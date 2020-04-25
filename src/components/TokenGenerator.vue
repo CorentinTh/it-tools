@@ -1,0 +1,90 @@
+<template>
+    <v-card>
+        <v-card-title>Token generator</v-card-title>
+
+        <v-card-text>
+            <v-row no-gutters>
+                <v-col lg="6" md="12">
+                    <v-switch v-model="withLowercase" label="Lowercase (abc...)" color="#4CAF50"/>
+                    <v-switch v-model="withUppercase" label="Uppercase (ABC...)" color="#4CAF50"/>
+
+                </v-col>
+                <v-col lg="6" md="12">
+                    <v-switch v-model="withNumbers" label="Numbers (123...)" color="#4CAF50"/>
+                    <v-switch v-model="withSpecials" label="Specials (#]-...)" color="#4CAF50"/>
+                </v-col>
+            </v-row>
+
+
+            <v-slider :label="`Length (${length})`" v-model="length" color="#4CAF50"></v-slider>
+
+            <v-text-field
+                    outlined
+                    :value="token"
+                    append-icon="fa-refresh"
+                    @click:append="refreshToken()"
+                    append-outer-icon="fa-clipboard"
+                    @click:append-outer="copyToken()"
+            >
+
+            </v-text-field>
+
+        </v-card-text>
+    </v-card>
+</template>
+
+<script>
+    import {copyToClipboard} from "../utils/helpers";
+
+    const shuffle = (str) => str.split('').sort(() => 0.5 - Math.random()).join('');
+    const noop = () => {
+    };
+
+    const lowercase = 'abcdefghijklmopqrstuvwxyz';
+    const uppercase = 'ABCDEFGHIJKLMOPQRSTUVWXYZ';
+    const numbers = '0123456789';
+    const specials = '.,;:!?./-"\'#{([-|\\@)]=}*+';
+
+
+    export default {
+        name: 'TokenGenerator',
+        data() {
+            return {
+                withNumbers: true,
+                withLowercase: true,
+                withUppercase: true,
+                withSpecials: false,
+                length: 32,
+                refreshBool: true,
+                refreshToken() {
+                    this.refreshBool = !this.refreshBool;
+                },
+                copyToken(){
+                    copyToClipboard(this.token);
+                    this.$toast.success('Copied to clipboard.')
+                }
+            }
+        },
+        computed: {
+            token() {
+                if (this.refreshBool) noop(); // To force recomputation
+
+                let result = '';
+
+                if (this.withLowercase) result += lowercase;
+                if (this.withUppercase) result += uppercase;
+                if (this.withNumbers) result += numbers;
+                if (this.withSpecials) result += specials;
+
+                return shuffle(result.repeat(this.length)).substring(0, this.length);
+            }
+        }
+    }
+</script>
+
+<style>
+    .v-card {
+        max-width: 600px;
+        width: 500px;
+    }
+</style>
