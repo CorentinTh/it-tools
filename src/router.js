@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from './routes/Home.vue'
 import TokenGenerator from "./components/TokenGenerator";
 import Hash from "./components/Hash";
+import DateConverter from "./components/DateConverter";
 
 Vue.use(VueRouter)
 
@@ -18,6 +19,10 @@ const routes = [
     {
         path: '/hash',
         component: Hash
+    },
+    {
+        path: '/date-converter',
+        component: DateConverter
     },
     {
         path: '/about',
