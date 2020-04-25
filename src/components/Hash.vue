@@ -1,5 +1,5 @@
 <template>
-    <v-card>
+    <v-card class="single-card">
         <v-card-title>Hash text</v-card-title>
         <v-card-text>
             <v-textarea

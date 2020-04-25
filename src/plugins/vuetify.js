@@ -11,7 +11,8 @@ Vue.use(Vuetify, {
 export default new Vuetify({
   theme: {
     themes: {
-      light: {
+      theme: 'dark',
+      dark: {
         primary: '#4CAF50',
         secondary: '#424242',
         accent: '#4CAF50',

@@ -55,18 +55,16 @@
         </v-app-bar>
 
         <v-content>
-            <v-container class="fill-height">
-                <v-row justify="center" align="center">
+            <v-row class="fill-height pa-4" justify="center" align="center" no-gutters>
                     <router-view></router-view>
-                </v-row>
-            </v-container>
+            </v-row>
         </v-content>
 
-<!--        <v-footer app>-->
-<!--            <span>&copy; {{new Date().getFullYear()}} <a href="//corentin-thomasset.fr" class="footer-link">Corentin Thomasset</a></span>-->
-<!--            <span>A bug ? A feature request ? Stuff happens <a href="https://github.com/CorentinTh/it-tools/issues"-->
-<!--                                                               target="_blank" class="footer-link">here</a>.</span>-->
-<!--        </v-footer>-->
+        <!--        <v-footer app>-->
+        <!--            <span>&copy; {{new Date().getFullYear()}} <a href="//corentin-thomasset.fr" class="footer-link">Corentin Thomasset</a></span>-->
+        <!--            <span>A bug ? A feature request ? Stuff happens <a href="https://github.com/CorentinTh/it-tools/issues"-->
+        <!--                                                               target="_blank" class="footer-link">here</a>.</span>-->
+        <!--        </v-footer>-->
     </v-app>
 </template>
 
@@ -79,15 +77,19 @@
             appVersion: 'v' + process.env.APPLICATION_VERSION,
             drawer: null,
             items: [
-
                 {
                     title: 'Crypto',
                     child: [
                         {icon: 'fa-key', text: 'Token generator', link: '/token-generator'},
-                        {icon: 'fa-key', text: 'Hash text', link: '/hash'},
-                    ]
+                        {icon: 'fa-font', text: 'Hash text', link: '/hash'},
+                    ],
+                },
+                {
+                    title: 'Converter',
+                    child: [
+                        {icon: 'fa-calendar', text: 'Date/Time converter', link: '/date-converter'},
+                    ],
                 }
-
             ],
         }),
         created() {
@@ -97,24 +99,36 @@
 </script>
 
 <style lang="less">
+    .single-card {
+        width: 100%;
+        max-width: 700px !important;
+    }
 
-/*    footer {*/
-/*        display: flex;*/
-/*        flex-direction: row;*/
-/*        justify-content: space-between;*/
-/*        color: rgba(255, 255, 255, 0.52) !important;*/
+    .v-card__title{
+        justify-content: center;
+        font-size: 30px !important;
+        line-height: 30px !important;
+        padding: 30px 0 !important;
+        font-weight: 300 !important;
+    }
 
-/*        .footer-link {*/
-/*            text-decoration: none;*/
-/*            color: rgba(255, 255, 255, 0.52) !important;*/
-/*            border-bottom: 1px dashed;*/
+    /*    footer {*/
+    /*        display: flex;*/
+    /*        flex-direction: row;*/
+    /*        justify-content: space-between;*/
+    /*        color: rgba(255, 255, 255, 0.52) !important;*/
 
-/*            &:hover {*/
-/*                color: #4CAF50 !important;*/
-/*                border-bottom: 1px solid;*/
-/*            }*/
-/*        }*/
-/*    }*/
+    /*        .footer-link {*/
+    /*            text-decoration: none;*/
+    /*            color: rgba(255, 255, 255, 0.52) !important;*/
+    /*            border-bottom: 1px dashed;*/
+
+    /*            &:hover {*/
+    /*                color: #4CAF50 !important;*/
+    /*                border-bottom: 1px solid;*/
+    /*            }*/
+    /*        }*/
+    /*    }*/
 
     .title {
         text-decoration: none;
