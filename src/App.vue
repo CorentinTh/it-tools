@@ -1,32 +1,172 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+    <v-app id="inspire">
+        <v-navigation-drawer v-model="drawer" app clipped>
+            <v-list dense>
+
+                <div v-for="section in items" :key="section.title">
+                    <v-subheader class="mt-4 pl-4">{{section.title}}</v-subheader>
+
+                    <v-list-item v-for="item in section.child" :key="item.text" :to="item.link">
+                        <v-list-item-action>
+                            <v-icon>{{ item.icon }}</v-icon>
+                        </v-list-item-action>
+                        <v-list-item-content>
+                            <v-list-item-title>
+                                {{ item.text }}
+                            </v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </div>
+
+            </v-list>
+
+            <template v-slot:append>
+                <v-divider></v-divider>
+
+                <div class="pa-5">
+                    <div>
+                        IT-Tools <a v-bind:href="'https://github.com/CorentinTh/it-tools/tree/'+appVersion"
+                                    target="_blank">{{appVersion}}</a>
+
+                    </div>
+                    <div>&copy; {{new Date().getFullYear()}} <a href="//corentin-thomasset.fr" class="footer-link">Corentin
+                        Thomasset</a></div>
+
+                </div>
+
+
+            </template>
+        </v-navigation-drawer>
+
+        <v-app-bar app clipped-left color="green">
+            <v-app-bar-nav-icon @click.stop="drawer = !drawer"/>
+            <v-toolbar-title class="mr-12 align-center">
+                <router-link to="/" class="title">IT Tools</router-link>
+            </v-toolbar-title>
+            <v-spacer></v-spacer>
+
+            <div class="right-links">
+                <router-link to="/about">About</router-link>
+
+                <a href="https://github.com/CorentinTh/it-tools" target="_blank" class="navbar-link">
+                    <v-icon>fa-github</v-icon>
+                </a>
+            </div>
+        </v-app-bar>
+
+        <v-content>
+            <v-container class="fill-height">
+                <v-row justify="center" align="center">
+                    <router-view></router-view>
+                </v-row>
+            </v-container>
+        </v-content>
+
+<!--        <v-footer app>-->
+<!--            <span>&copy; {{new Date().getFullYear()}} <a href="//corentin-thomasset.fr" class="footer-link">Corentin Thomasset</a></span>-->
+<!--            <span>A bug ? A feature request ? Stuff happens <a href="https://github.com/CorentinTh/it-tools/issues"-->
+<!--                                                               target="_blank" class="footer-link">here</a>.</span>-->
+<!--        </v-footer>-->
+    </v-app>
 </template>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+    export default {
+        props: {
+            source: String,
+        },
+        data: () => ({
+            appVersion: 'v' + process.env.APPLICATION_VERSION,
+            drawer: null,
+            items: [
 
-#nav {
-  padding: 30px;
+                {
+                    title: 'Crypto',
+                    child: [
+                        {icon: 'fa-key', text: 'Token generator', link: '/token-generator'},
+                        {icon: 'fa-key', text: 'Hash text', link: '/hash'},
+                    ]
+                }
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+            ],
+        }),
+        created() {
+            this.$vuetify.theme.dark = true
+        },
     }
-  }
-}
+</script>
+
+<style lang="less">
+
+/*    footer {*/
+/*        display: flex;*/
+/*        flex-direction: row;*/
+/*        justify-content: space-between;*/
+/*        color: rgba(255, 255, 255, 0.52) !important;*/
+
+/*        .footer-link {*/
+/*            text-decoration: none;*/
+/*            color: rgba(255, 255, 255, 0.52) !important;*/
+/*            border-bottom: 1px dashed;*/
+
+/*            &:hover {*/
+/*                color: #4CAF50 !important;*/
+/*                border-bottom: 1px solid;*/
+/*            }*/
+/*        }*/
+/*    }*/
+
+    .title {
+        text-decoration: none;
+        color: #fff !important;
+
+        &:hover {
+            border-bottom: 1px dashed;
+        }
+    }
+
+    .right-links {
+        align-items: center;
+        display: flex;
+
+        a:not(:last-child) {
+            margin-right: 20px;
+            text-decoration: none;
+            color: #fff;
+
+            &:hover {
+                border-bottom: 1px dashed;
+            }
+        }
+
+
+        .navbar-link {
+            text-decoration: none;
+
+            .v-icon {
+                font-size: 37px !important;
+
+                &:hover {
+                    color: #363636;
+                }
+            }
+        }
+    }
+
+    .v-navigation-drawer__append {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.52) !important;
+
+        a {
+            border-bottom: 1px dashed;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.52) !important;
+
+            &:hover {
+                color: #4CAF50 !important;
+                border-bottom: 1px solid;
+            }
+        }
+
+    }
 </style>

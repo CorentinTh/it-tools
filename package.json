@@ -9,9 +9,15 @@
   },
   "dependencies": {
     "core-js": "^3.6.4",
+    "font-awesome": "^4.7.0",
     "register-service-worker": "^1.7.1",
+    "roboto-fontface": "*",
     "vue": "^2.6.11",
-    "vue-router": "^3.1.6"
+    "vue-async-computed": "^3.8.2",
+    "vue-cryptojs": "^2.1.4",
+    "vue-router": "^3.1.6",
+    "vuetify": "^2.2.11",
+    "vuetify-toast-snackbar": "^0.6.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.3.0",
@@ -25,7 +31,11 @@
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "lint-staged": "^9.5.0",
-    "vue-template-compiler": "^2.6.11"
+    "sass": "^1.19.0",
+    "sass-loader": "^8.0.0",
+    "vue-cli-plugin-vuetify": "~2.0.5",
+    "vue-template-compiler": "^2.6.11",
+    "vuetify-loader": "^1.3.0"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
