@@ -30,7 +30,7 @@
 
 <script>
     import Vue from 'vue'
-    import {copyToClipboard} from "../utils/helpers";
+    import {copyToClipboard} from "../../utils/helpers";
 
     export default {
         name: "Hash",

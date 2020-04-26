@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from './routes/Home.vue'
-import TokenGenerator from "./components/TokenGenerator";
-import Hash from "./components/Hash";
-import DateConverter from "./components/DateConverter";
+import TokenGenerator from "./routes/tools/TokenGenerator";
+import Hash from "./routes/tools/Hash";
+import DateConverter from "./routes/tools/DateConverter";
+import UrlEncoder from "./routes/tools/UrlEncoder";
+import FileToBase64 from "./routes/tools/FileToBase64";
 
 Vue.use(VueRouter)
 
@@ -23,6 +25,14 @@ const routes = [
     {
         path: '/date-converter',
         component: DateConverter
+    },
+    {
+        path: '/url-encoder',
+        component: UrlEncoder
+    },
+    {
+        path: '/file-to-base64',
+        component: FileToBase64
     },
     {
         path: '/about',

@@ -1,6 +1,6 @@
 <template>
     <v-row justify="center" align="center">
-        <v-col xl="4" lg="6" md="12">
+        <v-col cols="12" xl="4" lg="6" md="12">
             <v-card class="mb-5">
                 <v-card-title>Input</v-card-title>
                 <v-card-text>
@@ -37,7 +37,7 @@
                 </v-card-text>
             </v-card>
         </v-col>
-        <v-col xl="4" lg="6" md="12" >
+        <v-col cols="12" xl="4" lg="6" md="12" >
             <v-card>
                 <v-card-title>Dates formats</v-card-title>
                 <v-card-text>
@@ -61,7 +61,7 @@
 </template>
 
 <script>
-    import {copyToClipboard} from "../utils/helpers";
+    import {copyToClipboard} from "../../utils/helpers";
 
     export default {
         name: "DateConverter",
