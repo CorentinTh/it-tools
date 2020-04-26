@@ -99,6 +99,9 @@
 </script>
 
 <style lang="less">
+    html{
+        overflow-y: hidden !important;
+    }
     .single-card {
         width: 100%;
         max-width: 700px !important;
