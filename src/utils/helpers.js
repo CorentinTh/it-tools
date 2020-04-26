@@ -8,6 +8,11 @@ const copyToClipboard = (text) => {
     return result;
 }
 
+const fileIsImage = (file) => {
+    return file.type.split('/')[0] === 'image';
+}
+
 export {
-    copyToClipboard
+    copyToClipboard,
+    fileIsImage
 }

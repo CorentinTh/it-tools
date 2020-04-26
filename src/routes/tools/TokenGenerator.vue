@@ -29,7 +29,7 @@
 </template>
 
 <script>
-    import {copyToClipboard} from "../utils/helpers";
+    import {copyToClipboard} from "../../utils/helpers";
 
     const shuffle = (str) => str.split('').sort(() => 0.5 - Math.random()).join('');
     const noop = () => {

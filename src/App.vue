@@ -89,6 +89,13 @@
                     child: [
                         {icon: 'fa-calendar', text: 'Date/Time converter', link: '/date-converter'},
                     ],
+                },
+                {
+                    title: 'Web',
+                    child: [
+                        {icon: 'fa-link', text: 'URL encode/decode', link: '/url-encoder'},
+                        {icon: 'fa-file-image-o', text: 'File to Base64', link: '/file-to-base64'},
+                    ],
                 }
             ],
         }),
@@ -100,7 +107,7 @@
 
 <style lang="less">
     html{
-        overflow-y: hidden !important;
+        overflow-y: auto !important;
     }
     .single-card {
         width: 100%;
