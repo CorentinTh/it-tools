@@ -43,6 +43,14 @@
             <v-toolbar-title class="mr-12 align-center">
                 <router-link to="/" class="title">IT Tools</router-link>
             </v-toolbar-title>
+
+            <v-spacer></v-spacer>
+            <v-row
+                    align="center"
+                    style="max-width: 650px"
+            >
+                <SearchBar />
+            </v-row>
             <v-spacer></v-spacer>
 
             <div class="right-links">
@@ -56,7 +64,7 @@
 
         <v-content>
             <v-row class="fill-height pa-4" justify="center" align="center" no-gutters>
-                    <router-view></router-view>
+                <router-view></router-view>
             </v-row>
         </v-content>
 
@@ -69,10 +77,13 @@
 </template>
 
 <script>
+    import SearchBar from "./components/SearchBar";
+
     export default {
         props: {
             source: String,
         },
+        components: {SearchBar},
         data: () => ({
             appVersion: 'v' + process.env.APPLICATION_VERSION,
             drawer: null,
@@ -106,15 +117,16 @@
 </script>
 
 <style lang="less">
-    html{
+    html {
         overflow-y: auto !important;
     }
+
     .single-card {
         width: 100%;
         max-width: 700px !important;
     }
 
-    .v-card__title{
+    .v-card__title {
         justify-content: center;
         font-size: 30px !important;
         line-height: 30px !important;
