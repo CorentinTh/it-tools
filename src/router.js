@@ -9,11 +9,7 @@ import FileToBase64 from "./routes/tools/FileToBase64";
 
 Vue.use(VueRouter)
 
-const routes = [
-    {
-        path: '/',
-        component: Home
-    },
+const toolsRoutes = [
     {
         path: '/token-generator',
         component: TokenGenerator
@@ -33,6 +29,14 @@ const routes = [
     {
         path: '/file-to-base64',
         component: FileToBase64
+    }
+]
+
+const routes = [
+    ...toolsRoutes,
+    {
+        path: '/',
+        component: Home
     },
     {
         path: '/about',
@@ -45,6 +49,10 @@ const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
     routes
-})
+});
 
-export default router
+export default router;
+export {
+    routes,
+    toolsRoutes
+};

@@ -11,7 +11,7 @@
     >
         <p>Drag & drop a file here</p>
         <p class="or">or</p>
-        <v-btn depressed>upload manually</v-btn>
+        <v-btn depressed>select a file</v-btn>
         <p class="or">or</p>
         <v-text-field outlined dense label="Paste an url to the file" hide-details></v-text-field>
     </div>
