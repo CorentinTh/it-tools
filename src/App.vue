@@ -1,6 +1,9 @@
 <template>
     <v-app id="inspire">
         <v-navigation-drawer v-model="drawer" app clipped>
+
+            <SearchBar class="hidden-sm-and-up" />
+
             <v-list dense>
 
                 <div v-for="section in items" :key="section.title">
@@ -48,8 +51,9 @@
             <v-row
                     align="center"
                     style="max-width: 650px"
+                    class="hidden-sm-and-down"
             >
-                <SearchBar />
+                <SearchBar/>
             </v-row>
             <v-spacer></v-spacer>
 
