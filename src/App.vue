@@ -97,6 +97,7 @@
                     child: [
                         {icon: 'fa-key', text: 'Token generator', link: '/token-generator'},
                         {icon: 'fa-font', text: 'Hash text', link: '/hash'},
+                        {icon: 'fa-lock', text: 'Cypher/uncypher text', link: '/cypher'},
                     ],
                 },
                 {
