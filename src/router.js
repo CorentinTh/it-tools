@@ -6,6 +6,7 @@ import Hash from "./routes/tools/Hash";
 import DateConverter from "./routes/tools/DateConverter";
 import UrlEncoder from "./routes/tools/UrlEncoder";
 import FileToBase64 from "./routes/tools/FileToBase64";
+import TextCypher from "./routes/tools/TextCypher";
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,10 @@ const toolsRoutes = [
     {
         path: '/file-to-base64',
         component: FileToBase64
+    },
+    {
+        path: '/cypher',
+        component: TextCypher
     }
 ]
 
