@@ -4,21 +4,21 @@
             <v-card>
                 <v-card-title>File to Base64</v-card-title>
                 <v-card-text>
-                    <FileUploader v-model="imageFile"/>
+                    <FileUploader v-model="file"/>
                 </v-card-text>
             </v-card>
         </v-col>
-        <v-col cols="12" lg="4" md="6" sm="12" v-if="base64">
+        <v-col cols="12" lg="4" md="6" sm="12" v-if="base64 || loading">
             <v-card>
                 <v-card-title>Result</v-card-title>
                 <v-card-text>
-                    <v-img :src="base64" class="mb-4" v-if="isImage"/>
                     <v-textarea
                             label="File in base 64"
                             outlined
                             readonly
                             v-model="base64"
                             hide-details
+                            :loading="loading"
                     />
                     <div class="text-center mt-4">
                         <v-btn @click="copyBase64()" depressed>Copy base64</v-btn>
@@ -32,34 +32,36 @@
 
 <script>
     import FileUploader from '../../components/FileUploader'
-    import {copyToClipboard, fileIsImage} from "../../utils/helpers";
+    import {copyToClipboard} from "../../utils/helpers";
 
     export default {
         name: "FileToBase64",
         components: {FileUploader},
         data() {
             return {
-                imageFile: undefined,
+                file: undefined,
+                loading: false,
                 base64: '',
-                isImage: false,
-                copyBase64(){
+                copyBase64() {
                     copyToClipboard(this.base64)
                     this.$toast.success('Copied to clipboard.')
                 }
             }
         },
+        methods:{
+            handleBase64(base64){
+                this.base64 = base64;
+                this.loading = false;
+            }
+        },
         watch: {
-            imageFile() {
-                this.isImage = fileIsImage(this.imageFile);
-
+            file() {
+                this.loading = true;
+                this.base64 = '';
                 const reader = new FileReader();
-                reader.readAsDataURL(this.imageFile);
-                reader.onload = () => {
-                    this.base64 = reader.result;
-                }
-                reader.onerror = () => {
-                    this.base64 = '[An error as occurred]';
-                }
+                reader.onload = () => this.handleBase64(reader.result);
+                reader.onerror = () => this.handleBase64('[An error as occurred]');
+                reader.readAsDataURL(this.file);
             }
         }
     }
