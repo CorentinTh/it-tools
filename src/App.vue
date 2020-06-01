@@ -9,7 +9,7 @@
                 <div v-for="section in items" :key="section.title">
                     <v-subheader class="mt-4 pl-4">{{section.title}}</v-subheader>
 
-                    <v-list-item v-for="item in section.child" :key="item.text" :to="item.link">
+                    <v-list-item v-for="item in section.child" :key="item.text" :to="item.path">
                         <v-list-item-action>
                             <v-icon>{{ item.icon }}</v-icon>
                         </v-list-item-action>
@@ -82,6 +82,7 @@
 
 <script>
     import SearchBar from "./components/SearchBar";
+    import {toolsComponents} from "./router";
 
     export default {
         props: {
@@ -91,29 +92,7 @@
         data: () => ({
             appVersion: 'v' + process.env.APPLICATION_VERSION,
             drawer: null,
-            items: [
-                {
-                    title: 'Crypto',
-                    child: [
-                        {icon: 'fa-key', text: 'Token generator', link: '/token-generator'},
-                        {icon: 'fa-font', text: 'Hash text', link: '/hash'},
-                        {icon: 'fa-lock', text: 'Cypher/uncypher text', link: '/cypher'},
-                    ],
-                },
-                {
-                    title: 'Converter',
-                    child: [
-                        {icon: 'fa-calendar', text: 'Date/Time converter', link: '/date-converter'},
-                    ],
-                },
-                {
-                    title: 'Web',
-                    child: [
-                        {icon: 'fa-link', text: 'URL encode/decode', link: '/url-encoder'},
-                        {icon: 'fa-file-image-o', text: 'File to Base64', link: '/file-to-base64'},
-                    ],
-                }
-            ],
+            items: toolsComponents
         }),
         created() {
             this.$vuetify.theme.dark = true
