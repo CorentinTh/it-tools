@@ -7,38 +7,81 @@ import DateConverter from "./routes/tools/DateConverter";
 import UrlEncoder from "./routes/tools/UrlEncoder";
 import FileToBase64 from "./routes/tools/FileToBase64";
 import TextCypher from "./routes/tools/TextCypher";
+import TextStats from "./routes/tools/TextStats";
 
 Vue.use(VueRouter)
 
-const toolsRoutes = [
+
+const toolsComponents = [
     {
-        path: '/token-generator',
-        component: TokenGenerator
+        title: 'Crypto',
+        child: [
+            {
+                icon: 'fa-key',
+                text: 'Token generator',
+                path: '/token-generator',
+                component: TokenGenerator,
+                keywords: ['md5']
+            },
+            {
+                icon: 'fa-font',
+                text: 'Hash text',
+                path: '/hash',
+                component: Hash
+            },
+            {
+                icon: 'fa-lock',
+                text: 'Cypher/uncypher text',
+                path: '/cypher',
+                component: TextCypher
+            },
+        ],
     },
     {
-        path: '/hash',
-        component: Hash
+        title: 'Converter',
+        child: [
+            {
+                icon: 'fa-calendar',
+                text: 'Date/Time converter',
+                path: '/date-converter',
+                component: DateConverter
+            },
+        ],
     },
     {
-        path: '/date-converter',
-        component: DateConverter
+        title: 'Web',
+        child: [
+            {
+                icon: 'fa-link',
+                text: 'URL encode/decode',
+                path: '/url-encoder',
+                component: UrlEncoder
+            },
+            {
+                icon: 'fa-file-image-o',
+                text: 'File to Base64',
+                path: '/file-to-base64',
+                component: FileToBase64
+            },
+        ],
     },
     {
-        path: '/url-encoder',
-        component: UrlEncoder
-    },
-    {
-        path: '/file-to-base64',
-        component: FileToBase64
-    },
-    {
-        path: '/cypher',
-        component: TextCypher
+        title: 'Miscellaneous',
+        child: [
+            {
+                icon: 'fa-file-text',
+                text: 'Text stats',
+                path: '/text-stats',
+                component: TextStats
+            },
+        ],
     }
-]
+];
+
+const toolsComponentsFlat = toolsComponents.reduce((acc, section) => [...acc, ...section.child], [])
 
 const routes = [
-    ...toolsRoutes,
+    ...toolsComponentsFlat,
     {
         path: '/',
         component: Home
@@ -59,5 +102,6 @@ const router = new VueRouter({
 export default router;
 export {
     routes,
-    toolsRoutes
+    toolsComponents,
+    toolsComponentsFlat
 };
