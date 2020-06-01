@@ -9,6 +9,7 @@ import FileToBase64 from "./routes/tools/FileToBase64";
 import TextCypher from "./routes/tools/TextCypher";
 import TextStats from "./routes/tools/TextStats";
 import BaseConverter from "./routes/tools/BaseConverter";
+import UuidGenerator from "./routes/tools/UuidGenerator";
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,13 @@ const toolsComponents = [
                 path: '/token-generator',
                 component: TokenGenerator,
                 keywords: ['token', 'random', 'string', 'alphanumeric']
+            },
+            {
+                icon: 'fa-key',
+                text: 'Uuid generator',
+                path: '/uuid-generator',
+                component: UuidGenerator,
+                keywords: ['token', 'v4', 'string', 'alphanumeric']
             },
             {
                 icon: 'fa-font',
