@@ -8,6 +8,7 @@ import UrlEncoder from "./routes/tools/UrlEncoder";
 import FileToBase64 from "./routes/tools/FileToBase64";
 import TextCypher from "./routes/tools/TextCypher";
 import TextStats from "./routes/tools/TextStats";
+import BaseConverter from "./routes/tools/BaseConverter";
 
 Vue.use(VueRouter)
 
@@ -21,19 +22,22 @@ const toolsComponents = [
                 text: 'Token generator',
                 path: '/token-generator',
                 component: TokenGenerator,
-                keywords: ['md5']
+                keywords: ['token', 'random', 'string', 'alphanumeric']
             },
             {
                 icon: 'fa-font',
                 text: 'Hash text',
                 path: '/hash',
-                component: Hash
+                component: Hash,
+                keywords: ['md5', 'sha1', 'sha256', 'sha224', 'sha512', 'sha384', 'sha3', 'ripemd160', 'random']
+
             },
             {
                 icon: 'fa-lock',
                 text: 'Cypher/uncypher text',
                 path: '/cypher',
-                component: TextCypher
+                component: TextCypher,
+                keywords: ['aes', 'tripledes', 'rabbit', 'rabbitlegacy', 'rc4']
             },
         ],
     },
@@ -44,7 +48,15 @@ const toolsComponents = [
                 icon: 'fa-calendar',
                 text: 'Date/Time converter',
                 path: '/date-converter',
-                component: DateConverter
+                component: DateConverter,
+                keywords: ['locale', 'format', 'iso 8601', 'utc', 'timestamp', 'unix', 'year', 'month', 'day', 'hours', 'minutes', 'seconds']
+            },
+            {
+                icon: 'fa-arrows-h',
+                text: 'Base converter',
+                path: '/base-converter',
+                component: BaseConverter,
+                keywords: ['binary', 'hexadecimal', 'decimal']
             },
         ],
     },
@@ -55,7 +67,8 @@ const toolsComponents = [
                 icon: 'fa-link',
                 text: 'URL encode/decode',
                 path: '/url-encoder',
-                component: UrlEncoder
+                component: UrlEncoder,
+                keywords: ['%20']
             },
             {
                 icon: 'fa-file-image-o',
@@ -72,7 +85,8 @@ const toolsComponents = [
                 icon: 'fa-file-text',
                 text: 'Text stats',
                 path: '/text-stats',
-                component: TextStats
+                component: TextStats,
+                keywords: ['word', 'count', 'size', 'bytes', 'length']
             },
         ],
     }
