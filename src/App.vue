@@ -118,24 +118,6 @@
         font-weight: 300 !important;
     }
 
-    /*    footer {*/
-    /*        display: flex;*/
-    /*        flex-direction: row;*/
-    /*        justify-content: space-between;*/
-    /*        color: rgba(255, 255, 255, 0.52) !important;*/
-
-    /*        .footer-link {*/
-    /*            text-decoration: none;*/
-    /*            color: rgba(255, 255, 255, 0.52) !important;*/
-    /*            border-bottom: 1px dashed;*/
-
-    /*            &:hover {*/
-    /*                color: #4CAF50 !important;*/
-    /*                border-bottom: 1px solid;*/
-    /*            }*/
-    /*        }*/
-    /*    }*/
-
     .title {
         text-decoration: none;
         color: #fff !important;
