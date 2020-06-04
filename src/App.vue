@@ -61,7 +61,7 @@
                 <router-link to="/about">About</router-link>
 
                 <a href="https://github.com/CorentinTh/it-tools" target="_blank" class="navbar-link">
-                    <v-icon>fa-github</v-icon>
+                    <v-icon>fab fa-github</v-icon>
                 </a>
             </div>
         </v-app-bar>

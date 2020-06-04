@@ -26,7 +26,7 @@ const toolsComponents = [
                 keywords: ['token', 'random', 'string', 'alphanumeric']
             },
             {
-                icon: 'fa-key',
+                icon: 'fa-fingerprint',
                 text: 'Uuid generator',
                 path: '/uuid-generator',
                 component: UuidGenerator,
@@ -60,7 +60,7 @@ const toolsComponents = [
                 keywords: ['locale', 'format', 'iso 8601', 'utc', 'timestamp', 'unix', 'year', 'month', 'day', 'hours', 'minutes', 'seconds']
             },
             {
-                icon: 'fa-arrows-h',
+                icon: 'fa-exchange-alt',
                 text: 'Base converter',
                 path: '/base-converter',
                 component: BaseConverter,
@@ -79,7 +79,7 @@ const toolsComponents = [
                 keywords: ['%20']
             },
             {
-                icon: 'fa-file-image-o',
+                icon: 'fa-file-export',
                 text: 'File to Base64',
                 path: '/file-to-base64',
                 component: FileToBase64
@@ -90,7 +90,7 @@ const toolsComponents = [
         title: 'Miscellaneous',
         child: [
             {
-                icon: 'fa-file-text',
+                icon: 'fa-align-left\n',
                 text: 'Text stats',
                 path: '/text-stats',
                 component: TextStats,
