@@ -10,6 +10,7 @@ import TextCypher from "./routes/tools/TextCypher";
 import TextStats from "./routes/tools/TextStats";
 import BaseConverter from "./routes/tools/BaseConverter";
 import UuidGenerator from "./routes/tools/UuidGenerator";
+import ColorConverter from "./routes/tools/ColorConverter";
 
 Vue.use(VueRouter)
 
@@ -65,6 +66,13 @@ const toolsComponents = [
                 path: '/base-converter',
                 component: BaseConverter,
                 keywords: ['binary', 'hexadecimal', 'decimal']
+            },
+            {
+                icon: 'fa-palette',
+                text: 'Color picker/converter',
+                path: '/color-picker-converter',
+                component: ColorConverter,
+                keywords: ['rgb', 'rgba', 'hexadecimal', 'hsla', 'red', 'green', 'blue', 'alpha']
             },
         ],
     },
