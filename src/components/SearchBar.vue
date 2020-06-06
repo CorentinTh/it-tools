@@ -27,7 +27,6 @@
 <script>
     import {toolsComponentsFlat} from '../router'
 
-    console.log(toolsComponentsFlat);
     export default {
         name: "SearchBar",
         data() {

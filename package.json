@@ -11,6 +11,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "color-convert": "^2.0.1",
+    "color-name": "^1.1.4",
     "core-js": "^3.6.4",
     "register-service-worker": "^1.7.1",
     "roboto-fontface": "*",
