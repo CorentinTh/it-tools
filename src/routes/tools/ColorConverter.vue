@@ -10,47 +10,44 @@
                             canvas-height="300"
                             hide-inputs
                             mode="rgba"
-                            v-model="rgba"
+                            v-model="rgb"
                     />
                 </v-col>
                 <v-col cols="12" sm="6" align="center">
-                    <v-form v-model="valid" ref="form">
-                        <v-text-field
-                                outlined
-                                label="hex"
-                                v-model="_hex"
-                                :rules="rules.hex"
-                                dense
-                        />
-                        <v-text-field
-                                outlined
-                                label="hexa"
-                                :rules="rules.hexa"
-                                v-model="_hexa"
-                                dense
-                        />
-                        <v-text-field
-                                outlined
-                                label="rgb"
-                                v-model="_rgb"
-                                :rules="rules.rgb"
-                                dense
-                        />
-                        <v-text-field
-                                outlined
-                                label="rgba"
-                                v-model="_rgba"
-                                :rules="rules.rgba"
-                                dense
-                        />
-                        <v-text-field
-                                outlined
-                                label="hsl"
-                                v-model="_hsl"
-                                dense
-                        />
-
-                    </v-form>
+                    <v-text-field
+                            outlined
+                            ref="hex"
+                            label="hex"
+                            v-model="_hex"
+                            :rules="rules.hex"
+                            dense
+                    />
+                    <v-text-field
+                            outlined
+                            label="rgb"
+                            ref="rgb"
+                            v-model="_rgb"
+                            :rules="rules.rgb"
+                            dense
+                    />
+                    <v-text-field
+                            outlined
+                            label="hsl"
+                            ref="hsl"
+                            v-model="_hsl"
+                            :rules="rules.hsl"
+                            dense
+                    />
+                    <v-autocomplete
+                            v-model="_keyword"
+                            outlined
+                            label="css keyword"
+                            ref="keyword"
+                            :items="colorsName"
+                            :rules="rules.keyword"
+                            no-data-text="This is not an authorized color name."
+                            dense
+                    />
                 </v-col>
             </v-row>
         </v-card-text>
@@ -58,137 +55,90 @@
 </template>
 
 <script>
+    import convert from "color-convert";
+    import colors from "color-name";
+
     const required = v => !!v || 'A value is required'
-    const intToHex = (int) => Math.floor(int).toString(16).toUpperCase().padStart(2, '0');
-    const hexToInt = (hex) => parseInt(hex, 16);
-    const rgbToHSL = ({r, g, b}) => {
-        r /= 255, g /= 255, b /= 255;
-        const max = Math.max(r, g, b), min = Math.min(r, g, b);
-        let h, s, l = (max + min) / 2;
 
-        if (max === min) {
-            h = s = 0; // achromatic
-        } else {
-            const d = max - min;
-            s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-            switch (max) {
-                case r:
-                    h = (g - b) / d + (g < b ? 6 : 0);
-                    break;
-                case g:
-                    h = (b - r) / d + 2;
-                    break;
-                case b:
-                    h = (r - g) / d + 4;
-                    break;
-            }
-            h /= 6;
-        }
-
-        return {h: h * 360, s: s * 100, l: l * 100};
-    }
     export default {
         name: "ColorConverter",
         data: () => ({
-            rgba: {
+            rgb: {
                 "r": 76,
                 "g": 175,
-                "b": 80,
-                "a": 1
+                "b": 80
             },
-            console: console,
+            colorsName: Object.keys(colors).sort(),
             valid: true,
             rules: {
-                hexa: [
-                    required,
-                    v => /^#(?:[0-9a-fA-F]{8})$/.test(v) || 'Format should be like #112233aa'
-                ],
                 hex: [
                     required,
-                    v => /^#([0-9a-fA-F]{3}){1,2}$/.test(v) || 'Format should be like #112233'
+                    v => /^#(?:[0-9a-fA-F]{6})$/.test(v) || 'Format should be like #112233'
                 ],
                 rgb: [
                     required,
                     v => /^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/.test(v) || 'Format should be like rgb(255, 0, 0)'
                 ],
-                rgba: [
+                hsl: [
                     required,
-                    v => /^rgba\((\d+),\s*(\d+),\s*(\d+),\s*(\d+(?:\.\d+)?)\)$/.test(v) || 'Format should be like rgb(255, 0, 0, 1)'
+                    v => /^hsl\((\d+),\s*(\d+)%,\s*(\d+)%\)$/.test(v) || 'Format should be like hsl(360, 100%, 50%)'
+                ],
+                keywords: [
+                    required,
+                    v => !!colors[v] || 'Value should be from the list'
                 ]
             }
         }),
         computed: {
             _hex: {
                 get() {
-                    return `#${intToHex(this.rgba.r)}${intToHex(this.rgba.g)}${intToHex(this.rgba.b)}`
+                    const result = convert.rgb.hex(this.rgb.r, this.rgb.g, this.rgb.b)
+                    return `#${result}`
                 },
                 set(value) {
-                    if (this.$refs.form.validate()) {
-                        value = value.replace(/#/, '');
-                        value = value.length === 3 ? value.split('').map(v => v + v) : value.match(/.{2}/g);
-                        console.log(value);
-                        this.rgba = {
-                            r: hexToInt(value[0]),
-                            g: hexToInt(value[1]),
-                            b: hexToInt(value[2]),
-                            a: '1'
-                        }
-                    }
-                }
-            },
-            _hexa: {
-                get() {
-                    return `#${intToHex(this.rgba.r)}${intToHex(this.rgba.g)}${intToHex(this.rgba.b)}${intToHex((this.rgba.a ?? 0) * 255)}`
-                },
-                set(value) {
-                    if (this.$refs.form.validate()) {
-                        value = value.replace(/#/, '');
-                        value = value.match(/.{2}/g);
-
-                        this.rgba = {
-                            r: hexToInt(value[0]),
-                            g: hexToInt(value[1]),
-                            b: hexToInt(value[2]),
-                            a: hexToInt(value[3]) / 255,
-                        }
+                    if (this.$refs.hex.validate()) {
+                        const [r, g, b] = convert.hex.rgb(value.replace(/#/g, ''))
+                        this.rgb = {r, g, b}
                     }
                 }
             },
             _rgb: {
                 get() {
-                    return `rgb(${this.rgba.r}, ${this.rgba.g}, ${this.rgba.b})`
+                    return `rgb(${this.rgb.r}, ${this.rgb.g}, ${this.rgb.b})`
                 },
                 set(value) {
-                    if (this.$refs.form.validate()) {
-                        const [, r, g, b] = value.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-
-                        this.rgba = {r, g, b, a: 1}
-                    }
-                }
-            },
-            _rgba: {
-                get() {
-                    return `rgba(${this.rgba.r}, ${this.rgba.g}, ${this.rgba.b}, ${parseFloat((this.rgba.a ?? 0).toFixed(2))})`
-                },
-                set(value) {
-                    if (this.$refs.form.validate()) {
-                        const [, r, g, b, a] = value.match(/^rgba\((\d+),\s*(\d+),\s*(\d+),\s*(\d+(?:\.\d+)?)\)$/);
-
-                        this.rgba = {r, g, b, a: parseFloat(a)}
+                    if (this.$refs.rgb.validate()) {
+                        const [r, g, b] = value.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/).slice(1).map(v => parseInt(v));
+                        this.rgb = {r, g, b}
                     }
                 }
             },
             _hsl: {
                 get() {
-                    const {h, s, l} = rgbToHSL(this.rgba)
-
-                    return `hsl(${Math.floor(h)}, ${Math.floor(s )}%, ${Math.floor(l)}%)`
+                    const [h, s, l] = convert.rgb.hsl(this.rgb.r, this.rgb.g, this.rgb.b)
+                    return `hsl(${Math.floor(h)}, ${Math.floor(s)}%, ${Math.floor(l)}%)`
                 },
                 set(value) {
-                    if (this.$refs.form.validate()) {
-                        const [, r, g, b, a] = value.match(/^rgba\((\d+),\s*(\d+),\s*(\d+),\s*(\d+(?:\.\d+)?)\)$/);
+                    if (this.$refs.hsl.validate()) {
+                        const [h, s, l] = value.match(/^hsl\((\d+),\s*(\d+)%,\s*(\d+)%\)$/).slice(1).map(v => parseInt(v));
+                        const [r, g, b] = convert.hsl.rgb(h, s, l)
 
-                        this.rgba = {r, g, b, a: parseFloat(a)}
+                        this.rgb = {r, g, b}
+                    }
+                }
+            },
+            _keyword: {
+                get() {
+                    return convert.rgb.keyword(this.rgb.r, this.rgb.g, this.rgb.b)
+                },
+                set(value) {
+                    if (this.$refs.keyword.validate()) {
+                        try {
+                            const [r, g, b] = convert.keyword.rgb(value)
+                            this.rgb = {r, g, b}
+                        } catch (ignored) {
+                            // ignored
+                        }
                     }
                 }
             }
@@ -196,6 +146,8 @@
     }
 </script>
 
-<style scoped>
-
+<style scoped lang="less">
+    ::v-deep .v-input__icon {
+        height: 18px !important;
+    }
 </style>
