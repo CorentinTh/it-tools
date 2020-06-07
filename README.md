@@ -1,5 +1,28 @@
 ![logo](.github/logo.png)
 
+Aggregated set of useful tools that every developer may need once in a while
+
+## Functionality/roadmap
+
+-[x] Token generator
+-[x] Uuid generator
+-[x] String hash
+-[x] Text encryption
+-[x] Date format converter
+-[x] Int base converter
+-[x] Color format converter
+-[x] Url encoder
+-[x] Base 64 generator
+-[x] Text information
+-[ ] Lorem ipsum text generator
+-[ ] Image exif editor/remover
+-[ ] QR code generator
+-[ ] Bip39 pass-phrase generator
+-[ ] Crontab friendly generator
+-[ ] Image format converter?
+-[ ] Image cropper 
+
+You have an idea of a tool? Submit a feature request!
 
 ## Project setup
 Install dependencies by running the following command:
@@ -16,3 +39,14 @@ And to lint and fixe files, run:
 ```shell
 npm run lint
 ```
+
+## Contribute
+**Pull requests are welcome !** Feel free to contribute.
+
+## Credits
+Coded with ❤️ by [Corentin Thomasset](//corentin-thomasset.fr).
+
+This project is continuously deployed using [vercel.com](https://vercel.com).
+
+## License
+This project is under the [MIT license](LICENSE).
