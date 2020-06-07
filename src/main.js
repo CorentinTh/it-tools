@@ -7,6 +7,7 @@ import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 import './plugins/crypto-js'
 import './plugins/toast-snackbar'
+import './plugins/vue-headful'
 
 Vue.config.productionTip = false
 
