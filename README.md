@@ -1,8 +1,9 @@
 ![logo](.github/logo.png)
 
-Aggregated set of useful tools that every developer may need once in a while
+Aggregated set of useful tools that every developer may need once in a while. Available [here](https://it-tools.tech).
 
 ## Functionality/roadmap
+Here is an unordered list of the current functionalities, and some that may come. 
 
 - [x] Token generator
 - [x] Uuid generator
