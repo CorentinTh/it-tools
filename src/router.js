@@ -121,6 +121,11 @@ const routes = [
         path: '/about',
         name: 'About',
         component: () => import('./routes/About.vue')
+    },
+    {
+        path: '*',
+        name: '404',
+        component: () => import('./routes/NotFound.vue')
     }
 ]
 
