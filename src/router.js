@@ -24,7 +24,8 @@ const toolsComponents = [
                 text: 'Token generator',
                 path: '/token-generator',
                 component: TokenGenerator,
-                keywords: ['token', 'random', 'string', 'alphanumeric']
+                keywords: ['token', 'random', 'string', 'alphanumeric'],
+                description: 'Generate random tokens.'
             },
             {
                 icon: 'fa-fingerprint',

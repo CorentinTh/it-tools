@@ -17,6 +17,7 @@
     "roboto-fontface": "*",
     "vue": "^2.6.11",
     "vue-cryptojs": "^2.1.4",
+    "vue-headful": "^2.1.0",
     "vue-router": "^3.1.6",
     "vuetify": "^2.2.11",
     "vuetify-toast-snackbar": "^0.6.1"

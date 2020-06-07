@@ -1,5 +1,11 @@
 <template>
     <v-app id="inspire">
+        <vue-headful
+            :title="currentRoute ? `${currentRoute.text} - IT-Tools` : 'IT-Tools'"
+            :description="currentRoute ? currentRoute.description: 'Aggregated set of useful tools that every developer may need once in a while.'"
+            :keywords="currentRoute ? currentRoute.keywords: null"
+            image="/img/banner.png"
+        />
         <v-navigation-drawer v-model="drawer" app clipped>
 
             <SearchBar class="hidden-sm-and-up" />
@@ -92,11 +98,26 @@
         data: () => ({
             appVersion: 'v' + process.env.APPLICATION_VERSION,
             drawer: null,
-            items: toolsComponents
+            items: toolsComponents,
+            currentRoute:{}
         }),
+        mounted() {
+            this.setTitle()
+        },
         created() {
             this.$vuetify.theme.dark = true
         },
+        methods:{
+            setTitle(){
+                const path = this.$router.currentRoute.path;
+                this.currentRoute = toolsComponents.map(p => p.child).flat().find(p => p.path === path)
+            }
+        },
+        watch:{
+            '$route'(){
+                this.setTitle()
+            }
+        }
     }
 </script>
 
