@@ -12,7 +12,7 @@
                     <br>
 
                     <v-row>
-                        <v-col md="6" sm="12" class="pt-0 pb-0">
+                        <v-col md="4" sm="12" class="pt-0 pb-0">
                             <v-select
                                     :items="formats.filter(f => !f.title.toLowerCase().includes('locale'))"
                                     item-value="dateFromFormat"
@@ -24,7 +24,7 @@
                                     @input="userInputChanged()"
                             />
                         </v-col>
-                        <v-col md="6" sm="12" class="pt-0 pb-0">
+                        <v-col md="8" sm="12" class="pt-0 pb-0">
                             <v-text-field
                                     outlined
                                     v-model="inputString"

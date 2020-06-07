@@ -3,7 +3,7 @@
         <v-card-title>Cypher text</v-card-title>
         <v-card-text>
             <v-row justify="center" align="center">
-                <v-col cols="12" xl="4" lg="6" md="12">
+                <v-col cols="12" lg="8" md="12">
                     <v-textarea
                             outlined
                             v-model="key"
@@ -12,7 +12,7 @@
                             @input="encrypt"
                     ></v-textarea>
                 </v-col>
-                <v-col cols="12" xl="4" lg="6" md="12">
+                <v-col cols="12" lg="4" md="12">
                     <v-select
                             :items="Object.keys(algorithms)"
                             label="Algorithm"
