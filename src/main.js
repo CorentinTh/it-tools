@@ -8,6 +8,7 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import './plugins/crypto-js'
 import './plugins/toast-snackbar'
 import './plugins/vue-headful'
+import './plugins/vue-analytics'
 
 Vue.config.productionTip = false
 

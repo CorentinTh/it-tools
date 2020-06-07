@@ -16,6 +16,7 @@
     "register-service-worker": "^1.7.1",
     "roboto-fontface": "*",
     "vue": "^2.6.11",
+    "vue-analytics": "^5.22.1",
     "vue-cryptojs": "^2.1.4",
     "vue-headful": "^2.1.0",
     "vue-router": "^3.1.6",
