@@ -6,6 +6,11 @@ module.exports = {
   ],
   configureWebpack: () => {
     return {
+      module:{
+        rules: [
+          { test: /\.md$/, use: 'raw-loader' }
+        ]
+      },
       plugins: [
         new webpack.DefinePlugin({
           'process.env': {
