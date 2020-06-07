@@ -1,24 +1,19 @@
 # it-tools
+![logo](.github/logo.png)
+
 
 ## Project setup
-```
+Install dependencies by running the following command:
+```shell
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
+Then compiles and hot-reloads for development:
+```shell
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
+And to lint and fixe files, run:
+```shell
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
