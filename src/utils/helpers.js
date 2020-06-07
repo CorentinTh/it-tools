@@ -24,8 +24,13 @@ const formatBytes = (bytes, decimals = 2) => {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
 
+const isInt = (value) => {
+    return !isNaN(value) && ((x) => (x | 0) === x)(parseFloat(value))
+}
+
 export {
     copyToClipboard,
     fileIsImage,
-    formatBytes
+    formatBytes,
+    isInt
 }
