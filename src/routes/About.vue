@@ -1,7 +1,9 @@
 <template>
   <v-card class="single-card">
     <v-card-title>About</v-card-title>
-    <v-card-text><Abstract /></v-card-text>
+    <v-card-text>
+      <Abstract />
+    </v-card-text>
   </v-card>
 </template>
 
