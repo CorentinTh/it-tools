@@ -7,21 +7,19 @@
                     <div class="text-center">
                         <v-switch v-model="useCurrentDate" label="Use current date"/>
                     </div>
-
                     <v-divider></v-divider>
                     <br>
 
                     <v-row>
                         <v-col md="4" sm="12" class="pt-0 pb-0">
                             <v-select
-                                    :items="formats.filter(f => !f.title.toLowerCase().includes('locale'))"
-                                    item-value="dateFromFormat"
-                                    item-text="title"
+                                    :items="formats.filter(f => !f.title.toLowerCase().includes('locale')).map(v => v.title)"
                                     outlined
                                     label="Your date format"
                                     placeholder="Input format"
-                                    v-model="inputFormater"
+                                    v-model="inputFormatterTitle"
                                     @input="userInputChanged()"
+                                    :disabled="useCurrentDate"
                             />
                         </v-col>
                         <v-col md="8" sm="12" class="pt-0 pb-0">
@@ -31,13 +29,14 @@
                                     label="Your date string"
                                     @input="userInputChanged()"
                                     :error="invalidInput"
+                                    :disabled="useCurrentDate"
                             />
                         </v-col>
                     </v-row>
                 </v-card-text>
             </v-card>
         </v-col>
-        <v-col cols="12" xl="4" lg="6" md="12" >
+        <v-col cols="12" xl="4" lg="6" md="12">
             <v-card>
                 <v-card-title>Dates formats</v-card-title>
                 <v-card-text>
@@ -67,14 +66,14 @@
         name: "DateConverter",
         created() {
             setInterval(this.refreshCurrentDate.bind(this), 1000);
-            this.inputFormater = this.formats[1].dateFromFormat;
+            this.inputFormatterTitle = this.formats[1].title;
         },
         data() {
             const vm = this;
 
             return {
                 inputString: '',
-                inputFormater: undefined,
+                inputFormatterTitle: undefined,
                 useCurrentDate: true,
                 displayedDate: new Date(),
                 invalidInput: false,
@@ -84,7 +83,7 @@
                         getDate() {
                             return vm.displayedDate.toLocaleString();
                         },
-                        dateFromFormat(dateString){
+                        dateFromFormat(dateString) {
                             return dateString
                         }
                     },
@@ -93,7 +92,7 @@
                         getDate() {
                             return vm.displayedDate.toISOString();
                         },
-                        dateFromFormat(dateString){
+                        dateFromFormat(dateString) {
                             return new Date(dateString)
                         }
                     },
@@ -102,7 +101,7 @@
                         getDate() {
                             return vm.displayedDate.toUTCString();
                         },
-                        dateFromFormat(dateString){
+                        dateFromFormat(dateString) {
                             return new Date(dateString)
                         }
                     },
@@ -111,7 +110,7 @@
                         getDate() {
                             return vm.displayedDate.getTime();
                         },
-                        dateFromFormat(dateString){
+                        dateFromFormat(dateString) {
                             return new Date(parseInt(dateString))
                         }
                     },
@@ -120,7 +119,7 @@
                         getDate() {
                             return vm.displayedDate.toString();
                         },
-                        dateFromFormat(dateString){
+                        dateFromFormat(dateString) {
                             return new Date(dateString)
                         }
                     }
@@ -134,15 +133,15 @@
                     copyToClipboard(date);
                     this.$toast.success('Copied to clipboard.')
                 },
-                userInputChanged(){
-                    try{
+                userInputChanged() {
+                    try {
                         this.invalidInput = false;
-                        const newDate = this.inputFormater(this.inputString);
+                        const newDate = this.formats.find(f => f.title === this.inputFormatterTitle)?.dateFromFormat(this.inputString);
 
-                        if(newDate && !isNaN(newDate.getTime())){
+                        if (newDate && !isNaN(newDate.getTime())) {
                             this.useCurrentDate = false;
                             this.displayedDate = newDate;
-                        }else if(this.inputString.length > 0) {
+                        } else if (this.inputString.length > 0) {
                             this.invalidInput = true;
                         }
                     } catch (ignored) {
