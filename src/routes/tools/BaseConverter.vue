@@ -9,6 +9,7 @@
                             outlined
                             type="number"
                             v-model="inputBase"
+                            ref="inputBase"
                             hide-details="auto"
                             :rules="baseRules"
                     />
@@ -33,6 +34,7 @@
                             outlined
                             type="number"
                             v-model="outputBase"
+                            ref="outputBase"
                             :rules="baseRules"
                     />
                 </v-col>
@@ -54,7 +56,7 @@
 </template>
 
 <script>
-    import {copyToClipboard} from "../../utils/helpers";
+    import {copyToClipboard, isInt} from "../../utils/helpers";
 
     const convertBase = (value, fromBase, toBase) => {
         const range = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/'.split('');
@@ -83,11 +85,16 @@
                 inputBase: 10,
                 outputBase: 16,
                 baseRules: [
+                    v => isInt(v) || 'Base should be an integer',
                     v => !!v || 'Required',
                     v => v > 1 || 'Base should be > 1',
-                    v => v <= 64 || 'Base should be <= 64',
+                    v => v <= 64 || 'Base should be <= 64'
                 ],
+                isMounted: false
             }
+        },
+        mounted() {
+            this.isMounted = true;
         },
         methods: {
             copy() {
@@ -97,10 +104,14 @@
         },
         computed: {
             outputNumber() {
-                try{
-                    return convertBase(this.inputNumber, this.inputBase, this.outputBase)
-                }catch (e) {
-                    return e.message;
+                if(this.isMounted && this.$refs.inputBase.validate() && this.$refs.outputBase.validate()){
+                    try{
+                        return convertBase(this.inputNumber, this.inputBase, this.outputBase)
+                    }catch (e) {
+                        return e.message;
+                    }
+                }else {
+                    return ''
                 }
             }
         }
