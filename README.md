@@ -22,6 +22,7 @@ Here is an unordered list of the current functionalities, and some that may come
 - [ ] Crontab friendly generator
 - [ ] Image format converter?
 - [ ] Image cropper 
+- [ ] 404 page
 
 You have an idea of a tool? Submit a feature request!
 
