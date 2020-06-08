@@ -25,7 +25,7 @@ const formatBytes = (bytes, decimals = 2) => {
 }
 
 const isInt = (value) => {
-    return !isNaN(value) && ((x) => (x | 0) === x)(parseFloat(value))
+    return Number.isInteger(value);
 }
 
 export {
