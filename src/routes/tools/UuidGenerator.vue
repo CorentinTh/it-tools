@@ -3,8 +3,17 @@
         <v-card-title>Uuid v4 generator</v-card-title>
 
         <v-card-text>
-            <v-text-field outlined v-model="quantity" type="number" label="Quantity" dense class="quantity"/>
-            <v-textarea outlined v-model="token" class="centered-input" :rows="quantity <= 10 ? quantity : 10" readonly/>
+            <v-text-field
+                    outlined
+                    v-model="quantity"
+                    type="number"
+                    label="Quantity"
+                    dense
+                    class="quantity"
+                    :rules="rules.quantity"
+            />
+            <v-textarea outlined v-model="token" class="centered-input" :rows="quantity <= 10 ? quantity : 10"
+                        readonly/>
 
             <div class="text-center">
                 <v-btn @click="refreshBool = !refreshBool" depressed class="mr-4">Refresh</v-btn>
@@ -26,7 +35,13 @@
         name: "UuidGenerator",
         data: () => ({
             refreshBool: true,
-            quantity: 1
+            quantity: 1,
+            rules: {
+                quantity: [
+                    v => !!v || 'Quantity is required',
+                    v => v > 0 || 'Quantity should be > 0'
+                ]
+            }
         }),
         methods: {
             copyToken() {
@@ -45,12 +60,12 @@
 </script>
 
 <style scoped lang="less">
-    .quantity{
+    .quantity {
         width: 100px;
         margin: auto;
         text-align: center;
 
-        ::v-deep input{
+        ::v-deep input {
             text-align: center;
         }
     }
