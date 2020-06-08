@@ -23,7 +23,6 @@ Here is an unordered list of the current functionalities, and some that may come
 - [ ] Image format converter?
 - [ ] Image cropper 
 - [ ] Image resizer 
-- [ ] 404 page
 - [ ] HTTP client (w/ axios)
 
 You have an idea of a tool? Submit a feature request!
