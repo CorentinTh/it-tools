@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [feat] 404 route + page
 - [feat] changelog in the About page 
 - [feat] contributors list in the About page 
+- [fix] [ColorConverter] color picker now updates fields 
 
 ## 1.0.1
 - [chore] added changelog

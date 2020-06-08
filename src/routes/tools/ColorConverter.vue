@@ -11,6 +11,7 @@
                             hide-inputs
                             mode="rgba"
                             v-model="rgbPicker"
+                            @input="(v) => updateColors(v, 'picker')"
                     />
                 </v-col>
                 <v-col cols="12" sm="6" align="center">
@@ -116,7 +117,7 @@
                 this.keyword = convert.rgb.keyword(r, g, b);
             },
             updateColors(value, fromType) {
-                if (this.$refs[fromType].validate()) {
+                if (fromType === 'picker' || this.$refs[fromType].validate()) {
                     if (fromType === 'rgb') {
                         const [r, g, b] = value.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/).slice(1).map(v => parseInt(v));
                         this.rgbPicker = {r, g, b}
@@ -150,6 +151,13 @@
                         } catch (ignored) {
                             // ignored
                         }
+                    } else if (fromType === 'picker') {
+                        const {r, g, b} = value;
+
+                        this.setRGB(r, g, b);
+                        this.setHEX(r, g, b);
+                        this.setHSL(r, g, b);
+                        this.setKeyword(r, g, b);
                     }
                 }
             }
