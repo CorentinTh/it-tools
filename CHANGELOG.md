@@ -5,6 +5,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Next
 - [fix] [UuidGenerator] added quantity validation rules
+- [refactor] better isInt checker
 
 ## 1.2.0
 - [feat] [UuidGenerator] can generate multiple uuids 
