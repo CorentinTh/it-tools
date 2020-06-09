@@ -6,6 +6,7 @@
             <v-text-field
                     outlined
                     v-model="quantity"
+                    ref="quantity"
                     type="number"
                     label="Quantity"
                     dense
@@ -24,7 +25,7 @@
 </template>
 
 <script>
-    import {copyToClipboard} from "../../utils/helpers";
+    import {copyToClipboard, isInt} from "../../utils/helpers";
 
     const noop = () => {
     };
@@ -39,10 +40,15 @@
             rules: {
                 quantity: [
                     v => !!v || 'Quantity is required',
-                    v => v > 0 || 'Quantity should be > 0'
+                    v => (v > 0 && v <= 50 ) || 'Quantity should be > 0 and <= 50',
+                    v => isInt(v) || 'Quantity should be an integer'
                 ]
-            }
+            },
+            isMounted:false
         }),
+        mounted() {
+            this.isMounted = true;
+        },
         methods: {
             copyToken() {
                 copyToClipboard(this.token);
@@ -51,9 +57,13 @@
         },
         computed: {
             token() {
-                if (this.refreshBool) noop(); // To force recomputation
+                if (this.isMounted && this.$refs.quantity.validate()) {
+                    if (this.refreshBool) noop(); // To force recomputation
 
-                return Array.from({length: this.quantity}, generateUuid).join('\n');
+                    return Array.from({length: this.quantity}, generateUuid).join('\n');
+                } else {
+                    return '';
+                }
             }
         }
     }
