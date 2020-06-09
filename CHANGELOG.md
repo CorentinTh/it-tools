@@ -4,7 +4,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Next
-- [fix] [UuidGenerator] added quantity validation rules (prevent < 0)
+- [fix] [UuidGenerator] added quantity validation rules
 
 ## 1.2.0
 - [feat] [UuidGenerator] can generate multiple uuids 
