@@ -5,7 +5,7 @@
         <v-card-text>
             <v-text-field
                     outlined
-                    v-model="quantity"
+                    v-model.number="quantity"
                     ref="quantity"
                     type="number"
                     label="Quantity"

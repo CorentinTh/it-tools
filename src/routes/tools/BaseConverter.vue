@@ -8,7 +8,7 @@
                             label="Input base"
                             outlined
                             type="number"
-                            v-model="inputBase"
+                            v-model.number="inputBase"
                             ref="inputBase"
                             hide-details="auto"
                             :rules="baseRules"
@@ -33,7 +33,7 @@
                             label="Output base"
                             outlined
                             type="number"
-                            v-model="outputBase"
+                            v-model.number="outputBase"
                             ref="outputBase"
                             :rules="baseRules"
                     />
