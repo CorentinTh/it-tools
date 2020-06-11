@@ -5,6 +5,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Next
 - [fix] [GithubContributors] ordered contributors by contribution count
+- [refactor] used vue-typecasting for number inputs
 
 ## 1.2.1
 - [fix] [UuidGenerator] added quantity validation rules
