@@ -36,7 +36,7 @@
             axios
                 .get(url)
                 .then(({data}) => {
-                    this.contributors = data.sort((a, b) => a.contributions - b.contributions)
+                    this.contributors = data.sort((a, b) => b.contributions - a.contributions)
                     this.loading = false
                 })
                 .catch(() => this.hasError = true)
