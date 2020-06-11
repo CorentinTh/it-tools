@@ -25,7 +25,7 @@ const formatBytes = (bytes, decimals = 2) => {
 }
 
 const isInt = (value) => {
-    return Number.isInteger(parseFloat(value));
+    return Number.isInteger(value);
 }
 
 export {
