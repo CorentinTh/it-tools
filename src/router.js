@@ -4,8 +4,6 @@ import Home from './routes/Home.vue'
 
 Vue.use(VueRouter)
 
-const lazyLoad = (componentPath) => (() => import(componentPath));
-
 const toolsComponents = [
     {
         title: 'Crypto',
@@ -14,7 +12,7 @@ const toolsComponents = [
                 icon: 'fa-key',
                 text: 'Token generator',
                 path: '/token-generator',
-                component: lazyLoad('./routes/tools/TokenGenerator'),
+                component: () => import('./routes/tools/TokenGenerator'),
                 keywords: ['token', 'random', 'string', 'alphanumeric'],
                 description: 'Generate random tokens.'
             },
@@ -22,14 +20,14 @@ const toolsComponents = [
                 icon: 'fa-fingerprint',
                 text: 'Uuid generator',
                 path: '/uuid-generator',
-                component: lazyLoad('./routes/tools/UuidGenerator'),
+                component: () => import('./routes/tools/UuidGenerator'),
                 keywords: ['token', 'v4', 'string', 'alphanumeric']
             },
             {
                 icon: 'fa-font',
                 text: 'Hash text',
                 path: '/hash',
-                component: lazyLoad('./routes/tools/Hash'),
+                component: () => import('./routes/tools/Hash'),
                 keywords: ['md5', 'sha1', 'sha256', 'sha224', 'sha512', 'sha384', 'sha3', 'ripemd160', 'random']
 
             },
@@ -37,7 +35,7 @@ const toolsComponents = [
                 icon: 'fa-lock',
                 text: 'Cypher/uncypher text',
                 path: '/cypher',
-                component: lazyLoad('./routes/tools/TextCypher'),
+                component: () => import('./routes/tools/TextCypher'),
                 keywords: ['aes', 'tripledes', 'rabbit', 'rabbitlegacy', 'rc4']
             },
         ],
@@ -49,21 +47,21 @@ const toolsComponents = [
                 icon: 'fa-calendar',
                 text: 'Date/Time converter',
                 path: '/date-converter',
-                component: lazyLoad('./routes/tools/DateConverter'),
+                component: () => import('./routes/tools/DateConverter'),
                 keywords: ['locale', 'format', 'iso 8601', 'utc', 'timestamp', 'unix', 'year', 'month', 'day', 'hours', 'minutes', 'seconds']
             },
             {
                 icon: 'fa-exchange-alt',
                 text: 'Base converter',
                 path: '/base-converter',
-                component: lazyLoad('./routes/tools/BaseConverter'),
+                component: () => import('./routes/tools/BaseConverter'),
                 keywords: ['binary', 'hexadecimal', 'decimal']
             },
             {
                 icon: 'fa-palette',
                 text: 'Color picker/converter',
                 path: '/color-picker-converter',
-                component: lazyLoad('./routes/tools/ColorConverter'),
+                component: () => import('./routes/tools/ColorConverter'),
                 keywords: ['rgb', 'rgba', 'hexadecimal', 'hsla', 'red', 'green', 'blue', 'alpha']
             },
         ],
@@ -75,14 +73,14 @@ const toolsComponents = [
                 icon: 'fa-link',
                 text: 'URL encode/decode',
                 path: '/url-encoder',
-                component: lazyLoad('./routes/tools/UrlEncoder'),
+                component: () => import('./routes/tools/UrlEncoder'),
                 keywords: ['%20']
             },
             {
                 icon: 'fa-file-export',
                 text: 'File to Base64',
                 path: '/file-to-base64',
-                component: lazyLoad('./routes/tools/FileToBase64')
+                component: () => import('./routes/tools/FileToBase64')
             },
         ],
     },
@@ -93,7 +91,7 @@ const toolsComponents = [
                 icon: 'fa-align-left\n',
                 text: 'Text stats',
                 path: '/text-stats',
-                component: lazyLoad('./routes/tools/TextStats'),
+                component: () => import('./routes/tools/TextStats'),
                 keywords: ['word', 'count', 'size', 'bytes', 'length']
             },
         ],
@@ -111,12 +109,12 @@ const routes = [
     {
         path: '/about',
         name: 'About',
-        component: lazyLoad('./routes/About.vue')
+        component: () => import('./routes/About.vue')
     },
     {
         path: '*',
         name: '404',
-        component: lazyLoad('./routes/NotFound.vue')
+        component: () => import('./routes/NotFound.vue')
     }
 ]
 
