@@ -1,19 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from './routes/Home.vue'
-import TokenGenerator from "./routes/tools/TokenGenerator";
-import Hash from "./routes/tools/Hash";
-import DateConverter from "./routes/tools/DateConverter";
-import UrlEncoder from "./routes/tools/UrlEncoder";
-import FileToBase64 from "./routes/tools/FileToBase64";
-import TextCypher from "./routes/tools/TextCypher";
-import TextStats from "./routes/tools/TextStats";
-import BaseConverter from "./routes/tools/BaseConverter";
-import UuidGenerator from "./routes/tools/UuidGenerator";
-import ColorConverter from "./routes/tools/ColorConverter";
 
 Vue.use(VueRouter)
 
+const lazyLoad = (componentPath) => (() => import(componentPath));
 
 const toolsComponents = [
     {
@@ -23,7 +14,7 @@ const toolsComponents = [
                 icon: 'fa-key',
                 text: 'Token generator',
                 path: '/token-generator',
-                component: TokenGenerator,
+                component: lazyLoad('./routes/tools/TokenGenerator'),
                 keywords: ['token', 'random', 'string', 'alphanumeric'],
                 description: 'Generate random tokens.'
             },
@@ -31,14 +22,14 @@ const toolsComponents = [
                 icon: 'fa-fingerprint',
                 text: 'Uuid generator',
                 path: '/uuid-generator',
-                component: UuidGenerator,
+                component: lazyLoad('./routes/tools/UuidGenerator'),
                 keywords: ['token', 'v4', 'string', 'alphanumeric']
             },
             {
                 icon: 'fa-font',
                 text: 'Hash text',
                 path: '/hash',
-                component: Hash,
+                component: lazyLoad('./routes/tools/Hash'),
                 keywords: ['md5', 'sha1', 'sha256', 'sha224', 'sha512', 'sha384', 'sha3', 'ripemd160', 'random']
 
             },
@@ -46,7 +37,7 @@ const toolsComponents = [
                 icon: 'fa-lock',
                 text: 'Cypher/uncypher text',
                 path: '/cypher',
-                component: TextCypher,
+                component: lazyLoad('./routes/tools/TextCypher'),
                 keywords: ['aes', 'tripledes', 'rabbit', 'rabbitlegacy', 'rc4']
             },
         ],
@@ -58,21 +49,21 @@ const toolsComponents = [
                 icon: 'fa-calendar',
                 text: 'Date/Time converter',
                 path: '/date-converter',
-                component: DateConverter,
+                component: lazyLoad('./routes/tools/DateConverter'),
                 keywords: ['locale', 'format', 'iso 8601', 'utc', 'timestamp', 'unix', 'year', 'month', 'day', 'hours', 'minutes', 'seconds']
             },
             {
                 icon: 'fa-exchange-alt',
                 text: 'Base converter',
                 path: '/base-converter',
-                component: BaseConverter,
+                component: lazyLoad('./routes/tools/BaseConverter'),
                 keywords: ['binary', 'hexadecimal', 'decimal']
             },
             {
                 icon: 'fa-palette',
                 text: 'Color picker/converter',
                 path: '/color-picker-converter',
-                component: ColorConverter,
+                component: lazyLoad('./routes/tools/ColorConverter'),
                 keywords: ['rgb', 'rgba', 'hexadecimal', 'hsla', 'red', 'green', 'blue', 'alpha']
             },
         ],
@@ -84,14 +75,14 @@ const toolsComponents = [
                 icon: 'fa-link',
                 text: 'URL encode/decode',
                 path: '/url-encoder',
-                component: UrlEncoder,
+                component: lazyLoad('./routes/tools/UrlEncoder'),
                 keywords: ['%20']
             },
             {
                 icon: 'fa-file-export',
                 text: 'File to Base64',
                 path: '/file-to-base64',
-                component: FileToBase64
+                component: lazyLoad('./routes/tools/FileToBase64')
             },
         ],
     },
@@ -102,7 +93,7 @@ const toolsComponents = [
                 icon: 'fa-align-left\n',
                 text: 'Text stats',
                 path: '/text-stats',
-                component: TextStats,
+                component: lazyLoad('./routes/tools/TextStats'),
                 keywords: ['word', 'count', 'size', 'bytes', 'length']
             },
         ],
@@ -120,12 +111,12 @@ const routes = [
     {
         path: '/about',
         name: 'About',
-        component: () => import('./routes/About.vue')
+        component: lazyLoad('./routes/About.vue')
     },
     {
         path: '*',
         name: '404',
-        component: () => import('./routes/NotFound.vue')
+        component: lazyLoad('./routes/NotFound.vue')
     }
 ]
 
