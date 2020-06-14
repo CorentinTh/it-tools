@@ -85,14 +85,21 @@ const toolsComponents = [
         ],
     },
     {
-        title: 'Miscellaneous',
+        title: 'Text',
         child: [
             {
-                icon: 'fa-align-left\n',
+                icon: 'fa-align-left',
                 text: 'Text stats',
                 path: '/text-stats',
                 component: () => import('./routes/tools/TextStats'),
                 keywords: ['word', 'count', 'size', 'bytes', 'length']
+            },
+            {
+                icon: 'fab fa-markdown',
+                text: 'Markdown editor',
+                path: '/markdown-editor',
+                component: () => import('./routes/tools/MarkdownEditor'),
+                keywords: ['text', 'html', 'markdown']
             },
         ],
     }
