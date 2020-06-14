@@ -24,6 +24,9 @@ Here is an unordered list of the current functionalities, and some that may come
 - [ ] Image cropper 
 - [ ] Image resizer 
 - [ ] HTTP client (w/ axios)
+- [ ] Math expression evaluator
+- [ ] Math expression graph
+- [ ] Markdown editor
 
 You have an idea of a tool? Submit a feature request!
 
