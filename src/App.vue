@@ -17,7 +17,7 @@
 
                     <v-list-item v-for="item in section.child" :key="item.text" :to="item.path">
                         <v-list-item-action>
-                            <v-icon>{{ item.icon }}</v-icon>
+                            <v-icon style="width: 1.25em">{{ item.icon }}</v-icon>
                         </v-list-item-action>
                         <v-list-item-content>
                             <v-list-item-title>
