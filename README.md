@@ -15,6 +15,7 @@ Here is an unordered list of the current functionalities, and some that may come
 - [x] Url encoder
 - [x] Base 64 generator
 - [x] Text information
+- [x] Markdown editor
 - [ ] Lorem ipsum text generator
 - [ ] Image exif editor/remover
 - [ ] QR code generator
@@ -26,7 +27,6 @@ Here is an unordered list of the current functionalities, and some that may come
 - [ ] HTTP client (w/ axios)
 - [ ] Math expression evaluator
 - [ ] Math expression graph
-- [ ] Markdown editor
 
 You have an idea of a tool? Submit a feature request!
 
