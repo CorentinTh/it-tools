@@ -28,9 +28,19 @@ const isInt = (value) => {
     return Number.isInteger(value);
 }
 
+const debounce = (callback, delay = 300) => {
+    let timer;
+
+    return function(...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => callback(...args), delay);
+    }
+}
+
 export {
     copyToClipboard,
     fileIsImage,
     formatBytes,
-    isInt
+    isInt,
+    debounce
 }
