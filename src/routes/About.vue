@@ -11,7 +11,7 @@
             </v-col>
 
         </v-row>
-        <v-row justify="center" >
+        <v-row justify="center">
             <v-col cols="12" md="5" sm="12">
                 <v-card>
                     <v-card-title>Contributors</v-card-title>
@@ -22,12 +22,7 @@
                 <v-card>
                     <v-card-title>Changelog</v-card-title>
                     <v-card-text>
-                        <div v-for="(section, i) in changelog" :key="i">
-                            <h2>{{section.title}}</h2>
-                            <ul>
-                                <li v-for="(log, i) in section.logs" :key="i"> {{log}}</li>
-                            </ul>
-                            <br>
+                        <div v-html="changelog" class="changelog">
                         </div>
                     </v-card-text>
                 </v-card>
@@ -39,6 +34,8 @@
     import Abstract from "../components/Abstract";
     import GithubContributors from "../components/GithubContributors";
     import changelog from "../../CHANGELOG.md"
+    import marked from 'marked'
+    import DOMPurify from 'dompurify';
 
     export default {
         name: "About",
@@ -46,24 +43,7 @@
             changelog: []
         }),
         mounted() {
-
-            this.changelog = ('##' + changelog.replace(/^(.*?)##/s, ''))
-                .split('\n')
-                .filter(v => v !== '')
-                .reduce((sections, v) => {
-                    v = v.trim();
-                    if(v.startsWith('##')){
-                        sections.push({
-                            title: v.replace(/^##/, '').trim(),
-                            logs: []
-                        })
-                    }else {
-                        sections.slice(-1)[0].logs.push(v.replace(/^-/, '').trim())
-                    }
-
-                    return sections
-                }, []);
-            console.log(this.changelog);
+            this.changelog = DOMPurify.sanitize(marked('##' + changelog.replace(/^(.*?)##/s, '')));
         },
         components: {
             Abstract,
@@ -71,3 +51,13 @@
         },
     }
 </script>
+
+<style scoped lang="less">
+    ::v-deep {
+        .changelog {
+            h2 {
+                margin-top: 10px;
+            }
+        }
+    }
+</style>
