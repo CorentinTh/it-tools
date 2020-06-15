@@ -101,6 +101,13 @@ const toolsComponents = [
                 component: () => import('./routes/tools/MarkdownEditor'),
                 keywords: ['text', 'html', 'markdown']
             },
+            {
+                icon: 'fa-align-justify',
+                text: 'Lorem ipsum generator',
+                path: '/lorem-ipsum-generator',
+                component: () => import('./routes/tools/LoremIpsumGenerator'),
+                keywords: ['text', 'dolor', 'sit', 'placeholder', 'fill', 'dummy']
+            }
         ],
     }
 ];

@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [refactor] used vue-typecasting for number inputs
 - [feat] lazy loading tools routes
 - [feat] added [markdown editor](/#/markdown-editor)
+- [feat] added [lorem ipsum generator](/#/lorem-ipsum-generator)
 
 ## 1.2.1
 - [fix] [UuidGenerator] added quantity validation rules
