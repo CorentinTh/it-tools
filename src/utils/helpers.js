@@ -37,10 +37,16 @@ const debounce = (callback, delay = 300) => {
     }
 }
 
+const randFromArray = (array) => array[Math.floor(Math.random() * array.length)];
+
+const randIntFromInterval = (min, max) => Math.floor(Math.random() * (max - min) + min)
+
 export {
     copyToClipboard,
     fileIsImage,
     formatBytes,
     isInt,
-    debounce
+    debounce,
+    randFromArray,
+    randIntFromInterval
 }
