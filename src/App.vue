@@ -1,14 +1,15 @@
 <template>
     <v-app id="inspire">
         <vue-headful
-            :title="currentRoute ? `${currentRoute.text} - IT-Tools` : 'IT-Tools'"
-            :description="currentRoute ? currentRoute.description: 'Aggregated set of useful tools that every developer may need once in a while.'"
-            :keywords="currentRoute ? currentRoute.keywords: null"
-            image="/img/banner.png"
+                :title="currentRoute ? `${currentRoute.text} - IT-Tools` : 'IT-Tools'"
+                :description="currentRoute ? currentRoute.description: 'Aggregated set of useful tools that every developer may need once in a while.'"
+                :keywords="currentRoute ? currentRoute.keywords: null"
+                image="/img/banner.png"
         />
         <v-navigation-drawer v-model="drawer" app clipped>
-
-            <SearchBar class="hidden-sm-and-up" />
+            <template v-slot:prepend>
+                <SearchBar class="hidden-sm-and-up"/>
+            </template>
 
             <v-list dense>
 
@@ -99,7 +100,7 @@
             appVersion: 'v' + process.env.APPLICATION_VERSION,
             drawer: null,
             items: toolsComponents,
-            currentRoute:{}
+            currentRoute: {}
         }),
         mounted() {
             this.setTitle()
@@ -107,14 +108,14 @@
         created() {
             this.$vuetify.theme.dark = true
         },
-        methods:{
-            setTitle(){
+        methods: {
+            setTitle() {
                 const path = this.$router.currentRoute.path;
                 this.currentRoute = toolsComponents.map(p => p.child).flat().find(p => p.path === path)
             }
         },
-        watch:{
-            '$route'(){
+        watch: {
+            '$route'() {
                 this.setTitle()
             }
         }
@@ -124,6 +125,33 @@
 <style lang="less">
     html {
         overflow-y: auto !important;
+    }
+
+    .pretty-scrollbar{
+        &::-webkit-scrollbar {
+            width: 5px!important;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+            opacity: 0 !important;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: rgba(241, 241, 241, 0.10) !important;
+            border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+            background: rgba(241, 241, 241, 0.20)!important;
+        }
+    }
+
+
+    .v-navigation-drawer__content{
+        .pretty-scrollbar;
     }
 
     .single-card {
