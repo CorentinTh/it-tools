@@ -16,7 +16,7 @@ Here is an unordered list of the current functionalities, and some that may come
 - [x] Base 64 generator
 - [x] Text information
 - [x] Markdown editor
-- [ ] Lorem ipsum text generator
+- [x] Lorem ipsum text generator
 - [ ] Image exif editor/remover
 - [ ] QR code generator
 - [ ] Bip39 pass-phrase generator
