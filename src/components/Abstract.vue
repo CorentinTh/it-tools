@@ -4,7 +4,9 @@
         <p class="text-justify">
             Welcome to <strong>IT-Tools</strong>! This wonderful website, originally created with ❤ by
             <a href="//corentin-thomasset.fr">Corentin Thomasset</a>, aggregate a set of useful tools
-            that every developer may need once in a while.
+            that every developer may need once in a while. And don't forget to add <strong>IT-Tools</strong> to your
+            shortcut bar (press <code>{{ isMacOS ? 'Cmd' : 'Ctrl' }} +
+            D</code>).
         </p>
 
 
@@ -30,7 +32,10 @@
 
 <script>
     export default {
-        name: "Abstract"
+        name: "Abstract",
+        data: () => ({
+            isMacOS: navigator.platform.toUpperCase().indexOf('MAC') >= 0
+        })
     }
 </script>
 
