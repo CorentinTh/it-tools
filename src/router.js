@@ -109,6 +109,19 @@ const toolsComponents = [
                 keywords: ['text', 'dolor', 'sit', 'placeholder', 'fill', 'dummy']
             }
         ],
+    },
+    {
+        title: 'Memos',
+        child: [
+            {
+                text: 'Git memo',
+                path: '/git-memo',
+                icon: 'fa-code-branch',
+                component: () => import('./routes/tools/GitMemo'),
+                keywords: ['git', 'push', 'rebase', 'merge', 'tag', 'commit', 'checkout']
+            }
+        ]
+
     }
 ];
 

@@ -135,6 +135,7 @@
     .pretty-scrollbar{
         &::-webkit-scrollbar {
             width: 5px!important;
+            height: 5px !important;
         }
 
         /* Track */
