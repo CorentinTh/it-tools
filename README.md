@@ -17,6 +17,9 @@ Here is an unordered list of the current functionalities, and some that may come
 - [x] Text information
 - [x] Markdown editor
 - [x] Lorem ipsum text generator
+- [x] Git memo (cheat sheet)
+- [ ] CSS memo (cheat sheet)
+- [ ] REGEX memo (cheat sheet) + tester?
 - [ ] Image exif editor/remover
 - [ ] QR code generator
 - [ ] Bip39 pass-phrase generator
@@ -24,7 +27,7 @@ Here is an unordered list of the current functionalities, and some that may come
 - [ ] Image format converter?
 - [ ] Image cropper 
 - [ ] Image resizer 
-- [ ] HTTP client (w/ axios)
+- [ ] HTTP client (w/ axios + cors proxy)
 - [ ] Math expression evaluator
 - [ ] Math expression graph
 
