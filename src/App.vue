@@ -11,7 +11,7 @@
                 <SearchBar class="hidden-sm-and-up"/>
             </template>
 
-            <v-list dense>
+            <v-list dense id="navigation-list">
 
                 <div v-for="section in items" :key="section.title">
                     <v-subheader class="mt-4 pl-4">{{section.title}}</v-subheader>
@@ -149,6 +149,18 @@
         }
     }
 
+    #navigation-list{
+        div:first-child .v-subheader{
+                margin-top: 0 !important;
+        }
+
+        .v-list-item__action{
+            margin: 8px 25px 8px 0;
+            .v-icon{
+                color: #4CAF50 !important;
+            }
+        }
+    }
 
     .v-navigation-drawer__content{
         .pretty-scrollbar;
