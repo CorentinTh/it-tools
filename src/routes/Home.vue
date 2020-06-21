@@ -9,9 +9,7 @@
                     </v-card-text>
                 </v-card>
             </v-col>
-        </v-row>
-        <v-row justify="center" align="center">
-            <v-col cols="12" lg="8" md="12">
+            <v-col cols="12" lg="5" md="12">
                 <v-card class="card-auto">
                     <v-card-text>
                         <div class="card-wrapper ">
@@ -56,7 +54,7 @@
         flex-wrap: wrap;
 
         div {
-            flex: 0 1 20%;
+            flex: 0 1 33%;
 
             @media only screen and (max-width: 800px) {
                 flex: 0 1 33%;
