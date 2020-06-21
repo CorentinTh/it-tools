@@ -17,56 +17,77 @@
     export default {
         name: "GitMemo",
         data: () => ({
-           tips: [
-               {
-                   section: 'Basic configuration',
-                   child:[
-                       {
-                           text: 'Set the name that will be associated to every operation',
-                           code: 'git config --global user.name "[nom]"'
-                       },
-                       {
-                           text: 'Set the email address that will be associated to every operation',
-                           code: 'git config --global user.email "[email]"'
-                       },
-                       {
-                           text: 'Tell git to always push tags',
-                           code: 'git config --global push.followTags true'
-                       }
-                   ]
-               },
-               {
-                   section: 'Get started',
-                   child:[
-                       {
-                           text: 'Create a git repo',
-                           code: 'git init'
-                       },
-                       {
-                           text: 'Clone an existing repository',
-                           code: 'git clone [repo url]'
-                       },
-                       {
-                           text: 'Add current files to next commit',
-                           code: 'git add .'
-                       },
-                       {
-                           text: 'Commit tracked files changes',
-                           code: 'git commit -am "[commit message]"'
-                       },
-                       {
-                           text: 'List files that has changed',
-                           code: 'git status'
-                       },
-                       {
-                           text: 'List changes in tracked files',
-                           code: 'git diff'
-                       }
-                   ]
-               },
-               {
-                   section: 'Setup SSH',
-                   child:[
+            tips: [
+                {
+                    section: 'Get started',
+                    child: [
+                        {
+                            text: 'Create a git repo',
+                            code: 'git init'
+                        },
+                        {
+                            text: 'Clone an existing repository',
+                            code: 'git clone [repo url]'
+                        },
+                        {
+                            text: 'Add current files to next commit',
+                            code: 'git add .'
+                        },
+                        {
+                            text: 'Commit tracked files changes',
+                            code: 'git commit -am "[commit message]"'
+                        },
+                        {
+                            text: 'List files that has changed',
+                            code: 'git status'
+                        },
+                        {
+                            text: 'List changes in tracked files',
+                            code: 'git diff'
+                        }
+                    ]
+                },
+                {
+                    section: 'Basic configuration',
+                    child: [
+                        {
+                            text: 'Set the name that will be associated to every operation',
+                            code: 'git config --global user.name "[nom]"'
+                        },
+                        {
+                            text: 'Set the email address that will be associated to every operation',
+                            code: 'git config --global user.email "[email]"'
+                        },
+                        {
+                            text: 'Tell git to always push tags',
+                            code: 'git config --global push.followTags true'
+                        }
+                    ]
+                },
+                {
+                    section: 'I\'ve made a mistake',
+                    child: [
+                        {
+                            text: 'Change last commit message',
+                            code: 'git commit --amend'
+                        },
+                        {
+                            text: 'Undo most recent commit and keep changes',
+                            code: 'git reset HEAD~1'
+                        },
+                        {
+                            text: 'Undo most recent commit and get rid of changes',
+                            code: 'git reset HEAD~1 --hard'
+                        },
+                        {
+                            text: 'Reset branch to remote state',
+                            code: 'git fetch origin\ngit reset --hard origin/[branch-name]'
+                        }
+                    ]
+                },
+                {
+                    section: 'Setup SSH',
+                    child: [
                         [
                             {
                                 text: '1). Generate an SSH key.',
@@ -90,30 +111,38 @@
                             },
 
                         ]
-                   ]
-               },
-               {
-                   section: 'I\'ve made a mistake',
-                   child:[
-                       {
-                           text: 'Change last commit message',
-                           code: 'git commit --amend'
-                       },
-                       {
-                           text: 'Undo most recent commit and keep changes',
-                           code: 'git reset HEAD~1'
-                       },
-                       {
-                           text: 'Undo most recent commit and get rid of changes',
-                           code: 'git reset HEAD~1 --hard'
-                       },
-                       {
-                           text: 'Reset branch to remote state',
-                           code: 'git fetch origin\ngit reset --hard origin/[branch-name]'
-                       }
-                   ]
-               }
-           ]
+                    ]
+                },
+                {
+                    section: 'Merge and rebase',
+                    child: [
+                        {
+                            text: 'Merge a branch into the current',
+                            code: 'git merge [branch]'
+                        },
+                        {
+                            text: 'Abort merge (conflicts)',
+                            code: 'git merge --abort'
+                        },
+                        {
+                            text: 'Continue merge after resolving conflicts',
+                            code: 'git merge --continue'
+                        },
+                        {
+                            text: 'Rebase a branch into the current',
+                            code: 'git rebase [branch]'
+                        },
+                        {
+                            text: 'Rebase merge (conflicts)',
+                            code: 'git merge --abort'
+                        },
+                        {
+                            text: 'Continue rebase after resolving conflicts',
+                            code: 'git merge --continue'
+                        },
+                    ]
+                },
+            ]
         }),
         components: {
             MemoViewer

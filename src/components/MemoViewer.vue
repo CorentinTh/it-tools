@@ -38,7 +38,7 @@
 <style lang="less" scoped>
     .memo-viewer {
         column-gap: 30px;
-        column-rule: 1px solid #373739;
+        column-rule: 1px solid #37373961;
         column-fill: auto;
 
     }
