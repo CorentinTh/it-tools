@@ -58,12 +58,6 @@
             h1{
                 margin-bottom: 15px;
             }
-            code{
-                background-color: rgba(0, 0, 0, 0.3) !important;
-                box-shadow: none;
-                color: #9a9a9a;
-                font-weight: normal;
-            }
             pre {
                 width: 100%;
 

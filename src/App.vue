@@ -126,7 +126,12 @@
     html {
         overflow-y: auto !important;
     }
-
+    code{
+        background-color: rgba(0, 0, 0, 0.15) !important;
+        box-shadow: none !important;
+        color: #9a9a9a !important;
+        font-weight: normal !important;
+    }
     .pretty-scrollbar{
         &::-webkit-scrollbar {
             width: 5px!important;
