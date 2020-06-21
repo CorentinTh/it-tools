@@ -5,6 +5,12 @@ import router from "../router";
 if(process.env.VUE_APP_GANALYTICS){
     Vue.use(VueAnalytics, {
         id: process.env.VUE_APP_GANALYTICS,
-        router
+        router,
+        set:[
+            {
+                field: 'dimension1',
+                value: process.env.APPLICATION_VERSION
+            }
+        ]
     })
 }
