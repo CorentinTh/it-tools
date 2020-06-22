@@ -52,6 +52,29 @@ npm run lint
 ## Contribute
 **Pull requests are welcome !** Feel free to contribute.
 
+### Add a tool
+To add a tool you just have to create a vue component in [src/routes/tools](./src/routes/tools), example:
+```vue
+<template>
+    <v-card class="single-card">
+        <v-card-title>My component</v-card-title>
+        <v-card-text>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</v-card-text>
+    </v-card>
+</template>
+
+<script>
+    export default {
+        name: "My component"
+    }
+</script>
+
+<style scoped lang="less">
+</style>
+```
+
+Then, update the file [router.js](./src/router.js) specifying info of the component.
+Use [fontawesome 5](https://fontawesome.com/icons?d=gallery&m=free) for icons.
+
 ## Credits
 Coded with ❤️ by [Corentin Thomasset](//corentin-thomasset.fr).
 
