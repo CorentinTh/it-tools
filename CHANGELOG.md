@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Next
 - [ui] condensed + colored sidenav
 - [feat] added [git memo](/#/git-memo)
+- [refactor] changed app title
 
 ## 1.3.0
 - [fix] [GithubContributors] ordered contributors by contribution count

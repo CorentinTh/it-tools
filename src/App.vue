@@ -1,7 +1,7 @@
 <template>
     <v-app id="inspire">
         <vue-headful
-                :title="currentRoute ? `${currentRoute.text} - IT-Tools` : 'IT-Tools'"
+                :title="currentRoute ? `${currentRoute.text} - IT Tools` : 'IT Tools - Set of handy developer tools'"
                 :description="currentRoute ? currentRoute.description: 'Aggregated set of useful tools that every developer may need once in a while.'"
                 :keywords="currentRoute ? currentRoute.keywords: null"
                 image="/img/banner.png"
