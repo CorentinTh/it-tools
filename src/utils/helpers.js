@@ -41,6 +41,13 @@ const randFromArray = (array) => array[Math.floor(Math.random() * array.length)]
 
 const randIntFromInterval = (min, max) => Math.floor(Math.random() * (max - min) + min)
 
+const downloadBase64File = (dataUrl, name = 'file') => {
+    const a = document.createElement("a");
+    a.href = dataUrl;
+    a.download = name;
+    a.click();
+}
+
 export {
     copyToClipboard,
     fileIsImage,
@@ -48,5 +55,6 @@ export {
     isInt,
     debounce,
     randFromArray,
-    randIntFromInterval
+    randIntFromInterval,
+    downloadBase64File
 }

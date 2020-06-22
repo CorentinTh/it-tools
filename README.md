@@ -18,10 +18,10 @@ Here is an unordered list of the current functionalities, and some that may come
 - [x] Markdown editor
 - [x] Lorem ipsum text generator
 - [x] Git memo (cheat sheet)
+- [x] QR code generator
 - [ ] CSS memo (cheat sheet)
 - [ ] REGEX memo (cheat sheet) + tester?
 - [ ] Image exif editor/remover
-- [ ] QR code generator
 - [ ] Bip39 pass-phrase generator
 - [ ] Crontab friendly generator
 - [ ] Image format converter?

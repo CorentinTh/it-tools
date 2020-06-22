@@ -15,6 +15,7 @@
     "core-js": "^3.6.4",
     "dompurify": "^2.0.11",
     "marked": "^1.1.0",
+    "qrcode.vue": "^1.7.0",
     "register-service-worker": "^1.7.1",
     "roboto-fontface": "*",
     "vue": "^2.6.11",

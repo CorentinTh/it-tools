@@ -121,7 +121,18 @@ const toolsComponents = [
                 keywords: ['git', 'push', 'rebase', 'merge', 'tag', 'commit', 'checkout']
             }
         ]
-
+    },
+    {
+        title: 'Miscellaneous',
+        child: [
+            {
+                text: 'QR Code generator',
+                path: '/qrcode-generator',
+                icon: 'fa-qrcode',
+                component: () => import('./routes/tools/QRCodeGenerator'),
+                keywords: []
+            }
+        ]
     }
 ];
 
