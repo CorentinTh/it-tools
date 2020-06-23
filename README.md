@@ -21,6 +21,7 @@ Here is an unordered list of the current functionalities, and some that may come
 - [x] QR code generator
 - [ ] CSS memo (cheat sheet)
 - [ ] REGEX memo (cheat sheet) + tester?
+- [ ] Minify/un-minify
 - [ ] Image exif editor/remover
 - [ ] Bip39 pass-phrase generator
 - [ ] Crontab friendly generator
