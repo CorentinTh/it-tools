@@ -1,7 +1,7 @@
 {
   "name": "it-tools",
   "description": "",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
