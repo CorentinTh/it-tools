@@ -56,8 +56,7 @@
                     v => (!!v && bip39.validateMnemonic(v)) || 'Invalid mnemonic.'
                 ],
                 entropy: [
-                    v => (!!v && v.match(/[0-9a-fA-F]{32}/)) || 'Invalid entropy.'
-
+                    v => (!!v && !!v.match(/[0-9a-fA-F]{32}/)) || 'Invalid entropy.'
                 ]
             }
         }),
