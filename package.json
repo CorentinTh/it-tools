@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "bip39": "^3.0.2",
     "color-convert": "^2.0.1",
     "color-name": "^1.1.4",
     "core-js": "^3.6.4",

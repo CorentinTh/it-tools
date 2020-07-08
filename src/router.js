@@ -38,6 +38,13 @@ const toolsComponents = [
                 component: () => import('./routes/tools/TextCypher'),
                 keywords: ['aes', 'tripledes', 'rabbit', 'rabbitlegacy', 'rc4']
             },
+            {
+                icon: 'fa-file-word',
+                text: 'BIP39 passphrase generator',
+                path: '/bip39-generator',
+                component: () => import('./routes/tools/BIP39Generator'),
+                keywords: []
+            },
         ],
     },
     {
