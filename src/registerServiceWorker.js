@@ -20,7 +20,8 @@ if (process.env.NODE_ENV === 'production') {
       console.log('New content is downloading.')
     },
     updated () {
-      console.log('New content is available; please refresh.')
+      console.log('New content is available; hard refresh.');
+      window.location.reload(true);
     },
     offline () {
       console.log('No internet connection found. App is running in offline mode.')

@@ -5,6 +5,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Next
 - [feat] [humans.txt](/humans.txt)
+- [feat] pwa auto update on new changes
 
 ## 1.5.1
 - [feat] switched back to history mode (no more '#' in url)
