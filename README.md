@@ -19,11 +19,11 @@ Here is an unordered list of the current functionalities, and some that may come
 - [x] Lorem ipsum text generator
 - [x] Git memo (cheat sheet)
 - [x] QR code generator
+- [x] Bip39 pass-phrase generator
 - [ ] CSS memo (cheat sheet)
 - [ ] REGEX memo (cheat sheet) + tester?
 - [ ] Minify/un-minify
 - [ ] Image exif editor/remover
-- [ ] Bip39 pass-phrase generator
 - [ ] Crontab friendly generator
 - [ ] Image format converter?
 - [ ] Image cropper 
