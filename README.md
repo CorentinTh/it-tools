@@ -20,6 +20,7 @@ Here is an unordered list of the current functionalities, and some that may come
 - [x] Git memo (cheat sheet)
 - [x] QR code generator
 - [x] Bip39 pass-phrase generator
+- [ ] Base 64 string converter
 - [ ] CSS memo (cheat sheet)
 - [ ] REGEX memo (cheat sheet) + tester?
 - [ ] Minify/un-minify
