@@ -5,6 +5,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Next
 - [feat] [BIP39 generator](https://it-tools.tech/bip39-generator)
+- [feat] [Base 64 converter](https://it-tools.tech/base64-string-converter)
 
 ## 1.5.2
 - [feat] [humans.txt](https://it-tools.tech/humans.txt)

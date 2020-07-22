@@ -89,6 +89,12 @@ const toolsComponents = [
                 path: '/file-to-base64',
                 component: () => import('./routes/tools/FileToBase64')
             },
+            {
+                icon: 'fa-file-alt',
+                text: 'Base64 string converter',
+                path: '/base64-string-converter',
+                component: () => import('./routes/tools/StringToBase64')
+            }
         ],
     },
     {
