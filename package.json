@@ -14,6 +14,8 @@
     "color-convert": "^2.0.1",
     "color-name": "^1.1.4",
     "core-js": "^3.6.4",
+    "cron-validator": "^1.1.1",
+    "cronstrue": "^1.96.0",
     "dompurify": "^2.0.11",
     "marked": "^1.1.0",
     "qrcode.vue": "^1.7.0",

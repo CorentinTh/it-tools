@@ -139,6 +139,13 @@ const toolsComponents = [
         title: 'Miscellaneous',
         child: [
             {
+                text: 'Crontab generator',
+                path: '/crontab-generator',
+                icon: 'fa-clock',
+                component: () => import('./routes/tools/CrontabGenerator'),
+                keywords: ['Cron', 'Schedule']
+            },
+            {
                 text: 'QR Code generator',
                 path: '/qrcode-generator',
                 icon: 'fa-qrcode',
