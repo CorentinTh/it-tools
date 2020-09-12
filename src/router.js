@@ -132,6 +132,13 @@ const toolsComponents = [
                 icon: 'fa-code-branch',
                 component: () => import('./routes/tools/GitMemo'),
                 keywords: ['git', 'push', 'rebase', 'merge', 'tag', 'commit', 'checkout']
+            },
+            {
+                text: 'Regex memo',
+                path: '/regex-memo',
+                icon: 'fa-code',
+                component: () => import('./routes/tools/RegexMemo'),
+                keywords: ['regex', 'regular', 'expression']
             }
         ]
     },

@@ -23,7 +23,7 @@ Here is an unordered list of the current functionalities, and some that may come
 - [x] Base 64 string converter
 - [x] Crontab friendly generator
 - [ ] CSS memo (cheat sheet)
-- [ ] REGEX memo (cheat sheet) + tester?
+- [x] REGEX memo (cheat sheet) + tester?
 - [ ] Minify/un-minify
 - [ ] Image exif editor/remover
 - [ ] Image format converter?

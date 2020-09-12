@@ -3,7 +3,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Next
+## 1.8.0
+- [feat] [REGEX memo](https://it-tools.tech/regex-memo)
+
+## 1.7.0
 - [feat] [Crontab friendly generator](https://it-tools.tech/crontab-generator)
 
 ## 1.6.0
