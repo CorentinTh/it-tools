@@ -16,19 +16,50 @@ export default {
   },
   methods: {
     updateInput (moveCursor) {
-      if(this.$el.innerText){
-        this.$emit('input', this.$el.innerText);
-        
-        let html = this.fn(this.$el.innerText);
-        this.$el.innerHTML = html;
+      let area = this.$el;
+
+      /* Emit innerText */
+      this.$emit('input', area.innerText);
+
+      if(area.innerText) {
+        let pos = this.getPos();
+        console.log(pos);
+
+        /* Update innerHTML with formatting */
+        let html = this.fn(area.innerText);
+        area.innerHTML = html;
 
         if(moveCursor){
-          /* Move cursor to end of selection */
-          this.$el.focus();
-          document.execCommand('selectAll', false, null);
-          document.getSelection().collapseToEnd();
+          this.setPos(pos);
         }
       }
+    },
+    getPos () {
+      let _range = document.getSelection().getRangeAt(0);
+      let range = _range.cloneRange();
+      range.selectNodeContents(this.$el);
+      range.setEnd(_range.endContainer, _range.endOffset);
+      return range.toString().length;
+    },
+    setPos (pos) {
+      /* find childnode which will contain the cursor. */
+      let node = null;
+      for(let n of this.$el.childNodes) {
+        let length = n.firstChild ? n.firstChild.length : n.length;
+        if(length >= pos) {
+          node = n.firstChild ?? n;
+          break;
+        } else {
+          pos -= length;
+        }
+      }
+      /* Set cursor at right position on right node */
+      let rangeObj = document.createRange();
+      let selectObj = window.getSelection();
+      rangeObj.setStart(node, pos);
+      rangeObj.collapse(true);
+      selectObj.removeAllRanges();
+      selectObj.addRange(rangeObj);
     }
   }
 }
