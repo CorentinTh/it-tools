@@ -1,7 +1,7 @@
 <template>
     <v-row >
       <v-col cols="12" xl="6" lg="6" md="4" sm="12">
-        <v-card class="single-card" id="REGEX_Tester">
+        <v-card class="single-card" id="regex-tester">
             <v-card-title>REGEX Tester</v-card-title>
             <v-card-text>
                 <v-text-field
@@ -16,7 +16,7 @@
         </v-card>
       </v-col>
       <v-col cols="12" xl="6" lg="6" md="8" sm="12">
-        <v-card class="single-card" id="REGEX_Memo">
+        <v-card class="single-card" id="regex-memo">
             <v-card-title>REGEX Memo</v-card-title>
             <table>
               <tr><th>Character Classes</th></tr>
@@ -148,9 +148,12 @@
 </script>
 
 <style lang="less">
+  #regex-memo {
+    padding: 0px 16px 16px 16px;
+  }
   table {
     width: 100%;
-    margin-left: 10%;
+    table-layout: fixed;
   }
   th {
     padding-top: 15px;

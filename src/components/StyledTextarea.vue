@@ -1,5 +1,5 @@
 <template>
-  <div class="StyledTextarea" @input="updateInput(true)" contenteditable></div>
+  <div class="styled-textarea" @input="updateInput(true)" contenteditable></div>
 </template>
 
 <script>
@@ -23,7 +23,6 @@ export default {
 
       if(area.innerText) {
         let pos = this.getPos();
-        console.log(pos);
 
         /* Update innerHTML with formatting */
         let html = this.fn(area.innerText);
@@ -66,12 +65,14 @@ export default {
 </script>
 
 <style lang="less">
-  .StyledTextarea {
-    overflow:scroll;
+  .styled-textarea {
+    overflow:auto;
     height:100px;
     width:100%;
     border:solid;
     border-width:1px;
     resize: vertical;
+    white-space: pre-wrap;
+    display: inline-block;
   }
 </style>
