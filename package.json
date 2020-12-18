@@ -16,7 +16,7 @@
     "core-js": "^3.6.4",
     "cron-validator": "^1.1.1",
     "cronstrue": "^1.96.0",
-    "dompurify": "^2.0.11",
+    "dompurify": "^2.0.17",
     "marked": "^1.1.0",
     "qrcode.vue": "^1.7.0",
     "register-service-worker": "^1.7.1",
