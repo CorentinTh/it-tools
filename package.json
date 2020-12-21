@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "nuxt-ts",
-    "build": "nuxt-ts build",
+    "build": "npm run generate",
     "start": "nuxt-ts start",
     "generate": "nuxt-ts generate",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
@@ -34,8 +34,10 @@
     "eslint-plugin-nuxt": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "jest": "^26.5.0",
-    "prettier": "^2.1.2",
+    "less": "^4.0.0",
+    "less-loader": "^7.1.0",
     "ts-jest": "^26.4.1",
-    "vue-jest": "^3.0.4"
+    "vue-jest": "^3.0.4",
+    "vue-property-decorator": "^9.1.2"
   }
 }
