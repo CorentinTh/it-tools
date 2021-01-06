@@ -9,7 +9,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bip39": "^3.0.2",
     "color-convert": "^2.0.1",
     "color-name": "^1.1.4",
