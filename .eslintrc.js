@@ -10,6 +10,8 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
-    'space-before-function-paren': 'off'
+    'space-before-function-paren': 'off',
+    'object-curly-spacing': 'off',
+    'no-undef': 'off' // will be catch by the tsc compiler
   }
 }

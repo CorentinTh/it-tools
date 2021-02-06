@@ -1,8 +1,8 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
-  ssr: false,
+  // Enable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
+  ssr: true,
 
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -50,17 +50,22 @@ export default {
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    treeShake: true,
     theme: {
       dark: true,
+      options: { customProperties: true },
       themes: {
         dark: {
-          primary: colors.blue.darken2,
+          primary: '#05e677',
           accent: colors.grey.darken3,
           secondary: colors.amber.darken3,
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: colors.green.accent3
+          success: colors.green.accent3,
+          background: '#324148',
+          foreground: '#28353b',
+          toolbar: '#243137'
         }
       }
     }
