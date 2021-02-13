@@ -1,28 +1,29 @@
 <script lang="ts">
 import {Component, Vue} from 'nuxt-property-decorator'
-import ToolWrapper from '~/components/ToolWrapper.vue';
-
-interface ToolConfig {
-  title: string;
-  description: string;
-}
-
-export {ToolConfig}
+import ToolWrapper from '~/components/ToolWrapper.vue'
+import {ToolConfig} from '~/types/ToolConfig'
 
 @Component({components: {ToolWrapper}})
 export default class Tool extends Vue {
-  public isTool = true;
-  public config: ToolConfig = {
-    title: 'Tool',
-    description: 'Tool description'
-  }
+  config(): ToolConfig {
+    throw new Error('You need to specify a config() method your custom Tool.')
+  };
 
   public head() {
-    const {title, description} = this.config
+    const {title, description, keywords} = this.config()
 
     return {
       title,
-      description
+      meta: [
+        {
+          name: 'description',
+          content: description
+        },
+        {
+          name: 'keywords',
+          content: keywords
+        }
+      ]
     }
   }
 }

@@ -4,12 +4,14 @@
       <v-col cols="12" lg="6">
         <div class="tool-wrapper-info">
           <h1>{{ config.title }}</h1>
-          <div class="spacer"></div>
-          <div class="description">{{ config.description }}</div>
+          <div class="spacer" />
+          <div class="description">
+            {{ config.description }}
+          </div>
         </div>
         <v-card flat>
           <v-card-text class="pa-10">
-            <slot></slot>
+            <slot />
           </v-card-text>
         </v-card>
       </v-col>
@@ -19,7 +21,7 @@
 
 <script lang="ts">
 import {Component, Prop, Vue} from 'nuxt-property-decorator'
-import {ToolConfig} from '~/components/Tool.vue'
+import {ToolConfig} from '~/types/ToolConfig'
 
 @Component
 export default class ToolWrapper extends Vue {

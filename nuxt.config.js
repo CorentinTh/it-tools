@@ -9,21 +9,23 @@ export default {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    titleTemplate: '%s - it-tools',
-    title: 'it-tools',
+    titleTemplate: '%s - IT-Tools',
+    title: 'IT-Tools',
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      {charset: 'utf-8'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+      {hid: 'description', name: 'description', content: ''}
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}]
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [],
+  plugins: [
+    '~/plugins/vuetify-toast'
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -41,7 +43,8 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/svg'
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -50,10 +53,16 @@ export default {
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
-    treeShake: true,
+    treeShake: {
+      components: [
+        'VSnackbar',
+        'VBtn',
+        'VIcon'
+      ]
+    },
     theme: {
       dark: true,
-      options: { customProperties: true },
+      options: {customProperties: true},
       themes: {
         dark: {
           primary: '#05e677',
@@ -72,5 +81,20 @@ export default {
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {}
+  build: {},
+
+  router: {
+    extendRoutes(routes) {
+      routes.forEach((route) => {
+        if (route.path.match(/^\/tools\/.*/)) {
+          const sections = route.path.split('/')
+          route.path = `/${sections[sections.length - 1]}`
+          route.meta = {
+            isTool: true,
+            section: sections[sections.length - 2]
+          }
+        }
+      })
+    }
+  }
 }

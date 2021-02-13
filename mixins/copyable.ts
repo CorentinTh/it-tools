@@ -1,3 +1,5 @@
+import {Component, Vue} from 'nuxt-property-decorator'
+
 const copyToClipboard = (text: string) => {
   const input = document.createElement('textarea')
   input.innerHTML = text
@@ -8,11 +10,11 @@ const copyToClipboard = (text: string) => {
   return result
 }
 
-export const copyable = {
-  methods: {
-    copy(text: string, toastText = 'Copied to clipboard !') {
-      copyToClipboard(text)
-      this.$toast.success(toastText)
-    }
+@Component
+export class Copyable extends Vue {
+  copy(text: string, toastText = 'Copied to clipboard !') {
+    copyToClipboard(text)
+    console.log(toastText)
+    this.$toast.success(toastText)
   }
 }

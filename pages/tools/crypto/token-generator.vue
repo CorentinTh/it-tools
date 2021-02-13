@@ -1,5 +1,5 @@
 <template>
-  <ToolWrapper :config="config">
+  <ToolWrapper :config="config()">
     <v-row no-gutters>
       <v-col lg="6" md="12">
         <v-switch v-model="withLowercase" label="Lowercase (abc...)" />
@@ -19,14 +19,18 @@
       <v-btn depressed class="mr-4" @click="refreshToken()">
         Refresh
       </v-btn>
-      <!--      <v-btn @click="copyToken()" depressed>Copy token</v-btn>-->
+      <v-btn depressed @click="copy(token)">
+        Copy token
+      </v-btn>
     </div>
   </ToolWrapper>
 </template>
 
 <script lang="ts">
 import {Component} from 'nuxt-property-decorator'
-import Tool, {ToolConfig} from '~/components/Tool.vue'
+import Tool from '~/components/Tool.vue'
+import {ToolConfig} from '~/types/ToolConfig'
+import {Copyable} from '~/mixins/copyable'
 
 const shuffle = (s: string) => s.split('').sort(() => 0.5 - Math.random()).join('')
 const lowercase = 'abcdefghijklmopqrstuvwxyz'
@@ -34,11 +38,17 @@ const uppercase = 'ABCDEFGHIJKLMOPQRSTUVWXYZ'
 const numbers = '0123456789'
 const specials = '.,;:!?./-"\'#{([-|\\@)]=}*+'
 
-@Component
+@Component({
+  mixins: [Copyable]
+})
 export default class TokenGenerator extends Tool {
-  config: ToolConfig = {
-    title: 'Token generator',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.'
+  config(): ToolConfig {
+    return {
+      title: 'Token generator',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.',
+      icon: 'mdi-key-chain-variant',
+      keywords: ['token', 'random', 'string', 'alphanumeric', 'symbols']
+    }
   }
 
   withNumbers = true;
@@ -53,7 +63,10 @@ export default class TokenGenerator extends Tool {
   }
 
   get token() {
-    if (this.refreshBool) { (() => {})() } // To force recomputation
+    if (this.refreshBool) {
+      (() => {
+      })()
+    } // To force recomputation
 
     let result = ''
     if (this.withLowercase) {
