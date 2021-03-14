@@ -1,7 +1,7 @@
 <template>
   <div class="tool-wrapper">
     <v-row no-gutters justify="center" align="center">
-      <v-col cols="12" lg="6">
+      <v-col cols="12" xl="6" lg="8" md="10">
         <div class="tool-wrapper-info">
           <h1>{{ config.title }}</h1>
           <div class="spacer" />
@@ -50,9 +50,10 @@ export default class ToolWrapper extends Vue {
   }
 
   .spacer{
-    width: 130px;
-    height: 1px;
-    background-color: var(--v-primary-base);
+    width: 200px;
+    height: 2px;
+    background: var(--v-primary-base);
+    background: linear-gradient(90deg, rgba(71, 177, 113, 1) 0%, rgba(59, 149, 111, 1) 60%, rgba(37, 99, 108, 1) 200%);
     margin-bottom: 10px;
   }
 

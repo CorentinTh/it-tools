@@ -11,7 +11,7 @@
       </v-col>
     </v-row>
 
-    <v-slider v-model="length" :label="`Length (${length})`" min="1" max="256" />
+    <v-slider v-model="length" :label="`Length (${length})`" min="1" max="512" />
 
     <v-textarea v-model="token" outlined />
 
@@ -30,16 +30,16 @@
 import {Component} from 'nuxt-property-decorator'
 import Tool from '~/components/Tool.vue'
 import {ToolConfig} from '~/types/ToolConfig'
-import {Copyable} from '~/mixins/copyable'
+import {CopyableMixin} from '~/mixins/copyable.mixin'
+import {shuffle} from '~/utils/string'
 
-const shuffle = (s: string) => s.split('').sort(() => 0.5 - Math.random()).join('')
 const lowercase = 'abcdefghijklmopqrstuvwxyz'
 const uppercase = 'ABCDEFGHIJKLMOPQRSTUVWXYZ'
 const numbers = '0123456789'
 const specials = '.,;:!?./-"\'#{([-|\\@)]=}*+'
 
 @Component({
-  mixins: [Copyable]
+  mixins: [CopyableMixin]
 })
 export default class TokenGenerator extends Tool {
   config(): ToolConfig {

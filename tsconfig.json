@@ -28,7 +28,8 @@
       "@types/node",
       "@nuxtjs/toast",
       "@nuxt/types",
-      "~/types/custom.d.ts"
+      "~/types/custom.d.ts",
+      "vuetify"
     ]
   },
   "exclude": [

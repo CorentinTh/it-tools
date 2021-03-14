@@ -11,7 +11,7 @@ const copyToClipboard = (text: string) => {
 }
 
 @Component
-export class Copyable extends Vue {
+export class CopyableMixin extends Vue {
   copy(text: string, toastText = 'Copied to clipboard !') {
     copyToClipboard(text)
     console.log(toastText)

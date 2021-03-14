@@ -1,3 +1,5 @@
+import {RouteConfig} from '@nuxt/types/config/router';
+
 interface ToolConfig {
   title: string;
   description: string;
@@ -6,5 +8,6 @@ interface ToolConfig {
 }
 
 type ToolConfigMethod = () => ToolConfig;
+type ToolRouteConfig = RouteConfig & {config: ToolConfig}
 
-export {ToolConfig, ToolConfigMethod}
+export {ToolConfig, ToolConfigMethod, ToolRouteConfig}

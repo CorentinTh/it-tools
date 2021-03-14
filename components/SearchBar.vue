@@ -2,14 +2,15 @@
   <v-autocomplete
     label="Search..."
     single-line
-    append-icon="fa-search"
+    append-icon="mdi-magnify"
     color="white"
     hide-details
-    :items="items"
-    item-text="text"
+    :items="toolRoutesFlat"
+    :item-text="item => item.config.title"
     item-value="path"
     solo-inverted
-    :filter="filter"
+    dense
+    :filter="filterItems"
     clearable
     cache-items
     @change="choose"
@@ -24,23 +25,39 @@
   </v-autocomplete>
 </template>
 
-<script>
-import {Component, Vue} from 'nuxt-property-decorator'
-import {ToolRoutes} from '~/mixins/tool-routes'
+<script lang="ts">
+import {Component, mixins} from 'nuxt-property-decorator'
+import {ToolRoutesMixin} from '@/mixins/tool-routes.mixin'
+import {ToolRouteConfig} from '~/types/ToolConfig'
 
-@Component({
-  mixins: [ToolRoutes]
-})
-export default class SearchBar extends Vue {
-  title = 'IT - Tools'
-  drawer = false
-  items = []
+@Component
+export default class SearchBar extends mixins(ToolRoutesMixin) {
+  choose(path:string) {
+    this.$router.push({path})
+  }
+
+  filterItems(item:ToolRouteConfig, queryText:string, itemText:string) {
+    const query = queryText.trim().toLowerCase()
+    const nameContainsText = itemText.toLowerCase().includes(query)
+    const keywordContainsText = item?.config?.keywords.some((keyword:string) => keyword.toLowerCase().includes(query)) ?? false
+    return nameContainsText || keywordContainsText
+  }
 }
 </script>
 
 <style scoped lang="less">
-::v-deep .v-list-item__mask{
-  color: inherit !important;
-  background: inherit !important;
+::v-deep {
+  .v-input__slot{
+    background: var(--v-primary-base) !important;
+    background: linear-gradient(90deg, rgba(37,99,108,1) 0%, rgba(59,149,111,1) 60%, rgba(71,177,113,1) 100%) !important;
+    input {
+      color: #ffffff !important;
+    }
+  }
+
+}
+
+.v-list{
+  background: var(--v-foreground-base) !important;
 }
 </style>
