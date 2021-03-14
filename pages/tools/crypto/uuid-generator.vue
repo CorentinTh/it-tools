@@ -32,7 +32,7 @@
 
 import {Component, Ref, Watch} from 'nuxt-property-decorator'
 import {CopyableMixin} from '@/mixins/copyable.mixin'
-import {ToolConfig} from '@/types/ToolConfig'
+import type {ToolConfig} from '@/types/ToolConfig'
 import { VTextField } from 'vuetify/lib'
 import Tool from '~/components/Tool.vue'
 

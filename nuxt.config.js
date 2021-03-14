@@ -44,7 +44,8 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    '@nuxtjs/svg'
+    '@nuxtjs/svg',
+    'nuxt-i18n'
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -78,6 +79,11 @@ export default {
         }
       }
     }
+  },
+
+  i18n: {
+    vueI18nLoader: true,
+    locales: ['en']
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)

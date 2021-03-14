@@ -32,8 +32,7 @@ import {Component} from 'nuxt-property-decorator'
 import CryptoJS from 'crypto-js'
 import {CopyableMixin} from '~/mixins/copyable.mixin'
 import Tool from '~/components/Tool.vue'
-import {ToolConfig} from '~/types/ToolConfig'
-
+import type {ToolConfig} from '~/types/ToolConfig'
 const algos = {
   MD5: CryptoJS.MD5,
   SHA1: CryptoJS.SHA1,

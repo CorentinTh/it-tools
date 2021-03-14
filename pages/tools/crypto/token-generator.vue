@@ -29,7 +29,7 @@
 <script lang="ts">
 import {Component} from 'nuxt-property-decorator'
 import Tool from '~/components/Tool.vue'
-import {ToolConfig} from '~/types/ToolConfig'
+import type {ToolConfig} from '~/types/ToolConfig'
 import {CopyableMixin} from '~/mixins/copyable.mixin'
 import {shuffle} from '~/utils/string'
 

@@ -19,6 +19,7 @@
     "core-js": "^3.6.5",
     "crypto-js": "^4.0.0",
     "nuxt": "^2.14.12",
+    "nuxt-i18n": "^6.21.0",
     "vuetify": "^2.4.5",
     "vuetify-toast-snackbar": "^0.6.1"
   },

@@ -1,8 +1,7 @@
 <script lang="ts">
 import {Component, Vue} from 'nuxt-property-decorator'
 import ToolWrapper from '~/components/ToolWrapper.vue'
-import {ToolConfig} from '~/types/ToolConfig'
-
+import type {ToolConfig} from '~/types/ToolConfig'
 @Component({components: {ToolWrapper}})
 export default class Tool extends Vue {
   config(): ToolConfig {

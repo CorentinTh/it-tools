@@ -3,12 +3,13 @@
     <v-col cols="12" sm="12" md="12">
       <h1>Yolo</h1>
 
-      <v-row justify="center" >
+      <v-row justify="center">
         <v-col
+          v-for="(items, section) in toolRoutesSections"
+          :key="section"
           cols="12"
           sm="12"
           md="6"
-          v-for="(items, section) in toolRoutesSections" :key="section"
         >
           <v-card>
             <v-card-title>{{ section }}</v-card-title>
@@ -25,7 +26,7 @@
                     <v-icon>{{ item.config.icon }}</v-icon>
                   </v-list-item-action>
                   <v-list-item-content>
-                    <v-list-item-title v-text="item.config.title"/>
+                    <v-list-item-title v-text="item.config.title" />
                   </v-list-item-content>
                 </v-list-item>
               </v-list>

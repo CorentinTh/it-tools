@@ -46,7 +46,7 @@
 import {Component} from 'nuxt-property-decorator'
 import {CopyableMixin} from '@/mixins/copyable.mixin'
 import Tool from '@/components/Tool.vue'
-import {ToolConfig} from '@/types/ToolConfig'
+import type {ToolConfig} from '@/types/ToolConfig'
 import CryptoJS from 'crypto-js'
 
 const algos = {

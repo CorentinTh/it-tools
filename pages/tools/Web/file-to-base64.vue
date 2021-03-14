@@ -1,6 +1,5 @@
 <template>
-  <ToolWrapper :config="config()" noCard="true">
-
+  <ToolWrapper :config="config()" no-card="true">
     <FileUploader v-model="file"/>
 
     <div v-if="base64 || loading" class="mt-10">
@@ -23,16 +22,15 @@
         </v-card-text>
       </v-card>
     </div>
-
   </ToolWrapper>
 </template>
 
 <script lang="ts">
 import {Component, Watch} from 'nuxt-property-decorator'
 import {CopyableMixin} from '@/mixins/copyable.mixin'
-import Tool from '@/components/Tool'
-import {ToolConfig} from '@/types/ToolConfig'
-import FileUploader from '~/components/FileUploader'
+import Tool from '@/components/Tool.vue'
+import type {ToolConfig} from '@/types/ToolConfig'
+import FileUploader from '~/components/FileUploader.vue'
 
 @Component({
   mixins: [CopyableMixin],
@@ -43,28 +41,30 @@ export default class FileToBase64 extends Tool {
     return {
       title: 'File to base64',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.',
-      icon: 'mdi-key-chain-variant',
+      icon: 'mdi-file-link-outline',
       keywords: ['file', 'base64']
     }
   }
 
-  file = null
+  file: Blob | null = null
   loading = false
-  base64= ''
+  base64 = ''
 
-  handleBase64(base64) {
+  handleBase64(base64: string) {
     this.base64 = base64
     this.loading = false
   }
 
   @Watch('file')
   onFile() {
-    this.loading = true
-    this.base64 = ''
-    const reader = new FileReader()
-    reader.onload = () => this.handleBase64(reader.result)
-    reader.onerror = () => this.handleBase64('[An error as occurred]')
-    reader.readAsDataURL(this.file)
+    if (this.file) {
+      this.loading = true
+      this.base64 = ''
+      const reader = new FileReader()
+      reader.onload = () => this.handleBase64(reader.result as string)
+      reader.onerror = () => this.handleBase64('[An error as occurred]')
+      reader.readAsDataURL(this.file)
+    }
   }
 }
 
