@@ -4,16 +4,22 @@
       <v-col cols="12" xl="6" lg="8" md="10">
         <div class="tool-wrapper-info">
           <h1>{{ config.title }}</h1>
-          <div class="spacer" />
+          <div class="spacer"/>
           <div class="description">
             {{ config.description }}
           </div>
         </div>
-        <v-card flat>
-          <v-card-text class="pa-10">
-            <slot />
-          </v-card-text>
-        </v-card>
+        <template v-if="!noCard">
+          <v-card flat>
+            <v-card-text class="pa-10">
+              <slot/>
+            </v-card-text>
+          </v-card>
+        </template>
+        <template v-else>
+          <slot/>
+        </template>
+
       </v-col>
     </v-row>
   </div>
@@ -25,7 +31,8 @@ import {ToolConfig} from '~/types/ToolConfig'
 
 @Component
 export default class ToolWrapper extends Vue {
-  @Prop() config!: ToolConfig;
+  @Prop() readonly config!: ToolConfig;
+  @Prop({default: () => false}) readonly noCard!: boolean;
 }
 
 </script>
@@ -34,7 +41,7 @@ export default class ToolWrapper extends Vue {
 .tool-wrapper {
   height: 100%;
 
-  .tool-wrapper-info{
+  .tool-wrapper-info {
     padding: 50px 0 30px;
   }
 
@@ -49,7 +56,7 @@ export default class ToolWrapper extends Vue {
     padding: 0;
   }
 
-  .spacer{
+  .spacer {
     width: 200px;
     height: 2px;
     background: var(--v-primary-base);
