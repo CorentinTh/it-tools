@@ -37,6 +37,7 @@ en:
         - text: Tip n°3 (avec du code !)
           code: rm -rf / --no-preserve-root
         - text: Tip n°4
+          code: "multiline\ncode sample"
 
     - section: Titre de la section 3
       items:
@@ -48,7 +49,6 @@ en:
         - text: Tip n°4 (avec du code et un sous titre !)
           code: rm -rf / --no-preserve-root
           subtitle: Un super sous titre, yeah
-
 
     - section: Titre de la section 4
       items:

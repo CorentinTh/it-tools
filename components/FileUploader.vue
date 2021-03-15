@@ -13,27 +13,32 @@
       <v-progress-circular
         indeterminate
         color="primary"
-
       />
     </div>
     <div v-else>
       <p>Drag & drop a file here</p>
-      <p class="or">or</p>
-      <v-btn depressed @click="manualUploadClicked">select a file</v-btn>
+      <p class="or">
+        or
+      </p>
+      <v-btn depressed @click="manualUploadClicked">
+        select a file
+      </v-btn>
       <input ref="uploadInput" type="file" hidden @change="(e) => handleFiles(e.target.files[0])">
 
       <div v-if="allowUrl">
-        <p class="or">or</p>
+        <p class="or">
+          or
+        </p>
         <v-text-field
           ref="urlInput"
-          @click:append="urlFilled(url)"
-          @keypress.enter="urlFilled(url)"
           v-model="url"
           append-icon="fa-arrow-right"
           dense
           label="Paste the file url"
           outlined
           :error-messages="urlErrors"
+          @click:append="urlFilled(url)"
+          @keypress.enter="urlFilled(url)"
         />
       </div>
     </div>
@@ -41,9 +46,9 @@
 </template>
 
 <script>
-import * as axios from "axios";
+import * as axios from 'axios'
 export default {
-  name: "FileUploader",
+  name: 'FileUploader',
   props: {
     allowUrl: {
       type: Boolean,
@@ -61,50 +66,50 @@ export default {
   },
   methods: {
     imageDropped(e) {
-      this.dragging = false;
+      this.dragging = false
       if (e.dataTransfer.items.length > 0) {
-        const item = e.dataTransfer.items[0];
+        const item = e.dataTransfer.items[0]
         switch (item.kind) {
           case 'string':
-            item.getAsString(url => this.urlFilled(url));
-            break;
+            item.getAsString(url => this.urlFilled(url))
+            break
           case 'file':
-            this.handleFiles(item.getAsFile());
-            break;
+            this.handleFiles(item.getAsFile())
+            break
         }
       }
     },
     dragEnter() {
-      this.dragEnterCounter++;
-      this.dragging = true;
+      this.dragEnterCounter++
+      this.dragging = true
     },
     dragLeave() {
       if (--this.dragEnterCounter <= 0) {
-        this.dragging = false;
+        this.dragging = false
       }
     },
     async urlFilled(url) {
       if (url && url.length > 0) {
-        this.loading = true;
+        this.loading = true
         try {
-          const {data, headers} = await axios.get(url);
-          const name = url.split('/').pop();
+          const {data, headers} = await axios.get(url)
+          const name = url.split('/').pop()
           const file = new File([data], name, {type: headers['content-type']})
-          this.handleFiles(file);
+          this.handleFiles(file)
         } catch (ignored) {
           this.urlErrors = 'Incorrect url'
         }
-        this.loading = false;
+        this.loading = false
       }
     },
     dragEnd() {
-      this.dragging = false;
+      this.dragging = false
     },
     dragExit() {
-      this.dragging = false;
+      this.dragging = false
     },
     handleFiles(file) {
-      if (!file) return;
+      if (!file) { return }
       this.$emit('input', file)
     },
     manualUploadClicked() {

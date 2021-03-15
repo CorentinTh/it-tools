@@ -1,6 +1,6 @@
 <template>
   <ToolWrapper :config="config()" no-card="true">
-    <FileUploader v-model="file"/>
+    <FileUploader v-model="file" />
 
     <div v-if="base64 || loading" class="mt-10">
       <v-card>

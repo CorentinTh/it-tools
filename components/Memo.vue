@@ -5,7 +5,15 @@
     Warning: le style/aspect est toujours en wip, so focus on content <br><br>
 
     <v-row>
-      <v-col cols="12" sm="12" md="6" lg="4" v-for="item in items" :key="item.section" class="memo-section">
+      <v-col
+        v-for="item in items"
+        :key="item.section"
+        cols="12"
+        sm="12"
+        md="6"
+        lg="4"
+        class="memo-section"
+      >
         <v-card class="mb-5">
           <v-card-title>{{ item.section }}</v-card-title>
           <v-card-text>
