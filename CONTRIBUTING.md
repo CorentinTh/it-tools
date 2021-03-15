@@ -25,7 +25,7 @@ import type {ToolConfig} from '@/types/ToolConfig'
 import Tool from '~/components/Tool.vue'
 
 @Component
-export default class UuidGenerator extends Tool {
+export default class MyComponent extends Tool {
   config(): ToolConfig {
     return {
       title: 'My component',

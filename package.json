@@ -16,6 +16,7 @@
     "@nuxtjs/axios": "^5.13.1",
     "@nuxtjs/pwa": "^3.0.2",
     "@nuxtjs/toast": "^3.3.1",
+    "bip39": "^3.0.3",
     "core-js": "^3.6.5",
     "crypto-js": "^4.0.0",
     "nuxt": "^2.14.12",
