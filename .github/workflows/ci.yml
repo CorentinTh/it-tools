@@ -1,16 +1,16 @@
 name: ci
 
-on:
-  push:
-    branches:
-      - main
-      - master
-  pull_request:
-    branches:
-      - main
-      - master
+on: [pull_request]
 
 jobs:
+  commitlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: wagoid/commitlint-github-action@v2
+
   ci:
     runs-on: ${{ matrix.os }}
 
@@ -20,15 +20,15 @@ jobs:
         node: [14]
 
     steps:
-      - name: Checkout 🛎
+      - name: Checkout
         uses: actions/checkout@master
 
-      - name: Setup node env 🏗
+      - name: Setup node env
         uses: actions/setup-node@v2.1.2
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Cache node_modules 📦
+      - name: Cache node_modules
         uses: actions/cache@v2
         with:
           path: ~/.npm
@@ -36,11 +36,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Install dependencies 👨🏻‍💻
+      - name: Install dependencies
         run: npm ci
 
-      - name: Run linter 👀
+      - name: Run linter
         run: npm run lint
-
-      - name: Run tests 🧪
-        run: npm run test
