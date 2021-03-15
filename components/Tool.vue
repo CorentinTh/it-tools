@@ -16,11 +16,13 @@ export default class Tool extends Vue {
       meta: [
         {
           name: 'description',
-          content: description
+          content: description,
+          hid: 'description'
         },
         {
           name: 'keywords',
-          content: keywords
+          content: keywords,
+          hid: 'keywords'
         }
       ]
     }
