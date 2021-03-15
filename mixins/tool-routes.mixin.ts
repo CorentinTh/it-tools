@@ -9,7 +9,7 @@ export class ToolRoutesMixin extends Vue {
   toolRoutesSections : {[key: string]: ToolRouteConfig[]} = {}
 
   async created() {
-    const routes = this.$router.options.routes?.filter(r => r.meta?.isTool) || []
+    const routes = this.$router.options.routes?.filter((r1, i, a) => r1.meta?.isTool && a.findIndex(r2 => r2.path.split('/').pop() === r1.path.split('/').pop()) === i) || []
     const flat: ToolRouteConfig[] = []
     const sections: { [key: string]: ToolRouteConfig[] } = {}
 
@@ -17,6 +17,7 @@ export class ToolRoutesMixin extends Vue {
       if ('component' in route) {
         // @ts-ignore
         const component = await route.component()
+
         const routeConfig = {...route, config: component.options.methods.config()} as ToolRouteConfig
         flat.push(routeConfig)
 
