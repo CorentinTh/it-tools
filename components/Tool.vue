@@ -12,7 +12,7 @@ export default class Tool extends Vue {
   public head() {
     const {title, description, keywords} = this.config()
 
-    const uniqueKeywords = [...new Set([...keywords, ...title.split(/\s+/)])]
+    const uniqueKeywordsCleaned = [...new Set([...keywords, ...title.split(/\s+/)].map(s => s.trim().toLowerCase()))]
 
     return {
       title,
@@ -24,7 +24,7 @@ export default class Tool extends Vue {
         },
         {
           name: 'keywords',
-          content: uniqueKeywords,
+          content: uniqueKeywordsCleaned,
           hid: 'keywords'
         }
       ]
