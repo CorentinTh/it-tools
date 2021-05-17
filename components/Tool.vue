@@ -2,6 +2,7 @@
 import {Component, Vue} from 'nuxt-property-decorator'
 import ToolWrapper from '~/components/ToolWrapper.vue'
 import type {ToolConfig} from '~/types/ToolConfig'
+
 @Component({components: {ToolWrapper}})
 export default class Tool extends Vue {
   config(): ToolConfig {
@@ -10,6 +11,8 @@ export default class Tool extends Vue {
 
   public head() {
     const {title, description, keywords} = this.config()
+
+    const uniqueKeywords = [...new Set([...keywords, ...title.split(/\s+/)])]
 
     return {
       title,
@@ -21,7 +24,7 @@ export default class Tool extends Vue {
         },
         {
           name: 'keywords',
-          content: keywords,
+          content: uniqueKeywords,
           hid: 'keywords'
         }
       ]
