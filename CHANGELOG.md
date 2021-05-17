@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added [/how-to-report-bug-or-request](/how-to-report-bug-or-request) route to explain how to report bug and request features
 - Added i18n support
 
+### Removed
+- Removed markdown editor
+
 ## 1.7.0
 - [feat] [Crontab friendly generator](https://it-tools.tech/crontab-generator)
 
