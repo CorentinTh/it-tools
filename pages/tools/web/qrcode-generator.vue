@@ -1,40 +1,45 @@
 <template>
   <ToolWrapper :config="config()">
-    <v-text-field
-      v-model="value"
-      outlined
-      label="Data"
-      :rules="rules.value"
-    />
-    <v-slider v-model="size" min="100" max="1920" label="Size (preview will not change): " thumb-label />
-    <v-select
-      v-model="level"
-      outlined
-      :items="levels"
-      label="Error resistance"
-    />
-    <v-row>
-      <v-col cols="12" md="6" sm="12">
-        <ColorInput v-model="fgColor" label="Foreground color" />
+    <v-row justify="center" align="center">
+      <v-col cols="12" lg="6" sm="12">
+        <v-text-field
+          v-model="value"
+          outlined
+          label="Data"
+          :rules="rules.value"
+        />
+        <v-slider v-model="size" min="100" max="1920" label="Size (preview will not change): " thumb-label/>
+        <v-select
+          v-model="level"
+          outlined
+          :items="levels"
+          label="Error resistance"
+        />
+        <v-row>
+          <v-col cols="12" md="6" sm="12">
+            <ColorInput v-model="fgColor" label="Foreground color"/>
+          </v-col>
+          <v-col cols="12" md="6" sm="12">
+            <ColorInput v-model="bgColor" label="Background color"/>
+          </v-col>
+        </v-row>
+
       </v-col>
-      <v-col cols="12" md="6" sm="12">
-        <ColorInput v-model="bgColor" label="Background color" />
+
+      <v-col cols="12" lg="6" sm="12" class="text-center mt-5 ">
+        <qrcode-vue
+          :value="value"
+          :size="size"
+          :level="level"
+          :background="bgColor"
+          :foreground="fgColor"
+          render-as="svg"
+          class-name="qrcode-wrapper"
+        />
       </v-col>
     </v-row>
 
-    <div class="text-center mt-5 mb-5">
-      <qrcode-vue
-        :value="value"
-        :size="size"
-        :level="level"
-        :background="bgColor"
-        :foreground="fgColor"
-        render-as="svg"
-        class-name="qrcode-wrapper"
-      />
-    </div>
-
-    <div class="text-center mb-sm-2">
+    <div class="text-center mb-sm-2 mt-4">
       <v-btn class="mr-1" color="primary" @click="download('png')">
         download as png
       </v-btn>
