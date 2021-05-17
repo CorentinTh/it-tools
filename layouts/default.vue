@@ -124,6 +124,32 @@ export default class DefaultLayout extends mixins(ToolRoutesMixin) {
 </script>
 
 <style lang="less">
+.pretty-scrollbar {
+  &::-webkit-scrollbar {
+    width: 5px !important;
+    height: 5px !important;
+  }
+
+  // Track
+  &::-webkit-scrollbar-track {
+    opacity: 0 !important;
+  }
+
+  // Handle
+  &::-webkit-scrollbar-thumb {
+    background: rgba(241, 241, 241, 0.10) !important;
+    border-radius: 10px;
+  }
+
+  // Handle on hover
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(241, 241, 241, 0.20) !important;
+  }
+}
+
+.v-navigation-drawer__content {
+  .pretty-scrollbar;
+}
 
 .v-toolbar__content {
   a {
