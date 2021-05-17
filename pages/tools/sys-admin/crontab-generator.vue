@@ -191,7 +191,7 @@ export default class CrontabGenerator extends Tool {
     throwExceptionOnParseError: true
   }
 
-  isCronValid(v) {
+  isCronValid(v: string) {
     return isValidCron(v, {allowBlankDay: true, alias: true, seconds: true})
   }
 

@@ -64,7 +64,7 @@ export default class TextStats extends Tool {
   }
 
   get textSize() {
-    return formatBytes(Uint8Array.from(this.text).buffer.byteLength, 3)
+    return formatBytes(Uint8Array.from(this.text as unknown as ArrayLike<number>).buffer.byteLength, 3)
   }
 }
 
