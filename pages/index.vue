@@ -26,7 +26,7 @@
                     <v-icon>{{ item.config.icon }}</v-icon>
                   </v-list-item-action>
                   <v-list-item-content>
-                    <v-list-item-title v-text="item.config.title"/>
+                    <v-list-item-title v-text="item.config.title" />
                   </v-list-item-content>
                 </v-list-item>
               </v-list>

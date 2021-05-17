@@ -8,7 +8,7 @@
           label="Data"
           :rules="rules.value"
         />
-        <v-slider v-model="size" min="100" max="1920" label="Size (preview will not change): " thumb-label/>
+        <v-slider v-model="size" min="100" max="1920" label="Size (preview will not change): " thumb-label />
         <v-select
           v-model="level"
           outlined
@@ -17,13 +17,12 @@
         />
         <v-row>
           <v-col cols="12" md="6" sm="12">
-            <ColorInput v-model="fgColor" label="Foreground color"/>
+            <ColorInput v-model="fgColor" label="Foreground color" />
           </v-col>
           <v-col cols="12" md="6" sm="12">
-            <ColorInput v-model="bgColor" label="Background color"/>
+            <ColorInput v-model="bgColor" label="Background color" />
           </v-col>
         </v-row>
-
       </v-col>
 
       <v-col cols="12" lg="6" sm="12" class="text-center mt-5 ">

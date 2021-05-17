@@ -10,11 +10,11 @@
     <template v-slot:append>
       <v-menu v-model="menu" top nudge-bottom="101" nudge-left="16" :close-on-content-click="false">
         <template v-slot:activator="{ on }">
-          <div :style="swatchStyle" v-on="on"/>
+          <div :style="swatchStyle" v-on="on" />
         </template>
         <v-card>
           <v-card-text class="pa-0">
-            <v-color-picker v-model="color" flat @input="$emit('input', color)"/>
+            <v-color-picker v-model="color" flat @input="$emit('input', color)" />
           </v-card-text>
         </v-card>
       </v-menu>

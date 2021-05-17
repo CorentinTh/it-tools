@@ -3,7 +3,7 @@
     <v-row>
       <v-col md="3" sm="12" class="pt-0 pb-0">
         <div class="text-center">
-          <v-switch v-model="useCurrentDate" label="Use current date"/>
+          <v-switch v-model="useCurrentDate" label="Use current date" />
         </div>
       </v-col>
 
@@ -31,7 +31,7 @@
     </v-row>
 
     <br>
-    <v-divider/>
+    <v-divider />
     <br>
     <br>
 

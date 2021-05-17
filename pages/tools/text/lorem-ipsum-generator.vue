@@ -1,6 +1,6 @@
 <template>
   <ToolWrapper :config="config()">
-    <v-slider v-model="paragraphs" min="1" max="20" label="Paragraphs" thumb-label/>
+    <v-slider v-model="paragraphs" min="1" max="20" label="Paragraphs" thumb-label />
     <v-range-slider
       v-model="sentencePerParagraph"
       min="1"
@@ -16,8 +16,8 @@
       thumb-label
       hide-details
     />
-    <v-checkbox v-model="startWithLoremIpsum" label="Start with 'Lorem ipsum ...'" hide-details/>
-    <v-checkbox v-model="asHTML" label="As HTML"/>
+    <v-checkbox v-model="startWithLoremIpsum" label="Start with 'Lorem ipsum ...'" hide-details />
+    <v-checkbox v-model="asHTML" label="As HTML" />
 
     <v-textarea
       v-model="loremIpsum"
