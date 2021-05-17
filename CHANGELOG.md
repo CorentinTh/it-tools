@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - URL path changed
     - `/hash` -> [`/hash-text`](https://it-tools.tech/hash-text)
     - `/cypher` -> [`/cypher-uncyfer-text`](https://it-tools.tech/cypher-uncyfer-text)
+- [Crontab generator](https://it-tools.tech/crontab-generator) now handle 6 digits format (second support)  
 
 ### Added
 - Added [/how-to-report-bug-or-request](/how-to-report-bug-or-request) route to explain how to report bug and request features
