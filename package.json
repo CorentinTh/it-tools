@@ -20,6 +20,8 @@
     "color-convert": "^2.0.1",
     "color-name": "^1.1.4",
     "core-js": "^3.12.1",
+    "cron-validator": "^1.2.1",
+    "cronstrue": "^1.113.0",
     "crypto-js": "^4.0.0",
     "nuxt": "^2.15.6",
     "nuxt-i18n": "^6.27.0",
