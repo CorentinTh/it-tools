@@ -6,7 +6,6 @@
       label="Input text"
       hide-details
       auto-grow
-
     />
 
     <table>
@@ -35,7 +34,7 @@ import {Component} from 'nuxt-property-decorator'
 import {CopyableMixin} from '~/mixins/copyable.mixin'
 import Tool from '~/components/Tool.vue'
 import type {ToolConfig} from '~/types/ToolConfig'
-import {formatBytes} from '~/utils/convert';
+import {formatBytes} from '~/utils/convert'
 
 @Component({
   mixins: [CopyableMixin]
