@@ -207,18 +207,26 @@ export default class CrontabGenerator extends Tool {
 </script>
 
 <style scoped lang="less">
-::v-deep .cron-wrapper input {
-  text-align: center;
-  font-size: 22px;
-  font-family: Consolas, monospace;
+::v-deep {
+  .cron-wrapper input {
+    text-align: center;
+    font-size: 22px;
+    font-family: Consolas, monospace;
+  }
+
+  .v-data-table {
+    background-color: transparent;
+  }
 }
+
 .result {
   text-align: center;
   font-size: 18px;
   margin-bottom: 22px;
 }
-.text-center{
-  pre{
+
+.text-center {
+  pre {
     display: inline-block;
     text-align: left;
   }
