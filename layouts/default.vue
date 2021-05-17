@@ -44,6 +44,23 @@
           </v-list-item>
         </div>
       </v-list>
+
+      <template v-slot:append>
+        <v-divider />
+
+        <div class="pa-5 navigation-drawer-footer">
+          <div>
+            IT-Tools <a
+              :href="'https://github.com/CorentinTh/it-tools/tree/'+appVersion"
+              target="_blank"
+            >{{ appVersion }}</a>
+          </div>
+          <div>
+            &copy; {{ new Date().getFullYear() }} <a href="//corentin-thomasset.fr" class="footer-link">Corentin
+              Thomasset</a>
+          </div>
+        </div>
+      </template>
     </v-navigation-drawer>
 
     <v-app-bar
@@ -85,6 +102,7 @@
 
 <script lang="ts">
 import {Component, mixins} from 'nuxt-property-decorator'
+import {version} from '../package.json'
 import {ToolRoutesMixin} from '~/mixins/tool-routes.mixin'
 import LogoOutlined from '~/assets/logo-outlined.svg?inline'
 import HeroGradient from '~/assets/small-hero-gradient.svg?inline'
@@ -101,6 +119,7 @@ export default class DefaultLayout extends mixins(ToolRoutesMixin) {
   title = 'IT - Tools'
   drawer = false
   items = []
+  appVersion = 'v' + version
 }
 </script>
 
@@ -115,7 +134,7 @@ export default class DefaultLayout extends mixins(ToolRoutesMixin) {
     opacity: 0.5;
     font-size: 15px;
 
-    &.title{
+    &.title {
       opacity: 1;
     }
 
@@ -165,8 +184,8 @@ export default class DefaultLayout extends mixins(ToolRoutesMixin) {
   }
 }
 
-.v-navigation-drawer__content{
-  .v-list-item--active{
+.v-navigation-drawer__content {
+  .v-list-item--active {
     color: var(--v-anchor-base);
     border-left: 3px solid var(--v-primary-base);
   }
@@ -183,6 +202,22 @@ export default class DefaultLayout extends mixins(ToolRoutesMixin) {
 .v-snack__content {
   font-weight: bold !important;
   color: #fff !important;
+}
+
+.v-navigation-drawer__append {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.52) !important;
+
+  a {
+    border-bottom: 1px dashed;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.52) !important;
+
+    &:hover {
+      color: #4CAF50 !important;
+      border-bottom: 1px solid;
+    }
+  }
 }
 
 .theme--dark {
