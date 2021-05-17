@@ -10,6 +10,7 @@
     ],
     "esModuleInterop": true,
     "allowJs": true,
+    "resolveJsonModule": true,
     "sourceMap": true,
     "strict": true,
     "noEmit": true,
