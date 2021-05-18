@@ -39,7 +39,7 @@ export default class SearchBar extends mixins(ToolRoutesMixin) {
   filterItems(item:ToolRouteConfig, queryText:string, itemText:string) {
     const query = queryText.trim().toLowerCase()
     const nameContainsText = itemText.toLowerCase().includes(query)
-    const keywordContainsText = item?.config?.keywords.some((keyword:string) => keyword.toLowerCase().includes(query)) ?? false
+    const keywordContainsText = item?.config?.keywords.join(' ').toLowerCase().includes(query) ?? false
     return nameContainsText || keywordContainsText
   }
 }
