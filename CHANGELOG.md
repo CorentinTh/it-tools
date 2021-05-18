@@ -6,8 +6,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Next
 ### Changed
 - Switched to [Nuxt.js](//nuxtjs.org)
-    - Server-Side rendered static app 
-    - Better SEO
 - Switched to Typescript using class components decorators from [nuxt-property-decorator](https://github.com/nuxt-community/nuxt-property-decorator)
 - UI and theme reworked
 - URL path changed
@@ -18,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Added [/how-to-report-bug-or-request](/how-to-report-bug-or-request) route to explain how to report bug and request features
 - Added i18n support
+- Added new tools
+  - [Random port generator](https://it-tools.tech/random-port-generator)
 
 ### Removed
 - Removed markdown editor
