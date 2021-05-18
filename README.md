@@ -1,20 +1,46 @@
-# it-tools
+![logo](.github/logo.png)
 
-## Build Setup
+Aggregated set of useful tools that every developer may need once in a while. Available [here](https://it-tools.tech).
 
-```bash
-# install dependencies
-$ npm install
+## Functionalities and roadmap
+Please check the [issues](https://github.com/CorentinTh/it-tools/issues) to see if some feature listed to be implemented.
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+You have an idea of a tool? Submit a [feature request](https://github.com/CorentinTh/it-tools/issues/new?assignees=corentinth&labels=&template=feature_request.md&title=)!
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+## Project setup
 
-# generate static project
-$ npm run generate
+Install dependencies by running the following command:
+```shell
+npm install
 ```
 
+Serve with hot reload at localhost:3000
+```shell
+npm run dev
+```
+
+Build for production
+```shell
+npm run build
+```
+
+And to lint and fixe files, run:
+```shell
+npm run lint
+```
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+## Contribute
+**Pull requests are welcome !** Feel free to contribute.
+
+### Add a tool
+*Coming soon*
+
+## Credits
+Coded with ❤️ by [Corentin Thomasset](//corentin-thomasset.fr).
+
+This project is continuously deployed using [vercel.com](https://vercel.com).
+
+## License
+This project is under the [MIT license](LICENSE).
+
+
