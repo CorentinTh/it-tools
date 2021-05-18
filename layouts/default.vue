@@ -68,7 +68,7 @@
       flat
       height="60px"
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-app-bar-nav-icon aria-label="menu" @click.stop="drawer = !drawer" />
       <v-toolbar-title>
         <NuxtLink to="/" class="title">
           {{ title }}
@@ -84,7 +84,7 @@
       <NuxtLink to="/about">
         About
       </NuxtLink>
-      <a href="https://github.com/CorentinTh/it-tools" target="_blank" class="github-link">
+      <a href="https://github.com/CorentinTh/it-tools" target="_blank" class="github-link" rel="noopener noreferrer" aria-label="Github repository">
         <v-icon>mdi-github</v-icon>
       </a>
     </v-app-bar>
