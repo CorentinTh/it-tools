@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.1.0",
-    "@nuxtjs/axios": "^5.13.1",
+    "@nuxtjs/axios": "^5.13.4",
     "@nuxtjs/markdownit": "^2.0.0",
     "@nuxtjs/pwa": "^3.0.2",
     "@nuxtjs/toast": "^3.3.1",
