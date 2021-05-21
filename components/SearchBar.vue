@@ -15,7 +15,7 @@
     cache-items
     @change="choose"
   >
-    <template v-slot:no-data>
+    <template #no-data>
       <v-list-item>
         <v-list-item-title>
           Search for the <strong>tool</strong> you need!

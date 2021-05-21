@@ -7,9 +7,9 @@
     :label="label"
     @input="$emit('input', color)"
   >
-    <template v-slot:append>
+    <template #append>
       <v-menu v-model="menu" top nudge-bottom="101" nudge-left="16" :close-on-content-click="false">
-        <template v-slot:activator="{ on }">
+        <template #activator="{ on }">
           <div :style="swatchStyle" v-on="on" />
         </template>
         <v-card>

@@ -8,7 +8,7 @@
     "start": "nuxt-ts start",
     "generate": "nuxt-ts generate",
     "lint:commit": "commitlint --from $(git rev-list --max-parents=0 HEAD)",
-    "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lint:js": "eslint --ext .js,.vue --ignore-path=.gitignore --max-warnings=0 .",
     "lint": "npm run lint:js && npm run lint:commit",
     "test": "jest"
   },

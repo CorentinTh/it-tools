@@ -5,7 +5,7 @@
       fixed
       app
     >
-      <template v-slot:prepend>
+      <template #prepend>
         <div class="small-hero">
           <HeroGradient />
           <div class="small-hero-content">
@@ -47,7 +47,7 @@
         </div>
       </v-list>
 
-      <template v-slot:append>
+      <template #append>
         <v-divider />
 
         <div class="pa-5 navigation-drawer-footer">
