@@ -5,17 +5,19 @@
       fixed
       app
     >
-      <div class="small-hero">
-        <HeroGradient />
-        <div class="small-hero-content">
-          <div class="small-hero-content-logo">
-            <LogoOutlined />
-          </div>
-          <div class="small-hero-content-title">
-            {{ title }}
+      <template v-slot:prepend>
+        <div class="small-hero">
+          <HeroGradient />
+          <div class="small-hero-content">
+            <div class="small-hero-content-logo">
+              <LogoOutlined />
+            </div>
+            <div class="small-hero-content-title">
+              {{ title }}
+            </div>
           </div>
         </div>
-      </div>
+      </template>
 
       <SearchBar class="hidden-sm-and-up" />
 
