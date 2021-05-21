@@ -46,7 +46,8 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/svg',
-    'nuxt-i18n'
+    'nuxt-i18n',
+    '@nuxtjs/markdownit'
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -54,6 +55,9 @@ export default {
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
+    icons: {
+      iconfont: 'mdi'
+    },
     customVariables: ['~/assets/variables.scss'],
     treeShake: {
       components: [

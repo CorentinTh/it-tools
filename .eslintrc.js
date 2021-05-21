@@ -12,6 +12,7 @@ module.exports = {
   rules: {
     'space-before-function-paren': 'off',
     'object-curly-spacing': 'off',
-    'no-undef': 'off' // will be catch by the tsc compiler
+    'no-undef': 'off', // will be catch by the tsc compiler
+    'vue/no-v-html': 'off'
   }
 }
