@@ -122,6 +122,17 @@ export default class DefaultLayout extends mixins(ToolRoutesMixin) {
   drawer = false
   items = []
   appVersion = 'v' + version
+
+  head() {
+    return {
+      link: [
+        {
+          rel: 'canonical',
+          href: 'https://it-tools.tech' + this.$route.path
+        }
+      ]
+    }
+  }
 }
 </script>
 
