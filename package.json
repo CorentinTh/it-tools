@@ -7,8 +7,9 @@
     "build": "npm run generate",
     "start": "nuxt-ts start",
     "generate": "nuxt-ts generate",
+    "lint:commit": "commitlint --from $(git rev-list --max-parents=0 HEAD)",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "lint": "npm run lint:js",
+    "lint": "npm run lint:js && npm run lint:commit",
     "test": "jest"
   },
   "dependencies": {
@@ -31,6 +32,8 @@
     "vuetify-toast-snackbar": "^0.6.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "@nuxt/types": "^2.15.6",
     "@nuxt/typescript-build": "^2.1.0",
     "@nuxtjs/eslint-config": "^3.1.0",

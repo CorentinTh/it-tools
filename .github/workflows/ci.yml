@@ -3,14 +3,6 @@ name: ci
 on: [pull_request, push]
 
 jobs:
-  commitlint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: wagoid/commitlint-github-action@v2
-
   ci:
     runs-on: ${{ matrix.os }}
 
