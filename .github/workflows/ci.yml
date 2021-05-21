@@ -13,7 +13,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup node env
-        uses: actions/setup-node@v2.1.2
+        uses: actions/setup-node@v2.1.5
         with:
           node-version: 14
 
