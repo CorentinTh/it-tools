@@ -36,7 +36,7 @@
     "@commitlint/config-conventional": "^12.1.4",
     "@nuxt/types": "^2.15.6",
     "@nuxt/typescript-build": "^2.1.0",
-    "@nuxtjs/eslint-config": "^3.1.0",
+    "@nuxtjs/eslint-config": "^6.0.0",
     "@nuxtjs/eslint-config-typescript": "^6.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/svg": "^0.1.12",
