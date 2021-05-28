@@ -55,7 +55,7 @@ title: 'Base converter'
 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.'
 icon: 'mdi-swap-horizontal'
 keywords: ['base', 'converter']
-path: '/color-picker-converter'
+path: '/base-converter'
 </tool>
 
 <script lang="ts">
