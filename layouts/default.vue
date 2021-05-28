@@ -22,7 +22,7 @@
       <SearchBar class="hidden-sm-and-up" />
 
       <v-list>
-        <div v-for="(items, section) in toolRoutesSections" :key="section">
+        <div v-for="(items, section) in $toolList" :key="section">
           <v-subheader class="mt-4 pl-4">
             {{ section }}
           </v-subheader>
@@ -37,11 +37,11 @@
           >
             <v-list-item-action>
               <v-icon color="primary">
-                {{ item.config.icon }}
+                {{ item.icon }}
               </v-icon>
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title v-text="item.config.title" />
+              <v-list-item-title v-text="item.title" />
             </v-list-item-content>
           </v-list-item>
         </div>
@@ -103,9 +103,8 @@
 </template>
 
 <script lang="ts">
-import {Component, mixins} from 'nuxt-property-decorator'
+import {Component, Vue} from 'nuxt-property-decorator'
 import {version} from '../package.json'
-import {ToolRoutesMixin} from '~/mixins/tool-routes.mixin'
 import LogoOutlined from '~/assets/logo-outlined.svg?inline'
 import HeroGradient from '~/assets/small-hero-gradient.svg?inline'
 import SearchBar from '~/components/SearchBar.vue'
@@ -117,7 +116,7 @@ import SearchBar from '~/components/SearchBar.vue'
     SearchBar
   }
 })
-export default class DefaultLayout extends mixins(ToolRoutesMixin) {
+export default class DefaultLayout extends Vue {
   title = 'IT - Tools'
   drawer = false
   items = []

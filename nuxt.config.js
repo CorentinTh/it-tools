@@ -36,7 +36,9 @@ export default {
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
-    '@nuxtjs/vuetify'
+    '@nuxtjs/vuetify',
+    // '@nuxtjs/router-extras'
+    '~/buildModules/tool-config'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -48,6 +50,8 @@ export default {
     '@nuxtjs/svg',
     'nuxt-i18n',
     '@nuxtjs/markdownit'
+    // '~/buildModules/tool-config'
+
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)

@@ -1,5 +1,5 @@
 <template>
-  <ToolWrapper :config="config()">
+  <ToolWrapper :config="$toolConfig">
     <div class="result">
       {{ cronString }}
     </div>
@@ -162,27 +162,25 @@
   </ToolWrapper>
 </template>
 
+<tool>
+title: 'Crontab generator'
+description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.'
+icon: 'mdi-calendar-clock'
+keywords: ['year', 'month', 'week', 'day', 'minute', 'second']
+path: '/crontab-generator'
+</tool>
+
 <script lang="ts">
 import {Component} from 'nuxt-property-decorator'
 import cronstrue from 'cronstrue'
 import {isValidCron} from 'cron-validator'
 import {CopyableMixin} from '~/mixins/copyable.mixin'
 import Tool from '~/components/Tool.vue'
-import type {ToolConfig} from '~/types/ToolConfig'
 
 @Component({
   mixins: [CopyableMixin]
 })
 export default class CrontabGenerator extends Tool {
-  config(): ToolConfig {
-    return {
-      title: 'Crontab generator',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.',
-      icon: 'mdi-calendar-clock',
-      keywords: ['year', 'month', 'week', 'day', 'minute', 'second']
-    }
-  }
-
   cron = '* * * * *'
   cronstrueConfig = {
     verbose: true,

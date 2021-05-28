@@ -1,5 +1,5 @@
 <template>
-  <ToolWrapper :config="config()">
+  <ToolWrapper :config="$toolConfig">
     <v-textarea
       v-model="clearText"
       outlined
@@ -23,26 +23,24 @@
   </ToolWrapper>
 </template>
 
+<tool>
+title: 'Base64 string converter'
+description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.'
+icon: 'mdi-text-box-outline'
+keywords: ['base64', 'base', '64', 'converter']
+path: '/base64-string-converter'
+</tool>
+
 <script lang="ts">
 import {Component} from 'nuxt-property-decorator'
 import {CopyableMixin} from '~/mixins/copyable.mixin'
 import Tool from '~/components/Tool.vue'
-import type {ToolConfig} from '~/types/ToolConfig'
 import {base64ToString, stringToBase64} from '~/utils/convert'
 
 @Component({
   mixins: [CopyableMixin]
 })
 export default class Base64StringConverter extends Tool {
-  config(): ToolConfig {
-    return {
-      title: 'Base64 string converter',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.',
-      icon: 'mdi-text-box-outline',
-      keywords: ['base64', 'base', '64', 'converter']
-    }
-  }
-
   clearText = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
 
   get base64Text() {

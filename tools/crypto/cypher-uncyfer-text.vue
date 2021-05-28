@@ -1,5 +1,5 @@
 <template>
-  <ToolWrapper :config="config()">
+  <ToolWrapper :config="$toolConfig">
     <v-row justify="center" align="center">
       <v-col cols="12" lg="8" md="12">
         <v-textarea
@@ -42,11 +42,18 @@
   </ToolWrapper>
 </template>
 
+<tool>
+title: 'Cypher / uncypher text'
+description: 'Cypher and uncyfer text.'
+icon: 'mdi-lock-open'
+keywords: ['cypher', 'uncypher', 'text', 'AES', 'TripleDES', 'Rabbit', 'RabbitLegacy', 'RC4']
+path: '/cypher-uncyfer-text'
+</tool>
+
 <script lang="ts">
 import {Component} from 'nuxt-property-decorator'
 import {CopyableMixin} from '@/mixins/copyable.mixin'
 import Tool from '@/components/Tool.vue'
-import type {ToolConfig} from '@/types/ToolConfig'
 import CryptoJS from 'crypto-js'
 
 const algos = {
@@ -66,15 +73,6 @@ export default class CypherUncyferText extends Tool {
   key = 'sup3r s3cr3t k3y'
   decrypted = 'Lorem ipsum dolor sit amet.'
   encrypted = ''
-
-  config(): ToolConfig {
-    return {
-      title: 'Cypher / uncypher text',
-      description: 'Cypher and uncyfer text.',
-      icon: 'mdi-lock-open',
-      keywords: ['cypher', 'uncypher', 'text', ...Object.keys(algos).map(s => s.toLowerCase())]
-    }
-  }
 
   mounted() {
     this.encrypt()

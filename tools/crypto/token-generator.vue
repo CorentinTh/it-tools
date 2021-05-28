@@ -1,5 +1,5 @@
 <template>
-  <ToolWrapper :config="config()">
+  <ToolWrapper :config="$toolConfig">
     <v-row no-gutters>
       <v-col lg="6" md="12">
         <v-switch v-model="withLowercase" label="Lowercase (abc...)" />
@@ -26,10 +26,17 @@
   </ToolWrapper>
 </template>
 
+<tool>
+title: 'Token generator'
+description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.'
+icon: 'mdi-key-chain-variant'
+keywords: ['token', 'random', 'string', 'alphanumeric', 'symbols']
+path: '/token-generator'
+</tool>
+
 <script lang="ts">
 import {Component} from 'nuxt-property-decorator'
 import Tool from '~/components/Tool.vue'
-import type {ToolConfig} from '~/types/ToolConfig'
 import {CopyableMixin} from '~/mixins/copyable.mixin'
 import {shuffle} from '~/utils/string'
 
@@ -42,15 +49,6 @@ const specials = '.,;:!?./-"\'#{([-|\\@)]=}*+'
   mixins: [CopyableMixin]
 })
 export default class TokenGenerator extends Tool {
-  config(): ToolConfig {
-    return {
-      title: 'Token generator',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.',
-      icon: 'mdi-key-chain-variant',
-      keywords: ['token', 'random', 'string', 'alphanumeric', 'symbols']
-    }
-  }
-
   withNumbers = true;
   withLowercase = true;
   withUppercase = true;

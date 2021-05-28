@@ -1,6 +1,6 @@
 <template>
   <div class="memo">
-    <ToolHeader :config="memoConfig" />
+    <ToolHeader :config="$toolConfig" />
 
     Warning: le style/aspect est toujours en wip, so focus on content <br><br>
 

@@ -1,5 +1,5 @@
 <template>
-  <ToolWrapper :config="config()">
+  <ToolWrapper :config="$toolConfig">
     <v-textarea
       v-model="inputText"
       outlined
@@ -27,12 +27,20 @@
   </ToolWrapper>
 </template>
 
+<tool>
+title: 'Hash text'
+description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.'
+icon: 'mdi-script-text-play'
+keywords: ['hash', 'text', 'MD5', 'SHA1', 'SHA256', 'SHA224', 'SHA512', 'SHA384', 'SHA3', 'RIPEMD160']
+path: '/hash-text'
+</tool>
+
 <script lang="ts">
 import {Component} from 'nuxt-property-decorator'
 import CryptoJS from 'crypto-js'
 import {CopyableMixin} from '~/mixins/copyable.mixin'
 import Tool from '~/components/Tool.vue'
-import type {ToolConfig} from '~/types/ToolConfig'
+
 const algos = {
   MD5: CryptoJS.MD5,
   SHA1: CryptoJS.SHA1,
@@ -48,15 +56,6 @@ const algos = {
   mixins: [CopyableMixin]
 })
 export default class HashText extends Tool {
-  config(): ToolConfig {
-    return {
-      title: 'Hash text',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.',
-      icon: 'mdi-script-text-play',
-      keywords: ['hash', 'text', ...Object.keys(algos).map(s => s.toLowerCase())]
-    }
-  }
-
   inputText = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
   algorithm: keyof typeof algos = 'SHA256'
   algorithms: typeof algos = algos

@@ -3,17 +3,16 @@
   "version": "2.0.0-beta.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt-ts",
+    "dev": "nuxt",
     "build": "npm run generate",
-    "start": "nuxt-ts start",
-    "generate": "nuxt-ts generate",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
     "lint:commit": "commitlint --from $(git rev-list --max-parents=0 HEAD)",
     "lint:js": "eslint --ext .js,.vue --ignore-path=.gitignore --max-warnings=0 .",
     "lint": "npm run lint:js && npm run lint:commit",
     "test": "jest"
   },
   "dependencies": {
-    "@nuxt/typescript-runtime": "^2.1.0",
     "@nuxtjs/axios": "^5.13.5",
     "@nuxtjs/markdownit": "^2.0.0",
     "@nuxtjs/pwa": "^3.0.2",
@@ -57,6 +56,7 @@
     "less-loader": "^7.1.0",
     "nuxt-property-decorator": "^2.9.1",
     "ts-jest": "^26.5.6",
-    "vue-jest": "^3.0.4"
+    "vue-jest": "^3.0.4",
+    "yaml": "^1.10.2"
   }
 }

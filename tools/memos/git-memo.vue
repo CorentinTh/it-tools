@@ -1,18 +1,17 @@
+<tool>
+title: 'Git memo'
+description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.'
+icon: 'mdi-git'
+keywords: ['git', 'memo', 'cheat', 'sheet']
+path: '/git-memo'
+</tool>
+
 <script lang="ts">
 import {Component} from 'nuxt-property-decorator'
-import type {ToolConfig} from '@/types/ToolConfig'
 import Memo from '~/components/Memo.vue'
 
 @Component
 export default class GitMemo extends Memo {
-  config(): ToolConfig {
-    return {
-      title: 'Git memo',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.',
-      icon: 'mdi-git',
-      keywords: ['git', 'memo', 'cheat', 'sheet']
-    }
-  }
 }
 </script>
 

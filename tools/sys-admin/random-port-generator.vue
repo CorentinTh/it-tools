@@ -1,5 +1,5 @@
 <template>
-  <ToolWrapper :config="config()">
+  <ToolWrapper :config="$toolConfig">
     <v-text-field
       v-model="port"
       outlined
@@ -18,11 +18,18 @@
   </ToolWrapper>
 </template>
 
+<tool>
+title: 'Random port generator'
+description: 'Random port generator without the range of "known" ports (0-1023).'
+icon: 'mdi-lan-pending'
+keywords: ['system', 'port', 'lan']
+path: '/random-port-generator'
+</tool>
+
 <script lang="ts">
 
 import {Component} from 'nuxt-property-decorator'
 import {CopyableMixin} from '@/mixins/copyable.mixin'
-import type {ToolConfig} from '@/types/ToolConfig'
 import Tool from '~/components/Tool.vue'
 import {randIntFromInterval} from '~/utils/random'
 
@@ -32,15 +39,6 @@ const generatePort = () => randIntFromInterval(1024, 65535)
   mixins: [CopyableMixin]
 })
 export default class RandomPortGenerator extends Tool {
-  config(): ToolConfig {
-    return {
-      title: 'Random port generator',
-      description: 'Random port generator without the range of "known" ports (0-1023).',
-      icon: 'mdi-lan-pending',
-      keywords: ['system', 'port', 'lan']
-    }
-  }
-
   port!: number
 
   created() {

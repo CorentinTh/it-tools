@@ -5,7 +5,7 @@
 
       <v-row>
         <v-col
-          v-for="(items, section) in toolRoutesSections"
+          v-for="(items, section) in $toolList"
           :key="section"
           cols="12"
           sm="12"
@@ -24,10 +24,10 @@
                   exact
                 >
                   <v-list-item-action>
-                    <v-icon>{{ item.config.icon }}</v-icon>
+                    <v-icon>{{ item.icon }}</v-icon>
                   </v-list-item-action>
                   <v-list-item-content>
-                    <v-list-item-title v-text="item.config.title" />
+                    <v-list-item-title v-text="item.title" />
                   </v-list-item-content>
                 </v-list-item>
               </v-list>
@@ -40,11 +40,10 @@
 </template>
 
 <script>
-import {Component, mixins} from 'nuxt-property-decorator'
-import {ToolRoutesMixin} from '@/mixins/tool-routes.mixin'
+import {Component, Vue} from 'nuxt-property-decorator'
 
 @Component
-export default class Index extends mixins(ToolRoutesMixin) {
+export default class Index extends Vue {
 }
 </script>
 

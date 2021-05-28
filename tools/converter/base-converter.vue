@@ -1,5 +1,5 @@
 <template>
-  <ToolWrapper :config="config()">
+  <ToolWrapper :config="$toolConfig">
     <v-row>
       <v-col cols="12" sm="4">
         <v-text-field
@@ -50,12 +50,19 @@
   </ToolWrapper>
 </template>
 
+<tool>
+title: 'Base converter'
+description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.'
+icon: 'mdi-swap-horizontal'
+keywords: ['base', 'converter']
+path: '/color-picker-converter'
+</tool>
+
 <script lang="ts">
 
 import {Component, Ref} from 'nuxt-property-decorator'
 import {CopyableMixin} from '~/mixins/copyable.mixin'
 import Tool from '~/components/Tool.vue'
-import {ToolConfig} from '~/types/ToolConfig'
 import type {VForm} from '~/types/VForm'
 
 const convertBase = (value: string, fromBase: number, toBase: number) => {
@@ -83,15 +90,6 @@ const convertBase = (value: string, fromBase: number, toBase: number) => {
   mixins: [CopyableMixin]
 })
 export default class BaseConverter extends Tool {
-  config(): ToolConfig {
-    return {
-      title: 'Base converter',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.',
-      icon: 'mdi-swap-horizontal',
-      keywords: ['base', 'converter']
-    }
-  }
-
   @Ref() readonly inputBaseRef!: VForm
   @Ref() readonly outputBaseRef!: VForm
 

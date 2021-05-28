@@ -5,8 +5,8 @@
     append-icon="mdi-magnify"
     color="white"
     hide-details
-    :items="toolRoutesFlat"
-    :item-text="item => item.config.title"
+    :items="$toolListFlat"
+    :item-text="item => item.title"
     item-value="path"
     solo-inverted
     dense
@@ -26,12 +26,11 @@
 </template>
 
 <script lang="ts">
-import {Component, mixins} from 'nuxt-property-decorator'
-import {ToolRoutesMixin} from '@/mixins/tool-routes.mixin'
+import {Component, Vue} from 'nuxt-property-decorator'
 import {ToolRouteConfig} from '~/types/ToolConfig'
 
 @Component
-export default class SearchBar extends mixins(ToolRoutesMixin) {
+export default class SearchBar extends Vue {
   choose(path:string) {
     this.$router.push({path})
   }
@@ -39,7 +38,7 @@ export default class SearchBar extends mixins(ToolRoutesMixin) {
   filterItems(item:ToolRouteConfig, queryText:string, itemText:string) {
     const query = queryText.trim().toLowerCase()
     const nameContainsText = itemText.toLowerCase().includes(query)
-    const keywordContainsText = item?.config?.keywords.join(' ').toLowerCase().includes(query) ?? false
+    const keywordContainsText = item?.keywords.join(' ').toLowerCase().includes(query) ?? false
     return nameContainsText || keywordContainsText
   }
 }

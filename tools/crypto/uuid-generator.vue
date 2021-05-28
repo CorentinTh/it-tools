@@ -1,5 +1,5 @@
 <template>
-  <ToolWrapper :config="config()">
+  <ToolWrapper :config="$toolConfig">
     <v-text-field
       v-model.number="quantity"
       outlined
@@ -28,11 +28,18 @@
   </ToolWrapper>
 </template>
 
+<tool>
+title: 'UUIDs generator'
+description: 'A universally unique identifier (UUID) is a 128-bit number used to identify information in computer systems. '
+icon: 'mdi-fingerprint'
+keywords: ['uuid', 'v4', 'random', 'id', 'alphanumeric', 'identity']
+path: '/uuid-generator'
+</tool>
+
 <script lang="ts">
 
 import {Component, Ref, Watch} from 'nuxt-property-decorator'
 import {CopyableMixin} from '@/mixins/copyable.mixin'
-import type {ToolConfig} from '@/types/ToolConfig'
 import { VTextField } from 'vuetify/lib'
 import Tool from '~/components/Tool.vue'
 
@@ -42,15 +49,6 @@ const generateUuid = () => '10000000-1000-4000-8000-100000000000'.replace(/[018]
   mixins: [CopyableMixin]
 })
 export default class UuidGenerator extends Tool {
-  config(): ToolConfig {
-    return {
-      title: 'UUIDs generator',
-      description: 'A universally unique identifier (UUID) is a 128-bit number used to identify information in computer systems. ',
-      icon: 'mdi-fingerprint',
-      keywords: ['uuid', 'v4', 'random', 'id', 'alphanumeric', 'identity']
-    }
-  }
-
   @Ref() readonly quantityEl! : typeof VTextField
   token = ''
   quantity = 1

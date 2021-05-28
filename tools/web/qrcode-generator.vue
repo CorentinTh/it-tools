@@ -1,5 +1,5 @@
 <template>
-  <ToolWrapper :config="config()">
+  <ToolWrapper :config="$toolConfig">
     <v-row justify="center" align="center">
       <v-col cols="12" lg="6" sm="12">
         <v-text-field
@@ -49,13 +49,20 @@
   </ToolWrapper>
 </template>
 
+<tool>
+title: 'QR-code generator'
+description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.'
+icon: 'mdi-qrcode'
+keywords: ['editor']
+path: '/qrcode-generator'
+</tool>
+
 <script lang="ts">
 import {Component} from 'nuxt-property-decorator'
 import QrcodeVue from 'qrcode.vue'
 import colors from 'color-name'
 import {CopyableMixin} from '~/mixins/copyable.mixin'
 import Tool from '~/components/Tool.vue'
-import type {ToolConfig} from '~/types/ToolConfig'
 import {downloadBase64File} from '~/utils/file'
 import {stringToBase64} from '~/utils/convert'
 import ColorInput from '~/components/ColorInput.vue'
@@ -65,15 +72,6 @@ import ColorInput from '~/components/ColorInput.vue'
   mixins: [CopyableMixin]
 })
 export default class QrcodeGenerator extends Tool {
-  config(): ToolConfig {
-    return {
-      title: 'QR-code generator',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.',
-      icon: 'mdi-qrcode',
-      keywords: ['editor']
-    }
-  }
-
   value = 'https://it-tools.tech'
   size = 300
   level = 'M'

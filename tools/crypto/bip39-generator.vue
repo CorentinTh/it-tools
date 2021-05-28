@@ -1,5 +1,5 @@
 <template>
-  <ToolWrapper :config="config()">
+  <ToolWrapper :config="$toolConfig">
     <v-select
       v-model="language"
       outlined
@@ -33,13 +33,20 @@
   </ToolWrapper>
 </template>
 
+<tool>
+title: 'BIP39 passphrase generator'
+description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.'
+icon: 'mdi-message-text-lock-outline'
+keywords: ['BIP39', 'passphrase', 'generator']
+path: '/bip39-generator'
+</tool>
+
 <script lang="ts">
 import * as bip39 from 'bip39'
 import {shuffle} from '@/utils/string'
 import {Component, Ref} from 'nuxt-property-decorator'
 import {CopyableMixin} from '@/mixins/copyable.mixin'
 import Tool from '@/components/Tool.vue'
-import {ToolConfig} from '@/types/ToolConfig'
 import type {VForm} from '~/types/VForm'
 
 const getRandomBuffer = () => Buffer.from(shuffle('0123456789abcdef'.repeat(16)).substring(0, 32), 'hex')
@@ -48,15 +55,6 @@ const getRandomBuffer = () => Buffer.from(shuffle('0123456789abcdef'.repeat(16))
   mixins: [CopyableMixin]
 })
 export default class Bip39Generator extends Tool {
-  config(): ToolConfig {
-    return {
-      title: 'BIP39 passphrase generator',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.',
-      icon: 'mdi-message-text-lock-outline',
-      keywords: ['BIP39', 'passphrase', 'generator']
-    }
-  }
-
   @Ref() readonly entropyRef!: VForm
   @Ref() readonly passphraseRef!: VForm
   buffer = getRandomBuffer()

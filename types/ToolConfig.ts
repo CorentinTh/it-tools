@@ -1,13 +1,14 @@
-import {RouteConfig} from '@nuxt/types/config/router';
 
 interface ToolConfig {
   title: string;
   description: string;
   icon: string;
   keywords: string[];
+  path?: string
 }
 
-type ToolConfigMethod = () => ToolConfig;
-type ToolRouteConfig = RouteConfig & {config: ToolConfig}
+interface ToolRouteConfig extends ToolConfig{
+  componentPath: string
+}
 
-export {ToolConfig, ToolConfigMethod, ToolRouteConfig}
+export {ToolConfig, ToolRouteConfig}

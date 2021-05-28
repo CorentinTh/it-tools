@@ -1,5 +1,5 @@
 <template>
-  <ToolWrapper :config="config()">
+  <ToolWrapper :config="$toolConfig">
     <v-row>
       <v-col md="3" sm="12" class="pt-0 pb-0">
         <div class="text-center">
@@ -49,26 +49,24 @@
   </ToolWrapper>
 </template>
 
+<tool>
+title: 'Date/Time converter'
+description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.'
+icon: 'mdi-calendar-range'
+keywords: ['date', 'time', 'converter', 'iso']
+path: '/date-converter'
+</tool>
+
 <script lang="ts">
 
 import {Component} from 'nuxt-property-decorator'
 import {CopyableMixin} from '@/mixins/copyable.mixin'
 import Tool from '@/components/Tool.vue'
-import {ToolConfig} from '@/types/ToolConfig'
 
 @Component({
   mixins: [CopyableMixin]
 })
 export default class DateConverter extends Tool {
-  config(): ToolConfig {
-    return {
-      title: 'Date/Time converter',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.',
-      icon: 'mdi-calendar-range',
-      keywords: ['date', 'time', 'converter', 'iso']
-    }
-  }
-
   inputString = ''
   inputFormatterTitle: string | null = null
   useCurrentDate = true

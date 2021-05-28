@@ -1,5 +1,5 @@
 <template>
-  <ToolWrapper :config="config()">
+  <ToolWrapper :config="$toolConfig">
     <v-row no-gutters align="center" align-content="center" justify="center">
       <v-col cols="12" sm="6" align="center">
         <v-color-picker
@@ -59,6 +59,14 @@
   </ToolWrapper>
 </template>
 
+<tool>
+title: 'Color picker/converter'
+description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.'
+icon: 'mdi-palette'
+keywords: ['rgb', 'hsl', 'hex', 'keyword', 'css', 'picker']
+path: '/color-picker-converter'
+</tool>
+
 <script lang="ts">
 
 import {Component} from 'nuxt-property-decorator'
@@ -66,7 +74,6 @@ import colors from 'color-name'
 import convert from 'color-convert'
 import {CopyableMixin} from '~/mixins/copyable.mixin'
 import Tool from '~/components/Tool.vue'
-import {ToolConfig} from '~/types/ToolConfig'
 import type {VForm} from '~/types/VForm'
 
 const required = (v: unknown) => !!v || 'A value is required'
@@ -75,15 +82,6 @@ const required = (v: unknown) => !!v || 'A value is required'
   mixins: [CopyableMixin]
 })
 export default class ColorPickerConverter extends Tool {
-  config(): ToolConfig {
-    return {
-      title: 'Color picker/converter',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.',
-      icon: 'mdi-palette',
-      keywords: ['rgb', 'hsl', 'hex', 'keyword', 'css', 'picker']
-    }
-  }
-
   rgbPicker = {
     r: 76,
     g: 175,

@@ -1,5 +1,5 @@
 <template>
-  <ToolWrapper :config="config()" no-card="true">
+  <ToolWrapper :config="$toolConfig" no-card="true">
     <FileUploader v-model="file" />
 
     <div v-if="base64 || loading" class="mt-10">
@@ -25,11 +25,18 @@
   </ToolWrapper>
 </template>
 
+<tool>
+title: 'File to base64'
+description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.'
+icon: 'mdi-file-link-outline'
+keywords: ['file', 'base64']
+path: '/file-to-base64'
+</tool>
+
 <script lang="ts">
 import {Component, Watch} from 'nuxt-property-decorator'
 import {CopyableMixin} from '@/mixins/copyable.mixin'
 import Tool from '@/components/Tool.vue'
-import type {ToolConfig} from '@/types/ToolConfig'
 import FileUploader from '~/components/FileUploader.vue'
 
 @Component({
@@ -37,15 +44,6 @@ import FileUploader from '~/components/FileUploader.vue'
   components: {FileUploader}
 })
 export default class FileToBase64 extends Tool {
-  config(): ToolConfig {
-    return {
-      title: 'File to base64',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.',
-      icon: 'mdi-file-link-outline',
-      keywords: ['file', 'base64']
-    }
-  }
-
   file: Blob | null = null
   loading = false
   base64 = ''
