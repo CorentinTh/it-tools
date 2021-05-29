@@ -100,18 +100,5 @@ export default {
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
 
-  router: {
-    extendRoutes(routes) {
-      routes.forEach((route) => {
-        if (route.path.match(/^\/tools\/.*/)) {
-          const sections = route.path.split('/')
-          route.path = `/${sections[sections.length - 1]}`
-          route.meta = {
-            isTool: true,
-            section: sections[sections.length - 2]
-          }
-        }
-      })
-    }
-  }
+  router: {}
 }
