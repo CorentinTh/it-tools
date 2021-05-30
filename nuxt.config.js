@@ -94,7 +94,7 @@ export default {
     vueI18nLoader: true,
     locales: ['en'],
     defaultLocale: 'en',
-    strategy: 'prefix_and_default'
+    strategy: 'no_prefix'
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
