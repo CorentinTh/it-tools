@@ -55,8 +55,6 @@ const toolConfigModule: Module<toolConfigModuleOptions> = function () {
 
       routes.push(newRoute)
     })
-
-    nuxt.options.publicRuntimeConfig.toolList = toolList
   })
 
   extendBuild((config) => {
