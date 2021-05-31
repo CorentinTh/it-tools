@@ -2,18 +2,18 @@
   <ToolWrapper :config="$toolConfig">
     <v-row no-gutters>
       <v-col lg="6" md="12">
-        <v-switch v-model="config.withLowercase" label="Lowercase (abc...)"/>
-        <v-switch v-model="config.withUppercase" label="Uppercase (ABC...)"/>
+        <v-switch v-model="config.withLowercase" label="Lowercase (abc...)" />
+        <v-switch v-model="config.withUppercase" label="Uppercase (ABC...)" />
       </v-col>
       <v-col lg="6" md="12">
-        <v-switch v-model="config.withNumbers" label="Numbers (123...)"/>
-        <v-switch v-model="config.withSpecials" label="Specials (#]-...)"/>
+        <v-switch v-model="config.withNumbers" label="Numbers (123...)" />
+        <v-switch v-model="config.withSpecials" label="Specials (#]-...)" />
       </v-col>
     </v-row>
 
-    <v-slider v-model="config.length" :label="`Length (${config.length})`" min="1" max="512"/>
+    <v-slider v-model="config.length" :label="`Length (${config.length})`" min="1" max="512" />
 
-    <v-textarea v-model="token" outlined/>
+    <v-textarea v-model="token" outlined />
 
     <div class="text-center">
       <v-btn depressed class="mr-4" @click="refreshToken()">

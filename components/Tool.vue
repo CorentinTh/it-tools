@@ -7,7 +7,6 @@ import {ToolConfigMixin} from '~/mixins/tool-config.mixin'
   components: {ToolWrapper}
 })
 export default class Tool extends mixins(ToolConfigMixin) {
-
   public head() {
     const {title, description, keywords} = this.$toolConfig
 
