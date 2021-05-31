@@ -71,6 +71,3 @@ export default class HashText extends Tool {
 }
 
 </script>
-
-<style>
-</style>

@@ -61,8 +61,8 @@ path: '/base-converter'
 <script lang="ts">
 
 import {Component, Ref} from 'nuxt-property-decorator'
-import {CopyableMixin} from '~/mixins/copyable.mixin'
 import Tool from '~/components/Tool.vue'
+import {CopyableMixin} from '~/mixins/copyable.mixin'
 import type {VForm} from '~/types/VForm'
 
 const convertBase = (value: string, fromBase: number, toBase: number) => {
@@ -117,6 +117,3 @@ export default class BaseConverter extends Tool {
   }
 }
 </script>
-
-<style scoped lang="less">
-</style>

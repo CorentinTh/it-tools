@@ -128,6 +128,3 @@ export default class DateConverter extends Tool {
 }
 
 </script>
-
-<style scoped lang="less">
-</style>

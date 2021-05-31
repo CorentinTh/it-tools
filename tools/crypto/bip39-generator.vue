@@ -62,9 +62,9 @@ export default class Bip39Generator extends Tool {
   languageList = Object
     .keys(bip39.wordlists)
     .filter(k => !k.match(/[A-Z]{2}/))
-    .map(k => ({
-      text: k.split('_').map(k => k.charAt(0).toUpperCase() + k.slice(1)).join(' '),
-      value: k
+    .map(v => ({
+      text: v.split('_').map(k => k.charAt(0).toUpperCase() + k.slice(1)).join(' '),
+      value: v
     }))
 
   rules = {
@@ -103,6 +103,3 @@ export default class Bip39Generator extends Tool {
 }
 
 </script>
-
-<style scoped>
-</style>

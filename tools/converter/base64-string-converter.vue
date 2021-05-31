@@ -53,6 +53,3 @@ export default class Base64StringConverter extends Tool {
 }
 
 </script>
-
-<style scoped>
-</style>

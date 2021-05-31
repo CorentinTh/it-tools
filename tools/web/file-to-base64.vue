@@ -65,39 +65,4 @@ export default class FileToBase64 extends Tool {
     }
   }
 }
-
-// export default {
-//   name: 'FileToBase64',
-//   components: {FileUploader},
-//   data() {
-//     return {
-//       file: undefined,
-//       loading: false,
-//       base64: '',
-//       copyBase64() {
-//         copyToClipboard(this.base64)
-//         this.$toast.success('Copied to clipboard.')
-//       }
-//     }
-//   },
-//   watch: {
-//     file() {
-//       this.loading = true
-//       this.base64 = ''
-//       const reader = new FileReader()
-//       reader.onload = () => this.handleBase64(reader.result)
-//       reader.onerror = () => this.handleBase64('[An error as occurred]')
-//       reader.readAsDataURL(this.file)
-//     }
-//   },
-//   methods: {
-//     handleBase64(base64) {
-//       this.base64 = base64
-//       this.loading = false
-//     }
-//   }
-// }
 </script>
-
-<style scoped>
-</style>

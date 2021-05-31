@@ -117,9 +117,6 @@
         <nuxt />
       </v-container>
     </v-main>
-    <!--<v-footer app>-->
-    <!--  <span>&copy; {{ new Date().getFullYear() }}</span>-->
-    <!--</v-footer>-->
   </v-app>
 </template>
 
@@ -180,10 +177,6 @@ export default class DefaultLayout extends Vue {
   }
 }
 
-.v-navigation-drawer__content {
-  .pretty-scrollbar;
-}
-
 .v-toolbar__content {
   a {
     color: #ffffff;
@@ -235,6 +228,8 @@ export default class DefaultLayout extends Vue {
 }
 
 .v-navigation-drawer__content {
+  .pretty-scrollbar;
+
   .v-list-item--active {
     color: var(--v-anchor-base);
     border-left: 3px solid var(--v-primary-base);

@@ -2,18 +2,18 @@
   <ToolWrapper :config="$toolConfig">
     <v-row no-gutters>
       <v-col lg="6" md="12">
-        <v-switch v-model="withLowercase" label="Lowercase (abc...)" />
-        <v-switch v-model="withUppercase" label="Uppercase (ABC...)" />
+        <v-switch v-model="config.withLowercase" label="Lowercase (abc...)"/>
+        <v-switch v-model="config.withUppercase" label="Uppercase (ABC...)"/>
       </v-col>
       <v-col lg="6" md="12">
-        <v-switch v-model="withNumbers" label="Numbers (123...)" />
-        <v-switch v-model="withSpecials" label="Specials (#]-...)" />
+        <v-switch v-model="config.withNumbers" label="Numbers (123...)"/>
+        <v-switch v-model="config.withSpecials" label="Specials (#]-...)"/>
       </v-col>
     </v-row>
 
-    <v-slider v-model="length" :label="`Length (${length})`" min="1" max="512" />
+    <v-slider v-model="config.length" :label="`Length (${config.length})`" min="1" max="512"/>
 
-    <v-textarea v-model="token" outlined />
+    <v-textarea v-model="token" outlined/>
 
     <div class="text-center">
       <v-btn depressed class="mr-4" @click="refreshToken()">
@@ -30,12 +30,12 @@
 title: 'Token generator'
 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.'
 icon: 'mdi-key-chain-variant'
-keywords: ['token', 'random', 'string', 'alphanumeric', 'symbols']
+keywords: [ 'token', 'random', 'string', 'alphanumeric', 'symbols' ]
 path: '/token-generator'
 </tool>
 
 <script lang="ts">
-import {Component} from 'nuxt-property-decorator'
+import {Component, Watch} from 'nuxt-property-decorator'
 import Tool from '~/components/Tool.vue'
 import {CopyableMixin} from '~/mixins/copyable.mixin'
 import {shuffle} from '~/utils/string'
@@ -49,42 +49,36 @@ const specials = '.,;:!?./-"\'#{([-|\\@)]=}*+'
   mixins: [CopyableMixin]
 })
 export default class TokenGenerator extends Tool {
-  withNumbers = true;
-  withLowercase = true;
-  withUppercase = true;
-  withSpecials = false;
-  length = 64;
-  refreshBool = true;
-
-  refreshToken() {
-    this.refreshBool = !this.refreshBool
+  token = '';
+  config = {
+    withNumbers: true,
+    withLowercase: true,
+    withUppercase: true,
+    withSpecials: false,
+    length: 64
   }
 
-  get token() {
-    if (this.refreshBool) {
-      (() => {
-      })()
-    } // To force recomputation
+  created() {
+    this.refreshToken()
+  }
 
+  @Watch('config', {deep: true})
+  refreshToken() {
     let result = ''
-    if (this.withLowercase) {
+    if (this.config.withLowercase) {
       result += lowercase
     }
-    if (this.withUppercase) {
+    if (this.config.withUppercase) {
       result += uppercase
     }
-    if (this.withNumbers) {
+    if (this.config.withNumbers) {
       result += numbers
     }
-    if (this.withSpecials) {
+    if (this.config.withSpecials) {
       result += specials
     }
 
-    return shuffle(result.repeat(this.length)).substring(0, this.length)
+    this.token = shuffle(result.repeat(this.config.length)).substring(0, this.config.length)
   }
 }
 </script>
-
-<style scoped>
-
-</style>

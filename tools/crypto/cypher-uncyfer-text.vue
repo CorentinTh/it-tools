@@ -99,6 +99,3 @@ export default class CypherUncyferText extends Tool {
   }
 }
 </script>
-
-<style lang="less">
-</style>

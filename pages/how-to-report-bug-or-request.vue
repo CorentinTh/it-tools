@@ -11,10 +11,5 @@ import {Component, Vue} from 'nuxt-property-decorator'
 
 @Component
 export default class HowToReportBugOrRequest extends Vue {
-
 }
 </script>
-
-<style lang="less">
-
-</style>
