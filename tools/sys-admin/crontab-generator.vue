@@ -47,16 +47,16 @@
       <template #default>
         <thead>
           <tr>
-            <th class="text-left">
+            <th class="text-left" scope="col">
               Symbol
             </th>
-            <th class="text-left">
+            <th class="text-left" scope="col">
               Meaning
             </th>
-            <th class="text-left">
+            <th class="text-left" scope="col">
               Example
             </th>
-            <th class="text-left">
+            <th class="text-left" scope="col">
               Equivalent
             </th>
           </tr>
