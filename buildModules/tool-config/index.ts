@@ -1,5 +1,5 @@
 import {readdirSync, readFileSync} from 'fs'
-import path, {join} from 'path'
+import {join, resolve} from 'path'
 import {Module} from '@nuxt/types'
 import {NuxtRouteConfig} from '@nuxt/types/config/router'
 import YAML from 'yaml'
@@ -9,7 +9,7 @@ const toolDirName = 'tools'
 const rootDir = join(__dirname, '..', '..')
 const toolsDir = join(rootDir, toolDirName)
 
-interface toolConfigModuleOptions {
+interface ToolConfigModuleOptions {
 }
 
 function getTools() {
@@ -36,7 +36,7 @@ function getTools() {
   return toolList
 }
 
-const toolConfigModule: Module<toolConfigModuleOptions> = function () {
+const toolConfigModule: Module<ToolConfigModuleOptions> = function () {
   const {nuxt, extendBuild, addPlugin} = this
   const toolList = getTools()
   const toolListFlat = Object.values(toolList).flat()
@@ -71,7 +71,7 @@ const toolConfigModule: Module<toolConfigModuleOptions> = function () {
   })
 
   addPlugin({
-    src: path.resolve(__dirname, 'plugin.ts'),
+    src: resolve(__dirname, 'plugin.ts'),
     fileName: 'tool-config/plugin.ts',
     options: {
       toolList,

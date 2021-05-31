@@ -41,7 +41,7 @@ import Tool from '~/components/Tool.vue'
 @Component({
   mixins: [CopyableMixin]
 })
-export default class RandomPortGenerator extends Tool {
+export default class UrlEncoderDecoder extends Tool {
   decoded = 'Hello world :)'
   rules = {
     decoder: [

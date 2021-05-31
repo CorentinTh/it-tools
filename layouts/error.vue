@@ -43,7 +43,7 @@
 import {Component, Prop, Vue} from 'nuxt-property-decorator'
 
 @Component
-export default class Index extends Vue {
+export default class Error extends Vue {
   @Prop({default: () => null}) error!: { statusCode: number, message: string } | null;
   layout = 'empty'
 
