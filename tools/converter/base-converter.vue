@@ -93,7 +93,6 @@ export default class BaseConverter extends Tool {
   @Ref() readonly inputBaseRef!: VForm
   @Ref() readonly outputBaseRef!: VForm
 
-  isMounted = false
   inputError = ''
   inputNumber = '42'
   inputBase = 10
@@ -105,12 +104,8 @@ export default class BaseConverter extends Tool {
     (v: number) => v <= 64 || 'Base should be <= 64'
   ]
 
-  mounted() {
-    this.isMounted = true
-  }
-
   get outputNumber() {
-    if (this.isMounted && this.inputBaseRef.validate() && this.outputBaseRef.validate()) {
+    if (this.inputBaseRef?.validate() && this.outputBaseRef?.validate()) {
       try {
         return convertBase(this.inputNumber, this.inputBase, this.outputBase)
       } catch (e) {
