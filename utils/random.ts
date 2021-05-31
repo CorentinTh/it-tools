@@ -1,8 +1,13 @@
-const randFromArray = (array: any[]) => array[Math.floor(Math.random() * array.length)]
+import {randomBytes} from 'crypto'
 
-const randIntFromInterval = (min: number, max: number) => Math.floor(Math.random() * (max - min) + min)
+const random = () => randomBytes(4).readUInt32LE(0) / 0x100000000
+
+const randFromArray = (array: any[]) => array[Math.floor(random() * array.length)]
+
+const randIntFromInterval = (min: number, max: number) => Math.floor(random() * (max - min) + min)
 
 export {
   randFromArray,
-  randIntFromInterval
+  randIntFromInterval,
+  random
 }
