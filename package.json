@@ -1,7 +1,28 @@
 {
   "name": "it-tools",
   "version": "2.0.0-beta.0",
-  "private": true,
+  "private": false,
+  "description": "Aggregated set of useful tools that every developer may need once in a while.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CorentinTh/it-tools"
+  },
+  "funding": "https://github.com/sponsors/CorentinTh",
+  "author": "Corentin Th <corentin.thomasset74+npm@gmail.com> (https://github.com/CorentinTh)",
+  "homepage": "https://it-tools.tech",
+  "bugs": "https://github.com/CorentinTh/it-tools/issues",
+  "keywords": [
+    "productivity",
+    "converter",
+    "website",
+    "vuejs",
+    "tools",
+    "frontend",
+    "tool",
+    "developer-tools",
+    "developer-productivity"
+  ],
   "scripts": {
     "dev": "nuxt",
     "build": "npm run generate",
