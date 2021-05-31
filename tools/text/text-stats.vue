@@ -8,8 +8,6 @@
       auto-grow
     />
 
-    <div>{{ $toolListFlat }}</div>
-
     <table>
       <tbody>
         <tr>
