@@ -14,7 +14,11 @@ export default {
     meta: [
       {charset: 'utf-8'},
       {name: 'viewport', content: 'width=device-width, initial-scale=1'},
-      {hid: 'description', name: 'description', content: 'Aggregated set of useful tools that every developer may need once in a while.'},
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Aggregated set of useful tools that every developer may need once in a while.'
+      },
       {hid: 'keywords', name: 'keywords', content: ['tools', 'tool', 'it', 'developer', 'web', 'computing']}
     ],
     link: [{rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}]

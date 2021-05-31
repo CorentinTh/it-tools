@@ -16,7 +16,7 @@
             <g><path d="M296.624,292.726l-29.863-29.863L296.624,233c2.968-2.969,2.968-7.783-0.002-10.753c-2.971-2.97-7.784-2.97-10.754,0 l-29.863,29.863l-29.863-29.863c-2.971-2.97-7.784-2.97-10.754,0c-2.97,2.97-2.97,7.784,0,10.753l29.863,29.863l-29.863,29.863 c-2.97,2.97-2.97,7.784,0,10.753c1.485,1.484,3.432,2.227,5.378,2.227c1.946,0,3.892-0.742,5.377-2.227l29.863-29.863 l29.863,29.863c1.485,1.484,3.432,2.227,5.377,2.227s3.892-0.742,5.378-2.227C299.593,300.51,299.593,295.695,296.624,292.726z" /></g>
           </svg>
         </div>
-        <div class="separator"/>
+        <div class="separator" />
         <div class="error-description">
           Page not found, sorry.
         </div>
@@ -28,7 +28,7 @@
     <div v-else>
       <div class="error-wrapper">
         <div class="error-description">
-          {{this.error ? this.error.message : 'An error occurred'}}
+          {{ error ? error.message : 'An error occurred' }}
         </div>
         <v-btn color="primary" depressed @click="$router.go(-1)">
           Back
