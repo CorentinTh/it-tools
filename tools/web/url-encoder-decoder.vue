@@ -14,8 +14,12 @@
     />
 
     <div class="text-center">
-      <v-btn @click="copy(decoded)">Copy decoded</v-btn>
-      <v-btn @click="copy(encoded)">Copy encoded</v-btn>
+      <v-btn @click="copy(decoded)">
+        Copy decoded
+      </v-btn>
+      <v-btn @click="copy(encoded)">
+        Copy encoded
+      </v-btn>
     </div>
   </ToolWrapper>
 </template>
