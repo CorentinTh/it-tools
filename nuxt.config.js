@@ -38,7 +38,8 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
     // '@nuxtjs/router-extras'
-    '~/buildModules/tool-config'
+    '~/buildModules/tool-config',
+    '@nuxtjs/google-fonts'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -50,8 +51,6 @@ export default {
     '@nuxtjs/svg',
     'nuxt-i18n',
     '@nuxtjs/markdownit'
-    // '~/buildModules/tool-config'
-
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -59,6 +58,9 @@ export default {
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
+    defaultAssets: {
+      icons: 'mdi'
+    },
     icons: {
       iconfont: 'mdi'
     },
@@ -102,5 +104,17 @@ export default {
     extractCSS: true
   },
 
-  router: {}
+  router: {},
+
+  googleFonts: {
+    display: 'swap',
+    prefetch: true,
+    preconnect: true,
+    preload: true,
+    families: {
+      Roboto: {
+        wght: [300, 400, 500, 700, 900]
+      }
+    }
+  }
 }
