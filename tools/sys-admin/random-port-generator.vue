@@ -39,7 +39,7 @@ const generatePort = () => randIntFromInterval(1024, 65535)
   mixins: [CopyableMixin]
 })
 export default class RandomPortGenerator extends Tool {
-  port!: number
+  port: number = 0
 
   created() {
     this.refreshPort()
