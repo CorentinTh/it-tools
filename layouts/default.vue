@@ -83,21 +83,33 @@
       <SearchBar class="hidden-sm-and-down" />
       <v-spacer />
 
-      <NuxtLink to="/how-to-report-bug-or-request">
-        Bug / Request
-      </NuxtLink>
       <NuxtLink to="/about">
         About
       </NuxtLink>
       <a
         href="https://github.com/CorentinTh/it-tools"
         target="_blank"
-        class="github-link"
         rel="noopener noreferrer"
         aria-label="Github repository"
       >
         <v-icon>mdi-github</v-icon>
       </a>
+      <v-tooltip bottom>
+        <template #activator="{ on, attrs }">
+          <v-btn
+            depressed
+            color="primary"
+            href="https://github.com/sponsors/CorentinTh"
+            target="_blank"
+            rel="noopener noreferrer"
+            v-bind="attrs"
+            v-on="on"
+          >
+            Sponsor
+          </v-btn>
+        </template>
+        <span class="text-center">Sponsor this project by supporting the developer</span>
+      </v-tooltip>
     </v-app-bar>
 
     <v-main>
@@ -178,7 +190,6 @@ export default class DefaultLayout extends Vue {
     text-decoration: none;
     transition: all ease 0.2s;
     margin: 0 10px;
-    opacity: 0.5;
     font-size: 15px;
 
     &.title {
@@ -189,19 +200,11 @@ export default class DefaultLayout extends Vue {
       opacity: 1;
       color: var(--v-primary-base);
     }
-  }
 
-  .github-link {
-    border-bottom: none;
-    margin-left: 10px;
-    transition: all ease 0.2s;
-
-    .v-icon {
-      font-size: 37px !important;
-      color: var(--v-primary-base);
-      transition: all ease 0.2s;
-      transition: all ease 0.2s;
-
+    &.v-btn {
+      font-size: 15px;
+      background: var(--v-primary-base) !important;
+      background: linear-gradient(90deg, rgba(37,99,108,1) 0%, rgba(71,177,113,1) 100%) !important;
     }
   }
 }
