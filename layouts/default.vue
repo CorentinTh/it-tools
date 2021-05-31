@@ -55,11 +55,14 @@
             IT-Tools <a
               :href="'https://github.com/CorentinTh/it-tools/tree/'+appVersion"
               target="_blank"
+              rel="noopener noreferrer"
             >{{ appVersion }}</a>
           </div>
           <div>
-            &copy; {{ new Date().getFullYear() }} <a href="//corentin-thomasset.fr" class="footer-link">Corentin
-              Thomasset</a>
+            &copy; {{ new Date().getFullYear() }}
+            <a href="//corentin-thomasset.fr" class="footer-link" rel="noopener noreferrer" target="_blank">
+              Corentin Thomasset
+            </a>
           </div>
         </div>
       </template>
@@ -86,7 +89,13 @@
       <NuxtLink to="/about">
         About
       </NuxtLink>
-      <a href="https://github.com/CorentinTh/it-tools" target="_blank" class="github-link" rel="noopener noreferrer" aria-label="Github repository">
+      <a
+        href="https://github.com/CorentinTh/it-tools"
+        target="_blank"
+        class="github-link"
+        rel="noopener noreferrer"
+        aria-label="Github repository"
+      >
         <v-icon>mdi-github</v-icon>
       </a>
     </v-app-bar>
