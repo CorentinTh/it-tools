@@ -39,7 +39,6 @@
 <script lang="ts">
 import {Component} from 'nuxt-property-decorator'
 import Tool from './Tool.vue'
-import type {ToolConfig} from '~/types/ToolConfig'
 import {CopyableMixin} from '~/mixins/copyable.mixin'
 import ToolHeader from '~/components/ToolHeader.vue'
 
