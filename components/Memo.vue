@@ -50,7 +50,6 @@ type MemoItems = { section: string, items: { text: string, code?: string, subtit
   components: {ToolHeader}
 })
 export default class Memo extends Tool {
-  private memoConfig: ToolConfig = this.config();
   private items: MemoItems = this.$t('memo') as unknown as MemoItems
 }
 </script>
