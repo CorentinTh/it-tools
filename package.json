@@ -34,7 +34,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.13.5",
+    "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/markdownit": "^2.0.0",
     "@nuxtjs/pwa": "^3.0.2",
     "@nuxtjs/toast": "^3.3.1",
