@@ -34,7 +34,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.13.5",
+    "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/markdownit": "^2.0.0",
     "@nuxtjs/pwa": "^3.0.2",
     "@nuxtjs/toast": "^3.3.1",
@@ -49,7 +49,7 @@
     "nuxt": "^2.15.6",
     "nuxt-i18n": "^6.27.0",
     "qrcode.vue": "^1.7.0",
-    "vuetify": "^2.5.1",
+    "vuetify": "^2.5.3",
     "vuetify-toast-snackbar": "^0.6.1"
   },
   "devDependencies": {
