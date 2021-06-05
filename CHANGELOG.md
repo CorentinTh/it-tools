@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added i18n support
 - Added new tools
   - [Random port generator](https://it-tools.tech/random-port-generator)
+  - [Unit converter](https://it-tools.tech/unit-converter)
 
 ### Removed
 - Removed markdown editor
