@@ -11,7 +11,7 @@
       <v-btn depressed class="mr-4" @click="refreshPort">
         Refresh
       </v-btn>
-      <v-btn depressed @click="copy(port.toString())">
+      <v-btn depressed @click="copy(port)">
         Copy port
       </v-btn>
     </div>
