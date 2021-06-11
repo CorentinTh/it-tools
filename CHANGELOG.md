@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added new tools
   - [Random port generator](https://it-tools.tech/random-port-generator)
   - [Unit converter](https://it-tools.tech/unit-converter)
+  - [Roman numeral converter](https://it-tools.tech/roman-numeral-converter)
 
 ### Removed
 - Removed markdown editor
