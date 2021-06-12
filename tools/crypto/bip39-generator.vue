@@ -43,13 +43,13 @@ path: '/bip39-generator'
 
 <script lang="ts">
 import * as bip39 from 'bip39'
-import {shuffle} from '@/utils/string'
 import {Component, Ref} from 'nuxt-property-decorator'
 import {CopyableMixin} from '@/mixins/copyable.mixin'
 import Tool from '@/components/Tool.vue'
 import type {VForm} from '~/types/VForm'
+import {shuffleString} from '~/utils/random'
 
-const getRandomBuffer = () => Buffer.from(shuffle('0123456789abcdef'.repeat(16)).substring(0, 32), 'hex')
+const getRandomBuffer = () => Buffer.from(shuffleString('0123456789abcdef'.repeat(16)).substring(0, 32), 'hex')
 
 @Component({
   mixins: [CopyableMixin]

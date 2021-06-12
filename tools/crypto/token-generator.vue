@@ -38,7 +38,7 @@ path: '/token-generator'
 import {Component, Watch} from 'nuxt-property-decorator'
 import Tool from '~/components/Tool.vue'
 import {CopyableMixin} from '~/mixins/copyable.mixin'
-import {shuffle} from '~/utils/string'
+import {shuffleString} from '~/utils/random'
 
 const lowercase = 'abcdefghijklmopqrstuvwxyz'
 const uppercase = 'ABCDEFGHIJKLMOPQRSTUVWXYZ'
@@ -78,7 +78,7 @@ export default class TokenGenerator extends Tool {
       result += specials
     }
 
-    this.token = shuffle(result.repeat(this.config.length)).substring(0, this.config.length)
+    this.token = shuffleString(result.repeat(this.config.length)).substring(0, this.config.length)
   }
 }
 </script>
