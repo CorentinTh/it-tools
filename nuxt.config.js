@@ -54,7 +54,8 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/svg',
     'nuxt-i18n',
-    '@nuxtjs/markdownit'
+    '@nuxtjs/markdownit',
+    '@nuxtjs/sitemap'
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
