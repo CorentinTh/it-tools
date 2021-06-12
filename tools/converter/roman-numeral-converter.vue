@@ -21,7 +21,7 @@
 <tool>
 title: 'Roman numeral converter'
 description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus distinctio dolor dolorum eaque eligendi, facilis impedit laboriosam odit placeat.'
-icon: 'mdi-swap-horizontal'
+icon: 'mdi-roman-numeral-4'
 keywords: [ 'roman', 'arabic', 'converter' ]
 path: '/roman-numeral-converter'
 </tool>
