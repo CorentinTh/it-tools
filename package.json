@@ -67,7 +67,7 @@
     "@types/color-name": "^1.1.1",
     "@types/convert-units": "^2.3.3",
     "@types/crypto-js": "^4.0.1",
-    "@vue/test-utils": "^1.2.0",
+    "@vue/test-utils": "^1.2.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^27.0.2",
