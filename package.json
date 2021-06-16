@@ -47,7 +47,7 @@
     "cronstrue": "^1.114.0",
     "crypto-js": "^4.0.0",
     "nuxt": "^2.15.7",
-    "nuxt-i18n": "^6.27.0",
+    "nuxt-i18n": "^6.27.1",
     "qrcode.vue": "^1.7.0",
     "vuetify": "^2.5.4",
     "vuetify-toast-snackbar": "^0.6.1"
