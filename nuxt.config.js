@@ -55,7 +55,7 @@ export default {
     '@nuxtjs/svg',
     'nuxt-i18n',
     '@nuxtjs/markdownit',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap' // Must stay last
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -121,5 +121,10 @@ export default {
         wght: [300, 400, 500, 700, 900]
       }
     }
+  },
+
+  sitemap: {
+    hostname: 'https://it-tools.tech',
+    gzip: true
   }
 }
