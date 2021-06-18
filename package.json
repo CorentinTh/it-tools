@@ -31,7 +31,8 @@
     "lint:commit": "commitlint --from $(git rev-list --max-parents=0 HEAD)",
     "lint:js": "eslint --ext .js,.vue --ignore-path=.gitignore --max-warnings=0 .",
     "lint": "npm run lint:js && npm run lint:commit",
-    "test": "jest"
+    "test": "jest",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
@@ -77,6 +78,7 @@
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-promise": "^5.1.0",
+    "husky": "^6.0.0",
     "jest": "^26.5.0",
     "less": "^4.0.0",
     "less-loader": "^7.1.0",
