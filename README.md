@@ -1,6 +1,9 @@
 ![logo](.github/logo.png)
 
-Aggregated set of useful tools that every developer may need once in a while. Available [here](https://it-tools.tech).
+Aggregated set of useful tools that every developer may need once in a while. Available [here](https://dev.it-tools.tech).
+
+:warning: This is the v2 branch it features a new and fresher version of it-tools completly reworked with nuxt. Stay tuned to be notified when it'll go live (click `watch`) :purple_heart:
+
 
 ## Functionalities and roadmap
 Please check the [issues](https://github.com/CorentinTh/it-tools/issues) to see if some feature listed to be implemented.
