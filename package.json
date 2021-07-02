@@ -78,7 +78,7 @@
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-promise": "^5.1.0",
-    "husky": "^6.0.0",
+    "husky": "^7.0.0",
     "jest": "^26.5.0",
     "less": "^4.0.0",
     "less-loader": "^7.1.0",
