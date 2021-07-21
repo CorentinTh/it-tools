@@ -51,7 +51,7 @@
     "nuxt": "^2.15.7",
     "nuxt-i18n": "^6.27.3",
     "qrcode.vue": "^1.7.0",
-    "vuetify": "^2.5.6",
+    "vuetify": "^2.5.7",
     "vuetify-toast-snackbar": "^0.6.1"
   },
   "devDependencies": {
