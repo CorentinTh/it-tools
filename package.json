@@ -32,7 +32,8 @@
     "lint:js": "eslint --ext .js,.vue --ignore-path=.gitignore --max-warnings=0 .",
     "lint": "npm run lint:js && npm run lint:commit",
     "test": "jest",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "release": "standard-version"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
@@ -83,6 +84,7 @@
     "less": "^4.0.0",
     "less-loader": "^7.1.0",
     "nuxt-property-decorator": "^2.9.1",
+    "standard-version": "^9.3.1",
     "ts-jest": "^26.5.6",
     "vue-jest": "^3.0.4",
     "yaml": "^1.10.2"
