@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - `/cypher` -> [`/cypher-uncyfer-text`](https://it-tools.tech/cypher-uncyfer-text)
     - `/url-encoder` -> [`/url-encoder-decoder`](https://it-tools.tech/url-encoder-decoder)
 - [Crontab generator](https://it-tools.tech/crontab-generator) now handle 6 digits format (second support)  
+- Switched from google analytics to a selfhosted privacy-friendly plausible tracker
 
 ### Added
 - Added [/how-to-report-bug-or-request](/how-to-report-bug-or-request) route to explain how to report bug and request features

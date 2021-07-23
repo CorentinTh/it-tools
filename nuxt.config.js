@@ -56,8 +56,15 @@ export default {
     '@nuxtjs/svg',
     'nuxt-i18n',
     '@nuxtjs/markdownit',
+    'vue-plausible',
     '@nuxtjs/sitemap' // Must stay last
   ],
+
+  plausible: {
+    domain: process.env.NUXT_ENV_PLAUSIBLE_DOMAIN,
+    apiHost: process.env.NUXT_ENV_PLAUSIBLE_API_HOST,
+    trackLocalhost: false
+  },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
