@@ -179,7 +179,7 @@ export default class DefaultLayout extends Vue {
 
 .v-toolbar__content {
   a {
-    color: #ffffff;
+    color: #ffffff !important;
     text-decoration: none;
     transition: all ease 0.2s;
     margin: 0 10px;
