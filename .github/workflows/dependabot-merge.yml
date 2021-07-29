@@ -1,0 +1,30 @@
+on:
+  workflow_run:
+    workflows: [ci]
+    branches-ignore: [main]
+    types: 
+      - completed
+
+
+jobs:
+  on-success:
+    runs-on: ubuntu-latest
+    if: >
+      github.event.workflow_run.conclusion == 'success' &&
+      github.actor == 'dependabot[bot]'
+
+    steps:
+      - name: "Merge pull request"
+        uses: ridedott/merge-me-action@v2
+        with:
+          # Depending on branch protection rules, a  manually populated
+          # `GITHUB_TOKEN_WORKAROUND` secret with permissions to push to
+          # a protected branch must be used. This secret can have an arbitrary
+          # name, as an example, this repository uses `DOTTBOTT_TOKEN`.
+          #
+          # When using a custom token, it is recommended to leave the following
+          # comment for other developers to be aware of the reasoning behind it:
+          #
+          # This must be used as GitHub Actions token does not support pushing
+          # to protected branches.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
