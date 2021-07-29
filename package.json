@@ -50,7 +50,7 @@
     "cronstrue": "^1.114.0",
     "crypto-js": "^4.1.1",
     "nuxt": "^2.15.7",
-    "nuxt-i18n": "^6.27.3",
+    "nuxt-i18n": "^6.28.0",
     "qrcode.vue": "^3.2.2",
     "vue-plausible": "^1.2.1",
     "vuetify": "^2.5.7",
