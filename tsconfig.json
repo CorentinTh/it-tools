@@ -29,6 +29,7 @@
       "@types/node",
       "@nuxtjs/toast",
       "@nuxt/types",
+      "@nuxtjs/markdownit",
       "~/types/custom.d.ts",
       "vuetify",
       "nuxt-i18n"

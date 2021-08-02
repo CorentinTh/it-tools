@@ -1,36 +1,23 @@
 <template>
   <div class="memo">
-    <ToolHeader :config="$toolConfig" />
+    <v-row justify="center">
+      <v-col lg="6" md="9" sm="9" cols="12" class="mb-16">
+        <ToolHeader :config="$toolConfig" />
 
-    Warning: le style/aspect est toujours en wip, so focus on content <br><br>
-
-    <v-row>
-      <v-col
-        v-for="item in items"
-        :key="item.section"
-        cols="12"
-        sm="12"
-        md="6"
-        lg="4"
-        class="memo-section"
-      >
-        <v-card class="mb-5">
-          <v-card-title>{{ item.section }}</v-card-title>
-          <v-card-text>
-            <div v-for="tip in item.items" :key="tip.text" class="memo-item">
-              <div class="memo-item-title">
-                {{ tip.text }}
-              </div>
-              <div v-if="tip.subtitle" class="memo-item-subtitle">
-                {{ tip.subtitle }}
-              </div>
-              <div v-if="tip.code" class="memo-item-code" @click="copy(tip.code)">
-                <pre>{{ tip.code }}</pre>
-                <v-icon>mdi-content-copy</v-icon>
-              </div>
-            </div>
+        <v-card>
+          <v-card-text class="pa-10">
+            <div class="memo-content" v-html="content" />
           </v-card-text>
         </v-card>
+      </v-col>
+
+      <v-col lg="2" md="3" sm="3" cols="12">
+        <div class="toc">
+          <div class="toc-title">
+            On this page
+          </div>
+          <div class="toc-content" v-html="toc" />
+        </div>
       </v-col>
     </v-row>
   </div>
@@ -41,66 +28,108 @@ import {Component} from 'nuxt-property-decorator'
 import Tool from './Tool.vue'
 import {CopyableMixin} from '~/mixins/copyable.mixin'
 import ToolHeader from '~/components/ToolHeader.vue'
-
-type MemoItems = { section: string, items: { text: string, code?: string, subtitle?: string }[] }[];
+import {toc} from '~/utils/md-toc'
 
 @Component({
   mixins: [CopyableMixin],
   components: {ToolHeader}
 })
 export default class Memo extends Tool {
-  private items: MemoItems = this.$t('memo') as unknown as MemoItems
+  fetchOnServer = true
+  content: string = ''
+  toc: string = ''
+
+  fetch() {
+    // @ts-ignore
+    const content: string = this.$options.__memo.trim()
+
+    this.toc = this.$md.render(toc(content).join('\n'))
+    this.content = this.$md.render(content)
+  }
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .memo {
-  h1 {
-    font-weight: 300;
-    font-size: 50px;
-    margin: 0;
-    padding: 0;
-  }
 
-  h2 {
-    font-weight: 400;
-  }
+  ::v-deep {
+    .memo-content {
+      text-align: justify;
 
-  .memo-item {
-    margin-bottom: 20px;
+      h2 {
+        font-weight: 400;
+        font-size: 25px;
+        margin: 0 0 20px 0;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.26);
+        color: #ffffff;
 
-    .memo-item-title {
-      font-weight: bold;
-      font-size: 16px;
-      color: var(--v-primary-base);
-    }
+        &:not(:first-child){
+          margin-top: 50px;
+        }
+      }
 
-    .memo-item-subtitle {
-      padding-bottom: 5px;
-    }
-
-    .memo-item-code {
-      cursor: pointer;
-      background-color: rgba(0, 0, 0, 0.1);
-      border-radius: 4px;
-      padding: 8px 15px;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
+      h3 {
+        font-weight: 400;
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
 
       pre {
-        flex: 1;
+        width: 100%;
         overflow-x: auto;
-      }
 
-      .v-icon {
-        opacity: 0;
+        code {
+          display: block;
+          padding: 15px;
+        }
       }
+    }
+  }
 
-      &:hover {
-        .v-icon {
-          opacity: 1;
+  .toc {
+    margin-top: 140px;
+
+    .toc-title {
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    ::v-deep {
+      .toc-content {
+        a {
+          color: #ffffff;
+          text-decoration: none;
+          opacity: 0.7;
+          transition: all 0.3s ease;
+          font-weight: 400;
+
+          &:hover {
+            opacity: 1;
+            color: var(--v-primary-base);
+          }
+        }
+
+        ul {
+          list-style-type: none;
+          padding-left: 10px;
+
+          li {
+            padding: 5px 0;
+          }
+        }
+
+        &>ul {
+          padding-left: 0;
+
+          &>li {
+            border-top: 1px dashed rgba(238, 238, 238, 0.38);
+            padding: 5px 0 5px 10px;
+
+            &>a {
+              font-weight: 600 !important;
+            }
+          }
         }
       }
     }

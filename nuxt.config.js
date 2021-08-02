@@ -44,6 +44,7 @@ export default {
     '@nuxtjs/vuetify',
     // '@nuxtjs/router-extras'
     '~/buildModules/tool-config',
+    '~/buildModules/memo',
     '@nuxtjs/google-fonts'
   ],
 
@@ -134,5 +135,18 @@ export default {
   sitemap: {
     hostname: 'https://it-tools.tech',
     gzip: true
+  },
+
+  markdownit: {
+    preset: 'default',
+    linkify: true,
+    breaks: true,
+    runtime: true,
+    typographer: true,
+    html: false,
+    use: [
+      'markdown-it-anchor',
+      'markdown-it-highlightjs'
+    ]
   }
 }
