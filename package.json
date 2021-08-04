@@ -52,7 +52,7 @@
     "markdown-it-anchor": "^8.1.2",
     "markdown-it-highlightjs": "^3.5.0",
     "nuxt": "^2.15.7",
-    "nuxt-i18n": "^6.28.0",
+    "nuxt-i18n": "^6.28.1",
     "qrcode.vue": "^3.2.2",
     "vue-plausible": "^1.2.1",
     "vuetify": "^2.5.8",
