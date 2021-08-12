@@ -51,7 +51,7 @@
     "crypto-js": "^4.1.1",
     "markdown-it-anchor": "^8.1.2",
     "markdown-it-highlightjs": "^3.5.0",
-    "nuxt": "^2.15.7",
+    "nuxt": "^2.15.8",
     "nuxt-i18n": "^6.28.1",
     "qrcode.vue": "^3.2.2",
     "vue-plausible": "^1.2.1",
