@@ -47,7 +47,7 @@
     "convert-units": "^2.3.4",
     "core-js": "^3.16.1",
     "cron-validator": "^1.2.1",
-    "cronstrue": "^1.114.0",
+    "cronstrue": "^1.115.0",
     "crypto-js": "^4.1.1",
     "markdown-it-anchor": "^8.1.2",
     "markdown-it-highlightjs": "^3.5.0",
