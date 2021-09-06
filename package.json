@@ -53,7 +53,7 @@
     "markdown-it-highlightjs": "^3.5.0",
     "nuxt": "^2.15.8",
     "nuxt-i18n": "^6.28.1",
-    "qrcode.vue": "^3.2.2",
+    "qrcode.vue": "^3.3.0",
     "vue-plausible": "^1.2.1",
     "vuetify": "^2.5.8",
     "vuetify-toast-snackbar": "^0.6.1"
