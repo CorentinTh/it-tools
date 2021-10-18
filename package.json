@@ -89,7 +89,7 @@
     "less-loader": "^7.1.0",
     "markdown-toc": "^1.2.0",
     "nuxt-property-decorator": "^2.9.1",
-    "standard-version": "^9.3.1",
+    "standard-version": "^9.3.2",
     "ts-jest": "^27.0.7",
     "vue-jest": "^3.0.4",
     "yaml": "^1.10.2"
