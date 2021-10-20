@@ -84,7 +84,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^5.1.0",
     "husky": "^7.0.2",
-    "jest": "^27.3.0",
+    "jest": "^27.3.1",
     "less": "^4.1.2",
     "less-loader": "^7.1.0",
     "markdown-toc": "^1.2.0",
