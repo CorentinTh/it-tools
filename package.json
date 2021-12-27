@@ -51,7 +51,7 @@
     "cronstrue": "^1.122.0",
     "crypto-js": "^4.1.1",
     "markdown-it-anchor": "^8.4.1",
-    "markdown-it-highlightjs": "^3.5.0",
+    "markdown-it-highlightjs": "^3.6.0",
     "nuxt": "^2.15.8",
     "nuxt-i18n": "^6.28.1",
     "qrcode.vue": "^3.3.3",
