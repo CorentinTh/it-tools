@@ -46,7 +46,7 @@
     "color-convert": "^2.0.1",
     "color-name": "^1.1.4",
     "convert-units": "^2.3.4",
-    "core-js": "^3.20.2",
+    "core-js": "^3.20.3",
     "cron-validator": "^1.2.1",
     "cronstrue": "^1.122.0",
     "crypto-js": "^4.1.1",
