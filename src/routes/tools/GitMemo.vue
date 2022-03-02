@@ -133,12 +133,8 @@
                             code: 'git rebase [branch]'
                         },
                         {
-                            text: 'Rebase merge (conflicts)',
-                            code: 'git merge --abort'
-                        },
-                        {
                             text: 'Continue rebase after resolving conflicts',
-                            code: 'git merge --continue'
+                            code: 'git rebase --continue'
                         },
                     ]
                 },
