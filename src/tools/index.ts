@@ -1,5 +1,5 @@
-import { tool as tokenGenerator } from './token-generator';
+import type { ToolCategory } from './Tool';
 
-export const tools = {
-  crypto: [tokenGenerator],
-};
+export const toolsByCategory: ToolCategory[] = [];
+
+export const tools = toolsByCategory.flatMap(({ components }) => components);

@@ -16,9 +16,11 @@ const layout = computed(() => route?.meta?.layout ?? layouts.base)
 <template>
   <n-config-provider>
     <n-global-style />
-    <component :is="layout">
-      <router-view />
-    </component>
+    <n-message-provider placement="bottom">
+      <component :is="layout">
+        <router-view />
+      </component>
+    </n-message-provider>
   </n-config-provider>
 </template>
 

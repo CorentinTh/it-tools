@@ -33,9 +33,19 @@ import {
   NP,
   NH2,
   NDropdown,
+  NLayout,
+  NLayoutSider,
+  NMenu,
+  NMessageProvider,
+  NPageHeader,
 } from 'naive-ui';
 
 const components = [
+  NPageHeader,
+  NMessageProvider,
+  NLayout,
+  NLayoutSider,
+  NMenu,
   NDropdown,
   NH2,
   NP,

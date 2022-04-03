@@ -1,3 +1,4 @@
+import { layouts } from './layouts/index';
 import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from './pages/Home.page.vue';
 import { tools } from './tools';
@@ -10,7 +11,7 @@ const router = createRouter({
       name: 'home',
       component: HomePage,
     },
-    ...Object.values(tools).flat(),
+    ...tools.map(({ path, name, component, ...config }) => ({ path, name, component, meta: { isTool: true, layout: layouts.toolLayout, name, ...config } })),
   ],
 });
 

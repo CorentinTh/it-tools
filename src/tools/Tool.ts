@@ -6,4 +6,11 @@ export interface ITool {
   description: string;
   keywords: string[];
   component: () => Promise<Component>;
+  icon: Component;
+}
+
+export interface ToolCategory {
+  name: string;
+  icon: Component;
+  components: ITool[];
 }
