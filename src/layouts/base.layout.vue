@@ -4,6 +4,7 @@ import { h, ref, type Component } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { User } from '@vicons/tabler'
 import { tools } from '@/tools';
+import SearchBar from '../components/SearchBar.vue';
 
 const collapsed = ref(false)
 const activeKey = ref(null)
@@ -50,7 +51,8 @@ const menuOptions = tools.map(({ name, path, icon }) => ({
         </n-layout-sider>
         <n-layout class="content">
             <div class="bar-wrapper">
-                <n-input />
+                <search-bar />
+
                 <n-button secondary circle>
                     <n-icon size="large">
                         <user />
