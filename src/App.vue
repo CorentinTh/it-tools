@@ -5,16 +5,21 @@ import { computed } from 'vue';
 import { useRoute } from 'vue-router'
 
 import {
+  darkTheme,
   NConfigProvider,
   NGlobalStyle,
 } from 'naive-ui'
+import { useStyleStore } from './stores/style.store';
 
 const route = useRoute();
 const layout = computed(() => route?.meta?.layout ?? layouts.base)
+const styleStore = useStyleStore()
+
+const theme = computed(() => styleStore.isDarkTheme ? darkTheme : null)
 </script>
 
 <template>
-  <n-config-provider>
+  <n-config-provider :theme="theme">
     <n-global-style />
     <n-message-provider placement="bottom">
       <component :is="layout">

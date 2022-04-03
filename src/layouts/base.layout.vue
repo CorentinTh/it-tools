@@ -2,13 +2,15 @@
 import { NIcon } from 'naive-ui';
 import { h, ref, type Component } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
-import { User } from '@vicons/tabler'
+import { LightModeFilled, DarkModeFilled } from '@vicons/material'
 import { tools } from '@/tools';
 import SearchBar from '../components/SearchBar.vue';
+import { useStyleStore } from '@/stores/style.store';
 
 const collapsed = ref(false)
 const activeKey = ref(null)
 const route = useRoute()
+const styleStore = useStyleStore()
 
 const makeLabel = (text: string, to: string) => () => h(RouterLink, { to }, { default: () => text })
 const makeIcon = (icon: Component) => () => h(NIcon, null, { default: () => h(icon) })
@@ -53,9 +55,16 @@ const menuOptions = tools.map(({ name, path, icon }) => ({
             <div class="bar-wrapper">
                 <search-bar />
 
-                <n-button secondary circle>
-                    <n-icon size="large">
-                        <user />
+                <n-button
+                    circle
+                    quaternary
+                    @click="styleStore.isDarkTheme = !styleStore.isDarkTheme"
+                >
+                    <n-icon size="large" v-if="styleStore.isDarkTheme">
+                        <LightModeFilled />
+                    </n-icon>
+                    <n-icon size="large" v-else>
+                        <DarkModeFilled />
                     </n-icon>
                 </n-button>
             </div>
@@ -76,7 +85,7 @@ const menuOptions = tools.map(({ name, path, icon }) => ({
 }
 
 .content {
-    background-color: #f1f5f9;
+    // background-color: #f1f5f9;
     ::v-deep(.n-layout-scroll-container) {
         padding: 26px;
     }
