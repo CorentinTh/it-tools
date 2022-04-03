@@ -65,7 +65,7 @@ const clearText = ref('Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 const algo = ref<keyof typeof algos>('SHA256')
 const hashedText = computed(() => algos[algo.value](clearText.value).toString())
 
-const { copy } = useCopy({ source: hashedText, text: 'Token copied to the clipboard' })
+const { copy } = useCopy({ source: hashedText, text: 'Hash copied to the clipboard' })
 </script>
 
 <style lang="scss" scoped>
