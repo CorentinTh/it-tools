@@ -17,7 +17,7 @@
             <br />
             <n-input
                 style="text-align: center;"
-                v-model:value="hashedText"
+                :value="hashedText"
                 type="textarea"
                 placeholder="Your string hash"
                 :autosize="{ minRows: 1 }"
@@ -61,9 +61,9 @@ const algos = {
     RIPEMD160,
 } as const;
 
-const clearText = ref('Lorem ipsum')
-const hashedText = computed(() => algos[algo.value](clearText.value))
+const clearText = ref('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lacus metus blandit dolor lacus natoque ad fusce aliquam velit.')
 const algo = ref<keyof typeof algos>('SHA256')
+const hashedText = computed(() => algos[algo.value](clearText.value).toString())
 
 const { copy } = useCopy({ source: hashedText, text: 'Token copied to the clipboard' })
 </script>
