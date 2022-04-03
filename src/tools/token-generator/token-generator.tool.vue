@@ -1,71 +1,81 @@
 <template>
     <div>
-        <h1>Token generator</h1>
+        <n-card>
+            <n-form label-placement="left" label-width="140">
+                <n-space justify="center" item-style="padding: 0" :size="0">
+                    <div>
+                        <n-form-item label="Uppercase (ABC...)">
+                            <n-switch v-model:value="withUppercase" />
+                        </n-form-item>
 
-        <n-form label-placement="left" label-width="140">
-            <n-space justify="center" item-style="padding: 0" :size="0">
-                <div>
-                    <n-form-item label="Uppercase (ABC...)">
-                        <n-switch v-model:value="withUppercase" />
-                    </n-form-item>
+                        <n-form-item label="Lowercase (abc...)">
+                            <n-switch v-model:value="withLowercase" />
+                        </n-form-item>
+                    </div>
 
-                    <n-form-item label="Lowercase (abc...)">
-                        <n-switch v-model:value="withLowercase" />
-                    </n-form-item>
-                </div>
+                    <div>
+                        <n-form-item label="Numbers (012...)">
+                            <n-switch v-model:value="withNumbers" />
+                        </n-form-item>
 
-                <div>
-                    <n-form-item label="Numbers (012...)">
-                        <n-switch v-model:value="withNumbers" />
-                    </n-form-item>
+                        <n-form-item label="Symbols (;-!...)">
+                            <n-switch v-model:value="withSymbols" />
+                        </n-form-item>
+                    </div>
+                </n-space>
+            </n-form>
 
-                    <n-form-item label="Symbols (;-!...)">
-                        <n-switch v-model:value="withSymbols" />
-                    </n-form-item>
-                </div>
+            <n-form-item :label="`Length (${length})`" label-placement="left">
+                <n-slider v-model:value="length" :step="1" :min="1" :max="512" />
+            </n-form-item>
+
+            <n-input
+                style="text-align: center;"
+                v-model:value="token"
+                type="textarea"
+                placeholder="The token..."
+                :autosize="{ minRows: 1 }"
+                readonly
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="off"
+                spellcheck="false"
+            />
+            <br />
+            <br />
+            <n-space justify="center">
+                <n-button @click="copy" secondary autofocus>Copy</n-button>
+                <n-button @click="refreshToken" secondary>Refresh</n-button>
             </n-space>
-        </n-form>
-
-        <!-- <n-form-item label="Custom alphabet" label-placement="left">
-            <n-switch v-model:value="withAlphabet" />
-            <n-input v-model:value="customAlphabet" placeholder="Custom alphabet" />
-        </n-form-item>-->
-
-        <n-form-item :label="`Length (${length})`" label-placement="left">
-            <n-slider v-model:value="length" :step="1" :min="1" :max="512" />
-        </n-form-item>
-
-        <n-input v-model:value="token" type="textarea" placeholder="The token..." />
+        </n-card>
     </div>
 </template>
 
 <script setup lang="ts">
-import { shuffleString } from '@/utils/random';
+import { useCopy } from '@/composable/copy';
 import { ref, watch } from 'vue';
+import { createToken } from './token-generator.service';
+
 
 const token = ref('')
 const length = ref(64)
-const customAlphabet = ref('it-tools <3')
+const { copy } = useCopy({ source: token, text: 'Token copied to the clipboard' })
 
 const withUppercase = ref(true)
 const withLowercase = ref(true)
 const withNumbers = ref(true)
 const withSymbols = ref(false)
-const withAlphabet = ref(false)
 
-watch([withUppercase, withLowercase, withNumbers, withSymbols, length, customAlphabet, withAlphabet], refreshToken)
+watch([withUppercase, withLowercase, withNumbers, withSymbols, length], refreshToken)
 
 function refreshToken() {
-    const alphabet = withAlphabet.value
-        ? customAlphabet.value
-        : [
-            ...(withUppercase.value ? 'ABCDEFGHIJKLMOPQRSTUVWXYZ' : ''),
-            ...(withLowercase.value ? 'abcdefghijklmopqrstuvwxyz' : ''),
-            ...(withNumbers.value ? '0123456789' : ''),
-            ...(withSymbols.value ? '.,;:!?./-"\'#{([-|\\@)]=}*+' : '')
-        ].join('')
-
-    token.value = shuffleString(alphabet.repeat(length.value)).substring(0, length.value)
+    token.value = createToken({
+        length: length.value,
+        withUppercase: withUppercase.value,
+        withLowercase: withLowercase.value,
+        withNumbers: withNumbers.value,
+        withSymbols: withSymbols.value,
+    })
 }
 
 refreshToken()
