@@ -3,12 +3,13 @@ import type { ToolCategory } from './Tool';
 
 import { tool as tokenGenerator } from './token-generator';
 import { tool as hashText } from './hash-text';
+import { tool as uuidGenerator } from './uuid-generator';
 
 export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Crypto',
     icon: LockOpen,
-    components: [tokenGenerator, hashText],
+    components: [tokenGenerator, hashText, uuidGenerator],
   },
 ];
 
