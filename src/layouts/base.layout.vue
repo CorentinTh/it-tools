@@ -3,7 +3,7 @@ import { NIcon } from 'naive-ui';
 import { h, ref, type Component } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { LightModeFilled, DarkModeFilled } from '@vicons/material'
-import { tools } from '@/tools';
+import { toolsByCategory } from '@/tools';
 import SearchBar from '../components/SearchBar.vue';
 import { useStyleStore } from '@/stores/style.store';
 
@@ -15,11 +15,16 @@ const styleStore = useStyleStore()
 const makeLabel = (text: string, to: string) => () => h(RouterLink, { to }, { default: () => text })
 const makeIcon = (icon: Component) => () => h(NIcon, null, { default: () => h(icon) })
 
-const menuOptions = tools.map(({ name, path, icon }) => ({
-    label: makeLabel(name, path),
-    key: name,
-    icon: makeIcon(icon)
+const m = toolsByCategory.map(category => ({
+    label: category.name,
+    key: category.name,
+    type: 'group',
+    children: category.components.map(({ name, path, icon }) => ({
+        label: makeLabel(name, path),
+        icon: makeIcon(icon)
+    }))
 }))
+
 </script>
 
 <template>
@@ -47,7 +52,7 @@ const menuOptions = tools.map(({ name, path, icon }) => ({
                 :collapsed="collapsed"
                 :collapsed-width="64"
                 :collapsed-icon-size="22"
-                :options="menuOptions"
+                :options="m"
                 v-model:value="activeKey"
             />
         </n-layout-sider>
