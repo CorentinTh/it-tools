@@ -1,11 +1,21 @@
 <script setup lang="ts">
-
+import { toolsWithCategory } from '@/tools';
+import ToolCard from '../components/ToolCard.vue';
 </script>
 
 <template>
-    <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima velit nesciunt esse iusto explicabo? Corporis, optio inventore doloremque sed maxime repellendus debitis recusandae atque nulla corrupti cum sit molestiae ad.</div>
+    <div class="home-page">
+        <n-grid x-gap="12" y-gap="12" :cols="3">
+            <n-gi v-for="tool in toolsWithCategory" :key="tool.name">
+                <tool-card :tool="tool" />
+            </n-gi>
+        </n-grid>
+    </div>
 </template>
 
 
-<style scoped>
+<style scoped lang="less">
+.home-page {
+    padding-top: 50px;
+}
 </style>

@@ -39,10 +39,15 @@ import {
   NMessageProvider,
   NPageHeader,
   NResult,
+  NH3,
+  NEllipsis,
+  NTag,
 } from 'naive-ui';
 
 const components = [
+  NTag,
   NResult,
+  NEllipsis,
   NPageHeader,
   NMessageProvider,
   NLayout,
@@ -50,6 +55,7 @@ const components = [
   NMenu,
   NDropdown,
   NH2,
+  NH3,
   NP,
   NAlert,
   NTooltip,
