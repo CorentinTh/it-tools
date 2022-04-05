@@ -15,7 +15,6 @@
 <script setup lang="ts">
 import type { ITool } from '@/tools/Tool';
 import { toRefs, defineProps } from 'vue';
-import { ArrowRight } from '@vicons/tabler'
 
 const props = defineProps<{ tool: ITool & { category: string } }>()
 const { tool } = toRefs(props)
