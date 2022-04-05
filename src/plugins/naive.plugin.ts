@@ -38,9 +38,11 @@ import {
   NMenu,
   NMessageProvider,
   NPageHeader,
+  NResult,
 } from 'naive-ui';
 
 const components = [
+  NResult,
   NPageHeader,
   NMessageProvider,
   NLayout,
