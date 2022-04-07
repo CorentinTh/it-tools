@@ -21,7 +21,8 @@ const m = toolsByCategory.map(category => ({
     type: 'group',
     children: category.components.map(({ name, path, icon }) => ({
         label: makeLabel(name, path),
-        icon: makeIcon(icon)
+        icon: makeIcon(icon),
+        key: name
     }))
 }))
 
