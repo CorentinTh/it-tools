@@ -6,12 +6,13 @@ import { tool as hashText } from './hash-text';
 import { tool as uuidGenerator } from './uuid-generator';
 import { tool as romanNumeralConverter } from './roman-numeral-converter';
 import { tool as cypher } from './encryption';
+import { tool as bip39 } from './bip39-generator';
 
 export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Crypto',
     icon: LockOpen,
-    components: [tokenGenerator, hashText, uuidGenerator, cypher],
+    components: [tokenGenerator, hashText, uuidGenerator, cypher, bip39],
   },
   {
     name: 'Converter',

@@ -2,6 +2,9 @@ import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import { createHead } from '@vueuse/head';
 
+import { Buffer } from 'buffer';
+globalThis.Buffer = Buffer;
+
 import { naive } from './plugins/naive.plugin';
 
 import App from './App.vue';

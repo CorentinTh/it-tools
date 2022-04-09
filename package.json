@@ -18,6 +18,8 @@
     "@vicons/tabler": "^0.12.0",
     "@vueuse/core": "^8.2.1",
     "@vueuse/head": "^0.7.5",
+    "bip39": "^3.0.4",
+    "buffer": "^6.0.3",
     "crypto-js": "^4.1.1",
     "lodash": "^4.17.21",
     "naive-ui": "^2.27.0",
