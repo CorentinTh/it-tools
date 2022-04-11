@@ -7,6 +7,7 @@ import { tool as uuidGenerator } from './uuid-generator';
 import { tool as romanNumeralConverter } from './roman-numeral-converter';
 import { tool as cypher } from './encryption';
 import { tool as bip39 } from './bip39-generator';
+import { tool as dateTimeConverter } from './date-time-converter';
 
 export const toolsByCategory: ToolCategory[] = [
   {
@@ -17,7 +18,7 @@ export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Converter',
     icon: LockOpen,
-    components: [romanNumeralConverter],
+    components: [dateTimeConverter, romanNumeralConverter],
   },
 ];
 

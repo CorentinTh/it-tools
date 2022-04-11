@@ -44,9 +44,11 @@ import {
   NTag,
   NInputGroup,
   NInputGroupLabel,
+  NDivider,
 } from 'naive-ui';
 
 const components = [
+  NDivider,
   NInputGroup,
   NInputGroupLabel,
   NTag,
