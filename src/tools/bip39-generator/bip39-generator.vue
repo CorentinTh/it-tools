@@ -28,7 +28,6 @@
                     </n-form-item>
                 </n-gi>
             </n-grid>
-            <br>
             <n-form-item label="Passphrase (mnemonic):" :feedback="mnemonicValidation.message"
                 :validation-status="mnemonicValidation.status">
                 <n-input-group>
