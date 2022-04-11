@@ -110,7 +110,7 @@ const entropyValidation = useValidation({
             message: 'Entropy length should be >= 16, <= 32 and be a multiple of 4'
         },
         {
-            validator: (value) => /^[a-fA-f0-9]?$/.test(value),
+            validator: (value) => /^[a-fA-F0-9]*$/.test(value),
             message: 'Entropy should an hexadecimal number'
         }
     ]
