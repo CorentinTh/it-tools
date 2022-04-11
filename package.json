@@ -23,7 +23,7 @@
     "buffer": "^6.0.3",
     "crypto-js": "^4.1.1",
     "lodash": "^4.17.21",
-    "naive-ui": "^2.27.0",
+    "naive-ui": "^2.28.0",
     "pinia": "^2.0.11",
     "randombytes": "^2.1.0",
     "uuid": "^8.3.2",
