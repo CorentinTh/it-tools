@@ -42,9 +42,13 @@ import {
   NH3,
   NEllipsis,
   NTag,
+  NInputGroup,
+  NInputGroupLabel,
 } from 'naive-ui';
 
 const components = [
+  NInputGroup,
+  NInputGroupLabel,
   NTag,
   NResult,
   NEllipsis,
