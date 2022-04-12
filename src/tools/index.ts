@@ -8,6 +8,7 @@ import { tool as romanNumeralConverter } from './roman-numeral-converter';
 import { tool as cypher } from './encryption';
 import { tool as bip39 } from './bip39-generator';
 import { tool as dateTimeConverter } from './date-time-converter';
+import { tool as gitMemo } from './git-memo';
 
 export const toolsByCategory: ToolCategory[] = [
   {
@@ -19,6 +20,11 @@ export const toolsByCategory: ToolCategory[] = [
     name: 'Converter',
     icon: LockOpen,
     components: [dateTimeConverter, romanNumeralConverter],
+  },
+  {
+    name: 'Development',
+    icon: LockOpen,
+    components: [gitMemo],
   },
 ];
 
