@@ -1,8 +1,6 @@
 <template>
     <n-card>
-        <n-input :value="port" readonly style="text-align: center; font-family: monospace;" />
-        <br>
-        <br>
+        <div class="port">{{ port }}</div>
         <n-space justify="center">
             <n-button @click="copy" secondary>Copy</n-button>
             <n-button @click="refreshPort" secondary>Refresh</n-button>
@@ -27,5 +25,11 @@ refreshPort()
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
+.port {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 400;
+    margin: 10px 0 25px;
+}
 </style>
