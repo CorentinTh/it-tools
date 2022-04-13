@@ -10,6 +10,7 @@ import { tool as bip39 } from './bip39-generator';
 import { tool as dateTimeConverter } from './date-time-converter';
 import { tool as gitMemo } from './git-memo';
 import { tool as baseConverter } from './integer-base-converter';
+import { tool as urlEncoder } from './url-encoder';
 
 export const toolsByCategory: ToolCategory[] = [
   {
@@ -21,6 +22,11 @@ export const toolsByCategory: ToolCategory[] = [
     name: 'Converter',
     icon: LockOpen,
     components: [dateTimeConverter, baseConverter, romanNumeralConverter],
+  },
+  {
+    name: 'Web',
+    icon: LockOpen,
+    components: [urlEncoder],
   },
   {
     name: 'Development',
