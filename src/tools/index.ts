@@ -11,6 +11,7 @@ import { tool as dateTimeConverter } from './date-time-converter';
 import { tool as gitMemo } from './git-memo';
 import { tool as baseConverter } from './integer-base-converter';
 import { tool as urlEncoder } from './url-encoder';
+import { tool as randomPortGenerator } from './random-port-generator';
 
 export const toolsByCategory: ToolCategory[] = [
   {
@@ -31,7 +32,7 @@ export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Development',
     icon: LockOpen,
-    components: [gitMemo],
+    components: [gitMemo, randomPortGenerator],
   },
 ];
 
