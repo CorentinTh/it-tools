@@ -98,5 +98,5 @@ const decryptOutput = computed(() => algos[decryptAlgo.value].decrypt(decryptInp
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 </style>

@@ -143,5 +143,5 @@ const { copy: copyPassphrase } = useCopy({ source: passphrase, text: 'Passphrase
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 </style>

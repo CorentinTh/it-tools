@@ -68,5 +68,5 @@ const hashedText = computed(() => algos[algo.value](clearText.value).toString())
 const { copy } = useCopy({ source: hashedText, text: 'Hash copied to the clipboard' })
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 </style>

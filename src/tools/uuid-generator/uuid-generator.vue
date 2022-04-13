@@ -48,5 +48,5 @@ const { copy } = useCopy({ source: uuids, text: 'UUIDs copied to the clipboard' 
 refreshUUIDs()
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 </style>
