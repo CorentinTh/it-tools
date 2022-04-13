@@ -1,6 +1,7 @@
 import { LockOpen } from '@vicons/tabler';
 import type { ToolCategory } from './Tool';
 
+import { tool as textStatistics } from './text-statistics';
 import { tool as tokenGenerator } from './token-generator';
 import { tool as hashText } from './hash-text';
 import { tool as uuidGenerator } from './uuid-generator';
@@ -38,7 +39,7 @@ export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Text',
     icon: LockOpen,
-    components: [loremIpsumGenerator],
+    components: [loremIpsumGenerator, textStatistics],
   },
 ];
 
