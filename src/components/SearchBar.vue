@@ -32,7 +32,7 @@ function onSelect(path: string) {
 </script>
 
 <template>
-    <div>
+    <div class="search-bar">
         <n-auto-complete :options="options" v-model:value="queryString" :input-props="{ autocomplete: 'disabled' }"
             :on-select="onSelect">
             <template #default="{ handleInput, handleBlur, handleFocus, value: slotValue }">

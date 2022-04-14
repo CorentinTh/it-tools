@@ -49,9 +49,11 @@ import {
   NUploadDragger,
   NImage,
   NScrollbar,
+  NGradientText,
 } from 'naive-ui';
 
 const components = [
+  NGradientText,
   NScrollbar,
   NImage,
   NUploadDragger,
