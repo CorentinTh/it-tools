@@ -1,9 +1,7 @@
 <template>
     <router-link :to="tool.path">
         <n-card class="tool-card">
-            <n-icon class="icon" size="40">
-                <component :is="tool.icon" />
-            </n-icon>
+            <n-icon class="icon" size="40" :component="tool.icon" />
             <n-h3 class="title">
                 <n-ellipsis>{{ tool.name }}</n-ellipsis>
             </n-h3>
