@@ -30,42 +30,24 @@ const m = toolsByCategory.map(category => ({
 
 <template>
     <n-layout has-sider>
-        <n-layout-sider
-            bordered
-            collapse-mode="width"
-            :collapsed-width="64"
-            :width="240"
-            :collapsed="collapsed"
-            show-trigger
-            @collapse="collapsed = true"
-            @expand="collapsed = false"
-        >
-            <router-link
-                to="/"
-                style="text-decoration: none; color: grey; display: block; text-align: center; margin:25px 0; font-size: 25px;"
-            >
-                <strong>IT-Tools</strong>
-            </router-link>
+        <n-layout-sider bordered collapse-mode="width" :collapsed-width="64" :width="260" :collapsed="collapsed"
+            @collapse="collapsed = true" @expand="collapsed = false" :show-trigger="false">
+            <n-scrollbar>
+                <router-link to="/"
+                    style="text-decoration: none; color: grey; display: block; text-align: center; margin:25px 0; font-size: 25px;">
+                    <strong>IT-Tools</strong>
+                </router-link>
 
-            <n-menu
-                :value="route.name"
-                class="menu"
-                :collapsed="collapsed"
-                :collapsed-width="64"
-                :collapsed-icon-size="22"
-                :options="m"
-                v-model:value="activeKey"
-            />
+                <n-menu :value="route.name" class="menu" :collapsed="collapsed" :collapsed-width="64"
+                    :collapsed-icon-size="22" :options="m" v-model:value="activeKey" />
+
+            </n-scrollbar>
         </n-layout-sider>
         <n-layout class="content">
             <div class="bar-wrapper">
                 <search-bar />
 
-                <n-button
-                    circle
-                    quaternary
-                    @click="styleStore.isDarkTheme = !styleStore.isDarkTheme"
-                >
+                <n-button circle quaternary @click="styleStore.isDarkTheme = !styleStore.isDarkTheme">
                     <n-icon size="large" v-if="styleStore.isDarkTheme">
                         <LightModeFilled />
                     </n-icon>
@@ -82,20 +64,24 @@ const m = toolsByCategory.map(category => ({
 <style lang="less" scoped>
 .bar-wrapper {
     display: flex;
-    & > *:not(:first-child) {
+
+    &>*:not(:first-child) {
         margin-left: 15px;
     }
-    & > :first-child {
+
+    &> :first-child {
         flex-grow: 1;
     }
 }
 
 .content {
+
     // background-color: #f1f5f9;
     ::v-deep(.n-layout-scroll-container) {
         padding: 26px;
     }
 }
+
 .n-layout {
     height: 100vh;
 }
