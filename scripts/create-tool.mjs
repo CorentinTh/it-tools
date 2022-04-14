@@ -12,6 +12,7 @@ if (!toolName) {
 }
 
 const toolNameCamelCase = toolName.replace(/-./g, (x) => x[1].toUpperCase());
+const toolNameTitleCase = toolName[0].toUpperCase() + toolName.slice(1).replace(/-/g, ' ');
 const toolDir = join(toolsDir, toolName);
 
 await mkdir(toolDir);
@@ -48,7 +49,7 @@ import { ArrowsShuffle } from '@vicons/tabler';
 import type { ITool } from './../Tool';
 
 export const tool: ITool = {
-  name: '${toolName}',
+  name: '${toolNameTitleCase}',
   path: '/${toolName}',
   description: '',
   keywords: ['${toolName.split('-').join("', '")}'],
