@@ -47,9 +47,11 @@ import {
   NStatistic,
   NTable,
   NUploadDragger,
+  NImage,
 } from 'naive-ui';
 
 const components = [
+  NImage,
   NUploadDragger,
   NTable,
   NStatistic,

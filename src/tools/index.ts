@@ -1,6 +1,7 @@
 import { LockOpen } from '@vicons/tabler';
 import type { ToolCategory } from './Tool';
 
+import { tool as qrCodeGenerator } from './qr-code-generator';
 import { tool as base64Converter } from './base64-converter';
 import { tool as crontabGenerator } from './crontab-generator';
 import { tool as textStatistics } from './text-statistics';
@@ -31,7 +32,7 @@ export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Web',
     icon: LockOpen,
-    components: [urlEncoder],
+    components: [urlEncoder, qrCodeGenerator],
   },
   {
     name: 'Development',
