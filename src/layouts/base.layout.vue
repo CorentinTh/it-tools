@@ -3,7 +3,7 @@ import { NIcon } from 'naive-ui';
 import { h, ref, type Component } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { LightModeFilled, DarkModeFilled } from '@vicons/material'
-import { Heart } from '@vicons/tabler'
+import { Heart, BrandGithub } from '@vicons/tabler'
 import { toolsByCategory } from '@/tools';
 import SearchBar from '../components/SearchBar.vue';
 import { useStyleStore } from '@/stores/style.store';
@@ -61,13 +61,13 @@ const m = toolsByCategory.map(category => ({
                     <n-icon :component="Heart" />&nbsp;
                     Sponsor
                 </n-button>
+                <n-button circle quaternary tag="a" href="https://github.com/CorentinTh/it-tools" rel="noopener"
+                    target="_blank">
+                    <n-icon size="large" :component="BrandGithub" />
+                </n-button>
                 <n-button circle quaternary @click="styleStore.isDarkTheme = !styleStore.isDarkTheme">
-                    <n-icon size="large" v-if="styleStore.isDarkTheme">
-                        <LightModeFilled />
-                    </n-icon>
-                    <n-icon size="large" v-else>
-                        <DarkModeFilled />
-                    </n-icon>
+                    <n-icon size="large" v-if="styleStore.isDarkTheme" :component="LightModeFilled" />
+                    <n-icon size="large" v-else :component="DarkModeFilled" />
                 </n-button>
             </div>
             <slot />
