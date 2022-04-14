@@ -2,8 +2,7 @@
 import { NIcon } from 'naive-ui';
 import { h, ref, type Component } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
-import { LightModeFilled, DarkModeFilled } from '@vicons/material'
-import { Heart, BrandGithub, BrandTwitter } from '@vicons/tabler'
+import { Heart, BrandGithub, BrandTwitter, Moon, Sun } from '@vicons/tabler'
 import { toolsByCategory } from '@/tools';
 import SearchBar from '../components/SearchBar.vue';
 import { useStyleStore } from '@/stores/style.store';
@@ -61,16 +60,17 @@ const m = toolsByCategory.map(category => ({
                     <n-icon :component="Heart" />&nbsp;
                     Sponsor
                 </n-button>
-                <n-button circle quaternary tag="a" href="https://github.com/CorentinTh/it-tools" rel="noopener"
+                <n-button size="large" circle quaternary tag="a" href="https://github.com/CorentinTh/it-tools"
+                    rel="noopener" target="_blank">
+                    <n-icon size="25" :component="BrandGithub" />
+                </n-button>
+                <n-button size="large" circle quaternary tag="a" href="https://twitter.com/cthmsst" rel="noopener"
                     target="_blank">
-                    <n-icon size="large" :component="BrandGithub" />
+                    <n-icon size="25" :component="BrandTwitter" />
                 </n-button>
-                <n-button circle quaternary tag="a" href="https://twitter.com/cthmsst" rel="noopener" target="_blank">
-                    <n-icon size="large" :component="BrandTwitter" />
-                </n-button>
-                <n-button circle quaternary @click="styleStore.isDarkTheme = !styleStore.isDarkTheme">
-                    <n-icon size="large" v-if="styleStore.isDarkTheme" :component="LightModeFilled" />
-                    <n-icon size="large" v-else :component="DarkModeFilled" />
+                <n-button size="large" circle quaternary @click="styleStore.isDarkTheme = !styleStore.isDarkTheme">
+                    <n-icon size="25" v-if="styleStore.isDarkTheme" :component="Sun" />
+                    <n-icon size="25" v-else :component="Moon" />
                 </n-button>
             </div>
             <slot />
