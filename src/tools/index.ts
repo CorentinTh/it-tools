@@ -1,6 +1,7 @@
 import { LockOpen } from '@vicons/tabler';
 import type { ToolCategory } from './Tool';
 
+import { tool as base64Converter } from './base64-converter';
 import { tool as crontabGenerator } from './crontab-generator';
 import { tool as textStatistics } from './text-statistics';
 import { tool as tokenGenerator } from './token-generator';
@@ -25,7 +26,7 @@ export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Converter',
     icon: LockOpen,
-    components: [dateTimeConverter, baseConverter, romanNumeralConverter],
+    components: [dateTimeConverter, baseConverter, romanNumeralConverter, base64Converter],
   },
   {
     name: 'Web',

@@ -46,9 +46,11 @@ import {
   NDivider,
   NStatistic,
   NTable,
+  NUploadDragger,
 } from 'naive-ui';
 
 const components = [
+  NUploadDragger,
   NTable,
   NStatistic,
   NDivider,
