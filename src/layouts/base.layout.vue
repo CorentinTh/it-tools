@@ -76,6 +76,17 @@ const m = toolsByCategory.map(category => ({
 </template>
 
 <style lang="less" scoped>
+// ::v-deep(.n-layout-scroll-container) {
+//     @percent: 4%;
+//     @position: 25px;
+//     @size: 50px;
+//     @color: #eeeeee25;
+//     background-image: radial-gradient(@color @percent, transparent @percent),
+//         radial-gradient(@color @percent, transparent @percent);
+//     background-position: 0 0, @position @position;
+//     background-size: @size @size;
+// }
+
 .n-menu {
     padding-top: 160px;
     padding-bottom: 200px;
@@ -118,8 +129,6 @@ const m = toolsByCategory.map(category => ({
             font-size: 16px;
         }
     }
-
-
 }
 
 .bar-wrapper {
