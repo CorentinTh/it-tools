@@ -1,6 +1,7 @@
 import { LockOpen } from '@vicons/tabler';
 import type { ToolCategory } from './Tool';
 
+import { tool as crontabGenerator } from './crontab-generator';
 import { tool as textStatistics } from './text-statistics';
 import { tool as tokenGenerator } from './token-generator';
 import { tool as hashText } from './hash-text';
@@ -34,7 +35,7 @@ export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Development',
     icon: LockOpen,
-    components: [gitMemo, randomPortGenerator],
+    components: [gitMemo, randomPortGenerator, crontabGenerator],
   },
   {
     name: 'Text',
