@@ -45,19 +45,23 @@ useHead(head)
 
     .tool-header {
         padding: 40px 0;
+
         .n-h1 {
             opacity: 0.9;
             font-size: 40px;
             font-weight: 400;
             margin: 0;
+            line-height: 1;
         }
+
         .separator {
             width: 200px;
             height: 2px;
             background: rgb(161, 161, 161);
 
-            margin-bottom: 10px;
+            margin: 10px 0;
         }
+
         .description {
             margin: 0;
 
