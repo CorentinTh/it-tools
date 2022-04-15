@@ -1,30 +1,84 @@
 <template>
-    <n-card>
-        <n-form-item label="Paragraphs" :show-feedback="false" label-width="200" label-placement="left">
-            <n-slider v-model:value="paragraphs" :step="1" :min="1" :max="20" />
-        </n-form-item>
-        <n-form-item label="Sentences per paragraph" :show-feedback="false" label-width="200" label-placement="left">
-            <n-slider v-model:value="sentences" range :step="1" :min="1" :max="50" />
-        </n-form-item>
-        <n-form-item label="Words per sentence" :show-feedback="false" label-width="200" label-placement="left">
-            <n-slider v-model:value="words" range :step="1" :min="1" :max="50" />
-        </n-form-item>
-        <n-form-item label="Start with lorem ipsum ?" :show-feedback="false" label-width="200" label-placement="left">
-            <n-switch v-model:value="startWithLoremIpsum" />
-        </n-form-item>
-        <n-form-item label="As html ?" :show-feedback="false" label-width="200" label-placement="left">
-            <n-switch v-model:value="asHTML" />
-        </n-form-item>
+  <n-card>
+    <n-form-item
+      label="Paragraphs"
+      :show-feedback="false"
+      label-width="200"
+      label-placement="left"
+    >
+      <n-slider
+        v-model:value="paragraphs"
+        :step="1"
+        :min="1"
+        :max="20"
+      />
+    </n-form-item>
+    <n-form-item
+      label="Sentences per paragraph"
+      :show-feedback="false"
+      label-width="200"
+      label-placement="left"
+    >
+      <n-slider
+        v-model:value="sentences"
+        range
+        :step="1"
+        :min="1"
+        :max="50"
+      />
+    </n-form-item>
+    <n-form-item
+      label="Words per sentence"
+      :show-feedback="false"
+      label-width="200"
+      label-placement="left"
+    >
+      <n-slider
+        v-model:value="words"
+        range
+        :step="1"
+        :min="1"
+        :max="50"
+      />
+    </n-form-item>
+    <n-form-item
+      label="Start with lorem ipsum ?"
+      :show-feedback="false"
+      label-width="200"
+      label-placement="left"
+    >
+      <n-switch v-model:value="startWithLoremIpsum" />
+    </n-form-item>
+    <n-form-item
+      label="As html ?"
+      :show-feedback="false"
+      label-width="200"
+      label-placement="left"
+    >
+      <n-switch v-model:value="asHTML" />
+    </n-form-item>
 
-        <br>
+    <br>
 
-        <n-input :value="loremIpsumText" type="textarea" placeholder="Your lorem ipsum..." autosize readonly />
-        <br>
-        <br>
-        <n-space justify="center">
-            <n-button @click="copy" secondary autofocus>Copy</n-button>
-        </n-space>
-    </n-card>
+    <n-input
+      :value="loremIpsumText"
+      type="textarea"
+      placeholder="Your lorem ipsum..."
+      autosize
+      readonly
+    />
+    <br>
+    <br>
+    <n-space justify="center">
+      <n-button
+        secondary
+        autofocus
+        @click="copy"
+      >
+        Copy
+      </n-button>
+    </n-space>
+  </n-card>
 </template>
 
 <script setup lang="ts">

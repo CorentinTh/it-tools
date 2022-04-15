@@ -1,8 +1,16 @@
 <template>
   <n-card>
-    <n-form-item class="cron" :show-label="false" :feedback="cronValidation.message"
-      :validation-status="cronValidation.status">
-      <n-input v-model:value="cron" size="large" placeholder="* * * * *" />
+    <n-form-item
+      class="cron"
+      :show-label="false"
+      :feedback="cronValidation.message"
+      :validation-status="cronValidation.status"
+    >
+      <n-input
+        v-model:value="cron"
+        size="large"
+        placeholder="* * * * *"
+      />
     </n-form-item>
     <div class="cron-string">
       {{ cronString }}
@@ -11,8 +19,11 @@
     <n-divider />
 
     <n-space justify="center">
-
-      <n-form :show-feedback="false" label-width="170" label-placement="left">
+      <n-form
+        :show-feedback="false"
+        label-width="170"
+        label-placement="left"
+      >
         <n-form-item label="Verbose">
           <n-switch v-model:value="cronstrueConfig.verbose" />
         </n-form-item>
@@ -41,16 +52,28 @@
     <n-table size="small">
       <thead>
         <tr>
-          <th class="text-left" scope="col">
+          <th
+            class="text-left"
+            scope="col"
+          >
             Symbol
           </th>
-          <th class="text-left" scope="col">
+          <th
+            class="text-left"
+            scope="col"
+          >
             Meaning
           </th>
-          <th class="text-left" scope="col">
+          <th
+            class="text-left"
+            scope="col"
+          >
             Example
           </th>
-          <th class="text-left" scope="col">
+          <th
+            class="text-left"
+            scope="col"
+          >
             Equivalent
           </th>
         </tr>
@@ -152,7 +175,6 @@
         </tr>
       </tbody>
     </n-table>
-
   </n-card>
 </template>
 

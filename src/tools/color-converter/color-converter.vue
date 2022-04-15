@@ -1,30 +1,57 @@
 <template>
   <n-card>
-    <n-form label-width="100" label-placement="left">
+    <n-form
+      label-width="100"
+      label-placement="left"
+    >
       <n-form-item label="color picker:">
-        <n-color-picker v-model:value="hex" @update:value="(v: string) => onInputUpdated(v, 'hex')"
-          placement="bottom-end" />
+        <n-color-picker
+          v-model:value="hex"
+          placement="bottom-end"
+          @update:value="(v: string) => onInputUpdated(v, 'hex')"
+        />
       </n-form-item>
       <n-form-item label="color name:">
-        <n-input v-model:value="name" :on-input="(v: string) => onInputUpdated(v, 'name')" />
+        <n-input
+          v-model:value="name"
+          :on-input="(v: string) => onInputUpdated(v, 'name')"
+        />
       </n-form-item>
       <n-form-item label="hex:">
-        <n-input v-model:value="hex" :on-input="(v: string) => onInputUpdated(v, 'hex')" />
+        <n-input
+          v-model:value="hex"
+          :on-input="(v: string) => onInputUpdated(v, 'hex')"
+        />
       </n-form-item>
       <n-form-item label="rgb:">
-        <n-input v-model:value="rgb" :on-input="(v: string) => onInputUpdated(v, 'rgb')" />
+        <n-input
+          v-model:value="rgb"
+          :on-input="(v: string) => onInputUpdated(v, 'rgb')"
+        />
       </n-form-item>
       <n-form-item label="hsl:">
-        <n-input v-model:value="hsl" :on-input="(v: string) => onInputUpdated(v, 'hsl')" />
+        <n-input
+          v-model:value="hsl"
+          :on-input="(v: string) => onInputUpdated(v, 'hsl')"
+        />
       </n-form-item>
       <n-form-item label="hwb:">
-        <n-input v-model:value="hwb" :on-input="(v: string) => onInputUpdated(v, 'hwb')" />
+        <n-input
+          v-model:value="hwb"
+          :on-input="(v: string) => onInputUpdated(v, 'hwb')"
+        />
       </n-form-item>
       <n-form-item label="lch:">
-        <n-input v-model:value="lch" :on-input="(v: string) => onInputUpdated(v, 'lch')" />
+        <n-input
+          v-model:value="lch"
+          :on-input="(v: string) => onInputUpdated(v, 'lch')"
+        />
       </n-form-item>
       <n-form-item label="cmyk:">
-        <n-input v-model:value="cmyk" :on-input="(v: string) => onInputUpdated(v, 'cmyk')" />
+        <n-input
+          v-model:value="cmyk"
+          :on-input="(v: string) => onInputUpdated(v, 'cmyk')"
+        />
       </n-form-item>
     </n-form>
   </n-card>

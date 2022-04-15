@@ -1,15 +1,28 @@
 <template>
-    <n-layout has-sider>
-        <n-layout-sider bordered collapse-mode="width" :collapsed-width="0" :width="240" :collapsed="isMenuCollapsed"
-            @collapse="isMenuCollapsed = true" @expand="isMenuCollapsed = false" :show-trigger="false"
-            :native-scrollbar="false" :position="siderPosition">
-            <slot name="sider" />
-        </n-layout-sider>
-        <n-layout class="content">
-            <slot name="content" />
-            <div class="overlay" v-show="isSmallScreen && !isMenuCollapsed" @click="isMenuCollapsed = true" />
-        </n-layout>
+  <n-layout has-sider>
+    <n-layout-sider
+      bordered
+      collapse-mode="width"
+      :collapsed-width="0"
+      :width="240"
+      :collapsed="isMenuCollapsed"
+      :show-trigger="false"
+      :native-scrollbar="false"
+      :position="siderPosition"
+      @collapse="isMenuCollapsed = true"
+      @expand="isMenuCollapsed = false"
+    >
+      <slot name="sider" />
+    </n-layout-sider>
+    <n-layout class="content">
+      <slot name="content" />
+      <div
+        v-show="isSmallScreen && !isMenuCollapsed"
+        class="overlay"
+        @click="isMenuCollapsed = true"
+      />
     </n-layout>
+  </n-layout>
 </template>
 
 <script setup lang="ts">

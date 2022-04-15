@@ -24,17 +24,19 @@ useHead(head)
 </script>
 
 <template>
-    <base-layout>
-        <div class="tool-layout">
-            <div class="tool-header">
-                <n-h1>{{ route.meta.name }}</n-h1>
-                <div class="separator" />
-                <div class="description">{{ route.meta.description }}</div>
-            </div>
-
-            <slot />
+  <base-layout>
+    <div class="tool-layout">
+      <div class="tool-header">
+        <n-h1>{{ route.meta.name }}</n-h1>
+        <div class="separator" />
+        <div class="description">
+          {{ route.meta.description }}
         </div>
-    </base-layout>
+      </div>
+
+      <slot />
+    </div>
+  </base-layout>
 </template>
 
 <style lang="less" scoped>

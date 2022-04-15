@@ -20,7 +20,10 @@ const themeOverrides = computed(() => styleStore.isDarkTheme ? darkThemeOverride
 </script>
 
 <template>
-  <n-config-provider :theme="theme" :theme-overrides="themeOverrides">
+  <n-config-provider
+    :theme="theme"
+    :theme-overrides="themeOverrides"
+  >
     <n-global-style />
     <n-message-provider placement="bottom">
       <component :is="layout">

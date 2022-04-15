@@ -32,19 +32,30 @@ function onSelect(path: string) {
 </script>
 
 <template>
-    <div class="search-bar">
-        <n-auto-complete :options="options" v-model:value="queryString" :input-props="{ autocomplete: 'disabled' }"
-            :on-select="onSelect">
-            <template #default="{ handleInput, handleBlur, handleFocus, value: slotValue }">
-                <n-input round clearable placeholder="Search a tool..." :value="slotValue" @input="handleInput"
-                    @focus="handleFocus" @blur="handleBlur">
-                    <template #prefix>
-                        <n-icon :component="SearchRound" />
-                    </template>
-                </n-input>
-            </template>
-        </n-auto-complete>
-    </div>
+  <div class="search-bar">
+    <n-auto-complete
+      v-model:value="queryString"
+      :options="options"
+      :input-props="{ autocomplete: 'disabled' }"
+      :on-select="onSelect"
+    >
+      <template #default="{ handleInput, handleBlur, handleFocus, value: slotValue }">
+        <n-input
+          round
+          clearable
+          placeholder="Search a tool..."
+          :value="slotValue"
+          @input="handleInput"
+          @focus="handleFocus"
+          @blur="handleBlur"
+        >
+          <template #prefix>
+            <n-icon :component="SearchRound" />
+          </template>
+        </n-input>
+      </template>
+    </n-auto-complete>
+  </div>
 </template>
 
 

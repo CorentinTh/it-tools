@@ -1,31 +1,50 @@
 <template>
-    <div>
-        <n-card>
-            <n-space justify="center">
-                <n-form-item label="Use current date-time ?" label-placement="left" :show-feedback="false">
-                    <n-switch v-model:value="useCurrentDate" />
-                </n-form-item>
-            </n-space>
-            <n-form-item :feedback="inputInvalid ? 'Invalid date for the current format' : ''"
-                :validation-status="inputInvalid ? 'error' : undefined">
-                <n-input-group style="flex-grow: 1;">
-                    <n-select v-model:value="inputFormat" style="width: 200px;"
-                        :options="formats.map(({ name }, i) => ({ label: name, value: i }))"
-                        :disabled="useCurrentDate" />
+  <div>
+    <n-card>
+      <n-space justify="center">
+        <n-form-item
+          label="Use current date-time ?"
+          label-placement="left"
+          :show-feedback="false"
+        >
+          <n-switch v-model:value="useCurrentDate" />
+        </n-form-item>
+      </n-space>
+      <n-form-item
+        :feedback="inputInvalid ? 'Invalid date for the current format' : ''"
+        :validation-status="inputInvalid ? 'error' : undefined"
+      >
+        <n-input-group style="flex-grow: 1;">
+          <n-select
+            v-model:value="inputFormat"
+            style="width: 200px;"
+            :options="formats.map(({ name }, i) => ({ label: name, value: i }))"
+            :disabled="useCurrentDate"
+          />
 
-                    <n-input v-model:value="inputDate" :on-input="onDateInputChanged" :disabled="useCurrentDate"
-                        placeholder="Your date string..." />
-                </n-input-group>
-            </n-form-item>
-            <n-divider style="margin-top: 0;"></n-divider>
-            <div v-for="{ name, fromDate } in formats" :key="name" style="margin: 5px 0;">
-                <n-input-group>
-                    <n-input-group-label style="width: 150px;">{{ name }}</n-input-group-label>
-                    <n-input :value="fromDate(date)" />
-                </n-input-group>
-            </div>
-        </n-card>
-    </div>
+          <n-input
+            v-model:value="inputDate"
+            :on-input="onDateInputChanged"
+            :disabled="useCurrentDate"
+            placeholder="Your date string..."
+          />
+        </n-input-group>
+      </n-form-item>
+      <n-divider style="margin-top: 0;" />
+      <div
+        v-for="{ name, fromDate } in formats"
+        :key="name"
+        style="margin: 5px 0;"
+      >
+        <n-input-group>
+          <n-input-group-label style="width: 150px;">
+            {{ name }}
+          </n-input-group-label>
+          <n-input :value="fromDate(date)" />
+        </n-input-group>
+      </div>
+    </n-card>
+  </div>
 </template>
 
 <script setup lang="ts">

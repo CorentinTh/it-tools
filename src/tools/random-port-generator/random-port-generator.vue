@@ -1,11 +1,23 @@
 <template>
-    <n-card>
-        <div class="port">{{ port }}</div>
-        <n-space justify="center">
-            <n-button @click="copy" secondary>Copy</n-button>
-            <n-button @click="refreshPort" secondary>Refresh</n-button>
-        </n-space>
-    </n-card>
+  <n-card>
+    <div class="port">
+      {{ port }}
+    </div>
+    <n-space justify="center">
+      <n-button
+        secondary
+        @click="copy"
+      >
+        Copy
+      </n-button>
+      <n-button
+        secondary
+        @click="refreshPort"
+      >
+        Refresh
+      </n-button>
+    </n-space>
+  </n-card>
 </template>
 
 <script setup lang="ts">

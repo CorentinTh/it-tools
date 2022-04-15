@@ -1,15 +1,24 @@
 <template>
-    <router-link :to="tool.path">
-        <n-card class="tool-card">
-            <n-icon class="icon" size="40" :component="tool.icon" />
-            <n-h3 class="title">
-                <n-ellipsis>{{ tool.name }}</n-ellipsis>
-            </n-h3>
-            <div class="description">
-                <n-ellipsis :line-clamp="2" :tooltip="false">{{ tool.description }}</n-ellipsis>
-            </div>
-        </n-card>
-    </router-link>
+  <router-link :to="tool.path">
+    <n-card class="tool-card">
+      <n-icon
+        class="icon"
+        size="40"
+        :component="tool.icon"
+      />
+      <n-h3 class="title">
+        <n-ellipsis>{{ tool.name }}</n-ellipsis>
+      </n-h3>
+      <div class="description">
+        <n-ellipsis
+          :line-clamp="2"
+          :tooltip="false"
+        >
+          {{ tool.description }}
+        </n-ellipsis>
+      </div>
+    </n-card>
+  </router-link>
 </template>
 
 <script setup lang="ts">

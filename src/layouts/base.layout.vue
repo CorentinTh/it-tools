@@ -32,84 +32,199 @@ const m = toolsByCategory.map(category => ({
 </script>
 
 <template>
-    <menu-layout class="menu-layout" :class="{ isSmallScreen: styleStore.isSmallScreen }">
+  <menu-layout
+    class="menu-layout"
+    :class="{ isSmallScreen: styleStore.isSmallScreen }"
+  >
+    <template #sider>
+      <router-link
+        to="/"
+        class="hero-wrapper"
+      >
+        <hero-gradient class="gradient" />
+        <div class="text-wrapper">
+          <div class="title">
+            IT - TOOLS
+          </div>
+          <div class="divider" />
+          <div class="subtitle">
+            Handy tools for developers
+          </div>
+        </div>
+      </router-link>
 
-        <template v-slot:sider>
-            <router-link to="/" class="hero-wrapper">
-                <hero-gradient class="gradient" />
-                <div class="text-wrapper">
-                    <div class="title">IT - TOOLS</div>
-                    <div class="divider" />
-                    <div class="subtitle">Handy tools for developers</div>
-                </div>
-            </router-link>
+      <div class="sider-content">
+        <n-space
+          v-if="styleStore.isSmallScreen"
+          justify="center"
+        >
+          <n-button
+            size="large"
+            circle
+            quaternary
+            tag="a"
+            href="https://github.com/CorentinTh/it-tools"
+            rel="noopener"
+            target="_blank"
+          >
+            <n-icon
+              size="25"
+              :component="BrandGithub"
+            />
+          </n-button>
+          <n-button
+            size="large"
+            circle
+            quaternary
+            tag="a"
+            href="https://twitter.com/cthmsst"
+            rel="noopener"
+            target="_blank"
+          >
+            <n-icon
+              size="25"
+              :component="BrandTwitter"
+            />
+          </n-button>
+          <n-button
+            size="large"
+            circle
+            quaternary
+            @click="styleStore.isDarkTheme = !styleStore.isDarkTheme"
+          >
+            <n-icon
+              v-if="styleStore.isDarkTheme"
+              size="25"
+              :component="Sun"
+            />
+            <n-icon
+              v-else
+              size="25"
+              :component="Moon"
+            />
+          </n-button>
+        </n-space>
 
-            <div class="sider-content">
-                <n-space v-if="styleStore.isSmallScreen" justify="center">
-                    <n-button size="large" circle quaternary tag="a" href="https://github.com/CorentinTh/it-tools"
-                        rel="noopener" target="_blank">
-                        <n-icon size="25" :component="BrandGithub" />
-                    </n-button>
-                    <n-button size="large" circle quaternary tag="a" href="https://twitter.com/cthmsst" rel="noopener"
-                        target="_blank">
-                        <n-icon size="25" :component="BrandTwitter" />
-                    </n-button>
-                    <n-button size="large" circle quaternary @click="styleStore.isDarkTheme = !styleStore.isDarkTheme">
-                        <n-icon size="25" v-if="styleStore.isDarkTheme" :component="Sun" />
-                        <n-icon size="25" v-else :component="Moon" />
-                    </n-button>
-                </n-space>
+        <n-menu
+          v-model:value="activeKey"
+          :value="route.name"
+          class="menu"
+          :collapsed-width="64"
+          :collapsed-icon-size="22"
+          :options="m"
+          :indent="20"
+        />
+      </div>
+    </template>
 
-                <n-menu :value="route.name" class="menu" :collapsed-width="64" :collapsed-icon-size="22" :options="m"
-                    v-model:value="activeKey" :indent="20" />
+    <template #content>
+      <div class="navigation">
+        <n-button
+          :size="styleStore.isSmallScreen ? 'medium' : 'large'"
+          circle
+          quaternary
+          aria-label="Toogle menu"
+          @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed"
+        >
+          <n-icon
+            size="25"
+            :component="Menu2"
+          />
+        </n-button>
 
-            </div>
+        <router-link
+          to="/"
+          #="{ navigate, href }"
+          custom
+        >
+          <n-button
+            tag="a"
+            :href="href"
+            :size="styleStore.isSmallScreen ? 'medium' : 'large'"
+            circle
+            quaternary
+            aria-label="Home"
+            @click="navigate"
+          >
+            <n-icon
+              size="25"
+              :component="Home2"
+            />
+          </n-button>
+        </router-link>
+
+        <search-bar />
 
 
-        </template>
-
-        <template v-slot:content>
-            <div class="navigation">
-                <n-button :size="styleStore.isSmallScreen ? 'medium' : 'large'" circle quaternary
-                    @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed" aria-label="Toogle menu">
-                    <n-icon size="25" :component="Menu2" />
-                </n-button>
-
-                <router-link to="/" #="{ navigate, href }" custom>
-                    <n-button tag="a" :href="href" @click="navigate"
-                        :size="styleStore.isSmallScreen ? 'medium' : 'large'" circle quaternary aria-label="Home">
-                        <n-icon size="25" :component="Home2" />
-                    </n-button>
-                </router-link>
-
-                <search-bar />
-
-
-                <n-button type="primary" tag="a" href="https://github.com/sponsors/CorentinTh" rel="noopener"
-                    target="_blank">
-                    <n-icon :component="Heart" style="margin-right: 5px;" v-if="!styleStore.isSmallScreen" />
-                    Sponsor
-                </n-button>
-                <n-button size="large" circle quaternary tag="a" href="https://github.com/CorentinTh/it-tools"
-                    rel="noopener" target="_blank" v-if="!styleStore.isSmallScreen" aria-label="Github repository">
-                    <n-icon size="25" :component="BrandGithub" />
-                </n-button>
-                <n-button size="large" circle quaternary tag="a" href="https://twitter.com/cthmsst" rel="noopener"
-                    target="_blank" v-if="!styleStore.isSmallScreen" aria-label="Twitter account">
-                    <n-icon size="25" :component="BrandTwitter" />
-                </n-button>
-                <n-button size="large" circle quaternary @click="styleStore.isDarkTheme = !styleStore.isDarkTheme"
-                    v-if="!styleStore.isSmallScreen" aria-label="Toogle theme">
-                    <n-icon size="25" v-if="styleStore.isDarkTheme" :component="Sun" />
-                    <n-icon size="25" v-else :component="Moon" />
-                </n-button>
-
-            </div>
-            <slot />
-
-        </template>
-
-    </menu-layout>
+        <n-button
+          type="primary"
+          tag="a"
+          href="https://github.com/sponsors/CorentinTh"
+          rel="noopener"
+          target="_blank"
+        >
+          <n-icon
+            v-if="!styleStore.isSmallScreen"
+            :component="Heart"
+            style="margin-right: 5px;"
+          />
+          Sponsor
+        </n-button>
+        <n-button
+          v-if="!styleStore.isSmallScreen"
+          size="large"
+          circle
+          quaternary
+          tag="a"
+          href="https://github.com/CorentinTh/it-tools"
+          rel="noopener"
+          target="_blank"
+          aria-label="Github repository"
+        >
+          <n-icon
+            size="25"
+            :component="BrandGithub"
+          />
+        </n-button>
+        <n-button
+          v-if="!styleStore.isSmallScreen"
+          size="large"
+          circle
+          quaternary
+          tag="a"
+          href="https://twitter.com/cthmsst"
+          rel="noopener"
+          target="_blank"
+          aria-label="Twitter account"
+        >
+          <n-icon
+            size="25"
+            :component="BrandTwitter"
+          />
+        </n-button>
+        <n-button
+          v-if="!styleStore.isSmallScreen"
+          size="large"
+          circle
+          quaternary
+          aria-label="Toogle theme"
+          @click="styleStore.isDarkTheme = !styleStore.isDarkTheme"
+        >
+          <n-icon
+            v-if="styleStore.isDarkTheme"
+            size="25"
+            :component="Sun"
+          />
+          <n-icon
+            v-else
+            size="25"
+            :component="Moon"
+          />
+        </n-button>
+      </div>
+      <slot />
+    </template>
+  </menu-layout>
 </template>
 
 <style lang="less" scoped>

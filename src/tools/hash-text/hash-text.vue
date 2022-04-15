@@ -1,39 +1,45 @@
 <template>
-    <div>
-        <n-card>
-            <n-input
-                v-model:value="clearText"
-                type="textarea"
-                placeholder="Your string..."
-                :autosize="{ minRows: 3 }"
-            />
-            <br />
-            <br />
-            <n-select
-                v-model:value="algo"
-                :options="Object.keys(algos).map(label => ({ label, value: label }))"
-            />
+  <div>
+    <n-card>
+      <n-input
+        v-model:value="clearText"
+        type="textarea"
+        placeholder="Your string..."
+        :autosize="{ minRows: 3 }"
+      />
+      <br>
+      <br>
+      <n-select
+        v-model:value="algo"
+        :options="Object.keys(algos).map(label => ({ label, value: label }))"
+      />
 
-            <br />
-            <n-input
-                style="text-align: center;"
-                :value="hashedText"
-                type="textarea"
-                placeholder="Your string hash"
-                :autosize="{ minRows: 1 }"
-                readonly
-                autocomplete="off"
-                autocorrect="off"
-                autocapitalize="off"
-                spellcheck="false"
-            />
-            <br />
-            <br />
-            <n-space justify="center">
-                <n-button @click="copy" secondary autofocus>Copy</n-button>
-            </n-space>
-        </n-card>
-    </div>
+      <br>
+      <n-input
+        style="text-align: center;"
+        :value="hashedText"
+        type="textarea"
+        placeholder="Your string hash"
+        :autosize="{ minRows: 1 }"
+        readonly
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+      />
+      <br>
+      <br>
+      <n-space justify="center">
+        <n-button
+          secondary
+          autofocus
+          @click="copy"
+        >
+          Copy
+        </n-button>
+      </n-space>
+    </n-card>
+  </div>
 </template>
 
 <script setup lang="ts">

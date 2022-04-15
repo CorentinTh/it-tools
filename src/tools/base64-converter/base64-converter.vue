@@ -1,17 +1,39 @@
 <template>
   <n-card title="Text to base64">
-    <n-input v-model:value="textInput" type="textarea" placeholder="Put your string here..." />
-    <n-input :value="textBase64" type="textarea" readonly />
+    <n-input
+      v-model:value="textInput"
+      type="textarea"
+      placeholder="Put your string here..."
+    />
+    <n-input
+      :value="textBase64"
+      type="textarea"
+      readonly
+    />
     <n-space justify="center">
-      <n-button @click="copyTextBase64()" secondary>Copy</n-button>
+      <n-button
+        secondary
+        @click="copyTextBase64()"
+      >
+        Copy
+      </n-button>
     </n-space>
   </n-card>
 
   <n-card title="File to base64">
-    <n-upload :show-file-list="true" :on-before-upload="onUpload" list-type="image" v-model:file-list="fileList">
+    <n-upload
+      v-model:file-list="fileList"
+      :show-file-list="true"
+      :on-before-upload="onUpload"
+      list-type="image"
+    >
       <n-upload-dragger>
         <div style="margin-bottom: 12px">
-          <n-icon size="35" :depth="3" :component="Upload" />
+          <n-icon
+            size="35"
+            :depth="3"
+            :component="Upload"
+          />
         </div>
         <n-text style="font-size: 14px">
           Click or drag a file to this area to upload
@@ -19,12 +41,20 @@
       </n-upload-dragger>
     </n-upload>
 
-    <n-input :value="fileBase64" type="textarea" readonly />
+    <n-input
+      :value="fileBase64"
+      type="textarea"
+      readonly
+    />
     <n-space justify="center">
-      <n-button @click="copyFileBase64()" secondary>Copy</n-button>
+      <n-button
+        secondary
+        @click="copyFileBase64()"
+      >
+        Copy
+      </n-button>
     </n-space>
   </n-card>
-
 </template>
 
 <script setup lang="ts">
