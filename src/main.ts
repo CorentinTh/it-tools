@@ -1,6 +1,9 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import { createHead } from '@vueuse/head';
+import { registerSW } from 'virtual:pwa-register';
+
+registerSW();
 
 import { Buffer } from 'buffer';
 globalThis.Buffer = Buffer;

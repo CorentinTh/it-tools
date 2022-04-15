@@ -1,6 +1,6 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "**/*.d.ts"],
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "**/*.d.ts", "node_modules/vite-plugin-pwa/client.d.ts"],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "lib": ["ES2021"],
