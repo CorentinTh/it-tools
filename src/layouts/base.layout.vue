@@ -34,23 +34,20 @@ const m = toolsByCategory.map(category => ({
 <template>
     <n-layout has-sider>
         <n-layout-sider bordered collapse-mode="width" :collapsed-width="64" :width="260" :collapsed="collapsed"
-            @collapse="collapsed = true" @expand="collapsed = false" :show-trigger="false">
-            <n-scrollbar>
+            @collapse="collapsed = true" @expand="collapsed = false" :show-trigger="false" :native-scrollbar="false">
 
-                <router-link to="/" class="hero-wrapper">
-                    <hero-gradient class="gradient" />
-                    <div class="text-wrapper">
-                        <div class="title">IT - TOOLS</div>
-                        <div class="divider" />
-                        <div class="subtitle">Handy tools for developers</div>
-                    </div>
-                </router-link>
+            <router-link to="/" class="hero-wrapper">
+                <hero-gradient class="gradient" />
+                <div class="text-wrapper">
+                    <div class="title">IT - TOOLS</div>
+                    <div class="divider" />
+                    <div class="subtitle">Handy tools for developers</div>
+                </div>
+            </router-link>
 
-                <n-menu :value="route.name" class="menu" :collapsed="collapsed" :collapsed-width="64"
-                    :collapsed-icon-size="22" :options="m" v-model:value="activeKey" />
+            <n-menu :value="route.name" class="menu" :collapsed="collapsed" :collapsed-width="64"
+                :collapsed-icon-size="22" :options="m" v-model:value="activeKey" />
 
-
-            </n-scrollbar>
         </n-layout-sider>
         <n-layout class="content">
             <div class="bar-wrapper">
