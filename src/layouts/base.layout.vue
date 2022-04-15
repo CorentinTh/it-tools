@@ -71,13 +71,13 @@ const m = toolsByCategory.map(category => ({
         <template v-slot:content>
             <div class="navigation">
                 <n-button :size="styleStore.isSmallScreen ? 'medium' : 'large'" circle quaternary
-                    @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed">
+                    @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed" aria-label="Toogle menu">
                     <n-icon size="25" :component="Menu2" />
                 </n-button>
 
                 <router-link to="/" #="{ navigate, href }" custom>
                     <n-button tag="a" :href="href" @click="navigate"
-                        :size="styleStore.isSmallScreen ? 'medium' : 'large'" circle quaternary>
+                        :size="styleStore.isSmallScreen ? 'medium' : 'large'" circle quaternary aria-label="Home">
                         <n-icon size="25" :component="Home2" />
                     </n-button>
                 </router-link>
@@ -91,15 +91,15 @@ const m = toolsByCategory.map(category => ({
                     Sponsor
                 </n-button>
                 <n-button size="large" circle quaternary tag="a" href="https://github.com/CorentinTh/it-tools"
-                    rel="noopener" target="_blank" v-if="!styleStore.isSmallScreen">
+                    rel="noopener" target="_blank" v-if="!styleStore.isSmallScreen" aria-label="Github repository">
                     <n-icon size="25" :component="BrandGithub" />
                 </n-button>
                 <n-button size="large" circle quaternary tag="a" href="https://twitter.com/cthmsst" rel="noopener"
-                    target="_blank" v-if="!styleStore.isSmallScreen">
+                    target="_blank" v-if="!styleStore.isSmallScreen" aria-label="Twitter account">
                     <n-icon size="25" :component="BrandTwitter" />
                 </n-button>
                 <n-button size="large" circle quaternary @click="styleStore.isDarkTheme = !styleStore.isDarkTheme"
-                    v-if="!styleStore.isSmallScreen">
+                    v-if="!styleStore.isSmallScreen" aria-label="Toogle theme">
                     <n-icon size="25" v-if="styleStore.isDarkTheme" :component="Sun" />
                     <n-icon size="25" v-else :component="Moon" />
                 </n-button>
