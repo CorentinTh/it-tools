@@ -12,43 +12,43 @@
         />
       </n-form-item>
       <n-form-item label="color name:">
-        <n-input
+        <input-copyable
           v-model:value="name"
           :on-input="(v: string) => onInputUpdated(v, 'name')"
         />
       </n-form-item>
       <n-form-item label="hex:">
-        <n-input
+        <input-copyable
           v-model:value="hex"
           :on-input="(v: string) => onInputUpdated(v, 'hex')"
         />
       </n-form-item>
       <n-form-item label="rgb:">
-        <n-input
+        <input-copyable
           v-model:value="rgb"
           :on-input="(v: string) => onInputUpdated(v, 'rgb')"
         />
       </n-form-item>
       <n-form-item label="hsl:">
-        <n-input
+        <input-copyable
           v-model:value="hsl"
           :on-input="(v: string) => onInputUpdated(v, 'hsl')"
         />
       </n-form-item>
       <n-form-item label="hwb:">
-        <n-input
+        <input-copyable
           v-model:value="hwb"
           :on-input="(v: string) => onInputUpdated(v, 'hwb')"
         />
       </n-form-item>
       <n-form-item label="lch:">
-        <n-input
+        <input-copyable
           v-model:value="lch"
           :on-input="(v: string) => onInputUpdated(v, 'lch')"
         />
       </n-form-item>
       <n-form-item label="cmyk:">
-        <n-input
+        <input-copyable
           v-model:value="cmyk"
           :on-input="(v: string) => onInputUpdated(v, 'cmyk')"
         />
@@ -60,6 +60,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { colord, extend } from "colord";
+import InputCopyable from "../../components/InputCopyable.vue";
 
 import cmykPlugin from "colord/plugins/cmyk";
 import hwbPlugin from "colord/plugins/hwb";

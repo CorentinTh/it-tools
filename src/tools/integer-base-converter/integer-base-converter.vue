@@ -28,7 +28,7 @@
         <n-input-group-label style="width: 200px;">
           Binary (2):
         </n-input-group-label>
-        <n-input
+        <input-copyable
           :value="convertBase({ value: String(inputNumber), fromBase: inputBase, toBase: 2 })"
           readonly
         />
@@ -38,7 +38,7 @@
         <n-input-group-label style="width: 200px;">
           Octale (8):
         </n-input-group-label>
-        <n-input
+        <input-copyable
           :value="convertBase({ value: String(inputNumber), fromBase: inputBase, toBase: 8 })"
           readonly
         />
@@ -48,7 +48,7 @@
         <n-input-group-label style="width: 200px;">
           Decimal (10):
         </n-input-group-label>
-        <n-input
+        <input-copyable
           :value="convertBase({ value: String(inputNumber), fromBase: inputBase, toBase: 10 })"
           readonly
         />
@@ -58,7 +58,7 @@
         <n-input-group-label style="width: 200px;">
           Hexadecimal (16):
         </n-input-group-label>
-        <n-input
+        <input-copyable
           :value="convertBase({ value: String(inputNumber), fromBase: inputBase, toBase: 16 })"
           readonly
         />
@@ -68,7 +68,7 @@
         <n-input-group-label style="width: 200px;">
           Base64 (64):
         </n-input-group-label>
-        <n-input
+        <input-copyable
           :value="convertBase({ value: String(inputNumber), fromBase: inputBase, toBase: 64 })"
           readonly
         />
@@ -83,7 +83,7 @@
           max="64"
           min="2"
         />
-        <n-input
+        <input-copyable
           :value="convertBase({ value: String(inputNumber), fromBase: inputBase, toBase: outputBase })"
           readonly
         />
@@ -95,6 +95,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { convertBase } from './integer-base-converter.model'
+import InputCopyable from "../../components/InputCopyable.vue";
 
 const inputNumber = ref(42)
 const inputBase = ref(10)

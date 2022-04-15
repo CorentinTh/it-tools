@@ -40,7 +40,7 @@
           <n-input-group-label style="width: 150px;">
             {{ name }}
           </n-input-group-label>
-          <n-input :value="fromDate(date)" />
+          <input-copyable :value="fromDate(date)" />
         </n-input-group>
       </div>
     </n-card>
@@ -51,6 +51,7 @@
 import { useRafFn } from '@vueuse/core';
 import { formatISO, formatISO9075, formatRFC3339, formatRFC7231, fromUnixTime, getTime, getUnixTime, isDate, parseISO, parseJSON } from 'date-fns';
 import { ref } from 'vue'
+import InputCopyable from "../../components/InputCopyable.vue";
 
 const useCurrentDate = ref(true)
 const inputDate = ref('')
