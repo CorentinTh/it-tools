@@ -20,6 +20,9 @@
       <n-form-item label="hwb:">
         <n-input v-model:value="hwb" :on-input="(v: string) => onInputUpdated(v, 'hwb')" />
       </n-form-item>
+      <n-form-item label="lch:">
+        <n-input v-model:value="lch" :on-input="(v: string) => onInputUpdated(v, 'lch')" />
+      </n-form-item>
       <n-form-item label="cmyk:">
         <n-input v-model:value="cmyk" :on-input="(v: string) => onInputUpdated(v, 'cmyk')" />
       </n-form-item>
@@ -34,8 +37,9 @@ import { colord, extend } from "colord";
 import cmykPlugin from "colord/plugins/cmyk";
 import hwbPlugin from "colord/plugins/hwb";
 import namesPlugin from "colord/plugins/names";
+import lchPlugin from "colord/plugins/lch";
 
-extend([cmykPlugin, hwbPlugin, namesPlugin]);
+extend([cmykPlugin, hwbPlugin, namesPlugin, lchPlugin]);
 
 const name = ref('')
 const hex = ref('#1ea54cff')
@@ -43,16 +47,18 @@ const rgb = ref('')
 const hsl = ref('')
 const hwb = ref('')
 const cmyk = ref('')
+const lch = ref('')
 
 function onInputUpdated(value: string, omit: string) {
   const color = colord(value);
 
-  omit !== 'name' && (name.value = color.toName({ closest: true }) ?? '');
-  omit !== 'hex' && (hex.value = color.toHex());
-  omit !== 'rgb' && (rgb.value = color.toRgbString());
-  omit !== 'hsl' && (hsl.value = color.toHslString());
-  omit !== 'hwb' && (hwb.value = color.toHwbString());
-  omit !== 'cmyk' && (cmyk.value = color.toCmykString());
+  if (omit !== 'name') name.value = color.toName({ closest: true }) ?? '';
+  if (omit !== 'hex') hex.value = color.toHex();
+  if (omit !== 'rgb') rgb.value = color.toRgbString();
+  if (omit !== 'hsl') hsl.value = color.toHslString();
+  if (omit !== 'hwb') hwb.value = color.toHwbString();
+  if (omit !== 'cmyk') cmyk.value = color.toCmykString();
+  if (omit !== 'lch') lch.value = color.toLchString();
 }
 
 onInputUpdated(hex.value, 'hex')
