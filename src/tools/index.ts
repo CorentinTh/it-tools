@@ -1,6 +1,7 @@
 import { LockOpen } from '@vicons/tabler';
 import type { ToolCategory } from './Tool';
 
+import { tool as caseConverter } from './case-converter';
 import { tool as colorConverter } from './color-converter';
 import { tool as qrCodeGenerator } from './qr-code-generator';
 import { tool as base64Converter } from './base64-converter';
@@ -28,7 +29,7 @@ export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Converter',
     icon: LockOpen,
-    components: [dateTimeConverter, baseConverter, romanNumeralConverter, base64Converter, colorConverter],
+    components: [dateTimeConverter, baseConverter, romanNumeralConverter, base64Converter, colorConverter, caseConverter],
   },
   {
     name: 'Web',
