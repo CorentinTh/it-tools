@@ -37,7 +37,7 @@
         style="margin: 5px 0;"
       >
         <n-input-group>
-          <n-input-group-label style="width: 150px;">
+          <n-input-group-label style="width: 200px;">
             {{ name }}
           </n-input-group-label>
           <input-copyable :value="fromDate(date)" />
