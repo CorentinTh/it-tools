@@ -19,8 +19,6 @@
     "@vicons/tabler": "^0.12.0",
     "@vueuse/core": "^8.2.1",
     "@vueuse/head": "^0.7.5",
-    "bip39": "^3.0.4",
-    "buffer": "^6.0.3",
     "change-case": "^4.1.2",
     "colord": "^2.9.2",
     "cron-validator": "^1.3.1",
