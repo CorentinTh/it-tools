@@ -34,9 +34,15 @@ const m = toolsByCategory.map(category => ({
 </script>
 
 <template>
-  <menu-layout class="menu-layout" :class="{ isSmallScreen: styleStore.isSmallScreen }">
+  <menu-layout
+    class="menu-layout"
+    :class="{ isSmallScreen: styleStore.isSmallScreen }"
+  >
     <template #sider>
-      <router-link to="/" class="hero-wrapper">
+      <router-link
+        to="/"
+        class="hero-wrapper"
+      >
         <hero-gradient class="gradient" />
         <div class="text-wrapper">
           <div class="title">
@@ -50,33 +56,63 @@ const m = toolsByCategory.map(category => ({
       </router-link>
 
       <div class="sider-content">
-        <n-space v-if="styleStore.isSmallScreen" justify="center">
+        <n-space
+          v-if="styleStore.isSmallScreen"
+          justify="center"
+        >
           <navbar-buttons />
         </n-space>
 
-        <n-menu v-model:value="activeKey" :value="route.name" class="menu" :collapsed-width="64"
-          :collapsed-icon-size="22" :options="m" :indent="20" />
+        <n-menu
+          v-model:value="activeKey"
+          :value="route.name"
+          class="menu"
+          :collapsed-width="64"
+          :collapsed-icon-size="22"
+          :options="m"
+          :indent="20"
+        />
 
         <div class="footer">
           <div>
             IT-Tools
 
-            <n-button text tag="a" target="_blank" rel="noopener" type="primary" depth="3"
-              :href="`https://github.com/CorentinTh/it-tools/tree/v${version}`">
+            <n-button
+              text
+              tag="a"
+              target="_blank"
+              rel="noopener"
+              type="primary"
+              depth="3"
+              :href="`https://github.com/CorentinTh/it-tools/tree/v${version}`"
+            >
               v{{ version }}
             </n-button>
 
             <template v-if="commitSha && commitSha.length > 0">
               -
-              <n-button text tag="a" target="_blank" rel="noopener" type="primary" depth="3"
-                :href="`https://github.com/CorentinTh/it-tools/tree/v${commitSha}`">
+              <n-button
+                text
+                tag="a"
+                target="_blank"
+                rel="noopener"
+                type="primary"
+                depth="3"
+                :href="`https://github.com/CorentinTh/it-tools/tree/v${commitSha}`"
+              >
                 {{ commitSha }}
               </n-button>
             </template>
           </div>
           <div>
             © {{ new Date().getFullYear() }}
-            <n-button text tag="a" target="_blank" rel="noopener" type="primary">
+            <n-button
+              text
+              tag="a"
+              target="_blank"
+              rel="noopener"
+              type="primary"
+            >
               Corentin Thomasset
             </n-button>
           </div>
@@ -86,22 +122,47 @@ const m = toolsByCategory.map(category => ({
 
     <template #content>
       <div class="navigation">
-        <n-tooltip trigger="hover" placement="bottom-start">
+        <n-tooltip
+          trigger="hover"
+          placement="bottom-start"
+        >
           <template #trigger>
-            <n-button :size="styleStore.isSmallScreen ? 'medium' : 'large'" circle quaternary aria-label="Toogle menu"
-              @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed">
-              <n-icon size="25" :component="Menu2" />
+            <n-button
+              :size="styleStore.isSmallScreen ? 'medium' : 'large'"
+              circle
+              quaternary
+              aria-label="Toogle menu"
+              @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed"
+            >
+              <n-icon
+                size="25"
+                :component="Menu2"
+              />
             </n-button>
           </template>
           Toggle menu
         </n-tooltip>
 
-        <router-link to="/" #="{ navigate, href }" custom>
+        <router-link
+          to="/"
+          #="{ navigate, href }"
+          custom
+        >
           <n-tooltip trigger="hover">
             <template #trigger>
-              <n-button tag="a" :href="href" :size="styleStore.isSmallScreen ? 'medium' : 'large'" circle quaternary
-                aria-label="Home" @click="navigate">
-                <n-icon size="25" :component="Home2" />
+              <n-button
+                tag="a"
+                :href="href"
+                :size="styleStore.isSmallScreen ? 'medium' : 'large'"
+                circle
+                quaternary
+                aria-label="Home"
+                @click="navigate"
+              >
+                <n-icon
+                  size="25"
+                  :component="Home2"
+                />
               </n-button>
             </template>
             Home
@@ -112,9 +173,18 @@ const m = toolsByCategory.map(category => ({
 
         <n-tooltip trigger="hover">
           <template #trigger>
-            <n-button type="primary" tag="a" href="https://github.com/sponsors/CorentinTh" rel="noopener"
-              target="_blank">
-              <n-icon v-if="!styleStore.isSmallScreen" :component="Heart" style="margin-right: 5px;" />
+            <n-button
+              type="primary"
+              tag="a"
+              href="https://github.com/sponsors/CorentinTh"
+              rel="noopener"
+              target="_blank"
+            >
+              <n-icon
+                v-if="!styleStore.isSmallScreen"
+                :component="Heart"
+                style="margin-right: 5px;"
+              />
               Sponsor
             </n-button>
           </template>
