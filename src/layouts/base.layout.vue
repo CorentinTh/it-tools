@@ -2,13 +2,14 @@
 import { NIcon } from 'naive-ui';
 import { h, ref, type Component } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
-import { Heart, BrandGithub, BrandTwitter, Moon, Sun, Menu2, Home2, InfoCircle } from '@vicons/tabler'
+import { Heart, Menu2, Home2 } from '@vicons/tabler'
 import { toolsByCategory } from '@/tools';
 import SearchBar from '../components/SearchBar.vue';
 import { useStyleStore } from '@/stores/style.store';
 import HeroGradient from '../assets/hero-gradient.svg?component'
 import { useThemeVars } from 'naive-ui'
 import MenuLayout from '../components/MenuLayout.vue'
+import NavbarButtons from '../components/NavbarButtons.vue'
 
 const themeVars = useThemeVars()
 const activeKey = ref(null)
@@ -19,14 +20,14 @@ const makeLabel = (text: string, to: string) => () => h(RouterLink, { to }, { de
 const makeIcon = (icon: Component) => () => h(NIcon, null, { default: () => h(icon) })
 
 const m = toolsByCategory.map(category => ({
-    label: category.name,
-    key: category.name,
-    type: 'group',
-    children: category.components.map(({ name, path, icon }) => ({
-        label: makeLabel(name, path),
-        icon: makeIcon(icon),
-        key: name
-    }))
+  label: category.name,
+  key: category.name,
+  type: 'group',
+  children: category.components.map(({ name, path, icon }) => ({
+    label: makeLabel(name, path),
+    icon: makeIcon(icon),
+    key: name
+  }))
 }))
 
 </script>
@@ -58,71 +59,7 @@ const m = toolsByCategory.map(category => ({
           v-if="styleStore.isSmallScreen"
           justify="center"
         >
-          <n-button
-            size="large"
-            circle
-            quaternary
-            tag="a"
-            href="https://github.com/CorentinTh/it-tools"
-            rel="noopener"
-            target="_blank"
-          >
-            <n-icon
-              size="25"
-              :component="BrandGithub"
-            />
-          </n-button>
-          <n-button
-            size="large"
-            circle
-            quaternary
-            tag="a"
-            href="https://twitter.com/cthmsst"
-            rel="noopener"
-            target="_blank"
-          >
-            <n-icon
-              size="25"
-              :component="BrandTwitter"
-            />
-          </n-button>
-          <router-link
-            to="/about"
-            #="{ navigate, href }"
-            custom
-          >
-            <n-button
-              tag="a"
-              :href="href"
-              circle
-              quaternary
-              size="large"
-              aria-label="Home"
-              @click="navigate"
-            >
-              <n-icon
-                size="25"
-                :component="InfoCircle"
-              />
-            </n-button>
-          </router-link>
-          <n-button
-            size="large"
-            circle
-            quaternary
-            @click="styleStore.isDarkTheme = !styleStore.isDarkTheme"
-          >
-            <n-icon
-              v-if="styleStore.isDarkTheme"
-              size="25"
-              :component="Sun"
-            />
-            <n-icon
-              v-else
-              size="25"
-              :component="Moon"
-            />
-          </n-button>
+          <navbar-buttons />
         </n-space>
 
         <n-menu
@@ -139,131 +76,76 @@ const m = toolsByCategory.map(category => ({
 
     <template #content>
       <div class="navigation">
-        <n-button
-          :size="styleStore.isSmallScreen ? 'medium' : 'large'"
-          circle
-          quaternary
-          aria-label="Toogle menu"
-          @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed"
+        <n-tooltip
+          trigger="hover"
+          placement="bottom-start"
         >
-          <n-icon
-            size="25"
-            :component="Menu2"
-          />
-        </n-button>
+          <template #trigger>
+            <n-button
+              :size="styleStore.isSmallScreen ? 'medium' : 'large'"
+              circle
+              quaternary
+              aria-label="Toogle menu"
+              @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed"
+            >
+              <n-icon
+                size="25"
+                :component="Menu2"
+              />
+            </n-button>
+          </template>
+          Toggle menu
+        </n-tooltip>
 
         <router-link
           to="/"
           #="{ navigate, href }"
           custom
         >
-          <n-button
-            tag="a"
-            :href="href"
-            :size="styleStore.isSmallScreen ? 'medium' : 'large'"
-            circle
-            quaternary
-            aria-label="Home"
-            @click="navigate"
-          >
-            <n-icon
-              size="25"
-              :component="Home2"
-            />
-          </n-button>
+          <n-tooltip trigger="hover">
+            <template #trigger>
+              <n-button
+                tag="a"
+                :href="href"
+                :size="styleStore.isSmallScreen ? 'medium' : 'large'"
+                circle
+                quaternary
+                aria-label="Home"
+                @click="navigate"
+              >
+                <n-icon
+                  size="25"
+                  :component="Home2"
+                />
+              </n-button>
+            </template>
+            Home
+          </n-tooltip>
         </router-link>
 
         <search-bar />
 
+        <n-tooltip trigger="hover">
+          <template #trigger>
+            <n-button
+              type="primary"
+              tag="a"
+              href="https://github.com/sponsors/CorentinTh"
+              rel="noopener"
+              target="_blank"
+            >
+              <n-icon
+                v-if="!styleStore.isSmallScreen"
+                :component="Heart"
+                style="margin-right: 5px;"
+              />
+              Sponsor
+            </n-button>
+          </template>
+          ❤ Support IT Tools developement ! 
+        </n-tooltip>
 
-        <n-button
-          type="primary"
-          tag="a"
-          href="https://github.com/sponsors/CorentinTh"
-          rel="noopener"
-          target="_blank"
-        >
-          <n-icon
-            v-if="!styleStore.isSmallScreen"
-            :component="Heart"
-            style="margin-right: 5px;"
-          />
-          Sponsor
-        </n-button>
-        <n-button
-          v-if="!styleStore.isSmallScreen"
-          size="large"
-          circle
-          quaternary
-          tag="a"
-          href="https://github.com/CorentinTh/it-tools"
-          rel="noopener"
-          target="_blank"
-          aria-label="Github repository"
-        >
-          <n-icon
-            size="25"
-            :component="BrandGithub"
-          />
-        </n-button>
-        <n-button
-          v-if="!styleStore.isSmallScreen"
-          size="large"
-          circle
-          quaternary
-          tag="a"
-          href="https://twitter.com/cthmsst"
-          rel="noopener"
-          target="_blank"
-          aria-label="Twitter account"
-        >
-          <n-icon
-            size="25"
-            :component="BrandTwitter"
-          />
-        </n-button>
-
-        <router-link
-          v-if="!styleStore.isSmallScreen"
-          to="/about"
-          #="{ navigate, href }"
-          custom
-        >
-          <n-button
-            tag="a"
-            :href="href"
-            circle
-            quaternary
-            size="large"
-            aria-label="Home"
-            @click="navigate"
-          >
-            <n-icon
-              size="25"
-              :component="InfoCircle"
-            />
-          </n-button>
-        </router-link>
-
-        <n-button
-          v-if="!styleStore.isSmallScreen"
-          size="large"
-          circle
-          quaternary
-          aria-label="Toogle theme"
-          @click="styleStore.isDarkTheme = !styleStore.isDarkTheme"
-        >
-          <n-icon
-            v-if="styleStore.isDarkTheme"
-            size="25"
-            :component="Sun"
-          />
-          <n-icon
-            v-else
-            size="25"
-            :component="Moon"
-          />
-        </n-button>
+        <navbar-buttons v-if="!styleStore.isSmallScreen" />
       </div>
       <slot />
     </template>
@@ -283,68 +165,64 @@ const m = toolsByCategory.map(category => ({
 // }
 
 .sider-content {
-    padding-top: 160px;
-    padding-bottom: 200px;
+  padding-top: 160px;
+  padding-bottom: 200px;
 }
 
 .hero-wrapper {
-    position: absolute;
-    display: block;
+  position: absolute;
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  overflow: hidden;
+
+  .gradient {
+    margin-top: -65px;
+  }
+
+  .text-wrapper {
     position: absolute;
     left: 0;
     width: 100%;
-    z-index: 10;
-    overflow: hidden;
+    text-align: center;
+    top: 16px;
+    color: #fff;
 
-    .gradient {
-        margin-top: -65px;
+    .title {
+      font-size: 25px;
+      font-weight: 600;
     }
 
-    .text-wrapper {
-        position: absolute;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        top: 16px;
-        color: #fff;
-
-        .title {
-            font-size: 25px;
-            font-weight: 600;
-        }
-
-        .divider {
-            width: 50px;
-            height: 2px;
-            border-radius: 4px;
-            background-color: v-bind('themeVars.primaryColor');
-            margin: 0 auto 5px;
-        }
-
-        .subtitle {
-            font-size: 16px;
-        }
+    .divider {
+      width: 50px;
+      height: 2px;
+      border-radius: 4px;
+      background-color: v-bind('themeVars.primaryColor');
+      margin: 0 auto 5px;
     }
+
+    .subtitle {
+      font-size: 16px;
+    }
+  }
 }
 
 .navigation {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 
-    &>*:not(:first-child) {
-        margin-left: 10px;
-
-        .isSmallScreen & {
-            margin-left: 5px;
-        }
-    }
+  &>*:not(:last-child) {
+    margin-right: 5px;
+  }
 
 
-    .search-bar {
-        // width: 100%;
-        flex-grow: 1;
-    }
+  .search-bar {
+    // width: 100%;
+    flex-grow: 1;
+  }
 }
-</style>
+</style> 
