@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import { createHead } from '@vueuse/head';
 import { registerSW } from 'virtual:pwa-register';
+import { plausible } from './plugins/plausible.plugin';
 
 registerSW();
 
@@ -16,5 +17,6 @@ app.use(createPinia());
 app.use(createHead());
 app.use(router);
 app.use(naive);
+app.use(plausible);
 
 app.mount('#app');
