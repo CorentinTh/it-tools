@@ -1,6 +1,6 @@
 ![logo](.github/logo.png)
 
-Aggregated set of useful tools that every developer may need once in a while. Available [here](https://dev.it-tools.tech).
+Useful tools for developer and people working in IT. [Have a look !](https://it-tools.tech).
 
 ## Functionalities and roadmap
 
