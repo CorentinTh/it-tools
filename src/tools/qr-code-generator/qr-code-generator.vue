@@ -84,6 +84,3 @@ const { qrcode } = useQRCode({
 const { download } = useDownloadFileFromBase64({ source: qrcode, filename: 'qr-code.png' })
 
 </script>
-
-<style lang="less" scoped>
-</style>

@@ -130,6 +130,3 @@ const { copy: copyDecoded } = useCopy({ source: decodeOutput, text: 'Decoded str
 
 
 </script>
-
-<style lang="less" scoped>
-</style>

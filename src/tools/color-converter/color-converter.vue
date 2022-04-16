@@ -92,6 +92,3 @@ function onInputUpdated(value: string, omit: string) {
 onInputUpdated(hex.value, 'hex')
 
 </script>
-
-<style lang="less" scoped>
-</style>

@@ -106,6 +106,3 @@ function refreshToken() {
 
 refreshToken()
 </script>
-
-<style lang="less" scoped>
-</style>

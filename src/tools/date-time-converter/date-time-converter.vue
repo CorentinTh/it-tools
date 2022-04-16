@@ -126,6 +126,3 @@ const formats = [
 ]
 
 </script>
-
-<style lang="less" scoped>
-</style>

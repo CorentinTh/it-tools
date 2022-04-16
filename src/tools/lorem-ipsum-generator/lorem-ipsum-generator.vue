@@ -104,6 +104,3 @@ const { copy } = useCopy({ source: loremIpsumText, text: 'Lorem ipsum copied to 
 
 
 </script>
-
-<style lang="less" scoped>
-</style>

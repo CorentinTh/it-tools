@@ -164,6 +164,3 @@ const { copy: copyEntropy } = useCopy({ source: entropy, text: 'Entropy copied t
 const { copy: copyPassphrase } = useCopy({ source: passphrase, text: 'Passphrase copied to the clipboard' })
 
 </script>
-
-<style lang="less" scoped>
-</style>
