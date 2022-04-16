@@ -40,7 +40,7 @@
           <n-input-group-label style="width: 200px;">
             {{ name }}
           </n-input-group-label>
-          <input-copyable :value="fromDate(date)" />
+          <input-copyable :value="fromDate(baseDate)" />
         </n-input-group>
       </div>
     </n-card>
@@ -57,11 +57,11 @@ const useCurrentDate = ref(true)
 const inputDate = ref('')
 const inputFormat = ref(6)
 const inputInvalid = ref(false)
-const date = ref(new Date())
+const baseDate = ref(new Date())
 
 useRafFn(() => {
     if (useCurrentDate.value) {
-        date.value = new Date()
+        baseDate.value = new Date()
     }
 })
 
@@ -76,7 +76,7 @@ function onDateInputChanged(value: string) {
             throw 'invalid date'
         }
 
-        date.value = formatted
+        baseDate.value = formatted
     } catch (_) {
         inputInvalid.value = true
     }
