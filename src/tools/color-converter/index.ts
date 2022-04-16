@@ -8,4 +8,5 @@ export const tool: ITool = {
   keywords: ['color', 'converter'],
   component: () => import('./color-converter.vue'),
   icon: Palette,
+  redirectFrom: ['/color-picker-converter'],
 };

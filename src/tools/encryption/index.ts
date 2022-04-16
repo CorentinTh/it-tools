@@ -8,4 +8,5 @@ export const tool: ITool = {
   keywords: ['cypher', 'uncypher', 'text', 'AES', 'TripleDES', 'Rabbit', 'RC4'],
   component: () => import('./encryption.vue'),
   icon: Lock,
+  redirectFrom: ['/cypher'],
 };

@@ -4,6 +4,11 @@ import HomePage from './pages/Home.page.vue';
 import NotFound from './pages/404.page.vue';
 import { tools } from './tools';
 
+const toolsRoutes = tools.map(({ path, name, component, ...config }) => ({ path, name, component, meta: { isTool: true, layout: layouts.toolLayout, name, ...config } }));
+const toolsRedirectRoutes = tools
+  .filter(({ redirectFrom }) => redirectFrom && redirectFrom.length > 0)
+  .flatMap(({ path, redirectFrom }) => redirectFrom?.map((redirectSource) => ({ path: redirectSource, redirect: path })) ?? []);
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -12,7 +17,8 @@ const router = createRouter({
       name: 'home',
       component: HomePage,
     },
-    ...tools.map(({ path, name, component, ...config }) => ({ path, name, component, meta: { isTool: true, layout: layouts.toolLayout, name, ...config } })),
+    ...toolsRoutes,
+    ...toolsRedirectRoutes,
     { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
   ],
 });

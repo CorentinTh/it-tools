@@ -8,4 +8,5 @@ export const tool: ITool = {
   keywords: ['text', 'statistics', 'length', 'characters', 'count', 'size', 'bytes'],
   component: () => import('./text-statistics.vue'),
   icon: FileText,
+  redirectFrom: ['/text-stats'],
 };

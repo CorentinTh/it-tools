@@ -7,6 +7,7 @@ export interface ITool {
   keywords: string[];
   component: () => Promise<Component>;
   icon: Component;
+  redirectFrom?: string[];
 }
 
 export interface ToolCategory {

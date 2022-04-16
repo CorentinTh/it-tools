@@ -8,4 +8,5 @@ export const tool: ITool = {
   keywords: ['base64', 'converter', 'upload', 'image', 'file', 'convertion', 'web', 'data', 'format'],
   component: () => import('./base64-converter.vue'),
   icon: FileDigit,
+  redirectFrom: ['/file-to-base64', '/base64-string-converter'],
 };
