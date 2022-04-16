@@ -73,7 +73,7 @@ function onDateInputChanged(value: string) {
         const formatted: Date | string = toDate(value)
 
         if (!isDate(formatted) || isNaN(formatted.getTime())) {
-            throw 'invalid date'
+            throw new Error('Invalid date')
         }
 
         baseDate.value = formatted
