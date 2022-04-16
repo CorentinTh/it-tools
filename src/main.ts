@@ -5,9 +5,6 @@ import { registerSW } from 'virtual:pwa-register';
 
 registerSW();
 
-import { Buffer } from 'buffer';
-globalThis.Buffer = Buffer;
-
 import { naive } from './plugins/naive.plugin';
 
 import App from './App.vue';
