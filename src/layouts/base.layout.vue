@@ -15,6 +15,9 @@ const themeVars = useThemeVars()
 const activeKey = ref(null)
 const route = useRoute()
 const styleStore = useStyleStore()
+const version = import.meta.env.PACKAGE_VERSION;
+
+console.log(themeVars.value)
 
 const makeLabel = (text: string, to: string) => () => h(RouterLink, { to }, { default: () => text })
 const makeIcon = (icon: Component) => () => h(NIcon, null, { default: () => h(icon) })
@@ -71,6 +74,36 @@ const m = toolsByCategory.map(category => ({
           :options="m"
           :indent="20"
         />
+
+        <div class="footer">
+          <div>
+            IT-Tools 
+            
+            <n-button
+              text
+              tag="a"
+              target="_blank"
+              rel="noopener"
+              type="primary"
+              depth="3"
+              :href="`https://github.com/CorentinTh/it-tools/tree/v${version}`"
+            >
+              v{{ version }}
+            </n-button>
+          </div>
+          <div>
+            © {{ new Date().getFullYear() }}
+            <n-button
+              text
+              tag="a"
+              target="_blank"
+              rel="noopener"
+              type="primary"
+            >
+              Corentin Thomasset
+            </n-button>
+          </div>
+        </div>
       </div>
     </template>
 
@@ -163,6 +196,13 @@ const m = toolsByCategory.map(category => ({
 //     background-position: 0 0, @position @position;
 //     background-size: @size @size;
 // }
+
+.footer {
+  text-align: center;
+  color: #838587;
+  margin-top: 20px;
+  padding: 20px 0;
+}
 
 .sider-content {
   padding-top: 160px;
