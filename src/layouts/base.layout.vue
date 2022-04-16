@@ -17,8 +17,6 @@ const route = useRoute()
 const styleStore = useStyleStore()
 const version = import.meta.env.PACKAGE_VERSION;
 
-console.log(themeVars.value)
-
 const makeLabel = (text: string, to: string) => () => h(RouterLink, { to }, { default: () => text })
 const makeIcon = (icon: Component) => () => h(NIcon, null, { default: () => h(icon) })
 
