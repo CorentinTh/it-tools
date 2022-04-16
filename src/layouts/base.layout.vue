@@ -16,6 +16,7 @@ const activeKey = ref(null)
 const route = useRoute()
 const styleStore = useStyleStore()
 const version = import.meta.env.PACKAGE_VERSION;
+const commitSha = import.meta.env.GIT_SHORT_SHA;
 
 const makeLabel = (text: string, to: string) => () => h(RouterLink, { to }, { default: () => text })
 const makeIcon = (icon: Component) => () => h(NIcon, null, { default: () => h(icon) })
@@ -75,8 +76,8 @@ const m = toolsByCategory.map(category => ({
 
         <div class="footer">
           <div>
-            IT-Tools 
-            
+            IT-Tools
+
             <n-button
               text
               tag="a"
@@ -88,6 +89,21 @@ const m = toolsByCategory.map(category => ({
             >
               v{{ version }}
             </n-button>
+
+            <template v-if="commitSha && commitSha.length > 0">
+              -
+              <n-button
+                text
+                tag="a"
+                target="_blank"
+                rel="noopener"
+                type="primary"
+                depth="3"
+                :href="`https://github.com/CorentinTh/it-tools/tree/v${commitSha}`"
+              >
+                {{ commitSha }}
+              </n-button>
+            </template>
           </div>
           <div>
             © {{ new Date().getFullYear() }}
@@ -123,7 +139,7 @@ const m = toolsByCategory.map(category => ({
                 size="25"
                 :component="Menu2"
               />
-            </n-button>
+            </n-button> 
           </template>
           Toggle menu
         </n-tooltip>
@@ -173,7 +189,7 @@ const m = toolsByCategory.map(category => ({
               Sponsor
             </n-button>
           </template>
-          ❤ Support IT Tools developement ! 
+          ❤ Support IT Tools developement !
         </n-tooltip>
 
         <navbar-buttons v-if="!styleStore.isSmallScreen" />
