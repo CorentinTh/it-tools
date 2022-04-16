@@ -1,6 +1,6 @@
 {
   "name": "it-tools",
-  "version": "0.0.0",
+  "version": "2.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -11,7 +11,8 @@
     "test:e2e": "start-server-and-test preview http://127.0.0.1:5050/ 'cypress open'",
     "test:e2e:ci": "start-server-and-test preview http://127.0.0.1:5050/ 'cypress run'",
     "typecheck": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
-    "lint": "eslint src --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore"
+    "lint": "eslint src --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore",
+    "release": "standard-version"
   },
   "dependencies": {
     "@it-tools/bip39": "^0.0.4",
@@ -56,6 +57,7 @@
     "jsdom": "^19.0.0",
     "less": "^4.1.2",
     "prettier": "^2.5.1",
+    "standard-version": "^9.3.2",
     "start-server-and-test": "^1.14.0",
     "typescript": "~4.5.5",
     "vite": "^2.9.1",
