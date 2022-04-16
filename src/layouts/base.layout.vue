@@ -2,7 +2,7 @@
 import { NIcon } from 'naive-ui';
 import { h, ref, type Component } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
-import { Heart, BrandGithub, BrandTwitter, Moon, Sun, Menu2, Home2 } from '@vicons/tabler'
+import { Heart, BrandGithub, BrandTwitter, Moon, Sun, Menu2, Home2, InfoCircle } from '@vicons/tabler'
 import { toolsByCategory } from '@/tools';
 import SearchBar from '../components/SearchBar.vue';
 import { useStyleStore } from '@/stores/style.store';
@@ -86,6 +86,26 @@ const m = toolsByCategory.map(category => ({
               :component="BrandTwitter"
             />
           </n-button>
+          <router-link
+            to="/about"
+            #="{ navigate, href }"
+            custom
+          >
+            <n-button
+              tag="a"
+              :href="href"
+              circle
+              quaternary
+              size="large"
+              aria-label="Home"
+              @click="navigate"
+            >
+              <n-icon
+                size="25"
+                :component="InfoCircle"
+              />
+            </n-button>
+          </router-link>
           <n-button
             size="large"
             circle
@@ -202,6 +222,29 @@ const m = toolsByCategory.map(category => ({
             :component="BrandTwitter"
           />
         </n-button>
+
+        <router-link
+          v-if="!styleStore.isSmallScreen"
+          to="/about"
+          #="{ navigate, href }"
+          custom
+        >
+          <n-button
+            tag="a"
+            :href="href"
+            circle
+            quaternary
+            size="large"
+            aria-label="Home"
+            @click="navigate"
+          >
+            <n-icon
+              size="25"
+              :component="InfoCircle"
+            />
+          </n-button>
+        </router-link>
+
         <n-button
           v-if="!styleStore.isSmallScreen"
           size="large"
