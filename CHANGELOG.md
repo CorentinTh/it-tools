@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/CorentinTh/it-tools/compare/v2.0.0...v2.0.1) (2022-04-16)
+
+
+### Features
+
+* **config:** added vercel.json ([2e046ad](https://github.com/CorentinTh/it-tools/commit/2e046ad09fed4a55bbf4449e3683a4150839c461))
+
+
+### Bug Fixes
+
+* remove duplicate property ([d066319](https://github.com/CorentinTh/it-tools/commit/d066319b45dee35df0212c7ff407013bd7449ae3))
+* **style:** url encode/decode layout ([34480b4](https://github.com/CorentinTh/it-tools/commit/34480b4e25ffc33536b03a0ba711c480219ad553))
+
+
+### Documentation
+
+* updated description ([70a3df0](https://github.com/CorentinTh/it-tools/commit/70a3df044ea86ac35c1839ac5ab624f694fdd845))
+
+
+### Refactors
+
+* clean imports ([724e142](https://github.com/CorentinTh/it-tools/commit/724e142222202798ea3df7d0fb34da1e7a5216a1))
+* lint fix ([a58ae24](https://github.com/CorentinTh/it-tools/commit/a58ae24d9409728ac12fb780f2c64643087de5be))
+* ref name ([5828085](https://github.com/CorentinTh/it-tools/commit/582808597c6aadf0feb48f6aae0a29b839e0dd54))
+
 ## 2.0.0 (2022-04-16)
 
 
