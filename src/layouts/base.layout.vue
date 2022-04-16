@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { NIcon } from 'naive-ui';
+import { NIcon, useThemeVars } from 'naive-ui';
 import { h, ref, type Component } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { Heart, Menu2, Home2 } from '@vicons/tabler'
@@ -7,7 +7,6 @@ import { toolsByCategory } from '@/tools';
 import SearchBar from '../components/SearchBar.vue';
 import { useStyleStore } from '@/stores/style.store';
 import HeroGradient from '../assets/hero-gradient.svg?component'
-import { useThemeVars } from 'naive-ui'
 import MenuLayout from '../components/MenuLayout.vue'
 import NavbarButtons from '../components/NavbarButtons.vue'
 

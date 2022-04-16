@@ -18,10 +18,8 @@
 </template>
 
 <script setup lang="ts">
-import { useVModel } from '@vueuse/core'
+import { useVModel, useClipboard } from '@vueuse/core'
 import { ContentCopyFilled } from '@vicons/material'
-
-import { useClipboard } from '@vueuse/core';
 import { ref } from 'vue';
 
 const props = defineProps<{ value: string, }>()

@@ -27,8 +27,7 @@
 
 <script setup lang="ts">
 import { useStyleStore } from '@/stores/style.store';
-import { toRefs } from 'vue';
-import { computed } from 'vue';
+import { toRefs, computed } from 'vue';
 
 const styleStore = useStyleStore()
 const { isMenuCollapsed, isSmallScreen } = toRefs(styleStore)
