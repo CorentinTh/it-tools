@@ -1,6 +1,7 @@
 import { LockOpen } from '@vicons/tabler';
 import type { ToolCategory } from './Tool';
 
+import { tool as bcrypt } from './bcrypt';
 import { tool as caseConverter } from './case-converter';
 import { tool as colorConverter } from './color-converter';
 import { tool as qrCodeGenerator } from './qr-code-generator';
@@ -24,7 +25,7 @@ export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Crypto',
     icon: LockOpen,
-    components: [tokenGenerator, hashText, uuidGenerator, cypher, bip39],
+    components: [tokenGenerator, hashText, bcrypt, uuidGenerator, cypher, bip39],
   },
   {
     name: 'Converter',
