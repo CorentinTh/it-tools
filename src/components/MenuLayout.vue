@@ -9,8 +9,6 @@
       :show-trigger="false"
       :native-scrollbar="false"
       :position="siderPosition"
-      @collapse="isMenuCollapsed = true"
-      @expand="isMenuCollapsed = false"
     >
       <slot name="sider" />
     </n-layout-sider>
@@ -36,24 +34,24 @@ const siderPosition = computed(() => isSmallScreen.value ? 'absolute' : 'static'
 
 <style lang="less" scoped>
 .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #00000080;
-    cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000080;
+  cursor: pointer;
 }
 
 .content {
 
-    // background-color: #f1f5f9;
-    ::v-deep(.n-layout-scroll-container) {
-        padding: 26px;
-    }
+  // background-color: #f1f5f9;
+  ::v-deep(.n-layout-scroll-container) {
+    padding: 26px;
+  }
 }
 
 .n-layout {
-    height: 100vh;
+  height: 100vh;
 }
 </style>
