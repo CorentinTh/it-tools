@@ -49,7 +49,26 @@
 * * * * * * command</pre>
 
 
-    <n-table size="small">
+    <n-space
+      v-if="styleStore.isSmallScreen"
+      vertical
+    > 
+      <n-card
+        v-for="{symbol, meaning, example, equivalent} in helpers"
+        :key="symbol"
+        embedded
+        :bordered="false"
+      >
+        <div>Symbol: <strong>{{ symbol }}</strong></div>
+        <div>Meaning: <strong>{{ meaning }}</strong></div>
+        <div>Example: <strong><code>{{ example }}</code></strong></div>
+        <div>Equivalent: <strong>{{ equivalent }}</strong></div>
+      </n-card>
+    </n-space>
+    <n-table
+      v-else
+      size="small"
+    >
       <thead>
         <tr>
           <th
@@ -79,99 +98,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>*</td>
-          <td>Any value</td>
+        <tr
+          v-for="{symbol, meaning, example, equivalent} in helpers"
+          :key="symbol"
+        >
+          <td>{{ symbol }}</td>
+          <td>{{ meaning }}</td>
           <td>
-            <code>* * * *</code>
+            <code>{{ example }}</code>
           </td>
-          <td>Every minute</td>
-        </tr>
-        <tr>
-          <td>-</td>
-          <td>Range of values</td>
-          <td>
-            <code>1-10 * * *</code>
-          </td>
-          <td>Minutes 1 through 10</td>
-        </tr>
-        <tr>
-          <td>,</td>
-          <td>List of values</td>
-          <td>
-            <code>1,10 * * *</code>
-          </td>
-          <td>At minutes 1 and 10</td>
-        </tr>
-        <tr>
-          <td>/</td>
-          <td>Step values</td>
-          <td>
-            <code>*/10 * * *</code>
-          </td>
-          <td>Every 10 minutes</td>
-        </tr>
-        <tr>
-          <td>@yearly</td>
-          <td>Once every year at midnight of 1 January</td>
-          <td>
-            <code>@yearly</code>
-          </td>
-          <td>0 0 1 1 *</td>
-        </tr>
-        <tr>
-          <td>@annually</td>
-          <td>Same as @yearly</td>
-          <td>
-            <code>@annually</code>
-          </td>
-          <td>0 0 1 1 *</td>
-        </tr>
-        <tr>
-          <td>@monthly</td>
-          <td>Once a month at midnight on the first day</td>
-          <td>
-            <code>@monthly</code>
-          </td>
-          <td>0 0 1 * *</td>
-        </tr>
-        <tr>
-          <td>@weekly</td>
-          <td>Once a week at midnight on Sunday morning</td>
-          <td>
-            <code>@weekly</code>
-          </td>
-          <td>0 0 * * 0</td>
-        </tr>
-        <tr>
-          <td>@daily</td>
-          <td>Once a day at midnight</td>
-          <td>
-            <code>@daily</code>
-          </td>
-          <td>0 0 * * *</td>
-        </tr>
-        <tr>
-          <td>@midnight</td>
-          <td>Same as @daily</td>
-          <td>
-            <code>@midnight</code>
-          </td>
-          <td>0 0 * * *</td>
-        </tr>
-        <tr>
-          <td>@hourly</td>
-          <td>Once an hour at the beginning of the hour</td>
-          <td>
-            <code>@hourly</code>
-          </td>
-          <td>0 * * * *</td>
-        </tr>
-        <tr>
-          <td>@reboot</td>
-          <td>Run at startup</td>
-          <td />
-          <td />
+          <td>{{ equivalent }}</td>
         </tr>
       </tbody>
     </n-table>
@@ -183,11 +119,14 @@ import cronstrue from 'cronstrue'
 import { isValidCron } from 'cron-validator'
 import { computed, reactive, ref } from 'vue';
 import { useValidation } from '@/composable/validation';
+import { useStyleStore } from '@/stores/style.store';
 
 
 function isCronValid(v: string) {
   return isValidCron(v, { allowBlankDay: true, alias: true, seconds: true })
 }
+
+const styleStore = useStyleStore()
 
 const cron = ref('40 * * * *')
 const cronstrueConfig = reactive({
@@ -197,6 +136,81 @@ const cronstrueConfig = reactive({
   throwExceptionOnParseError: true
 })
 
+const helpers = [
+    {
+        "symbol": "*",
+        "meaning": "Any value",
+        "example": "* * * *",
+        "equivalent": "Every minute"
+    },
+    {
+        "symbol": "-",
+        "meaning": "Range of values",
+        "example": "1-10 * * *",
+        "equivalent": "Minutes 1 through 10"
+    },
+    {
+        "symbol": ",",
+        "meaning": "List of values",
+        "example": "1,10 * * *",
+        "equivalent": "At minutes 1 and 10"
+    },
+    {
+        "symbol": "/",
+        "meaning": "Step values",
+        "example": "*/10 * * *",
+        "equivalent": "Every 10 minutes"
+    },
+    {
+        "symbol": "@yearly",
+        "meaning": "Once every year at midnight of 1 January",
+        "example": "@yearly",
+        "equivalent": "0 0 1 1 *"
+    },
+    {
+        "symbol": "@annually",
+        "meaning": "Same as @yearly",
+        "example": "@annually",
+        "equivalent": "0 0 1 1 *"
+    },
+    {
+        "symbol": "@monthly",
+        "meaning": "Once a month at midnight on the first day",
+        "example": "@monthly",
+        "equivalent": "0 0 1 * *"
+    },
+    {
+        "symbol": "@weekly",
+        "meaning": "Once a week at midnight on Sunday morning",
+        "example": "@weekly",
+        "equivalent": "0 0 * * 0"
+    },
+    {
+        "symbol": "@daily",
+        "meaning": "Once a day at midnight",
+        "example": "@daily",
+        "equivalent": "0 0 * * *"
+    },
+    {
+        "symbol": "@midnight",
+        "meaning": "Same as @daily",
+        "example": "@midnight",
+        "equivalent": "0 0 * * *"
+    },
+    {
+        "symbol": "@hourly",
+        "meaning": "Once an hour at the beginning of the hour",
+        "example": "@hourly",
+        "equivalent": "0 * * * *"
+    },
+    {
+        "symbol": "@reboot",
+        "meaning": "Run at startup",
+        "example": "",
+        "equivalent": ""
+    }
+]
+ 
 const cronString = computed(() => {
   if (isCronValid(cron.value)) {
     return cronstrue.toString(cron.value, cronstrueConfig)
