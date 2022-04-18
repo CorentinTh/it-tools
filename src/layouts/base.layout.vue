@@ -98,7 +98,7 @@ const m = toolsByCategory.map(category => ({
                 rel="noopener"
                 type="primary"
                 depth="3"
-                :href="`https://github.com/CorentinTh/it-tools/tree/v${commitSha}`"
+                :href="`https://github.com/CorentinTh/it-tools/tree/${commitSha}`"
               >
                 {{ commitSha }}
               </n-button>
