@@ -17,5 +17,6 @@ const themeVars = useThemeVars()
     padding: 15px 22px;
     background-color: v-bind('themeVars.cardColor');
     border-radius: 4px;
+    overflow: auto;
 }
 </style>

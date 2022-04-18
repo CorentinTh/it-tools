@@ -235,4 +235,9 @@ const cronValidation = useValidation({
   opacity: 0.8;
   margin: 5px 0 15px;
 }
+
+pre {
+  overflow: auto;
+  padding: 10px 0;
+}
 </style>
