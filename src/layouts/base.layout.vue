@@ -122,26 +122,19 @@ const m = toolsByCategory.map(category => ({
 
     <template #content>
       <div class="navigation">
-        <n-tooltip
-          trigger="hover"
-          placement="bottom-start"
+        <n-button
+          :size="styleStore.isSmallScreen ? 'medium' : 'large'"
+          circle
+          quaternary
+          aria-label="Toogle menu"
+          @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed"
         >
-          <template #trigger>
-            <n-button
-              :size="styleStore.isSmallScreen ? 'medium' : 'large'"
-              circle
-              quaternary
-              aria-label="Toogle menu"
-              @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed"
-            >
-              <n-icon
-                size="25"
-                :component="Menu2"
-              />
-            </n-button>
-          </template>
-          Toggle menu
-        </n-tooltip>
+          <n-icon
+            size="25"
+            :component="Menu2"
+          />
+        </n-button>
+
 
         <router-link
           to="/"
