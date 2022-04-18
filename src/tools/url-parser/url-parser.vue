@@ -97,22 +97,6 @@ const properties: {title: string, key: keyof URL}[] = [
   text-align: right;
 }
 .n-input-group {
-
-  &:not(:first-child) > * {
-    
-    ::v-deep(.n-input__border), ::v-deep(.n-input-group-label__border) {
-      border-radius: 0;
-      border-top: none;
-    
-    }
-  }
-
-    &:first-child > * {
-    
-    ::v-deep(.n-input__border), ::v-deep(.n-input-group-label__border) {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-  }
+  margin: 2px 0;
 }
 </style>
