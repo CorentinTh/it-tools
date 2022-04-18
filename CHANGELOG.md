@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.2](https://github.com/CorentinTh/it-tools/compare/v2.0.1...v2.0.2) (2022-04-18)
+
+
+### Bug Fixes
+
+* **git-memo:** pre scroll on overflow ([4fc303e](https://github.com/CorentinTh/it-tools/commit/4fc303e5e3f0bef9201cc002963e244a5d3be7b5))
+* **menu:** menu auto closed on mobile ([71f79a5](https://github.com/CorentinTh/it-tools/commit/71f79a5bbfe0dd5451a435c0a55e8b77ee7d3848))
+* **qr-code:** responsive layout ([cbf0b3d](https://github.com/CorentinTh/it-tools/commit/cbf0b3d6995e47d371a8fbcfccd65ba304fb08dc))
+
+
+### Refactors
+
+* **crontab:** list instead of table on small screen ([6b11de2](https://github.com/CorentinTh/it-tools/commit/6b11de258a8039fe7729130ede35d47592be7cbe))
+* removed empty sources ([a14cac6](https://github.com/CorentinTh/it-tools/commit/a14cac6d5c5967a47ca76a1d1a420115114c3bbf))
+* throw an error object instead of string ([4112fa5](https://github.com/CorentinTh/it-tools/commit/4112fa532e3d4be190d52bf3b11e0d4c3625a402))
+
 ### [2.0.1](https://github.com/CorentinTh/it-tools/compare/v2.0.0...v2.0.1) (2022-04-16)
 
 
