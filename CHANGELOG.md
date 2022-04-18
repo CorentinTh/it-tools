@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/CorentinTh/it-tools/compare/v2.0.2...v2.1.0) (2022-04-18)
+
+
+### Features
+
+* **new-tool:** bcrypt ([6d5856f](https://github.com/CorentinTh/it-tools/commit/6d5856fa93d1ffbf71856c75adc24ad87dc4b49b))
+* **new-tool:** device information ([277bd5f](https://github.com/CorentinTh/it-tools/commit/277bd5f0da359fd54c5164b376007d182a9fabde))
+
+
+### Refactors
+
+* **menu:** removed burger menu icon tooltip ([09abffb](https://github.com/CorentinTh/it-tools/commit/09abffbcf9b09cb5adc34f8754b019d0c8b60854))
+
 ### [2.0.2](https://github.com/CorentinTh/it-tools/compare/v2.0.1...v2.0.2) (2022-04-18)
 
 
