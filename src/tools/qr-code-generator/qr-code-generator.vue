@@ -1,8 +1,9 @@
 <template>
   <n-card>
     <n-grid
-      cols="3"
       x-gap="12"
+      y-gap="12"
+      cols="1 600:3"
     >
       <n-gi span="2">
         <n-form
