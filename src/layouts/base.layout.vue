@@ -112,6 +112,7 @@ const m = toolsByCategory.map(category => ({
               target="_blank"
               rel="noopener"
               type="primary"
+              href="https://github.com/CorentinTh"
             >
               Corentin Thomasset
             </n-button>
