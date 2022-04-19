@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { useHead } from '@vueuse/head';
 
+useHead({title: 'Page not found - IT Tools'})
 </script>
 
 <template>

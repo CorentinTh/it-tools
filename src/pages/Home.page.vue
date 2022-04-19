@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { toolsWithCategory } from '@/tools';
 import ToolCard from '../components/ToolCard.vue';
+import { useHead } from '@vueuse/head';
+
+useHead({title: 'IT Tools'})
 </script>
 
 <template>

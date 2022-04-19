@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useHead } from '@vueuse/head';
+
+useHead({title: 'About - IT Tools'})
 </script>
 
 <template>
