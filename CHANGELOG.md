@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.1](https://github.com/CorentinTh/it-tools/compare/v2.2.0...v2.2.1) (2022-04-21)
+
+
+### Bug Fixes
+
+* **head:** added titles for non-tool pages ([0a15892](https://github.com/CorentinTh/it-tools/commit/0a15892dde9852ff158a8fcb72d0ad6bae8bad02))
+* **sider:** missing href for link in footer ([c4dabcc](https://github.com/CorentinTh/it-tools/commit/c4dabccdaeac9d03163ac2588599b000e4e74562))
+* **style:** hard width for group labels ([ebf6695](https://github.com/CorentinTh/it-tools/commit/ebf6695d2533db6f37b24dc7d338f422c551c8cb))
+* **url-parser:** cleaned weird margins on dark mode ([005ebfb](https://github.com/CorentinTh/it-tools/commit/005ebfba318ece1a9c04aefb737baed5d7aafb91))
+
 ## [2.2.0](https://github.com/CorentinTh/it-tools/compare/v2.1.0...v2.2.0) (2022-04-18)
 
 
