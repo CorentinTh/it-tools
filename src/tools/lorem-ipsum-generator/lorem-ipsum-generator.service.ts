@@ -200,7 +200,9 @@ export function generateLoremIpsum({
   startWithLoremIpsum?: boolean;
   asHTML?: boolean;
 }) {
-  const paragraphs = Array.from({ length: paragraphCount }).map(() => Array.from({ length: sentencePerParagraph }).map(() => generateSentence(wordCount)));
+  const paragraphs = Array.from({ length: paragraphCount }).map(() =>
+    Array.from({ length: sentencePerParagraph }).map(() => generateSentence(wordCount)),
+  );
 
   if (startWithLoremIpsum) {
     paragraphs[0][0] = firstSentence;

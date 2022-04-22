@@ -1,26 +1,26 @@
 <script lang="ts" setup>
 import { useRoute } from 'vue-router';
 import BaseLayout from './base.layout.vue';
-import { useHead } from '@vueuse/head'
-import type { HeadObject } from '@vueuse/head'
+import { useHead } from '@vueuse/head';
+import type { HeadObject } from '@vueuse/head';
 import { reactive } from 'vue';
 
-const route = useRoute()
+const route = useRoute();
 
 const head = reactive<HeadObject>({
-    title: `${route.meta.name} - IT Tools`,
-    meta: [
-        {
-            name: 'description',
-            content: route.meta.description
-        },
-        {
-            name: 'keywords',
-            content: route.meta.keywords
-        }
-    ]
-})
-useHead(head)
+  title: `${route.meta.name} - IT Tools`,
+  meta: [
+    {
+      name: 'description',
+      content: route.meta.description,
+    },
+    {
+      name: 'keywords',
+      content: route.meta.keywords,
+    },
+  ],
+});
+useHead(head);
 </script>
 
 <template>
@@ -41,34 +41,34 @@ useHead(head)
 
 <style lang="less" scoped>
 .tool-layout {
-    max-width: 700px;
-    margin: 0 auto;
-    box-sizing: border-box;
+  max-width: 700px;
+  margin: 0 auto;
+  box-sizing: border-box;
 
-    .tool-header {
-        padding: 40px 0;
+  .tool-header {
+    padding: 40px 0;
 
-        .n-h1 {
-            opacity: 0.9;
-            font-size: 40px;
-            font-weight: 400;
-            margin: 0;
-            line-height: 1;
-        }
-
-        .separator {
-            width: 200px;
-            height: 2px;
-            background: rgb(161, 161, 161);
-
-            margin: 10px 0;
-        }
-
-        .description {
-            margin: 0;
-
-            opacity: 0.7;
-        }
+    .n-h1 {
+      opacity: 0.9;
+      font-size: 40px;
+      font-weight: 400;
+      margin: 0;
+      line-height: 1;
     }
+
+    .separator {
+      width: 200px;
+      height: 2px;
+      background: rgb(161, 161, 161);
+
+      margin: 10px 0;
+    }
+
+    .description {
+      margin: 0;
+
+      opacity: 0.7;
+    }
+  }
 }
 </style>

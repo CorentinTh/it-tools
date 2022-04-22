@@ -1,8 +1,6 @@
 <template>
   <n-card title="Escape html entities">
-    <n-form-item
-      label="Your string :"
-    >
+    <n-form-item label="Your string :">
       <n-input
         v-model:value="escapeInput"
         type="textarea"
@@ -13,28 +11,21 @@
 
     <n-form-item label="Your string escaped :">
       <n-input
-        :value="escapeOutput"
         type="textarea"
         readonly
         placeholder="Your string escaped"
+        :value="escapeOutput"
         :autosize="{ minRows: 2 }"
       />
     </n-form-item>
 
     <n-space justify="center">
-      <n-button
-        secondary
-        @click="copyEscaped"
-      >
-        Copy
-      </n-button>
+      <n-button secondary @click="copyEscaped"> Copy </n-button>
     </n-space>
   </n-card>
-  <br>
+  <br />
   <n-card title="Unescape html entities">
-    <n-form-item
-      label="Your escaped string :"
-    >
+    <n-form-item label="Your escaped string :">
       <n-input
         v-model:value="unescapeInput"
         type="textarea"
@@ -43,7 +34,7 @@
       />
     </n-form-item>
 
-    <n-form-item label="Your string unescaped :"> 
+    <n-form-item label="Your string unescaped :">
       <n-input
         :value="unescapeOutput"
         type="textarea"
@@ -54,27 +45,21 @@
     </n-form-item>
 
     <n-space justify="center">
-      <n-button
-        secondary
-        @click="copyUnescaped"
-      >
-        Copy
-      </n-button>
+      <n-button secondary @click="copyUnescaped"> Copy </n-button>
     </n-space>
   </n-card>
 </template>
 
 <script setup lang="ts">
-import {escape,unescape} from 'lodash'
+import { escape, unescape } from 'lodash';
 import { computed, ref } from 'vue';
- import { useCopy } from '@/composable/copy';
+import { useCopy } from '@/composable/copy';
 
-const escapeInput = ref('<title>IT Tool</title>')
-const escapeOutput = computed(() => escape(escapeInput.value))
-const {copy: copyEscaped} = useCopy({source: escapeOutput})
+const escapeInput = ref('<title>IT Tool</title>');
+const escapeOutput = computed(() => escape(escapeInput.value));
+const { copy: copyEscaped } = useCopy({ source: escapeOutput });
 
-const unescapeInput = ref('&lt;title&gt;IT Tool&lt;/title')
-const unescapeOutput = computed(() => unescape(unescapeInput.value))
-const {copy: copyUnescaped} = useCopy({source: unescapeOutput})
-</script> 
- 
+const unescapeInput = ref('&lt;title&gt;IT Tool&lt;/title');
+const unescapeOutput = computed(() => unescape(unescapeInput.value));
+const { copy: copyUnescaped } = useCopy({ source: unescapeOutput });
+</script>

@@ -10,10 +10,7 @@
         rel="noopener"
         target="_blank"
       >
-        <n-icon
-          size="25"
-          :component="BrandGithub"
-        />
+        <n-icon size="25" :component="BrandGithub" />
       </n-button>
     </template>
     Github repository
@@ -30,36 +27,17 @@
         rel="noopener"
         target="_blank"
       >
-        <n-icon
-          size="25"
-          :component="BrandTwitter"
-        />
+        <n-icon size="25" :component="BrandTwitter" />
       </n-button>
     </template>
     Creator twitter
   </n-tooltip>
 
-
-  <router-link
-    to="/about"
-    #="{ navigate, href }"
-    custom
-  >
+  <router-link to="/about" #="{ navigate, href }" custom>
     <n-tooltip trigger="hover">
       <template #trigger>
-        <n-button
-          tag="a"
-          :href="href"
-          circle
-          quaternary
-          size="large"
-          aria-label="Home"
-          @click="navigate"
-        >
-          <n-icon
-            size="25"
-            :component="InfoCircle"
-          />
+        <n-button tag="a" :href="href" circle quaternary size="large" aria-label="Home" @click="navigate">
+          <n-icon size="25" :component="InfoCircle" />
         </n-button>
       </template>
       About
@@ -67,22 +45,9 @@
   </router-link>
   <n-tooltip trigger="hover">
     <template #trigger>
-      <n-button
-        size="large"
-        circle
-        quaternary
-        @click="isDarkTheme = !isDarkTheme"
-      >
-        <n-icon
-          v-if="isDarkTheme"
-          size="25"
-          :component="Sun"
-        />
-        <n-icon
-          v-else
-          size="25"
-          :component="Moon"
-        />
+      <n-button size="large" circle quaternary @click="isDarkTheme = !isDarkTheme">
+        <n-icon v-if="isDarkTheme" size="25" :component="Sun" />
+        <n-icon v-else size="25" :component="Moon" />
       </n-button>
     </template>
     <span v-if="isDarkTheme">Light mode</span>
@@ -93,16 +58,16 @@
 <script setup lang="ts">
 import { useStyleStore } from '@/stores/style.store';
 import { toRefs } from 'vue';
-import { BrandGithub, BrandTwitter, Moon, Sun, InfoCircle } from '@vicons/tabler'
+import { BrandGithub, BrandTwitter, Moon, Sun, InfoCircle } from '@vicons/tabler';
 
-const styleStore = useStyleStore()
-const { isDarkTheme } = toRefs(styleStore)
-</script> 
+const styleStore = useStyleStore();
+const { isDarkTheme } = toRefs(styleStore);
+</script>
 
 <style lang="less" scoped>
 .n-button {
-    &:not(:last-child) {
-        margin-right: 5px;
-    }
+  &:not(:last-child) {
+    margin-right: 5px;
+  }
 }
-</style> 
+</style>

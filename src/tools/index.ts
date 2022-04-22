@@ -33,7 +33,14 @@ export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Converter',
     icon: LockOpen,
-    components: [dateTimeConverter, baseConverter, romanNumeralConverter, base64Converter, colorConverter, caseConverter],
+    components: [
+      dateTimeConverter,
+      baseConverter,
+      romanNumeralConverter,
+      base64Converter,
+      colorConverter,
+      caseConverter,
+    ],
   },
   {
     name: 'Web',
@@ -53,4 +60,6 @@ export const toolsByCategory: ToolCategory[] = [
 ];
 
 export const tools = toolsByCategory.flatMap(({ components }) => components);
-export const toolsWithCategory = toolsByCategory.flatMap(({ components, name }) => components.map((tool) => ({ category: name, ...tool })));
+export const toolsWithCategory = toolsByCategory.flatMap(({ components, name }) =>
+  components.map((tool) => ({ category: name, ...tool })),
+);

@@ -14,11 +14,7 @@
     </n-layout-sider>
     <n-layout class="content">
       <slot name="content" />
-      <div
-        v-show="isSmallScreen && !isMenuCollapsed"
-        class="overlay"
-        @click="isMenuCollapsed = true"
-      />
+      <div v-show="isSmallScreen && !isMenuCollapsed" class="overlay" @click="isMenuCollapsed = true" />
     </n-layout>
   </n-layout>
 </template>
@@ -27,9 +23,9 @@
 import { useStyleStore } from '@/stores/style.store';
 import { toRefs, computed } from 'vue';
 
-const styleStore = useStyleStore()
-const { isMenuCollapsed, isSmallScreen } = toRefs(styleStore)
-const siderPosition = computed(() => isSmallScreen.value ? 'absolute' : 'static')
+const styleStore = useStyleStore();
+const { isMenuCollapsed, isSmallScreen } = toRefs(styleStore);
+const siderPosition = computed(() => (isSmallScreen.value ? 'absolute' : 'static'));
 </script>
 
 <style lang="less" scoped>
@@ -44,7 +40,6 @@ const siderPosition = computed(() => isSmallScreen.value ? 'absolute' : 'static'
 }
 
 .content {
-
   // background-color: #f1f5f9;
   ::v-deep(.n-layout-scroll-container) {
     padding: 26px;

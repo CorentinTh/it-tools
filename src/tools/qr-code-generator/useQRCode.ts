@@ -28,7 +28,7 @@ export function useQRCode({
           ...options,
         });
     },
-    { immediate: true }
+    { immediate: true },
   );
 
   return { qrcode };

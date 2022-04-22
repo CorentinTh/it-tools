@@ -1,34 +1,33 @@
 <script lang="ts" setup>
-import { SearchRound } from '@vicons/material'
+import { SearchRound } from '@vicons/material';
 import { computed, ref } from 'vue';
-import { deburr } from 'lodash'
+import { deburr } from 'lodash';
 import { tools } from '@/tools';
 import { useRouter } from 'vue-router';
 
-const router = useRouter()
-const queryString = ref('')
+const router = useRouter();
+const queryString = ref('');
 
-const cleanString = (s: string) => deburr(s.trim().toLowerCase())
+const cleanString = (s: string) => deburr(s.trim().toLowerCase());
 
 const searchableTools = tools.map(({ name, description, keywords, path }) => ({
-    searchableText: [name, description, ...keywords].map(cleanString).join(' '),
-    path,
-    name
-}))
+  searchableText: [name, description, ...keywords].map(cleanString).join(' '),
+  path,
+  name,
+}));
 
 const options = computed(() => {
-    const query = cleanString(queryString.value)
+  const query = cleanString(queryString.value);
 
-    return searchableTools
-        .filter(({ searchableText }) => searchableText.includes(query))
-        .map(({ name, path }) => ({ label: name, value: path }))
-})
+  return searchableTools
+    .filter(({ searchableText }) => searchableText.includes(query))
+    .map(({ name, path }) => ({ label: name, value: path }));
+});
 
 function onSelect(path: string) {
-    router.push(path)
-    queryString.value = ''
+  router.push(path);
+  queryString.value = '';
 }
-
 </script>
 
 <template>
@@ -57,7 +56,6 @@ function onSelect(path: string) {
     </n-auto-complete>
   </div>
 </template>
-
 
 <style lang="less" scoped>
 // ::v-deep(.n-input__border) {

@@ -2,71 +2,57 @@
 import { NIcon, useThemeVars } from 'naive-ui';
 import { h, ref, type Component } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
-import { Heart, Menu2, Home2 } from '@vicons/tabler'
+import { Heart, Menu2, Home2 } from '@vicons/tabler';
 import { toolsByCategory } from '@/tools';
 import SearchBar from '../components/SearchBar.vue';
 import { useStyleStore } from '@/stores/style.store';
-import HeroGradient from '../assets/hero-gradient.svg?component'
-import MenuLayout from '../components/MenuLayout.vue'
-import NavbarButtons from '../components/NavbarButtons.vue'
+import HeroGradient from '../assets/hero-gradient.svg?component';
+import MenuLayout from '../components/MenuLayout.vue';
+import NavbarButtons from '../components/NavbarButtons.vue';
 
-const themeVars = useThemeVars()
-const activeKey = ref(null)
-const route = useRoute()
-const styleStore = useStyleStore()
+const themeVars = useThemeVars();
+const activeKey = ref(null);
+const route = useRoute();
+const styleStore = useStyleStore();
 const version = import.meta.env.PACKAGE_VERSION;
 const commitSha = import.meta.env.GIT_SHORT_SHA;
 
-const makeLabel = (text: string, to: string) => () => h(RouterLink, { to }, { default: () => text })
-const makeIcon = (icon: Component) => () => h(NIcon, null, { default: () => h(icon) })
+const makeLabel = (text: string, to: string) => () => h(RouterLink, { to }, { default: () => text });
+const makeIcon = (icon: Component) => () => h(NIcon, null, { default: () => h(icon) });
 
-const m = toolsByCategory.map(category => ({
+const m = toolsByCategory.map((category) => ({
   label: category.name,
   key: category.name,
   type: 'group',
   children: category.components.map(({ name, path, icon }) => ({
     label: makeLabel(name, path),
     icon: makeIcon(icon),
-    key: name
-  }))
-}))
-
+    key: name,
+  })),
+}));
 </script>
 
 <template>
-  <menu-layout
-    class="menu-layout"
-    :class="{ isSmallScreen: styleStore.isSmallScreen }"
-  >
+  <menu-layout class="menu-layout" :class="{ isSmallScreen: styleStore.isSmallScreen }">
     <template #sider>
-      <router-link
-        to="/"
-        class="hero-wrapper"
-      >
+      <router-link to="/" class="hero-wrapper">
         <hero-gradient class="gradient" />
         <div class="text-wrapper">
-          <div class="title">
-            IT - TOOLS
-          </div>
+          <div class="title">IT - TOOLS</div>
           <div class="divider" />
-          <div class="subtitle">
-            Handy tools for developers
-          </div>
+          <div class="subtitle">Handy tools for developers</div>
         </div>
       </router-link>
 
       <div class="sider-content">
-        <n-space
-          v-if="styleStore.isSmallScreen"
-          justify="center"
-        >
+        <n-space v-if="styleStore.isSmallScreen" justify="center">
           <navbar-buttons />
         </n-space>
 
         <n-menu
           v-model:value="activeKey"
-          :value="route.name"
           class="menu"
+          :value="route.name"
           :collapsed-width="64"
           :collapsed-icon-size="22"
           :options="m"
@@ -106,14 +92,7 @@ const m = toolsByCategory.map(category => ({
           </div>
           <div>
             © {{ new Date().getFullYear() }}
-            <n-button
-              text
-              tag="a"
-              target="_blank"
-              rel="noopener"
-              type="primary"
-              href="https://github.com/CorentinTh"
-            >
+            <n-button text tag="a" target="_blank" rel="noopener" type="primary" href="https://github.com/CorentinTh">
               Corentin Thomasset
             </n-button>
           </div>
@@ -130,18 +109,10 @@ const m = toolsByCategory.map(category => ({
           aria-label="Toogle menu"
           @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed"
         >
-          <n-icon
-            size="25"
-            :component="Menu2"
-          />
+          <n-icon size="25" :component="Menu2" />
         </n-button>
 
-
-        <router-link
-          to="/"
-          #="{ navigate, href }"
-          custom
-        >
+        <router-link to="/" #="{ navigate, href }" custom>
           <n-tooltip trigger="hover">
             <template #trigger>
               <n-button
@@ -153,10 +124,7 @@ const m = toolsByCategory.map(category => ({
                 aria-label="Home"
                 @click="navigate"
               >
-                <n-icon
-                  size="25"
-                  :component="Home2"
-                />
+                <n-icon size="25" :component="Home2" />
               </n-button>
             </template>
             Home
@@ -174,11 +142,7 @@ const m = toolsByCategory.map(category => ({
               rel="noopener"
               target="_blank"
             >
-              <n-icon
-                v-if="!styleStore.isSmallScreen"
-                :component="Heart"
-                style="margin-right: 5px;"
-              />
+              <n-icon v-if="!styleStore.isSmallScreen" :component="Heart" style="margin-right: 5px" />
               Sponsor
             </n-button>
           </template>
@@ -261,14 +225,13 @@ const m = toolsByCategory.map(category => ({
   justify-content: center;
   flex-direction: row;
 
-  &>*:not(:last-child) {
+  & > *:not(:last-child) {
     margin-right: 5px;
   }
-
 
   .search-bar {
     // width: 100%;
     flex-grow: 1;
   }
 }
-</style> 
+</style>

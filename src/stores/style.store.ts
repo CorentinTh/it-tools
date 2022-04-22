@@ -10,12 +10,12 @@ export const useStyleStore = defineStore('style', {
 
     whenever(
       () => !isSmallScreen.value,
-      () => (isMenuCollapsed.value = false)
+      () => (isMenuCollapsed.value = false),
     );
 
     whenever(
       () => isSmallScreen.value,
-      () => (isMenuCollapsed.value = true)
+      () => (isMenuCollapsed.value = true),
     );
 
     return {

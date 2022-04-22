@@ -3,45 +3,41 @@
     <template #suffix>
       <n-tooltip trigger="hover">
         <template #trigger>
-          <n-button
-            quaternary
-            circle
-            @click="onCopyClicked"
-          >
+          <n-button quaternary circle @click="onCopyClicked">
             <n-icon :component="ContentCopyFilled" />
           </n-button>
         </template>
         {{ tooltipText }}
       </n-tooltip>
-    </template> 
+    </template>
   </n-input>
 </template>
 
 <script setup lang="ts">
-import { useVModel, useClipboard } from '@vueuse/core'
-import { ContentCopyFilled } from '@vicons/material'
+import { useVModel, useClipboard } from '@vueuse/core';
+import { ContentCopyFilled } from '@vicons/material';
 import { ref } from 'vue';
 
-const props = defineProps<{ value: string, }>()
-const emit = defineEmits(['update:value'])
+const props = defineProps<{ value: string }>();
+const emit = defineEmits(['update:value']);
 
-const value = useVModel(props, 'value', emit)
-const tooltipText = ref('Copy to clipboard')
+const value = useVModel(props, 'value', emit);
+const tooltipText = ref('Copy to clipboard');
 
-const {copy} = useClipboard({source: value})
+const { copy } = useClipboard({ source: value });
 
 function onCopyClicked() {
-    copy();
-    tooltipText.value = 'Copied !'
+  copy();
+  tooltipText.value = 'Copied !';
 
-    setTimeout(() => {
-        tooltipText.value = 'Copy to clipboard'
-    }, 2000)
+  setTimeout(() => {
+    tooltipText.value = 'Copy to clipboard';
+  }, 2000);
 }
 </script>
 
 <style scoped>
 ::v-deep(.n-input-wrapper) {
-    padding-right: 5px;
+  padding-right: 5px;
 }
 </style>

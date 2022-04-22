@@ -25,15 +25,10 @@
       </n-form-item>
 
       <n-space justify="center">
-        <n-button
-          secondary
-          @click="copyEncoded"
-        >
-          Copy
-        </n-button>
+        <n-button secondary @click="copyEncoded"> Copy </n-button>
       </n-space>
     </n-card>
-    <br>
+    <br />
     <n-card title="Decode">
       <n-form-item
         label="Your encoded string :"
@@ -48,7 +43,7 @@
         />
       </n-form-item>
 
-      <n-form-item label="Your string decoded :"> 
+      <n-form-item label="Your string decoded :">
         <n-input
           :value="decodeOutput"
           type="textarea"
@@ -59,12 +54,7 @@
       </n-form-item>
 
       <n-space justify="center">
-        <n-button
-          secondary
-          @click="copyDecoded"
-        >
-          Copy
-        </n-button>
+        <n-button secondary @click="copyDecoded"> Copy </n-button>
       </n-space>
     </n-card>
   </div>
@@ -73,60 +63,62 @@
 <script setup lang="ts">
 import { useCopy } from '@/composable/copy';
 import { useValidation } from '@/composable/validation';
-import { computed, ref } from 'vue'
+import { computed, ref } from 'vue';
 
-const encodeInput = ref('Hello world :)')
+const encodeInput = ref('Hello world :)');
 const encodeOutput = computed(() => {
   try {
-    return encodeURIComponent(encodeInput.value)
+    return encodeURIComponent(encodeInput.value);
   } catch (_) {
-    return ''
+    return '';
   }
-})
+});
 
 const encodedValidation = useValidation({
-  source: encodeInput, rules: [{
-    validator: (value) => {
-      try {
-        encodeURIComponent(value)
-        return true
-      } catch (_) {
-        return false
-      }
+  source: encodeInput,
+  rules: [
+    {
+      validator: (value) => {
+        try {
+          encodeURIComponent(value);
+          return true;
+        } catch (_) {
+          return false;
+        }
+      },
+      message: 'Impossible to parse this string',
     },
-    message: 'Impossible to parse this string'
-  }]
-})
+  ],
+});
 
-const { copy: copyEncoded } = useCopy({ source: encodeOutput, text: 'Encoded string copied to the clipboard' })
+const { copy: copyEncoded } = useCopy({ source: encodeOutput, text: 'Encoded string copied to the clipboard' });
 
-
-const decodeInput = ref('Hello%20world%20%3A)')
+const decodeInput = ref('Hello%20world%20%3A)');
 
 const decodeOutput = computed(() => {
   try {
-    return decodeURIComponent(decodeInput.value)
+    return decodeURIComponent(decodeInput.value);
   } catch (_) {
-    return ''
+    return '';
   }
-})
+});
 
 const decodeValidation = useValidation({
-  source: encodeInput, rules: [{
-    validator: (value) => {
-      try {
-        decodeURIComponent(value)
-        return true
-      } catch (_) {
-        return false
-      }
+  source: encodeInput,
+  rules: [
+    {
+      validator: (value) => {
+        try {
+          decodeURIComponent(value);
+          return true;
+        } catch (_) {
+          return false;
+        }
+      },
+      message: 'Impossible to parse this string',
     },
-    message: 'Impossible to parse this string'
-  }]
-})
+  ],
+});
 
-const { copy: copyDecoded } = useCopy({ source: decodeOutput, text: 'Decoded string copied to the clipboard' })
-
-
-
+const { copy: copyDecoded } = useCopy({ source: decodeOutput, text: 'Decoded string copied to the clipboard' });
 </script>

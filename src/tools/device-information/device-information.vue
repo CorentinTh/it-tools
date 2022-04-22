@@ -1,24 +1,8 @@
 <template>
-  <n-card
-    v-for="{name, information} in sections"
-    :key="name"
-    :title="name"
-    style="margin-bottom: 15px;"
-  >
-    <n-grid
-      cols="1 400:2"
-      x-gap="12"
-      y-gap="12"
-    >
-      <n-gi
-        v-for="{label, value} in information"
-        :key="label"
-        class="information"
-      >
-        <n-card
-          :bordered="false"
-          embedded
-        >
+  <n-card v-for="{ name, information } in sections" :key="name" :title="name" style="margin-bottom: 15px">
+    <n-grid cols="1 400:2" x-gap="12" y-gap="12">
+      <n-gi v-for="{ label, value } in information" :key="label" class="information">
+        <n-card :bordered="false" embedded>
           <div class="label">
             {{ label }}
           </div>
@@ -35,10 +19,10 @@
 </template>
 
 <script setup lang="ts">
-import { useWindowSize } from '@vueuse/core'
+import { useWindowSize } from '@vueuse/core';
 import { computed } from 'vue';
 
-const { width, height } = useWindowSize()
+const { width, height } = useWindowSize();
 
 const sections = [
   {
@@ -46,60 +30,57 @@ const sections = [
     information: [
       {
         label: 'Screen size',
-        value: computed(() => `${window.screen.availWidth} x ${window.screen.availHeight}`)
+        value: computed(() => `${window.screen.availWidth} x ${window.screen.availHeight}`),
       },
       {
         label: 'Orientation',
-        value:  computed(() => window.screen.orientation.type)
+        value: computed(() => window.screen.orientation.type),
       },
       {
         label: 'Orientation angle',
-        value:  computed(() => `${window.screen.orientation.angle}°`)
+        value: computed(() => `${window.screen.orientation.angle}°`),
       },
       {
         label: 'Color depth',
-        value:  computed(() => `${window.screen.colorDepth} bits`)
+        value: computed(() => `${window.screen.colorDepth} bits`),
       },
       {
         label: 'Pixel ratio',
-        value:  computed(() => `${window.devicePixelRatio} dppx`)
+        value: computed(() => `${window.devicePixelRatio} dppx`),
       },
       {
         label: 'Window size',
-        value: computed(() => `${width.value} x ${height.value}`)
-      }
-    ]
+        value: computed(() => `${width.value} x ${height.value}`),
+      },
+    ],
   },
   {
     name: 'Device',
     information: [
       {
         label: 'Browser vendor',
-        value: computed(() => navigator.vendor)
+        value: computed(() => navigator.vendor),
       },
-            {
+      {
         label: 'Languages',
-        value: computed(() => navigator.languages.join(', '))
+        value: computed(() => navigator.languages.join(', ')),
       },
-            {
+      {
         label: 'Plateform',
-        value: computed(() => navigator.platform)
+        value: computed(() => navigator.platform),
       },
       {
         label: 'User agent',
-        value: computed(() => navigator.userAgent)
-      }
-    ]
-  }
-]
-
-
+        value: computed(() => navigator.userAgent),
+      },
+    ],
+  },
+];
 </script>
 
 <style lang="less" scoped>
 .information {
-
-  .label {  
+  .label {
     font-size: 14px;
     opacity: 0.8;
     line-height: 1;

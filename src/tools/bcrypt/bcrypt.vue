@@ -1,10 +1,7 @@
 <template>
   <n-card title="Hash">
     <n-form label-width="120">
-      <n-form-item
-        label="Your string: "
-        label-placement="left"
-      >
+      <n-form-item label="Your string: " label-placement="left">
         <n-input
           v-model:value="input"
           placeholder="Your string to bcrypt..."
@@ -14,42 +11,21 @@
           spellcheck="false"
         />
       </n-form-item>
-      <n-form-item
-        label="Salt count: "
-        label-placement="left"
-      >
-        <n-input-number
-          v-model:value="saltCount"
-          placeholder="Salt rounds..."
-          :max="10"
-          :min="0"
-          style="width: 100%;"
-        />
+      <n-form-item label="Salt count: " label-placement="left">
+        <n-input-number v-model:value="saltCount" placeholder="Salt rounds..." :max="10" :min="0" style="width: 100%" />
       </n-form-item>
-      <n-input
-        :value="hashed"
-        readonly
-        style="text-align: center;"
-      />
+      <n-input :value="hashed" readonly style="text-align: center" />
     </n-form>
-    <br>
+    <br />
     <n-space justify="center">
-      <n-button
-        secondary
-        @click="copy"
-      >
-        Copy hash
-      </n-button>
+      <n-button secondary @click="copy"> Copy hash </n-button>
     </n-space>
   </n-card>
 
-  <br>
+  <br />
   <n-card title="Compare string with hash">
     <n-form label-width="120">
-      <n-form-item
-        label="Your string: "
-        label-placement="left"
-      >
+      <n-form-item label="Your string: " label-placement="left">
         <n-input
           v-model:value="compareString"
           placeholder="Your string to compare..."
@@ -59,10 +35,7 @@
           spellcheck="false"
         />
       </n-form-item>
-      <n-form-item
-        label="Your hash: "
-        label-placement="left"
-      >
+      <n-form-item label="Your hash: " label-placement="left">
         <n-input
           v-model:value="compareHash"
           placeholder="Your hahs to compare..."
@@ -72,15 +45,8 @@
           spellcheck="false"
         />
       </n-form-item>
-      <n-form-item
-        label="Do they match ? "
-        label-placement="left"
-        :show-feedback="false"
-      >
-        <div
-          class="compare-result"
-          :class="{positive:compareMatch}"
-        >
+      <n-form-item label="Do they match ? " label-placement="left" :show-feedback="false">
+        <div class="compare-result" :class="{ positive: compareMatch }">
           {{ compareMatch ? 'Yes' : 'No' }}
         </div>
       </n-form-item>
@@ -90,29 +56,28 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import {hashSync, compareSync} from 'bcryptjs'
+import { hashSync, compareSync } from 'bcryptjs';
 import { useCopy } from '@/composable/copy';
 import { useThemeVars } from 'naive-ui';
 
-const themeVars = useThemeVars()
+const themeVars = useThemeVars();
 
-const input = ref('')
-const saltCount = ref(10)
-const hashed = computed(() => hashSync(input.value, saltCount.value))
-const {copy} = useCopy({source: hashed, text:'Hashed string copied to the clipboard'})
+const input = ref('');
+const saltCount = ref(10);
+const hashed = computed(() => hashSync(input.value, saltCount.value));
+const { copy } = useCopy({ source: hashed, text: 'Hashed string copied to the clipboard' });
 
-const compareString = ref('')
-const compareHash = ref('')
-const compareMatch = computed(() => compareSync(compareString.value, compareHash.value))
-
+const compareString = ref('');
+const compareHash = ref('');
+const compareMatch = computed(() => compareSync(compareString.value, compareHash.value));
 </script>
 
 <style lang="less" scoped>
 .compare-result {
-    color: v-bind('themeVars.errorColor');
+  color: v-bind('themeVars.errorColor');
 
   &.positive {
-    color: v-bind('themeVars.successColor')
+    color: v-bind('themeVars.successColor');
   }
 }
 </style>

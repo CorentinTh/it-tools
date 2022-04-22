@@ -1,10 +1,6 @@
 <template>
   <n-card>
-    <n-form
-      label-width="120"
-      label-placement="left"
-      :show-feedback="false"
-    >
+    <n-form label-width="120" label-placement="left" :show-feedback="false">
       <n-form-item label="Your string:">
         <n-input v-model:value="input" />
       </n-form-item>
@@ -50,7 +46,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import InputCopyable from "../../components/InputCopyable.vue";
+import InputCopyable from '../../components/InputCopyable.vue';
 
 import {
   camelCase,
@@ -64,10 +60,9 @@ import {
   pathCase,
   sentenceCase,
   snakeCase,
-} from "change-case";
+} from 'change-case';
 
-const input = ref('lorem ipsum dolor sit amet')
-
+const input = ref('lorem ipsum dolor sit amet');
 </script>
 
 <style lang="less" scoped>

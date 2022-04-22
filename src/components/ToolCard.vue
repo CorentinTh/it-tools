@@ -1,19 +1,12 @@
 <template>
   <router-link :to="tool.path">
     <n-card class="tool-card">
-      <n-icon
-        class="icon"
-        size="40"
-        :component="tool.icon"
-      />
+      <n-icon class="icon" size="40" :component="tool.icon" />
       <n-h3 class="title">
         <n-ellipsis>{{ tool.name }}</n-ellipsis>
       </n-h3>
       <div class="description">
-        <n-ellipsis
-          :line-clamp="2"
-          :tooltip="false"
-        >
+        <n-ellipsis :line-clamp="2" :tooltip="false">
           {{ tool.description }}
         </n-ellipsis>
       </div>
@@ -25,32 +18,31 @@
 import type { ITool } from '@/tools/Tool';
 import { toRefs, defineProps } from 'vue';
 
-const props = defineProps<{ tool: ITool & { category: string } }>()
-const { tool } = toRefs(props)
-
+const props = defineProps<{ tool: ITool & { category: string } }>();
+const { tool } = toRefs(props);
 </script>
 
 <style lang="less" scoped>
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .tool-card {
-    &:hover {
-        border-color: var(--n-color-target);
-    }
+  &:hover {
+    border-color: var(--n-color-target);
+  }
 
-    .icon {
-        opacity: 0.7;
-    }
+  .icon {
+    opacity: 0.7;
+  }
 
-    .title {
-        margin: 5px 0;
-    }
+  .title {
+    margin: 5px 0;
+  }
 
-    .description {
-        opacity: 0.7;
-        margin: 5px 0;
-    }
+  .description {
+    opacity: 0.7;
+    margin: 5px 0;
+  }
 }
 </style>
