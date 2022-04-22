@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/CorentinTh/it-tools/compare/v2.2.0...v2.3.0) (2022-04-22)
+
+
+### Features
+
+* **new-tool:** html entities escape/unescape ([8e29a97](https://github.com/CorentinTh/it-tools/commit/8e29a97404ea0aa9b9b576656358c8c276b6f992))
+
+
+### Bug Fixes
+
+* **head:** added titles for non-tool pages ([0a15892](https://github.com/CorentinTh/it-tools/commit/0a15892dde9852ff158a8fcb72d0ad6bae8bad02))
+* **sider:** default collapsed value ([b22aa94](https://github.com/CorentinTh/it-tools/commit/b22aa941f52009118d4d3cc98277cc4c402a4c77))
+* **sider:** missing href for link in footer ([c4dabcc](https://github.com/CorentinTh/it-tools/commit/c4dabccdaeac9d03163ac2588599b000e4e74562))
+* **style:** hard width for group labels ([ebf6695](https://github.com/CorentinTh/it-tools/commit/ebf6695d2533db6f37b24dc7d338f422c551c8cb))
+* **url-parser:** cleaned weird margins on dark mode ([005ebfb](https://github.com/CorentinTh/it-tools/commit/005ebfba318ece1a9c04aefb737baed5d7aafb91))
+
+
+### Refactors
+
+* **lint:** linter auto fix ([086d31e](https://github.com/CorentinTh/it-tools/commit/086d31eab5b3b1a927803eab5e650585f61abe19))
+* removed useless ref and value ([b12cbe4](https://github.com/CorentinTh/it-tools/commit/b12cbe412407389186a58e4ceaa94f5b441c11ea))
+
 ### [2.2.1](https://github.com/CorentinTh/it-tools/compare/v2.2.0...v2.2.1) (2022-04-21)
 
 

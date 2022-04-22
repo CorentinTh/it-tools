@@ -1,6 +1,6 @@
 {
   "name": "it-tools",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
