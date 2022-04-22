@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { NIcon, useThemeVars } from 'naive-ui';
-import { h, ref, type Component } from 'vue';
+import { h, type Component } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { Heart, Menu2, Home2 } from '@vicons/tabler';
 import { toolsByCategory } from '@/tools';
@@ -11,7 +11,6 @@ import MenuLayout from '../components/MenuLayout.vue';
 import NavbarButtons from '../components/NavbarButtons.vue';
 
 const themeVars = useThemeVars();
-const activeKey = ref(null);
 const route = useRoute();
 const styleStore = useStyleStore();
 const version = import.meta.env.PACKAGE_VERSION;
@@ -50,9 +49,8 @@ const m = toolsByCategory.map((category) => ({
         </n-space>
 
         <n-menu
-          v-model:value="activeKey"
           class="menu"
-          :value="route.name"
+          :value="(route.name as string)"
           :collapsed-width="64"
           :collapsed-icon-size="22"
           :options="m"
