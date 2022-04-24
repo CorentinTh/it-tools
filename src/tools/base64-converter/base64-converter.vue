@@ -40,7 +40,7 @@ const fileInput = ref() as Ref<File>;
 const { base64: fileBase64 } = useBase64(fileInput);
 const { copy: copyFileBase64 } = useCopy({ source: fileBase64, text: 'Base64 string copied to the clipboard' });
 
-function onUpload({ file: { file } }: { file: UploadFileInfo }) {
+async function onUpload({ file: { file } }: { file: UploadFileInfo }) {
   if (file) {
     fileList.value = [];
     fileInput.value = file;
