@@ -23,7 +23,6 @@
       <n-button secondary @click="copyEscaped"> Copy </n-button>
     </n-space>
   </n-card>
-  <br />
   <n-card title="Unescape html entities">
     <n-form-item label="Your escaped string :">
       <n-input

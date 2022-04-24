@@ -1,63 +1,60 @@
 <template>
-  <div>
-    <n-card title="Encode">
-      <n-form-item
-        label="Your string :"
-        :feedback="encodedValidation.message"
-        :validation-status="encodedValidation.status"
-      >
-        <n-input
-          v-model:value="encodeInput"
-          type="textarea"
-          placeholder="The string to encode"
-          :autosize="{ minRows: 2 }"
-        />
-      </n-form-item>
+  <n-card title="Encode">
+    <n-form-item
+      label="Your string :"
+      :feedback="encodedValidation.message"
+      :validation-status="encodedValidation.status"
+    >
+      <n-input
+        v-model:value="encodeInput"
+        type="textarea"
+        placeholder="The string to encode"
+        :autosize="{ minRows: 2 }"
+      />
+    </n-form-item>
 
-      <n-form-item label="Your string encoded :">
-        <n-input
-          :value="encodeOutput"
-          type="textarea"
-          readonly
-          placeholder="Your string encoded"
-          :autosize="{ minRows: 2 }"
-        />
-      </n-form-item>
+    <n-form-item label="Your string encoded :">
+      <n-input
+        :value="encodeOutput"
+        type="textarea"
+        readonly
+        placeholder="Your string encoded"
+        :autosize="{ minRows: 2 }"
+      />
+    </n-form-item>
 
-      <n-space justify="center">
-        <n-button secondary @click="copyEncoded"> Copy </n-button>
-      </n-space>
-    </n-card>
-    <br />
-    <n-card title="Decode">
-      <n-form-item
-        label="Your encoded string :"
-        :feedback="decodeValidation.message"
-        :validation-status="decodeValidation.status"
-      >
-        <n-input
-          v-model:value="decodeInput"
-          type="textarea"
-          placeholder="The string to decode"
-          :autosize="{ minRows: 2 }"
-        />
-      </n-form-item>
+    <n-space justify="center">
+      <n-button secondary @click="copyEncoded"> Copy </n-button>
+    </n-space>
+  </n-card>
+  <n-card title="Decode">
+    <n-form-item
+      label="Your encoded string :"
+      :feedback="decodeValidation.message"
+      :validation-status="decodeValidation.status"
+    >
+      <n-input
+        v-model:value="decodeInput"
+        type="textarea"
+        placeholder="The string to decode"
+        :autosize="{ minRows: 2 }"
+      />
+    </n-form-item>
 
-      <n-form-item label="Your string decoded :">
-        <n-input
-          :value="decodeOutput"
-          type="textarea"
-          readonly
-          placeholder="Your string decoded"
-          :autosize="{ minRows: 2 }"
-        />
-      </n-form-item>
+    <n-form-item label="Your string decoded :">
+      <n-input
+        :value="decodeOutput"
+        type="textarea"
+        readonly
+        placeholder="Your string decoded"
+        :autosize="{ minRows: 2 }"
+      />
+    </n-form-item>
 
-      <n-space justify="center">
-        <n-button secondary @click="copyDecoded"> Copy </n-button>
-      </n-space>
-    </n-card>
-  </div>
+    <n-space justify="center">
+      <n-button secondary @click="copyDecoded"> Copy </n-button>
+    </n-space>
+  </n-card>
 </template>
 
 <script setup lang="ts">

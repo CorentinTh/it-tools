@@ -22,7 +22,6 @@
     </n-space>
   </n-card>
 
-  <br />
   <n-card title="Compare string with hash">
     <n-form label-width="120">
       <n-form-item label="Your string: " label-placement="left">

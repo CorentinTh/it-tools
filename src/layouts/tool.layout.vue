@@ -33,20 +33,36 @@ useHead(head);
           {{ route.meta.description }}
         </div>
       </div>
+    </div>
 
+    <div class="tool-content">
       <slot />
     </div>
   </base-layout>
 </template>
 
 <style lang="less" scoped>
+.tool-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  ::v-deep(& > *) {
+    flex: 0 1 600px;
+  }
+}
+
 .tool-layout {
-  max-width: 700px;
+  max-width: 600px;
   margin: 0 auto;
   box-sizing: border-box;
 
   .tool-header {
     padding: 40px 0;
+    width: 100%;
 
     .n-h1 {
       opacity: 0.9;

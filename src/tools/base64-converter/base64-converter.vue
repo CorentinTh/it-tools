@@ -50,8 +50,7 @@ async function onUpload({ file: { file } }: { file: UploadFileInfo }) {
 
 <style lang="less" scoped>
 .n-input,
-.n-upload,
-.n-card {
+.n-upload {
   margin-bottom: 15px;
 }
 

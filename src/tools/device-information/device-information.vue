@@ -1,5 +1,5 @@
 <template>
-  <n-card v-for="{ name, information } in sections" :key="name" :title="name" style="margin-bottom: 15px">
+  <n-card v-for="{ name, information } in sections" :key="name" :title="name">
     <n-grid cols="1 400:2" x-gap="12" y-gap="12">
       <n-gi v-for="{ label, value } in information" :key="label" class="information">
         <n-card :bordered="false" embedded>

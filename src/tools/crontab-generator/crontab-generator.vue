@@ -28,7 +28,6 @@
       </n-form>
     </n-space>
   </n-card>
-  <br />
   <n-card>
     <pre>
 ┌──────────── [optional] seconds (0 - 59)

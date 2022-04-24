@@ -1,81 +1,78 @@
 <template>
-  <div>
-    <n-card title="Encrypt">
-      <n-space item-style="flex: 1 1 0">
-        <n-form-item label="Your text:" :show-feedback="false">
-          <n-input
-            v-model:value="cypherInput"
-            type="textarea"
-            placeholder="The string to cypher"
-            :autosize="{ minRows: 4 }"
-          />
-        </n-form-item>
-        <n-space vertical>
-          <n-form-item label="Your secret key:" :show-feedback="false">
-            <n-input v-model:value="cypherSecret" />
-          </n-form-item>
-          <n-form-item label="Encryption algorithm:" :show-feedback="false">
-            <n-select
-              v-model:value="cypherAlgo"
-              :options="Object.keys(algos).map((label) => ({ label, value: label }))"
-            />
-          </n-form-item>
-        </n-space>
-      </n-space>
-      <br />
-      <n-form-item label="Yout text encrypted:" :show-feedback="false">
+  <n-card title="Encrypt">
+    <n-space item-style="flex: 1 1 0">
+      <n-form-item label="Your text:" :show-feedback="false">
         <n-input
-          :value="cypherOutput"
+          v-model:value="cypherInput"
           type="textarea"
-          placeholder="Your string hash"
-          :autosize="{ minRows: 2 }"
-          readonly
-          autocomplete="off"
-          autocorrect="off"
-          autocapitalize="off"
-          spellcheck="false"
+          placeholder="The string to cypher"
+          :autosize="{ minRows: 4 }"
         />
       </n-form-item>
-    </n-card>
+      <n-space vertical>
+        <n-form-item label="Your secret key:" :show-feedback="false">
+          <n-input v-model:value="cypherSecret" />
+        </n-form-item>
+        <n-form-item label="Encryption algorithm:" :show-feedback="false">
+          <n-select
+            v-model:value="cypherAlgo"
+            :options="Object.keys(algos).map((label) => ({ label, value: label }))"
+          />
+        </n-form-item>
+      </n-space>
+    </n-space>
     <br />
-    <n-card title="Decrypt">
-      <n-space item-style="flex: 1 1 0">
-        <n-form-item label="Your encrypted text:" :show-feedback="false">
-          <n-input
-            v-model:value="decryptInput"
-            type="textarea"
-            placeholder="The string to cypher"
-            :autosize="{ minRows: 4 }"
-          />
-        </n-form-item>
-        <n-space vertical>
-          <n-form-item label="Your secret key:" :show-feedback="false">
-            <n-input v-model:value="decryptSecret" />
-          </n-form-item>
-          <n-form-item label="Encryption algorithm:" :show-feedback="false">
-            <n-select
-              v-model:value="decryptAlgo"
-              :options="Object.keys(algos).map((label) => ({ label, value: label }))"
-            />
-          </n-form-item>
-        </n-space>
-      </n-space>
-      <br />
-      <n-form-item label="Yout decrypted text:" :show-feedback="false">
+    <n-form-item label="Yout text encrypted:" :show-feedback="false">
+      <n-input
+        :value="cypherOutput"
+        type="textarea"
+        placeholder="Your string hash"
+        :autosize="{ minRows: 2 }"
+        readonly
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+      />
+    </n-form-item>
+  </n-card>
+  <n-card title="Decrypt">
+    <n-space item-style="flex: 1 1 0">
+      <n-form-item label="Your encrypted text:" :show-feedback="false">
         <n-input
-          :value="decryptOutput"
+          v-model:value="decryptInput"
           type="textarea"
-          placeholder="Your string hash"
-          :autosize="{ minRows: 2 }"
-          readonly
-          autocomplete="off"
-          autocorrect="off"
-          autocapitalize="off"
-          spellcheck="false"
+          placeholder="The string to cypher"
+          :autosize="{ minRows: 4 }"
         />
       </n-form-item>
-    </n-card>
-  </div>
+      <n-space vertical>
+        <n-form-item label="Your secret key:" :show-feedback="false">
+          <n-input v-model:value="decryptSecret" />
+        </n-form-item>
+        <n-form-item label="Encryption algorithm:" :show-feedback="false">
+          <n-select
+            v-model:value="decryptAlgo"
+            :options="Object.keys(algos).map((label) => ({ label, value: label }))"
+          />
+        </n-form-item>
+      </n-space>
+    </n-space>
+    <br />
+    <n-form-item label="Yout decrypted text:" :show-feedback="false">
+      <n-input
+        :value="decryptOutput"
+        type="textarea"
+        placeholder="Your string hash"
+        :autosize="{ minRows: 2 }"
+        readonly
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+      />
+    </n-form-item>
+  </n-card>
 </template>
 
 <script setup lang="ts">
