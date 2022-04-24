@@ -23,7 +23,7 @@
         circle
         quaternary
         tag="a"
-        href="https://twitter.com/cthmsst"
+        href="https://twitter.com/ittoolsdottech"
         rel="noopener"
         target="_blank"
       >
