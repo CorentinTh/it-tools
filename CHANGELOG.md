@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.1](https://github.com/CorentinTh/it-tools/compare/v2.3.0...v2.3.1) (2022-04-24)
+
+
+### Refactors
+
+* changed twitter account handler ([608ec3a](https://github.com/CorentinTh/it-tools/commit/608ec3a81db6583c8a2bf126b3868afd043c6981))
+
 ## [2.3.0](https://github.com/CorentinTh/it-tools/compare/v2.2.0...v2.3.0) (2022-04-22)
 
 
