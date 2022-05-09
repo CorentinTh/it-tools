@@ -5,6 +5,14 @@ type UseValidationRule<T> = {
   message: string;
 };
 
+function isFalsyOrHasThrown(cb: () => boolean) {
+  try {
+    return !cb();
+  } catch (_) {
+    return true;
+  }
+}
+
 export function useValidation<T>({ source, rules }: { source: Ref<T>; rules: UseValidationRule<T>[] }) {
   const state = reactive<{
     message: string;
@@ -19,7 +27,7 @@ export function useValidation<T>({ source, rules }: { source: Ref<T>; rules: Use
     state.status = undefined;
 
     for (const rule of rules) {
-      if (!rule.validator(source.value)) {
+      if (isFalsyOrHasThrown(() => rule.validator(source.value))) {
         state.message = rule.message;
         state.status = 'error';
       }
