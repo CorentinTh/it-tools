@@ -50,9 +50,11 @@ import {
   NImage,
   NScrollbar,
   NGradientText,
+  NCode,
 } from 'naive-ui';
 
 const components = [
+  NCode,
   NGradientText,
   NScrollbar,
   NImage,
