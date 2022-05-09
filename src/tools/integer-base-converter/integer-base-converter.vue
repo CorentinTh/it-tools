@@ -26,7 +26,7 @@
       </n-input-group>
 
       <n-input-group>
-        <n-input-group-label style="flex: 0 0 170px"> Octale (8): </n-input-group-label>
+        <n-input-group-label style="flex: 0 0 170px"> Octal (8): </n-input-group-label>
         <input-copyable :value="convertBase({ value: String(inputNumber), fromBase: inputBase, toBase: 8 })" readonly />
       </n-input-group>
 

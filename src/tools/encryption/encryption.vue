@@ -22,7 +22,7 @@
       </n-space>
     </n-space>
     <br />
-    <n-form-item label="Yout text encrypted:" :show-feedback="false">
+    <n-form-item label="Your text encrypted:" :show-feedback="false">
       <n-input
         :value="cypherOutput"
         type="textarea"
@@ -59,7 +59,7 @@
       </n-space>
     </n-space>
     <br />
-    <n-form-item label="Yout decrypted text:" :show-feedback="false">
+    <n-form-item label="Your decrypted text:" :show-feedback="false">
       <n-input
         :value="decryptOutput"
         type="textarea"

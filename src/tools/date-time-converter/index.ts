@@ -5,7 +5,7 @@ export const tool: ITool = {
   name: 'Date-time converter',
   path: '/date-converter',
   description: 'Convert date and time into the various different formats',
-  keywords: ['date', 'time', 'converter', 'iso', 'utc', 'timezone', 'year', 'mounth', 'day', 'minute', 'seconde'],
+  keywords: ['date', 'time', 'converter', 'iso', 'utc', 'timezone', 'year', 'month', 'day', 'minute', 'seconde'],
   component: () => import('./date-time-converter.vue'),
   icon: Calendar,
 };

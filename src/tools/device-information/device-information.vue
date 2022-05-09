@@ -66,7 +66,7 @@ const sections = [
         value: computed(() => navigator.languages.join(', ')),
       },
       {
-        label: 'Plateform',
+        label: 'Platform',
         value: computed(() => navigator.platform),
       },
       {
