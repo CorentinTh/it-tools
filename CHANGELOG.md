@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.2](https://github.com/CorentinTh/it-tools/compare/v2.3.1...v2.3.2) (2022-05-09)
+
+
+### Bug Fixes
+
+* **base-converter:** responsive input ([0b0cbd5](https://github.com/CorentinTh/it-tools/commit/0b0cbd55c3809ded2eedfa0b2238bc950b01516a))
+* **base64-converter:** async onUpload callback ([84cf1bb](https://github.com/CorentinTh/it-tools/commit/84cf1bb9645c5ae31579098df59471f7d99f6f0c))
+* **typo:** misspelings ([9755e51](https://github.com/CorentinTh/it-tools/commit/9755e51fe216e5e25c56417152e70cb5bce26b11))
+
+
+### Refactors
+
+* **responsive:** row layout for multicards on big screens ([e21230b](https://github.com/CorentinTh/it-tools/commit/e21230bbd9550ba3315607b021a60a4f9f9e1b61))
+
 ### [2.3.1](https://github.com/CorentinTh/it-tools/compare/v2.3.0...v2.3.1) (2022-04-24)
 
 
