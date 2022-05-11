@@ -83,46 +83,54 @@ function onDateInputChanged(value: string) {
   }
 }
 
-const formats = [
+type Format = {
+  name: string;
+  fromDate: (date: Date) => string;
+  toDate: (value: string) => Date;
+};
+
+const toDate: Format['toDate'] = (date) => new Date(date);
+
+const formats: Format[] = [
   {
     name: 'JS locale date string',
-    fromDate: (date: Date) => date.toString(),
-    toDate: (date: string) => new Date(date),
+    fromDate: (date) => date.toString(),
+    toDate,
   },
   {
     name: 'ISO 8601',
-    fromDate: (date: Date) => formatISO(date),
-    toDate: (date: string) => parseISO(date),
+    fromDate: formatISO,
+    toDate: parseISO,
   },
   {
     name: 'ISO 9075',
-    fromDate: (date: Date) => formatISO9075(date),
-    toDate: (date: string) => parseISO(date),
+    fromDate: formatISO9075,
+    toDate: parseISO,
   },
   {
     name: 'RFC 3339',
-    fromDate: (date: Date) => formatRFC3339(date),
-    toDate: (date: string) => new Date(date),
+    fromDate: formatRFC3339,
+    toDate,
   },
   {
     name: 'RFC 7231',
-    fromDate: (date: Date) => formatRFC7231(date),
-    toDate: (date: string) => new Date(date),
+    fromDate: formatRFC7231,
+    toDate,
   },
   {
     name: 'Timestamp',
-    fromDate: (date: Date) => String(getTime(date)),
-    toDate: (ms: string) => parseJSON(+ms),
+    fromDate: (date) => String(getTime(date)),
+    toDate: (ms) => parseJSON(+ms),
   },
   {
     name: 'Unix timestamp',
-    fromDate: (date: Date) => String(getUnixTime(date)),
-    toDate: (sec: string) => fromUnixTime(+sec),
+    fromDate: (date) => String(getUnixTime(date)),
+    toDate: (sec) => fromUnixTime(+sec),
   },
   {
     name: 'UTC format',
-    fromDate: (date: Date) => date.toUTCString(),
-    toDate: (date: string) => new Date(date),
+    fromDate: (date) => date.toUTCString(),
+    toDate,
   },
 ];
 </script>
