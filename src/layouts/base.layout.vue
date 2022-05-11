@@ -19,7 +19,7 @@ const commitSha = import.meta.env.GIT_SHORT_SHA;
 const makeLabel = (text: string, to: string) => () => h(RouterLink, { to }, { default: () => text });
 const makeIcon = (icon: Component) => () => h(NIcon, null, { default: () => h(icon) });
 
-const m = toolsByCategory.map((category) => ({
+const menuOptions = toolsByCategory.map((category) => ({
   label: category.name,
   key: category.name,
   type: 'group',
@@ -53,7 +53,7 @@ const m = toolsByCategory.map((category) => ({
           :value="(route.name as string)"
           :collapsed-width="64"
           :collapsed-icon-size="22"
-          :options="m"
+          :options="menuOptions"
           :indent="20"
         />
 
