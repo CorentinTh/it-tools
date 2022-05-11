@@ -35,7 +35,7 @@ type AlgoNames = keyof typeof algos;
 const algoNames = Object.keys(algos) as AlgoNames[];
 
 const clearText = ref(
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lacus metus blandit dolor lacus natoque ad fusce aliquam velit.'
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lacus metus blandit dolor lacus natoque ad fusce aliquam velit.',
 );
-const hashText = (algo: AlgoNames, value: string) => (value ? algos[algo](value).toString() : '');
+const hashText = (algo: AlgoNames, value: string) => algos[algo](value).toString();
 </script>
