@@ -14,12 +14,12 @@ You have an idea of a tool? Submit a [feature request](https://github.com/Corent
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
 
-### Node version
+### Node & NPM versions
 
-Ensure you have the correct node/npm version
+Volta manages node and npm versions automatically in this project.
 
 ```sh
-nvm use
+curl https://get.volta.sh | bash
 ```
 
 ### Project Setup
