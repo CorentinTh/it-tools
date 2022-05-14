@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/CorentinTh/it-tools/compare/v2.3.2...v2.4.0) (2022-05-14)
+
+
+### Features
+
+* catch throw on validation ([a60f64f](https://github.com/CorentinTh/it-tools/commit/a60f64f74417f811204121f97c16cdb4754afc3b))
+* **hash-text:** compute all hashes at the same time ([#242](https://github.com/CorentinTh/it-tools/issues/242)) ([e9cc499](https://github.com/CorentinTh/it-tools/commit/e9cc499ed87ba926086323223c7eca4f6658b3f0))
+* **new-tool:**  json viewer ([d356b14](https://github.com/CorentinTh/it-tools/commit/d356b1488fc640a4f5b65d62e0f2f368f5941996))
+* **seo:** added cannonical meta ([34bc6a5](https://github.com/CorentinTh/it-tools/commit/34bc6a57a7bab98ff2a630d02034c342084e0af9))
+
+
+### Bug Fixes
+
+* **lint:** missing new lines ([3cfc5f8](https://github.com/CorentinTh/it-tools/commit/3cfc5f8bc27b66e6fbb6054f3c909818083ebc37))
+* update recommended extension ids ([#244](https://github.com/CorentinTh/it-tools/issues/244)) ([1d7032d](https://github.com/CorentinTh/it-tools/commit/1d7032d0268220f594de6d837a303fc1e63cbd9f))
+
+
+### Documentation
+
+* added producthunt banners ([4c4da16](https://github.com/CorentinTh/it-tools/commit/4c4da16970e1dbb13705d8b6c020cd40cd2b5e0d))
+
+
+### Refactors
+
+* **base-layout:** renammed one letter variable ([383d975](https://github.com/CorentinTh/it-tools/commit/383d97569580c4f31448c07cb97e3778bc97a8af))
+* **date-converter:** mutualised and dry-ed code ([d2c767f](https://github.com/CorentinTh/it-tools/commit/d2c767f0922e9b93172c3167226ad3db5499b9f6))
+* **seo:** changed title string ([c3b6132](https://github.com/CorentinTh/it-tools/commit/c3b6132c261bd5952bafb1ff1e576eb13d2d0a7d))
+* updated description ([b89db3c](https://github.com/CorentinTh/it-tools/commit/b89db3c8d0de601fecbd2f9f79492dff1b461bd8))
+
 ### [2.3.2](https://github.com/CorentinTh/it-tools/compare/v2.3.1...v2.3.2) (2022-05-09)
 
 
