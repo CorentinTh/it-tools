@@ -5,8 +5,21 @@
       :feedback="rawJsonValidation.message"
       :validation-status="rawJsonValidation.status"
     >
-      <n-input v-model:value="rawJson" class="json-input" type="textarea" placeholder="Paste your raw json here..." />
+      <n-input
+        v-model:value="rawJson"
+        class="json-input"
+        type="textarea"
+        placeholder="Paste your raw json here..."
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+      />
     </n-form-item>
+
+    <n-space justify="center">
+      <n-button secondary @click="rawJson = ''">Clear</n-button>
+    </n-space>
   </n-card>
 
   <n-card v-if="cleanJson.length > 0">
@@ -39,7 +52,7 @@ const rawJsonValidation = useValidation({
   source: rawJson,
   rules: [
     {
-      validator: (v) => JSON.parse(v),
+      validator: (v) => v === '' || JSON.parse(v),
       message: 'Invalid json string',
     },
   ],
