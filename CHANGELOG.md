@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.1](https://github.com/CorentinTh/it-tools/compare/v2.4.0...v2.4.1) (2022-05-15)
+
+
+### Bug Fixes
+
+* **seo:** wrong url in share metas ([a88e4a9](https://github.com/CorentinTh/it-tools/commit/a88e4a9289e7d8cc80190f60f2fe08fe2ba08ee6))
+
+
+### Refactors
+
+* **json-viewer:** add clear button ([048bc4a](https://github.com/CorentinTh/it-tools/commit/048bc4ae943509dea2946764efaa69f845b6c478))
+* **seo:** changed title string ([d4ea393](https://github.com/CorentinTh/it-tools/commit/d4ea393c1df87ae958a06ed66a11e36b081282d4))
+
 ## [2.4.0](https://github.com/CorentinTh/it-tools/compare/v2.3.2...v2.4.0) (2022-05-14)
 
 
