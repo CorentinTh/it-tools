@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import type { ITool } from '@/tools/Tool';
-import { toRefs, defineProps } from 'vue';
+import { toRefs } from 'vue';
 
 const props = defineProps<{ tool: ITool & { category: string } }>();
 const { tool } = toRefs(props);
