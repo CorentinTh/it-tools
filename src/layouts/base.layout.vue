@@ -9,12 +9,13 @@ import { useStyleStore } from '@/stores/style.store';
 import HeroGradient from '../assets/hero-gradient.svg?component';
 import MenuLayout from '../components/MenuLayout.vue';
 import NavbarButtons from '../components/NavbarButtons.vue';
+import { config } from '@/config';
 
 const themeVars = useThemeVars();
 const route = useRoute();
 const styleStore = useStyleStore();
-const version = import.meta.env.PACKAGE_VERSION;
-const commitSha = import.meta.env.GIT_SHORT_SHA;
+const version = config.app.version;
+const commitSha = config.app.lastCommitSha.slice(0, 7);
 
 const makeLabel = (text: string, to: string) => () => h(RouterLink, { to }, { default: () => text });
 const makeIcon = (icon: Component) => () => h(NIcon, null, { default: () => h(icon) });

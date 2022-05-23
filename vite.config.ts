@@ -61,6 +61,5 @@ export default defineConfig({
   },
   define: {
     'import.meta.env.PACKAGE_VERSION': JSON.stringify(process.env.npm_package_version),
-    'import.meta.env.GIT_SHORT_SHA': JSON.stringify((process?.env?.VITE_VERCEL_GIT_COMMIT_SHA ?? '').slice(0, 7)),
   },
 });
