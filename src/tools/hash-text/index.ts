@@ -1,5 +1,5 @@
 import { EyeOff } from '@vicons/tabler';
-import type { ITool } from '../Tool';
+import type { ITool } from '../tool';
 
 export const tool: ITool = {
   name: 'Hash text',

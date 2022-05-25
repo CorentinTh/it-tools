@@ -1,5 +1,5 @@
 import { LetterX } from '@vicons/tabler';
-import type { ITool } from '../Tool';
+import type { ITool } from '../tool';
 
 export const tool: ITool = {
   name: 'Roman numeral converter',

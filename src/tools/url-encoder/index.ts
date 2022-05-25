@@ -1,5 +1,5 @@
 import { Link } from '@vicons/tabler';
-import type { ITool } from '../Tool';
+import type { ITool } from '../tool';
 
 export const tool: ITool = {
   name: 'Encode/decode url formatted strings',

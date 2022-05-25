@@ -1,5 +1,5 @@
 import { Lock } from '@vicons/tabler';
-import type { ITool } from '../Tool';
+import type { ITool } from '../tool';
 
 export const tool: ITool = {
   name: 'Encrypt / decrypt text',

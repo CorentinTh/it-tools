@@ -1,5 +1,5 @@
 import { LockOpen } from '@vicons/tabler';
-import type { ToolCategory } from './Tool';
+import type { ToolCategory } from './tool';
 
 import { tool as jsonViewer } from './json-viewer';
 import { tool as htmlEntities } from './html-entities';
