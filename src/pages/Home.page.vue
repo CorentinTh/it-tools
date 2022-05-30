@@ -3,7 +3,7 @@ import { toolsWithCategory } from '@/tools';
 import ToolCard from '../components/ToolCard.vue';
 import { useHead } from '@vueuse/head';
 
-useHead({ title: 'IT Tools' });
+useHead({ title: 'IT Tools - Handy online tools for developers' });
 </script>
 
 <template>
