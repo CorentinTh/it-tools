@@ -9,7 +9,13 @@ useHead({ title: 'IT Tools - Handy online tools for developers' });
 <template>
   <div class="home-page">
     <n-grid x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
-      <n-gi v-for="tool in toolsWithCategory.reverse().sort(({ isNew }) => (isNew ? -1 : 1))" :key="tool.name">
+      <n-gi
+        v-for="tool in [
+          ...toolsWithCategory.filter(({ isNew }) => isNew),
+          ...toolsWithCategory.filter(({ isNew }) => !isNew),
+        ]"
+        :key="tool.name"
+      >
         <tool-card :tool="tool" />
       </n-gi>
     </n-grid>
