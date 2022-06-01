@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { NIcon, useThemeVars } from 'naive-ui';
+import { NIcon, useThemeVars, type MenuGroupOption } from 'naive-ui';
 import { h } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { Heart, Menu2, Home2 } from '@vicons/tabler';
@@ -19,17 +19,17 @@ const styleStore = useStyleStore();
 const version = config.app.version;
 const commitSha = config.app.lastCommitSha.slice(0, 7);
 
-const makeLabel = (text: string, to: string) => () => h(RouterLink, { to }, { default: () => text });
+const makeLabel = (tool: ITool) => () => h(RouterLink, { to: tool.path }, { default: () => tool.name });
 const makeIcon = (tool: ITool) => () => h(MenuIconItem, { tool });
 
-const menuOptions = toolsByCategory.map((category) => ({
+const menuOptions: MenuGroupOption[] = toolsByCategory.map((category) => ({
   label: category.name,
   key: category.name,
   type: 'group',
   children: category.components.map((tool) => ({
-    label: makeLabel(tool.name, tool.path),
+    label: makeLabel(tool),
     icon: makeIcon(tool),
-    key: name,
+    key: tool.name,
   })),
 }));
 </script>
