@@ -1,6 +1,7 @@
 import { LockOpen } from '@vicons/tabler';
 import type { ToolCategory } from './tool';
 
+import { tool as mathEvaluator } from './math-evaluator';
 import { tool as jsonViewer } from './json-viewer';
 import { tool as htmlEntities } from './html-entities';
 import { tool as urlParser } from './url-parser';
@@ -52,6 +53,11 @@ export const toolsByCategory: ToolCategory[] = [
     name: 'Development',
     icon: LockOpen,
     components: [gitMemo, randomPortGenerator, crontabGenerator, jsonViewer],
+  },
+  {
+    name: 'Math',
+    icon: LockOpen,
+    components: [mathEvaluator],
   },
   {
     name: 'Text',
