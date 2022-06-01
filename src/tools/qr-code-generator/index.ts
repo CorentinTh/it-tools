@@ -1,7 +1,7 @@
 import { Qrcode } from '@vicons/tabler';
-import type { ITool } from '../tool';
+import { defineTool } from '../tool';
 
-export const tool: ITool = {
+export const tool = defineTool({
   name: 'QR Code generator',
   path: '/qrcode-generator',
   description:
@@ -9,4 +9,4 @@ export const tool: ITool = {
   keywords: ['qr', 'code', 'generator', 'square', 'color', 'link', 'low', 'medium', 'quartile', 'high', 'transparent'],
   component: () => import('./qr-code-generator.vue'),
   icon: Qrcode,
-};
+});

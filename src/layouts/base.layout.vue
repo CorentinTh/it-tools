@@ -10,6 +10,8 @@ import HeroGradient from '../assets/hero-gradient.svg?component';
 import MenuLayout from '../components/MenuLayout.vue';
 import NavbarButtons from '../components/NavbarButtons.vue';
 import { config } from '@/config';
+import MenuIconItem from '@/components/MenuIconItem.vue';
+import type { ITool } from '@/tools/tool';
 
 const themeVars = useThemeVars();
 const route = useRoute();
@@ -18,15 +20,15 @@ const version = config.app.version;
 const commitSha = config.app.lastCommitSha.slice(0, 7);
 
 const makeLabel = (text: string, to: string) => () => h(RouterLink, { to }, { default: () => text });
-const makeIcon = (icon: Component) => () => h(NIcon, null, { default: () => h(icon) });
+const makeIcon = (tool: ITool) => () => h(MenuIconItem, { tool });
 
 const menuOptions = toolsByCategory.map((category) => ({
   label: category.name,
   key: category.name,
   type: 'group',
-  children: category.components.map(({ name, path, icon }) => ({
-    label: makeLabel(name, path),
-    icon: makeIcon(icon),
+  children: category.components.map((tool) => ({
+    label: makeLabel(tool.name, tool.path),
+    icon: makeIcon(tool),
     key: name,
   })),
 }));
@@ -217,6 +219,11 @@ const menuOptions = toolsByCategory.map((category) => ({
     }
   }
 }
+
+// ::v-deep(.n-menu-item-content-header) {
+//   overflow: visible !important;
+//   // overflow-x: hidden !important;
+// }
 
 .navigation {
   display: flex;

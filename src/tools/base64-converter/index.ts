@@ -1,7 +1,7 @@
 import { FileDigit } from '@vicons/tabler';
-import type { ITool } from '../tool';
+import { defineTool } from '../tool';
 
-export const tool: ITool = {
+export const tool = defineTool({
   name: 'Base64 converter',
   path: '/base64-converter',
   description: "Convert string, files or images into a it's base64 representation.",
@@ -9,4 +9,4 @@ export const tool: ITool = {
   component: () => import('./base64-converter.vue'),
   icon: FileDigit,
   redirectFrom: ['/file-to-base64', '/base64-string-converter'],
-};
+});

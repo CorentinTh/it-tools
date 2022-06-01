@@ -1,7 +1,7 @@
 import { FileText } from '@vicons/tabler';
-import type { ITool } from '../tool';
+import { defineTool } from '../tool';
 
-export const tool: ITool = {
+export const tool = defineTool({
   name: 'Text statistics',
   path: '/text-statistics',
   description: "Get information about a text, the amount of characters, the amount of words, it's size, ...",
@@ -9,4 +9,4 @@ export const tool: ITool = {
   component: () => import('./text-statistics.vue'),
   icon: FileText,
   redirectFrom: ['/text-stats'],
-};
+});

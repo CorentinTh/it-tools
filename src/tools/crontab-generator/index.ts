@@ -1,7 +1,7 @@
 import { Alarm } from '@vicons/tabler';
-import type { ITool } from '../tool';
+import { defineTool } from '../tool';
 
-export const tool: ITool = {
+export const tool = defineTool({
   name: 'Crontab generator',
   path: '/crontab-generator',
   description: 'Validate and generate crontab and get the human readable description of the cron schedule.',
@@ -22,4 +22,4 @@ export const tool: ITool = {
   ],
   component: () => import('./crontab-generator.vue'),
   icon: Alarm,
-};
+});

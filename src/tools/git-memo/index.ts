@@ -1,7 +1,7 @@
 import { BrandGit } from '@vicons/tabler';
-import type { ITool } from '../tool';
+import { defineTool } from '../tool';
 
-export const tool: ITool = {
+export const tool = defineTool({
   name: 'Git cheatsheet',
   path: '/git-memo',
   description:
@@ -9,4 +9,4 @@ export const tool: ITool = {
   keywords: ['git', 'push', 'force', 'pull', 'commit', 'amend', 'rebase', 'merge', 'reset', 'soft', 'hard', 'lease'],
   component: () => import('./git-memo.vue'),
   icon: BrandGit,
-};
+});

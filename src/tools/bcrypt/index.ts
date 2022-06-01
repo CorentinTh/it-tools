@@ -1,7 +1,7 @@
 import { LockSquare } from '@vicons/tabler';
-import type { ITool } from '../tool';
+import { defineTool } from '../tool';
 
-export const tool: ITool = {
+export const tool = defineTool({
   name: 'Bcrypt',
   path: '/bcrypt',
   description:
@@ -9,4 +9,4 @@ export const tool: ITool = {
   keywords: ['bcrypt', 'hash', 'compare', 'password', 'salt', 'round', 'storage', 'crypto'],
   component: () => import('./bcrypt.vue'),
   icon: LockSquare,
-};
+});

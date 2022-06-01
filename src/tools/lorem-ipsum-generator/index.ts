@@ -1,7 +1,7 @@
 import { AlignJustified } from '@vicons/tabler';
-import type { ITool } from '../tool';
+import { defineTool } from '../tool';
 
-export const tool: ITool = {
+export const tool = defineTool({
   name: 'Lorem ipsum generator',
   path: '/lorem-ipsum-generator',
   description:
@@ -9,4 +9,4 @@ export const tool: ITool = {
   keywords: ['lorem', 'ipsum', 'dolor', 'sit', 'amet', 'placeholder', 'text', 'filler', 'random', 'generator'],
   component: () => import('./lorem-ipsum-generator.vue'),
   icon: AlignJustified,
-};
+});

@@ -39,16 +39,16 @@ createToolFile(
 
 <style lang="less" scoped>
 </style>
-`
+`,
 );
 
 createToolFile(
   `index.ts`,
   `
 import { ArrowsShuffle } from '@vicons/tabler';
-import type { ITool } from './../Tool';
+import { defineTool } from '../tool';
 
-export const tool: ITool = {
+export const tool = defineTool({
   name: '${toolNameTitleCase}',
   path: '/${toolName}',
   description: '',
@@ -56,7 +56,7 @@ export const tool: ITool = {
   component: () => import('./${toolName}.vue'),
   icon: ArrowsShuffle,
 };
-`
+`,
 );
 
 createToolFile(`${toolName}.service.ts`, ``);
@@ -69,7 +69,7 @@ import { expect, describe, it } from 'vitest';
 // describe('${toolName}', () => {
 //
 // })
-`
+`,
 );
 
 const toolsIndex = join(toolsDir, 'index.ts');

@@ -1,7 +1,7 @@
 import { Palette } from '@vicons/tabler';
-import type { ITool } from '../tool';
+import { defineTool } from '../tool';
 
-export const tool: ITool = {
+export const tool = defineTool({
   name: 'Color converter',
   path: '/color-converter',
   description: 'Convert color between the different formats (hex, rgb, hsl and css name)',
@@ -9,4 +9,4 @@ export const tool: ITool = {
   component: () => import('./color-converter.vue'),
   icon: Palette,
   redirectFrom: ['/color-picker-converter'],
-};
+});

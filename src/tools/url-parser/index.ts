@@ -1,7 +1,7 @@
 import { Unlink } from '@vicons/tabler';
-import type { ITool } from '../tool';
+import { defineTool } from '../tool';
 
-export const tool: ITool = {
+export const tool = defineTool({
   name: 'Url parser',
   path: '/url-parser',
   description:
@@ -9,4 +9,4 @@ export const tool: ITool = {
   keywords: ['url', 'parser', 'protocol', 'origin', 'params', 'port', 'username', 'password', 'href'],
   component: () => import('./url-parser.vue'),
   icon: Unlink,
-};
+});

@@ -1,7 +1,7 @@
 import { Fingerprint } from '@vicons/tabler';
-import type { ITool } from '../tool';
+import { defineTool } from '../tool';
 
-export const tool: ITool = {
+export const tool = defineTool({
   name: 'UUIDs v4 generator',
   path: '/uuid-generator',
   description:
@@ -9,4 +9,4 @@ export const tool: ITool = {
   keywords: ['uuid', 'v4', 'random', 'id', 'alphanumeric', 'identity', 'token', 'string', 'identifier', 'unique'],
   component: () => import('./uuid-generator.vue'),
   icon: Fingerprint,
-};
+});

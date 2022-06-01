@@ -1,7 +1,7 @@
 import { LetterCaseToggle } from '@vicons/tabler';
-import type { ITool } from '../tool';
+import { defineTool } from '../tool';
 
-export const tool: ITool = {
+export const tool = defineTool({
   name: 'Case converter',
   path: '/case-converter',
   description: 'Change the case of a string and chose between different formats',
@@ -22,4 +22,4 @@ export const tool: ITool = {
   ],
   component: () => import('./case-converter.vue'),
   icon: LetterCaseToggle,
-};
+});

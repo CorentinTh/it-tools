@@ -1,7 +1,7 @@
 import { DeviceDesktop } from '@vicons/tabler';
-import type { ITool } from '../tool';
+import { defineTool } from '../tool';
 
-export const tool: ITool = {
+export const tool = defineTool({
   name: 'Device information',
   path: '/device-information',
   description: 'Get information about your current device (screen size, pixel-ratio, user agent, ...)',
@@ -20,4 +20,4 @@ export const tool: ITool = {
   ],
   component: () => import('./device-information.vue'),
   icon: DeviceDesktop,
-};
+});

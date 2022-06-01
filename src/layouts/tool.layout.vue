@@ -4,8 +4,10 @@ import BaseLayout from './base.layout.vue';
 import { useHead } from '@vueuse/head';
 import type { HeadObject } from '@vueuse/head';
 import { reactive } from 'vue';
+import { useThemeVars } from 'naive-ui';
 
 const route = useRoute();
+const theme = useThemeVars();
 
 const head = reactive<HeadObject>({
   title: `${route.meta.name} - IT Tools`,
@@ -27,7 +29,21 @@ useHead(head);
   <base-layout>
     <div class="tool-layout">
       <div class="tool-header">
-        <n-h1>{{ route.meta.name }}</n-h1>
+        <n-h1>
+          {{ route.meta.name }}
+
+          <n-tag
+            v-if="route.meta.isNew"
+            round
+            type="success"
+            :bordered="false"
+            :color="{ color: theme.primaryColor, textColor: theme.tagColor }"
+          >
+            New tool
+          </n-tag>
+          <!-- <span class="new-tool-badge">New !</span> -->
+        </n-h1>
+
         <div class="separator" />
         <div class="description">
           {{ route.meta.description }}
