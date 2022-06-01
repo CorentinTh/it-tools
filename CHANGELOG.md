@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/CorentinTh/it-tools/compare/v2.4.2...v2.5.0) (2022-06-01)
+
+
+### Features
+
+* **new-tool:** math evaluator ([433ba2a](https://github.com/CorentinTh/it-tools/commit/433ba2a3e5419eed0c96304b37693082224a1c73))
+* **tools:** new badge for recently created tools ([11720e6](https://github.com/CorentinTh/it-tools/commit/11720e6cdefc1da4bdd638415813b609840f8462))
+
+
+### Bug Fixes
+
+* **config:** updated env values loading ([2f61c74](https://github.com/CorentinTh/it-tools/commit/2f61c745f57962cf3bb9e2c1db4a3176df042808))
+
+
+### Refactors
+
+* removed unused import ([8fb0e6a](https://github.com/CorentinTh/it-tools/commit/8fb0e6af9c3be708d3f1777a1661e1b38f197a3f))
+* renammed Tool.ts to tool.ts ([ac89490](https://github.com/CorentinTh/it-tools/commit/ac89490794ee3c1c033859ffea31a962a13cc96d))
+
 ### [2.4.2](https://github.com/CorentinTh/it-tools/compare/v2.4.1...v2.4.2) (2022-06-01)
 
 
