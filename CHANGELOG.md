@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.2](https://github.com/CorentinTh/it-tools/compare/v2.4.1...v2.4.2) (2022-06-01)
+
+
+### Refactors
+
+* **config:** added config management with figue ([6becdbb](https://github.com/CorentinTh/it-tools/commit/6becdbb42329e1bdecf158707e37ba9f13ba1d2c))
+* **imports:** removed useless defineProps import ([5ce1262](https://github.com/CorentinTh/it-tools/commit/5ce1262fb44864b829dac09d5c0b9b68d522ceb7))
+* set coerent head title for home page ([a46d125](https://github.com/CorentinTh/it-tools/commit/a46d125c19902c2f41f37c62c07bb7b548d9f6f0))
+
 ### [2.4.1](https://github.com/CorentinTh/it-tools/compare/v2.4.0...v2.4.1) (2022-05-15)
 
 
