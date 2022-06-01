@@ -3,13 +3,13 @@ import { useRoute } from 'vue-router';
 import BaseLayout from './base.layout.vue';
 import { useHead } from '@vueuse/head';
 import type { HeadObject } from '@vueuse/head';
-import { reactive } from 'vue';
+import { computed } from 'vue';
 import { useThemeVars } from 'naive-ui';
 
 const route = useRoute();
 const theme = useThemeVars();
 
-const head = reactive<HeadObject>({
+const head = computed<HeadObject>(() => ({
   title: `${route.meta.name} - IT Tools`,
   meta: [
     {
@@ -21,7 +21,7 @@ const head = reactive<HeadObject>({
       content: route.meta.keywords,
     },
   ],
-});
+}));
 useHead(head);
 </script>
 
