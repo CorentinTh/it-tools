@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { NIcon, useThemeVars } from 'naive-ui';
-import { h, type Component } from 'vue';
+import { h } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { Heart, Menu2, Home2 } from '@vicons/tabler';
 import { toolsByCategory } from '@/tools';
