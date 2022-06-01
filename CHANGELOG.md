@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.5.1](https://github.com/CorentinTh/it-tools/compare/v2.5.0...v2.5.1) (2022-06-01)
+
+
+### Bug Fixes
+
+* **lint:** missing dangling comma ([f05c8e1](https://github.com/CorentinTh/it-tools/commit/f05c8e1dc69275e529f4c8771ad55ba211e7fb5e))
+* menu label key value was undefined ([f48cd05](https://github.com/CorentinTh/it-tools/commit/f48cd058cf3381f3bc92ea8fe37b565327707d1e))
+* **title:** trully reactive tool title ([c2e1d59](https://github.com/CorentinTh/it-tools/commit/c2e1d59cb9d8dbb1bb072a46100192cb8c59f59b))
+* tool sorting inconsistencies in home page ([5ab4dd3](https://github.com/CorentinTh/it-tools/commit/5ab4dd3d4a42c3609d72597c7ba91764170e6e96))
+
 ## [2.5.0](https://github.com/CorentinTh/it-tools/compare/v2.4.2...v2.5.0) (2022-06-01)
 
 
