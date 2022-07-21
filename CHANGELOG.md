@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.5.3](https://github.com/CorentinTh/it-tools/compare/v2.5.2...v2.5.3) (2022-07-21)
+
+
+### Bug Fixes
+
+* updated license in README ([e371e8f](https://github.com/CorentinTh/it-tools/commit/e371e8fedfd68f3cf6ecd3fbc9e2da8849f7d5bd))
+
 ### [2.5.2](https://github.com/CorentinTh/it-tools/compare/v2.5.1...v2.5.2) (2022-07-21)
 
 ### [2.5.1](https://github.com/CorentinTh/it-tools/compare/v2.5.0...v2.5.1) (2022-06-01)
