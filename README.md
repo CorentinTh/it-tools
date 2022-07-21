@@ -76,4 +76,4 @@ This project is continuously deployed using [vercel.com](https://vercel.com).
 
 ## License
 
-This project is under the [MIT license](LICENSE).
+This project is under the [GNU GPLv3](LICENSE).
