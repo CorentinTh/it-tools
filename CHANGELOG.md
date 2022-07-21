@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.5.2](https://github.com/CorentinTh/it-tools/compare/v2.5.1...v2.5.2) (2022-07-21)
+
 ### [2.5.1](https://github.com/CorentinTh/it-tools/compare/v2.5.0...v2.5.1) (2022-06-01)
 
 
