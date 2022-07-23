@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-import { SearchRound } from '@vicons/material';
-import { computed, ref } from 'vue';
-import { deburr } from 'lodash';
 import { tools } from '@/tools';
+import { SearchRound } from '@vicons/material';
+import { useMagicKeys, whenever } from '@vueuse/core';
+import { deburr } from 'lodash';
+import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
@@ -28,6 +29,21 @@ function onSelect(path: string) {
   router.push(path);
   queryString.value = '';
 }
+
+const focusTarget = ref();
+
+const keys = useMagicKeys({
+  passive: false,
+  onEventFired(e) {
+    if (e.ctrlKey && e.key === 'k' && e.type === 'keydown') {
+      e.preventDefault();
+    }
+  },
+});
+
+whenever(keys.ctrl_k, () => {
+  focusTarget.value.focus();
+});
 </script>
 
 <template>
@@ -40,9 +56,10 @@ function onSelect(path: string) {
     >
       <template #default="{ handleInput, handleBlur, handleFocus, value: slotValue }">
         <n-input
+          ref="focusTarget"
           round
           clearable
-          placeholder="Search a tool..."
+          placeholder="Search a tool... [Ctrl + K]"
           :value="slotValue"
           @input="handleInput"
           @focus="handleFocus"
