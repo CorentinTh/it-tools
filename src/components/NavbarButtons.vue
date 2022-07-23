@@ -9,6 +9,7 @@
         href="https://github.com/CorentinTh/it-tools"
         rel="noopener"
         target="_blank"
+        aria-label="IT-Tools' github repository"
       >
         <n-icon size="25" :component="BrandGithub" />
       </n-button>
@@ -26,17 +27,18 @@
         href="https://twitter.com/ittoolsdottech"
         rel="noopener"
         target="_blank"
+        aria-label="IT Tools' twitter account"
       >
         <n-icon size="25" :component="BrandTwitter" />
       </n-button>
     </template>
-    Creator twitter
+    IT Tools' twitter account
   </n-tooltip>
 
   <router-link to="/about" #="{ navigate, href }" custom>
     <n-tooltip trigger="hover">
       <template #trigger>
-        <n-button tag="a" :href="href" circle quaternary size="large" aria-label="Home" @click="navigate">
+        <n-button tag="a" :href="href" circle quaternary size="large" aria-label="About" @click="navigate">
           <n-icon size="25" :component="InfoCircle" />
         </n-button>
       </template>
@@ -45,7 +47,7 @@
   </router-link>
   <n-tooltip trigger="hover">
     <template #trigger>
-      <n-button size="large" circle quaternary @click="isDarkTheme = !isDarkTheme">
+      <n-button size="large" circle quaternary aria-label="Toggle dark/light mode" @click="isDarkTheme = !isDarkTheme">
         <n-icon v-if="isDarkTheme" size="25" :component="Sun" />
         <n-icon v-else size="25" :component="Moon" />
       </n-button>
@@ -57,8 +59,8 @@
 
 <script setup lang="ts">
 import { useStyleStore } from '@/stores/style.store';
+import { BrandGithub, BrandTwitter, InfoCircle, Moon, Sun } from '@vicons/tabler';
 import { toRefs } from 'vue';
-import { BrandGithub, BrandTwitter, Moon, Sun, InfoCircle } from '@vicons/tabler';
 
 const styleStore = useStyleStore();
 const { isDarkTheme } = toRefs(styleStore);
