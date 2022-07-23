@@ -1,6 +1,6 @@
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
 import { mkdir, readFile, writeFile } from 'fs/promises';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 
 const currentDirname = dirname(fileURLToPath(import.meta.url));
 
@@ -55,7 +55,7 @@ export const tool = defineTool({
   keywords: ['${toolName.split('-').join("', '")}'],
   component: () => import('./${toolName}.vue'),
   icon: ArrowsShuffle,
-};
+});
 `,
 );
 
