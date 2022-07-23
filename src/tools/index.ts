@@ -5,6 +5,7 @@ import { tool as base64Converter } from './base64-converter';
 import { tool as bcrypt } from './bcrypt';
 import { tool as bip39 } from './bip39-generator';
 import { tool as caseConverter } from './case-converter';
+import { tool as chronometer } from './chronometer';
 import { tool as colorConverter } from './color-converter';
 import { tool as crontabGenerator } from './crontab-generator';
 import { tool as dateTimeConverter } from './date-time-converter';
@@ -58,6 +59,11 @@ export const toolsByCategory: ToolCategory[] = [
     name: 'Math',
     icon: LockOpen,
     components: [mathEvaluator],
+  },
+  {
+    name: 'Measurement',
+    icon: LockOpen,
+    components: [chronometer],
   },
   {
     name: 'Text',
