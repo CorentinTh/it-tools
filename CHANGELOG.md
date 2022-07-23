@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.6.0](https://github.com/CorentinTh/it-tools/compare/v2.5.3...v2.6.0) (2022-07-23)
+
+
+### Features
+
+* **new-tool:** added chronometer ([130031c](https://github.com/CorentinTh/it-tools/commit/130031c2256f3d4d46948974b9de85ee6e92bf8b))
+* **search:** focus the search bar using Ctrl+K ([ab53048](https://github.com/CorentinTh/it-tools/commit/ab53048d5f6fdca7d00edbb79dee1a5409e6b11e))
+
+
+### Bug Fixes
+
+* **deps:** run dependencie audit auto fix ([a16161c](https://github.com/CorentinTh/it-tools/commit/a16161cdb48c064882b9dc91ec3d091d286f5c63))
+* **lint:** cleanned index.html ([c3a302b](https://github.com/CorentinTh/it-tools/commit/c3a302bc389a0e13aef4b14d5a9d3ec3a0d32729))
+* **text-statistics:** empty text mean 0 words and 0 lines ([92ce419](https://github.com/CorentinTh/it-tools/commit/92ce419f45e110509ab202485a36bf175ce345da))
+
+
+### Refactors
+
+* added accessibility labels on icon buttons ([394d085](https://github.com/CorentinTh/it-tools/commit/394d085846d976219ea775c21cd7e77f0f72a12b))
+* **import:** auto reordered imports ([2140842](https://github.com/CorentinTh/it-tools/commit/214084262cec7fb881fd397626356b080ea1a5cc))
+
 ### [2.5.3](https://github.com/CorentinTh/it-tools/compare/v2.5.2...v2.5.3) (2022-07-21)
 
 
