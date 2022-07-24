@@ -11,6 +11,7 @@ import { tool as crontabGenerator } from './crontab-generator';
 import { tool as dateTimeConverter } from './date-time-converter';
 import { tool as deviceInformation } from './device-information';
 import { tool as cypher } from './encryption';
+import { tool as etaCalculator } from './eta-calculator';
 import { tool as gitMemo } from './git-memo';
 import { tool as hashText } from './hash-text';
 import { tool as htmlEntities } from './html-entities';
@@ -59,7 +60,7 @@ export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Math',
     icon: LockOpen,
-    components: [mathEvaluator],
+    components: [mathEvaluator, etaCalculator],
   },
   {
     name: 'Measurement',

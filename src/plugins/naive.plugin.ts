@@ -51,9 +51,11 @@ import {
   NScrollbar,
   NGradientText,
   NCode,
+  NDatePicker,
 } from 'naive-ui';
 
 const components = [
+  NDatePicker,
   NCode,
   NGradientText,
   NScrollbar,
