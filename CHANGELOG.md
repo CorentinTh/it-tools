@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.8.0](https://github.com/CorentinTh/it-tools/compare/v2.7.0...v2.8.0) (2022-07-24)
+
+
+### Features
+
+* **new-tool:** added an ETA calculator ([125a502](https://github.com/CorentinTh/it-tools/commit/125a50215a7abb9e0b59dbbc62aee49007b05ffe))
+
+
+### Bug Fixes
+
+* **sql-prettifier:** better responsiveness ([560fcf3](https://github.com/CorentinTh/it-tools/commit/560fcf3f783c66b9197e4a015420c43a729518bc))
+
+
+### Refactors
+
+* **json-prettify:** improved layout for the json prettifier ([328fda6](https://github.com/CorentinTh/it-tools/commit/328fda65b3490869328467c5e2d5f538c689d9b6))
+* **sql-prettifier:** remove unused service files ([ba87097](https://github.com/CorentinTh/it-tools/commit/ba87097e3d834b6ea3212d28c2c33badb95f85e1))
+
 ## [2.7.0](https://github.com/CorentinTh/it-tools/compare/v2.6.0...v2.7.0) (2022-07-24)
 
 
