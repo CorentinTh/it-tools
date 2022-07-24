@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0](https://github.com/CorentinTh/it-tools/compare/v2.6.0...v2.7.0) (2022-07-24)
+
+
+### Features
+
+* **new-tool:** added an SQL prettifier and formatter ([d1f95f5](https://github.com/CorentinTh/it-tools/commit/d1f95f5b34a4570f1033a5289f0bd009d1aefb0c))
+
+
+### Bug Fixes
+
+* **typo:** fix few typos ([6cd25a7](https://github.com/CorentinTh/it-tools/commit/6cd25a743e32fceeaec8c1f8b94927a9c5d901f1))
+
 ## [2.6.0](https://github.com/CorentinTh/it-tools/compare/v2.5.3...v2.6.0) (2022-07-23)
 
 
