@@ -52,6 +52,7 @@
     "plausible-tracker": "^0.3.5",
     "qrcode": "^1.5.0",
     "randombytes": "^2.1.0",
+    "sql-formatter": "^8.2.0",
     "uuid": "^8.3.2",
     "vue": "^3.2.31",
     "vue-router": "^4.0.12"
