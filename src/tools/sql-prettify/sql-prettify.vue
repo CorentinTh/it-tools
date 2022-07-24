@@ -1,55 +1,47 @@
 <template>
   <div style="flex: 0 0 100%">
-    <div style="margin: 0 auto; width: 600px">
-      <n-space n-space item-style="flex: 1 1 0">
-        <div>
-          <n-form-item label="Dialect">
-            <n-select
-              v-model:value="config.language"
-              :options="[
-                { label: 'GCP BigQuery', value: 'bigquery' },
-                { label: 'IBM DB2', value: 'db2' },
-                { label: 'Apache Hive', value: 'hive' },
-                { label: 'MariaDB', value: 'mariadb' },
-                { label: 'MySQL', value: 'mysql' },
-                { label: 'Couchbase N1QL', value: 'n1ql' },
-                { label: 'Oracle PL/SQL', value: 'plsql' },
-                { label: 'PostgreSQL', value: 'postgresql' },
-                { label: 'Amazon Redshift', value: 'redshift' },
-                { label: 'Spark', value: 'spark' },
-                { label: 'Standard SQL', value: 'sql' },
-                { label: 'sqlite', value: 'sqlite' },
-                { label: 'SQL Server Transact-SQL', value: 'tsql' },
-              ]"
-            />
-          </n-form-item>
-        </div>
-        <div>
-          <n-form-item label="Keyword case">
-            <n-select
-              v-model:value="config.keywordCase"
-              :options="[
-                { label: 'UPPERCASE', value: 'upper' },
-                { label: 'lowercase', value: 'lower' },
-                { label: 'Preserve', value: 'preserve' },
-              ]"
-            />
-          </n-form-item>
-        </div>
-        <div>
-          <n-form-item label="Indent style">
-            <n-select
-              v-model:value="config.indentStyle"
-              :options="[
-                { label: 'Standard', value: 'standard' },
-                { label: 'Tabular left', value: 'tabularLeft' },
-                { label: 'Tabular right', value: 'tabularRight' },
-              ]"
-            />
-          </n-form-item>
-        </div>
-      </n-space>
-    </div>
+    <n-space item-style="flex:1 1 0" style="margin: 0 auto; max-width: 600px" :vertical="styleStore.isSmallScreen">
+      <n-form-item label="Dialect" label-width="500">
+        <n-select
+          v-model:value="config.language"
+          :options="[
+            { label: 'GCP BigQuery', value: 'bigquery' },
+            { label: 'IBM DB2', value: 'db2' },
+            { label: 'Apache Hive', value: 'hive' },
+            { label: 'MariaDB', value: 'mariadb' },
+            { label: 'MySQL', value: 'mysql' },
+            { label: 'Couchbase N1QL', value: 'n1ql' },
+            { label: 'Oracle PL/SQL', value: 'plsql' },
+            { label: 'PostgreSQL', value: 'postgresql' },
+            { label: 'Amazon Redshift', value: 'redshift' },
+            { label: 'Spark', value: 'spark' },
+            { label: 'Standard SQL', value: 'sql' },
+            { label: 'sqlite', value: 'sqlite' },
+            { label: 'SQL Server Transact-SQL', value: 'tsql' },
+          ]"
+        />
+      </n-form-item>
+      <n-form-item label="Keyword case">
+        <n-select
+          v-model:value="config.keywordCase"
+          :options="[
+            { label: 'UPPERCASE', value: 'upper' },
+            { label: 'lowercase', value: 'lower' },
+            { label: 'Preserve', value: 'preserve' },
+          ]"
+        />
+      </n-form-item>
+      <n-form-item label="Indent style">
+        <n-select
+          v-model:value="config.indentStyle"
+          :options="[
+            { label: 'Standard', value: 'standard' },
+            { label: 'Tabular left', value: 'tabularLeft' },
+            { label: 'Tabular right', value: 'tabularRight' },
+          ]"
+        />
+      </n-form-item>
+    </n-space>
   </div>
 
   <n-form-item label="Your SQL query">
@@ -77,6 +69,7 @@
 
 <script setup lang="ts">
 import { useCopy } from '@/composable/copy';
+import { useStyleStore } from '@/stores/style.store';
 import { useElementSize } from '@vueuse/core';
 import hljs from 'highlight.js/lib/core';
 import sqlHljs from 'highlight.js/lib/languages/sql';
@@ -86,7 +79,7 @@ hljs.registerLanguage('sql', sqlHljs);
 
 const inputElement = ref<HTMLElement>();
 const { height: inputElementHeight } = useElementSize(inputElement);
-
+const styleStore = useStyleStore();
 const config = reactive<Partial<FormatFnOptions>>({
   keywordCase: 'upper',
   useTabs: false,
