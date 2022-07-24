@@ -11,11 +11,11 @@ useHead({ title: 'About - IT Tools' });
       This wonderful website, made with ❤ by
       <n-button text tag="a" href="https://github.com/CorentinTh" target="_blank" rel="noopener" type="primary">
         Corentin Thomasset </n-button
-      >, aggregates useful tools for developer and people working in IT. If you find it usefull, please fell free to
-      share it to people you think may find it usefull too and dont forget to pin it in your shortcut bar !
+      >, aggregates useful tools for developer and people working in IT. If you find it useful, please fell free to
+      share it to people you think may find it useful too and don't forget to pin it in your shortcut bar !
     </n-p>
     <n-p>
-      IT Tools is opensource (under the MIT license) and free, and will always be, but it cost me money to host and
+      IT Tools is open-source (under the MIT license) and free, and will always be, but it cost me money to host and
       renew the domain name, if you want to support my work, and encourage me to add more tools, please consider
       supporting by
       <n-button
@@ -33,7 +33,7 @@ useHead({ title: 'About - IT Tools' });
     <n-h2>Technologies</n-h2>
     <n-p>
       IT Tools is made in Vue JS (vue 3) with the the naive-ui component library and is hosted and continuously deployed
-      by Vercel. Third party opensource libraries are used in some tools, you may find the complete list in the
+      by Vercel. Third party open-source libraries are used in some tools, you may find the complete list in the
       <n-button
         type="primary"
         tag="a"

@@ -107,7 +107,7 @@ const menuOptions: MenuGroupOption[] = toolsByCategory.map((category) => ({
           :size="styleStore.isSmallScreen ? 'medium' : 'large'"
           circle
           quaternary
-          aria-label="Toogle menu"
+          aria-label="Toggle menu"
           @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed"
         >
           <n-icon size="25" :component="Menu2" />
@@ -147,7 +147,7 @@ const menuOptions: MenuGroupOption[] = toolsByCategory.map((category) => ({
               Sponsor
             </n-button>
           </template>
-          ❤ Support IT Tools developement !
+          ❤ Support IT Tools development !
         </n-tooltip>
 
         <navbar-buttons v-if="!styleStore.isSmallScreen" />
