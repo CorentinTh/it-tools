@@ -16,7 +16,7 @@
       </n-upload-dragger>
     </n-upload>
 
-    <n-input :value="fileBase64" type="textarea" readonly placeholder="File in ase64 will be here" />
+    <n-input :value="fileBase64" type="textarea" readonly placeholder="File in base64 will be here" />
     <n-space justify="center">
       <n-button secondary @click="copyFileBase64()"> Copy </n-button>
     </n-space>
