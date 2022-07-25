@@ -2,6 +2,7 @@ import { LockOpen } from '@vicons/tabler';
 import type { ToolCategory } from './tool';
 
 import { tool as base64Converter } from './base64-converter';
+import { tool as basicAuthGenerator } from './basic-auth-generator';
 import { tool as bcrypt } from './bcrypt';
 import { tool as bip39 } from './bip39-generator';
 import { tool as caseConverter } from './case-converter';
@@ -50,7 +51,7 @@ export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Web',
     icon: LockOpen,
-    components: [urlEncoder, htmlEntities, qrCodeGenerator, urlParser, deviceInformation],
+    components: [urlEncoder, htmlEntities, qrCodeGenerator, urlParser, deviceInformation, basicAuthGenerator],
   },
   {
     name: 'Development',
