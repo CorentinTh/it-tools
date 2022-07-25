@@ -1,7 +1,8 @@
 import { LockOpen } from '@vicons/tabler';
 import type { ToolCategory } from './tool';
 
-import { tool as base64Converter } from './base64-converter';
+import { tool as base64FileConverter } from './base64-file-converter';
+import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
 import { tool as bcrypt } from './bcrypt';
 import { tool as bip39 } from './bip39-generator';
@@ -43,7 +44,8 @@ export const toolsByCategory: ToolCategory[] = [
       dateTimeConverter,
       baseConverter,
       romanNumeralConverter,
-      base64Converter,
+      base64StringConverter,
+      base64FileConverter,
       colorConverter,
       caseConverter,
     ],

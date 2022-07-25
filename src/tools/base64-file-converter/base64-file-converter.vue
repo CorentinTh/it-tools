@@ -1,9 +1,8 @@
 <template>
-  <n-card title="Text to base64">
-    <n-input v-model:value="textInput" type="textarea" placeholder="Put your string here..." />
-    <n-input :value="textBase64" type="textarea" readonly />
+  <n-card title="Base64 to file">
+    <n-input v-model:value="base64Input" type="textarea" placeholder="Put your base64 file string here..." rows="5" />
     <n-space justify="center">
-      <n-button secondary @click="copyTextBase64()"> Copy </n-button>
+      <n-button secondary @click="download()"> Download file </n-button>
     </n-space>
   </n-card>
 
@@ -17,7 +16,7 @@
       </n-upload-dragger>
     </n-upload>
 
-    <n-input :value="fileBase64" type="textarea" readonly />
+    <n-input :value="fileBase64" type="textarea" readonly placeholder="File in ase64 will be here" />
     <n-space justify="center">
       <n-button secondary @click="copyFileBase64()"> Copy </n-button>
     </n-space>
@@ -26,14 +25,14 @@
 
 <script setup lang="ts">
 import { useCopy } from '@/composable/copy';
-import { useBase64 } from '@vueuse/core';
+import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 import { Upload } from '@vicons/tabler';
-import { ref, type Ref } from 'vue';
+import { useBase64 } from '@vueuse/core';
 import type { UploadFileInfo } from 'naive-ui';
+import { ref, type Ref } from 'vue';
 
-const textInput = ref('');
-const { base64: textBase64 } = useBase64(textInput);
-const { copy: copyTextBase64 } = useCopy({ source: textBase64, text: 'Base64 string copied to the clipboard' });
+const base64Input = ref('');
+const { download } = useDownloadFileFromBase64({ source: base64Input });
 
 const fileList = ref();
 const fileInput = ref() as Ref<File>;

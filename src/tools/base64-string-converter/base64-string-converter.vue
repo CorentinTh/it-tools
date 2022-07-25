@@ -1,0 +1,65 @@
+<template>
+  <n-card title="String to base64">
+    <n-form-item label="String to encode">
+      <n-input v-model:value="textInput" type="textarea" placeholder="Put your string here..." rows="5" />
+    </n-form-item>
+
+    <n-form-item label="Base64 of string">
+      <n-input
+        :value="base64Output"
+        type="textarea"
+        readonly
+        placeholder="The base64 encoding of your string will be here"
+        rows="5"
+      />
+    </n-form-item>
+
+    <n-space justify="center">
+      <n-button secondary @click="copyTextBase64()"> Copy base64 </n-button>
+    </n-space>
+  </n-card>
+
+  <n-card title="Base64 to string">
+    <n-form-item
+      label="Base64 string to decode"
+      :validation-status="b64Validation.status"
+      :feedback="b64Validation.message"
+    >
+      <n-input v-model:value="base64Input" type="textarea" placeholder="Your base64 string..." rows="5" />
+    </n-form-item>
+
+    <n-form-item label="Decoded string">
+      <n-input :value="textOutput" type="textarea" readonly placeholder="The decoded string will be here" rows="5" />
+    </n-form-item>
+
+    <n-space justify="center">
+      <n-button secondary @click="copyText()"> Copy decoded string </n-button>
+    </n-space>
+  </n-card>
+</template>
+
+<script setup lang="ts">
+import { useCopy } from '@/composable/copy';
+import { useValidation } from '@/composable/validation';
+import { computed, ref } from 'vue';
+
+const textInput = ref('');
+const base64Output = computed(() => window.btoa(textInput.value));
+const { copy: copyTextBase64 } = useCopy({ source: base64Output, text: 'Base64 string copied to the clipboard' });
+
+const base64Input = ref('');
+const textOutput = computed(() => {
+  try {
+    return window.atob(base64Input.value);
+  } catch (_) {
+    return '';
+  }
+});
+const { copy: copyText } = useCopy({ source: textOutput, text: 'String copied to the clipboard' });
+const b64Validation = useValidation({
+  source: base64Input,
+  rules: [{ message: 'Invalid base64 string', validator: (value) => true || window.atob(value) }],
+});
+</script>
+
+<style lang="less" scoped></style>
