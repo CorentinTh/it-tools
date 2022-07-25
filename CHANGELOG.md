@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.9.1](https://github.com/CorentinTh/it-tools/compare/v2.9.0...v2.9.1) (2022-07-25)
+
+
+### Refactors
+
+* **base64:** split base64 text and file conversion in two tools + base64 to file ([e6953d1](https://github.com/CorentinTh/it-tools/commit/e6953d1b67b81a6d3c19973b706f29637c421f98))
+
 ## [2.9.0](https://github.com/CorentinTh/it-tools/compare/v2.8.0...v2.9.0) (2022-07-25)
 
 
