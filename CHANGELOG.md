@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.9.0](https://github.com/CorentinTh/it-tools/compare/v2.8.0...v2.9.0) (2022-07-25)
+
+
+### Features
+
+* **new-tool:** added a basic auth generator ([bdee93a](https://github.com/CorentinTh/it-tools/commit/bdee93a9e45c6b46e7f75cdcbe1907f138722dca))
+
 ## [2.8.0](https://github.com/CorentinTh/it-tools/compare/v2.7.0...v2.8.0) (2022-07-24)
 
 
