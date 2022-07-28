@@ -89,7 +89,7 @@ const sections = [
   .value {
     font-size: 20px;
     font-weight: 400;
-    line-height: 1;
+    margin-top: -5px;
   }
 }
 </style>
