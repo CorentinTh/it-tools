@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.9.2](https://github.com/CorentinTh/it-tools/compare/v2.9.1...v2.9.2) (2022-07-28)
+
+
+### Bug Fixes
+
+* **base64-file:** fixed url slug ([412de23](https://github.com/CorentinTh/it-tools/commit/412de23796babbc080b0768a75029ff2ddf2acfc))
+* **device-information:** handle of unknown values ([4f599b6](https://github.com/CorentinTh/it-tools/commit/4f599b699901a93444bcc67cbb3b3556a0561ae4))
+* **device-information:** prevent unwanted y-truncature of text  ([138149e](https://github.com/CorentinTh/it-tools/commit/138149e6f0be91255907a6083887898e5c68882e))
+
+
+### Refactors
+
+* **base64-file:** fixed typo ([1a22d55](https://github.com/CorentinTh/it-tools/commit/1a22d55b3c48f58b05b5a50de4fea260e781fbef))
+
 ### [2.9.1](https://github.com/CorentinTh/it-tools/compare/v2.9.0...v2.9.1) (2022-07-25)
 
 
