@@ -1,16 +1,17 @@
 <template>
   <n-card v-for="{ name, information } in sections" :key="name" :title="name">
     <n-grid cols="1 400:2" x-gap="12" y-gap="12">
-      <n-gi v-for="{ label, value } in information" :key="label" class="information">
+      <n-gi v-for="{ label, value: { value } } in information" :key="label" class="information">
         <n-card :bordered="false" embedded>
           <div class="label">
             {{ label }}
           </div>
 
           <div class="value">
-            <n-ellipsis>
-              {{ value.value }}
+            <n-ellipsis v-if="value">
+              {{ value }}
             </n-ellipsis>
+            <div v-else class="undefined-value">unknown</div>
           </div>
         </n-card>
       </n-gi>
@@ -89,6 +90,10 @@ const sections = [
   .value {
     font-size: 20px;
     font-weight: 400;
+  }
+
+  .undefined-value {
+    opacity: 0.8;
   }
 }
 </style>
