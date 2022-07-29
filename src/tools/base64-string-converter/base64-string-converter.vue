@@ -58,7 +58,7 @@ const textOutput = computed(() => {
 const { copy: copyText } = useCopy({ source: textOutput, text: 'String copied to the clipboard' });
 const b64Validation = useValidation({
   source: base64Input,
-  rules: [{ message: 'Invalid base64 string', validator: (value) => true || window.atob(value) }],
+  rules: [{ message: 'Invalid base64 string', validator: (value) => window.atob(value) }],
 });
 </script>
 
