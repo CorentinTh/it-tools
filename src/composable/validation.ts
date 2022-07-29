@@ -20,15 +20,25 @@ export function isFalsyOrHasThrown(cb: () => ValidatorReturnType): boolean {
   }
 }
 
+type ValidationAttrs = {
+  feedback: string;
+  validationStatus: string | undefined;
+};
+
 export function useValidation<T>({ source, rules }: { source: Ref<T>; rules: UseValidationRule<T>[] }) {
   const state = reactive<{
     message: string;
     status: undefined | 'error';
     isValid: boolean;
+    attrs: ValidationAttrs;
   }>({
     message: '',
     status: undefined,
     isValid: false,
+    attrs: {
+      validationStatus: undefined,
+      feedback: '',
+    },
   });
 
   watch(
@@ -45,6 +55,8 @@ export function useValidation<T>({ source, rules }: { source: Ref<T>; rules: Use
       }
 
       state.isValid = state.status !== 'error';
+      state.attrs.feedback = state.message;
+      state.attrs.validationStatus = state.status;
     },
     { immediate: true },
   );

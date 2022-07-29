@@ -20,11 +20,7 @@
   </n-card>
 
   <n-card title="Base64 to string">
-    <n-form-item
-      label="Base64 string to decode"
-      :validation-status="b64Validation.status"
-      :feedback="b64Validation.message"
-    >
+    <n-form-item label="Base64 string to decode" v-bind="b64Validation.attrs">
       <n-input v-model:value="base64Input" type="textarea" placeholder="Your base64 string..." rows="5" />
     </n-form-item>
 
