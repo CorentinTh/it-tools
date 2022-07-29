@@ -123,7 +123,7 @@ const entropyValidation = useValidation({
     },
     {
       validator: (value) => /^[a-fA-F0-9]*$/.test(value),
-      message: 'Entropy should an hexadecimal number',
+      message: 'Entropy should be an hexadecimal string',
     },
   ],
 });
