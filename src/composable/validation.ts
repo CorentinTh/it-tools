@@ -1,13 +1,20 @@
+import _ from 'lodash';
 import { reactive, watch, type Ref } from 'vue';
 
-type UseValidationRule<T> = {
-  validator: (value: T) => boolean;
-  message: string;
-};
+type ValidatorReturnType = unknown;
 
-function isFalsyOrHasThrown(cb: () => boolean) {
+interface UseValidationRule<T> {
+  validator: (value: T) => ValidatorReturnType;
+  message: string;
+}
+
+export function isFalsyOrHasThrown(cb: () => ValidatorReturnType): boolean {
   try {
-    return !cb();
+    const returnValue = cb();
+
+    if (_.isNil(returnValue)) return true;
+
+    return returnValue === false;
   } catch (_) {
     return true;
   }
@@ -17,22 +24,30 @@ export function useValidation<T>({ source, rules }: { source: Ref<T>; rules: Use
   const state = reactive<{
     message: string;
     status: undefined | 'error';
+    isValid: boolean;
   }>({
     message: '',
     status: undefined,
+    isValid: false,
   });
 
-  watch([source], () => {
-    state.message = '';
-    state.status = undefined;
+  watch(
+    [source],
+    () => {
+      state.message = '';
+      state.status = undefined;
 
-    for (const rule of rules) {
-      if (isFalsyOrHasThrown(() => rule.validator(source.value))) {
-        state.message = rule.message;
-        state.status = 'error';
+      for (const rule of rules) {
+        if (isFalsyOrHasThrown(() => rule.validator(source.value))) {
+          state.message = rule.message;
+          state.status = 'error';
+        }
       }
-    }
-  });
+
+      state.isValid = state.status !== 'error';
+    },
+    { immediate: true },
+  );
 
   return state;
 }
