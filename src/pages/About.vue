@@ -47,7 +47,7 @@ useHead({ title: 'About - IT Tools' });
       file of the repository.
     </n-p>
 
-    <n-h2>Found a bug ? A tool is missing ?</n-h2>
+    <n-h2>Found a bug? A tool is missing?</n-h2>
     <n-p>
       If you need a tool that is currently not present here, and you think can be relevant, you are welcome to submit a
       feature request in the
