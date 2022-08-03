@@ -17,26 +17,16 @@
     />
   </n-form-item>
   <n-form-item label="Prettify version of your json">
-    <n-card class="result-card" :style="`min-height: ${inputElementHeight ?? 400}px`">
-      <n-config-provider :hljs="hljs">
-        <n-code :code="cleanJson" language="json" :trim="false" />
-      </n-config-provider>
-      <n-button v-if="cleanJson" class="copy-button" secondary @click="copy">Copy</n-button>
-    </n-card>
+    <textarea-copyable :value="cleanJson" language="json" :follow-height-of="inputElement" />
   </n-form-item>
 </template>
 
 <script setup lang="ts">
-import { useCopy } from '@/composable/copy';
+import TextareaCopyable from '@/components/TextareaCopyable.vue';
 import { useValidation } from '@/composable/validation';
-import { useElementSize } from '@vueuse/core';
-import hljs from 'highlight.js/lib/core';
-import json from 'highlight.js/lib/languages/json';
 import { computed, ref } from 'vue';
 
-hljs.registerLanguage('json', json);
 const inputElement = ref<HTMLElement>();
-const { height: inputElementHeight } = useElementSize(inputElement);
 
 const rawJson = ref('{"hello": "world"}');
 const cleanJson = computed(() => {
@@ -46,8 +36,6 @@ const cleanJson = computed(() => {
     return '';
   }
 });
-
-const { copy } = useCopy({ source: cleanJson });
 
 const rawJsonValidation = useValidation({
   source: rawJson,
