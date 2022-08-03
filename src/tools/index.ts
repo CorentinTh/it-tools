@@ -16,6 +16,7 @@ import { tool as cypher } from './encryption';
 import { tool as etaCalculator } from './eta-calculator';
 import { tool as gitMemo } from './git-memo';
 import { tool as hashText } from './hash-text';
+import { tool as hmacGenerator } from './hmac-generator';
 import { tool as htmlEntities } from './html-entities';
 import { tool as baseConverter } from './integer-base-converter';
 import { tool as jsonViewer } from './json-viewer';
@@ -36,7 +37,7 @@ export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Crypto',
     icon: LockOpen,
-    components: [tokenGenerator, hashText, bcrypt, uuidGenerator, cypher, bip39],
+    components: [tokenGenerator, hashText, bcrypt, uuidGenerator, cypher, bip39, hmacGenerator],
   },
   {
     name: 'Converter',
