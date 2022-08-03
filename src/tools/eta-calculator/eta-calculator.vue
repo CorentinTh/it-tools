@@ -11,7 +11,7 @@
       <div>
         <n-space item-style="flex:1 1 0">
           <n-form-item label="Amount of element to consume">
-            <n-input-number v-model:value="unitCount" />
+            <n-input-number v-model:value="unitCount" :min="1" />
           </n-form-item>
           <n-form-item label="The consumption started at">
             <n-date-picker v-model:value="startedAt" type="datetime" />
@@ -19,10 +19,10 @@
         </n-space>
 
         <n-form-item label="Amount of unit consumed by time span" :show-feedback="false">
-          <n-input-number v-model:value="unitPerTimeSpan" />
+          <n-input-number v-model:value="unitPerTimeSpan" :min="1" />
           <span style="margin: 0 10px">in</span>
           <n-input-group>
-            <n-input-number v-model:value="timeSpan" />
+            <n-input-number v-model:value="timeSpan" :min="1" />
             <n-select
               v-model:value="timeSpanUnitMultiplier"
               :options="[
