@@ -25,6 +25,7 @@ import { tool as qrCodeGenerator } from './qr-code-generator';
 import { tool as randomPortGenerator } from './random-port-generator';
 import { tool as romanNumeralConverter } from './roman-numeral-converter';
 import { tool as sqlPrettify } from './sql-prettify';
+import { tool as svgPlaceholderGenerator } from './svg-placeholder-generator';
 import { tool as textStatistics } from './text-statistics';
 import { tool as tokenGenerator } from './token-generator';
 import { tool as urlEncoder } from './url-encoder';
@@ -53,7 +54,12 @@ export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Web',
     icon: LockOpen,
-    components: [urlEncoder, htmlEntities, qrCodeGenerator, urlParser, deviceInformation, basicAuthGenerator],
+    components: [urlEncoder, htmlEntities, urlParser, deviceInformation, basicAuthGenerator],
+  },
+  {
+    name: 'Images',
+    icon: LockOpen,
+    components: [qrCodeGenerator, svgPlaceholderGenerator],
   },
   {
     name: 'Development',
