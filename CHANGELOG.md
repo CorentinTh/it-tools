@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.10.0](https://github.com/CorentinTh/it-tools/compare/v2.9.2...v2.10.0) (2022-08-03)
+
+
+### Features
+
+* **hash-text:** digest base selector ([#254](https://github.com/CorentinTh/it-tools/issues/254)) ([422b6eb](https://github.com/CorentinTh/it-tools/commit/422b6eb05a2fb5e7eec816a6bd2d37b53e4a6bdc))
+* **new-tool:** an svg placeholder image generator ([129f74c](https://github.com/CorentinTh/it-tools/commit/129f74c371eaf09fdc3a19afb709cee40b7aaf7f))
+* **new-tool:** hmac generator ([1bc6380](https://github.com/CorentinTh/it-tools/commit/1bc6380c6fdd7a9b500422a54bc508ab5557eb46))
+
+
+### Bug Fixes
+
+* **base64-to-string:** prevent validation error ([8a9e788](https://github.com/CorentinTh/it-tools/commit/8a9e7888dec41364c8c17b1234adcdc0616612b0))
+* **bip39-generator:** typo in validation message ([7570ad9](https://github.com/CorentinTh/it-tools/commit/7570ad965602233f860b9e03177a5b9dacf1b034))
+* **eta-calculator:** clamp inputs ([#249](https://github.com/CorentinTh/it-tools/issues/249)) ([531a25c](https://github.com/CorentinTh/it-tools/commit/531a25c1c4892835633ba5635c6ee48e1fbef31c))
+* **wording:** removed spaces before ponctuation ([#252](https://github.com/CorentinTh/it-tools/issues/252)) ([5f03619](https://github.com/CorentinTh/it-tools/commit/5f03619ab44c0b35455c46698ec37d79e87555b5))
+
+
+### Refactors
+
+* **base64-to-file:** clean validation to convert base64 to file ([750a76b](https://github.com/CorentinTh/it-tools/commit/750a76b00fb79c0e9c2851c112141158ee0ffab1))
+* **display:** mutualized code display ([0be33fb](https://github.com/CorentinTh/it-tools/commit/0be33fb337e8d82474922c0fdf9555aa328cd729))
+* **lint:** externalization of prettier for simpler IDE support ([02c4963](https://github.com/CorentinTh/it-tools/commit/02c49635315661ca08deb0859c5ba33113368b9b))
+* **validation:** simplified validation system ([77b5b0c](https://github.com/CorentinTh/it-tools/commit/77b5b0cab50a05dcb419ce87d74517d82e7cd2c0))
+
 ### [2.9.2](https://github.com/CorentinTh/it-tools/compare/v2.9.1...v2.9.2) (2022-07-28)
 
 
