@@ -58,27 +58,17 @@
     />
   </n-form-item>
   <n-form-item label="Prettify version of your query">
-    <n-card class="result-card" :style="`min-height: ${inputElementHeight ?? 400}px`">
-      <n-config-provider :hljs="hljs">
-        <n-code :code="prettySQL" language="sql" :trim="false" />
-      </n-config-provider>
-      <n-button v-if="prettySQL" class="copy-button" secondary @click="copy">Copy</n-button>
-    </n-card>
+    <textarea-copyable :value="prettySQL" language="sql" :follow-height-of="inputElement" />
   </n-form-item>
 </template>
 
 <script setup lang="ts">
-import { useCopy } from '@/composable/copy';
+import TextareaCopyable from '@/components/TextareaCopyable.vue';
 import { useStyleStore } from '@/stores/style.store';
-import { useElementSize } from '@vueuse/core';
-import hljs from 'highlight.js/lib/core';
-import sqlHljs from 'highlight.js/lib/languages/sql';
 import { format as formatSQL, type FormatFnOptions } from 'sql-formatter';
 import { computed, reactive, ref } from 'vue';
-hljs.registerLanguage('sql', sqlHljs);
 
 const inputElement = ref<HTMLElement>();
-const { height: inputElementHeight } = useElementSize(inputElement);
 const styleStore = useStyleStore();
 const config = reactive<Partial<FormatFnOptions>>({
   keywordCase: 'upper',
@@ -90,7 +80,6 @@ const config = reactive<Partial<FormatFnOptions>>({
 
 const rawSQL = ref('select field1,field2,field3 from my_table where my_condition;');
 const prettySQL = computed(() => formatSQL(rawSQL.value, config));
-const { copy } = useCopy({ source: prettySQL });
 </script>
 
 <style lang="less" scoped>
