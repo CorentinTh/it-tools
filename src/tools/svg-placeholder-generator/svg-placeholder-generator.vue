@@ -52,7 +52,7 @@
 <script setup lang="ts">
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 import { useCopy } from '@/composable/copy';
-import { useDownloadFileFromBase64 } from '@/composable/downloadBase64.js';
+import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 import { computed, ref } from 'vue';
 
 const width = ref(600);

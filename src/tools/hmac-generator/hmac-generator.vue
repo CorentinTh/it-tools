@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { useCopy } from '@/composable/copy.js';
+import { useCopy } from '@/composable/copy';
 import {
   enc,
   HmacMD5,
@@ -63,7 +63,7 @@ import {
   lib,
 } from 'crypto-js';
 import { computed, ref } from 'vue';
-import { convertHexToBin } from '../hash-text/hash-text.service.js';
+import { convertHexToBin } from '../hash-text/hash-text.service';
 
 const algos = {
   MD5: HmacMD5,
