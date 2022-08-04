@@ -7,15 +7,29 @@ module.exports = {
     'plugin:vue/vue3-essential',
     'eslint:recommended',
     'plugin:vue/vue3-recommended',
-    'plugin:vue/vue3-recommended',
     '@vue/eslint-config-typescript/recommended',
     '@vue/eslint-config-prettier',
+    'plugin:import/recommended',
   ],
+
+  settings: {
+    'import/resolver': { typescript: { project: './tsconfig.app.json' } },
+  },
   env: {
     'vue/setup-compiler-macros': true,
   },
   rules: {
     'vue/multi-word-component-names': ['off'],
     'prettier/prettier': ['error'],
+    'import/no-duplicates': ['error', { considerQueryString: true }],
+    'import/order': ['error', { groups: [['builtin', 'external', 'internal']] }],
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        ts: 'never',
+      },
+    ],
   },
 };

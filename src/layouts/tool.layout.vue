@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { useRoute } from 'vue-router';
-import BaseLayout from './base.layout.vue';
 import { useHead } from '@vueuse/head';
 import type { HeadObject } from '@vueuse/head';
 import { computed } from 'vue';
 import { useThemeVars } from 'naive-ui';
+import BaseLayout from './base.layout.vue';
 
 const route = useRoute();
 const theme = useThemeVars();

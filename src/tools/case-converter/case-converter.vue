@@ -46,8 +46,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import InputCopyable from '../../components/InputCopyable.vue';
-
 import {
   camelCase,
   capitalCase,
@@ -61,6 +59,7 @@ import {
   sentenceCase,
   snakeCase,
 } from 'change-case';
+import InputCopyable from '../../components/InputCopyable.vue';
 
 const input = ref('lorem ipsum dolor sit amet');
 </script>

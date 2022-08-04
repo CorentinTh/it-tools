@@ -5,8 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import Memo from './git-memo.md';
 import { useThemeVars } from 'naive-ui';
+import Memo from './git-memo.md';
 
 const themeVars = useThemeVars();
 </script>

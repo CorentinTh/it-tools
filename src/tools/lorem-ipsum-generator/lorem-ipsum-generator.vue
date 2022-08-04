@@ -30,8 +30,8 @@
 <script setup lang="ts">
 import { useCopy } from '@/composable/copy';
 import { ref, computed } from 'vue';
-import { generateLoremIpsum } from './lorem-ipsum-generator.service';
 import { randIntFromInterval } from '@/utils/random';
+import { generateLoremIpsum } from './lorem-ipsum-generator.service';
 
 const paragraphs = ref(1);
 const sentences = ref([3, 8]);

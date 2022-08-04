@@ -67,9 +67,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useStyleStore } from '@/stores/style.store';
 import { convertBase } from './integer-base-converter.model';
 import InputCopyable from '../../components/InputCopyable.vue';
-import { useStyleStore } from '@/stores/style.store';
 
 const styleStore = useStyleStore();
 

@@ -51,7 +51,10 @@
 </template>
 
 <script setup lang="ts">
+// Duplicate issue with sub directory
+// eslint-disable-next-line import/no-duplicates
 import { addMilliseconds, formatRelative } from 'date-fns';
+// eslint-disable-next-line import/no-duplicates
 import { enGB } from 'date-fns/locale';
 import { computed, ref } from 'vue';
 import { formatMsDuration } from './eta-calculator.service';

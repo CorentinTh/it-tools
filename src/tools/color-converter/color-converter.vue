@@ -36,12 +36,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { colord, extend } from 'colord';
-import InputCopyable from '../../components/InputCopyable.vue';
 
 import cmykPlugin from 'colord/plugins/cmyk';
 import hwbPlugin from 'colord/plugins/hwb';
 import namesPlugin from 'colord/plugins/names';
 import lchPlugin from 'colord/plugins/lch';
+import InputCopyable from '../../components/InputCopyable.vue';
 
 extend([cmykPlugin, hwbPlugin, namesPlugin, lchPlugin]);
 

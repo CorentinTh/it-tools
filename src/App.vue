@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { layouts } from './layouts';
 import { computed } from 'vue';
 import { useRoute, RouterView } from 'vue-router';
-import { darkThemeOverrides, lightThemeOverrides } from './themes';
 import { darkTheme, NGlobalStyle, NMessageProvider } from 'naive-ui';
+import { darkThemeOverrides, lightThemeOverrides } from './themes';
+import { layouts } from './layouts';
 import { useStyleStore } from './stores/style.store';
 
 const route = useRoute();

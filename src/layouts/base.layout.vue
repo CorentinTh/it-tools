@@ -4,14 +4,14 @@ import { h } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { Heart, Menu2, Home2 } from '@vicons/tabler';
 import { toolsByCategory } from '@/tools';
-import SearchBar from '../components/SearchBar.vue';
 import { useStyleStore } from '@/stores/style.store';
-import HeroGradient from '../assets/hero-gradient.svg?component';
-import MenuLayout from '../components/MenuLayout.vue';
-import NavbarButtons from '../components/NavbarButtons.vue';
 import { config } from '@/config';
 import MenuIconItem from '@/components/MenuIconItem.vue';
 import type { ITool } from '@/tools/tool';
+import SearchBar from '../components/SearchBar.vue';
+import HeroGradient from '../assets/hero-gradient.svg?component';
+import MenuLayout from '../components/MenuLayout.vue';
+import NavbarButtons from '../components/NavbarButtons.vue';
 
 const themeVars = useThemeVars();
 const route = useRoute();
