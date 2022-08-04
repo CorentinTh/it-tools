@@ -60,6 +60,7 @@
 <script setup lang="ts">
 import { useCopy } from '@/composable/copy';
 import { useValidation } from '@/composable/validation';
+import { withDefaultOnError } from '@/utils/defaults';
 import {
   chineseSimplifiedWordList,
   chineseTraditionalWordList,
@@ -105,12 +106,7 @@ const passphrase = computed({
   },
   set(value: string) {
     passphraseInput.value = value;
-
-    try {
-      entropy.value = mnemonicToEntropy(value, languages[language.value]);
-    } catch (_) {
-      entropy.value = '';
-    }
+    entropy.value = withDefaultOnError(() => mnemonicToEntropy(value, languages[language.value]), '');
   },
 });
 

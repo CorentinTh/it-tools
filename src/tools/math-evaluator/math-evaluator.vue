@@ -21,18 +21,13 @@
 </template>
 
 <script setup lang="ts">
+import { withDefaultOnError } from '@/utils/defaults';
 import { evaluate } from 'mathjs';
 import { computed, ref } from 'vue';
 
 const expression = ref('');
 
-const result = computed(() => {
-  try {
-    return evaluate(expression.value) ?? '';
-  } catch (_) {
-    return '';
-  }
-});
+const result = computed(() => withDefaultOnError(() => evaluate(expression.value) ?? '', ''));
 </script>
 
 <style lang="less" scoped></style>

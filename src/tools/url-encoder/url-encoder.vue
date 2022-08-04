@@ -60,16 +60,11 @@
 <script setup lang="ts">
 import { useCopy } from '@/composable/copy';
 import { useValidation } from '@/composable/validation';
+import { withDefaultOnError } from '@/utils/defaults';
 import { computed, ref } from 'vue';
 
 const encodeInput = ref('Hello world :)');
-const encodeOutput = computed(() => {
-  try {
-    return encodeURIComponent(encodeInput.value);
-  } catch (_) {
-    return '';
-  }
-});
+const encodeOutput = computed(() => withDefaultOnError(() => encodeURIComponent(encodeInput.value), ''));
 
 const encodedValidation = useValidation({
   source: encodeInput,
@@ -91,14 +86,7 @@ const encodedValidation = useValidation({
 const { copy: copyEncoded } = useCopy({ source: encodeOutput, text: 'Encoded string copied to the clipboard' });
 
 const decodeInput = ref('Hello%20world%20%3A)');
-
-const decodeOutput = computed(() => {
-  try {
-    return decodeURIComponent(decodeInput.value);
-  } catch (_) {
-    return '';
-  }
-});
+const decodeOutput = computed(() => withDefaultOnError(() => decodeURIComponent(decodeInput.value), ''));
 
 const decodeValidation = useValidation({
   source: encodeInput,

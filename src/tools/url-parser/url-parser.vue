@@ -30,16 +30,12 @@
 import { computed, ref } from 'vue';
 import { SubdirectoryArrowRightRound } from '@vicons/material';
 import { useValidation } from '@/composable/validation';
+import { withDefaultOnError } from '@/utils/defaults';
 import InputCopyable from '../../components/InputCopyable.vue';
 
 const urlToParse = ref('https://me:pwd@it-tools.tech:3000/url-parser?key1=value&key2=value2#the-hash');
-const urlParsed = computed<URL | undefined>(() => {
-  try {
-    return new URL(urlToParse.value);
-  } catch (_) {
-    return undefined;
-  }
-});
+
+const urlParsed = computed(() => withDefaultOnError(() => new URL(urlToParse.value), undefined));
 const validation = useValidation({
   source: urlToParse,
   rules: [
