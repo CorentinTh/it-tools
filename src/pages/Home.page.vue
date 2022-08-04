@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { toolsWithCategory } from '@/tools';
-import ToolCard from '../components/ToolCard.vue';
 import { useHead } from '@vueuse/head';
+import ToolCard from '../components/ToolCard.vue';
 
 useHead({ title: 'IT Tools - Handy online tools for developers' });
 </script>
@@ -9,13 +9,7 @@ useHead({ title: 'IT Tools - Handy online tools for developers' });
 <template>
   <div class="home-page">
     <n-grid x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
-      <n-gi
-        v-for="tool in [
-          ...toolsWithCategory.filter(({ isNew }) => isNew),
-          ...toolsWithCategory.filter(({ isNew }) => !isNew),
-        ]"
-        :key="tool.name"
-      >
+      <n-gi v-for="tool in toolsWithCategory" :key="tool.name">
         <tool-card :tool="tool" />
       </n-gi>
     </n-grid>
