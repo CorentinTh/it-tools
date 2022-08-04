@@ -27,10 +27,11 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
-import { SubdirectoryArrowRightRound } from '@vicons/material';
 import { useValidation } from '@/composable/validation';
+import { isNotThrowing } from '@/utils/boolean';
 import { withDefaultOnError } from '@/utils/defaults';
+import { SubdirectoryArrowRightRound } from '@vicons/material';
+import { computed, ref } from 'vue';
 import InputCopyable from '../../components/InputCopyable.vue';
 
 const urlToParse = ref('https://me:pwd@it-tools.tech:3000/url-parser?key1=value&key2=value2#the-hash');
@@ -40,14 +41,7 @@ const validation = useValidation({
   source: urlToParse,
   rules: [
     {
-      validator: (value) => {
-        try {
-          new URL(value);
-          return true;
-        } catch (_) {
-          return false;
-        }
-      },
+      validator: (value) => isNotThrowing(() => new URL(value)),
       message: 'Invalid url',
     },
   ],

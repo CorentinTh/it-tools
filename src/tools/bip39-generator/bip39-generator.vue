@@ -60,6 +60,7 @@
 <script setup lang="ts">
 import { useCopy } from '@/composable/copy';
 import { useValidation } from '@/composable/validation';
+import { isNotThrowing } from '@/utils/boolean';
 import { withDefaultOnError } from '@/utils/defaults';
 import {
   chineseSimplifiedWordList,
@@ -98,11 +99,7 @@ const passphraseInput = ref('');
 const language = ref<keyof typeof languages>('English');
 const passphrase = computed({
   get() {
-    try {
-      return entropyToMnemonic(entropy.value, languages[language.value]);
-    } catch (_) {
-      return passphraseInput.value;
-    }
+    return withDefaultOnError(() => entropyToMnemonic(entropy.value, languages[language.value]), passphraseInput.value);
   },
   set(value: string) {
     passphraseInput.value = value;
@@ -128,14 +125,7 @@ const mnemonicValidation = useValidation({
   source: passphrase,
   rules: [
     {
-      validator: (value) => {
-        try {
-          mnemonicToEntropy(value, languages[language.value]);
-          return true;
-        } catch (_) {
-          return false;
-        }
-      },
+      validator: (value) => isNotThrowing(() => mnemonicToEntropy(value, languages[language.value])),
       message: 'Invalid mnemonic',
     },
   ],

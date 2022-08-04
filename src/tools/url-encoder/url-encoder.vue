@@ -60,6 +60,7 @@
 <script setup lang="ts">
 import { useCopy } from '@/composable/copy';
 import { useValidation } from '@/composable/validation';
+import { isNotThrowing } from '@/utils/boolean';
 import { withDefaultOnError } from '@/utils/defaults';
 import { computed, ref } from 'vue';
 
@@ -70,14 +71,7 @@ const encodedValidation = useValidation({
   source: encodeInput,
   rules: [
     {
-      validator: (value) => {
-        try {
-          encodeURIComponent(value);
-          return true;
-        } catch (_) {
-          return false;
-        }
-      },
+      validator: (value) => isNotThrowing(() => encodeURIComponent(value)),
       message: 'Impossible to parse this string',
     },
   ],
@@ -92,14 +86,7 @@ const decodeValidation = useValidation({
   source: encodeInput,
   rules: [
     {
-      validator: (value) => {
-        try {
-          decodeURIComponent(value);
-          return true;
-        } catch (_) {
-          return false;
-        }
-      },
+      validator: (value) => isNotThrowing(() => decodeURIComponent(value)),
       message: 'Impossible to parse this string',
     },
   ],
