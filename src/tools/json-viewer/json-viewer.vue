@@ -24,25 +24,21 @@
 <script setup lang="ts">
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 import { useValidation } from '@/composable/validation';
+import { withDefaultOnError } from '@/utils/defaults';
+import JSON5 from 'json5';
 import { computed, ref } from 'vue';
 
 const inputElement = ref<HTMLElement>();
 
 const rawJson = ref('{"hello": "world"}');
-const cleanJson = computed(() => {
-  try {
-    return JSON.stringify(JSON.parse(rawJson.value), null, 3);
-  } catch (_) {
-    return '';
-  }
-});
+const cleanJson = computed(() => withDefaultOnError(() => JSON.stringify(JSON5.parse(rawJson.value), null, 3), ''));
 
 const rawJsonValidation = useValidation({
   source: rawJson,
   rules: [
     {
-      validator: (v) => v === '' || JSON.parse(v),
-      message: 'Invalid json',
+      validator: (v) => v === '' || JSON5.parse(v),
+      message: 'Provided JSON is not valid.',
     },
   ],
 });
