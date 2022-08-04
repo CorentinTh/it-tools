@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.10.2](https://github.com/CorentinTh/it-tools/compare/v2.10.1...v2.10.2) (2022-08-04)
+
+
+### Refactors
+
+* **dry:** mutualised duplicated code with withDefaultOnError ([f6cd9b7](https://github.com/CorentinTh/it-tools/commit/f6cd9b76d38800e1a1f63d07152fc96cda562795))
+* **home:** removed new tool first sort ([d30cd8a](https://github.com/CorentinTh/it-tools/commit/d30cd8a9abc3298c0a0b05f249e54318bb4537f2))
+* **json-prettifier:** more permissive json parser ([8089c60](https://github.com/CorentinTh/it-tools/commit/8089c60000000c42c821c6586c128d3d2b248885))
+* **lint:** added import rules ([208a373](https://github.com/CorentinTh/it-tools/commit/208a373fd08ac550778745eb6e4536bf02537da7))
+
 ### [2.10.1](https://github.com/CorentinTh/it-tools/compare/v2.10.0...v2.10.1) (2022-08-04)
 
 
