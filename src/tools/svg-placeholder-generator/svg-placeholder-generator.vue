@@ -53,6 +53,7 @@
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 import { useCopy } from '@/composable/copy';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
+import { textToBase64 } from '@/utils/base64';
 import { computed, ref } from 'vue';
 
 const width = ref(600);
@@ -75,7 +76,7 @@ const svgString = computed(() => {
 </svg>
   `.trim();
 });
-const base64 = computed(() => 'data:image/svg+xml;base64,' + window.btoa(svgString.value));
+const base64 = computed(() => 'data:image/svg+xml;base64,' + textToBase64(svgString.value));
 
 const { copy: copySVG } = useCopy({ source: svgString });
 const { copy: copyBase64 } = useCopy({ source: base64 });

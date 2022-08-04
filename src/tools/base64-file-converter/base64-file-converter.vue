@@ -35,6 +35,7 @@
 import { useCopy } from '@/composable/copy';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 import { useValidation } from '@/composable/validation';
+import { isValidBase64 } from '@/utils/base64';
 import { Upload } from '@vicons/tabler';
 import { useBase64 } from '@vueuse/core';
 import type { UploadFileInfo } from 'naive-ui';
@@ -47,7 +48,7 @@ const base64InputValidation = useValidation({
   rules: [
     {
       message: 'Invalid base 64 string',
-      validator: (value) => window.atob(value.replace(/^data:.*?;base64,/, '')),
+      validator: (value) => isValidBase64(value.trim()),
     },
   ],
 });

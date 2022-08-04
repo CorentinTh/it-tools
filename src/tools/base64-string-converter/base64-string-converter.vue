@@ -37,24 +37,20 @@
 <script setup lang="ts">
 import { useCopy } from '@/composable/copy';
 import { useValidation } from '@/composable/validation';
+import { base64ToText, isValidBase64, textToBase64 } from '@/utils/base64';
+import { withDefaultOnError } from '@/utils/defaults';
 import { computed, ref } from 'vue';
 
 const textInput = ref('');
-const base64Output = computed(() => window.btoa(textInput.value));
+const base64Output = computed(() => textToBase64(textInput.value));
 const { copy: copyTextBase64 } = useCopy({ source: base64Output, text: 'Base64 string copied to the clipboard' });
 
 const base64Input = ref('');
-const textOutput = computed(() => {
-  try {
-    return window.atob(base64Input.value);
-  } catch (_) {
-    return '';
-  }
-});
+const textOutput = computed(() => withDefaultOnError(() => base64ToText(base64Input.value.trim()), ''));
 const { copy: copyText } = useCopy({ source: textOutput, text: 'String copied to the clipboard' });
 const b64Validation = useValidation({
   source: base64Input,
-  rules: [{ message: 'Invalid base64 string', validator: (value) => window.atob(value) }],
+  rules: [{ message: 'Invalid base64 string', validator: (value) => isValidBase64(value.trim()) }],
 });
 </script>
 
