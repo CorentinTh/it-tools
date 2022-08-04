@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.10.1](https://github.com/CorentinTh/it-tools/compare/v2.10.0...v2.10.1) (2022-08-04)
+
+
+### Bug Fixes
+
+* **bip39-generator:** cleared an issue with the mnemonic validation ([ca7cb44](https://github.com/CorentinTh/it-tools/commit/ca7cb4438972ca09f28a6a40332ec94ceaa4aab4))
+* **import:** removed auto added weird .js extension ([fda0b0c](https://github.com/CorentinTh/it-tools/commit/fda0b0ca25c1733542a4e797ac1a2150c546a660))
+
+
+### Refactors
+
+* **base64:** mutualized base64 functions into global utilities ([447bdf2](https://github.com/CorentinTh/it-tools/commit/447bdf2148098d70ba309e13d9b1e846b5064da1))
+* **chronometer:** improved chronometer precision ([e48d60b](https://github.com/CorentinTh/it-tools/commit/e48d60b1ed19279f48441743f7ed69e8fd915011))
+
 ## [2.10.0](https://github.com/CorentinTh/it-tools/compare/v2.9.2...v2.10.0) (2022-08-03)
 
 
