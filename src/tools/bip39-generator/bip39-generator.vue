@@ -59,24 +59,24 @@
 
 <script setup lang="ts">
 import { useCopy } from '@/composable/copy';
-import { ref, computed } from 'vue';
+import { useValidation } from '@/composable/validation';
 import {
-  entropyToMnemonic,
-  englishWordList,
   chineseSimplifiedWordList,
   chineseTraditionalWordList,
   czechWordList,
+  englishWordList,
+  entropyToMnemonic,
   frenchWordList,
+  generateEntropy,
   italianWordList,
   japaneseWordList,
   koreanWordList,
+  mnemonicToEntropy,
   portugueseWordList,
   spanishWordList,
-  generateEntropy,
-  mnemonicToEntropy,
 } from '@it-tools/bip39';
 import { Copy, Refresh } from '@vicons/tabler';
-import { useValidation } from '@/composable/validation';
+import { computed, ref } from 'vue';
 
 const languages = {
   English: englishWordList,
@@ -134,7 +134,7 @@ const mnemonicValidation = useValidation({
     {
       validator: (value) => {
         try {
-          mnemonicToEntropy(value);
+          mnemonicToEntropy(value, languages[language.value]);
           return true;
         } catch (_) {
           return false;
