@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.10.3](https://github.com/CorentinTh/it-tools/compare/v2.10.2...v2.10.3) (2022-08-14)
+
+
+### Refactors
+
+* **share:** new share banner ([fcf4cfe](https://github.com/CorentinTh/it-tools/commit/fcf4cfe64d4c1c3814137c8ff23b83a1ca0d502d))
+* **share:** updated twitter meta tags ([992f96b](https://github.com/CorentinTh/it-tools/commit/992f96b48a89e2793ccf75fb9e28b2ec7b7f62b6))
+* **validation:** simplified validation management with helpers ([f54223f](https://github.com/CorentinTh/it-tools/commit/f54223fb0aaedbd101b5d3dc4176053533bb936a))
+
 ### [2.10.2](https://github.com/CorentinTh/it-tools/compare/v2.10.1...v2.10.2) (2022-08-04)
 
 
