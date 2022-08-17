@@ -27,10 +27,7 @@ const { icon, title } = toRefs(props);
   background: rgb(37, 99, 108);
   background: linear-gradient(48deg, rgba(37, 99, 108, 1) 0%, rgba(59, 149, 111, 1) 60%, rgba(20, 160, 88, 1) 100%);
   color: #fff;
-
-  &:hover {
-    border-color: var(--n-color-target);
-  }
+  border: none;
 
   .icon {
     opacity: 0.7;
