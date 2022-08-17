@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@it-tools/bip39': ^0.0.4
+  '@it-tools/oggen': ^1.3.0
   '@rushstack/eslint-patch': ^1.1.4
   '@types/bcryptjs': ^2.4.2
   '@types/crypto-js': ^4.1.1
@@ -67,6 +68,7 @@ specifiers:
 
 dependencies:
   '@it-tools/bip39': 0.0.4
+  '@it-tools/oggen': 1.3.0
   '@vicons/material': 0.12.0
   '@vicons/tabler': 0.12.0
   '@vueuse/core': 8.9.4_vue@3.2.37
@@ -1446,6 +1448,10 @@ packages:
     dependencies:
       js-sha256: 0.9.0
       nanoid: 3.3.4
+    dev: false
+
+  /@it-tools/oggen/1.3.0:
+    resolution: {integrity: sha512-hvPn0mDkbJvA6jDxV3Xw+MIermq+QyrQpUq86KkZXaWLfCIDnLVp3hBmdxpxU4NIckXj5/7eeVg5CvW0kpQBTw==}
     dev: false
 
   /@jridgewell/gen-mapping/0.1.1:

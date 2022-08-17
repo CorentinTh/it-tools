@@ -33,10 +33,12 @@ import { useClipboard, useElementSize } from '@vueuse/core';
 import hljs from 'highlight.js/lib/core';
 import jsonHljs from 'highlight.js/lib/languages/json';
 import sqlHljs from 'highlight.js/lib/languages/sql';
+import xmlHljs from 'highlight.js/lib/languages/xml';
 import { ref, toRefs } from 'vue';
 
 hljs.registerLanguage('sql', sqlHljs);
 hljs.registerLanguage('json', jsonHljs);
+hljs.registerLanguage('html', xmlHljs);
 
 const props = withDefaults(
   defineProps<{

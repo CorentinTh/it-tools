@@ -22,6 +22,7 @@ import { tool as baseConverter } from './integer-base-converter';
 import { tool as jsonViewer } from './json-viewer';
 import { tool as loremIpsumGenerator } from './lorem-ipsum-generator';
 import { tool as mathEvaluator } from './math-evaluator';
+import { tool as metaTagGenerator } from './meta-tag-generator';
 import { tool as qrCodeGenerator } from './qr-code-generator';
 import { tool as randomPortGenerator } from './random-port-generator';
 import { tool as romanNumeralConverter } from './roman-numeral-converter';
@@ -55,7 +56,7 @@ export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Web',
     icon: LockOpen,
-    components: [urlEncoder, htmlEntities, urlParser, deviceInformation, basicAuthGenerator],
+    components: [urlEncoder, htmlEntities, urlParser, deviceInformation, basicAuthGenerator, metaTagGenerator],
   },
   {
     name: 'Images',

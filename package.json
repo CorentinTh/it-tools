@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@it-tools/bip39": "^0.0.4",
+    "@it-tools/oggen": "^1.3.0",
     "@vicons/material": "^0.12.0",
     "@vicons/tabler": "^0.12.0",
     "@vueuse/core": "^8.9.4",
