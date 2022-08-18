@@ -48,6 +48,7 @@ const { icon, title } = toRefs(props);
       color: inherit;
       text-decoration: underline;
       font-weight: bold;
+      transition: color ease 0.2s;
 
       &:hover {
         color: rgb(20, 20, 20);
