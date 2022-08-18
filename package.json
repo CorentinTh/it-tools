@@ -64,6 +64,7 @@
     "@types/bcryptjs": "^2.4.2",
     "@types/crypto-js": "^4.1.1",
     "@types/jsdom": "^16.2.15",
+    "@types/lodash": "^4.14.183",
     "@types/mime-types": "^2.1.1",
     "@types/node": "^16.11.49",
     "@types/qrcode": "^1.4.3",
@@ -93,6 +94,7 @@
     "vite-plugin-pwa": "^0.11.13",
     "vite-svg-loader": "^3.4.0",
     "vitest": "^0.13.1",
-    "vue-tsc": "^0.31.4"
+    "vue-tsc": "^0.31.4",
+    "workbox-window": "^6.5.4"
   }
 }
