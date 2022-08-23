@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.12.0](https://github.com/CorentinTh/it-tools/compare/v2.10.3...v2.12.0) (2022-08-23)
+
+
+### Features
+
+* added colored share card ([ab7483b](https://github.com/CorentinTh/it-tools/commit/ab7483b5c2bd5aee1b8b609597c22b7b7b55606d))
+* **config:** added tsx to allowed extension ([741a3c2](https://github.com/CorentinTh/it-tools/commit/741a3c25a915d8296987b23bda03f2b664d51ba6))
+* **new-tool:** added otp generator ([cc6070a](https://github.com/CorentinTh/it-tools/commit/cc6070a16655bce9de90517bdda3bf6224ba139d))
+* **new-tool:** meta tag generator ([164e32b](https://github.com/CorentinTh/it-tools/commit/164e32b4428b8dfaaddcefa06b767a8af94573a9))
+
+
+### Bug Fixes
+
+* **deps:** added missing optional deps ([4975590](https://github.com/CorentinTh/it-tools/commit/49755909bdaea9399e51b67fbd1a6d071acd3182))
+* removed colored card border ([7c449f4](https://github.com/CorentinTh/it-tools/commit/7c449f4f2d491ce58726c5419a74dc295fa92905))
+
+
+### Refactors
+
+* **colored-card:** added transition on like hover ([da17696](https://github.com/CorentinTh/it-tools/commit/da17696293270005b1b7ec4aafc0df7496f602c7))
+* **share:** updated share meta ([5222bd5](https://github.com/CorentinTh/it-tools/commit/5222bd5d04ad089ba4cbade399dada55e29dcde5))
+* token generator can use a custom alphabet ([59ec629](https://github.com/CorentinTh/it-tools/commit/59ec6293b65526fe8dc527ac596d0e5af29b1e32))
+* **useQRCode:** switched args to MaybeRef ([a89c9be](https://github.com/CorentinTh/it-tools/commit/a89c9bea42d598f4caba10800becd66a07bbcdc9))
+
 ## [2.11.0](https://github.com/CorentinTh/it-tools/compare/v2.10.3...v2.11.0) (2022-08-19)
 
 
