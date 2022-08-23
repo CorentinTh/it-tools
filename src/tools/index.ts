@@ -1,6 +1,7 @@
 import { LockOpen } from '@vicons/tabler';
 import type { ToolCategory } from './tool';
 
+import { tool as otpCodeGeneratorAndValidator } from './otp-code-generator-and-validator';
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
@@ -56,7 +57,15 @@ export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Web',
     icon: LockOpen,
-    components: [urlEncoder, htmlEntities, urlParser, deviceInformation, basicAuthGenerator, metaTagGenerator],
+    components: [
+      urlEncoder,
+      htmlEntities,
+      urlParser,
+      deviceInformation,
+      basicAuthGenerator,
+      metaTagGenerator,
+      otpCodeGeneratorAndValidator,
+    ],
   },
   {
     name: 'Images',
