@@ -6,19 +6,23 @@ export function createToken({
   withNumbers = true,
   withSymbols = false,
   length = 64,
+  alphabet,
 }: {
   withUppercase?: boolean;
   withLowercase?: boolean;
   withNumbers?: boolean;
   withSymbols?: boolean;
   length?: number;
+  alphabet?: string;
 }) {
-  const alphabet = [
-    ...(withUppercase ? 'ABCDEFGHIJKLMOPQRSTUVWXYZ' : ''),
-    ...(withLowercase ? 'abcdefghijklmopqrstuvwxyz' : ''),
-    ...(withNumbers ? '0123456789' : ''),
-    ...(withSymbols ? '.,;:!?./-"\'#{([-|\\@)]=}*+' : ''),
-  ].join('');
+  const allAlphabet =
+    alphabet ??
+    [
+      ...(withUppercase ? 'ABCDEFGHIJKLMOPQRSTUVWXYZ' : ''),
+      ...(withLowercase ? 'abcdefghijklmopqrstuvwxyz' : ''),
+      ...(withNumbers ? '0123456789' : ''),
+      ...(withSymbols ? '.,;:!?./-"\'#{([-|\\@)]=}*+' : ''),
+    ].join('');
 
-  return shuffleString(alphabet.repeat(length)).substring(0, length);
+  return shuffleString(allAlphabet.repeat(length)).substring(0, length);
 }
