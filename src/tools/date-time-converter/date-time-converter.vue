@@ -132,5 +132,10 @@ const formats: Format[] = [
     fromDate: (date) => date.toUTCString(),
     toDate,
   },
+  {
+    name: 'Mongo ObjectID',
+    fromDate: (date) => Math.floor(date.getTime() / 1000).toString(16) + '0000000000000000',
+    toDate: (objectId) => new Date(parseInt(objectId.substring(0, 8), 16) * 1000),
+  },
 ];
 </script>
