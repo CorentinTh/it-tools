@@ -49,7 +49,8 @@ a {
   }
 
   .icon {
-    opacity: 0.7;
+    opacity: 0.6;
+    color: #ffffff;
   }
 
   .title {
@@ -57,7 +58,8 @@ a {
   }
 
   .description {
-    opacity: 0.7;
+    opacity: 0.6;
+    color: #ffffff;
     margin: 5px 0;
   }
 }
