@@ -134,23 +134,24 @@ const menuOptions: MenuGroupOption[] = toolsByCategory.map((category) => ({
 
         <search-bar />
 
+        <navbar-buttons v-if="!styleStore.isSmallScreen" />
+
         <n-tooltip trigger="hover">
           <template #trigger>
             <n-button
+              round
               type="primary"
               tag="a"
               href="https://github.com/sponsors/CorentinTh"
               rel="noopener"
               target="_blank"
             >
-              <n-icon v-if="!styleStore.isSmallScreen" :component="Heart" style="margin-right: 5px" />
-              Sponsor
+              Buy me a coffee
+              <n-icon v-if="!styleStore.isSmallScreen" :component="Heart" style="margin-left: 5px" />
             </n-button>
           </template>
           ❤ Support IT Tools development !
         </n-tooltip>
-
-        <navbar-buttons v-if="!styleStore.isSmallScreen" />
       </div>
       <slot />
     </template>
