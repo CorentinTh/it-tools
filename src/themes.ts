@@ -30,4 +30,9 @@ export const darkThemeOverrides: GlobalThemeOverrides = {
     color: '#1e1e1e',
     borderColor: 'transparent',
   },
+
+  Table: {
+    tdColor: '#1e1e1e',
+    thColor: '#353535',
+  },
 };
