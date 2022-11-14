@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.13.0](https://github.com/CorentinTh/it-tools/compare/v2.11.0...v2.13.0) (2022-11-14)
+
+
+### Features
+
+* **config:** added tsx to allowed extension ([ea5e7a7](https://github.com/CorentinTh/it-tools/commit/ea5e7a7fc7df1a3a912193912a6ab80a8a36a256))
+* **date-converter:** added mongodb objectID format ([4ef2588](https://github.com/CorentinTh/it-tools/commit/4ef25887b9d874b8789bf8dbabd8aab92b4b1b03))
+* **new-tool:** added otp generator ([5f16885](https://github.com/CorentinTh/it-tools/commit/5f168859238e9c3a8b8bbaf6b550c4b9bd163e00))
+* **new-tool:** mime type to extension converter ([7c9b8ac](https://github.com/CorentinTh/it-tools/commit/7c9b8ac178967151a4f921ac26e8c2fe8d23b886))
+
+
+### Bug Fixes
+
+* **ui:** remove icon transparency overlap ([35a3760](https://github.com/CorentinTh/it-tools/commit/35a376077116dd65b21f9a0786d2ecfc14db6051))
+
+
+### Refactors
+
+* **otp-generator:** changed url ([7f22995](https://github.com/CorentinTh/it-tools/commit/7f229959d64b7a932f32753e3838d87a819a9192))
+* token generator can use a custom alphabet ([83da6b7](https://github.com/CorentinTh/it-tools/commit/83da6b7ee9db29e40faf288f9627257aa7124038))
+* **ui:** change sponsor button location and caption ([5d8f46a](https://github.com/CorentinTh/it-tools/commit/5d8f46abf8d5a10cc4650efc87b12a9a6c537fe5))
+* **useQRCode:** switched args to MaybeRef ([7de6c86](https://github.com/CorentinTh/it-tools/commit/7de6c86f9ead8d7315614cc508dfee4fed90e9c2))
+
 ## [2.12.0](https://github.com/CorentinTh/it-tools/compare/v2.10.3...v2.12.0) (2022-08-23)
 
 
