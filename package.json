@@ -47,6 +47,7 @@
     "figue": "^1.2.0",
     "highlight.js": "^11.6.0",
     "json5": "^2.2.1",
+    "jwt-decode": "^3.1.2",
     "lodash": "^4.17.21",
     "mathjs": "^10.6.4",
     "mime-types": "^2.1.35",
