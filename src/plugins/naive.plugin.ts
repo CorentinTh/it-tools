@@ -53,6 +53,7 @@ import {
   NTooltip,
   NUpload,
   NUploadDragger,
+  NPopover,
 } from 'naive-ui';
 
 const components = [
@@ -109,6 +110,7 @@ const components = [
   NIcon,
   NSwitch,
   NCollapseTransition,
+  NPopover,
 ];
 
 export const naive = create({ components });

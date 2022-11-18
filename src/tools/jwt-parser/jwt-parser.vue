@@ -7,18 +7,14 @@
     <n-table>
       <tbody>
         <td colspan="2" class="table-header"><b>Header</b></td>
-        <tr v-for="(value, key) in decodedJWT.header" :key="key">
-          <td>
-            <i>{{ key }}</i>
-          </td>
-          <td>{{ value }}</td>
+        <tr v-for="[key, value] in Object.entries(decodedJWT.header)" :key="key">
+          <td><claim-vue :claim="key" /></td>
+          <td><value-vue :claim="key" :value="value" /></td>
         </tr>
         <td colspan="2" class="table-header"><b>Payload</b></td>
-        <tr v-for="(value, key) in decodedJWT.payload" :key="key">
-          <td>
-            <i>{{ key }}</i>
-          </td>
-          <td>{{ value }}</td>
+        <tr v-for="[key, value] in Object.entries(decodedJWT.payload)" :key="key">
+          <td><claim-vue :claim="key" /></td>
+          <td><value-vue :claim="key" :value="value" /></td>
         </tr>
       </tbody>
     </n-table>
@@ -31,6 +27,8 @@ import jwt_decode from 'jwt-decode';
 import { useValidation } from '@/composable/validation';
 import { isNotThrowing } from '@/utils/boolean';
 import { safe_jwt_decode } from './jwt-parser.service';
+import claimVue from './claim.vue';
+import valueVue from './value.vue';
 
 const raw_jwt = ref(
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
