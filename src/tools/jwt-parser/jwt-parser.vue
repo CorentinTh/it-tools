@@ -4,14 +4,24 @@
       <n-input v-model:value="raw_jwt" type="textarea" placeholder="Put your token here..." rows="5" />
     </n-form-item>
 
-    <p>Header</p>
-    <ul>
-      <li v-for="(value, key) in decodedJWT.header" :key="key">{{ key }}: {{ value }}</li>
-    </ul>
-    <p>Payload</p>
-    <ul>
-      <li v-for="(value, key) in decodedJWT.payload" :key="key">{{ key }}: {{ value }}</li>
-    </ul>
+    <n-table>
+      <tbody>
+        <td colspan="2" class="table-header"><b>Header</b></td>
+        <tr v-for="(value, key) in decodedJWT.header" :key="key">
+          <td>
+            <i>{{ key }}</i>
+          </td>
+          <td>{{ value }}</td>
+        </tr>
+        <td colspan="2" class="table-header"><b>Payload</b></td>
+        <tr v-for="(value, key) in decodedJWT.payload" :key="key">
+          <td>
+            <i>{{ key }}</i>
+          </td>
+          <td>{{ value }}</td>
+        </tr>
+      </tbody>
+    </n-table>
   </n-card>
 </template>
 
@@ -39,4 +49,8 @@ const validation = useValidation({
 });
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.table-header {
+  text-align: center;
+}
+</style>
