@@ -1,6 +1,7 @@
 import { LockOpen } from '@vicons/tabler';
 import type { ToolCategory } from './tool';
 
+import { tool as jwtParser } from './jwt-parser';
 import { tool as mimeTypes } from './mime-types';
 import { tool as otpCodeGeneratorAndValidator } from './otp-code-generator-and-validator';
 import { tool as base64FileConverter } from './base64-file-converter';
@@ -67,6 +68,7 @@ export const toolsByCategory: ToolCategory[] = [
       metaTagGenerator,
       otpCodeGeneratorAndValidator,
       mimeTypes,
+      jwtParser,
     ],
   },
   {
