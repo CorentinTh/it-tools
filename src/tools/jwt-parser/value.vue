@@ -1,7 +1,7 @@
 <template>
   <n-space>
     {{ value.value }}
-    <i v-if="value.extension">({{ value.extension }})</i>
+    <em v-if="value.extension">({{ value.extension }})</em>
   </n-space>
 </template>
 
@@ -22,5 +22,3 @@ const props = defineProps({
 
 const value = computed(() => parse_claim_value(props.claim, props.value));
 </script>
-
-<style lang="less" scoped></style>

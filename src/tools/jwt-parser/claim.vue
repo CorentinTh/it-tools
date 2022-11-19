@@ -1,6 +1,6 @@
 <template>
   <n-space>
-    <i>{{ claim }}</i>
+    <em>{{ claim }}</em>
     <span v-if="label.label !== claim">
       <n-popover placement="right" trigger="hover">
         <template #trigger>
@@ -27,5 +27,3 @@ const props = defineProps({
 
 const label = computed(() => get_claim_label(props.claim ? props.claim : ''));
 </script>
-
-<style lang="less" scoped></style>

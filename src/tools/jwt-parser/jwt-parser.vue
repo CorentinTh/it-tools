@@ -9,7 +9,7 @@
 
     <n-table>
       <tbody>
-        <td colspan="2" class="table-header"><b>Header</b></td>
+        <td colspan="2" class="table-header"><strong>Header</strong></td>
         <tr v-for="[key, value] in Object.entries(decodedJWT.header)" :key="key">
           <td class="claims"><claim-vue :claim="key" /></td>
           <td>
@@ -17,7 +17,7 @@
             <value-vue v-else :claim="key" :value="value" />
           </td>
         </tr>
-        <td colspan="2" class="table-header"><b>Payload</b></td>
+        <td colspan="2" class="table-header"><strong>Payload</strong></td>
         <tr v-for="[key, value] in Object.entries(decodedJWT.payload)" :key="key">
           <td class="claims"><claim-vue :claim="key" /></td>
           <td>
