@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.14.0](https://github.com/CorentinTh/it-tools/compare/v2.13.0...v2.14.0) (2022-11-23)
+
+
+### Features
+
+* **new-tool:** chmod calculator ([35b5187](https://github.com/CorentinTh/it-tools/commit/35b518711938c2bc88f35d104bb35d9956f0c267))
+
 ## [2.13.0](https://github.com/CorentinTh/it-tools/compare/v2.11.0...v2.13.0) (2022-11-14)
 
 
