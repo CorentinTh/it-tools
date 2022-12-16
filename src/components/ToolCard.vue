@@ -50,7 +50,7 @@ a {
 
   .icon {
     opacity: 0.6;
-    color: #ffffff;
+    color: v-bind('theme.textColorBase');
   }
 
   .title {
@@ -59,7 +59,7 @@ a {
 
   .description {
     opacity: 0.6;
-    color: #ffffff;
+    color: v-bind('theme.textColorBase');
     margin: 5px 0;
   }
 }
