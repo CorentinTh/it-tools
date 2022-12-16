@@ -1,10 +1,12 @@
 <script lang="ts" setup>
 import { useFuzzySearch } from '@/composable/fuzzySearch';
 import { tools } from '@/tools';
+import type { ITool } from '@/tools/tool';
 import { SearchRound } from '@vicons/material';
 import { useMagicKeys, whenever } from '@vueuse/core';
-import { computed, ref } from 'vue';
+import { computed, h, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import SearchBarItem from './SearchBarItem.vue';
 
 const router = useRouter();
 const queryString = ref('');
@@ -15,7 +17,15 @@ const { searchResult } = useFuzzySearch({
   options: { keys: [{ name: 'name', weight: 2 }, 'description', 'keywords'] },
 });
 
-const options = computed(() => searchResult.value.map(({ name, path }) => ({ label: name, value: path })));
+const toolToOption = (tool: ITool) => ({ label: tool.name, value: tool.path, tool });
+
+const options = computed(() => {
+  if (queryString.value === '') {
+    return tools.map(toolToOption);
+  }
+
+  return searchResult.value.map(toolToOption);
+});
 
 function onSelect(path: string) {
   router.push(path);
@@ -36,6 +46,10 @@ const keys = useMagicKeys({
 whenever(keys.ctrl_k, () => {
   focusTarget.value.focus();
 });
+
+function renderOption({ tool }: { tool: ITool }) {
+  return h(SearchBarItem, { tool });
+}
 </script>
 
 <template>
@@ -43,8 +57,10 @@ whenever(keys.ctrl_k, () => {
     <n-auto-complete
       v-model:value="queryString"
       :options="options"
-      :input-props="{ autocomplete: 'disabled' }"
       :on-select="(value) => onSelect(String(value))"
+      :render-label="renderOption"
+      :default-value="'aa'"
+      :get-show="() => true"
     >
       <template #default="{ handleInput, handleBlur, handleFocus, value: slotValue }">
         <n-input
@@ -53,6 +69,7 @@ whenever(keys.ctrl_k, () => {
           clearable
           placeholder="Search a tool... [Ctrl + K]"
           :value="slotValue"
+          :input-props="{ autocomplete: 'disabled' }"
           @input="handleInput"
           @focus="handleFocus"
           @blur="handleBlur"
@@ -66,8 +83,4 @@ whenever(keys.ctrl_k, () => {
   </div>
 </template>
 
-<style lang="less" scoped>
-// ::v-deep(.n-input__border) {
-//     border: none;
-// }
-</style>
+<style lang="less" scoped></style>
