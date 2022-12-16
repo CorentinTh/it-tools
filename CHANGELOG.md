@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.15.0](https://github.com/CorentinTh/it-tools/compare/v2.14.1...v2.15.0) (2022-12-16)
+
+
+### Features
+
+* **search-bar:** better search back result ([71e98e9](https://github.com/CorentinTh/it-tools/commit/71e98e93e5752cba934f67d679088524c4d3d2ad))
+
+
+### Bug Fixes
+
+* **integer-base-converter:** handle non-decimal char and better error message ([8476cf3](https://github.com/CorentinTh/it-tools/commit/8476cf319b7ebae87c7928592604a54833ac56ef))
+* **tool-card:** correct text color on light mode for card description ([acf8bc1](https://github.com/CorentinTh/it-tools/commit/acf8bc11dbab85ab361edbe400ebbe5e52a11b89))
+
+
+### Refactors
+
+* **search-bar:** improved tool fuzzy search ([1b5d4e7](https://github.com/CorentinTh/it-tools/commit/1b5d4e72bdb222dd721a1e484c3e5d73bb62d2b1))
+
 ### [2.14.1](https://github.com/CorentinTh/it-tools/compare/v2.14.0...v2.14.1) (2022-11-23)
 
 ## [2.14.0](https://github.com/CorentinTh/it-tools/compare/v2.13.0...v2.14.0) (2022-11-23)
