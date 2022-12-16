@@ -45,6 +45,7 @@
     "crypto-js": "^4.1.1",
     "date-fns": "^2.29.3",
     "figue": "^1.2.0",
+    "fuse.js": "^6.6.2",
     "highlight.js": "^11.6.0",
     "json5": "^2.2.1",
     "lodash": "^4.17.21",

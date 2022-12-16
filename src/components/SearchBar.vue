@@ -1,29 +1,21 @@
 <script lang="ts" setup>
+import { useFuzzySearch } from '@/composable/fuzzySearch';
 import { tools } from '@/tools';
 import { SearchRound } from '@vicons/material';
 import { useMagicKeys, whenever } from '@vueuse/core';
-import { deburr } from 'lodash';
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const queryString = ref('');
 
-const cleanString = (s: string) => deburr(s.trim().toLowerCase());
-
-const searchableTools = tools.map(({ name, description, keywords, path }) => ({
-  searchableText: [name, description, ...keywords].map(cleanString).join(' '),
-  path,
-  name,
-}));
-
-const options = computed(() => {
-  const query = cleanString(queryString.value);
-
-  return searchableTools
-    .filter(({ searchableText }) => searchableText.includes(query))
-    .map(({ name, path }) => ({ label: name, value: path }));
+const { searchResult } = useFuzzySearch({
+  search: queryString,
+  data: tools,
+  options: { keys: [{ name: 'name', weight: 2 }, 'description', 'keywords'] },
 });
+
+const options = computed(() => searchResult.value.map(({ name, path }) => ({ label: name, value: path })));
 
 function onSelect(path: string) {
   router.push(path);
@@ -52,7 +44,7 @@ whenever(keys.ctrl_k, () => {
       v-model:value="queryString"
       :options="options"
       :input-props="{ autocomplete: 'disabled' }"
-      :on-select="onSelect"
+      :on-select="(value) => onSelect(String(value))"
     >
       <template #default="{ handleInput, handleBlur, handleFocus, value: slotValue }">
         <n-input
