@@ -7,7 +7,7 @@ import { toolsByCategory } from '@/tools';
 import { useStyleStore } from '@/stores/style.store';
 import { config } from '@/config';
 import MenuIconItem from '@/components/MenuIconItem.vue';
-import type { ITool } from '@/tools/tool';
+import type { Tool } from '@/tools/tools.types';
 import SearchBar from '../components/SearchBar.vue';
 import HeroGradient from '../assets/hero-gradient.svg?component';
 import MenuLayout from '../components/MenuLayout.vue';
@@ -19,8 +19,8 @@ const styleStore = useStyleStore();
 const version = config.app.version;
 const commitSha = config.app.lastCommitSha.slice(0, 7);
 
-const makeLabel = (tool: ITool) => () => h(RouterLink, { to: tool.path }, { default: () => tool.name });
-const makeIcon = (tool: ITool) => () => h(MenuIconItem, { tool });
+const makeLabel = (tool: Tool) => () => h(RouterLink, { to: tool.path }, { default: () => tool.name });
+const makeIcon = (tool: Tool) => () => h(MenuIconItem, { tool });
 
 const menuOptions: MenuGroupOption[] = toolsByCategory.map((category) => ({
   label: category.name,
@@ -145,9 +145,12 @@ const menuOptions: MenuGroupOption[] = toolsByCategory.map((category) => ({
               href="https://github.com/sponsors/CorentinTh"
               rel="noopener"
               target="_blank"
+              class="support-button"
+              :bordered="false"
             >
               Buy me a coffee
-              <n-icon v-if="!styleStore.isSmallScreen" :component="Heart" style="margin-left: 5px" />
+
+              <n-icon v-if="!styleStore.isSmallScreen" :component="Heart" style="margin-left: 8px" size="20px" />
             </n-button>
           </template>
           ❤ Support IT Tools development !
@@ -169,6 +172,19 @@ const menuOptions: MenuGroupOption[] = toolsByCategory.map((category) => ({
 //     background-position: 0 0, @position @position;
 //     background-size: @size @size;
 // }
+
+.support-button {
+  background: rgb(37, 99, 108);
+  background: linear-gradient(48deg, rgba(37, 99, 108, 1) 0%, rgba(59, 149, 111, 1) 60%, rgba(20, 160, 88, 1) 100%);
+  color: #fff;
+  transition: all ease 0.2s;
+
+  &:hover {
+    color: #fff;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
 
 .footer {
   text-align: center;
