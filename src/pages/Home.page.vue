@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { toolsWithCategory } from '@/tools';
+import { useToolStore } from '@/tools/tools.store';
 import { Heart } from '@vicons/tabler';
 import { useHead } from '@vueuse/head';
 import ColoredCard from '../components/ColoredCard.vue';
 import ToolCard from '../components/ToolCard.vue';
+
+const toolStore = useToolStore();
 
 useHead({ title: 'IT Tools - Handy online tools for developers' });
 </script>
@@ -32,8 +34,34 @@ useHead({ title: 'IT Tools - Handy online tools for developers' });
           <n-icon :component="Heart" />
         </colored-card>
       </n-gi>
-      <n-gi v-for="tool in toolsWithCategory" :key="tool.name">
-        <tool-card :tool="tool" />
+    </n-grid>
+
+    <transition name="height">
+      <div v-if="toolStore.favoriteTools.length > 0">
+        <n-h3>Your favorite tools</n-h3>
+        <n-grid x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
+          <n-gi v-for="tool in toolStore.favoriteTools" :key="tool.name">
+            <tool-card :tool="tool" />
+          </n-gi>
+        </n-grid>
+      </div>
+    </transition>
+
+    <div v-if="toolStore.newTools.length > 0">
+      <n-h3>Newest tools</n-h3>
+      <n-grid x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
+        <n-gi v-for="tool in toolStore.newTools" :key="tool.name">
+          <tool-card :tool="tool" />
+        </n-gi>
+      </n-grid>
+    </div>
+
+    <n-h3>All the tools</n-h3>
+    <n-grid x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
+      <n-gi v-for="tool in toolStore.tools" :key="tool.name">
+        <transition>
+          <tool-card :tool="tool" />
+        </transition>
       </n-gi>
     </n-grid>
   </div>
@@ -42,5 +70,24 @@ useHead({ title: 'IT Tools - Handy online tools for developers' });
 <style scoped lang="less">
 .home-page {
   padding-top: 50px;
+}
+
+::v-deep(.n-grid) {
+  margin-bottom: 12px;
+}
+
+.height-enter-active,
+.height-leave-active {
+  transition: all 0.5s ease-in-out;
+  overflow: hidden;
+  max-height: 500px;
+}
+
+.height-enter-from,
+.height-leave-to {
+  max-height: 42px;
+  overflow: hidden;
+  opacity: 0;
+  margin-bottom: 0;
 }
 </style>

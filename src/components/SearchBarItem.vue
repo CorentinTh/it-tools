@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import type { ITool } from '@/tools/tool';
+import type { Tool } from '@/tools/tools.types';
 import { toRefs } from 'vue';
 
-const props = defineProps<{ tool: ITool }>();
+const props = defineProps<{ tool: Tool }>();
 const { tool } = toRefs(props);
 </script>
 

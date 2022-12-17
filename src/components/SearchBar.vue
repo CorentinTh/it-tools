@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useFuzzySearch } from '@/composable/fuzzySearch';
 import { tools } from '@/tools';
-import type { ITool } from '@/tools/tool';
+import type { Tool } from '@/tools/tools.types';
 import { SearchRound } from '@vicons/material';
 import { useMagicKeys, whenever } from '@vueuse/core';
 import { computed, h, ref } from 'vue';
@@ -17,7 +17,7 @@ const { searchResult } = useFuzzySearch({
   options: { keys: [{ name: 'name', weight: 2 }, 'description', 'keywords'] },
 });
 
-const toolToOption = (tool: ITool) => ({ label: tool.name, value: tool.path, tool });
+const toolToOption = (tool: Tool) => ({ label: tool.name, value: tool.path, tool });
 
 const options = computed(() => {
   if (queryString.value === '') {
@@ -47,7 +47,7 @@ whenever(keys.ctrl_k, () => {
   focusTarget.value.focus();
 });
 
-function renderOption({ tool }: { tool: ITool }) {
+function renderOption({ tool }: { tool: Tool }) {
   return h(SearchBarItem, { tool });
 }
 </script>
