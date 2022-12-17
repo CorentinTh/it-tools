@@ -12,58 +12,60 @@ useHead({ title: 'IT Tools - Handy online tools for developers' });
 
 <template>
   <div class="home-page">
-    <n-grid x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
-      <n-gi>
-        <colored-card title="You like it-tools?" :icon="Heart">
-          Give us a star on
-          <a
-            href="https://github.com/CorentinTh/it-tools"
-            rel="noopener"
-            target="_blank"
-            aria-label="IT-Tools' github repository"
-            >github</a
-          >
-          or follow us on
-          <a
-            href="https://twitter.com/ittoolsdottech"
-            rel="noopener"
-            target="_blank"
-            aria-label="IT-Tools' twitter account"
-            >twitter</a
-          >! Thank you
-          <n-icon :component="Heart" />
-        </colored-card>
-      </n-gi>
-    </n-grid>
+    <div class="grid-wrapper">
+      <n-grid x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
+        <n-gi>
+          <colored-card title="You like it-tools?" :icon="Heart">
+            Give us a star on
+            <a
+              href="https://github.com/CorentinTh/it-tools"
+              rel="noopener"
+              target="_blank"
+              aria-label="IT-Tools' github repository"
+              >github</a
+            >
+            or follow us on
+            <a
+              href="https://twitter.com/ittoolsdottech"
+              rel="noopener"
+              target="_blank"
+              aria-label="IT-Tools' twitter account"
+              >twitter</a
+            >! Thank you
+            <n-icon :component="Heart" />
+          </colored-card>
+        </n-gi>
+      </n-grid>
 
-    <transition name="height">
-      <div v-if="toolStore.favoriteTools.length > 0">
-        <n-h3>Your favorite tools</n-h3>
+      <transition name="height">
+        <div v-if="toolStore.favoriteTools.length > 0">
+          <n-h3>Your favorite tools</n-h3>
+          <n-grid x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
+            <n-gi v-for="tool in toolStore.favoriteTools" :key="tool.name">
+              <tool-card :tool="tool" />
+            </n-gi>
+          </n-grid>
+        </div>
+      </transition>
+
+      <div v-if="toolStore.newTools.length > 0">
+        <n-h3>Newest tools</n-h3>
         <n-grid x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
-          <n-gi v-for="tool in toolStore.favoriteTools" :key="tool.name">
+          <n-gi v-for="tool in toolStore.newTools" :key="tool.name">
             <tool-card :tool="tool" />
           </n-gi>
         </n-grid>
       </div>
-    </transition>
 
-    <div v-if="toolStore.newTools.length > 0">
-      <n-h3>Newest tools</n-h3>
+      <n-h3>All the tools</n-h3>
       <n-grid x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
-        <n-gi v-for="tool in toolStore.newTools" :key="tool.name">
-          <tool-card :tool="tool" />
+        <n-gi v-for="tool in toolStore.tools" :key="tool.name">
+          <transition>
+            <tool-card :tool="tool" />
+          </transition>
         </n-gi>
       </n-grid>
     </div>
-
-    <n-h3>All the tools</n-h3>
-    <n-grid x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
-      <n-gi v-for="tool in toolStore.tools" :key="tool.name">
-        <transition>
-          <tool-card :tool="tool" />
-        </transition>
-      </n-gi>
-    </n-grid>
   </div>
 </template>
 
@@ -72,8 +74,12 @@ useHead({ title: 'IT Tools - Handy online tools for developers' });
   padding-top: 50px;
 }
 
+.n-h3 {
+  margin-bottom: 10px;
+}
+
 ::v-deep(.n-grid) {
-  margin-bottom: 12px;
+  margin-bottom: 30px;
 }
 
 .height-enter-active,

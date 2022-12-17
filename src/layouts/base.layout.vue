@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { NIcon, useThemeVars, type MenuGroupOption } from 'naive-ui';
-import { h } from 'vue';
+import { computed, h } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { Heart, Menu2, Home2 } from '@vicons/tabler';
 import { toolsByCategory } from '@/tools';
@@ -8,6 +8,7 @@ import { useStyleStore } from '@/stores/style.store';
 import { config } from '@/config';
 import MenuIconItem from '@/components/MenuIconItem.vue';
 import type { Tool } from '@/tools/tools.types';
+import { useToolStore } from '@/tools/tools.store';
 import SearchBar from '../components/SearchBar.vue';
 import HeroGradient from '../assets/hero-gradient.svg?component';
 import MenuLayout from '../components/MenuLayout.vue';
@@ -22,16 +23,25 @@ const commitSha = config.app.lastCommitSha.slice(0, 7);
 const makeLabel = (tool: Tool) => () => h(RouterLink, { to: tool.path }, { default: () => tool.name });
 const makeIcon = (tool: Tool) => () => h(MenuIconItem, { tool });
 
-const menuOptions: MenuGroupOption[] = toolsByCategory.map((category) => ({
-  label: category.name,
-  key: category.name,
-  type: 'group',
-  children: category.components.map((tool) => ({
-    label: makeLabel(tool),
-    icon: makeIcon(tool),
-    key: tool.name,
+const toolStore = useToolStore();
+
+const menuOptions = computed<MenuGroupOption[]>(() =>
+  [
+    ...(toolStore.favoriteTools.length > 0
+      ? [{ name: 'Your favorite tools', components: toolStore.favoriteTools }]
+      : []),
+    ...toolsByCategory,
+  ].map((category) => ({
+    label: category.name,
+    key: category.name,
+    type: 'group',
+    children: category.components.map((tool) => ({
+      label: makeLabel(tool),
+      icon: makeIcon(tool),
+      key: tool.name,
+    })),
   })),
-}));
+);
 </script>
 
 <template>
@@ -149,8 +159,7 @@ const menuOptions: MenuGroupOption[] = toolsByCategory.map((category) => ({
               :bordered="false"
             >
               Buy me a coffee
-
-              <n-icon v-if="!styleStore.isSmallScreen" :component="Heart" style="margin-left: 8px" size="20px" />
+              <n-icon v-if="!styleStore.isSmallScreen" :component="Heart" style="margin-left: 5px" />
             </n-button>
           </template>
           ❤ Support IT Tools development !
