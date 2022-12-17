@@ -4,7 +4,9 @@ import { useHead } from '@vueuse/head';
 import type { HeadObject } from '@vueuse/head';
 import { computed } from 'vue';
 import { useThemeVars } from 'naive-ui';
-import BaseLayout from './base.layout.vue';
+import FavoriteButton from '@/components/FavoriteButton.vue';
+import type { Tool } from '@/tools/tools.types';
+import NavbarLayout from './navbar.layout.vue';
 
 const route = useRoute();
 const theme = useThemeVars();
@@ -14,11 +16,11 @@ const head = computed<HeadObject>(() => ({
   meta: [
     {
       name: 'description',
-      content: route.meta.description,
+      content: route.meta?.description as string,
     },
     {
       name: 'keywords',
-      content: route.meta.keywords,
+      content: ((route.meta.keywords ?? []) as string[]).join(','),
     },
   ],
 }));
@@ -26,25 +28,21 @@ useHead(head);
 </script>
 
 <template>
-  <base-layout>
+  <navbar-layout>
     <div class="tool-layout">
       <div class="tool-header">
-        <n-h1>
-          {{ route.meta.name }}
+        <n-space align="center" justify="space-between" :wrap="false">
+          <n-h1>
+            {{ route.meta.name }}
+          </n-h1>
 
-          <n-tag
-            v-if="route.meta.isNew"
-            round
-            type="success"
-            :bordered="false"
-            :color="{ color: theme.primaryColor, textColor: theme.tagColor }"
-          >
-            New tool
-          </n-tag>
-          <!-- <span class="new-tool-badge">New !</span> -->
-        </n-h1>
+          <div>
+            <favorite-button :tool="{name: route.meta.name} as Tool" />
+          </div>
+        </n-space>
 
         <div class="separator" />
+
         <div class="description">
           {{ route.meta.description }}
         </div>
@@ -54,7 +52,7 @@ useHead(head);
     <div class="tool-content">
       <slot />
     </div>
-  </base-layout>
+  </navbar-layout>
 </template>
 
 <style lang="less" scoped>
@@ -92,6 +90,7 @@ useHead(head);
       width: 200px;
       height: 2px;
       background: rgb(161, 161, 161);
+      opacity: 0.2;
 
       margin: 10px 0;
     }

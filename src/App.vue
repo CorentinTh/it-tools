@@ -7,7 +7,7 @@ import { layouts } from './layouts';
 import { useStyleStore } from './stores/style.store';
 
 const route = useRoute();
-const layout = computed(() => route?.meta?.layout ?? layouts.base);
+const layout = computed(() => route?.meta?.layout ?? layouts.navbar);
 const styleStore = useStyleStore();
 
 const theme = computed(() => (styleStore.isDarkTheme ? darkTheme : null));

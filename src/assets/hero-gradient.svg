@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275" preserveAspectRatio="none">
   <defs>
     <linearGradient id="small-hero-gradient-1" x1="13.74" y1="183.7" x2="303.96" y2="45.59" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#25636c"/>
@@ -20,4 +20,4 @@
       <path fill="url(#small-hero-gradient-1)" d="M0,0V212.5s62.5-12.5,150,25,150,0,150,0V0Z"/>
     </g>
   </g>
-</svg>
+</svg> 
