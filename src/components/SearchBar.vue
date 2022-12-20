@@ -40,16 +40,25 @@ const keys = useMagicKeys({
     if (e.ctrlKey && e.key === 'k' && e.type === 'keydown') {
       e.preventDefault();
     }
+
+    if (e.metaKey && e.key === 'k' && e.type === 'keydown') {
+      e.preventDefault();
+    }
   },
 });
 
 whenever(keys.ctrl_k, () => {
   focusTarget.value.focus();
 });
+whenever(keys.meta_k, () => {
+  focusTarget.value.focus();
+});
 
 function renderOption({ tool }: { tool: Tool }) {
   return h(SearchBarItem, { tool });
 }
+
+const isMac = computed(() => window.navigator.userAgent.toLowerCase().includes('mac'));
 </script>
 
 <template>
@@ -68,7 +77,7 @@ function renderOption({ tool }: { tool: Tool }) {
           ref="focusTarget"
           round
           clearable
-          placeholder="Search a tool... [Ctrl + K]"
+          :placeholder="`Search a tool (use ${isMac ? 'Cmd' : 'Ctrl'} + K to focus)`"
           :value="slotValue"
           :input-props="{ autocomplete: 'disabled' }"
           @input="handleInput"
