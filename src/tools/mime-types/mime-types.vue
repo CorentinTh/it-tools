@@ -95,5 +95,3 @@ const selectedExtension = ref(undefined);
 
 const mimeTypeFound = computed(() => (selectedExtension.value ? extensionToMimeType[selectedExtension.value] : []));
 </script>
-
-<style lang="less" scoped></style>

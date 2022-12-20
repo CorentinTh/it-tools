@@ -82,5 +82,3 @@ function renderOption({ tool }: { tool: Tool }) {
     </n-auto-complete>
   </div>
 </template>
-
-<style lang="less" scoped></style>

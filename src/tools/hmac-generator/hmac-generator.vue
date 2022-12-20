@@ -94,5 +94,3 @@ const hmac = computed(() =>
 );
 const { copy } = useCopy({ source: hmac });
 </script>
-
-<style lang="less" scoped></style>

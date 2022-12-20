@@ -29,5 +29,3 @@ const expression = ref('');
 
 const result = computed(() => withDefaultOnError(() => evaluate(expression.value) ?? '', ''));
 </script>
-
-<style lang="less" scoped></style>

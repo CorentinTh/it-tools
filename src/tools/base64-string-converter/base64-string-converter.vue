@@ -53,5 +53,3 @@ const b64Validation = useValidation({
   rules: [{ message: 'Invalid base64 string', validator: (value) => isValidBase64(value.trim()) }],
 });
 </script>
-
-<style lang="less" scoped></style>

@@ -36,5 +36,3 @@ function toggleFavorite(event: MouseEvent) {
   toolStore.addToolToFavorites({ tool });
 }
 </script>
-
-<style scoped></style>
