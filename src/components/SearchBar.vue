@@ -61,6 +61,7 @@ function renderOption({ tool }: { tool: Tool }) {
       :render-label="renderOption"
       :default-value="'aa'"
       :get-show="() => true"
+      :on-focus="() => $tracker.trackEvent({ eventName: 'Search-bar focused' })"
     >
       <template #default="{ handleInput, handleBlur, handleFocus, value: slotValue }">
         <n-input

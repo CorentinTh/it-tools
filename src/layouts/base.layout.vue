@@ -157,6 +157,7 @@ const menuOptions = computed<MenuGroupOption[]>(() =>
               target="_blank"
               class="support-button"
               :bordered="false"
+              @click="() => $tracker.trackEvent({ eventName: 'Support button clicked' })"
             >
               Buy me a coffee
               <n-icon v-if="!styleStore.isSmallScreen" :component="Heart" style="margin-left: 5px" />
