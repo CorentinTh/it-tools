@@ -9,6 +9,7 @@ import { config } from '@/config';
 import MenuIconItem from '@/components/MenuIconItem.vue';
 import type { Tool } from '@/tools/tools.types';
 import { useToolStore } from '@/tools/tools.store';
+import { useTracker } from '@/modules/tracker/tracker.services';
 import SearchBar from '../components/SearchBar.vue';
 import HeroGradient from '../assets/hero-gradient.svg?component';
 import MenuLayout from '../components/MenuLayout.vue';
@@ -22,6 +23,8 @@ const commitSha = config.app.lastCommitSha.slice(0, 7);
 
 const makeLabel = (tool: Tool) => () => h(RouterLink, { to: tool.path }, { default: () => tool.name });
 const makeIcon = (tool: Tool) => () => h(MenuIconItem, { tool });
+
+const { tracker } = useTracker();
 
 const toolStore = useToolStore();
 
@@ -157,7 +160,7 @@ const menuOptions = computed<MenuGroupOption[]>(() =>
               target="_blank"
               class="support-button"
               :bordered="false"
-              @click="() => $tracker.trackEvent({ eventName: 'Support button clicked' })"
+              @click="() => tracker.trackEvent({ eventName: 'Support button clicked' })"
             >
               Buy me a coffee
               <n-icon v-if="!styleStore.isSmallScreen" :component="Heart" style="margin-left: 5px" />
