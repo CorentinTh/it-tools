@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.16.0](https://github.com/CorentinTh/it-tools/compare/v2.15.0...v2.16.0) (2022-12-21)
+
+
+### Features
+
+* **search-bar:** use cmd + k to focus on mac ([bf88836](https://github.com/CorentinTh/it-tools/commit/bf88836dbe4037019e9545deaae1db06e5768cfb))
+* **tool:** improved favorite tool management ([af075dc](https://github.com/CorentinTh/it-tools/commit/af075dccccec959a0863e6d11516206860bed91f))
+* **tools:** added favorite tool handling ([4cd809b](https://github.com/CorentinTh/it-tools/commit/4cd809bd0c94836532f58a2ec6aa131694cce10d))
+* **tracker:** added actions monitoring ([bfc2e24](https://github.com/CorentinTh/it-tools/commit/bfc2e24bbfc08f67ed9c9b1d93474029bc01dc8b))
+
+
+### Refactors
+
+* **clean:** removed empty style tag ([cf723f1](https://github.com/CorentinTh/it-tools/commit/cf723f144ee865b6de7323d3be58eb7a9586fa56))
+* **clean:** removed unused import ([4087285](https://github.com/CorentinTh/it-tools/commit/40872859a580a20bb838b79db2b3c88c00995e37))
+* **menu:** improve support button ([679dd1c](https://github.com/CorentinTh/it-tools/commit/679dd1c1f6265227cc9db60c55d83f8eaf8f72b4))
+* **tracker:** better tracker injection ([def60e7](https://github.com/CorentinTh/it-tools/commit/def60e7248003e74ed67e9ff116b438bab410a92))
+
 ## [2.15.0](https://github.com/CorentinTh/it-tools/compare/v2.14.1...v2.15.0) (2022-12-16)
 
 
