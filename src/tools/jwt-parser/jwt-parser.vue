@@ -1,7 +1,7 @@
 <template>
   <n-card>
     <n-form-item label="JWT to decode" :feedback="validation.message" :validation-status="validation.status">
-      <n-input v-model:value="raw_jwt" type="textarea" placeholder="Put your token here..." rows="5" />
+      <n-input v-model:value="rawJwt" type="textarea" placeholder="Put your token here..." rows="5" />
     </n-form-item>
 
     <n-table>
@@ -34,15 +34,15 @@ import { safeJwtDecode } from './jwt-parser.service';
 import claimVue from './claim.vue';
 import valueVue from './value.vue';
 
-const raw_jwt = ref(
+const rawJwt = ref(
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
 );
 
 const decodedJWT = computed(() => {
-  return safeJwtDecode(raw_jwt.value);
+  return safeJwtDecode(rawJwt.value);
 });
 const validation = useValidation({
-  source: raw_jwt,
+  source: rawJwt,
   rules: [
     {
       validator: (value) => value.length > 0 && isNotThrowing(() => jwt_decode(value, { header: true })),
