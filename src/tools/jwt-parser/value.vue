@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { parse_claim_value } from './jwt-parser.service';
+import { parseClaimValue } from './jwt-parser.service';
 
 const props = defineProps({
   claim: {
@@ -20,5 +20,5 @@ const props = defineProps({
   },
 });
 
-const value = computed(() => parse_claim_value(props.claim, props.value));
+const value = computed(() => parseClaimValue(props.claim, props.value));
 </script>

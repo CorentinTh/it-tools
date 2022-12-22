@@ -5,10 +5,10 @@ interface JWT {
   payload: Map<string, unknown>;
 }
 
-export function safe_jwt_decode(raw_jwt: string): JWT {
+export function safeJwtDecode(rawJwt: string): JWT {
   try {
-    const header = jwt_decode(raw_jwt, { header: true }) as Map<string, unknown>;
-    const payload = jwt_decode(raw_jwt) as Map<string, unknown>;
+    const header = jwt_decode(rawJwt, { header: true }) as Map<string, unknown>;
+    const payload = jwt_decode(rawJwt) as Map<string, unknown>;
     return { header, payload };
   } catch (e) {
     if (e instanceof InvalidTokenError) {
@@ -19,7 +19,7 @@ export function safe_jwt_decode(raw_jwt: string): JWT {
   }
 }
 
-export function get_claim_label(claim: string): { label: string; ref: string } {
+export function getClaimLabel(claim: string): { label: string; ref: string } {
   const infos = STANDARD_CLAIMS.find((info) => info.name === claim);
   if (infos) {
     return { label: infos.long_name, ref: infos.ref };
@@ -33,7 +33,7 @@ export function get_claim_label(claim: string): { label: string; ref: string } {
   return { label: claim, ref: '' };
 }
 
-export function parse_claim_value(claim: string, value: unknown): { value: unknown; extension?: unknown } {
+export function parseClaimValue(claim: string, value: unknown): { value: unknown; extension?: unknown } {
   switch (claim) {
     case 'exp':
     case 'nbf':

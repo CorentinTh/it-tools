@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { InfoCircle } from '@vicons/tabler';
-import { get_claim_label } from './jwt-parser.service';
+import { getClaimLabel } from './jwt-parser.service';
 
 const props = defineProps({
   claim: {
@@ -25,5 +25,5 @@ const props = defineProps({
   },
 });
 
-const label = computed(() => get_claim_label(props.claim ? props.claim : ''));
+const label = computed(() => getClaimLabel(props.claim ? props.claim : ''));
 </script>

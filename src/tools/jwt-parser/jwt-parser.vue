@@ -35,7 +35,7 @@ import { computed, ref } from 'vue';
 import jwt_decode from 'jwt-decode';
 import { useValidation } from '@/composable/validation';
 import { isNotThrowing } from '@/utils/boolean';
-import { safe_jwt_decode } from './jwt-parser.service';
+import { safeJwtDecode } from './jwt-parser.service';
 import claimVue from './claim.vue';
 import valueVue from './value.vue';
 
@@ -45,7 +45,7 @@ const raw_jwt = ref(
 const showParsedValues = ref(true);
 
 const decodedJWT = computed(() => {
-  return safe_jwt_decode(raw_jwt.value);
+  return safeJwtDecode(raw_jwt.value);
 });
 const validation = useValidation({
   source: raw_jwt,
