@@ -6,6 +6,12 @@ export const lightThemeOverrides: GlobalThemeOverrides = {
   },
 
   Layout: { color: '#f1f5f9' },
+
+  AutoComplete: {
+    peers: {
+      InternalSelectMenu: { height: '500px' },
+    },
+  },
 };
 
 export const darkThemeOverrides: GlobalThemeOverrides = {
@@ -14,6 +20,12 @@ export const darkThemeOverrides: GlobalThemeOverrides = {
     primaryColorHover: '#36AD6AFF',
     primaryColorPressed: '#0C7A43FF',
     primaryColorSuppl: '#36AD6AFF',
+  },
+
+  AutoComplete: {
+    peers: {
+      InternalSelectMenu: { height: '500px', color: '#1e1e1e' },
+    },
   },
 
   Menu: {

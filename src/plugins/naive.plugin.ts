@@ -54,9 +54,11 @@ import {
   NUpload,
   NUploadDragger,
   NPopover,
+  NCheckbox,
 } from 'naive-ui';
 
 const components = [
+  NCheckbox,
   NDynamicInput,
   NDatePicker,
   NCode,

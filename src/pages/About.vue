@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { useTracker } from '@/modules/tracker/tracker.services';
 import { useHead } from '@vueuse/head';
 
 useHead({ title: 'About - IT Tools' });
+const { tracker } = useTracker();
 </script>
 
 <template>
@@ -25,6 +27,7 @@ useHead({ title: 'About - IT Tools' });
         href="https://github.com/sponsors/CorentinTh"
         rel="noopener"
         target="_blank"
+        @click="() => tracker.trackEvent({ eventName: 'Support button clicked' })"
       >
         sponsoring me </n-button
       >.

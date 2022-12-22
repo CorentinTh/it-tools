@@ -1,7 +1,5 @@
-import { LockOpen } from '@vicons/tabler';
-import type { ToolCategory } from './tool';
-
 import { tool as jwtParser } from './jwt-parser';
+import { tool as chmodCalculator } from './chmod-calculator';
 import { tool as mimeTypes } from './mime-types';
 import { tool as otpCodeGeneratorAndValidator } from './otp-code-generator-and-validator';
 import { tool as base64FileConverter } from './base64-file-converter';
@@ -36,16 +34,15 @@ import { tool as tokenGenerator } from './token-generator';
 import { tool as urlEncoder } from './url-encoder';
 import { tool as urlParser } from './url-parser';
 import { tool as uuidGenerator } from './uuid-generator';
+import type { ToolCategory } from './tools.types';
 
 export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Crypto',
-    icon: LockOpen,
     components: [tokenGenerator, hashText, bcrypt, uuidGenerator, cypher, bip39, hmacGenerator],
   },
   {
     name: 'Converter',
-    icon: LockOpen,
     components: [
       dateTimeConverter,
       baseConverter,
@@ -58,7 +55,6 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Web',
-    icon: LockOpen,
     components: [
       urlEncoder,
       htmlEntities,
@@ -73,27 +69,22 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Images',
-    icon: LockOpen,
     components: [qrCodeGenerator, svgPlaceholderGenerator],
   },
   {
     name: 'Development',
-    icon: LockOpen,
-    components: [gitMemo, randomPortGenerator, crontabGenerator, jsonViewer, sqlPrettify],
+    components: [gitMemo, randomPortGenerator, crontabGenerator, jsonViewer, sqlPrettify, chmodCalculator],
   },
   {
     name: 'Math',
-    icon: LockOpen,
     components: [mathEvaluator, etaCalculator],
   },
   {
     name: 'Measurement',
-    icon: LockOpen,
     components: [chronometer],
   },
   {
     name: 'Text',
-    icon: LockOpen,
     components: [loremIpsumGenerator, textStatistics],
   },
 ];

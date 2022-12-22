@@ -6,11 +6,11 @@
 </template>
 
 <script setup lang="ts">
-import type { ITool } from '@/tools/tool';
+import type { Tool } from '@/tools/tools.types';
 import { useThemeVars } from 'naive-ui';
 import { toRefs } from 'vue';
 
-const props = defineProps<{ tool: ITool }>();
+const props = defineProps<{ tool: Tool }>();
 const { tool } = toRefs(props);
 
 const theme = useThemeVars();

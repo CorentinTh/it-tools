@@ -2,6 +2,51 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.16.0](https://github.com/CorentinTh/it-tools/compare/v2.15.0...v2.16.0) (2022-12-21)
+
+
+### Features
+
+* **search-bar:** use cmd + k to focus on mac ([bf88836](https://github.com/CorentinTh/it-tools/commit/bf88836dbe4037019e9545deaae1db06e5768cfb))
+* **tool:** improved favorite tool management ([af075dc](https://github.com/CorentinTh/it-tools/commit/af075dccccec959a0863e6d11516206860bed91f))
+* **tools:** added favorite tool handling ([4cd809b](https://github.com/CorentinTh/it-tools/commit/4cd809bd0c94836532f58a2ec6aa131694cce10d))
+* **tracker:** added actions monitoring ([bfc2e24](https://github.com/CorentinTh/it-tools/commit/bfc2e24bbfc08f67ed9c9b1d93474029bc01dc8b))
+
+
+### Refactors
+
+* **clean:** removed empty style tag ([cf723f1](https://github.com/CorentinTh/it-tools/commit/cf723f144ee865b6de7323d3be58eb7a9586fa56))
+* **clean:** removed unused import ([4087285](https://github.com/CorentinTh/it-tools/commit/40872859a580a20bb838b79db2b3c88c00995e37))
+* **menu:** improve support button ([679dd1c](https://github.com/CorentinTh/it-tools/commit/679dd1c1f6265227cc9db60c55d83f8eaf8f72b4))
+* **tracker:** better tracker injection ([def60e7](https://github.com/CorentinTh/it-tools/commit/def60e7248003e74ed67e9ff116b438bab410a92))
+
+## [2.15.0](https://github.com/CorentinTh/it-tools/compare/v2.14.1...v2.15.0) (2022-12-16)
+
+
+### Features
+
+* **search-bar:** better search back result ([71e98e9](https://github.com/CorentinTh/it-tools/commit/71e98e93e5752cba934f67d679088524c4d3d2ad))
+
+
+### Bug Fixes
+
+* **integer-base-converter:** handle non-decimal char and better error message ([8476cf3](https://github.com/CorentinTh/it-tools/commit/8476cf319b7ebae87c7928592604a54833ac56ef))
+* **tool-card:** correct text color on light mode for card description ([acf8bc1](https://github.com/CorentinTh/it-tools/commit/acf8bc11dbab85ab361edbe400ebbe5e52a11b89))
+
+
+### Refactors
+
+* **search-bar:** improved tool fuzzy search ([1b5d4e7](https://github.com/CorentinTh/it-tools/commit/1b5d4e72bdb222dd721a1e484c3e5d73bb62d2b1))
+
+### [2.14.1](https://github.com/CorentinTh/it-tools/compare/v2.14.0...v2.14.1) (2022-11-23)
+
+## [2.14.0](https://github.com/CorentinTh/it-tools/compare/v2.13.0...v2.14.0) (2022-11-23)
+
+
+### Features
+
+* **new-tool:** chmod calculator ([35b5187](https://github.com/CorentinTh/it-tools/commit/35b518711938c2bc88f35d104bb35d9956f0c267))
+
 ## [2.13.0](https://github.com/CorentinTh/it-tools/compare/v2.11.0...v2.13.0) (2022-11-14)
 
 

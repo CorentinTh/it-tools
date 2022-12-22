@@ -1,36 +1,38 @@
 <script lang="ts" setup>
+import { useFuzzySearch } from '@/composable/fuzzySearch';
+import { useTracker } from '@/modules/tracker/tracker.services';
 import { tools } from '@/tools';
+import type { Tool } from '@/tools/tools.types';
 import { SearchRound } from '@vicons/material';
 import { useMagicKeys, whenever } from '@vueuse/core';
-import { deburr } from 'lodash';
-import { computed, ref } from 'vue';
+import type { NInput } from 'naive-ui';
+import { computed, h, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import SearchBarItem from './SearchBarItem.vue';
+
+const toolToOption = (tool: Tool) => ({ label: tool.name, value: tool.path, tool });
 
 const router = useRouter();
+const { tracker } = useTracker();
+
 const queryString = ref('');
-
-const cleanString = (s: string) => deburr(s.trim().toLowerCase());
-
-const searchableTools = tools.map(({ name, description, keywords, path }) => ({
-  searchableText: [name, description, ...keywords].map(cleanString).join(' '),
-  path,
-  name,
-}));
+const inputEl = ref<HTMLElement>();
+const displayDropDown = ref(true);
+const isMac = computed(() => window.navigator.userAgent.toLowerCase().includes('mac'));
 
 const options = computed(() => {
-  const query = cleanString(queryString.value);
+  if (queryString.value === '') {
+    return tools.map(toolToOption);
+  }
 
-  return searchableTools
-    .filter(({ searchableText }) => searchableText.includes(query))
-    .map(({ name, path }) => ({ label: name, value: path }));
+  return searchResult.value.map(toolToOption);
 });
 
-function onSelect(path: string) {
-  router.push(path);
-  queryString.value = '';
-}
-
-const focusTarget = ref();
+const { searchResult } = useFuzzySearch({
+  search: queryString,
+  data: tools,
+  options: { keys: [{ name: 'name', weight: 2 }, 'description', 'keywords'] },
+});
 
 const keys = useMagicKeys({
   passive: false,
@@ -38,12 +40,40 @@ const keys = useMagicKeys({
     if (e.ctrlKey && e.key === 'k' && e.type === 'keydown') {
       e.preventDefault();
     }
+
+    if (e.metaKey && e.key === 'k' && e.type === 'keydown') {
+      e.preventDefault();
+    }
   },
 });
 
-whenever(keys.ctrl_k, () => {
-  focusTarget.value.focus();
-});
+whenever(keys.ctrl_k, claimFocus);
+whenever(keys.meta_k, claimFocus);
+whenever(keys.escape, releaseFocus);
+
+function renderOption({ tool }: { tool: Tool }) {
+  return h(SearchBarItem, { tool });
+}
+
+function onSelect(path: string) {
+  router.push(path);
+  queryString.value = '';
+}
+
+function claimFocus() {
+  displayDropDown.value = true;
+
+  inputEl.value?.focus();
+}
+
+function releaseFocus() {
+  displayDropDown.value = false;
+}
+
+function onFocus() {
+  tracker.trackEvent({ eventName: 'Search-bar focused' });
+  displayDropDown.value = true;
+}
 </script>
 
 <template>
@@ -51,16 +81,21 @@ whenever(keys.ctrl_k, () => {
     <n-auto-complete
       v-model:value="queryString"
       :options="options"
-      :input-props="{ autocomplete: 'disabled' }"
-      :on-select="onSelect"
+      :on-select="(value) => onSelect(String(value))"
+      :render-label="renderOption"
+      :default-value="'aa'"
+      :get-show="() => displayDropDown"
+      :on-focus="onFocus"
+      @update:value="() => (displayDropDown = true)"
     >
       <template #default="{ handleInput, handleBlur, handleFocus, value: slotValue }">
         <n-input
-          ref="focusTarget"
+          ref="inputEl"
           round
           clearable
-          placeholder="Search a tool... [Ctrl + K]"
+          :placeholder="`Search a tool (use ${isMac ? 'Cmd' : 'Ctrl'} + K to focus)`"
           :value="slotValue"
+          :input-props="{ autocomplete: 'disabled' }"
           @input="handleInput"
           @focus="handleFocus"
           @blur="handleBlur"
@@ -73,9 +108,3 @@ whenever(keys.ctrl_k, () => {
     </n-auto-complete>
   </div>
 </template>
-
-<style lang="less" scoped>
-// ::v-deep(.n-input__border) {
-//     border: none;
-// }
-</style>

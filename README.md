@@ -10,46 +10,53 @@ You have an idea of a tool? Submit a [feature request](https://github.com/Corent
 
 ## Contribute
 
-### Recommended IDE Setup
+## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-### Node version
+## Type Support for `.vue` Imports in TS
 
-Ensure you have the correct node/npm version
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+
+If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+
+1. Disable the built-in TypeScript Extension
+   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
+   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
+2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+
+## Customize configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/).
+
+## Project Setup
 
 ```sh
-nvm use
+pnpm install
 ```
 
-### Project Setup
+### Compile and Hot-Reload for Development
 
 ```sh
-npm install
+pnpm dev
 ```
 
-#### Compile and Hot-Reload for Development
+### Type-Check, Compile and Minify for Production
 
 ```sh
-npm run dev
+pnpm build
 ```
 
-#### Type-Check, Compile and Minify for Production
+### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
-npm run build
+pnpm test
 ```
 
-#### Run Unit Tests with [Vitest](https://vitest.dev/)
+### Lint with [ESLint](https://eslint.org/)
 
 ```sh
-npm run test
-```
-
-#### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
+pnpm lint
 ```
 
 ### Create a new tool
@@ -68,11 +75,8 @@ Coded with ❤️ by [Corentin Thomasset](//corentin-thomasset.fr).
 
 This project is continuously deployed using [vercel.com](https://vercel.com).
 
-
-
 <a href="https://www.producthunt.com/posts/it-tools?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-it&#0045;tools" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=345793&theme=light" alt="IT&#0032;Tools - Collection&#0032;of&#0032;handy&#0032;online&#0032;tools&#0032;for&#0032;devs&#0044;&#0032;with&#0032;great&#0032;UX | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 <a href="https://www.producthunt.com/posts/it-tools?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-it&#0045;tools" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=345793&theme=light&period=daily" alt="IT&#0032;Tools - Collection&#0032;of&#0032;handy&#0032;online&#0032;tools&#0032;for&#0032;devs&#0044;&#0032;with&#0032;great&#0032;UX | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
-
 
 ## License
 
