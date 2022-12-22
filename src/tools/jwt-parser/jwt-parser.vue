@@ -3,9 +3,6 @@
     <n-form-item label="JWT to decode" :feedback="validation.message" :validation-status="validation.status">
       <n-input v-model:value="raw_jwt" type="textarea" placeholder="Put your token here..." rows="5" />
     </n-form-item>
-    <n-form-item label="Display parsed value?" label-placement="left" :show-feedback="false">
-      <n-switch v-model:value="showParsedValues" />
-    </n-form-item>
 
     <n-table>
       <tbody>
@@ -13,16 +10,14 @@
         <tr v-for="[key, value] in Object.entries(decodedJWT.header)" :key="key">
           <td class="claims"><claim-vue :claim="key" /></td>
           <td>
-            <span v-if="!showParsedValues">{{ value }}</span>
-            <value-vue v-else :claim="key" :value="value" />
+            <value-vue :claim="key" :value="value" />
           </td>
         </tr>
         <td colspan="2" class="table-header"><strong>Payload</strong></td>
         <tr v-for="[key, value] in Object.entries(decodedJWT.payload)" :key="key">
           <td class="claims"><claim-vue :claim="key" /></td>
           <td>
-            <span v-if="!showParsedValues">{{ value }}</span>
-            <value-vue v-else :claim="key" :value="value" />
+            <value-vue :claim="key" :value="value" />
           </td>
         </tr>
       </tbody>
@@ -42,7 +37,6 @@ import valueVue from './value.vue';
 const raw_jwt = ref(
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
 );
-const showParsedValues = ref(true);
 
 const decodedJWT = computed(() => {
   return safeJwtDecode(raw_jwt.value);
