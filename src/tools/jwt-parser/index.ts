@@ -1,4 +1,4 @@
-import { ArrowsShuffle } from '@vicons/tabler';
+import { Key } from '@vicons/tabler';
 import { defineTool } from '../tool';
 
 export const tool = defineTool({
@@ -7,5 +7,5 @@ export const tool = defineTool({
   description: '',
   keywords: ['jwt', 'parser'],
   component: () => import('./jwt-parser.vue'),
-  icon: ArrowsShuffle,
+  icon: Key,
 });
