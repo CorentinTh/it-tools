@@ -1,3 +1,4 @@
+import { tool as jwtParser } from './jwt-parser';
 import { tool as chmodCalculator } from './chmod-calculator';
 import { tool as mimeTypes } from './mime-types';
 import { tool as otpCodeGeneratorAndValidator } from './otp-code-generator-and-validator';
@@ -63,6 +64,7 @@ export const toolsByCategory: ToolCategory[] = [
       metaTagGenerator,
       otpCodeGeneratorAndValidator,
       mimeTypes,
+      jwtParser,
     ],
   },
   {
