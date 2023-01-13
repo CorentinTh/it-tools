@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.17.0](https://github.com/CorentinTh/it-tools/compare/v2.16.0...v2.17.0) (2023-01-13)
+
+
+### Features
+
+* **new-tool:** jwt parser ([#262](https://github.com/CorentinTh/it-tools/issues/262)) ([acc7f0a](https://github.com/CorentinTh/it-tools/commit/acc7f0a586c64500c5f720e70cdbccf9bffe76d9))
+* **new-tool:** temperature converter ([4607837](https://github.com/CorentinTh/it-tools/commit/4607837f9a398440e0098f2ba862e8d7422ce94f))
+
+
+### Refactors
+
+* **jwt-parser:** simplified code ([f52f7a8](https://github.com/CorentinTh/it-tools/commit/f52f7a845c34ce7da57b11c17d261733be89554f))
+
 ## [2.16.0](https://github.com/CorentinTh/it-tools/compare/v2.15.0...v2.16.0) (2022-12-21)
 
 
