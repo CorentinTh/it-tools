@@ -4,48 +4,59 @@
       <n-input v-model:value="rawJwt" type="textarea" placeholder="Put your token here..." rows="5" />
     </n-form-item>
 
-    <n-table>
+    <n-table v-if="validation.isValid">
       <tbody>
-        <td colspan="2" class="table-header"><strong>Header</strong></td>
-        <tr v-for="[key, value] in Object.entries(decodedJWT.header)" :key="key">
-          <td class="claims"><claim-vue :claim="key" /></td>
-          <td>
-            <value-vue :claim="key" :value="value" />
-          </td>
-        </tr>
-        <td colspan="2" class="table-header"><strong>Payload</strong></td>
-        <tr v-for="[key, value] in Object.entries(decodedJWT.payload)" :key="key">
-          <td class="claims"><claim-vue :claim="key" /></td>
-          <td>
-            <value-vue :claim="key" :value="value" />
-          </td>
-        </tr>
+        <template v-for="section of sections" :key="section.key">
+          <th colspan="2" class="table-header">{{ section.title }}</th>
+          <tr v-for="{ claim, claimDescription, friendlyValue, value } in decodedJWT[section.key]" :key="claim + value">
+            <td class="claims">
+              <n-space>
+                <n-text strong>{{ claim }}</n-text>
+                <template v-if="claimDescription">
+                  <n-text depth="3">({{ claimDescription }})</n-text>
+                </template>
+              </n-space>
+            </td>
+            <td>
+              <n-space>
+                <n-text>{{ value }}</n-text>
+                <template v-if="friendlyValue">
+                  <n-text depth="3">({{ friendlyValue }})</n-text>
+                </template>
+              </n-space>
+            </td>
+          </tr>
+        </template>
       </tbody>
     </n-table>
   </n-card>
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
-import jwt_decode from 'jwt-decode';
 import { useValidation } from '@/composable/validation';
 import { isNotThrowing } from '@/utils/boolean';
-import { safeJwtDecode } from './jwt-parser.service';
-import claimVue from './claim.vue';
-import valueVue from './value.vue';
+import { withDefaultOnError } from '@/utils/defaults';
+import { computed, ref } from 'vue';
+import { decodeJwt } from './jwt-parser.service';
 
 const rawJwt = ref(
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
 );
 
-const decodedJWT = computed(() => {
-  return safeJwtDecode(rawJwt.value);
-});
+const decodedJWT = computed(() =>
+  withDefaultOnError(() => decodeJwt({ jwt: rawJwt.value }), { header: [], payload: [] }),
+);
+
+const sections = [
+  { key: 'header', title: 'Header' },
+  { key: 'payload', title: 'Payload' },
+] as const;
+
 const validation = useValidation({
   source: rawJwt,
   rules: [
     {
-      validator: (value) => value.length > 0 && isNotThrowing(() => jwt_decode(value, { header: true })),
+      validator: (value) => value.length > 0 && isNotThrowing(() => decodeJwt({ jwt: rawJwt.value })),
       message: 'Invalid JWT',
     },
   ],
@@ -55,9 +66,5 @@ const validation = useValidation({
 <style lang="less" scoped>
 .table-header {
   text-align: center;
-}
-
-.claims {
-  width: 20%;
 }
 </style>
