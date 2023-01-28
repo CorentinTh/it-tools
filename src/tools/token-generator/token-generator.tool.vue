@@ -54,18 +54,19 @@
 <script setup lang="ts">
 import { useCopy } from '@/composable/copy';
 import { ref, watch } from 'vue';
+import { useQueryParam } from '@/composable/queryParams';
 import { createToken } from './token-generator.service';
 
 const token = ref('');
-const length = ref(64);
+const length = useQueryParam({ name: 'length', defaultValue: 64 });
 const { copy } = useCopy({ source: token, text: 'Token copied to the clipboard' });
 
-const withUppercase = ref(true);
-const withLowercase = ref(true);
-const withNumbers = ref(true);
-const withSymbols = ref(false);
+const withUppercase = useQueryParam({ name: 'uppercase', defaultValue: true });
+const withLowercase = useQueryParam({ name: 'lowercase', defaultValue: true });
+const withNumbers = useQueryParam({ name: 'numbers', defaultValue: true });
+const withSymbols = useQueryParam({ name: 'symbols', defaultValue: false });
 
-watch([withUppercase, withLowercase, withNumbers, withSymbols, length], refreshToken);
+watch([withUppercase, withLowercase, withNumbers, withSymbols, length], refreshToken, { immediate: true });
 
 function refreshToken() {
   token.value = createToken({
@@ -76,6 +77,4 @@ function refreshToken() {
     withSymbols: withSymbols.value,
   });
 }
-
-refreshToken();
 </script>

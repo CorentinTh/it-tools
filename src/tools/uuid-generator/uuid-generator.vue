@@ -32,8 +32,9 @@
 import { useCopy } from '@/composable/copy';
 import { ref, watch } from 'vue';
 import { v4 as generateUUID } from 'uuid';
+import { useQueryParam } from '@/composable/queryParams';
 
-const count = ref(1);
+const count = useQueryParam({ defaultValue: 1, name: 'count' });
 
 const uuids = ref('');
 

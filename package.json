@@ -37,6 +37,7 @@
     "@vicons/tabler": "^0.12.0",
     "@vueuse/core": "^8.9.4",
     "@vueuse/head": "^0.7.13",
+    "@vueuse/router": "^9.11.0",
     "bcryptjs": "^2.4.3",
     "change-case": "^4.1.2",
     "colord": "^2.9.3",

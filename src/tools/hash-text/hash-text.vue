@@ -40,6 +40,7 @@
 </template>
 
 <script setup lang="ts">
+import { useQueryParam } from '@/composable/queryParams';
 import { enc, lib, MD5, RIPEMD160, SHA1, SHA224, SHA256, SHA3, SHA384, SHA512 } from 'crypto-js';
 import { ref } from 'vue';
 import InputCopyable from '../../components/InputCopyable.vue';
@@ -59,7 +60,7 @@ const algos = {
 type AlgoNames = keyof typeof algos;
 type Encoding = keyof typeof enc | 'Bin';
 const algoNames = Object.keys(algos) as AlgoNames[];
-const encoding = ref<Encoding>('Hex');
+const encoding = useQueryParam<Encoding>({ defaultValue: 'Hex', name: 'encoding' });
 const clearText = ref('');
 
 function formatWithEncoding(words: lib.WordArray, encoding: Encoding) {
