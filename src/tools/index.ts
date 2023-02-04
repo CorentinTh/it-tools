@@ -1,6 +1,7 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+import { tool as jsonMinify } from './json-minify';
 import { tool as bcrypt } from './bcrypt';
 import { tool as bip39 } from './bip39-generator';
 import { tool as caseConverter } from './case-converter';
@@ -74,7 +75,7 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Development',
-    components: [gitMemo, randomPortGenerator, crontabGenerator, jsonViewer, sqlPrettify, chmodCalculator],
+    components: [gitMemo, randomPortGenerator, crontabGenerator, jsonViewer, jsonMinify, sqlPrettify, chmodCalculator],
   },
   {
     name: 'Math',
