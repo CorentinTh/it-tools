@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.18.0](https://github.com/CorentinTh/it-tools/compare/v2.17.0...v2.18.0) (2023-02-04)
+
+
+### Features
+
+* **new-tool:** json minify ([#265](https://github.com/CorentinTh/it-tools/issues/265)) ([f708f50](https://github.com/CorentinTh/it-tools/commit/f708f5091e2182fc88e7cf3e7d23b3d05edc04da))
+
+
+### Refactors
+
+* **tools:** config in query params ([db817a2](https://github.com/CorentinTh/it-tools/commit/db817a2459e23bd096274a7f91815d613d5f7ff4))
+
 ## [2.17.0](https://github.com/CorentinTh/it-tools/compare/v2.16.0...v2.17.0) (2023-01-13)
 
 
