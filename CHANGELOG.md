@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.19.0](https://github.com/CorentinTh/it-tools/compare/v2.18.0...v2.19.0) (2023-02-06)
+
+
+### Features
+
+* **new-tool:** keycode info ([c934c4e](https://github.com/CorentinTh/it-tools/commit/c934c4e50ca1a129b80b786a5d9a7dbc33ad9ba3))
+
 ## [2.18.0](https://github.com/CorentinTh/it-tools/compare/v2.17.0...v2.18.0) (2023-02-04)
 
 
