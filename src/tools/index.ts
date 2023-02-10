@@ -1,6 +1,7 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+import { tool as slugifyString } from './slugify-string';
 import { tool as keycodeInfo } from './keycode-info';
 import { tool as jsonMinify } from './json-minify';
 import { tool as bcrypt } from './bcrypt';
@@ -69,6 +70,7 @@ export const toolsByCategory: ToolCategory[] = [
       mimeTypes,
       jwtParser,
       keycodeInfo,
+      slugifyString,
     ],
   },
   {
