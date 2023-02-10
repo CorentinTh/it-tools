@@ -62,7 +62,7 @@ import {
 import InputCopyable from '../../components/InputCopyable.vue';
 
 const baseConfig = {
-  stripRegexp: /[^A-Za-zÀ-ÖØ-öø-ÿ]+/,
+  stripRegexp: /[^A-Za-zÀ-ÖØ-öø-ÿ]+/gi,
 };
 
 const input = ref('lorem ipsum dolor sit amet');
