@@ -26,6 +26,7 @@
       <div class="description">
         <n-ellipsis :line-clamp="2" :tooltip="false">
           {{ tool.description }}
+          <br />&nbsp;
         </n-ellipsis>
       </div>
     </n-card>
