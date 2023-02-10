@@ -24,7 +24,7 @@
       </n-h3>
 
       <div class="description">
-        <n-ellipsis :line-clamp="2" :tooltip="false">
+        <n-ellipsis :line-clamp="2" :tooltip="false" style="min-height: 44.78px">
           {{ tool.description }}
           <br />&nbsp;
         </n-ellipsis>
