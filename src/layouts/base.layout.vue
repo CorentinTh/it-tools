@@ -155,7 +155,7 @@ const menuOptions = computed<MenuGroupOption[]>(() =>
               round
               type="primary"
               tag="a"
-              href="https://github.com/sponsors/CorentinTh"
+              href="https://www.buymeacoffee.com/cthmsst"
               rel="noopener"
               target="_blank"
               class="support-button"

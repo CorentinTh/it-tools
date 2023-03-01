@@ -24,7 +24,7 @@ const { tracker } = useTracker();
         type="primary"
         tag="a"
         text
-        href="https://github.com/sponsors/CorentinTh"
+        href="https://www.buymeacoffee.com/cthmsst"
         rel="noopener"
         target="_blank"
         @click="() => tracker.trackEvent({ eventName: 'Support button clicked' })"
