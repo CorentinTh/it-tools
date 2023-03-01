@@ -5,7 +5,6 @@ import { darkTheme, NGlobalStyle, NMessageProvider, NNotificationProvider } from
 import { darkThemeOverrides, lightThemeOverrides } from './themes';
 import { layouts } from './layouts';
 import { useStyleStore } from './stores/style.store';
-import ReloadPrompt from './components/ReloadPrompt';
 
 const route = useRoute();
 const layout = computed(() => route?.meta?.layout ?? layouts.base);
@@ -20,7 +19,6 @@ const themeOverrides = computed(() => (styleStore.isDarkTheme ? darkThemeOverrid
     <n-global-style />
     <n-message-provider placement="bottom">
       <n-notification-provider placement="bottom-right">
-        <reload-prompt />
         <component :is="layout">
           <router-view />
         </component>

@@ -17,7 +17,7 @@ export default defineConfig({
     markdown(),
     svgLoader(),
     VitePWA({
-      registerType: 'prompt',
+      registerType: 'autoUpdate',
       strategies: 'generateSW',
       manifest: {
         name: 'IT Tools',
