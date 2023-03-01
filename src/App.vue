@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRoute, RouterView } from 'vue-router';
-import { darkTheme, NGlobalStyle, NMessageProvider } from 'naive-ui';
+import { darkTheme, NGlobalStyle, NMessageProvider, NNotificationProvider } from 'naive-ui';
 import { darkThemeOverrides, lightThemeOverrides } from './themes';
 import { layouts } from './layouts';
 import { useStyleStore } from './stores/style.store';
+import ReloadPrompt from './components/ReloadPrompt';
 
 const route = useRoute();
 const layout = computed(() => route?.meta?.layout ?? layouts.base);
@@ -18,9 +19,12 @@ const themeOverrides = computed(() => (styleStore.isDarkTheme ? darkThemeOverrid
   <n-config-provider :theme="theme" :theme-overrides="themeOverrides">
     <n-global-style />
     <n-message-provider placement="bottom">
-      <component :is="layout">
-        <router-view />
-      </component>
+      <n-notification-provider placement="bottom-right">
+        <reload-prompt />
+        <component :is="layout">
+          <router-view />
+        </component>
+      </n-notification-provider>
     </n-message-provider>
   </n-config-provider>
 </template>

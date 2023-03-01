@@ -32,5 +32,6 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    'import/no-unresolved': ['error', { ignore: ['^virtual:'] }],
   },
 };

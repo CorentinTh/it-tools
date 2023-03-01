@@ -22,6 +22,10 @@ export const darkThemeOverrides: GlobalThemeOverrides = {
     primaryColorSuppl: '#36AD6AFF',
   },
 
+  Notification: {
+    color: '#333333',
+  },
+
   AutoComplete: {
     peers: {
       InternalSelectMenu: { height: '500px', color: '#1e1e1e' },
