@@ -1,32 +1,52 @@
+/* eslint-disable vue/one-component-per-file */
 import { useRegisterSW } from 'virtual:pwa-register/vue';
-import { NButton, useNotification } from 'naive-ui';
-import { h, type Component } from 'vue';
+import { useNotification, type NotificationReactive } from 'naive-ui';
+import { defineComponent } from 'vue';
 import { whenever } from '@vueuse/core';
 
-export default function () {
-  const notification = useNotification();
+export default defineComponent({
+  setup() {
+    const notificationBuilder = useNotification();
 
-  const { needRefresh, updateServiceWorker } = useRegisterSW();
+    const { needRefresh, offlineReady, updateServiceWorker } = useRegisterSW();
 
-  whenever(
-    needRefresh,
-    () => {
-      notification.create({
-        title: 'A new version is out!',
-        content: 'Reload the page to refresh the cache and get the newest version of it-tools',
-        closable: true,
-        onClose: () => {
-          needRefresh.value = false;
-          return true;
-        },
-        action: () =>
-          h(
-            NButton as Component,
-            { onClick: updateServiceWorker, type: 'primary', secondary: true },
-            { default: () => 'Reload' },
+    let notification: NotificationReactive | null = null;
+
+    const onUpdateClicked = () => {
+      if (notification) {
+        notification.action = () => (
+          <n-button loading type="primary" secondary>
+            Reloading
+          </n-button>
+        );
+      }
+
+      updateServiceWorker();
+    };
+
+    whenever(
+      needRefresh,
+      () => {
+        notification = notificationBuilder.create({
+          title: 'A new version is out!',
+          content: 'Update to get the latest version of it-tools',
+          closable: true,
+          onClose: () => {
+            needRefresh.value = false;
+            return true;
+          },
+          action: () => (
+            <n-button onClick={onUpdateClicked} type="primary" secondary>
+              Reload
+            </n-button>
           ),
-      });
-    },
-    { immediate: true },
-  );
-}
+        });
+      },
+      { immediate: true },
+    );
+
+    whenever(offlineReady, () => notification?.destroy(), { immediate: true });
+
+    return () => '';
+  },
+});
