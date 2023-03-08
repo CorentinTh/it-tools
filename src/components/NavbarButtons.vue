@@ -9,7 +9,7 @@
         href="https://github.com/CorentinTh/it-tools"
         rel="noopener"
         target="_blank"
-        aria-label="IT-Tools' github repository"
+        aria-label="IT-Tools' GitHub repository"
       >
         <n-icon size="25" :component="BrandGithub" />
       </n-button>
@@ -27,12 +27,12 @@
         href="https://twitter.com/ittoolsdottech"
         rel="noopener"
         target="_blank"
-        aria-label="IT Tools' twitter account"
+        aria-label="IT Tools' Twitter account"
       >
         <n-icon size="25" :component="BrandTwitter" />
       </n-button>
     </template>
-    IT Tools' twitter account
+    IT Tools' Twitter account
   </n-tooltip>
 
   <router-link to="/about" #="{ navigate, href }" custom>

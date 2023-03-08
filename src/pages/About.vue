@@ -64,7 +64,7 @@ const { tracker } = useTracker();
       >
         issues section
       </n-button>
-      in the github repository.
+      in the GitHub repository.
     </n-p>
     <n-p>
       And if you found a bug, or something broken that doesn't work as expected, please fill a bug report in the
@@ -78,7 +78,7 @@ const { tracker } = useTracker();
       >
         issues section
       </n-button>
-      in the github repository.
+      in the GitHub repository.
     </n-p>
   </div>
 </template>

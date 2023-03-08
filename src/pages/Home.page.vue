@@ -21,16 +21,16 @@ useHead({ title: 'IT Tools - Handy online tools for developers' });
               href="https://github.com/CorentinTh/it-tools"
               rel="noopener"
               target="_blank"
-              aria-label="IT-Tools' github repository"
-              >github</a
+              aria-label="IT-Tools' GitHub repository"
+              >GitHub</a
             >
             or follow us on
             <a
               href="https://twitter.com/ittoolsdottech"
               rel="noopener"
               target="_blank"
-              aria-label="IT-Tools' twitter account"
-              >twitter</a
+              aria-label="IT-Tools' Twitter account"
+              >Twitter</a
             >! Thank you
             <n-icon :component="Heart" />
           </colored-card>
