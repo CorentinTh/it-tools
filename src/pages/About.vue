@@ -41,7 +41,7 @@ const { tracker } = useTracker();
         type="primary"
         tag="a"
         text
-        href="https://github.com/CorentinTh/it-tools/blob/master/package.json"
+        href="https://github.com/CorentinTh/it-tools/blob/main/package.json"
         rel="noopener"
         target="_blank"
       >
