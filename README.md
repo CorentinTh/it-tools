@@ -8,6 +8,15 @@ Please check the [issues](https://github.com/CorentinTh/it-tools/issues) to see 
 
 You have an idea of a tool? Submit a [feature request](https://github.com/CorentinTh/it-tools/issues/new?assignees=corentinth&labels=&template=feature_request.md&title=)!
 
+## Self host
+
+Self host your own version of it-tools in your homelab with docker:
+
+```sh
+docker run -d -p 8080:80 --name it-tools -it corentinth/it-tools
+
+```
+
 ## Contribute
 
 ## Recommended IDE Setup
