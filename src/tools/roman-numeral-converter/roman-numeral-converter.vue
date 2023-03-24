@@ -30,7 +30,7 @@ import { arabicToRoman, romanToArabic } from './roman-numeral-converter.service'
 const inputNumeral = ref(42);
 const outputRoman = computed(() => arabicToRoman(inputNumeral.value));
 
-const inputRoman = ref('IVX');
+const inputRoman = ref('XLII');
 const outputNumeral = computed(() => romanToArabic(inputRoman.value));
 
 const { copy: copyRoman } = useCopy({ source: outputRoman, text: 'Roman number copied to the clipboard' });
