@@ -84,7 +84,10 @@ const keyUri = computed(() => buildKeyUri({ secret: secret.value }));
 
 const { qrcode } = useQRCode({
   text: keyUri,
-  color: { background: '#00000000', foreground: computed(() => (styleStore.isDarkTheme ? '#ffffff' : '#000000')) },
+  color: {
+    background: computed(() => (styleStore.isDarkTheme ? '#ffffff' : '#00000000')),
+    foreground: '#000000',
+  },
   options: { width: 210 },
 });
 
