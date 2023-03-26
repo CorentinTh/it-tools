@@ -26,6 +26,7 @@ function base32toHex(base32: string) {
   const base32Chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
 
   const bits = base32
+    .toUpperCase() // Since base 32, we coerce lowercase to uppercase
     .replace(/=+$/, '')
     .split('')
     .map((value) => base32Chars.indexOf(value).toString(2).padStart(5, '0'))

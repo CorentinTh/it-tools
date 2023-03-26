@@ -96,7 +96,7 @@ const { attrs: secretValidationAttrs } = useValidation({
   rules: [
     {
       message: 'Secret should be a base32 string',
-      validator: (value) => value.match(/^[A-Z234567]+$/),
+      validator: (value) => value.toUpperCase().match(/^[A-Z234567]+$/),
     },
     {
       message: 'Please set a secret',

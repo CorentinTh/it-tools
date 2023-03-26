@@ -20,11 +20,15 @@ describe('otp functions', () => {
       expect(hexToBytes('0102030405060708090a0b0c0d0e0f')).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]);
     });
   });
-  describe('base32tohex', () => {
+  describe('base32toHex', () => {
     it('convert a base32 to hex string', () => {
       expect(base32toHex('ABCDEF')).to.eql('00443205');
       expect(base32toHex('7777')).to.eql('ffff0f');
       expect(base32toHex('JBSWY3DPEHPK3PXP')).to.eql('48656c6c6f21deadbeef');
+    });
+
+    it('case does not matter', () => {
+      expect(base32toHex('ABC')).to.eql(base32toHex('abc'));
     });
   });
 
