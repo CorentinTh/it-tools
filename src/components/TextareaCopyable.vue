@@ -34,11 +34,13 @@ import hljs from 'highlight.js/lib/core';
 import jsonHljs from 'highlight.js/lib/languages/json';
 import sqlHljs from 'highlight.js/lib/languages/sql';
 import xmlHljs from 'highlight.js/lib/languages/xml';
+import yamlHljs from 'highlight.js/lib/languages/yaml';
 import { ref, toRefs } from 'vue';
 
 hljs.registerLanguage('sql', sqlHljs);
 hljs.registerLanguage('json', jsonHljs);
 hljs.registerLanguage('html', xmlHljs);
+hljs.registerLanguage('yaml', yamlHljs);
 
 const props = withDefaults(
   defineProps<{
