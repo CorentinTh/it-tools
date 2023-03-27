@@ -2,7 +2,7 @@ import { Edit } from '@vicons/tabler';
 import { defineTool } from '../tool';
 
 export const tool = defineTool({
-  name: 'Html wysiwyg editor',
+  name: 'HTML WYSIWYG editor',
   path: '/html-wysiwyg-editor',
   description: 'Online HTML editor with feature-rich WYSIWYG editor, get the source code of the content immediately.',
   keywords: ['html', 'wysiwyg', 'editor', 'p', 'ul', 'ol', 'converter', 'live'],
