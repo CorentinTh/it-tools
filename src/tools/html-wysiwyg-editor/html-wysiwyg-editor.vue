@@ -5,7 +5,6 @@
 
 <script setup lang="ts">
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
-import { ref } from 'vue';
 import { format } from 'prettier';
 import htmlParser from 'prettier/parser-html';
 import { useStorage } from '@vueuse/core';

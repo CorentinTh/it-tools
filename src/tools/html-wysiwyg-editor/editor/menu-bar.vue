@@ -22,10 +22,8 @@ import {
   H3,
   H4,
   Italic,
-  Link,
   List,
   ListNumbers,
-  Separator,
   Strikethrough,
   TextWrap,
 } from '@vicons/tabler';
