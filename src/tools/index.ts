@@ -85,7 +85,16 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Development',
-    components: [gitMemo, randomPortGenerator, crontabGenerator, jsonViewer, jsonMinify, sqlPrettify, chmodCalculator, dockerToDockerCompose],
+    components: [
+      gitMemo,
+      randomPortGenerator,
+      crontabGenerator,
+      jsonViewer,
+      jsonMinify,
+      sqlPrettify,
+      chmodCalculator,
+      dockerToDockerCompose,
+    ],
   },
   {
     name: 'Math',
