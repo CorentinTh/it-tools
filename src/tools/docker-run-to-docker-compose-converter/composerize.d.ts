@@ -1,4 +1,4 @@
 declare module 'composerize' {
-  const composerize: function;
+  const composerize: (arg: string) => string;
   export default composerize;
 }

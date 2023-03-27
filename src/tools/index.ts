@@ -1,7 +1,7 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
-import { tool as dockerToDockerCompose } from './docker-to-docker-compose';
+import { tool as dockerRunToDockerComposeConverter } from './docker-run-to-docker-compose-converter';
 import { tool as htmlWysiwygEditor } from './html-wysiwyg-editor';
 import { tool as rsaKeyPairGenerator } from './rsa-key-pair-generator';
 import { tool as textToNatoAlphabet } from './text-to-nato-alphabet';
@@ -93,7 +93,7 @@ export const toolsByCategory: ToolCategory[] = [
       jsonMinify,
       sqlPrettify,
       chmodCalculator,
-      dockerToDockerCompose,
+      dockerRunToDockerComposeConverter,
     ],
   },
   {
