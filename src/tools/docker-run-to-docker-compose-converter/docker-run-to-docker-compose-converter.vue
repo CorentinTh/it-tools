@@ -1,6 +1,6 @@
 <template>
-  <n-card>
-    <n-form-item label="Your docker run command:">
+  <div>
+    <n-form-item label="Your docker run command:" :show-feedback="false">
       <n-input
         v-model:value="dockerRun"
         style="font-family: monospace"
@@ -18,7 +18,7 @@
     <n-space justify="center">
       <n-button :disabled="dockerCompose === ''" secondary @click="download"> Download docker-compose.yml </n-button>
     </n-space>
-  </n-card>
+  </div>
 </template>
 
 <script setup lang="ts">
