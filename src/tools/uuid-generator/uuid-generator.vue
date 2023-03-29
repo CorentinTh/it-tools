@@ -30,21 +30,15 @@
 
 <script setup lang="ts">
 import { useCopy } from '@/composable/copy';
-import { ref, watch } from 'vue';
 import { v4 as generateUUID } from 'uuid';
 import { useQueryParam } from '@/composable/queryParams';
+import { computedRefreshable } from '@/composable/computedRefreshable';
 
 const count = useQueryParam({ defaultValue: 1, name: 'count' });
 
-const uuids = ref('');
-
-function refreshUUIDs() {
-  uuids.value = Array.from({ length: count.value }, () => generateUUID()).join('\n');
-}
-
-watch([count], refreshUUIDs);
+const [uuids, refreshUUIDs] = computedRefreshable(() =>
+  Array.from({ length: count.value }, () => generateUUID()).join('\n'),
+);
 
 const { copy } = useCopy({ source: uuids, text: 'UUIDs copied to the clipboard' });
-
-refreshUUIDs();
 </script>
