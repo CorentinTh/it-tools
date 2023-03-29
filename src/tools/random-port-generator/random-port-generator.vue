@@ -11,19 +11,13 @@
 </template>
 
 <script setup lang="ts">
+import { computedRefreshable } from '@/composable/computedRefreshable';
 import { useCopy } from '@/composable/copy';
-import { ref } from 'vue';
 import { generatePort } from './random-port-generator.model';
 
-const port = ref('');
+const [port, refreshPort] = computedRefreshable(() => String(generatePort()));
 
 const { copy } = useCopy({ source: port, text: 'Port copied to the clipboard' });
-
-function refreshPort() {
-  port.value = String(generatePort());
-}
-
-refreshPort();
 </script>
 
 <style lang="less" scoped>
