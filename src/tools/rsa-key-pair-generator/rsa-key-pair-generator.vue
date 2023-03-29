@@ -2,8 +2,10 @@
   <div style="flex: 0 0 100%">
     <n-space item-style="flex: 1 1 0" style="margin: 0 auto; max-width: 600px" justify="center">
       <n-form-item label="Bits :" v-bind="bitsValidationAttrs" label-placement="left" label-width="100">
-        <n-input-number v-model:value="bits" min="256" max="16384" step="8" style="width: 150px" />
+        <n-input-number v-model:value="bits" min="256" max="16384" step="8" />
       </n-form-item>
+
+      <n-button tertiary @click="refreshCerts">Refresh key-pair</n-button>
     </n-space>
   </div>
 
@@ -21,9 +23,9 @@
 <script setup lang="ts">
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 import { ref } from 'vue';
-import { computedAsync } from '@vueuse/core';
 import { withDefaultOnErrorAsync } from '@/utils/defaults';
 import { useValidation } from '@/composable/validation';
+import { computedRefreshableAsync } from '@/composable/computedRefreshable';
 import { generateKeyPair } from './rsa-key-pair-generator.service';
 
 const bits = ref(2048);
@@ -39,7 +41,7 @@ const { attrs: bitsValidationAttrs } = useValidation({
   ],
 });
 
-const certs = computedAsync(
+const [certs, refreshCerts] = computedRefreshableAsync(
   () => withDefaultOnErrorAsync(() => generateKeyPair({ bits: bits.value }), emptyCerts),
   emptyCerts,
 );
