@@ -53,28 +53,25 @@
 
 <script setup lang="ts">
 import { useCopy } from '@/composable/copy';
-import { ref, watch } from 'vue';
 import { useQueryParam } from '@/composable/queryParams';
+import { computedRefreshable } from '@/composable/computedRefreshable';
 import { createToken } from './token-generator.service';
 
-const token = ref('');
 const length = useQueryParam({ name: 'length', defaultValue: 64 });
-const { copy } = useCopy({ source: token, text: 'Token copied to the clipboard' });
-
 const withUppercase = useQueryParam({ name: 'uppercase', defaultValue: true });
 const withLowercase = useQueryParam({ name: 'lowercase', defaultValue: true });
 const withNumbers = useQueryParam({ name: 'numbers', defaultValue: true });
 const withSymbols = useQueryParam({ name: 'symbols', defaultValue: false });
 
-watch([withUppercase, withLowercase, withNumbers, withSymbols, length], refreshToken, { immediate: true });
-
-function refreshToken() {
-  token.value = createToken({
+const [token, refreshToken] = computedRefreshable(() =>
+  createToken({
     length: length.value,
     withUppercase: withUppercase.value,
     withLowercase: withLowercase.value,
     withNumbers: withNumbers.value,
     withSymbols: withSymbols.value,
-  });
-}
+  }),
+);
+
+const { copy } = useCopy({ source: token, text: 'Token copied to the clipboard' });
 </script>
