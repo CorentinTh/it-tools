@@ -1,4 +1,15 @@
 <template>
+  <div style="flex: 0 0 100%">
+    <n-space style="margin: 0 auto; max-width: 600px" justify="center">
+      <n-form-item label="Sort keys :" label-placement="left" label-width="100">
+        <n-switch v-model:value="sortKeys" />
+      </n-form-item>
+      <n-form-item label="Indent size :" label-placement="left" label-width="100" :show-feedback="false">
+        <n-input-number v-model:value="indentSize" min="0" max="10" style="width: 100px" />
+      </n-form-item>
+    </n-space>
+  </div>
+
   <n-form-item
     label="Your raw json"
     :feedback="rawJsonValidation.message"
@@ -25,13 +36,17 @@
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 import { useValidation } from '@/composable/validation';
 import { withDefaultOnError } from '@/utils/defaults';
-import JSON5 from 'json5';
 import { computed, ref } from 'vue';
+import JSON5 from 'json5';
+import { useStorage } from '@vueuse/core';
+import { formatJson } from './json.models';
 
 const inputElement = ref<HTMLElement>();
 
-const rawJson = ref('{"hello": "world"}');
-const cleanJson = computed(() => withDefaultOnError(() => JSON.stringify(JSON5.parse(rawJson.value), null, 3), ''));
+const rawJson = useStorage('json-prettify:raw-json', '{"hello": "world", "foo": "bar"}');
+const indentSize = useStorage('json-prettify:indent-size', 3);
+const sortKeys = useStorage('json-prettify:sort-keys', true);
+const cleanJson = computed(() => withDefaultOnError(() => formatJson({ rawJson, indentSize, sortKeys }), ''));
 
 const rawJsonValidation = useValidation({
   source: rawJson,
