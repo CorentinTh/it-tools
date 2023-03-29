@@ -28,6 +28,7 @@
     "coverage": "vitest run --coverage",
     "typecheck": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint src --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore",
+    "script:create-new-tool": "node scripts/create-tool.mjs",
     "release": "standard-version"
   },
   "dependencies": {
