@@ -55,6 +55,12 @@ export const config = figue({
       env: 'VITE_NEW_TOOLS',
     },
   },
+  showBanner: {
+    doc: 'Show the banner',
+    format: 'boolean',
+    default: false,
+    env: 'VITE_SHOW_BANNER',
+  },
 })
   .loadEnv({
     ...import.meta.env,

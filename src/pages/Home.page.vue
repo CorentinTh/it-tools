@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { config } from '@/config';
 import { useToolStore } from '@/tools/tools.store';
 import { Heart } from '@vicons/tabler';
 import { useHead } from '@vueuse/head';
@@ -13,7 +14,7 @@ useHead({ title: 'IT Tools - Handy online tools for developers' });
 <template>
   <div class="home-page">
     <div class="grid-wrapper">
-      <n-grid x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
+      <n-grid v-if="config.showBanner" x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
         <n-gi>
           <colored-card title="You like it-tools?" :icon="Heart">
             Give us a star on
