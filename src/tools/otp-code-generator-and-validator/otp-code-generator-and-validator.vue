@@ -65,11 +65,12 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { Refresh } from '@vicons/tabler';
-import { useTimestamp, whenever } from '@vueuse/core';
+import { useTimestamp, useWindowFocus, whenever } from '@vueuse/core';
 import { useThemeVars } from 'naive-ui';
 import { useStyleStore } from '@/stores/style.store';
 import InputCopyable from '@/components/InputCopyable.vue';
 import { useValidation } from '@/composable/validation';
+import { computedRefreshable } from '@/composable/computedRefreshable';
 import { generateTOTP, buildKeyUri, generateSecret, base32toHex, getCounterFromTime } from './otp.service';
 import { useQRCode } from '../qr-code-generator/useQRCode';
 import TokenDisplay from './token-display.vue';
@@ -78,8 +79,18 @@ const now = useTimestamp();
 const interval = computed(() => (now.value / 1000) % 30);
 const theme = useThemeVars();
 const styleStore = useStyleStore();
-const secret = ref(generateSecret());
-const tokens = ref(buildTokens());
+
+const [secret, refreshSecret] = computedRefreshable(generateSecret);
+
+const [tokens] = computedRefreshable(
+  () => ({
+    previous: generateTOTP({ key: secret.value, now: now.value - 30000 }),
+    current: generateTOTP({ key: secret.value, now: now.value }),
+    next: generateTOTP({ key: secret.value, now: now.value + 30000 }),
+  }),
+  { throttle: 500 },
+);
+
 const keyUri = computed(() => buildKeyUri({ secret: secret.value }));
 
 const { qrcode } = useQRCode({
@@ -104,26 +115,6 @@ const { attrs: secretValidationAttrs } = useValidation({
     },
   ],
 });
-
-// watch + whenever to prevent token to be refresh every raf
-watch([secret], refreshToken);
-whenever(() => Math.floor(interval.value) === 0, refreshToken);
-
-function refreshSecret() {
-  secret.value = generateSecret();
-}
-
-function refreshToken() {
-  tokens.value = buildTokens();
-}
-
-function buildTokens() {
-  return {
-    previous: generateTOTP({ key: secret.value, now: now.value - 30000 }),
-    current: generateTOTP({ key: secret.value, now: now.value }),
-    next: generateTOTP({ key: secret.value, now: now.value + 30000 }),
-  };
-}
 </script>
 
 <style lang="less" scoped>
