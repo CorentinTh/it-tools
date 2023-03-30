@@ -1,15 +1,19 @@
-import { computedAsync } from '@vueuse/core';
+import { computedAsync, watchThrottled } from '@vueuse/core';
 import { computed, ref, watch } from 'vue';
 
 export { computedRefreshable, computedRefreshableAsync };
 
-function computedRefreshable<T>(getter: () => T) {
+function computedRefreshable<T>(getter: () => T, { throttle }: { throttle?: number } = {}) {
   const dirty = ref(true);
   let value: T;
 
   const update = () => (dirty.value = true);
 
-  watch(getter, update);
+  if (throttle) {
+    watchThrottled(getter, update, { throttle });
+  } else {
+    watch(getter, update);
+  }
 
   const computedValue = computed(() => {
     if (dirty.value) {
