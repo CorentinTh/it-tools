@@ -111,7 +111,7 @@ console.log(themeVars.value);
   }
 
   .toggle-bar {
-    width: 25px;
+    width: 24px;
     opacity: 0.1;
     transition: opacity ease 0.2s;
     position: relative;
@@ -125,7 +125,7 @@ console.log(themeVars.value);
       border-radius: 2px;
       position: absolute;
       top: 0;
-      left: 14.5px;
+      left: 14px;
     }
 
     &:hover {
