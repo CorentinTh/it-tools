@@ -13,8 +13,11 @@ You have an idea of a tool? Submit a [feature request](https://github.com/Corent
 Self host your own version of it-tools in your homelab with docker:
 
 ```sh
-docker run -d -p 8080:80 --name it-tools -it corentinth/it-tools
-
+docker run -d \
+  --name it-tools \
+  --restart unless-stopped \
+  -p 8080:80 \
+  corentinth/it-tools:latest
 ```
 
 ## Contribute
