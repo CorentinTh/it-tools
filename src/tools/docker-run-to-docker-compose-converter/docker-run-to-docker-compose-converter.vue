@@ -18,6 +18,30 @@
     <n-space justify="center">
       <n-button :disabled="dockerCompose === ''" secondary @click="download"> Download docker-compose.yml </n-button>
     </n-space>
+
+    <div v-if="notComposable.length > 0">
+      <br />
+      <n-alert title="This options are not translatable to docker-compose" type="info">
+        {{ notComposable }}
+      </n-alert>
+    </div>
+
+    <div v-if="notImplemented.length > 0">
+      <br />
+      <n-alert
+        title="This options are not yet implemented and therefore haven't been translated to docker-compose"
+        type="warning"
+      >
+        {{ notImplemented }}
+      </n-alert>
+    </div>
+
+    <div v-if="errors.length > 0">
+      <br />
+      <n-alert title="The following errors occured" type="error">
+        {{ errors }}
+      </n-alert>
+    </div>
   </div>
 </template>
 
@@ -28,12 +52,34 @@ import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 import { textToBase64 } from '@/utils/base64';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 
-import composerize from 'composerize';
+import { composerize, MessageType } from 'composerize-ts';
 
 const dockerRun = ref(
   'docker run -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock:ro --restart always --log-opt max-size=1g nginx',
 );
-const dockerCompose = computed(() => withDefaultOnError(() => composerize(dockerRun.value), ''));
+
+const conversionResult = computed(() =>
+  withDefaultOnError(() => composerize(dockerRun.value), { yaml: '', messages: [] }),
+);
+const dockerCompose = computed(() => conversionResult.value.yaml);
+const notImplemented = computed(() =>
+  conversionResult.value.messages
+    .filter((msg) => msg.type === MessageType.notImplemented)
+    .map((msg) => msg.value)
+    .join('<br>'),
+);
+const notComposable = computed(() =>
+  conversionResult.value.messages
+    .filter((msg) => msg.type === MessageType.notTranslatable)
+    .map((msg) => msg.value)
+    .join('<br>'),
+);
+const errors = computed(() =>
+  conversionResult.value.messages
+    .filter((msg) => msg.type === MessageType.errorDuringConversion)
+    .map((msg) => msg.value)
+    .join('<br>'),
+);
 const dockerComposeBase64 = computed(() => 'data:application/yaml;base64,' + textToBase64(dockerCompose.value));
 const { download } = useDownloadFileFromBase64({ source: dockerComposeBase64, filename: 'docker-compose.yml' });
 </script>
