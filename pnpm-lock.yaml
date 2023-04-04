@@ -44,8 +44,8 @@ dependencies:
     specifier: ^2.9.3
     version: 2.9.3
   composerize-ts:
-    specifier: ^0.6.1
-    version: 0.6.1
+    specifier: ^0.6.2
+    version: 0.6.2
   cron-validator:
     specifier: ^1.3.1
     version: 1.3.1
@@ -3206,8 +3206,8 @@ packages:
     resolution: {integrity: sha512-8njCHOTtFFLtegk6zQo0kkVX1rngygb/KQI6z1qZxlFI3scluC+LVTCFbrkWjBv4vvLlbQ9t88IPMC6k95VTTg==}
     dev: false
 
-  /composerize-ts@0.6.1:
-    resolution: {integrity: sha512-dTZveZ42FjZVNF1mXzeOmaDW2cXDYjKA2N3BL77lxhI2sx8WQ+5OoU39jZ4wnjIzX84ODs8NCMmb6TjCgcbPMQ==}
+  /composerize-ts@0.6.2:
+    resolution: {integrity: sha512-8tw5p/FBxg77ubjVftaXA+pknWbkUgbZ4rbZZs2yFUsj2yvO38IvtfpGLfaJ9mGFj324lFEr/OU9xULrKSF9Ag==}
     hasBin: true
     dependencies:
       commander: 10.0.0
