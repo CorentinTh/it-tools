@@ -63,9 +63,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
+import { computed, ref } from 'vue';
 import { Refresh } from '@vicons/tabler';
-import { useTimestamp, useWindowFocus, whenever } from '@vueuse/core';
+import { useTimestamp } from '@vueuse/core';
 import { useThemeVars } from 'naive-ui';
 import { useStyleStore } from '@/stores/style.store';
 import InputCopyable from '@/components/InputCopyable.vue';
@@ -80,7 +80,11 @@ const interval = computed(() => (now.value / 1000) % 30);
 const theme = useThemeVars();
 const styleStore = useStyleStore();
 
-const [secret, refreshSecret] = computedRefreshable(generateSecret);
+const secret = ref(generateSecret());
+
+function refreshSecret() {
+  secret.value = generateSecret();
+}
 
 const [tokens] = computedRefreshable(
   () => ({
