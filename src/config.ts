@@ -29,6 +29,12 @@ export const config = figue({
     },
   },
   plausible: {
+    isTrackerEnabled: {
+      doc: 'Is the tracker enabled',
+      format: 'boolean',
+      default: false,
+      env: 'VITE_TRACKER_ENABLED',
+    },
     domain: {
       doc: 'Plausible current domain',
       format: 'string',
