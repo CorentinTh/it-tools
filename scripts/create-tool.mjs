@@ -55,6 +55,7 @@ export const tool = defineTool({
   keywords: ['${toolName.split('-').join("', '")}'],
   component: () => import('./${toolName}.vue'),
   icon: ArrowsShuffle,
+  createdAt: new Date('${new Date().toISOString().split('T')[0]}'),
 });
 `,
 );
