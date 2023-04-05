@@ -72,8 +72,6 @@ const menuOptions = computed(() =>
 );
 
 const themeVars = useThemeVars();
-
-console.log(themeVars.value);
 </script>
 
 <style scoped lang="less">
