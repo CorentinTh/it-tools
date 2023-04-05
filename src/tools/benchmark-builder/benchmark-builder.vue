@@ -106,12 +106,4 @@ function copyAsMarkdown() {
 }
 </script>
 
-<<<<<<< HEAD
-<style lang="less" scoped>
-.delete-suite {
-  margin-top: 15px;
-}
-</style>
-=======
 <style lang="less" scoped></style>
->>>>>>> a5d1352 (feat(new-tool): simple benchmark calculator)
