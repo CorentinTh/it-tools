@@ -22,7 +22,9 @@
     <div v-if="notComposable.length > 0">
       <br />
       <n-alert title="This options are not translatable to docker-compose" type="info">
-        {{ notComposable }}
+        <ul>
+          <li v-for="(message, index) of notComposable" :key="index">{{ message }}</li>
+        </ul>
       </n-alert>
     </div>
 
@@ -32,14 +34,18 @@
         title="This options are not yet implemented and therefore haven't been translated to docker-compose"
         type="warning"
       >
-        {{ notImplemented }}
+        <ul>
+          <li v-for="(message, index) of notImplemented" :key="index">{{ message }}</li>
+        </ul>
       </n-alert>
     </div>
 
     <div v-if="errors.length > 0">
       <br />
       <n-alert title="The following errors occured" type="error">
-        {{ errors }}
+        <ul>
+          <li v-for="(message, index) of errors" :key="index">{{ message }}</li>
+        </ul>
       </n-alert>
     </div>
   </div>
@@ -63,22 +69,15 @@ const conversionResult = computed(() =>
 );
 const dockerCompose = computed(() => conversionResult.value.yaml);
 const notImplemented = computed(() =>
-  conversionResult.value.messages
-    .filter((msg) => msg.type === MessageType.notImplemented)
-    .map((msg) => msg.value)
-    .join('<br>'),
+  conversionResult.value.messages.filter((msg) => msg.type === MessageType.notImplemented).map((msg) => msg.value),
 );
 const notComposable = computed(() =>
-  conversionResult.value.messages
-    .filter((msg) => msg.type === MessageType.notTranslatable)
-    .map((msg) => msg.value)
-    .join('<br>'),
+  conversionResult.value.messages.filter((msg) => msg.type === MessageType.notTranslatable).map((msg) => msg.value),
 );
 const errors = computed(() =>
   conversionResult.value.messages
     .filter((msg) => msg.type === MessageType.errorDuringConversion)
-    .map((msg) => msg.value)
-    .join('<br>'),
+    .map((msg) => msg.value),
 );
 const dockerComposeBase64 = computed(() => 'data:application/yaml;base64,' + textToBase64(dockerCompose.value));
 const { download } = useDownloadFileFromBase64({ source: dockerComposeBase64, filename: 'docker-compose.yml' });
