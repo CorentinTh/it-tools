@@ -19,7 +19,7 @@ export function useQRCode({
     [text, background, foreground, errorCorrectionLevel].filter(isRef),
     async () => {
       if (get(text))
-        qrcode.value = await QRCode.toDataURL(get(text), {
+        qrcode.value = await QRCode.toDataURL(get(text).trim(), {
           color: {
             dark: get(foreground),
             light: get(background),
