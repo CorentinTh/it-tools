@@ -2,7 +2,7 @@
   <n-scrollbar style="flex: 1" x-scrollable>
     <n-space :wrap="false" style="flex: 1" justify="center" :size="0">
       <div v-for="(suite, index) of suites" :key="index">
-        <n-card style="width: 292px; margin: 0 8px">
+        <n-card style="width: 292px; margin: 0 8px 5px">
           <n-form-item label="Suite name:" :show-feedback="false" label-placement="left">
             <n-input v-model:value="suite.title" />
           </n-form-item>
@@ -14,17 +14,13 @@
         </n-card>
 
         <n-space justify="center">
-          <n-button quaternary class="delete-suite" @click="suites.splice(index, 1)">
+          <n-button v-if="suites.length > 1" quaternary @click="suites.splice(index, 1)">
             <template #icon>
               <n-icon :component="Trash" depth="3" />
             </template>
             Delete suite
           </n-button>
-          <n-button
-            quaternary
-            class="delete-suite"
-            @click="suites.splice(index + 1, 0, { data: [0], title: `Suite ${suites.length + 1}` })"
-          >
+          <n-button quaternary @click="suites.splice(index + 1, 0, { data: [0], title: `Suite ${suites.length + 1}` })">
             <template #icon>
               <n-icon :component="Plus" depth="3" />
             </template>
@@ -110,8 +106,12 @@ function copyAsMarkdown() {
 }
 </script>
 
+<<<<<<< HEAD
 <style lang="less" scoped>
 .delete-suite {
   margin-top: 15px;
 }
 </style>
+=======
+<style lang="less" scoped></style>
+>>>>>>> a5d1352 (feat(new-tool): simple benchmark calculator)
