@@ -12,7 +12,7 @@
         />
       </n-form-item>
       <n-form-item label="Salt count: " label-placement="left">
-        <n-input-number v-model:value="saltCount" placeholder="Salt rounds..." :max="10" :min="0" style="width: 100%" />
+        <n-input-number v-model:value="saltCount" placeholder="Salt rounds..." :max="10" :min="0" w-full />
       </n-form-item>
       <n-input :value="hashed" readonly style="text-align: center" />
     </n-form>

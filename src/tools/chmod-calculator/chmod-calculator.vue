@@ -24,7 +24,7 @@
       {{ octal }}
     </div>
 
-    <input-copyable :value="`chmod ${octal} path`" readonly style="margin-bottom: 5px" />
+    <input-copyable :value="`chmod ${octal} path`" readonly />
   </div>
 </template>
 
