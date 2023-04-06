@@ -110,7 +110,7 @@ const results = computed(() => {
       };
     })
     .sort((a, b) => a.mean - b.mean)
-    .map(({ mean, variance, ...value }, index, suites) => {
+    .map(({ mean, variance, size, title }, index, suites) => {
       const cleanUnit = unit.value.trim();
       const bestMean: number = suites[0].mean;
       const deltaWithBestMean = mean - bestMean;
@@ -121,9 +121,10 @@ const results = computed(() => {
 
       return {
         position: index + 1,
+        title,
         mean: `${round(mean)}${cleanUnit}${comparisonValues}`,
         variance: `${round(variance)}${cleanUnit}${cleanUnit ? '²' : ''}`,
-        ...value,
+        size,
       };
     });
 });
