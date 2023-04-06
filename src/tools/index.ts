@@ -2,6 +2,7 @@ import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
 import { tool as benchmarkBuilder } from './benchmark-builder';
+import { tool as userAgentParser } from './user-agent-parser';
 import { tool as ipv4SubnetCalculator } from './ipv4-subnet-calculator';
 import { tool as dockerRunToDockerComposeConverter } from './docker-run-to-docker-compose-converter';
 import { tool as htmlWysiwygEditor } from './html-wysiwyg-editor';
@@ -79,6 +80,7 @@ export const toolsByCategory: ToolCategory[] = [
       keycodeInfo,
       slugifyString,
       htmlWysiwygEditor,
+      userAgentParser,
     ],
   },
   {

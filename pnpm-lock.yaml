@@ -109,6 +109,9 @@ dependencies:
   ts-pattern:
     specifier: ^4.2.2
     version: 4.2.2
+  ua-parser-js:
+    specifier: ^1.0.35
+    version: 1.0.35
   uuid:
     specifier: ^8.3.2
     version: 8.3.2
@@ -156,6 +159,9 @@ devDependencies:
   '@types/randombytes':
     specifier: ^2.0.0
     version: 2.0.0
+  '@types/ua-parser-js':
+    specifier: ^0.7.36
+    version: 0.7.36
   '@types/uuid':
     specifier: ^8.3.4
     version: 8.3.4
@@ -2216,6 +2222,10 @@ packages:
 
   /@types/trusted-types@2.0.3:
     resolution: {integrity: sha512-NfQ4gyz38SL8sDNrSixxU2Os1a5xcdFxipAFxYEuLUlvU2uDwS4NUpsImcf1//SlWItCVMMLiylsxbmNMToV/g==}
+    dev: true
+
+  /@types/ua-parser-js@0.7.36:
+    resolution: {integrity: sha512-N1rW+njavs70y2cApeIw1vLMYXRwfBy+7trgavGuuTfOd7j1Yh7QTRc/yqsPl6ncokt72ZXuxEU0PiCp9bSwNQ==}
     dev: true
 
   /@types/uuid@8.3.4:
@@ -7510,6 +7520,10 @@ packages:
     resolution: {integrity: sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA==}
     engines: {node: '>=4.2.0'}
     hasBin: true
+
+  /ua-parser-js@1.0.35:
+    resolution: {integrity: sha512-fKnGuqmTBnIE+/KXSzCn4db8RTigUzw1AN0DmdU6hJovUTbYJKyqj+8Mt1c4VfRDnOVJnENmfYkIPZ946UrSAA==}
+    dev: false
 
   /uc.micro@1.0.6:
     resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}
