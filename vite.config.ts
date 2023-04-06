@@ -7,6 +7,8 @@ import markdown from 'vite-plugin-md';
 import svgLoader from 'vite-svg-loader';
 import { VitePWA } from 'vite-plugin-pwa';
 import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -68,6 +70,9 @@ export default defineConfig({
           },
         ],
       },
+    }),
+    Components({
+      resolvers: [NaiveUiResolver()],
     }),
   ],
   resolve: {
