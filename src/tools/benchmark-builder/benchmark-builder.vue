@@ -4,7 +4,7 @@
       <div v-for="(suite, index) of suites" :key="index">
         <n-card style="width: 292px; margin: 0 8px 5px">
           <n-form-item label="Suite name:" :show-feedback="false" label-placement="left">
-            <n-input v-model:value="suite.title" />
+            <n-input v-model:value="suite.title" placeholder="Suite name..." />
           </n-form-item>
 
           <n-divider></n-divider>
@@ -34,6 +34,23 @@
 
   <div style="flex: 0 0 100%">
     <div style="max-width: 600px; margin: 0 auto">
+      <n-space justify="center">
+        <n-form-item label="Unit:" label-placement="left">
+          <n-input v-model:value="unit" placeholder="Unit (eg: ms)" />
+        </n-form-item>
+
+        <n-button
+          tertiary
+          @click="
+            suites = [
+              { title: 'Suite 1', data: [] },
+              { title: 'Suite 2', data: [] },
+            ]
+          "
+          >Reset suites</n-button
+        >
+      </n-space>
+
       <n-table>
         <thead>
           <tr>
@@ -57,6 +74,7 @@
       <br />
       <n-space justify="center">
         <n-button tertiary @click="copyAsMarkdown">Copy as markdown table</n-button>
+        <n-button tertiary @click="copyAsBulletList">Copy as bullet list</n-button>
       </n-space>
     </div>
   </div>
@@ -75,6 +93,10 @@ const suites = useStorage('benchmark-builder:suites', [
   { title: 'Suite 2', data: [8, 12] },
 ]);
 
+const unit = useStorage('benchmark-builder:unit', '');
+
+const round = (v: number) => Math.round(v * 1000) / 1000;
+
 const results = computed(() => {
   return suites.value
     .map(({ data: dirtyData, title }) => {
@@ -88,14 +110,29 @@ const results = computed(() => {
       };
     })
     .sort((a, b) => a.mean - b.mean)
-    .map((value, index) => ({ position: index + 1, ...value }));
+    .map(({ mean, variance, ...value }, index, suites) => {
+      const cleanUnit = unit.value.trim();
+      const bestMean: number = suites[0].mean;
+      const deltaWithBestMean = mean - bestMean;
+      const ratioWithBestMean = bestMean === 0 ? '∞' : round(mean / bestMean);
+
+      const comparisonValues: string =
+        index !== 0 && bestMean !== mean ? ` (+${round(deltaWithBestMean)}${cleanUnit} ; x${ratioWithBestMean})` : '';
+
+      return {
+        position: index + 1,
+        mean: `${round(mean)}${cleanUnit}${comparisonValues}`,
+        variance: `${round(variance)}${cleanUnit}${cleanUnit ? '²' : ''}`,
+        ...value,
+      };
+    });
 });
 
 const { copy } = useClipboard();
 
 const header = {
-  title: 'Suite name',
-  size: 'Sample count',
+  title: 'Suite',
+  size: 'Samples',
   mean: 'Mean',
   variance: 'Variance',
   position: 'Position',
@@ -103,6 +140,21 @@ const header = {
 
 function copyAsMarkdown() {
   copy(arrayToMarkdownTable({ data: results.value, headerMap: header }));
+}
+
+function copyAsBulletList() {
+  const bulletList = results.value
+    .flatMap(({ title, ...sections }) => {
+      return [
+        ` - ${title}`,
+        ...Object.entries(sections).map(
+          ([key, value]) => `    - ${header[key as keyof typeof header] ?? key}: ${value}`,
+        ),
+      ];
+    })
+    .join('\n');
+
+  copy(bulletList);
 }
 </script>
 
