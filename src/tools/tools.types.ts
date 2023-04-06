@@ -9,6 +9,7 @@ export type Tool = {
   icon: Component;
   redirectFrom?: string[];
   isNew: boolean;
+  createdAt?: Date;
 };
 
 export type ToolCategory = {

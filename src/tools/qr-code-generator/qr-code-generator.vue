@@ -4,7 +4,12 @@
       <n-gi span="2">
         <n-form label-width="130" label-placement="left">
           <n-form-item label="Text:">
-            <n-input v-model:value="text" placeholder="Your link or text..." />
+            <n-input
+              v-model:value="text"
+              type="textarea"
+              :autosize="{ minRows: 1 }"
+              placeholder="Your link or text..."
+            />
           </n-form-item>
           <n-form-item label="Foreground color:">
             <n-color-picker v-model:value="foreground" :modes="['hex']" />
