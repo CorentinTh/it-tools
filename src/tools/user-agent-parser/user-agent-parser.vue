@@ -15,11 +15,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed, PropType, ref } from 'vue';
+import { computed, ref } from 'vue';
 import { UAParser } from 'ua-parser-js';
 import { withDefaultOnError } from '@/utils/defaults';
 import { Adjustments, Browser, Cpu, Devices, Engine } from '@vicons/tabler';
 import UserAgentResultCards from './user-agent-result-cards.vue';
+import type { UserAgentResultSection } from './user-agent-parser.types';
 
 const ua = ref(navigator.userAgent as string);
 
@@ -32,15 +33,7 @@ const getUserAgentInfo = (userAgent: string) =>
     : ({ ua: '', browser: {}, cpu: {}, device: {}, engine: {}, os: {} } as UAParser.IResult);
 const userAgentInfo = computed(() => withDefaultOnError(() => getUserAgentInfo(ua.value), undefined));
 
-const sections: {
-  heading: string;
-  icon?: PropType<any>;
-  content: {
-    label: string;
-    getValue: (blocks: UAParser.IResult) => string | undefined;
-    undefinedFallback?: string;
-  }[];
-}[] = [
+const sections: UserAgentResultSection[] = [
   {
     heading: 'Browser',
     icon: Browser,

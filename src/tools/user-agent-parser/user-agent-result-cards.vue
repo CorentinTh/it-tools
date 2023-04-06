@@ -16,12 +16,11 @@
 
           <n-space>
             <span v-for="{ label, getValue } in content" :key="label">
-              <n-tooltip trigger="hover">
+              <n-tooltip v-if="getValue(userAgentInfo)" trigger="hover">
                 <template #trigger>
-                  <n-tag v-if="getValue(userAgentInfo)" type="success" size="large" round :bordered="false">
+                  <n-tag type="success" size="large" round :bordered="false">
                     {{ getValue(userAgentInfo) }}
                   </n-tag>
-                  <span v-else />
                 </template>
                 {{ label }}
               </n-tooltip>
@@ -39,20 +38,13 @@
 </template>
 
 <script setup lang="ts">
-import { PropType, toRefs } from 'vue';
+import { toRefs } from 'vue';
 import { UAParser } from 'ua-parser-js';
+import type { UserAgentResultSection } from './user-agent-parser.types';
 
 const props = defineProps<{
   userAgentInfo?: UAParser.IResult;
-  sections: {
-    heading: string;
-    icon?: PropType<any>;
-    content: {
-      label: string;
-      getValue: (blocks: UAParser.IResult) => string | undefined;
-      undefinedFallback?: string;
-    }[];
-  }[];
+  sections: UserAgentResultSection[];
 }>();
 const { userAgentInfo, sections } = toRefs(props);
 </script>
