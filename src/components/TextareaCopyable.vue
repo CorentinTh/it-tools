@@ -21,7 +21,7 @@
         <span>{{ tooltipText }}</span>
       </n-tooltip>
     </n-card>
-    <n-space v-if="copyPlacement === 'outside'" justify="center" style="margin-top: 15px">
+    <n-space v-if="copyPlacement === 'outside'" justify="center" mt-4>
       <n-button secondary @click="onCopyClicked"> {{ tooltipText }} </n-button>
     </n-space>
   </div>

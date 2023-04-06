@@ -5,6 +5,8 @@ import { createHead } from '@vueuse/head';
 import { registerSW } from 'virtual:pwa-register';
 import { plausible } from './plugins/plausible.plugin';
 
+import 'virtual:uno.css';
+
 registerSW();
 
 import { naive } from './plugins/naive.plugin';

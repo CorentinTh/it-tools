@@ -141,7 +141,7 @@ const tools = computed<ToolCategory[]>(() => [
               @click="() => tracker.trackEvent({ eventName: 'Support button clicked' })"
             >
               Buy me a coffee
-              <n-icon v-if="!styleStore.isSmallScreen" :component="Heart" style="margin-left: 5px" />
+              <n-icon v-if="!styleStore.isSmallScreen" :component="Heart" ml-2 />
             </n-button>
           </template>
           ❤ Support IT Tools development !

@@ -1,10 +1,6 @@
 <template>
   <div>
-    <n-input-group
-      v-for="[key, { title, unit }] in Object.entries(units)"
-      :key="key"
-      style="width: 100%; margin-bottom: 15px"
-    >
+    <n-input-group v-for="[key, { title, unit }] in Object.entries(units)" :key="key" mb-3 w-full>
       <n-input-group-label style="width: 100px">
         {{ title }}
       </n-input-group-label>

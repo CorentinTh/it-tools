@@ -1,6 +1,6 @@
 <template>
   <div>
-    <n-space class="labels" item-style="flex: 1 1 0" style="width: 100%" align="center">
+    <n-space class="labels" item-style="flex: 1 1 0" w-full align="center">
       <div style="text-align: left">Previous</div>
       <div style="text-align: center">Current OTP</div>
       <div style="text-align: right">Next</div>
