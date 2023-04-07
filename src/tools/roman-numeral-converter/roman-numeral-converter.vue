@@ -2,27 +2,25 @@
   <div>
     <n-card title="Arabic to roman">
       <n-space align="center" justify="space-between">
-        <n-form-item :feedback="validationNumeral.message" :validation-status="validationNumeral.status">
+        <n-form-item v-bind="validationNumeral">
           <n-input-number v-model:value="inputNumeral" :min="1" style="width: 200px" :show-button="false" />
         </n-form-item>
         <div class="result">
           <span v-html="outputRoman"></span>
         </div>
-        <n-button secondary autofocus :disabled="validationNumeral.status === 'error'" @click="copyRoman">
-          Copy
-        </n-button>
+        <n-button secondary autofocus :disabled="isCopyRomanDisabled()" @click="copyRoman"> Copy </n-button>
       </n-space>
     </n-card>
     <br />
     <n-card title="Roman to arabic">
       <n-space align="center" justify="space-between">
-        <n-form-item :feedback="validationRoman.message" :validation-status="validationRoman.status">
+        <n-form-item v-bind="validationRoman">
           <n-input v-model:value="inputRoman" style="width: 200px" />
         </n-form-item>
         <div class="result">
           {{ outputNumeral }}
         </div>
-        <n-button secondary autofocus :disabled="validationRoman.status === 'error'" @click="copyArabic">
+        <n-button secondary autofocus :disabled="validationRoman.validationStatus === 'error'" @click="copyArabic">
           Copy
         </n-button>
       </n-space>
@@ -45,7 +43,7 @@ import {
 const inputNumeral = ref(42);
 const outputRoman = computed(() => arabicToRoman(inputNumeral.value));
 
-const validationNumeral = useValidation({
+const { attrs: validationNumeral } = useValidation({
   source: inputNumeral,
   rules: [
     {
@@ -58,7 +56,7 @@ const validationNumeral = useValidation({
 const inputRoman = ref('XLII');
 const outputNumeral = computed(() => romanToArabic(inputRoman.value));
 
-const validationRoman = useValidation({
+const { attrs: validationRoman } = useValidation({
   source: inputRoman,
   rules: [
     {
@@ -70,6 +68,10 @@ const validationRoman = useValidation({
 
 const { copy: copyRoman } = useCopy({ source: outputRoman, text: 'Roman number copied to the clipboard' });
 const { copy: copyArabic } = useCopy({ source: outputNumeral, text: 'Arabic number copied to the clipboard' });
+
+function isCopyRomanDisabled() {
+  return validationNumeral.validationStatus === 'error' || inputNumeral.value > 3999;
+}
 </script>
 
 <style lang="less" scoped>
