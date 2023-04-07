@@ -6,7 +6,12 @@
 
 	A simple utility to translate JSON into a Go type definition.
 */
-
+const cryptoRand = () => {
+  const crypto = window.crypto || window.msCrypto;
+  const randomBuffer = new Uint32Array(1);
+  crypto.getRandomValues(randomBuffer);
+  return randomBuffer[0] / (0xffffffff + 1); // 0xFFFFFFFF = uint32.MaxValue (+1 because Math.random is inclusive of 0, but not 1)
+};
 function jsonToGo(json, typename, flatten = true, example = false, allOmitempty = false) {
   let data;
   let scope;
@@ -20,7 +25,7 @@ function jsonToGo(json, typename, flatten = true, example = false, allOmitempty 
   let parent = '';
 
   try {
-    data = JSON.parse(json.replace(/(:\s*\[?\s*-?\d*)\.0/g, '$1.1')); // hack that forces floats to stay as floats
+    data = JSON.parse(json.replace(/(:\s{0,128}\[?\s{0,128}-?\d{0,128})\.0/g, '$1.1')); // hack that forces floats to stay as floats
     scope = data;
   } catch (e) {
     return {
@@ -360,7 +365,7 @@ function jsonToGo(json, typename, flatten = true, example = false, allOmitempty 
 
   function uuidv4() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-      var r = (Math.random() * 16) | 0,
+      let r = (cryptoRand() * 16) | 0,
         v = c == 'x' ? r : (r & 0x3) | 0x8;
       return v.toString(16);
     });

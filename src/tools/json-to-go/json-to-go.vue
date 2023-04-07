@@ -10,11 +10,11 @@
     </n-space>
   </div>
 
-  <n-form-item label="Your Json">
+  <n-form-item label="Your JSON">
     <n-input
       ref="inputElement"
-      v-model:value="rawSQL"
-      placeholder="Put your Json..."
+      v-model:value="rawJSON"
+      placeholder="Put your JSON..."
       type="textarea"
       rows="20"
       autocomplete="off"
@@ -41,13 +41,12 @@ const config = reactive<Partial<FormatFnOptions>>({
   inline: false,
   omitempty: false,
 });
-
-const rawSQL = ref('');
+const rawJSON = ref('');
 // function jsonToGo(json, typename, flatten = true, example = false, allOmitempty = false)
 const goCode = computed(() => {
-  let result = jsonToGo(rawSQL.value, '', config.inline, false, config.omitempty);
+  let result = jsonToGo(rawJSON.value, '', config.inline, false, config.omitempty);
   if (result.error) {
-    return rawSQL ? '' : result.error;
+    return !rawJSON.value ? '' : result.error;
   }
   return result.go;
 });
