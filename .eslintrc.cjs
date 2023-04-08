@@ -10,6 +10,8 @@ module.exports = {
     '@vue/eslint-config-typescript/recommended',
     '@vue/eslint-config-prettier',
     'plugin:import/recommended',
+    './.eslintrc-auto-import.json',
+    '@unocss',
   ],
 
   settings: {

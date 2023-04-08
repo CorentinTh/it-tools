@@ -6,10 +6,29 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import markdown from 'vite-plugin-md';
 import svgLoader from 'vite-svg-loader';
 import { VitePWA } from 'vite-plugin-pwa';
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
+import Unocss from 'unocss/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    AutoImport({
+      imports: [
+        'vue',
+        'vue-router',
+        '@vueuse/core',
+        {
+          'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar'],
+        },
+      ],
+      vueTemplate: true,
+      eslintrc: {
+        enabled: true,
+      },
+    }),
+
     vue({
       include: [/\.vue$/, /\.md$/],
     }),
@@ -53,6 +72,10 @@ export default defineConfig({
         ],
       },
     }),
+    Components({
+      resolvers: [NaiveUiResolver()],
+    }),
+    Unocss(),
   ],
   resolve: {
     alias: {

@@ -17,7 +17,7 @@
   <n-card title="File to base64">
     <n-upload v-model:file-list="fileList" :show-file-list="true" :on-before-upload="onUpload" list-type="image">
       <n-upload-dragger>
-        <div style="margin-bottom: 12px">
+        <div mb-2>
           <n-icon size="35" :depth="3" :component="Upload" />
         </div>
         <n-text style="font-size: 14px"> Click or drag a file to this area to upload </n-text>

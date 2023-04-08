@@ -4,11 +4,11 @@
       <div v-if="styleStore.isSmallScreen">
         <n-input-group>
           <n-input-group-label style="flex: 0 0 120px"> Input number: </n-input-group-label>
-          <n-input v-model:value="input" style="width: 100%" :status="error ? 'error' : undefined" />
+          <n-input v-model:value="input" w-full :status="error ? 'error' : undefined" />
         </n-input-group>
         <n-input-group>
           <n-input-group-label style="flex: 0 0 120px"> Input base: </n-input-group-label>
-          <n-input-number v-model:value="inputBase" max="64" min="2" style="width: 100%" />
+          <n-input-number v-model:value="inputBase" max="64" min="2" w-full />
         </n-input-group>
       </div>
 
