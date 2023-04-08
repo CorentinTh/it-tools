@@ -13,10 +13,10 @@ describe('roman-numeral-converter', () => {
       expect(arabicToRoman(0.9)).toEqual('');
     });
 
-    it('should convert numbers greater than 3999999 to empty string', () => {
-      expect(arabicToRoman(3999999.1)).toEqual('');
-      expect(arabicToRoman(4000000)).toEqual('');
-      expect(arabicToRoman(10000000)).toEqual('');
+    it('should convert numbers greater than 3999 to empty string', () => {
+      expect(arabicToRoman(3999.1)).toEqual('');
+      expect(arabicToRoman(4000)).toEqual('');
+      expect(arabicToRoman(10000)).toEqual('');
     });
 
     it('should convert floating points number to the lower integer in roman version', () => {
@@ -70,10 +70,6 @@ describe('roman-numeral-converter', () => {
       expect(arabicToRoman(999)).toEqual('CMXCIX');
       expect(arabicToRoman(1000)).toEqual('M');
       expect(arabicToRoman(2000)).toEqual('MM');
-      expect(arabicToRoman(4000)).toEqual('<span style="text-decoration: overline">IV</span>');
-      expect(arabicToRoman(5000)).toEqual('<span style="text-decoration: overline">V</span>');
-      expect(arabicToRoman(9000)).toEqual('<span style="text-decoration: overline">IX</span>');
-      expect(arabicToRoman(10000)).toEqual('<span style="text-decoration: overline">X</span>');
     });
   });
 });

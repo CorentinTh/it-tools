@@ -6,9 +6,11 @@
           <n-input-number v-model:value="inputNumeral" :min="1" style="width: 200px" :show-button="false" />
         </n-form-item>
         <div class="result">
-          <span v-html="outputRoman"></span>
+          {{ outputRoman }}
         </div>
-        <n-button secondary autofocus :disabled="isCopyRomanDisabled()" @click="copyRoman"> Copy </n-button>
+        <n-button secondary autofocus :disabled="validationNumeral.validationStatus === 'error'" @click="copyRoman">
+          Copy
+        </n-button>
       </n-space>
     </n-card>
     <br />
@@ -68,10 +70,6 @@ const { attrs: validationRoman } = useValidation({
 
 const { copy: copyRoman } = useCopy({ source: outputRoman, text: 'Roman number copied to the clipboard' });
 const { copy: copyArabic } = useCopy({ source: outputNumeral, text: 'Arabic number copied to the clipboard' });
-
-function isCopyRomanDisabled() {
-  return validationNumeral.validationStatus === 'error' || inputNumeral.value > 3999;
-}
 </script>
 
 <style lang="less" scoped>
