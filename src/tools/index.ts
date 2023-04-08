@@ -1,6 +1,7 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+import { tool as ipv4AddressConverter } from './ipv4-address-converter';
 import { tool as benchmarkBuilder } from './benchmark-builder';
 import { tool as userAgentParser } from './user-agent-parser';
 import { tool as ipv4SubnetCalculator } from './ipv4-subnet-calculator';
@@ -103,7 +104,7 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Network',
-    components: [ipv4SubnetCalculator, macAddressLookup],
+    components: [ipv4SubnetCalculator, ipv4AddressConverter, macAddressLookup],
   },
   {
     name: 'Math',
