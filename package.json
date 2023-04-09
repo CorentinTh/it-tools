@@ -25,6 +25,7 @@
     "preview": "vite preview --port 5050",
     "test": "npm run test:unit",
     "test:unit": "vitest --environment jsdom",
+    "test:e2e": "playwright test",
     "coverage": "vitest run --coverage",
     "typecheck": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint src --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore",
@@ -75,6 +76,7 @@
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
+    "@playwright/test": "^1.32.2",
     "@rushstack/eslint-patch": "^1.2.0",
     "@types/bcryptjs": "^2.4.2",
     "@types/crypto-js": "^4.1.1",
