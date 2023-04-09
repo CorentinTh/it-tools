@@ -1,4 +1,4 @@
-import { useValidation, type ValidationAttrs } from '@/composable/validation';
+import { useValidation } from '@/composable/validation';
 import type { Ref } from 'vue';
 
 function macAddressValidation(value: Ref) {

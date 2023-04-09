@@ -2,7 +2,7 @@
   <div>
     <n-space vertical :size="50">
       <n-alert title="Info" type="info">
-        This page uses the first method suggested by IETF using the current timestamp plus the mac address, sha1 hashed,
+        This tool uses the first method suggested by IETF using the current timestamp plus the mac address, sha1 hashed,
         and the lower 40 bits to generate your random ULA.
       </n-alert>
 
@@ -40,19 +40,20 @@ const calculatedSections = computed(() => {
   const hex40bit = SHA1(timestamp + macAddress.value)
     .toString()
     .substring(30);
+
   const ula = 'fd' + hex40bit.substring(0, 2) + ':' + hex40bit.substring(2, 6) + ':' + hex40bit.substring(6);
 
   return [
     {
-      label: 'IPv6 ULA : ',
+      label: 'IPv6 ULA:',
       value: `${ula}::/48`,
     },
     {
-      label: 'First routable block: ',
+      label: 'First routable block:',
       value: `${ula}:0::/64`,
     },
     {
-      label: 'Last routable block: ',
+      label: 'Last routable block:',
       value: `${ula}:ffff::/64`,
     },
   ];
