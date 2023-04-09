@@ -20,7 +20,7 @@ export function isFalsyOrHasThrown(cb: () => ValidatorReturnType): boolean {
   }
 }
 
-type ValidationAttrs = {
+export type ValidationAttrs = {
   feedback: string;
   validationStatus: string | undefined;
 };

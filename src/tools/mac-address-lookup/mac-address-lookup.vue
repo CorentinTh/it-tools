@@ -30,23 +30,15 @@
 </template>
 
 <script setup lang="ts">
-import { useValidation } from '@/composable/validation';
 import db from 'oui/oui.json';
+import { macAddressValidation } from '@/utils/macAddress';
 
 const getVendorValue = (address: string) => address.trim().replace(/[.:-]/g, '').toUpperCase().substring(0, 6);
 
 const macAddress = ref('20:37:06:12:34:56');
 const details = computed<string | undefined>(() => db[getVendorValue(macAddress.value)]);
 
-const { attrs: validationAttrs } = useValidation({
-  source: macAddress,
-  rules: [
-    {
-      message: 'Invalid MAC address',
-      validator: (value) => value.trim().match(/^([0-9A-Fa-f]{2}[:-]){2,5}([0-9A-Fa-f]{2})$/),
-    },
-  ],
-});
+const { attrs: validationAttrs } = macAddressValidation(macAddress);
 </script>
 
 <style lang="less" scoped></style>
