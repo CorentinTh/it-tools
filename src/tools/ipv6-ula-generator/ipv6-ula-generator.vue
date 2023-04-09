@@ -22,7 +22,7 @@
 
     <div v-if="validationAttrs.validationStatus !== 'error'">
       <n-input-group v-for="{ label, value } in calculatedSections" :key="label" style="margin: 5px 0">
-        <n-input-group-label style="flex: 0 0 120px"> {{ label }} </n-input-group-label>
+        <n-input-group-label style="flex: 0 0 160px"> {{ label }} </n-input-group-label>
         <input-copyable :value="value" readonly />
       </n-input-group>
     </div>
