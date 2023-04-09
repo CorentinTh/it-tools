@@ -1,12 +1,7 @@
 import { useValidation, type ValidationAttrs } from '@/composable/validation';
 import type { Ref } from 'vue';
 
-function macAddressValidation(value: Ref): {
-  message: string;
-  status: 'error' | undefined;
-  isValid: boolean;
-  attrs: ValidationAttrs;
-} {
+function macAddressValidation(value: Ref) {
   return useValidation({
     source: value,
     rules: [
