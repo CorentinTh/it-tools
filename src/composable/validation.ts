@@ -3,7 +3,7 @@ import { reactive, watch, type Ref } from 'vue';
 
 type ValidatorReturnType = unknown;
 
-interface UseValidationRule<T> {
+export interface UseValidationRule<T> {
   validator: (value: T) => ValidatorReturnType;
   message: string;
 }
