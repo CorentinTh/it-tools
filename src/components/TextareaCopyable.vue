@@ -13,7 +13,7 @@
       <n-tooltip v-if="value" trigger="hover">
         <template #trigger>
           <div class="copy-button" :class="[copyPlacement]">
-            <n-button secondary circle size="large" @click="onCopyClicked">
+            <n-button circle secondary size="large" @click="onCopyClicked">
               <n-icon size="22" :component="Copy" />
             </n-button>
           </div>

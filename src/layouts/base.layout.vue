@@ -1,13 +1,12 @@
 <script lang="ts" setup>
-import { NIcon, useThemeVars, type MenuGroupOption, type MenuOption } from 'naive-ui';
-import { computed, h } from 'vue';
-import { RouterLink, useRoute } from 'vue-router';
+import { NIcon, useThemeVars } from 'naive-ui';
+import { computed } from 'vue';
+import { RouterLink } from 'vue-router';
 import { Heart, Menu2, Home2 } from '@vicons/tabler';
 import { toolsByCategory } from '@/tools';
 import { useStyleStore } from '@/stores/style.store';
 import { config } from '@/config';
-import MenuIconItem from '@/components/MenuIconItem.vue';
-import type { Tool, ToolCategory } from '@/tools/tools.types';
+import type { ToolCategory } from '@/tools/tools.types';
 import { useToolStore } from '@/tools/tools.store';
 import { useTracker } from '@/modules/tracker/tracker.services';
 import CollapsibleToolMenu from '@/components/CollapsibleToolMenu.vue';
@@ -17,7 +16,6 @@ import MenuLayout from '../components/MenuLayout.vue';
 import NavbarButtons from '../components/NavbarButtons.vue';
 
 const themeVars = useThemeVars();
-const route = useRoute();
 const styleStore = useStyleStore();
 const version = config.app.version;
 const commitSha = config.app.lastCommitSha.slice(0, 7);
