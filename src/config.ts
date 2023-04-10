@@ -53,14 +53,6 @@ export const config = figue({
       default: false,
     },
   },
-  tools: {
-    newTools: {
-      doc: 'Tool names for tools flagged a as new',
-      format: 'array',
-      default: [],
-      env: 'VITE_NEW_TOOLS',
-    },
-  },
   showBanner: {
     doc: 'Show the banner',
     format: 'boolean',
