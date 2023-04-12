@@ -1,0 +1,48 @@
+name: Release new versions
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  docker-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get release version
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            corentinth/it-tools:latest
+            corentinth/it-tools:${{ env.RELEASE_VERSION }}
+            ghcr.io/corentinth/it-tools:latest
+            ghcr.io/corentinth/it-tools:${{ env.RELEASE_VERSION}}

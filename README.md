@@ -10,15 +10,24 @@ You have an idea of a tool? Submit a [feature request](https://github.com/Corent
 
 ## Self host
 
-Self host your own version of it-tools in your homelab with docker:
+Self host solutions for your homelab
+
+**From docker hub:**
 
 ```sh
-docker run -d \
-  --name it-tools \
-  --restart unless-stopped \
-  -p 8080:80 \
-  corentinth/it-tools:latest
+docker run -d --name it-tools --restart unless-stopped -p 8080:80 corentinth/it-tools:latest
 ```
+
+**From github packages:**
+
+```sh
+docker run -d --name it-tools --restart unless-stopped -p 8080:80 ghcr.io/corentinth/it-tools:latest
+```
+
+**Other solutions:**
+
+- [Tipi](https://www.runtipi.io/docs/apps-available)
+- [Unraid](https://unraid.net/community/apps?q=it-tools)
 
 ## Contribute
 
