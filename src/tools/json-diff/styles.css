@@ -1,0 +1,184 @@
+:root {
+    --jsdiff-color_fg: #888888ff;
+    --jsdiff-color_fg_location: #bbbbbbff;
+    --jsdiff-color_bg_added: #066f1988;
+    --jsdiff-color_bg_deleted: #ab060988;
+    --jsdiff-color_bg_moved: #ffffbbff;
+    --jsdiff-font_family: monospace;
+}
+.jsondiffpatch-delta {
+    font-family: var(--jsdiff-font_family);
+    margin: 0;
+    padding: 0 0 0 12px;
+    display: inline-block;
+}
+.jsondiffpatch-delta pre {
+    font-family: var(--jsdiff-font_family);
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+.jsondiffpatch-delta ul {
+    list-style-type: none;
+    padding: 0 0 0 20px;
+    margin: 0;
+}
+ul.jsondiffpatch-delta {
+    list-style-type: none;
+    padding: 0 0 0 20px;
+    margin: 0;
+}
+.jsondiffpatch-added .jsondiffpatch-property-name {
+    background: var(--jsdiff-color_bg_added);
+}
+.jsondiffpatch-added .jsondiffpatch-value pre {
+    background: var(--jsdiff-color_bg_added);
+}
+.jsondiffpatch-modified .jsondiffpatch-right-value {
+    margin-left: 5px;
+}
+.jsondiffpatch-modified .jsondiffpatch-right-value pre {
+    background: var(--jsdiff-color_bg_added);
+}
+.jsondiffpatch-modified .jsondiffpatch-left-value pre {
+    background: var(--jsdiff-color_bg_deleted);
+    text-decoration: line-through;
+}
+.jsondiffpatch-modified >.jsondiffpatch-left-value pre:after {
+    content: '';
+}
+.jsondiffpatch-modified .jsondiffpatch-value {
+    display: inline-block;
+}
+.jsondiffpatch-textdiff-added {
+    background: var(--jsdiff-color_bg_added);
+}
+.jsondiffpatch-deleted .jsondiffpatch-property-name {
+    background: var(--jsdiff-color_bg_deleted);
+    text-decoration: line-through;
+}
+.jsondiffpatch-deleted pre {
+    background: var(--jsdiff-color_bg_deleted);
+    text-decoration: line-through;
+}
+.jsondiffpatch-textdiff-deleted {
+    background: var(--jsdiff-color_bg_deleted);
+    text-decoration: line-through;
+}
+.jsondiffpatch-unchanged {
+    color: var(--jsdiff-color_fg);
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    overflow-y: hidden;
+}
+.jsondiffpatch-movedestination {
+    color: var(--jsdiff-color_fg);
+}
+.jsondiffpatch-movedestination >.jsondiffpatch-value {
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    overflow-y: hidden;
+}
+.jsondiffpatch-unchanged-showing .jsondiffpatch-unchanged {
+    max-height: 100px;
+}
+.jsondiffpatch-unchanged-showing .jsondiffpatch-movedestination >.jsondiffpatch-value {
+    max-height: 100px;
+}
+.jsondiffpatch-unchanged-showing .jsondiffpatch-arrow {
+    display: none;
+}
+.jsondiffpatch-unchanged-hidden .jsondiffpatch-unchanged {
+    max-height: 0;
+}
+.jsondiffpatch-unchanged-hidden .jsondiffpatch-movedestination >.jsondiffpatch-value {
+    max-height: 0;
+    display: block;
+}
+.jsondiffpatch-unchanged-hiding .jsondiffpatch-movedestination >.jsondiffpatch-value {
+    display: block;
+    max-height: 0;
+}
+.jsondiffpatch-unchanged-hiding .jsondiffpatch-unchanged {
+    max-height: 0;
+}
+.jsondiffpatch-unchanged-hiding .jsondiffpatch-arrow {
+    display: none;
+}
+.jsondiffpatch-unchanged-visible .jsondiffpatch-unchanged {
+    max-height: 100px;
+}
+.jsondiffpatch-unchanged-visible .jsondiffpatch-movedestination >.jsondiffpatch-value {
+    max-height: 100px;
+}
+.jsondiffpatch-value {
+    display: inline-block;
+}
+.jsondiffpatch-value pre:after {
+    content: ',';
+}
+.jsondiffpatch-property-name {
+    display: inline-block;
+    padding-right: 5px;
+    vertical-align: top;
+}
+.jsondiffpatch-property-name:after {
+    content: ': ';
+}
+.jsondiffpatch-child-node-type-array >.jsondiffpatch-property-name:after {
+    content: ': [';
+}
+.jsondiffpatch-child-node-type-array:after {
+    content: '],';
+}
+div.jsondiffpatch-child-node-type-array:before {
+    content: '[';
+}
+div.jsondiffpatch-child-node-type-array:after {
+    content: ']';
+}
+.jsondiffpatch-child-node-type-object >.jsondiffpatch-property-name:after {
+    content: ': {';
+}
+.jsondiffpatch-child-node-type-object:after {
+    content: '},';
+}
+div.jsondiffpatch-child-node-type-object:before {
+    content: '{';
+}
+div.jsondiffpatch-child-node-type-object:after {
+    content: '}';
+}
+li:last-child >.jsondiffpatch-value pre:after {
+    content: '';
+}
+.jsondiffpatch-moved .jsondiffpatch-value {
+    display: none;
+}
+.jsondiffpatch-moved .jsondiffpatch-moved-destination {
+    display: inline-block;
+    background: var(--jsdiff-color_bg_moved);
+    color: var(--jsdiff-color_fg);
+}
+.jsondiffpatch-moved .jsondiffpatch-moved-destination:before {
+    content: ' => ';
+}
+ul.jsondiffpatch-textdiff {
+    padding: 0;
+}
+.jsondiffpatch-textdiff-location {
+    color: var(--jsdiff-color_fg_location);
+    display: inline-block;
+    min-width: 60px;
+}
+.jsondiffpatch-textdiff-line {
+    display: inline-block;
+}
+.jsondiffpatch-textdiff-line-number:after {
+    content: ',';
+}
+.jsondiffpatch-error {
+    background: red;
+    color: white;
+    font-weight: bold;
+}
