@@ -1,6 +1,7 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+import { tool as httpStatusCodes } from './http-status-codes';
 import { tool as yamlToJson } from './yaml-to-json-converter';
 import { tool as jsonToYaml } from './json-to-yaml-converter';
 import { tool as ipv6UlaGenerator } from './ipv6-ula-generator';
@@ -88,6 +89,7 @@ export const toolsByCategory: ToolCategory[] = [
       slugifyString,
       htmlWysiwygEditor,
       userAgentParser,
+      httpStatusCodes,
     ],
   },
   {
