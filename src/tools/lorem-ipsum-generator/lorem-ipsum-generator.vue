@@ -18,7 +18,7 @@
 
     <br />
 
-    <n-input :value="loremIpsumText" type="textarea" placeholder="Your lorem ipsum..." autosize readonly />
+    <n-input :value="loremIpsumText" type="textarea" placeholder="Your lorem ipsum..." readonly autosize />
     <br />
     <br />
     <n-space justify="center">

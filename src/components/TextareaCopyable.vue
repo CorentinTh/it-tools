@@ -7,13 +7,13 @@
         :style="height ? `min-height: ${height - 40 /* card padding */ + 10 /* negative margin compensation */}px` : ''"
       >
         <n-config-provider :hljs="hljs">
-          <n-code :code="value" :language="language" :trim="false" />
+          <n-code :code="value" :language="language" :trim="false" data-test-id="area-content" />
         </n-config-provider>
       </n-scrollbar>
       <n-tooltip v-if="value" trigger="hover">
         <template #trigger>
           <div class="copy-button" :class="[copyPlacement]">
-            <n-button secondary circle size="large" @click="onCopyClicked">
+            <n-button circle secondary size="large" @click="onCopyClicked">
               <n-icon size="22" :component="Copy" />
             </n-button>
           </div>
