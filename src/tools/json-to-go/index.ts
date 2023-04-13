@@ -4,7 +4,7 @@ import { defineTool } from '../tool';
 export const tool = defineTool({
     name: 'JSON to GO',
     path: '/json-to-go',
-    description: '',
+    description: 'Converts JSON into a Go type definition.',
     keywords: ['json', 'JSON', 'go'],
     component: () => import('./json-to-go.vue'),
     icon: ArrowsShuffle,
