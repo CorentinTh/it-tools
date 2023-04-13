@@ -1,6 +1,10 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+import { tool as yamlToJson } from './yaml-to-json-converter';
+import { tool as jsonToYaml } from './json-to-yaml-converter';
+import { tool as ipv6UlaGenerator } from './ipv6-ula-generator';
+import { tool as ipv4AddressConverter } from './ipv4-address-converter';
 import { tool as jsonToGo } from './json-to-go';
 import { tool as benchmarkBuilder } from './benchmark-builder';
 import { tool as userAgentParser } from './user-agent-parser';
@@ -65,6 +69,8 @@ export const toolsByCategory: ToolCategory[] = [
       colorConverter,
       caseConverter,
       textToNatoAlphabet,
+      yamlToJson,
+      jsonToYaml,
     ],
   },
   {
@@ -105,7 +111,7 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Network',
-    components: [ipv4SubnetCalculator, macAddressLookup],
+    components: [ipv4SubnetCalculator, ipv4AddressConverter, macAddressLookup, ipv6UlaGenerator],
   },
   {
     name: 'Math',

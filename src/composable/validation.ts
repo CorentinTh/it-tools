@@ -3,7 +3,7 @@ import { reactive, watch, type Ref } from 'vue';
 
 type ValidatorReturnType = unknown;
 
-interface UseValidationRule<T> {
+export interface UseValidationRule<T> {
   validator: (value: T) => ValidatorReturnType;
   message: string;
 }
@@ -20,12 +20,20 @@ export function isFalsyOrHasThrown(cb: () => ValidatorReturnType): boolean {
   }
 }
 
-type ValidationAttrs = {
+export type ValidationAttrs = {
   feedback: string;
   validationStatus: string | undefined;
 };
 
-export function useValidation<T>({ source, rules }: { source: Ref<T>; rules: UseValidationRule<T>[] }) {
+export function useValidation<T>({
+  source,
+  rules,
+  watch: watchRefs = [],
+}: {
+  source: Ref<T>;
+  rules: UseValidationRule<T>[];
+  watch?: Ref<unknown>[];
+}) {
   const state = reactive<{
     message: string;
     status: undefined | 'error';
@@ -42,7 +50,7 @@ export function useValidation<T>({ source, rules }: { source: Ref<T>; rules: Use
   });
 
   watch(
-    [source],
+    [source, ...watchRefs],
     () => {
       state.message = '';
       state.status = undefined;

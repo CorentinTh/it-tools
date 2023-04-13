@@ -12,6 +12,7 @@ declare module '@vue/runtime-core' {
     CollapsibleToolMenu: typeof import('./src/components/CollapsibleToolMenu.vue')['default']
     ColoredCard: typeof import('./src/components/ColoredCard.vue')['default']
     FavoriteButton: typeof import('./src/components/FavoriteButton.vue')['default']
+    FormatTransformer: typeof import('./src/components/FormatTransformer.vue')['default']
     InputCopyable: typeof import('./src/components/InputCopyable.vue')['default']
     MenuIconItem: typeof import('./src/components/MenuIconItem.vue')['default']
     MenuLayout: typeof import('./src/components/MenuLayout.vue')['default']
