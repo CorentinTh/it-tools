@@ -46,3 +46,46 @@ jobs:
             corentinth/it-tools:${{ env.RELEASE_VERSION }}
             ghcr.io/corentinth/it-tools:latest
             ghcr.io/corentinth/it-tools:${{ env.RELEASE_VERSION}}
+
+  github-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get release version
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm i
+
+      - name: Build the app
+        run: pnpm build
+
+      - name: Zip the app
+        run: zip -r it-tools-${{ env.RELEASE_VERSION }}.zip dist/*
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: it-tools-${{ env.RELEASE_VERSION }}.zip
+          tag_name: ${{ env.RELEASE_VERSION }}
+          draft: true
+          prerelease: false
+          body: |
+            ## Docker images
+
+            - `corentinth/it-tools:latest`
+            - `corentinth/it-tools:${{ env.RELEASE_VERSION }}`
+            - `ghcr.io/corentinth/it-tools:latest`
+            - `ghcr.io/corentinth/it-tools:${{ env.RELEASE_VERSION}}`
+
+            ## Changelog
+
+            $(node ./scripts/getLatestChangelog.mjs)
