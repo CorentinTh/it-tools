@@ -1,6 +1,6 @@
 {
   "name": "it-tools",
-  "version": "2023.4.13-dce9ff9",
+  "version": "2023.4.14-dbad773",
   "description": "Collection of handy online tools for developers, with great UX. ",
   "keywords": [
     "productivity",
@@ -30,7 +30,7 @@
     "typecheck": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint src --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore",
     "script:create-new-tool": "node scripts/create-tool.mjs",
-    "release": "standard-version"
+    "release": "node ./scripts/release.mjs"
   },
   "dependencies": {
     "@it-tools/bip39": "^0.0.4",
@@ -103,6 +103,7 @@
     "@vue/test-utils": "^2.3.2",
     "@vue/tsconfig": "^0.1.3",
     "c8": "^7.13.0",
+    "consola": "^3.0.2",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-import-resolver-typescript": "^3.5.5",
@@ -111,7 +112,6 @@
     "jsdom": "^19.0.0",
     "less": "^4.1.3",
     "prettier": "^2.8.7",
-    "standard-version": "^9.5.0",
     "start-server-and-test": "^1.15.4",
     "typescript": "~4.5.5",
     "unocss": "^0.50.8",
@@ -123,6 +123,7 @@
     "vite-svg-loader": "^3.6.0",
     "vitest": "^0.13.1",
     "vue-tsc": "^0.31.4",
-    "workbox-window": "^6.5.4"
+    "workbox-window": "^6.5.4",
+    "zx": "^7.2.1"
   }
 }
