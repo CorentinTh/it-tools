@@ -6,12 +6,12 @@
     <n-h3 class="title">
       <n-ellipsis>{{ title }}</n-ellipsis>
     </n-h3>
-
+    <!-- 
     <div class="description">
       <n-ellipsis :line-clamp="2" :tooltip="false">
         <slot />
       </n-ellipsis>
-    </div>
+    </div> -->
   </n-card>
 </template>
 

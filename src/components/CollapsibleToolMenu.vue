@@ -14,7 +14,6 @@
 
         <n-menu
           class="menu"
-          :value="(route.name as string)"
           :collapsed-width="64"
           :collapsed-icon-size="22"
           :options="tools"
@@ -32,7 +31,7 @@ import { ChevronRight } from '@vicons/tabler';
 import { useStorage } from '@vueuse/core';
 import { useThemeVars } from 'naive-ui';
 import { toRefs, computed, h } from 'vue';
-import { RouterLink, useRoute } from 'vue-router';
+import { RouterLink } from 'vue-router';
 import MenuIconItem from './MenuIconItem.vue';
 
 const props = withDefaults(defineProps<{ toolsByCategory?: ToolCategory[] }>(), { toolsByCategory: () => [] });

@@ -21,7 +21,7 @@ function createPlausibleInstance({
     trackLocalhost: boolean;
   };
 }) {
-  if (config.isTrackerEnabled) {
+  if (config.isTrackerEnabled && !import.meta.env.SSR) {
     return Plausible(config);
   }
 

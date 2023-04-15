@@ -12,6 +12,38 @@ useHead({ title: 'IT Tools - Handy online tools for developers' });
 </script>
 
 <template>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum voluptatibus, voluptatum excepturi quidem ipsam
+  dignissimos sit eius illo corrupti, provident aliquam quaerat nostrum obcaecati velit ratione neque possimus beatae
+  quod?
+
+  <n-grid v-if="config.showBanner" x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
+    <n-gi>
+      aa
+      <colored-card title="You like it-tools?" :icon="Heart">
+        Give us a star on
+        <!-- <a
+          href="https://github.com/CorentinTh/it-tools"
+          rel="noopener"
+          target="_blank"
+          aria-label="IT-Tools' GitHub repository"
+          >GitHub</a
+        >
+        or follow us on
+        <a
+          href="https://twitter.com/ittoolsdottech"
+          rel="noopener"
+          target="_blank"
+          aria-label="IT-Tools' Twitter account"
+          >Twitter</a
+        >! Thank you
+        <n-icon :component="Heart" /> -->
+      </colored-card>
+    </n-gi>
+  </n-grid>
+
+  <n-button>a</n-button>
+
+  <!--
   <div class="home-page">
     <div class="grid-wrapper">
       <n-grid v-if="config.showBanner" x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
@@ -67,7 +99,7 @@ useHead({ title: 'IT Tools - Handy online tools for developers' });
         </n-gi>
       </n-grid>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <style scoped lang="less">

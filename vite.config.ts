@@ -15,15 +15,9 @@ import Unocss from 'unocss/vite';
 export default defineConfig({
   plugins: [
     AutoImport({
-      imports: [
-        'vue',
-        'vue-router',
-        '@vueuse/core',
-        {
-          'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar'],
-        },
-      ],
+      imports: ['vue', 'vue-router', '@vueuse/core'],
       vueTemplate: true,
+      dts: true,
       eslintrc: {
         enabled: true,
       },
@@ -77,6 +71,21 @@ export default defineConfig({
     }),
     Unocss(),
   ],
+
+  ssgOptions: {
+    script: 'async',
+    format: 'cjs',
+    formatting: 'prettify',
+  },
+
+  ssr: {
+    noExternal: ['lodash', 'date-fns'],
+    //   noExternal: Object.keys(pkg.dependencies || {}),
+  },
+  optimizeDeps: {
+    include: ['naive-ui'],
+  },
+
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
