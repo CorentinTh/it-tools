@@ -54,6 +54,7 @@
     "date-fns": "^2.29.3",
     "figue": "^1.2.0",
     "fuse.js": "^6.6.2",
+    "hash-wasm": "^4.9.0",
     "highlight.js": "^11.7.0",
     "json5": "^2.2.3",
     "jwt-decode": "^3.1.2",
