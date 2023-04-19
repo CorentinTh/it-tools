@@ -11,10 +11,8 @@
       autocapitalize="off"
       spellcheck="false"
     />
-    <br />
-    <br />
 
-    <n-card v-if="result !== ''" title="Result ">
+    <n-card v-if="result !== ''" title="Result " mt-5>
       {{ result }}
     </n-card>
   </div>

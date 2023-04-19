@@ -13,7 +13,6 @@
       />
     </n-form-item>
 
-    <br />
     <n-card>
       <n-statistic label="Authorization header:" class="header">
         <n-scrollbar x-scrollable style="max-width: 550px; margin-bottom: -10px; padding-bottom: 10px" trigger="none">
@@ -21,8 +20,7 @@
         </n-scrollbar>
       </n-statistic>
     </n-card>
-    <br />
-    <n-space justify="center">
+    <n-space justify="center" mt-5>
       <c-button @click="copy">Copy header</c-button>
     </n-space>
   </div>

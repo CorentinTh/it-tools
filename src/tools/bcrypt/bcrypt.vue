@@ -16,8 +16,7 @@
       </n-form-item>
       <n-input :value="hashed" readonly style="text-align: center" />
     </n-form>
-    <br />
-    <n-space justify="center">
+    <n-space justify="center" mt-5>
       <c-button @click="copy"> Copy hash </c-button>
     </n-space>
   </n-card>

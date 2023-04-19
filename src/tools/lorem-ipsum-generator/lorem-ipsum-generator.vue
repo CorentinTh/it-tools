@@ -16,12 +16,9 @@
       <n-switch v-model:value="asHTML" />
     </n-form-item>
 
-    <br />
+    <n-input :value="loremIpsumText" type="textarea" placeholder="Your lorem ipsum..." readonly autosize mt-5 />
 
-    <n-input :value="loremIpsumText" type="textarea" placeholder="Your lorem ipsum..." readonly autosize />
-    <br />
-    <br />
-    <n-space justify="center">
+    <n-space justify="center" mt-5>
       <c-button autofocus @click="copy"> Copy </c-button>
     </n-space>
   </n-card>

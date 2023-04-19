@@ -13,8 +13,7 @@
         </c-button>
       </n-space>
     </n-card>
-    <br />
-    <n-card title="Roman to arabic">
+    <n-card title="Roman to arabic" mt-5>
       <n-space align="center" justify="space-between">
         <n-form-item v-bind="validationRoman">
           <n-input v-model:value="inputRoman" style="width: 200px" />

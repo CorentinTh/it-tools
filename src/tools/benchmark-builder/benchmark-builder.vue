@@ -1,6 +1,6 @@
 <template>
   <n-scrollbar style="flex: 1" x-scrollable>
-    <n-space :wrap="false" style="flex: 1" justify="center" :size="0">
+    <n-space :wrap="false" style="flex: 1" justify="center" :size="0" mb-5>
       <div v-for="(suite, index) of suites" :key="index">
         <n-card style="width: 292px; margin: 0 8px 5px">
           <n-form-item label="Suite name:" :show-feedback="false" label-placement="left">
@@ -28,7 +28,6 @@
         </n-space>
       </div>
     </n-space>
-    <br />
   </n-scrollbar>
 
   <div style="flex: 0 0 100%">
@@ -69,8 +68,7 @@
           </tr>
         </tbody>
       </n-table>
-      <br />
-      <n-space justify="center">
+      <n-space justify="center" mt-5>
         <c-button @click="copyAsMarkdown">Copy as markdown table</c-button>
         <c-button @click="copyAsBulletList">Copy as bullet list</c-button>
       </n-space>

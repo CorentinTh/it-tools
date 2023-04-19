@@ -12,9 +12,7 @@
             </template>
           </n-page-header>
 
-          <br />
-
-          <n-space>
+          <n-space mt-5>
             <span v-for="{ label, getValue } in content" :key="label">
               <n-tooltip v-if="getValue(userAgentInfo)" trigger="hover">
                 <template #trigger>

@@ -21,8 +21,7 @@
         </n-form-item>
       </n-space>
     </n-space>
-    <br />
-    <n-form-item label="Your text encrypted:" :show-feedback="false">
+    <n-form-item label="Your text encrypted:" :show-feedback="false" mt-5>
       <n-input
         :value="cypherOutput"
         type="textarea"
@@ -58,8 +57,7 @@
         </n-form-item>
       </n-space>
     </n-space>
-    <br />
-    <n-form-item label="Your decrypted text:" :show-feedback="false">
+    <n-form-item label="Your decrypted text:" :show-feedback="false" mt-5>
       <n-input
         :value="decryptOutput"
         type="textarea"
