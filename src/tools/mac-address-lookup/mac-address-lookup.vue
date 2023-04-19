@@ -24,7 +24,7 @@
     </n-form-item>
 
     <n-space justify="center">
-      <c-button :disabled="!details"> Copy vendor info </c-button>
+      <c-button :disabled="!details" @click="copy"> Copy vendor info </c-button>
     </n-space>
   </div>
 </template>
@@ -32,6 +32,7 @@
 <script setup lang="ts">
 import db from 'oui/oui.json';
 import { macAddressValidation } from '@/utils/macAddress';
+import { useCopy } from '@/composable/copy';
 
 const getVendorValue = (address: string) => address.trim().replace(/[.:-]/g, '').toUpperCase().substring(0, 6);
 
@@ -39,6 +40,8 @@ const macAddress = ref('20:37:06:12:34:56');
 const details = computed<string | undefined>(() => db[getVendorValue(macAddress.value)]);
 
 const { attrs: validationAttrs } = macAddressValidation(macAddress);
+
+const { copy } = useCopy({ source: details, text: 'Vendor info copied to the clipboard' });
 </script>
 
 <style lang="less" scoped></style>
