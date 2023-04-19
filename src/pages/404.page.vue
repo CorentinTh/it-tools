@@ -13,8 +13,6 @@ useHead({ title: 'Page not found - IT Tools' });
     <n-text mt-4 block depth="3">Sorry, this page does not seem to exist</n-text>
     <n-text mb-8 block depth="3">Maybe the cache is doing tricky things, try force-refreshing?</n-text>
 
-    <router-link to="/" #="{ navigate, href }" custom>
-      <n-button tag="a" :href="href" secondary @click="navigate"> Back home </n-button>
-    </router-link>
+    <c-button to="/"> Back home </c-button>
   </div>
 </template>

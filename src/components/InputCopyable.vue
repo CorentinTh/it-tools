@@ -3,9 +3,9 @@
     <template #suffix>
       <n-tooltip trigger="hover">
         <template #trigger>
-          <n-button quaternary circle @click="onCopyClicked">
+          <c-button circle variant="text" @click="onCopyClicked">
             <n-icon :component="ContentCopyFilled" />
-          </n-button>
+          </c-button>
         </template>
         {{ tooltipText }}
       </n-tooltip>

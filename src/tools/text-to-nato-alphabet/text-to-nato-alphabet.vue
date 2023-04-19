@@ -11,7 +11,7 @@
       </n-card>
 
       <n-space justify="center">
-        <n-button secondary autofocus @click="copy"> Copy NATO string </n-button>
+        <c-button autofocus @click="copy"> Copy NATO string </c-button>
       </n-space>
     </n-space>
   </div>

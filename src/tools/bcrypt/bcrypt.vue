@@ -18,7 +18,7 @@
     </n-form>
     <br />
     <n-space justify="center">
-      <n-button secondary @click="copy"> Copy hash </n-button>
+      <c-button @click="copy"> Copy hash </c-button>
     </n-space>
   </n-card>
 

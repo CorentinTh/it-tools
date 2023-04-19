@@ -11,22 +11,18 @@
       />
       <n-tooltip>
         <template #trigger>
-          <n-button circle quaternary @click="values.splice(index, 1)">
-            <template #icon>
-              <n-icon :component="Trash" depth="3" />
-            </template>
-          </n-button>
+          <c-button circle variant="text" @click="values.splice(index, 1)">
+            <n-icon :component="Trash" depth="3" size="18" />
+          </c-button>
         </template>
         Delete value
       </n-tooltip>
     </n-space>
 
-    <n-button tertiary @click="addValue">
-      <template #icon>
-        <n-icon :component="Plus" />
-      </template>
+    <c-button @click="addValue">
+      <n-icon :component="Plus" depth="3" mr-2 size="18" />
       Add a measure
-    </n-button>
+    </c-button>
   </div>
 </template>
 

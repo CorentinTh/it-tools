@@ -5,10 +5,10 @@
     </n-card>
     <br />
     <n-space justify="center">
-      <n-button v-if="!isRunning" secondary type="primary" @click="resume">Start</n-button>
-      <n-button v-else secondary type="warning" @click="pause">Stop</n-button>
+      <c-button v-if="!isRunning" secondary type="primary" @click="resume">Start</c-button>
+      <c-button v-else secondary type="warning" @click="pause">Stop</c-button>
 
-      <n-button secondary @click="counter = 0">Reset</n-button>
+      <c-button @click="counter = 0">Reset</c-button>
     </n-space>
   </div>
 </template>

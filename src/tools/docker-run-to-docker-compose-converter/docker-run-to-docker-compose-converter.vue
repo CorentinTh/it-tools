@@ -16,7 +16,7 @@
     <br />
     <br />
     <n-space justify="center">
-      <n-button :disabled="dockerCompose === ''" secondary @click="download"> Download docker-compose.yml </n-button>
+      <c-button :disabled="dockerCompose === ''" secondary @click="download"> Download docker-compose.yml </c-button>
     </n-space>
 
     <div v-if="notComposable.length > 0">

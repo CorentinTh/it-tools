@@ -28,7 +28,7 @@
       <n-gi>
         <n-space justify="center" align="center" vertical>
           <n-image :src="qrcode" width="200" />
-          <n-button secondary @click="download"> Download qr-code </n-button>
+          <c-button @click="download"> Download qr-code </c-button>
         </n-space>
       </n-gi>
     </n-grid>

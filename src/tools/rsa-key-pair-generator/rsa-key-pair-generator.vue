@@ -5,7 +5,7 @@
         <n-input-number v-model:value="bits" min="256" max="16384" step="8" />
       </n-form-item>
 
-      <n-button tertiary @click="refreshCerts">Refresh key-pair</n-button>
+      <c-button @click="refreshCerts">Refresh key-pair</c-button>
     </n-space>
   </div>
 

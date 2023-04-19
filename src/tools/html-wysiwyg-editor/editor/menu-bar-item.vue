@@ -1,11 +1,9 @@
 <template>
   <n-tooltip trigger="hover">
     <template #trigger>
-      <n-button circle quaternary :type="isActive?.() ? 'primary' : 'default'" @click="action">
-        <template #icon>
-          <n-icon :component="icon" />
-        </template>
-      </n-button>
+      <c-button circle variant="text" :type="isActive?.() ? 'primary' : 'default'" @click="action">
+        <n-icon :component="icon" />
+      </c-button>
     </template>
 
     {{ title }}

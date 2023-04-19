@@ -14,18 +14,17 @@
         </n-card>
 
         <n-space justify="center">
-          <n-button v-if="suites.length > 1" quaternary @click="suites.splice(index, 1)">
-            <template #icon>
-              <n-icon :component="Trash" depth="3" />
-            </template>
+          <c-button v-if="suites.length > 1" variant="text" @click="suites.splice(index, 1)">
+            <n-icon :component="Trash" depth="3" mr-2 size="18" />
             Delete suite
-          </n-button>
-          <n-button quaternary @click="suites.splice(index + 1, 0, { data: [0], title: `Suite ${suites.length + 1}` })">
-            <template #icon>
-              <n-icon :component="Plus" depth="3" />
-            </template>
+          </c-button>
+          <c-button
+            variant="text"
+            @click="suites.splice(index + 1, 0, { data: [0], title: `Suite ${suites.length + 1}` })"
+          >
+            <n-icon :component="Plus" depth="3" mr-2 size="18" />
             Add suite
-          </n-button>
+          </c-button>
         </n-space>
       </div>
     </n-space>
@@ -39,15 +38,14 @@
           <n-input v-model:value="unit" placeholder="Unit (eg: ms)" />
         </n-form-item>
 
-        <n-button
-          tertiary
+        <c-button
           @click="
             suites = [
               { title: 'Suite 1', data: [] },
               { title: 'Suite 2', data: [] },
             ]
           "
-          >Reset suites</n-button
+          >Reset suites</c-button
         >
       </n-space>
 
@@ -73,8 +71,8 @@
       </n-table>
       <br />
       <n-space justify="center">
-        <n-button tertiary @click="copyAsMarkdown">Copy as markdown table</n-button>
-        <n-button tertiary @click="copyAsBulletList">Copy as bullet list</n-button>
+        <c-button @click="copyAsMarkdown">Copy as markdown table</c-button>
+        <c-button @click="copyAsBulletList">Copy as bullet list</c-button>
       </n-space>
     </div>
   </div>

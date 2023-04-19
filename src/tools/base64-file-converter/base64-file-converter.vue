@@ -8,9 +8,9 @@
       <n-input v-model:value="base64Input" type="textarea" placeholder="Put your base64 file string here..." rows="5" />
     </n-form-item>
     <n-space justify="center">
-      <n-button :disabled="base64Input === '' || !base64InputValidation.isValid" secondary @click="downloadFile()">
+      <c-button :disabled="base64Input === '' || !base64InputValidation.isValid" @click="downloadFile()">
         Download file
-      </n-button>
+      </c-button>
     </n-space>
   </n-card>
 
@@ -26,7 +26,7 @@
 
     <n-input :value="fileBase64" type="textarea" readonly placeholder="File in base64 will be here" />
     <n-space justify="center">
-      <n-button secondary @click="copyFileBase64()"> Copy </n-button>
+      <c-button @click="copyFileBase64()"> Copy </c-button>
     </n-space>
   </n-card>
 </template>

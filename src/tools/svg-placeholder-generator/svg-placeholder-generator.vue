@@ -38,9 +38,9 @@
     </n-form-item>
 
     <n-space justify="center">
-      <n-button secondary @click="copySVG()">Copy svg</n-button>
-      <n-button secondary @click="copyBase64()">Copy base64</n-button>
-      <n-button secondary @click="download()">Download svg</n-button>
+      <c-button @click="copySVG()">Copy svg</c-button>
+      <c-button @click="copyBase64()">Copy base64</c-button>
+      <c-button @click="download()">Download svg</c-button>
     </n-space>
   </div>
 

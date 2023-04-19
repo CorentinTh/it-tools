@@ -20,14 +20,14 @@
       </n-table>
 
       <n-space style="margin-top: 14px" justify="space-between">
-        <n-button tertiary @click="switchToBlock({ count: -1 })">
+        <c-button @click="switchToBlock({ count: -1 })">
           <n-icon :component="ArrowLeft" />
           Previous block
-        </n-button>
-        <n-button tertiary @click="switchToBlock({ count: 1 })">
+        </c-button>
+        <c-button @click="switchToBlock({ count: 1 })">
           Next block
           <n-icon :component="ArrowRight" />
-        </n-button>
+        </c-button>
       </n-space>
     </div>
   </div>

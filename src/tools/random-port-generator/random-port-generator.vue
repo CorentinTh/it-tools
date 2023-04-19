@@ -4,8 +4,8 @@
       {{ port }}
     </div>
     <n-space justify="center">
-      <n-button secondary @click="copy"> Copy </n-button>
-      <n-button secondary @click="refreshPort"> Refresh </n-button>
+      <c-button @click="copy"> Copy </c-button>
+      <c-button @click="refreshPort"> Refresh </c-button>
     </n-space>
   </n-card>
 </template>

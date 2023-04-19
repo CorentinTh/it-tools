@@ -24,7 +24,7 @@
     </n-form-item>
 
     <n-space justify="center">
-      <n-button secondary @click="copyEncoded"> Copy </n-button>
+      <c-button @click="copyEncoded"> Copy </c-button>
     </n-space>
   </n-card>
   <n-card title="Decode">
@@ -52,7 +52,7 @@
     </n-form-item>
 
     <n-space justify="center">
-      <n-button secondary @click="copyDecoded"> Copy </n-button>
+      <c-button @click="copyDecoded"> Copy </c-button>
     </n-space>
   </n-card>
 </template>

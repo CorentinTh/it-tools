@@ -1,11 +1,15 @@
 <template>
   <n-tooltip trigger="hover">
     <template #trigger>
-      <n-button circle quaternary :type="buttonType" :style="{ opacity: isFavorite ? 1 : 0.2 }" @click="toggleFavorite">
-        <template #icon>
-          <n-icon :component="FavoriteFilled" />
-        </template>
-      </n-button>
+      <c-button
+        variant="text"
+        circle
+        :type="buttonType"
+        :style="{ opacity: isFavorite ? 1 : 0.2 }"
+        @click="toggleFavorite"
+      >
+        <n-icon :component="FavoriteFilled" />
+      </c-button>
     </template>
     {{ isFavorite ? 'Remove from favorites' : 'Add to favorites' }}
   </n-tooltip>
