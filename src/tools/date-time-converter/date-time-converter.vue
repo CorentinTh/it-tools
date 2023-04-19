@@ -4,6 +4,7 @@
       <n-input-group>
         <n-input
           v-model:value="inputDate"
+          autofocus
           :on-input="onDateInputChanged"
           placeholder="Put you date string here..."
           clearable
