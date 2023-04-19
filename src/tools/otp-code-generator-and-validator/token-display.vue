@@ -8,31 +8,30 @@
     <n-input-group>
       <n-tooltip trigger="hover" placement="bottom">
         <template #trigger>
-          <n-button data-test-id="previous-otp" secondary @click.prevent="copyPrevious(tokens.previous)">{{
-            tokens.previous
-          }}</n-button>
+          <c-button important:h-12 data-test-id="previous-otp" @click.prevent="copyPrevious(tokens.previous)">
+            {{ tokens.previous }}
+          </c-button>
         </template>
         <div>{{ previousCopied ? 'Copied !' : 'Copy previous OTP' }}</div>
       </n-tooltip>
       <n-tooltip trigger="hover" placement="bottom">
         <template #trigger>
-          <n-button
-            tertiary
-            type="primary"
+          <c-button
             data-test-id="current-otp"
             class="current-otp"
+            important:h-12
             @click.prevent="copyCurrent(tokens.current)"
           >
             {{ tokens.current }}
-          </n-button>
+          </c-button>
         </template>
         <div>{{ currentCopied ? 'Copied !' : 'Copy current OTP' }}</div>
       </n-tooltip>
       <n-tooltip trigger="hover" placement="bottom">
         <template #trigger>
-          <n-button secondary data-test-id="next-otp" @click.prevent="copyNext(tokens.next)">{{
+          <c-button important:h-12 data-test-id="next-otp" @click.prevent="copyNext(tokens.next)">{{
             tokens.next
-          }}</n-button>
+          }}</c-button>
         </template>
         <div>{{ nextCopied ? 'Copied !' : 'Copy next OTP' }}</div>
       </n-tooltip>

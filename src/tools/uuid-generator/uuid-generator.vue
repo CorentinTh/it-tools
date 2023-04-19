@@ -19,8 +19,8 @@
     />
 
     <n-space justify="center">
-      <n-button secondary autofocus @click="copy"> Copy </n-button>
-      <n-button secondary @click="refreshUUIDs"> Refresh </n-button>
+      <c-button autofocus @click="copy"> Copy </c-button>
+      <c-button @click="refreshUUIDs"> Refresh </c-button>
     </n-space>
   </n-space>
 </template>

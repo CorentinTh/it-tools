@@ -22,7 +22,7 @@
     <br />
     <br />
     <n-space justify="center">
-      <n-button secondary autofocus @click="copy"> Copy </n-button>
+      <c-button autofocus @click="copy"> Copy </c-button>
     </n-space>
   </n-card>
 </template>

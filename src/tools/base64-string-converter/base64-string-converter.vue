@@ -15,7 +15,7 @@
     </n-form-item>
 
     <n-space justify="center">
-      <n-button secondary @click="copyTextBase64()"> Copy base64 </n-button>
+      <c-button @click="copyTextBase64()"> Copy base64 </c-button>
     </n-space>
   </n-card>
 
@@ -29,7 +29,7 @@
     </n-form-item>
 
     <n-space justify="center">
-      <n-button secondary @click="copyText()"> Copy decoded string </n-button>
+      <c-button @click="copyText()"> Copy decoded string </c-button>
     </n-space>
   </n-card>
 </template>

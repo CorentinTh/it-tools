@@ -5,9 +5,9 @@
         <template #suffix>
           <n-tooltip trigger="hover">
             <template #trigger>
-              <n-button quaternary circle @click="refreshSecret">
+              <c-button circle variant="text" @click="refreshSecret">
                 <n-icon :component="Refresh" />
-              </n-button>
+              </c-button>
             </template>
             Generate secret token
           </n-tooltip>
@@ -23,7 +23,7 @@
     </div>
     <n-space justify="center" vertical align="center" style="margin-top: 10px">
       <n-image :src="qrcode"></n-image>
-      <n-button secondary tag="a" :href="keyUri" target="_blank">Open Key URI in new tab</n-button>
+      <c-button :href="keyUri" target="_blank">Open Key URI in new tab</c-button>
     </n-space>
   </div>
   <div style="max-width: 350px">

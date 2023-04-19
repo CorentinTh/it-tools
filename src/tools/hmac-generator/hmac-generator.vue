@@ -43,7 +43,7 @@
       <n-input readonly :value="hmac" type="textarea" placeholder="The result of the HMAC..." />
     </n-form-item>
     <n-space justify="center">
-      <n-button secondary @click="copy()">Copy HMAC</n-button>
+      <c-button @click="copy()">Copy HMAC</c-button>
     </n-space>
   </div>
 </template>

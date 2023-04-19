@@ -13,16 +13,16 @@
       <n-tooltip v-if="value" trigger="hover">
         <template #trigger>
           <div class="copy-button" :class="[copyPlacement]">
-            <n-button circle secondary size="large" @click="onCopyClicked">
+            <c-button circle important:h-10 important:w-10 @click="onCopyClicked">
               <n-icon size="22" :component="Copy" />
-            </n-button>
+            </c-button>
           </div>
         </template>
         <span>{{ tooltipText }}</span>
       </n-tooltip>
     </n-card>
     <n-space v-if="copyPlacement === 'outside'" justify="center" mt-4>
-      <n-button secondary @click="onCopyClicked"> {{ tooltipText }} </n-button>
+      <c-button @click="onCopyClicked"> {{ tooltipText }} </c-button>
     </n-space>
   </div>
 </template>

@@ -39,10 +39,10 @@
               The end IPv4 address is lower than the start IPv4 address. This is not valid and no result could be
               calculated. In the most cases the solution to solve this problem is to change start and end address.
             </n-text>
-            <n-button quaternary @click="onSwitchStartEndClicked">
-              <n-icon :component="ChangeCircleOutlined" />
-              &nbsp;&nbsp;Switch start and end IPv4 address
-            </n-button>
+            <c-button @click="onSwitchStartEndClicked">
+              <n-icon mr-2 :component="Exchange" depth="3" size="22" />
+              Switch start and end IPv4 address
+            </c-button>
           </n-space>
         </n-alert>
       </div>
@@ -52,7 +52,7 @@
 
 <script setup lang="ts">
 import { useValidation } from '@/composable/validation';
-import { ChangeCircleOutlined } from '@vicons/material';
+import { Exchange } from '@vicons/tabler';
 import { isValidIpv4 } from '../ipv4-address-converter/ipv4-address-converter.service';
 import type { Ipv4RangeExpanderResult } from './ipv4-range-expander.types';
 import { calculateCidr } from './ipv4-range-expander.service';

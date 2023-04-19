@@ -73,6 +73,9 @@ export default defineConfig({
       },
     }),
     Components({
+      dirs: ['src/'],
+      extensions: ['vue', 'md'],
+      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       resolvers: [NaiveUiResolver()],
     }),
     Unocss(),

@@ -53,38 +53,25 @@ const tools = computed<ToolCategory[]>(() => [
           <div>
             IT-Tools
 
-            <n-button
-              text
-              tag="a"
-              target="_blank"
-              rel="noopener"
-              type="primary"
-              depth="3"
-              :href="`https://github.com/CorentinTh/it-tools/tree/v${version}`"
-            >
+            <c-link target="_blank" rel="noopener" :href="`https://github.com/CorentinTh/it-tools/tree/v${version}`">
               v{{ version }}
-            </n-button>
+            </c-link>
 
             <template v-if="commitSha && commitSha.length > 0">
               -
-              <n-button
-                text
-                tag="a"
+              <c-link
                 target="_blank"
                 rel="noopener"
                 type="primary"
-                depth="3"
                 :href="`https://github.com/CorentinTh/it-tools/tree/${commitSha}`"
               >
                 {{ commitSha }}
-              </n-button>
+              </c-link>
             </template>
           </div>
           <div>
             © {{ new Date().getFullYear() }}
-            <n-button text tag="a" target="_blank" rel="noopener" type="primary" href="https://github.com/CorentinTh">
-              Corentin Thomasset
-            </n-button>
+            <c-link target="_blank" rel="noopener" href="https://github.com/CorentinTh"> Corentin Thomasset </c-link>
           </div>
         </div>
       </div>
@@ -92,34 +79,24 @@ const tools = computed<ToolCategory[]>(() => [
 
     <template #content>
       <div class="navigation">
-        <n-button
+        <c-button
           :size="styleStore.isSmallScreen ? 'medium' : 'large'"
           circle
-          quaternary
+          variant="text"
           aria-label="Toggle menu"
           @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed"
         >
           <n-icon size="25" :component="Menu2" />
-        </n-button>
+        </c-button>
 
-        <router-link to="/" #="{ navigate, href }" custom>
-          <n-tooltip trigger="hover">
-            <template #trigger>
-              <n-button
-                tag="a"
-                :href="href"
-                :size="styleStore.isSmallScreen ? 'medium' : 'large'"
-                circle
-                quaternary
-                aria-label="Home"
-                @click="navigate"
-              >
-                <n-icon size="25" :component="Home2" />
-              </n-button>
-            </template>
-            Home
-          </n-tooltip>
-        </router-link>
+        <n-tooltip trigger="hover">
+          <template #trigger>
+            <c-button to="/" circle variant="text" aria-label="Home">
+              <n-icon size="25" :component="Home2" />
+            </c-button>
+          </template>
+          Home
+        </n-tooltip>
 
         <search-bar />
 
@@ -127,10 +104,8 @@ const tools = computed<ToolCategory[]>(() => [
 
         <n-tooltip trigger="hover">
           <template #trigger>
-            <n-button
+            <c-button
               round
-              type="primary"
-              tag="a"
               href="https://www.buymeacoffee.com/cthmsst"
               rel="noopener"
               target="_blank"
@@ -140,7 +115,7 @@ const tools = computed<ToolCategory[]>(() => [
             >
               Buy me a coffee
               <n-icon v-if="!styleStore.isSmallScreen" :component="Heart" ml-2 />
-            </n-button>
+            </c-button>
           </template>
           ❤ Support IT Tools development !
         </n-tooltip>
@@ -165,8 +140,8 @@ const tools = computed<ToolCategory[]>(() => [
 .support-button {
   background: rgb(37, 99, 108);
   background: linear-gradient(48deg, rgba(37, 99, 108, 1) 0%, rgba(59, 149, 111, 1) 60%, rgba(20, 160, 88, 1) 100%);
-  color: #fff;
-  transition: all ease 0.2s;
+  color: #fff !important;
+  transition: padding ease 0.2s !important;
 
   &:hover {
     color: #fff;

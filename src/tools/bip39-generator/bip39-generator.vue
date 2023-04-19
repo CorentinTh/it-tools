@@ -18,16 +18,16 @@
           >
             <n-input-group>
               <n-input v-model:value="entropy" placeholder="Your string..." />
-              <n-button @click="refreshEntropy">
+              <c-button @click="refreshEntropy">
                 <n-icon size="22">
                   <Refresh />
                 </n-icon>
-              </n-button>
-              <n-button @click="copyEntropy">
+              </c-button>
+              <c-button @click="copyEntropy">
                 <n-icon size="22">
                   <Copy />
                 </n-icon>
-              </n-button>
+              </c-button>
             </n-input-group>
           </n-form-item>
         </n-gi>
@@ -48,9 +48,9 @@
             spellcheck="false"
           />
 
-          <n-button @click="copyPassphrase">
+          <c-button @click="copyPassphrase">
             <n-icon size="22" :component="Copy" />
-          </n-button>
+          </c-button>
         </n-input-group>
       </n-form-item>
     </n-card>

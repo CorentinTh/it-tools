@@ -44,8 +44,8 @@
       <br />
       <br />
       <n-space justify="center">
-        <n-button secondary autofocus @click="copy"> Copy </n-button>
-        <n-button secondary @click="refreshToken"> Refresh </n-button>
+        <c-button @click="copy"> Copy </c-button>
+        <c-button @click="refreshToken"> Refresh </c-button>
       </n-space>
     </n-card>
   </div>

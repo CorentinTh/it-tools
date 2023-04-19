@@ -24,7 +24,7 @@
     </n-form-item>
 
     <n-space justify="center">
-      <n-button :disabled="!details" tertiary> Copy vendor info </n-button>
+      <c-button :disabled="!details"> Copy vendor info </c-button>
     </n-space>
   </div>
 </template>

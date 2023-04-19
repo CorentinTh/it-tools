@@ -8,9 +8,9 @@
         <div class="result">
           {{ outputRoman }}
         </div>
-        <n-button secondary autofocus :disabled="validationNumeral.validationStatus === 'error'" @click="copyRoman">
+        <c-button autofocus :disabled="validationNumeral.validationStatus === 'error'" @click="copyRoman">
           Copy
-        </n-button>
+        </c-button>
       </n-space>
     </n-card>
     <br />
@@ -22,9 +22,7 @@
         <div class="result">
           {{ outputNumeral }}
         </div>
-        <n-button secondary autofocus :disabled="validationRoman.validationStatus === 'error'" @click="copyArabic">
-          Copy
-        </n-button>
+        <c-button :disabled="validationRoman.validationStatus === 'error'" @click="copyArabic"> Copy </c-button>
       </n-space>
     </n-card>
   </div>

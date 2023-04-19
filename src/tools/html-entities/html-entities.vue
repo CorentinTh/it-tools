@@ -20,7 +20,7 @@
     </n-form-item>
 
     <n-space justify="center">
-      <n-button secondary @click="copyEscaped"> Copy </n-button>
+      <c-button @click="copyEscaped"> Copy </c-button>
     </n-space>
   </n-card>
   <n-card title="Unescape html entities">
@@ -44,7 +44,7 @@
     </n-form-item>
 
     <n-space justify="center">
-      <n-button secondary @click="copyUnescaped"> Copy </n-button>
+      <c-button @click="copyUnescaped"> Copy </c-button>
     </n-space>
   </n-card>
 </template>

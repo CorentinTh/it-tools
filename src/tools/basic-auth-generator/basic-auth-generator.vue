@@ -23,7 +23,7 @@
     </n-card>
     <br />
     <n-space justify="center">
-      <n-button secondary @click="copy">Copy header</n-button>
+      <c-button @click="copy">Copy header</c-button>
     </n-space>
   </div>
 </template>
