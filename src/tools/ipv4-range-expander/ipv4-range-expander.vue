@@ -3,10 +3,10 @@
     <n-space item-style="flex:1 1 0">
       <div>
         <n-space item-style="flex:1 1 0">
-          <n-form-item label="Start address" v-bind="validationAttrsStart">
+          <n-form-item label="Start address" v-bind="startIpValidation.attrs">
             <n-input v-model:value="rawStartAddress" placeholder="Start IPv4 address..." />
           </n-form-item>
-          <n-form-item label="End address" v-bind="validationAttrsEnd">
+          <n-form-item label="End address" v-bind="endIpValidation.attrs">
             <n-input v-model:value="rawEndAddress" placeholder="End IPv4 address..." />
           </n-form-item>
         </n-space>
@@ -29,6 +29,18 @@
             />
           </tbody>
         </n-table>
+        <n-alert v-else title="Invalid combination of start and end IPv4 address" type="error">
+          <n-space vertical>
+            <n-text depth="3">
+              The end IPv4 address is lower than the start IPv4 address. This is not valid and no result could be
+              calculated. In the most cases the solution to solve this problem is to change start and end address.
+            </n-text>
+            <n-button quaternary @click="onSwitchStartEndClicked">
+              <n-icon :component="ChangeCircleOutlined" />
+              &nbsp;&nbsp;Switch start and end IPv4 address
+            </n-button>
+          </n-space>
+        </n-alert>
       </div>
     </n-space>
   </div>
@@ -36,8 +48,10 @@
 
 <script setup lang="ts">
 import { useValidation } from '@/composable/validation';
+import { ChangeCircleOutlined } from '@vicons/material';
 import { isValidIpv4 } from '../ipv4-address-converter/ipv4-address-converter.service';
-import { calculateCidr, Ipv4RangeExpanderResult } from './ipv4-range-expander.service';
+import type { Ipv4RangeExpanderResult } from './ipv4-range-expander.types';
+import { calculateCidr } from './ipv4-range-expander.service';
 import ResultRow from './result-row.vue';
 
 const rawStartAddress = useStorage('ipv4-range-expander:startAddress', '192.168.1.1');
@@ -72,21 +86,21 @@ const calculatedValues: {
   },
 ];
 
-const showResult = computed(
-  () =>
-    validationAttrsStart.validationStatus !== 'error' &&
-    validationAttrsEnd.validationStatus !== 'error' &&
-    result.value !== undefined,
-);
-const { attrs: validationAttrsStart } = useValidation({
+const showResult = computed(() => endIpValidation.isValid && startIpValidation.isValid && result.value !== undefined);
+const startIpValidation = useValidation({
   source: rawStartAddress,
   rules: [{ message: 'Invalid ipv4 address', validator: (ip) => isValidIpv4({ ip }) }],
 });
-
-const { attrs: validationAttrsEnd } = useValidation({
+const endIpValidation = useValidation({
   source: rawEndAddress,
   rules: [{ message: 'Invalid ipv4 address', validator: (ip) => isValidIpv4({ ip }) }],
 });
+
+function onSwitchStartEndClicked() {
+  const tmpStart = rawStartAddress.value;
+  rawStartAddress.value = rawEndAddress.value;
+  rawEndAddress.value = tmpStart;
+}
 </script>
 
 <style lang="less" scoped></style>

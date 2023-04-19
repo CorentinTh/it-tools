@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
 import SpanCopyable from '@/components/SpanCopyable.vue';
-import { paramCase } from 'change-case';
+import _ from 'lodash';
 
 const props = withDefaults(defineProps<{ label: string; oldValue?: string; newValue?: string }>(), {
   label: '',
@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<{ label: string; oldValue?: string; newVa
 });
 const { label, oldValue, newValue } = toRefs(props);
 
-const testId = computed(() => paramCase(label.value));
+const testId = computed(() => _.kebabCase(label.value));
 </script>
 
 <style scoped lang="less"></style>
