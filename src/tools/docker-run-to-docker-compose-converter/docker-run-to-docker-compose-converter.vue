@@ -13,15 +13,13 @@
     <n-divider />
 
     <textarea-copyable :value="dockerCompose" language="yaml" />
-    <br />
-    <br />
-    <n-space justify="center">
+
+    <n-space justify="center" mt-5>
       <c-button :disabled="dockerCompose === ''" secondary @click="download"> Download docker-compose.yml </c-button>
     </n-space>
 
     <div v-if="notComposable.length > 0">
-      <br />
-      <n-alert title="This options are not translatable to docker-compose" type="info">
+      <n-alert title="This options are not translatable to docker-compose" type="info" mt-5>
         <ul>
           <li v-for="(message, index) of notComposable" :key="index">{{ message }}</li>
         </ul>
@@ -29,10 +27,10 @@
     </div>
 
     <div v-if="notImplemented.length > 0">
-      <br />
       <n-alert
         title="This options are not yet implemented and therefore haven't been translated to docker-compose"
         type="warning"
+        mt-5
       >
         <ul>
           <li v-for="(message, index) of notImplemented" :key="index">{{ message }}</li>
@@ -41,8 +39,7 @@
     </div>
 
     <div v-if="errors.length > 0">
-      <br />
-      <n-alert title="The following errors occured" type="error">
+      <n-alert title="The following errors occured" type="error" mt-5>
         <ul>
           <li v-for="(message, index) of errors" :key="index">{{ message }}</li>
         </ul>

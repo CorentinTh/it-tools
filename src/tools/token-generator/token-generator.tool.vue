@@ -41,9 +41,8 @@
         autocapitalize="off"
         spellcheck="false"
       />
-      <br />
-      <br />
-      <n-space justify="center">
+
+      <n-space justify="center" mt-5>
         <c-button @click="copy"> Copy </c-button>
         <c-button @click="refreshToken"> Refresh </c-button>
       </n-space>

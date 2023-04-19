@@ -5,7 +5,6 @@
       hours and 10 minutes to wash them all, and if you start now, you'll end
       {{ endAt }}.
     </n-text>
-    <br />
     <n-divider />
     <n-space item-style="flex:1 1 0">
       <div>
