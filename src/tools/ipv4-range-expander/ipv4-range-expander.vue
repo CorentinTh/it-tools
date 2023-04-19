@@ -29,7 +29,11 @@
             />
           </tbody>
         </n-table>
-        <n-alert v-else title="Invalid combination of start and end IPv4 address" type="error">
+        <n-alert
+          v-else-if="startIpValidation.isValid && endIpValidation.isValid"
+          title="Invalid combination of start and end IPv4 address"
+          type="error"
+        >
           <n-space vertical>
             <n-text depth="3">
               The end IPv4 address is lower than the start IPv4 address. This is not valid and no result could be
