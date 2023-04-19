@@ -12,7 +12,7 @@
               <n-text strong>{{ label }}</n-text>
             </td>
             <td>
-              <copyable-ip-like v-if="getValue(networkInfo)" :ip="getValue(networkInfo)"></copyable-ip-like>
+              <span-copyable v-if="getValue(networkInfo)" :value="getValue(networkInfo)"></span-copyable>
               <n-text v-else depth="3">{{ undefinedFallback }}</n-text>
             </td>
           </tr>
@@ -41,8 +41,8 @@ import { useValidation } from '@/composable/validation';
 import { isNotThrowing } from '@/utils/boolean';
 import { useStorage } from '@vueuse/core';
 import { ArrowLeft, ArrowRight } from '@vicons/tabler';
+import SpanCopyable from '@/components/SpanCopyable.vue';
 import { getIPClass } from './ipv4-subnet-calculator.models';
-import CopyableIpLike from './copyable-ip-like.vue';
 
 const ip = useStorage('ipv4-subnet-calculator:ip', '192.168.0.1/24');
 
