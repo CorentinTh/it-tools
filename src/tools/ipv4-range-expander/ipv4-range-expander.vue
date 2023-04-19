@@ -14,9 +14,9 @@
         <n-table v-if="showResult" data-test-id="result">
           <thead>
             <tr>
-              <th>&nbsp;</th>
-              <th>old value</th>
-              <th>new value</th>
+              <th scope="col">&nbsp;</th>
+              <th scope="col">old value</th>
+              <th scope="col">new value</th>
             </tr>
           </thead>
           <tbody>
