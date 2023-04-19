@@ -34,7 +34,6 @@
 
 <script setup lang="ts">
 import { useFuzzySearch } from '@/composable/fuzzySearch';
-import _ from 'lodash';
 import { SearchRound } from '@vicons/material';
 import { codesByCategories } from './http-status-codes.constants';
 
