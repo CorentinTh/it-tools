@@ -67,6 +67,7 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     SearchBar: typeof import('./src/components/SearchBar.vue')['default']
     SearchBarItem: typeof import('./src/components/SearchBarItem.vue')['default']
+    SpanCopyable: typeof import('./src/components/SpanCopyable.vue')['default']
     TextareaCopyable: typeof import('./src/components/TextareaCopyable.vue')['default']
     ToolCard: typeof import('./src/components/ToolCard.vue')['default']
   }

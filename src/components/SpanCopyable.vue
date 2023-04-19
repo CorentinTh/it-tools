@@ -1,7 +1,7 @@
 <template>
   <n-tooltip trigger="hover">
     <template #trigger>
-      <span class="ip" @click="handleClick">{{ ip }}</span>
+      <span class="value" @click="handleClick">{{ value }}</span>
     </template>
     {{ tooltipText }}
   </n-tooltip>
@@ -11,13 +11,13 @@
 import { useClipboard } from '@vueuse/core';
 import { ref, toRefs } from 'vue';
 
-const props = withDefaults(defineProps<{ ip?: string }>(), { ip: '' });
-const { ip } = toRefs(props);
+const props = withDefaults(defineProps<{ value?: string }>(), { value: '' });
+const { value } = toRefs(props);
 
 const initialText = 'Copy to clipboard';
 const tooltipText = ref(initialText);
 
-const { copy } = useClipboard({ source: ip });
+const { copy } = useClipboard({ source: value });
 
 function handleClick() {
   copy();
@@ -28,8 +28,8 @@ function handleClick() {
 </script>
 
 <style scoped lang="less">
-.ip {
-  font-family: monospace;
+.value {
   cursor: pointer;
+  font-family: monospace;
 }
 </style>
