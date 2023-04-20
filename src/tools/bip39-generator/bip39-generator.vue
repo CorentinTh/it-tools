@@ -1,59 +1,57 @@
 <template>
   <div>
-    <n-card>
-      <n-grid cols="3" x-gap="12">
-        <n-gi span="1">
-          <n-form-item label="Language:">
-            <n-select
-              v-model:value="language"
-              :options="Object.keys(languages).map((label) => ({ label, value: label }))"
-            />
-          </n-form-item>
-        </n-gi>
-        <n-gi span="2">
-          <n-form-item
-            label="Entropy (seed):"
-            :feedback="entropyValidation.message"
-            :validation-status="entropyValidation.status"
-          >
-            <n-input-group>
-              <n-input v-model:value="entropy" placeholder="Your string..." />
-              <c-button @click="refreshEntropy">
-                <n-icon size="22">
-                  <Refresh />
-                </n-icon>
-              </c-button>
-              <c-button @click="copyEntropy">
-                <n-icon size="22">
-                  <Copy />
-                </n-icon>
-              </c-button>
-            </n-input-group>
-          </n-form-item>
-        </n-gi>
-      </n-grid>
-      <n-form-item
-        label="Passphrase (mnemonic):"
-        :feedback="mnemonicValidation.message"
-        :validation-status="mnemonicValidation.status"
-      >
-        <n-input-group>
-          <n-input
-            v-model:value="passphrase"
-            style="text-align: center; flex: 1"
-            placeholder="Your mnemonic..."
-            autocomplete="off"
-            autocorrect="off"
-            autocapitalize="off"
-            spellcheck="false"
+    <n-grid cols="3" x-gap="12">
+      <n-gi span="1">
+        <n-form-item label="Language:">
+          <n-select
+            v-model:value="language"
+            :options="Object.keys(languages).map((label) => ({ label, value: label }))"
           />
+        </n-form-item>
+      </n-gi>
+      <n-gi span="2">
+        <n-form-item
+          label="Entropy (seed):"
+          :feedback="entropyValidation.message"
+          :validation-status="entropyValidation.status"
+        >
+          <n-input-group>
+            <n-input v-model:value="entropy" placeholder="Your string..." />
+            <c-button @click="refreshEntropy">
+              <n-icon size="22">
+                <Refresh />
+              </n-icon>
+            </c-button>
+            <c-button @click="copyEntropy">
+              <n-icon size="22">
+                <Copy />
+              </n-icon>
+            </c-button>
+          </n-input-group>
+        </n-form-item>
+      </n-gi>
+    </n-grid>
+    <n-form-item
+      label="Passphrase (mnemonic):"
+      :feedback="mnemonicValidation.message"
+      :validation-status="mnemonicValidation.status"
+    >
+      <n-input-group>
+        <n-input
+          v-model:value="passphrase"
+          style="text-align: center; flex: 1"
+          placeholder="Your mnemonic..."
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+        />
 
-          <c-button @click="copyPassphrase">
-            <n-icon size="22" :component="Copy" />
-          </c-button>
-        </n-input-group>
-      </n-form-item>
-    </n-card>
+        <c-button @click="copyPassphrase">
+          <n-icon size="22" :component="Copy" />
+        </c-button>
+      </n-input-group>
+    </n-form-item>
   </div>
 </template>
 

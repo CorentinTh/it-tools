@@ -1,5 +1,5 @@
 <template>
-  <n-card title="String to base64">
+  <c-card title="String to base64">
     <n-form-item label="String to encode">
       <n-input v-model:value="textInput" type="textarea" placeholder="Put your string here..." rows="5" />
     </n-form-item>
@@ -17,9 +17,9 @@
     <n-space justify="center">
       <c-button @click="copyTextBase64()"> Copy base64 </c-button>
     </n-space>
-  </n-card>
+  </c-card>
 
-  <n-card title="Base64 to string">
+  <c-card title="Base64 to string">
     <n-form-item label="Base64 string to decode" v-bind="b64Validation.attrs">
       <n-input v-model:value="base64Input" type="textarea" placeholder="Your base64 string..." rows="5" />
     </n-form-item>
@@ -31,7 +31,7 @@
     <n-space justify="center">
       <c-button @click="copyText()"> Copy decoded string </c-button>
     </n-space>
-  </n-card>
+  </c-card>
 </template>
 
 <script setup lang="ts">

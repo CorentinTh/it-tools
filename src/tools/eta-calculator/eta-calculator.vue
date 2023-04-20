@@ -37,12 +37,12 @@
 
         <n-divider />
         <n-space vertical>
-          <n-card>
+          <c-card>
             <n-statistic label="Total duration">{{ formatMsDuration(durationMs) }}</n-statistic>
-          </n-card>
-          <n-card>
+          </c-card>
+          <c-card>
             <n-statistic label="It will end ">{{ endAt }}</n-statistic>
-          </n-card>
+          </c-card>
         </n-space>
       </div>
     </n-space>

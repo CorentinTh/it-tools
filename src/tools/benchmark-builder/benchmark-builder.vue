@@ -2,7 +2,7 @@
   <n-scrollbar style="flex: 1" x-scrollable>
     <n-space :wrap="false" style="flex: 1" justify="center" :size="0" mb-5>
       <div v-for="(suite, index) of suites" :key="index">
-        <n-card style="width: 292px; margin: 0 8px 5px">
+        <c-card style="width: 292px; margin: 0 8px 5px">
           <n-form-item label="Suite name:" :show-feedback="false" label-placement="left">
             <n-input v-model:value="suite.title" placeholder="Suite name..." />
           </n-form-item>
@@ -11,7 +11,7 @@
           <n-form-item label="Suite values" :show-feedback="false">
             <dynamic-values v-model:values="suite.data" />
           </n-form-item>
-        </n-card>
+        </c-card>
 
         <n-space justify="center">
           <c-button v-if="suites.length > 1" variant="text" @click="suites.splice(index, 1)">

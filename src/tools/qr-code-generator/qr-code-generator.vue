@@ -1,5 +1,5 @@
 <template>
-  <n-card>
+  <c-card>
     <n-grid x-gap="12" y-gap="12" cols="1 600:3">
       <n-gi span="2">
         <n-form label-width="130" label-placement="left">
@@ -32,7 +32,7 @@
         </n-space>
       </n-gi>
     </n-grid>
-  </n-card>
+  </c-card>
 </template>
 
 <script setup lang="ts">

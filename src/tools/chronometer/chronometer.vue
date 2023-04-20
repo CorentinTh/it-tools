@@ -1,8 +1,8 @@
 <template>
   <div>
-    <n-card>
+    <c-card>
       <div class="duration">{{ formatMs(counter) }}</div>
-    </n-card>
+    </c-card>
     <n-space justify="center" mt-5>
       <c-button v-if="!isRunning" secondary type="primary" @click="resume">Start</c-button>
       <c-button v-else secondary type="warning" @click="pause">Stop</c-button>

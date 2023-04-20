@@ -1,6 +1,6 @@
 <template>
   <div style="overflow-x: hidden; width: 100%">
-    <n-card class="result-card">
+    <c-card class="result-card">
       <n-scrollbar
         x-scrollable
         trigger="none"
@@ -20,7 +20,7 @@
         </template>
         <span>{{ tooltipText }}</span>
       </n-tooltip>
-    </n-card>
+    </c-card>
     <n-space v-if="copyPlacement === 'outside'" justify="center" mt-4>
       <c-button @click="onCopyClicked"> {{ tooltipText }} </c-button>
     </n-space>

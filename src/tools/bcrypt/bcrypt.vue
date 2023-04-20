@@ -1,5 +1,5 @@
 <template>
-  <n-card title="Hash">
+  <c-card title="Hash">
     <n-form label-width="120">
       <n-form-item label="Your string: " label-placement="left">
         <n-input
@@ -19,9 +19,9 @@
     <n-space justify="center" mt-5>
       <c-button @click="copy"> Copy hash </c-button>
     </n-space>
-  </n-card>
+  </c-card>
 
-  <n-card title="Compare string with hash">
+  <c-card title="Compare string with hash">
     <n-form label-width="120">
       <n-form-item label="Your string: " label-placement="left">
         <n-input
@@ -49,7 +49,7 @@
         </div>
       </n-form-item>
     </n-form>
-  </n-card>
+  </c-card>
 </template>
 
 <script setup lang="ts">

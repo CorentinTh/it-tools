@@ -1,5 +1,5 @@
 <template>
-  <n-card>
+  <c-card>
     <n-form-item label="JWT to decode" :feedback="validation.message" :validation-status="validation.status">
       <n-input v-model:value="rawJwt" type="textarea" placeholder="Put your token here..." rows="5" />
     </n-form-item>
@@ -29,7 +29,7 @@
         </template>
       </tbody>
     </n-table>
-  </n-card>
+  </c-card>
 </template>
 
 <script setup lang="ts">

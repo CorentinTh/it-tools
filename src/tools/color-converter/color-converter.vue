@@ -1,5 +1,5 @@
 <template>
-  <n-card>
+  <c-card>
     <n-form label-width="100" label-placement="left">
       <n-form-item label="color picker:">
         <n-color-picker
@@ -30,7 +30,7 @@
         <input-copyable v-model:value="cmyk" :on-input="(v: string) => onInputUpdated(v, 'cmyk')" />
       </n-form-item>
     </n-form>
-  </n-card>
+  </c-card>
 </template>
 
 <script setup lang="ts">

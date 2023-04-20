@@ -1,5 +1,5 @@
 <template>
-  <n-card>
+  <c-card>
     <n-form-item
       class="cron"
       :show-label="false"
@@ -27,8 +27,8 @@
         </n-form-item>
       </n-form>
     </n-space>
-  </n-card>
-  <n-card>
+  </c-card>
+  <c-card>
     <pre>
 ┌──────────── [optional] seconds (0 - 59)
 | ┌────────── minute (0 - 59)
@@ -41,7 +41,7 @@
     >
 
     <n-space v-if="styleStore.isSmallScreen" vertical>
-      <n-card v-for="{ symbol, meaning, example, equivalent } in helpers" :key="symbol" embedded :bordered="false">
+      <c-card v-for="{ symbol, meaning, example, equivalent } in helpers" :key="symbol" important:border-none>
         <div>
           Symbol: <strong>{{ symbol }}</strong>
         </div>
@@ -57,7 +57,7 @@
         <div>
           Equivalent: <strong>{{ equivalent }}</strong>
         </div>
-      </n-card>
+      </c-card>
     </n-space>
     <n-table v-else size="small">
       <thead>
@@ -79,7 +79,7 @@
         </tr>
       </tbody>
     </n-table>
-  </n-card>
+  </c-card>
 </template>
 
 <script setup lang="ts">

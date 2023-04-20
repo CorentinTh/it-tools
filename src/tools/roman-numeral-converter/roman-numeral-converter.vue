@@ -1,6 +1,6 @@
 <template>
   <div>
-    <n-card title="Arabic to roman">
+    <c-card title="Arabic to roman">
       <n-space align="center" justify="space-between">
         <n-form-item v-bind="validationNumeral">
           <n-input-number v-model:value="inputNumeral" :min="1" style="width: 200px" :show-button="false" />
@@ -12,8 +12,8 @@
           Copy
         </c-button>
       </n-space>
-    </n-card>
-    <n-card title="Roman to arabic" mt-5>
+    </c-card>
+    <c-card title="Roman to arabic" mt-5>
       <n-space align="center" justify="space-between">
         <n-form-item v-bind="validationRoman">
           <n-input v-model:value="inputRoman" style="width: 200px" />
@@ -23,7 +23,7 @@
         </div>
         <c-button :disabled="validationRoman.validationStatus === 'error'" @click="copyArabic"> Copy </c-button>
       </n-space>
-    </n-card>
+    </c-card>
   </div>
 </template>
 

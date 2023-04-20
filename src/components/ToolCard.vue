@@ -1,6 +1,6 @@
 <template>
   <router-link :to="tool.path">
-    <n-card class="tool-card">
+    <c-card class="tool-card">
       <n-space justify="space-between" align="center">
         <n-icon class="icon" size="40" :component="tool.icon" />
         <n-space align="center">
@@ -29,7 +29,7 @@
           <br />&nbsp;
         </n-ellipsis>
       </div>
-    </n-card>
+    </c-card>
   </router-link>
 </template>
 
@@ -37,11 +37,14 @@
 import type { Tool } from '@/tools/tools.types';
 import { useThemeVars } from 'naive-ui';
 import { toRefs } from 'vue';
+import { useAppTheme } from '@/ui/theme/themes';
 import FavoriteButton from './FavoriteButton.vue';
 
 const props = defineProps<{ tool: Tool & { category: string } }>();
 const { tool } = toRefs(props);
 const theme = useThemeVars();
+
+const appTheme = useAppTheme();
 </script>
 
 <style lang="less" scoped>
@@ -50,8 +53,11 @@ a {
 }
 
 .tool-card {
+  transition: border-color ease 0.5s;
+  border-width: 2px !important;
+
   &:hover {
-    border-color: var(--n-color-target);
+    border-color: v-bind('appTheme.primary.colorHover');
   }
 
   .icon {

@@ -1,5 +1,5 @@
 <template>
-  <n-card class="colored-card">
+  <c-card class="colored-card">
     <n-space justify="space-between" align="center">
       <n-icon class="icon" size="40" :component="icon" />
     </n-space>
@@ -12,7 +12,7 @@
         <slot />
       </n-ellipsis>
     </div>
-  </n-card>
+  </c-card>
 </template>
 
 <script setup lang="ts">

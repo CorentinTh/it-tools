@@ -1,5 +1,5 @@
 <template>
-  <n-card>
+  <c-card>
     <n-form label-width="120" label-placement="left" :show-feedback="false">
       <n-form-item label="Your string:">
         <n-input v-model:value="input" />
@@ -41,7 +41,7 @@
         <input-copyable :value="snakeCase(input, baseConfig)" />
       </n-form-item>
     </n-form>
-  </n-card>
+  </c-card>
 </template>
 
 <script setup lang="ts">

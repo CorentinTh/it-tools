@@ -12,9 +12,9 @@
       spellcheck="false"
     />
 
-    <n-card v-if="result !== ''" title="Result " mt-5>
+    <c-card v-if="result !== ''" title="Result " mt-5>
       {{ result }}
-    </n-card>
+    </c-card>
   </div>
 </template>
 
