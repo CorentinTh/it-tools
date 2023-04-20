@@ -1,6 +1,6 @@
 <template>
   <div>
-    <n-card>
+    <c-card>
       <div v-if="styleStore.isSmallScreen">
         <n-input-group>
           <n-input-group-label style="flex: 0 0 120px"> Input number: </n-input-group-label>
@@ -75,7 +75,7 @@
           :placeholder="`Base ${outputBase} will be here...`"
         />
       </n-input-group>
-    </n-card>
+    </c-card>
   </div>
 </template>
 

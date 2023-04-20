@@ -1,5 +1,5 @@
 <template>
-  <n-card title="Encrypt">
+  <c-card title="Encrypt">
     <n-space item-style="flex: 1 1 0">
       <n-form-item label="Your text:" :show-feedback="false">
         <n-input
@@ -34,8 +34,8 @@
         spellcheck="false"
       />
     </n-form-item>
-  </n-card>
-  <n-card title="Decrypt">
+  </c-card>
+  <c-card title="Decrypt">
     <n-space item-style="flex: 1 1 0">
       <n-form-item label="Your encrypted text:" :show-feedback="false">
         <n-input
@@ -70,7 +70,7 @@
         spellcheck="false"
       />
     </n-form-item>
-  </n-card>
+  </c-card>
 </template>
 
 <script setup lang="ts">

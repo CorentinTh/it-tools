@@ -6,9 +6,9 @@
 
     <n-space v-if="natoText" vertical>
       <n-text>Your text in NATO phonetic alphabet</n-text>
-      <n-card>
+      <c-card>
         {{ natoText }}
-      </n-card>
+      </c-card>
 
       <n-space justify="center">
         <c-button autofocus @click="copy"> Copy NATO string </c-button>

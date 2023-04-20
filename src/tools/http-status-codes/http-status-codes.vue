@@ -20,14 +20,12 @@
     <div v-for="{ codes, category } of codesByCategoryFiltered" :key="category" mb-8>
       <n-h2> {{ category }} </n-h2>
 
-      <n-space vertical :size="20">
-        <n-card v-for="{ code, description, name, type } of codes" :key="code">
-          <n-space align="center">
-            <n-text strong text-lg> {{ code }} {{ name }} </n-text>
-          </n-space>
-          <n-text depth="3">{{ description }} {{ type !== 'HTTP' ? `For ${type}.` : '' }}</n-text>
-        </n-card>
-      </n-space>
+      <c-card v-for="{ code, description, name, type } of codes" :key="code" mb-2>
+        <n-space align="center">
+          <n-text strong text-lg> {{ code }} {{ name }} </n-text>
+        </n-space>
+        <n-text depth="3">{{ description }} {{ type !== 'HTTP' ? `For ${type}.` : '' }}</n-text>
+      </c-card>
     </div>
   </div>
 </template>

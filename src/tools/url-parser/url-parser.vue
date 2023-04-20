@@ -1,5 +1,5 @@
 <template>
-  <n-card>
+  <c-card>
     <n-form-item label="Your url to parse:" :feedback="validation.message" :validation-status="validation.status">
       <n-input v-model:value="urlToParse" placeholder="Your url to parse..." />
     </n-form-item>
@@ -23,7 +23,7 @@
         <input-copyable :value="v" readonly />
       </n-input-group>
     </n-form>
-  </n-card>
+  </c-card>
 </template>
 
 <script setup lang="ts">

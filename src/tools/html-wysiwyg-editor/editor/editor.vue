@@ -1,12 +1,12 @@
 <template>
-  <n-card v-if="editor" class="editor">
-    <template #header>
-      <menu-bar class="editor-header" :editor="editor" />
-      <n-divider style="margin-top: 0" />
-    </template>
+  <c-card v-if="editor" important:p0>
+    <menu-bar class="editor-header" :editor="editor" />
+    <n-divider style="margin-top: 0" />
 
-    <editor-content class="editor-content" :editor="editor" />
-  </n-card>
+    <div px8 pb6>
+      <editor-content class="editor-content" :editor="editor" />
+    </div>
+  </c-card>
 </template>
 
 <script setup lang="ts">
@@ -34,10 +34,6 @@ tryOnBeforeUnmount(() => {
 </script>
 
 <style scoped lang="less">
-::v-deep(.n-card-header) {
-  padding: 0;
-}
-
 ::v-deep(.ProseMirror-focused) {
   outline: none;
 }

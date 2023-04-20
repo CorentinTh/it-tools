@@ -1,6 +1,6 @@
 <template>
   <div>
-    <n-card>
+    <c-card>
       <n-input v-model:value="clearText" type="textarea" placeholder="Your string to hash..." rows="3" />
 
       <n-divider />
@@ -35,7 +35,7 @@
           <input-copyable :value="hashText(algo, clearText)" readonly />
         </n-input-group>
       </div>
-    </n-card>
+    </c-card>
   </div>
 </template>
 

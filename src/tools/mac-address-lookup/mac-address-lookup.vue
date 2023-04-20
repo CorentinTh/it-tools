@@ -14,13 +14,13 @@
     </n-form-item>
 
     <n-form-item label="Vendor info:">
-      <n-card>
+      <c-card>
         <n-text v-if="details">
           <div v-for="(detail, index) of details.split('\n')" :key="index">{{ detail }}</div>
         </n-text>
 
         <n-text v-else depth="3" italic>Unknown vendor for this address</n-text>
-      </n-card>
+      </c-card>
     </n-form-item>
 
     <n-space justify="center">

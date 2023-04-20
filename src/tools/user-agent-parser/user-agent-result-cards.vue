@@ -2,7 +2,7 @@
   <div>
     <n-grid :x-gap="12" :y-gap="8" cols="1 s:2" responsive="screen">
       <n-gi v-for="{ heading, icon, content } in sections" :key="heading">
-        <n-card style="height: 100%">
+        <c-card h-full>
           <n-page-header>
             <template #title>
               {{ heading }}
@@ -29,7 +29,7 @@
               <n-text v-if="getValue(userAgentInfo) === undefined" depth="3">{{ undefinedFallback }}</n-text>
             </span>
           </n-space>
-        </n-card>
+        </c-card>
       </n-gi>
     </n-grid>
   </div>

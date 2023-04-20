@@ -1,6 +1,6 @@
 <template>
   <div>
-    <n-card>
+    <c-card>
       <n-form label-placement="left" label-width="140">
         <n-space justify="center" item-style="padding: 0" :size="0">
           <div>
@@ -46,7 +46,7 @@
         <c-button @click="copy"> Copy </c-button>
         <c-button @click="refreshToken"> Refresh </c-button>
       </n-space>
-    </n-card>
+    </c-card>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <n-card title="Encode">
+  <c-card title="Encode">
     <n-form-item
       label="Your string :"
       :feedback="encodedValidation.message"
@@ -26,8 +26,8 @@
     <n-space justify="center">
       <c-button @click="copyEncoded"> Copy </c-button>
     </n-space>
-  </n-card>
-  <n-card title="Decode">
+  </c-card>
+  <c-card title="Decode">
     <n-form-item
       label="Your encoded string :"
       :feedback="decodeValidation.message"
@@ -54,7 +54,7 @@
     <n-space justify="center">
       <c-button @click="copyDecoded"> Copy </c-button>
     </n-space>
-  </n-card>
+  </c-card>
 </template>
 
 <script setup lang="ts">

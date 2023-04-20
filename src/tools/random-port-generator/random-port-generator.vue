@@ -1,5 +1,5 @@
 <template>
-  <n-card>
+  <c-card>
     <div class="port">
       {{ port }}
     </div>
@@ -7,7 +7,7 @@
       <c-button @click="copy"> Copy </c-button>
       <c-button @click="refreshPort"> Refresh </c-button>
     </n-space>
-  </n-card>
+  </c-card>
 </template>
 
 <script setup lang="ts">

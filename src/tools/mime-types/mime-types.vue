@@ -1,5 +1,5 @@
 <template>
-  <n-card>
+  <c-card>
     <n-h2 style="margin-bottom: 0">Mime type to extension</n-h2>
     <div style="opacity: 0.8">Now witch file extensions are associated to a mime-type</div>
     <n-form-item>
@@ -27,9 +27,9 @@
         </n-tag>
       </div>
     </div>
-  </n-card>
+  </c-card>
 
-  <n-card>
+  <c-card>
     <n-h2 style="margin-bottom: 0">File extension to mime type</n-h2>
     <div style="opacity: 0.8">Now witch mime type is associated to a file extension</div>
     <n-form-item>
@@ -51,7 +51,7 @@
         </n-tag>
       </div>
     </div>
-  </n-card>
+  </c-card>
 
   <div>
     <n-table>

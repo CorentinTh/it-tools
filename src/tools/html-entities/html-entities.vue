@@ -1,5 +1,5 @@
 <template>
-  <n-card title="Escape html entities">
+  <c-card title="Escape html entities">
     <n-form-item label="Your string :">
       <n-input
         v-model:value="escapeInput"
@@ -22,8 +22,8 @@
     <n-space justify="center">
       <c-button @click="copyEscaped"> Copy </c-button>
     </n-space>
-  </n-card>
-  <n-card title="Unescape html entities">
+  </c-card>
+  <c-card title="Unescape html entities">
     <n-form-item label="Your escaped string :">
       <n-input
         v-model:value="unescapeInput"
@@ -46,7 +46,7 @@
     <n-space justify="center">
       <c-button @click="copyUnescaped"> Copy </c-button>
     </n-space>
-  </n-card>
+  </c-card>
 </template>
 
 <script setup lang="ts">

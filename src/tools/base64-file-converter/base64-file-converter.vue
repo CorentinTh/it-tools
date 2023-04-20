@@ -1,5 +1,5 @@
 <template>
-  <n-card title="Base64 to file">
+  <c-card title="Base64 to file">
     <n-form-item
       :feedback="base64InputValidation.message"
       :validation-status="base64InputValidation.status"
@@ -12,9 +12,9 @@
         Download file
       </c-button>
     </n-space>
-  </n-card>
+  </c-card>
 
-  <n-card title="File to base64">
+  <c-card title="File to base64">
     <n-upload v-model:file-list="fileList" :show-file-list="true" :on-before-upload="onUpload" list-type="image">
       <n-upload-dragger>
         <div mb-2>
@@ -28,7 +28,7 @@
     <n-space justify="center">
       <c-button @click="copyFileBase64()"> Copy </c-button>
     </n-space>
-  </n-card>
+  </c-card>
 </template>
 
 <script setup lang="ts">

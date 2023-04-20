@@ -1,9 +1,9 @@
 <template>
   <div>
-    <n-card style="text-align: center; padding: 40px 0; margin-bottom: 26px">
+    <c-card style="text-align: center; padding: 40px 0; margin-bottom: 26px">
       <n-h2 v-if="event">{{ event.key }}</n-h2>
       <n-text strong depth="3">Press the key on your keyboard you want to get info about this key</n-text>
-    </n-card>
+    </c-card>
 
     <n-input-group v-for="({ label, value, placeholder }, i) of fields" :key="i" style="margin-bottom: 5px">
       <n-input-group-label style="flex: 0 0 150px"> {{ label }} </n-input-group-label>
