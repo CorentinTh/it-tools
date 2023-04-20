@@ -19,6 +19,13 @@
             :options="Object.keys(algos).map((label) => ({ label, value: label }))"
           />
         </n-form-item>
+        <n-form-item
+          v-if="cypherAlgo === 'AES' || cypherAlgo === 'TripleDES'"
+          label="Initialization vector:"
+          :show-feedback="false"
+        >
+          <n-input v-model:value="cypherInitializationVector" />
+        </n-form-item>
       </n-space>
     </n-space>
     <br />
@@ -56,6 +63,13 @@
             :options="Object.keys(algos).map((label) => ({ label, value: label }))"
           />
         </n-form-item>
+        <n-form-item
+          v-if="decryptAlgo === 'AES' || decryptAlgo === 'TripleDES'"
+          label="Initialization vector:"
+          :show-feedback="false"
+        >
+          <n-input v-model:value="decryptInitializationVector" />
+        </n-form-item>
       </n-space>
     </n-space>
     <br />
@@ -81,15 +95,29 @@ import { AES, TripleDES, Rabbit, RC4, enc } from 'crypto-js';
 
 const algos = { AES, TripleDES, Rabbit, RC4 };
 
-const cypherInput = ref('Lorem ipsum dolor sit amet');
+const cypherInput = ref('Hello World!');
 const cypherAlgo = ref<keyof typeof algos>('AES');
-const cypherSecret = ref('my secret key');
-const cypherOutput = computed(() => algos[cypherAlgo.value].encrypt(cypherInput.value, cypherSecret.value).toString());
+const cypherSecret = ref('16bit secret key');
+const cypherInitializationVector = ref('1234567812345678');
+const cypherOutput = computed(() => {
+  var cfg = {};
+  if (cypherAlgo.value === 'AES' || cypherAlgo.value === 'TripleDES') {
+    cfg = { iv: enc.Utf8.parse(cypherInitializationVector.value) };
+  }
+  return algos[cypherAlgo.value].encrypt(cypherInput.value, enc.Utf8.parse(cypherSecret.value), cfg).toString();
+});
 
-const decryptInput = ref('U2FsdGVkX1/EC3+6P5dbbkZ3e1kQ5o2yzuU0NHTjmrKnLBEwreV489Kr0DIB+uBs');
+const decryptInput = ref('DX+W8WBHbt08XoJNV8bcoQ==');
 const decryptAlgo = ref<keyof typeof algos>('AES');
-const decryptSecret = ref('my secret key');
-const decryptOutput = computed(() =>
-  algos[decryptAlgo.value].decrypt(decryptInput.value, decryptSecret.value).toString(enc.Utf8),
-);
+const decryptSecret = ref('16bit secret key');
+const decryptInitializationVector = ref('1234567812345678');
+const decryptOutput = computed(() => {
+  var cfg = {};
+  if (decryptAlgo.value === 'AES' || decryptAlgo.value === 'TripleDES') {
+    cfg = { iv: enc.Utf8.parse(decryptInitializationVector.value) };
+  }
+  return algos[decryptAlgo.value]
+    .decrypt(decryptInput.value, enc.Utf8.parse(decryptSecret.value), cfg)
+    .toString(enc.Utf8);
+});
 </script>
