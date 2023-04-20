@@ -80,6 +80,7 @@ const tag = computed(() => {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 
   // outline-offset: 1px;
   &.round {
