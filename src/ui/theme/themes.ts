@@ -4,6 +4,7 @@ export const { themes: appThemes, useTheme: useAppTheme } = defineThemes({
   light: {
     text: {
       baseColor: 'rgb(51, 54, 57)',
+      mutedColor: 'rgba(118, 124, 130)',
     },
 
     primary: {
@@ -17,10 +18,23 @@ export const { themes: appThemes, useTheme: useAppTheme } = defineThemes({
       colorHover: '#f59e0b',
       colorPressed: '#f59e0b',
     },
+    success: {
+      color: '#18a058',
+      colorHover: '#36ad6a',
+      colorPressed: '#0c7a43',
+      colorFaded: '#18a0582f',
+    },
+    error: {
+      color: '#d03050',
+      colorHover: '#de576d',
+      colorPressed: '#ab1f3f',
+      colorFaded: '#d030502a',
+    },
   },
   dark: {
     text: {
       baseColor: 'rgba(255, 255, 255, 0.82)',
+      mutedColor: 'rgba(255, 255, 255, 0.5)',
     },
 
     primary: {
@@ -32,6 +46,18 @@ export const { themes: appThemes, useTheme: useAppTheme } = defineThemes({
       color: '#f59e0b',
       colorHover: '#f59e0b',
       colorPressed: '#f59e0b',
+    },
+    success: {
+      color: '#18a058',
+      colorHover: '#36ad6a',
+      colorPressed: '#0c7a43',
+      colorFaded: '#18a0582f',
+    },
+    error: {
+      color: '#e88080',
+      colorHover: '#e98b8b',
+      colorPressed: '#e57272',
+      colorFaded: '#e8808029',
     },
   },
 });

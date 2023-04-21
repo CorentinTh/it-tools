@@ -1,6 +1,7 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+import { tool as jsonDiff } from './json-diff';
 import { tool as ipv4RangeExpander } from './ipv4-range-expander';
 import { tool as httpStatusCodes } from './http-status-codes';
 import { tool as yamlToJson } from './yaml-to-json-converter';
@@ -91,6 +92,7 @@ export const toolsByCategory: ToolCategory[] = [
       htmlWysiwygEditor,
       userAgentParser,
       httpStatusCodes,
+      jsonDiff,
     ],
   },
   {
