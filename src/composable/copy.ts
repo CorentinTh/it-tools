@@ -1,8 +1,7 @@
-import { useClipboard } from '@vueuse/core';
+import { useClipboard, type MaybeRef } from '@vueuse/core';
 import { useMessage } from 'naive-ui';
-import type { Ref } from 'vue';
 
-export function useCopy({ source, text = 'Copied to the clipboard' }: { source: Ref; text?: string }) {
+export function useCopy({ source, text = 'Copied to the clipboard' }: { source: MaybeRef<string>; text?: string }) {
   const { copy } = useClipboard({ source });
   const message = useMessage();
 
