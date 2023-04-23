@@ -40,12 +40,12 @@ const sections: UserAgentResultSection[] = [
     content: [
       {
         label: 'Name',
-        getValue: (block) => block.browser.name,
+        getValue: (block) => block?.browser.name,
         undefinedFallback: 'No browser name available',
       },
       {
         label: 'Version',
-        getValue: (block) => block.browser.version,
+        getValue: (block) => block?.browser.version,
         undefinedFallback: 'No browser version available',
       },
     ],
@@ -56,12 +56,12 @@ const sections: UserAgentResultSection[] = [
     content: [
       {
         label: 'Name',
-        getValue: (block) => block.engine.name,
+        getValue: (block) => block?.engine.name,
         undefinedFallback: 'No engine name available',
       },
       {
         label: 'Version',
-        getValue: (block) => block.engine.version,
+        getValue: (block) => block?.engine.version,
         undefinedFallback: 'No engine version available',
       },
     ],
@@ -72,12 +72,12 @@ const sections: UserAgentResultSection[] = [
     content: [
       {
         label: 'Name',
-        getValue: (block) => block.os.name,
+        getValue: (block) => block?.os.name,
         undefinedFallback: 'No OS name available',
       },
       {
         label: 'Version',
-        getValue: (block) => block.os.version,
+        getValue: (block) => block?.os.version,
         undefinedFallback: 'No OS version available',
       },
     ],
@@ -88,17 +88,17 @@ const sections: UserAgentResultSection[] = [
     content: [
       {
         label: 'Model',
-        getValue: (block) => block.device.model,
+        getValue: (block) => block?.device.model,
         undefinedFallback: 'No device model available',
       },
       {
         label: 'Type',
-        getValue: (block) => block.device.type,
+        getValue: (block) => block?.device.type,
         undefinedFallback: 'No device type available',
       },
       {
         label: 'Vendor',
-        getValue: (block) => block.device.vendor,
+        getValue: (block) => block?.device.vendor,
         undefinedFallback: 'No device vendor available',
       },
     ],
@@ -109,7 +109,7 @@ const sections: UserAgentResultSection[] = [
     content: [
       {
         label: 'Architecture',
-        getValue: (block) => block.cpu.architecture,
+        getValue: (block) => block?.cpu.architecture,
         undefinedFallback: 'No CPU architecture available',
       },
     ],
