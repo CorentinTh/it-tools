@@ -16,7 +16,15 @@ const props = defineProps<{
 const { href, to } = toRefs(props);
 
 const theme = useTheme();
-const tag = computed(() => (href?.value ? 'a' : RouterLink));
+const tag = computed(() => {
+  if (href?.value) {
+    return 'a';
+  }
+  if (to?.value) {
+    return RouterLink;
+  }
+  return 'span';
+});
 </script>
 
 <style lang="less" scoped>
