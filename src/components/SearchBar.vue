@@ -81,7 +81,7 @@ function onFocus() {
     <n-auto-complete
       v-model:value="queryString"
       :options="options"
-      :on-select="(value) => onSelect(String(value))"
+      :on-select="(value: string | number) => onSelect(String(value))"
       :render-label="renderOption"
       :default-value="'aa'"
       :get-show="() => displayDropDown"

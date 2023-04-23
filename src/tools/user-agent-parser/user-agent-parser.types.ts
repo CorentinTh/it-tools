@@ -6,7 +6,7 @@ export type UserAgentResultSection = {
   icon?: Component;
   content: {
     label: string;
-    getValue: (blocks: UAParser.IResult) => string | undefined;
+    getValue: (blocks?: UAParser.IResult) => string | undefined;
     undefinedFallback?: string;
   }[];
 };
