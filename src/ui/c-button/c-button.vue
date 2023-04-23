@@ -14,6 +14,7 @@
 <script lang="ts" setup>
 import type { RouteLocationRaw } from 'vue-router';
 import { useTheme } from './c-button.theme';
+import { useAppTheme } from '../theme/themes';
 
 const props = withDefaults(
   defineProps<{
@@ -56,11 +57,11 @@ const tag = computed(() => {
   }
   return 'button';
 });
+const appTheme = useAppTheme();
 </script>
 
 <style lang="less" scoped>
 .c-button {
-  margin: 0;
   line-height: 1;
   font-family: inherit;
   font-size: inherit;
@@ -103,7 +104,7 @@ const tag = computed(() => {
   }
 
   &:focus {
-    outline: 2px solid v-bind('variantTheme.outline.color');
+    outline: 1px solid v-bind('appTheme.primary.color');
   }
 
   &.disabled {
