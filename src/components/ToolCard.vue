@@ -55,6 +55,7 @@ a {
 .tool-card {
   transition: border-color ease 0.5s;
   border-width: 2px !important;
+  color: transparent;
 
   &:hover {
     border-color: v-bind('appTheme.primary.colorHover');
