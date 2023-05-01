@@ -46,6 +46,9 @@ dependencies:
   composerize-ts:
     specifier: ^0.6.2
     version: 0.6.2
+  country-code-lookup:
+    specifier: ^0.0.23
+    version: 0.0.23
   cron-validator:
     specifier: ^1.3.1
     version: 1.3.1
@@ -73,6 +76,9 @@ dependencies:
   jwt-decode:
     specifier: ^3.1.2
     version: 3.1.2
+  libphonenumber-js:
+    specifier: ^1.10.28
+    version: 1.10.28
   lodash:
     specifier: ^4.17.21
     version: 4.17.21
@@ -3604,6 +3610,10 @@ packages:
       browserslist: 4.21.5
     dev: true
 
+  /country-code-lookup@0.0.23:
+    resolution: {integrity: sha512-kxhIGcau9/X+tgPg9yO2q1OLu8jiYYsdwXuiXzHdsgNChd36xrJMlOba7ka9O1xShCVTiVQPQpq/tcuy4WiW+Q==}
+    dev: false
+
   /country-data@0.0.31:
     resolution: {integrity: sha512-YqlY/i6ikZwoBFfdjK+hJTGaBdTgDpXLI15MCj2UsXZ2cPBb+Kx86AXmDH7PRGt0LUleck0cCgNdWeIhfbcxkQ==}
     dependencies:
@@ -5664,6 +5674,10 @@ packages:
       prelude-ls: 1.2.1
       type-check: 0.4.0
     dev: true
+
+  /libphonenumber-js@1.10.28:
+    resolution: {integrity: sha512-1eAgjLrZA0+2Wgw4hs+4Q/kEBycxQo8ZLYnmOvZ3AlM8ImAVAJgDPlZtISLEzD1vunc2q8s2Pn7XwB7I8U3Kzw==}
+    dev: false
 
   /linkify-it@3.0.3:
     resolution: {integrity: sha512-ynTsyrFSdE5oZ/O9GEf00kPngmOfVwazR5GKDq6EYfhlpFug3J2zybX56a2PRRpc9P+FuSoGNAwjlbDs9jJBPQ==}
