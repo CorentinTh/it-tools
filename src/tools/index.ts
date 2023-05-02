@@ -1,6 +1,7 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+import { tool as listConverter } from './list-converter';
 import { tool as phoneParserAndFormatter } from './phone-parser-and-formatter';
 import { tool as jsonDiff } from './json-diff';
 import { tool as ipv4RangeExpander } from './ipv4-range-expander';
@@ -74,6 +75,7 @@ export const toolsByCategory: ToolCategory[] = [
       textToNatoAlphabet,
       yamlToJson,
       jsonToYaml,
+      listConverter,
     ],
   },
   {
