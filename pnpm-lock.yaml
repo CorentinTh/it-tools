@@ -135,6 +135,9 @@ dependencies:
     version: 2.2.1
 
 devDependencies:
+  '@iconify-json/mdi':
+    specifier: ^1.1.50
+    version: 1.1.50
   '@playwright/test':
     specifier: ^1.32.3
     version: 1.32.3
@@ -192,12 +195,18 @@ devDependencies:
   '@vitejs/plugin-vue-jsx':
     specifier: ^1.3.10
     version: 1.3.10
+  '@vue/compiler-sfc':
+    specifier: ^3.2.47
+    version: 3.2.47
   '@vue/eslint-config-prettier':
     specifier: ^7.1.0
     version: 7.1.0(eslint@8.38.0)(prettier@2.8.7)
   '@vue/eslint-config-typescript':
     specifier: ^10.0.0
     version: 10.0.0(eslint-plugin-vue@8.7.1)(eslint@8.38.0)(typescript@4.5.5)
+  '@vue/runtime-core':
+    specifier: ^3.2.47
+    version: 3.2.47
   '@vue/test-utils':
     specifier: ^2.3.2
     version: 2.3.2(vue@3.2.47)
@@ -246,6 +255,9 @@ devDependencies:
   unplugin-auto-import:
     specifier: ^0.15.2
     version: 0.15.2(@vueuse/core@8.9.4)(rollup@2.79.1)
+  unplugin-icons:
+    specifier: ^0.16.1
+    version: 0.16.1(@vue/compiler-sfc@3.2.47)
   unplugin-vue-components:
     specifier: ^0.24.1
     version: 0.24.1(rollup@2.79.1)(vue@3.2.47)
@@ -1610,6 +1622,12 @@ packages:
 
   /@humanwhocodes/object-schema@1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+    dev: true
+
+  /@iconify-json/mdi@1.1.50:
+    resolution: {integrity: sha512-SgbT5w5eHCdOG74ZWPz7HlTGk6VsifIJhNi6lAsxj/5Nlqt6Cz4LlQmSa9eecU9p075Jub2aAx/o7YI+GCahRQ==}
+    dependencies:
+      '@iconify/types': 2.0.0
     dev: true
 
   /@iconify/types@2.0.0:
@@ -7559,6 +7577,35 @@ packages:
       unplugin: 1.3.1
     transitivePeerDependencies:
       - rollup
+    dev: true
+
+  /unplugin-icons@0.16.1(@vue/compiler-sfc@3.2.47):
+    resolution: {integrity: sha512-qTunFUkpAyDnwzwV7YV1ZgCWRYfLuURcCurhhXOWMy2ipY88qx1pADvral2hJu4Xymh0X0t3Zcll3BIru2AVLQ==}
+    peerDependencies:
+      '@svgr/core': '>=7.0.0'
+      '@vue/compiler-sfc': ^3.0.2 || ^2.7.0
+      vue-template-compiler: ^2.6.12
+      vue-template-es2015-compiler: ^1.9.0
+    peerDependenciesMeta:
+      '@svgr/core':
+        optional: true
+      '@vue/compiler-sfc':
+        optional: true
+      vue-template-compiler:
+        optional: true
+      vue-template-es2015-compiler:
+        optional: true
+    dependencies:
+      '@antfu/install-pkg': 0.1.1
+      '@antfu/utils': 0.7.2
+      '@iconify/utils': 2.1.5
+      '@vue/compiler-sfc': 3.2.47
+      debug: 4.3.4
+      kolorist: 1.7.0
+      local-pkg: 0.4.3
+      unplugin: 1.3.1
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /unplugin-vue-components@0.24.1(rollup@2.79.1)(vue@3.2.47):

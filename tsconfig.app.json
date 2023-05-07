@@ -9,6 +9,6 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["naive-ui/volar"]
+    "types": ["naive-ui/volar", "unplugin-icons/types/vue"]
   }
 }

@@ -10,6 +10,9 @@ import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import Unocss from 'unocss/vite';
+import { configDefaults } from 'vitest/config';
+import Icons from 'unplugin-icons/vite';
+import IconsResolver from 'unplugin-icons/resolver';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -28,7 +31,7 @@ export default defineConfig({
         enabled: true,
       },
     }),
-
+    Icons({ compiler: 'vue3' }),
     vue({
       include: [/\.vue$/, /\.md$/],
     }),
@@ -76,7 +79,7 @@ export default defineConfig({
       dirs: ['src/'],
       extensions: ['vue', 'md'],
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
-      resolvers: [NaiveUiResolver()],
+      resolvers: [NaiveUiResolver(), IconsResolver({ prefix: 'icon' })],
     }),
     Unocss(),
   ],
@@ -87,5 +90,8 @@ export default defineConfig({
   },
   define: {
     'import.meta.env.PACKAGE_VERSION': JSON.stringify(process.env.npm_package_version),
+  },
+  test: {
+    exclude: [...configDefaults.exclude, '**/*.e2e.spec.ts'],
   },
 });
