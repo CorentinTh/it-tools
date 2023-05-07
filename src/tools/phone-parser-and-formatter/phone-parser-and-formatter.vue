@@ -50,7 +50,7 @@ const validation = useValidation({
 const parsedDetails = computed(() => {
   if (!validation.isValid) return undefined;
 
-  const parsed = withDefaultOnError(() => parsePhoneNumber(rawPhone.value, 'FR'), undefined);
+  const parsed = withDefaultOnError(() => parsePhoneNumber(rawPhone.value, defaultCountryCode.value), undefined);
 
   if (!parsed) return undefined;
 
