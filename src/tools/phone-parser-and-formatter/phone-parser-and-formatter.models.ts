@@ -1,4 +1,4 @@
-import type { NumberType } from 'libphonenumber-js/types';
+import type { CountryCode, NumberType } from 'libphonenumber-js/types';
 import lookup from 'country-code-lookup';
 
 export { formatTypeToHumanReadable, getFullCountryName, getDefaultCountryCode };
@@ -32,10 +32,10 @@ function getFullCountryName(countryCode: string | undefined) {
 function getDefaultCountryCode({
   locale = window.navigator.language,
   defaultCode = 'FR',
-}: { locale?: string; defaultCode?: string } = {}): string {
+}: { locale?: string; defaultCode?: CountryCode } = {}): CountryCode {
   const countryCode = locale.split('-')[1]?.toUpperCase();
 
   if (!countryCode) return defaultCode;
 
-  return lookup.byIso(countryCode)?.iso2 ?? defaultCode;
+  return (lookup.byIso(countryCode)?.iso2 ?? defaultCode) as CountryCode;
 }
