@@ -18,4 +18,14 @@ const shuffleArray = <T>(array: T[]): T[] => shuffleArrayMutate([...array]);
 
 const shuffleString = (str: string, delimiter = ''): string => shuffleArrayMutate(str.split(delimiter)).join(delimiter);
 
-export { randFromArray, randIntFromInterval, random, shuffleArray, shuffleArrayMutate, shuffleString };
+const generateRandomId = () => `id-${random().toString(36).substring(2, 12)}`;
+
+export {
+  randFromArray,
+  randIntFromInterval,
+  random,
+  shuffleArray,
+  shuffleArrayMutate,
+  shuffleString,
+  generateRandomId,
+};

@@ -18,6 +18,8 @@
       </div>
 
       <div flex-1 pl-4>
+        <h1>{{ componentName }}</h1>
+
         <router-view />
       </div>
     </div>
@@ -25,9 +27,12 @@
 </template>
 
 <script lang="ts" setup>
+import _ from 'lodash';
 import { demoRoutes } from './demo.routes';
 
 const route = useRoute();
+
+const componentName = computed(() => _.startCase(String(route.name).replace(/^c-/, '')));
 </script>
 
 <style lang="less" scoped></style>

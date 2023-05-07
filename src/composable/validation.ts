@@ -1,3 +1,4 @@
+import { get, type MaybeRef } from '@vueuse/core';
 import _ from 'lodash';
 import { reactive, watch, type Ref } from 'vue';
 
@@ -31,7 +32,7 @@ export function useValidation<T>({
   watch: watchRefs = [],
 }: {
   source: Ref<T>;
-  rules: UseValidationRule<T>[];
+  rules: MaybeRef<UseValidationRule<T>[]>;
   watch?: Ref<unknown>[];
 }) {
   const state = reactive<{
@@ -55,7 +56,7 @@ export function useValidation<T>({
       state.message = '';
       state.status = undefined;
 
-      for (const rule of rules) {
+      for (const rule of get(rules)) {
         if (isFalsyOrHasThrown(() => rule.validator(source.value))) {
           state.message = rule.message;
           state.status = 'error';

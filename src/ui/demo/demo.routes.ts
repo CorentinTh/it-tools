@@ -6,8 +6,6 @@ export const demoRoutes = Object.keys(demoPages).map((path) => {
   const [, , fileName] = path.split('/');
   const name = fileName.split('.').shift();
 
-  console.log(path);
-
   return {
     path: name,
     name,
