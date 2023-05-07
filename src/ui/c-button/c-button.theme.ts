@@ -27,6 +27,21 @@ const createTheme = ({ style }: { style: 'light' | 'dark' }) => {
   const theme = appThemes[style];
 
   return {
+    size: {
+      small: {
+        width: '28px',
+        fontSize: '12px',
+      },
+      medium: {
+        width: '34px',
+        fontSize: '14px',
+      },
+      large: {
+        width: '40px',
+        fontSize: '16px',
+      },
+    },
+
     basic: {
       default: createState({
         textColor: theme.text.baseColor,
