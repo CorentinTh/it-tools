@@ -1,5 +1,8 @@
 <template>
   <c-card title="String to base64">
+    <n-form-item label="Encode URL safe" label-placement="left">
+      <n-switch v-model:value="encodeUrlSafe" />
+    </n-form-item>
     <n-form-item label="String to encode">
       <n-input v-model:value="textInput" type="textarea" placeholder="Put your string here..." rows="5" />
     </n-form-item>
@@ -20,6 +23,9 @@
   </c-card>
 
   <c-card title="Base64 to string">
+    <n-form-item label="Decode URL safe" label-placement="left">
+      <n-switch v-model:value="decodeUrlSafe" />
+    </n-form-item>
     <n-form-item label="Base64 string to decode" v-bind="b64Validation.attrs">
       <n-input v-model:value="base64Input" type="textarea" placeholder="Your base64 string..." rows="5" />
     </n-form-item>
@@ -41,15 +47,20 @@ import { base64ToText, isValidBase64, textToBase64 } from '@/utils/base64';
 import { withDefaultOnError } from '@/utils/defaults';
 import { computed, ref } from 'vue';
 
+const encodeUrlSafe = useStorage('base64-string-converter--encode-url-safe', false);
+const decodeUrlSafe = useStorage('base64-string-converter--decode-url-safe', false);
+
 const textInput = ref('');
-const base64Output = computed(() => textToBase64(textInput.value));
+const base64Output = computed(() => textToBase64(textInput.value, encodeUrlSafe.value));
 const { copy: copyTextBase64 } = useCopy({ source: base64Output, text: 'Base64 string copied to the clipboard' });
 
 const base64Input = ref('');
-const textOutput = computed(() => withDefaultOnError(() => base64ToText(base64Input.value.trim()), ''));
+const textOutput = computed(() =>
+  withDefaultOnError(() => base64ToText(base64Input.value.trim(), decodeUrlSafe.value), ''),
+);
 const { copy: copyText } = useCopy({ source: textOutput, text: 'String copied to the clipboard' });
 const b64Validation = useValidation({
   source: base64Input,
-  rules: [{ message: 'Invalid base64 string', validator: (value) => isValidBase64(value.trim()) }],
+  rules: [{ message: 'Invalid base64 string', validator: (value) => isValidBase64(value.trim(), decodeUrlSafe.value) }],
 });
 </script>

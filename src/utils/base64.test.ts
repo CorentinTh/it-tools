@@ -8,6 +8,13 @@ describe('base64 utils', () => {
       expect(textToBase64('a')).to.eql('YQ==');
       expect(textToBase64('lorem ipsum')).to.eql('bG9yZW0gaXBzdW0=');
       expect(textToBase64('-1')).to.eql('LTE=');
+      expect(textToBase64('<<<????????>>>')).to.eql('PDw8Pz8/Pz8/Pz8+Pj4=');
+    });
+    it('should convert string into url safe base64', () => {
+      expect(textToBase64('', true)).to.eql('');
+      expect(textToBase64('a', true)).to.eql('YQ');
+      expect(textToBase64('lorem ipsum', true)).to.eql('bG9yZW0gaXBzdW0');
+      expect(textToBase64('<<<????????>>>', true)).to.eql('PDw8Pz8_Pz8_Pz8-Pj4');
     });
   });
 
@@ -18,6 +25,15 @@ describe('base64 utils', () => {
       expect(base64ToText('bG9yZW0gaXBzdW0=')).to.eql('lorem ipsum');
       expect(base64ToText('data:text/plain;base64,bG9yZW0gaXBzdW0=')).to.eql('lorem ipsum');
       expect(base64ToText('LTE=')).to.eql('-1');
+    });
+
+    it('should convert url safe base64 into text', () => {
+      expect(base64ToText('', true)).to.eql('');
+      expect(base64ToText('YQ', true)).to.eql('a');
+      expect(base64ToText('bG9yZW0gaXBzdW0', true)).to.eql('lorem ipsum');
+      expect(base64ToText('data:text/plain;base64,bG9yZW0gaXBzdW0', true)).to.eql('lorem ipsum');
+      expect(base64ToText('LTE', true)).to.eql('-1');
+      expect(base64ToText('PDw8Pz8_Pz8_Pz8-Pj4', true)).to.eql('<<<????????>>>');
     });
 
     it('should throw for incorrect base64 string', () => {
