@@ -6,8 +6,8 @@ labels: new tool
 assignees: CorentinTh
 ---
 
-**Which tool is impacted?**
-Example: the token generator
+**What tool do you want?**
+Example: a token generator
 
 **Describe the solution you'd like**
 A clear and concise description of what you want to happen.
