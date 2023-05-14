@@ -30,8 +30,8 @@ test.describe('Tool - List converter', () => {
     3
     5`);
     await page.getByTestId('removeDuplicates').check();
-    await page.getByTestId('itemPrefix').locator('input').fill("'");
-    await page.getByTestId('itemSuffix').locator('input').fill("'");
+    await page.getByTestId('itemPrefix').fill("'");
+    await page.getByTestId('itemSuffix').fill("'");
 
     const result = await page.getByTestId('area-content').innerText();
     expect(result.trim()).toEqual("'1', '2', '4', '3', '5'");

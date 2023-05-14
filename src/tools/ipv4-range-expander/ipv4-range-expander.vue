@@ -3,10 +3,10 @@
     <n-space item-style="flex:1 1 0">
       <div>
         <n-space item-style="flex:1 1 0">
-          <n-form-item label="Start address" v-bind="startIpValidation.attrs">
+          <n-form-item label="Start address" v-bind="startIpValidation.attrs as any">
             <n-input v-model:value="rawStartAddress" placeholder="Start IPv4 address..." />
           </n-form-item>
-          <n-form-item label="End address" v-bind="endIpValidation.attrs">
+          <n-form-item label="End address" v-bind="endIpValidation.attrs as any">
             <n-input v-model:value="rawEndAddress" placeholder="End IPv4 address..." />
           </n-form-item>
         </n-space>

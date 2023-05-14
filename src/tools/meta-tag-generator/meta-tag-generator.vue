@@ -5,7 +5,7 @@
 
       <n-input-group v-for="{ key, type, label, placeholder, ...element } of elements" :key="key">
         <n-input-group-label style="flex: 0 0 110px">{{ label }}</n-input-group-label>
-        <n-input v-if="type === 'input'" v-model:value="metadata[key]" :placeholder="placeholder" />
+        <c-input-text v-if="type === 'input'" v-model:value="metadata[key]" :placeholder="placeholder" clearable />
         <n-dynamic-input
           v-else-if="type === 'input-multiple'"
           v-model:value="metadata[key]"

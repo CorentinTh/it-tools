@@ -21,6 +21,7 @@ export const { themes: appThemes, useTheme: useAppTheme } = defineThemes({
       color: '#f59e0b',
       colorHover: '#f59e0b',
       colorPressed: '#f59e0b',
+      colorFaded: '#f59e0b2f',
     },
     success: {
       color: '#18a058',
@@ -55,6 +56,7 @@ export const { themes: appThemes, useTheme: useAppTheme } = defineThemes({
       color: '#f59e0b',
       colorHover: '#f59e0b',
       colorPressed: '#f59e0b',
+      colorFaded: '#f59e0b2f',
     },
     success: {
       color: '#18a058',

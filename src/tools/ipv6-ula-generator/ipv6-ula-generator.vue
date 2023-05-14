@@ -1,30 +1,32 @@
 <template>
   <div>
-    <n-space vertical :size="50">
-      <n-alert title="Info" type="info">
-        This tool uses the first method suggested by IETF using the current timestamp plus the mac address, sha1 hashed,
-        and the lower 40 bits to generate your random ULA.
-      </n-alert>
+    <n-alert title="Info" type="info">
+      This tool uses the first method suggested by IETF using the current timestamp plus the mac address, sha1 hashed,
+      and the lower 40 bits to generate your random ULA.
+    </n-alert>
 
-      <n-form-item label="MAC address:" v-bind="validationAttrs">
-        <n-input
-          v-model:value="macAddress"
-          size="large"
-          placeholder="Type a MAC address"
-          clearable
-          autocomplete="off"
-          autocorrect="off"
-          autocapitalize="off"
-          spellcheck="false"
-        />
-      </n-form-item>
-    </n-space>
+    <c-input-text
+      v-model:value="macAddress"
+      placeholder="Type a MAC address"
+      clearable
+      label="MAC address:"
+      raw-text
+      my-8
+      :validation="addressValidation"
+    />
 
-    <div v-if="validationAttrs.validationStatus !== 'error'">
-      <n-input-group v-for="{ label, value } in calculatedSections" :key="label" style="margin: 5px 0">
-        <n-input-group-label style="flex: 0 0 160px"> {{ label }} </n-input-group-label>
-        <input-copyable :value="value" readonly />
-      </n-input-group>
+    <div v-if="addressValidation.isValid">
+      <input-copyable
+        v-for="{ label, value } in calculatedSections"
+        :key="label"
+        :value="value"
+        :label="label"
+        label-width="160px"
+        label-align="right"
+        label-position="left"
+        readonly
+        mb-2
+      />
     </div>
   </div>
 </template>
@@ -59,7 +61,7 @@ const calculatedSections = computed(() => {
   ];
 });
 
-const { attrs: validationAttrs } = macAddressValidation(macAddress);
+const addressValidation = macAddressValidation(macAddress);
 </script>
 
 <style lang="less" scoped></style>

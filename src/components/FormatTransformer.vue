@@ -1,5 +1,5 @@
 <template>
-  <n-form-item :label="inputLabel" v-bind="validationAttrs">
+  <n-form-item :label="inputLabel" v-bind="validationAttrs as any">
     <n-input
       ref="inputElement"
       v-model:value="input"
@@ -10,7 +10,7 @@
       autocorrect="off"
       autocapitalize="off"
       spellcheck="false"
-      :input-props="{ 'data-test-id': 'input' }"
+      :input-props="{ 'data-test-id': 'input' } as any"
     />
   </n-form-item>
   <n-form-item :label="outputLabel">

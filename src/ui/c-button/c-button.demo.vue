@@ -25,6 +25,18 @@
       >
         A
       </c-button>
+
+      <c-button
+        v-for="buttonType of buttonTypes"
+        :key="buttonType"
+        :variant="buttonVariant"
+        :type="buttonType"
+        :size="buttonSize"
+        circle
+        mx-1
+      >
+        <icon-mdi-content-copy />
+      </c-button>
     </div>
   </div>
 </template>
@@ -33,7 +45,7 @@
 import _ from 'lodash';
 
 const buttonVariants = ['basic', 'text'] as const;
-const buttonTypes = ['default', 'primary'] as const;
+const buttonTypes = ['default', 'primary', 'warning'] as const;
 const buttonSizes = ['small', 'medium', 'large'] as const;
 </script>
 

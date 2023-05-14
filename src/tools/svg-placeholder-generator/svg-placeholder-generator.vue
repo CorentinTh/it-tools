@@ -21,9 +21,15 @@
         <n-form-item label="Font size">
           <n-input-number v-model:value="fontSize" placeholder="Font size..." min="1" />
         </n-form-item>
-        <n-form-item label="Custom text">
-          <n-input v-model:value="customText" :placeholder="`Default is ${width}x${height}`" />
-        </n-form-item>
+
+        <c-input-text
+          v-model:value="customText"
+          label="Custom text"
+          :placeholder="`Default is ${width}x${height}`"
+          label-position="left"
+          label-width="100px"
+          label-align="right"
+        />
       </n-space>
       <n-form-item label="Use exact size" label-placement="left">
         <n-switch v-model:value="useExactSize" />

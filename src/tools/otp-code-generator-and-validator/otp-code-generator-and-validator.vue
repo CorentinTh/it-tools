@@ -1,19 +1,23 @@
 <template>
   <div style="max-width: 350px">
-    <n-form-item label="Secret" v-bind="secretValidationAttrs">
-      <n-input v-model:value="secret" placeholder="Paste your TOTP secret...">
-        <template #suffix>
-          <n-tooltip trigger="hover">
-            <template #trigger>
-              <c-button circle variant="text" @click="refreshSecret">
-                <n-icon :component="Refresh" />
-              </c-button>
-            </template>
-            Generate secret token
-          </n-tooltip>
-        </template>
-      </n-input>
-    </n-form-item>
+    <c-input-text
+      v-model:value="secret"
+      label="Secret"
+      placeholder="Paste your TOTP secret..."
+      mb-5
+      :validation-rules="secretValidationRules"
+    >
+      <template #suffix>
+        <n-tooltip trigger="hover">
+          <template #trigger>
+            <c-button circle variant="text" size="small" @click="refreshSecret">
+              <icon-mdi-refresh />
+            </c-button>
+          </template>
+          Generate secret token
+        </n-tooltip>
+      </template>
+    </c-input-text>
 
     <div>
       <token-display :tokens="tokens" style="margin-top: 2px" />
@@ -27,49 +31,52 @@
     </n-space>
   </div>
   <div style="max-width: 350px">
-    <n-form-item label="Secret in hexadecimal">
-      <input-copyable :value="base32toHex(secret)" readonly placeholder="Secret in hex will be displayed here" />
-    </n-form-item>
+    <input-copyable
+      label="Secret in hexadecimal"
+      :value="base32toHex(secret)"
+      readonly
+      placeholder="Secret in hex will be displayed here"
+      mb-5
+    />
 
-    <n-form-item label="Epoch">
-      <input-copyable
-        :value="Math.floor(now / 1000).toString()"
-        readonly
-        placeholder="Epoch in sec will be displayed here"
-      />
-    </n-form-item>
-    <n-form-item label="Iteration" :show-feedback="false">
-      <n-input-group>
-        <n-input-group-label style="width: 110px">Count:</n-input-group-label>
-        <input-copyable
-          :value="String(getCounterFromTime({ now, timeStep: 30 }))"
-          readonly
-          placeholder="Iteration count will be displayed here"
-        />
-      </n-input-group>
-    </n-form-item>
+    <input-copyable
+      label="Epoch"
+      :value="Math.floor(now / 1000).toString()"
+      readonly
+      mb-5
+      placeholder="Epoch in sec will be displayed here"
+    />
 
-    <n-form-item label="Iteration" :show-label="false" style="margin-top: 5px">
-      <n-input-group>
-        <n-input-group-label style="width: 110px">Padded hex:</n-input-group-label>
-        <input-copyable
-          :value="getCounterFromTime({ now, timeStep: 30 }).toString(16).padStart(16, '0')"
-          readonly
-          placeholder="Iteration count in hex will be displayed here"
-        />
-      </n-input-group>
-    </n-form-item>
+    <p>Iteration</p>
+
+    <input-copyable
+      :value="String(getCounterFromTime({ now, timeStep: 30 }))"
+      readonly
+      label="Count:"
+      label-position="left"
+      label-width="90px"
+      label-align="right"
+      placeholder="Iteration count will be displayed here"
+    />
+
+    <input-copyable
+      :value="getCounterFromTime({ now, timeStep: 30 }).toString(16).padStart(16, '0')"
+      readonly
+      placeholder="Iteration count in hex will be displayed here"
+      label-position="left"
+      label-width="90px"
+      label-align="right"
+      label="Padded hex:"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { Refresh } from '@vicons/tabler';
 import { useTimestamp } from '@vueuse/core';
 import { useThemeVars } from 'naive-ui';
 import { useStyleStore } from '@/stores/style.store';
 import InputCopyable from '@/components/InputCopyable.vue';
-import { useValidation } from '@/composable/validation';
 import { computedRefreshable } from '@/composable/computedRefreshable';
 import { generateTOTP, buildKeyUri, generateSecret, base32toHex, getCounterFromTime } from './otp.service';
 import { useQRCode } from '../qr-code-generator/useQRCode';
@@ -106,19 +113,16 @@ const { qrcode } = useQRCode({
   options: { width: 210 },
 });
 
-const { attrs: secretValidationAttrs } = useValidation({
-  source: secret,
-  rules: [
-    {
-      message: 'Secret should be a base32 string',
-      validator: (value) => value.toUpperCase().match(/^[A-Z234567]+$/),
-    },
-    {
-      message: 'Please set a secret',
-      validator: (value) => value !== '',
-    },
-  ],
-});
+const secretValidationRules = [
+  {
+    message: 'Secret should be a base32 string',
+    validator: (value: string) => value.toUpperCase().match(/^[A-Z234567]+$/),
+  },
+  {
+    message: 'Please set a secret',
+    validator: (value: string) => value !== '',
+  },
+];
 </script>
 
 <style lang="less" scoped>

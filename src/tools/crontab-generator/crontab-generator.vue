@@ -1,13 +1,15 @@
 <template>
   <c-card>
-    <n-form-item
-      class="cron"
-      :show-label="false"
-      :feedback="cronValidation.message"
-      :validation-status="cronValidation.status"
-    >
-      <n-input v-model:value="cron" size="large" placeholder="* * * * *" />
-    </n-form-item>
+    <div mx-auto max-w-sm>
+      <c-input-text
+        v-model:value="cron"
+        size="large"
+        placeholder="* * * * *"
+        :validation-rules="cronValidationRules"
+        mb-3
+      />
+    </div>
+
     <div class="cron-string">
       {{ cronString }}
     </div>
@@ -86,7 +88,6 @@
 import cronstrue from 'cronstrue';
 import { isValidCron } from 'cron-validator';
 import { computed, reactive, ref } from 'vue';
-import { useValidation } from '@/composable/validation';
 import { useStyleStore } from '@/stores/style.store';
 
 function isCronValid(v: string) {
@@ -185,30 +186,20 @@ const cronString = computed(() => {
   return ' ';
 });
 
-const cronValidation = useValidation({
-  source: cron,
-  rules: [
-    {
-      validator: (value) => isCronValid(value),
-      message: 'This cron is invalid',
-    },
-  ],
-});
+const cronValidationRules = [
+  {
+    validator: (value: string) => isCronValid(value),
+    message: 'This cron is invalid',
+  },
+];
 </script>
 
 <style lang="less" scoped>
-.cron {
+::v-deep(input) {
+  font-size: 30px;
+  font-family: monospace;
+  padding: 5px;
   text-align: center;
-
-  margin: auto;
-  max-width: 400px;
-  display: block;
-
-  .n-input {
-    font-size: 30px;
-    font-family: monospace;
-    padding: 5px;
-  }
 }
 
 .cron-string {

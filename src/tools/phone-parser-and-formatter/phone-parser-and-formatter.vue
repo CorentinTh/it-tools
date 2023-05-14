@@ -3,9 +3,14 @@
     <n-form-item label="Default country code:">
       <n-select v-model:value="defaultCountryCode" :options="countriesOptions" />
     </n-form-item>
-    <n-form-item label="Phone number:" v-bind="validation.attrs">
-      <n-input v-model:value="rawPhone" placeholder="Enter a phone number" />
-    </n-form-item>
+
+    <c-input-text
+      v-model:value="rawPhone"
+      placeholder="Enter a phone number"
+      label="Phone number:"
+      :validation="validation"
+      mb-5
+    />
 
     <n-table v-if="parsedDetails">
       <tbody>

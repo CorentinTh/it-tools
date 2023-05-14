@@ -18,7 +18,7 @@ import { useAppTheme } from '../theme/themes';
 
 const props = withDefaults(
   defineProps<{
-    type?: 'default' | 'primary';
+    type?: 'default' | 'primary' | 'warning';
     variant?: 'basic' | 'text';
     disabled?: boolean;
     round?: boolean;
