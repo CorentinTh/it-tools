@@ -1,17 +1,19 @@
 <template>
   <c-card title="Base64 to file">
-    <n-form-item
-      :feedback="base64InputValidation.message"
-      :validation-status="base64InputValidation.status"
-      :show-label="false"
-    >
-      <n-input v-model:value="base64Input" type="textarea" placeholder="Put your base64 file string here..." rows="5" />
-    </n-form-item>
-    <n-space justify="center">
+    <c-input-text
+      v-model:value="base64Input"
+      multiline
+      placeholder="Put your base64 file string here..."
+      rows="5"
+      :validation="base64InputValidation"
+      mb-2
+    />
+
+    <div flex justify-center>
       <c-button :disabled="base64Input === '' || !base64InputValidation.isValid" @click="downloadFile()">
         Download file
       </c-button>
-    </n-space>
+    </div>
   </c-card>
 
   <c-card title="File to base64">
@@ -24,10 +26,11 @@
       </n-upload-dragger>
     </n-upload>
 
-    <n-input :value="fileBase64" type="textarea" readonly placeholder="File in base64 will be here" />
-    <n-space justify="center">
+    <c-input-text :value="fileBase64" multiline readonly placeholder="File in base64 will be here" rows="5" mb-2 />
+
+    <div flex justify-center>
       <c-button @click="copyFileBase64()"> Copy </c-button>
-    </n-space>
+    </div>
   </c-card>
 </template>
 
@@ -77,11 +80,6 @@ async function onUpload({ file: { file } }: { file: UploadFileInfo }) {
 </script>
 
 <style lang="less" scoped>
-.n-input,
-.n-upload {
-  margin-bottom: 15px;
-}
-
 ::v-deep(.n-upload-trigger) {
   width: 100%;
 }

@@ -133,6 +133,10 @@ const appTheme = useAppTheme();
 const textareaRef = ref<HTMLTextAreaElement>();
 const inputWrapperRef = ref<HTMLElement>();
 
+defineExpose({
+  inputWrapperRef,
+});
+
 watch(
   value,
   () => {

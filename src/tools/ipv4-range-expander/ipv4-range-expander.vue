@@ -2,14 +2,23 @@
   <div>
     <n-space item-style="flex:1 1 0">
       <div>
-        <n-space item-style="flex:1 1 0">
-          <n-form-item label="Start address" v-bind="startIpValidation.attrs as any">
-            <n-input v-model:value="rawStartAddress" placeholder="Start IPv4 address..." />
-          </n-form-item>
-          <n-form-item label="End address" v-bind="endIpValidation.attrs as any">
-            <n-input v-model:value="rawEndAddress" placeholder="End IPv4 address..." />
-          </n-form-item>
-        </n-space>
+        <div mb-4 flex gap-4>
+          <c-input-text
+            v-model:value="rawStartAddress"
+            label="Start address"
+            placeholder="Start IPv4 address..."
+            :validation="startIpValidation"
+            clearable
+          />
+
+          <c-input-text
+            v-model:value="rawEndAddress"
+            label="End address"
+            placeholder="End IPv4 address..."
+            :validation="endIpValidation"
+            clearable
+          />
+        </div>
 
         <n-table v-if="showResult" data-test-id="result">
           <thead>
