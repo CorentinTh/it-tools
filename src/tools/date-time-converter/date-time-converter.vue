@@ -1,25 +1,26 @@
 <template>
   <div>
-    <n-form-item :show-label="false" v-bind="validation.attrs as any">
-      <n-input-group>
-        <n-input
-          v-model:value="inputDate"
-          autofocus
-          :on-input="onDateInputChanged"
-          placeholder="Put you date string here..."
-          clearable
-          :input-props="{ 'data-test-id': 'date-time-converter-input' } as any"
-        />
+    <n-input-group>
+      <c-input-text
+        v-model:value="inputDate"
+        autofocus
+        placeholder="Put you date string here..."
+        clearable
+        test-id="date-time-converter-input"
+        :validation="validation"
+        @update:value="onDateInputChanged"
+      />
 
-        <n-select
-          v-model:value="formatIndex"
-          style="flex: 0 0 170px"
-          :options="formats.map(({ name }, i) => ({ label: name, value: i }))"
-          data-test-id="date-time-converter-format-select"
-        />
-      </n-input-group>
-    </n-form-item>
-    <n-divider style="margin-top: 0" />
+      <n-select
+        v-model:value="formatIndex"
+        style="flex: 0 0 170px"
+        :options="formats.map(({ name }, i) => ({ label: name, value: i }))"
+        data-test-id="date-time-converter-format-select"
+      />
+    </n-input-group>
+
+    <n-divider />
+
     <input-copyable
       v-for="{ name, fromDate } in formats"
       :key="name"
