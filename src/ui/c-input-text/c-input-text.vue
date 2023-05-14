@@ -1,32 +1,60 @@
 <template>
-  <div class="c-input-text" :class="{ disabled, error: !validation.isValid, 'label-left': labelPosition === 'left' }">
+  <div
+    class="c-input-text"
+    :class="{ disabled, error: !validation.isValid, 'label-left': labelPosition === 'left', multiline }"
+  >
     <label v-if="label" :for="id" class="label"> {{ label }} </label>
 
-    <div class="input-wrapper">
-      <slot name="prefix" />
+    <div class="feedback-wrapper">
+      <div ref="inputWrapperRef" class="input-wrapper">
+        <slot name="prefix" />
 
-      <input
-        :id="id"
-        v-model="value"
-        type="text"
-        class="input"
-        :placeholder="placeholder"
-        :readonly="readonly"
-        :disabled="disabled"
-        :data-test-id="testId"
-        :autocapitalize="autocapitalize ?? (rawText ? 'off' : undefined)"
-        :autocomplete="autocomplete ?? (rawText ? 'off' : undefined)"
-        :autocorrect="autocorrect ?? (rawText ? 'off' : undefined)"
-        :spellcheck="spellcheck ?? (rawText ? false : undefined)"
-      />
+        <textarea
+          v-if="multiline"
+          :id="id"
+          ref="textareaRef"
+          v-model="value"
+          class="input"
+          :placeholder="placeholder"
+          :readonly="readonly"
+          :disabled="disabled"
+          :data-test-id="testId"
+          :autocapitalize="autocapitalize ?? (rawText ? 'off' : undefined)"
+          :autocomplete="autocomplete ?? (rawText ? 'off' : undefined)"
+          :autocorrect="autocorrect ?? (rawText ? 'off' : undefined)"
+          :spellcheck="spellcheck ?? (rawText ? false : undefined)"
+          :rows="rows"
+        />
 
-      <c-button v-if="clearable && value" variant="text" circle size="small" @click="value = ''">
-        <icon-mdi-close />
-      </c-button>
-      <slot name="suffix" />
+        <input
+          v-else
+          :id="id"
+          v-model="value"
+          :type="htmlInputType"
+          class="input"
+          size="1"
+          :placeholder="placeholder"
+          :readonly="readonly"
+          :disabled="disabled"
+          :data-test-id="testId"
+          :autocapitalize="autocapitalize ?? (rawText ? 'off' : undefined)"
+          :autocomplete="autocomplete ?? (rawText ? 'off' : undefined)"
+          :autocorrect="autocorrect ?? (rawText ? 'off' : undefined)"
+          :spellcheck="spellcheck ?? (rawText ? false : undefined)"
+        />
+
+        <c-button v-if="clearable && value" variant="text" circle size="small" @click="value = ''">
+          <icon-mdi-close />
+        </c-button>
+
+        <c-button v-if="type === 'password'" variant="text" circle size="small" @click="showPassword = !showPassword">
+          <icon-mdi-eye v-if="!showPassword" />
+          <icon-mdi-eye-off v-if="showPassword" />
+        </c-button>
+        <slot name="suffix" />
+      </div>
+      <span v-if="!validation.isValid" class="feedback"> {{ validation.message }} </span>
     </div>
-
-    <span v-if="!validation.isValid" class="feedback"> {{ validation.message }} </span>
   </div>
 </template>
 
@@ -45,6 +73,7 @@ const props = withDefaults(
     readonly?: boolean;
     disabled?: boolean;
     validationRules?: UseValidationRule<string>[];
+    validation?: ReturnType<typeof useValidation>;
     labelPosition?: 'top' | 'left';
     labelWidth?: string;
     labelAlign?: 'left' | 'right';
@@ -55,6 +84,10 @@ const props = withDefaults(
     autocorrect?: 'on' | 'off' | string;
     spellcheck?: 'true' | 'false' | boolean;
     rawText?: boolean;
+    type?: 'text' | 'password';
+    multiline?: boolean;
+    rows?: number | string;
+    autosize?: boolean;
   }>(),
   {
     value: '',
@@ -64,6 +97,7 @@ const props = withDefaults(
     readonly: false,
     disabled: false,
     validationRules: () => [],
+    validation: undefined,
     labelPosition: 'top',
     labelWidth: 'auto',
     labelAlign: 'left',
@@ -74,20 +108,58 @@ const props = withDefaults(
     autocorrect: undefined,
     spellcheck: undefined,
     rawText: false,
+    type: 'text',
+    multiline: false,
+    rows: 3,
+    autosize: false,
   },
 );
 const emit = defineEmits(['update:value']);
 const value = useVModel(props, 'value', emit);
+const showPassword = ref(false);
 
-const { id, placeholder, label, validationRules, labelPosition, labelWidth, labelAlign } = toRefs(props);
+const { id, placeholder, label, validationRules, labelPosition, labelWidth, labelAlign, autosize } = toRefs(props);
 
-const validation = useValidation({
-  rules: validationRules,
-  source: value,
-});
+const validation =
+  props.validation ??
+  useValidation({
+    rules: validationRules,
+    source: value,
+  });
 
 const theme = useTheme();
 const appTheme = useAppTheme();
+
+const textareaRef = ref<HTMLTextAreaElement>();
+const inputWrapperRef = ref<HTMLElement>();
+
+watch(
+  value,
+  () => {
+    if (props.multiline && autosize.value) {
+      resizeTextarea();
+    }
+  },
+  { immediate: true },
+);
+
+function resizeTextarea() {
+  if (!textareaRef.value || !inputWrapperRef.value) {
+    return;
+  }
+
+  const { scrollHeight } = textareaRef.value;
+
+  inputWrapperRef.value.style.height = `${scrollHeight + 2}px`;
+}
+
+const htmlInputType = computed(() => {
+  if (props.type === 'password' && !showPassword.value) {
+    return 'password';
+  }
+
+  return 'text';
+});
 </script>
 
 <style lang="less" scoped>
@@ -114,29 +186,55 @@ const appTheme = useAppTheme();
       }
     }
 
-    & > .feedback {
+    & .feedback {
       color: v-bind('appTheme.error.color');
     }
   }
 
   & > .label {
+    flex-shrink: 0;
     margin-bottom: 5px;
     flex: 0 0 v-bind('labelWidth');
     text-align: v-bind('labelAlign');
-    padding-right: 10px;
+    padding-right: 12px;
   }
 
-  .input-wrapper {
+  .feedback-wrapper {
     flex: 1 1 0;
     min-width: 0;
-
+  }
+  .input-wrapper {
     display: flex;
     flex-direction: row;
     align-items: center;
     background-color: v-bind('theme.backgroundColor');
+    color: transparent;
     border: 1px solid v-bind('theme.borderColor');
     border-radius: 4px;
     padding: 0 4px 0 12px;
+    transition: border-color 0.2s ease-in-out;
+
+    .multiline& {
+      resize: vertical;
+      overflow: hidden;
+
+      & > textarea {
+        height: 100%;
+        resize: none;
+        word-break: break-word;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+        border: none;
+        outline: none;
+        font-family: inherit;
+        font-size: inherit;
+        color: v-bind('appTheme.text.baseColor');
+
+        &::placeholder {
+          color: v-bind('appTheme.text.mutedColor');
+        }
+      }
+    }
 
     & > .input {
       flex: 1 1 0;
@@ -144,7 +242,6 @@ const appTheme = useAppTheme();
 
       padding: 8px 0;
       outline: none;
-      transition: border-color 0.2s ease-in-out;
       background-color: transparent;
       background-image: none;
       -webkit-box-shadow: none;
@@ -159,12 +256,13 @@ const appTheme = useAppTheme();
       }
     }
 
-    &:hover,
-    &:focus {
+    &:hover {
       border-color: v-bind('appTheme.primary.color');
     }
 
-    &:focus {
+    &:focus-within {
+      border-color: v-bind('appTheme.primary.color');
+
       background-color: v-bind('theme.focus.backgroundColor');
     }
   }
@@ -173,11 +271,11 @@ const appTheme = useAppTheme();
     border-color: v-bind('appTheme.error.color');
 
     &:hover,
-    &:focus {
+    &:focus-within {
       border-color: v-bind('appTheme.error.color');
     }
 
-    &:focus {
+    &:focus-within {
       background-color: v-bind('appTheme.error.color + 22');
     }
   }
@@ -186,7 +284,7 @@ const appTheme = useAppTheme();
     opacity: 0.5;
 
     &:hover,
-    &:focus {
+    &:focus-within {
       border-color: v-bind('theme.borderColor');
     }
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <n-form-item :show-label="false" v-bind="validation.attrs">
+    <n-form-item :show-label="false" v-bind="validation.attrs as any">
       <n-input-group>
         <n-input
           v-model:value="inputDate"
@@ -8,7 +8,7 @@
           :on-input="onDateInputChanged"
           placeholder="Put you date string here..."
           clearable
-          :input-props="{ 'data-test-id': 'date-time-converter-input' }"
+          :input-props="{ 'data-test-id': 'date-time-converter-input' } as any"
         />
 
         <n-select
@@ -20,16 +20,19 @@
       </n-input-group>
     </n-form-item>
     <n-divider style="margin-top: 0" />
-    <div v-for="{ name, fromDate } in formats" :key="name" mt-1>
-      <n-input-group>
-        <n-input-group-label style="flex: 0 0 170px"> {{ name }}: </n-input-group-label>
-        <input-copyable
-          :value="formatDateUsingFormatter(fromDate, normalizedDate)"
-          placeholder="Invalid date..."
-          :input-props="{ 'data-test-id': name }"
-        />
-      </n-input-group>
-    </div>
+    <input-copyable
+      v-for="{ name, fromDate } in formats"
+      :key="name"
+      :label="name"
+      label-width="150px"
+      label-position="left"
+      label-align="right"
+      :value="formatDateUsingFormatter(fromDate, normalizedDate)"
+      placeholder="Invalid date..."
+      :test-id="name"
+      readonly
+      mt-2
+    />
   </div>
 </template>
 

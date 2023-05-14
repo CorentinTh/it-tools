@@ -1,11 +1,15 @@
 <template>
   <n-scrollbar style="flex: 1" x-scrollable>
-    <n-space :wrap="false" style="flex: 1" justify="center" :size="0" mb-5>
+    <n-space :wrap="false" style="flex: 1" justify="center" :size="12" mb-5>
       <div v-for="(suite, index) of suites" :key="index">
-        <c-card style="width: 292px; margin: 0 8px 5px">
-          <n-form-item label="Suite name:" :show-feedback="false" label-placement="left">
-            <n-input v-model:value="suite.title" placeholder="Suite name..." />
-          </n-form-item>
+        <c-card style="width: 294px">
+          <c-input-text
+            v-model:value="suite.title"
+            label-position="left"
+            label="Suite name"
+            placeholder="Suite name..."
+            clearable
+          />
 
           <n-divider></n-divider>
           <n-form-item label="Suite values" :show-feedback="false">
@@ -33,9 +37,7 @@
   <div style="flex: 0 0 100%">
     <div style="max-width: 600px; margin: 0 auto">
       <n-space justify="center">
-        <n-form-item label="Unit:" label-placement="left">
-          <n-input v-model:value="unit" placeholder="Unit (eg: ms)" />
-        </n-form-item>
+        <c-input-text v-model:value="unit" placeholder="Unit (eg: ms)" label="Unit" label-position="left" mb-4 />
 
         <c-button
           @click="

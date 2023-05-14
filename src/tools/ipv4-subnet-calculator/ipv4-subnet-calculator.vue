@@ -1,8 +1,12 @@
 <template>
   <div>
-    <n-form-item label="An IPv4 address with or without mask" v-bind="validationAttrs">
-      <n-input v-model:value="ip" />
-    </n-form-item>
+    <c-input-text
+      v-model:value="ip"
+      label="An IPv4 address with or without mask"
+      placeholder="The ipv4 address..."
+      :validation-rules="ipValidationRules"
+      mb-4
+    />
 
     <div v-if="networkInfo">
       <n-table>
@@ -37,7 +41,6 @@
 import { computed } from 'vue';
 import { Netmask } from 'netmask';
 import { withDefaultOnError } from '@/utils/defaults';
-import { useValidation } from '@/composable/validation';
 import { isNotThrowing } from '@/utils/boolean';
 import { useStorage } from '@vueuse/core';
 import { ArrowLeft, ArrowRight } from '@vicons/tabler';
@@ -50,15 +53,12 @@ const getNetworkInfo = (address: string) => new Netmask(address.trim());
 
 const networkInfo = computed(() => withDefaultOnError(() => getNetworkInfo(ip.value), undefined));
 
-const { attrs: validationAttrs } = useValidation({
-  source: ip,
-  rules: [
-    {
-      message: 'We cannot parse this address, check the format',
-      validator: (value) => isNotThrowing(() => getNetworkInfo(value.trim())),
-    },
-  ],
-});
+const ipValidationRules = [
+  {
+    message: 'We cannot parse this address, check the format',
+    validator: (value: string) => isNotThrowing(() => getNetworkInfo(value.trim())),
+  },
+];
 
 const sections: {
   label: string;

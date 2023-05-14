@@ -7,12 +7,15 @@
           type="textarea"
           placeholder="The string to cypher"
           :autosize="{ minRows: 4 }"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
         />
       </n-form-item>
       <n-space vertical>
-        <n-form-item label="Your secret key:" :show-feedback="false">
-          <n-input v-model:value="cypherSecret" />
-        </n-form-item>
+        <c-input-text v-model:value="cypherSecret" label="Your secret key:" clearable raw-text />
+
         <n-form-item label="Encryption algorithm:" :show-feedback="false">
           <n-select
             v-model:value="cypherAlgo"
@@ -43,12 +46,15 @@
           type="textarea"
           placeholder="The string to cypher"
           :autosize="{ minRows: 4 }"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
         />
       </n-form-item>
       <n-space vertical>
-        <n-form-item label="Your secret key:" :show-feedback="false">
-          <n-input v-model:value="decryptSecret" />
-        </n-form-item>
+        <c-input-text v-model:value="decryptSecret" label="Your secret key:" clearable raw-text />
+
         <n-form-item label="Encryption algorithm:" :show-feedback="false">
           <n-select
             v-model:value="decryptAlgo"

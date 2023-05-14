@@ -1,7 +1,8 @@
 import { describe, expect, it, beforeEach } from 'vitest';
-import { shallowMount } from '@vue/test-utils';
+import { shallowMount, mount } from '@vue/test-utils';
 import { setActivePinia, createPinia } from 'pinia';
 import _ from 'lodash';
+import { useValidation } from '@/composable/validation';
 import CInputText from './c-input-text.vue';
 
 describe('CInputText', () => {
@@ -71,10 +72,28 @@ describe('CInputText', () => {
 
   it('renders a feedback message for invalid rules', async () => {
     const wrapper = shallowMount(CInputText, {
-      props: { rules: [{ validator: () => false, message: 'Message' }] },
+      props: { validationRules: [{ validator: () => false, message: 'Message' }] },
     });
 
-    expect(wrapper.get('.feedback').text()).to.equal('Message');
+    const feedback = wrapper.find('.feedback');
+    expect(feedback.exists()).to.equal(true);
+    expect(feedback.text()).to.equal('Message');
+  });
+
+  it('if the value become valid according to rules, the feedback disappear', async () => {
+    const wrapper = shallowMount(CInputText, {
+      props: {
+        validationRules: [{ validator: (value: string) => value === 'Hello', message: 'Value should be Hello' }],
+      },
+    });
+
+    const feedback = wrapper.find('.feedback');
+    expect(feedback.exists()).to.equal(true);
+    expect(feedback.text()).to.equal('Value should be Hello');
+
+    await wrapper.setProps({ value: 'Hello' });
+
+    expect(wrapper.find('.feedback').exists()).to.equal(false);
   });
 
   it('feedback does not render for valid rules', async () => {
@@ -83,5 +102,59 @@ describe('CInputText', () => {
     });
 
     expect(wrapper.find('.feedback').exists()).to.equal(false);
+  });
+
+  it('renders a feedback message for invalid custom validation wrapper', async () => {
+    const wrapper = shallowMount(CInputText, {
+      props: {
+        validation: useValidation({ source: ref(), rules: [{ validator: () => false, message: 'Message' }] }),
+      },
+    });
+
+    const feedback = wrapper.find('.feedback');
+    expect(feedback.exists()).to.equal(true);
+    expect(feedback.text()).to.equal('Message');
+  });
+
+  it('feedback does not render for valid custom validation wrapper', async () => {
+    const wrapper = shallowMount(CInputText, {
+      props: {
+        validation: useValidation({ source: ref(), rules: [{ validator: () => true, message: 'Message' }] }),
+      },
+    });
+    expect(wrapper.find('.feedback').exists()).to.equal(false);
+  });
+
+  it('if the value become valid according to the custom validation wrapper, the feedback disappear', async () => {
+    const source = ref('');
+
+    const wrapper = shallowMount(CInputText, {
+      props: {
+        validation: useValidation({
+          source,
+          rules: [{ validator: (value: string) => value === 'Hello', message: 'Value should be Hello' }],
+        }),
+      },
+    });
+
+    const feedback = wrapper.find('.feedback');
+    expect(feedback.exists()).to.equal(true);
+    expect(feedback.text()).to.equal('Value should be Hello');
+
+    source.value = 'Hello';
+
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.feedback').exists()).to.equal(false);
+  });
+
+  it('[prop:testId] renders a test id on the input', async () => {
+    const wrapper = mount(CInputText, {
+      props: {
+        testId: 'TEST',
+      },
+    });
+
+    expect(wrapper.get('input').attributes('data-test-id')).to.equal('TEST');
   });
 });

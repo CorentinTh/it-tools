@@ -1,5 +1,5 @@
 <template>
-  <n-form-item label="Your first json" v-bind="leftJsonValidation.attrs">
+  <n-form-item label="Your first json" v-bind="leftJsonValidation.attrs as any">
     <n-input
       v-model:value="rawLeftJson"
       placeholder="Paste your first json here..."
@@ -9,10 +9,10 @@
       autocorrect="off"
       autocapitalize="off"
       spellcheck="false"
-      :input-props="{ 'data-test-id': 'leftJson' }"
+      :input-props="{ 'data-test-id': 'leftJson' }  as any"
     />
   </n-form-item>
-  <n-form-item label="Your json to compare" v-bind="rightJsonValidation.attrs">
+  <n-form-item label="Your json to compare" v-bind="rightJsonValidation.attrs as any">
     <n-input
       v-model:value="rawRightJson"
       placeholder="Paste your json to compare here..."
@@ -22,7 +22,7 @@
       autocorrect="off"
       autocapitalize="off"
       spellcheck="false"
-      :input-props="{ 'data-test-id': 'rightJson' }"
+      :input-props="{ 'data-test-id': 'rightJson' }  as any"
     />
   </n-form-item>
 

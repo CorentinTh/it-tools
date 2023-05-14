@@ -16,7 +16,8 @@
           :validation-status="entropyValidation.status"
         >
           <n-input-group>
-            <n-input v-model:value="entropy" placeholder="Your string..." />
+            <c-input-text v-model:value="entropy" placeholder="Your string..." />
+
             <c-button @click="refreshEntropy">
               <n-icon size="22">
                 <Refresh />
@@ -37,15 +38,7 @@
       :validation-status="mnemonicValidation.status"
     >
       <n-input-group>
-        <n-input
-          v-model:value="passphrase"
-          style="text-align: center; flex: 1"
-          placeholder="Your mnemonic..."
-          autocomplete="off"
-          autocorrect="off"
-          autocapitalize="off"
-          spellcheck="false"
-        />
+        <c-input-text v-model:value="passphrase" placeholder="Your mnemonic..." raw-text />
 
         <c-button @click="copyPassphrase">
           <n-icon size="22" :component="Copy" />

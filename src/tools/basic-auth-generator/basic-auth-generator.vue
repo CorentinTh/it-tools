@@ -1,17 +1,15 @@
 <template>
   <div>
-    <n-form-item label="Username">
-      <n-input v-model:value="username" placeholder="Your username..." clearable />
-    </n-form-item>
-    <n-form-item label="Password">
-      <n-input
-        v-model:value="password"
-        placeholder="Your password..."
-        type="password"
-        show-password-on="click"
-        clearable
-      />
-    </n-form-item>
+    <c-input-text v-model:value="username" label="Username" placeholder="Your username..." clearable raw-text mb-5 />
+    <c-input-text
+      v-model:value="password"
+      label="Password"
+      placeholder="Your password..."
+      clearable
+      raw-text
+      mb-2
+      type="password"
+    />
 
     <c-card>
       <n-statistic label="Authorization header:" class="header">

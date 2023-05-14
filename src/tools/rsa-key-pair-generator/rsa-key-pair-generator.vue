@@ -1,7 +1,7 @@
 <template>
   <div style="flex: 0 0 100%">
     <n-space item-style="flex: 1 1 0" style="margin: 0 auto; max-width: 600px" justify="center">
-      <n-form-item label="Bits :" v-bind="bitsValidationAttrs" label-placement="left" label-width="100">
+      <n-form-item label="Bits :" v-bind="bitsValidationAttrs as any" label-placement="left" label-width="100">
         <n-input-number v-model:value="bits" min="256" max="16384" step="8" />
       </n-form-item>
 

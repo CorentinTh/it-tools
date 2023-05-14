@@ -36,37 +36,39 @@
               />
             </n-form-item>
 
-            <n-form-item label="Separator" label-placement="left" label-width="120" :show-feedback="false" mb-2>
-              <n-input v-model:value="conversionConfig.separator" placeholder="," />
-            </n-form-item>
+            <c-input-text
+              v-model:value="conversionConfig.separator"
+              label="Separator"
+              label-position="left"
+              label-width="120px"
+              label-align="right"
+              mb-2
+              placeholder=","
+            />
 
             <n-form-item label="Wrap item" label-placement="left" label-width="120" :show-feedback="false" mb-2>
-              <n-input-group>
-                <n-input
-                  v-model:value="conversionConfig.itemPrefix"
-                  placeholder="Item prefix"
-                  data-test-id="itemPrefix"
-                />
-                <n-input
-                  v-model:value="conversionConfig.itemSuffix"
-                  placeholder="Item suffix"
-                  data-test-id="itemSuffix"
-                />
-              </n-input-group>
+              <c-input-text
+                v-model:value="conversionConfig.itemPrefix"
+                placeholder="Item prefix"
+                test-id="itemPrefix"
+              />
+              <c-input-text
+                v-model:value="conversionConfig.itemSuffix"
+                placeholder="Item suffix"
+                test-id="itemSuffix"
+              />
             </n-form-item>
             <n-form-item label="Wrap list" label-placement="left" label-width="120" :show-feedback="false" mb-2>
-              <n-input-group>
-                <n-input
-                  v-model:value="conversionConfig.listPrefix"
-                  placeholder="List prefix"
-                  data-test-id="listPrefix"
-                />
-                <n-input
-                  v-model:value="conversionConfig.listSuffix"
-                  placeholder="List suffix"
-                  data-test-id="listSuffix"
-                />
-              </n-input-group>
+              <c-input-text
+                v-model:value="conversionConfig.listPrefix"
+                placeholder="List prefix"
+                test-id="listPrefix"
+              />
+              <c-input-text
+                v-model:value="conversionConfig.listSuffix"
+                placeholder="List suffix"
+                test-id="listSuffix"
+              />
             </n-form-item>
           </div>
         </div>

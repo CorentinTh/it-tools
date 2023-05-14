@@ -1,6 +1,6 @@
 <template>
   <div>
-    <n-form-item label="MAC address:" v-bind="validationAttrs">
+    <n-form-item label="MAC address:" v-bind="validationAttrs as any">
       <n-input
         v-model:value="macAddress"
         size="large"
