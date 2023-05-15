@@ -1,6 +1,6 @@
 <template>
   <div>
-    <c-input-text v-model:value="rawIpAddress" label="The ipv4 address:" placeholder="The ipv4 address..." readonly />
+    <c-input-text v-model:value="rawIpAddress" label="The ipv4 address:" placeholder="The ipv4 address..." />
 
     <n-divider />
 
