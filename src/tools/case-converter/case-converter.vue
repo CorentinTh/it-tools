@@ -1,9 +1,15 @@
 <template>
   <c-card>
     <n-form label-width="120" label-placement="left" :show-feedback="false">
-      <n-form-item label="Your string:">
-        <n-input v-model:value="input" />
-      </n-form-item>
+      <c-input-text
+        v-model:value="input"
+        label="Your string"
+        label-position="left"
+        label-width="120px"
+        label-align="right"
+        placeholder="Your string..."
+        raw-text
+      />
 
       <n-divider />
 

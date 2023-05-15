@@ -2,28 +2,51 @@
   <div v-for="buttonVariant of buttonVariants" :key="buttonVariant">
     <h2>{{ _.capitalize(buttonVariant) }}</h2>
 
-    <c-button v-for="buttonType of buttonTypes" :key="buttonType" :variant="buttonVariant" :type="buttonType" mx-1>
-      Button
-    </c-button>
+    <div v-for="buttonSize of buttonSizes" :key="buttonSize" mb-2>
+      <c-button
+        v-for="buttonType of buttonTypes"
+        :key="buttonType"
+        :variant="buttonVariant"
+        :type="buttonType"
+        :size="buttonSize"
+        mx-1
+      >
+        Button
+      </c-button>
 
-    <c-button
-      v-for="buttonType of buttonTypes"
-      :key="buttonType"
-      :variant="buttonVariant"
-      :type="buttonType"
-      circle
-      mx-1
-    >
-      A
-    </c-button>
+      <c-button
+        v-for="buttonType of buttonTypes"
+        :key="buttonType"
+        :variant="buttonVariant"
+        :type="buttonType"
+        :size="buttonSize"
+        circle
+        mx-1
+      >
+        A
+      </c-button>
+
+      <c-button
+        v-for="buttonType of buttonTypes"
+        :key="buttonType"
+        :variant="buttonVariant"
+        :type="buttonType"
+        :size="buttonSize"
+        circle
+        mx-1
+      >
+        <icon-mdi-content-copy />
+      </c-button>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import _ from 'lodash';
 
-const buttonVariants = ['basic', 'text'];
-const buttonTypes = ['default', 'primary'];
+const buttonVariants = ['basic', 'text'] as const;
+const buttonTypes = ['default', 'primary', 'warning'] as const;
+const buttonSizes = ['small', 'medium', 'large'] as const;
 </script>
 
 <style lang="less" scoped></style>

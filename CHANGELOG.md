@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## Version 2023.05.14-77f2efc
+
+### Features
+- **list-converter**: a small converter who deals with column based data and do some stuff with it (#387) (83a7b3b)
+- **new tool**: phone parser and normalizer (ce3150c)
+
+### Bug fixes
+- **phone-parser**: use default country code (a43c546)
+- **home**: prevent weird blue border on card (3f6c8f0)
+
+### Refactoring
+- **ui**: replaced some n-input with c-input-text (77f2efc)
+
+### Chores
+- **issues**: updated new tool request issue template (edae4c6)
+
+### Ui-lib
+- **new-component**: added text input component in the c-lib (aad8d84)
+- **button**: size variants (401f13f)
+
 ## Version 2023.04.23-92bd835
 
 ### Features

@@ -9,25 +9,25 @@
         />
       </n-form-item>
       <n-form-item label="color name:">
-        <input-copyable v-model:value="name" :on-input="(v: string) => onInputUpdated(v, 'name')" />
+        <input-copyable v-model:value="name" @update:value="(v: string) => onInputUpdated(v, 'name')" />
       </n-form-item>
       <n-form-item label="hex:">
-        <input-copyable v-model:value="hex" :on-input="(v: string) => onInputUpdated(v, 'hex')" />
+        <input-copyable v-model:value="hex" @update:value="(v: string) => onInputUpdated(v, 'hex')" />
       </n-form-item>
       <n-form-item label="rgb:">
-        <input-copyable v-model:value="rgb" :on-input="(v: string) => onInputUpdated(v, 'rgb')" />
+        <input-copyable v-model:value="rgb" @update:value="(v: string) => onInputUpdated(v, 'rgb')" />
       </n-form-item>
       <n-form-item label="hsl:">
-        <input-copyable v-model:value="hsl" :on-input="(v: string) => onInputUpdated(v, 'hsl')" />
+        <input-copyable v-model:value="hsl" @update:value="(v: string) => onInputUpdated(v, 'hsl')" />
       </n-form-item>
       <n-form-item label="hwb:">
-        <input-copyable v-model:value="hwb" :on-input="(v: string) => onInputUpdated(v, 'hwb')" />
+        <input-copyable v-model:value="hwb" @update:value="(v: string) => onInputUpdated(v, 'hwb')" />
       </n-form-item>
       <n-form-item label="lch:">
-        <input-copyable v-model:value="lch" :on-input="(v: string) => onInputUpdated(v, 'lch')" />
+        <input-copyable v-model:value="lch" @update:value="(v: string) => onInputUpdated(v, 'lch')" />
       </n-form-item>
       <n-form-item label="cmyk:">
-        <input-copyable v-model:value="cmyk" :on-input="(v: string) => onInputUpdated(v, 'cmyk')" />
+        <input-copyable v-model:value="cmyk" @update:value="(v: string) => onInputUpdated(v, 'cmyk')" />
       </n-form-item>
     </n-form>
   </c-card>
@@ -54,15 +54,19 @@ const cmyk = ref('');
 const lch = ref('');
 
 function onInputUpdated(value: string, omit: string) {
-  const color = colord(value);
+  try {
+    const color = colord(value);
 
-  if (omit !== 'name') name.value = color.toName({ closest: true }) ?? '';
-  if (omit !== 'hex') hex.value = color.toHex();
-  if (omit !== 'rgb') rgb.value = color.toRgbString();
-  if (omit !== 'hsl') hsl.value = color.toHslString();
-  if (omit !== 'hwb') hwb.value = color.toHwbString();
-  if (omit !== 'cmyk') cmyk.value = color.toCmykString();
-  if (omit !== 'lch') lch.value = color.toLchString();
+    if (omit !== 'name') name.value = color.toName({ closest: true }) ?? '';
+    if (omit !== 'hex') hex.value = color.toHex();
+    if (omit !== 'rgb') rgb.value = color.toRgbString();
+    if (omit !== 'hsl') hsl.value = color.toHslString();
+    if (omit !== 'hwb') hwb.value = color.toHwbString();
+    if (omit !== 'cmyk') cmyk.value = color.toCmykString();
+    if (omit !== 'lch') lch.value = color.toLchString();
+  } catch {
+    //
+  }
 }
 
 onInputUpdated(hex.value, 'hex');

@@ -3,46 +3,63 @@
     <n-form-item label="Encode URL safe" label-placement="left">
       <n-switch v-model:value="encodeUrlSafe" />
     </n-form-item>
-    <n-form-item label="String to encode">
-      <n-input v-model:value="textInput" type="textarea" placeholder="Put your string here..." rows="5" />
-    </n-form-item>
+    <c-input-text
+      v-model:value="textInput"
+      multiline
+      placeholder="Put your string here..."
+      rows="5"
+      label="String to encode"
+      raw-text
+      mb-5
+    />
 
-    <n-form-item label="Base64 of string">
-      <n-input
-        :value="base64Output"
-        type="textarea"
-        readonly
-        placeholder="The base64 encoding of your string will be here"
-        rows="5"
-      />
-    </n-form-item>
+    <c-input-text
+      label="Base64 of string"
+      :value="base64Output"
+      multiline
+      readonly
+      placeholder="The base64 encoding of your string will be here"
+      rows="5"
+      mb-5
+    />
 
-    <n-space justify="center">
+    <div flex justify-center>
       <c-button @click="copyTextBase64()"> Copy base64 </c-button>
-    </n-space>
+    </div>
   </c-card>
 
   <c-card title="Base64 to string">
     <n-form-item label="Decode URL safe" label-placement="left">
       <n-switch v-model:value="decodeUrlSafe" />
     </n-form-item>
-    <n-form-item label="Base64 string to decode" v-bind="b64Validation.attrs">
-      <n-input v-model:value="base64Input" type="textarea" placeholder="Your base64 string..." rows="5" />
-    </n-form-item>
+    <c-input-text
+      v-model:value="base64Input"
+      multiline
+      placeholder="Your base64 string..."
+      rows="5"
+      :validation-rules="b64ValidationRules"
+      label="Base64 string to decode"
+      mb-5
+    />
 
-    <n-form-item label="Decoded string">
-      <n-input :value="textOutput" type="textarea" readonly placeholder="The decoded string will be here" rows="5" />
-    </n-form-item>
+    <c-input-text
+      v-model:value="textOutput"
+      label="Decoded string"
+      placeholder="The decoded string will be here"
+      multiline
+      rows="5"
+      readonly
+      mb-5
+    />
 
-    <n-space justify="center">
+    <div flex justify-center>
       <c-button @click="copyText()"> Copy decoded string </c-button>
-    </n-space>
+    </div>
   </c-card>
 </template>
 
 <script setup lang="ts">
 import { useCopy } from '@/composable/copy';
-import { useValidation } from '@/composable/validation';
 import { base64ToText, isValidBase64, textToBase64 } from '@/utils/base64';
 import { withDefaultOnError } from '@/utils/defaults';
 import { computed, ref } from 'vue';
@@ -59,8 +76,8 @@ const textOutput = computed(() =>
   withDefaultOnError(() => base64ToText(base64Input.value.trim(), decodeUrlSafe.value), ''),
 );
 const { copy: copyText } = useCopy({ source: textOutput, text: 'String copied to the clipboard' });
-const b64Validation = useValidation({
-  source: base64Input,
-  rules: [{ message: 'Invalid base64 string', validator: (value) => isValidBase64(value.trim(), decodeUrlSafe.value) }],
-});
+const b64ValidationRules = [
+  { message: 'Invalid base64 string', validator: (value: string) => isValidBase64(value.trim(), decodeUrlSafe.value) },
+];
+
 </script>

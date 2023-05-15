@@ -1,8 +1,12 @@
 <template>
   <div>
-    <n-form-item label="Your text to convert to NATO phonetic alphabet">
-      <n-input v-model:value="input" placeholder="Put your text here..." clearable />
-    </n-form-item>
+    <c-input-text
+      v-model:value="input"
+      label="Your text to convert to NATO phonetic alphabet"
+      placeholder="Put your text here..."
+      clearable
+      mb-5
+    />
 
     <n-space v-if="natoText" vertical>
       <n-text>Your text in NATO phonetic alphabet</n-text>

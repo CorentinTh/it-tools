@@ -27,6 +27,21 @@ const createTheme = ({ style }: { style: 'light' | 'dark' }) => {
   const theme = appThemes[style];
 
   return {
+    size: {
+      small: {
+        width: '28px',
+        fontSize: '12px',
+      },
+      medium: {
+        width: '34px',
+        fontSize: '14px',
+      },
+      large: {
+        width: '40px',
+        fontSize: '16px',
+      },
+    },
+
     basic: {
       default: createState({
         textColor: theme.text.baseColor,
@@ -41,10 +56,10 @@ const createTheme = ({ style }: { style: 'light' | 'dark' }) => {
         pressedBackground: darken(theme.primary.colorFaded, 30),
       }),
       warning: createState({
-        textColor: theme.text.baseColor,
-        backgroundColor: theme.warning.color,
-        hoverBackground: theme.warning.colorHover,
-        pressedBackground: theme.warning.colorPressed,
+        textColor: theme.warning.color,
+        backgroundColor: theme.warning.colorFaded,
+        hoverBackground: lighten(theme.warning.colorFaded, 30),
+        pressedBackground: darken(theme.warning.colorFaded, 30),
       }),
     },
     text: {
@@ -61,10 +76,10 @@ const createTheme = ({ style }: { style: 'light' | 'dark' }) => {
         pressedBackground: darken(theme.primary.colorFaded, 30),
       }),
       warning: createState({
-        textColor: theme.text.baseColor,
-        backgroundColor: theme.warning.color,
-        hoverBackground: theme.warning.colorHover,
-        pressedBackground: theme.warning.colorPressed,
+        textColor: darken(theme.warning.color, 20),
+        backgroundColor: 'transparent',
+        hoverBackground: theme.warning.colorFaded,
+        pressedBackground: darken(theme.warning.colorFaded, 30),
       }),
     },
   };
