@@ -61,6 +61,7 @@
 <script lang="ts" setup>
 import { generateRandomId } from '@/utils/random';
 import { useValidation, type UseValidationRule } from '@/composable/validation';
+import type { Ref } from 'vue';
 import { useTheme } from './c-input-text.theme';
 import { useAppTheme } from '../theme/themes';
 
@@ -73,6 +74,7 @@ const props = withDefaults(
     readonly?: boolean;
     disabled?: boolean;
     validationRules?: UseValidationRule<string>[];
+    validationWatch?: Ref<unknown>[];
     validation?: ReturnType<typeof useValidation>;
     labelPosition?: 'top' | 'left';
     labelWidth?: string;
@@ -97,6 +99,7 @@ const props = withDefaults(
     readonly: false,
     disabled: false,
     validationRules: () => [],
+    validationWatch: undefined,
     validation: undefined,
     labelPosition: 'top',
     labelWidth: 'auto',
@@ -125,6 +128,7 @@ const validation =
   useValidation({
     rules: validationRules,
     source: value,
+    watch: props.validationWatch,
   });
 
 const theme = useTheme();
