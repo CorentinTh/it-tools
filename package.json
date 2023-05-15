@@ -41,7 +41,7 @@
     "@tiptap/vue-3": "2.0.0-beta.220",
     "@vicons/material": "^0.12.0",
     "@vicons/tabler": "^0.12.0",
-    "@vueuse/core": "^8.9.4",
+    "@vueuse/core": "^10.1.2",
     "@vueuse/head": "^0.7.13",
     "@vueuse/router": "^9.13.0",
     "bcryptjs": "^2.4.3",
