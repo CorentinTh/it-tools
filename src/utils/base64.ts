@@ -1,17 +1,17 @@
 export { textToBase64, base64ToText, isValidBase64, removePotentialDataAndMimePrefix };
 
-function textToBase64(str: string, urlSafe = false) {
+function textToBase64(str: string, { makeUrlSafe = false }: { makeUrlSafe?: boolean } = {}) {
   const encoded = window.btoa(str);
-  return urlSafe ? makeUriSafe(encoded) : encoded;
+  return makeUrlSafe ? makeUriSafe(encoded) : encoded;
 }
 
-function base64ToText(str: string, urlSafe = false) {
-  if (!isValidBase64(str, urlSafe)) {
+function base64ToText(str: string, { makeUrlSafe = false }: { makeUrlSafe?: boolean } = {}) {
+  if (!isValidBase64(str, { makeUrlSafe: makeUrlSafe })) {
     throw new Error('Incorrect base64 string');
   }
 
   let cleanStr = removePotentialDataAndMimePrefix(str);
-  if (urlSafe) {
+  if (makeUrlSafe) {
     cleanStr = unURI(cleanStr);
   }
 
@@ -26,14 +26,14 @@ function removePotentialDataAndMimePrefix(str: string) {
   return str.replace(/^data:.*?;base64,/, '');
 }
 
-function isValidBase64(str: string, urlSafe = false) {
+function isValidBase64(str: string, { makeUrlSafe = false }: { makeUrlSafe?: boolean } = {}) {
   let cleanStr = removePotentialDataAndMimePrefix(str);
-  if (urlSafe) {
+  if (makeUrlSafe) {
     cleanStr = unURI(cleanStr);
   }
 
   try {
-    if (urlSafe) {
+    if (makeUrlSafe) {
       return removePotentialPadding(window.btoa(window.atob(cleanStr))) === cleanStr;
     }
     return window.btoa(window.atob(cleanStr)) === cleanStr;
