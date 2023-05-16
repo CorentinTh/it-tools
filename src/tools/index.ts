@@ -1,6 +1,7 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+import { tool as cameraRecorder } from './camera-recorder';
 import { tool as listConverter } from './list-converter';
 import { tool as phoneParserAndFormatter } from './phone-parser-and-formatter';
 import { tool as jsonDiff } from './json-diff';
@@ -99,8 +100,8 @@ export const toolsByCategory: ToolCategory[] = [
     ],
   },
   {
-    name: 'Images',
-    components: [qrCodeGenerator, svgPlaceholderGenerator],
+    name: 'Images and videos',
+    components: [qrCodeGenerator, svgPlaceholderGenerator, cameraRecorder],
   },
   {
     name: 'Development',

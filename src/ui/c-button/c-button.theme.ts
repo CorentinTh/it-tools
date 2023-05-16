@@ -61,6 +61,12 @@ const createTheme = ({ style }: { style: 'light' | 'dark' }) => {
         hoverBackground: lighten(theme.warning.colorFaded, 30),
         pressedBackground: darken(theme.warning.colorFaded, 30),
       }),
+      error: createState({
+        textColor: theme.error.color,
+        backgroundColor: theme.error.colorFaded,
+        hoverBackground: lighten(theme.error.colorFaded, 30),
+        pressedBackground: darken(theme.error.colorFaded, 30),
+      }),
     },
     text: {
       default: createState({
@@ -80,6 +86,12 @@ const createTheme = ({ style }: { style: 'light' | 'dark' }) => {
         backgroundColor: 'transparent',
         hoverBackground: theme.warning.colorFaded,
         pressedBackground: darken(theme.warning.colorFaded, 30),
+      }),
+      error: createState({
+        textColor: darken(theme.error.color, 20),
+        backgroundColor: 'transparent',
+        hoverBackground: theme.error.colorFaded,
+        pressedBackground: darken(theme.error.colorFaded, 30),
       }),
     },
   };

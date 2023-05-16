@@ -45,7 +45,7 @@
 import _ from 'lodash';
 
 const buttonVariants = ['basic', 'text'] as const;
-const buttonTypes = ['default', 'primary', 'warning'] as const;
+const buttonTypes = ['default', 'primary', 'warning', 'error'] as const;
 const buttonSizes = ['small', 'medium', 'large'] as const;
 </script>
 

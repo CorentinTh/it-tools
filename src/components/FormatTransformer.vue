@@ -4,10 +4,10 @@
     v-model:value="input"
     :placeholder="inputPlaceholder"
     :label="inputLabel"
-    multiline
-    autosize
     rows="20"
+    autosize
     raw-text
+    multiline
     test-id="input"
     :validation-rules="inputValidationRules"
   />
