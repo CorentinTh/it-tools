@@ -19,9 +19,9 @@
       />
     </n-form-item>
 
-    <n-space justify="center">
+    <div flex justify-center>
       <c-button @click="copyEscaped"> Copy </c-button>
-    </n-space>
+    </div>
   </c-card>
   <c-card title="Unescape html entities">
     <n-form-item label="Your escaped string :">
@@ -43,9 +43,9 @@
       />
     </n-form-item>
 
-    <n-space justify="center">
+    <div flex justify-center>
       <c-button @click="copyUnescaped"> Copy </c-button>
-    </n-space>
+    </div>
   </c-card>
 </template>
 

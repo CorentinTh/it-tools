@@ -1,9 +1,9 @@
 <template>
-  <n-space vertical :size="20">
-    <n-space align="center" justify="center">
+  <div>
+    <div flex items-center justify-center gap-3>
       Quantity :
       <n-input-number v-model:value="count" :min="1" :max="50" placeholder="UUID quantity" />
-    </n-space>
+    </div>
 
     <n-input
       style="text-align: center; font-family: monospace"
@@ -16,13 +16,14 @@
       autocorrect="off"
       autocapitalize="off"
       spellcheck="false"
+      my-3
     />
 
-    <n-space justify="center">
+    <div flex justify-center gap-3>
       <c-button autofocus @click="copy"> Copy </c-button>
       <c-button @click="refreshUUIDs"> Refresh </c-button>
-    </n-space>
-  </n-space>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">

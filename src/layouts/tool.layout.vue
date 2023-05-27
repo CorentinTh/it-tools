@@ -29,7 +29,7 @@ useHead(head);
   <base-layout>
     <div class="tool-layout">
       <div class="tool-header">
-        <n-space align="center" justify="space-between" :wrap="false">
+        <div flex flex-nowrap items-center justify-between>
           <n-h1>
             {{ route.meta.name }}
           </n-h1>
@@ -37,7 +37,7 @@ useHead(head);
           <div>
             <favorite-button :tool="{name: route.meta.name} as Tool" />
           </div>
-        </n-space>
+        </div>
 
         <div class="separator" />
 

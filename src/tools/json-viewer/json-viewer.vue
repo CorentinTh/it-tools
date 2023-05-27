@@ -1,13 +1,13 @@
 <template>
   <div style="flex: 0 0 100%">
-    <n-space style="margin: 0 auto; max-width: 600px" justify="center">
+    <div style="margin: 0 auto; max-width: 600px" flex justify-center gap-3>
       <n-form-item label="Sort keys :" label-placement="left" label-width="100">
         <n-switch v-model:value="sortKeys" />
       </n-form-item>
       <n-form-item label="Indent size :" label-placement="left" label-width="100" :show-feedback="false">
         <n-input-number v-model:value="indentSize" min="0" max="10" style="width: 100px" />
       </n-form-item>
-    </n-space>
+    </div>
   </div>
 
   <n-form-item

@@ -1,61 +1,56 @@
 <template>
   <div>
-    <n-space item-style="flex:1 1 0">
-      <div>
-        <div mb-4 flex gap-4>
-          <c-input-text
-            v-model:value="rawStartAddress"
-            label="Start address"
-            placeholder="Start IPv4 address..."
-            :validation="startIpValidation"
-            clearable
-          />
+    <div mb-4 flex gap-4>
+      <c-input-text
+        v-model:value="rawStartAddress"
+        label="Start address"
+        placeholder="Start IPv4 address..."
+        :validation="startIpValidation"
+        clearable
+      />
 
-          <c-input-text
-            v-model:value="rawEndAddress"
-            label="End address"
-            placeholder="End IPv4 address..."
-            :validation="endIpValidation"
-            clearable
-          />
-        </div>
+      <c-input-text
+        v-model:value="rawEndAddress"
+        label="End address"
+        placeholder="End IPv4 address..."
+        :validation="endIpValidation"
+        clearable
+      />
+    </div>
 
-        <n-table v-if="showResult" data-test-id="result">
-          <thead>
-            <tr>
-              <th scope="col">&nbsp;</th>
-              <th scope="col">old value</th>
-              <th scope="col">new value</th>
-            </tr>
-          </thead>
-          <tbody>
-            <result-row
-              v-for="{ label, getOldValue, getNewValue } in calculatedValues"
-              :key="label"
-              :label="label"
-              :old-value="getOldValue(result)"
-              :new-value="getNewValue(result)"
-            />
-          </tbody>
-        </n-table>
-        <n-alert
-          v-else-if="startIpValidation.isValid && endIpValidation.isValid"
-          title="Invalid combination of start and end IPv4 address"
-          type="error"
-        >
-          <n-space vertical>
-            <n-text depth="3">
-              The end IPv4 address is lower than the start IPv4 address. This is not valid and no result could be
-              calculated. In the most cases the solution to solve this problem is to change start and end address.
-            </n-text>
-            <c-button @click="onSwitchStartEndClicked">
-              <n-icon mr-2 :component="Exchange" depth="3" size="22" />
-              Switch start and end IPv4 address
-            </c-button>
-          </n-space>
-        </n-alert>
-      </div>
-    </n-space>
+    <n-table v-if="showResult" data-test-id="result">
+      <thead>
+        <tr>
+          <th scope="col">&nbsp;</th>
+          <th scope="col">old value</th>
+          <th scope="col">new value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <result-row
+          v-for="{ label, getOldValue, getNewValue } in calculatedValues"
+          :key="label"
+          :label="label"
+          :old-value="getOldValue(result)"
+          :new-value="getNewValue(result)"
+        />
+      </tbody>
+    </n-table>
+    <n-alert
+      v-else-if="startIpValidation.isValid && endIpValidation.isValid"
+      title="Invalid combination of start and end IPv4 address"
+      type="error"
+    >
+      <n-text depth="3" my-3 block>
+        The end IPv4 address is lower than the start IPv4 address. This is not valid and no result could be calculated.
+        In the most cases the solution to solve this problem is to change start and end address.
+      </n-text>
+
+      <c-button @click="onSwitchStartEndClicked">
+        <n-icon mr-2 :component="Exchange" depth="3" size="22" />
+        Switch start and end IPv4 address
+      </c-button>
+    </n-alert>
   </div>
 </template>
 

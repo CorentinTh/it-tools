@@ -14,9 +14,9 @@
 
     <textarea-copyable :value="dockerCompose" language="yaml" />
 
-    <n-space justify="center" mt-5>
+    <div mt-5 flex justify-center>
       <c-button :disabled="dockerCompose === ''" secondary @click="download"> Download docker-compose.yml </c-button>
-    </n-space>
+    </div>
 
     <div v-if="notComposable.length > 0">
       <n-alert title="This options are not translatable to docker-compose" type="info" mt-5>

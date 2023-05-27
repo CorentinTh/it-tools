@@ -12,7 +12,7 @@
             </template>
           </n-page-header>
 
-          <n-space mt-5>
+          <div mt-5 flex gap-2>
             <span v-for="{ label, getValue } in content" :key="label">
               <n-tooltip v-if="getValue(userAgentInfo)" trigger="hover">
                 <template #trigger>
@@ -23,12 +23,12 @@
                 {{ label }}
               </n-tooltip>
             </span>
-          </n-space>
-          <n-space vertical>
+          </div>
+          <div flex flex-col>
             <span v-for="{ label, getValue, undefinedFallback } in content" :key="label">
               <n-text v-if="getValue(userAgentInfo) === undefined" depth="3">{{ undefinedFallback }}</n-text>
             </span>
-          </n-space>
+          </div>
         </c-card>
       </n-gi>
     </n-grid>

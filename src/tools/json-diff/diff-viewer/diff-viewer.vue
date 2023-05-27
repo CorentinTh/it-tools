@@ -1,10 +1,10 @@
 <template>
   <div v-if="showResults">
-    <n-space justify="center">
+    <div flex justify-center>
       <n-form-item label="Only show differences" label-placement="left">
         <n-switch v-model:value="onlyShowDifferences" />
       </n-form-item>
-    </n-space>
+    </div>
 
     <c-card data-test-id="diff-result">
       <n-text v-if="jsonAreTheSame" depth="3" block text-center italic> The provided JSONs are the same </n-text>

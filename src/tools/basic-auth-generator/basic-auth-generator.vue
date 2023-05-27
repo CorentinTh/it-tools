@@ -18,9 +18,9 @@
         </n-scrollbar>
       </n-statistic>
     </c-card>
-    <n-space justify="center" mt-5>
+    <div mt-5 flex justify-center>
       <c-button @click="copy">Copy header</c-button>
-    </n-space>
+    </div>
   </div>
 </template>
 

@@ -18,9 +18,9 @@
 
     <n-input :value="loremIpsumText" type="textarea" placeholder="Your lorem ipsum..." readonly autosize mt-5 />
 
-    <n-space justify="center" mt-5>
+    <div mt-5 flex justify-center>
       <c-button autofocus @click="copy"> Copy </c-button>
-    </n-space>
+    </div>
   </c-card>
 </template>
 

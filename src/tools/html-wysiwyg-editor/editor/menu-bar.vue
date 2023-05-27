@@ -1,10 +1,10 @@
 <template>
-  <n-space align="center" :size="0">
+  <div flex items-center>
     <template v-for="(item, index) in items">
       <n-divider v-if="item.type === 'divider'" :key="`divider${index}`" vertical />
       <menu-bar-item v-else-if="item.type === 'button'" :key="index" v-bind="item" />
     </template>
-  </n-space>
+  </div>
 </template>
 
 <script setup lang="ts">

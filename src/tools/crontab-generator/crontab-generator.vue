@@ -16,7 +16,7 @@
 
     <n-divider />
 
-    <n-space justify="center">
+    <div flex justify-center>
       <n-form :show-feedback="false" label-width="170" label-placement="left">
         <n-form-item label="Verbose">
           <n-switch v-model:value="cronstrueConfig.verbose" />
@@ -28,7 +28,7 @@
           <n-switch v-model:value="cronstrueConfig.dayOfWeekStartIndexZero" />
         </n-form-item>
       </n-form>
-    </n-space>
+    </div>
   </c-card>
   <c-card>
     <pre>
@@ -42,8 +42,8 @@
 * * * * * * command</pre
     >
 
-    <n-space v-if="styleStore.isSmallScreen" vertical>
-      <c-card v-for="{ symbol, meaning, example, equivalent } in helpers" :key="symbol" important:border-none>
+    <div v-if="styleStore.isSmallScreen">
+      <c-card v-for="{ symbol, meaning, example, equivalent } in helpers" :key="symbol" mb-3 important:border-none>
         <div>
           Symbol: <strong>{{ symbol }}</strong>
         </div>
@@ -60,7 +60,7 @@
           Equivalent: <strong>{{ equivalent }}</strong>
         </div>
       </c-card>
-    </n-space>
+    </div>
     <n-table v-else size="small">
       <thead>
         <tr>

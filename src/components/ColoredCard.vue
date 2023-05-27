@@ -1,8 +1,6 @@
 <template>
   <c-card class="colored-card">
-    <n-space justify="space-between" align="center">
-      <n-icon class="icon" size="40" :component="icon" />
-    </n-space>
+    <n-icon class="icon" size="40" :component="icon" />
     <n-h3 class="title">
       <n-ellipsis>{{ title }}</n-ellipsis>
     </n-h3>

@@ -3,10 +3,10 @@
     <div class="port">
       {{ port }}
     </div>
-    <n-space justify="center">
+    <div flex justify-center gap-3>
       <c-button @click="copy"> Copy </c-button>
       <c-button @click="refreshPort"> Refresh </c-button>
-    </n-space>
+    </div>
   </c-card>
 </template>
 

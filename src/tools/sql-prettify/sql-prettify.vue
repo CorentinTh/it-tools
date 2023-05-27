@@ -1,7 +1,7 @@
 <template>
   <div style="flex: 0 0 100%">
-    <n-space item-style="flex:1 1 0" style="margin: 0 auto; max-width: 600px" :vertical="styleStore.isSmallScreen">
-      <n-form-item label="Dialect" label-width="500">
+    <div mx-auto style="max-width: 600px" flex gap-2 :class="{ 'flex-col': styleStore.isSmallScreen }">
+      <n-form-item label="Dialect" label-width="500" flex-1>
         <n-select
           v-model:value="config.language"
           :options="[
@@ -21,7 +21,7 @@
           ]"
         />
       </n-form-item>
-      <n-form-item label="Keyword case">
+      <n-form-item label="Keyword case" flex-1>
         <n-select
           v-model:value="config.keywordCase"
           :options="[
@@ -31,7 +31,7 @@
           ]"
         />
       </n-form-item>
-      <n-form-item label="Indent style">
+      <n-form-item label="Indent style" flex-1>
         <n-select
           v-model:value="config.indentStyle"
           :options="[
@@ -41,7 +41,7 @@
           ]"
         />
       </n-form-item>
-    </n-space>
+    </div>
   </div>
 
   <n-form-item label="Your SQL query">
