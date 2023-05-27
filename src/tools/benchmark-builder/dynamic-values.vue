@@ -1,6 +1,6 @@
 <template>
   <div>
-    <n-space v-for="(value, index) of values" :key="index" :wrap="false" style="margin-bottom: 5px" :size="5">
+    <div v-for="(value, index) of values" :key="index" mb-2 flex flex-nowrap gap-2>
       <n-input-number
         :ref="refs.set"
         v-model:value="values[index]"
@@ -17,7 +17,7 @@
         </template>
         Delete value
       </n-tooltip>
-    </n-space>
+    </div>
 
     <c-button @click="addValue">
       <n-icon :component="Plus" depth="3" mr-2 size="18" />

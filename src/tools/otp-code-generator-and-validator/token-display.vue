@@ -1,10 +1,10 @@
 <template>
   <div>
-    <n-space class="labels" item-style="flex: 1 1 0" w-full align="center">
-      <div style="text-align: left">Previous</div>
-      <div style="text-align: center">Current OTP</div>
-      <div style="text-align: right">Next</div>
-    </n-space>
+    <div class="labels" w-full flex items-center>
+      <div flex-1 text-left>Previous</div>
+      <div flex-1 text-center>Current OTP</div>
+      <div flex-1 text-right>Next</div>
+    </div>
     <n-input-group>
       <n-tooltip trigger="hover" placement="bottom">
         <template #trigger>
@@ -63,7 +63,6 @@ const { tokens } = toRefs(props);
 
 .labels {
   div {
-    text-align: center;
     padding: 0 2px 6px 2px;
     line-height: 1.25;
   }

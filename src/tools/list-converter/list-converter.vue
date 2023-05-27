@@ -1,6 +1,6 @@
 <template>
   <div style="flex: 0 0 100%">
-    <n-space item-style="flex: 1 1 0" style="margin: 0 auto; max-width: 600px" justify="center">
+    <div style="margin: 0 auto; max-width: 600px">
       <c-card>
         <div flex>
           <div>
@@ -73,7 +73,7 @@
           </div>
         </div>
       </c-card>
-    </n-space>
+    </div>
   </div>
   <format-transformer
     input-label="Your input data"

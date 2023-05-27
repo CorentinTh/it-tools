@@ -13,9 +13,9 @@
       ></n-input>
     </n-form-item>
 
-    <n-space justify="center">
+    <div flex justify-center>
       <c-button :disabled="slug.length === 0" @click="copy">Copy slug</c-button>
-    </n-space>
+    </div>
   </div>
 </template>
 

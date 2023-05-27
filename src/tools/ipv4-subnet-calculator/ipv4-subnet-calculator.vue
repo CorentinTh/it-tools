@@ -23,7 +23,7 @@
         </tbody>
       </n-table>
 
-      <n-space style="margin-top: 14px" justify="space-between">
+      <div mt-3 flex items-center justify-between>
         <c-button @click="switchToBlock({ count: -1 })">
           <n-icon :component="ArrowLeft" />
           Previous block
@@ -32,7 +32,7 @@
           Next block
           <n-icon :component="ArrowRight" />
         </c-button>
-      </n-space>
+      </div>
     </div>
   </div>
 </template>

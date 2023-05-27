@@ -2,7 +2,7 @@
   <div>
     <c-card>
       <n-form label-placement="left" label-width="140">
-        <n-space justify="center" item-style="padding: 0" :size="0">
+        <div flex justify-center>
           <div>
             <n-form-item label="Uppercase (ABC...)">
               <n-switch v-model:value="withUppercase" />
@@ -22,7 +22,7 @@
               <n-switch v-model:value="withSymbols" />
             </n-form-item>
           </div>
-        </n-space>
+        </div>
       </n-form>
 
       <n-form-item :label="`Length (${length})`" label-placement="left">
@@ -42,10 +42,10 @@
         spellcheck="false"
       />
 
-      <n-space justify="center" mt-5>
+      <div mt-5 flex justify-center gap-3>
         <c-button @click="copy"> Copy </c-button>
         <c-button @click="refreshToken"> Refresh </c-button>
-      </n-space>
+      </div>
     </c-card>
   </div>
 </template>

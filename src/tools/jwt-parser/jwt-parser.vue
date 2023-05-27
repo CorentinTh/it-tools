@@ -10,20 +10,12 @@
           <th colspan="2" class="table-header">{{ section.title }}</th>
           <tr v-for="{ claim, claimDescription, friendlyValue, value } in decodedJWT[section.key]" :key="claim + value">
             <td class="claims">
-              <n-space>
-                <n-text strong>{{ claim }}</n-text>
-                <template v-if="claimDescription">
-                  <n-text depth="3">({{ claimDescription }})</n-text>
-                </template>
-              </n-space>
+              <n-text strong>{{ claim }}</n-text>
+              <n-text v-if="claimDescription" depth="3" ml-2>({{ claimDescription }})</n-text>
             </td>
             <td>
-              <n-space>
-                <n-text>{{ value }}</n-text>
-                <template v-if="friendlyValue">
-                  <n-text depth="3">({{ friendlyValue }})</n-text>
-                </template>
-              </n-space>
+              <n-text>{{ value }}</n-text>
+              <n-text v-if="friendlyValue" ml-2 depth="3">({{ friendlyValue }})</n-text>
             </td>
           </tr>
         </template>

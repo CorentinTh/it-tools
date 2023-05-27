@@ -1,9 +1,9 @@
 <template>
   <router-link :to="tool.path">
     <c-card class="tool-card">
-      <n-space justify="space-between" align="center">
+      <div flex items-center justify-between>
         <n-icon class="icon" size="40" :component="tool.icon" />
-        <n-space align="center">
+        <div flex items-center gap-8px>
           <n-tag
             v-if="tool.isNew"
             size="small"
@@ -17,8 +17,8 @@
           </n-tag>
 
           <favorite-button :tool="tool" />
-        </n-space>
-      </n-space>
+        </div>
+      </div>
       <n-h3 class="title">
         <n-ellipsis>{{ tool.name }}</n-ellipsis>
       </n-h3>

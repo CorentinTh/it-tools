@@ -25,10 +25,10 @@
       <n-progress :percentage="(100 * interval) / 30" :color="theme.primaryColor" :show-indicator="false" />
       <div style="text-align: center">Next in {{ String(Math.floor(30 - interval)).padStart(2, '0') }}s</div>
     </div>
-    <n-space justify="center" vertical align="center" style="margin-top: 10px">
+    <div mt-4 flex flex-col items-center justify-center gap-3>
       <n-image :src="qrcode"></n-image>
       <c-button :href="keyUri" target="_blank">Open Key URI in new tab</c-button>
-    </n-space>
+    </div>
   </div>
   <div style="max-width: 350px">
     <input-copyable

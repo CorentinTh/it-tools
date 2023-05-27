@@ -1,7 +1,7 @@
 <template>
   <div>
     <c-card title="Arabic to roman">
-      <n-space align="center" justify="space-between">
+      <div flex items-center justify-between>
         <n-form-item v-bind="validationNumeral as any">
           <n-input-number v-model:value="inputNumeral" :min="1" style="width: 200px" :show-button="false" />
         </n-form-item>
@@ -11,17 +11,17 @@
         <c-button autofocus :disabled="validationNumeral.validationStatus === 'error'" @click="copyRoman">
           Copy
         </c-button>
-      </n-space>
+      </div>
     </c-card>
     <c-card title="Roman to arabic" mt-5>
-      <n-space align="center" justify="space-between">
+      <div flex items-center justify-between>
         <c-input-text v-model:value="inputRoman" style="width: 200px" :validation="validationRoman" />
 
         <div class="result">
           {{ outputNumeral }}
         </div>
         <c-button :disabled="!validationRoman.isValid" @click="copyArabic"> Copy </c-button>
-      </n-space>
+      </div>
     </c-card>
   </div>
 </template>

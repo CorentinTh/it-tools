@@ -8,16 +8,16 @@
       mb-5
     />
 
-    <n-space v-if="natoText" vertical>
-      <n-text>Your text in NATO phonetic alphabet</n-text>
+    <div v-if="natoText">
+      <n-text mb-1 block>Your text in NATO phonetic alphabet</n-text>
       <c-card>
         {{ natoText }}
       </c-card>
 
-      <n-space justify="center">
+      <div mt-3 flex justify-center>
         <c-button autofocus @click="copy"> Copy NATO string </c-button>
-      </n-space>
-    </n-space>
+      </div>
+    </div>
   </div>
 </template>
 

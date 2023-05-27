@@ -6,15 +6,15 @@
     <n-form-item label="Secret key">
       <n-input v-model:value="secret" placeholder="Enter the secret key..." />
     </n-form-item>
-    <n-space item-style="flex:1 1 0">
-      <n-form-item label="Hashing function">
+    <div flex gap-2>
+      <n-form-item label="Hashing function" flex-1>
         <n-select
           v-model:value="hashFunction"
           placeholder="Select an hashing function..."
           :options="Object.keys(algos).map((label) => ({ label, value: label }))"
         />
       </n-form-item>
-      <n-form-item label="Output encoding">
+      <n-form-item label="Output encoding" flex-1>
         <n-select
           v-model:value="encoding"
           placeholder="Select the result encoding..."
@@ -38,13 +38,13 @@
           ]"
         />
       </n-form-item>
-    </n-space>
+    </div>
     <n-form-item label="HMAC of your text">
       <n-input readonly :value="hmac" type="textarea" placeholder="The result of the HMAC..." />
     </n-form-item>
-    <n-space justify="center">
+    <div flex justify-center>
       <c-button @click="copy()">Copy HMAC</c-button>
-    </n-space>
+    </div>
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <c-card title="Encrypt">
-    <n-space item-style="flex: 1 1 0">
-      <n-form-item label="Your text:" :show-feedback="false">
+    <div flex gap-3>
+      <n-form-item label="Your text:" :show-feedback="false" flex-1>
         <n-input
           v-model:value="cypherInput"
           type="textarea"
@@ -13,7 +13,7 @@
           spellcheck="false"
         />
       </n-form-item>
-      <n-space vertical>
+      <div flex flex-1 flex-col gap-2>
         <c-input-text v-model:value="cypherSecret" label="Your secret key:" clearable raw-text />
 
         <n-form-item label="Encryption algorithm:" :show-feedback="false">
@@ -22,8 +22,8 @@
             :options="Object.keys(algos).map((label) => ({ label, value: label }))"
           />
         </n-form-item>
-      </n-space>
-    </n-space>
+      </div>
+    </div>
     <n-form-item label="Your text encrypted:" :show-feedback="false" mt-5>
       <n-input
         :value="cypherOutput"
@@ -39,8 +39,8 @@
     </n-form-item>
   </c-card>
   <c-card title="Decrypt">
-    <n-space item-style="flex: 1 1 0">
-      <n-form-item label="Your encrypted text:" :show-feedback="false">
+    <div flex gap-3>
+      <n-form-item label="Your encrypted text:" :show-feedback="false" flex-1>
         <n-input
           v-model:value="decryptInput"
           type="textarea"
@@ -52,7 +52,7 @@
           spellcheck="false"
         />
       </n-form-item>
-      <n-space vertical>
+      <div flex flex-1 flex-col gap-2>
         <c-input-text v-model:value="decryptSecret" label="Your secret key:" clearable raw-text />
 
         <n-form-item label="Encryption algorithm:" :show-feedback="false">
@@ -61,8 +61,8 @@
             :options="Object.keys(algos).map((label) => ({ label, value: label }))"
           />
         </n-form-item>
-      </n-space>
-    </n-space>
+      </div>
+    </div>
     <n-form-item label="Your decrypted text:" :show-feedback="false" mt-5>
       <n-input
         :value="decryptOutput"

@@ -26,10 +26,10 @@
         </n-form>
       </n-gi>
       <n-gi>
-        <n-space justify="center" align="center" vertical>
+        <div flex flex-col items-center gap-3>
           <n-image :src="qrcode" width="200" />
           <c-button @click="download"> Download qr-code </c-button>
-        </n-space>
+        </div>
       </n-gi>
     </n-grid>
   </c-card>

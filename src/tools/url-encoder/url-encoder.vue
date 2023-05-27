@@ -23,9 +23,9 @@
       />
     </n-form-item>
 
-    <n-space justify="center">
+    <div flex justify-center>
       <c-button @click="copyEncoded"> Copy </c-button>
-    </n-space>
+    </div>
   </c-card>
   <c-card title="Decode">
     <n-form-item
@@ -51,9 +51,9 @@
       />
     </n-form-item>
 
-    <n-space justify="center">
+    <div flex justify-center>
       <c-button @click="copyDecoded"> Copy </c-button>
-    </n-space>
+    </div>
   </c-card>
 </template>
 

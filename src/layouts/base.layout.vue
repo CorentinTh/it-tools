@@ -43,9 +43,9 @@ const tools = computed<ToolCategory[]>(() => [
       </router-link>
 
       <div class="sider-content">
-        <n-space v-if="styleStore.isSmallScreen" justify="center">
+        <div v-if="styleStore.isSmallScreen" flex justify-center>
           <navbar-buttons />
-        </n-space>
+        </div>
 
         <collapsible-tool-menu :tools-by-category="tools" />
 

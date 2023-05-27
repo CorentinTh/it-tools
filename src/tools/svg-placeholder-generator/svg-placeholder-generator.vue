@@ -1,24 +1,24 @@
 <template>
   <div>
     <n-form label-placement="left" label-width="100">
-      <n-space item-style="flex:1 1 0">
-        <n-form-item label="Width (in px)">
+      <div flex gap-3>
+        <n-form-item label="Width (in px)" flex-1>
           <n-input-number v-model:value="width" placeholder="SVG width..." min="1" />
         </n-form-item>
-        <n-form-item label="Background">
+        <n-form-item label="Background" flex-1>
           <n-color-picker v-model:value="bgColor" :modes="['hex']" />
         </n-form-item>
-      </n-space>
-      <n-space item-style="flex:1 1 0">
-        <n-form-item label="Height (in px)">
+      </div>
+      <div flex gap-3>
+        <n-form-item label="Height (in px)" flex-1>
           <n-input-number v-model:value="height" placeholder="SVG height..." min="1" />
         </n-form-item>
-        <n-form-item label="Text color">
+        <n-form-item label="Text color" flex-1>
           <n-color-picker v-model:value="fgColor" :modes="['hex']" />
         </n-form-item>
-      </n-space>
-      <n-space item-style="flex:1 1 0">
-        <n-form-item label="Font size">
+      </div>
+      <div flex gap-3>
+        <n-form-item label="Font size" flex-1>
           <n-input-number v-model:value="fontSize" placeholder="Font size..." min="1" />
         </n-form-item>
 
@@ -29,8 +29,9 @@
           label-position="left"
           label-width="100px"
           label-align="right"
+          flex-1
         />
-      </n-space>
+      </div>
       <n-form-item label="Use exact size" label-placement="left">
         <n-switch v-model:value="useExactSize" />
       </n-form-item>
@@ -43,16 +44,14 @@
       <textarea-copyable :value="base64" copy-placement="none" />
     </n-form-item>
 
-    <n-space justify="center">
+    <div flex justify-center gap-3>
       <c-button @click="copySVG()">Copy svg</c-button>
       <c-button @click="copyBase64()">Copy base64</c-button>
       <c-button @click="download()">Download svg</c-button>
-    </n-space>
+    </div>
   </div>
 
-  <n-space vertical justify="start">
-    <img :src="base64" alt="Image" />
-  </n-space>
+  <img :src="base64" alt="Image" />
 </template>
 
 <script setup lang="ts">

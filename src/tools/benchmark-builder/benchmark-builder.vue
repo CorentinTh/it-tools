@@ -1,6 +1,6 @@
 <template>
   <n-scrollbar style="flex: 1" x-scrollable>
-    <n-space :wrap="false" style="flex: 1" justify="center" :size="12" mb-5>
+    <div mb-5 flex flex-1 flex-nowrap justify-center gap-12px>
       <div v-for="(suite, index) of suites" :key="index">
         <c-card style="width: 294px">
           <c-input-text
@@ -17,7 +17,7 @@
           </n-form-item>
         </c-card>
 
-        <n-space justify="center">
+        <div flex justify-center>
           <c-button v-if="suites.length > 1" variant="text" @click="suites.splice(index, 1)">
             <n-icon :component="Trash" depth="3" mr-2 size="18" />
             Delete suite
@@ -29,14 +29,14 @@
             <n-icon :component="Plus" depth="3" mr-2 size="18" />
             Add suite
           </c-button>
-        </n-space>
+        </div>
       </div>
-    </n-space>
+    </div>
   </n-scrollbar>
 
   <div style="flex: 0 0 100%">
     <div style="max-width: 600px; margin: 0 auto">
-      <n-space justify="center">
+      <div mx-auto max-w-sm flex justify-center gap-3>
         <c-input-text v-model:value="unit" placeholder="Unit (eg: ms)" label="Unit" label-position="left" mb-4 />
 
         <c-button
@@ -48,7 +48,7 @@
           "
           >Reset suites</c-button
         >
-      </n-space>
+      </div>
 
       <n-table>
         <thead>
@@ -70,10 +70,10 @@
           </tr>
         </tbody>
       </n-table>
-      <n-space justify="center" mt-5>
+      <div mt-5 flex justify-center gap-3>
         <c-button @click="copyAsMarkdown">Copy as markdown table</c-button>
         <c-button @click="copyAsBulletList">Copy as bullet list</c-button>
-      </n-space>
+      </div>
     </div>
   </div>
 </template>

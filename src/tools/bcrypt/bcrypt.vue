@@ -15,9 +15,9 @@
 
     <c-input-text :value="hashed" readonly text-center />
 
-    <n-space justify="center" mt-5>
+    <div mt-5 flex justify-center>
       <c-button @click="copy"> Copy hash </c-button>
-    </n-space>
+    </div>
   </c-card>
 
   <c-card title="Compare string with hash">
