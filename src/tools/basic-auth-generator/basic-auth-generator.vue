@@ -1,3 +1,15 @@
+<script setup lang="ts">
+import { computed, ref } from 'vue';
+import { useCopy } from '@/composable/copy';
+import { textToBase64 } from '@/utils/base64';
+
+const username = ref('');
+const password = ref('');
+const header = computed(() => `Authorization: Basic ${textToBase64(`${username.value}:${password.value}`)}`);
+
+const { copy } = useCopy({ source: header, text: 'Header copied to the clipboard' });
+</script>
+
 <template>
   <div>
     <c-input-text v-model:value="username" label="Username" placeholder="Your username..." clearable raw-text mb-5 />
@@ -19,22 +31,12 @@
       </n-statistic>
     </c-card>
     <div mt-5 flex justify-center>
-      <c-button @click="copy">Copy header</c-button>
+      <c-button @click="copy">
+        Copy header
+      </c-button>
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { useCopy } from '@/composable/copy';
-import { textToBase64 } from '@/utils/base64';
-import { computed, ref } from 'vue';
-
-const username = ref('');
-const password = ref('');
-const header = computed(() => `Authorization: Basic ${textToBase64(`${username.value}:${password.value}`)}`);
-
-const { copy } = useCopy({ source: header, text: 'Header copied to the clipboard' });
-</script>
 
 <style lang="less" scoped>
 ::v-deep(.n-statistic-value__content) {

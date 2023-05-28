@@ -1,3 +1,17 @@
+<script setup lang="ts">
+import { escape, unescape } from 'lodash';
+import { computed, ref } from 'vue';
+import { useCopy } from '@/composable/copy';
+
+const escapeInput = ref('<title>IT Tool</title>');
+const escapeOutput = computed(() => escape(escapeInput.value));
+const { copy: copyEscaped } = useCopy({ source: escapeOutput });
+
+const unescapeInput = ref('&lt;title&gt;IT Tool&lt;/title');
+const unescapeOutput = computed(() => unescape(unescapeInput.value));
+const { copy: copyUnescaped } = useCopy({ source: unescapeOutput });
+</script>
+
 <template>
   <c-card title="Escape html entities">
     <n-form-item label="Your string :">
@@ -20,7 +34,9 @@
     </n-form-item>
 
     <div flex justify-center>
-      <c-button @click="copyEscaped"> Copy </c-button>
+      <c-button @click="copyEscaped">
+        Copy
+      </c-button>
     </div>
   </c-card>
   <c-card title="Unescape html entities">
@@ -44,21 +60,9 @@
     </n-form-item>
 
     <div flex justify-center>
-      <c-button @click="copyUnescaped"> Copy </c-button>
+      <c-button @click="copyUnescaped">
+        Copy
+      </c-button>
     </div>
   </c-card>
 </template>
-
-<script setup lang="ts">
-import { escape, unescape } from 'lodash';
-import { computed, ref } from 'vue';
-import { useCopy } from '@/composable/copy';
-
-const escapeInput = ref('<title>IT Tool</title>');
-const escapeOutput = computed(() => escape(escapeInput.value));
-const { copy: copyEscaped } = useCopy({ source: escapeOutput });
-
-const unescapeInput = ref('&lt;title&gt;IT Tool&lt;/title');
-const unescapeOutput = computed(() => unescape(unescapeInput.value));
-const { copy: copyUnescaped } = useCopy({ source: unescapeOutput });
-</script>

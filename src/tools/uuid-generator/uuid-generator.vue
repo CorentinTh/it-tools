@@ -1,3 +1,17 @@
+<script setup lang="ts">
+import { v4 as generateUUID } from 'uuid';
+import { useCopy } from '@/composable/copy';
+import { computedRefreshable } from '@/composable/computedRefreshable';
+
+const count = useStorage('uuid-generator:quantity', 1);
+
+const [uuids, refreshUUIDs] = computedRefreshable(() =>
+  Array.from({ length: count.value }, () => generateUUID()).join('\n'),
+);
+
+const { copy } = useCopy({ source: uuids, text: 'UUIDs copied to the clipboard' });
+</script>
+
 <template>
   <div>
     <div flex items-center justify-center gap-3>
@@ -20,22 +34,12 @@
     />
 
     <div flex justify-center gap-3>
-      <c-button autofocus @click="copy"> Copy </c-button>
-      <c-button @click="refreshUUIDs"> Refresh </c-button>
+      <c-button autofocus @click="copy">
+        Copy
+      </c-button>
+      <c-button @click="refreshUUIDs">
+        Refresh
+      </c-button>
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { useCopy } from '@/composable/copy';
-import { v4 as generateUUID } from 'uuid';
-import { computedRefreshable } from '@/composable/computedRefreshable';
-
-const count = useStorage('uuid-generator:quantity', 1);
-
-const [uuids, refreshUUIDs] = computedRefreshable(() =>
-  Array.from({ length: count.value }, () => generateUUID()).join('\n'),
-);
-
-const { copy } = useCopy({ source: uuids, text: 'UUIDs copied to the clipboard' });
-</script>

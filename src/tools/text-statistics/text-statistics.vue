@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import { ref } from 'vue';
+import { getStringSizeInBytes } from './text-statistics.service';
+import { formatBytes } from '@/utils/convert';
+
+const text = ref('');
+</script>
+
 <template>
   <c-card>
     <n-input v-model:value="text" type="textarea" placeholder="Your text..." rows="5" />
@@ -10,11 +18,3 @@
     </div>
   </c-card>
 </template>
-
-<script setup lang="ts">
-import { formatBytes } from '@/utils/convert';
-import { ref } from 'vue';
-import { getStringSizeInBytes } from './text-statistics.service';
-
-const text = ref('');
-</script>

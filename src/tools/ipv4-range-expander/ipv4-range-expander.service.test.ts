@@ -1,4 +1,4 @@
-import { expect, describe, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { calculateCidr } from './ipv4-range-expander.service';
 
 describe('ipv4RangeExpander', () => {

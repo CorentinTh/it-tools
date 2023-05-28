@@ -7,9 +7,9 @@ export function convertBase({ value, fromBase, toBase }: { value: string; fromBa
     .reverse()
     .reduce((carry: number, digit: string, index: number) => {
       if (!fromRange.includes(digit)) {
-        throw new Error('Invalid digit "' + digit + '" for base ' + fromBase + '.');
+        throw new Error(`Invalid digit "${digit}" for base ${fromBase}.`);
       }
-      return (carry += fromRange.indexOf(digit) * Math.pow(fromBase, index));
+      return (carry += fromRange.indexOf(digit) * fromBase ** index);
     }, 0);
   let newValue = '';
   while (decValue > 0) {

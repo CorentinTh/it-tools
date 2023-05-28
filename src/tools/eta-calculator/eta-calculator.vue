@@ -1,3 +1,28 @@
+<script setup lang="ts">
+// Duplicate issue with sub directory
+
+import { addMilliseconds, formatRelative } from 'date-fns';
+
+import { enGB } from 'date-fns/locale';
+import { computed, ref } from 'vue';
+import { formatMsDuration } from './eta-calculator.service';
+
+const unitCount = ref(3 * 62);
+const unitPerTimeSpan = ref(3);
+const timeSpan = ref(5);
+const timeSpanUnitMultiplier = ref(60000);
+const startedAt = ref(Date.now());
+
+const durationMs = computed(() => {
+  const timeSpanMs = timeSpan.value * timeSpanUnitMultiplier.value;
+
+  return unitCount.value / (unitPerTimeSpan.value / timeSpanMs);
+});
+const endAt = computed(() =>
+  formatRelative(addMilliseconds(startedAt.value, durationMs.value), Date.now(), { locale: enGB }),
+);
+</script>
+
 <template>
   <div>
     <n-text depth="3" style="text-align: justify; width: 100%; display: inline-block">
@@ -29,44 +54,23 @@
             { label: 'hours', value: 1000 * 60 * 60 },
             { label: 'days', value: 1000 * 60 * 60 * 24 },
           ]"
-        ></n-select>
+        />
       </n-input-group>
     </n-form-item>
 
     <n-divider />
     <c-card mb-2>
-      <n-statistic label="Total duration">{{ formatMsDuration(durationMs) }}</n-statistic>
+      <n-statistic label="Total duration">
+        {{ formatMsDuration(durationMs) }}
+      </n-statistic>
     </c-card>
     <c-card>
-      <n-statistic label="It will end ">{{ endAt }}</n-statistic>
+      <n-statistic label="It will end ">
+        {{ endAt }}
+      </n-statistic>
     </c-card>
   </div>
 </template>
-
-<script setup lang="ts">
-// Duplicate issue with sub directory
-// eslint-disable-next-line import/no-duplicates
-import { addMilliseconds, formatRelative } from 'date-fns';
-// eslint-disable-next-line import/no-duplicates
-import { enGB } from 'date-fns/locale';
-import { computed, ref } from 'vue';
-import { formatMsDuration } from './eta-calculator.service';
-
-const unitCount = ref(3 * 62);
-const unitPerTimeSpan = ref(3);
-const timeSpan = ref(5);
-const timeSpanUnitMultiplier = ref(60000);
-const startedAt = ref(Date.now());
-
-const durationMs = computed(() => {
-  const timeSpanMs = timeSpan.value * timeSpanUnitMultiplier.value;
-
-  return unitCount.value / (unitPerTimeSpan.value / timeSpanMs);
-});
-const endAt = computed(() =>
-  formatRelative(addMilliseconds(startedAt.value, durationMs.value), Date.now(), { locale: enGB }),
-);
-</script>
 
 <style lang="less" scoped>
 .n-input-number,

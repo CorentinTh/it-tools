@@ -1,3 +1,37 @@
+<script setup lang="ts">
+import { computed, ref } from 'vue';
+import TextareaCopyable from '@/components/TextareaCopyable.vue';
+import { useCopy } from '@/composable/copy';
+import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
+import { textToBase64 } from '@/utils/base64';
+
+const width = ref(600);
+const height = ref(350);
+const fontSize = ref(26);
+const bgColor = ref('#cccccc');
+const fgColor = ref('#333333');
+const useExactSize = ref(true);
+const customText = ref('');
+const svgString = computed(() => {
+  const w = width.value;
+  const h = height.value;
+  const text = customText.value.length > 0 ? customText.value : `${w}x${h}`;
+  const size = useExactSize.value ? ` width="${w}" height="${h}"` : '';
+
+  return `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}"${size}>
+  <rect width="${w}" height="${h}" fill="${bgColor.value}"></rect>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="monospace" font-size="${fontSize.value}px" fill="${fgColor.value}">${text}</text>   
+</svg>
+  `.trim();
+});
+const base64 = computed(() => `data:image/svg+xml;base64,${textToBase64(svgString.value)}`);
+
+const { copy: copySVG } = useCopy({ source: svgString });
+const { copy: copyBase64 } = useCopy({ source: base64 });
+const { download } = useDownloadFileFromBase64({ source: base64 });
+</script>
+
 <template>
   <div>
     <n-form label-placement="left" label-width="100">
@@ -38,55 +72,27 @@
     </n-form>
 
     <n-form-item label="SVG HTML element">
-      <textarea-copyable :value="svgString" copy-placement="none" />
+      <TextareaCopyable :value="svgString" copy-placement="none" />
     </n-form-item>
     <n-form-item label="SVG in Base64">
-      <textarea-copyable :value="base64" copy-placement="none" />
+      <TextareaCopyable :value="base64" copy-placement="none" />
     </n-form-item>
 
     <div flex justify-center gap-3>
-      <c-button @click="copySVG()">Copy svg</c-button>
-      <c-button @click="copyBase64()">Copy base64</c-button>
-      <c-button @click="download()">Download svg</c-button>
+      <c-button @click="copySVG()">
+        Copy svg
+      </c-button>
+      <c-button @click="copyBase64()">
+        Copy base64
+      </c-button>
+      <c-button @click="download()">
+        Download svg
+      </c-button>
     </div>
   </div>
 
-  <img :src="base64" alt="Image" />
+  <img :src="base64" alt="Image">
 </template>
-
-<script setup lang="ts">
-import TextareaCopyable from '@/components/TextareaCopyable.vue';
-import { useCopy } from '@/composable/copy';
-import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
-import { textToBase64 } from '@/utils/base64';
-import { computed, ref } from 'vue';
-
-const width = ref(600);
-const height = ref(350);
-const fontSize = ref(26);
-const bgColor = ref('#cccccc');
-const fgColor = ref('#333333');
-const useExactSize = ref(true);
-const customText = ref('');
-const svgString = computed(() => {
-  const w = width.value;
-  const h = height.value;
-  const text = customText.value.length > 0 ? customText.value : `${w}x${h}`;
-  const size = useExactSize.value ? ` width="${w}" height="${h}"` : '';
-
-  return `
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}"${size}>
-  <rect width="${w}" height="${h}" fill="${bgColor.value}"></rect>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="monospace" font-size="${fontSize.value}px" fill="${fgColor.value}">${text}</text>   
-</svg>
-  `.trim();
-});
-const base64 = computed(() => 'data:image/svg+xml;base64,' + textToBase64(svgString.value));
-
-const { copy: copySVG } = useCopy({ source: svgString });
-const { copy: copyBase64 } = useCopy({ source: base64 });
-const { download } = useDownloadFileFromBase64({ source: base64 });
-</script>
 
 <style lang="less" scoped>
 .n-input-number {

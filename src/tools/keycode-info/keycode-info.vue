@@ -1,17 +1,3 @@
-<template>
-  <div>
-    <c-card style="text-align: center; padding: 40px 0; margin-bottom: 26px">
-      <n-h2 v-if="event">{{ event.key }}</n-h2>
-      <n-text strong depth="3">Press the key on your keyboard you want to get info about this key</n-text>
-    </c-card>
-
-    <n-input-group v-for="({ label, value, placeholder }, i) of fields" :key="i" style="margin-bottom: 5px">
-      <n-input-group-label style="flex: 0 0 150px"> {{ label }} </n-input-group-label>
-      <input-copyable :value="value" readonly :placeholder="placeholder" />
-    </n-input-group>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { useEventListener } from '@vueuse/core';
 import { computed, ref } from 'vue';
@@ -24,7 +10,9 @@ useEventListener(document, 'keydown', (e) => {
 });
 
 const fields = computed(() => {
-  if (!event.value) return [];
+  if (!event.value) {
+    return [];
+  }
 
   return [
     {
@@ -64,4 +52,22 @@ const fields = computed(() => {
 });
 </script>
 
-<style lang="less" scoped></style>
+<template>
+  <div>
+    <c-card style="text-align: center; padding: 40px 0; margin-bottom: 26px">
+      <n-h2 v-if="event">
+        {{ event.key }}
+      </n-h2>
+      <n-text strong depth="3">
+        Press the key on your keyboard you want to get info about this key
+      </n-text>
+    </c-card>
+
+    <n-input-group v-for="({ label, value, placeholder }, i) of fields" :key="i" style="margin-bottom: 5px">
+      <n-input-group-label style="flex: 0 0 150px">
+        {{ label }}
+      </n-input-group-label>
+      <InputCopyable :value="value" readonly :placeholder="placeholder" />
+    </n-input-group>
+  </div>
+</template>

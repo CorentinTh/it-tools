@@ -1,3 +1,15 @@
+<script setup lang="ts">
+import { toRefs } from 'vue';
+import type { UAParser } from 'ua-parser-js';
+import type { UserAgentResultSection } from './user-agent-parser.types';
+
+const props = defineProps<{
+  userAgentInfo?: UAParser.IResult
+  sections: UserAgentResultSection[]
+}>();
+const { userAgentInfo, sections } = toRefs(props);
+</script>
+
 <template>
   <div>
     <n-grid :x-gap="12" :y-gap="8" cols="1 s:2" responsive="screen">
@@ -34,15 +46,3 @@
     </n-grid>
   </div>
 </template>
-
-<script setup lang="ts">
-import { toRefs } from 'vue';
-import { UAParser } from 'ua-parser-js';
-import type { UserAgentResultSection } from './user-agent-parser.types';
-
-const props = defineProps<{
-  userAgentInfo?: UAParser.IResult;
-  sections: UserAgentResultSection[];
-}>();
-const { userAgentInfo, sections } = toRefs(props);
-</script>

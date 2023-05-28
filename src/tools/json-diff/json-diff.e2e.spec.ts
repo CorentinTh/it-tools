@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('Tool - JSON diff', () => {
   test.beforeEach(async ({ page }) => {
@@ -24,7 +24,7 @@ test.describe('Tool - JSON diff', () => {
 
     const result = await page.getByTestId('diff-result').innerText();
 
-    expect(result).toContain(`{\nfoo: "bar""buz",\nbaz: "qux",\n},`);
+    expect(result).toContain('{\nfoo: "bar""buz",\nbaz: "qux",\n},');
   });
 
   test('Different JSONs have only differences listed when "Only show differences" is checked', async ({ page }) => {
@@ -34,6 +34,6 @@ test.describe('Tool - JSON diff', () => {
 
     const result = await page.getByTestId('diff-result').innerText();
 
-    expect(result).toContain(`{\nbaz: "qux",\n},`);
+    expect(result).toContain('{\nbaz: "qux",\n},');
   });
 });

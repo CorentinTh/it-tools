@@ -38,9 +38,11 @@ function getFriendlyValue({ claim, value }: { claim: string; value: unknown }) {
     .otherwise(() => undefined);
 }
 
-const dateFormatter = (value: unknown) => {
-  if (_.isNil(value)) return undefined;
+function dateFormatter(value: unknown) {
+  if (_.isNil(value)) {
+    return undefined;
+  }
 
   const date = new Date(Number(value) * 1000);
   return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
-};
+}

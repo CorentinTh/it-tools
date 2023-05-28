@@ -1,8 +1,8 @@
-import { get, useStorage, type MaybeRef } from '@vueuse/core';
+import { type MaybeRef, get, useStorage } from '@vueuse/core';
 import { defineStore } from 'pinia';
 import type { Ref } from 'vue';
-import { toolsWithCategory } from './index';
 import type { Tool, ToolWithCategory } from './tools.types';
+import { toolsWithCategory } from './index';
 
 export const useToolStore = defineStore('tools', {
   state: () => ({
@@ -11,12 +11,12 @@ export const useToolStore = defineStore('tools', {
   getters: {
     favoriteTools(state) {
       return state.favoriteToolsName
-        .map((favoriteName) => toolsWithCategory.find(({ name }) => name === favoriteName))
+        .map(favoriteName => toolsWithCategory.find(({ name }) => name === favoriteName))
         .filter(Boolean) as ToolWithCategory[]; // cast because .filter(Boolean) does not remove undefined from type
     },
 
     notFavoriteTools(state): ToolWithCategory[] {
-      return toolsWithCategory.filter((tool) => !state.favoriteToolsName.includes(tool.name));
+      return toolsWithCategory.filter(tool => !state.favoriteToolsName.includes(tool.name));
     },
 
     tools(): ToolWithCategory[] {
@@ -34,7 +34,7 @@ export const useToolStore = defineStore('tools', {
     },
 
     removeToolFromFavorites({ tool }: { tool: MaybeRef<Tool> }) {
-      this.favoriteToolsName = this.favoriteToolsName.filter((name) => get(tool).name !== name);
+      this.favoriteToolsName = this.favoriteToolsName.filter(name => get(tool).name !== name);
     },
 
     isToolFavorite({ tool }: { tool: MaybeRef<Tool> }) {

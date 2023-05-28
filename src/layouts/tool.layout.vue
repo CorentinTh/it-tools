@@ -3,9 +3,9 @@ import { useRoute } from 'vue-router';
 import { useHead } from '@vueuse/head';
 import type { HeadObject } from '@vueuse/head';
 import { computed } from 'vue';
+import BaseLayout from './base.layout.vue';
 import FavoriteButton from '@/components/FavoriteButton.vue';
 import type { Tool } from '@/tools/tools.types';
-import BaseLayout from './base.layout.vue';
 
 const route = useRoute();
 
@@ -26,7 +26,7 @@ useHead(head);
 </script>
 
 <template>
-  <base-layout>
+  <BaseLayout>
     <div class="tool-layout">
       <div class="tool-header">
         <div flex flex-nowrap items-center justify-between>
@@ -35,7 +35,7 @@ useHead(head);
           </n-h1>
 
           <div>
-            <favorite-button :tool="{name: route.meta.name} as Tool" />
+            <FavoriteButton :tool="{ name: route.meta.name } as Tool" />
           </div>
         </div>
 
@@ -50,7 +50,7 @@ useHead(head);
     <div class="tool-content">
       <slot />
     </div>
-  </base-layout>
+  </BaseLayout>
 </template>
 
 <style lang="less" scoped>

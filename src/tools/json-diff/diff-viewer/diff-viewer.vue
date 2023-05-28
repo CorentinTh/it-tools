@@ -1,26 +1,11 @@
-<template>
-  <div v-if="showResults">
-    <div flex justify-center>
-      <n-form-item label="Only show differences" label-placement="left">
-        <n-switch v-model:value="onlyShowDifferences" />
-      </n-form-item>
-    </div>
-
-    <c-card data-test-id="diff-result">
-      <n-text v-if="jsonAreTheSame" depth="3" block text-center italic> The provided JSONs are the same </n-text>
-      <diff-root-viewer v-else :diff="result" />
-    </c-card>
-  </div>
-</template>
-
 <script lang="ts" setup>
-import { useAppTheme } from '@/ui/theme/themes';
 import _ from 'lodash';
-import { DiffRootViewer } from './diff-viewer.models';
 import { diff } from '../json-diff.models';
+import { DiffRootViewer } from './diff-viewer.models';
+import { useAppTheme } from '@/ui/theme/themes';
 
-const onlyShowDifferences = ref(false);
 const props = defineProps<{ leftJson: unknown; rightJson: unknown }>();
+const onlyShowDifferences = ref(false);
 const { leftJson, rightJson } = toRefs(props);
 const appTheme = useAppTheme();
 
@@ -31,6 +16,23 @@ const result = computed(() =>
 const jsonAreTheSame = computed(() => _.isEqual(leftJson.value, rightJson.value));
 const showResults = computed(() => !_.isUndefined(leftJson.value) && !_.isUndefined(rightJson.value));
 </script>
+
+<template>
+  <div v-if="showResults">
+    <div flex justify-center>
+      <n-form-item label="Only show differences" label-placement="left">
+        <n-switch v-model:value="onlyShowDifferences" />
+      </n-form-item>
+    </div>
+
+    <c-card data-test-id="diff-result">
+      <n-text v-if="jsonAreTheSame" depth="3" block text-center italic>
+        The provided JSONs are the same
+      </n-text>
+      <DiffRootViewer v-else :diff="result" />
+    </c-card>
+  </div>
+</template>
 
 <style lang="less" scoped>
 ::v-deep(.diffs-viewer) {

@@ -1,3 +1,15 @@
+<script lang="ts" setup>
+import { useTheme } from './c-card.theme';
+
+const props = defineProps<{
+  title?: string
+}>();
+
+const { title } = toRefs(props);
+
+const theme = useTheme();
+</script>
+
 <template>
   <div class="c-card">
     <div v-if="title" class="c-card-title">
@@ -6,18 +18,6 @@
     <slot />
   </div>
 </template>
-
-<script lang="ts" setup>
-import { useTheme } from './c-card.theme';
-
-const props = defineProps<{
-  title?: string;
-}>();
-
-const { title } = toRefs(props);
-
-const theme = useTheme();
-</script>
 
 <style lang="less" scoped>
 .c-card {

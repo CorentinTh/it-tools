@@ -1,11 +1,11 @@
 export const codesByCategories: {
-  category: string;
+  category: string
   codes: {
-    code: number;
-    name: string;
-    description: string;
-    type: 'HTTP' | 'WebDav';
-  }[];
+    code: number
+    name: string
+    description: string
+    type: 'HTTP' | 'WebDav'
+  }[]
 }[] = [
   {
     category: '1xx informational response',
@@ -286,7 +286,7 @@ export const codesByCategories: {
       },
       {
         code: 418,
-        name: "I'm a teapot",
+        name: 'I\'m a teapot',
         description: 'The server refuses the attempt to brew coffee with a teapot.',
         type: 'HTTP',
       },

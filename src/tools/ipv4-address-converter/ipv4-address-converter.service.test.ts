@@ -1,5 +1,5 @@
-import { expect, describe, it } from 'vitest';
-import { isValidIpv4, ipv4ToInt } from './ipv4-address-converter.service';
+import { describe, expect, it } from 'vitest';
+import { ipv4ToInt, isValidIpv4 } from './ipv4-address-converter.service';
 
 describe('ipv4-address-converter', () => {
   describe('ipv4ToInt', () => {

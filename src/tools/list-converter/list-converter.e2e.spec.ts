@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('Tool - List converter', () => {
   test.beforeEach(async ({ page }) => {
@@ -30,10 +30,10 @@ test.describe('Tool - List converter', () => {
     3
     5`);
     await page.getByTestId('removeDuplicates').check();
-    await page.getByTestId('itemPrefix').fill("'");
-    await page.getByTestId('itemSuffix').fill("'");
+    await page.getByTestId('itemPrefix').fill('\'');
+    await page.getByTestId('itemSuffix').fill('\'');
 
     const result = await page.getByTestId('area-content').innerText();
-    expect(result.trim()).toEqual("'1', '2', '4', '3', '5'");
+    expect(result.trim()).toEqual('\'1\', \'2\', \'4\', \'3\', \'5\'');
   });
 });

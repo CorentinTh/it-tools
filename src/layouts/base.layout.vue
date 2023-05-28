@@ -2,7 +2,11 @@
 import { NIcon, useThemeVars } from 'naive-ui';
 import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
-import { Heart, Menu2, Home2 } from '@vicons/tabler';
+import { Heart, Home2, Menu2 } from '@vicons/tabler';
+import SearchBar from '../components/SearchBar.vue';
+import HeroGradient from '../assets/hero-gradient.svg?component';
+import MenuLayout from '../components/MenuLayout.vue';
+import NavbarButtons from '../components/NavbarButtons.vue';
 import { toolsByCategory } from '@/tools';
 import { useStyleStore } from '@/stores/style.store';
 import { config } from '@/config';
@@ -10,10 +14,6 @@ import type { ToolCategory } from '@/tools/tools.types';
 import { useToolStore } from '@/tools/tools.store';
 import { useTracker } from '@/modules/tracker/tracker.services';
 import CollapsibleToolMenu from '@/components/CollapsibleToolMenu.vue';
-import SearchBar from '../components/SearchBar.vue';
-import HeroGradient from '../assets/hero-gradient.svg?component';
-import MenuLayout from '../components/MenuLayout.vue';
-import NavbarButtons from '../components/NavbarButtons.vue';
 
 const themeVars = useThemeVars();
 const styleStore = useStyleStore();
@@ -31,23 +31,27 @@ const tools = computed<ToolCategory[]>(() => [
 </script>
 
 <template>
-  <menu-layout class="menu-layout" :class="{ isSmallScreen: styleStore.isSmallScreen }">
+  <MenuLayout class="menu-layout" :class="{ isSmallScreen: styleStore.isSmallScreen }">
     <template #sider>
-      <router-link to="/" class="hero-wrapper">
-        <hero-gradient class="gradient" />
+      <RouterLink to="/" class="hero-wrapper">
+        <HeroGradient class="gradient" />
         <div class="text-wrapper">
-          <div class="title">IT - TOOLS</div>
+          <div class="title">
+            IT - TOOLS
+          </div>
           <div class="divider" />
-          <div class="subtitle">Handy tools for developers</div>
+          <div class="subtitle">
+            Handy tools for developers
+          </div>
         </div>
-      </router-link>
+      </RouterLink>
 
       <div class="sider-content">
         <div v-if="styleStore.isSmallScreen" flex justify-center>
-          <navbar-buttons />
+          <NavbarButtons />
         </div>
 
-        <collapsible-tool-menu :tools-by-category="tools" />
+        <CollapsibleToolMenu :tools-by-category="tools" />
 
         <div class="footer">
           <div>
@@ -71,7 +75,9 @@ const tools = computed<ToolCategory[]>(() => [
           </div>
           <div>
             © {{ new Date().getFullYear() }}
-            <c-link target="_blank" rel="noopener" href="https://github.com/CorentinTh"> Corentin Thomasset </c-link>
+            <c-link target="_blank" rel="noopener" href="https://github.com/CorentinTh">
+              Corentin Thomasset
+            </c-link>
           </div>
         </div>
       </div>
@@ -86,21 +92,21 @@ const tools = computed<ToolCategory[]>(() => [
           aria-label="Toggle menu"
           @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed"
         >
-          <n-icon size="25" :component="Menu2" />
+          <NIcon size="25" :component="Menu2" />
         </c-button>
 
         <n-tooltip trigger="hover">
           <template #trigger>
             <c-button to="/" circle variant="text" aria-label="Home">
-              <n-icon size="25" :component="Home2" />
+              <NIcon size="25" :component="Home2" />
             </c-button>
           </template>
           Home
         </n-tooltip>
 
-        <search-bar />
+        <SearchBar />
 
-        <navbar-buttons v-if="!styleStore.isSmallScreen" />
+        <NavbarButtons v-if="!styleStore.isSmallScreen" />
 
         <n-tooltip trigger="hover">
           <template #trigger>
@@ -114,7 +120,7 @@ const tools = computed<ToolCategory[]>(() => [
               @click="() => tracker.trackEvent({ eventName: 'Support button clicked' })"
             >
               Buy me a coffee
-              <n-icon v-if="!styleStore.isSmallScreen" :component="Heart" ml-2 />
+              <NIcon v-if="!styleStore.isSmallScreen" :component="Heart" ml-2 />
             </c-button>
           </template>
           ❤ Support IT Tools development !
@@ -122,7 +128,7 @@ const tools = computed<ToolCategory[]>(() => [
       </div>
       <slot />
     </template>
-  </menu-layout>
+  </MenuLayout>
 </template>
 
 <style lang="less" scoped>

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { Tool } from '@/tools/tools.types';
 import { toRefs } from 'vue';
+import type { Tool } from '@/tools/tools.types';
 
 const props = defineProps<{ tool: Tool }>();
 const { tool } = toRefs(props);
@@ -11,8 +11,12 @@ const { tool } = toRefs(props);
     <n-icon class="icon" :component="tool.icon" />
 
     <div>
-      <div class="name">{{ tool.name }}</div>
-      <div class="description">{{ tool.description }}</div>
+      <div class="name">
+        {{ tool.name }}
+      </div>
+      <div class="description">
+        {{ tool.description }}
+      </div>
     </div>
   </div>
 </template>

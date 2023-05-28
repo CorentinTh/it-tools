@@ -1,3 +1,51 @@
+<script setup lang="ts">
+import { ChevronRight } from '@vicons/tabler';
+import { useStorage } from '@vueuse/core';
+import { useThemeVars } from 'naive-ui';
+import { computed, h, toRefs } from 'vue';
+import { RouterLink, useRoute } from 'vue-router';
+import MenuIconItem from './MenuIconItem.vue';
+import type { Tool, ToolCategory } from '@/tools/tools.types';
+
+const props = withDefaults(defineProps<{ toolsByCategory?: ToolCategory[] }>(), { toolsByCategory: () => [] });
+const { toolsByCategory } = toRefs(props);
+const route = useRoute();
+
+const makeLabel = (tool: Tool) => () => h(RouterLink, { to: tool.path }, { default: () => tool.name });
+const makeIcon = (tool: Tool) => () => h(MenuIconItem, { tool });
+
+const collapsedCategories = useStorage<Record<string, boolean>>(
+  'menu-tool-option:collapsed-categories',
+  {},
+  undefined,
+  {
+    deep: true,
+    serializer: {
+      read: v => (v ? JSON.parse(v) : null),
+      write: v => JSON.stringify(v),
+    },
+  },
+);
+
+function toggleCategoryCollapse({ name }: { name: string }) {
+  collapsedCategories.value[name] = !collapsedCategories.value[name];
+}
+
+const menuOptions = computed(() =>
+  toolsByCategory.value.map(({ name, components }) => ({
+    name,
+    isCollapsed: collapsedCategories.value[name],
+    tools: components.map(tool => ({
+      label: makeLabel(tool),
+      icon: makeIcon(tool),
+      key: tool.name,
+    })),
+  })),
+);
+
+const themeVars = useThemeVars();
+</script>
+
 <template>
   <div v-for="{ name, tools, isCollapsed } of menuOptions" :key="name">
     <n-text tag="div" depth="3" class="category-name" @click="toggleCategoryCollapse({ name })">
@@ -14,7 +62,7 @@
 
         <n-menu
           class="menu"
-          :value="(route.name as string)"
+          :value="route.name as string"
           :collapsed-width="64"
           :collapsed-icon-size="22"
           :options="tools"
@@ -25,54 +73,6 @@
     </n-collapse-transition>
   </div>
 </template>
-
-<script setup lang="ts">
-import type { Tool, ToolCategory } from '@/tools/tools.types';
-import { ChevronRight } from '@vicons/tabler';
-import { useStorage } from '@vueuse/core';
-import { useThemeVars } from 'naive-ui';
-import { toRefs, computed, h } from 'vue';
-import { RouterLink, useRoute } from 'vue-router';
-import MenuIconItem from './MenuIconItem.vue';
-
-const props = withDefaults(defineProps<{ toolsByCategory?: ToolCategory[] }>(), { toolsByCategory: () => [] });
-const { toolsByCategory } = toRefs(props);
-const route = useRoute();
-
-const makeLabel = (tool: Tool) => () => h(RouterLink, { to: tool.path }, { default: () => tool.name });
-const makeIcon = (tool: Tool) => () => h(MenuIconItem, { tool });
-
-const collapsedCategories = useStorage<Record<string, boolean>>(
-  'menu-tool-option:collapsed-categories',
-  {},
-  undefined,
-  {
-    deep: true,
-    serializer: {
-      read: (v) => (v ? JSON.parse(v) : null),
-      write: (v) => JSON.stringify(v),
-    },
-  },
-);
-
-function toggleCategoryCollapse({ name }: { name: string }) {
-  collapsedCategories.value[name] = !collapsedCategories.value[name];
-}
-
-const menuOptions = computed(() =>
-  toolsByCategory.value.map(({ name, components }) => ({
-    name: name,
-    isCollapsed: collapsedCategories.value[name],
-    tools: components.map((tool) => ({
-      label: makeLabel(tool),
-      icon: makeIcon(tool),
-      key: tool.name,
-    })),
-  })),
-);
-
-const themeVars = useThemeVars();
-</script>
 
 <style scoped lang="less">
 .category-name {

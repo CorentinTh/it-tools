@@ -2,7 +2,6 @@ import { darken } from '../color/color.models';
 import { defineThemes } from '../theme/theme.models';
 import { appThemes } from '../theme/themes';
 
-// eslint-disable-next-line
 import WarningIcon from '~icons/mdi/alert-circle-outline';
 
 export const { useTheme } = defineThemes({

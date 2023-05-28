@@ -1,4 +1,4 @@
-import { expect, describe, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { convert } from './list-converter.models';
 import type { ConvertOptions } from './list-converter.types';
 
