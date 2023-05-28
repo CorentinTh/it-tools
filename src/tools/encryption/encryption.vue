@@ -29,12 +29,11 @@ const decryptOutput = computed(() =>
       <div flex flex-1 flex-col gap-2>
         <c-input-text v-model:value="cypherSecret" label="Your secret key:" clearable raw-text />
 
-        <n-form-item label="Encryption algorithm:" :show-feedback="false">
-          <n-select
-            v-model:value="cypherAlgo"
-            :options="Object.keys(algos).map((label) => ({ label, value: label }))"
-          />
-        </n-form-item>
+        <c-select
+          v-model:value="cypherAlgo"
+          label="Encryption algorithm:"
+          :options="Object.keys(algos).map((label) => ({ label, value: label }))"
+        />
       </div>
     </div>
     <c-input-text
@@ -57,12 +56,11 @@ const decryptOutput = computed(() =>
       <div flex flex-1 flex-col gap-2>
         <c-input-text v-model:value="decryptSecret" label="Your secret key:" clearable raw-text />
 
-        <n-form-item label="Encryption algorithm:" :show-feedback="false">
-          <n-select
-            v-model:value="decryptAlgo"
-            :options="Object.keys(algos).map((label) => ({ label, value: label }))"
-          />
-        </n-form-item>
+        <c-select
+          v-model:value="decryptAlgo"
+          label="Encryption algorithm:"
+          :options="Object.keys(algos).map((label) => ({ label, value: label }))"
+        />
       </div>
     </div>
     <c-input-text

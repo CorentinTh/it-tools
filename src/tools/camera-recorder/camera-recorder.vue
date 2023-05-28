@@ -122,23 +122,24 @@ function downloadMedia({ type, value, createdAt }: Media) {
     </c-card>
 
     <c-card v-else>
-      <div flex gap-2>
-        <div flex-1>
-          <div>Video</div>
-          <n-select
-            v-model:value="currentCamera"
-            :options="cameras.map(({ deviceId, label }) => ({ value: deviceId, label }))"
-            placeholder="Select camera"
-          />
-        </div>
-        <div v-if="currentMicrophone && microphones.length > 0" flex-1>
-          <div>Audio</div>
-          <n-select
-            v-model:value="currentMicrophone"
-            :options="microphones.map(({ deviceId, label }) => ({ value: deviceId, label }))"
-            placeholder="Select microphone"
-          />
-        </div>
+      <div flex flex-col gap-2>
+        <c-select
+          v-model:value="currentCamera"
+          label-position="left"
+          label-width="60px"
+          label="Video:"
+          :options="cameras.map(({ deviceId, label }) => ({ value: deviceId, label }))"
+          placeholder="Select camera"
+        />
+        <c-select
+          v-if="currentMicrophone && microphones.length > 0"
+          v-model:value="currentMicrophone"
+          label="Audio:"
+          label-position="left"
+          label-width="60px"
+          :options="microphones.map(({ deviceId, label }) => ({ value: deviceId, label }))"
+          placeholder="Select microphone"
+        />
       </div>
 
       <div v-if="!isMediaStreamAvailable" mt-3 flex justify-center>

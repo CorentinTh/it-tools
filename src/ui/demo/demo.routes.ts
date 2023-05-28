@@ -1,4 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router';
+import DemoHome from './demo-home.page.vue';
 
 const demoPages = import.meta.glob('../*/*.demo.vue');
 
@@ -17,7 +18,14 @@ export const routes = [
   {
     path: '/c-lib',
     name: 'c-lib',
-    children: demoRoutes,
+    children: [
+      {
+        path: '',
+        name: 'c-lib-index',
+        component: DemoHome,
+      },
+      ...demoRoutes,
+    ],
     component: () => import('./demo-wrapper.vue'),
   },
 ];
