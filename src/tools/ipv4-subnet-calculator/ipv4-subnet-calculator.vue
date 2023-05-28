@@ -1,51 +1,12 @@
-<template>
-  <div>
-    <c-input-text
-      v-model:value="ip"
-      label="An IPv4 address with or without mask"
-      placeholder="The ipv4 address..."
-      :validation-rules="ipValidationRules"
-      mb-4
-    />
-
-    <div v-if="networkInfo">
-      <n-table>
-        <tbody>
-          <tr v-for="{ getValue, label, undefinedFallback } in sections" :key="label">
-            <td>
-              <n-text strong>{{ label }}</n-text>
-            </td>
-            <td>
-              <span-copyable v-if="getValue(networkInfo)" :value="getValue(networkInfo)"></span-copyable>
-              <n-text v-else depth="3">{{ undefinedFallback }}</n-text>
-            </td>
-          </tr>
-        </tbody>
-      </n-table>
-
-      <div mt-3 flex items-center justify-between>
-        <c-button @click="switchToBlock({ count: -1 })">
-          <n-icon :component="ArrowLeft" />
-          Previous block
-        </c-button>
-        <c-button @click="switchToBlock({ count: 1 })">
-          Next block
-          <n-icon :component="ArrowRight" />
-        </c-button>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Netmask } from 'netmask';
-import { withDefaultOnError } from '@/utils/defaults';
-import { isNotThrowing } from '@/utils/boolean';
 import { useStorage } from '@vueuse/core';
 import { ArrowLeft, ArrowRight } from '@vicons/tabler';
-import SpanCopyable from '@/components/SpanCopyable.vue';
 import { getIPClass } from './ipv4-subnet-calculator.models';
+import { withDefaultOnError } from '@/utils/defaults';
+import { isNotThrowing } from '@/utils/boolean';
+import SpanCopyable from '@/components/SpanCopyable.vue';
 
 const ip = useStorage('ipv4-subnet-calculator:ip', '192.168.0.1/24');
 
@@ -61,13 +22,13 @@ const ipValidationRules = [
 ];
 
 const sections: {
-  label: string;
-  getValue: (blocks: Netmask) => string | undefined;
-  undefinedFallback?: string;
+  label: string
+  getValue: (blocks: Netmask) => string | undefined
+  undefinedFallback?: string
 }[] = [
   {
     label: 'Netmask',
-    getValue: (block) => block.toString(),
+    getValue: block => block.toString(),
   },
   {
     label: 'Network address',
@@ -122,4 +83,45 @@ function switchToBlock({ count = 1 }: { count?: number }) {
 }
 </script>
 
-<style lang="less" scoped></style>
+<template>
+  <div>
+    <c-input-text
+      v-model:value="ip"
+      label="An IPv4 address with or without mask"
+      placeholder="The ipv4 address..."
+      :validation-rules="ipValidationRules"
+      mb-4
+    />
+
+    <div v-if="networkInfo">
+      <n-table>
+        <tbody>
+          <tr v-for="{ getValue, label, undefinedFallback } in sections" :key="label">
+            <td>
+              <n-text strong>
+                {{ label }}
+              </n-text>
+            </td>
+            <td>
+              <SpanCopyable v-if="getValue(networkInfo)" :value="getValue(networkInfo)" />
+              <n-text v-else depth="3">
+                {{ undefinedFallback }}
+              </n-text>
+            </td>
+          </tr>
+        </tbody>
+      </n-table>
+
+      <div mt-3 flex items-center justify-between>
+        <c-button @click="switchToBlock({ count: -1 })">
+          <n-icon :component="ArrowLeft" />
+          Previous block
+        </c-button>
+        <c-button @click="switchToBlock({ count: 1 })">
+          Next block
+          <n-icon :component="ArrowRight" />
+        </c-button>
+      </div>
+    </div>
+  </div>
+</template>

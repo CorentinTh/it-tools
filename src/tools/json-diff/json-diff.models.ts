@@ -46,8 +46,8 @@ function diffObjects(
 ): Difference[] {
   const keys = Object.keys({ ...obj, ...newObj });
   return keys
-    .map((key) => createDifference(obj?.[key], newObj?.[key], key, { onlyShowDifferences }))
-    .filter((diff) => !onlyShowDifferences || diff.status !== 'unchanged');
+    .map(key => createDifference(obj?.[key], newObj?.[key], key, { onlyShowDifferences }))
+    .filter(diff => !onlyShowDifferences || diff.status !== 'unchanged');
 }
 
 function createDifference(
@@ -99,7 +99,7 @@ function diffArrays(
   const maxLength = Math.max(0, arr?.length, newArr?.length);
   return Array.from({ length: maxLength }, (_, i) =>
     createDifference(arr?.[i], newArr?.[i], i, { onlyShowDifferences }),
-  ).filter((diff) => !onlyShowDifferences || diff.status !== 'unchanged');
+  ).filter(diff => !onlyShowDifferences || diff.status !== 'unchanged');
 }
 
 function getType(value: unknown): 'object' | 'array' | 'value' {

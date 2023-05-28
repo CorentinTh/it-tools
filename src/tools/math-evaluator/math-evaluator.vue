@@ -1,3 +1,13 @@
+<script setup lang="ts">
+import { evaluate } from 'mathjs';
+import { computed, ref } from 'vue';
+import { withDefaultOnError } from '@/utils/defaults';
+
+const expression = ref('');
+
+const result = computed(() => withDefaultOnError(() => evaluate(expression.value) ?? '', ''));
+</script>
+
 <template>
   <div>
     <n-input
@@ -17,13 +27,3 @@
     </c-card>
   </div>
 </template>
-
-<script setup lang="ts">
-import { withDefaultOnError } from '@/utils/defaults';
-import { evaluate } from 'mathjs';
-import { computed, ref } from 'vue';
-
-const expression = ref('');
-
-const result = computed(() => withDefaultOnError(() => evaluate(expression.value) ?? '', ''));
-</script>

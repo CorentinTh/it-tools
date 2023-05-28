@@ -1,3 +1,21 @@
+<script setup lang="ts">
+import { BrandGithub, BrandTwitter, InfoCircle, Moon, Sun } from '@vicons/tabler';
+import { toRefs } from 'vue';
+import { useStyleStore } from '@/stores/style.store';
+import { useThemeStore } from '@/ui/theme/theme.store';
+
+const styleStore = useStyleStore();
+const { isDarkTheme } = toRefs(styleStore);
+
+const themeStore = useThemeStore();
+
+function toggleDarkTheme() {
+  isDarkTheme.value = !isDarkTheme.value;
+
+  themeStore.toggleTheme();
+}
+</script>
+
 <template>
   <n-tooltip trigger="hover">
     <template #trigger>
@@ -50,24 +68,6 @@
     <span v-else>Dark mode</span>
   </n-tooltip>
 </template>
-
-<script setup lang="ts">
-import { useStyleStore } from '@/stores/style.store';
-import { useThemeStore } from '@/ui/theme/theme.store';
-import { BrandGithub, BrandTwitter, InfoCircle, Moon, Sun } from '@vicons/tabler';
-import { toRefs } from 'vue';
-
-const styleStore = useStyleStore();
-const { isDarkTheme } = toRefs(styleStore);
-
-const themeStore = useThemeStore();
-
-function toggleDarkTheme() {
-  isDarkTheme.value = !isDarkTheme.value;
-
-  themeStore.toggleTheme();
-}
-</script>
 
 <style lang="less" scoped>
 .n-button {

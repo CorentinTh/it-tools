@@ -1,12 +1,3 @@
-<template>
-  <n-tooltip trigger="hover">
-    <template #trigger>
-      <span class="value" @click="handleClick">{{ value }}</span>
-    </template>
-    {{ tooltipText }}
-  </n-tooltip>
-</template>
-
 <script setup lang="ts">
 import { useClipboard } from '@vueuse/core';
 import { ref, toRefs } from 'vue';
@@ -26,6 +17,15 @@ function handleClick() {
   setTimeout(() => (tooltipText.value = initialText), 1000);
 }
 </script>
+
+<template>
+  <n-tooltip trigger="hover">
+    <template #trigger>
+      <span class="value" @click="handleClick">{{ value }}</span>
+    </template>
+    {{ tooltipText }}
+  </n-tooltip>
+</template>
 
 <style scoped lang="less">
 .value {

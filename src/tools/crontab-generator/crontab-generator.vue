@@ -1,89 +1,3 @@
-<template>
-  <c-card>
-    <div mx-auto max-w-sm>
-      <c-input-text
-        v-model:value="cron"
-        size="large"
-        placeholder="* * * * *"
-        :validation-rules="cronValidationRules"
-        mb-3
-      />
-    </div>
-
-    <div class="cron-string">
-      {{ cronString }}
-    </div>
-
-    <n-divider />
-
-    <div flex justify-center>
-      <n-form :show-feedback="false" label-width="170" label-placement="left">
-        <n-form-item label="Verbose">
-          <n-switch v-model:value="cronstrueConfig.verbose" />
-        </n-form-item>
-        <n-form-item label="Use 24 hour time format">
-          <n-switch v-model:value="cronstrueConfig.use24HourTimeFormat" />
-        </n-form-item>
-        <n-form-item label="Days start at 0">
-          <n-switch v-model:value="cronstrueConfig.dayOfWeekStartIndexZero" />
-        </n-form-item>
-      </n-form>
-    </div>
-  </c-card>
-  <c-card>
-    <pre>
-┌──────────── [optional] seconds (0 - 59)
-| ┌────────── minute (0 - 59)
-| | ┌──────── hour (0 - 23)
-| | | ┌────── day of month (1 - 31)
-| | | | ┌──── month (1 - 12) OR jan,feb,mar,apr ...
-| | | | | ┌── day of week (0 - 6, sunday=0) OR sun,mon ...
-| | | | | |
-* * * * * * command</pre
-    >
-
-    <div v-if="styleStore.isSmallScreen">
-      <c-card v-for="{ symbol, meaning, example, equivalent } in helpers" :key="symbol" mb-3 important:border-none>
-        <div>
-          Symbol: <strong>{{ symbol }}</strong>
-        </div>
-        <div>
-          Meaning: <strong>{{ meaning }}</strong>
-        </div>
-        <div>
-          Example:
-          <strong
-            ><code>{{ example }}</code></strong
-          >
-        </div>
-        <div>
-          Equivalent: <strong>{{ equivalent }}</strong>
-        </div>
-      </c-card>
-    </div>
-    <n-table v-else size="small">
-      <thead>
-        <tr>
-          <th class="text-left" scope="col">Symbol</th>
-          <th class="text-left" scope="col">Meaning</th>
-          <th class="text-left" scope="col">Example</th>
-          <th class="text-left" scope="col">Equivalent</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="{ symbol, meaning, example, equivalent } in helpers" :key="symbol">
-          <td>{{ symbol }}</td>
-          <td>{{ meaning }}</td>
-          <td>
-            <code>{{ example }}</code>
-          </td>
-          <td>{{ equivalent }}</td>
-        </tr>
-      </tbody>
-    </n-table>
-  </c-card>
-</template>
-
 <script setup lang="ts">
 import cronstrue from 'cronstrue';
 import { isValidCron } from 'cron-validator';
@@ -193,6 +107,97 @@ const cronValidationRules = [
   },
 ];
 </script>
+
+<template>
+  <c-card>
+    <div mx-auto max-w-sm>
+      <c-input-text
+        v-model:value="cron"
+        size="large"
+        placeholder="* * * * *"
+        :validation-rules="cronValidationRules"
+        mb-3
+      />
+    </div>
+
+    <div class="cron-string">
+      {{ cronString }}
+    </div>
+
+    <n-divider />
+
+    <div flex justify-center>
+      <n-form :show-feedback="false" label-width="170" label-placement="left">
+        <n-form-item label="Verbose">
+          <n-switch v-model:value="cronstrueConfig.verbose" />
+        </n-form-item>
+        <n-form-item label="Use 24 hour time format">
+          <n-switch v-model:value="cronstrueConfig.use24HourTimeFormat" />
+        </n-form-item>
+        <n-form-item label="Days start at 0">
+          <n-switch v-model:value="cronstrueConfig.dayOfWeekStartIndexZero" />
+        </n-form-item>
+      </n-form>
+    </div>
+  </c-card>
+  <c-card>
+    <pre>
+┌──────────── [optional] seconds (0 - 59)
+| ┌────────── minute (0 - 59)
+| | ┌──────── hour (0 - 23)
+| | | ┌────── day of month (1 - 31)
+| | | | ┌──── month (1 - 12) OR jan,feb,mar,apr ...
+| | | | | ┌── day of week (0 - 6, sunday=0) OR sun,mon ...
+| | | | | |
+* * * * * * command</pre>
+
+    <div v-if="styleStore.isSmallScreen">
+      <c-card v-for="{ symbol, meaning, example, equivalent } in helpers" :key="symbol" mb-3 important:border-none>
+        <div>
+          Symbol: <strong>{{ symbol }}</strong>
+        </div>
+        <div>
+          Meaning: <strong>{{ meaning }}</strong>
+        </div>
+        <div>
+          Example:
+          <strong><code>{{ example }}</code></strong>
+        </div>
+        <div>
+          Equivalent: <strong>{{ equivalent }}</strong>
+        </div>
+      </c-card>
+    </div>
+    <n-table v-else size="small">
+      <thead>
+        <tr>
+          <th class="text-left" scope="col">
+            Symbol
+          </th>
+          <th class="text-left" scope="col">
+            Meaning
+          </th>
+          <th class="text-left" scope="col">
+            Example
+          </th>
+          <th class="text-left" scope="col">
+            Equivalent
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="{ symbol, meaning, example, equivalent } in helpers" :key="symbol">
+          <td>{{ symbol }}</td>
+          <td>{{ meaning }}</td>
+          <td>
+            <code>{{ example }}</code>
+          </td>
+          <td>{{ equivalent }}</td>
+        </tr>
+      </tbody>
+    </n-table>
+  </c-card>
+</template>
 
 <style lang="less" scoped>
 ::v-deep(input) {

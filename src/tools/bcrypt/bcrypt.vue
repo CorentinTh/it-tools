@@ -1,3 +1,21 @@
+<script setup lang="ts">
+import { computed, ref } from 'vue';
+import { compareSync, hashSync } from 'bcryptjs';
+import { useThemeVars } from 'naive-ui';
+import { useCopy } from '@/composable/copy';
+
+const themeVars = useThemeVars();
+
+const input = ref('');
+const saltCount = ref(10);
+const hashed = computed(() => hashSync(input.value, saltCount.value));
+const { copy } = useCopy({ source: hashed, text: 'Hashed string copied to the clipboard' });
+
+const compareString = ref('');
+const compareHash = ref('');
+const compareMatch = computed(() => compareSync(compareString.value, compareHash.value));
+</script>
+
 <template>
   <c-card title="Hash">
     <c-input-text
@@ -16,7 +34,9 @@
     <c-input-text :value="hashed" readonly text-center />
 
     <div mt-5 flex justify-center>
-      <c-button @click="copy"> Copy hash </c-button>
+      <c-button @click="copy">
+        Copy hash
+      </c-button>
     </div>
   </c-card>
 
@@ -36,24 +56,6 @@
     </n-form>
   </c-card>
 </template>
-
-<script setup lang="ts">
-import { computed, ref } from 'vue';
-import { hashSync, compareSync } from 'bcryptjs';
-import { useCopy } from '@/composable/copy';
-import { useThemeVars } from 'naive-ui';
-
-const themeVars = useThemeVars();
-
-const input = ref('');
-const saltCount = ref(10);
-const hashed = computed(() => hashSync(input.value, saltCount.value));
-const { copy } = useCopy({ source: hashed, text: 'Hashed string copied to the clipboard' });
-
-const compareString = ref('');
-const compareHash = ref('');
-const compareMatch = computed(() => compareSync(compareString.value, compareHash.value));
-</script>
 
 <style lang="less" scoped>
 .compare-result {

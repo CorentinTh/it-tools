@@ -6,7 +6,7 @@ function textToBase64(str: string, { makeUrlSafe = false }: { makeUrlSafe?: bool
 }
 
 function base64ToText(str: string, { makeUrlSafe = false }: { makeUrlSafe?: boolean } = {}) {
-  if (!isValidBase64(str, { makeUrlSafe: makeUrlSafe })) {
+  if (!isValidBase64(str, { makeUrlSafe })) {
     throw new Error('Incorrect base64 string');
   }
 
@@ -17,7 +17,8 @@ function base64ToText(str: string, { makeUrlSafe = false }: { makeUrlSafe?: bool
 
   try {
     return window.atob(cleanStr);
-  } catch (_) {
+  }
+  catch (_) {
     throw new Error('Incorrect base64 string');
   }
 }
@@ -37,7 +38,8 @@ function isValidBase64(str: string, { makeUrlSafe = false }: { makeUrlSafe?: boo
       return removePotentialPadding(window.btoa(window.atob(cleanStr))) === cleanStr;
     }
     return window.btoa(window.atob(cleanStr)) === cleanStr;
-  } catch (err) {
+  }
+  catch (err) {
     return false;
   }
 }

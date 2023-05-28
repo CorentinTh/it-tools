@@ -1,16 +1,10 @@
-<template>
-  <component :is="tag" :href="href ?? to" class="c-link" :to="to">
-    <slot />
-  </component>
-</template>
-
 <script lang="ts" setup>
-import { RouterLink, type RouteLocationRaw } from 'vue-router';
+import { type RouteLocationRaw, RouterLink } from 'vue-router';
 import { useTheme } from './c-link.theme';
 
 const props = defineProps<{
-  href?: string;
-  to?: RouteLocationRaw;
+  href?: string
+  to?: RouteLocationRaw
 }>();
 
 const { href, to } = toRefs(props);
@@ -26,6 +20,12 @@ const tag = computed(() => {
   return 'span';
 });
 </script>
+
+<template>
+  <component :is="tag" :href="href ?? to" class="c-link" :to="to">
+    <slot />
+  </component>
+</template>
 
 <style lang="less" scoped>
 .c-link {

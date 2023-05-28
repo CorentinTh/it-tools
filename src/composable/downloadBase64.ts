@@ -5,8 +5,8 @@ function getFileExtensionFromBase64({
   base64String,
   defaultExtension = 'txt',
 }: {
-  base64String: string;
-  defaultExtension?: string;
+  base64String: string
+  defaultExtension?: string
 }) {
   const hasMimeType = base64String.match(/data:(.*?);base64/i);
 

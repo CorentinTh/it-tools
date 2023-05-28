@@ -8,7 +8,7 @@ describe('boolean utils', () => {
       expect(isNotThrowing(_.noop)).to.eql(true);
       expect(
         isNotThrowing(() => {
-          throw new Error();
+          throw new Error('message');
         }),
       ).to.eql(false);
     });

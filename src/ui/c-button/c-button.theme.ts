@@ -2,7 +2,7 @@ import { darken, lighten } from '../color/color.models';
 import { defineThemes } from '../theme/theme.models';
 import { appThemes } from '../theme/themes';
 
-const createState = ({
+function createState({
   textColor,
   backgroundColor,
   hoverBackground,
@@ -10,20 +10,22 @@ const createState = ({
   pressedBackground,
   pressedTextColor = textColor,
 }: {
-  textColor: string;
-  backgroundColor: string;
-  hoverBackground: string;
-  hoveredTextColor?: string;
-  pressedBackground: string;
-  pressedTextColor?: string;
-}) => ({
-  textColor,
-  backgroundColor,
-  hover: { textColor: hoveredTextColor, backgroundColor: hoverBackground },
-  pressed: { textColor: pressedTextColor, backgroundColor: pressedBackground },
-});
+  textColor: string
+  backgroundColor: string
+  hoverBackground: string
+  hoveredTextColor?: string
+  pressedBackground: string
+  pressedTextColor?: string
+}) {
+  return {
+    textColor,
+    backgroundColor,
+    hover: { textColor: hoveredTextColor, backgroundColor: hoverBackground },
+    pressed: { textColor: pressedTextColor, backgroundColor: pressedBackground },
+  };
+}
 
-const createTheme = ({ style }: { style: 'light' | 'dark' }) => {
+function createTheme({ style }: { style: 'light' | 'dark' }) {
   const theme = appThemes[style];
 
   return {
@@ -95,7 +97,7 @@ const createTheme = ({ style }: { style: 'light' | 'dark' }) => {
       }),
     },
   };
-};
+}
 
 export const { useTheme } = defineThemes({
   dark: createTheme({ style: 'dark' }),

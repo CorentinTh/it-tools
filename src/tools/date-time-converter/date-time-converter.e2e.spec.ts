@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('Date time converter - json to yaml', () => {
   test.beforeEach(async ({ page }) => {

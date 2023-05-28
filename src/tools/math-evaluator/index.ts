@@ -4,7 +4,7 @@ import { defineTool } from '../tool';
 export const tool = defineTool({
   name: 'Math evaluator',
   path: '/math-evaluator',
-  description: `Evaluate math expression, like a calculator on steroid (you can use function like sqrt, cos, sin, abs, ...)`,
+  description: 'Evaluate math expression, like a calculator on steroid (you can use function like sqrt, cos, sin, abs, ...)',
   keywords: [
     'math',
     'evaluator',

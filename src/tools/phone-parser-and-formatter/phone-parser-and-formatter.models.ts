@@ -18,13 +18,17 @@ const typeToLabel: Record<NonNullable<NumberType>, string> = {
 };
 
 function formatTypeToHumanReadable(type: NumberType): string | undefined {
-  if (!type) return undefined;
+  if (!type) {
+    return undefined;
+  }
 
   return typeToLabel[type];
 }
 
 function getFullCountryName(countryCode: string | undefined) {
-  if (!countryCode) return undefined;
+  if (!countryCode) {
+    return undefined;
+  }
 
   return lookup.byIso(countryCode)?.country;
 }
@@ -35,7 +39,9 @@ function getDefaultCountryCode({
 }: { locale?: string; defaultCode?: CountryCode } = {}): CountryCode {
   const countryCode = locale.split('-')[1]?.toUpperCase();
 
-  if (!countryCode) return defaultCode;
+  if (!countryCode) {
+    return defaultCode;
+  }
 
   return (lookup.byIso(countryCode)?.iso2 ?? defaultCode) as CountryCode;
 }

@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import { type Component, toRefs } from 'vue';
+
+const props = defineProps<{ icon: Component; title: string; action: () => void; isActive?: () => boolean }>();
+const { icon, title, action, isActive } = toRefs(props);
+</script>
+
 <template>
   <n-tooltip trigger="hover">
     <template #trigger>
@@ -9,12 +16,3 @@
     {{ title }}
   </n-tooltip>
 </template>
-
-<script setup lang="ts">
-import { toRefs, type Component } from 'vue';
-
-const props = defineProps<{ icon: Component; title: string; action: () => void; isActive?: () => boolean }>();
-const { icon, title, action, isActive } = toRefs(props);
-</script>
-
-<style scoped></style>

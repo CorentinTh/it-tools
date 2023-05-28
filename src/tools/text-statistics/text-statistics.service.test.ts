@@ -1,4 +1,4 @@
-import { expect, describe, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { getStringSizeInBytes } from './text-statistics.service';
 
 describe('text-statistics', () => {

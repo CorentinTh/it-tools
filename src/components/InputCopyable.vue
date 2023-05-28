@@ -1,20 +1,5 @@
-<template>
-  <c-input-text v-model:value="value">
-    <template #suffix>
-      <n-tooltip trigger="hover">
-        <template #trigger>
-          <c-button circle variant="text" size="small" @click="onCopyClicked">
-            <icon-mdi-content-copy />
-          </c-button>
-        </template>
-        {{ tooltipText }}
-      </n-tooltip>
-    </template>
-  </c-input-text>
-</template>
-
 <script setup lang="ts">
-import { useVModel, useClipboard } from '@vueuse/core';
+import { useClipboard, useVModel } from '@vueuse/core';
 import { ref } from 'vue';
 
 const props = defineProps<{ value: string }>();
@@ -34,3 +19,18 @@ function onCopyClicked() {
   }, 2000);
 }
 </script>
+
+<template>
+  <c-input-text v-model:value="value">
+    <template #suffix>
+      <n-tooltip trigger="hover">
+        <template #trigger>
+          <c-button circle variant="text" size="small" @click="onCopyClicked">
+            <icon-mdi-content-copy />
+          </c-button>
+        </template>
+        {{ tooltipText }}
+      </n-tooltip>
+    </template>
+  </c-input-text>
+</template>

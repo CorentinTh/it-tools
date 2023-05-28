@@ -1,86 +1,13 @@
-<template>
-  <div style="max-width: 350px">
-    <c-input-text
-      v-model:value="secret"
-      label="Secret"
-      placeholder="Paste your TOTP secret..."
-      mb-5
-      :validation-rules="secretValidationRules"
-    >
-      <template #suffix>
-        <n-tooltip trigger="hover">
-          <template #trigger>
-            <c-button circle variant="text" size="small" @click="refreshSecret">
-              <icon-mdi-refresh />
-            </c-button>
-          </template>
-          Generate secret token
-        </n-tooltip>
-      </template>
-    </c-input-text>
-
-    <div>
-      <token-display :tokens="tokens" style="margin-top: 2px" />
-
-      <n-progress :percentage="(100 * interval) / 30" :color="theme.primaryColor" :show-indicator="false" />
-      <div style="text-align: center">Next in {{ String(Math.floor(30 - interval)).padStart(2, '0') }}s</div>
-    </div>
-    <div mt-4 flex flex-col items-center justify-center gap-3>
-      <n-image :src="qrcode"></n-image>
-      <c-button :href="keyUri" target="_blank">Open Key URI in new tab</c-button>
-    </div>
-  </div>
-  <div style="max-width: 350px">
-    <input-copyable
-      label="Secret in hexadecimal"
-      :value="base32toHex(secret)"
-      readonly
-      placeholder="Secret in hex will be displayed here"
-      mb-5
-    />
-
-    <input-copyable
-      label="Epoch"
-      :value="Math.floor(now / 1000).toString()"
-      readonly
-      mb-5
-      placeholder="Epoch in sec will be displayed here"
-    />
-
-    <p>Iteration</p>
-
-    <input-copyable
-      :value="String(getCounterFromTime({ now, timeStep: 30 }))"
-      readonly
-      label="Count:"
-      label-position="left"
-      label-width="90px"
-      label-align="right"
-      placeholder="Iteration count will be displayed here"
-    />
-
-    <input-copyable
-      :value="getCounterFromTime({ now, timeStep: 30 }).toString(16).padStart(16, '0')"
-      readonly
-      placeholder="Iteration count in hex will be displayed here"
-      label-position="left"
-      label-width="90px"
-      label-align="right"
-      label="Padded hex:"
-    />
-  </div>
-</template>
-
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { useTimestamp } from '@vueuse/core';
 import { useThemeVars } from 'naive-ui';
+import { useQRCode } from '../qr-code-generator/useQRCode';
+import { base32toHex, buildKeyUri, generateSecret, generateTOTP, getCounterFromTime } from './otp.service';
+import TokenDisplay from './token-display.vue';
 import { useStyleStore } from '@/stores/style.store';
 import InputCopyable from '@/components/InputCopyable.vue';
 import { computedRefreshable } from '@/composable/computedRefreshable';
-import { generateTOTP, buildKeyUri, generateSecret, base32toHex, getCounterFromTime } from './otp.service';
-import { useQRCode } from '../qr-code-generator/useQRCode';
-import TokenDisplay from './token-display.vue';
 
 const now = useTimestamp();
 const interval = computed(() => (now.value / 1000) % 30);
@@ -124,6 +51,83 @@ const secretValidationRules = [
   },
 ];
 </script>
+
+<template>
+  <div style="max-width: 350px">
+    <c-input-text
+      v-model:value="secret"
+      label="Secret"
+      placeholder="Paste your TOTP secret..."
+      mb-5
+      :validation-rules="secretValidationRules"
+    >
+      <template #suffix>
+        <n-tooltip trigger="hover">
+          <template #trigger>
+            <c-button circle variant="text" size="small" @click="refreshSecret">
+              <icon-mdi-refresh />
+            </c-button>
+          </template>
+          Generate secret token
+        </n-tooltip>
+      </template>
+    </c-input-text>
+
+    <div>
+      <TokenDisplay :tokens="tokens" style="margin-top: 2px" />
+
+      <n-progress :percentage="(100 * interval) / 30" :color="theme.primaryColor" :show-indicator="false" />
+      <div style="text-align: center">
+        Next in {{ String(Math.floor(30 - interval)).padStart(2, '0') }}s
+      </div>
+    </div>
+    <div mt-4 flex flex-col items-center justify-center gap-3>
+      <n-image :src="qrcode" />
+      <c-button :href="keyUri" target="_blank">
+        Open Key URI in new tab
+      </c-button>
+    </div>
+  </div>
+  <div style="max-width: 350px">
+    <InputCopyable
+      label="Secret in hexadecimal"
+      :value="base32toHex(secret)"
+      readonly
+      placeholder="Secret in hex will be displayed here"
+      mb-5
+    />
+
+    <InputCopyable
+      label="Epoch"
+      :value="Math.floor(now / 1000).toString()"
+      readonly
+      mb-5
+      placeholder="Epoch in sec will be displayed here"
+    />
+
+    <p>Iteration</p>
+
+    <InputCopyable
+      :value="String(getCounterFromTime({ now, timeStep: 30 }))"
+      readonly
+      label="Count:"
+      label-position="left"
+      label-width="90px"
+      label-align="right"
+      placeholder="Iteration count will be displayed here"
+    />
+
+    <InputCopyable
+      :value="getCounterFromTime({ now, timeStep: 30 }).toString(16).padStart(16, '0')"
+      readonly
+      placeholder="Iteration count in hex will be displayed here"
+      label-position="left"
+      label-width="90px"
+      label-align="right"
+      label="Padded hex:"
+    />
+  </div>
+</template>
 
 <style lang="less" scoped>
 .n-progress {

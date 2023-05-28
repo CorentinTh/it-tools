@@ -1,38 +1,8 @@
-<template>
-  <div>
-    <n-table :bordered="false" :bottom-bordered="false" single-column class="permission-table">
-      <thead>
-        <tr>
-          <th class="text-center" scope="col"></th>
-          <th class="text-center" scope="col">Owner (u)</th>
-          <th class="text-center" scope="col">Group (g)</th>
-          <th class="text-center" scope="col">Public (o)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="{ scope, title } of scopes" :key="scope">
-          <td class="line-header">{{ title }}</td>
-          <td v-for="group of groups" :key="group" class="text-center">
-            <!-- <n-switch v-model:value="permissions[group][scope]" /> -->
-            <n-checkbox v-model:checked="permissions[group][scope]" size="large" />
-          </td>
-        </tr>
-      </tbody>
-    </n-table>
-
-    <div class="octal-result">
-      {{ octal }}
-    </div>
-
-    <input-copyable :value="`chmod ${octal} path`" readonly />
-  </div>
-</template>
-
 <script setup lang="ts">
 import { useThemeVars } from 'naive-ui';
 import { computed, ref } from 'vue';
-import { computeChmodOctalRepresentation } from './chmod-calculator.service';
 import InputCopyable from '../../components/InputCopyable.vue';
+import { computeChmodOctalRepresentation } from './chmod-calculator.service';
 
 import type { Group, Scope } from './chmod-calculator.types';
 
@@ -53,6 +23,44 @@ const permissions = ref({
 
 const octal = computed(() => computeChmodOctalRepresentation({ permissions: permissions.value }));
 </script>
+
+<template>
+  <div>
+    <n-table :bordered="false" :bottom-bordered="false" single-column class="permission-table">
+      <thead>
+        <tr>
+          <th class="text-center" scope="col" />
+          <th class="text-center" scope="col">
+            Owner (u)
+          </th>
+          <th class="text-center" scope="col">
+            Group (g)
+          </th>
+          <th class="text-center" scope="col">
+            Public (o)
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="{ scope, title } of scopes" :key="scope">
+          <td class="line-header">
+            {{ title }}
+          </td>
+          <td v-for="group of groups" :key="group" class="text-center">
+            <!-- <n-switch v-model:value="permissions[group][scope]" /> -->
+            <n-checkbox v-model:checked="permissions[group][scope]" size="large" />
+          </td>
+        </tr>
+      </tbody>
+    </n-table>
+
+    <div class="octal-result">
+      {{ octal }}
+    </div>
+
+    <InputCopyable :value="`chmod ${octal} path`" readonly />
+  </div>
+</template>
 
 <style lang="less" scoped>
 .octal-result {

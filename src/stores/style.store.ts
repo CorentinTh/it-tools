@@ -1,6 +1,6 @@
 import { useMediaQuery, useStorage } from '@vueuse/core';
 import { defineStore } from 'pinia';
-import { watch, type Ref } from 'vue';
+import { type Ref, watch } from 'vue';
 
 export const useStyleStore = defineStore('style', {
   state: () => {
@@ -8,7 +8,7 @@ export const useStyleStore = defineStore('style', {
     const isSmallScreen = useMediaQuery('(max-width: 700px)');
     const isMenuCollapsed = useStorage('isMenuCollapsed', isSmallScreen.value) as Ref<boolean>;
 
-    watch(isSmallScreen, (v) => (isMenuCollapsed.value = v));
+    watch(isSmallScreen, v => (isMenuCollapsed.value = v));
 
     return {
       isDarkTheme,

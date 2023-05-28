@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useTracker } from '@/modules/tracker/tracker.services';
 import { useHead } from '@vueuse/head';
+import { useTracker } from '@/modules/tracker/tracker.services';
 
 useHead({ title: 'About - IT Tools' });
 const { tracker } = useTracker();
@@ -11,7 +11,9 @@ const { tracker } = useTracker();
     <n-h1>About</n-h1>
     <n-p>
       This wonderful website, made with ❤ by
-      <c-link href="https://github.com/CorentinTh" target="_blank" rel="noopener"> Corentin Thomasset </c-link>,
+      <c-link href="https://github.com/CorentinTh" target="_blank" rel="noopener">
+        Corentin Thomasset
+      </c-link>,
       aggregates useful tools for developer and people working in IT. If you find it useful, please fell free to share
       it to people you think may find it useful too and don't forget to pin it in your shortcut bar !
     </n-p>
@@ -25,8 +27,8 @@ const { tracker } = useTracker();
         target="_blank"
         @click="() => tracker.trackEvent({ eventName: 'Support button clicked' })"
       >
-        sponsoring me </c-link
-      >.
+        sponsoring me
+      </c-link>.
     </n-p>
 
     <n-h2>Technologies</n-h2>

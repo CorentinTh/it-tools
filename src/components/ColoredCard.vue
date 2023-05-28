@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import { type Component, toRefs } from 'vue';
+
+const props = defineProps<{ icon: Component; title: string }>();
+const { icon, title } = toRefs(props);
+</script>
+
 <template>
   <c-card class="colored-card">
     <n-icon class="icon" size="40" :component="icon" />
@@ -12,13 +19,6 @@
     </div>
   </c-card>
 </template>
-
-<script setup lang="ts">
-import { toRefs, type Component } from 'vue';
-
-const props = defineProps<{ icon: Component; title: string }>();
-const { icon, title } = toRefs(props);
-</script>
 
 <style lang="less" scoped>
 .colored-card {

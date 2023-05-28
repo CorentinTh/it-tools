@@ -1,95 +1,35 @@
-<template>
-  <div
-    class="c-input-text"
-    :class="{ disabled, error: !validation.isValid, 'label-left': labelPosition === 'left', multiline }"
-  >
-    <label v-if="label" :for="id" class="label"> {{ label }} </label>
-
-    <div class="feedback-wrapper">
-      <div ref="inputWrapperRef" class="input-wrapper">
-        <slot name="prefix" />
-
-        <textarea
-          v-if="multiline"
-          :id="id"
-          ref="textareaRef"
-          v-model="value"
-          class="input"
-          :placeholder="placeholder"
-          :readonly="readonly"
-          :disabled="disabled"
-          :data-test-id="testId"
-          :autocapitalize="autocapitalize ?? (rawText ? 'off' : undefined)"
-          :autocomplete="autocomplete ?? (rawText ? 'off' : undefined)"
-          :autocorrect="autocorrect ?? (rawText ? 'off' : undefined)"
-          :spellcheck="spellcheck ?? (rawText ? false : undefined)"
-          :rows="rows"
-        />
-
-        <input
-          v-else
-          :id="id"
-          v-model="value"
-          :type="htmlInputType"
-          class="input"
-          size="1"
-          :placeholder="placeholder"
-          :readonly="readonly"
-          :disabled="disabled"
-          :data-test-id="testId"
-          :autocapitalize="autocapitalize ?? (rawText ? 'off' : undefined)"
-          :autocomplete="autocomplete ?? (rawText ? 'off' : undefined)"
-          :autocorrect="autocorrect ?? (rawText ? 'off' : undefined)"
-          :spellcheck="spellcheck ?? (rawText ? false : undefined)"
-        />
-
-        <c-button v-if="clearable && value" variant="text" circle size="small" @click="value = ''">
-          <icon-mdi-close />
-        </c-button>
-
-        <c-button v-if="type === 'password'" variant="text" circle size="small" @click="showPassword = !showPassword">
-          <icon-mdi-eye v-if="!showPassword" />
-          <icon-mdi-eye-off v-if="showPassword" />
-        </c-button>
-        <slot name="suffix" />
-      </div>
-      <span v-if="!validation.isValid" class="feedback"> {{ validation.message }} </span>
-    </div>
-  </div>
-</template>
-
 <script lang="ts" setup>
-import { generateRandomId } from '@/utils/random';
-import { useValidation, type UseValidationRule } from '@/composable/validation';
 import type { Ref } from 'vue';
-import { useTheme } from './c-input-text.theme';
 import { useAppTheme } from '../theme/themes';
+import { useTheme } from './c-input-text.theme';
+import { generateRandomId } from '@/utils/random';
+import { type UseValidationRule, useValidation } from '@/composable/validation';
 
 const props = withDefaults(
   defineProps<{
-    value?: string;
-    id?: string;
-    placeholder?: string;
-    label?: string;
-    readonly?: boolean;
-    disabled?: boolean;
-    validationRules?: UseValidationRule<string>[];
-    validationWatch?: Ref<unknown>[];
-    validation?: ReturnType<typeof useValidation>;
-    labelPosition?: 'top' | 'left';
-    labelWidth?: string;
-    labelAlign?: 'left' | 'right';
-    clearable?: boolean;
-    testId?: string;
-    autocapitalize?: 'none' | 'sentences' | 'words' | 'characters' | 'on' | 'off' | string;
-    autocomplete?: 'on' | 'off' | string;
-    autocorrect?: 'on' | 'off' | string;
-    spellcheck?: 'true' | 'false' | boolean;
-    rawText?: boolean;
-    type?: 'text' | 'password';
-    multiline?: boolean;
-    rows?: number | string;
-    autosize?: boolean;
+    value?: string
+    id?: string
+    placeholder?: string
+    label?: string
+    readonly?: boolean
+    disabled?: boolean
+    validationRules?: UseValidationRule<string>[]
+    validationWatch?: Ref<unknown>[]
+    validation?: ReturnType<typeof useValidation>
+    labelPosition?: 'top' | 'left'
+    labelWidth?: string
+    labelAlign?: 'left' | 'right'
+    clearable?: boolean
+    testId?: string
+    autocapitalize?: 'none' | 'sentences' | 'words' | 'characters' | 'on' | 'off' | string
+    autocomplete?: 'on' | 'off' | string
+    autocorrect?: 'on' | 'off' | string
+    spellcheck?: 'true' | 'false' | boolean
+    rawText?: boolean
+    type?: 'text' | 'password'
+    multiline?: boolean
+    rows?: number | string
+    autosize?: boolean
   }>(),
   {
     value: '',
@@ -123,9 +63,9 @@ const showPassword = ref(false);
 
 const { id, placeholder, label, validationRules, labelPosition, labelWidth, labelAlign, autosize } = toRefs(props);
 
-const validation =
-  props.validation ??
-  useValidation({
+const validation
+  = props.validation
+  ?? useValidation({
     rules: validationRules,
     source: value,
     watch: props.validationWatch,
@@ -169,6 +109,66 @@ const htmlInputType = computed(() => {
   return 'text';
 });
 </script>
+
+<template>
+  <div
+    class="c-input-text"
+    :class="{ disabled, 'error': !validation.isValid, 'label-left': labelPosition === 'left', multiline }"
+  >
+    <label v-if="label" :for="id" class="label"> {{ label }} </label>
+
+    <div class="feedback-wrapper">
+      <div ref="inputWrapperRef" class="input-wrapper">
+        <slot name="prefix" />
+
+        <textarea
+          v-if="multiline"
+          :id="id"
+          ref="textareaRef"
+          v-model="value"
+          class="input"
+          :placeholder="placeholder"
+          :readonly="readonly"
+          :disabled="disabled"
+          :data-test-id="testId"
+          :autocapitalize="autocapitalize ?? (rawText ? 'off' : undefined)"
+          :autocomplete="autocomplete ?? (rawText ? 'off' : undefined)"
+          :autocorrect="autocorrect ?? (rawText ? 'off' : undefined)"
+          :spellcheck="spellcheck ?? (rawText ? false : undefined)"
+          :rows="rows"
+        />
+
+        <input
+          v-else
+          :id="id"
+          v-model="value"
+          :type="htmlInputType"
+          class="input"
+          size="1"
+          :placeholder="placeholder"
+          :readonly="readonly"
+          :disabled="disabled"
+          :data-test-id="testId"
+          :autocapitalize="autocapitalize ?? (rawText ? 'off' : undefined)"
+          :autocomplete="autocomplete ?? (rawText ? 'off' : undefined)"
+          :autocorrect="autocorrect ?? (rawText ? 'off' : undefined)"
+          :spellcheck="spellcheck ?? (rawText ? false : undefined)"
+        >
+
+        <c-button v-if="clearable && value" variant="text" circle size="small" @click="value = ''">
+          <icon-mdi-close />
+        </c-button>
+
+        <c-button v-if="type === 'password'" variant="text" circle size="small" @click="showPassword = !showPassword">
+          <icon-mdi-eye v-if="!showPassword" />
+          <icon-mdi-eye-off v-if="showPassword" />
+        </c-button>
+        <slot name="suffix" />
+      </div>
+      <span v-if="!validation.isValid" class="feedback"> {{ validation.message }} </span>
+    </div>
+  </div>
+</template>
 
 <style lang="less" scoped>
 .c-input-text {

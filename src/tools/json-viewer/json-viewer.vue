@@ -1,3 +1,30 @@
+<script setup lang="ts">
+import { computed, ref } from 'vue';
+import JSON5 from 'json5';
+import { useStorage } from '@vueuse/core';
+import { formatJson } from './json.models';
+import { withDefaultOnError } from '@/utils/defaults';
+import { useValidation } from '@/composable/validation';
+import TextareaCopyable from '@/components/TextareaCopyable.vue';
+
+const inputElement = ref<HTMLElement>();
+
+const rawJson = useStorage('json-prettify:raw-json', '{"hello": "world", "foo": "bar"}');
+const indentSize = useStorage('json-prettify:indent-size', 3);
+const sortKeys = useStorage('json-prettify:sort-keys', true);
+const cleanJson = computed(() => withDefaultOnError(() => formatJson({ rawJson, indentSize, sortKeys }), ''));
+
+const rawJsonValidation = useValidation({
+  source: rawJson,
+  rules: [
+    {
+      validator: v => v === '' || JSON5.parse(v),
+      message: 'Provided JSON is not valid.',
+    },
+  ],
+});
+</script>
+
 <template>
   <div style="flex: 0 0 100%">
     <div style="margin: 0 auto; max-width: 600px" flex justify-center gap-3>
@@ -28,36 +55,9 @@
     />
   </n-form-item>
   <n-form-item label="Prettify version of your json">
-    <textarea-copyable :value="cleanJson" language="json" :follow-height-of="inputElement" />
+    <TextareaCopyable :value="cleanJson" language="json" :follow-height-of="inputElement" />
   </n-form-item>
 </template>
-
-<script setup lang="ts">
-import TextareaCopyable from '@/components/TextareaCopyable.vue';
-import { useValidation } from '@/composable/validation';
-import { withDefaultOnError } from '@/utils/defaults';
-import { computed, ref } from 'vue';
-import JSON5 from 'json5';
-import { useStorage } from '@vueuse/core';
-import { formatJson } from './json.models';
-
-const inputElement = ref<HTMLElement>();
-
-const rawJson = useStorage('json-prettify:raw-json', '{"hello": "world", "foo": "bar"}');
-const indentSize = useStorage('json-prettify:indent-size', 3);
-const sortKeys = useStorage('json-prettify:sort-keys', true);
-const cleanJson = computed(() => withDefaultOnError(() => formatJson({ rawJson, indentSize, sortKeys }), ''));
-
-const rawJsonValidation = useValidation({
-  source: rawJson,
-  rules: [
-    {
-      validator: (v) => v === '' || JSON5.parse(v),
-      message: 'Provided JSON is not valid.',
-    },
-  ],
-});
-</script>
 
 <style lang="less" scoped>
 .result-card {

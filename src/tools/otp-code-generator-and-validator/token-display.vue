@@ -1,9 +1,27 @@
+<script setup lang="ts">
+import { useClipboard } from '@vueuse/core';
+import { toRefs } from 'vue';
+
+const props = defineProps<{ tokens: { previous: string; current: string; next: string } }>();
+const { copy: copyPrevious, copied: previousCopied } = useClipboard();
+const { copy: copyCurrent, copied: currentCopied } = useClipboard();
+const { copy: copyNext, copied: nextCopied } = useClipboard();
+
+const { tokens } = toRefs(props);
+</script>
+
 <template>
   <div>
     <div class="labels" w-full flex items-center>
-      <div flex-1 text-left>Previous</div>
-      <div flex-1 text-center>Current OTP</div>
-      <div flex-1 text-right>Next</div>
+      <div flex-1 text-left>
+        Previous
+      </div>
+      <div flex-1 text-center>
+        Current OTP
+      </div>
+      <div flex-1 text-right>
+        Next
+      </div>
     </div>
     <n-input-group>
       <n-tooltip trigger="hover" placement="bottom">
@@ -29,27 +47,17 @@
       </n-tooltip>
       <n-tooltip trigger="hover" placement="bottom">
         <template #trigger>
-          <c-button important:h-12 data-test-id="next-otp" @click.prevent="copyNext(tokens.next)">{{
-            tokens.next
-          }}</c-button>
+          <c-button important:h-12 data-test-id="next-otp" @click.prevent="copyNext(tokens.next)">
+            {{
+              tokens.next
+            }}
+          </c-button>
         </template>
         <div>{{ nextCopied ? 'Copied !' : 'Copy next OTP' }}</div>
       </n-tooltip>
     </n-input-group>
   </div>
 </template>
-
-<script setup lang="ts">
-import { useClipboard } from '@vueuse/core';
-import { toRefs } from 'vue';
-
-const { copy: copyPrevious, copied: previousCopied } = useClipboard();
-const { copy: copyCurrent, copied: currentCopied } = useClipboard();
-const { copy: copyNext, copied: nextCopied } = useClipboard();
-
-const props = defineProps<{ tokens: { previous: string; current: string; next: string } }>();
-const { tokens } = toRefs(props);
-</script>
 
 <style scoped lang="less">
 .current-otp {

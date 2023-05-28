@@ -1,4 +1,4 @@
-import { expect, describe, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { convertBase } from './integer-base-converter.model';
 
 describe('integer-base-converter', () => {

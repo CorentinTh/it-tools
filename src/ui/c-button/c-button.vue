@@ -1,31 +1,18 @@
-<template>
-  <component
-    :is="tag"
-    :href="href ?? to"
-    class="c-button"
-    :class="{ disabled, round, circle }"
-    :to="to"
-    @click="handleClick"
-  >
-    <slot />
-  </component>
-</template>
-
 <script lang="ts" setup>
 import type { RouteLocationRaw } from 'vue-router';
-import { useTheme } from './c-button.theme';
 import { useAppTheme } from '../theme/themes';
+import { useTheme } from './c-button.theme';
 
 const props = withDefaults(
   defineProps<{
-    type?: 'default' | 'primary' | 'warning' | 'error';
-    variant?: 'basic' | 'text';
-    disabled?: boolean;
-    round?: boolean;
-    circle?: boolean;
-    href?: string;
-    to?: RouteLocationRaw;
-    size?: 'small' | 'medium' | 'large';
+    type?: 'default' | 'primary' | 'warning' | 'error'
+    variant?: 'basic' | 'text'
+    disabled?: boolean
+    round?: boolean
+    circle?: boolean
+    href?: string
+    to?: RouteLocationRaw
+    size?: 'small' | 'medium' | 'large'
   }>(),
   {
     type: 'default',
@@ -38,9 +25,9 @@ const props = withDefaults(
     size: 'medium',
   },
 );
-const { variant, disabled, round, circle, href, type, to, size: sizeName } = toRefs(props);
-
 const emits = defineEmits(['click']);
+
+const { variant, disabled, round, circle, href, type, to, size: sizeName } = toRefs(props);
 
 function handleClick(event: MouseEvent) {
   if (!disabled.value) {
@@ -63,6 +50,19 @@ const appTheme = useAppTheme();
 
 const size = computed(() => theme.value.size[sizeName.value]);
 </script>
+
+<template>
+  <component
+    :is="tag"
+    :href="href ?? to"
+    class="c-button"
+    :class="{ disabled, round, circle }"
+    :to="to"
+    @click="handleClick"
+  >
+    <slot />
+  </component>
+</template>
 
 <style lang="less" scoped>
 .c-button {
