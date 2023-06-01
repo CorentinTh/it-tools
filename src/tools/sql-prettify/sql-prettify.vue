@@ -1,7 +1,27 @@
+<script setup lang="ts">
+import { type FormatFnOptions, format as formatSQL } from 'sql-formatter';
+import { computed, reactive, ref } from 'vue';
+import TextareaCopyable from '@/components/TextareaCopyable.vue';
+import { useStyleStore } from '@/stores/style.store';
+
+const inputElement = ref<HTMLElement>();
+const styleStore = useStyleStore();
+const config = reactive<Partial<FormatFnOptions>>({
+  keywordCase: 'upper',
+  useTabs: false,
+  language: 'sql',
+  indentStyle: 'standard',
+  tabulateAlias: true,
+});
+
+const rawSQL = ref('select field1,field2,field3 from my_table where my_condition;');
+const prettySQL = computed(() => formatSQL(rawSQL.value, config));
+</script>
+
 <template>
   <div style="flex: 0 0 100%">
-    <n-space item-style="flex:1 1 0" style="margin: 0 auto; max-width: 600px" :vertical="styleStore.isSmallScreen">
-      <n-form-item label="Dialect" label-width="500">
+    <div mx-auto style="max-width: 600px" flex gap-2 :class="{ 'flex-col': styleStore.isSmallScreen }">
+      <n-form-item label="Dialect" label-width="500" flex-1>
         <n-select
           v-model:value="config.language"
           :options="[
@@ -21,7 +41,7 @@
           ]"
         />
       </n-form-item>
-      <n-form-item label="Keyword case">
+      <n-form-item label="Keyword case" flex-1>
         <n-select
           v-model:value="config.keywordCase"
           :options="[
@@ -31,7 +51,7 @@
           ]"
         />
       </n-form-item>
-      <n-form-item label="Indent style">
+      <n-form-item label="Indent style" flex-1>
         <n-select
           v-model:value="config.indentStyle"
           :options="[
@@ -41,7 +61,7 @@
           ]"
         />
       </n-form-item>
-    </n-space>
+    </div>
   </div>
 
   <n-form-item label="Your SQL query">
@@ -58,29 +78,9 @@
     />
   </n-form-item>
   <n-form-item label="Prettify version of your query">
-    <textarea-copyable :value="prettySQL" language="sql" :follow-height-of="inputElement" />
+    <TextareaCopyable :value="prettySQL" language="sql" :follow-height-of="inputElement" />
   </n-form-item>
 </template>
-
-<script setup lang="ts">
-import TextareaCopyable from '@/components/TextareaCopyable.vue';
-import { useStyleStore } from '@/stores/style.store';
-import { format as formatSQL, type FormatFnOptions } from 'sql-formatter';
-import { computed, reactive, ref } from 'vue';
-
-const inputElement = ref<HTMLElement>();
-const styleStore = useStyleStore();
-const config = reactive<Partial<FormatFnOptions>>({
-  keywordCase: 'upper',
-  useTabs: false,
-  language: 'sql',
-  indentStyle: 'standard',
-  tabulateAlias: true,
-});
-
-const rawSQL = ref('select field1,field2,field3 from my_table where my_condition;');
-const prettySQL = computed(() => formatSQL(rawSQL.value, config));
-</script>
 
 <style lang="less" scoped>
 .result-card {

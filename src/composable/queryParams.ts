@@ -26,7 +26,7 @@ function useQueryParam<T>({ name, defaultValue }: { name: string; defaultValue: 
 
   return computed<T>({
     get() {
-      return transformer.fromQuery(proxy.value) as T;
+      return transformer.fromQuery(proxy.value) as unknown as T;
     },
     set(value) {
       proxy.value = transformer.toQuery(value as never);

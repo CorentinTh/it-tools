@@ -1,18 +1,3 @@
-<template>
-  <div>
-    <n-card>
-      <div class="duration">{{ formatMs(counter) }}</div>
-    </n-card>
-    <br />
-    <n-space justify="center">
-      <n-button v-if="!isRunning" secondary type="primary" @click="resume">Start</n-button>
-      <n-button v-else secondary type="warning" @click="pause">Stop</n-button>
-
-      <n-button secondary @click="counter = 0">Reset</n-button>
-    </n-space>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { useRafFn } from '@vueuse/core';
 import { ref } from 'vue';
@@ -42,6 +27,28 @@ function pause() {
   isRunning.value = false;
 }
 </script>
+
+<template>
+  <div>
+    <c-card>
+      <div class="duration">
+        {{ formatMs(counter) }}
+      </div>
+    </c-card>
+    <div mt-5 flex justify-center gap-3>
+      <c-button v-if="!isRunning" type="primary" @click="resume">
+        Start
+      </c-button>
+      <c-button v-else type="warning" @click="pause">
+        Stop
+      </c-button>
+
+      <c-button @click="counter = 0">
+        Reset
+      </c-button>
+    </div>
+  </div>
+</template>
 
 <style lang="less" scoped>
 .duration {

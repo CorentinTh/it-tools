@@ -29,9 +29,9 @@ createToolFile(
   `${toolName}.vue`,
   `
 <template>
-  <n-card>
+  <div>
     Lorem ipsum
-  </n-card>
+  </div>
 </template>
 
 <script setup lang="ts">

@@ -1,24 +1,28 @@
-<template>
-  <n-card>
-    <div class="port">
-      {{ port }}
-    </div>
-    <n-space justify="center">
-      <n-button secondary @click="copy"> Copy </n-button>
-      <n-button secondary @click="refreshPort"> Refresh </n-button>
-    </n-space>
-  </n-card>
-</template>
-
 <script setup lang="ts">
+import { generatePort } from './random-port-generator.model';
 import { computedRefreshable } from '@/composable/computedRefreshable';
 import { useCopy } from '@/composable/copy';
-import { generatePort } from './random-port-generator.model';
 
 const [port, refreshPort] = computedRefreshable(() => String(generatePort()));
 
 const { copy } = useCopy({ source: port, text: 'Port copied to the clipboard' });
 </script>
+
+<template>
+  <c-card>
+    <div class="port">
+      {{ port }}
+    </div>
+    <div flex justify-center gap-3>
+      <c-button @click="copy">
+        Copy
+      </c-button>
+      <c-button @click="refreshPort">
+        Refresh
+      </c-button>
+    </div>
+  </c-card>
+</template>
 
 <style lang="less" scoped>
 .port {

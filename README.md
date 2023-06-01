@@ -84,7 +84,7 @@ To create a new tool, there is a script that generate the boilerplate of the new
 pnpm run script:create-new-tool my-tool-name
 ```
 
-It will create a directory in `src/tools` with the correct files, and a the import in `src/tools/index.ts`. You will just need to add the inported tool in the proper category and develop the tool.
+It will create a directory in `src/tools` with the correct files, and a the import in `src/tools/index.ts`. You will just need to add the imported tool in the proper category and develop the tool.
 
 ## Credits
 

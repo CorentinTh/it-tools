@@ -1,6 +1,11 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+import { tool as cameraRecorder } from './camera-recorder';
+import { tool as listConverter } from './list-converter';
+import { tool as phoneParserAndFormatter } from './phone-parser-and-formatter';
+import { tool as jsonDiff } from './json-diff';
+import { tool as ipv4RangeExpander } from './ipv4-range-expander';
 import { tool as httpStatusCodes } from './http-status-codes';
 import { tool as yamlToJson } from './yaml-to-json-converter';
 import { tool as jsonToYaml } from './json-to-yaml-converter';
@@ -71,6 +76,7 @@ export const toolsByCategory: ToolCategory[] = [
       textToNatoAlphabet,
       yamlToJson,
       jsonToYaml,
+      listConverter,
     ],
   },
   {
@@ -90,11 +96,12 @@ export const toolsByCategory: ToolCategory[] = [
       htmlWysiwygEditor,
       userAgentParser,
       httpStatusCodes,
+      jsonDiff,
     ],
   },
   {
-    name: 'Images',
-    components: [qrCodeGenerator, svgPlaceholderGenerator],
+    name: 'Images and videos',
+    components: [qrCodeGenerator, svgPlaceholderGenerator, cameraRecorder],
   },
   {
     name: 'Development',
@@ -111,7 +118,7 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Network',
-    components: [ipv4SubnetCalculator, ipv4AddressConverter, macAddressLookup, ipv6UlaGenerator],
+    components: [ipv4SubnetCalculator, ipv4AddressConverter, ipv4RangeExpander, macAddressLookup, ipv6UlaGenerator],
   },
   {
     name: 'Math',
@@ -125,9 +132,13 @@ export const toolsByCategory: ToolCategory[] = [
     name: 'Text',
     components: [loremIpsumGenerator, textStatistics],
   },
+  {
+    name: 'Data',
+    components: [phoneParserAndFormatter],
+  },
 ];
 
 export const tools = toolsByCategory.flatMap(({ components }) => components);
 export const toolsWithCategory = toolsByCategory.flatMap(({ components, name }) =>
-  components.map((tool) => ({ category: name, ...tool })),
+  components.map(tool => ({ category: name, ...tool })),
 );

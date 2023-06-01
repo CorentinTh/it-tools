@@ -1,45 +1,12 @@
-<template>
-  <n-card title="Base64 to file">
-    <n-form-item
-      :feedback="base64InputValidation.message"
-      :validation-status="base64InputValidation.status"
-      :show-label="false"
-    >
-      <n-input v-model:value="base64Input" type="textarea" placeholder="Put your base64 file string here..." rows="5" />
-    </n-form-item>
-    <n-space justify="center">
-      <n-button :disabled="base64Input === '' || !base64InputValidation.isValid" secondary @click="downloadFile()">
-        Download file
-      </n-button>
-    </n-space>
-  </n-card>
-
-  <n-card title="File to base64">
-    <n-upload v-model:file-list="fileList" :show-file-list="true" :on-before-upload="onUpload" list-type="image">
-      <n-upload-dragger>
-        <div mb-2>
-          <n-icon size="35" :depth="3" :component="Upload" />
-        </div>
-        <n-text style="font-size: 14px"> Click or drag a file to this area to upload </n-text>
-      </n-upload-dragger>
-    </n-upload>
-
-    <n-input :value="fileBase64" type="textarea" readonly placeholder="File in base64 will be here" />
-    <n-space justify="center">
-      <n-button secondary @click="copyFileBase64()"> Copy </n-button>
-    </n-space>
-  </n-card>
-</template>
-
 <script setup lang="ts">
+import { Upload } from '@vicons/tabler';
+import { useBase64 } from '@vueuse/core';
+import type { UploadFileInfo } from 'naive-ui';
+import { type Ref, ref } from 'vue';
 import { useCopy } from '@/composable/copy';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 import { useValidation } from '@/composable/validation';
 import { isValidBase64 } from '@/utils/base64';
-import { Upload } from '@vicons/tabler';
-import { useBase64 } from '@vueuse/core';
-import type { UploadFileInfo } from 'naive-ui';
-import { ref, type Ref } from 'vue';
 
 const base64Input = ref('');
 const { download } = useDownloadFileFromBase64({ source: base64Input });
@@ -48,17 +15,20 @@ const base64InputValidation = useValidation({
   rules: [
     {
       message: 'Invalid base 64 string',
-      validator: (value) => isValidBase64(value.trim()),
+      validator: value => isValidBase64(value.trim()),
     },
   ],
 });
 
 function downloadFile() {
-  if (!base64InputValidation.isValid) return;
+  if (!base64InputValidation.isValid) {
+    return;
+  }
 
   try {
     download();
-  } catch (_) {
+  }
+  catch (_) {
     //
   }
 }
@@ -76,12 +46,47 @@ async function onUpload({ file: { file } }: { file: UploadFileInfo }) {
 }
 </script>
 
-<style lang="less" scoped>
-.n-input,
-.n-upload {
-  margin-bottom: 15px;
-}
+<template>
+  <c-card title="Base64 to file">
+    <c-input-text
+      v-model:value="base64Input"
+      multiline
+      placeholder="Put your base64 file string here..."
+      rows="5"
+      :validation="base64InputValidation"
+      mb-2
+    />
 
+    <div flex justify-center>
+      <c-button :disabled="base64Input === '' || !base64InputValidation.isValid" @click="downloadFile()">
+        Download file
+      </c-button>
+    </div>
+  </c-card>
+
+  <c-card title="File to base64">
+    <n-upload v-model:file-list="fileList" :show-file-list="true" :on-before-upload="onUpload" list-type="image">
+      <n-upload-dragger>
+        <div mb-2>
+          <n-icon size="35" :depth="3" :component="Upload" />
+        </div>
+        <n-text style="font-size: 14px">
+          Click or drag a file to this area to upload
+        </n-text>
+      </n-upload-dragger>
+    </n-upload>
+
+    <c-input-text :value="fileBase64" multiline readonly placeholder="File in base64 will be here" rows="5" mb-2 />
+
+    <div flex justify-center>
+      <c-button @click="copyFileBase64()">
+        Copy
+      </c-button>
+    </div>
+  </c-card>
+</template>
+
+<style lang="less" scoped>
 ::v-deep(.n-upload-trigger) {
   width: 100%;
 }

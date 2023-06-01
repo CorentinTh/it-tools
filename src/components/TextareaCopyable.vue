@@ -1,32 +1,3 @@
-<template>
-  <div style="overflow-x: hidden; width: 100%">
-    <n-card class="result-card">
-      <n-scrollbar
-        x-scrollable
-        trigger="none"
-        :style="height ? `min-height: ${height - 40 /* card padding */ + 10 /* negative margin compensation */}px` : ''"
-      >
-        <n-config-provider :hljs="hljs">
-          <n-code :code="value" :language="language" :trim="false" data-test-id="area-content" />
-        </n-config-provider>
-      </n-scrollbar>
-      <n-tooltip v-if="value" trigger="hover">
-        <template #trigger>
-          <div class="copy-button" :class="[copyPlacement]">
-            <n-button circle secondary size="large" @click="onCopyClicked">
-              <n-icon size="22" :component="Copy" />
-            </n-button>
-          </div>
-        </template>
-        <span>{{ tooltipText }}</span>
-      </n-tooltip>
-    </n-card>
-    <n-space v-if="copyPlacement === 'outside'" justify="center" mt-4>
-      <n-button secondary @click="onCopyClicked"> {{ tooltipText }} </n-button>
-    </n-space>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { Copy } from '@vicons/tabler';
 import { useClipboard, useElementSize } from '@vueuse/core';
@@ -37,18 +8,13 @@ import xmlHljs from 'highlight.js/lib/languages/xml';
 import yamlHljs from 'highlight.js/lib/languages/yaml';
 import { ref, toRefs } from 'vue';
 
-hljs.registerLanguage('sql', sqlHljs);
-hljs.registerLanguage('json', jsonHljs);
-hljs.registerLanguage('html', xmlHljs);
-hljs.registerLanguage('yaml', yamlHljs);
-
 const props = withDefaults(
   defineProps<{
-    value: string;
-    followHeightOf?: HTMLElement | null;
-    language?: string;
-    copyPlacement?: 'top-right' | 'bottom-right' | 'outside' | 'none';
-    copyMessage?: string;
+    value: string
+    followHeightOf?: HTMLElement | null
+    language?: string
+    copyPlacement?: 'top-right' | 'bottom-right' | 'outside' | 'none'
+    copyMessage?: string
   }>(),
   {
     followHeightOf: null,
@@ -57,8 +23,13 @@ const props = withDefaults(
     copyMessage: 'Copy to clipboard',
   },
 );
+hljs.registerLanguage('sql', sqlHljs);
+hljs.registerLanguage('json', jsonHljs);
+hljs.registerLanguage('html', xmlHljs);
+hljs.registerLanguage('yaml', yamlHljs);
+
 const { value, language, followHeightOf, copyPlacement, copyMessage } = toRefs(props);
-const { height } = followHeightOf ? useElementSize(followHeightOf) : { height: ref(null) };
+const { height } = followHeightOf.value ? useElementSize(followHeightOf) : { height: ref(null) };
 
 const { copy } = useClipboard({ source: value });
 const tooltipText = ref(copyMessage.value);
@@ -72,6 +43,37 @@ function onCopyClicked() {
   }, 2000);
 }
 </script>
+
+<template>
+  <div style="overflow-x: hidden; width: 100%">
+    <c-card class="result-card">
+      <n-scrollbar
+        x-scrollable
+        trigger="none"
+        :style="height ? `min-height: ${height - 40 /* card padding */ + 10 /* negative margin compensation */}px` : ''"
+      >
+        <n-config-provider :hljs="hljs">
+          <n-code :code="value" :language="language" :trim="false" data-test-id="area-content" />
+        </n-config-provider>
+      </n-scrollbar>
+      <n-tooltip v-if="value" trigger="hover">
+        <template #trigger>
+          <div class="copy-button" :class="[copyPlacement]">
+            <c-button circle important:h-10 important:w-10 @click="onCopyClicked">
+              <n-icon size="22" :component="Copy" />
+            </c-button>
+          </div>
+        </template>
+        <span>{{ tooltipText }}</span>
+      </n-tooltip>
+    </c-card>
+    <div v-if="copyPlacement === 'outside'" mt-4 flex justify-center>
+      <c-button @click="onCopyClicked">
+        {{ tooltipText }}
+      </c-button>
+    </div>
+  </div>
+</template>
 
 <style lang="less" scoped>
 ::v-deep(.n-scrollbar) {

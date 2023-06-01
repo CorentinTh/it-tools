@@ -1,56 +1,63 @@
+<script setup lang="ts">
+import { useClipboard } from '@vueuse/core';
+import { toRefs } from 'vue';
+
+const props = defineProps<{ tokens: { previous: string; current: string; next: string } }>();
+const { copy: copyPrevious, copied: previousCopied } = useClipboard();
+const { copy: copyCurrent, copied: currentCopied } = useClipboard();
+const { copy: copyNext, copied: nextCopied } = useClipboard();
+
+const { tokens } = toRefs(props);
+</script>
+
 <template>
   <div>
-    <n-space class="labels" item-style="flex: 1 1 0" w-full align="center">
-      <div style="text-align: left">Previous</div>
-      <div style="text-align: center">Current OTP</div>
-      <div style="text-align: right">Next</div>
-    </n-space>
+    <div class="labels" w-full flex items-center>
+      <div flex-1 text-left>
+        Previous
+      </div>
+      <div flex-1 text-center>
+        Current OTP
+      </div>
+      <div flex-1 text-right>
+        Next
+      </div>
+    </div>
     <n-input-group>
       <n-tooltip trigger="hover" placement="bottom">
         <template #trigger>
-          <n-button data-test-id="previous-otp" secondary @click.prevent="copyPrevious(tokens.previous)">{{
-            tokens.previous
-          }}</n-button>
+          <c-button important:h-12 data-test-id="previous-otp" @click.prevent="copyPrevious(tokens.previous)">
+            {{ tokens.previous }}
+          </c-button>
         </template>
         <div>{{ previousCopied ? 'Copied !' : 'Copy previous OTP' }}</div>
       </n-tooltip>
       <n-tooltip trigger="hover" placement="bottom">
         <template #trigger>
-          <n-button
-            tertiary
-            type="primary"
+          <c-button
             data-test-id="current-otp"
             class="current-otp"
+            important:h-12
             @click.prevent="copyCurrent(tokens.current)"
           >
             {{ tokens.current }}
-          </n-button>
+          </c-button>
         </template>
         <div>{{ currentCopied ? 'Copied !' : 'Copy current OTP' }}</div>
       </n-tooltip>
       <n-tooltip trigger="hover" placement="bottom">
         <template #trigger>
-          <n-button secondary data-test-id="next-otp" @click.prevent="copyNext(tokens.next)">{{
-            tokens.next
-          }}</n-button>
+          <c-button important:h-12 data-test-id="next-otp" @click.prevent="copyNext(tokens.next)">
+            {{
+              tokens.next
+            }}
+          </c-button>
         </template>
         <div>{{ nextCopied ? 'Copied !' : 'Copy next OTP' }}</div>
       </n-tooltip>
     </n-input-group>
   </div>
 </template>
-
-<script setup lang="ts">
-import { useClipboard } from '@vueuse/core';
-import { toRefs } from 'vue';
-
-const { copy: copyPrevious, copied: previousCopied } = useClipboard();
-const { copy: copyCurrent, copied: currentCopied } = useClipboard();
-const { copy: copyNext, copied: nextCopied } = useClipboard();
-
-const props = defineProps<{ tokens: { previous: string; current: string; next: string } }>();
-const { tokens } = toRefs(props);
-</script>
 
 <style scoped lang="less">
 .current-otp {
@@ -64,7 +71,6 @@ const { tokens } = toRefs(props);
 
 .labels {
   div {
-    text-align: center;
     padding: 0 2px 6px 2px;
     line-height: 1.25;
   }

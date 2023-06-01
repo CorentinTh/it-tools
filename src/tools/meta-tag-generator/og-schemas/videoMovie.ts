@@ -17,7 +17,7 @@ export const videoMovie: OGSchemaType = {
       placeholder: 'Name of the director...',
     },
     { type: 'input-multiple', label: 'Writer', key: 'video:writer', placeholder: 'Writers of the movie...' },
-    { type: 'input', label: 'Duration', key: 'video:duration', placeholder: "The movie's length in seconds..." },
+    { type: 'input', label: 'Duration', key: 'video:duration', placeholder: 'The movie\'s length in seconds...' },
     {
       type: 'input',
       label: 'Release date',

@@ -1,21 +1,5 @@
-<template>
-  <n-input v-model:value="value">
-    <template #suffix>
-      <n-tooltip trigger="hover">
-        <template #trigger>
-          <n-button quaternary circle @click="onCopyClicked">
-            <n-icon :component="ContentCopyFilled" />
-          </n-button>
-        </template>
-        {{ tooltipText }}
-      </n-tooltip>
-    </template>
-  </n-input>
-</template>
-
 <script setup lang="ts">
-import { useVModel, useClipboard } from '@vueuse/core';
-import { ContentCopyFilled } from '@vicons/material';
+import { useClipboard, useVModel } from '@vueuse/core';
 import { ref } from 'vue';
 
 const props = defineProps<{ value: string }>();
@@ -36,8 +20,17 @@ function onCopyClicked() {
 }
 </script>
 
-<style scoped>
-::v-deep(.n-input-wrapper) {
-  padding-right: 5px;
-}
-</style>
+<template>
+  <c-input-text v-model:value="value">
+    <template #suffix>
+      <n-tooltip trigger="hover">
+        <template #trigger>
+          <c-button circle variant="text" size="small" @click="onCopyClicked">
+            <icon-mdi-content-copy />
+          </c-button>
+        </template>
+        {{ tooltipText }}
+      </n-tooltip>
+    </template>
+  </c-input-text>
+</template>

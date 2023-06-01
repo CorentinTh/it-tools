@@ -11,7 +11,8 @@ function computedRefreshable<T>(getter: () => T, { throttle }: { throttle?: numb
 
   if (throttle) {
     watchThrottled(getter, update, { throttle });
-  } else {
+  }
+  else {
     watch(getter, update);
   }
 

@@ -1,8 +1,13 @@
+<script setup lang="ts">
+import { type Component, toRefs } from 'vue';
+
+const props = defineProps<{ icon: Component; title: string }>();
+const { icon, title } = toRefs(props);
+</script>
+
 <template>
-  <n-card class="colored-card">
-    <n-space justify="space-between" align="center">
-      <n-icon class="icon" size="40" :component="icon" />
-    </n-space>
+  <c-card class="colored-card">
+    <n-icon class="icon" size="40" :component="icon" />
     <n-h3 class="title">
       <n-ellipsis>{{ title }}</n-ellipsis>
     </n-h3>
@@ -12,15 +17,8 @@
         <slot />
       </n-ellipsis>
     </div>
-  </n-card>
+  </c-card>
 </template>
-
-<script setup lang="ts">
-import { toRefs, type Component } from 'vue';
-
-const props = defineProps<{ icon: Component; title: string }>();
-const { icon, title } = toRefs(props);
-</script>
 
 <style lang="less" scoped>
 .colored-card {

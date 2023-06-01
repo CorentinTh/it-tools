@@ -1,67 +1,4 @@
-<template>
-  <div>
-    <n-card>
-      <n-grid cols="3" x-gap="12">
-        <n-gi span="1">
-          <n-form-item label="Language:">
-            <n-select
-              v-model:value="language"
-              :options="Object.keys(languages).map((label) => ({ label, value: label }))"
-            />
-          </n-form-item>
-        </n-gi>
-        <n-gi span="2">
-          <n-form-item
-            label="Entropy (seed):"
-            :feedback="entropyValidation.message"
-            :validation-status="entropyValidation.status"
-          >
-            <n-input-group>
-              <n-input v-model:value="entropy" placeholder="Your string..." />
-              <n-button @click="refreshEntropy">
-                <n-icon size="22">
-                  <Refresh />
-                </n-icon>
-              </n-button>
-              <n-button @click="copyEntropy">
-                <n-icon size="22">
-                  <Copy />
-                </n-icon>
-              </n-button>
-            </n-input-group>
-          </n-form-item>
-        </n-gi>
-      </n-grid>
-      <n-form-item
-        label="Passphrase (mnemonic):"
-        :feedback="mnemonicValidation.message"
-        :validation-status="mnemonicValidation.status"
-      >
-        <n-input-group>
-          <n-input
-            v-model:value="passphrase"
-            style="text-align: center; flex: 1"
-            placeholder="Your mnemonic..."
-            autocomplete="off"
-            autocorrect="off"
-            autocapitalize="off"
-            spellcheck="false"
-          />
-
-          <n-button @click="copyPassphrase">
-            <n-icon size="22" :component="Copy" />
-          </n-button>
-        </n-input-group>
-      </n-form-item>
-    </n-card>
-  </div>
-</template>
-
 <script setup lang="ts">
-import { useCopy } from '@/composable/copy';
-import { useValidation } from '@/composable/validation';
-import { isNotThrowing } from '@/utils/boolean';
-import { withDefaultOnError } from '@/utils/defaults';
 import {
   chineseSimplifiedWordList,
   chineseTraditionalWordList,
@@ -79,18 +16,22 @@ import {
 } from '@it-tools/bip39';
 import { Copy, Refresh } from '@vicons/tabler';
 import { computed, ref } from 'vue';
+import { useCopy } from '@/composable/copy';
+import { useValidation } from '@/composable/validation';
+import { isNotThrowing } from '@/utils/boolean';
+import { withDefaultOnError } from '@/utils/defaults';
 
 const languages = {
-  English: englishWordList,
+  'English': englishWordList,
   'Chinese simplified': chineseSimplifiedWordList,
   'Chinese traditional': chineseTraditionalWordList,
-  Czech: czechWordList,
-  French: frenchWordList,
-  Italian: italianWordList,
-  Japanese: japaneseWordList,
-  Korean: koreanWordList,
-  Portuguese: portugueseWordList,
-  Spanish: spanishWordList,
+  'Czech': czechWordList,
+  'French': frenchWordList,
+  'Italian': italianWordList,
+  'Japanese': japaneseWordList,
+  'Korean': koreanWordList,
+  'Portuguese': portugueseWordList,
+  'Spanish': spanishWordList,
 };
 
 const entropy = ref(generateEntropy());
@@ -111,11 +52,11 @@ const entropyValidation = useValidation({
   source: entropy,
   rules: [
     {
-      validator: (value) => value === '' || (value.length <= 32 && value.length >= 16 && value.length % 4 === 0),
+      validator: value => value === '' || (value.length <= 32 && value.length >= 16 && value.length % 4 === 0),
       message: 'Entropy length should be >= 16, <= 32 and be a multiple of 4',
     },
     {
-      validator: (value) => /^[a-fA-F0-9]*$/.test(value),
+      validator: value => /^[a-fA-F0-9]*$/.test(value),
       message: 'Entropy should be an hexadecimal string',
     },
   ],
@@ -125,7 +66,7 @@ const mnemonicValidation = useValidation({
   source: passphrase,
   rules: [
     {
-      validator: (value) => isNotThrowing(() => mnemonicToEntropy(value, languages[language.value])),
+      validator: value => isNotThrowing(() => mnemonicToEntropy(value, languages[language.value])),
       message: 'Invalid mnemonic',
     },
   ],
@@ -138,3 +79,53 @@ function refreshEntropy() {
 const { copy: copyEntropy } = useCopy({ source: entropy, text: 'Entropy copied to the clipboard' });
 const { copy: copyPassphrase } = useCopy({ source: passphrase, text: 'Passphrase copied to the clipboard' });
 </script>
+
+<template>
+  <div>
+    <n-grid cols="3" x-gap="12">
+      <n-gi span="1">
+        <n-form-item label="Language:">
+          <n-select
+            v-model:value="language"
+            :options="Object.keys(languages).map((label) => ({ label, value: label }))"
+          />
+        </n-form-item>
+      </n-gi>
+      <n-gi span="2">
+        <n-form-item
+          label="Entropy (seed):"
+          :feedback="entropyValidation.message"
+          :validation-status="entropyValidation.status"
+        >
+          <n-input-group>
+            <c-input-text v-model:value="entropy" placeholder="Your string..." />
+
+            <c-button @click="refreshEntropy">
+              <n-icon size="22">
+                <Refresh />
+              </n-icon>
+            </c-button>
+            <c-button @click="copyEntropy">
+              <n-icon size="22">
+                <Copy />
+              </n-icon>
+            </c-button>
+          </n-input-group>
+        </n-form-item>
+      </n-gi>
+    </n-grid>
+    <n-form-item
+      label="Passphrase (mnemonic):"
+      :feedback="mnemonicValidation.message"
+      :validation-status="mnemonicValidation.status"
+    >
+      <n-input-group>
+        <c-input-text v-model:value="passphrase" placeholder="Your mnemonic..." raw-text />
+
+        <c-button @click="copyPassphrase">
+          <n-icon size="22" :component="Copy" />
+        </c-button>
+      </n-input-group>
+    </n-form-item>
+  </div>
+</template>

@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import { useFuzzySearch } from '@/composable/fuzzySearch';
-import { useTracker } from '@/modules/tracker/tracker.services';
-import { tools } from '@/tools';
-import type { Tool } from '@/tools/tools.types';
 import { SearchRound } from '@vicons/material';
 import { useMagicKeys, whenever } from '@vueuse/core';
-import type { NInput } from 'naive-ui';
+import { NInput } from 'naive-ui';
 import { computed, h, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import SearchBarItem from './SearchBarItem.vue';
+import type { Tool } from '@/tools/tools.types';
+import { tools } from '@/tools';
+import { useTracker } from '@/modules/tracker/tracker.services';
+import { useFuzzySearch } from '@/composable/fuzzySearch';
 
 const toolToOption = (tool: Tool) => ({ label: tool.name, value: tool.path, tool });
 
@@ -20,18 +20,18 @@ const inputEl = ref<HTMLElement>();
 const displayDropDown = ref(true);
 const isMac = computed(() => window.navigator.userAgent.toLowerCase().includes('mac'));
 
+const { searchResult } = useFuzzySearch({
+  search: queryString,
+  data: tools,
+  options: { keys: [{ name: 'name', weight: 2 }, 'description', 'keywords'] },
+});
+
 const options = computed(() => {
   if (queryString.value === '') {
     return tools.map(toolToOption);
   }
 
   return searchResult.value.map(toolToOption);
-});
-
-const { searchResult } = useFuzzySearch({
-  search: queryString,
-  data: tools,
-  options: { keys: [{ name: 'name', weight: 2 }, 'description', 'keywords'] },
 });
 
 const keys = useMagicKeys({
@@ -81,15 +81,15 @@ function onFocus() {
     <n-auto-complete
       v-model:value="queryString"
       :options="options"
-      :on-select="(value) => onSelect(String(value))"
+      :on-select="(value: string | number) => onSelect(String(value))"
       :render-label="renderOption"
-      :default-value="'aa'"
+      default-value="aa"
       :get-show="() => displayDropDown"
       :on-focus="onFocus"
       @update:value="() => (displayDropDown = true)"
     >
       <template #default="{ handleInput, handleBlur, handleFocus, value: slotValue }">
-        <n-input
+        <NInput
           ref="inputEl"
           round
           clearable
@@ -103,7 +103,7 @@ function onFocus() {
           <template #prefix>
             <n-icon :component="SearchRound" />
           </template>
-        </n-input>
+        </NInput>
       </template>
     </n-auto-complete>
   </div>
