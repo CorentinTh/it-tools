@@ -1,0 +1,6 @@
+TZ='Asia/Ho_Chi_Minh'
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
