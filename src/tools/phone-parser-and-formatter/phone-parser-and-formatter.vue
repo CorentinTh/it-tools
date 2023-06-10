@@ -86,7 +86,7 @@ const countriesOptions = getCountries().map(code => ({
 <template>
   <div>
     <n-form-item label="Default country code:">
-      <n-select v-model:value="defaultCountryCode" :options="countriesOptions" />
+      <n-select v-model:value="defaultCountryCode" :options="countriesOptions" filterable />
     </n-form-item>
 
     <c-input-text
