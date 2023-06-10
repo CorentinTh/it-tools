@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { NIcon, useThemeVars } from 'naive-ui';
-import { computed } from 'vue';
+
 import { RouterLink } from 'vue-router';
 import { Heart, Home2, Menu2 } from '@vicons/tabler';
 import SearchBar from '../components/SearchBar.vue';

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
 import { useTimestamp } from '@vueuse/core';
 import { useThemeVars } from 'naive-ui';
 import { useQRCode } from '../qr-code-generator/useQRCode';

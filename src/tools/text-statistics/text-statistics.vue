@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { getStringSizeInBytes } from './text-statistics.service';
 import { formatBytes } from '@/utils/convert';
 

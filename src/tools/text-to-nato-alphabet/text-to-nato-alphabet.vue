@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
 import { textToNatoAlphabet } from './text-to-nato-alphabet.service';
 import { useCopy } from '@/composable/copy';
 

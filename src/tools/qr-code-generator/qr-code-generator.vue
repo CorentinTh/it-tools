@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import type { QRCodeErrorCorrectionLevel } from 'qrcode';
 import { useQRCode } from './useQRCode';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';

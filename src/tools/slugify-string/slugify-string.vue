@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
 import slugify from '@sindresorhus/slugify';
 import { withDefaultOnError } from '@/utils/defaults';
 import { useCopy } from '@/composable/copy';

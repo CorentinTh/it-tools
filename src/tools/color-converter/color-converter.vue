@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { colord, extend } from 'colord';
 
 import cmykPlugin from 'colord/plugins/cmyk';

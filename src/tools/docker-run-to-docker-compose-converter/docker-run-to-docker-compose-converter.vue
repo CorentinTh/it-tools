@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
 import { MessageType, composerize } from 'composerize-ts';
 import { withDefaultOnError } from '@/utils/defaults';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';

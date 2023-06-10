@@ -2,7 +2,6 @@
 import { SearchRound } from '@vicons/material';
 import { useMagicKeys, whenever } from '@vueuse/core';
 import { NInput } from 'naive-ui';
-import { computed, h, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import SearchBarItem from './SearchBarItem.vue';
 import type { Tool } from '@/tools/tools.types';

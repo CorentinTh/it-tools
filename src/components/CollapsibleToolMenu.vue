@@ -2,7 +2,6 @@
 import { ChevronRight } from '@vicons/tabler';
 import { useStorage } from '@vueuse/core';
 import { useThemeVars } from 'naive-ui';
-import { computed, h, toRefs } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import MenuIconItem from './MenuIconItem.vue';
 import type { Tool, ToolCategory } from '@/tools/tools.types';

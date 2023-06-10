@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
 import { AES, RC4, Rabbit, TripleDES, enc } from 'crypto-js';
 
 const algos = { AES, TripleDES, Rabbit, RC4 };

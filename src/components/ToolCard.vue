@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useThemeVars } from 'naive-ui';
-import { toRefs } from 'vue';
 import FavoriteButton from './FavoriteButton.vue';
 import { useAppTheme } from '@/ui/theme/themes';
 import type { Tool } from '@/tools/tools.types';

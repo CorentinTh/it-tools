@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { BrandGithub, BrandTwitter, InfoCircle, Moon, Sun } from '@vicons/tabler';
-import { toRefs } from 'vue';
 import { useStyleStore } from '@/stores/style.store';
 import { useThemeStore } from '@/ui/theme/theme.store';
 

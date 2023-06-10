@@ -2,7 +2,7 @@
 import { Plus, Trash } from '@vicons/tabler';
 import { useClipboard, useStorage } from '@vueuse/core';
 import _ from 'lodash';
-import { computed } from 'vue';
+
 import { arrayToMarkdownTable, computeAverage, computeVariance } from './benchmark-builder.models';
 import DynamicValues from './dynamic-values.vue';
 

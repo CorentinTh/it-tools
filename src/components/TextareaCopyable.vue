@@ -6,7 +6,6 @@ import jsonHljs from 'highlight.js/lib/languages/json';
 import sqlHljs from 'highlight.js/lib/languages/sql';
 import xmlHljs from 'highlight.js/lib/languages/xml';
 import yamlHljs from 'highlight.js/lib/languages/yaml';
-import { ref, toRefs } from 'vue';
 
 const props = withDefaults(
   defineProps<{

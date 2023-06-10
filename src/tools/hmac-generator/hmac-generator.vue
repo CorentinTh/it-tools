@@ -11,7 +11,7 @@ import {
   HmacSHA512,
   enc,
 } from 'crypto-js';
-import { computed, ref } from 'vue';
+
 import { convertHexToBin } from '../hash-text/hash-text.service';
 import { useCopy } from '@/composable/copy';
 

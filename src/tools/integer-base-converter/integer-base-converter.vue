@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
 import InputCopyable from '../../components/InputCopyable.vue';
 import { convertBase } from './integer-base-converter.model';
 import { useStyleStore } from '@/stores/style.store';

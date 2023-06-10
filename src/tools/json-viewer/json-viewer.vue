@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
 import JSON5 from 'json5';
 import { useStorage } from '@vueuse/core';
 import { formatJson } from './json.models';
