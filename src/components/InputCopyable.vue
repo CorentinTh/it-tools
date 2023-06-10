@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useClipboard, useVModel } from '@vueuse/core';
-import { ref } from 'vue';
 
 const props = defineProps<{ value: string }>();
 const emit = defineEmits(['update:value']);

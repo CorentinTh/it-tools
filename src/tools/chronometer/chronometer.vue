@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRafFn } from '@vueuse/core';
-import { ref } from 'vue';
+
 import { formatMs } from './chronometer.service';
 
 const isRunning = ref(false);

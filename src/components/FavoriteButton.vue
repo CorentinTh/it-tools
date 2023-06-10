@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { FavoriteFilled } from '@vicons/material';
-import { computed, toRefs } from 'vue';
+
 import { useToolStore } from '@/tools/tools.store';
 import type { Tool } from '@/tools/tools.types';
 

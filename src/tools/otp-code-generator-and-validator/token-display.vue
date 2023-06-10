@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useClipboard } from '@vueuse/core';
-import { toRefs } from 'vue';
 
 const props = defineProps<{ tokens: { previous: string; current: string; next: string } }>();
 const { copy: copyPrevious, copied: previousCopied } = useClipboard();

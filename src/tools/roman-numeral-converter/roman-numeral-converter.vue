@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
 import {
   MAX_ARABIC_TO_ROMAN,
   MIN_ARABIC_TO_ROMAN,

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import _ from 'lodash';
-import { reactive } from 'vue';
 import {
   convertCelsiusToKelvin,
   convertDelisleToKelvin,

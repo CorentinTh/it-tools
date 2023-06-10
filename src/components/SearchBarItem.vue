@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { toRefs } from 'vue';
 import type { Tool } from '@/tools/tools.types';
 
 const props = defineProps<{ tool: Tool }>();

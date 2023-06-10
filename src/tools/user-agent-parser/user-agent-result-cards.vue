@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { toRefs } from 'vue';
 import type { UAParser } from 'ua-parser-js';
 import type { UserAgentResultSection } from './user-agent-parser.types';
 
