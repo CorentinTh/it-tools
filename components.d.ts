@@ -134,6 +134,7 @@ declare module '@vue/runtime-core' {
     NUpload: typeof import('naive-ui')['NUpload']
     NUploadDragger: typeof import('naive-ui')['NUploadDragger']
     OtpCodeGeneratorAndValidator: typeof import('./src/tools/otp-code-generator-and-validator/otp-code-generator-and-validator.vue')['default']
+    PercentageCalculator: typeof import('./src/tools/percentage-calculator/percentage-calculator.vue')['default']
     PhoneParserAndFormatter: typeof import('./src/tools/phone-parser-and-formatter/phone-parser-and-formatter.vue')['default']
     QrCodeGenerator: typeof import('./src/tools/qr-code-generator/qr-code-generator.vue')['default']
     RandomPortGenerator: typeof import('./src/tools/random-port-generator/random-port-generator.vue')['default']
