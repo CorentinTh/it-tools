@@ -9,8 +9,7 @@ const { isDarkTheme } = toRefs(styleStore);
 const themeStore = useThemeStore();
 
 function toggleDarkTheme() {
-  isDarkTheme.value = !isDarkTheme.value;
-
+  styleStore.toggleDark();
   themeStore.toggleTheme();
 }
 </script>

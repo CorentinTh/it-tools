@@ -1,9 +1,13 @@
 import { defineStore } from 'pinia';
+import { useStyleStore } from '@/stores/style.store';
 
 export const useThemeStore = defineStore('ui-theme', {
-  state: () => ({
-    themeType: useStorage<'dark' | 'light'>('ui-store:theme-type', 'dark') as Ref<'dark' | 'light'>,
-  }),
+  state: () => {
+    const styleStore = useStyleStore();
+    return {
+      themeType: styleStore.isDarkTheme ? 'dark' : 'light',
+    };
+  },
   getters: {
     isDarkTheme(): boolean {
       return this.themeType === 'dark';
