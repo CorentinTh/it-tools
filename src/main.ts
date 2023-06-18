@@ -11,6 +11,7 @@ import { naive } from './plugins/naive.plugin';
 
 import App from './App.vue';
 import router from './router';
+import { i18nPlugin } from './plugins/i18n.plugin';
 
 registerSW();
 
@@ -18,6 +19,7 @@ const app = createApp(App);
 
 app.use(createPinia());
 app.use(createHead());
+app.use(i18nPlugin);
 app.use(router);
 app.use(naive);
 app.use(plausible);

@@ -75,6 +75,7 @@
     "ua-parser-js": "^1.0.35",
     "uuid": "^8.3.2",
     "vue": "^3.2.47",
+    "vue-i18n": "^9.2.2",
     "vue-router": "^4.1.6",
     "xml-formatter": "^3.3.2",
     "yaml": "^2.2.1"
@@ -82,6 +83,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^0.39.3",
     "@iconify-json/mdi": "^1.1.50",
+    "@intlify/unplugin-vue-i18n": "^0.11.0",
     "@playwright/test": "^1.32.3",
     "@rushstack/eslint-patch": "^1.2.0",
     "@types/bcryptjs": "^2.4.2",
