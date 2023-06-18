@@ -25,6 +25,7 @@ const props = withDefaults(
 hljs.registerLanguage('sql', sqlHljs);
 hljs.registerLanguage('json', jsonHljs);
 hljs.registerLanguage('html', xmlHljs);
+hljs.registerLanguage('xml', xmlHljs);
 hljs.registerLanguage('yaml', yamlHljs);
 
 const { value, language, followHeightOf, copyPlacement, copyMessage } = toRefs(props);
