@@ -63,7 +63,8 @@ export const config = figue({
   .loadEnv({
     ...import.meta.env,
     // Because the string 'import.meta.env.PACKAGE_VERSION' is statically replaced during build time (see 'define' in vite.config.ts)
-    PACKAGE_VERSION: import.meta.env.PACKAGE_VERSION,
+    PACKAGE_VERSION: import.meta.env?.PACKAGE_VERSION,
+    BASE_URL: import.meta.env?.BASE_URL || process.env.BASE_URL,
   })
   .validate()
   .getConfig();
