@@ -1,4 +1,5 @@
-import { fileURLToPath, URL } from 'url';
+import { URL, fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
 
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
@@ -13,15 +14,23 @@ import Unocss from 'unocss/vite';
 import { configDefaults } from 'vitest/config';
 import Icons from 'unplugin-icons/vite';
 import IconsResolver from 'unplugin-icons/resolver';
+import VueI18n from '@intlify/unplugin-vue-i18n/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    VueI18n({
+      runtimeOnly: true,
+      compositionOnly: true,
+      fullInstall: true,
+      include: [resolve(__dirname, 'locales/**'), resolve(__dirname, 'src/tools/*/locales/**')],
+    }),
     AutoImport({
       imports: [
         'vue',
         'vue-router',
         '@vueuse/core',
+        'vue-i18n',
         {
           'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar'],
         },
