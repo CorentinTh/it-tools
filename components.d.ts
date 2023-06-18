@@ -68,6 +68,7 @@ declare module '@vue/runtime-core' {
     IconMdiPlay: typeof import('~icons/mdi/play')['default']
     IconMdiRecord: typeof import('~icons/mdi/record')['default']
     IconMdiRefresh: typeof import('~icons/mdi/refresh')['default']
+    IconMdiSearch: typeof import('~icons/mdi/search')['default']
     IconMdiVideo: typeof import('~icons/mdi/video')['default']
     InputCopyable: typeof import('./src/components/InputCopyable.vue')['default']
     IntegerBaseConverter: typeof import('./src/tools/integer-base-converter/integer-base-converter.vue')['default']
