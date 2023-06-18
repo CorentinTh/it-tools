@@ -199,7 +199,6 @@ const htmlInputType = computed(() => {
   }
 
   & > .label {
-    flex-shrink: 0;
     margin-bottom: 5px;
     flex: 0 0 v-bind('labelWidth');
     text-align: v-bind('labelAlign');
@@ -254,7 +253,6 @@ const htmlInputType = computed(() => {
       -webkit-box-shadow: none;
       -moz-box-shadow: none;
       box-shadow: none;
-      background-color: transparent;
       border: none;
       color: v-bind('appTheme.text.baseColor');
 

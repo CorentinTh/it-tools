@@ -13,7 +13,7 @@ function sortObjectKeys<T>(obj: T): T {
   }
 
   return Object.keys(obj)
-    .sort()
+    .sort((a, b) => a.localeCompare(b))
     .reduce((sortedObj, key) => {
       sortedObj[key] = sortObjectKeys((obj as Record<string, unknown>)[key]);
       return sortedObj;
