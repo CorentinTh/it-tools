@@ -76,6 +76,7 @@
     "uuid": "^8.3.2",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6",
+    "xml-formatter": "^3.3.2",
     "yaml": "^2.2.1"
   },
   "devDependencies": {
