@@ -46,7 +46,7 @@ const { tracker } = useTracker();
       If you need a tool that is currently not present here, and you think can be relevant, you are welcome to submit a
       feature request in the
       <c-link
-        href="https://github.com/CorentinTh/it-tools/issues/new?assignees=CorentinTh&labels=enhancement&template=feature_request.md&title=%5BFEAT%5D%20My%20feature"
+        href="https://github.com/CorentinTh/it-tools/issues/new/choose"
         rel="noopener"
         target="_blank"
       >
@@ -57,7 +57,7 @@ const { tracker } = useTracker();
     <n-p>
       And if you found a bug, or something broken that doesn't work as expected, please fill a bug report in the
       <c-link
-        href="https://github.com/CorentinTh/it-tools/issues/new?assignees=CorentinTh&labels=bug&template=bug_report.md&title=%5BBUG%5D%20My%20bug"
+        href="https://github.com/CorentinTh/it-tools/issues/new/choose"
         rel="noopener"
         target="_blank"
       >

@@ -3,7 +3,7 @@ import { NIcon, useThemeVars } from 'naive-ui';
 
 import { RouterLink } from 'vue-router';
 import { Heart, Home2, Menu2 } from '@vicons/tabler';
-import SearchBar from '../components/SearchBar.vue';
+
 import HeroGradient from '../assets/hero-gradient.svg?component';
 import MenuLayout from '../components/MenuLayout.vue';
 import NavbarButtons from '../components/NavbarButtons.vue';
@@ -104,7 +104,7 @@ const tools = computed<ToolCategory[]>(() => [
           Home
         </n-tooltip>
 
-        <SearchBar />
+        <command-palette />
 
         <NavbarButtons v-if="!styleStore.isSmallScreen" />
 
