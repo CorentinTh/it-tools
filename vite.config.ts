@@ -55,7 +55,7 @@ export default defineConfig({
         description: 'Aggregated set of useful tools for developers.',
         display: 'standalone',
         lang: 'fr-FR',
-        start_url: '/?utm_source=pwa&utm_medium=pwa',
+        start_url: `${process.env.BASE_URL}/?utm_source=pwa&utm_medium=pwa`,
         orientation: 'any',
         theme_color: '#18a058',
         background_color: '#f1f5f9',
@@ -92,6 +92,7 @@ export default defineConfig({
     }),
     Unocss(),
   ],
+  base: process.env.BASE_URL,
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
