@@ -36,7 +36,7 @@ const rules: UseValidationRule<string>[] = [
 
   <format-transformer
     input-label="Your XML"
-    input-placeholder="Paste your xml here..."
+    input-placeholder="Paste your XML here..."
     output-label="Formatted XML from your XML"
     output-language="xml"
     :input-validation-rules="rules"

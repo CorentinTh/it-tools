@@ -1,12 +1,12 @@
 import { expect, test } from '@playwright/test';
 
-test.describe('Tool - Xml formatter', () => {
+test.describe('Tool - XML formatter', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/xml-formatter');
   });
 
   test('Has correct title', async ({ page }) => {
-    await expect(page).toHaveTitle('Xml formatter - IT Tools');
+    await expect(page).toHaveTitle('XML formatter - IT Tools');
   });
 
   test('XML is converted into a human readable format', async ({ page }) => {
