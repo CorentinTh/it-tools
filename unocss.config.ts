@@ -10,5 +10,9 @@ import {
 export default defineConfig({
   presets: [presetUno(), presetAttributify(), presetTypography()],
   transformers: [transformerDirectives(), transformerVariantGroup()],
-  safelist: 'prose prose-sm m-auto text-left'.split(' '),
+  theme: {
+    colors: {
+      primary: '#1ea54c',
+    },
+  },
 });

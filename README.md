@@ -6,7 +6,7 @@ Useful tools for developer and people working in IT. [Have a look !](https://it-
 
 Please check the [issues](https://github.com/CorentinTh/it-tools/issues) to see if some feature listed to be implemented.
 
-You have an idea of a tool? Submit a [feature request](https://github.com/CorentinTh/it-tools/issues/new?assignees=corentinth&labels=&template=feature_request.md&title=)!
+You have an idea of a tool? Submit a [feature request](https://github.com/CorentinTh/it-tools/issues/new/choose)!
 
 ## Self host
 
