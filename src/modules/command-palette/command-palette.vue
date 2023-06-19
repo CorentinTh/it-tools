@@ -76,19 +76,35 @@ function getOptionIndex(option: PaletteOption) {
 }
 
 function activateOption(option: PaletteOption) {
+  const { closeOnSelect } = option;
+
   if (option.action) {
     option.action();
+
+    if (closeOnSelect) {
+      close();
+    }
+
     return;
   }
 
+  const closeAfterNavigation = closeOnSelect || _.isUndefined(closeOnSelect);
+
   if (option.to) {
     router.push(option.to);
-    close();
+
+    if (closeAfterNavigation) {
+      close();
+    }
+    return;
   }
 
   if (option.href) {
     window.open(option.href, '_blank');
-    close();
+
+    if (closeAfterNavigation) {
+      close();
+    }
   }
 }
 </script>

@@ -10,4 +10,5 @@ export interface PaletteOption {
   category: string
   keywords?: string[]
   href?: string
+  closeOnSelect?: boolean
 }
