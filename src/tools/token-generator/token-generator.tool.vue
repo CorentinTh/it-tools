@@ -9,6 +9,7 @@ const withUppercase = useQueryParam({ name: 'uppercase', defaultValue: true });
 const withLowercase = useQueryParam({ name: 'lowercase', defaultValue: true });
 const withNumbers = useQueryParam({ name: 'numbers', defaultValue: true });
 const withSymbols = useQueryParam({ name: 'symbols', defaultValue: false });
+const { t } = useI18n();
 
 const [token, refreshToken] = computedRefreshable(() =>
   createToken({
@@ -29,21 +30,21 @@ const { copy } = useCopy({ source: token, text: 'Token copied to the clipboard' 
       <n-form label-placement="left" label-width="140">
         <div flex justify-center>
           <div>
-            <n-form-item label="Uppercase (ABC...)">
+            <n-form-item :label="t('tools.token-generator.uppercase')">
               <n-switch v-model:value="withUppercase" />
             </n-form-item>
 
-            <n-form-item label="Lowercase (abc...)">
+            <n-form-item :label="t('tools.token-generator.lowercase')">
               <n-switch v-model:value="withLowercase" />
             </n-form-item>
           </div>
 
           <div>
-            <n-form-item label="Numbers (012...)">
+            <n-form-item :label="t('tools.token-generator.numbers')">
               <n-switch v-model:value="withNumbers" />
             </n-form-item>
 
-            <n-form-item label="Symbols (;-!...)">
+            <n-form-item :label="t('tools.token-generator.symbols')">
               <n-switch v-model:value="withSymbols" />
             </n-form-item>
           </div>
