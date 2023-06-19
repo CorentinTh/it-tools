@@ -15,7 +15,6 @@ import { configDefaults } from 'vitest/config';
 import Icons from 'unplugin-icons/vite';
 import IconsResolver from 'unplugin-icons/resolver';
 import VueI18n from '@intlify/unplugin-vue-i18n/vite';
-import { config } from './src/config';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -56,7 +55,7 @@ export default defineConfig({
         description: 'Aggregated set of useful tools for developers.',
         display: 'standalone',
         lang: 'fr-FR',
-        start_url: `${config.app.baseUrl}/?utm_source=pwa&utm_medium=pwa`,
+        start_url: `${process.env.BASE_URL}/?utm_source=pwa&utm_medium=pwa`,
         orientation: 'any',
         theme_color: '#18a058',
         background_color: '#f1f5f9',
@@ -93,7 +92,7 @@ export default defineConfig({
     }),
     Unocss(),
   ],
-  base: config.app.baseUrl,
+  base: process.env.BASE_URL,
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
