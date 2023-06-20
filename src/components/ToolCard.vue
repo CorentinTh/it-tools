@@ -8,6 +8,8 @@ const props = defineProps<{ tool: Tool & { category: string } }>();
 const { tool } = toRefs(props);
 const theme = useThemeVars();
 
+const { t } = useI18n();
+
 const appTheme = useAppTheme();
 </script>
 
@@ -38,7 +40,7 @@ const appTheme = useAppTheme();
 
       <div class="description">
         <n-ellipsis :line-clamp="2" :tooltip="false" style="min-height: 44.78px">
-          {{ tool.description }}
+          {{ t(tool.description) }}
           <br>&nbsp;
         </n-ellipsis>
       </div>

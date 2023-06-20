@@ -8,6 +8,7 @@ const emit = defineEmits(['activated']);
 const { option } = toRefs(props);
 
 const { selected } = toRefs(props);
+const { t } = useI18n();
 </script>
 
 <template>
@@ -29,7 +30,7 @@ const { selected } = toRefs(props);
       </div>
 
       <div v-if="option.description" truncate lh-tight op-60>
-        {{ option.description }}
+        {{ t(option.description) }}
       </div>
     </div>
   </div>

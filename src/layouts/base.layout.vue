@@ -7,6 +7,7 @@ import { Heart, Home2, Menu2 } from '@vicons/tabler';
 import HeroGradient from '../assets/hero-gradient.svg?component';
 import MenuLayout from '../components/MenuLayout.vue';
 import NavbarButtons from '../components/NavbarButtons.vue';
+import { availableLocales, loadLanguageAsync } from '../plugins/i18n.plugin';
 import { toolsByCategory } from '@/tools';
 import { useStyleStore } from '@/stores/style.store';
 import { config } from '@/config';
@@ -24,10 +25,19 @@ const { tracker } = useTracker();
 
 const toolStore = useToolStore();
 
+const currentLang = useStorage('application:selected-language', 'en');
+
+loadLanguageAsync(currentLang.value);
+
 const tools = computed<ToolCategory[]>(() => [
   ...(toolStore.favoriteTools.length > 0 ? [{ name: 'Your favorite tools', components: toolStore.favoriteTools }] : []),
   ...toolsByCategory,
 ]);
+
+function onChange(event: any) {
+  currentLang.value = event;
+  loadLanguageAsync(event);
+}
 </script>
 
 <template>
@@ -105,6 +115,15 @@ const tools = computed<ToolCategory[]>(() => [
         </n-tooltip>
 
         <command-palette mx-2 />
+
+        <n-select
+          class="i18n"
+          :model:value="currentLang"
+          :options="availableLocales.map(lang => ({ value: lang, label: lang }))"
+          placeholder="Select language"
+          :on-update-value="onChange"
+          :default-value="currentLang"
+        />
 
         <NavbarButtons v-if="!styleStore.isSmallScreen" />
 
@@ -222,5 +241,8 @@ const tools = computed<ToolCategory[]>(() => [
     // width: 100%;
     flex-grow: 1;
   }
+}
+.i18n{
+  width: 75px;
 }
 </style>

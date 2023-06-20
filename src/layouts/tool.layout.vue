@@ -9,6 +9,7 @@ import type { Tool } from '@/tools/tools.types';
 
 const route = useRoute();
 
+const { t } = useI18n();
 const head = computed<HeadObject>(() => ({
   title: `${route.meta.name} - IT Tools`,
   meta: [
@@ -42,7 +43,7 @@ useHead(head);
         <div class="separator" />
 
         <div class="description">
-          {{ route.meta.description }}
+          {{ t(route.meta.description) }}
         </div>
       </div>
     </div>

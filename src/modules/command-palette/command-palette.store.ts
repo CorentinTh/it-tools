@@ -18,7 +18,7 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
     ...tool,
     to: tool.path,
     toolCategory: tool.category,
-    category: 'Tools',
+    category: 'home.commandPaletteStore.tools',
   }));
 
   const searchOptions: PaletteOption[] = [
@@ -28,13 +28,13 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
       description: 'Toggle dark mode on or off.',
       action: () => styleStore.toggleDark(),
       icon: SunIcon,
-      category: 'Actions',
+      category: 'home.commandPaletteStore.actions',
       keywords: ['dark', 'theme', 'toggle', 'mode', 'light', 'system'],
     },
     {
       name: 'Github repository',
       href: 'https://github.com/CorentinTh/it-tools',
-      category: 'External',
+      category: 'home.commandPaletteStore.external',
       description: 'View the source code of it-tools on Github.',
       keywords: ['github', 'repo', 'repository', 'source', 'code'],
       icon: GithubIcon,
@@ -43,7 +43,7 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
       name: 'Report a bug or an issue',
       description: 'Report a bug or an issue to help improve it-tools.',
       href: 'https://github.com/CorentinTh/it-tools/issues/new/choose',
-      category: 'Actions',
+      category: 'home.commandPaletteStore.actions',
       keywords: ['report', 'issue', 'bug', 'problem', 'error'],
       icon: BugIcon,
     },
@@ -59,7 +59,11 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
   });
 
   const filteredSearchResult = computed(() =>
-    _.chain(searchResult.value).groupBy('category').mapValues(categoryOptions => _.take(categoryOptions, 5)).value());
+    _.chain(searchResult.value)
+      .groupBy('category')
+      .mapValues(categoryOptions => _.take(categoryOptions, 5))
+      .value(),
+  );
 
   return {
     filteredSearchResult,

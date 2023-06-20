@@ -1,0 +1,26 @@
+home:
+  commandPalette:
+    search: Buscar...
+    placeholder: Escribe para buscar una herramienta o comando...
+  commandPaletteStore:
+    actions: Acciones
+    external: Externa
+    tools: Herramientas
+  categories:
+    newestTools: Herramientas Nuevas
+    title: 'IT Tools - Prácticas herramientas en línea para desarrolladores.'
+    allTools: Todas las herramientas
+    favoriteTools: Tus herramientas favorias
+    thanks: '! Thank you'
+    giveUsAStarOn: Give us a star on
+    orFollowUsOn: or follow us on
+    youLikeItTools: You like it-tools?
+tools:
+  xmlFormat:
+    description: Embellece tu XML a un formato XML más amigable.
+    indentSize: 'Tamaño de indentación:'
+    collapseContent: 'Colapsar contenido:'
+    providedXmlIsNotValid: El XML proporcionado no es válido.
+    inputLabel: Tu XML
+    outputLabel: XML Formateado desde tu XML
+    placeHolder: Pega tu XML aquí...
