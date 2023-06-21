@@ -55,7 +55,7 @@ const { tracker } = useTracker();
       in the GitHub repository.
     </n-p>
     <n-p>
-      And if you found a bug, or something doesn't work as expected, please fill a bug report in the
+      And if you found a bug, or something doesn't work as expected, please file a bug report in the
       <c-link
         href="https://github.com/CorentinTh/it-tools/issues/new/choose"
         rel="noopener"
