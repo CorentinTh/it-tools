@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
 import { generateLoremIpsum } from './lorem-ipsum-generator.service';
 import { useCopy } from '@/composable/copy';
 import { randIntFromInterval } from '@/utils/random';

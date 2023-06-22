@@ -15,7 +15,7 @@ import {
   spanishWordList,
 } from '@it-tools/bip39';
 import { Copy, Refresh } from '@vicons/tabler';
-import { computed, ref } from 'vue';
+
 import { useCopy } from '@/composable/copy';
 import { useValidation } from '@/composable/validation';
 import { isNotThrowing } from '@/utils/boolean';

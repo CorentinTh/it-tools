@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { Netmask } from 'netmask';
 import { useStorage } from '@vueuse/core';
 import { ArrowLeft, ArrowRight } from '@vicons/tabler';

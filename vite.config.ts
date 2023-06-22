@@ -1,4 +1,5 @@
-import { fileURLToPath, URL } from 'url';
+import { URL, fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
 
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
@@ -13,15 +14,25 @@ import Unocss from 'unocss/vite';
 import { configDefaults } from 'vitest/config';
 import Icons from 'unplugin-icons/vite';
 import IconsResolver from 'unplugin-icons/resolver';
+import VueI18n from '@intlify/unplugin-vue-i18n/vite';
+
+const baseUrl = process.env.BASE_URL ?? '/';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    VueI18n({
+      runtimeOnly: true,
+      compositionOnly: true,
+      fullInstall: true,
+      include: [resolve(__dirname, 'locales/**'), resolve(__dirname, 'src/tools/*/locales/**')],
+    }),
     AutoImport({
       imports: [
         'vue',
         'vue-router',
         '@vueuse/core',
+        'vue-i18n',
         {
           'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar'],
         },
@@ -46,7 +57,7 @@ export default defineConfig({
         description: 'Aggregated set of useful tools for developers.',
         display: 'standalone',
         lang: 'fr-FR',
-        start_url: '/?utm_source=pwa&utm_medium=pwa',
+        start_url: `${baseUrl}?utm_source=pwa&utm_medium=pwa`,
         orientation: 'any',
         theme_color: '#18a058',
         background_color: '#f1f5f9',
@@ -83,6 +94,7 @@ export default defineConfig({
     }),
     Unocss(),
   ],
+  base: baseUrl,
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

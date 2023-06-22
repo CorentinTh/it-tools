@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { Ref } from 'vue';
 import { useAppTheme } from '../theme/themes';
 import { useTheme } from './c-input-text.theme';
 import { generateRandomId } from '@/utils/random';
@@ -30,6 +29,7 @@ const props = withDefaults(
     multiline?: boolean
     rows?: number | string
     autosize?: boolean
+    autofocus?: boolean
   }>(),
   {
     value: '',
@@ -55,13 +55,14 @@ const props = withDefaults(
     multiline: false,
     rows: 3,
     autosize: false,
+    autofocus: false,
   },
 );
 const emit = defineEmits(['update:value']);
 const value = useVModel(props, 'value', emit);
 const showPassword = ref(false);
 
-const { id, placeholder, label, validationRules, labelPosition, labelWidth, labelAlign, autosize } = toRefs(props);
+const { id, placeholder, label, validationRules, labelPosition, labelWidth, labelAlign, autosize, readonly, disabled, clearable, type, multiline, rows, rawText, autofocus } = toRefs(props);
 
 const validation
   = props.validation
@@ -75,11 +76,8 @@ const theme = useTheme();
 const appTheme = useAppTheme();
 
 const textareaRef = ref<HTMLTextAreaElement>();
+const inputRef = ref<HTMLInputElement>();
 const inputWrapperRef = ref<HTMLElement>();
-
-defineExpose({
-  inputWrapperRef,
-});
 
 watch(
   value,
@@ -107,6 +105,38 @@ const htmlInputType = computed(() => {
   }
 
   return 'text';
+});
+
+function focus() {
+  if (textareaRef.value) {
+    textareaRef.value.focus();
+  }
+
+  if (inputRef.value) {
+    inputRef.value.focus();
+  }
+}
+
+function blur() {
+  if (textareaRef.value) {
+    textareaRef.value.blur?.();
+  }
+
+  if (inputRef.value) {
+    inputRef.value.blur?.();
+  }
+}
+
+onMounted(() => {
+  if (autofocus.value) {
+    focus();
+  }
+});
+
+defineExpose({
+  inputWrapperRef,
+  focus,
+  blur,
 });
 </script>
 
@@ -141,6 +171,7 @@ const htmlInputType = computed(() => {
         <input
           v-else
           :id="id"
+          ref="inputRef"
           v-model="value"
           :type="htmlInputType"
           class="input"
@@ -200,7 +231,6 @@ const htmlInputType = computed(() => {
   }
 
   & > .label {
-    flex-shrink: 0;
     margin-bottom: 5px;
     flex: 0 0 v-bind('labelWidth');
     text-align: v-bind('labelAlign');
@@ -255,7 +285,6 @@ const htmlInputType = computed(() => {
       -webkit-box-shadow: none;
       -moz-box-shadow: none;
       box-shadow: none;
-      background-color: transparent;
       border: none;
       color: v-bind('appTheme.text.baseColor');
 

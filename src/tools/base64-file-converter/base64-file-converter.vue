@@ -2,7 +2,7 @@
 import { Upload } from '@vicons/tabler';
 import { useBase64 } from '@vueuse/core';
 import type { UploadFileInfo } from 'naive-ui';
-import { type Ref, ref } from 'vue';
+import type { Ref } from 'vue';
 import { useCopy } from '@/composable/copy';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 import { useValidation } from '@/composable/validation';

@@ -1,19 +1,9 @@
 <script setup lang="ts">
 import { BrandGithub, BrandTwitter, InfoCircle, Moon, Sun } from '@vicons/tabler';
-import { toRefs } from 'vue';
 import { useStyleStore } from '@/stores/style.store';
-import { useThemeStore } from '@/ui/theme/theme.store';
 
 const styleStore = useStyleStore();
 const { isDarkTheme } = toRefs(styleStore);
-
-const themeStore = useThemeStore();
-
-function toggleDarkTheme() {
-  isDarkTheme.value = !isDarkTheme.value;
-
-  themeStore.toggleTheme();
-}
 </script>
 
 <template>
@@ -59,7 +49,7 @@ function toggleDarkTheme() {
   </n-tooltip>
   <n-tooltip trigger="hover">
     <template #trigger>
-      <c-button circle variant="text" aria-label="Toggle dark/light mode" @click="toggleDarkTheme">
+      <c-button circle variant="text" aria-label="Toggle dark/light mode" @click="() => styleStore.toggleDark()">
         <n-icon v-if="isDarkTheme" size="25" :component="Sun" />
         <n-icon v-else size="25" :component="Moon" />
       </c-button>

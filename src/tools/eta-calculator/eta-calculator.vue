@@ -4,7 +4,7 @@
 import { addMilliseconds, formatRelative } from 'date-fns';
 
 import { enGB } from 'date-fns/locale';
-import { computed, ref } from 'vue';
+
 import { formatMsDuration } from './eta-calculator.service';
 
 const unitCount = ref(3 * 62);

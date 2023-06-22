@@ -2,7 +2,7 @@
 import { useRoute } from 'vue-router';
 import { useHead } from '@vueuse/head';
 import type { HeadObject } from '@vueuse/head';
-import { computed } from 'vue';
+
 import BaseLayout from './base.layout.vue';
 import FavoriteButton from '@/components/FavoriteButton.vue';
 import type { Tool } from '@/tools/tools.types';
@@ -23,6 +23,11 @@ const head = computed<HeadObject>(() => ({
   ],
 }));
 useHead(head);
+const { t } = useI18n();
+
+const i18nKey = computed<string>(() => route.path.trim().replace('/', ''));
+const toolTitle = computed<string>(() => t(`tools.${i18nKey.value}.title`, String(route.meta.name)));
+const toolDescription = computed<string>(() => t(`tools.${i18nKey.value}.description`, String(route.meta.description)));
 </script>
 
 <template>
@@ -31,7 +36,7 @@ useHead(head);
       <div class="tool-header">
         <div flex flex-nowrap items-center justify-between>
           <n-h1>
-            {{ route.meta.name }}
+            {{ toolTitle }}
           </n-h1>
 
           <div>
@@ -42,7 +47,7 @@ useHead(head);
         <div class="separator" />
 
         <div class="description">
-          {{ route.meta.description }}
+          {{ toolDescription }}
         </div>
       </div>
     </div>

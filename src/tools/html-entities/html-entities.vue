@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { escape, unescape } from 'lodash';
-import { computed, ref } from 'vue';
+
 import { useCopy } from '@/composable/copy';
 
 const escapeInput = ref('<title>IT Tool</title>');

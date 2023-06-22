@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { evaluate } from 'mathjs';
-import { computed, ref } from 'vue';
+
 import { withDefaultOnError } from '@/utils/defaults';
 
 const expression = ref('');

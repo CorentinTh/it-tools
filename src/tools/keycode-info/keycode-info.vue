@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useEventListener } from '@vueuse/core';
-import { computed, ref } from 'vue';
+
 import InputCopyable from '../../components/InputCopyable.vue';
 
 const event = ref<KeyboardEvent>();

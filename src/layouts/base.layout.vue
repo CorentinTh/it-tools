@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { NIcon, useThemeVars } from 'naive-ui';
-import { computed } from 'vue';
+
 import { RouterLink } from 'vue-router';
 import { Heart, Home2, Menu2 } from '@vicons/tabler';
-import SearchBar from '../components/SearchBar.vue';
+
 import HeroGradient from '../assets/hero-gradient.svg?component';
 import MenuLayout from '../components/MenuLayout.vue';
 import NavbarButtons from '../components/NavbarButtons.vue';
@@ -104,7 +104,7 @@ const tools = computed<ToolCategory[]>(() => [
           Home
         </n-tooltip>
 
-        <SearchBar />
+        <command-palette mx-2 />
 
         <NavbarButtons v-if="!styleStore.isSmallScreen" />
 
@@ -217,10 +217,6 @@ const tools = computed<ToolCategory[]>(() => [
   align-items: center;
   justify-content: center;
   flex-direction: row;
-
-  & > *:not(:last-child) {
-    margin-right: 5px;
-  }
 
   .search-bar {
     // width: 100%;

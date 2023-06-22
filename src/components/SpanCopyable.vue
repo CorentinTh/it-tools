@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useClipboard } from '@vueuse/core';
-import { ref, toRefs } from 'vue';
 
 const props = withDefaults(defineProps<{ value?: string }>(), { value: '' });
 const { value } = toRefs(props);

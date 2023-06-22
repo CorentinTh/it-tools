@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
 import { useCopy } from '@/composable/copy';
 import { textToBase64 } from '@/utils/base64';
 

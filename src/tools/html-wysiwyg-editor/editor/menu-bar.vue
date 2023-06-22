@@ -18,7 +18,7 @@ import {
   Strikethrough,
   TextWrap,
 } from '@vicons/tabler';
-import { type Component, toRefs } from 'vue';
+import type { Component } from 'vue';
 import MenuBarItem from './menu-bar-item.vue';
 
 const props = defineProps<{ editor: Editor }>();
