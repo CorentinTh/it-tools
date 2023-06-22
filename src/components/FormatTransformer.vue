@@ -45,6 +45,7 @@ const output = computed(() => transformer.value(input.value));
     multiline
     test-id="input"
     :validation-rules="inputValidationRules"
+    monospace
   />
 
   <div>

@@ -29,6 +29,7 @@ const jsonValidationRules = [
     multiline
     test-id="leftJson"
     raw-text
+    monospace
   />
 
   <c-input-text
@@ -40,6 +41,7 @@ const jsonValidationRules = [
     multiline
     test-id="rightJson"
     raw-text
+    monospace
   />
 
   <DiffsViewer :left-json="leftJson" :right-json="rightJson" />
