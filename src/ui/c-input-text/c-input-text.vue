@@ -30,6 +30,7 @@ const props = withDefaults(
     rows?: number | string
     autosize?: boolean
     autofocus?: boolean
+    monospace?: boolean
   }>(),
   {
     value: '',
@@ -56,13 +57,14 @@ const props = withDefaults(
     rows: 3,
     autosize: false,
     autofocus: false,
+    monospace: false,
   },
 );
 const emit = defineEmits(['update:value']);
 const value = useVModel(props, 'value', emit);
 const showPassword = ref(false);
 
-const { id, placeholder, label, validationRules, labelPosition, labelWidth, labelAlign, autosize, readonly, disabled, clearable, type, multiline, rows, rawText, autofocus } = toRefs(props);
+const { id, placeholder, label, validationRules, labelPosition, labelWidth, labelAlign, autosize, readonly, disabled, clearable, type, multiline, rows, rawText, autofocus, monospace } = toRefs(props);
 
 const validation
   = props.validation
@@ -157,6 +159,9 @@ defineExpose({
           ref="textareaRef"
           v-model="value"
           class="input"
+          :class="{
+            'leading-5 !font-mono': monospace,
+          }"
           :placeholder="placeholder"
           :readonly="readonly"
           :disabled="disabled"
@@ -175,6 +180,9 @@ defineExpose({
           v-model="value"
           :type="htmlInputType"
           class="input"
+          :class="{
+            'leading-5 !font-mono': monospace,
+          }"
           size="1"
           :placeholder="placeholder"
           :readonly="readonly"
