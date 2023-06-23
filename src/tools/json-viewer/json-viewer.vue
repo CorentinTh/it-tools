@@ -37,14 +37,14 @@ const rawJsonValidation = useValidation({
   </div>
 
   <n-form-item
-    label="Your raw json"
+    label="Your raw JSON"
     :feedback="rawJsonValidation.message"
     :validation-status="rawJsonValidation.status"
   >
     <n-input
       ref="inputElement"
       v-model:value="rawJson"
-      placeholder="Paste your raw json here..."
+      placeholder="Paste your raw JSON here..."
       type="textarea"
       rows="20"
       autocomplete="off"
@@ -53,7 +53,7 @@ const rawJsonValidation = useValidation({
       spellcheck="false"
     />
   </n-form-item>
-  <n-form-item label="Prettify version of your json">
+  <n-form-item label="Prettified version of your JSON">
     <TextareaCopyable :value="cleanJson" language="json" :follow-height-of="inputElement" />
   </n-form-item>
 </template>
