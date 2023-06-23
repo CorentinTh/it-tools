@@ -1,6 +1,7 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+import { tool as yamlToToml } from './yaml-to-toml';
 import { tool as jsonToToml } from './json-to-toml';
 import { tool as tomlToYaml } from './toml-to-yaml';
 import { tool as tomlToJson } from './toml-to-json';
@@ -81,6 +82,7 @@ export const toolsByCategory: ToolCategory[] = [
       caseConverter,
       textToNatoAlphabet,
       yamlToJson,
+      yamlToToml,
       jsonToYaml,
       jsonToToml,
       listConverter,
