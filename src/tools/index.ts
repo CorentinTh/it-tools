@@ -1,6 +1,7 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+import { tool as tomlToJson } from './toml-to-json';
 import { tool as jsonToCsv } from './json-to-csv';
 import { tool as cameraRecorder } from './camera-recorder';
 import { tool as listConverter } from './list-converter';
@@ -80,6 +81,7 @@ export const toolsByCategory: ToolCategory[] = [
       yamlToJson,
       jsonToYaml,
       listConverter,
+      tomlToJson,
     ],
   },
   {

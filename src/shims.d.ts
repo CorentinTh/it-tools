@@ -14,3 +14,8 @@ declare module '~icons/*' {
   const component: FunctionalComponent<SVGAttributes>;
   export default component;
 }
+
+declare module 'iarna-toml-esm' {
+  export const parse: (toml: string) => any;
+  export const stringify: (obj: any) => string;
+}
