@@ -51,8 +51,8 @@ dependencies:
     specifier: ^0.6.2
     version: 0.6.2
   country-code-lookup:
-    specifier: ^0.0.23
-    version: 0.0.23
+    specifier: ^0.1.0
+    version: 0.1.0
   cron-validator:
     specifier: ^1.3.1
     version: 1.3.1
@@ -4686,8 +4686,8 @@ packages:
       browserslist: 4.21.9
     dev: true
 
-  /country-code-lookup@0.0.23:
-    resolution: {integrity: sha512-kxhIGcau9/X+tgPg9yO2q1OLu8jiYYsdwXuiXzHdsgNChd36xrJMlOba7ka9O1xShCVTiVQPQpq/tcuy4WiW+Q==}
+  /country-code-lookup@0.1.0:
+    resolution: {integrity: sha512-IOI66HEG+8bXfWPy+sTzuN7161vmDZOHg1wgIPFf3WfD73FeLajnn6C+fnxOIa9RL1WRBDMXQQWW/FOaOYaQ3w==}
     dev: false
 
   /country-data@0.0.31:
