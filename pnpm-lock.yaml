@@ -33,8 +33,8 @@ dependencies:
     specifier: ^10.1.2
     version: 10.1.2(vue@3.3.4)
   '@vueuse/head':
-    specifier: ^0.7.13
-    version: 0.7.13(vue@3.3.4)
+    specifier: ^0.9.0
+    version: 0.9.0(vue@3.3.4)
   '@vueuse/router':
     specifier: ^9.13.0
     version: 9.13.0(vue-router@4.1.6)(vue@3.3.4)
@@ -3699,12 +3699,14 @@ packages:
       - '@vue/composition-api'
       - vue
 
-  /@vueuse/head@0.7.13(vue@3.3.4):
-    resolution: {integrity: sha512-VHSla/0uOAUii/mz+NWLFKMrMbz/lQoYxEcpS/ri7drepYjdB5QdbTnD2KdOX8EmQM/b07qpjKanr7erGrd3XA==}
+  /@vueuse/head@0.9.0(vue@3.3.4):
+    resolution: {integrity: sha512-Pp+kRiiP9AIIV1V7wi9v9ndB/2UUH41LiLFKWnvkeRx7mS3DkacSN8vn+qbKKSPrgi6KaXSR+1sAKovna+Sk4g==}
     peerDependencies:
       vue: '>=2.7 || >=3'
     dependencies:
-      '@zhead/schema-vue': 0.7.4(vue@3.3.4)
+      '@vueuse/shared': 9.13.0(vue@3.3.4)
+      '@zhead/schema': 0.8.5
+      '@zhead/schema-vue': 0.8.5(vue@3.3.4)
       vue: 3.3.4
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -3743,20 +3745,27 @@ packages:
       - vue
     dev: false
 
-  /@zhead/schema-vue@0.7.4(vue@3.3.4):
-    resolution: {integrity: sha512-Q7wPUly3ZWbPYQ5SEJBUuD6Mw3wiUfPMPquGfqsR2KF6sxQKRF8oaHnRLuu2uxpjuXjkzpBlZBPu1JgQX+Lf6Q==}
+  /@zhead/schema-raw@0.8.5:
+    resolution: {integrity: sha512-Aq+9mksf5zbtj7HYluT6PVyfpQ6z7mja9MzjFxg76Vt+Q9i0oL1XN6ZYaCXImWRafwbyAxjFQ5aUCVyFn79OpA==}
+    dependencies:
+      '@zhead/schema': 0.8.5
+    dev: false
+
+  /@zhead/schema-vue@0.8.5(vue@3.3.4):
+    resolution: {integrity: sha512-6aXjYy3fZVeYBLrHcJQqzqwzC/2tafRO5UxZEgBHnryRnzeLNZV6nTptDvIPWiJObMoJTK21vbg3gkfLNQg84g==}
     peerDependencies:
       vue: '>=2.7 || >=3'
     dependencies:
       '@vueuse/shared': 9.13.0(vue@3.3.4)
-      '@zhead/schema': 0.7.4
+      '@zhead/schema': 0.8.5
+      '@zhead/schema-raw': 0.8.5
       vue: 3.3.4
     transitivePeerDependencies:
       - '@vue/composition-api'
     dev: false
 
-  /@zhead/schema@0.7.4:
-    resolution: {integrity: sha512-18gfgmZL8gM64JdcT11d1rYLnCaY2mOtbDDSAXtCySanPGpkA1r+w01LCssEI/OfLdoZPS/kYCIW09d1PmUFfQ==}
+  /@zhead/schema@0.8.5:
+    resolution: {integrity: sha512-1S3Otr2zpl1zwP72dNseVXQNG9tnTQ6hHUEUYwINvBjRj6bHcUwdE+Itc9OLxnGAJT/7p8P7GHGo5sshXJNJsA==}
     dev: false
 
   /abab@2.0.6:
@@ -6957,13 +6966,6 @@ packages:
       brace-expansion: 2.0.1
     dev: true
 
-  /minimatch@7.4.6:
-    resolution: {integrity: sha512-sBz8G/YjVniEz6lKPNpKxXwazJe4c19fEfV2GDMX6AjFz+MX9uDWIZW8XreVhkFW3fkIdTv/gxWr/Kks5FFAVw==}
-    engines: {node: '>=10'}
-    dependencies:
-      brace-expansion: 2.0.1
-    dev: true
-
   /minimatch@9.0.1:
     resolution: {integrity: sha512-0jWhJpD/MdhPXwPuiRkCbfYfSKp2qnn2eOc279qI7f+osl/l+prKSrvhg157zSYvx/1nmgn2NqdT6k2Z7zSH9w==}
     engines: {node: '>=16 || 14 >=14.17'}
@@ -9445,6 +9447,7 @@ packages:
 
   /workbox-cacheable-response@6.6.0:
     resolution: {integrity: sha512-JfhJUSQDwsF1Xv3EV1vWzSsCOZn4mQ38bWEBR3LdvOxSPgB65gAM6cS2CX8rkkKHRgiLrN7Wxoyu+TuH67kHrw==}
+    deprecated: workbox-background-sync@6.6.0
     dependencies:
       workbox-core: 6.6.0
     dev: true
