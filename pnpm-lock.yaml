@@ -248,8 +248,8 @@ devDependencies:
     specifier: ^2.8.7
     version: 2.8.7
   start-server-and-test:
-    specifier: ^1.15.4
-    version: 1.15.4
+    specifier: ^2.0.0
+    version: 2.0.0
   typescript:
     specifier: ~4.5.5
     version: 4.5.5
@@ -8559,9 +8559,10 @@ packages:
     resolution: {integrity: sha512-1XMJE5fQo1jGH6Y/7ebnwPOBEkIEnT4QF32d5R1+VXdXveM0IBMJt8zfaxX1P3QhVwrYe+576+jkANtSS2mBbw==}
     dev: true
 
-  /start-server-and-test@1.15.4:
-    resolution: {integrity: sha512-ucQtp5+UCr0m4aHlY+aEV2JSYNTiMZKdSKK/bsIr6AlmwAWDYDnV7uGlWWEtWa7T4XvRI5cPYcPcQgeLqpz+Tg==}
+  /start-server-and-test@2.0.0:
+    resolution: {integrity: sha512-UqKLw0mJbfrsG1jcRLTUlvuRi9sjNuUiDOLI42r7R5fA9dsFoywAy9DoLXNYys9B886E4RCKb+qM1Gzu96h7DQ==}
     engines: {node: '>=6'}
+    hasBin: true
     dependencies:
       arg: 5.0.2
       bluebird: 3.7.2
@@ -9702,6 +9703,7 @@ packages:
   /wait-on@7.0.1(debug@4.3.4):
     resolution: {integrity: sha512-9AnJE9qTjRQOlTZIldAaf/da2eW0eSRSgcqq85mXQja/DW3MriHxkpODDSUEg+Gri/rKEcXUZHe+cevvYItaog==}
     engines: {node: '>=12.0.0'}
+    hasBin: true
     dependencies:
       axios: 0.27.2(debug@4.3.4)
       joi: 17.9.1
