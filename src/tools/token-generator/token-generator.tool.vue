@@ -55,17 +55,14 @@ const { copy } = useCopy({ source: token, text: 'Token copied to the clipboard' 
         <n-slider v-model:value="length" :step="1" :min="1" :max="512" />
       </n-form-item>
 
-      <n-input
+      <c-input-text
         v-model:value="token"
-        style="text-align: center"
-        type="textarea"
+        multiline
         placeholder="The token..."
-        :autosize="{ minRows: 1 }"
         readonly
-        autocomplete="off"
-        autocorrect="off"
-        autocapitalize="off"
-        spellcheck="false"
+        rows="3"
+        autosize
+        class="token-display"
       />
 
       <div mt-5 flex justify-center gap-3>
@@ -79,3 +76,11 @@ const { copy } = useCopy({ source: token, text: 'Token copied to the clipboard' 
     </c-card>
   </div>
 </template>
+
+<style scoped lang="less">
+::v-deep(.token-display) {
+  textarea {
+    text-align: center;
+  }
+}
+</style>

@@ -19,18 +19,13 @@ const decryptOutput = computed(() =>
 <template>
   <c-card title="Encrypt">
     <div flex gap-3>
-      <n-form-item label="Your text:" :show-feedback="false" flex-1>
-        <n-input
-          v-model:value="cypherInput"
-          type="textarea"
-          placeholder="The string to cypher"
-          :autosize="{ minRows: 4 }"
-          autocomplete="off"
-          autocorrect="off"
-          autocapitalize="off"
-          spellcheck="false"
-        />
-      </n-form-item>
+      <c-input-text
+        v-model:value="cypherInput"
+        label="Your text:"
+        placeholder="The string to cypher"
+        rows="4"
+        multiline raw-text monospace autosize flex-1
+      />
       <div flex flex-1 flex-col gap-2>
         <c-input-text v-model:value="cypherSecret" label="Your secret key:" clearable raw-text />
 
@@ -42,34 +37,23 @@ const decryptOutput = computed(() =>
         </n-form-item>
       </div>
     </div>
-    <n-form-item label="Your text encrypted:" :show-feedback="false" mt-5>
-      <n-input
-        :value="cypherOutput"
-        type="textarea"
-        placeholder="Your string hash"
-        :autosize="{ minRows: 2 }"
-        readonly
-        autocomplete="off"
-        autocorrect="off"
-        autocapitalize="off"
-        spellcheck="false"
-      />
-    </n-form-item>
+    <c-input-text
+      label="Your text encrypted:"
+      :value="cypherOutput"
+      rows="3"
+      placeholder="Your string hash"
+      multiline monospace readonly autosize mt-5
+    />
   </c-card>
   <c-card title="Decrypt">
     <div flex gap-3>
-      <n-form-item label="Your encrypted text:" :show-feedback="false" flex-1>
-        <n-input
-          v-model:value="decryptInput"
-          type="textarea"
-          placeholder="The string to cypher"
-          :autosize="{ minRows: 4 }"
-          autocomplete="off"
-          autocorrect="off"
-          autocapitalize="off"
-          spellcheck="false"
-        />
-      </n-form-item>
+      <c-input-text
+        v-model:value="decryptInput"
+        label="Your encrypted text:"
+        placeholder="The string to cypher"
+        rows="4"
+        multiline raw-text monospace autosize flex-1
+      />
       <div flex flex-1 flex-col gap-2>
         <c-input-text v-model:value="decryptSecret" label="Your secret key:" clearable raw-text />
 
@@ -81,18 +65,12 @@ const decryptOutput = computed(() =>
         </n-form-item>
       </div>
     </div>
-    <n-form-item label="Your decrypted text:" :show-feedback="false" mt-5>
-      <n-input
-        :value="decryptOutput"
-        type="textarea"
-        placeholder="Your string hash"
-        :autosize="{ minRows: 2 }"
-        readonly
-        autocomplete="off"
-        autocorrect="off"
-        autocapitalize="off"
-        spellcheck="false"
-      />
-    </n-form-item>
+    <c-input-text
+      label="Your decrypted text:"
+      :value="decryptOutput"
+      placeholder="Your string hash"
+      rows="3"
+      multiline monospace readonly autosize mt-5
+    />
   </c-card>
 </template>

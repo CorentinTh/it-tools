@@ -19,18 +19,18 @@ const { copy } = useCopy({ source: uuids, text: 'UUIDs copied to the clipboard' 
       <n-input-number v-model:value="count" :min="1" :max="50" placeholder="UUID quantity" />
     </div>
 
-    <n-input
+    <c-input-text
       style="text-align: center; font-family: monospace"
       :value="uuids"
-      type="textarea"
+      multiline
       placeholder="Your uuids"
-      :autosize="{ minRows: 1 }"
+      autosize
+      rows="1"
       readonly
-      autocomplete="off"
-      autocorrect="off"
-      autocapitalize="off"
-      spellcheck="false"
+      raw-text
+      monospace
       my-3
+      class="uuid-display"
     />
 
     <div flex justify-center gap-3>
@@ -43,3 +43,11 @@ const { copy } = useCopy({ source: uuids, text: 'UUIDs copied to the clipboard' 
     </div>
   </div>
 </template>
+
+<style scoped lang="less">
+::v-deep(.uuid-display) {
+  textarea {
+    text-align: center;
+  }
+}
+</style>

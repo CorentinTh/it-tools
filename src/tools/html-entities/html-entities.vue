@@ -7,7 +7,7 @@ const escapeInput = ref('<title>IT Tool</title>');
 const escapeOutput = computed(() => escape(escapeInput.value));
 const { copy: copyEscaped } = useCopy({ source: escapeOutput });
 
-const unescapeInput = ref('&lt;title&gt;IT Tool&lt;/title');
+const unescapeInput = ref('&lt;title&gt;IT Tool&lt;/title&gt;');
 const unescapeOutput = computed(() => unescape(unescapeInput.value));
 const { copy: copyUnescaped } = useCopy({ source: unescapeOutput });
 </script>
@@ -15,21 +15,24 @@ const { copy: copyUnescaped } = useCopy({ source: unescapeOutput });
 <template>
   <c-card title="Escape html entities">
     <n-form-item label="Your string :">
-      <n-input
+      <c-input-text
         v-model:value="escapeInput"
-        type="textarea"
+        multiline
         placeholder="The string to escape"
-        :autosize="{ minRows: 2 }"
+        rows="3"
+        autosize
+        raw-text
       />
     </n-form-item>
 
     <n-form-item label="Your string escaped :">
-      <n-input
-        type="textarea"
+      <c-input-text
+        multiline
         readonly
         placeholder="Your string escaped"
         :value="escapeOutput"
-        :autosize="{ minRows: 2 }"
+        rows="3"
+        autosize
       />
     </n-form-item>
 
@@ -41,21 +44,24 @@ const { copy: copyUnescaped } = useCopy({ source: unescapeOutput });
   </c-card>
   <c-card title="Unescape html entities">
     <n-form-item label="Your escaped string :">
-      <n-input
+      <c-input-text
         v-model:value="unescapeInput"
-        type="textarea"
+        multiline
         placeholder="The string to unescape"
-        :autosize="{ minRows: 2 }"
+        rows="3"
+        autosize
+        raw-text
       />
     </n-form-item>
 
     <n-form-item label="Your string unescaped :">
-      <n-input
+      <c-input-text
         :value="unescapeOutput"
-        type="textarea"
+        multiline
         readonly
         placeholder="Your string unescaped"
-        :autosize="{ minRows: 2 }"
+        rows="3"
+        autosize
       />
     </n-form-item>
 

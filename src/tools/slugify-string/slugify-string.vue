@@ -10,18 +10,9 @@ const { copy } = useCopy({ source: slug, text: 'Slug copied to clipboard' });
 
 <template>
   <div>
-    <n-form-item label="Your string to slugify">
-      <n-input v-model:value="input" type="textarea" placeholder="Put your string here (ex: My file path)" />
-    </n-form-item>
+    <c-input-text v-model:value="input" multiline placeholder="Put your string here (ex: My file path)" label="Your string to slugify" autofocus raw-text mb-5 />
 
-    <n-form-item label="Your slug">
-      <n-input
-        :value="slug"
-        type="textarea"
-        readonly
-        placeholder="You slug will be generated here (ex: my-file-path)"
-      />
-    </n-form-item>
+    <c-input-text :value="slug" multiline readonly placeholder="You slug will be generated here (ex: my-file-path)" label="Your slug" mb-5 />
 
     <div flex justify-center>
       <c-button :disabled="slug.length === 0" @click="copy">
