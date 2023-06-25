@@ -46,13 +46,10 @@ const { copy } = useCopy({ source: hmac });
 </script>
 
 <template>
-  <div>
-    <n-form-item label="Plain text to compute the hash">
-      <n-input v-model:value="plainText" type="textarea" placeholder="Enter the text to compute the hash..." />
-    </n-form-item>
-    <n-form-item label="Secret key">
-      <n-input v-model:value="secret" placeholder="Enter the secret key..." />
-    </n-form-item>
+  <div flex flex-col gap-4>
+    <c-input-text v-model:value="plainText" multiline raw-text placeholder="Plain text to compute the hash..." rows="3" autosize autofocus label="Plain text to compute the hash" />
+    <c-input-text v-model:value="secret" raw-text placeholder="Enter the secret key..." label="Secret key" clearable />
+
     <div flex gap-2>
       <n-form-item label="Hashing function" flex-1>
         <n-select
@@ -86,9 +83,7 @@ const { copy } = useCopy({ source: hmac });
         />
       </n-form-item>
     </div>
-    <n-form-item label="HMAC of your text">
-      <n-input readonly :value="hmac" type="textarea" placeholder="The result of the HMAC..." />
-    </n-form-item>
+    <input-copyable v-model:value="hmac" type="textarea" placeholder="The result of the HMAC..." label="HMAC of your text" />
     <div flex justify-center>
       <c-button @click="copy()">
         Copy HMAC

@@ -66,11 +66,14 @@ const validation = useValidation({
     mb-2
   />
 
-  <c-input-text v-model:value="valueLong" multiline autosize mb-2 rows="5" />
-
   <c-input-text
     value="Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, est modi iusto repellendus fuga accusantium atque at magnam aliquam eum explicabo vero quia, nobis quasi quis! Earum amet quam a?"
     multiline
     clearable
   />
+
+  <h2>Autosize</h2>
+
+  <c-input-text v-model:value="value" label="Autosize" rows="1" multiline autosize mb-2 />
+  <c-input-text v-model:value="valueLong" label="Autosize monospace" rows="1" multiline autosize monospace mb-2 />
 </template>

@@ -7,7 +7,7 @@ const text = ref('');
 
 <template>
   <c-card>
-    <n-input v-model:value="text" type="textarea" placeholder="Your text..." rows="5" />
+    <c-input-text v-model:value="text" multiline placeholder="Your text..." rows="5" />
 
     <div mt-5 flex>
       <n-statistic label="Character count" :value="text.length" flex-1 />

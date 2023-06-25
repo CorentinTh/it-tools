@@ -10,16 +10,12 @@ const result = computed(() => withDefaultOnError(() => evaluate(expression.value
 
 <template>
   <div>
-    <n-input
+    <c-input-text
       v-model:value="expression"
       rows="1"
-      type="textarea"
+      multiline
       placeholder="Your math expression (ex: 2*sqrt(6) )..."
-      size="large"
-      autocomplete="off"
-      autocorrect="off"
-      autocapitalize="off"
-      spellcheck="false"
+      raw-text
     />
 
     <c-card v-if="result !== ''" title="Result " mt-5>

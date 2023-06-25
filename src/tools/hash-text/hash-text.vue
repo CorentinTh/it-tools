@@ -37,7 +37,7 @@ const hashText = (algo: AlgoNames, value: string) => formatWithEncoding(algos[al
 <template>
   <div>
     <c-card>
-      <n-input v-model:value="clearText" type="textarea" placeholder="Your string to hash..." rows="3" />
+      <c-input-text v-model:value="clearText" multiline raw-text placeholder="Your string to hash..." rows="3" autosize autofocus label="Your text to hash:" />
 
       <n-divider />
 

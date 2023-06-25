@@ -39,7 +39,7 @@ const { copy } = useCopy({ source: loremIpsumText, text: 'Lorem ipsum copied to 
       <n-switch v-model:value="asHTML" />
     </n-form-item>
 
-    <n-input :value="loremIpsumText" type="textarea" placeholder="Your lorem ipsum..." readonly autosize mt-5 />
+    <c-input-text :value="loremIpsumText" multiline placeholder="Your lorem ipsum..." readonly mt-5 rows="5" />
 
     <div mt-5 flex justify-center>
       <c-button autofocus @click="copy">
