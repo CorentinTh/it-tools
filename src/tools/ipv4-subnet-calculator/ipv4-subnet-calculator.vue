@@ -96,16 +96,14 @@ function switchToBlock({ count = 1 }: { count?: number }) {
       <n-table>
         <tbody>
           <tr v-for="{ getValue, label, undefinedFallback } in sections" :key="label">
-            <td>
-              <n-text strong>
-                {{ label }}
-              </n-text>
+            <td font-bold>
+              {{ label }}
             </td>
             <td>
               <SpanCopyable v-if="getValue(networkInfo)" :value="getValue(networkInfo)" />
-              <n-text v-else depth="3">
+              <span v-else op-70>
                 {{ undefinedFallback }}
-              </n-text>
+              </span>
             </td>
           </tr>
         </tbody>

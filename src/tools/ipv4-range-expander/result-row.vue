@@ -14,10 +14,8 @@ const testId = computed(() => _.kebabCase(label.value));
 
 <template>
   <tr>
-    <td>
-      <n-text strong>
-        {{ label }}
-      </n-text>
+    <td font-bold>
+      {{ label }}
     </td>
     <td :data-test-id="`${testId}.old`">
       <SpanCopyable :value="oldValue" class="monospace" />

@@ -105,10 +105,10 @@ function onSwitchStartEndClicked() {
       title="Invalid combination of start and end IPv4 address"
       type="error"
     >
-      <n-text depth="3" my-3 block>
+      <div my-3 op-70>
         The end IPv4 address is lower than the start IPv4 address. This is not valid and no result could be calculated.
         In the most cases the solution to solve this problem is to change start and end address.
-      </n-text>
+      </div>
 
       <c-button @click="onSwitchStartEndClicked">
         <n-icon mr-2 :component="Exchange" depth="3" size="22" />

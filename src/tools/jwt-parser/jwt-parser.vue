@@ -40,18 +40,18 @@ const validation = useValidation({
           </th>
           <tr v-for="{ claim, claimDescription, friendlyValue, value } in decodedJWT[section.key]" :key="claim + value">
             <td class="claims">
-              <n-text strong>
+              <span font-bold>
                 {{ claim }}
-              </n-text>
-              <n-text v-if="claimDescription" depth="3" ml-2>
+              </span>
+              <span v-if="claimDescription" ml-2 op-70>
                 ({{ claimDescription }})
-              </n-text>
+              </span>
             </td>
             <td>
-              <n-text>{{ value }}</n-text>
-              <n-text v-if="friendlyValue" ml-2 depth="3">
+              <span>{{ value }}</span>
+              <span v-if="friendlyValue" ml-2 op-70>
                 ({{ friendlyValue }})
-              </n-text>
+              </span>
             </td>
           </tr>
         </template>

@@ -37,7 +37,7 @@ const { userAgentInfo, sections } = toRefs(props);
           </div>
           <div flex flex-col>
             <span v-for="{ label, getValue, undefinedFallback } in content" :key="label">
-              <n-text v-if="getValue(userAgentInfo) === undefined" depth="3">{{ undefinedFallback }}</n-text>
+              <span v-if="getValue(userAgentInfo) === undefined" op-70>{{ undefinedFallback }}</span>
             </span>
           </div>
         </c-card>

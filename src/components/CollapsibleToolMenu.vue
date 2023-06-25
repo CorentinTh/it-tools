@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ChevronRight } from '@vicons/tabler';
 import { useStorage } from '@vueuse/core';
 import { useThemeVars } from 'naive-ui';
 import { RouterLink, useRoute } from 'vue-router';
@@ -47,13 +46,15 @@ const themeVars = useThemeVars();
 
 <template>
   <div v-for="{ name, tools, isCollapsed } of menuOptions" :key="name">
-    <n-text tag="div" depth="3" class="category-name" @click="toggleCategoryCollapse({ name })">
-      <n-icon :component="ChevronRight" :class="{ rotated: isCollapsed }" size="16" />
+    <div ml-6px mt-12px flex cursor-pointer items-center op-60 @click="toggleCategoryCollapse({ name })">
+      <span :class="{ 'rotate-0': isCollapsed, 'rotate-90': !isCollapsed }" text-16px lh-1 op-50 transition-transform>
+        <icon-mdi-chevron-right />
+      </span>
 
-      <span>
+      <span ml-8px text-13px>
         {{ name }}
       </span>
-    </n-text>
+    </div>
 
     <n-collapse-transition :show="!isCollapsed">
       <div class="menu-wrapper">
@@ -74,26 +75,6 @@ const themeVars = useThemeVars();
 </template>
 
 <style scoped lang="less">
-.category-name {
-  font-size: 0.93em;
-  padding: 12px 0 0px 0;
-  cursor: pointer;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  .n-icon {
-    transition: transform ease 0.5s;
-    transform: rotate(90deg);
-    margin: 0 10px 0 7px;
-    opacity: 0.5;
-
-    &.rotated {
-      transform: rotate(0deg);
-    }
-  }
-}
-
 .menu-wrapper {
   display: flex;
   flex-direction: row;
