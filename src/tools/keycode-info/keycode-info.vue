@@ -54,13 +54,13 @@ const fields = computed(() => {
 
 <template>
   <div>
-    <c-card style="text-align: center; padding: 40px 0; margin-bottom: 26px">
-      <n-h2 v-if="event">
+    <c-card mb-5 text-center important:py-12>
+      <div v-if="event" mb-2 text-3xl>
         {{ event.key }}
-      </n-h2>
-      <n-text strong depth="3">
+      </div>
+      <span lh-1 op-70>
         Press the key on your keyboard you want to get info about this key
-      </n-text>
+      </span>
     </c-card>
 
     <n-input-group v-for="({ label, value, placeholder }, i) of fields" :key="i" style="margin-bottom: 5px">

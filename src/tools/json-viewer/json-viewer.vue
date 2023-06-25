@@ -41,16 +41,17 @@ const rawJsonValidation = useValidation({
     :feedback="rawJsonValidation.message"
     :validation-status="rawJsonValidation.status"
   >
-    <n-input
+    <c-input-text
       ref="inputElement"
       v-model:value="rawJson"
       placeholder="Paste your raw JSON here..."
-      type="textarea"
       rows="20"
+      multiline
       autocomplete="off"
       autocorrect="off"
       autocapitalize="off"
       spellcheck="false"
+      monospace
     />
   </n-form-item>
   <n-form-item label="Prettified version of your JSON">

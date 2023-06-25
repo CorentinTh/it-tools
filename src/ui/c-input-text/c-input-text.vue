@@ -82,12 +82,12 @@ const inputRef = ref<HTMLInputElement>();
 const inputWrapperRef = ref<HTMLElement>();
 
 watch(
-  value,
-  () => {
+  [value, autosize, multiline, inputWrapperRef, textareaRef],
+  () => nextTick(() => {
     if (props.multiline && autosize.value) {
       resizeTextarea();
     }
-  },
+  }),
   { immediate: true },
 );
 
@@ -96,9 +96,9 @@ function resizeTextarea() {
     return;
   }
 
-  const { scrollHeight } = textareaRef.value;
+  const scrollHeight = textareaRef.value.scrollHeight + 2;
 
-  inputWrapperRef.value.style.height = `${scrollHeight + 2}px`;
+  inputWrapperRef.value.style.height = `${scrollHeight}px`;
 }
 
 const htmlInputType = computed(() => {

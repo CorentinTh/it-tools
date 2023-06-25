@@ -37,28 +37,27 @@ const { copy: copyDecoded } = useCopy({ source: decodeOutput, text: 'Decoded str
 
 <template>
   <c-card title="Encode">
-    <n-form-item
+    <c-input-text
+      v-model:value="encodeInput"
       label="Your string :"
-      :feedback="encodedValidation.message"
-      :validation-status="encodedValidation.status"
-    >
-      <n-input
-        v-model:value="encodeInput"
-        type="textarea"
-        placeholder="The string to encode"
-        :autosize="{ minRows: 2 }"
-      />
-    </n-form-item>
+      :validation="encodedValidation"
+      multiline
+      autosize
+      placeholder="The string to encode"
+      rows="2"
+      mb-3
+    />
 
-    <n-form-item label="Your string encoded :">
-      <n-input
-        :value="encodeOutput"
-        type="textarea"
-        readonly
-        placeholder="Your string encoded"
-        :autosize="{ minRows: 2 }"
-      />
-    </n-form-item>
+    <c-input-text
+      label="Your string encoded :"
+      :value="encodeOutput"
+      multiline
+      autosize
+      readonly
+      placeholder="Your string encoded"
+      rows="2"
+      mb-3
+    />
 
     <div flex justify-center>
       <c-button @click="copyEncoded">
@@ -67,28 +66,27 @@ const { copy: copyDecoded } = useCopy({ source: decodeOutput, text: 'Decoded str
     </div>
   </c-card>
   <c-card title="Decode">
-    <n-form-item
+    <c-input-text
+      v-model:value="decodeInput"
       label="Your encoded string :"
-      :feedback="decodeValidation.message"
-      :validation-status="decodeValidation.status"
-    >
-      <n-input
-        v-model:value="decodeInput"
-        type="textarea"
-        placeholder="The string to decode"
-        :autosize="{ minRows: 2 }"
-      />
-    </n-form-item>
+      :validation="decodeValidation"
+      multiline
+      autosize
+      placeholder="The string to decode"
+      rows="2"
+      mb-3
+    />
 
-    <n-form-item label="Your string decoded :">
-      <n-input
-        :value="decodeOutput"
-        type="textarea"
-        readonly
-        placeholder="Your string decoded"
-        :autosize="{ minRows: 2 }"
-      />
-    </n-form-item>
+    <c-input-text
+      label="Your string decoded :"
+      :value="decodeOutput"
+      multiline
+      autosize
+      readonly
+      placeholder="Your string decoded"
+      rows="2"
+      mb-3
+    />
 
     <div flex justify-center>
       <c-button @click="copyDecoded">

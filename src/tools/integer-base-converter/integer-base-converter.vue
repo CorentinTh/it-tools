@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import InputCopyable from '../../components/InputCopyable.vue';
 import { convertBase } from './integer-base-converter.model';
-import { useStyleStore } from '@/stores/style.store';
 import { getErrorMessageIfThrows } from '@/utils/error';
-
-const styleStore = useStyleStore();
 
 const inputProps = {
   'labelPosition': 'left',
@@ -37,31 +34,11 @@ const error = computed(() =>
 <template>
   <div>
     <c-card>
-      <div v-if="styleStore.isSmallScreen">
-        <n-input-group>
-          <n-input-group-label style="flex: 0 0 120px">
-            Input number:
-          </n-input-group-label>
-          <n-input v-model:value="input" w-full :status="error ? 'error' : undefined" />
-        </n-input-group>
-        <n-input-group>
-          <n-input-group-label style="flex: 0 0 120px">
-            Input base:
-          </n-input-group-label>
-          <n-input-number v-model:value="inputBase" max="64" min="2" w-full />
-        </n-input-group>
-      </div>
+      <c-input-text v-model:value="input" label="Input number" placeholder="Put your number here (ex: 42)" label-position="left" label-width="110px" mb-2 label-align="right" />
 
-      <n-input-group v-else>
-        <n-input-group-label style="flex: 0 0 120px">
-          Input number:
-        </n-input-group-label>
-        <n-input v-model:value="input" :status="error ? 'error' : undefined" />
-        <n-input-group-label style="flex: 0 0 120px">
-          Input base:
-        </n-input-group-label>
-        <n-input-number v-model:value="inputBase" max="64" min="2" />
-      </n-input-group>
+      <n-form-item label="Input base" label-placement="left" label-width="110" :show-feedback="false">
+        <n-input-number v-model:value="inputBase" max="64" min="2" placeholder="Put your input base here (ex: 10)" w-full />
+      </n-form-item>
 
       <n-alert v-if="error" style="margin-top: 25px" type="error">
         {{ error }}

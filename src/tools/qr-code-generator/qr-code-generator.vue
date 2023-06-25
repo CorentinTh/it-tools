@@ -27,15 +27,18 @@ const { download } = useDownloadFileFromBase64({ source: qrcode, filename: 'qr-c
   <c-card>
     <n-grid x-gap="12" y-gap="12" cols="1 600:3">
       <n-gi span="2">
+        <c-input-text
+          v-model:value="text"
+          label-position="left"
+          label-width="130px"
+          label-align="right"
+          label="Text:"
+          multiline
+          rows="1"
+          placeholder="Your link or text..."
+          mb-6
+        />
         <n-form label-width="130" label-placement="left">
-          <n-form-item label="Text:">
-            <n-input
-              v-model:value="text"
-              type="textarea"
-              :autosize="{ minRows: 1 }"
-              placeholder="Your link or text..."
-            />
-          </n-form-item>
           <n-form-item label="Foreground color:">
             <n-color-picker v-model:value="foreground" :modes="['hex']" />
           </n-form-item>

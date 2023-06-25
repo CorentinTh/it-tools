@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { SearchRound } from '@vicons/material';
 import { codesByCategories } from './http-status-codes.constants';
 import { useFuzzySearch } from '@/composable/fuzzySearch';
 
@@ -24,33 +23,24 @@ const codesByCategoryFiltered = computed(() => {
 
 <template>
   <div>
-    <n-form-item :show-label="false">
-      <n-input
-        v-model:value="search"
-        placeholder="Search http status..."
-        size="large"
-        autofocus
-        mb-10
-        autocomplete="off"
-        autocorrect="off"
-        autocapitalize="off"
-      >
-        <template #prefix>
-          <n-icon :component="SearchRound" />
-        </template>
-      </n-input>
-    </n-form-item>
+    <c-input-text
+      v-model:value="search"
+      placeholder="Search http status..."
+      autofocus raw-text mb-10
+    />
 
     <div v-for="{ codes, category } of codesByCategoryFiltered" :key="category" mb-8>
-      <n-h2> {{ category }} </n-h2>
+      <div mb-2 text-xl>
+        {{ category }}
+      </div>
 
       <c-card v-for="{ code, description, name, type } of codes" :key="code" mb-2>
-        <n-text strong block text-lg>
+        <div text-lg font-bold>
           {{ code }} {{ name }}
-        </n-text>
-        <n-text block depth="3">
+        </div>
+        <div op-70>
           {{ description }} {{ type !== 'HTTP' ? `For ${type}.` : '' }}
-        </n-text>
+        </div>
       </c-card>
     </div>
   </div>

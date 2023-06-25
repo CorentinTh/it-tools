@@ -6,6 +6,7 @@ import jsonHljs from 'highlight.js/lib/languages/json';
 import sqlHljs from 'highlight.js/lib/languages/sql';
 import xmlHljs from 'highlight.js/lib/languages/xml';
 import yamlHljs from 'highlight.js/lib/languages/yaml';
+import iniHljs from 'highlight.js/lib/languages/ini';
 
 const props = withDefaults(
   defineProps<{
@@ -27,6 +28,7 @@ hljs.registerLanguage('json', jsonHljs);
 hljs.registerLanguage('html', xmlHljs);
 hljs.registerLanguage('xml', xmlHljs);
 hljs.registerLanguage('yaml', yamlHljs);
+hljs.registerLanguage('toml', iniHljs);
 
 const { value, language, followHeightOf, copyPlacement, copyMessage } = toRefs(props);
 const { height } = followHeightOf.value ? useElementSize(followHeightOf) : { height: ref(null) };
