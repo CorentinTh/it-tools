@@ -25,11 +25,10 @@ const endAt = computed(() =>
 
 <template>
   <div>
-    <n-text depth="3" style="text-align: justify; width: 100%; display: inline-block">
+    <div text-justify op-70>
       With a concrete example, if you wash 3 plates in 5 minutes and you have 500 plates to wash, it will take you 5
-      hours and 10 minutes to wash them all, and if you start now, you'll end
-      {{ endAt }}.
-    </n-text>
+      hours and 10 minutes to wash them all.
+    </div>
     <n-divider />
     <div flex gap-2>
       <n-form-item label="Amount of element to consume" flex-1>
