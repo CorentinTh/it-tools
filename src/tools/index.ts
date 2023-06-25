@@ -1,6 +1,7 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+import { tool as passwordStrengthAnalyser } from './password-strength-analyser';
 import { tool as yamlToToml } from './yaml-to-toml';
 import { tool as jsonToToml } from './json-to-toml';
 import { tool as tomlToYaml } from './toml-to-yaml';
@@ -68,7 +69,7 @@ import { tool as xmlFormatter } from './xml-formatter';
 export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Crypto',
-    components: [tokenGenerator, hashText, bcrypt, uuidGenerator, cypher, bip39, hmacGenerator, rsaKeyPairGenerator],
+    components: [tokenGenerator, hashText, bcrypt, uuidGenerator, cypher, bip39, hmacGenerator, rsaKeyPairGenerator, passwordStrengthAnalyser],
   },
   {
     name: 'Converter',
