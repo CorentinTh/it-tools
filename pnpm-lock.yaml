@@ -270,7 +270,7 @@ devDependencies:
     version: 0.12.4(vite@2.9.15)
   vite-plugin-pwa:
     specifier: ^0.11.13
-    version: 0.11.13(vite@2.9.15)(workbox-build@6.6.0)(workbox-window@6.5.4)
+    version: 0.11.13(vite@2.9.15)(workbox-build@6.6.0)(workbox-window@7.0.0)
   vite-svg-loader:
     specifier: ^4.0.0
     version: 4.0.0
@@ -278,8 +278,8 @@ devDependencies:
     specifier: ^0.32.0
     version: 0.32.0(jsdom@19.0.0)(less@4.1.3)
   workbox-window:
-    specifier: ^6.5.4
-    version: 6.5.4
+    specifier: ^7.0.0
+    version: 7.0.0
   zx:
     specifier: ^7.2.1
     version: 7.2.1
@@ -8968,7 +8968,7 @@ packages:
       vite: 2.9.15(less@4.1.3)
     dev: true
 
-  /vite-plugin-pwa@0.11.13(vite@2.9.15)(workbox-build@6.6.0)(workbox-window@6.5.4):
+  /vite-plugin-pwa@0.11.13(vite@2.9.15)(workbox-build@6.6.0)(workbox-window@7.0.0):
     resolution: {integrity: sha512-Ssj14m3TRVLfkFEAWSMcFE2d1cSdEZyrVTzfY2lSL+umHYvcIFHVDAY143sygtBCb44OPczsAOmWwBTxwOvh7g==}
     peerDependencies:
       vite: ^2.0.0
@@ -8981,7 +8981,7 @@ packages:
       rollup: 2.79.1
       vite: 2.9.15(less@4.1.3)
       workbox-build: 6.6.0
-      workbox-window: 6.5.4
+      workbox-window: 7.0.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -9453,12 +9453,12 @@ packages:
       workbox-core: 6.6.0
     dev: true
 
-  /workbox-core@6.5.4:
-    resolution: {integrity: sha512-OXYb+m9wZm8GrORlV2vBbE5EC1FKu71GGp0H4rjmxmF4/HLbMCoTFws87M3dFwgpmg0v00K++PImpNQ6J5NQ6Q==}
-    dev: true
-
   /workbox-core@6.6.0:
     resolution: {integrity: sha512-GDtFRF7Yg3DD859PMbPAYPeJyg5gJYXuBQAC+wyrWuuXgpfoOrIQIvFRZnQ7+czTIQjIr1DhLEGFzZanAT/3bQ==}
+    dev: true
+
+  /workbox-core@7.0.0:
+    resolution: {integrity: sha512-81JkAAZtfVP8darBpfRTovHg8DGAVrKFgHpOArZbdFd78VqHr5Iw65f2guwjE2NlCFbPFDoez3D3/6ZvhI/rwQ==}
     dev: true
 
   /workbox-expiration@6.6.0:
@@ -9531,18 +9531,18 @@ packages:
     resolution: {integrity: sha512-R2IkwDokbtHUE4Kus8pKO5+VkPHD2oqTgl+XJwh4zbF1HyjAbgNmK/FneZHVU7p03XUt9ICfuGDYISWG9qV/CQ==}
     dev: true
 
-  /workbox-window@6.5.4:
-    resolution: {integrity: sha512-HnLZJDwYBE+hpG25AQBO8RUWBJRaCsI9ksQJEp3aCOFCaG5kqaToAYXFRAHxzRluM2cQbGzdQF5rjKPWPA1fug==}
-    dependencies:
-      '@types/trusted-types': 2.0.3
-      workbox-core: 6.5.4
-    dev: true
-
   /workbox-window@6.6.0:
     resolution: {integrity: sha512-L4N9+vka17d16geaJXXRjENLFldvkWy7JyGxElRD0JvBxvFEd8LOhr+uXCcar/NzAmIBRv9EZ+M+Qr4mOoBITw==}
     dependencies:
       '@types/trusted-types': 2.0.3
       workbox-core: 6.6.0
+    dev: true
+
+  /workbox-window@7.0.0:
+    resolution: {integrity: sha512-j7P/bsAWE/a7sxqTzXo3P2ALb1reTfZdvVp6OJ/uLr/C2kZAMvjeWGm8V4htQhor7DOvYg0sSbFN2+flT5U0qA==}
+    dependencies:
+      '@types/trusted-types': 2.0.3
+      workbox-core: 7.0.0
     dev: true
 
   /wrap-ansi@6.2.0:

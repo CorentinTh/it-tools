@@ -125,7 +125,7 @@
     "vite-plugin-pwa": "^0.11.13",
     "vite-svg-loader": "^4.0.0",
     "vitest": "^0.32.0",
-    "workbox-window": "^6.5.4",
+    "workbox-window": "^7.0.0",
     "zx": "^7.2.1"
   }
 }
