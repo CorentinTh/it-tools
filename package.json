@@ -121,7 +121,7 @@
     "unplugin-icons": "^0.16.1",
     "unplugin-vue-components": "^0.25.0",
     "vite": "^2.9.15",
-    "vite-plugin-md": "^0.12.4",
+    "vite-plugin-md": "^0.21.0",
     "vite-plugin-pwa": "^0.11.13",
     "vite-svg-loader": "^4.0.0",
     "vitest": "^0.32.0",
