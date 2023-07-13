@@ -4,7 +4,7 @@ import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-import markdown from 'vite-plugin-md';
+import markdown from 'vite-plugin-vue-markdown';
 import svgLoader from 'vite-svg-loader';
 import { VitePWA } from 'vite-plugin-pwa';
 import AutoImport from 'unplugin-auto-import/vite';

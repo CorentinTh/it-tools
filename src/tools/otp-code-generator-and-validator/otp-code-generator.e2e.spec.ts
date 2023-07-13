@@ -2,6 +2,9 @@ import { expect, test } from '@playwright/test';
 
 test.describe('Tool - OTP code generator', () => {
   test.beforeEach(async ({ page }) => {
+    await page.addInitScript(() => {
+      Date.now = () => 1609477200000; // Jan 1, 2021
+    });
     await page.goto('/otp-generator');
   });
 
@@ -18,10 +21,6 @@ test.describe('Tool - OTP code generator', () => {
   });
 
   test('OTP a generated from the provided secret', async ({ page }) => {
-    page.evaluate(() => {
-      Date.now = () => 1609477200000; // Jan 1, 2021
-    });
-
     await page.getByPlaceholder('Paste your TOTP secret...').fill('ITTOOLS');
 
     const previousOtp = await page.getByTestId('previous-otp').innerText();
