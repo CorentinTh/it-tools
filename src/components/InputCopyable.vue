@@ -11,7 +11,7 @@ const { copy } = useClipboard({ source: value });
 
 function onCopyClicked() {
   copy();
-  tooltipText.value = 'Copied !';
+  tooltipText.value = 'Copied!';
 
   setTimeout(() => {
     tooltipText.value = 'Copy to clipboard';

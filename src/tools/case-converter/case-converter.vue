@@ -36,6 +36,12 @@ const input = ref('lorem ipsum dolor sit amet');
 
       <n-divider />
 
+      <n-form-item label="Lowercase:">
+        <InputCopyable :value="input.toLowerCase()" />
+      </n-form-item>
+      <n-form-item label="Uppercase:">
+        <InputCopyable :value="input.toUpperCase()" />
+      </n-form-item>
       <n-form-item label="Camelcase:">
         <InputCopyable :value="camelCase(input, baseConfig)" />
       </n-form-item>
