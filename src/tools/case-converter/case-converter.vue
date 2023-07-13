@@ -19,28 +19,22 @@ const baseConfig = {
 };
 
 const input = ref('lorem ipsum dolor sit amet');
+const strippedInput = computed(() => input.value.split(" ").map(x => x.replace(baseConfig.stripRegexp, "")).join(" "))
 </script>
 
 <template>
   <c-card>
     <n-form label-width="120" label-placement="left" :show-feedback="false">
-      <c-input-text
-        v-model:value="input"
-        label="Your string"
-        label-position="left"
-        label-width="120px"
-        label-align="right"
-        placeholder="Your string..."
-        raw-text
-      />
+      <c-input-text v-model:value="input" label="Your string" label-position="left" label-width="120px"
+        label-align="right" placeholder="Your string..." raw-text />
 
       <n-divider />
 
       <n-form-item label="Lowercase:">
-        <InputCopyable :value="input.toLowerCase()" />
+        <InputCopyable :value="strippedInput.toLowerCase()" />
       </n-form-item>
       <n-form-item label="Uppercase:">
-        <InputCopyable :value="input.toUpperCase()" />
+        <InputCopyable :value="strippedInput.toUpperCase()" />
       </n-form-item>
       <n-form-item label="Camelcase:">
         <InputCopyable :value="camelCase(input, baseConfig)" />
