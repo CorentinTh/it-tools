@@ -51,6 +51,7 @@ declare module '@vue/runtime-core' {
     Encryption: typeof import('./src/tools/encryption/encryption.vue')['default']
     EtaCalculator: typeof import('./src/tools/eta-calculator/eta-calculator.vue')['default']
     FavoriteButton: typeof import('./src/components/FavoriteButton.vue')['default']
+    FileHash: typeof import('./src/tools/file-hash/file-hash.vue')['default']
     FormatTransformer: typeof import('./src/components/FormatTransformer.vue')['default']
     GitMemo: typeof import('./src/tools/git-memo/git-memo.vue')['default']
     'GitMemo.content': typeof import('./src/tools/git-memo/git-memo.content.md')['default']
