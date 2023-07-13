@@ -19,14 +19,16 @@ const baseConfig = {
 };
 
 const input = ref('lorem ipsum dolor sit amet');
-const strippedInput = computed(() => input.value.split(" ").map(x => x.replace(baseConfig.stripRegexp, "")).join(" "))
+const strippedInput = computed(() => input.value.split(' ').map(x => x.replace(baseConfig.stripRegexp, '')).join(' '));
 </script>
 
 <template>
   <c-card>
     <n-form label-width="120" label-placement="left" :show-feedback="false">
-      <c-input-text v-model:value="input" label="Your string" label-position="left" label-width="120px"
-        label-align="right" placeholder="Your string..." raw-text />
+      <c-input-text
+        v-model:value="input" label="Your string" label-position="left" label-width="120px"
+        label-align="right" placeholder="Your string..." raw-text
+      />
 
       <n-divider />
 
