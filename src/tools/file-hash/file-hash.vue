@@ -5,7 +5,16 @@ import { Upload } from '@vicons/tabler';
 import CryptoJS from 'crypto-js';
 import { useCopy } from '@/composable/copy';
 
-type Hasher = 'md5';
+type Hasher = 'md5' |
+'sha1' |
+'sha2_224' |
+'sha2_256' |
+'sha2_384' |
+'sha2_512' |
+'sha3_224' |
+'sha3_256' |
+'sha3_384' |
+'sha3_512';
 type Digest = 'base64' | 'hex';
 
 function useFileHash(target: Ref<File>, hasher: Ref<Hasher>, digest: Ref<Digest>) {
@@ -49,12 +58,17 @@ function readAndHashFile(file: File, hashType: Hasher, digestType: Digest) {
     fr.onload = (ev) => {
       const content = ev.target!.result as string;
 
-      const hasher = {
+      const hasher: Record<Hasher, typeof CryptoJS.MD5> = {
         md5: CryptoJS.MD5,
         sha1: CryptoJS.SHA1,
-        sha256: CryptoJS.SHA256,
-        sha512: CryptoJS.SHA512,
-        sha3: CryptoJS.SHA3,
+        sha2_224: CryptoJS.SHA224,
+        sha2_256: CryptoJS.SHA256,
+        sha2_384: CryptoJS.SHA384,
+        sha2_512: CryptoJS.SHA512,
+        sha3_224: () => CryptoJS.SHA3(content, { outputLength: 224 }),
+        sha3_256: () => CryptoJS.SHA3(content, { outputLength: 256 }),
+        sha3_384: () => CryptoJS.SHA3(content, { outputLength: 384 }),
+        sha3_512: () => CryptoJS.SHA3(content, { outputLength: 512 }),
       };
 
       const digest = {
@@ -107,20 +121,40 @@ async function onUpload({ file: { file } }: { file: UploadFileInfo }) {
             value: 'md5',
           },
           {
-            label: 'SHA-1',
+            label: 'SHA1',
             value: 'sha1',
           },
           {
-            label: 'SHA-256',
-            value: 'sha256',
+            label: 'SHA2-224',
+            value: 'sha2_224',
           },
           {
-            label: 'SHA-512',
-            value: 'sha512',
+            label: 'SHA2-256',
+            value: 'sha2_256',
           },
           {
-            label: 'SHA-3',
-            value: 'sha3',
+            label: 'SHA2-384',
+            value: 'sha2_384',
+          },
+          {
+            label: 'SHA2-512',
+            value: 'sha2_512',
+          },
+          {
+            label: 'SHA3-224',
+            value: 'sha3_224',
+          },
+          {
+            label: 'SHA3-256',
+            value: 'sha3_256',
+          },
+          {
+            label: 'SHA3-384',
+            value: 'sha3_384',
+          },
+          {
+            label: 'SHA3-512',
+            value: 'sha3_512',
           },
         ]"
       />
