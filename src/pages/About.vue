@@ -11,7 +11,7 @@ const { tracker } = useTracker();
     <n-h1>About</n-h1>
     <n-p>
       This wonderful website, made with ❤ by
-      <c-link href="https://github.com/CorentinTh" target="_blank" rel="noopener">
+      <c-link href="https://github.com/jmy126" target="_blank" rel="noopener">
         Corentin Thomasset
       </c-link>,
       aggregates useful tools for developer and people working in IT. If you find it useful, please feel free to share
@@ -22,7 +22,7 @@ const { tracker } = useTracker();
       renew the domain name. If you want to support my work, and encourage me to add more tools, please consider
       supporting by
       <c-link
-        href="https://www.buymeacoffee.com/cthmsst"
+        href="https://www.buymeacoffee.com/itnongfu"
         rel="noopener"
         target="_blank"
         @click="() => tracker.trackEvent({ eventName: 'Support button clicked' })"
@@ -35,7 +35,7 @@ const { tracker } = useTracker();
     <n-p>
       IT Tools is made in Vue.js (Vue 3) with the the Naive UI component library and is hosted and continuously deployed
       by Vercel. Third-party open-source libraries are used in some tools, you may find the complete list in the
-      <c-link href="https://github.com/CorentinTh/it-tools/blob/main/package.json" rel="noopener" target="_blank">
+      <c-link href="https://github.com/jmy126/it-tools/blob/main/package.json" rel="noopener" target="_blank">
         package.json
       </c-link>
       file of the repository.
@@ -46,7 +46,7 @@ const { tracker } = useTracker();
       If you need a tool that is currently not present here, and you think can be useful, you are welcome to submit a
       feature request in the
       <c-link
-        href="https://github.com/CorentinTh/it-tools/issues/new/choose"
+        href="https://github.com/jmy126/it-tools/issues/new/choose"
         rel="noopener"
         target="_blank"
       >
@@ -57,7 +57,7 @@ const { tracker } = useTracker();
     <n-p>
       And if you found a bug, or something doesn't work as expected, please file a bug report in the
       <c-link
-        href="https://github.com/CorentinTh/it-tools/issues/new/choose"
+        href="https://github.com/jmy126/it-tools/issues/new/choose"
         rel="noopener"
         target="_blank"
       >
