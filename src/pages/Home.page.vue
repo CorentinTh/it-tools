@@ -20,14 +20,14 @@ const { t } = useI18n();
           <ColoredCard title="You like it-tools?" :icon="Heart">
             Give us a star on
             <a
-              href="https://github.com/CorentinTh/it-tools"
+              href="https://github.com/jmy126/it-tools"
               rel="noopener"
               target="_blank"
               aria-label="IT-Tools' GitHub repository"
             >GitHub</a>
             or follow us on
             <a
-              href="https://twitter.com/ittoolsdottech"
+              href="https://twitter.com/itnongfu"
               rel="noopener"
               target="_blank"
               aria-label="IT-Tools' Twitter account"
