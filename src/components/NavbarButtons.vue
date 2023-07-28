@@ -12,7 +12,7 @@ const { isDarkTheme } = toRefs(styleStore);
       <c-button
         circle
         variant="text"
-        href="https://github.com/CorentinTh/it-tools"
+        href="https://github.com/jmy126/it-tools"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="IT-Tools' GitHub repository"
@@ -28,7 +28,7 @@ const { isDarkTheme } = toRefs(styleStore);
       <c-button
         circle
         variant="text"
-        href="https://twitter.com/ittoolsdottech"
+        href="https://twitter.com/itnongfu"
         rel="noopener"
         target="_blank"
         aria-label="IT Tools' Twitter account"
