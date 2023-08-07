@@ -53,12 +53,15 @@ const metaTags = computed(() => {
 <template>
   <div>
     <div v-for="{ name, elements } of sections" :key="name" style="margin-bottom: 15px">
-      <n-form-item :label="name" :show-feedback="false" />
+      <div mb-5px>
+        {{ name }}
+      </div>
 
       <n-input-group v-for="{ key, type, label, placeholder, ...element } of elements" :key="key">
         <n-input-group-label style="flex: 0 0 110px">
           {{ label }}
         </n-input-group-label>
+
         <c-input-text v-if="type === 'input'" v-model:value="metadata[key]" :placeholder="placeholder" clearable />
         <n-dynamic-input
           v-else-if="type === 'input-multiple'"
@@ -69,9 +72,10 @@ const metaTags = computed(() => {
           :show-sort-button="true"
         />
 
-        <n-select
+        <c-select
           v-else-if="type === 'select'"
           v-model:value="metadata[key]"
+          w-full
           :placeholder="placeholder"
           :options="(element as OGSchemaTypeElementSelect).options"
         />

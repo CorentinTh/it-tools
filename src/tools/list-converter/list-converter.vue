@@ -61,17 +61,19 @@ function transformer(value: string) {
             </n-form-item>
           </div>
           <div flex-1>
-            <n-form-item label="Sort list" label-placement="left" label-width="120" :show-feedback="false" mb-2>
-              <n-select
-                v-model:value="conversionConfig.sortList"
-                :options="sortOrderOptions"
-                clearable
-                w-full
-                :disabled="conversionConfig.reverseList"
-                data-test-id="sortList"
-                placeholder="Sort alphabetically"
-              />
-            </n-form-item>
+            <c-select
+              v-model:value="conversionConfig.sortList"
+              label="Sort list"
+              label-position="left"
+              label-width="120px"
+              label-align="right"
+              mb-2
+              :options="sortOrderOptions"
+              w-full
+              :disabled="conversionConfig.reverseList"
+              data-test-id="sortList"
+              placeholder="Sort alphabetically"
+            />
 
             <c-input-text
               v-model:value="conversionConfig.separator"

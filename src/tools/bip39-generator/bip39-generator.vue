@@ -84,12 +84,12 @@ const { copy: copyPassphrase } = useCopy({ source: passphrase, text: 'Passphrase
   <div>
     <n-grid cols="3" x-gap="12">
       <n-gi span="1">
-        <n-form-item label="Language:">
-          <n-select
-            v-model:value="language"
-            :options="Object.keys(languages).map((label) => ({ label, value: label }))"
-          />
-        </n-form-item>
+        <c-select
+          v-model:value="language"
+          searchable
+          label="Language:"
+          :options="Object.keys(languages)"
+        />
       </n-gi>
       <n-gi span="2">
         <n-form-item

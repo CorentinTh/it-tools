@@ -103,6 +103,10 @@ const tools = computed<ToolCategory[]>(() => [
           Home
         </n-tooltip>
 
+        <c-button to="/c-lib" circle variant="text" aria-label="UI Lib">
+          <icon-mdi:brush-variant text-20px />
+        </c-button>
+
         <command-palette />
 
         <div>

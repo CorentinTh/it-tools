@@ -41,29 +41,29 @@ const hashText = (algo: AlgoNames, value: string) => formatWithEncoding(algos[al
 
       <n-divider />
 
-      <n-form-item label="Digest encoding">
-        <n-select
-          v-model:value="encoding"
-          :options="[
-            {
-              label: 'Binary (base 2)',
-              value: 'Bin',
-            },
-            {
-              label: 'Hexadecimal (base 16)',
-              value: 'Hex',
-            },
-            {
-              label: 'Base64 (base 64)',
-              value: 'Base64',
-            },
-            {
-              label: 'Base64url (base 64 with url safe chars)',
-              value: 'Base64url',
-            },
-          ]"
-        />
-      </n-form-item>
+      <c-select
+        v-model:value="encoding"
+        mb-4
+        label="Digest encoding"
+        :options="[
+          {
+            label: 'Binary (base 2)',
+            value: 'Bin',
+          },
+          {
+            label: 'Hexadecimal (base 16)',
+            value: 'Hex',
+          },
+          {
+            label: 'Base64 (base 64)',
+            value: 'Base64',
+          },
+          {
+            label: 'Base64url (base 64 with url safe chars)',
+            value: 'Base64url',
+          },
+        ]"
+      />
 
       <div v-for="algo in algoNames" :key="algo" style="margin: 5px 0">
         <n-input-group>
