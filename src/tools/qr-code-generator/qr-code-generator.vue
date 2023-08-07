@@ -35,6 +35,7 @@ const { download } = useDownloadFileFromBase64({ source: qrcode, filename: 'qr-c
           label="Text:"
           multiline
           rows="1"
+          autosize
           placeholder="Your link or text..."
           mb-6
         />
@@ -45,12 +46,14 @@ const { download } = useDownloadFileFromBase64({ source: qrcode, filename: 'qr-c
           <n-form-item label="Background color:">
             <n-color-picker v-model:value="background" :modes="['hex']" />
           </n-form-item>
-          <n-form-item label="Error resistance:">
-            <n-select
-              v-model:value="errorCorrectionLevel"
-              :options="errorCorrectionLevels.map((value) => ({ label: value, value }))"
-            />
-          </n-form-item>
+          <c-select
+            v-model:value="errorCorrectionLevel"
+            label="Error resistance:"
+            label-position="left"
+            label-width="130px"
+            label-align="right"
+            :options="errorCorrectionLevels.map((value) => ({ label: value, value }))"
+          />
         </n-form>
       </n-gi>
       <n-gi>
