@@ -142,7 +142,7 @@ function formatDateUsingFormatter(formatter: (date: Date) => string, date?: Date
 
 <template>
   <div>
-    <n-input-group>
+    <div flex gap-2>
       <c-input-text
         v-model:value="inputDate"
         autofocus
@@ -153,13 +153,13 @@ function formatDateUsingFormatter(formatter: (date: Date) => string, date?: Date
         @update:value="onDateInputChanged"
       />
 
-      <n-select
+      <c-select
         v-model:value="formatIndex"
         style="flex: 0 0 170px"
         :options="formats.map(({ name }, i) => ({ label: name, value: i }))"
         data-test-id="date-time-converter-format-select"
       />
-    </n-input-group>
+    </div>
 
     <n-divider />
 
