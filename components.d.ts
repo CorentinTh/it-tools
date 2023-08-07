@@ -53,6 +53,8 @@ declare module '@vue/runtime-core' {
     DockerRunToDockerComposeConverter: typeof import('./src/tools/docker-run-to-docker-compose-converter/docker-run-to-docker-compose-converter.vue')['default']
     DynamicValues: typeof import('./src/tools/benchmark-builder/dynamic-values.vue')['default']
     Editor: typeof import('./src/tools/html-wysiwyg-editor/editor/editor.vue')['default']
+    EmojiCard: typeof import('./src/tools/emoji-picker/emoji-card.vue')['default']
+    EmojiPicker: typeof import('./src/tools/emoji-picker/emoji-picker.vue')['default']
     Encryption: typeof import('./src/tools/encryption/encryption.vue')['default']
     EtaCalculator: typeof import('./src/tools/eta-calculator/eta-calculator.vue')['default']
     FavoriteButton: typeof import('./src/components/FavoriteButton.vue')['default']
