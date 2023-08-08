@@ -93,8 +93,8 @@ dependencies:
     specifier: ^4.17.21
     version: 4.17.21
   mathjs:
-    specifier: ^10.6.4
-    version: 10.6.4
+    specifier: ^11.0.0
+    version: 11.0.0
   mime-types:
     specifier: ^2.1.35
     version: 2.1.35
@@ -1622,13 +1622,6 @@ packages:
   /@babel/regjsgen@0.8.0:
     resolution: {integrity: sha512-x/rqGMdzj+fWZvCOYForTghzbtqPDZ5gPwaoNGHdgDfF2QA/XZbCBp4Moo5scrkAMPhB7z26XM/AaHuIJdgauA==}
     dev: true
-
-  /@babel/runtime@7.21.0:
-    resolution: {integrity: sha512-xwII0//EObnq89Ji5AKYQaRYiW/nZ3llSv29d49IuxPhKbtJoLP+9QUUZ4nVragQVtaVGeZrpB+ZtG/Pdy/POw==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      regenerator-runtime: 0.13.11
-    dev: false
 
   /@babel/runtime@7.22.5:
     resolution: {integrity: sha512-ecjvYlnAaZ/KVneE/OdKYBYfgXV3Ptu6zQWmgEF7vwKhQnvVS6bjMD2XYgj+SNvQ1GfK/pjgokfPkC/2CO8CuA==}
@@ -6467,11 +6460,12 @@ packages:
       mdurl: 1.0.1
       uc.micro: 1.0.6
 
-  /mathjs@10.6.4:
-    resolution: {integrity: sha512-omQyvRE1jIy+3k2qsqkWASOcd45aZguXZDckr3HtnTYyXk5+2xpVfC3kATgbO2Srjxlqww3TVdhD0oUdZ/hiFA==}
+  /mathjs@11.0.0:
+    resolution: {integrity: sha512-D024bzgUcfmRfT/YsZXcktWhfy3k++2qeXK6hmO+FM5pKtBpMxi4KkW1wAgHpQTSphNIKr4WNs8ZFwpB4er8RA==}
     engines: {node: '>= 14'}
+    hasBin: true
     dependencies:
-      '@babel/runtime': 7.21.0
+      '@babel/runtime': 7.22.5
       complex.js: 2.1.1
       decimal.js: 10.4.3
       escape-latex: 1.2.0
@@ -6479,7 +6473,7 @@ packages:
       javascript-natural-sort: 0.7.1
       seedrandom: 3.0.5
       tiny-emitter: 2.1.0
-      typed-function: 2.1.0
+      typed-function: 3.0.1
     dev: false
 
   /md5-hex@3.0.1:
@@ -8125,9 +8119,9 @@ packages:
       is-typed-array: 1.1.10
     dev: true
 
-  /typed-function@2.1.0:
-    resolution: {integrity: sha512-bctQIOqx2iVbWGDGPWwIm18QScpu2XRmkC19D8rQGFsjKSgteq/o1hTZvIG/wuDq8fanpBDrLkLq+aEN/6y5XQ==}
-    engines: {node: '>= 10'}
+  /typed-function@3.0.1:
+    resolution: {integrity: sha512-bHs+Nfx5fu7BFWxxwqOv+toxYmMYzyqU+/3wdVk/z2Yz5l9kPJtTkk8sz3dqmWtz7bLIsAboIIrs4nhBBKWnXQ==}
+    engines: {node: '>= 14'}
     dev: false
 
   /typescript@4.9.3:
