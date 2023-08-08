@@ -107,7 +107,7 @@
     "@typescript-eslint/parser": "^5.58.0",
     "@unocss/eslint-config": "^0.53.0",
     "@vitejs/plugin-vue": "^4.0.0",
-    "@vitejs/plugin-vue-jsx": "^1.3.10",
+    "@vitejs/plugin-vue-jsx": "^3.0.0",
     "@vue/compiler-sfc": "^3.2.47",
     "@vue/runtime-dom": "^3.3.4",
     "@vue/test-utils": "^2.3.2",
