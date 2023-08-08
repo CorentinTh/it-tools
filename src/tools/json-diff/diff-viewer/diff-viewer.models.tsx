@@ -112,7 +112,7 @@ function Value({ value, status }: { value: unknown; status: string }) {
   const { copy } = useCopy({ source: formatedValue });
 
   return (
-    <span class={['value', status]} onClick={copy}>
+    <span class={['value', status]} onClick={() => copy()}>
       {formatedValue}
     </span>
   );
