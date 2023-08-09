@@ -103,7 +103,7 @@ const tools = computed<ToolCategory[]>(() => [
           Home
         </n-tooltip>
 
-        <c-button to="/c-lib" circle variant="text" aria-label="UI Lib">
+        <c-button v-if="config.app.env === 'development'" to="/c-lib" circle variant="text" aria-label="UI Lib">
           <icon-mdi:brush-variant text-20px />
         </c-button>
 
