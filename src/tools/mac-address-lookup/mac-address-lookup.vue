@@ -43,7 +43,7 @@ const { copy } = useCopy({ source: details, text: 'Vendor info copied to the cli
     </c-card>
 
     <div flex justify-center>
-      <c-button :disabled="!details" @click="copy">
+      <c-button :disabled="!details" @click="copy()">
         Copy vendor info
       </c-button>
     </div>

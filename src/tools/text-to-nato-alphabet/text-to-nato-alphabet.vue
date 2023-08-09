@@ -26,7 +26,7 @@ const { copy } = useCopy({ source: natoText, text: 'NATO alphabet string copied.
       </c-card>
 
       <div mt-3 flex justify-center>
-        <c-button autofocus @click="copy">
+        <c-button autofocus @click="copy()">
           Copy NATO string
         </c-button>
       </div>

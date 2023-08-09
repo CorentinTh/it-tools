@@ -15,7 +15,7 @@ const { copy } = useCopy({ source: slug, text: 'Slug copied to clipboard' });
     <c-input-text :value="slug" multiline readonly placeholder="You slug will be generated here (ex: my-file-path)" label="Your slug" mb-5 />
 
     <div flex justify-center>
-      <c-button :disabled="slug.length === 0" @click="copy">
+      <c-button :disabled="slug.length === 0" @click="copy()">
         Copy slug
       </c-button>
     </div>

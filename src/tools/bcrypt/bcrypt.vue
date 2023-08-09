@@ -33,7 +33,7 @@ const compareMatch = computed(() => compareSync(compareString.value, compareHash
     <c-input-text :value="hashed" readonly text-center />
 
     <div mt-5 flex justify-center>
-      <c-button @click="copy">
+      <c-button @click="copy()">
         Copy hash
       </c-button>
     </div>
