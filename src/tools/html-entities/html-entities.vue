@@ -37,7 +37,7 @@ const { copy: copyUnescaped } = useCopy({ source: unescapeOutput });
     </n-form-item>
 
     <div flex justify-center>
-      <c-button @click="copyEscaped">
+      <c-button @click="copyEscaped()">
         Copy
       </c-button>
     </div>
@@ -66,7 +66,7 @@ const { copy: copyUnescaped } = useCopy({ source: unescapeOutput });
     </n-form-item>
 
     <div flex justify-center>
-      <c-button @click="copyUnescaped">
+      <c-button @click="copyUnescaped()">
         Copy
       </c-button>
     </div>

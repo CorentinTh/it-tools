@@ -66,7 +66,7 @@ const { copy } = useCopy({ source: token, text: 'Token copied to the clipboard' 
       />
 
       <div mt-5 flex justify-center gap-3>
-        <c-button @click="copy">
+        <c-button @click="copy()">
           Copy
         </c-button>
         <c-button @click="refreshToken">

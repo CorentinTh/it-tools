@@ -42,7 +42,7 @@ const { copy } = useCopy({ source: loremIpsumText, text: 'Lorem ipsum copied to 
     <c-input-text :value="loremIpsumText" multiline placeholder="Your lorem ipsum..." readonly mt-5 rows="5" />
 
     <div mt-5 flex justify-center>
-      <c-button autofocus @click="copy">
+      <c-button autofocus @click="copy()">
         Copy
       </c-button>
     </div>

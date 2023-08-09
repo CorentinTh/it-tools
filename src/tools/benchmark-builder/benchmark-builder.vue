@@ -151,10 +151,10 @@ function copyAsBulletList() {
         </tbody>
       </n-table>
       <div mt-5 flex justify-center gap-3>
-        <c-button @click="copyAsMarkdown">
+        <c-button @click="copyAsMarkdown()">
           Copy as markdown table
         </c-button>
-        <c-button @click="copyAsBulletList">
+        <c-button @click="copyAsBulletList()">
           Copy as bullet list
         </c-button>
       </div>

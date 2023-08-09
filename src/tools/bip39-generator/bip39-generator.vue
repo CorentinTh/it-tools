@@ -100,12 +100,12 @@ const { copy: copyPassphrase } = useCopy({ source: passphrase, text: 'Passphrase
           <n-input-group>
             <c-input-text v-model:value="entropy" placeholder="Your string..." />
 
-            <c-button @click="refreshEntropy">
+            <c-button @click="refreshEntropy()">
               <n-icon size="22">
                 <Refresh />
               </n-icon>
             </c-button>
-            <c-button @click="copyEntropy">
+            <c-button @click="copyEntropy()">
               <n-icon size="22">
                 <Copy />
               </n-icon>
@@ -122,7 +122,7 @@ const { copy: copyPassphrase } = useCopy({ source: passphrase, text: 'Passphrase
       <n-input-group>
         <c-input-text v-model:value="passphrase" placeholder="Your mnemonic..." raw-text />
 
-        <c-button @click="copyPassphrase">
+        <c-button @click="copyPassphrase()">
           <n-icon size="22" :component="Copy" />
         </c-button>
       </n-input-group>
