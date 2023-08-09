@@ -14,7 +14,7 @@ const { copy } = useCopy({ source: port, text: 'Port copied to the clipboard' })
       {{ port }}
     </div>
     <div flex justify-center gap-3>
-      <c-button @click="copy">
+      <c-button @click="copy()">
         Copy
       </c-button>
       <c-button @click="refreshPort">
