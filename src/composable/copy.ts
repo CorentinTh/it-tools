@@ -7,7 +7,7 @@ export function useCopy({ source, text = 'Copied to the clipboard' }: { source?:
 
   return {
     async copy(content?: string, { notificationMessage }: { notificationMessage?: string } = {}) {
-      await copy();
+      await copy(content);
       message.success(notificationMessage ?? text);
     },
   };
