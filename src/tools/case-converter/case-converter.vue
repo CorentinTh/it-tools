@@ -19,7 +19,10 @@ const baseConfig = {
 };
 
 const input = ref('lorem ipsum dolor sit amet');
-const strippedInput = computed(() => input.value.split(' ').map(x => x.replace(baseConfig.stripRegexp, '')).join(' '));
+
+// Using noCase to convert to lowercase and uppercase to ensure consistent splitting
+const toLowerCase = (str: string) => noCase(str, baseConfig).toLocaleLowerCase();
+const toUpperCase = (str: string) => noCase(str, baseConfig).toLocaleUpperCase();
 </script>
 
 <template>
@@ -33,10 +36,10 @@ const strippedInput = computed(() => input.value.split(' ').map(x => x.replace(b
       <n-divider />
 
       <n-form-item label="Lowercase:">
-        <InputCopyable :value="strippedInput.toLowerCase()" />
+        <InputCopyable :value="toLowerCase(input)" />
       </n-form-item>
       <n-form-item label="Uppercase:">
-        <InputCopyable :value="strippedInput.toUpperCase()" />
+        <InputCopyable :value="toUpperCase(input)" />
       </n-form-item>
       <n-form-item label="Camelcase:">
         <InputCopyable :value="camelCase(input, baseConfig)" />
