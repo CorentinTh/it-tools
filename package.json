@@ -62,7 +62,7 @@
     "jwt-decode": "^3.1.2",
     "libphonenumber-js": "^1.10.28",
     "lodash": "^4.17.21",
-    "mathjs": "^10.6.4",
+    "mathjs": "^11.0.0",
     "mime-types": "^2.1.35",
     "naive-ui": "^2.34.3",
     "netmask": "^2.0.2",
