@@ -119,7 +119,7 @@
     "less": "^4.1.3",
     "prettier": "^2.8.7",
     "typescript": "~4.9.0",
-    "unocss": "^0.53.0",
+    "unocss": "^0.55.0",
     "unocss-preset-scrollbar": "^0.2.1",
     "unplugin-icons": "^0.16.1",
     "unplugin-vue-components": "^0.25.0",
