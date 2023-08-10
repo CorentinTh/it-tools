@@ -138,8 +138,8 @@ dependencies:
     specifier: ^0.16.4
     version: 0.16.4(@vueuse/core@10.1.2)(rollup@2.79.1)
   uuid:
-    specifier: ^8.3.2
-    version: 8.3.2
+    specifier: ^9.0.0
+    version: 9.0.0
   vue:
     specifier: ^3.3.4
     version: 3.3.4
@@ -212,8 +212,8 @@ devDependencies:
     specifier: ^0.7.36
     version: 0.7.36
   '@types/uuid':
-    specifier: ^8.3.4
-    version: 8.3.4
+    specifier: ^9.0.0
+    version: 9.0.0
   '@typescript-eslint/parser':
     specifier: ^5.58.0
     version: 5.58.0(eslint@8.38.0)(typescript@4.9.3)
@@ -2837,8 +2837,8 @@ packages:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
     dev: true
 
-  /@types/uuid@8.3.4:
-    resolution: {integrity: sha512-c/I8ZRb51j+pYGAu5CrFMRxqZ2ke4y2grEBO5AUjgSkSk+qT2Ea+OdWElz/OiMf5MNpn2b17kuVBwZLQJXzihw==}
+  /@types/uuid@9.0.0:
+    resolution: {integrity: sha512-kr90f+ERiQtKWMz5rP32ltJ/BtULDI5RVO0uavn1HQUOwjx0R1h0rnDYNL0CepF1zL5bSY6FISAfd9tOdDhU5Q==}
     dev: true
 
   /@types/web-bluetooth@0.0.17:
@@ -8497,8 +8497,9 @@ packages:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
 
-  /uuid@8.3.2:
-    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+  /uuid@9.0.0:
+    resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
+    hasBin: true
     dev: false
 
   /v8-to-istanbul@9.1.0:
