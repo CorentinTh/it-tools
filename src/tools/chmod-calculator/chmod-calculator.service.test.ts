@@ -279,6 +279,14 @@ describe('chmod-calculator', () => {
   describe('validateSymbolicInput', () => {
     describe('validateOrder', () => {
       it('should correctly validate the order of permissions', () => {
+        expect(checkSymbolicString('-rwxrwxrwx')).toBe('');
+        expect(checkSymbolicString('drwxrwxrwx')).toBe('');
+        expect(checkSymbolicString('lrwxrwxrwx')).toBe('');
+        expect(checkSymbolicString('brwxrwxrwx')).toBe('');
+        expect(checkSymbolicString('crwxrwxrwx')).toBe('');
+        expect(checkSymbolicString('srwxrwxrwx')).toBe('');
+        expect(checkSymbolicString('prwxrwxrwx')).toBe('');
+
         expect(checkSymbolicString('rwxrwxrwx')).toBe('');
         expect(checkSymbolicString('rw-r--r--')).toBe('');
         expect(checkSymbolicString('r-xr-xr-x')).toBe('');

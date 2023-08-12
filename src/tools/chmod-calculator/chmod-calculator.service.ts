@@ -74,7 +74,7 @@ function symbolicToOctal(symbolic: string): number {
 }
 
 function checkSymbolicString(symbolicInput: string): string {
-  const generalPattern = /^([d-]|[lf-])?[rwx-]{9}$/;
+  const permissionsRegex = /^([-dlbcsp])?[rwx-]{9}$/;
 
   if (symbolicInput.length === 0) {
     return '';
@@ -82,7 +82,7 @@ function checkSymbolicString(symbolicInput: string): string {
   if (symbolicInput.length > 10) {
     return 'Invalid length.';
   }
-  if (!generalPattern.test(symbolicInput)) {
+  if (!permissionsRegex.test(symbolicInput)) {
     return 'Invalid permission pattern.';
   }
 
