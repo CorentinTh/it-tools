@@ -10,7 +10,6 @@ import {
 } from './chmod-calculator.service';
 
 import type { Group, Scope } from './chmod-calculator.types';
-import CLabel from '@/ui/c-label/c-label.vue';
 
 const themeVars = useThemeVars();
 
@@ -71,12 +70,11 @@ const computedOctal = computed(() => symbolicToOctal(symbolicInput.value));
       <div class="octal-result">
         {{ symbolic }}
       </div>
-
       <InputCopyable :value="`chmod ${octal} path`" readonly />
     </c-card>
     <c-card title="Convert symbolic permission string to octal value">
       <p>For permission strings of length 10:<br>The first character represents the file type: "-" for a regular file, "d" for a directory, "l" for a symbolic link.</p>
-      <CLabel /> <n-form-item label="Permission string" label-placement="left">
+      <n-form-item label="Permission string" label-placement="left">
         <c-input-text v-model:value="symbolicInput" placeholder="-rw-r--r--" w-full />
       </n-form-item>
       <n-alert v-if="checkSymbolicString(symbolicInput)" style="margin-top: 25px" type="error">
