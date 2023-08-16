@@ -1,6 +1,7 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+import { tool as stringObfuscator } from './string-obfuscator';
 import { tool as emojiPicker } from './emoji-picker';
 import { tool as passwordStrengthAnalyser } from './password-strength-analyser';
 import { tool as yamlToToml } from './yaml-to-toml';
@@ -145,7 +146,7 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Text',
-    components: [loremIpsumGenerator, textStatistics, emojiPicker],
+    components: [loremIpsumGenerator, textStatistics, emojiPicker, stringObfuscator],
   },
   {
     name: 'Data',
