@@ -18,7 +18,7 @@ function computeVariance({ data }: { data: number[] }) {
   return computeAverage({ data: squaredDiffs });
 }
 
-function arrayToMarkdownTable({ data, headerMap = {} }: { data: unknown[]; headerMap?: Record<string, string> }) {
+function arrayToMarkdownTable({ data, headerMap = {} }: { data: Record<string, unknown>[]; headerMap?: Record<string, string> }) {
   if (!Array.isArray(data) || data.length === 0) {
     return '';
   }
