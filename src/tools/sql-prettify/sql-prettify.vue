@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { type FormatFnOptions, format as formatSQL } from 'sql-formatter';
+import { type FormatOptionsWithLanguage, format as formatSQL } from 'sql-formatter';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 import { useStyleStore } from '@/stores/style.store';
 
 const inputElement = ref<HTMLElement>();
 const styleStore = useStyleStore();
-const config = reactive<Partial<FormatFnOptions>>({
+const config = reactive<FormatOptionsWithLanguage>({
   keywordCase: 'upper',
   useTabs: false,
   language: 'sql',
