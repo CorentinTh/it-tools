@@ -5,4 +5,4 @@ export type EmojiInfo = {
   emoji: string
   codePoints: string | undefined
   unicode: string
-} & typeof emojiUnicodeData['\uD83E\uDD10'];
+} & typeof emojiUnicodeData[string];
