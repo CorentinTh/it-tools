@@ -39,7 +39,7 @@ const { copy } = useCopy({ source: obfuscatedString });
         {{ obfuscatedString }}
       </div>
 
-      <c-button @click="copy">
+      <c-button @click="copy()">
         <icon-mdi:content-copy />
       </c-button>
     </c-card>

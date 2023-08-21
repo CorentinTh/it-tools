@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useClipboard } from '@vueuse/core';
+import { useCopy } from '@/composable/copy';
 
 const props = defineProps<{ tokens: { previous: string; current: string; next: string } }>();
-const { copy: copyPrevious, copied: previousCopied } = useClipboard();
-const { copy: copyCurrent, copied: currentCopied } = useClipboard();
-const { copy: copyNext, copied: nextCopied } = useClipboard();
+const { copy: copyPrevious, isJustCopied: previousCopied } = useCopy({ createToast: false });
+const { copy: copyCurrent, isJustCopied: currentCopied } = useCopy({ createToast: false });
+const { copy: copyNext, isJustCopied: nextCopied } = useCopy({ createToast: false });
 
 const { tokens } = toRefs(props);
 </script>
