@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## Version 2023.08.21-6f93cba
+
+### Features
+- **copy**: support legacy copy to clipboard for older browser (#581) (6f93cba)
+- **new tool**: string obfuscator (#575) (c58d6e3)
+
+### Bug fixes
+- **deps**: update dependency sql-formatter to v12 (#520) (2bcb77a)
+
+### Chores
+- **deps**: switched to fucking typescript v5 (#501) (76b2761)
+- **deps**: update dependency @antfu/eslint-config to ^0.40.0 (#552) (6ff9a01)
+- **deps**: update dependency prettier to v3 (#564) (a2b9b15)
+- **deps**: removed @typescript-eslint/parser (#563) (144f86e)
+- **deps**: removed ts-pattern (#565) (0f1f659)
+
 ## Version 2023.08.16-9bd4ad4
 
 ### Features
