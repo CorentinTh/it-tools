@@ -15,7 +15,7 @@ export {
 };
 
 function hexToBytes(hex: string) {
-  return (hex.match(/.{1,2}/g) ?? []).map(char => parseInt(char, 16));
+  return (hex.match(/.{1,2}/g) ?? []).map(char => Number.parseInt(char, 16));
 }
 
 function computeHMACSha1(message: string, key: string) {
@@ -32,7 +32,7 @@ function base32toHex(base32: string) {
     .map(value => base32Chars.indexOf(value).toString(2).padStart(5, '0'))
     .join('');
 
-  const hex = (bits.match(/.{1,8}/g) ?? []).map(chunk => parseInt(chunk, 2).toString(16).padStart(2, '0')).join('');
+  const hex = (bits.match(/.{1,8}/g) ?? []).map(chunk => Number.parseInt(chunk, 2).toString(16).padStart(2, '0')).join('');
 
   return hex;
 }

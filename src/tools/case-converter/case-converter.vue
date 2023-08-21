@@ -92,7 +92,7 @@ const inputLabelAlignmentConfig = {
       v-bind="inputLabelAlignmentConfig"
     />
 
-    <div divider my-16px />
+    <div my-16px divider />
 
     <InputCopyable
       v-for="format in formats"

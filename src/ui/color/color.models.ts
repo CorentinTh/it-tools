@@ -4,7 +4,7 @@ const clampHex = (value: number) => Math.max(0, Math.min(255, Math.round(value))
 
 function lighten(color: string, amount: number): string {
   const alpha = color.length === 9 ? color.slice(7) : '';
-  const num = parseInt(color.slice(1, 7), 16);
+  const num = Number.parseInt(color.slice(1, 7), 16);
 
   const r = clampHex(((num >> 16) & 255) + amount);
   const g = clampHex(((num >> 8) & 255) + amount);
