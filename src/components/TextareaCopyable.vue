@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { Copy } from '@vicons/tabler';
-import { useClipboard, useElementSize } from '@vueuse/core';
+import { useElementSize } from '@vueuse/core';
 import hljs from 'highlight.js/lib/core';
 import jsonHljs from 'highlight.js/lib/languages/json';
 import sqlHljs from 'highlight.js/lib/languages/sql';
 import xmlHljs from 'highlight.js/lib/languages/xml';
 import yamlHljs from 'highlight.js/lib/languages/yaml';
 import iniHljs from 'highlight.js/lib/languages/ini';
+import { useCopy } from '@/composable/copy';
 
 const props = withDefaults(
   defineProps<{
@@ -33,17 +34,8 @@ hljs.registerLanguage('toml', iniHljs);
 const { value, language, followHeightOf, copyPlacement, copyMessage } = toRefs(props);
 const { height } = followHeightOf.value ? useElementSize(followHeightOf) : { height: ref(null) };
 
-const { copy } = useClipboard({ source: value });
-const tooltipText = ref(copyMessage.value);
-
-function onCopyClicked() {
-  copy();
-  tooltipText.value = 'Copied !';
-
-  setTimeout(() => {
-    tooltipText.value = copyMessage.value;
-  }, 2000);
-}
+const { copy, isJustCopied } = useCopy({ source: value, createToast: false });
+const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : copyMessage.value);
 </script>
 
 <template>
@@ -61,7 +53,7 @@ function onCopyClicked() {
       <n-tooltip v-if="value" trigger="hover">
         <template #trigger>
           <div class="copy-button" :class="[copyPlacement]">
-            <c-button circle important:h-10 important:w-10 @click="onCopyClicked">
+            <c-button circle important:h-10 important:w-10 @click="copy()">
               <n-icon size="22" :component="Copy" />
             </c-button>
           </div>
@@ -70,7 +62,7 @@ function onCopyClicked() {
       </n-tooltip>
     </c-card>
     <div v-if="copyPlacement === 'outside'" mt-4 flex justify-center>
-      <c-button @click="onCopyClicked">
+      <c-button @click="copy()">
         {{ tooltipText }}
       </c-button>
     </div>
