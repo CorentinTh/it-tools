@@ -126,8 +126,8 @@ dependencies:
     specifier: ^12.0.0
     version: 12.0.0
   ts-pattern:
-    specifier: ^4.2.2
-    version: 4.2.2
+    specifier: ^5.0.0
+    version: 5.0.0
   ua-parser-js:
     specifier: ^1.0.35
     version: 1.0.35
@@ -8122,8 +8122,8 @@ packages:
       typescript: 4.9.3
     dev: true
 
-  /ts-pattern@4.2.2:
-    resolution: {integrity: sha512-qzJMo2pbkUJWusRH5o8xR+xogn6RmvViyUgwBFTtRENLse470clCGjHDf6haWGZ1AOmk8XkEohUoBW8Uut6Scg==}
+  /ts-pattern@5.0.0:
+    resolution: {integrity: sha512-FDTdTujq2GvMmrwYM0Om6pMilRAUKvBApEN+YniTQui/HGjFwaI6WAx9SepD+yDBf4q29JLf6yqGB8uvdzysEg==}
     dev: false
 
   /tsconfig-paths@3.14.2:
