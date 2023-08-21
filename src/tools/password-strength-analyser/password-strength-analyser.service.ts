@@ -4,7 +4,7 @@ export { getPasswordCrackTimeEstimation, getCharsetLength };
 
 function prettifyExponentialNotation(exponentialNotation: number) {
   const [base, exponent] = exponentialNotation.toString().split('e');
-  const baseAsNumber = parseFloat(base);
+  const baseAsNumber = Number.parseFloat(base);
   const prettyBase = baseAsNumber % 1 === 0 ? baseAsNumber.toLocaleString() : baseAsNumber.toFixed(2);
   return exponent ? `${prettyBase}e${exponent}` : prettyBase;
 }
