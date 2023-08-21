@@ -170,6 +170,7 @@ declare module '@vue/runtime-core' {
     SlugifyString: typeof import('./src/tools/slugify-string/slugify-string.vue')['default']
     SpanCopyable: typeof import('./src/components/SpanCopyable.vue')['default']
     SqlPrettify: typeof import('./src/tools/sql-prettify/sql-prettify.vue')['default']
+    StringObfuscator: typeof import('./src/tools/string-obfuscator/string-obfuscator.vue')['default']
     SvgPlaceholderGenerator: typeof import('./src/tools/svg-placeholder-generator/svg-placeholder-generator.vue')['default']
     TemperatureConverter: typeof import('./src/tools/temperature-converter/temperature-converter.vue')['default']
     TextareaCopyable: typeof import('./src/components/TextareaCopyable.vue')['default']

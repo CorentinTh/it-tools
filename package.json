@@ -104,7 +104,6 @@
     "@types/randombytes": "^2.0.0",
     "@types/ua-parser-js": "^0.7.36",
     "@types/uuid": "^9.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
     "@unocss/eslint-config": "^0.55.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vitejs/plugin-vue-jsx": "^3.0.0",
