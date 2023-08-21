@@ -125,9 +125,6 @@ dependencies:
   sql-formatter:
     specifier: ^12.0.0
     version: 12.0.0
-  ts-pattern:
-    specifier: ^4.2.2
-    version: 4.2.2
   ua-parser-js:
     specifier: ^1.0.35
     version: 1.0.35
@@ -8121,10 +8118,6 @@ packages:
     dependencies:
       typescript: 4.9.3
     dev: true
-
-  /ts-pattern@4.2.2:
-    resolution: {integrity: sha512-qzJMo2pbkUJWusRH5o8xR+xogn6RmvViyUgwBFTtRENLse470clCGjHDf6haWGZ1AOmk8XkEohUoBW8Uut6Scg==}
-    dev: false
 
   /tsconfig-paths@3.14.2:
     resolution: {integrity: sha512-o/9iXgCYc5L/JxCHPe3Hvh8Q/2xm5Z+p18PESBU6Ff33695QnCHBEjcytY2q19ua7Mbl/DavtBOLq+oG0RCL+g==}
