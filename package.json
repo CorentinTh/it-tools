@@ -116,7 +116,7 @@
     "jsdom": "^22.0.0",
     "less": "^4.1.3",
     "prettier": "^3.0.0",
-    "typescript": "~5.1.0",
+    "typescript": "~5.2.0",
     "unocss": "^0.55.0",
     "unocss-preset-scrollbar": "^0.2.1",
     "unplugin-icons": "^0.16.5",
