@@ -26,6 +26,7 @@ docker run -d --name it-tools --restart unless-stopped -p 8080:80 ghcr.io/corent
 
 **Other solutions:**
 
+- [Cloudron](https://www.cloudron.io/store/tech.ittools.cloudron.html)
 - [Tipi](https://www.runtipi.io/docs/apps-available)
 - [Unraid](https://unraid.net/community/apps?q=it-tools)
 
@@ -34,23 +35,21 @@ docker run -d --name it-tools --restart unless-stopped -p 8080:80 ghcr.io/corent
 ### Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) with the following extensions:
-- [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) 
+
+- [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur)
 - [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [i18n Ally](https://marketplace.visualstudio.com/items?itemName=lokalise.i18n-ally)
 
 with the following settings:
 
-```json5
+```json
 {
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "i18n-ally.localesPaths": [
-    "locales",
-    "src/tools/*/locales"
-  ],
+  "i18n-ally.localesPaths": ["locales", "src/tools/*/locales"],
   "i18n-ally.keystyle": "nested"
 }
 ```
