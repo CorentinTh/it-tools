@@ -80,6 +80,9 @@ dependencies:
   iarna-toml-esm:
     specifier: ^3.0.5
     version: 3.0.5
+  ibantools:
+    specifier: ^4.3.3
+    version: 4.3.3
   json5:
     specifier: ^2.2.3
     version: 2.2.3
@@ -5843,6 +5846,10 @@ packages:
     resolution: {integrity: sha512-CgeDbPohnFG827UoRaCqKxJ8idiIDZDWlcHf5hUReQnZ8jHnNnhN4QJFiY12fKvr0LvuDuKAimqQfrmQnacbtw==}
     dependencies:
       stream: 0.0.2
+    dev: false
+
+  /ibantools@4.3.3:
+    resolution: {integrity: sha512-RUTlGuFj3cU/Qfu5YIrsIZjW34/VDgKOz5fDr64Mc4NWP9b2i48vQ39r5xCl1yyFQeyEG/lASstIQHAUX18rRA==}
     dev: false
 
   /iconv-lite@0.6.3:
