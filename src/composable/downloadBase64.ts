@@ -35,3 +35,26 @@ export function useDownloadFileFromBase64({ source, filename }: { source: Ref<st
     },
   };
 }
+
+export function previewImageFromBase64(base64String: string): HTMLImageElement {
+  if (base64String === '') {
+    throw new Error('Base64 string is empty');
+  }
+
+  const img = document.createElement('img');
+  img.src = base64String;
+
+  const container = document.createElement('div');
+  container.appendChild(img);
+
+  const previewContainer = document.getElementById('previewContainer');
+  if (previewContainer) {
+    previewContainer.innerHTML = '';
+    previewContainer.appendChild(container);
+  }
+  else {
+    throw new Error('Preview container element not found');
+  }
+
+  return img;
+}

@@ -4,7 +4,7 @@ import { useBase64 } from '@vueuse/core';
 import type { UploadFileInfo } from 'naive-ui';
 import type { Ref } from 'vue';
 import { useCopy } from '@/composable/copy';
-import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
+import { previewImageFromBase64, useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 import { useValidation } from '@/composable/validation';
 import { isValidBase64 } from '@/utils/base64';
 
@@ -27,6 +27,25 @@ function downloadFile() {
 
   try {
     download();
+  }
+  catch (_) {
+    //
+  }
+}
+
+function previewImage() {
+  if (!base64InputValidation.isValid) {
+    return;
+  }
+  try {
+    const image = previewImageFromBase64(base64Input.value);
+    image.style.maxWidth = '100%';
+    image.style.maxHeight = '400px';
+    const previewContainer = document.getElementById('previewContainer');
+    if (previewContainer) {
+      previewContainer.innerHTML = '';
+      previewContainer.appendChild(image);
+    }
   }
   catch (_) {
     //
@@ -57,7 +76,14 @@ async function onUpload({ file: { file } }: { file: UploadFileInfo }) {
       mb-2
     />
 
-    <div flex justify-center>
+    <div flex justify-center py-2>
+      <div id="previewContainer" />
+    </div>
+
+    <div flex justify-center gap-3>
+      <c-button :disabled="base64Input === '' || !base64InputValidation.isValid" @click="previewImage()">
+        Preview image
+      </c-button>
       <c-button :disabled="base64Input === '' || !base64InputValidation.isValid" @click="downloadFile()">
         Download file
       </c-button>
