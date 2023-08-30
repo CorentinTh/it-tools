@@ -19,7 +19,7 @@ function getHumanFriendlyDuration({ seconds }: { seconds: number }) {
   }
 
   const timeUnits = [
-    { unit: 'millenium', secondsInUnit: 31536000000, format: prettifyExponentialNotation, plural: 'millenia' },
+    { unit: 'millenium', secondsInUnit: 31536000000, format: prettifyExponentialNotation, plural: 'millennia' },
     { unit: 'century', secondsInUnit: 3153600000, plural: 'centuries' },
     { unit: 'decade', secondsInUnit: 315360000, plural: 'decades' },
     { unit: 'year', secondsInUnit: 31536000, plural: 'years' },
