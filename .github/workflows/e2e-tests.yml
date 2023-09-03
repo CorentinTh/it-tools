@@ -1,13 +1,13 @@
 name: E2E tests
-on: [deployment_status]
-
+on:
+  pull_request:
+  push:
+    branches:
+      - main
 jobs:
   test:
-    if: github.event.deployment_status.state == 'success'
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    env:
-      BASE_URL: ${{ github.event.deployment_status.target_url }}
     strategy:
       matrix:
         shard: [1/3, 2/3, 3/3]
@@ -27,6 +27,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: Build app
+        run: pnpm build
 
       - name: Restore Playwright browsers from cache
         uses: actions/cache@v3
