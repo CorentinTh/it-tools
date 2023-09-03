@@ -19,7 +19,10 @@ const isTargetHovered = useElementHover(targetRef);
         'op-100 scale-100': isTargetHovered,
       }"
     >
-      <slot name="tooltip">
+      <slot
+        v-if="isTargetHovered"
+        name="tooltip"
+      >
         {{ tooltip }}
       </slot>
     </div>
