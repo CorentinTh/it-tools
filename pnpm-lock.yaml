@@ -129,8 +129,8 @@ dependencies:
     specifier: ^2.1.0
     version: 2.1.0
   sql-formatter:
-    specifier: ^12.0.0
-    version: 12.0.0
+    specifier: ^13.0.0
+    version: 13.0.0
   ua-parser-js:
     specifier: ^1.0.35
     version: 1.0.35
@@ -5565,6 +5565,11 @@ packages:
     resolution: {integrity: sha512-I0UBV/XOz1XkIJHEUDMZAbzCThU/H8DxmSfmdGcKPnVhu2VfFqr34jr9777IyaTYvxjedWhqVIilEDsCdP5G6g==}
     dev: true
 
+  /get-stdin@8.0.0:
+    resolution: {integrity: sha512-sY22aA6xchAzprjyqmSEQv4UbAAzRN0L2dQB0NlN5acTTK9Don6nhoc3eAbUnpZiCANAMfd/+40kVdKfFygohg==}
+    engines: {node: '>=10'}
+    dev: false
+
   /get-stream@6.0.1:
     resolution: {integrity: sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg==}
     engines: {node: '>=10'}
@@ -6713,6 +6718,7 @@ packages:
 
   /nearley@2.20.1:
     resolution: {integrity: sha512-+Mc8UaAebFzgV+KpI5n7DasuuQCHA89dmwm7JXw3TV43ukfNQ9DnBH3Mdb2g/I4Fdxc26pwimBWvjIw0UAILSQ==}
+    hasBin: true
     dependencies:
       commander: 2.20.3
       moo: 0.5.2
@@ -7820,10 +7826,12 @@ packages:
     resolution: {integrity: sha512-VE0SOVEHCk7Qc8ulkWw3ntAzXuqf7S2lvwQaDLRnUeIEaKNQJzV6BwmLKhOqT61aGhfUMrXeaBk+oDGCzvhcug==}
     dev: false
 
-  /sql-formatter@12.0.0:
-    resolution: {integrity: sha512-LR2m7BEvkyNAPzmcSCZ2b4Qzm5ySiiXS9Juc73VguTqCWIbYv7ZFV4LaDM7jNNZqHPfrqFssO7WWpITsAuLOuQ==}
+  /sql-formatter@13.0.0:
+    resolution: {integrity: sha512-V21cVvge4rhn9Fa7K/fTKcmPM+x1yee6Vhq8ZwgaWh3VPBqApgsaoFB5kLAhiqRo5AmSaRyLU7LIdgnNwH01/w==}
+    hasBin: true
     dependencies:
       argparse: 2.0.1
+      get-stdin: 8.0.0
       nearley: 2.20.1
     dev: false
 
