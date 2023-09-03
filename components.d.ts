@@ -33,6 +33,7 @@ declare module '@vue/runtime-core' {
     CInputText: typeof import('./src/ui/c-input-text/c-input-text.vue')['default']
     'CInputText.demo': typeof import('./src/ui/c-input-text/c-input-text.demo.vue')['default']
     CKeyValueList: typeof import('./src/ui/c-key-value-list/c-key-value-list.vue')['default']
+    CKeyValueListItem: typeof import('./src/ui/c-key-value-list/c-key-value-list-item.vue')['default']
     CLabel: typeof import('./src/ui/c-label/c-label.vue')['default']
     CLink: typeof import('./src/ui/c-link/c-link.vue')['default']
     'CLink.demo': typeof import('./src/ui/c-link/c-link.demo.vue')['default']
