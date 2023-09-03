@@ -9,29 +9,13 @@ const formattedItems = computed(() => items.value.filter(item => !_.isNil(item.v
 </script>
 
 <template>
-  <table border-collapse table-fixed>
-    <tr v-for="item in formattedItems" :key="item.label">
-      <td py-1 pr-2 text-right font-bold>
+  <div my-5>
+    <div v-for="item in formattedItems" :key="item.label" flex gap-2 py-1 class="c-key-value-list__item">
+      <div flex-basis-180px text-right font-bold class="c-key-value-list__key">
         {{ item.label }}
-      </td>
+      </div>
 
-      <td v-if="_.isArray(item.value)">
-        <div v-for="value in item.value" :key="value">
-          <c-text-copyable :value="value" :show-icon="item.showCopyButton ?? true" />
-        </div>
-      </td>
-      <td v-else-if="_.isBoolean(item.value)">
-        <c-text-copyable :value="item.value ? 'true' : 'false'" :displayed-value="item.value ? 'Yes' : 'No'" :show-icon="item.showCopyButton ?? true" />
-      </td>
-      <td v-else-if="_.isNumber(item.value)" font-mono>
-        <c-text-copyable :value="String(item.value)" :show-icon="item.showCopyButton ?? true" />
-      </td>
-      <td v-else-if="_.isNil(item.value) || item.value === ''" op-70>
-        {{ item.placeholder ?? 'N/A' }}
-      </td>
-      <td v-else>
-        <c-text-copyable :value="item.value" :show-icon="item.showCopyButton ?? true" />
-      </td>
-    </tr>
-  </table>
+      <c-key-value-list-item :item="item" class="c-key-value-list__value" />
+    </div>
+  </div>
 </template>
