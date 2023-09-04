@@ -1,14 +1,15 @@
 import { type Page, expect, test } from '@playwright/test';
-import _ from 'lodash';
 
 async function extractIbanInfo({ page }: { page: Page }) {
-  const tdHandles = await page.locator('table tr td').elementHandles();
-  const tdTextContents = await Promise.all(tdHandles.map(el => el.textContent()));
+  const itemsLines = await page
+    .locator('.c-key-value-list__item').all();
 
-  return _.chain(tdTextContents)
-    .map(tdTextContent => tdTextContent?.trim().replace(' Copy to clipboard', ''))
-    .chunk(2)
-    .value();
+  return await Promise.all(
+    itemsLines.map(async item => [
+      (await item.locator('.c-key-value-list__key').textContent() ?? '').trim(),
+      (await item.locator('.c-key-value-list__value').textContent() ?? '').trim(),
+    ]),
+  );
 }
 
 test.describe('Tool - Iban validator and parser', () => {
@@ -41,7 +42,7 @@ test.describe('Tool - Iban validator and parser', () => {
 
     expect(ibanInfo).toEqual([
       ['Is IBAN valid ?', 'No'],
-      ['IBAN errors', 'Wrong account bank branch checksumWrong IBAN checksum Copy to clipboard'],
+      ['IBAN errors', 'Wrong account bank branch checksum Wrong IBAN checksum'],
       ['Is IBAN a QR-IBAN ?', 'No'],
       ['Country code', 'N/A'],
       ['BBAN', 'N/A'],

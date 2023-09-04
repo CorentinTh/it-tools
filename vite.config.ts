@@ -25,7 +25,7 @@ export default defineConfig({
       runtimeOnly: true,
       compositionOnly: true,
       fullInstall: true,
-      include: [resolve(__dirname, 'locales/**'), resolve(__dirname, 'src/tools/*/locales/**')],
+      include: [resolve(__dirname, 'locales/**')],
     }),
     AutoImport({
       imports: [
@@ -105,5 +105,8 @@ export default defineConfig({
   },
   test: {
     exclude: [...configDefaults.exclude, '**/*.e2e.spec.ts'],
+  },
+  build: {
+    target: 'esnext',
   },
 });
