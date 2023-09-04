@@ -142,7 +142,7 @@ const { download } = useDownloadFileFromBase64({ source: qrcode, filename: 'qr-c
       </n-gi>
       <n-gi v-if="qrcode">
         <div flex flex-col items-center gap-3>
-          <n-image :src="qrcode" width="200" />
+          <img alt="wifi-qrcode" :src="qrcode" width="200" />
           <c-button @click="download">
             Download qr-code
           </c-button>
