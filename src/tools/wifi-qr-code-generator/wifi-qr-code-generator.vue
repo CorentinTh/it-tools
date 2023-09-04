@@ -37,8 +37,8 @@ const { download } = useDownloadFileFromBase64({ source: qrcode, filename: 'qr-c
 
 <template>
   <c-card>
-    <n-grid x-gap="12" y-gap="12" cols="1 600:3">
-      <n-gi span="2">
+    <div grid grid-cols-1 gap-12>
+      <div>
         <c-select
           v-model:value="encryption"
           mb-4
@@ -139,15 +139,15 @@ const { download } = useDownloadFileFromBase64({ source: qrcode, filename: 'qr-c
             <n-color-picker v-model:value="background" :modes="['hex']" />
           </n-form-item>
         </n-form>
-      </n-gi>
-      <n-gi v-if="qrcode">
+      </div>
+      <div v-if="qrcode">
         <div flex flex-col items-center gap-3>
-          <img alt="wifi-qrcode" :src="qrcode" width="200" />
+          <img alt="wifi-qrcode" :src="qrcode" width="200">
           <c-button @click="download">
             Download qr-code
           </c-button>
         </div>
-      </n-gi>
-    </n-grid>
+      </div>
+    </div>
   </c-card>
 </template>
