@@ -146,7 +146,7 @@ function formatDateUsingFormatter(formatter: (date: Date) => string, date?: Date
       <c-input-text
         v-model:value="inputDate"
         autofocus
-        placeholder="Put you date string here..."
+        placeholder="Put your date string here..."
         clearable
         test-id="date-time-converter-input"
         :validation="validation"

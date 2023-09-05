@@ -49,7 +49,7 @@ const { t } = useI18n();
       </transition>
 
       <div v-if="toolStore.newTools.length > 0">
-        <n-h3>{{ t('home.categories.newestTools', 'Newest tools') }}</n-h3>
+        <n-h3>{{ t('home.categories.newestTools') }}</n-h3>
         <n-grid x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
           <n-gi v-for="tool in toolStore.newTools" :key="tool.name">
             <ToolCard :tool="tool" />
