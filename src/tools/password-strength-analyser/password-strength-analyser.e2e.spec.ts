@@ -14,6 +14,6 @@ test.describe('Tool - Password strength analyser', () => {
 
     const crackDuration = await page.getByTestId('crack-duration').textContent();
 
-    expect(crackDuration).toEqual('15,091 milleniums, 3 centurys');
+    expect(crackDuration).toEqual('15,091 millennia, 3 centuries');
   });
 });
