@@ -7,6 +7,7 @@ import { Heart, Home2, Menu2 } from '@vicons/tabler';
 import HeroGradient from '../assets/hero-gradient.svg?component';
 import MenuLayout from '../components/MenuLayout.vue';
 import NavbarButtons from '../components/NavbarButtons.vue';
+import { availableLocales, loadLanguageAsync } from '../plugins/i18n.plugin';
 import { toolsByCategory } from '@/tools';
 import { useStyleStore } from '@/stores/style.store';
 import { config } from '@/config';
@@ -24,10 +25,19 @@ const { tracker } = useTracker();
 
 const toolStore = useToolStore();
 
+const currentLang = useStorage('application:selected-language', 'en');
+
+loadLanguageAsync(currentLang.value);
+
 const tools = computed<ToolCategory[]>(() => [
   ...(toolStore.favoriteTools.length > 0 ? [{ name: 'Your favorite tools', components: toolStore.favoriteTools }] : []),
   ...toolsByCategory,
 ]);
+
+function onChange(event: any) {
+  currentLang.value = event;
+  loadLanguageAsync(event);
+}
 </script>
 
 <template>
@@ -107,11 +117,24 @@ const tools = computed<ToolCategory[]>(() => [
           <icon-mdi:brush-variant text-20px />
         </c-button>
 
+<<<<<<< HEAD
         <command-palette />
 
         <div>
           <NavbarButtons v-if="!styleStore.isSmallScreen" />
         </div>
+=======
+        <n-select
+          class="i18n"
+          :model:value="currentLang"
+          :options="availableLocales.map(lang => ({ value: lang, label: lang }))"
+          placeholder="Select language"
+          :on-update-value="onChange"
+          :default-value="currentLang"
+        />
+
+        <NavbarButtons v-if="!styleStore.isSmallScreen" />
+>>>>>>> fcf79cc248ccefbca855c19a038bc71d59f8a2b8
 
         <n-tooltip trigger="hover">
           <template #trigger>
@@ -211,4 +234,27 @@ const tools = computed<ToolCategory[]>(() => [
     }
   }
 }
+<<<<<<< HEAD
+=======
+
+// ::v-deep(.n-menu-item-content-header) {
+//   overflow: visible !important;
+//   // overflow-x: hidden !important;
+// }
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+
+  .search-bar {
+    // width: 100%;
+    flex-grow: 1;
+  }
+}
+.i18n{
+  width: 75px;
+}
+>>>>>>> fcf79cc248ccefbca855c19a038bc71d59f8a2b8
 </style>

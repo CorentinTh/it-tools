@@ -9,6 +9,7 @@ import type { Tool } from '@/tools/tools.types';
 
 const route = useRoute();
 
+const { t } = useI18n();
 const head = computed<HeadObject>(() => ({
   title: `${route.meta.name} - IT Tools`,
   meta: [
@@ -47,7 +48,11 @@ const toolDescription = computed<string>(() => t(`tools.${i18nKey.value}.descrip
         <div class="separator" />
 
         <div class="description">
+<<<<<<< HEAD
           {{ toolDescription }}
+=======
+          {{ t(route.meta.description) }}
+>>>>>>> fcf79cc248ccefbca855c19a038bc71d59f8a2b8
         </div>
       </div>
     </div>
