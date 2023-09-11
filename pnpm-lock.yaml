@@ -102,8 +102,8 @@ dependencies:
     specifier: ^2.1.35
     version: 2.1.35
   monaco-editor:
-    specifier: ^0.41.0
-    version: 0.41.0
+    specifier: ^0.43.0
+    version: 0.43.0
   naive-ui:
     specifier: ^2.34.3
     version: 2.34.3(vue@3.3.4)
@@ -6659,8 +6659,8 @@ packages:
       pkg-types: 1.0.3
       ufo: 1.1.2
 
-  /monaco-editor@0.41.0:
-    resolution: {integrity: sha512-1o4olnZJsiLmv5pwLEAmzHTE/5geLKQ07BrGxlF4Ri/AXAc2yyDGZwHjiTqD8D/ROKUZmwMA28A+yEowLNOEcA==}
+  /monaco-editor@0.43.0:
+    resolution: {integrity: sha512-cnoqwQi/9fml2Szamv1XbSJieGJ1Dc8tENVMD26Kcfl7xGQWp7OBKMjlwKVGYFJ3/AXJjSOGvcqK7Ry/j9BM1Q==}
     dev: false
 
   /moo@0.5.2:
