@@ -41,6 +41,9 @@ dependencies:
   bcryptjs:
     specifier: ^2.4.3
     version: 2.4.3
+  turndown:
+    specifier: ^7.0.2
+    version: 7.0.2
   change-case:
     specifier: ^4.1.2
     version: 4.1.2
@@ -214,6 +217,9 @@ devDependencies:
   '@types/randombytes':
     specifier: ^2.0.0
     version: 2.0.0
+  '@types/turndown':
+    specifier: ^5.0.2
+    version: 5.0.2
   '@types/ua-parser-js':
     specifier: ^0.7.36
     version: 0.7.36
