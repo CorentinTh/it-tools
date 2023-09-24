@@ -4,8 +4,10 @@ import { ref } from 'vue';
 import { marked } from 'marked';
 
 import { convertHtmlToMarkdown } from './html-md-converter-service';
-import CCard from "@/ui/c-card/c-card.vue";
-import CInputText from "@/ui/c-input-text/c-input-text.vue"; // Import the service function
+
+import CCard from '@/ui/c-card/c-card.vue';
+
+import CInputText from '@/ui/c-input-text/c-input-text.vue'; // Import the service function
 
 const htmlInput = ref(''); // Reference for HTML input
 const markdownOutput = ref(''); // Reference for Markdown output
@@ -18,9 +20,9 @@ const previewHtml = computed(() => marked(markdownOutput.value));
 </script>
 
 <template>
-  <c-card>
+  <CCard>
     <!-- Input area for HTML -->
-    <c-input-text v-model:value="htmlInput" multiline placeholder="Paste your HTML here..." rows="5" />
+    <CInputText v-model:value="htmlInput" multiline placeholder="Paste your HTML here..." rows="5" />
 
     <!-- Convert button -->
     <button @click="convertHtmlToMd">
@@ -28,9 +30,9 @@ const previewHtml = computed(() => marked(markdownOutput.value));
     </button>
 
     <!-- Display area for converted Markdown -->
-    <c-input-text v-model:value="markdownOutput" multiline placeholder="Converted Markdown will appear here..." rows="5" />
+    <CInputText v-model:value="markdownOutput" multiline placeholder="Converted Markdown will appear here..." rows="5" />
 
     <!-- Preview area for converted Markdown -->
     <div v-html="previewHtml" />
-  </c-card>
+  </CCard>
 </template>
