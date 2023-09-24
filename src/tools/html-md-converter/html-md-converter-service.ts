@@ -8,6 +8,6 @@ const turnDownService = new TurnDownService();
  * @param html - The HTML string to convert.
  * @returns The converted Markdown string.
  */
-export const convertHtmlToMarkdown = (html: string): string => {
+export function convertHtmlToMarkdown(html: string): string {
   return turnDownService.turndown(html);
-};
+}

@@ -1,4 +1,4 @@
-import {BrandHtml5} from '@vicons/tabler';
+import { BrandHtml5 } from '@vicons/tabler';
 import { defineTool } from '../tool';
 
 export const tool = defineTool({
