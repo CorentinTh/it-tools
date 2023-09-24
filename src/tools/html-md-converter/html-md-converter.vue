@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-import { convertHtmlToMarkdown } from './html-md-converter-service'; // Import the service function
+import { marked } from 'marked';
+
+import { convertHtmlToMarkdown } from './html-md-converter-service';
+import CCard from "@/ui/c-card/c-card.vue";
+import CInputText from "@/ui/c-input-text/c-input-text.vue"; // Import the service function
 
 const htmlInput = ref(''); // Reference for HTML input
 const markdownOutput = ref(''); // Reference for Markdown output
@@ -9,6 +13,8 @@ const markdownOutput = ref(''); // Reference for Markdown output
 function convertHtmlToMd() {
   markdownOutput.value = convertHtmlToMarkdown(htmlInput.value); // Using the service function here
 }
+
+const previewHtml = computed(() => marked(markdownOutput.value));
 </script>
 
 <template>
@@ -24,6 +30,7 @@ function convertHtmlToMd() {
     <!-- Display area for converted Markdown -->
     <c-input-text v-model:value="markdownOutput" multiline placeholder="Converted Markdown will appear here..." rows="5" />
 
-    <!-- Optionally, you can add more features like 'Clear', 'Copy to Clipboard', etc. -->
+    <!-- Preview area for converted Markdown -->
+    <div v-html="previewHtml" />
   </c-card>
 </template>
