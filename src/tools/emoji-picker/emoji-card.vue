@@ -29,7 +29,7 @@ const { copy } = useCopy();
         Unicode:  <span border="1px solid current op-30" b-rd-xl px-12px py-4px>{{ emojiInfo.unicode }}</span>
       </div> -->
 
-      <div flex gap-2 font-mono text-xs op-70>
+      <div flex gap-2 text-xs font-mono op-70>
         <span cursor-pointer transition hover:text-primary @click="copy(emojiInfo.codePoints, { notificationMessage: `Code points '${emojiInfo.codePoints}' copied to the clipboard` })">
           {{ emojiInfo.codePoints }}
         </span>

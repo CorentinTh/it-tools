@@ -13,7 +13,7 @@ function getRangesize(start: string, end: string) {
     return -1;
   }
 
-  return 1 + parseInt(end, 2) - parseInt(start, 2);
+  return 1 + Number.parseInt(end, 2) - Number.parseInt(start, 2);
 }
 
 function getCidr(start: string, end: string) {
@@ -55,8 +55,8 @@ function calculateCidr({ startIp, endIp }: { startIp: string; endIp: string }) {
   const cidr = getCidr(start, end);
   if (cidr != null) {
     const result: Ipv4RangeExpanderResult = {};
-    result.newEnd = bits2ip(parseInt(cidr.end, 2));
-    result.newStart = bits2ip(parseInt(cidr.start, 2));
+    result.newEnd = bits2ip(Number.parseInt(cidr.end, 2));
+    result.newStart = bits2ip(Number.parseInt(cidr.start, 2));
     result.newCidr = `${result.newStart}/${cidr.mask}`;
     result.newSize = getRangesize(cidr.start, cidr.end);
 

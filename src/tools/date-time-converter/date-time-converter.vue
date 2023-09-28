@@ -82,7 +82,7 @@ const formats: DateFormat[] = [
   {
     name: 'Mongo ObjectID',
     fromDate: date => `${Math.floor(date.getTime() / 1000).toString(16)}0000000000000000`,
-    toDate: objectId => new Date(parseInt(objectId.substring(0, 8), 16) * 1000),
+    toDate: objectId => new Date(Number.parseInt(objectId.substring(0, 8), 16) * 1000),
     formatMatcher: date => isMongoObjectId(date),
   },
 ];
@@ -146,7 +146,7 @@ function formatDateUsingFormatter(formatter: (date: Date) => string, date?: Date
       <c-input-text
         v-model:value="inputDate"
         autofocus
-        placeholder="Put you date string here..."
+        placeholder="Put your date string here..."
         clearable
         test-id="date-time-converter-input"
         :validation="validation"

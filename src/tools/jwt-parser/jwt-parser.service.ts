@@ -1,6 +1,5 @@
 import jwtDecode, { type JwtHeader, type JwtPayload } from 'jwt-decode';
 import _ from 'lodash';
-import { match } from 'ts-pattern';
 import { ALGORITHM_DESCRIPTIONS, CLAIM_DESCRIPTIONS } from './jwt-parser.constants';
 
 export { decodeJwt };
@@ -32,10 +31,15 @@ function parseClaims({ claim, value }: { claim: string; value: unknown }) {
 }
 
 function getFriendlyValue({ claim, value }: { claim: string; value: unknown }) {
-  return match(claim)
-    .with('exp', 'nbf', 'iat', () => dateFormatter(value))
-    .with('alg', () => (_.isString(value) ? ALGORITHM_DESCRIPTIONS[value] : undefined))
-    .otherwise(() => undefined);
+  if (['exp', 'nbf', 'iat'].includes(claim)) {
+    return dateFormatter(value);
+  }
+
+  if (claim === 'alg' && _.isString(value)) {
+    return ALGORITHM_DESCRIPTIONS[value];
+  }
+
+  return undefined;
 }
 
 function dateFormatter(value: unknown) {

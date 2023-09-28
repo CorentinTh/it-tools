@@ -1,11 +1,17 @@
 <script setup lang="ts">
 import { useTheme } from './c-modal.theme';
 
+defineOptions({
+  inheritAttrs: false,
+});
+
 const props = withDefaults(defineProps<{ open?: boolean; centered?: boolean }>(), {
   open: false,
   centered: true,
 });
+
 const emit = defineEmits(['update:open']);
+
 const isOpen = useVModel(props, 'open', emit, { passive: true });
 
 const { centered } = toRefs(props);
@@ -27,10 +33,6 @@ defineExpose({
   open,
   toggle,
   isOpen,
-});
-
-defineOptions({
-  inheritAttrs: false,
 });
 
 const theme = useTheme();
