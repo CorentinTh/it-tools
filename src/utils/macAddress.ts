@@ -15,4 +15,18 @@ function macAddressValidation(value: Ref) {
   });
 }
 
-export { macAddressValidation, macAddressValidationRules };
+const partialMacAddressValidationRules = [
+  {
+    message: 'Invalid partial MAC address',
+    validator: (value: string) => value.trim().match(/^([0-9A-Fa-f]{2}[:-]){0,5}([0-9A-Fa-f]{0,2})$/),
+  },
+];
+
+function partialMacAddressValidation(value: Ref) {
+  return useValidation({
+    source: value,
+    rules: partialMacAddressValidationRules,
+  });
+}
+
+export { macAddressValidation, macAddressValidationRules, partialMacAddressValidation, partialMacAddressValidationRules };
