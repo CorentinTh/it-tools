@@ -11,17 +11,7 @@ const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : initialText)
 </script>
 
 <template>
-  <n-tooltip trigger="hover">
-    <template #trigger>
-      <span class="value" @click="copy()">{{ value }}</span>
-    </template>
-    {{ tooltipText }}
-  </n-tooltip>
+  <c-tooltip :tooltip="tooltipText">
+    <span cursor-pointer font-mono @click="copy()">{{ value }}</span>
+  </c-tooltip>
 </template>
-
-<style scoped lang="less">
-.value {
-  cursor: pointer;
-  font-family: monospace;
-}
-</style>
