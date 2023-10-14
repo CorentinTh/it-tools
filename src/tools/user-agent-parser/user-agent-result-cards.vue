@@ -14,14 +14,10 @@ const { userAgentInfo, sections } = toRefs(props);
     <n-grid :x-gap="12" :y-gap="8" cols="1 s:2" responsive="screen">
       <n-gi v-for="{ heading, icon, content } in sections" :key="heading">
         <c-card h-full>
-          <n-page-header>
-            <template #title>
-              {{ heading }}
-            </template>
-            <template v-if="icon" #avatar>
-              <n-icon size="30" :component="icon" :depth="3" />
-            </template>
-          </n-page-header>
+          <div flex items-center gap-3>
+            <n-icon size="30" :component="icon" :depth="3" />
+            <span text-lg>{{ heading }}</span>
+          </div>
 
           <div mt-5 flex gap-2>
             <span v-for="{ label, getValue } in content" :key="label">
