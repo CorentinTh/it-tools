@@ -30,7 +30,8 @@
     "coverage": "vitest run --coverage",
     "typecheck": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint src --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore",
-    "script:create-new-tool": "node scripts/create-tool.mjs",
+    "script:create:tool": "node scripts/create-tool.mjs",
+    "script:create:ui": "hygen generator ui-component",
     "release": "node ./scripts/release.mjs"
   },
   "dependencies": {
@@ -117,6 +118,7 @@
     "c8": "^8.0.0",
     "consola": "^3.0.2",
     "eslint": "^8.47.0",
+    "hygen": "^6.2.11",
     "jsdom": "^22.0.0",
     "less": "^4.1.3",
     "prettier": "^3.0.0",
