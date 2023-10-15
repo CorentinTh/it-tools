@@ -1,6 +1,7 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+import { tool as textToBinary } from './text-to-binary';
 import { tool as ulidGenerator } from './ulid-generator';
 import { tool as ibanValidatorAndParser } from './iban-validator-and-parser';
 import { tool as stringObfuscator } from './string-obfuscator';
@@ -88,6 +89,7 @@ export const toolsByCategory: ToolCategory[] = [
       colorConverter,
       caseConverter,
       textToNatoAlphabet,
+      textToBinary,
       yamlToJson,
       yamlToToml,
       jsonToYaml,
