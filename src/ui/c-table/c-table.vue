@@ -38,7 +38,7 @@ const headers = computed(() => {
 
 <template>
   <div class="relative overflow-x-auto rounded">
-    <table class="w-full border-collapse text-left text-sm text-gray-500 dark:text-gray-400" :description="description" role="table">
+    <table class="w-full border-collapse text-left text-sm text-gray-500 dark:text-gray-400" role="table" :aria-label="description">
       <thead v-if="!hideHeaders" class="bg-#ffffff uppercase text-gray-700 dark:bg-#333333 dark:text-gray-400">
         <tr>
           <th v-for="header in headers" :key="header.key" scope="col" class="px-6 py-3 text-xs">
