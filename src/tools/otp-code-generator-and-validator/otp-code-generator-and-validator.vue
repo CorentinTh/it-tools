@@ -61,19 +61,16 @@ const secretValidationRules = [
       :validation-rules="secretValidationRules"
     >
       <template #suffix>
-        <n-tooltip trigger="hover">
-          <template #trigger>
-            <c-button circle variant="text" size="small" @click="refreshSecret">
-              <icon-mdi-refresh />
-            </c-button>
-          </template>
-          Generate secret token
-        </n-tooltip>
+        <c-tooltip tooltip="Generate a new random secret">
+          <c-button circle variant="text" size="small" @click="refreshSecret">
+            <icon-mdi-refresh />
+          </c-button>
+        </c-tooltip>
       </template>
     </c-input-text>
 
     <div>
-      <TokenDisplay :tokens="tokens" style="margin-top: 2px" />
+      <TokenDisplay :tokens="tokens" />
 
       <n-progress :percentage="(100 * interval) / 30" :color="theme.primaryColor" :show-indicator="false" />
       <div style="text-align: center">

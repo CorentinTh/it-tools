@@ -13,14 +13,11 @@ const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : 'Copy to cli
 <template>
   <c-input-text v-model:value="value">
     <template #suffix>
-      <n-tooltip trigger="hover">
-        <template #trigger>
-          <c-button circle variant="text" size="small" @click="copy()">
-            <icon-mdi-content-copy />
-          </c-button>
-        </template>
-        {{ tooltipText }}
-      </n-tooltip>
+      <c-tooltip :tooltip="tooltipText">
+        <c-button circle variant="text" size="small" @click="copy()">
+          <icon-mdi-content-copy />
+        </c-button>
+      </c-tooltip>
     </template>
   </c-input-text>
 </template>

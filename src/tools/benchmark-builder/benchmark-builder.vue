@@ -51,11 +51,11 @@ const results = computed(() => {
 const { copy } = useCopy({ createToast: false });
 
 const header = {
+  position: 'Position',
   title: 'Suite',
   size: 'Samples',
   mean: 'Mean',
   variance: 'Variance',
-  position: 'Position',
 };
 
 function copyAsMarkdown() {
@@ -131,26 +131,8 @@ function copyAsBulletList() {
         </c-button>
       </div>
 
-      <n-table>
-        <thead>
-          <tr>
-            <th>{{ header.position }}</th>
-            <th>{{ header.title }}</th>
-            <th>{{ header.size }}</th>
-            <th>{{ header.mean }}</th>
-            <th>{{ header.variance }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="{ title, size, mean, variance, position } of results" :key="title">
-            <td>{{ position }}</td>
-            <td>{{ title }}</td>
-            <td>{{ size }}</td>
-            <td>{{ mean }}</td>
-            <td>{{ variance }}</td>
-          </tr>
-        </tbody>
-      </n-table>
+      <c-table :data="results" :headers="header" />
+
       <div mt-5 flex justify-center gap-3>
         <c-button @click="copyAsMarkdown()">
           Copy as markdown table

@@ -94,18 +94,17 @@ const tools = computed<ToolCategory[]>(() => [
           <NIcon size="25" :component="Menu2" />
         </c-button>
 
-        <n-tooltip trigger="hover">
-          <template #trigger>
-            <c-button to="/" circle variant="text" aria-label="Home">
-              <NIcon size="25" :component="Home2" />
-            </c-button>
-          </template>
-          Home
-        </n-tooltip>
+        <c-tooltip tooltip="Home" position="bottom">
+          <c-button to="/" circle variant="text" aria-label="Home">
+            <NIcon size="25" :component="Home2" />
+          </c-button>
+        </c-tooltip>
 
-        <c-button v-if="config.app.env === 'development'" to="/c-lib" circle variant="text" aria-label="UI Lib">
-          <icon-mdi:brush-variant text-20px />
-        </c-button>
+        <c-tooltip tooltip="UI Lib" position="bottom">
+          <c-button v-if="config.app.env === 'development'" to="/c-lib" circle variant="text" aria-label="UI Lib">
+            <icon-mdi:brush-variant text-20px />
+          </c-button>
+        </c-tooltip>
 
         <command-palette />
 
@@ -113,23 +112,20 @@ const tools = computed<ToolCategory[]>(() => [
           <NavbarButtons v-if="!styleStore.isSmallScreen" />
         </div>
 
-        <n-tooltip trigger="hover">
-          <template #trigger>
-            <c-button
-              round
-              href="https://www.buymeacoffee.com/cthmsst"
-              rel="noopener"
-              target="_blank"
-              class="support-button"
-              :bordered="false"
-              @click="() => tracker.trackEvent({ eventName: 'Support button clicked' })"
-            >
-              Buy me a coffee
-              <NIcon v-if="!styleStore.isSmallScreen" :component="Heart" ml-2 />
-            </c-button>
-          </template>
-          ❤ Support IT Tools development !
-        </n-tooltip>
+        <c-tooltip position="bottom" tooltip="Support IT Tools development">
+          <c-button
+            round
+            href="https://www.buymeacoffee.com/cthmsst"
+            rel="noopener"
+            target="_blank"
+            class="support-button"
+            :bordered="false"
+            @click="() => tracker.trackEvent({ eventName: 'Support button clicked' })"
+          >
+            Buy me a coffee
+            <NIcon v-if="!styleStore.isSmallScreen" :component="Heart" ml-2 />
+          </c-button>
+        </c-tooltip>
       </div>
       <slot />
     </template>
