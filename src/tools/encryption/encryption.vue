@@ -11,9 +11,18 @@ const cypherOutput = computed(() => algos[cypherAlgo.value].encrypt(cypherInput.
 const decryptInput = ref('U2FsdGVkX1/EC3+6P5dbbkZ3e1kQ5o2yzuU0NHTjmrKnLBEwreV489Kr0DIB+uBs');
 const decryptAlgo = ref<keyof typeof algos>('AES');
 const decryptSecret = ref('my secret key');
-const decryptOutput = computed(() =>
-  algos[decryptAlgo.value].decrypt(decryptInput.value, decryptSecret.value).toString(enc.Utf8),
-);
+const decryptError = ref<Error | null>(null);
+const decryptOutput = ref('');
+watchEffect(() => {
+  try {
+    decryptOutput.value = algos[decryptAlgo.value].decrypt(decryptInput.value, decryptSecret.value).toString(enc.Utf8);
+    decryptError.value = null;
+  }
+  catch (e) {
+    decryptOutput.value = '';
+    decryptError.value = e as Error;
+  }
+});
 </script>
 
 <template>
@@ -63,7 +72,11 @@ const decryptOutput = computed(() =>
         />
       </div>
     </div>
+    <c-alert v-if="decryptError" type="error" mt-5>
+      {{ decryptError }}
+    </c-alert>
     <c-input-text
+      v-else
       label="Your decrypted text:"
       :value="decryptOutput"
       placeholder="Your string hash"
