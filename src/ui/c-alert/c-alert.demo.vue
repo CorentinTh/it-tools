@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const variants = ['warning'] as const;
+const variants = ['warning', 'error'] as const;
 </script>
 
 <template>
