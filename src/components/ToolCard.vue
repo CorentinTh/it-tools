@@ -26,7 +26,7 @@ const appTheme = useAppTheme();
             :bordered="false"
             :color="{ color: theme.primaryColor, textColor: theme.tagColor }"
           >
-            New
+            {{ $t('toolCard.new') }}
           </n-tag>
 
           <FavoriteButton :tool="tool" />
