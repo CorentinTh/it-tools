@@ -8,62 +8,56 @@ const { tracker } = useTracker();
 
 <template>
   <div mx-auto mt-50px max-w-600px>
-    <h1>About IT-Tools</h1>
+    <h1>{{ $t('about.h1') }}</h1>
     <p text-justify>
-      This wonderful website, made with ❤ by
+      {{ $t('about.h1p1') }}
       <c-link href="https://github.com/CorentinTh" target="_blank" rel="noopener">
         Corentin Thomasset
-      </c-link>,
-      aggregates useful tools for developer and people working in IT. If you find it useful, please feel free to share
-      it to people you think may find it useful too and don't forget to bookmark it in your shortcut bar!
+      </c-link>{{ $t('about.h1p2') }}
     </p>
     <p text-justify>
-      IT Tools is open-source (under the MIT license) and free, and will always be, but it costs me money to host and
-      renew the domain name. If you want to support my work, and encourage me to add more tools, please consider
-      supporting by
+      {{ $t('about.h1p3') }}
       <c-link
         href="https://www.buymeacoffee.com/cthmsst"
         rel="noopener"
         target="_blank"
         @click="() => tracker.trackEvent({ eventName: 'Support button clicked' })"
       >
-        sponsoring me
+        {{ $t('about.h1p4') }}
       </c-link>.
     </p>
 
-    <h2>Technologies</h2>
+    <h2>{{ $t('about.h2') }}</h2>
     <p text-justify>
-      IT Tools is made in Vue.js (Vue 3) with the the Naive UI component library and is hosted and continuously deployed
-      by Vercel. Third-party open-source libraries are used in some tools, you may find the complete list in the
+      {{ $t('about.h2p1') }}
       <c-link href="https://github.com/CorentinTh/it-tools/blob/main/package.json" rel="noopener" target="_blank">
         package.json
       </c-link>
-      file of the repository.
+      {{ $t('about.h2p2') }}
     </p>
 
-    <h2>Found a bug? A tool is missing?</h2>
+    <h2>{{ $t('about.h3') }}</h2>
     <p text-justify>
-      If you need a tool that is currently not present here, and you think can be useful, you are welcome to submit a
-      feature request in the
+      {{ $t('about.h3p1') }}
       <c-link
         href="https://github.com/CorentinTh/it-tools/issues/new/choose"
         rel="noopener"
         target="_blank"
       >
-        issues section
+        {{ $t('about.h3p2') }}
       </c-link>
-      in the GitHub repository.
+      {{ $t('about.h3p3') }}
     </p>
     <p text-justify>
-      And if you found a bug, or something doesn't work as expected, please file a bug report in the
+      {{ $t('about.h3p4') }}
       <c-link
         href="https://github.com/CorentinTh/it-tools/issues/new/choose"
         rel="noopener"
         target="_blank"
       >
-        issues section
+        {{ $t('about.h3p5') }}
       </c-link>
-      in the GitHub repository.
+      {{ $t('about.h3p6') }}
     </p>
   </div>
 </template>
