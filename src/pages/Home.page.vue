@@ -1,99 +1,39 @@
 <script setup lang="ts">
-import { Heart } from '@vicons/tabler';
 import { useHead } from '@vueuse/head';
-import ColoredCard from '../components/ColoredCard.vue';
-import ToolCard from '../components/ToolCard.vue';
 import { useToolStore } from '@/tools/tools.store';
-import { config } from '@/config';
 
 const toolStore = useToolStore();
 
 useHead({ title: 'IT Tools - Handy online tools for developers' });
-const { t } = useI18n();
 </script>
 
 <template>
-  <div class="home-page">
-    <div class="grid-wrapper">
-      <n-grid v-if="config.showBanner" x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
-        <n-gi>
-          <ColoredCard title="You like it-tools?" :icon="Heart">
-            Give us a star on
-            <a
-              href="https://github.com/CorentinTh/it-tools"
-              rel="noopener"
-              target="_blank"
-              aria-label="IT-Tools' GitHub repository"
-            >GitHub</a>
-            or follow us on
-            <a
-              href="https://twitter.com/ittoolsdottech"
-              rel="noopener"
-              target="_blank"
-              aria-label="IT-Tools' Twitter account"
-            >Twitter</a>! Thank you
-            <n-icon :component="Heart" />
-          </ColoredCard>
-        </n-gi>
-      </n-grid>
+  <div class="home-page" m-auto mt-50px max-w-1800px>
+    <div my-8 />
 
-      <transition name="height">
-        <div v-if="toolStore.favoriteTools.length > 0">
-          <n-h3>Your favorite tools</n-h3>
-          <n-grid x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
-            <n-gi v-for="tool in toolStore.favoriteTools" :key="tool.name">
-              <ToolCard :tool="tool" />
-            </n-gi>
-          </n-grid>
-        </div>
-      </transition>
-
-      <div v-if="toolStore.newTools.length > 0">
-        <n-h3>{{ t('home.categories.newestTools') }}</n-h3>
-        <n-grid x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
-          <n-gi v-for="tool in toolStore.newTools" :key="tool.name">
-            <ToolCard :tool="tool" />
-          </n-gi>
-        </n-grid>
+    <div v-if="toolStore.favoriteTools.length > 0">
+      <div mb-2 mt-6 text-lg font-semibold>
+        {{ $t('home.categories.yourFavoriteTools') }}
       </div>
+      <div grid-cols="1 sm:2 md:2 lg:3 xl:4" grid gap-12px>
+        <tool-card v-for="tool in toolStore.favoriteTools" :key="tool.name" :tool="tool" />
+      </div>
+    </div>
 
-      <n-h3>All the tools</n-h3>
-      <n-grid x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
-        <n-gi v-for="tool in toolStore.tools" :key="tool.name">
-          <transition>
-            <ToolCard :tool="tool" />
-          </transition>
-        </n-gi>
-      </n-grid>
+    <div v-if="toolStore.newTools.length > 0">
+      <div mb-2 mt-6 text-lg font-semibold>
+        {{ $t('home.categories.newestTools') }}
+      </div>
+      <div grid-cols="1 sm:2 md:2 lg:3 xl:4" grid gap-12px>
+        <tool-card v-for="tool in toolStore.newTools" :key="tool.name" :tool="tool" />
+      </div>
+    </div>
+
+    <div mb-2 mt-6 text-lg font-semibold>
+      {{ $t('home.categories.allTheTools') }}
+    </div>
+    <div grid-cols="1 sm:2 md:2 lg:3 xl:4" grid gap-12px>
+      <tool-card v-for="tool in toolStore.tools" :key="tool.name" :tool="tool" />
     </div>
   </div>
 </template>
-
-<style scoped lang="less">
-.home-page {
-  padding-top: 50px;
-}
-
-.n-h3 {
-  margin-bottom: 10px;
-}
-
-::v-deep(.n-grid) {
-  margin-bottom: 30px;
-}
-
-.height-enter-active,
-.height-leave-active {
-  transition: all 0.5s ease-in-out;
-  overflow: hidden;
-  max-height: 500px;
-}
-
-.height-enter-from,
-.height-leave-to {
-  max-height: 42px;
-  overflow: hidden;
-  opacity: 0;
-  margin-bottom: 0;
-}
-</style>
