@@ -1,0 +1,37 @@
+tools:
+  encryption:
+    title: 'Encrypt / decrypt text'
+    description: 'Encrypt and decrypt text clear text using crypto algorithm like AES, TripleDES, Rabbit or RC4.'
+
+    encrypt:
+      text:
+        label: 'Your text'
+        placeholder: 'The string to cypher'
+        default: 'Lorem ipsum dolor sit amet'
+      secretKey:
+        label: 'Your secret key'
+        default: 'my secret key'
+      algorithm:
+        label: 'Encryption algorithm'
+      encrypted:
+        label: 'Your text encrypted'
+        placeholder: 'Your string hash'
+    decrypt:
+      encrypted:
+        label: 'Your encrypted text'
+        placeholder: 'The string to cypher'
+        default: 'U2FsdGVkX1/EC3+6P5dbbkZ3e1kQ5o2yzuU0NHTjmrKnLBEwreV489Kr0DIB+uBs'
+      secretKey:
+        label: 'Your secret key'
+        default: 'my secret key'
+      algorithm:
+        label: 'Encryption algorithm'
+      text:
+        label: 'Your decrypted text'
+        placeholder: 'Your string hash'
+
+
+
+
+
+
