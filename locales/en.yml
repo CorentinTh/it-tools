@@ -17,3 +17,8 @@ about:
   h3p4: 'And if you found a bug, or something doesn''''t work as expected, please file a bug report in the'
   h3p5: 'issues section'
   h3p6: 'in the GitHub repository.'
+404:
+  notFound: '404 Not Found'
+  sorry: 'Sorry, this page does not seem to exist'
+  maybe: 'Maybe the cache is doing tricky things, try force-refreshing?'
+  backHome: 'Back home'
