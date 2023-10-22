@@ -3,19 +3,20 @@ import { v4 as generateUUID } from 'uuid';
 import { useCopy } from '@/composable/copy';
 import { computedRefreshable } from '@/composable/computedRefreshable';
 
+const { t } = useI18n();
 const count = useStorage('uuid-generator:quantity', 1);
 
 const [uuids, refreshUUIDs] = computedRefreshable(() =>
   Array.from({ length: count.value }, () => generateUUID()).join('\n'),
 );
 
-const { copy } = useCopy({ source: uuids, text: 'UUIDs copied to the clipboard' });
+const { copy } = useCopy({ source: uuids, text: t('tools.uuid-generator.copied') });
 </script>
 
 <template>
   <div>
     <div flex items-center justify-center gap-3>
-      Quantity :
+      {{ t('tools.uuid-generator.quantity') }}:
       <n-input-number v-model:value="count" :min="1" :max="50" placeholder="UUID quantity" />
     </div>
 
@@ -35,10 +36,10 @@ const { copy } = useCopy({ source: uuids, text: 'UUIDs copied to the clipboard' 
 
     <div flex justify-center gap-3>
       <c-button autofocus @click="copy()">
-        Copy
+        {{ t('tools.uuid-generator.button.copy') }}
       </c-button>
       <c-button @click="refreshUUIDs">
-        Refresh
+        {{ t('tools.uuid-generator.button.refresh') }}
       </c-button>
     </div>
   </div>
