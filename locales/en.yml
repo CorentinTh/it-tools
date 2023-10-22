@@ -1,5 +1,10 @@
 home:
   categories:
     newestTools: Newest tools
+404:
+  notFound: '404 Not Found'
+  sorry: 'Sorry, this page does not seem to exist'
+  maybe: 'Maybe the cache is doing tricky things, try force-refreshing?'
+  backHome: 'Back home'
 toolCard:
   new: New
