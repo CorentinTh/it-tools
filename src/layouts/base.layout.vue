@@ -41,7 +41,7 @@ const tools = computed<ToolCategory[]>(() => [
           </div>
           <div class="divider" />
           <div class="subtitle">
-            Handy tools for developers
+            {{ $t('home.subtitle') }}
           </div>
         </div>
       </RouterLink>
@@ -88,20 +88,20 @@ const tools = computed<ToolCategory[]>(() => [
         <c-button
           circle
           variant="text"
-          aria-label="Toggle menu"
+          :aria-label="$t('home.toggleMenu')"
           @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed"
         >
           <NIcon size="25" :component="Menu2" />
         </c-button>
 
         <c-tooltip tooltip="Home" position="bottom">
-          <c-button to="/" circle variant="text" aria-label="Home">
+          <c-button to="/" circle variant="text" :aria-label="$t('home.home')">
             <NIcon size="25" :component="Home2" />
           </c-button>
         </c-tooltip>
 
         <c-tooltip tooltip="UI Lib" position="bottom">
-          <c-button v-if="config.app.env === 'development'" to="/c-lib" circle variant="text" aria-label="UI Lib">
+          <c-button v-if="config.app.env === 'development'" to="/c-lib" circle variant="text" :aria-label="$t('home.uiLib')">
             <icon-mdi:brush-variant text-20px />
           </c-button>
         </c-tooltip>
@@ -122,7 +122,7 @@ const tools = computed<ToolCategory[]>(() => [
             :bordered="false"
             @click="() => tracker.trackEvent({ eventName: 'Support button clicked' })"
           >
-            Buy me a coffee
+            {{ $t('home.buyMeACoffee') }}
             <NIcon v-if="!styleStore.isSmallScreen" :component="Heart" ml-2 />
           </c-button>
         </c-tooltip>
