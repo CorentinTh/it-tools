@@ -21,7 +21,7 @@ const [token, refreshToken] = computedRefreshable(() =>
   }),
 );
 
-const { copy } = useCopy({ source: token, text: 'Token copied to the clipboard' });
+const { copy } = useCopy({ source: token, text: t('tools.token-generator.copied') });
 </script>
 
 <template>
@@ -51,14 +51,14 @@ const { copy } = useCopy({ source: token, text: 'Token copied to the clipboard' 
         </div>
       </n-form>
 
-      <n-form-item :label="`Length (${length})`" label-placement="left">
+      <n-form-item :label="`${t('tools.token-generator.length')} (${length})`" label-placement="left">
         <n-slider v-model:value="length" :step="1" :min="1" :max="512" />
       </n-form-item>
 
       <c-input-text
         v-model:value="token"
         multiline
-        placeholder="The token..."
+        :placeholder="t('tools.token-generator.tokenPlaceholder')"
         readonly
         rows="3"
         autosize
@@ -67,10 +67,10 @@ const { copy } = useCopy({ source: token, text: 'Token copied to the clipboard' 
 
       <div mt-5 flex justify-center gap-3>
         <c-button @click="copy()">
-          Copy
+          {{ t('tools.token-generator.button.copy') }}
         </c-button>
         <c-button @click="refreshToken">
-          Refresh
+          {{ t('tools.token-generator.button.refresh') }}
         </c-button>
       </div>
     </c-card>
