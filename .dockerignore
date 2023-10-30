@@ -1,0 +1,5 @@
+node_modules
+playwright-report
+coverage
+dist
+test-results
