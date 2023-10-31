@@ -1,61 +1,92 @@
 <script setup lang="ts">
 import _ from 'lodash';
+import { generateRandomMacAddress } from './mac-adress-generator.models';
 import { computedRefreshable } from '@/composable/computedRefreshable';
 import { useCopy } from '@/composable/copy';
-import { partialMacAddressValidation, partialMacAddressValidationRules } from '@/utils/macAddress';
+import { useValidation } from '@/composable/validation';
+import { usePartialMacAddressValidation } from '@/utils/macAddress';
 
 const amount = useStorage('mac-address-generator-amount', 1);
-const uppercase = useStorage('mac-address-generator-uppercase', true);
 const macAddressPrefix = useStorage('mac-address-generator-prefix', '64:16:7F');
 
+const prefixValidation = usePartialMacAddressValidation(macAddressPrefix);
+
+const casesTransformers = [
+  { label: 'Uppercase', value: (value: string) => value.toUpperCase() },
+  { label: 'Lowercase', value: (value: string) => value.toLowerCase() },
+];
+const caseTransformer = ref(casesTransformers[0].value);
+
+const separators = [
+  {
+    label: ':',
+    value: ':',
+  },
+  {
+    label: '-',
+    value: '-',
+  },
+  {
+    label: '.',
+    value: '.',
+  },
+  {
+    label: 'None',
+    value: '',
+  },
+];
+const separator = useStorage('mac-address-generator-separator', separators[0].value);
+
 const [macAddresses, refreshMacAddresses] = computedRefreshable(() => {
-  if (!partialMacAddressValidation(macAddressPrefix).isValid) {
+  if (!prefixValidation.isValid) {
     return '';
   }
 
-  const ids = _.times(amount.value, () => generateMac(macAddressPrefix.value));
+  const ids = _.times(amount.value, () => caseTransformer.value(generateRandomMacAddress({
+    prefix: macAddressPrefix.value,
+    separator: separator.value,
+  })));
   return ids.join('\n');
 });
 
 const { copy } = useCopy({ source: macAddresses, text: 'MAC addresses copied to the clipboard' });
-
-function generateMac(prefix: string = ''): string {
-  let mac = prefix;
-
-  for (let i = prefix.length; i < 17; i++) {
-    if (i % 3 === 2) { // Place ':' after every 2 hex characters
-      mac += ':';
-    }
-    else {
-      mac += Math.floor(Math.random() * 16).toString(16);
-    }
-  }
-
-  return uppercase.value ? mac.toUpperCase() : mac;
-}
 </script>
 
 <template>
   <div flex flex-col justify-center gap-2>
     <div flex items-center>
-      <label w-75px> Quantity:</label>
+      <label w-150px pr-12px text-right> Quantity:</label>
       <n-input-number v-model:value="amount" min="1" max="100" flex-1 />
     </div>
 
     <c-input-text
       v-model:value="macAddressPrefix"
       label="MAC address prefix:"
-      placeholder="Type a MAC address"
+      placeholder="Set a prefix, e.g. 64:16:7F"
       clearable
       label-position="left"
       spellcheck="false"
-      :validation-rules="partialMacAddressValidationRules"
-      mb-5
+      :validation="prefixValidation"
+      raw-text
+      label-width="150px"
+      label-align="right"
     />
 
-    <n-checkbox v-model:checked="uppercase">
-      Uppercase
-    </n-checkbox>
+    <c-buttons-select
+      v-model:value="caseTransformer"
+      :options="casesTransformers"
+      label="Case:"
+      label-width="150px"
+      label-align="right"
+    />
+
+    <c-buttons-select
+      v-model:value="separator"
+      :options="separators"
+      label="Separator:"
+      label-width="150px"
+      label-align="right"
+    />
 
     <c-card mt-5 flex data-test-id="ulids">
       <pre m-0 m-x-auto>{{ macAddresses }}</pre>
