@@ -3,7 +3,6 @@ import _ from 'lodash';
 import { generateRandomMacAddress } from './mac-adress-generator.models';
 import { computedRefreshable } from '@/composable/computedRefreshable';
 import { useCopy } from '@/composable/copy';
-import { useValidation } from '@/composable/validation';
 import { usePartialMacAddressValidation } from '@/utils/macAddress';
 
 const amount = useStorage('mac-address-generator-amount', 1);
