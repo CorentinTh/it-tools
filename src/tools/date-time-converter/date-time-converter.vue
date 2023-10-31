@@ -14,6 +14,9 @@ import {
 } from 'date-fns';
 import type { DateFormat, ToDateMapper } from './date-time-converter.types';
 import {
+  dateToExcelFormat,
+  excelFormatToDate,
+  isExcelFormat,
   isISO8601DateTimeString,
   isISO9075DateString,
   isMongoObjectId,
@@ -84,6 +87,12 @@ const formats: DateFormat[] = [
     fromDate: date => `${Math.floor(date.getTime() / 1000).toString(16)}0000000000000000`,
     toDate: objectId => new Date(Number.parseInt(objectId.substring(0, 8), 16) * 1000),
     formatMatcher: date => isMongoObjectId(date),
+  },
+  {
+    name: 'Excel date/time',
+    fromDate: date => dateToExcelFormat(date),
+    toDate: excelFormatToDate,
+    formatMatcher: isExcelFormat,
   },
 ];
 

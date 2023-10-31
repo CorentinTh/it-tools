@@ -1,87 +1,103 @@
 <script setup lang="ts">
+import type { Colord } from 'colord';
 import { colord, extend } from 'colord';
-
+import _ from 'lodash';
 import cmykPlugin from 'colord/plugins/cmyk';
 import hwbPlugin from 'colord/plugins/hwb';
 import namesPlugin from 'colord/plugins/names';
 import lchPlugin from 'colord/plugins/lch';
-import InputCopyable from '../../components/InputCopyable.vue';
+import { buildColorFormat } from './color-converter.models';
 
 extend([cmykPlugin, hwbPlugin, namesPlugin, lchPlugin]);
 
-const name = ref('');
-const hex = ref('#1ea54cff');
-const rgb = ref('');
-const hsl = ref('');
-const hwb = ref('');
-const cmyk = ref('');
-const lch = ref('');
+const formats = {
+  picker: buildColorFormat({
+    label: 'color picker',
+    format: (v: Colord) => v.toHex(),
+    type: 'color-picker',
+  }),
+  hex: buildColorFormat({
+    label: 'hex',
+    format: (v: Colord) => v.toHex(),
+    placeholder: 'e.g. #ff0000',
+  }),
+  rgb: buildColorFormat({
+    label: 'rgb',
+    format: (v: Colord) => v.toRgbString(),
+    placeholder: 'e.g. rgb(255, 0, 0)',
+  }),
+  hsl: buildColorFormat({
+    label: 'hsl',
+    format: (v: Colord) => v.toHslString(),
+    placeholder: 'e.g. hsl(0, 100%, 50%)',
+  }),
+  hwb: buildColorFormat({
+    label: 'hwb',
+    format: (v: Colord) => v.toHwbString(),
+    placeholder: 'e.g. hwb(0, 0%, 0%)',
+  }),
+  lch: buildColorFormat({
+    label: 'lch',
+    format: (v: Colord) => v.toLchString(),
+    placeholder: 'e.g. lch(53.24, 104.55, 40.85)',
+  }),
+  cmyk: buildColorFormat({
+    label: 'cmyk',
+    format: (v: Colord) => v.toCmykString(),
+    placeholder: 'e.g. cmyk(0, 100%, 100%, 0)',
+  }),
+  name: buildColorFormat({
+    label: 'name',
+    format: (v: Colord) => v.toName({ closest: true }) ?? 'Unknown',
+    placeholder: 'e.g. red',
+  }),
+};
 
-function onInputUpdated(value: string, omit: string) {
-  try {
-    const color = colord(value);
+updateColorValue(colord('#1ea54c'));
 
-    if (omit !== 'name') {
-      name.value = color.toName({ closest: true }) ?? '';
-    }
-    if (omit !== 'hex') {
-      hex.value = color.toHex();
-    }
-    if (omit !== 'rgb') {
-      rgb.value = color.toRgbString();
-    }
-    if (omit !== 'hsl') {
-      hsl.value = color.toHslString();
-    }
-    if (omit !== 'hwb') {
-      hwb.value = color.toHwbString();
-    }
-    if (omit !== 'cmyk') {
-      cmyk.value = color.toCmykString();
-    }
-    if (omit !== 'lch') {
-      lch.value = color.toLchString();
-    }
+function updateColorValue(value: Colord | undefined, omitLabel?: string) {
+  if (value === undefined) {
+    return;
   }
-  catch {
-    //
+
+  if (!value.isValid()) {
+    return;
   }
+
+  _.forEach(formats, ({ value: valueRef, format }, key) => {
+    if (key !== omitLabel) {
+      valueRef.value = format(value);
+    }
+  });
 }
-
-onInputUpdated(hex.value, 'hex');
 </script>
 
 <template>
   <c-card>
-    <n-form label-width="100" label-placement="left">
-      <n-form-item label="color picker:">
+    <template v-for="({ label, parse, placeholder, validation, type }, key) in formats" :key="key">
+      <input-copyable
+        v-if="type === 'text'"
+        v-model:value="formats[key].value.value"
+        :test-id="`input-${key}`"
+        :label="`${label}:`"
+        label-position="left"
+        label-width="100px"
+        label-align="right"
+        :placeholder="placeholder"
+        :validation="validation"
+        raw-text
+        clearable
+        mt-2
+        @update:value="(v:string) => updateColorValue(parse(v), key)"
+      />
+
+      <n-form-item v-else-if="type === 'color-picker'" :label="`${label}:`" label-width="100" label-placement="left" :show-feedback="false">
         <n-color-picker
-          v-model:value="hex"
+          v-model:value="formats[key].value.value"
           placement="bottom-end"
-          @update:value="(v: string) => onInputUpdated(v, 'hex')"
+          @update:value="(v:string) => updateColorValue(parse(v), key)"
         />
       </n-form-item>
-      <n-form-item label="color name:">
-        <InputCopyable v-model:value="name" @update:value="(v: string) => onInputUpdated(v, 'name')" />
-      </n-form-item>
-      <n-form-item label="hex:">
-        <InputCopyable v-model:value="hex" @update:value="(v: string) => onInputUpdated(v, 'hex')" />
-      </n-form-item>
-      <n-form-item label="rgb:">
-        <InputCopyable v-model:value="rgb" @update:value="(v: string) => onInputUpdated(v, 'rgb')" />
-      </n-form-item>
-      <n-form-item label="hsl:">
-        <InputCopyable v-model:value="hsl" @update:value="(v: string) => onInputUpdated(v, 'hsl')" />
-      </n-form-item>
-      <n-form-item label="hwb:">
-        <InputCopyable v-model:value="hwb" @update:value="(v: string) => onInputUpdated(v, 'hwb')" />
-      </n-form-item>
-      <n-form-item label="lch:">
-        <InputCopyable v-model:value="lch" @update:value="(v: string) => onInputUpdated(v, 'lch')" />
-      </n-form-item>
-      <n-form-item label="cmyk:">
-        <InputCopyable v-model:value="cmyk" @update:value="(v: string) => onInputUpdated(v, 'cmyk')" />
-      </n-form-item>
-    </n-form>
+    </template>
   </c-card>
 </template>
