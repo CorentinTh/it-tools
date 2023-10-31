@@ -37,6 +37,7 @@ function open() {
 
 function close() {
   isModalOpen.value = false;
+  searchPrompt.value = '';
 }
 
 const selectedOptionIndex = ref(0);
