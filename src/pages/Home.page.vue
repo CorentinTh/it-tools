@@ -31,7 +31,8 @@ const { t } = useI18n();
               rel="noopener"
               target="_blank"
               :aria-label="$t('home.follow.twitterAccount')"
-            >Twitter</a>{{ $t('home.follow.thankYou') }}
+            >Twitter</a>.
+            {{ $t('home.follow.thankYou') }}
             <n-icon :component="Heart" />
           </ColoredCard>
         </n-gi>
