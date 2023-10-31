@@ -113,7 +113,6 @@
     "@vue/runtime-dom": "^3.3.4",
     "@vue/test-utils": "^2.3.2",
     "@vue/tsconfig": "^0.4.0",
-    "c8": "^8.0.0",
     "consola": "^3.0.2",
     "eslint": "^8.47.0",
     "hygen": "^6.2.11",
