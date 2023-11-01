@@ -8,6 +8,9 @@ export const tool = defineTool({
   keywords: [
     'math',
     'evaluator',
+    'calculator',
+    'expression',
+    'abs',
     'acos',
     'acosh',
     'acot',
@@ -31,6 +34,7 @@ export const tool = defineTool({
     'sech',
     'sin',
     'sinh',
+    'sqrt',
     'tan',
     'tanh',
   ],
