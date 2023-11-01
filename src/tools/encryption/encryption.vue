@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { AES, RC4, Rabbit, TripleDES, enc } from 'crypto-js';
+import { computedCatch } from '@/composable/computed/catchedComputed';
 
 const algos = { AES, TripleDES, Rabbit, RC4 };
 
@@ -11,17 +12,9 @@ const cypherOutput = computed(() => algos[cypherAlgo.value].encrypt(cypherInput.
 const decryptInput = ref('U2FsdGVkX1/EC3+6P5dbbkZ3e1kQ5o2yzuU0NHTjmrKnLBEwreV489Kr0DIB+uBs');
 const decryptAlgo = ref<keyof typeof algos>('AES');
 const decryptSecret = ref('my secret key');
-const decryptError = ref<Error | null>(null);
-const decryptOutput = ref('');
-watchEffect(() => {
-  try {
-    decryptOutput.value = algos[decryptAlgo.value].decrypt(decryptInput.value, decryptSecret.value).toString(enc.Utf8);
-    decryptError.value = null;
-  }
-  catch (e) {
-    decryptOutput.value = '';
-    decryptError.value = e as Error;
-  }
+const [decryptOutput, decryptError] = computedCatch(() => algos[decryptAlgo.value].decrypt(decryptInput.value, decryptSecret.value).toString(enc.Utf8), {
+  defaultValue: '',
+  defaultErrorMessage: 'Unable to decrypt your text',
 });
 </script>
 
@@ -72,7 +65,7 @@ watchEffect(() => {
         />
       </div>
     </div>
-    <c-alert v-if="decryptError" type="error" mt-5>
+    <c-alert v-if="decryptError" type="error" mt-12 title="Error while decrypting">
       {{ decryptError }}
     </c-alert>
     <c-input-text
