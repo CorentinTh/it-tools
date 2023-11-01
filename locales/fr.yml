@@ -1,3 +1,49 @@
 home:
   categories:
-    newestTools: "Nouveaux outils"
+    newestTools: 'Les nouveaux outils'
+    favoriteTools: 'Vos outils favoris'
+    allTools: 'Tous les outils'
+  subtitle: 'Outils pour les développeurs'
+  toggleMenu: 'Menu'
+  home: Accueil
+  uiLib: 'UI Lib'
+  buyMeACoffee: 'Soutenez IT-Tools'
+  follow:
+    title: 'Vous aimez it-tools ?'
+    p1: 'Soutenez-nous avec une star sur'
+    githubRepository: "le dépôt GitHub d'IT-Tools"
+    p2: 'ou suivez-nous sur'
+    twitterAccount: "le compte Twitter d'IT-Tools"
+    thankYou: 'Merci !'
+  nav:
+    github: 'Dépôt GitHub'
+    githubRepository: "Dépôt GitHub d'IT-Tools"
+    twitter: 'Compte Twitter'
+    twitterAccount: "Compte Twitter d'IT-Tools"
+    about: "À propos d'IT-Tools"
+    aboutLabel: 'À propos'
+    darkMode: 'Mode sombre'
+    lightMode: 'Mode clair'
+    mode: 'Basculer le mode sombre/clair'
+404:
+  notFound: '404 Not Found'
+  sorry: "Désolé, cette page n'existe pas"
+  maybe: 'Peut-être que le cache fait des siennes, essayez de forcer le rafraîchissement ?'
+  backHome: "Retour à l'accueil"
+toolCard:
+  new: Nouveau
+search:
+  label: Rechercher
+tools:
+  categories:
+    favorite-tools: 'Vos outils favoris'
+    crypto: Cryptographie
+    converter: Convertisseur
+    web: Web
+    images and videos: 'Images & Vidéos'
+    development: Développement
+    network: Réseau
+    math: Math
+    measurement: Mesure
+    text: Texte
+    data: Données
