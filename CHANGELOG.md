@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## Version 2023.11.02-7d94e11
+
+### Features
+- **i18n**: language selector (#710) (e86fd96)
+
+### Bug fixes
+- **dockerfile**: revert replacement of nginx image with non-privileged one (#716) (7d94e11)
+- **encryption**: alert on decryption error (#711) (02b0d0d)
+
+### Refactoring
+- **math-evaluator**: improved description (e87f4b1)
+- **math-evaluator**: improved search and UX (#713) (58de897)
+
 ## Version 2023.11.01-e164afb
 
 ### Features
