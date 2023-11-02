@@ -13,7 +13,7 @@ home:
     p1: '给我们Star'
     githubRepository: 'GitHub 仓库'
     p2: '关注我们的'
-    twitterAccount: 'Twitter 账号'
+    twitterAccount: 'Twitter'
     thankYou: '感谢您的支持！'
   nav:
     github: 'GitHub 仓库'
@@ -27,9 +27,9 @@ home:
     mode: '颜色模式'
 about:
   h1: '关于 IT-Tools'
-  h1p1: 'IT-Tools 是一个聚合了有用的工具的网站，适用于开发人员和 IT 行业工作者。如果您觉得它有用，请随意分享给您认为可能也会发现它有用的人，并不要忘记将其添加到您的书签栏中！'
-  h1p2: ", aggregates useful tools for developer and people working in IT. If you find it useful, please feel free to share it to people you think may find it useful too and don''t forget to bookmark it in your shortcut bar!"
-  h1p3: 'IT Tools is open-source (under the MIT license) and free, and will always be, but it costs me money to host and renew the domain name. If you want to support my work, and encourage me to add more tools, please consider supporting by'
+  h1p1: 'IT-Tools 是一个聚合了有用的工具的网站，适用于开发人员和 IT 行业工作者。'
+  h1p2: "如果您觉得它有用，请将其分享给您的朋友，并且添加到收藏夹中！"
+  h1p3: 'IT Tools 永久免费且开源 (MIT 许可证) , 但需要资金用于托管和续订域名. 欢迎赞助我们：'
   h1p4: '赞助我们'
   h2: '技术'
   h2p1: 'IT Tools is made in Vue.js (Vue 3) with the the Naive UI component library and is hosted and continuously deployed by Vercel. Third-party open-source libraries are used in some tools, you may find the complete list in the'
