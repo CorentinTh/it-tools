@@ -3,7 +3,7 @@ home:
     newestTools: '最新工具'
     favoriteTools: '收藏的工具'
     allTools: '全部工具'
-  subtitle: '主力开发人员和 IT 工作者'
+  subtitle: '助力开发人员和 IT 工作者'
   toggleMenu: '切换菜单'
   home: '主页'
   uiLib: 'UI 库'
@@ -27,20 +27,20 @@ home:
     mode: '颜色模式'
 about:
   h1: '关于 IT-Tools'
-  h1p1: 'IT-Tools 是一个聚合了有用的工具的网站，适用于开发人员和 IT 行业工作者。'
-  h1p2: "如果您觉得它有用，请将其分享给您的朋友，并且添加到收藏夹中！"
-  h1p3: 'IT Tools 永久免费且开源 (MIT 许可证) , 但需要资金用于托管和续订域名. 欢迎赞助我们：'
+  h1p1: 'IT-Tools 由，'
+  h1p2: "开发，致力于助力开发人员和 IT 行业工作者。如果对您有帮助，请将其分享给您的朋友，并且添加到收藏夹中！"
+  h1p3: 'IT Tools 永久免费且开源 (MIT 许可证) , 但需要资金用于托管和续订域名. 欢迎'
   h1p4: '赞助我们'
   h2: '技术'
-  h2p1: 'IT Tools is made in Vue.js (Vue 3) with the the Naive UI component library and is hosted and continuously deployed by Vercel. Third-party open-source libraries are used in some tools, you may find the complete list in the'
-  h2p2: 'file of the repository.'
-  h3: 'Found a bug? A tool is missing?'
-  h3p1: 'If you need a tool that is currently not present here, and you think can be useful, you are welcome to submit a feature request in the'
-  h3p2: 'issues section'
-  h3p3: 'in the GitHub repository.'
-  h3p4: "And if you found a bug, or something doesn''t work as expected, please file a bug report in the"
-  h3p5: 'issues section'
-  h3p6: 'in the GitHub repository.'
+  h2p1: 'IT Tools 采用 Vue.js (Vue 3) 和 Naive UI 组件库制作，由 Vercel 托管和持续部署。 某些工具使用了第三方开源库，您可以在存储库的'
+  h2p2: '文件中找到完整列表'
+  h3: '发现错误？ 缺少功能？'
+  h3p1: '如果您需要的工具目前此处不存在，并且您认为可能有必要，欢迎您在 GitHub 存储库的'
+  h3p2: ' issues '
+  h3p3: '提交新增功能的请求。'
+  h3p4: "如果您发现错误或某些内容未按预期工作，请在 GitHub 存储库的"
+  h3p5: ' issues '
+  h3p6: '部分提交错误报告。'
 404:
   notFound: '404 页面不存在'
   sorry: '抱歉，您访问的页面不存在。'
