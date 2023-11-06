@@ -33,3 +33,8 @@ coverage
 /playwright/.cache/
 # Webkit with playwright creates a salt file
 salt
+
+#DevWordingChanges
+index.html
+src/pages/404.page.vue
+src/pages/Home.page.vue
