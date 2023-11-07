@@ -4,7 +4,7 @@ import baseMessages from '@intlify/unplugin-vue-i18n/messages';
 import _ from 'lodash';
 import { parse as parseYaml } from 'yaml';
 
-const i18nFiles = import.meta.glob('../tools/*/locales/**.yml', { as: 'raw' });
+const i18nFiles = import.meta.glob('../tools/**/locales/*.yml', { as: 'raw' });
 
 const messagesByTools = await Promise.all(_.map(i18nFiles, async (fileDescriptor, path) => {
   const [, locale] = path.match(/\.\/tools\/.*?\/locales\/(.*)\.ya?ml$/i) ?? [];
