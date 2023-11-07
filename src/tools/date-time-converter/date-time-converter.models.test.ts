@@ -1,5 +1,8 @@
 import { describe, expect, test } from 'vitest';
 import {
+  dateToExcelFormat,
+  excelFormatToDate,
+  isExcelFormat,
   isISO8601DateTimeString,
   isISO9075DateString,
   isMongoObjectId,
@@ -137,6 +140,41 @@ describe('date-time-converter models', () => {
       expect(isMongoObjectId('507f1f77bcf86cd79943901z')).toBe(false);
       expect(isMongoObjectId('foo')).toBe(false);
       expect(isMongoObjectId('')).toBe(false);
+    });
+  });
+
+  describe('isExcelFormat', () => {
+    test('an Excel format string is a floating number that can be negative', () => {
+      expect(isExcelFormat('0')).toBe(true);
+      expect(isExcelFormat('1')).toBe(true);
+      expect(isExcelFormat('1.1')).toBe(true);
+      expect(isExcelFormat('-1.1')).toBe(true);
+      expect(isExcelFormat('-1')).toBe(true);
+
+      expect(isExcelFormat('')).toBe(false);
+      expect(isExcelFormat('foo')).toBe(false);
+      expect(isExcelFormat('1.1.1')).toBe(false);
+    });
+  });
+
+  describe('dateToExcelFormat', () => {
+    test('a date in Excel format is the number of days since 01/01/1900', () => {
+      expect(dateToExcelFormat(new Date('2016-05-20T00:00:00.000Z'))).toBe('42510');
+      expect(dateToExcelFormat(new Date('2016-05-20T12:00:00.000Z'))).toBe('42510.5');
+      expect(dateToExcelFormat(new Date('2023-10-31T09:26:06.421Z'))).toBe('45230.39312987268');
+      expect(dateToExcelFormat(new Date('1970-01-01T00:00:00.000Z'))).toBe('25569');
+      expect(dateToExcelFormat(new Date('1800-01-01T00:00:00.000Z'))).toBe('-36522');
+    });
+  });
+
+  describe('excelFormatToDate', () => {
+    test('a date in Excel format is the number of days since 01/01/1900', () => {
+      expect(excelFormatToDate('0')).toEqual(new Date('1899-12-30T00:00:00.000Z'));
+      expect(excelFormatToDate('1')).toEqual(new Date('1899-12-31T00:00:00.000Z'));
+      expect(excelFormatToDate('2')).toEqual(new Date('1900-01-01T00:00:00.000Z'));
+      expect(excelFormatToDate('4242.4242')).toEqual(new Date('1911-08-12T10:10:50.880Z'));
+      expect(excelFormatToDate('42738.22626859954')).toEqual(new Date('2017-01-03T05:25:49.607Z'));
+      expect(excelFormatToDate('-1000')).toEqual(new Date('1897-04-04T00:00:00.000Z'));
     });
   });
 });

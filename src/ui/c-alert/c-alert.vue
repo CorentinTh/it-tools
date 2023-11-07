@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { useTheme } from './c-alert.theme';
 
-const props = withDefaults(defineProps<{ type?: 'warning' }>(), { type: 'warning' });
-const { type } = toRefs(props);
+const props = withDefaults(defineProps<{ type?: 'warning'; title?: string }>(), { type: 'warning', title: undefined });
+const { type, title } = toRefs(props);
 
 const theme = useTheme();
 const variantTheme = computed(() => theme.value[type.value]);
@@ -17,6 +17,9 @@ const variantTheme = computed(() => theme.value[type.value]);
     </div>
 
     <div class="c-alert--content">
+      <div v-if="title" class="c-alert--title" text-15px fw-600>
+        {{ title }}
+      </div>
       <slot />
     </div>
   </div>

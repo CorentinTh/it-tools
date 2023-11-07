@@ -23,6 +23,7 @@ const compareMatch = computed(() => compareSync(compareString.value, compareHash
       raw-text
       label="Your string: "
       label-position="left"
+      label-align="right"
       label-width="120px"
       mb-2
     />

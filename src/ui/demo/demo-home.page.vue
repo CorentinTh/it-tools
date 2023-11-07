@@ -4,10 +4,8 @@ import { demoRoutes } from './demo.routes';
 
 <template>
   <div grid grid-cols-5 gap-2>
-    <c-card v-for="{ name } of demoRoutes" :key="name" :title="String(name)">
-      <c-button :to="{ name }">
-        {{ name }}
-      </c-button>
-    </c-card>
+    <c-button v-for="{ name } of demoRoutes" :key="name" :to="{ name }">
+      {{ name }}
+    </c-button>
   </div>
 </template>

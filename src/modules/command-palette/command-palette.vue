@@ -37,6 +37,7 @@ function open() {
 
 function close() {
   isModalOpen.value = false;
+  searchPrompt.value = '';
 }
 
 const selectedOptionIndex = ref(0);
@@ -115,7 +116,7 @@ function activateOption(option: PaletteOption) {
       <span flex items-center gap-3 op-40>
 
         <icon-mdi-search />
-        Search...
+        {{ $t('search.label') }}
 
         <span hidden flex-1 border border-current border-op-40 rounded border-solid px-5px py-3px sm:inline>
           {{ isMac ? 'Cmd' : 'Ctrl' }}&nbsp;+&nbsp;K
