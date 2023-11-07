@@ -26,7 +26,7 @@ jobs:
         run: echo "PLAYWRIGHT_VERSION=$(jq -r .dependencies.playwright package.json)" >> "$GITHUB_OUTPUT"
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build app
         run: pnpm build
