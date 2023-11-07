@@ -1,6 +1,6 @@
 {
   "name": "it-tools",
-  "version": "2023.11.2-7d94e11",
+  "version": "2023.8.21-6f93cba",
   "description": "Collection of handy online tools for developers, with great UX. ",
   "keywords": [
     "productivity",
@@ -14,8 +14,7 @@
     "developer-productivity"
   ],
   "author": "Corentin Th <corentin.thomasset74+it-tools@gmail.com> (https://github.com/CorentinTh)",
-  "license": "GNU GPLv3",    "oui": "^12.0.52",
-
+  "license": "GNU GPLv3",
   "repository": {
     "type": "git",
     "url": "https://github.com/CorentinTh/it-tools"
@@ -72,7 +71,7 @@
     "naive-ui": "^2.35.0",
     "netmask": "^2.0.2",
     "node-forge": "^1.3.1",
-    "oui": "^13.0.0,
+    "oui": "^13.0.0",
     "pinia": "^2.0.34",
     "plausible-tracker": "^0.3.8",
     "qrcode": "^1.5.1",
