@@ -114,8 +114,8 @@ dependencies:
     specifier: ^1.3.1
     version: 1.3.1
   oui:
-    specifier: ^12.0.52
-    version: 12.0.52
+    specifier: ^13.0.0
+    version: 13.0.4
   pinia:
     specifier: ^2.0.34
     version: 2.0.34(typescript@5.2.2)(vue@3.3.4)
