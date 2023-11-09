@@ -1,12 +1,12 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
-test.describe('Tool - Uuid converter', () => {
+test.describe('Tool - UUID converter', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/uuid-converter');
   });
 
   test('Has correct title', async ({ page }) => {
-    await expect(page).toHaveTitle('Uuid converter - IT Tools');
+    await expect(page).toHaveTitle('UUID converter - IT Tools');
   });
 
   test('', async ({ page }) => {
