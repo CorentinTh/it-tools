@@ -1,4 +1,4 @@
-import { parse as uuidParse, validate as uuidValidate, version as uuidVersion } from 'uuid';
+import { validate as uuidValidate, version as uuidVersion } from 'uuid';
 
 export { normalizeUUID, UUID2HEX, getVersion };
 
