@@ -1,0 +1,12 @@
+tools:
+  uuid-converter:
+    title: Convertisseur UUID
+    description: Convertit un UUID avec et sans trait d'union en d'autres notations SQL courantes et inversement.
+
+    uuid: UUID
+    uuidhexupper: Notation HEX (supérieure)
+    uuidhexlower: Notation HEX (inférieure)
+    uuidversion: Version RFC
+    input:
+      label: Votre contribution
+      placeholder: Votre UUID avec/sans trait d'union
