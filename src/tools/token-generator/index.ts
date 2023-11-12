@@ -6,7 +6,7 @@ export const tool = defineTool({
   name: translate('tools.token-generator.title'),
   path: '/token-generator',
   description: translate('tools.token-generator.description'),
-  keywords: ['token', 'random', 'string', 'alphanumeric', 'symbols', 'number', 'letters', 'lowercase', 'uppercase'],
+  keywords: ['token', 'random', 'string', 'alphanumeric', 'symbols', 'number', 'letters', 'lowercase', 'uppercase', 'password'],
   component: () => import('./token-generator.tool.vue'),
   icon: ArrowsShuffle,
 });
