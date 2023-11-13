@@ -23,11 +23,11 @@ const input = ref('lorem ipsum dolor sit amet');
 const formats = computed(() => [
   {
     label: 'Lowercase:',
-    value: noCase(input.value, baseConfig).toLocaleLowerCase(),
+    value: input.value.toLocaleLowerCase(),
   },
   {
     label: 'Uppercase:',
-    value: noCase(input.value, baseConfig).toLocaleUpperCase(),
+    value: input.value.toLocaleUpperCase(),
   },
   {
     label: 'Camelcase:',
@@ -75,7 +75,7 @@ const formats = computed(() => [
   },
   {
     label: 'Mockingcase:',
-    value: noCase(input.value, baseConfig)
+    value: input.value
       .split('')
       .map((char, index) => (index % 2 === 0 ? char.toUpperCase() : char.toLowerCase()))
       .join(''),
