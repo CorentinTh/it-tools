@@ -1,15 +1,13 @@
 import { extension as getExtensionFromMime } from 'mime-types';
 import type { Ref } from 'vue';
 
-function getFileExtensionFromBase64({
-  base64String,
+function getFileExtensionFromMime({
+  hasMimeType,
   defaultExtension = 'txt',
 }: {
-  base64String: string
+  hasMimeType: string[] | null
   defaultExtension?: string
 }) {
-  const hasMimeType = base64String.match(/data:(.*?);base64/i);
-
   if (hasMimeType) {
     return getExtensionFromMime(hasMimeType[1]) || defaultExtension;
   }
@@ -20,13 +18,16 @@ function getFileExtensionFromBase64({
 export function useDownloadFileFromBase64({ source, filename }: { source: Ref<string>; filename?: string }) {
   return {
     download() {
-      const base64String = source.value;
-
-      if (base64String === '') {
+      if (source.value === '') {
         throw new Error('Base64 string is empty');
       }
 
-      const cleanFileName = filename ?? `file.${getFileExtensionFromBase64({ base64String })}`;
+      const hasMimeType = source.value.match(/data:(.*?);base64/i);
+      const base64String = hasMimeType
+        ? source.value
+        : `data:text/plain;base64,${source.value}`;
+
+      const cleanFileName = filename ?? `file.${getFileExtensionFromMime({ hasMimeType })}`;
 
       const a = document.createElement('a');
       a.href = base64String;
