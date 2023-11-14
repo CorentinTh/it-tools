@@ -60,9 +60,11 @@ const ibanExamples = [
   <div>
     <c-input-text v-model:value="rawIban" placeholder="Enter an IBAN to check for validity..." test-id="iban-input" />
 
-    <c-key-value-list :items="ibanInfo" my-5 data-test-id="iban-info" />
+    <c-card v-if="ibanInfo.length > 0" mt-5>
+      <c-key-value-list :items="ibanInfo" data-test-id="iban-info" />
+    </c-card>
 
-    <c-card title="Valid IBAN examples">
+    <c-card title="Valid IBAN examples" mt-5>
       <div v-for="iban in ibanExamples" :key="iban">
         <c-text-copyable :value="iban" font-mono :displayed-value="friendlyFormatIBAN(iban)" />
       </div>
