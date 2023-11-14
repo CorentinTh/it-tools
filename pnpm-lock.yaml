@@ -113,9 +113,9 @@ dependencies:
   node-forge:
     specifier: ^1.3.1
     version: 1.3.1
-  oui:
-    specifier: ^13.0.0
-    version: 13.0.4
+  oui-data:
+    specifier: ^1.0.10
+    version: 1.0.10
   pdf-signature-reader:
     specifier: ^1.4.2
     version: 1.4.2
@@ -3348,7 +3348,7 @@ packages:
     dependencies:
       '@unhead/dom': 0.5.1
       '@unhead/schema': 0.5.1
-      '@vueuse/shared': 10.6.0(vue@3.3.4)
+      '@vueuse/shared': 10.6.1(vue@3.3.4)
       unhead: 0.5.1
       vue: 3.3.4
     transitivePeerDependencies:
@@ -3975,8 +3975,8 @@ packages:
       - vue
     dev: false
 
-  /@vueuse/shared@10.6.0(vue@3.3.4):
-    resolution: {integrity: sha512-0t4MVE18sO+/4Gh0jfeOXBTjKeV4606N9kIrDOLPjFl8Rwnlodn+QC5A4LfJuysK7aOsTMjF3KnzNeueaI0xlQ==}
+  /@vueuse/shared@10.6.1(vue@3.3.4):
+    resolution: {integrity: sha512-TECVDTIedFlL0NUfHWncf3zF9Gc4VfdxfQc8JFwoVZQmxpONhLxFrlm0eHQeidHj4rdTPL3KXJa0TZCk1wnc5Q==}
     dependencies:
       vue-demi: 0.14.6(vue@3.3.4)
     transitivePeerDependencies:
@@ -7174,13 +7174,6 @@ packages:
 
   /oui-data@1.0.10:
     resolution: {integrity: sha512-PPrr40z5/MPStTTGJ0QtSD9KtaGHmnexBQWANWLWQOZZwbNMf/VyG/Uh29LwxExd51p3S323oM3kHbjRqmBiLg==}
-    dev: false
-
-  /oui@13.0.4:
-    resolution: {integrity: sha512-PG4uW80fIqhKOcy33Ui3dsfnFEe9U3CdUN2TB/X/+qHDERAwcpa1XFMDVhfnwDJpTR2l/TXA+mv8JBx1QquS3Q==}
-    hasBin: true
-    dependencies:
-      oui-data: 1.0.10
     dev: false
 
   /p-limit@2.3.0:
