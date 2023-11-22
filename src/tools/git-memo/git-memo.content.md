@@ -98,7 +98,7 @@ git bisect bad ca82a6dff817ec66f44342007202690a93763949
 Pulling new changes into current branch from mainline
 
 ```shell
-git checkout [branchh-name]
+git checkout [branch-name]
 git fetch origin [master-branch-name]
 git rebase origin/[master-branch-name]
 ```
