@@ -43,6 +43,8 @@ declare module '@vue/runtime-core' {
     CLabel: typeof import('./src/ui/c-label/c-label.vue')['default']
     CLink: typeof import('./src/ui/c-link/c-link.vue')['default']
     'CLink.demo': typeof import('./src/ui/c-link/c-link.demo.vue')['default']
+    CMarkdown: typeof import('./src/ui/c-markdown/c-markdown.vue')['default']
+    'CMarkdown.demo': typeof import('./src/ui/c-markdown/c-markdown.demo.vue')['default']
     CModal: typeof import('./src/ui/c-modal/c-modal.vue')['default']
     'CModal.demo': typeof import('./src/ui/c-modal/c-modal.demo.vue')['default']
     CModalValue: typeof import('./src/ui/c-modal-value/c-modal-value.vue')['default']
