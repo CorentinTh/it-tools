@@ -33,3 +33,9 @@ declare module 'unicode-emoji-json' {
   
   export default emoji;
 }
+
+declare module 'pdf-signature-reader' {
+  const verifySignature: (pdf: ArrayBuffer) => ({signatures: SignatureInfo[]});
+
+  export default verifySignature;
+}
