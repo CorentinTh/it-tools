@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import yaml from 'js-yaml'
+import yaml from 'js-yaml';
 import { useStorage } from '@vueuse/core';
 import { formatYaml } from './yaml-models';
 import { withDefaultOnError } from '@/utils/defaults';
@@ -12,7 +12,7 @@ const rawYaml = useStorage('yaml-prettify:raw-yaml', '');
 const indentSize = useStorage('yaml-prettify:indent-size', 2);
 const sortKeys = useStorage('yaml-prettify:sort-keys', false);
 
-const cleanYaml = computed(() => withDefaultOnError(() => formatYaml({ rawYaml: rawYaml, indentSize, sortKeys }), ''));
+const cleanYaml = computed(() => withDefaultOnError(() => formatYaml({ rawYaml, indentSize, sortKeys }), ''));
 
 const rawYamlValidation = useValidation({
   source: rawYaml,
@@ -38,21 +38,21 @@ const rawYamlValidation = useValidation({
   </div>
 
   <n-form-item
-      label="Your raw YAML"
-      :feedback="rawYamlValidation.message"
-      :validation-status="rawYamlValidation.status"
+    label="Your raw YAML"
+    :feedback="rawYamlValidation.message"
+    :validation-status="rawYamlValidation.status"
   >
     <c-input-text
-        ref="inputElement"
-        v-model:value="rawYaml"
-        placeholder="Paste your raw YAML here..."
-        rows="20"
-        multiline
-        autocomplete="off"
-        autocorrect="off"
-        autocapitalize="off"
-        spellcheck="false"
-        monospace
+      ref="inputElement"
+      v-model:value="rawYaml"
+      placeholder="Paste your raw YAML here..."
+      rows="20"
+      multiline
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="false"
+      monospace
     />
   </n-form-item>
   <n-form-item label="Prettified version of your YAML">
