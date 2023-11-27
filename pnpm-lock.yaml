@@ -86,6 +86,9 @@ dependencies:
   ibantools:
     specifier: ^4.3.3
     version: 4.3.3
+  js-yaml:
+    specifier: ^4.1.0
+    version: 4.1.0
   json5:
     specifier: ^2.2.3
     version: 2.2.3
@@ -6520,7 +6523,6 @@ packages:
     hasBin: true
     dependencies:
       argparse: 2.0.1
-    dev: true
 
   /jsbn@1.1.0:
     resolution: {integrity: sha512-4bYVV3aAMtDTTu4+xsDYa6sy9GyJ69/amsu9sYF2zqjiEoZA5xJi3BrfX3uY+/IekIu7MwdObdbDWpoZdBv3/A==}

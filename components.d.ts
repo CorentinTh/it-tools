@@ -213,5 +213,6 @@ declare module '@vue/runtime-core' {
     XmlFormatter: typeof import('./src/tools/xml-formatter/xml-formatter.vue')['default']
     YamlToJson: typeof import('./src/tools/yaml-to-json-converter/yaml-to-json.vue')['default']
     YamlToToml: typeof import('./src/tools/yaml-to-toml/yaml-to-toml.vue')['default']
+    YamlViewer: typeof import('./src/tools/yaml-viewer/yaml-viewer.vue')['default']
   }
 }
