@@ -11,9 +11,8 @@ const inputElement = ref<HTMLElement>();
 const rawYaml = useStorage('yaml-prettify:raw-yaml', '');
 const indentSize = useStorage('yaml-prettify:indent-size', 2);
 const sortKeys = useStorage('yaml-prettify:sort-keys', false);
-const stripComments = useStorage('yaml-prettify:strip-comments', false);
 
-const cleanYaml = computed(() => withDefaultOnError(() => formatYaml({ rawYaml: rawYaml, indentSize, sortKeys, stripComments }), ''));
+const cleanYaml = computed(() => withDefaultOnError(() => formatYaml({ rawYaml: rawYaml, indentSize, sortKeys }), ''));
 
 const rawYamlValidation = useValidation({
   source: rawYaml,
@@ -32,11 +31,8 @@ const rawYamlValidation = useValidation({
       <n-form-item label="Sort keys :" label-placement="left" label-width="100">
         <n-switch v-model:value="sortKeys" />
       </n-form-item>
-      <n-form-item label="Strip comments :" label-placement="left" label-width="125">
-        <n-switch v-model:value="sortKeys" />
-      </n-form-item>
       <n-form-item label="Indent size :" label-placement="left" label-width="100" :show-feedback="false">
-        <n-input-number v-model:value="indentSize" min="0" max="10" style="width: 100px" />
+        <n-input-number v-model:value="indentSize" min="1" max="10" style="width: 100px" />
       </n-form-item>
     </div>
   </div>
@@ -60,7 +56,7 @@ const rawYamlValidation = useValidation({
     />
   </n-form-item>
   <n-form-item label="Prettified version of your YAML">
-    <TextareaCopyable :value="cleanYaml" language="json" :follow-height-of="inputElement" />
+    <TextareaCopyable :value="cleanYaml" language="yaml" :follow-height-of="inputElement" />
   </n-form-item>
 </template>
 
