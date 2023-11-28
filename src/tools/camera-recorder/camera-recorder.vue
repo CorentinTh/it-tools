@@ -84,7 +84,7 @@ watchEffect(() => {
   }
 });
 
-onBeforeUnmount(() => stop())
+onBeforeUnmount(() => stop());
 
 async function requestPermissions() {
   try {
