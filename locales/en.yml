@@ -56,6 +56,9 @@ toolCard:
   new: New
 search:
   label: Search
+transition:
+  placeholder: Type to search a tool or a command...
+
 tools:
   categories:
     favorite-tools: 'Your favorite tools'
