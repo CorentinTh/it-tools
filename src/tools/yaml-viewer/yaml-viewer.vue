@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import yaml from 'js-yaml';
+import yaml from 'yaml';
 import { useStorage } from '@vueuse/core';
 import { formatYaml } from './yaml-models';
 import { withDefaultOnError } from '@/utils/defaults';
@@ -18,7 +18,7 @@ const rawYamlValidation = useValidation({
   source: rawYaml,
   rules: [
     {
-      validator: v => v === '' || yaml.load(v),
+      validator: v => v === '' || yaml.parse(v),
       message: 'Provided YAML is not valid.',
     },
   ],

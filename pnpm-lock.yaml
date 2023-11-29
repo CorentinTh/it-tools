@@ -86,9 +86,6 @@ dependencies:
   ibantools:
     specifier: ^4.3.3
     version: 4.3.3
-  js-yaml:
-    specifier: ^4.1.0
-    version: 4.1.0
   json5:
     specifier: ^2.2.3
     version: 2.2.3
@@ -202,9 +199,6 @@ devDependencies:
   '@types/dompurify':
     specifier: ^3.0.5
     version: 3.0.5
-  '@types/js-yaml':
-    specifier: ^4.0.9
-    version: 4.0.9
   '@types/jsdom':
     specifier: ^21.0.0
     version: 21.1.0
@@ -2946,10 +2940,6 @@ packages:
     dependencies:
       '@types/jsonfile': 6.1.1
       '@types/node': 18.15.11
-    dev: true
-
-  /@types/js-yaml@4.0.9:
-    resolution: {integrity: sha512-k4MGaQl5TGo/iipqb2UDG2UwjXziSWkh0uysQelTlJpX1qGlpUZYm8PnO4DxG1qBomtJUdYJ6qR6xdIah10JLg==}
     dev: true
 
   /@types/jsdom@21.1.0:
@@ -6530,6 +6520,7 @@ packages:
     hasBin: true
     dependencies:
       argparse: 2.0.1
+    dev: true
 
   /jsbn@1.1.0:
     resolution: {integrity: sha512-4bYVV3aAMtDTTu4+xsDYa6sy9GyJ69/amsu9sYF2zqjiEoZA5xJi3BrfX3uY+/IekIu7MwdObdbDWpoZdBv3/A==}
