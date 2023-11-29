@@ -56,6 +56,8 @@ toolCard:
   new: '新'
 search:
   label: '搜索'
+transition:
+  placeholder: '请输入工具名或者命令……'
 tools:
   categories:
     favorite-tools: '我的收藏'
@@ -69,3 +71,241 @@ tools:
     measurement: '测量'
     text: '文本'
     data: '数据'
+  # 加密
+  'token-generator':
+    title: 'Token 生成器'
+    description: '随机生成Token字符串，可选择包含：大写或小写字母、数字和或符号.'
+  'hash-text':
+    title: 'Hash 文本'
+    description: '使用您需要的函数对文本字符串进行哈希处理：MD5、SHA1、SHA256、SHA224、SHA512、SHA384、SHA3 或 RIPEMD160'
+  bcrypt:
+    title: 'Bcrypt 加密'
+    description: '使用 bcrypt 对文本字符串进行散列和比较. Bcrypt 是基于 Blowfish 密码的密码散列算法.'
+  'uuid-generator':
+    title: 'UUIDs 生成器'
+    description: '通用唯一标识符（UUID）是一个128位数字，用于识别计算机系统中的信息.可能的UUID数量是16^32，即2^128或大约3.4x10^38（这很多！）.'
+  'ulid-generator':
+    title: 'ULID 生成器'
+    description: '生成随机通用唯一词典可排序标识符（ULID）.'
+  encryption:
+    title: '文本加解密'
+    description: '使用 AES、TripleDES、Rabbit 或 RC4 等加密算法对文本明文进行加密和解密.'
+  'bip39-generator':
+    title: 'BIP39 助记词生成器'
+    description: '从现有或随机助记符生成BIP39密码，或从密码中获取助记符.'
+  'hmac-generator':
+    title: 'Hmac 生成器'
+    description: '基于密钥和Hash函数计算HMAC. HMAC，全名为"Hash-based Message Authentication Code"，是一种用于数据完整性验证和消息认证的加密算法.它通常用于计算消息的身份验证标记，以确保消息在传输过程中没有被篡改'
+  'rsa-key-pair-generator':
+    title: 'RSA 密钥对生成器'
+    description: '生随机的 RSA 私钥和公钥 pem 证书.'
+  'password-strength-analyser':
+    title: '密码强度分析器'
+    description: '仅限客户端的密码强度分析和破解时间估计工具来发现密码的强度.'
+  'pdf-signature-checker':
+    title: 'PDF签名检查器'
+    description: '验证PDF文件的签名.签名的PDF文件包含一个或多个签名，可用于确定文件内容自文件签署以来是否已更改.'
+  # 转换器
+  'date-converter':
+    title: '日期-时间转换器'
+    description: '将日期和时间转换为各种不同的格式'
+  'base-converter':
+    title: '进制转换器'
+    description: '不同进制间的转换 (十进制、十六进制、二进制、八进制、base64, ...)'
+  'roman-numeral-converter':
+    title: '罗马数字转换器'
+    description: '将罗马数字转换为数字、将数字转换为罗马数字.'
+  'base64-string-converter':
+    title: 'Base64 字符串转换'
+    description: '将字符串编码和解码为 Base64 表示形式.'
+  'base64-file-converter':
+    title: 'Base64 文件转换器'
+    description: '将字符串、文件或图像转换为 Base64 表示形式.'
+  'color-converter':
+    title: 'Color 转换器'
+    description: '在不同格式之间转换颜色 (hex, rgb, hsl and css name)'
+  'case-converter':
+    title: '字符格式转换'
+    description: '更改字符串的大小写并在不同格式之间进行选择'
+  'text-to-nato-alphabet':
+    title: '文本转北约字母表'
+    description: '将文本转换为北约拼音字母.'
+  'text-to-binary':
+    title: '文本转ASCII二进制'
+    description: '将文本转换为其ASCII二进制表示，反之亦然.'
+  'yaml-to-json-converter':
+    title: 'YAML 转换为 JSON'
+    description: '将 YAML 转换为 JSON.'
+  'yaml-to-toml':
+    title: 'YAML 转换 TOML'
+    description: '将 YAML 转换为 TOML.'
+  'json-to-yaml-converter':
+    title: 'JSON 转换 YAML'
+    description: '将 JSON 转换为 YAML.'
+  'json-to-toml':
+    title: 'JSON 转换 TOML'
+    description: '解析 JSON 并将其转换为 TOML.'
+  'list-converter':
+    title: '链表处理'
+    description: '此工具可以处理基于列的数据，并对每行应用各种更改（转换、添加前缀和后缀、反向列表、排序列表、小写值、截断值）.'
+  'toml-to-json':
+    title: 'TOML 转换 JSON'
+    description: '解析并转换TOML为JSON.'
+  'toml-to-yaml':
+    title: 'TOML 转换 YAML'
+    description: '解析并转换TOML为YAML.'
+  # Web
+  'url-encoder':
+    title: 'URL 编码/解码'
+    description: '对URL 进行编码/解码.'
+  'html-entities':
+    title: 'HTML转义'
+    description: '转义或取消转义 html 文本（将 &lt;、&gt;、&amp;、&quot; 和 &#39; 替换为其 html 版本）'
+  'url-parser':
+    title: 'URL解析器'
+    description: '解析 url 字符串，输出组成部分（协议、来源、参数、端口、用户名密码等）'
+  'device-information':
+    title: '获取设备信息'
+    description: '获取有关您当前设备的信息（屏幕尺寸、像素比、用户代理...)'
+  'basic-auth-generator':
+    title: 'Basic Auth生成器'
+    description: '根据用户名和密码生成 Base64 Basic Auth标头.'
+  'og-meta-generator':
+    title: '开放图元生成器'
+    description: '为您的网站生成开放图形和社交html元标签.'
+  'otp-generator':
+    title: 'OTP 码生成'
+    description: '生成并验证基于时间的 OTP（一次性密码）以进行多重身份验证.'
+  'mime-types':
+    title: 'Mime 类型'
+    description: '将 mime 类型转换为扩展名，反之亦然.'
+  'jwt-parser':
+    title: 'JWT 转换器'
+    description: '解析和解码您的 JSON Web Token (jwt) 并显示其内容.'
+  'keycode-info':
+    title: 'Keycode 键盘'
+    description: '查找任何按下的键的 JavaScript 键码、代码、位置和修饰符.'
+  'slugify-string':
+    title: '打乱字符串'
+    description: '确保字符串 url、文件名和 id 安全.'
+  'html-wysiwyg-editor':
+    title: 'HTML 编辑器'
+    description: '在线HTML编辑器，功能丰富的所见即所得编辑器.'
+  'user-agent-parser':
+    title: 'User-agent 解析'
+    description: '从User-agent中解析浏览器、引擎、操作系统、CPU 和设备类型/型号.'
+  'http-status-codes':
+    title: 'HTTP 状态码'
+    description: '所有 HTTP 状态代码的列表、名称及其含义.'
+  'json-diff':
+    title: 'JSON 差异比对'
+    description: '比较两个 JSON 之间的差异.'
+  # 图片和视频
+  'qrcode-generator':
+    title: '二维码生成器'
+    description: '生成可供下载 URL 或文本二维码，可以自定义背景和前景色.'
+  'wifi-qrcode-generator':
+    title: 'WiFi二维码生成器'
+    description: '生成和下载二维码，以便快速连接到WiFi网络.'
+  'svg-placeholder-generator':
+    title: 'SVG 占位符生成器'
+    description: '生成 svg 图像以用作应用程序中的占位符.'
+  'camera-recorder':
+    title: '摄像头测试'
+    description: '从网络摄像头或相机拍摄照片或录制视频.'
+  # 开发
+  'git-memo':
+    title: 'Git备忘单'
+    description: 'Git是一个分散的版本管理软件.有了这个备忘单，您将可以快速访问最常见的git命令.'
+  'random-port-generator':
+    title: '随机端口生成器'
+    description: '生成（0-1023）范围之外的随机端口号.'
+  'crontab-generator':
+    title: 'Crontab 生成器'
+    description: '验证并生成 crontab 并获取可读的 cron 计划描述.'
+  'json-prettify':
+    title: 'JSON美化和格式'
+    description: '将 JSON 字符串美化为可读的格式.'
+  'json-minify':
+    title: 'JSON 压缩'
+    description: '通过删除不必要的空格来缩小和压缩 JSON.'
+  'json-to-csv':
+    title: 'JSON 转换为 CSV'
+    description: '通过自动标头检测将 JSON 转换为 CSV.'
+  'sql-prettify':
+    title: 'SQL格式化'
+    description: '在线格式 SQL 语句（支持 SQL 方言）.'
+  'chmod-calculator':
+    title: 'Chmod 权限检查器'
+    description: '使用此在线 chmod 计算器计算您的 chmod 权限和命令.'
+  'docker-run-to-docker-compose-converter':
+    title: 'Docker 与 Docker compose 转换器'
+    description: '将 docker run 命令转换为 docker-compose files'
+  'xml-formatter':
+    title: 'XML 格式化'
+    description: '将 XML 字符串进行可读的格式化.'
+  # Network
+  'ipv4-subnet-calculator':
+    title: 'IPv4 子网计算器'
+    description: '解析您的 IPv4 CIDR 块并获取您需要的有关子网的所有信息.'
+  'ipv4-address-converter':
+    title: 'Ipv4 地址转换'
+    description: '将ip地址转换为十进制、二进制、十六进制或ipv6'
+  'ipv4-range-expander':
+    title: 'IPv4 范围扩展器'
+    description: '给定起始和结束 IPv4 地址，并使用 CIDR 表示法计算有效的 IPv4 网络.'
+  'mac-address-lookup':
+    title: 'MAC地址查找'
+    description: '通过 MAC 地址查找设备的供应商和制造商.'
+  'mac-address-generator':
+    title: 'MAC地址生成器'
+    description: '输入数量和前缀.MAC地址将在您选择的情况下生成（大写或小写）'
+  'ipv6-ula-generator':
+    title: 'IPv6 ULA生成器'
+    description: '根据RFC4193，在您的网络上生成您自己的本地、不可路由的IP地址.'
+  # 数学
+  'math-evaluator':
+    title: '数学计算器'
+    description: '使用数学计算机进行科学计算 (sqrt, cos, sin, abs, ...)'
+  'eta-calculator':
+    title: 'ETA 计算器'
+    description: 'ETA（预计到达时间）计算器，用于了解任务的大致结束时间，例如下载结束的时刻. 举个具体的例子，如果你5分钟洗3个盘子，你有500个盘子要洗，那么你需要5小时10分钟才能把它们全部洗完.'
+  'percentage-calculator':
+    title: '百分比计算器'
+    description: '计算从一个值到另一个值的百分比，或从一个百分比到另一个值的百分比.'
+  # 测量
+  'chronometer':
+    title: '天文台表（计时器）'
+    description: '简单天文台功能的天文台表,用于监控事物的持续时间.'
+  'temperature-converter':
+    title: '温度转换器'
+    description: 'Kelvin, Celsius, Fahrenheit, Rankine, Delisle, Newton, Réaumur, Rømer 等温度转换'
+  'benchmark-builder':
+    title: 'Benchmark builder'
+    description: '与这个非常简单的在线基准构建器轻松比较任务的执行时间.'
+  # 文本
+  'lorem-ipsum-generator':
+    title: '占位文本生成'
+    description: '"Lorem ipsum generator" 是一个用于生成占位文本的工具.这种占位文本通常以拉丁文的 "Lorem ipsum" 开头，随后是一系列无意义的拉丁单词和短语，用于填充文档、网页或其他设计项目中的文本区域，以便进行排版和布局设计.'
+  'text-statistics':
+    title: '文本统计'
+    description: '获取有关文本、字符数、字数、大小的信息...'
+  'emoji-picker':
+    title: 'Emoji 拾取器'
+    description: '轻松复制和粘贴表情符号并获取每个表情符号的 unicode 和代码.'
+  'string-obfuscator':
+    title: '字符串混淆器'
+    description: '混淆字符串（如秘密、IBAN 或令牌），使其可共享和可识别，而不泄露其内容.'
+  'text-diff':
+    title: '文本差异比较'
+    description: '比较两个文本并查看它们之间的差异.'
+  'numeronym-generator':
+    title: '数字生成器'
+    description: '数字是数字用来形成缩写的单词.例如，“i18n”是“国际化”的代名词，其中18代表单词中第一个i和最后一个n之间的字母数.'
+  # 数据
+  'phone-parser-and-formatter':
+    title: '手机号归属地查询'
+    description: '解析、验证和格式化电话号码. 获取有关电话号码的信息，例如国家/地区代码.'
+  'iban-validator-and-parser':
+    title: 'IBAN 验证和转换'
+    description: '验证并解析 IBAN 号码. 检查 IBAN 是否有效，并获取国家/地区、BBAN（如果是 QR-IBAN）.IBAN验证器和解析器是用于处理国际银行帐号号码（IBAN）的工具或软件组件'
