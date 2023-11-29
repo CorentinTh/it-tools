@@ -8,5 +8,5 @@ export const tool = defineTool({
   keywords: ['yaml', 'viewer', 'prettify', 'format'],
   component: () => import('./yaml-viewer.vue'),
   icon: AlignJustified,
-  redirectFrom: ['/yaml-viewer'],
+  createdAt: new Date('2023-11-29'),
 });
