@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { useStorage } from '@vueuse/core';
+import { useElementSize, useStorage } from '@vueuse/core';
+
 import { renderMarkdown } from './markdown-viewer.service';
 
 const rawMd = useStorage('markdown-viewer:raw-md', '# Hello World');
 const inputElement = ref<HTMLElement>();
+const { height } = useElementSize(inputElement);
+
 </script>
 
 <template>
@@ -24,6 +27,6 @@ const inputElement = ref<HTMLElement>();
     />
   </n-form-item>
   <n-form-item label="Prettified version of your markdown">
-    <c-card style="width: 100%; overflow: scroll" v-html="renderMarkdown(rawMd)" />
+    <c-card :style="`width: 100%; overflow: scroll; max-height: ${`${height.valueOf()}px`}`" v-html="renderMarkdown(rawMd)" />
   </n-form-item>
 </template>
