@@ -2,18 +2,24 @@ import { marked } from 'marked';
 import highlight from 'highlight.js';
 import 'highlight.js/styles/atom-one-dark.css';
 
-export { renderMarkdown };
+export { renderMarkdown }
 
-function renderMarkdown(md: string) {
+const renderMarkdown = (md: string): string => {
   const renderer = new marked.Renderer();
 
   // Override the code rendering function to use highlight.js for syntax highlighting
   renderer.code = (code: string, language: string) => {
     const validLanguage = highlight.getLanguage(language) ? language : 'plaintext';
-    return `<pre><code class="hljs ${validLanguage}">${highlight.highlight(validLanguage, code).value}</code></pre>`;
+    const highlightedCode = highlight.highlight(validLanguage, code).value;
+    return `<pre><code class="hljs ${validLanguage}">${highlightedCode}</code></pre>`;
   };
 
-  marked.use({ renderer });
+  marked.setOptions({ renderer });
 
-  return marked.parse(md);
+  try {
+    return marked(md);
+  } catch (error) {
+    console.error('Markdown parsing error:', error);
+    return `<p>Error rendering Markdown</p>`;
+  }
 }
