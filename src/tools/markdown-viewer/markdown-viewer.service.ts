@@ -2,9 +2,9 @@ import { marked } from 'marked';
 import highlight from 'highlight.js';
 import 'highlight.js/styles/atom-one-dark.css';
 
-export { renderMarkdown }
+export { renderMarkdown };
 
-const renderMarkdown = (md: string): string => {
+function renderMarkdown(md: string): string {
   const renderer = new marked.Renderer();
 
   // Override the code rendering function to use highlight.js for syntax highlighting
@@ -18,8 +18,9 @@ const renderMarkdown = (md: string): string => {
 
   try {
     return marked(md);
-  } catch (error) {
+  }
+  catch (error) {
     console.error('Markdown parsing error:', error);
-    return `<p>Error rendering Markdown</p>`;
+    return '<p>Error rendering Markdown</p>';
   }
 }

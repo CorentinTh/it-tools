@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useElementSize, useStorage } from '@vueuse/core';
 import { renderMarkdown } from './markdown-viewer.service';
+
 const inputElement = ref<HTMLElement>();
 const rawMd = useStorage('markdown-viewer:raw-md', '# Hello World');
 const { height } = useElementSize(inputElement);
@@ -10,7 +11,6 @@ const cardStyles = computed(() => ({
   overflow: 'scroll',
   maxHeight: `${height.value}px`,
 }));
-
 </script>
 
 <template>
