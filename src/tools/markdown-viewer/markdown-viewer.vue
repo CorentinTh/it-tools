@@ -1,15 +1,14 @@
 <script setup lang="ts">
 import { useElementSize, useStorage } from '@vueuse/core';
-import { renderMarkdown } from './markdown-viewer.service';
 
 const inputElement = ref<HTMLElement>();
 const rawMd = useStorage('markdown-viewer:raw-md', '# Hello World');
-const { height } = useElementSize(inputElement);
+const { height: inputElementHeight } = useElementSize(inputElement);
 
 const cardStyles = computed(() => ({
   width: '100%',
   overflow: 'scroll',
-  maxHeight: `${height.value}px`,
+  maxHeight: `${inputElementHeight.value}px`,
 }));
 </script>
 
@@ -31,6 +30,8 @@ const cardStyles = computed(() => ({
     />
   </n-form-item>
   <n-form-item label="Prettified version of your markdown">
-    <c-card :style="cardStyles" v-html="renderMarkdown(rawMd)" />
+    <c-card :style="cardStyles">
+      <c-markdown :markdown="rawMd"></c-markdown>
+    </c-card>
   </n-form-item>
 </template>
