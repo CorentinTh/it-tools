@@ -31,7 +31,7 @@ const cardStyles = computed(() => ({
   </n-form-item>
   <n-form-item label="Prettified version of your markdown">
     <c-card :style="cardStyles">
-      <c-markdown :markdown="rawMd"></c-markdown>
+      <c-markdown :markdown="rawMd" />
     </c-card>
   </n-form-item>
 </template>

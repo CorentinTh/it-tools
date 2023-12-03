@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { marked } from 'marked';
 import DomPurify from 'dompurify';
-import highlight from "highlight.js";
+import highlight from 'highlight.js';
 import 'highlight.js/styles/atom-one-dark.css';
 
 const props = withDefaults(defineProps<{ markdown?: string }>(), { markdown: '' });
@@ -14,10 +14,10 @@ marked.use({
     },
 
     code(code: string, infoString: string = '') {
-      const validLanguage = highlight.getLanguage(infoString) ? infoString : 'plaintext'
+      const validLanguage = highlight.getLanguage(infoString) ? infoString : 'plaintext';
       const highlightedCode = highlight.highlight(validLanguage, code).value;
       return `<pre><code class="hljs ${validLanguage}">${highlightedCode}</code></pre>`;
-    }
+    },
   },
 });
 
