@@ -28,6 +28,7 @@ const permissionCannotBePrompted = ref(false);
 const {
   stream,
   start,
+  stop,
   enabled: isMediaStreamAvailable,
 } = useUserMedia({
   constraints: computed(() => ({
@@ -82,6 +83,8 @@ watchEffect(() => {
     video.value.srcObject = stream.value;
   }
 });
+
+onBeforeUnmount(() => stop());
 
 async function requestPermissions() {
   try {
