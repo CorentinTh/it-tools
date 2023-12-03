@@ -1,11 +1,24 @@
 <script setup lang="ts">
 import { useStorage } from '@vueuse/core';
-import showdown from 'showdown'
-import CCard from "@/ui/c-card/c-card.vue";
-
-const converter = new showdown.Converter()
+import { marked } from "marked";
+const rawMd = useStorage('markdown-viewer:raw-md', '# Hello World');
 const inputElement = ref<HTMLElement>();
-const rawMd = useStorage('json-prettify:raw-json', '{"hello": "world", "foo": "bar"}');
+import highlight from "highlight.js";
+import 'highlight.js/styles/default.css';
+
+const renderMarkdown = (md: string) => {
+  const renderer = new marked.Renderer();
+
+  // Override the code rendering function to use highlight.js for syntax highlighting
+  renderer.code = (code: string, language: string) => {
+    const validLanguage = highlight.getLanguage(language) ? language : 'plaintext';
+    return `<pre><code class="hljs ${validLanguage}">${highlight.highlight(validLanguage, code).value}</code></pre>`;
+  };
+
+  marked.use({ renderer });
+
+  return marked.parse(md)
+}
 
 </script>
 
@@ -27,7 +40,7 @@ const rawMd = useStorage('json-prettify:raw-json', '{"hello": "world", "foo": "b
     />
   </n-form-item>
   <n-form-item label="Prettified version of your MD">
-    <c-card style="width: 100%; overflow: scroll" v-html="converter.makeHtml(rawMd)"></c-card>
+    <c-card style="width: 100%; overflow: scroll" v-html="renderMarkdown(rawMd)"></c-card>
   </n-form-item>
 </template>
 
