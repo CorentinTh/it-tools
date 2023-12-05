@@ -7,6 +7,7 @@ home:
   toggleMenu: 'Toggle menu'
   home: Home
   uiLib: 'UI Lib'
+  support: 'Support IT Tools development'
   buyMeACoffee: 'Buy me a coffee'
   follow:
     title: 'You like it-tools?'
@@ -48,6 +49,9 @@ about:
   sorry: 'Sorry, this page does not seem to exist'
   maybe: 'Maybe the cache is doing tricky things, try force-refreshing?'
   backHome: 'Back home'
+favoriteButton:
+  remove: 'Remove from favorites'
+  add: 'Add to favorites'
 toolCard:
   new: New
 search:
