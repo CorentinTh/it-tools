@@ -83,5 +83,5 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            corentinth/it-tools:nightly
-            ghcr.io/corentinth/it-tools:nightly
+            thetechnetwork/it-tools:nightly
+            ghcr.io/thetechnetwork/it-tools:nightly
