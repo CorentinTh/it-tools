@@ -9,10 +9,11 @@ const versions = ['NIL', 'v1', 'v3', 'v4', 'v5'] as const;
 const version = useStorage<typeof versions[number]>('uuid-generator:version', 'v4');
 const count = useStorage('uuid-generator:quantity', 1);
 const v35Args = ref({ namespace: '6ba7b811-9dad-11d1-80b4-00c04fd430c8', name: '' });
+const { t } = useI18n();
 
 const validUuidRules = [
   {
-    message: 'Invalid UUID',
+    message: t('tools.uuid-generator.invalidMessage'),
     validator: (value: string) => {
       if (value === nilUuid) {
         return true;
@@ -42,16 +43,16 @@ const [uuids, refreshUUIDs] = computedRefreshable(() => withDefaultOnError(() =>
     return generator(index);
   }).join('\n'), ''));
 
-const { copy } = useCopy({ source: uuids, text: 'UUIDs copied to the clipboard' });
+const { copy } = useCopy({ source: uuids, text: t('tools.uuid-generator.copies') });
 </script>
 
 <template>
   <div>
-    <c-buttons-select v-model:value="version" :options="versions" label="UUID version" label-width="100px" mb-2 />
+    <c-buttons-select v-model:value="version" :options="versions" :label="t('tools.uuid-generator.version')" label-width="100px" mb-2 />
 
     <div mb-2 flex items-center>
-      <span w-100px>Quantity </span>
-      <n-input-number v-model:value="count" flex-1 :min="1" :max="50" placeholder="UUID quantity" />
+      <span w-100px>{{ t('tools.uuid-generator.quantity') }} </span>
+      <n-input-number v-model:value="count" flex-1 :min="1" :max="50" :placeholder="t('tools.uuid-generator.quantityPlaceholder')" />
     </div>
 
     <div v-if="version === 'v3' || version === 'v5'">
@@ -64,7 +65,7 @@ const { copy } = useCopy({ source: uuids, text: 'UUIDs copied to the clipboard' 
             OID: '6ba7b812-9dad-11d1-80b4-00c04fd430c8',
             X500: '6ba7b814-9dad-11d1-80b4-00c04fd430c8',
           }"
-          label="Namespace"
+          :label="t('tools.uuid-generator.namespace')"
           label-width="100px"
           mb-2
         />
@@ -72,7 +73,7 @@ const { copy } = useCopy({ source: uuids, text: 'UUIDs copied to the clipboard' 
       <div flex-1>
         <c-input-text
           v-model:value="v35Args.namespace"
-          placeholder="Namespace"
+          :placeholder="t('tools.uuid-generator.namespace')"
           label-width="100px"
           label-position="left"
           label=" "
@@ -83,8 +84,8 @@ const { copy } = useCopy({ source: uuids, text: 'UUIDs copied to the clipboard' 
 
       <c-input-text
         v-model:value="v35Args.name"
-        placeholder="Name"
-        label="Name"
+        :placeholder="t('tools.uuid-generator.name')"
+        :label="t('tools.uuid-generator.name')"
         label-width="100px"
         label-position="left"
         mb-2
@@ -95,7 +96,7 @@ const { copy } = useCopy({ source: uuids, text: 'UUIDs copied to the clipboard' 
       style="text-align: center; font-family: monospace"
       :value="uuids"
       multiline
-      placeholder="Your uuids"
+      :placeholder="t('tools.uuid-generator.uuidsPlaceholder')"
       autosize
       rows="1"
       readonly
@@ -107,10 +108,10 @@ const { copy } = useCopy({ source: uuids, text: 'UUIDs copied to the clipboard' 
 
     <div flex justify-center gap-3>
       <c-button autofocus @click="copy()">
-        Copy
+        {{ t('tools.uuid-generator.button.copy') }}
       </c-button>
       <c-button @click="refreshUUIDs">
-        Refresh
+        {{ t('tools.uuid-generator.button.refresh') }}
       </c-button>
     </div>
   </div>
