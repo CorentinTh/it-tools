@@ -1,0 +1,12 @@
+tools:
+  rsa-key-pair-generator:
+    title: RSA 密钥对生成器
+    description: 生成新的随机 RSA 私钥和公钥 PEM 证书。
+
+    bits: '位数：'
+    publicKey: 公钥
+    privateKey: 私钥
+    button:
+      refresh: 刷新密钥对
+
+    validationError: '位数应为256 <= bits <= 16384，并且是8的倍数'

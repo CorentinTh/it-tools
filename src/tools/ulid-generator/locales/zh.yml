@@ -1,0 +1,12 @@
+tools:
+  ulid-generator:
+    title: ULID 生成器
+    description: 生成随机的通用唯一词典排序标识符（ULID）。
+
+    quantity: '数量：'
+    format: '格式：'
+
+    copied: ULID 已复制到剪贴板
+    button:
+      refresh: 刷新
+      copy: 复制

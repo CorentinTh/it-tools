@@ -1,0 +1,38 @@
+tools:
+  password-strength-analyser:
+    title: 密码强度分析器
+    description: 使用此仅在客户端运行的密码强度分析器和破解时间估算工具来了解您的密码强度。
+
+    passwordPlaceholder: 输入密码...
+    bruteForceDuration: 使用暴力破解破解此密码所需时间
+    note: '注意：'
+    noteInfor: 计算的强度是基于使用暴力破解方法破解密码所需的时间，不考虑字典攻击的可能性。
+
+    details:
+      length: '密码长度：'
+      entropy: '熵：'
+      characterSize: '字符集大小：'
+      score: '得分：'
+
+    instantly: 瞬间
+    lessThanASecond: 不到一秒钟
+    millenium: 千年
+    century: 世纪
+    decade: 十年
+    year: 年
+    month: 月
+    week: 周
+    day: 天
+    hour: 小时
+    minute: 分钟
+    second: 秒
+    millennia: 千年
+    centuries: 世纪
+    decades: 十年
+    years: 年
+    months: 月
+    weeks: 周
+    days: 天
+    hours: 小时
+    minutes: 分钟
+    seconds: 秒

@@ -21,6 +21,7 @@ const messages = _.merge(
 const i18n = createI18n({
   legacy: false,
   locale: 'en',
+  fallbackLocale: 'en',
   messages,
 });
 
@@ -32,6 +33,5 @@ export const i18nPlugin: Plugin = {
 
 export const translate = function (localeKey: string) {
   // @ts-expect-error global
-  const hasKey = i18n.global.te(localeKey, i18n.global.locale);
-  return hasKey ? i18n.global.t(localeKey) : localeKey;
+  return i18n.global.t(localeKey);
 };
