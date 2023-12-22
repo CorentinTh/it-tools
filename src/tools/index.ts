@@ -1,6 +1,7 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+import { tool as macAddressConverter } from './mac-address-converter';
 import { tool as pdfSignatureChecker } from './pdf-signature-checker';
 import { tool as numeronymGenerator } from './numeronym-generator';
 import { tool as macAddressGenerator } from './mac-address-generator';
@@ -18,6 +19,7 @@ import { tool as tomlToJson } from './toml-to-json';
 import { tool as jsonToCsv } from './json-to-csv';
 import { tool as cameraRecorder } from './camera-recorder';
 import { tool as listConverter } from './list-converter';
+import { tool as macConverter } from './mac-address-converter';
 import { tool as phoneParserAndFormatter } from './phone-parser-and-formatter';
 import { tool as jsonDiff } from './json-diff';
 import { tool as ipv4RangeExpander } from './ipv4-range-expander';
@@ -98,6 +100,7 @@ export const toolsByCategory: ToolCategory[] = [
       jsonToYaml,
       jsonToToml,
       listConverter,
+      macConverter,
       tomlToJson,
       tomlToYaml,
     ],

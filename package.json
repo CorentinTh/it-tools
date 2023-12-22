@@ -132,7 +132,7 @@
     "vite-plugin-pwa": "^0.16.0",
     "vite-plugin-vue-markdown": "^0.23.5",
     "vite-svg-loader": "^4.0.0",
-    "vitest": "^0.34.0",
+    "vitest": "^0.34.6",
     "workbox-window": "^7.0.0",
     "zx": "^7.2.1"
   }
