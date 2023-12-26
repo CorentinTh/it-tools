@@ -1,0 +1,10 @@
+tools:
+  yaml-to-json-converter:
+    title: YAML 转 JSON
+    description: 解析并转换 YAML 到 JSON。
+
+    inputLabel: 您的 YAML
+    inputPlaceholder: 在这里粘贴你的 YAML...
+    outputLabel: 从您的 YAML 得到的 JSON
+
+    inValidMessage: 提供的 YAML 不合法。

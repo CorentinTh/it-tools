@@ -1,0 +1,26 @@
+tools:
+  base64-string-converter:
+    title: Base64 字符串编码器/解码器
+    description: 简单地将字符串编码和解码为它们的 base64 表示形式。
+
+    stringToBase64:
+      title: 字符串转 base64
+      encodeUrl: URL 安全编码
+      inputLabel: 要编码的字符串
+      inputPlaceholder: 在此处放置您的字符串...
+      outputLabel: 字符串的 base64 编码
+      outputPlaceholder: 您的字符串的 base64 编码将在此处
+    base64ToString:
+      title: Base64 转字符串
+      decodeUrl: URL 安全解码
+      inputLabel: 要解码的 base64 字符串
+      inputPlaceholder: 您的 base64 字符串...
+      outputLabel: 解码后的字符串
+      outputPlaceholder: 解码后的字符串将在此处
+    buttons:
+      copyBase64: 复制 base64
+      copyDecodedString: 复制解码后的字符串
+
+    base64Copied: 已复制 base64 字符串到剪贴板
+    stringCopied: 字符串已复制到剪贴板
+    base64InvalidMessage: 无效的 base64 字符串

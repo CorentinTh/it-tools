@@ -10,9 +10,11 @@ import { buildColorFormat } from './color-converter.models';
 
 extend([cmykPlugin, hwbPlugin, namesPlugin, lchPlugin]);
 
+const { t } = useI18n();
+
 const formats = {
   picker: buildColorFormat({
-    label: 'color picker',
+    label: t('tools.color-converter.colorPicker'),
     format: (v: Colord) => v.toHex(),
     type: 'color-picker',
   }),
@@ -47,7 +49,7 @@ const formats = {
     placeholder: 'e.g. cmyk(0, 100%, 100%, 0)',
   }),
   name: buildColorFormat({
-    label: 'name',
+    label: t('tools.color-converter.name'),
     format: (v: Colord) => v.toName({ closest: true }) ?? 'Unknown',
     placeholder: 'e.g. red',
   }),

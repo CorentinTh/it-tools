@@ -31,7 +31,7 @@ export const i18nPlugin: Plugin = {
   },
 };
 
-export const translate = function (localeKey: string) {
+export const translate = function (localeKey: string, named?: Record<string, unknown>) {
   // @ts-expect-error global
-  return i18n.global.t(localeKey);
+  return i18n.global.t(localeKey, named);
 };

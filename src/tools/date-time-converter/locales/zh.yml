@@ -1,0 +1,20 @@
+tools:
+  date-converter:
+    title: 日期时间转换器
+    description: 将日期和时间转换为各种不同的格式。
+
+    inputPlaceholder: 在此处输入日期字符串...
+    invalidDatePlaceholder: 无效的日期...
+
+    localDate: JS 本地日期字符串
+    ISO8601: ISO 8601
+    ISO9075: ISO 9075
+    RFC3339: RFC 3339
+    RFC7231: RFC 7231
+    unixTimestamp: Unix 时间戳
+    timestamp: 时间戳
+    UTCformat: UTC 格式
+    mongoObjectID: Mongo ObjectID
+    excelDate: Excel 日期/时间
+
+    invalidMessage: 该日期不适用于此格式

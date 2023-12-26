@@ -1,0 +1,10 @@
+tools:
+  yaml-to-toml:
+    title: YAML 转 TOML
+    description: 解析并转换 YAML 到 TOML。
+
+    inputLabel: 您的 YAML
+    inputPlaceholder: 在这里粘贴您的 YAML...
+    outputLabel: 从您的 YAML 得到的 TOML
+
+    inValidMessage: 提供的 YAML 不合法。

@@ -1,6 +1,7 @@
 import { type Colord, colord } from 'colord';
 import { withDefaultOnError } from '@/utils/defaults';
 import { useValidation } from '@/composable/validation';
+import { translate } from '@/plugins/i18n.plugin';
 
 export { removeAlphaChannelWhenOpaque, buildColorFormat };
 
@@ -13,7 +14,7 @@ function buildColorFormat({
   parse = value => colord(value),
   format,
   placeholder,
-  invalidMessage = `Invalid ${label.toLowerCase()} format.`,
+  invalidMessage = translate('tools.color-converter.invalidMessage', { format: label.toLowerCase() }),
   type = 'text',
 }: {
   label: string

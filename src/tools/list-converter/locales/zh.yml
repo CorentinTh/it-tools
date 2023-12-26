@@ -1,0 +1,28 @@
+tools:
+  list-converter:
+    title: 列表转换器
+    description: 该工具可以处理基于列的数据，并对每一行应用各种更改（转置、添加前缀和后缀、反转列表、排序列表、小写值、截断值）。
+
+    trimListItems: 裁剪列表项
+    removeDuplicates: 删除重复项
+    convertToLowercase: 转换为小写
+    keepLineBreaks: 保留换行符
+
+    sortListLabel: 排序列表
+    sortListPlaceholder: 按字母顺序排序
+    separatorLabel: 分隔符
+    separatorPlaceholder: ','
+    wrapItem: 包装条目
+    itemPrefix: 条目前缀
+    itemSuffix: 条目后缀
+    wrapList: 包装列表
+    listPrefix: 列表前缀
+    listSuffix: 列表后缀
+
+    inputLabel: 您的输入数据
+    inputPlaceholder: 在此处粘贴您的输入数据...
+    outputLabel: 您的转换后的数据
+
+    sortOrder:
+      asc: 升序排序
+      desc: 降序排序

@@ -1,0 +1,24 @@
+tools:
+  base-converter:
+    title: Integer base converter
+    description: Convert number between different bases (decimal, hexadecimal, binary, octal, base64, ...)
+
+    inputLabel: Input number
+    inputPlaceholder: 'Put your number here (ex: 42)'
+    inputBaseLabel: Input base
+    inputBasePlaceholder: 'Put your input base here (ex: 10)'
+
+    binaryLabel: Binary (2)
+    binaryPlaceholder: Binary version will be here...
+    octalLabel: Octal (8)
+    octalPlaceholder: Octal version will be here...
+    decimalLabel: Decimal (10)
+    decimalPlaceholder: Decimal version will be here...
+    hexadecimalLabel: Hexadecimal (16)
+    hexadecimalPlaceholder: Hexadecimal version will be here...
+    base64Label: Base64 (64)
+    base64Placeholder: Base64 version will be here...
+
+    custom: 'Custom:'
+    copyable: Base {outputBase} will be here...
+    invalidMessage: 'Invalid digit "{digit}" for base {fromBase}.'
