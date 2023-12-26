@@ -9,7 +9,7 @@ export const tool = defineTool({
     'converter',
     'mac',
     'address',
-    'format'
+    'format',
   ],
   component: () => import('./mac-address-converter.vue'),
   icon: Devices,

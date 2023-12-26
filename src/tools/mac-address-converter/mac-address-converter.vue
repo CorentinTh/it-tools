@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { macAddressValidationRules } from '@/utils/macAddress';
+import InputCopyable from '../../components/InputCopyable.vue';
 
-function convertMac(mac: string, group: number = 2, char: string = ":"): string {
-  mac = mac.replace(/[\W_]+/g, ''); 
+function convertMac(mac: string, group: number = 2, char: string = ':'): string {
+  mac = mac.replace(/[\W_]+/g, '');
   return mac.match(new RegExp(`.{1,${group}}`, 'g'))!.join(char);
 }
-
-import InputCopyable from '../../components/InputCopyable.vue';
 
 const input = ref('AA:BB:CC:DD:EE:FF');
 
@@ -17,15 +15,15 @@ const formats = computed(() => [
   },
   {
     label: 'Canonical Format:',
-    value: convertMac(input.value,2,"."),
+    value: convertMac(input.value, 2, '.'),
   },
   {
     label: 'Canonical IEEE Format:',
-    value: convertMac(input.value.toLocaleUpperCase(),2,"-"),
+    value: convertMac(input.value.toLocaleUpperCase(), 2, '-'),
   },
   {
     label: 'Cisco:',
-    value: convertMac(input.value.toLocaleLowerCase(),4,"."),
+    value: convertMac(input.value.toLocaleLowerCase(), 4, '.'),
   },
 ]);
 
