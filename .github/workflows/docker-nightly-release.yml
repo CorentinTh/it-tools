@@ -83,5 +83,5 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            TheTechNetwork/it-tools:nightly
-            ghcr.io/TheTechNetwork/it-tools:nightly
+            thetechnetwork/it-tools:nightly
+            ghcr.io/thetechnetwork/it-tools:nightly
