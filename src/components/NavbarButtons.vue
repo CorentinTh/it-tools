@@ -11,7 +11,7 @@ const { isDarkTheme } = toRefs(styleStore);
     <c-button
       circle
       variant="text"
-      href="https://github.com/CorentinTh/it-tools"
+      href="https://github.com/TheTechNetwork"
       target="_blank"
       rel="noopener noreferrer"
       :aria-label="$t('home.nav.githubRepository')"
@@ -24,7 +24,7 @@ const { isDarkTheme } = toRefs(styleStore);
     <c-button
       circle
       variant="text"
-      href="https://twitter.com/ittoolsdottech"
+      href="https://twitter.com/elibrody"
       rel="noopener"
       target="_blank"
       :aria-label="$t('home.nav.twitterAccount')"
