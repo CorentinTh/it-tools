@@ -1,4 +1,3 @@
 /* TEAM */
-Developer: Corentin Thomasset
-Site: https://github.com/CorentinTh
-Twitter: @cthmsst
+Developer: TheTechNetwork
+Site: https://github.com/TheTechNetwork
