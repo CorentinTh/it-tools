@@ -1,4 +1,4 @@
-import { translate } from '@/plugins/i18n.plugin';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 export { convertTextToAsciiBinary, convertAsciiBinaryToText };
 
@@ -13,7 +13,7 @@ function convertAsciiBinaryToText(binary: string): string {
   const cleanBinary = binary.replace(/[^01]/g, '');
 
   if (cleanBinary.length % 8) {
-    throw new Error(translate('tools.text-to-binary.invalidBinaryString'));
+    throw new Error(t('tools.text-to-binary.invalidBinaryString'));
   }
 
   return cleanBinary

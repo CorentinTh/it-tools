@@ -1,27 +1,28 @@
 import type { OGSchemaType } from '../OGSchemaType.type';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 export const musicAlbum: OGSchemaType = {
-  name: 'Album details',
+  name: t('tools.og-meta-generator.albumDetails.title'),
   elements: [
-    { type: 'input', label: 'Song', key: 'music:song', placeholder: 'The song on this album...' },
+    { type: 'input', label: t('tools.og-meta-generator.albumDetails.song.label'), key: 'music:song', placeholder: t('tools.og-meta-generator.albumDetails.song.placeholder') },
     {
       type: 'input',
-      label: 'Disc',
+      label: t('tools.og-meta-generator.albumDetails.disc.label'),
       key: 'music:song:disc',
-      placeholder: 'The same as music:album:disc but in reverse...',
+      placeholder: t('tools.og-meta-generator.albumDetails.disc.placeholder'),
     },
     {
       type: 'input',
-      label: 'Track',
+      label: t('tools.og-meta-generator.albumDetails.track.label'),
       key: 'music:song:track',
-      placeholder: 'The same as music:album:track but in reverse...',
+      placeholder: t('tools.og-meta-generator.albumDetails.track.placeholder'),
     },
-    { type: 'input', label: 'Musician', key: 'music:musician', placeholder: 'The musician that made this song...' },
+    { type: 'input', label: t('tools.og-meta-generator.albumDetails.musician.label'), key: 'music:musician', placeholder: t('tools.og-meta-generator.albumDetails.musician.placeholder') },
     {
       type: 'input',
-      label: 'Release date',
+      label: t('tools.og-meta-generator.albumDetails.releaseDate.label'),
       key: 'music:release_date',
-      placeholder: 'The date the album was released...',
+      placeholder: t('tools.og-meta-generator.albumDetails.releaseDate.placeholder'),
     },
   ],
 };

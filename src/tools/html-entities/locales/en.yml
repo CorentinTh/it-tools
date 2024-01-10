@@ -1,0 +1,19 @@
+tools:
+  html-entities:
+    title: Escape html entities
+    description: Escape or unescape html entities (replace <,>, &, " and \' to their html version)
+
+    escape:
+      title: Escape html entities
+      inputLabel: 'Your string :'
+      inputPlaceholder: The string to escape
+      outputLabel: 'Your string escaped :'
+      outputPlaceholder: Your string escaped
+    unescape:
+      title: Unescape html entities
+      inputLabel: 'Your escaped string :'
+      inputPlaceholder: The string to unescape
+      outputLabel: 'Your string unescaped :'
+      outputPlaceholder: Your string unescaped
+
+    copy: Copy

@@ -1,11 +1,11 @@
 import { LetterCaseToggle } from '@vicons/tabler';
 import { defineTool } from '../tool';
-import { translate } from '@/plugins/i18n.plugin';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: translate('tools.case-converter.title'),
+  name: t('tools.case-converter.title'),
   path: '/case-converter',
-  description: translate('tools.case-converter.description'),
+  description: t('tools.case-converter.description'),
   keywords: [
     'case',
     'converter',

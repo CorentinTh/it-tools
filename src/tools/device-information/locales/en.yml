@@ -1,0 +1,17 @@
+tools:
+  device-information:
+    title: Device information
+    description: Get information about your current device (screen size, pixel-ratio, user agent, ...)
+
+    screen: Screen
+    screenSize: Screen size
+    orientation: Orientation
+    orientationAngle: Orientation angle
+    colorDepth: Color depth
+    pixelRatio: Pixel ratio
+    windowSize: Window size
+    device: Device
+    browserVendor: Browser vendor
+    languages: Languages
+    platform: Platform
+    userAgent: User agent

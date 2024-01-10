@@ -3,6 +3,7 @@ import { escape, unescape } from 'lodash';
 
 import { useCopy } from '@/composable/copy';
 
+const { t } = useI18n();
 const escapeInput = ref('<title>IT Tool</title>');
 const escapeOutput = computed(() => escape(escapeInput.value));
 const { copy: copyEscaped } = useCopy({ source: escapeOutput });
@@ -13,23 +14,23 @@ const { copy: copyUnescaped } = useCopy({ source: unescapeOutput });
 </script>
 
 <template>
-  <c-card title="Escape html entities">
-    <n-form-item label="Your string :">
+  <c-card :title="t('tools.html-entities.escape.title')">
+    <n-form-item :label="t('tools.html-entities.escape.inputLabel')">
       <c-input-text
         v-model:value="escapeInput"
         multiline
-        placeholder="The string to escape"
+        :placeholder="t('tools.html-entities.escape.inputPlaceholder')"
         rows="3"
         autosize
         raw-text
       />
     </n-form-item>
 
-    <n-form-item label="Your string escaped :">
+    <n-form-item :label="t('tools.html-entities.escape.outputLabel')">
       <c-input-text
         multiline
         readonly
-        placeholder="Your string escaped"
+        :placeholder="t('tools.html-entities.escape.outputPlaceholder')"
         :value="escapeOutput"
         rows="3"
         autosize
@@ -38,28 +39,28 @@ const { copy: copyUnescaped } = useCopy({ source: unescapeOutput });
 
     <div flex justify-center>
       <c-button @click="copyEscaped()">
-        Copy
+        {{ t('tools.html-entities.copy') }}
       </c-button>
     </div>
   </c-card>
-  <c-card title="Unescape html entities">
-    <n-form-item label="Your escaped string :">
+  <c-card :title="t('tools.html-entities.unescape.title')">
+    <n-form-item :label="t('tools.html-entities.unescape.inputLabel')">
       <c-input-text
         v-model:value="unescapeInput"
         multiline
-        placeholder="The string to unescape"
+        :placeholder="t('tools.html-entities.unescape.inputPlaceholder')"
         rows="3"
         autosize
         raw-text
       />
     </n-form-item>
 
-    <n-form-item label="Your string unescaped :">
+    <n-form-item :label="t('tools.html-entities.unescape.outputLabel')">
       <c-input-text
         :value="unescapeOutput"
         multiline
         readonly
-        placeholder="Your string unescaped"
+        :placeholder="t('tools.html-entities.unescape.outputPlaceholder')"
         rows="3"
         autosize
       />
@@ -67,7 +68,7 @@ const { copy: copyUnescaped } = useCopy({ source: unescapeOutput });
 
     <div flex justify-center>
       <c-button @click="copyUnescaped()">
-        Copy
+        {{ t('tools.html-entities.copy') }}
       </c-button>
     </div>
   </c-card>

@@ -1,0 +1,15 @@
+tools:
+  basic-auth-generator:
+    title: Basic auth 生成器
+    description: 从用户名和密码生成一个 base64 基本授权头。
+
+    username:
+      inputLabel: 用户名
+      inputPlaceholder: 您的用户名...
+    password:
+      inputLabel: 密码
+      inputPlaceholder: 您的密码...
+    outputTitle: '授权头:'
+    copyHeader: 复制授权头
+
+    copied: 授权头已复制到剪贴板

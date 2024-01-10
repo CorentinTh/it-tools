@@ -6,7 +6,7 @@ import type { OGSchemaType, OGSchemaTypeElementSelect } from './OGSchemaType.typ
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 
 // Since type guards do not work in template
-
+const { t } = useI18n();
 const metadata = ref<{ type: string; [k: string]: any }>({
   'type': 'website',
   'twitter:card': 'summary_large_image',
@@ -83,7 +83,7 @@ const metaTags = computed(() => {
     </div>
   </div>
   <div>
-    <n-form-item label="Your meta tags">
+    <n-form-item :label="t('tools.og-meta-generator.yourMetaTags')">
       <TextareaCopyable :value="metaTags" language="html" />
     </n-form-item>
   </div>

@@ -1,0 +1,199 @@
+tools:
+  og-meta-generator:
+    title: 开放图谱元数据生成器
+    description: 为您的网站生成开放图谱和社交网站的 HTML 元标记。
+
+    yourMetaTags: 您的元标记
+
+    article:
+      title: 文章
+      publishingDate:
+        label: 发布日期
+        placeholder: 文章首次发布的日期...
+      modificationDate:
+        label: 修改日期
+        placeholder: 文章最后修改的日期...
+      expirationDate:
+        label: 过期日期
+        placeholder: 文章失效日期...
+      author:
+        label: 作者
+        placeholder: 文章的作者...
+      section:
+        label: 部分
+        placeholder: 高级部分名称。例如：技术...
+      tag:
+        label: 标签
+        placeholder: 与该文章相关的标签词...
+    book:
+      title: 书籍
+      author:
+        label: 作者
+        placeholder: 谁写了这本书...
+      ISBN:
+        label: ISBN
+        placeholder: 国际标准书号...
+      releaseDate:
+        label: 发行日期
+        placeholder: 书籍发布日期...
+      tag:
+        label: 标签
+        placeholder: 与该书籍相关的标签词...
+    image:
+      title: 图片
+      imageUrl:
+        label: 图片 URL
+        placeholder: 您网站社交图片的 URL...
+      imageAlt:
+        label: 图片说明
+        placeholder: 您网站社交图片的替代文本...
+      width:
+        label: 宽度
+        placeholder: 您网站社交图片的宽度（像素）...
+      height:
+        label: 高度
+        placeholder: 您网站社交图片的高度（像素）...
+    albumDetails:
+      title: 专辑详情
+      song:
+        label: 歌曲
+        placeholder: 该专辑中的歌曲...
+      disc:
+        label: 光盘
+        placeholder: 与音乐:专辑:光盘相同，但顺序相反...
+      track:
+        label: 曲目
+        placeholder: 与音乐:专辑:曲目相同，但顺序相反...
+      musician:
+        label: 音乐家
+        placeholder: 制作该歌曲的音乐家...
+      releaseDate:
+        label: 发行日期
+        placeholder: 专辑发布日期...
+    playlistDetails:
+      title: 播放列表详情
+      song:
+        label: 歌曲
+        placeholder: 该专辑中的歌曲...
+      disc:
+        label: 光盘
+        placeholder: 与音乐:专辑:光盘相同，但顺序相反...
+      track:
+        label: 曲目
+        placeholder: 与音乐:专辑:曲目相同，但顺序相反...
+      creator:
+        label: 创建者
+        placeholder: 此播放列表的创建者...
+    radioStationDetails:
+      title: 电台详情
+      creator:
+        label: 创建者
+        placeholder: 电台的创建者...
+    songDetails:
+      title: 歌曲详情
+      duration:
+        lebel: 时长
+        placeholder: 歌曲的时长...
+      album:
+        lebel: 专辑
+        placeholder: 歌曲所属的专辑...
+      disc:
+        lebel: 光盘
+        placeholder: 歌曲所在专辑的光盘...
+      track:
+        lebel: 曲目
+        placeholder: 歌曲的曲目...
+      musician:
+        lebel: 音乐家
+        placeholder: 制作该歌曲的音乐家...
+    profile:
+      title: 个人资料
+      firstName:
+        lebel: 名字
+        placeholder: 输入个人的名字...
+      lastName:
+        lebel: 姓氏
+        placeholder: 输入个人的姓氏...
+      username:
+        lebel: 用户名
+        placeholder: 输入个人的用户名...
+      gender:
+        lebel: 性别
+        placeholder: 输入个人的性别...
+    twitter:
+      title: 推特
+      card:
+        label: 卡片类型
+        placeholder: 推特卡片类型...
+        summary: 摘要
+        summaryWithLargeImage: 带大图的摘要
+        application: 应用
+        player: 播放器
+      site:
+        label: 网站账号
+        placeholder: '网站的推特账号（例如：@ittoolsdottech）...'
+      creator:
+        label: 创建者账号
+        placeholder: '创建者的推特账号（例如：@cthmsst）...'
+    videoEpisode:
+      title: 视频剧集详情
+      series:
+        label: 系列
+        placeholder: 该剧集所属的系列...
+    videoMovie:
+      title: 电影详情
+      actor:
+        label: 演员
+        placeholder: 女演员/男演员的名字...
+      actorRole:
+        label: 演员角色
+        placeholder: 他们扮演的角色...
+      director:
+        label: 导演
+        placeholder: 导演的名字...
+      writer:
+        label: 编剧
+        placeholder: 电影的编剧...
+      duration:
+        label: 时长
+        placeholder: 电影的长度（秒）...
+      releaseDate:
+        label: 发行日期
+        placeholder: 电影的发布日期...
+      tag:
+        label: 标签
+        placeholder: 与该电影相关的标签词...
+    videoOther:
+      title: 其他视频详情
+    videoTVShow:
+      title: 电视剧详情
+    website:
+      title: 常规信息
+      pageType:
+        label: 页面类型
+        placeholder: 选择您网站的类型...
+      pageTitle:
+        label: 标题
+        placeholder: 输入您网站的标题...
+      description:
+        label: 描述
+        placeholder: 输入您网站的描述...
+      url:
+        label: 页面 URL
+        placeholder: 输入您网站的 URL...
+      web: 网站
+      article: 文章
+      book: 书籍
+      profile: 个人资料
+      music:
+        label: 音乐
+        song: 歌曲
+        musicAlbum: 音乐专辑
+        playlist: 播放列表
+        radioStation: 电台
+      video:
+        label: 视频
+        movie: 电影
+        episode: 剧集
+        tvShow: 电视剧
+        otherVideo: 其他视频

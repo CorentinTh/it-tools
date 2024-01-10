@@ -1,55 +1,56 @@
 import type { OGSchemaType } from '../OGSchemaType.type';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 const typeOptions = [
-  { label: 'Website', value: 'website' },
-  { label: 'Article', value: 'article' },
-  { label: 'Book', value: 'book' },
-  { label: 'Profile', value: 'profile' },
+  { label: t('tools.og-meta-generator.website.web'), value: 'website' },
+  { label: t('tools.og-meta-generator.website.article'), value: 'article' },
+  { label: t('tools.og-meta-generator.website.book'), value: 'book' },
+  { label: t('tools.og-meta-generator.website.profile'), value: 'profile' },
   {
     type: 'group',
-    label: 'Music',
+    label: t('tools.og-meta-generator.website.music.label'),
     key: 'Music',
     children: [
-      { label: 'Song', value: 'music.song' },
-      { label: 'Music album', value: 'music.album' },
-      { label: 'Playlist', value: 'music.playlist' },
-      { label: 'Radio station', value: 'music.radio_station' },
+      { label: t('tools.og-meta-generator.website.music.song'), value: 'music.song' },
+      { label: t('tools.og-meta-generator.website.music.musicAlbum'), value: 'music.album' },
+      { label: t('tools.og-meta-generator.website.music.playlist'), value: 'music.playlist' },
+      { label: t('tools.og-meta-generator.website.music.radioStation'), value: 'music.radio_station' },
     ],
   },
   {
     type: 'group',
-    label: 'Video',
+    label: t('tools.og-meta-generator.website.video.label'),
     key: 'Video',
     children: [
-      { label: 'Movie', value: 'video.movie' },
-      { label: 'Episode', value: 'video.episode' },
-      { label: 'TV show', value: 'video.tv_show' },
-      { label: 'Other video', value: 'video.other' },
+      { label: t('tools.og-meta-generator.website.video.movie'), value: 'video.movie' },
+      { label: t('tools.og-meta-generator.website.video.episode'), value: 'video.episode' },
+      { label: t('tools.og-meta-generator.website.video.tvShow'), value: 'video.tv_show' },
+      { label: t('tools.og-meta-generator.website.video.otherVideo'), value: 'video.other' },
     ],
   },
 ];
 
 export const website: OGSchemaType = {
-  name: 'General information',
+  name: t('tools.og-meta-generator.website.title'),
   elements: [
     {
       type: 'select',
-      label: 'Page type',
-      placeholder: 'Select the type of your website...',
+      label: t('tools.og-meta-generator.website.pageType.label'),
+      placeholder: t('tools.og-meta-generator.website.pageType.placeholder'),
       key: 'type',
       options: typeOptions,
     },
-    { type: 'input', label: 'Title', placeholder: 'Enter the title of your website...', key: 'title' },
+    { type: 'input', label: t('tools.og-meta-generator.website.pageTitle.label'), placeholder: t('tools.og-meta-generator.website.pageTitle.placeholder'), key: 'title' },
     {
       type: 'input',
-      label: 'Description',
-      placeholder: 'Enter the description of your website...',
+      label: t('tools.og-meta-generator.website.description.label'),
+      placeholder: t('tools.og-meta-generator.website.description.placeholder'),
       key: 'description',
     },
     {
       type: 'input',
-      label: 'Page URL',
-      placeholder: 'Enter the url of your website...',
+      label: t('tools.og-meta-generator.website.url.label'),
+      placeholder: t('tools.og-meta-generator.website.url.placeholder'),
       key: 'url',
     },
   ],
