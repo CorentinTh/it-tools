@@ -42,10 +42,10 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            corentinth/it-tools:latest
-            corentinth/it-tools:${{ env.RELEASE_VERSION }}
-            ghcr.io/corentinth/it-tools:latest
-            ghcr.io/corentinth/it-tools:${{ env.RELEASE_VERSION}}
+            TheTechNetwork/it-tools:latest
+            TheTechNetwork/it-tools:${{ env.RELEASE_VERSION }}
+            ghcr.io/TheTechNetwork/it-tools:latest
+            ghcr.io/TheTechNetwork/it-tools:${{ env.RELEASE_VERSION}}
 
   github-release:
     runs-on: ubuntu-latest
@@ -93,11 +93,11 @@ jobs:
             ## Docker images
 
             - Docker Hub
-              - `corentinth/it-tools:latest`
-              - `corentinth/it-tools:${{ env.RELEASE_VERSION }}`
+              - `TheTechNetwork/it-tools:latest`
+              - `TheTechNetwork/it-tools:${{ env.RELEASE_VERSION }}`
             - GitHub Container Registry
-              - `ghcr.io/corentinth/it-tools:latest`
-              - `ghcr.io/corentinth/it-tools:${{ env.RELEASE_VERSION}}`
+              - `ghcr.io/TheTechNetwork/it-tools:latest`
+              - `ghcr.io/TheTechNetwork/it-tools:${{ env.RELEASE_VERSION}}`
 
             ## Changelog
 
