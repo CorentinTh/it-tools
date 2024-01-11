@@ -1,0 +1,8 @@
+{
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "i18n-ally.localesPaths": ["locales", "src/tools/*/locales"],
+    "i18n-ally.keystyle": "nested"
+  }
