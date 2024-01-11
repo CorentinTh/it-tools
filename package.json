@@ -82,7 +82,7 @@
     "ua-parser-js": "^1.0.35",
     "ulid": "^2.3.0",
     "unicode-emoji-json": "^0.4.0",
-    "unplugin-auto-import": "^0.16.4",
+    "unplugin-auto-import": "^0.17.0",
     "uuid": "^9.0.0",
     "vue": "^3.3.4",
     "vue-i18n": "^9.2.2",
