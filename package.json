@@ -44,7 +44,7 @@
     "@vicons/material": "^0.12.0",
     "@vicons/tabler": "^0.12.0",
     "@vueuse/core": "^10.3.0",
-    "@vueuse/head": "^1.0.0",
+    "@vueuse/head": "^2.0.0",
     "@vueuse/router": "^10.0.0",
     "bcryptjs": "^2.4.3",
     "change-case": "^4.1.2",
