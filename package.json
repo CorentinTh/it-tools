@@ -111,7 +111,7 @@
     "@types/ua-parser-js": "^0.7.36",
     "@types/uuid": "^9.0.0",
     "@unocss/eslint-config": "^0.58.0",
-    "@vitejs/plugin-vue": "^4.3.2",
+    "@vitejs/plugin-vue": "^5.0.0",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
     "@vue/compiler-sfc": "^3.2.47",
     "@vue/runtime-dom": "^3.3.4",
