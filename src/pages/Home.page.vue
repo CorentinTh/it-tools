@@ -20,14 +20,14 @@ const { t } = useI18n();
           <ColoredCard :title="$t('home.follow.title')" :icon="Heart">
             {{ $t('home.follow.p1') }}
             <a
-              href="https://github.com/CorentinTh/it-tools"
+              href="https://github.com/TheTechNetwork/it-tools"
               rel="noopener"
               target="_blank"
               :aria-label="$t('home.follow.githubRepository')"
             >GitHub</a>
             {{ $t('home.follow.p2') }}
             <a
-              href="https://twitter.com/ittoolsdottech"
+              href="https://twitter.com/is_that_merican"
               rel="noopener"
               target="_blank"
               :aria-label="$t('home.follow.twitterAccount')"
