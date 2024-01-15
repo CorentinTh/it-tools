@@ -4,10 +4,10 @@ import { NIcon, useThemeVars } from 'naive-ui';
 import { RouterLink } from 'vue-router';
 import { Heart, Home2, Menu2 } from '@vicons/tabler';
 
+import { storeToRefs } from 'pinia';
 import HeroGradient from '../assets/hero-gradient.svg?component';
 import MenuLayout from '../components/MenuLayout.vue';
 import NavbarButtons from '../components/NavbarButtons.vue';
-import { toolsByCategory } from '@/tools';
 import { useStyleStore } from '@/stores/style.store';
 import { config } from '@/config';
 import type { ToolCategory } from '@/tools/tools.types';
@@ -21,12 +21,14 @@ const version = config.app.version;
 const commitSha = config.app.lastCommitSha.slice(0, 7);
 
 const { tracker } = useTracker();
+const { t } = useI18n();
 
 const toolStore = useToolStore();
+const { favoriteTools, toolsByCategory } = storeToRefs(toolStore);
 
 const tools = computed<ToolCategory[]>(() => [
-  ...(toolStore.favoriteTools.length > 0 ? [{ name: 'Your favorite tools', components: toolStore.favoriteTools }] : []),
-  ...toolsByCategory,
+  ...(favoriteTools.value.length > 0 ? [{ name: t('tools.categories.favorite-tools'), components: favoriteTools.value }] : []),
+  ...toolsByCategory.value,
 ]);
 </script>
 
@@ -41,14 +43,18 @@ const tools = computed<ToolCategory[]>(() => [
           </div>
           <div class="divider" />
           <div class="subtitle">
-            Handy tools for developers
+            {{ $t('home.subtitle') }}
           </div>
         </div>
       </RouterLink>
 
       <div class="sider-content">
-        <div v-if="styleStore.isSmallScreen" flex justify-center>
-          <NavbarButtons />
+        <div v-if="styleStore.isSmallScreen" flex flex-col items-center>
+          <locale-selector w="90%" />
+
+          <div flex justify-center>
+            <NavbarButtons />
+          </div>
         </div>
 
         <CollapsibleToolMenu :tools-by-category="tools" />
@@ -88,48 +94,46 @@ const tools = computed<ToolCategory[]>(() => [
         <c-button
           circle
           variant="text"
-          aria-label="Toggle menu"
+          :aria-label="$t('home.toggleMenu')"
           @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed"
         >
           <NIcon size="25" :component="Menu2" />
         </c-button>
 
-        <n-tooltip trigger="hover">
-          <template #trigger>
-            <c-button to="/" circle variant="text" aria-label="Home">
-              <NIcon size="25" :component="Home2" />
-            </c-button>
-          </template>
-          Home
-        </n-tooltip>
+        <c-tooltip :tooltip="$t('home.home')" position="bottom">
+          <c-button to="/" circle variant="text" :aria-label="$t('home.home')">
+            <NIcon size="25" :component="Home2" />
+          </c-button>
+        </c-tooltip>
 
-        <c-button v-if="config.app.env === 'development'" to="/c-lib" circle variant="text" aria-label="UI Lib">
-          <icon-mdi:brush-variant text-20px />
-        </c-button>
+        <c-tooltip :tooltip="$t('home.uiLib')" position="bottom">
+          <c-button v-if="config.app.env === 'development'" to="/c-lib" circle variant="text" :aria-label="$t('home.uiLib')">
+            <icon-mdi:brush-variant text-20px />
+          </c-button>
+        </c-tooltip>
 
         <command-palette />
+
+        <locale-selector v-if="!styleStore.isSmallScreen" />
 
         <div>
           <NavbarButtons v-if="!styleStore.isSmallScreen" />
         </div>
 
-        <n-tooltip trigger="hover">
-          <template #trigger>
-            <c-button
-              round
-              href="https://www.buymeacoffee.com/cthmsst"
-              rel="noopener"
-              target="_blank"
-              class="support-button"
-              :bordered="false"
-              @click="() => tracker.trackEvent({ eventName: 'Support button clicked' })"
-            >
-              Buy me a coffee
-              <NIcon v-if="!styleStore.isSmallScreen" :component="Heart" ml-2 />
-            </c-button>
-          </template>
-          ❤ Support IT Tools development !
-        </n-tooltip>
+        <c-tooltip position="bottom" :tooltip="$t('home.support')">
+          <c-button
+            round
+            href="https://www.buymeacoffee.com/cthmsst"
+            rel="noopener"
+            target="_blank"
+            class="support-button"
+            :bordered="false"
+            @click="() => tracker.trackEvent({ eventName: 'Support button clicked' })"
+          >
+            {{ $t('home.buyMeACoffee') }}
+            <NIcon v-if="!styleStore.isSmallScreen" :component="Heart" ml-2 />
+          </c-button>
+        </c-tooltip>
       </div>
       <slot />
     </template>

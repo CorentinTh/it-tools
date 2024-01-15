@@ -9,6 +9,9 @@ export {
   isTimestamp,
   isUTCDateString,
   isMongoObjectId,
+  dateToExcelFormat,
+  excelFormatToDate,
+  isExcelFormat,
 };
 
 const ISO8601_REGEX
@@ -20,6 +23,8 @@ const RFC3339_REGEX
   = /^([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})(\.[0-9]{1,9})?(([+-])([0-9]{2}):([0-9]{2})|Z)$/;
 
 const RFC7231_REGEX = /^[A-Za-z]{3},\s[0-9]{2}\s[A-Za-z]{3}\s[0-9]{4}\s[0-9]{2}:[0-9]{2}:[0-9]{2}\sGMT$/;
+
+const EXCEL_FORMAT_REGEX = /^-?\d+(\.\d+)?$/;
 
 function createRegexMatcher(regex: RegExp) {
   return (date?: string) => !_.isNil(date) && regex.test(date);
@@ -33,6 +38,8 @@ const isUnixTimestamp = createRegexMatcher(/^[0-9]{1,10}$/);
 const isTimestamp = createRegexMatcher(/^[0-9]{1,13}$/);
 const isMongoObjectId = createRegexMatcher(/^[0-9a-fA-F]{24}$/);
 
+const isExcelFormat = createRegexMatcher(EXCEL_FORMAT_REGEX);
+
 function isUTCDateString(date?: string) {
   if (_.isNil(date)) {
     return false;
@@ -44,4 +51,12 @@ function isUTCDateString(date?: string) {
   catch (_ignored) {
     return false;
   }
+}
+
+function dateToExcelFormat(date: Date) {
+  return String(((date.getTime()) / (1000 * 60 * 60 * 24)) + 25569);
+}
+
+function excelFormatToDate(excelFormat: string | number) {
+  return new Date((Number(excelFormat) - 25569) * 86400 * 1000);
 }

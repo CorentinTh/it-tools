@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { Upload } from '@vicons/tabler';
 import { useBase64 } from '@vueuse/core';
-import type { UploadFileInfo } from 'naive-ui';
 import type { Ref } from 'vue';
 import { useCopy } from '@/composable/copy';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
@@ -33,14 +31,12 @@ function downloadFile() {
   }
 }
 
-const fileList = ref();
 const fileInput = ref() as Ref<File>;
 const { base64: fileBase64 } = useBase64(fileInput);
 const { copy: copyFileBase64 } = useCopy({ source: fileBase64, text: 'Base64 string copied to the clipboard' });
 
-async function onUpload({ file: { file } }: { file: UploadFileInfo }) {
+async function onUpload(file: File) {
   if (file) {
-    fileList.value = [];
     fileInput.value = file;
   }
 }
@@ -65,18 +61,8 @@ async function onUpload({ file: { file } }: { file: UploadFileInfo }) {
   </c-card>
 
   <c-card title="File to base64">
-    <n-upload v-model:file-list="fileList" :show-file-list="true" :on-before-upload="onUpload" list-type="image">
-      <n-upload-dragger>
-        <div mb-2>
-          <n-icon size="35" :depth="3" :component="Upload" />
-        </div>
-        <div op-60>
-          Click or drag a file to this area to upload
-        </div>
-      </n-upload-dragger>
-    </n-upload>
-
-    <c-input-text :value="fileBase64" multiline readonly placeholder="File in base64 will be here" rows="5" mb-2 />
+    <c-file-upload title="Drag and drop a file here, or click to select a file" @file-upload="onUpload" />
+    <c-input-text :value="fileBase64" multiline readonly placeholder="File in base64 will be here" rows="5" my-2 />
 
     <div flex justify-center>
       <c-button @click="copyFileBase64()">

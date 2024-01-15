@@ -1,0 +1,71 @@
+home:
+  categories:
+    newestTools: '最新工具'
+    favoriteTools: '我的收藏'
+    allTools: '全部工具'
+  subtitle: '助力开发人员和 IT 工作者'
+  toggleMenu: '切换菜单'
+  home: '主页'
+  uiLib: 'UI 库'
+  support: '支持 IT 工具开发'
+  buyMeACoffee: '赞助'
+  follow:
+    title: '关注我们'
+    p1: '给我们 Star'
+    githubRepository: 'GitHub 仓库'
+    p2: '关注我们的'
+    twitterAccount: 'Twitter'
+    thankYou: '感谢您的支持！'
+  nav:
+    github: 'GitHub 仓库'
+    githubRepository: 'GitHub 仓库'
+    twitter: 'Twitter 账号'
+    twitterAccount: 'Twitter 账号'
+    about: '关于 IT-Tools'
+    aboutLabel: '关于'
+    darkMode: '深色模式'
+    lightMode: '浅色模式'
+    mode: '颜色模式'
+about:
+  content: >
+    # 关于 IT-Tools
+
+    IT-Tools 由 [Corentin Thomasset](https://github.com/CorentinTh) 用 ❤ 开发，汇集了对开发人员和 IT 从业者有用的工具。如果对您有帮助，请将其分享给您的朋友，并且添加到收藏夹中！
+
+    IT-Tools 永久免费且开源（MIT 许可证），但需要资金用于托管和续订域名。如果您想支持我的工作，并鼓励我添加更多工具，请考虑通过 [赞助我](https://www.buymeacoffee.com/cthmsst) 进行支持。
+
+    ## 技术
+
+    IT-Tools 采用 Vue.js（Vue 3）和 Naive UI 组件库开发，并由 Vercel 托管和持续部署。某些工具使用了第三方开源库，您可以在仓库的 [package.json](https://github.com/CorentinTh/it-tools/blob/main/package.json) 文件中找到完整的列表。
+
+    ## 发现了 Bug？缺少工具？
+
+    如果目前这里没有您需要的工具，并且您认为它可能有用，欢迎在 GitHub 仓库的 [issues](https://github.com/CorentinTh/it-tools/issues/new/choose) 中提交新增功能的请求。
+
+    如果您发现了 Bug，或者某些功能未能按预期工作，请在 GitHub 仓库的 [issues](https://github.com/CorentinTh/it-tools/issues/new/choose) 中提交错误报告。
+
+404:
+  notFound: '404 页面不存在'
+  sorry: '抱歉，该页面似乎不存在'
+  maybe: '也许缓存出现了一些问题，试试强制刷新页面？'
+  backHome: '返回主页'
+favoriteButton:
+  remove: '取消收藏'
+  add: '加入收藏'
+toolCard:
+  new: '新'
+search:
+  label: '搜索'
+tools:
+  categories:
+    favorite-tools: '我的收藏'
+    crypto: '加密'
+    converter: '转换器'
+    web: Web
+    images and videos: '图片和视频'
+    development: '开发'
+    network: '网络'
+    math: '数学'
+    measurement: '测量'
+    text: '文本'
+    data: '数据'

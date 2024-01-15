@@ -2,6 +2,109 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## Version 2023.12.21-5ed3693
+
+### Features
+- **i18n**: improve chinese i18n (#757) (2e56641)
+- **i18n**: add tooltip and favoriteButton i18n (#756) (a1037cf)
+- **i18n**: add Chinese translation base (#718) (8f99eb6)
+- **new tool**: pdf signature checker (#745) (4781920)
+- **new tool**: numeronym generator (#729) (e07e2ae)
+
+### Bug fixes
+- **jwt-parser**: jwt claim array support (#799) (5ed3693)
+- **camera-recorder**: stop camera on navigation (#782) (80e46c9)
+- **doc**: updated create new tool command in readme (#762) (7a70dbb)
+- **base64-file-converter**: fix downloading of index.html content without data preambula (#750) (043e4f0)
+- **docker**: rollback armv7 in docker releases (#741) (205e360)
+- **eta**: corrected example (#737) (821cbea)
+
+### Refactoring
+- **about, i18n**: improved i18n dx with markdown (#753) (bd3edcb)
+- **token, i18n**: complete fr translation (#752) (de1ee69)
+- **uuid generator**: uuid version picker (#751) (38586ca)
+- **case converter**: no split on lowercase, uppercase and mocking case (#748) (ca43a25)
+- **ui**: replaced legacy n-upload with c-file-upload (#747) (7fe47b3)
+- **token**: added password in token generator keywords (#746) (16ffe6b)
+- **bcrypt**: fix input label align (#721) (093ff31)
+
+### Chores
+- **deps**: switched from oui to oui-data for mac address lookup (#693) (0fe9a20)
+- **deps**: update unocss monorepo to ^0.57.0 (#638) (2e396d8)
+- **docker**: added armv7 plateform for docker releases (#722) (fe1de8c)
+
+## Version 2023.11.02-7d94e11
+
+### Features
+- **i18n**: language selector (#710) (e86fd96)
+
+### Bug fixes
+- **dockerfile**: revert replacement of nginx image with non-privileged one (#716) (7d94e11)
+- **encryption**: alert on decryption error (#711) (02b0d0d)
+
+### Refactoring
+- **math-evaluator**: improved description (e87f4b1)
+- **math-evaluator**: improved search and UX (#713) (58de897)
+
+## Version 2023.11.01-e164afb
+
+### Features
+- **command-palette**: clear prompt on palette close (#708) (d013696)
+- **command-palette**: added about page in command palette (99b1eb9)
+- **new tool**: random MAC address generator (#657) (cc3425d)
+- **case-converter**: added mocking case (#705) (681f7bf)
+- **date-converter**: added excel date time format (#704) (f5eb7a8)
+- **i18n**: token generator (#688) (02e68d3)
+- **i18n**: home page (#687) (00562ed)
+- **i18n**: support for i18n in .ts files (#683) (ebb4ec4)
+- **i18n**: tool card (#682) (84a4a64)
+- **i18n**: about page (#680) (a2b53c2)
+- **i18n**: 404 page (#679) (35563b8)
+- **new tool**: text to ascii converter (#669) (b2ad4f7)
+- **new tool**: ULID generator (#623) (5c4d775)
+- **new tool**: add wifi qr code generator (#599) (0eedce6)
+- **new tool**: iban validation and parser (#591) (3a63837)
+- **new tool**: text diff and comparator (#588) (81bfe57)
+
+### Bug fixes
+- **deps**: fix issue on slugify (#593) (#673) (720201a)
+- **deps**: update dependency monaco-editor to ^0.43.0 (#620) (e371ef7)
+- **deps**: update dependency sql-formatter to v13 (#606) (c7d4562)
+
+### Refactoring
+- **ui**: better ui demo preview menu (#664) (015c673)
+- **color-converter**: improved color-converter UX (#701) (abb8335)
+- **docker**: improved docker config (#700) (020e9cb)
+- **c-table**: added description on c-table for accessibility (b408df8)
+- **ci**: reduced timeout in e2e (#666) (88b8818)
+- **ui**: new c-table ui component (#665) (ee4c853)
+- **ui**: removed n-page-header component in user-agent parser (#663) (cbf58fd)
+- **ui**: removed n-p components in about page (#662) (a757a51)
+- **ui**: switched naive tooltip components to custom ones (#661) (025f556)
+- **spelling**: minor corrections to phrasing/spelling (#596) (8a30b6b)
+- **i18n**: merge tools scoped locales with global ones (#612) (233d556)
+- **c-key-value-list**: got rid of table for layout (#611) (7ab9204)
+- **CI**: run e2e against built app and no longer vercel (#610) (18dd140)
+- **bcrypt**: fix typo (#604) (e18bae1)
+
+### Chores
+- **deps**: clean unused dependencies (#709) (e164afb)
+- **deps**: update docker/setup-qemu-action action to v3 (#627) (4365226)
+- **deps**: update docker/setup-buildx-action action to v3 (#626) (57ecda1)
+- **deps**: update docker/login-action action to v3 (#625) (d8d7a3b)
+- **deps**: update docker/build-push-action action to v5 (#624) (d36b18f)
+- **deps**: update dependency node to v18.18.2 (#674) (eea9f91)
+- **deps**: update dependency node to v18.18.0 (#636) (2d2dffb)
+- **deps**: update actions/checkout action to v4 (#613) (4972159)
+- **deps**: update dependency unplugin-icons to ^0.17.0 (#609) (f035f48)
+- **deps**: update dependency @intlify/unplugin-vue-i18n to ^0.13.0 (#597) (d1dff42)
+- **deps**: update dependency @antfu/eslint-config to ^0.41.0 (#585) (a9cd91c)
+- **deps**: update dependency typescript to ~5.2.0 (#587) (f3e14fc)
+
+### Doc
+- **readme**: added contributors list (#622) (557b304)
+- **hosting**: added cloudron in the other hosting solutions section (#589) (06c3547)
+
 ## Version 2023.08.21-6f93cba
 
 ### Features

@@ -36,7 +36,7 @@ const menuOptions = computed(() =>
     tools: components.map(tool => ({
       label: makeLabel(tool),
       icon: makeIcon(tool),
-      key: tool.name,
+      key: tool.path,
     })),
   })),
 );
@@ -62,7 +62,7 @@ const themeVars = useThemeVars();
 
         <n-menu
           class="menu"
-          :value="route.name as string"
+          :value="route.path"
           :collapsed-width="64"
           :collapsed-icon-size="22"
           :options="tools"

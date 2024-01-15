@@ -39,14 +39,11 @@ function onInputEnter(index: number) {
         autofocus
         @keydown.enter="onInputEnter(index)"
       />
-      <n-tooltip>
-        <template #trigger>
-          <c-button circle variant="text" @click="values.splice(index, 1)">
-            <n-icon :component="Trash" depth="3" size="18" />
-          </c-button>
-        </template>
-        Delete value
-      </n-tooltip>
+      <c-tooltip tooltip="Delete this value">
+        <c-button circle variant="text" @click="values.splice(index, 1)">
+          <n-icon :component="Trash" depth="3" size="18" />
+        </c-button>
+      </c-tooltip>
     </div>
 
     <c-button @click="addValue">

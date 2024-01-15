@@ -33,4 +33,19 @@ const value = ref('');
   <c-select label="Label" label-position="left" label-align="left" mb-2 label-width="200px" />
   <c-select label="Label" label-position="left" label-align="center" mb-2 label-width="200px" />
   <c-select label="Label" label-position="left" label-align="right" mb-2 label-width="200px" />
+
+  <h2>Custom displayed value</h2>
+  <c-select v-model:value="value" :options="optionsA" mb-2>
+    <template #displayed-value>
+      <span class="font-bold lh-normal">Hello</span>
+    </template>
+  </c-select>
+
+  <c-select v-model:value="value" :options="optionsA">
+    <template #displayed-value>
+      <span lh-normal>
+        <icon-mdi-translate />
+      </span>
+    </template>
+  </c-select>
 </template>

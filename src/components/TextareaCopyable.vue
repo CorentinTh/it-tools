@@ -40,7 +40,7 @@ const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : copyMessage.
 
 <template>
   <div style="overflow-x: hidden; width: 100%">
-    <c-card class="result-card">
+    <c-card relative>
       <n-scrollbar
         x-scrollable
         trigger="none"
@@ -50,16 +50,13 @@ const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : copyMessage.
           <n-code :code="value" :language="language" :trim="false" data-test-id="area-content" />
         </n-config-provider>
       </n-scrollbar>
-      <n-tooltip v-if="value" trigger="hover">
-        <template #trigger>
-          <div class="copy-button" :class="[copyPlacement]">
-            <c-button circle important:h-10 important:w-10 @click="copy()">
-              <n-icon size="22" :component="Copy" />
-            </c-button>
-          </div>
-        </template>
-        <span>{{ tooltipText }}</span>
-      </n-tooltip>
+      <div absolute right-10px top-10px>
+        <c-tooltip v-if="value" :tooltip="tooltipText" position="left">
+          <c-button circle important:h-10 important:w-10 @click="copy()">
+            <n-icon size="22" :component="Copy" />
+          </c-button>
+        </c-tooltip>
+      </div>
     </c-card>
     <div v-if="copyPlacement === 'outside'" mt-4 flex justify-center>
       <c-button @click="copy()">
@@ -73,26 +70,5 @@ const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : copyMessage.
 ::v-deep(.n-scrollbar) {
   padding-bottom: 10px;
   margin-bottom: -10px;
-}
-.result-card {
-  position: relative;
-  .copy-button {
-    position: absolute;
-    opacity: 1;
-
-    &.top-right {
-      top: 10px;
-      right: 10px;
-    }
-
-    &.bottom-right {
-      bottom: 10px;
-      right: 10px;
-    }
-    &.outside,
-    &.none {
-      display: none;
-    }
-  }
 }
 </style>

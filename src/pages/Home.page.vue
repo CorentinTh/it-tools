@@ -17,21 +17,22 @@ const { t } = useI18n();
     <div class="grid-wrapper">
       <n-grid v-if="config.showBanner" x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
         <n-gi>
-          <ColoredCard title="You like it-tools?" :icon="Heart">
-            Give us a star on
+          <ColoredCard :title="$t('home.follow.title')" :icon="Heart">
+            {{ $t('home.follow.p1') }}
             <a
               href="https://github.com/CorentinTh/it-tools"
               rel="noopener"
               target="_blank"
-              aria-label="IT-Tools' GitHub repository"
+              :aria-label="$t('home.follow.githubRepository')"
             >GitHub</a>
-            or follow us on
+            {{ $t('home.follow.p2') }}
             <a
               href="https://twitter.com/ittoolsdottech"
               rel="noopener"
               target="_blank"
-              aria-label="IT-Tools' Twitter account"
-            >Twitter</a>! Thank you
+              :aria-label="$t('home.follow.twitterAccount')"
+            >Twitter</a>.
+            {{ $t('home.follow.thankYou') }}
             <n-icon :component="Heart" />
           </ColoredCard>
         </n-gi>
@@ -39,7 +40,7 @@ const { t } = useI18n();
 
       <transition name="height">
         <div v-if="toolStore.favoriteTools.length > 0">
-          <n-h3>Your favorite tools</n-h3>
+          <n-h3>{{ $t('home.categories.favoriteTools') }}</n-h3>
           <n-grid x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
             <n-gi v-for="tool in toolStore.favoriteTools" :key="tool.name">
               <ToolCard :tool="tool" />
@@ -57,7 +58,7 @@ const { t } = useI18n();
         </n-grid>
       </div>
 
-      <n-h3>All the tools</n-h3>
+      <n-h3>{{ $t('home.categories.allTools') }}</n-h3>
       <n-grid x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
         <n-gi v-for="tool in toolStore.tools" :key="tool.name">
           <transition>

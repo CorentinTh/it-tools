@@ -12,7 +12,7 @@ const componentName = computed(() => _.startCase(String(route.name).replace(/^c-
     <h1>c-lib components</h1>
 
     <div flex>
-      <div w-30 b-r b-gray b-op-10 b-r-solid pr-4>
+      <div w-200px b-r b-gray b-op-10 b-r-solid pr-4>
         <c-button
           v-for="{ name } of demoRoutes"
           :key="name"
@@ -20,6 +20,7 @@ const componentName = computed(() => _.startCase(String(route.name).replace(/^c-
           :to="{ name }"
           w-full
           important:justify-start
+          important:text-left
           :type="route.name === name ? 'primary' : 'default'"
         >
           {{ name }}

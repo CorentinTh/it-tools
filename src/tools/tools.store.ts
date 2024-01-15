@@ -1,44 +1,57 @@
 import { type MaybeRef, get, useStorage } from '@vueuse/core';
 import { defineStore } from 'pinia';
 import type { Ref } from 'vue';
-import type { Tool, ToolWithCategory } from './tools.types';
+import _ from 'lodash';
+import type { Tool, ToolCategory, ToolWithCategory } from './tools.types';
 import { toolsWithCategory } from './index';
 
-export const useToolStore = defineStore('tools', {
-  state: () => ({
-    favoriteToolsName: useStorage('favoriteToolsName', []) as Ref<string[]>,
-  }),
-  getters: {
-    favoriteTools(state) {
-      return state.favoriteToolsName
-        .map(favoriteName => toolsWithCategory.find(({ name }) => name === favoriteName))
-        .filter(Boolean) as ToolWithCategory[]; // cast because .filter(Boolean) does not remove undefined from type
-    },
+export const useToolStore = defineStore('tools', () => {
+  const favoriteToolsName = useStorage('favoriteToolsName', []) as Ref<string[]>;
+  const { t } = useI18n();
 
-    notFavoriteTools(state): ToolWithCategory[] {
-      return toolsWithCategory.filter(tool => !state.favoriteToolsName.includes(tool.name));
-    },
+  const tools = computed<ToolWithCategory[]>(() => toolsWithCategory.map((tool) => {
+    const toolI18nKey = tool.path.replace(/\//g, '');
 
-    tools(): ToolWithCategory[] {
-      return toolsWithCategory;
-    },
+    return ({
+      ...tool,
+      name: t(`tools.${toolI18nKey}.title`, tool.name),
+      description: t(`tools.${toolI18nKey}.description`, tool.description),
+      category: t(`tools.categories.${tool.category.toLowerCase()}`, tool.category),
+    });
+  }));
 
-    newTools(): ToolWithCategory[] {
-      return this.tools.filter(({ isNew }) => isNew);
-    },
-  },
+  const toolsByCategory = computed<ToolCategory[]>(() => {
+    return _.chain(tools.value)
+      .groupBy('category')
+      .map((components, name) => ({
+        name,
+        components,
+      }))
+      .value();
+  });
 
-  actions: {
+  const favoriteTools = computed(() => {
+    return favoriteToolsName.value
+      .map(favoriteName => tools.value.find(({ name }) => name === favoriteName))
+      .filter(Boolean) as ToolWithCategory[]; // cast because .filter(Boolean) does not remove undefined from type
+  });
+
+  return {
+    tools,
+    favoriteTools,
+    toolsByCategory,
+    newTools: computed(() => tools.value.filter(({ isNew }) => isNew)),
+
     addToolToFavorites({ tool }: { tool: MaybeRef<Tool> }) {
-      this.favoriteToolsName.push(get(tool).name);
+      favoriteToolsName.value.push(get(tool).name);
     },
 
     removeToolFromFavorites({ tool }: { tool: MaybeRef<Tool> }) {
-      this.favoriteToolsName = this.favoriteToolsName.filter(name => get(tool).name !== name);
+      favoriteToolsName.value = favoriteToolsName.value.filter(name => get(tool).name !== name);
     },
 
     isToolFavorite({ tool }: { tool: MaybeRef<Tool> }) {
-      return this.favoriteToolsName.includes(get(tool).name);
+      return favoriteToolsName.value.includes(get(tool).name);
     },
-  },
+  };
 });

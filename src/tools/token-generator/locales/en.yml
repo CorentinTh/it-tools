@@ -7,3 +7,9 @@ tools:
     lowercase: Lowercase (abc...)
     numbers: Numbers (123...)
     symbols: Symbols (!-;...)
+    length: Length
+    tokenPlaceholder: 'The token...'
+    copied: Token copied to the clipboard
+    button:
+      copy: Copy
+      refresh: Refresh
