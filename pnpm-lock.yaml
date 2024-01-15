@@ -205,6 +205,9 @@ devDependencies:
   '@types/lodash':
     specifier: ^4.14.192
     version: 4.14.192
+  '@types/marked':
+    specifier: ^5.0.1
+    version: 5.0.2
   '@types/mime-types':
     specifier: ^2.1.1
     version: 2.1.1
@@ -2988,6 +2991,10 @@ packages:
       '@types/mdurl': 1.0.2
     dev: true
 
+  /@types/marked@5.0.2:
+    resolution: {integrity: sha512-OucS4KMHhFzhz27KxmWg7J+kIYqyqoW5kdIEI319hqARQQUTqhao3M/F+uFnDXD0Rg72iDDZxZNxq5gvctmLlg==}
+    dev: true
+
   /@types/mdast@3.0.11:
     resolution: {integrity: sha512-Y/uImid8aAwrEA24/1tcRZwpxX3pIFTSilcNDKSPn+Y2iDywSEachzRuvgAYYLR3wpGXAsMbv5lvKLDZLeYPAw==}
     dependencies:
@@ -3374,7 +3381,7 @@ packages:
     dependencies:
       '@unhead/dom': 0.5.1
       '@unhead/schema': 0.5.1
-      '@vueuse/shared': 10.6.1(vue@3.3.4)
+      '@vueuse/shared': 10.7.2(vue@3.3.4)
       unhead: 0.5.1
       vue: 3.3.4
     transitivePeerDependencies:
@@ -4010,14 +4017,14 @@ packages:
   /@vueuse/shared@10.3.0(vue@3.3.4):
     resolution: {integrity: sha512-kGqCTEuFPMK4+fNWy6dUOiYmxGcUbtznMwBZLC1PubidF4VZY05B+Oht7Jh7/6x4VOWGpvu3R37WHi81cKpiqg==}
     dependencies:
-      vue-demi: 0.14.5(vue@3.3.4)
+      vue-demi: 0.14.6(vue@3.3.4)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
     dev: false
 
-  /@vueuse/shared@10.6.1(vue@3.3.4):
-    resolution: {integrity: sha512-TECVDTIedFlL0NUfHWncf3zF9Gc4VfdxfQc8JFwoVZQmxpONhLxFrlm0eHQeidHj4rdTPL3KXJa0TZCk1wnc5Q==}
+  /@vueuse/shared@10.7.2(vue@3.3.4):
+    resolution: {integrity: sha512-qFbXoxS44pi2FkgFjPvF4h7c9oMDutpyBdcJdMYIMg9XyXli2meFMuaKn+UMgsClo//Th6+beeCgqweT/79BVA==}
     dependencies:
       vue-demi: 0.14.6(vue@3.3.4)
     transitivePeerDependencies:
