@@ -63,8 +63,8 @@ dependencies:
     specifier: ^4.1.1
     version: 4.1.1
   date-fns:
-    specifier: ^2.29.3
-    version: 2.29.3
+    specifier: ^3.0.0
+    version: 3.2.0
   dompurify:
     specifier: ^3.0.6
     version: 3.0.6
@@ -270,7 +270,7 @@ devDependencies:
     version: 5.3.3
   unocss:
     specifier: ^0.58.0
-    version: 0.58.3(postcss@8.4.31)(rollup@2.79.1)(vite@4.4.9)
+    version: 0.58.3(postcss@8.4.33)(rollup@2.79.1)(vite@4.4.9)
   unocss-preset-scrollbar:
     specifier: ^0.3.0
     version: 0.3.0(unocss@0.58.3)
@@ -3909,7 +3909,7 @@ packages:
       sirv: 2.0.4
     dev: true
 
-  /@unocss/postcss@0.58.3(postcss@8.4.31):
+  /@unocss/postcss@0.58.3(postcss@8.4.33):
     resolution: {integrity: sha512-y1WQNvLUidypCu/tr6oJfaV4pjd8Lsk1N27ASEVsvockOH3MekRYpHtJfTl2fMk+1Y98AHv7hPAVjM2NlvhDow==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -3921,7 +3921,7 @@ packages:
       css-tree: 2.3.1
       fast-glob: 3.3.2
       magic-string: 0.30.5
-      postcss: 8.4.31
+      postcss: 8.4.33
     dev: true
 
   /@unocss/preset-attributify@0.58.3:
@@ -5207,16 +5207,15 @@ packages:
       date-fns: 2.30.0
     dev: false
 
-  /date-fns@2.29.3:
-    resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
-    engines: {node: '>=0.11'}
-    dev: false
-
   /date-fns@2.30.0:
     resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
     engines: {node: '>=0.11'}
     dependencies:
       '@babel/runtime': 7.23.2
+    dev: false
+
+  /date-fns@3.2.0:
+    resolution: {integrity: sha512-E4KWKavANzeuusPi0jUjpuI22SURAznGkx7eZV+4i6x2A+IZxAMcajgkvuDAU1bg40+xuhW1zRdVIIM/4khuIg==}
     dev: false
 
   /de-indent@1.0.2:
@@ -9373,10 +9372,10 @@ packages:
       unocss: '>= 0.31.13 < 1'
     dependencies:
       '@unocss/preset-mini': 0.56.5
-      unocss: 0.58.3(postcss@8.4.31)(rollup@2.79.1)(vite@4.4.9)
+      unocss: 0.58.3(postcss@8.4.33)(rollup@2.79.1)(vite@4.4.9)
     dev: true
 
-  /unocss@0.58.3(postcss@8.4.31)(rollup@2.79.1)(vite@4.4.9):
+  /unocss@0.58.3(postcss@8.4.33)(rollup@2.79.1)(vite@4.4.9):
     resolution: {integrity: sha512-2rnvghfiIDRQ2cOrmN4P7J7xV2p3yBK+bPAt1aoUxCXcszkLczAnQzh9c7IZ+p70kSVstK45cJTYV6TMzOLF7Q==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -9392,7 +9391,7 @@ packages:
       '@unocss/cli': 0.58.3(rollup@2.79.1)
       '@unocss/core': 0.58.3
       '@unocss/extractor-arbitrary-variants': 0.58.3
-      '@unocss/postcss': 0.58.3(postcss@8.4.31)
+      '@unocss/postcss': 0.58.3(postcss@8.4.33)
       '@unocss/preset-attributify': 0.58.3
       '@unocss/preset-icons': 0.58.3
       '@unocss/preset-mini': 0.58.3
