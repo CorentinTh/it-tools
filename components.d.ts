@@ -69,6 +69,7 @@ declare module '@vue/runtime-core' {
     DemoWrapper: typeof import('./src/ui/demo/demo-wrapper.vue')['default']
     DeviceInformation: typeof import('./src/tools/device-information/device-information.vue')['default']
     DiffViewer: typeof import('./src/tools/json-diff/diff-viewer/diff-viewer.vue')['default']
+    DockerComposeConverter: typeof import('./src/tools/docker-compose-converter/docker-compose-converter.vue')['default']
     DockerRunToDockerComposeConverter: typeof import('./src/tools/docker-run-to-docker-compose-converter/docker-run-to-docker-compose-converter.vue')['default']
     DynamicValues: typeof import('./src/tools/benchmark-builder/dynamic-values.vue')['default']
     Editor: typeof import('./src/tools/html-wysiwyg-editor/editor/editor.vue')['default']
