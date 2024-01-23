@@ -135,8 +135,8 @@ dependencies:
     specifier: ^1.5.1
     version: 1.5.1
   sql-formatter:
-    specifier: ^13.0.0
-    version: 13.0.0
+    specifier: ^15.0.0
+    version: 15.1.2
   ua-parser-js:
     specifier: ^1.0.35
     version: 1.0.35
@@ -8717,8 +8717,8 @@ packages:
     resolution: {integrity: sha512-VE0SOVEHCk7Qc8ulkWw3ntAzXuqf7S2lvwQaDLRnUeIEaKNQJzV6BwmLKhOqT61aGhfUMrXeaBk+oDGCzvhcug==}
     dev: false
 
-  /sql-formatter@13.0.0:
-    resolution: {integrity: sha512-V21cVvge4rhn9Fa7K/fTKcmPM+x1yee6Vhq8ZwgaWh3VPBqApgsaoFB5kLAhiqRo5AmSaRyLU7LIdgnNwH01/w==}
+  /sql-formatter@15.1.2:
+    resolution: {integrity: sha512-zBrLBclCNurCsQaO6yMvkXzHvv7eJPjiF8LIEQ5HdBV/x6UuWIZwqss3mlZ/6HLj+VYhFKeHpQnyLuZWG2agKQ==}
     hasBin: true
     dependencies:
       argparse: 2.0.1
