@@ -209,8 +209,8 @@ devDependencies:
     specifier: 2.1.1
     version: 2.1.1
   '@types/netmask':
-    specifier: 2.0.0
-    version: 2.0.0
+    specifier: 2.0.5
+    version: 2.0.5
   '@types/node':
     specifier: 20.11.6
     version: 20.11.6
@@ -3067,8 +3067,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/netmask@2.0.0:
-    resolution: {integrity: sha512-6LjGn0BPF0gOHGuRuJ0hGfdBJLz/9K8Ikz+oRThTNc2w7CGLvwqdjAP7/CydsUeL4cxBBXAHLFfC9bMs74757Q==}
+  /@types/netmask@2.0.5:
+    resolution: {integrity: sha512-9Q5iw9+pHZBVLDG700dlQSWWHTYvOb8KfPjfQTNckCYky4IyjV2xh81+RgC1CCwqv92bYLpz1cVKyJav0B88uQ==}
     dev: true
 
   /@types/node-forge@1.3.2:
