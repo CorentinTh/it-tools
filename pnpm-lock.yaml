@@ -221,8 +221,8 @@ devDependencies:
     specifier: 1.5.5
     version: 1.5.5
   '@types/ua-parser-js':
-    specifier: 0.7.36
-    version: 0.7.36
+    specifier: 0.7.39
+    version: 0.7.39
   '@types/uuid':
     specifier: 9.0.0
     version: 9.0.0
@@ -3140,8 +3140,8 @@ packages:
     resolution: {integrity: sha512-NfQ4gyz38SL8sDNrSixxU2Os1a5xcdFxipAFxYEuLUlvU2uDwS4NUpsImcf1//SlWItCVMMLiylsxbmNMToV/g==}
     dev: true
 
-  /@types/ua-parser-js@0.7.36:
-    resolution: {integrity: sha512-N1rW+njavs70y2cApeIw1vLMYXRwfBy+7trgavGuuTfOd7j1Yh7QTRc/yqsPl6ncokt72ZXuxEU0PiCp9bSwNQ==}
+  /@types/ua-parser-js@0.7.39:
+    resolution: {integrity: sha512-P/oDfpofrdtF5xw433SPALpdSchtJmY7nsJItf8h3KXqOslkbySh8zq4dSWXH2oTjRvJ5PczVEoCZPow6GicLg==}
     dev: true
 
   /@types/unist@2.0.6:
