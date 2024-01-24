@@ -1,11 +1,9 @@
 {
+  "configMigration": true,
   "extends": [
-    ":dependencyDashboard",
-    ":semanticPrefixFixDepsChoreOthers",
-    ":ignoreModulesAndTests",
-    "group:monorepos",
-    "group:recommended",
-    "replacements:all",
-    "workarounds:all"
+    "config:recommended",
+    "docker:pinDigests",
+    "helpers:pinGitHubActionDigests",
+    ":pinDevDependencies"
   ]
 }
