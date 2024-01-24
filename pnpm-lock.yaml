@@ -218,8 +218,8 @@ devDependencies:
     specifier: 1.3.2
     version: 1.3.2
   '@types/qrcode':
-    specifier: 1.5.0
-    version: 1.5.0
+    specifier: 1.5.5
+    version: 1.5.5
   '@types/ua-parser-js':
     specifier: 0.7.36
     version: 0.7.36
@@ -3109,8 +3109,8 @@ packages:
     resolution: {integrity: sha512-ZREFYlpUmPQJ0esjxoG1fMvB2HNaD3z+mjqdSosZvd3RalncI9NEur73P8ZJz4YQdL64CmV1w0RuqoRUlhQRBw==}
     dev: true
 
-  /@types/qrcode@1.5.0:
-    resolution: {integrity: sha512-x5ilHXRxUPIMfjtM+1vf/GPTRWZ81nqscursm5gMznJeK9M0YnZ1c3bEvRLQ0zSSgedLx1J6MGL231ObQGGhaA==}
+  /@types/qrcode@1.5.5:
+    resolution: {integrity: sha512-CdfBi/e3Qk+3Z/fXYShipBT13OJ2fDO2Q2w5CIP5anLTLIndQG9z6P1cnm+8zCWSpm5dnxMFd/uREtb0EXuQzg==}
     dependencies:
       '@types/node': 20.11.6
     dev: true
