@@ -194,8 +194,8 @@ devDependencies:
     specifier: 2.4.6
     version: 2.4.6
   '@types/crypto-js':
-    specifier: 4.1.1
-    version: 4.1.1
+    specifier: 4.2.2
+    version: 4.2.2
   '@types/dompurify':
     specifier: 3.0.5
     version: 3.0.5
@@ -2979,8 +2979,8 @@ packages:
     resolution: {integrity: sha512-9xlo6R2qDs5uixm0bcIqCeMCE6HiQsIyel9KQySStiyqNl2tnj2mP3DX1Nf56MD6KMenNNlBBsy3LJ7gUEQPXQ==}
     dev: true
 
-  /@types/crypto-js@4.1.1:
-    resolution: {integrity: sha512-BG7fQKZ689HIoc5h+6D2Dgq1fABRa0RbBWKBd9SP/MVRVXROflpm5fhwyATX5duFmbStzyzyycPB8qUYKDH3NA==}
+  /@types/crypto-js@4.2.2:
+    resolution: {integrity: sha512-sDOLlVbHhXpAUAL0YHDUUwDZf3iN4Bwi4W6a0W0b+QcAezUbRtH4FVb+9J4h+XFPW7l/gQ9F8qC7P+Ec4k8QVQ==}
     dev: true
 
   /@types/dompurify@3.0.5:
