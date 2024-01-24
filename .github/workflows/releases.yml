@@ -42,8 +42,8 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            elibrody/it-tools:latest
-            elibrody/it-tools:${{ env.RELEASE_VERSION }}
+            thetechnetwork/it-tools:latest
+            thetechnetwork/it-tools:${{ env.RELEASE_VERSION }}
             ghcr.io/thetechnetwork/it-tools:latest
             ghcr.io/thetechnetwork/it-tools:${{ env.RELEASE_VERSION}}
 
@@ -93,8 +93,8 @@ jobs:
             ## Docker images
 
             - Docker Hub
-              - `elibrody/it-tools:latest`
-              - `elibrody/it-tools:${{ env.RELEASE_VERSION }}`
+              - `thetechnetwork/it-tools:latest`
+              - `thetechnetwork/it-tools:${{ env.RELEASE_VERSION }}`
             - GitHub Container Registry
               - `ghcr.io/thetechnetwork/it-tools:latest`
               - `ghcr.io/thetechnetwork/it-tools:${{ env.RELEASE_VERSION}}`
