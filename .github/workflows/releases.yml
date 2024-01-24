@@ -42,14 +42,14 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            thetechnetwork/it-tools:latest
-            thetechnetwork/it-tools:${{ env.RELEASE_VERSION }}
+            elibrody/it-tools:latest
+            elibrody/it-tools:${{ env.RELEASE_VERSION }}
             ghcr.io/thetechnetwork/it-tools:latest
             ghcr.io/thetechnetwork/it-tools:${{ env.RELEASE_VERSION}}
 
   github-release:
     runs-on: ubuntu-latest
-    #needs: docker-release
+    needs: docker-release
     steps:
       - name: Get release version
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
@@ -93,8 +93,8 @@ jobs:
             ## Docker images
 
             - Docker Hub
-              - `thetechnetwork/it-tools:latest`
-              - `thetechnetwork/it-tools:${{ env.RELEASE_VERSION }}`
+              - `elibrody/it-tools:latest`
+              - `elibrody/it-tools:${{ env.RELEASE_VERSION }}`
             - GitHub Container Registry
               - `ghcr.io/thetechnetwork/it-tools:latest`
               - `ghcr.io/thetechnetwork/it-tools:${{ env.RELEASE_VERSION}}`
