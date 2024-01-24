@@ -49,7 +49,7 @@ jobs:
 
   github-release:
     runs-on: ubuntu-latest
-    needs: docker-release
+    #needs: docker-release
     steps:
       - name: Get release version
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
