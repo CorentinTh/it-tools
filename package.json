@@ -118,7 +118,7 @@
     "@vue/test-utils": "2.3.2",
     "@vue/tsconfig": "0.4.0",
     "consola": "3.0.2",
-    "eslint": "8.47.0",
+    "eslint": "8.56.0",
     "hygen": "6.2.11",
     "jsdom": "24.0.0",
     "less": "4.1.3",
