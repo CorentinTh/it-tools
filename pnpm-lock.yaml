@@ -233,8 +233,8 @@ devDependencies:
     specifier: 5.0.3
     version: 5.0.3(vite@4.4.9)(vue@3.3.4)
   '@vitejs/plugin-vue-jsx':
-    specifier: 3.0.2
-    version: 3.0.2(vite@4.4.9)(vue@3.3.4)
+    specifier: 3.1.0
+    version: 3.1.0(vite@4.4.9)(vue@3.3.4)
   '@vue/compiler-sfc':
     specifier: 3.2.47
     version: 3.2.47
@@ -3663,11 +3663,11 @@ packages:
     resolution: {integrity: sha512-3+wUFuxb7e8OzZ8Wryct1pzfA2vyoF4lwW98O9s27ZrfCGaJGNmqG+q8A7vQ92Mf+COCgxpK+rhNPTtTvaU6qw==}
     dev: false
 
-  /@vitejs/plugin-vue-jsx@3.0.2(vite@4.4.9)(vue@3.3.4):
-    resolution: {integrity: sha512-obF26P2Z4Ogy3cPp07B4VaW6rpiu0ue4OT2Y15UxT5BZZ76haUY9guOsZV3uWh/I6xc+VeiW+ZVabRE82FyzWw==}
+  /@vitejs/plugin-vue-jsx@3.1.0(vite@4.4.9)(vue@3.3.4):
+    resolution: {integrity: sha512-w9M6F3LSEU5kszVb9An2/MmXNxocAnUb3WhRr8bHlimhDrXNt6n6D2nJQR3UXpGlZHh/EsgouOHCsM8V3Ln+WA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
-      vite: ^4.0.0
+      vite: ^4.0.0 || ^5.0.0
       vue: ^3.0.0
     dependencies:
       '@babel/core': 7.23.7
