@@ -92,7 +92,7 @@
     "yaml": "^2.2.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "2.6.2",
+    "@antfu/eslint-config": "2.6.3",
     "@iconify-json/mdi": "1.1.50",
     "@intlify/unplugin-vue-i18n": "2.0.0",
     "@playwright/test": "1.32.3",
