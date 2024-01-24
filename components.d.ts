@@ -10,7 +10,6 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     '404.page': typeof import('./src/pages/404.page.vue')['default']
-    About: typeof import('./src/pages/About.vue')['default']
     App: typeof import('./src/App.vue')['default']
     'Base.layout': typeof import('./src/layouts/base.layout.vue')['default']
     Base64FileConverter: typeof import('./src/tools/base64-file-converter/base64-file-converter.vue')['default']
@@ -91,7 +90,6 @@ declare module '@vue/runtime-core' {
     'IconMdi:contentCopy': typeof import('~icons/mdi/content-copy')['default']
     'IconMdi:kettleSteamOutline': typeof import('~icons/mdi/kettle-steam-outline')['default']
     IconMdiArrowDown: typeof import('~icons/mdi/arrow-down')['default']
-    IconMdiArrowRight: typeof import('~icons/mdi/arrow-right')['default']
     IconMdiArrowRightBottom: typeof import('~icons/mdi/arrow-right-bottom')['default']
     IconMdiCamera: typeof import('~icons/mdi/camera')['default']
     IconMdiChevronDown: typeof import('~icons/mdi/chevron-down')['default']
@@ -171,8 +169,6 @@ declare module '@vue/runtime-core' {
     NTable: typeof import('naive-ui')['NTable']
     NTag: typeof import('naive-ui')['NTag']
     NumeronymGenerator: typeof import('./src/tools/numeronym-generator/numeronym-generator.vue')['default']
-    NUpload: typeof import('naive-ui')['NUpload']
-    NUploadDragger: typeof import('naive-ui')['NUploadDragger']
     OtpCodeGeneratorAndValidator: typeof import('./src/tools/otp-code-generator-and-validator/otp-code-generator-and-validator.vue')['default']
     PasswordStrengthAnalyser: typeof import('./src/tools/password-strength-analyser/password-strength-analyser.vue')['default']
     PdfSignatureChecker: typeof import('./src/tools/pdf-signature-checker/pdf-signature-checker.vue')['default']
@@ -192,6 +188,7 @@ declare module '@vue/runtime-core' {
     StringObfuscator: typeof import('./src/tools/string-obfuscator/string-obfuscator.vue')['default']
     SvgPlaceholderGenerator: typeof import('./src/tools/svg-placeholder-generator/svg-placeholder-generator.vue')['default']
     TemperatureConverter: typeof import('./src/tools/temperature-converter/temperature-converter.vue')['default']
+    'Test.page': typeof import('./src/pages/test.page.vue')['default']
     TextareaCopyable: typeof import('./src/components/TextareaCopyable.vue')['default']
     TextDiff: typeof import('./src/tools/text-diff/text-diff.vue')['default']
     TextStatistics: typeof import('./src/tools/text-statistics/text-statistics.vue')['default']

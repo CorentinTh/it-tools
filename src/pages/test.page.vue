@@ -7,9 +7,6 @@ import { useToolStore } from '@/tools/tools.store';
 import { config } from '@/config';
 
 const toolStore = useToolStore();
-
-useHead({ title: 'IT Tools - Handy online tools for developers' });
-const { t } = useI18n();
 </script>
 
 <template>
