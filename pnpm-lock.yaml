@@ -248,8 +248,8 @@ devDependencies:
     specifier: 0.4.0
     version: 0.4.0
   consola:
-    specifier: 3.0.2
-    version: 3.0.2
+    specifier: 3.2.3
+    version: 3.2.3
   eslint:
     specifier: 8.56.0
     version: 8.56.0
@@ -4401,10 +4401,6 @@ packages:
     dependencies:
       ini: 1.3.8
       proto-list: 1.2.4
-    dev: true
-
-  /consola@3.0.2:
-    resolution: {integrity: sha512-o/Wau2FmZKiQgyp3c3IULgN6J5yc0lwYMnoyiZdEpdGxKGBtt2ACbkulBZ6BUsHy1HlSJqoP4YOyPIJLgRJyKQ==}
     dev: true
 
   /consola@3.2.3:
