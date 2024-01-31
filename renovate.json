@@ -7,3 +7,9 @@
     ":pinDevDependencies"
   ]
 }
+{
+  "branchConcurrentLimit": 10
+}
+{
+  "prHourlyLimit": 25
+}
