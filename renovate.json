@@ -1,15 +1,11 @@
 {
   "configMigration": true,
+  "branchConcurrentLimit": 10,
+  "prHourlyLimit": 25
   "extends": [
     "config:recommended",
     "docker:pinDigests",
     "helpers:pinGitHubActionDigests",
     ":pinDevDependencies"
   ]
-}
-{
-  "branchConcurrentLimit": 10
-}
-{
-  "prHourlyLimit": 25
 }
