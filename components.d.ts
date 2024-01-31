@@ -91,7 +91,6 @@ declare module '@vue/runtime-core' {
     'IconMdi:contentCopy': typeof import('~icons/mdi/content-copy')['default']
     'IconMdi:kettleSteamOutline': typeof import('~icons/mdi/kettle-steam-outline')['default']
     IconMdiArrowDown: typeof import('~icons/mdi/arrow-down')['default']
-    IconMdiArrowRight: typeof import('~icons/mdi/arrow-right')['default']
     IconMdiArrowRightBottom: typeof import('~icons/mdi/arrow-right-bottom')['default']
     IconMdiCamera: typeof import('~icons/mdi/camera')['default']
     IconMdiChevronDown: typeof import('~icons/mdi/chevron-down')['default']
@@ -171,8 +170,6 @@ declare module '@vue/runtime-core' {
     NTable: typeof import('naive-ui')['NTable']
     NTag: typeof import('naive-ui')['NTag']
     NumeronymGenerator: typeof import('./src/tools/numeronym-generator/numeronym-generator.vue')['default']
-    NUpload: typeof import('naive-ui')['NUpload']
-    NUploadDragger: typeof import('naive-ui')['NUploadDragger']
     OtpCodeGeneratorAndValidator: typeof import('./src/tools/otp-code-generator-and-validator/otp-code-generator-and-validator.vue')['default']
     PasswordStrengthAnalyser: typeof import('./src/tools/password-strength-analyser/password-strength-analyser.vue')['default']
     PdfSignatureChecker: typeof import('./src/tools/pdf-signature-checker/pdf-signature-checker.vue')['default']
@@ -197,6 +194,7 @@ declare module '@vue/runtime-core' {
     TextStatistics: typeof import('./src/tools/text-statistics/text-statistics.vue')['default']
     TextToBinary: typeof import('./src/tools/text-to-binary/text-to-binary.vue')['default']
     TextToNatoAlphabet: typeof import('./src/tools/text-to-nato-alphabet/text-to-nato-alphabet.vue')['default']
+    TextToUnicode: typeof import('./src/tools/text-to-unicode/text-to-unicode.vue')['default']
     TokenDisplay: typeof import('./src/tools/otp-code-generator-and-validator/token-display.vue')['default']
     'TokenGenerator.tool': typeof import('./src/tools/token-generator/token-generator.tool.vue')['default']
     TomlToJson: typeof import('./src/tools/toml-to-json/toml-to-json.vue')['default']
@@ -213,5 +211,6 @@ declare module '@vue/runtime-core' {
     XmlFormatter: typeof import('./src/tools/xml-formatter/xml-formatter.vue')['default']
     YamlToJson: typeof import('./src/tools/yaml-to-json-converter/yaml-to-json.vue')['default']
     YamlToToml: typeof import('./src/tools/yaml-to-toml/yaml-to-toml.vue')['default']
+    YamlViewer: typeof import('./src/tools/yaml-viewer/yaml-viewer.vue')['default']
   }
 }
