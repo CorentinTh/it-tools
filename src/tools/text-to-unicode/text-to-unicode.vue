@@ -13,11 +13,11 @@ const { copy: copyText } = useCopy({ source: textFromUnicode });
 
 <template>
   <c-card title="Text to Unicode">
-    <c-input-text v-model:value="inputText" multiline placeholder="e.g. 'Hello Avengers'" label="Enter text to convert to binary" autosize autofocus raw-text test-id="text-to-unicode-input" />
+    <c-input-text v-model:value="inputText" multiline placeholder="e.g. 'Hello Avengers'" label="Enter text to convert to unicode" autosize autofocus raw-text test-id="text-to-unicode-input" />
     <c-input-text v-model:value="unicodeFromText" label="Unicode from your text" multiline raw-text readonly mt-2 placeholder="The unicode representation of your text will be here" test-id="text-to-unicode-output" />
     <div mt-2 flex justify-center>
       <c-button :disabled="!unicodeFromText" @click="copyUnicode()">
-        Copy binary to clipboard
+        Copy unicode to clipboard
       </c-button>
     </div>
   </c-card>
