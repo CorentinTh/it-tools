@@ -4,7 +4,7 @@ import { defineTool } from '../tool';
 export const tool = defineTool({
   name: 'Text to Unicode',
   path: '/text-to-unicode',
-  description: 'Parse and convert Text to Unicode',
+  description: 'Parse and convert text to unicode and vice-versa',
   keywords: ['text', 'to', 'unicode'],
   component: () => import('./text-to-unicode.vue'),
   icon: TextWrap,
