@@ -3,6 +3,7 @@
   "branchConcurrentLimit": 10,
   "prHourlyLimit": 25,
   "recreateWhen": "always",
+  "prCreation": "immediate",
   "extends": [
     "config:recommended",
     "docker:pinDigests",
