@@ -1,7 +1,7 @@
 {
   "configMigration": true,
   "branchConcurrentLimit": 10,
-  "prHourlyLimit": 25
+  "prHourlyLimit": 25,
   "extends": [
     "config:recommended",
     "docker:pinDigests",
