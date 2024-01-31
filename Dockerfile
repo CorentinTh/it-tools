@@ -10,7 +10,7 @@ COPY . .
 RUN pnpm build
 
 # production stage
-FROM nginx:stable-alpine@sha256:c06b20150da98068f40dcb79900b2cc999040b7170afa07d78dd138fef0f10ce AS production-stage
+FROM nginx:stable-alpine@sha256:b3dfbe3d843d056742163dd5ca330996f561feb344553df0906bd3479001d84b AS production-stage
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
