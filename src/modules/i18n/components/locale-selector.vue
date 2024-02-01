@@ -9,6 +9,7 @@ const localesLong: Record<string, string> = {
   ru: 'Русский',
   uk: 'Українська',
   zh: '中文',
+  vi: 'Tiếng Việt',
 };
 
 const localeOptions = computed(() =>
