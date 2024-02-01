@@ -1,0 +1,4 @@
+tools:
+  temperature-converter:
+    title: Temperature converter
+    description: Temperature degrees conversions for Kelvin, Celsius, Fahrenheit, Rankine, Delisle, Newton, Réaumur and Rømer.

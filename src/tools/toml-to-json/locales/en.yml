@@ -1,0 +1,4 @@
+tools:
+  toml-to-json:
+    title: TOML to JSON
+    description: Parse and convert TOML to JSON.

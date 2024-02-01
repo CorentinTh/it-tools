@@ -1,11 +1,11 @@
 import { UnfoldMoreOutlined } from '@vicons/material';
 import { defineTool } from '../tool';
+import { translate } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: 'IPv4 range expander',
+  name: translate('tools.ipv4-range-expander.title'),
   path: '/ipv4-range-expander',
-  description:
-    'Given a start and an end IPv4 address this tool calculates a valid IPv4 network with its CIDR notation.',
+  description: translate('tools.ipv4-range-expander.description'),
   keywords: ['ipv4', 'range', 'expander', 'subnet', 'creator', 'cidr'],
   component: () => import('./ipv4-range-expander.vue'),
   icon: UnfoldMoreOutlined,

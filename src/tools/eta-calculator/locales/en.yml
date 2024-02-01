@@ -1,0 +1,4 @@
+tools:
+  eta-calculator:
+    title: ETA calculator
+    description: An ETA (Estimated Time of Arrival) calculator to know the approximate end time of a task, for example the moment of ending of a download.

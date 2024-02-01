@@ -1,10 +1,11 @@
 import { Binary } from '@vicons/tabler';
 import { defineTool } from '../tool';
+import { translate } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: 'Ipv4 address converter',
+  name: translate('tools.ipv4-address-converter.title'),
   path: '/ipv4-address-converter',
-  description: 'Convert an ip address into decimal, binary, hexadecimal or event in ipv6',
+  description: translate('tools.ipv4-address-converter.description'),
   keywords: ['ipv4', 'address', 'converter', 'decimal', 'hexadecimal', 'binary', 'ipv6'],
   component: () => import('./ipv4-address-converter.vue'),
   icon: Binary,

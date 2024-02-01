@@ -1,0 +1,4 @@
+tools:
+  phone-parser-and-formatter:
+    title: Phone parser and formatter
+    description: Parse, validate and format phone numbers. Get information about the phone number, like the country code, type, etc.
