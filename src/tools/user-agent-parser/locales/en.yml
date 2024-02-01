@@ -1,0 +1,4 @@
+tools:
+  user-agent-parser:
+    title: User-agent parser
+    description: Detect and parse Browser, Engine, OS, CPU, and Device type/model from an user-agent string.
