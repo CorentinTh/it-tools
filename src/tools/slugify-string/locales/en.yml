@@ -1,0 +1,4 @@
+tools:
+  slugify-string:
+    title: Slugify string
+    description: Make a string url, filename and id safe.

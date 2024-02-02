@@ -1,0 +1,4 @@
+tools:
+  keycode-info:
+    title: Keycode info
+    description: Find the javascript keycode, code, location and modifiers of any pressed key.
