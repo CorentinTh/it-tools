@@ -1,0 +1,4 @@
+tools:
+  html-entities:
+    title: Escape html entities
+    description: Escape or unescape html entities (replace <,>, &, " and \' to their html version)

@@ -1,0 +1,4 @@
+tools:
+  benchmark-builder:
+    title: Benchmark builder
+    description: Easily compare execution time of tasks with this very simple online benchmark builder.

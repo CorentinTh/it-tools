@@ -1,0 +1,15 @@
+tools:
+  token-generator:
+    title: Token generator
+    description: Genera una cadena aleatoria con los caracteres que desees, letras mayúsculas o minúsculas, números y/o símbolos.
+
+    uppercase: Mayúsculas (ABC...)
+    lowercase: Minúsculas (abc...)
+    numbers: Números (123...)
+    symbols: Símbolos (!-;...)
+    length: Longitud
+    tokenPlaceholder: 'The token...'
+    copied: Token copiado al portapapeles
+    button:
+      copy: Copiar
+      refresh: Actualizar

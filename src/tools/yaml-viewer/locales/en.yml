@@ -1,0 +1,4 @@
+tools:
+  yaml-prettify:
+    title: YAML prettify and format
+    description: Prettify your YAML string to a human friendly readable format.

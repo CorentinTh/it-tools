@@ -1,0 +1,4 @@
+tools:
+  git-memo:
+    title: Git cheatsheet
+    description: Git is a decentralized version management software. With this cheatsheet you will have a quick access to the most common git commands.

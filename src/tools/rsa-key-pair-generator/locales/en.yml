@@ -1,0 +1,4 @@
+tools:
+  rsa-key-pair-generator:
+    title: RSA key pair generator
+    description: Generate new random RSA private and public key pem certificates.
