@@ -1,0 +1,4 @@
+tools:
+  bcrypt:
+    title: Bcrypt
+    description: Hash and compare text string using bcrypt. Bcrypt is a password-hashing function based on the Blowfish cipher.

@@ -1,0 +1,4 @@
+tools:
+  case-converter:
+    title: Case converter
+    description: Change the case of a string and chose between different formats

@@ -1,0 +1,4 @@
+tools:
+  hmac-generator:
+    title: Hmac generator
+    description: Computes a hash-based message authentication code (HMAC) using a secret key and your favorite hashing function.
