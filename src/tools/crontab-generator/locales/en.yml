@@ -1,0 +1,4 @@
+tools:
+  crontab-generator:
+    title: Crontab generator
+    description: Validate and generate crontab and get the human readable description of the cron schedule.

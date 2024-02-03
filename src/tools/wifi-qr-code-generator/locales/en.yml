@@ -1,0 +1,4 @@
+tools:
+  wifi-qrcode-generator:
+    title: WiFi QR Code generator
+    description: Generate and download QR-codes for quick connections to WiFi networks.
