@@ -115,6 +115,7 @@ declare module '@vue/runtime-core' {
     Ipv4AddressConverter: typeof import('./src/tools/ipv4-address-converter/ipv4-address-converter.vue')['default']
     Ipv4RangeExpander: typeof import('./src/tools/ipv4-range-expander/ipv4-range-expander.vue')['default']
     Ipv4SubnetCalculator: typeof import('./src/tools/ipv4-subnet-calculator/ipv4-subnet-calculator.vue')['default']
+    Ipv6AddressConverter: typeof import('./src/tools/ipv6-address-converter/ipv6-address-converter.vue')['default']
     Ipv6UlaGenerator: typeof import('./src/tools/ipv6-ula-generator/ipv6-ula-generator.vue')['default']
     JsonDiff: typeof import('./src/tools/json-diff/json-diff.vue')['default']
     JsonMinify: typeof import('./src/tools/json-minify/json-minify.vue')['default']
