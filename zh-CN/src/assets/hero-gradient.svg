@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275">
+  <defs>
+    <linearGradient id="small-hero-gradient-1" x1="13.74" y1="183.7" x2="303.96" y2="45.59" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#25636c"/>
+      <stop offset="0.6" stop-color="#3b956f"/>
+      <stop offset="1" stop-color="#14a058"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <g>
+      <path fill="#14a058" opacity="0.49" d="M0,187.5v25s0,37.5,50,50S300,225,300,225V187.5Z"/>
+    </g>
+    <g>
+      <path fill="#14a058" opacity="0.49" d="M300,237.5S287.5,275,250,275,121.05,237.5,61.4,200s134.21,0,134.21,0Z"/>
+    </g>
+    <g>
+      <path fill="#14a058" opacity="0.38" d="M0,200v12.5a241.47,241.47,0,0,0,112.5,50c73.6,11.69,130.61-14.86,150-25L300,200Z"/>
+    </g>
+    <g>
+      <path fill="url(#small-hero-gradient-1)" d="M0,0V212.5s62.5-12.5,150,25,150,0,150,0V0Z"/>
+    </g>
+  </g>
+</svg>

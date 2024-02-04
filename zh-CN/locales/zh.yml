@@ -1,0 +1,105 @@
+home:
+  categories:
+    newestTools: '最新工具'
+    favoriteTools: '我的收藏'
+    allTools: '全部工具'
+  subtitle: '助力开发人员和 IT 工作者'
+  toggleMenu: '切换菜单'
+  home: '主页'
+  uiLib: 'UI 库'
+  support: '支持 IT-Tools 开发'
+  buyMeACoffee: '赞助'
+  follow:
+    title: '关注我们'
+    p1: '给我们 Star'
+    githubRepository: 'GitHub 仓库'
+    p2: '关注我们的'
+    twitterAccount: 'Twitter'
+    thankYou: '感谢您的支持！'
+  nav:
+    github: 'GitHub 仓库'
+    githubRepository: 'GitHub 仓库'
+    twitter: 'Twitter 账号'
+    twitterAccount: 'Twitter 账号'
+    about: '关于 IT-Tools'
+    aboutLabel: '关于'
+    darkMode: '深色模式'
+    lightMode: '浅色模式'
+    mode: '颜色模式'
+about:
+  content: >
+    # 关于 IT-Tools
+
+
+    IT-Tools 由 [Corentin Thomasset](https://github.com/CorentinTh) 用 ❤ 开发，汇集了对开发人员和 IT 从业者有用的工具。如果对您有帮助，请将其分享给您的朋友，并且添加到收藏夹中！
+
+
+    IT-Tools 永久免费且开源（MIT 许可证），但需要资金用于托管和续订域名。如果您想支持我的工作，并鼓励我添加更多工具，请考虑通过 [赞助我](https://www.buymeacoffee.com/cthmsst) 进行支持。
+
+
+    ## 技术栈
+
+
+    IT-Tools 采用 Vue.js（Vue 3）和 Naive UI 组件库开发，并由 Vercel 托管和持续部署。某些工具使用了第三方开源库，您可以在仓库的 [package.json](https://github.com/angelofan/it-tools/blob/main/package.json) 文件中找到完整的列表。
+
+
+    ## 深度适配简体中文
+
+
+    IT-Tools 由 [angelofan](https://github.com/angelofan) 深度翻译并适配简体中文。
+    
+
+    此版本的 IT-Tools 较原版有以下改动：
+
+
+    ***英文翻译了简体中文***：由于一些原因（组件定义、依赖包语言选项、对象简写、分布式本地化文件、维护者未将可翻译变量统一放置于本地化文件中 等）而无法将翻译集中到本地化文件中，而是直接进行了翻译。
+
+
+    ***隐藏了部分工具***：本站隐藏了部分因 在国内使用会有歧义/基本没有使用场景/无法翻译 的工具，如需查看完整的工具集，可前往 [开源版 IT-Tools](https://it-tools.tech/)（缺少大量中文翻译）。
+
+
+    ***替换了仓库链接***：仓库的链接全部替换成了Fork之后的仓库链接，原仓库链接可在Fork仓库中看到。
+
+
+    ***更新了依赖包***：手动更新了一些依赖包的版本。
+
+
+    ***还有其他***：可能还有一些变动没有具体列出，可以查看 [GitHub 差异比对](https://github.com/angelofan/it-tools/compare/main...zh)。
+    
+
+    ## 发现了 Bug？缺少工具？翻译错误？
+
+
+    如果目前这里没有您需要的工具，并且您认为它可能有用，欢迎在 GitHub 仓库的 [issues](https://github.com/CorentinTh/it-tools/issues/new/choose) 中提交新增功能的请求。
+
+
+    如果您发现了 Bug，或者某些功能未能按预期工作，请在 GitHub 仓库的 [issues](https://github.com/CorentinTh/it-tools/issues/new/choose) 中提交错误报告。
+
+
+    如果您发现了翻译错误，或者存在未翻译的内容，请在 GitHub 仓库的 [讨论](https://github.com/angelofan/it-tools/discussions) 中查看你创建讨论。
+
+404:
+  notFound: '404 页面不存在'
+  sorry: '抱歉，该页面似乎不存在'
+  maybe: '也许缓存出现了一些问题，试试强制刷新页面？'
+  backHome: '返回主页'
+favoriteButton:
+  remove: '取消收藏'
+  add: '加入收藏'
+toolCard:
+  new: '新'
+search:
+  label: '搜索'
+tools:
+  categories:
+    favorite-tools: '我的收藏'
+    crypto: '加密'
+    converter: '转换器'
+    web: Web
+    images and videos: '图片和视频'
+    development: '开发'
+    network: '网络'
+    math: '数学'
+    measurement: '测量'
+    text: '文本'
+    data: '数据'
