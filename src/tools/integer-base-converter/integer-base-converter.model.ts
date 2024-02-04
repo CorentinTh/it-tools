@@ -46,16 +46,16 @@ export function convertBase(
   let decValue = cleanedValue
     .split('')
     .reverse()
-    .reduce((carry: number, digit: string, index: number) => {
+    .reduce((carry: bigint, digit: string, index: number) => {
       if (!fromRange.includes(digit)) {
         throw new Error(`Invalid digit "${digit}" for base ${finalFromBase}.`);
       }
-      return (carry += fromRange.indexOf(digit) * finalFromBase ** index);
-    }, 0);
+      return (carry += BigInt(fromRange.indexOf(digit)) * BigInt(finalFromBase) ** BigInt(index));
+    }, 0n);
   let newValue = '';
   while (decValue > 0) {
-    newValue = toRange[decValue % toBase] + newValue;
-    decValue = (decValue - (decValue % toBase)) / toBase;
+    newValue = toRange[Number(decValue % BigInt(toBase))] + newValue;
+    decValue = (decValue - (decValue % BigInt(toBase))) / BigInt(toBase);
   }
   return newValue || '0';
 }
