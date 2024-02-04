@@ -195,6 +195,7 @@ declare module '@vue/runtime-core' {
     TextStatistics: typeof import('./src/tools/text-statistics/text-statistics.vue')['default']
     TextToBinary: typeof import('./src/tools/text-to-binary/text-to-binary.vue')['default']
     TextToNatoAlphabet: typeof import('./src/tools/text-to-nato-alphabet/text-to-nato-alphabet.vue')['default']
+    TextToUnicode: typeof import('./src/tools/text-to-unicode/text-to-unicode.vue')['default']
     TokenDisplay: typeof import('./src/tools/otp-code-generator-and-validator/token-display.vue')['default']
     'TokenGenerator.tool': typeof import('./src/tools/token-generator/token-generator.tool.vue')['default']
     TomlToJson: typeof import('./src/tools/toml-to-json/toml-to-json.vue')['default']
@@ -211,5 +212,6 @@ declare module '@vue/runtime-core' {
     XmlFormatter: typeof import('./src/tools/xml-formatter/xml-formatter.vue')['default']
     YamlToJson: typeof import('./src/tools/yaml-to-json-converter/yaml-to-json.vue')['default']
     YamlToToml: typeof import('./src/tools/yaml-to-toml/yaml-to-toml.vue')['default']
+    YamlViewer: typeof import('./src/tools/yaml-viewer/yaml-viewer.vue')['default']
   }
 }

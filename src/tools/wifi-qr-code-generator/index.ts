@@ -1,11 +1,11 @@
 import { Qrcode } from '@vicons/tabler';
 import { defineTool } from '../tool';
+import { translate } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: 'WiFi QR Code generator',
+  name: translate('tools.wifi-qrcode-generator.title'),
   path: '/wifi-qrcode-generator',
-  description:
-    'Generate and download QR-codes for quick connections to WiFi networks.',
+  description: translate('tools.wifi-qrcode-generator.description'),
   keywords: ['qr', 'code', 'generator', 'square', 'color', 'link', 'low', 'medium', 'quartile', 'high', 'transparent', 'wifi'],
   component: () => import('./wifi-qr-code-generator.vue'),
   icon: Qrcode,

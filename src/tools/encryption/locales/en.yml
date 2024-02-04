@@ -1,0 +1,4 @@
+tools:
+  encryption:
+    title: Encrypt / decrypt text
+    description: Encrypt and decrypt text clear text using crypto algorithm like AES, TripleDES, Rabbit or RC4.

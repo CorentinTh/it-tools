@@ -1,0 +1,4 @@
+tools:
+  xml-formatter:
+    title: XML formatter
+    description: Prettify your XML string to a human friendly readable format.

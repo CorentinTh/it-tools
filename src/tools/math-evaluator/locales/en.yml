@@ -1,0 +1,4 @@
+tools:
+  math-evaluator:
+    title: Math evaluator
+    description: A calculator for evaluating mathematical expressions. You can use functions like sqrt, cos, sin, abs, etc.

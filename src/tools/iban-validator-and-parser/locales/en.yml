@@ -1,0 +1,4 @@
+tools:
+  iban-validator-and-parser:
+    title: IBAN validator and parser
+    description: Validate and parse IBAN numbers. Check if IBAN is valid and get the country, BBAN, if it is a QR-IBAN and the IBAN friendly format.
