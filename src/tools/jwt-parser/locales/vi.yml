@@ -1,0 +1,4 @@
+tools:
+  jwt-parser:
+    title: Giải mã JWT
+    description: Giải mã và hiển thị nội dung của JSON Web Token (jwt).

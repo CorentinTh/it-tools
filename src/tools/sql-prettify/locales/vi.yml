@@ -1,0 +1,4 @@
+tools:
+  sql-prettify:
+    title: Định dạng và làm đẹp SQL
+    description: Định dạng và làm đẹp các truy vấn SQL của bạn trực tuyến (hỗ trợ nhiều ngôn ngữ SQL khác nhau).

@@ -1,0 +1,4 @@
+tools:
+  rsa-key-pair-generator:
+    title: Trình tạo cặp khóa RSA
+    description: Tạo các chứng chỉ pem khóa riêng tư và khóa công khai RSA ngẫu nhiên mới.

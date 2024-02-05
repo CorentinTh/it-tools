@@ -1,0 +1,4 @@
+tools:
+  text-statistics:
+    title: Thống kê văn bản
+    description: Lấy thông tin về một văn bản, số ký tự, số từ, kích thước của nó, ...

@@ -1,0 +1,4 @@
+tools:
+  yaml-prettify:
+    title: Định dạng và làm đẹp YAML
+    description: Định dạng chuỗi YAML của bạn thành một định dạng dễ đọc và thân thiện với con người.

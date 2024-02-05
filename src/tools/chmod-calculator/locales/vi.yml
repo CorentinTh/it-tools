@@ -1,0 +1,4 @@
+tools:
+  chmod-calculator:
+    title: Máy tính Chmod
+    description: Tính toán quyền và lệnh chmod của bạn với máy tính Chmod trực tuyến này.

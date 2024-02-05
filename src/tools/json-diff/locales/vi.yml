@@ -1,0 +1,4 @@
+tools:
+  json-diff:
+    title: So sánh JSON
+    description: So sánh hai đối tượng JSON và lấy ra sự khác biệt giữa chúng.

@@ -1,0 +1,4 @@
+tools:
+  xml-formatter:
+    title: Định dạng XML
+    description: Định dạng chuỗi XML của bạn thành một định dạng dễ đọc và thân thiện với con người.

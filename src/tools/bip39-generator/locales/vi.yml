@@ -1,0 +1,4 @@
+tools:
+  bip39-generator:
+    title: Trình tạo BIP39 passphrase
+    description: Tạo BIP39 passphrase từ mnemonic hiện có hoặc ngẫu nhiên, hoặc lấy mnemonic từ passphrase.

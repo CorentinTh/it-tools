@@ -1,0 +1,4 @@
+tools:
+  text-to-unicode:
+    title: Chuyển đổi văn bản thành Unicode
+    description: Phân tích và chuyển đổi văn bản thành Unicode và ngược lại

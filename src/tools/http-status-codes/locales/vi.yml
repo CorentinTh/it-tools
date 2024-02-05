@@ -1,0 +1,4 @@
+tools:
+  http-status-codes:
+    title: Mã trạng thái HTTP
+    description: Danh sách tất cả các mã trạng thái HTTP, tên và ý nghĩa của chúng.

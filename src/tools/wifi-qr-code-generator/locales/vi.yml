@@ -1,0 +1,4 @@
+tools:
+  wifi-qrcode-generator:
+    title: Tạo mã QR WiFi
+    description: Tạo và tải xuống mã QR để kết nối nhanh đến mạng WiFi.

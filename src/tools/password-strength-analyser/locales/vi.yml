@@ -1,0 +1,4 @@
+tools:
+  password-strength-analyser:
+    title: Bộ phân tích độ mạnh mật khẩu
+    description: Khám phá độ mạnh của mật khẩu của bạn với công cụ phân tích độ mạnh mật khẩu chỉ chạy trên phía máy khách và ước tính thời gian phá mật khẩu.
