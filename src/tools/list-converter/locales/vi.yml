@@ -1,0 +1,4 @@
+tools:
+  list-converter:
+    title: Trình chuyển đổi danh sách
+    description: Công cụ này có thể xử lý dữ liệu dựa trên cột và áp dụng các thay đổi khác nhau (đảo ngược, thêm tiền tố và hậu tố, đảo danh sách, sắp xếp danh sách, giảm giá trị thành chữ thường, cắt giá trị) cho mỗi hàng.

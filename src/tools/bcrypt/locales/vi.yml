@@ -1,0 +1,4 @@
+tools:
+  bcrypt:
+    title: Bcrypt
+    description: Mã hóa và so sánh chuỗi văn bản sử dụng bcrypt. Bcrypt là một hàm mã hóa mật khẩu dựa trên thuật toán Blowfish.

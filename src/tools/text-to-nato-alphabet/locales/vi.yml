@@ -1,0 +1,4 @@
+tools:
+  text-to-nato-alphabet:
+    title: Chuyển đổi văn bản thành bảng chữ cái NATO
+    description: Chuyển đổi văn bản thành bảng chữ cái phiên âm NATO để truyền tải bằng miệng.

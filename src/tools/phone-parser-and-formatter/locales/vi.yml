@@ -1,0 +1,4 @@
+tools:
+  phone-parser-and-formatter:
+    title: Trình phân tích và định dạng số điện thoại
+    description: Phân tích, xác thực và định dạng số điện thoại. Lấy thông tin về số điện thoại, như mã quốc gia, loại, v.v.

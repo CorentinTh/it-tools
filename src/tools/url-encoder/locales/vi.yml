@@ -1,0 +1,4 @@
+tools:
+  url-encoder:
+    title: Mã hóa/giải mã chuỗi định dạng URL
+    description: Mã hóa thành định dạng URL (còn được gọi là "percent-encoded") hoặc giải mã từ đó.

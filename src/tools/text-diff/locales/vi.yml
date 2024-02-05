@@ -1,0 +1,4 @@
+tools:
+  text-diff:
+    title: So sánh văn bản
+    description: So sánh hai văn bản và xem sự khác biệt giữa chúng.

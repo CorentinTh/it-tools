@@ -1,0 +1,4 @@
+tools:
+  numeronym-generator:
+    title: Trình tạo Numeronym
+    description: Numeronym là một từ mà một số được sử dụng để tạo thành một từ viết tắt. Ví dụ, "i18n" là một numeronym của "internationalization" trong đó số 18 đại diện cho số chữ cái giữa chữ i đầu tiên và chữ n cuối cùng trong từ.

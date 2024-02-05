@@ -1,0 +1,4 @@
+tools:
+  string-obfuscator:
+    title: Mã hóa chuỗi
+    description: Mã hóa một chuỗi (như một bí mật, một IBAN hoặc một mã thông báo) để có thể chia sẻ và nhận dạng mà không tiết lộ nội dung.

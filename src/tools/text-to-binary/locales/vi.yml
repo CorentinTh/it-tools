@@ -1,0 +1,4 @@
+tools:
+  text-to-binary:
+    title: Chuyển đổi văn bản thành nhị phân ASCII
+    description: Chuyển đổi văn bản thành biểu diễn nhị phân ASCII của nó và ngược lại.

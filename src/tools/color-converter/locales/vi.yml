@@ -1,0 +1,4 @@
+tools:
+  color-converter:
+    title: Trình chuyển đổi màu
+    description: Chuyển đổi màu giữa các định dạng khác nhau (hex, rgb, hsl và tên css)

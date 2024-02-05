@@ -1,0 +1,4 @@
+tools:
+  yaml-to-toml:
+    title: YAML sang TOML
+    description: Phân tích và chuyển đổi YAML sang TOML.
