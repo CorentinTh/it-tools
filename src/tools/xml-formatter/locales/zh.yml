@@ -1,0 +1,4 @@
+tools:
+  xml-formatter:
+    title: XML 格式化
+    description: 将XML字符串修饰为友好的可读格式。

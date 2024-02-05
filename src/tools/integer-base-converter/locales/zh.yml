@@ -1,0 +1,4 @@
+tools:
+  base-converter:
+    title: 整数基转换器
+    description: 在不同的基数（十进制、十六进制、二进制、八进制、base64…）之间转换数字
