@@ -1,0 +1,4 @@
+tools:
+  base-converter:
+    title: Integer base converter
+    description: Convert number between different bases (decimal, hexadecimal, binary, octal, base64, ...)

@@ -1,0 +1,4 @@
+tools:
+  percentage-calculator:
+    title: Percentage calculator
+    description: Easily calculate percentages from a value to another value, or from a percentage to a value.

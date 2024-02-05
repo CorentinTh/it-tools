@@ -1,0 +1,4 @@
+tools:
+  json-minify:
+    title: JSON minify
+    description: Minify and compress your JSON by removing unnecessary white spaces.

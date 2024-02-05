@@ -1,0 +1,4 @@
+tools:
+  url-encoder:
+    title: Encode/decode url formatted strings
+    description: Encode to url-encoded format (also known as "percent-encoded") or decode from it.

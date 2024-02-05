@@ -2,11 +2,12 @@ import { HttpRound } from '@vicons/material';
 import { defineTool } from '../tool';
 
 import { codesByCategories } from './http-status-codes.constants';
+import { translate } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: 'HTTP status codes',
+  name: translate('tools.http-status-codes.title'),
   path: '/http-status-codes',
-  description: 'The list of all HTTP status codes their name and their meaning.',
+  description: translate('tools.http-status-codes.description'),
   keywords: [
     'http',
     'status',

@@ -1,0 +1,4 @@
+tools:
+  color-converter:
+    title: Color converter
+    description: Convert color between the different formats (hex, rgb, hsl and css name)

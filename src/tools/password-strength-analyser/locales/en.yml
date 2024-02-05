@@ -1,0 +1,4 @@
+tools:
+  password-strength-analyser:
+    title: Password strength analyser
+    description: Discover the strength of your password with this client side only password strength analyser and crack time estimation tool.
