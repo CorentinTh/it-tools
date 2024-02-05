@@ -1,0 +1,4 @@
+tools:
+  http-status-codes:
+    title: HTTP 状态码
+    description: 所有HTTP状态的列表对其名称和含义解释。

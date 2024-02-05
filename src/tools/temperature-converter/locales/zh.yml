@@ -1,0 +1,4 @@
+tools:
+  temperature-converter:
+    title: 温度转换器
+    description: 开尔文、摄氏度、华氏度、兰金、德莱尔、牛顿、雷奥穆尔和罗默温度度数转换。

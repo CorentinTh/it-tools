@@ -1,0 +1,4 @@
+tools:
+  color-converter:
+    title: Color 选择器
+    description: 在不同格式（十六进制、rgb、hsl和css名称）之间转换颜色

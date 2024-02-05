@@ -1,0 +1,4 @@
+tools:
+  ipv6-ula-generator:
+    title: IPv6 ULA生成器
+    description: 根据RFC4193在网络上生成您自己的本地不可路由IP地址。

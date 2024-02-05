@@ -1,0 +1,4 @@
+tools:
+  text-to-binary:
+    title: 文本到 ASCII 二进制
+    description: 将文本转换为其 ASCII 二进制表示形式，反之亦然。
