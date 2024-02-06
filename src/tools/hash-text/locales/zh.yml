@@ -1,0 +1,4 @@
+tools:
+  hash-text:
+    title: Hash 文本
+    description: '使用所需的函数哈希文本字符串：MD5、SHA1、SHA256、SHA224、SHA512、SHA384、SHA3或RIPEMD160'

@@ -1,0 +1,4 @@
+tools:
+  case-converter:
+    title: Chuyển đổi chữ hoa/chữ thường
+    description: Thay đổi kiểu chữ của một chuỗi và chọn giữa các định dạng khác nhau

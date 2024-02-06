@@ -1,0 +1,4 @@
+tools:
+  json-minify:
+    title: JSON 压缩
+    description: 通过删除不必要的空白来缩小和压缩JSON。

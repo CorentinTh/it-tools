@@ -1,0 +1,4 @@
+tools:
+  ulid-generator:
+    title: Tạo ULID
+    description: Tạo ngẫu nhiên mã định danh duy nhất có thể sắp xếp theo thứ tự từ điển (ULID).

@@ -1,0 +1,4 @@
+tools:
+  crontab-generator:
+    title: Trình tạo Crontab
+    description: Xác thực và tạo crontab và lấy mô tả đọc được của lịch trình cron.

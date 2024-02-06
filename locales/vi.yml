@@ -3,7 +3,7 @@ home:
     newestTools: Công cụ mới nhất
     favoriteTools: 'Công cụ yêu thích của bạn'
     allTools: 'Tất cả công cụ'
-  subtitle: 'Công cụ tiện ích cho nhà phát triển'
+  subtitle: 'Công cụ cho nhà phát triển.'
   toggleMenu: 'Chuyển đổi menu'
   home: Trang chủ
   uiLib: 'Thư viện UI'
@@ -47,7 +47,7 @@ about:
 404:
   notFound: '404 Không Tìm Thấy'
   sorry: 'Xin lỗi, trang này dường như không tồn tại'
-  maybe: 'Có thể bộ nhớ đệm đang làm những điều kỳ lạ, thử làm mới cưỡng bức?'
+  maybe: 'Lỗi xảy ra có thể do bộ nhớ đệm, hãy (CTRL + F5) để tải lại trang?'
   backHome: 'Quay về trang chủ'
 favoriteButton:
   remove: 'Xóa khỏi mục yêu thích'
@@ -59,7 +59,7 @@ search:
 tools:
   categories:
     favorite-tools: 'Công cụ yêu thích của bạn'
-    crypto: Crypto
+    crypto: Mã hóa
     converter: Chuyển đổi
     web: Web
     images and videos: 'Hình ảnh & Video'

@@ -1,0 +1,4 @@
+tools:
+  user-agent-parser:
+    title: Trình phân tích User-agent
+    description: Phát hiện và phân tích trình duyệt, engine, hệ điều hành, CPU và kiểu/mô hình thiết bị từ chuỗi user-agent.

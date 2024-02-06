@@ -1,0 +1,4 @@
+tools:
+  json-minify:
+    title: Giảm kích thước JSON
+    description: Giảm kích thước và nén JSON của bạn bằng cách loại bỏ khoảng trắng không cần thiết.

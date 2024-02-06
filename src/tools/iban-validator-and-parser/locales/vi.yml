@@ -1,0 +1,4 @@
+tools:
+  iban-validator-and-parser:
+    title: Kiểm tra và phân tích số IBAN
+    description: Xác thực và phân tích số IBAN. Kiểm tra tính hợp lệ của IBAN và lấy thông tin về quốc gia, BBAN, xem có phải là QR-IBAN và định dạng thân thiện của IBAN.

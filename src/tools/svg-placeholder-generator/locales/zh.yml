@@ -1,0 +1,4 @@
+tools:
+  svg-placeholder-generator:
+    title: SVG 占位符生成器
+    description: 生成 svg 图像以用作应用程序中的占位符。

@@ -1,0 +1,4 @@
+tools:
+  git-memo:
+    title: Lệnh Git
+    description: Git là một phần mềm quản lý phiên bản phân tán. Với bảng ghi chú này, bạn sẽ có thể truy cập nhanh vào các lệnh Git phổ biến nhất.

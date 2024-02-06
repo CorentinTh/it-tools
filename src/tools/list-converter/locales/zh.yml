@@ -1,0 +1,4 @@
+tools:
+  list-converter:
+    title: List 转换器
+    description: 该工具可以处理基于数组的数据，并将各种更改（转置、添加前缀和后缀、反向列表、排序列表、小写值、截断值）应用于每一行。

@@ -1,0 +1,4 @@
+tools:
+  html-entities:
+    title: Thay thế các ký tự HTML
+    description: Thay thế hoặc bỏ thẻ các ký tự HTML (thay thế <,>, &, " và \' thành phiên bản HTML tương ứng)

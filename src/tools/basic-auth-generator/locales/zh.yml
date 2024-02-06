@@ -1,0 +1,4 @@
+tools:
+  basic-auth-generator:
+    title: 基本身份验证生成器
+    description: 从用户名和密码生成 base64 基本身份验证标头。

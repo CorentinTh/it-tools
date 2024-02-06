@@ -1,0 +1,4 @@
+tools:
+  ipv4-range-expander:
+    title: IPv4范围扩展器
+    description: 给定起始和结束IPv4地址，此工具使用其CIDR表示法计算有效的IPv4网络。

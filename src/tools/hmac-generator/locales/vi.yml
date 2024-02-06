@@ -1,0 +1,4 @@
+tools:
+  hmac-generator:
+    title: Máy tạo HMAC
+    description: Tính toán mã xác thực thông điệp dựa trên hash (HMAC) sử dụng một khóa bí mật và hàm băm yêu thích của bạn.
