@@ -22,7 +22,7 @@ dependencies:
     version: 2.2.2(@tiptap/pm@2.2.2)
   '@tiptap/vue-3':
     specifier: 2.2.2
-    version: 2.2.2(@tiptap/core@2.2.1)(@tiptap/pm@2.2.2)(vue@3.3.4)
+    version: 2.2.2(@tiptap/core@2.2.2)(@tiptap/pm@2.2.2)(vue@3.3.4)
   '@vicons/material':
     specifier: ^0.12.0
     version: 0.12.0
@@ -108,8 +108,8 @@ dependencies:
     specifier: ^2.1.35
     version: 2.1.35
   monaco-editor:
-    specifier: ^0.45.0
-    version: 0.45.0
+    specifier: ^0.46.0
+    version: 0.46.0
   naive-ui:
     specifier: ^2.35.0
     version: 2.35.0(vue@3.3.4)
@@ -2655,14 +2655,6 @@ packages:
       string.prototype.matchall: 4.0.10
     dev: true
 
-  /@tiptap/core@2.2.1(@tiptap/pm@2.2.2):
-    resolution: {integrity: sha512-9G6N2d5q4M5i/elK61qu28uO5MBDKEbStQnHuVKNe+LVNpb6xZal1AcIilmq1FVeuCUh3kYl3cFH3nBQOXtZUw==}
-    peerDependencies:
-      '@tiptap/pm': ^2.0.0
-    dependencies:
-      '@tiptap/pm': 2.2.2
-    dev: false
-
   /@tiptap/core@2.2.2(@tiptap/pm@2.2.2):
     resolution: {integrity: sha512-fec26LtNgYFGhKzEA9+Of+qLKIKUxDL/XZQofoPcxP71NffcmpZ+ZjAx9NjnvuYtvylUSySZiPauY6WhN3aprw==}
     peerDependencies:
@@ -2687,13 +2679,13 @@ packages:
       '@tiptap/core': 2.2.2(@tiptap/pm@2.2.2)
     dev: false
 
-  /@tiptap/extension-bubble-menu@2.2.2(@tiptap/core@2.2.1)(@tiptap/pm@2.2.2):
+  /@tiptap/extension-bubble-menu@2.2.2(@tiptap/core@2.2.2)(@tiptap/pm@2.2.2):
     resolution: {integrity: sha512-W3OvoHxgBdQSrlX8FXvIs5wA+eHXe/0jGsqQdwLXPtqZOSR4Ks9OLmxDk2+O8ci0KCLPb6/doJYg7j/8Ic4KRg==}
     peerDependencies:
       '@tiptap/core': ^2.0.0
       '@tiptap/pm': ^2.0.0
     dependencies:
-      '@tiptap/core': 2.2.1(@tiptap/pm@2.2.2)
+      '@tiptap/core': 2.2.2(@tiptap/pm@2.2.2)
       '@tiptap/pm': 2.2.2
       tippy.js: 6.3.7
     dev: false
@@ -2742,13 +2734,13 @@ packages:
       '@tiptap/pm': 2.2.2
     dev: false
 
-  /@tiptap/extension-floating-menu@2.2.2(@tiptap/core@2.2.1)(@tiptap/pm@2.2.2):
+  /@tiptap/extension-floating-menu@2.2.2(@tiptap/core@2.2.2)(@tiptap/pm@2.2.2):
     resolution: {integrity: sha512-DRz9kzcPt7S8s22EQC+KS/ghnHRV6j7Qequ+0kLjfLYPdqj2u4G5xTrFM7sWfzUqf2HdH8SS8Yo9WFMYm69D9w==}
     peerDependencies:
       '@tiptap/core': ^2.0.0
       '@tiptap/pm': ^2.0.0
     dependencies:
-      '@tiptap/core': 2.2.1(@tiptap/pm@2.2.2)
+      '@tiptap/core': 2.2.2(@tiptap/pm@2.2.2)
       '@tiptap/pm': 2.2.2
       tippy.js: 6.3.7
     dev: false
@@ -2896,16 +2888,16 @@ packages:
       - '@tiptap/pm'
     dev: false
 
-  /@tiptap/vue-3@2.2.2(@tiptap/core@2.2.1)(@tiptap/pm@2.2.2)(vue@3.3.4):
+  /@tiptap/vue-3@2.2.2(@tiptap/core@2.2.2)(@tiptap/pm@2.2.2)(vue@3.3.4):
     resolution: {integrity: sha512-4QNjruL7qiOgSANczipKtbYmMZS/gGuqV2UeBKKXTXIGFr5qA5R5n9Icy+El0oJOUZ8MNDFOVSGaHh/ts+pY3g==}
     peerDependencies:
       '@tiptap/core': ^2.0.0
       '@tiptap/pm': ^2.0.0
       vue: ^3.0.0
     dependencies:
-      '@tiptap/core': 2.2.1(@tiptap/pm@2.2.2)
-      '@tiptap/extension-bubble-menu': 2.2.2(@tiptap/core@2.2.1)(@tiptap/pm@2.2.2)
-      '@tiptap/extension-floating-menu': 2.2.2(@tiptap/core@2.2.1)(@tiptap/pm@2.2.2)
+      '@tiptap/core': 2.2.2(@tiptap/pm@2.2.2)
+      '@tiptap/extension-bubble-menu': 2.2.2(@tiptap/core@2.2.2)(@tiptap/pm@2.2.2)
+      '@tiptap/extension-floating-menu': 2.2.2(@tiptap/core@2.2.2)(@tiptap/pm@2.2.2)
       '@tiptap/pm': 2.2.2
       vue: 3.3.4
     dev: false
@@ -6976,8 +6968,8 @@ packages:
       pkg-types: 1.0.3
       ufo: 1.3.2
 
-  /monaco-editor@0.45.0:
-    resolution: {integrity: sha512-mjv1G1ZzfEE3k9HZN0dQ2olMdwIfaeAAjFiwNprLfYNRSz7ctv9XuCT7gPtBGrMUeV1/iZzYKj17Khu1hxoHOA==}
+  /monaco-editor@0.46.0:
+    resolution: {integrity: sha512-ADwtLIIww+9FKybWscd7OCfm9odsFYHImBRI1v9AviGce55QY8raT+9ihH8jX/E/e6QVSGM+pKj4jSUSRmALNQ==}
     dev: false
 
   /moo@0.5.2:
