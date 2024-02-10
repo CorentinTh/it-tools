@@ -1,4 +1,0 @@
-tools:
-  json-diff:
-    title: JSON 差异比较
-    description: 比较两个JSON对象并获得它们之间的差异。

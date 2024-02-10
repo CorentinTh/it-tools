@@ -1,4 +1,0 @@
-tools:
-  basic-auth-generator:
-    title: Tạo mã xác thực cơ bản
-    description: Tạo một tiêu đề xác thực cơ bản base64 từ tên người dùng và mật khẩu.

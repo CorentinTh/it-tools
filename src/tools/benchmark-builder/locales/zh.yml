@@ -1,4 +1,0 @@
-tools:
-  benchmark-builder:
-    title: 基准生成器
-    description: 简单的在线基准构建器可以轻松比较任务的执行时间。

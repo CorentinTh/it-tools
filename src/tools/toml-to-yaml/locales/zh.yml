@@ -1,4 +1,0 @@
-tools:
-  toml-to-yaml:
-    title: TOML 到 YAML
-    description: Parse and convert TOML to YAML.

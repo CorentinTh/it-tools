@@ -1,4 +1,0 @@
-tools:
-  list-converter:
-    title: List converter
-    description: This tool can process column-based data and apply various changes (transpose, add prefix and suffix, reverse list, sort list, lowercase values, truncate values) to each row.

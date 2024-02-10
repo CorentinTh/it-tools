@@ -1,4 +1,0 @@
-tools:
-  temperature-converter:
-    title: Bộ chuyển đổi nhiệt độ
-    description: Chuyển đổi độ nhiệt độ cho Kelvin, Celsius, Fahrenheit, Rankine, Delisle, Newton, Réaumur và Rømer.

@@ -1,4 +1,0 @@
-tools:
-  device-information:
-    title: Thông tin thiết bị
-    description: Lấy thông tin về thiết bị hiện tại của bạn (kích thước màn hình, tỷ lệ pixel, user agent, ...)

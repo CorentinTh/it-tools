@@ -1,4 +1,0 @@
-tools:
-  base64-file-converter:
-    title: Base64 文件转换器
-    description: 将字符串、文件或图像转换为其 Base64 表示形式。

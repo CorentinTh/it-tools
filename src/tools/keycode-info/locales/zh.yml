@@ -1,4 +1,0 @@
-tools:
-  keycode-info:
-    title: Keycode 信息
-    description: 查找任何按下的键的javascript键代码、代码、位置和修饰符。

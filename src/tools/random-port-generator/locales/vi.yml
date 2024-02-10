@@ -1,4 +1,0 @@
-tools:
-  random-port-generator:
-    title: Trình tạo số cổng ngẫu nhiên
-    description: Tạo số cổng ngẫu nhiên nằm ngoài phạm vi của các cổng "biết được" (0-1023).

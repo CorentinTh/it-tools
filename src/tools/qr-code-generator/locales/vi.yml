@@ -1,4 +1,0 @@
-tools:
-  qrcode-generator:
-    title: Tạo mã QR
-    description: Tạo và tải xuống mã QR cho một URL hoặc chỉ một đoạn văn bản và tùy chỉnh màu nền và màu chữ.

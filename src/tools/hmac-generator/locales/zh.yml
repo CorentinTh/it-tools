@@ -1,4 +1,0 @@
-tools:
-  hmac-generator:
-    title: Hmac 生成器
-    description: 使用密钥和您喜欢的哈希函数计算基于哈希的消息身份验证代码（HMAC）。

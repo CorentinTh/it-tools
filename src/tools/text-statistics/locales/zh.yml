@@ -1,4 +1,0 @@
-tools:
-  text-statistics:
-    title: 文本统计
-    description: 获取有关文本、字符数、字数、大小等的信息

@@ -1,4 +1,0 @@
-tools:
-  eta-calculator:
-    title: ETA 计算器
-    description: ETA（估计到达时间）计算器，用于知道任务的近似结束时间，例如下载的结束时刻。

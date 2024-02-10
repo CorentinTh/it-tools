@@ -1,4 +1,0 @@
-tools:
-  encryption:
-    title: 加密/解密文本
-    description: 使用加密算法（如AES、TripleDES、Rabbit或RC4）加密和解密文本明文。

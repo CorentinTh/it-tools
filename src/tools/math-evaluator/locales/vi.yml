@@ -1,4 +1,0 @@
-tools:
-  math-evaluator:
-    title: Trình đánh giá toán học
-    description: Một máy tính để tính toán biểu thức toán học. Bạn có thể sử dụng các hàm như sqrt, cos, sin, abs, v.v.

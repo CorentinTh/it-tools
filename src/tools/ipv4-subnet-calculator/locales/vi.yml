@@ -1,4 +1,0 @@
-tools:
-  ipv4-subnet-calculator:
-    title: Máy tính mạng con IPv4
-    description: Phân tích các khối CIDR IPv4 của bạn và nhận thông tin về mạng con của bạn.

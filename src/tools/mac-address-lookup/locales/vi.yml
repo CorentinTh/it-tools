@@ -1,4 +1,0 @@
-tools:
-  mac-address-lookup:
-    title: Tra cứu địa chỉ MAC
-    description: Tìm nhà sản xuất và nhà cung cấp của thiết bị dựa trên địa chỉ MAC.

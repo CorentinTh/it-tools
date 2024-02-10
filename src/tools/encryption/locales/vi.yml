@@ -1,4 +1,0 @@
-tools:
-  encryption:
-    title: Mã hóa / giải mã văn bản
-    description: Mã hóa và giải mã văn bản rõ bằng cách sử dụng thuật toán mã hóa như AES, TripleDES, Rabbit hoặc RC4.

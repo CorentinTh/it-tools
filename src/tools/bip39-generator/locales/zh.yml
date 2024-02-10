@@ -1,4 +1,0 @@
-tools:
-  bip39-generator:
-    title: BIP39密码生成器
-    description: 从现有或随机助记符生成BIP39密码短语，或从密码短语获取助记符。

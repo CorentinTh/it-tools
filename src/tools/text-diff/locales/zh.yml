@@ -1,4 +1,0 @@
-tools:
-  text-diff:
-    title: 文本比较
-    description: 比较两个文本并查看它们之间的差异。

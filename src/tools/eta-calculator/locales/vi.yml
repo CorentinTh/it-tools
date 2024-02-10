@@ -1,4 +1,0 @@
-tools:
-  eta-calculator:
-    title: Máy tính ETA
-    description: Một máy tính ETA (Thời gian dự kiến đến) để biết thời gian kết thúc xấp xỉ của một nhiệm vụ, ví dụ như thời điểm kết thúc của một quá trình tải xuống.
