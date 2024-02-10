@@ -1,4 +1,0 @@
-tools:
-  otp-generator:
-    title: Tạo mã OTP
-    description: Tạo và xác thực mã OTP (mật khẩu một lần) dựa trên thời gian cho xác thực đa yếu tố.

@@ -1,4 +1,0 @@
-tools:
-  slugify-string:
-    title: Chuyển đổi chuỗi thành slug
-    description: Biến đổi chuỗi thành dạng an toàn để sử dụng trong URL, tên file và ID.

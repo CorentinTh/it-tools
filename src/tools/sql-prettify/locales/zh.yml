@@ -1,4 +1,0 @@
-tools:
-  sql-prettify:
-    title: SQL 美化和格式化
-    description: 在线格式化和美化您的 SQL 查询（它支持各种 SQL 方言）。

@@ -1,4 +1,0 @@
-tools:
-  html-entities:
-    title: 转义html实体
-    description: 转义或unescape html实体（将<、>、&、“和\'替换为其html版本）

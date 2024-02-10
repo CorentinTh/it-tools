@@ -1,4 +1,0 @@
-tools:
-  json-to-csv:
-    title: JSON to CSV
-    description: Convert JSON to CSV with automatic header detection.

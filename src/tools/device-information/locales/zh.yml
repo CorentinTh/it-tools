@@ -1,4 +1,0 @@
-tools:
-  device-information:
-    title: 设备信息
-    description: 获取有关当前设备的信息（屏幕大小、像素比率、用户代理…）

@@ -1,4 +1,0 @@
-tools:
-  url-parser:
-    title: Trình phân tích URL
-    description: Phân tích một chuỗi URL để lấy tất cả các phần khác nhau (giao thức, nguồn gốc, tham số, cổng, tên người dùng-mật khẩu, ...)

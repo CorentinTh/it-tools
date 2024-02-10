@@ -1,4 +1,0 @@
-tools:
-  toml-to-json:
-    title: Chuyển đổi TOML thành JSON
-    description: Phân tích và chuyển đổi TOML thành JSON.

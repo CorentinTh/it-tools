@@ -1,4 +1,0 @@
-tools:
-  mime-types:
-    title: mime类型
-    description: 将mime类型转换为扩展，反之亦然。

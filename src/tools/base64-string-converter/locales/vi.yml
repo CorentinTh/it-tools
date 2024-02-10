@@ -1,4 +1,0 @@
-tools:
-  base64-string-converter:
-    title: Trình mã hóa/giải mã chuỗi Base64
-    description: Đơn giản mã hóa và giải mã chuỗi thành mã Base64.

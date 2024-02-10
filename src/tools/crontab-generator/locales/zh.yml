@@ -1,4 +1,0 @@
-tools:
-  crontab-generator:
-    title: Crontab 表达式生成
-    description: 验证并生成crontab，并获取cron调度的可读描述。
