@@ -1,0 +1,9 @@
+tools:
+  json-to-toml:
+    title: 'JSON to TOML'
+    description: 'Parse and convert JSON to TOML.'
+    invalid: 'Provided JSON is not valid.'
+    your-json: 'Your JSON'
+    toml-from-json: 'TOML from your JSON'
+    placeholder:
+      your-json: 'Paste your JSON here...'
