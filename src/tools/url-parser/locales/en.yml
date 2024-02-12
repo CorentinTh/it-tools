@@ -1,0 +1,15 @@
+tools:
+  url-parser:
+    title: 'Url parser'
+    description: 'Parse an url string to get all the different parts (protocol, origin, params, port, username-password, ...)'
+    your-url: 'Your url to parse:'
+    protocol: 'Protocol'
+    username: 'Username'
+    password: 'Password'
+    hostname: 'Hostname'
+    port: 'Port'
+    path: 'Path'
+    params: 'Params'
+    placeholder:
+      your-url: 'Your url to parse...'
+    invalid-url: 'Invalid url'
