@@ -1,4 +1,0 @@
-tools:
-  math-evaluator:
-    title: 数学计算器
-    description: 计算数学表达式的计算器。您可以使用sqrt、cos、sin、abs等函数。

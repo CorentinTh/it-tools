@@ -1,4 +1,0 @@
-tools:
-  case-converter:
-    title: 大小写转换
-    description: 更改字符串的大小写并在不同格式之间进行选择

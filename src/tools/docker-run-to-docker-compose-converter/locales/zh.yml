@@ -1,4 +1,0 @@
-tools:
-  docker-run-to-docker-compose-converter:
-    title: Docker Run 到 docker-compose 转换器
-    description: 将 docker run 命令行转换为 docker-compose 文件!

@@ -1,4 +1,0 @@
-tools:
-  json-to-toml:
-    title: JSON to TOML
-    description: Parse and convert JSON to TOML.

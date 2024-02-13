@@ -1,4 +1,0 @@
-tools:
-  slugify-string:
-    title: 打乱字符串
-    description: 确保字符串 url、文件名和 id 安全。

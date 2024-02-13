@@ -1,4 +1,0 @@
-tools:
-  base-converter:
-    title: Chuyển đổi cơ số số nguyên
-    description: Chuyển đổi số giữa các cơ số khác nhau (thập phân, thập lục phân, nhị phân, bát phân, base64, ...)

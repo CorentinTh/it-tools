@@ -1,4 +1,0 @@
-tools:
-  ipv6-ula-generator:
-    title: Trình tạo địa chỉ IPv6 ULA
-    description: Tạo địa chỉ IP cục bộ, không thể định tuyến trên mạng của bạn theo RFC4193.

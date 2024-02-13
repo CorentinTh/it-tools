@@ -1,4 +1,0 @@
-tools:
-  hash-text:
-    title: Mã hóa văn bản
-    description: 'Mã hóa một chuỗi văn bản bằng cách sử dụng các hàm bạn cần: MD5, SHA1, SHA256, SHA224, SHA512, SHA384, SHA3 hoặc RIPEMD160'

@@ -1,4 +1,0 @@
-tools:
-  url-encoder:
-    title: 编码/解码url格式的字符串
-    description: 编码为url编码格式（也称为“百分比编码”）或从中解码。

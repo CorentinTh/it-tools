@@ -1,4 +1,0 @@
-tools:
-  string-obfuscator:
-    title: String obfuscator
-    description: Obfuscate a string (like a secret, an IBAN, or a token) to make it shareable and identifiable without revealing its content.

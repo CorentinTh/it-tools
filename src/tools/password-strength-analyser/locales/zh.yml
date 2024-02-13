@@ -1,4 +1,0 @@
-tools:
-  password-strength-analyser:
-    title: 密码强度分析仪
-    description: 使用此密码强度分析器和破解时间估计工具来发现密码的强度。

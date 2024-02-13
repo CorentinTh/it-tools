@@ -1,4 +1,0 @@
-tools:
-  json-prettify:
-    title: JSON美化和格式化
-    description: 将JSON字符串修饰为友好的可读格式。

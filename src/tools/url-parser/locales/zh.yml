@@ -1,4 +1,0 @@
-tools:
-  url-parser:
-    title: Url分析器
-    description: 解析url字符串以获取所有不同的部分（协议、来源、参数、端口、用户名密码…）

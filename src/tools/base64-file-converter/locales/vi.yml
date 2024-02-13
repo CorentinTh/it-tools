@@ -1,4 +1,0 @@
-tools:
-  base64-file-converter:
-    title: Trình chuyển đổi tệp Base64
-    description: Chuyển đổi chuỗi, tệp hoặc hình ảnh thành mã Base64.

@@ -1,4 +1,0 @@
-tools:
-  ipv4-range-expander:
-    title: Mở rộng dải IPv4
-    description: Cho một địa chỉ IPv4 bắt đầu và kết thúc, công cụ này tính toán một mạng IPv4 hợp lệ với ký hiệu CIDR của nó.

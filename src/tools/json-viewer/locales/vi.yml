@@ -1,4 +1,0 @@
-tools:
-  json-prettify:
-    title: Định dạng và làm đẹp JSON
-    description: Định dạng chuỗi JSON của bạn thành một định dạng dễ đọc và thân thiện với con người.

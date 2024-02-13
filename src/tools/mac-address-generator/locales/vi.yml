@@ -1,4 +1,0 @@
-tools:
-  mac-address-generator:
-    title: Trình tạo địa chỉ MAC
-    description: Nhập số lượng và tiền tố. Địa chỉ MAC sẽ được tạo ra theo kiểu chữ hoa hoặc chữ thường theo lựa chọn của bạn

@@ -1,4 +1,0 @@
-tools:
-  text-to-nato-alphabet:
-    title: 文本转北约字母表
-    description: 将文本转换为北约拼音字母以进行口头传播。

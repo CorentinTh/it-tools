@@ -1,4 +1,0 @@
-tools:
-  device-information:
-    title: Device information
-    description: Get information about your current device (screen size, pixel-ratio, user agent, ...)

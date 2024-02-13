@@ -69,3 +69,314 @@ tools:
     measurement: Đo lường
     text: Văn bản
     data: Dữ liệu
+
+  password-strength-analyser:
+    title: Bộ phân tích độ mạnh mật khẩu
+    description: Khám phá độ mạnh của mật khẩu của bạn với công cụ phân tích độ mạnh mật khẩu chỉ chạy trên phía máy khách và ước tính thời gian phá mật khẩu.
+
+  chronometer:
+    title: Đồng hồ bấm giờ
+    description: Giám sát thời gian của một sự việc. Cơ bản là một đồng hồ bấm giờ với các tính năng đơn giản.
+
+  token-generator:
+    title: Trình tạo mã thông báo
+    description: Tạo chuỗi ngẫu nhiên với các ký tự bạn muốn, chữ hoa hoặc chữ thường, số và/hoặc ký tự đặc biệt.
+
+    uppercase: Chữ hoa (ABC...)
+    lowercase: Chữ thường (abc...)
+    numbers: Số (123...)
+    symbols: Ký tự đặc biệt (!-;...)
+    length: Độ dài
+    tokenPlaceholder: 'Mã thông báo...'
+    copied: Mã thông báo đã được sao chép vào clipboard
+    button:
+      copy: Sao chép
+      refresh: Làm mới
+
+  percentage-calculator:
+    title: Máy tính phần trăm
+    description: Dễ dàng tính toán phần trăm từ một giá trị đến giá trị khác, hoặc từ một phần trăm đến một giá trị.
+
+  svg-placeholder-generator:
+    title: Trình tạo hình ảnh SVG giả định
+    description: Tạo hình ảnh svg để sử dụng làm giả định trong ứng dụng của bạn.
+
+  json-to-csv:
+    title: Chuyển đổi JSON thành CSV
+    description: Chuyển đổi JSON thành CSV với việc tự động phát hiện tiêu đề.
+
+  camera-recorder:
+    title: Ghi lại camera
+    description: Chụp ảnh hoặc quay video từ webcam hoặc máy ảnh của bạn.
+  keycode-info:
+    title: Thông tin Keycode
+    description: Tìm mã keycode, mã, vị trí và các phím điều khiển của bất kỳ phím nào được nhấn.
+
+  emoji-picker:
+    title: Bộ chọn biểu tượng cảm xúc
+    description: Sao chép và dán biểu tượng cảm xúc một cách dễ dàng và nhận giá trị unicode và mã điểm của mỗi biểu tượng cảm xúc.
+
+  color-converter:
+    title: Trình chuyển đổi màu
+    description: Chuyển đổi màu giữa các định dạng khác nhau (hex, rgb, hsl và tên css)
+
+  bcrypt:
+    title: Bcrypt
+    description: Mã hóa và so sánh chuỗi văn bản sử dụng bcrypt. Bcrypt là một hàm mã hóa mật khẩu dựa trên thuật toán Blowfish.
+  crontab-generator:
+    title: Trình tạo Crontab
+    description: Xác thực và tạo crontab và lấy mô tả đọc được của lịch trình cron.
+  http-status-codes:
+    title: Mã trạng thái HTTP
+    description: Danh sách tất cả các mã trạng thái HTTP, tên và ý nghĩa của chúng.
+
+  sql-prettify:
+    title: Định dạng và làm đẹp SQL
+    description: Định dạng và làm đẹp các truy vấn SQL của bạn trực tuyến (hỗ trợ nhiều ngôn ngữ SQL khác nhau).
+
+  benchmark-builder:
+    title: Trình tạo bảng đánh giá
+    description: Dễ dàng so sánh thời gian thực thi của các nhiệm vụ với trình tạo bảng đánh giá trực tuyến đơn giản này.
+  git-memo:
+    title: Lệnh Git
+    description: Git là một phần mềm quản lý phiên bản phân tán. Với bảng ghi chú này, bạn sẽ có thể truy cập nhanh vào các lệnh Git phổ biến nhất.
+
+  slugify-string:
+    title: Chuyển đổi chuỗi thành slug
+    description: Biến đổi chuỗi thành dạng an toàn để sử dụng trong URL, tên file và ID.
+
+  encryption:
+    title: Mã hóa / giải mã văn bản
+    description: Mã hóa và giải mã văn bản rõ bằng cách sử dụng thuật toán mã hóa như AES, TripleDES, Rabbit hoặc RC4.
+
+  random-port-generator:
+    title: Trình tạo số cổng ngẫu nhiên
+    description: Tạo số cổng ngẫu nhiên nằm ngoài phạm vi của các cổng "biết được" (0-1023).
+
+  yaml-prettify:
+    title: Định dạng và làm đẹp YAML
+    description: Định dạng chuỗi YAML của bạn thành một định dạng dễ đọc và thân thiện với con người.
+
+  eta-calculator:
+    title: Máy tính ETA
+    description: Một máy tính ETA (Thời gian dự kiến đến) để biết thời gian kết thúc xấp xỉ của một nhiệm vụ, ví dụ như thời điểm kết thúc của một quá trình tải xuống.
+
+  roman-numeral-converter:
+    title: Bộ chuyển đổi số La Mã
+    description: Chuyển đổi số La Mã thành số và chuyển đổi số thành số La Mã.
+
+  hmac-generator:
+    title: Máy tạo HMAC
+    description: Tính toán mã xác thực thông điệp dựa trên hash (HMAC) sử dụng một khóa bí mật và hàm băm yêu thích của bạn.
+
+  bip39-generator:
+    title: Trình tạo BIP39 passphrase
+    description: Tạo BIP39 passphrase từ mnemonic hiện có hoặc ngẫu nhiên, hoặc lấy mnemonic từ passphrase.
+  base64-file-converter:
+    title: Trình chuyển đổi tệp Base64
+    description: Chuyển đổi chuỗi, tệp hoặc hình ảnh thành mã Base64.
+  list-converter:
+    title: Trình chuyển đổi danh sách
+    description: Công cụ này có thể xử lý dữ liệu dựa trên cột và áp dụng các thay đổi khác nhau (đảo ngược, thêm tiền tố và hậu tố, đảo danh sách, sắp xếp danh sách, giảm giá trị thành chữ thường, cắt giá trị) cho mỗi hàng.
+
+  base64-string-converter:
+    title: Trình mã hóa/giải mã chuỗi Base64
+    description: Đơn giản mã hóa và giải mã chuỗi thành mã Base64.
+  toml-to-yaml:
+    title: Chuyển đổi TOML thành YAML
+    description: Phân tích và chuyển đổi TOML thành YAML.
+
+  math-evaluator:
+    title: Trình đánh giá toán học
+    description: Một máy tính để tính toán biểu thức toán học. Bạn có thể sử dụng các hàm như sqrt, cos, sin, abs, v.v.
+
+  json-to-yaml-converter:
+    title: Chuyển đổi JSON sang YAML
+    description: Chuyển đổi đơn giản JSON sang YAML với công cụ chuyển đổi trực tuyến này.
+
+  url-parser:
+    title: Trình phân tích URL
+    description: Phân tích một chuỗi URL để lấy tất cả các phần khác nhau (giao thức, nguồn gốc, tham số, cổng, tên người dùng-mật khẩu, ...)
+
+  iban-validator-and-parser:
+    title: Kiểm tra và phân tích số IBAN
+    description: Xác thực và phân tích số IBAN. Kiểm tra tính hợp lệ của IBAN và lấy thông tin về quốc gia, BBAN, xem có phải là QR-IBAN và định dạng thân thiện của IBAN.
+
+  user-agent-parser:
+    title: Trình phân tích User-agent
+    description: Phát hiện và phân tích trình duyệt, engine, hệ điều hành, CPU và kiểu/mô hình thiết bị từ chuỗi user-agent.
+
+  numeronym-generator:
+    title: Trình tạo Numeronym
+    description: Numeronym là một từ mà một số được sử dụng để tạo thành một từ viết tắt. Ví dụ, "i18n" là một numeronym của "internationalization" trong đó số 18 đại diện cho số chữ cái giữa chữ i đầu tiên và chữ n cuối cùng trong từ.
+
+  case-converter:
+    title: Chuyển đổi chữ hoa/chữ thường
+    description: Thay đổi kiểu chữ của một chuỗi và chọn giữa các định dạng khác nhau
+  html-entities:
+    title: Thay thế các ký tự HTML
+    description: Thay thế hoặc bỏ thẻ các ký tự HTML (thay thế <,>, &, " và \' thành phiên bản HTML tương ứng)
+
+  json-prettify:
+    title: Định dạng và làm đẹp JSON
+    description: Định dạng chuỗi JSON của bạn thành một định dạng dễ đọc và thân thiện với con người.
+
+  docker-run-to-docker-compose-converter:
+    title: Chuyển đổi lệnh docker run thành tệp docker-compose
+    description: Chuyển đổi các lệnh docker run thành tệp docker-compose!
+
+  mac-address-lookup:
+    title: Tra cứu địa chỉ MAC
+    description: Tìm nhà sản xuất và nhà cung cấp của thiết bị dựa trên địa chỉ MAC.
+
+  mime-types:
+    title: Loại Mime
+    description: Chuyển đổi loại mime thành phần mở rộng và ngược lại.
+
+  toml-to-json:
+    title: Chuyển đổi TOML thành JSON
+    description: Phân tích và chuyển đổi TOML thành JSON.
+
+  lorem-ipsum-generator:
+    title: Máy tạo văn bản Lorem ipsum
+    description: Lorem ipsum là một đoạn văn bản giả được sử dụng phổ biến để thể hiện hình thức của một tài liệu hoặc một kiểu chữ mà không cần dựa vào nội dung có ý nghĩa
+
+  qrcode-generator:
+    title: Tạo mã QR
+    description: Tạo và tải xuống mã QR cho một URL hoặc chỉ một đoạn văn bản và tùy chỉnh màu nền và màu chữ.
+
+  wifi-qrcode-generator:
+    title: Tạo mã QR WiFi
+    description: Tạo và tải xuống mã QR để kết nối nhanh đến mạng WiFi.
+
+  xml-formatter:
+    title: Định dạng XML
+    description: Định dạng chuỗi XML của bạn thành một định dạng dễ đọc và thân thiện với con người.
+
+  temperature-converter:
+    title: Bộ chuyển đổi nhiệt độ
+    description: Chuyển đổi độ nhiệt độ cho Kelvin, Celsius, Fahrenheit, Rankine, Delisle, Newton, Réaumur và Rømer.
+
+  chmod-calculator:
+    title: Máy tính Chmod
+    description: Tính toán quyền và lệnh chmod của bạn với máy tính Chmod trực tuyến này.
+  rsa-key-pair-generator:
+    title: Trình tạo cặp khóa RSA
+    description: Tạo các chứng chỉ pem khóa riêng tư và khóa công khai RSA ngẫu nhiên mới.
+
+  html-wysiwyg-editor:
+    title: Trình soạn thảo HTML WYSIWYG
+    description: Trình soạn thảo HTML trực tuyến với trình soạn thảo WYSIWYG đa chức năng, lấy mã nguồn của nội dung ngay lập tức.
+
+  yaml-to-toml:
+    title: YAML sang TOML
+    description: Phân tích và chuyển đổi YAML sang TOML.
+
+  mac-address-generator:
+    title: Trình tạo địa chỉ MAC
+    description: Nhập số lượng và tiền tố. Địa chỉ MAC sẽ được tạo ra theo kiểu chữ hoa hoặc chữ thường theo lựa chọn của bạn
+
+  json-diff:
+    title: So sánh JSON
+    description: So sánh hai đối tượng JSON và lấy ra sự khác biệt giữa chúng.
+
+  jwt-parser:
+    title: Giải mã JWT
+    description: Giải mã và hiển thị nội dung của JSON Web Token (jwt).
+
+  date-converter:
+    title: Chuyển đổi ngày-tháng
+    description: Chuyển đổi ngày và thời gian sang các định dạng khác nhau
+
+  phone-parser-and-formatter:
+    title: Trình phân tích và định dạng số điện thoại
+    description: Phân tích, xác thực và định dạng số điện thoại. Lấy thông tin về số điện thoại, như mã quốc gia, loại, v.v.
+
+  ipv4-subnet-calculator:
+    title: Máy tính mạng con IPv4
+    description: Phân tích các khối CIDR IPv4 của bạn và nhận thông tin về mạng con của bạn.
+
+  og-meta-generator:
+    title: Trình tạo meta Open Graph
+    description: Tạo các thẻ meta HTML Open Graph và mạng xã hội cho trang web của bạn.
+
+  ipv6-ula-generator:
+    title: Trình tạo địa chỉ IPv6 ULA
+    description: Tạo địa chỉ IP cục bộ, không thể định tuyến trên mạng của bạn theo RFC4193.
+
+  hash-text:
+    title: Mã hóa văn bản
+    description: 'Mã hóa một chuỗi văn bản bằng cách sử dụng các hàm bạn cần: MD5, SHA1, SHA256, SHA224, SHA512, SHA384, SHA3 hoặc RIPEMD160'
+  json-to-toml:
+    title: Chuyển đổi JSON sang TOML
+    description: Phân tích và chuyển đổi JSON sang TOML.
+
+  device-information:
+    title: Thông tin thiết bị
+    description: Lấy thông tin về thiết bị hiện tại của bạn (kích thước màn hình, tỷ lệ pixel, user agent, ...)
+
+  pdf-signature-checker:
+    title: Kiểm tra chữ ký PDF
+    description: Xác minh chữ ký của một tệp PDF. Một tệp PDF đã được ký có chứa một hoặc nhiều chữ ký có thể được sử dụng để xác định xem nội dung của tệp đã được thay đổi kể từ khi tệp được ký.
+
+  json-minify:
+    title: Giảm kích thước JSON
+    description: Giảm kích thước và nén JSON của bạn bằng cách loại bỏ khoảng trắng không cần thiết.
+
+  ulid-generator:
+    title: Tạo ULID
+    description: Tạo ngẫu nhiên mã định danh duy nhất có thể sắp xếp theo thứ tự từ điển (ULID).
+  string-obfuscator:
+    title: Mã hóa chuỗi
+    description: Mã hóa một chuỗi (như một bí mật, một IBAN hoặc một mã thông báo) để có thể chia sẻ và nhận dạng mà không tiết lộ nội dung.
+
+  base-converter:
+    title: Chuyển đổi cơ số số nguyên
+    description: Chuyển đổi số giữa các cơ số khác nhau (thập phân, thập lục phân, nhị phân, bát phân, base64, ...)
+
+  yaml-to-json-converter:
+    title: Trình chuyển đổi YAML sang JSON
+    description: Chuyển đổi YAML sang JSON một cách đơn giản với công cụ chuyển đổi trực tuyến này.
+
+  uuid-generator:
+    title: Trình tạo UUID
+    description: Một UUID (Universally Unique Identifier) là một số 128 bit được sử dụng để xác định thông tin trong hệ thống máy tính. Số lượng UUID có thể có là 16^32, tương đương với 2^128 hoặc khoảng 3.4x10^38 (rất lớn!).
+
+  ipv4-address-converter:
+    title: Chuyển đổi địa chỉ Ipv4
+    description: Chuyển đổi địa chỉ ip thành số thập phân, nhị phân, thập lục phân hoặc thậm chí thành ipv6
+
+  text-statistics:
+    title: Thống kê văn bản
+    description: Lấy thông tin về một văn bản, số ký tự, số từ, kích thước của nó, ...
+
+  text-to-nato-alphabet:
+    title: Chuyển đổi văn bản thành bảng chữ cái NATO
+    description: Chuyển đổi văn bản thành bảng chữ cái phiên âm NATO để truyền tải bằng miệng.
+
+  basic-auth-generator:
+    title: Tạo mã xác thực cơ bản
+    description: Tạo một tiêu đề xác thực cơ bản base64 từ tên người dùng và mật khẩu.
+  text-to-unicode:
+    title: Chuyển đổi văn bản thành Unicode
+    description: Phân tích và chuyển đổi văn bản thành Unicode và ngược lại
+
+  ipv4-range-expander:
+    title: Mở rộng dải IPv4
+    description: Cho một địa chỉ IPv4 bắt đầu và kết thúc, công cụ này tính toán một mạng IPv4 hợp lệ với ký hiệu CIDR của nó.
+
+  text-diff:
+    title: So sánh văn bản
+    description: So sánh hai văn bản và xem sự khác biệt giữa chúng.
+
+  otp-generator:
+    title: Tạo mã OTP
+    description: Tạo và xác thực mã OTP (mật khẩu một lần) dựa trên thời gian cho xác thực đa yếu tố.
+
+  url-encoder:
+    title: Mã hóa/giải mã chuỗi định dạng URL
+    description: Mã hóa thành định dạng URL (còn được gọi là "percent-encoded") hoặc giải mã từ đó.
+
+  text-to-binary:
+    title: Chuyển đổi văn bản thành nhị phân ASCII
+    description: Chuyển đổi văn bản thành biểu diễn nhị phân ASCII của nó và ngược lại.

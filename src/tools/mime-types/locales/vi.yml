@@ -1,4 +1,0 @@
-tools:
-  mime-types:
-    title: Loại Mime
-    description: Chuyển đổi loại mime thành phần mở rộng và ngược lại.
