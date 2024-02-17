@@ -1,5 +1,6 @@
 import { resolve } from 'node:path';
 import { URL, fileURLToPath } from 'node:url';
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
 
 import VueI18n from '@intlify/unplugin-vue-i18n/vite';
 import vue from '@vitejs/plugin-vue';
@@ -97,6 +98,7 @@ export default defineConfig({
       resolvers: [NaiveUiResolver(), IconsResolver({ prefix: 'icon' })],
     }),
     Unocss(),
+    nodePolyfills(),
   ],
   base: baseUrl,
   resolve: {
