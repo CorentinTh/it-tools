@@ -1,6 +1,6 @@
 {
   "name": "it-tools",
-  "version": "2023.11.2-7d94e11",
+  "version": "2023.12.21-5ed3693",
   "description": "Collection of handy online tools for developers, with great UX. ",
   "keywords": [
     "productivity",
@@ -87,7 +87,7 @@
     "unplugin-auto-import": "^0.16.4",
     "uuid": "^9.0.0",
     "vue": "^3.3.4",
-    "vue-i18n": "^9.2.2",
+    "vue-i18n": "^9.9.1",
     "vue-router": "^4.1.6",
     "vue-tsc": "^1.8.1",
     "xml-formatter": "^3.3.2",
@@ -96,7 +96,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^0.41.0",
     "@iconify-json/mdi": "^1.1.50",
-    "@intlify/unplugin-vue-i18n": "^0.13.0",
+    "@intlify/unplugin-vue-i18n": "^2.0.0",
     "@playwright/test": "^1.32.3",
     "@rushstack/eslint-patch": "^1.2.0",
     "@tsconfig/node18": "^18.2.0",

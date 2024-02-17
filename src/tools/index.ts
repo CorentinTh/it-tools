@@ -1,7 +1,11 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+
 import { tool as asciiTextDrawer } from './ascii-text-drawer';
+
+import { tool as textToUnicode } from './text-to-unicode';
+
 import { tool as pdfSignatureChecker } from './pdf-signature-checker';
 import { tool as numeronymGenerator } from './numeronym-generator';
 import { tool as macAddressGenerator } from './mac-address-generator';
@@ -76,6 +80,7 @@ import { tool as urlParser } from './url-parser';
 import { tool as uuidGenerator } from './uuid-generator';
 import { tool as macAddressLookup } from './mac-address-lookup';
 import { tool as xmlFormatter } from './xml-formatter';
+import { tool as yamlViewer } from './yaml-viewer';
 
 export const toolsByCategory: ToolCategory[] = [
   {
@@ -94,6 +99,7 @@ export const toolsByCategory: ToolCategory[] = [
       caseConverter,
       textToNatoAlphabet,
       textToBinary,
+      textToUnicode,
       yamlToJson,
       yamlToToml,
       jsonToYaml,
@@ -140,6 +146,7 @@ export const toolsByCategory: ToolCategory[] = [
       chmodCalculator,
       dockerRunToDockerComposeConverter,
       xmlFormatter,
+      yamlViewer,
     ],
   },
   {

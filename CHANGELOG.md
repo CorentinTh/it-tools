@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## Version 2023.12.21-5ed3693
+
+### Features
+- **i18n**: improve chinese i18n (#757) (2e56641)
+- **i18n**: add tooltip and favoriteButton i18n (#756) (a1037cf)
+- **i18n**: add Chinese translation base (#718) (8f99eb6)
+- **new tool**: pdf signature checker (#745) (4781920)
+- **new tool**: numeronym generator (#729) (e07e2ae)
+
+### Bug fixes
+- **jwt-parser**: jwt claim array support (#799) (5ed3693)
+- **camera-recorder**: stop camera on navigation (#782) (80e46c9)
+- **doc**: updated create new tool command in readme (#762) (7a70dbb)
+- **base64-file-converter**: fix downloading of index.html content without data preambula (#750) (043e4f0)
+- **docker**: rollback armv7 in docker releases (#741) (205e360)
+- **eta**: corrected example (#737) (821cbea)
+
+### Refactoring
+- **about, i18n**: improved i18n dx with markdown (#753) (bd3edcb)
+- **token, i18n**: complete fr translation (#752) (de1ee69)
+- **uuid generator**: uuid version picker (#751) (38586ca)
+- **case converter**: no split on lowercase, uppercase and mocking case (#748) (ca43a25)
+- **ui**: replaced legacy n-upload with c-file-upload (#747) (7fe47b3)
+- **token**: added password in token generator keywords (#746) (16ffe6b)
+- **bcrypt**: fix input label align (#721) (093ff31)
+
+### Chores
+- **deps**: switched from oui to oui-data for mac address lookup (#693) (0fe9a20)
+- **deps**: update unocss monorepo to ^0.57.0 (#638) (2e396d8)
+- **docker**: added armv7 plateform for docker releases (#722) (fe1de8c)
+
 ## Version 2023.11.02-7d94e11
 
 ### Features

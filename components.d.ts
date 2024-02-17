@@ -139,12 +139,12 @@ declare module '@vue/runtime-core' {
     NH3: typeof import('naive-ui')['NH3']
     NIcon: typeof import('naive-ui')['NIcon']
     NInputNumber: typeof import('naive-ui')['NInputNumber']
+    NLabel: typeof import('naive-ui')['NLabel']
     NLayout: typeof import('naive-ui')['NLayout']
     NLayoutSider: typeof import('naive-ui')['NLayoutSider']
     NMenu: typeof import('naive-ui')['NMenu']
     NScrollbar: typeof import('naive-ui')['NScrollbar']
     NSpin: typeof import('naive-ui')['NSpin']
-    NTag: typeof import('naive-ui')['NTag']
     NumeronymGenerator: typeof import('./src/tools/numeronym-generator/numeronym-generator.vue')['default']
     OtpCodeGeneratorAndValidator: typeof import('./src/tools/otp-code-generator-and-validator/otp-code-generator-and-validator.vue')['default']
     PasswordStrengthAnalyser: typeof import('./src/tools/password-strength-analyser/password-strength-analyser.vue')['default']
@@ -170,6 +170,7 @@ declare module '@vue/runtime-core' {
     TextStatistics: typeof import('./src/tools/text-statistics/text-statistics.vue')['default']
     TextToBinary: typeof import('./src/tools/text-to-binary/text-to-binary.vue')['default']
     TextToNatoAlphabet: typeof import('./src/tools/text-to-nato-alphabet/text-to-nato-alphabet.vue')['default']
+    TextToUnicode: typeof import('./src/tools/text-to-unicode/text-to-unicode.vue')['default']
     TokenDisplay: typeof import('./src/tools/otp-code-generator-and-validator/token-display.vue')['default']
     'TokenGenerator.tool': typeof import('./src/tools/token-generator/token-generator.tool.vue')['default']
     TomlToJson: typeof import('./src/tools/toml-to-json/toml-to-json.vue')['default']
@@ -186,5 +187,6 @@ declare module '@vue/runtime-core' {
     XmlFormatter: typeof import('./src/tools/xml-formatter/xml-formatter.vue')['default']
     YamlToJson: typeof import('./src/tools/yaml-to-json-converter/yaml-to-json.vue')['default']
     YamlToToml: typeof import('./src/tools/yaml-to-toml/yaml-to-toml.vue')['default']
+    YamlViewer: typeof import('./src/tools/yaml-viewer/yaml-viewer.vue')['default']
   }
 }
