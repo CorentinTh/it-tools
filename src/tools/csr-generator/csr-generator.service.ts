@@ -37,27 +37,27 @@ async function generateCSR(config: {
   const csr = pki.createCertificationRequest();
   csr.publicKey = publicKey;
   csr.setSubject([{
-    name: 'CN',
+    name: 'commonName',
     value: config.commonName,
   }, {
-    name: 'C',
+    name: 'countryName',
     value: config.countryName,
   }, {
-    shortName: 'ST',
+    name: 'stateOrProvinceName',
     value: config.state,
   }, {
-    name: 'L',
+    name: 'localityName',
     value: config.city,
   }, {
-    name: 'O',
+    name: 'organizationName',
     value: config.organizationName,
   }, {
-    shortName: 'OU',
+    name: 'organizationalUnitName',
     value: config.organizationalUnit,
   }, {
-    name: 'EMAIL',
+    name: 'emailAddress',
     value: config.contactEmail,
-  }]);
+  }].filter(attr => attr.value));
 
   // sign certification request
   csr.sign(privateKey);
