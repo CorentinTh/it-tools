@@ -1,8 +1,5 @@
 import { resolve } from 'node:path';
-<<<<<<< HEAD
 import { URL, fileURLToPath } from 'node:url';
-=======
->>>>>>> chore: prepare sshpk for cert/key/sshkeys related tools
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
 
 import VueI18n from '@intlify/unplugin-vue-i18n/vite';
