@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { codesByCategories } from './http-status-codes.constants';
+import * as status from './http-status-codes.constants';
 import { useFuzzySearch } from '@/composable/fuzzySearch';
 
 const search = ref('');
+const { t } = useI18n();
+const { codesByCategories } = status;
 
 const { searchResult } = useFuzzySearch({
   search,
@@ -17,7 +19,7 @@ const codesByCategoryFiltered = computed(() => {
     return codesByCategories;
   }
 
-  return [{ category: 'Search results', codes: searchResult.value }];
+  return [{ category: t('tools.http-status-codes.searchResults'), codes: searchResult.value }];
 });
 </script>
 
@@ -25,7 +27,7 @@ const codesByCategoryFiltered = computed(() => {
   <div>
     <c-input-text
       v-model:value="search"
-      placeholder="Search http status..."
+      :placeholder="t('tools.http-status-codes.searchPlaceholder')"
       autofocus raw-text mb-10
     />
 

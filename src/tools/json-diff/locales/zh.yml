@@ -1,0 +1,13 @@
+tools:
+  json-diff:
+    title: JSON 对比
+    description: 比较两个 JSON 对象并获取它们之间的差异。
+
+    inputLable: 您的第一个 JSON
+    inputPlaceholder: 在此粘贴您的第一个 JSON...
+    outputLable: 您要比较的 JSON
+    outputPlaceholder: 在此粘贴要比较的 JSON...
+    onlyShowDifferences: 仅显示差异
+    jsonAreTheSame: 提供的 JSON 相同
+
+    invalidJSONFormat: 无效的 JSON 格式

@@ -2,3 +2,20 @@ tools:
   html-wysiwyg-editor:
     title: HTML WYSIWYG editor
     description: Online HTML editor with feature-rich WYSIWYG editor, get the source code of the content immediately.
+
+    bold: Bold
+    italic: Italic
+    strike: Strike
+    inlineCode: Inline code
+    heading1: Heading 1
+    heading2: Heading 2
+    heading3: Heading 3
+    heading4: Heading 4
+    bulletList: Bullet list
+    orderedList: Ordered list
+    codeBlock: Code block
+    blockquote: Blockquote
+    hardBreak: Hard break
+    clearFormat: Clear format
+    undo: Undo
+    redo: Redo

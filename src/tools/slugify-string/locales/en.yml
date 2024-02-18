@@ -2,3 +2,11 @@ tools:
   slugify-string:
     title: Slugify string
     description: Make a string url, filename and id safe.
+
+    inputLabel: Your string to slugify
+    inputPlaceholder: 'Put your string here (ex: My file path)'
+    outputLabel: Your slug
+    outputPlaceholder: 'You slug will be generated here (ex: my-file-path)'
+    copyBtn: Copy slug
+
+    copied: Slug copied to clipboard

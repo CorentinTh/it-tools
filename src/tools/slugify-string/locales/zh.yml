@@ -1,0 +1,12 @@
+tools:
+  slugify-string:
+    title: 字符串转换为 Slug
+    description: 将字符串转换为 URL、文件名和 ID 安全的格式。
+
+    inputLabel: 要转换为 Slug 的字符串
+    inputPlaceholder: '在此输入您的字符串（例如：我的文件路径）'
+    outputLabel: 您的 Slug
+    outputPlaceholder: '您的 Slug 将在此生成（例如：my-file-path）'
+    copyBtn: 复制 Slug
+
+    copied: Slug 已复制到剪贴板

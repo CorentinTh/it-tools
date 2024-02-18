@@ -1,7 +1,7 @@
 tools:
   html-entities:
     title: 转义 HTML 实体
-    description: 转义或取消转义 HTML 实体（将 <,>, &, " 和 \' 替换为它们的 HTML 版本）
+    description: 转义或取消转义 HTML 实体（将 <,>, &, " 和 ' 替换为它们的 HTML 版本）
 
     escape:
       title: 转义 HTML 实体

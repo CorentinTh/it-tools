@@ -6,6 +6,7 @@ import type { UserAgentResultSection } from './user-agent-parser.types';
 import { withDefaultOnError } from '@/utils/defaults';
 
 const ua = ref(navigator.userAgent as string);
+const { t } = useI18n();
 
 // If not input in the ua field is present return an empty object of type UAParser.IResult because otherwise
 // UAParser returns the values for the current Browser. This is confusing because results are shown for an empty
@@ -19,82 +20,82 @@ const userAgentInfo = computed(() => withDefaultOnError(() => getUserAgentInfo(u
 
 const sections: UserAgentResultSection[] = [
   {
-    heading: 'Browser',
+    heading: t('tools.user-agent-parser.browser'),
     icon: Browser,
     content: [
       {
-        label: 'Name',
+        label: t('tools.user-agent-parser.name'),
         getValue: block => block?.browser.name,
-        undefinedFallback: 'No browser name available',
+        undefinedFallback: t('tools.user-agent-parser.browserNameFallback'),
       },
       {
-        label: 'Version',
+        label: t('tools.user-agent-parser.version'),
         getValue: block => block?.browser.version,
-        undefinedFallback: 'No browser version available',
+        undefinedFallback: t('tools.user-agent-parser.browserVersionFallback'),
       },
     ],
   },
   {
-    heading: 'Engine',
+    heading: t('tools.user-agent-parser.engine'),
     icon: Engine,
     content: [
       {
-        label: 'Name',
+        label: t('tools.user-agent-parser.name'),
         getValue: block => block?.engine.name,
-        undefinedFallback: 'No engine name available',
+        undefinedFallback: t('tools.user-agent-parser.engineNameFallback'),
       },
       {
-        label: 'Version',
+        label: t('tools.user-agent-parser.version'),
         getValue: block => block?.engine.version,
-        undefinedFallback: 'No engine version available',
+        undefinedFallback: t('tools.user-agent-parser.engineVersionFallback'),
       },
     ],
   },
   {
-    heading: 'OS',
+    heading: t('tools.user-agent-parser.os'),
     icon: Adjustments,
     content: [
       {
-        label: 'Name',
+        label: t('tools.user-agent-parser.name'),
         getValue: block => block?.os.name,
-        undefinedFallback: 'No OS name available',
+        undefinedFallback: t('tools.user-agent-parser.osNameFallback'),
       },
       {
-        label: 'Version',
+        label: t('tools.user-agent-parser.version'),
         getValue: block => block?.os.version,
-        undefinedFallback: 'No OS version available',
+        undefinedFallback: t('tools.user-agent-parser.osVersionFallback'),
       },
     ],
   },
   {
-    heading: 'Device',
+    heading: t('tools.user-agent-parser.device'),
     icon: Devices,
     content: [
       {
-        label: 'Model',
+        label: t('tools.user-agent-parser.model'),
         getValue: block => block?.device.model,
-        undefinedFallback: 'No device model available',
+        undefinedFallback: t('tools.user-agent-parser.deviceModelFallback'),
       },
       {
-        label: 'Type',
+        label: t('tools.user-agent-parser.type'),
         getValue: block => block?.device.type,
-        undefinedFallback: 'No device type available',
+        undefinedFallback: t('tools.user-agent-parser.deviceTypeFallback'),
       },
       {
-        label: 'Vendor',
+        label: t('tools.user-agent-parser.vendor'),
         getValue: block => block?.device.vendor,
-        undefinedFallback: 'No device vendor available',
+        undefinedFallback: t('tools.user-agent-parser.deviceVendorFallback'),
       },
     ],
   },
   {
-    heading: 'CPU',
+    heading: t('tools.user-agent-parser.cpu'),
     icon: Cpu,
     content: [
       {
-        label: 'Architecture',
+        label: t('tools.user-agent-parser.architecture'),
         getValue: block => block?.cpu.architecture,
-        undefinedFallback: 'No CPU architecture available',
+        undefinedFallback: t('tools.user-agent-parser.cpuArchitectureFallback'),
       },
     ],
   },
@@ -105,9 +106,9 @@ const sections: UserAgentResultSection[] = [
   <div>
     <c-input-text
       v-model:value="ua"
-      label="User agent string"
+      :label="t('tools.user-agent-parser.label')"
       multiline
-      placeholder="Put your user-agent here..."
+      :placeholder="t('tools.user-agent-parser.placeholder')"
       clearable
       raw-text
       rows="2"
