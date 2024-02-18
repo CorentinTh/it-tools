@@ -1,6 +1,7 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+import { tool as dockerComposeToKubernetesConverter } from './docker-compose-to-kubernetes';
 import { tool as textToUnicode } from './text-to-unicode';
 import { tool as pdfSignatureChecker } from './pdf-signature-checker';
 import { tool as numeronymGenerator } from './numeronym-generator';
@@ -141,6 +142,7 @@ export const toolsByCategory: ToolCategory[] = [
       sqlPrettify,
       chmodCalculator,
       dockerRunToDockerComposeConverter,
+      dockerComposeToKubernetesConverter,
       xmlFormatter,
       yamlViewer,
     ],

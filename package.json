@@ -35,7 +35,7 @@
     "release": "node ./scripts/release.mjs"
   },
   "dependencies": {
-    "@guolao/vue-monaco-editor": "^1.4.1",
+    "@guolao/vue-monaco-editor": "^1.5.1",
     "@it-tools/bip39": "^0.0.4",
     "@it-tools/oggen": "^1.3.0",
     "@sindresorhus/slugify": "^2.2.1",
@@ -56,6 +56,7 @@
     "cronstrue": "^2.26.0",
     "crypto-js": "^4.1.1",
     "date-fns": "^2.29.3",
+    "docker2kube": "^0.0.13",
     "dompurify": "^3.0.6",
     "emojilib": "^3.0.10",
     "figue": "^1.2.0",
