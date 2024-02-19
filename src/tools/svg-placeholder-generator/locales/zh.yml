@@ -1,0 +1,21 @@
+tools:
+  svg-placeholder-generator:
+    title: SVG 占位符生成器
+    description: 生成 SVG 图像，用作应用程序中的占位符。
+
+    widthLabel: '宽度（以像素为单位）'
+    widthPlaceholder: 'SVG 宽度...'
+    heightLabel: '高度（以像素为单位）'
+    heightPlaceholder: 'SVG 高度...'
+    backgroundLabel: '背景'
+    textColorLabel: '文本颜色'
+    fontSizeLabel: '字体大小'
+    fontSizePlaceholder: '字体大小...'
+    customTextLabel: '自定义文本'
+    customTextPlaceholder: '默认为 {width}x{height}'
+    useExactSize: '使用精确尺寸'
+    svgString: 'SVG HTML 元素'
+    base64: 'Base64 编码的 SVG'
+    copySvg: '复制 SVG'
+    copyBase64: '复制 Base64'
+    downloadSvg: '下载 SVG'

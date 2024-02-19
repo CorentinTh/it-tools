@@ -80,6 +80,7 @@ declare module '@vue/runtime-core' {
     FormatTransformer: typeof import('./src/components/FormatTransformer.vue')['default']
     GitMemo: typeof import('./src/tools/git-memo/git-memo.vue')['default']
     'GitMemo.content': typeof import('./src/tools/git-memo/git-memo.content.md')['default']
+    'GitMemo.content.zh': typeof import('./src/tools/git-memo/git-memo.content.zh.md')['default']
     HashText: typeof import('./src/tools/hash-text/hash-text.vue')['default']
     HmacGenerator: typeof import('./src/tools/hmac-generator/hmac-generator.vue')['default']
     'Home.page': typeof import('./src/pages/Home.page.vue')['default']

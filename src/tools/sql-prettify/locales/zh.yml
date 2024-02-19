@@ -1,0 +1,19 @@
+tools:
+  sql-prettify:
+    title: SQL 格式化工具
+    description: 在线格式化和美化您的 SQL 查询（支持各种 SQL 方言）。
+
+    dialect: 方言
+    keywordCase: 关键词大小写
+    indentStyle: 缩进样式
+    sql: 标准 SQL
+    upper: 大写
+    lower: 小写
+    preserve: 保留原样
+    standard: 标准
+    tabularLeft: 左对齐
+    tabularRight: 右对齐
+
+    inputLabel: 您的 SQL 查询
+    inputPlaceholder: 在此处放置您的 SQL 查询...
+    outputLabel: SQL 查询的美化版本

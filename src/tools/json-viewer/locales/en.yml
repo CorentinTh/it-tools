@@ -1,0 +1,12 @@
+tools:
+  json-prettify:
+    title: JSON prettify and format
+    description: Prettify your JSON string to a human friendly readable format.
+
+    sortKeys: 'Sort keys :'
+    indentSize: 'Indent size :'
+    rawJSONLabel: Your raw JSON
+    rawJSONPlaceholder: Paste your raw JSON here...
+    prettifyJSON: Prettified version of your JSON
+
+    invalidMessage: Provided JSON is not valid.

@@ -1,0 +1,21 @@
+tools:
+  svg-placeholder-generator:
+    title: SVG placeholder generator
+    description: Generate svg images to use as placeholder in your applications.
+
+    widthLabel: 'Width (in px)'
+    widthPlaceholder: 'SVG width...'
+    heightLabel: 'Height (in px)'
+    heightPlaceholder: 'SVG height...'
+    backgroundLabel: 'Background'
+    textColorLabel: 'Text color'
+    fontSizeLabel: 'Font size'
+    fontSizePlaceholder: 'Font size...'
+    customTextLabel: 'Custom text'
+    customTextPlaceholder: 'Default is {width}x{height}'
+    useExactSize: 'Use exact size'
+    svgString: 'SVG HTML element'
+    base64: 'SVG in Base64'
+    copySvg: 'Copy svg'
+    copyBase64: 'Copy base64'
+    downloadSvg: 'Download svg'

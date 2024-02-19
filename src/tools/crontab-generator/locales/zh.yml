@@ -1,0 +1,38 @@
+tools:
+  crontab-generator:
+    title: 定时任务生成器
+    description: 验证和生成 crontab，并获取定时任务的可读描述。
+
+    anyMeaning: 任意值
+    anyExample: 每分钟
+    rangeMeaning: 值范围
+    rangeExample: 1 到 10 分钟
+    listMeaning: 值列表
+    listExample: 在第 1 和第 10 分钟
+    stepMeaning: 步进值
+    stepExample: 每 10 分钟
+    yearlyMeaning: 每年 1 月 1 日午夜
+    annuallyMeaning: '等同于 {yearly}'
+    monthlyMeaning: 每月第一天午夜
+    weeklyMeaning: 每周星期日凌晨
+    dailyMeaning: 每天午夜
+    midnightMeaning: '等同于 {daily}'
+    hourlyMeaning: 每小时整点
+    rebootMeaning: 启动时运行
+
+    verbose: 冗长模式
+    use24HourTimeFormat: 使用 24 小时时间格式
+    dayOfWeekStartIndexZero: 一周从 0 开始
+    secondDesc: '[可选] 秒（0 - 59）'
+    minuteDesc: '分钟（0 - 59）'
+    hourDesc: '小时（0 - 23）'
+    dayOfMonthDesc: '日期（1 - 31）'
+    monthDesc: '月份（1 - 12）或 jan、feb、mar、apr ...'
+    dayOfWeekDesc: '星期几（0 - 6，星期日=0）或 sun、mon ...'
+    command: 命令
+    symbol: '符号:'
+    meaning: '含义:'
+    example: '示例:'
+    equivalent: '等同:'
+    
+    invalidMessage: 此 cron 表达式无效

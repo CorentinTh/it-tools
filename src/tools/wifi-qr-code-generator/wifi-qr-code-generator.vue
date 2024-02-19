@@ -6,6 +6,7 @@ import {
 } from './useQRCode';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 
+const { t } = useI18n();
 const foreground = ref('#000000ff');
 const background = ref('#ffffffff');
 
@@ -42,7 +43,7 @@ const { download } = useDownloadFileFromBase64({ source: qrcode, filename: 'qr-c
         <c-select
           v-model:value="encryption"
           mb-4
-          label="Encryption method"
+          :label="t('tools.wifi-qrcode-generator.encryption')"
           default-value="WPA"
           label-position="left"
           label-width="130px"
@@ -72,14 +73,13 @@ const { download } = useDownloadFileFromBase64({ source: qrcode, filename: 'qr-c
             label-position="left"
             label-width="130px"
             label-align="right"
-            label="SSID:"
+            :label="t('tools.wifi-qrcode-generator.ssidLabel')"
             rows="1"
             autosize
-            placeholder="Your WiFi SSID..."
-            mb-6
+            :placeholder="t('tools.wifi-qrcode-generator.ssidPlaceholder')"
           />
-          <n-checkbox v-model:checked="isHiddenSSID">
-            Hidden SSID
+          <n-checkbox v-model:checked="isHiddenSSID" w-40>
+            {{ t('tools.wifi-qrcode-generator.hiddenSSID') }}
           </n-checkbox>
         </div>
         <c-input-text
@@ -88,17 +88,17 @@ const { download } = useDownloadFileFromBase64({ source: qrcode, filename: 'qr-c
           label-position="left"
           label-width="130px"
           label-align="right"
-          label="Password:"
+          :label="t('tools.wifi-qrcode-generator.passwordLabel')"
           rows="1"
           autosize
           type="password"
-          placeholder="Your WiFi Password..."
+          :placeholder="t('tools.wifi-qrcode-generator.passwordPlaceholder')"
           mb-6
         />
         <c-select
           v-if="encryption === 'WPA2-EAP'"
           v-model:value="eapMethod"
-          label="EAP method"
+          :label="t('tools.wifi-qrcode-generator.eapMethod')"
           label-position="left"
           label-width="130px"
           label-align="right"
@@ -111,20 +111,19 @@ const { download } = useDownloadFileFromBase64({ source: qrcode, filename: 'qr-c
             label-position="left"
             label-width="130px"
             label-align="right"
-            label="Identity:"
+            :label="t('tools.wifi-qrcode-generator.eapIdentityLabel')"
             rows="1"
             autosize
-            placeholder="Your EAP Identity..."
-            mb-6
+            :placeholder="t('tools.wifi-qrcode-generator.eapIdentityPlaceholder')"
           />
-          <n-checkbox v-model:checked="eapAnonymous">
-            Anonymous?
+          <n-checkbox v-model:checked="eapAnonymous" w-40>
+            {{ t('tools.wifi-qrcode-generator.anonymous') }}
           </n-checkbox>
         </div>
         <c-select
           v-if="encryption === 'WPA2-EAP'"
           v-model:value="eapPhase2Method"
-          label="EAP Phase 2 method"
+          :label="t('tools.wifi-qrcode-generator.eapPhase2Method')"
           label-position="left"
           label-width="130px"
           label-align="right"
@@ -132,19 +131,19 @@ const { download } = useDownloadFileFromBase64({ source: qrcode, filename: 'qr-c
           searchable mb-4
         />
         <n-form label-width="130" label-placement="left">
-          <n-form-item label="Foreground color:">
+          <n-form-item :label="t('tools.wifi-qrcode-generator.foreground')">
             <n-color-picker v-model:value="foreground" :modes="['hex']" />
           </n-form-item>
-          <n-form-item label="Background color:">
+          <n-form-item :label="t('tools.wifi-qrcode-generator.background')">
             <n-color-picker v-model:value="background" :modes="['hex']" />
           </n-form-item>
         </n-form>
       </div>
       <div v-if="qrcode">
         <div flex flex-col items-center gap-3>
-          <img alt="wifi-qrcode" :src="qrcode" width="200">
+          <img :alt="t('tools.wifi-qrcode-generator.wifiQrcode')" :src="qrcode" width="200">
           <c-button @click="download">
-            Download qr-code
+            {{ t('tools.wifi-qrcode-generator.downloadBtn') }}
           </c-button>
         </div>
       </div>

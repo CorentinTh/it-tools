@@ -1,0 +1,11 @@
+tools:
+  chmod-calculator:
+    title: Chmod calculator
+    description: Compute your chmod permissions and commands with this online chmod calculator.
+
+    read: 'Read (4)'
+    write: 'Write (2)'
+    execute: 'Execute (1)'
+    owner: 'Owner (u)'
+    group: 'Group (g)'
+    public: Public (o)

@@ -1,0 +1,10 @@
+tools:
+  json-to-csv:
+    title: JSON to CSV
+    description: Convert JSON to CSV with automatic header detection.
+
+    inputLabel: Your raw JSON
+    inputPlaceholder: Paste your raw JSON here...
+    outputLabel: CSV version of your JSON
+
+    invalidMessage: Provided JSON is not valid.

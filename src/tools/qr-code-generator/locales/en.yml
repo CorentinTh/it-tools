@@ -1,0 +1,16 @@
+tools:
+  qrcode-generator:
+    title: QR Code generator
+    description: Generate and download QR-code for an url or just a text and customize the background and foreground colors.
+
+    low: low
+    medium: medium
+    quartile: quartile
+    high: high
+
+    textLabel: 'Text:'
+    textPlaceholder: 'Your link or text...'
+    foreground: 'Foreground color:'
+    background: 'Background color:'
+    errorCorrectionLevels: 'Error resistance:'
+    downloadBtn: Download qr-code

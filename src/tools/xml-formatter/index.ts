@@ -1,10 +1,11 @@
 import { Code } from '@vicons/tabler';
 import { defineTool } from '../tool';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: 'XML formatter',
+  name: t('tools.xml-formatter.title'),
   path: '/xml-formatter',
-  description: 'Prettify your XML string to a human friendly readable format.',
+  description: t('tools.xml-formatter.description'),
   keywords: ['xml', 'prettify', 'format'],
   component: () => import('./xml-formatter.vue'),
   icon: Code,

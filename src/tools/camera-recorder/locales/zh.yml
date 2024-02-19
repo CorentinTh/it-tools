@@ -1,0 +1,22 @@
+tools:
+  camera-recorder:
+    title: 摄像头录制器
+    description: 从您的网络摄像头或相机拍照或录制视频。
+
+    unSupported: 您的浏览器不支持从摄像头录制视频
+    needPermissionGranted: 您需要授予使用摄像头和麦克风的权限
+    permissionCannotBePrompted: 您的浏览器已阻止权限请求或不支持它。 您需要在浏览器设置中手动授予权限（通常在地址栏中的锁图标）。
+    grantPermission: 授予权限
+    cameraLabel: '视频：'
+    cameraPlaceholder: 选择摄像头
+    microphoneLabel: '音频：'
+    microphonePlaceholder: 选择麦克风
+    startWebcam: 启动网络摄像头
+    takeScreenshot: 拍照
+    startRecording: 开始录制
+    pause: 暂停
+    resume: 恢复
+    stop: 停止
+    unSupportRecord: 您的浏览器不支持视频录制
+    screenshot: 截图
+    video: 视频
