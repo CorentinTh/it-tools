@@ -1,0 +1,15 @@
+tools:
+  ipv4-address-converter:
+    title: IPv4 地址转换器
+    description: 将 IP 地址转换为十进制、二进制、十六进制，甚至 IPv6
+
+    ipv4AddressLabel: 'IPv4 地址：'
+    ipv4AddressPlaceholder: 'IPv4 地址...'
+    decimal: '十进制：'
+    hexadecimal: '十六进制：'
+    binary: '二进制：'
+    ipv6: 'IPv6：'
+    ipv6Short: 'IPv6（简写）：'
+
+    errorPlaceholder: 设置一个正确的 IPv4 地址
+    invalidMessage: 无效的 IPv4 地址

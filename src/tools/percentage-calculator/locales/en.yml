@@ -1,0 +1,13 @@
+tools:
+  percentage-calculator:
+    title: Percentage calculator
+    description: Easily calculate percentages from a value to another value, or from a percentage to a value.
+
+    whatIs: What is
+    percentageX: '% of'
+    XIsWhatPercentOfY: X is what percent of Y
+    percentOf: is what percent of
+    percentage: What is the percentage increase/decrease
+    from: From
+    to: To
+    result: Result

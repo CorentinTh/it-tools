@@ -1,0 +1,24 @@
+tools:
+  ipv4-subnet-calculator:
+    title: IPv4 子网计算器
+    description: 解析您的 IPv4 CIDR 块，并获取关于您的子网络的所有所需信息。
+
+    ipv4AddressLabel: 带有或不带掩码的 IPv4 地址
+    ipv4AddressPlaceholder: IPv4 地址...
+    netmask: 子网掩码
+    networkAddress: 网络地址
+    networkMask: 网络掩码
+    networkMaskInBinary: 二进制网络掩码
+    CIDRNotation: CIDR 表示法
+    wildcardMask: 通配符掩码
+    networkSize: 网络大小
+    firstAddress: 第一个地址
+    lastAddress: 最后一个地址
+    broadcastAddress: 广播地址
+    broadcastFallback: 此掩码无广播地址
+    IPClass: IP 类别
+    IPClassFallback: 未知类别
+
+    previousBlock: 前一个块
+    nextBlock: 下一个块
+    invalidMessage: 我们无法解析此地址，请检查格式

@@ -1,0 +1,13 @@
+tools:
+  ipv6-ula-generator:
+    title: IPv6 ULA 生成器
+    description: 根据 RFC4193，在您的网络中生成您自己的本地、不可路由的 IP 地址。
+
+    macAddressLabel: 'MAC 地址:'
+    macAddressPlaceholder: '输入 MAC 地址'
+    IPv6ULA: 'IPv6 ULA:'
+    firstRoutableBlock: '第一个可路由的块:'
+    lastRoutableBlock: '最后一个可路由的块:'
+
+    info: 信息
+    infoDetail: 此工具使用 IETF 建议的第一种方法，使用当前时间戳加上 MAC 地址，进行 sha1 哈希处理，并使用低 40 位生成您的随机 ULA。

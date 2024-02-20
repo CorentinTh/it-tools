@@ -1,0 +1,18 @@
+tools:
+  ipv4-range-expander:
+    title: IPv4 范围扩展器
+    description: 给定起始和结束 IPv4 地址，此工具计算出一个有效的 IPv4 网络及其 CIDR 表示法。
+
+    startAddressPlaceholder: 起始 IPv4 地址...
+    endAddressPlaceholder: 结束 IPv4 地址...
+    startAddress: 起始地址
+    endAddress: 结束地址
+    addressesInRange: 范围内的地址
+    CIDR: CIDR
+    oldValue: 旧值
+    newValue: 新值
+
+    errorMessage: 起始和结束 IPv4 地址的组合无效
+    errorDesc: 结束 IPv4 地址低于起始 IPv4 地址。这是无效的，无法计算结果。大多数情况下，解决此问题的方法是更改起始和结束地址。
+    switchStartEnd: 切换起始和结束 IPv4 地址
+    invalidMessage: 无效的 IPv4 地址
