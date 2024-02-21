@@ -1,10 +1,11 @@
 import { FileText } from '@vicons/tabler';
 import { defineTool } from '../tool';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: 'Text statistics',
+  name: t('tools.text-statistics.title'),
   path: '/text-statistics',
-  description: 'Get information about a text, the amount of characters, the amount of words, it\'s size, ...',
+  description: t('tools.text-statistics.description'),
   keywords: ['text', 'statistics', 'length', 'characters', 'count', 'size', 'bytes'],
   component: () => import('./text-statistics.vue'),
   icon: FileText,

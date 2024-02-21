@@ -1,11 +1,11 @@
 import { Temperature } from '@vicons/tabler';
 import { defineTool } from '../tool';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: 'Temperature converter',
+  name: t('tools.temperature-converter.title'),
   path: '/temperature-converter',
-  description:
-    'Temperature degrees conversions for Kelvin, Celsius, Fahrenheit, Rankine, Delisle, Newton, Réaumur and Rømer.',
+  description: t('tools.temperature-converter.description'),
   keywords: [
     'temperature',
     'converter',

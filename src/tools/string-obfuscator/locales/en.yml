@@ -1,0 +1,10 @@
+tools:
+  string-obfuscator:
+    title: String obfuscator
+    description: Obfuscate a string (like a secret, an IBAN, or a token) to make it shareable and identifiable without revealing its content.
+
+    inputLabel: 'String to obfuscate:'
+    inputPlaceholder: Enter string to obfuscate
+    keepFirst: 'Keep first:'
+    keepLast: 'Keep last:'
+    KeepSpaces: 'Keep spaces:'

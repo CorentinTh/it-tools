@@ -3,6 +3,7 @@ import { useRafFn } from '@vueuse/core';
 
 import { formatMs } from './chronometer.service';
 
+const { t } = useI18n();
 const isRunning = ref(false);
 const counter = ref(0);
 
@@ -37,14 +38,14 @@ function pause() {
     </c-card>
     <div mt-5 flex justify-center gap-3>
       <c-button v-if="!isRunning" type="primary" @click="resume">
-        Start
+        {{ t('tools.chronometer.start') }}
       </c-button>
       <c-button v-else type="warning" @click="pause">
-        Stop
+        {{ t('tools.chronometer.stop') }}
       </c-button>
 
       <c-button @click="counter = 0">
-        Reset
+        {{ t('tools.chronometer.reset') }}
       </c-button>
     </div>
   </div>

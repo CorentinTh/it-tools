@@ -1,0 +1,12 @@
+tools:
+  emoji-picker:
+    title: Emoji picker
+    description: Copy and paste emojis easily and get the unicode and code points value of each emoji.
+
+    searchPlaceholder: Search emojis (e.g. "smile")...
+    noResults: No results
+    searchResult: Search result
+
+    emojiCopied: Emoji {emoji} copied to the clipboard
+    codePointsCopied: Code points {codePoints} copied to the clipboard
+    unicodeCopied: Unicode {unicode} copied to the clipboard

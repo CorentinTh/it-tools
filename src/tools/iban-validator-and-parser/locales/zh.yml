@@ -1,0 +1,22 @@
+tools:
+  iban-validator-and-parser:
+    title: IBAN 验证器和解析器
+    description: 验证和解析 IBAN 号码。检查 IBAN 是否有效，并获取国家、BBAN、是否为 QR-IBAN 和 IBAN 友好格式。
+
+    inputPlaceholder: 输入要检查有效性的 IBAN…
+    ibanExamples: 有效的 IBAN 示例
+
+    isIbanValid: IBAN 是否有效？
+    IBANErrors: IBAN 错误
+    isQRIBAN: 是否为 QR-IBAN？
+    countryCode: 国家代码
+    BBAN: BBAN
+    IBANFriendlyFormat: IBAN 友好格式
+    noIBANProvided: 未提供 IBAN
+    noIBANCountry: 未提供 IBAN 国家
+    wrongBBANLength: BBAN 长度错误
+    wrongBBANFormat: BBAN 格式错误
+    checksumNotNumber: 校验和不是数字
+    wrongIBANChecksum: IBAN 校验和错误
+    wrongAccountBankBranchChecksum: 帐户银行分行校验和错误
+    QRIBANNotAllowed: 不允许 QR-IBAN

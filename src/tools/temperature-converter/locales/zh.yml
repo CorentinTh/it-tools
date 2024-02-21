@@ -1,0 +1,13 @@
+tools:
+  temperature-converter:
+    title: 温度转换器
+    description: 开尔文、摄氏度、华氏度、兰氏度、德利斯尔度、牛顿度、瑞摄姆度和罗默度的温度转换。
+
+    kelvin: 开尔文
+    celsius: 摄氏度
+    fahrenheit: 华氏度
+    rankine: 兰氏度
+    delisle: 德利斯尔度
+    newton: 牛顿度
+    reaumur: 瑞摄姆度
+    romer: 罗默度

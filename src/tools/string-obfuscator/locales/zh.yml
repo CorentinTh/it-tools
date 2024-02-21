@@ -1,0 +1,10 @@
+tools:
+  string-obfuscator:
+    title: 字符串混淆器
+    description: 将字符串（如密码、IBAN 或令牌）混淆，使其可共享和识别，而不会暴露内容。
+
+    inputLabel: '要混淆的字符串：'
+    inputPlaceholder: 输入要混淆的字符串
+    keepFirst: '保留前：'
+    keepLast: '保留后：'
+    KeepSpaces: '保留空格：'
