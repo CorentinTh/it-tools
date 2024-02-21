@@ -1,0 +1,22 @@
+tools:
+  case-converter:
+    title: Case converter
+    description: Change the case of a string and chose between different formats
+
+    inputLabel: 'Your string:'
+    inputPlaceholder: Your string...
+
+    lowercase: 'Lowercase:'
+    uppercase: 'Uppercase:'
+    camelcase: 'Camelcase:'
+    capitalcase: 'Capitalcase:'
+    constantcase: 'Constantcase:'
+    dotcase: 'Dotcase:'
+    headercase: 'Headercase:'
+    nocase: 'Nocase:'
+    paramcase: 'Paramcase:'
+    pascalcase: 'Pascalcase:'
+    pathcase: 'Pathcase:'
+    sentencecase: 'Sentencecase:'
+    snakecase: 'Snakecase:'
+    mockingcase: 'Mockingcase:'

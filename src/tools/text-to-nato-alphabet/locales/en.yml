@@ -1,0 +1,11 @@
+tools:
+  text-to-nato-alphabet:
+    title: Text to NATO alphabet
+    description: Transform text into NATO phonetic alphabet for oral transmission.
+
+    inputLabel: Your text to convert to NATO phonetic alphabet
+    inputPlaceholder: Put your text here...
+    outputLabel: Your text in NATO phonetic alphabet
+    copy: Copy NATO string
+
+    copied: NATO alphabet string copied.

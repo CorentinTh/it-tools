@@ -1,0 +1,24 @@
+tools:
+  ipv4-subnet-calculator:
+    title: IPv4 subnet calculator
+    description: Parse your IPv4 CIDR blocks and get all the info you need about your sub network.
+
+    ipv4AddressLabel: An IPv4 address with or without mask
+    ipv4AddressPlaceholder: The ipv4 address...
+    netmask: Netmask
+    networkAddress: Network address
+    networkMask: Network mask
+    networkMaskInBinary: Network mask in binary
+    CIDRNotation: CIDR notation
+    wildcardMask: Wildcard mask
+    networkSize: Network size
+    firstAddress: First address
+    lastAddress: Last address
+    broadcastAddress: Broadcast address
+    broadcastFallback: No broadcast address with this mask
+    IPClass: IP class
+    IPClassFallback: Unknown class type
+
+    previousBlock: Previous block
+    nextBlock: Next block
+    invalidMessage: We cannot parse this address, check the format

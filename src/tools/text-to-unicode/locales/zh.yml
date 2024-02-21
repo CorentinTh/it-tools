@@ -1,0 +1,18 @@
+tools:
+  text-to-unicode:
+    title: 文本转 Unicode
+    description: 解析并转换文本到 Unicode，反之亦然
+
+    textToUnicode: 文本转 Unicode
+    inputTextLabel: 输入要转换为 Unicode 的文本
+    inputTextPlaceholder: "例如 '你好，复联'"
+    unicodeFromTextLabel: 您的文本的 Unicode
+    unicodeFromTextPlaceholder: 您的文本的 Unicode 表示将在此处显示
+    unicodeToText: Unicode 转文本
+    inputUnicodeLabel: 输入要转换为文本的 Unicode
+    inputUnicodePlaceholder: 输入 Unicode
+    textFromUnicodeLabel: 您的 Unicode 的文本
+    textFromUnicodePlaceholder: 您的 Unicode 的文本表示将在此处显示
+
+    copyUnicode: 复制 Unicode 到剪贴板
+    copyText: 复制文本到剪贴板

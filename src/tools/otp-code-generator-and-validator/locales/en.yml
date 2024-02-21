@@ -1,0 +1,30 @@
+tools:
+  otp-generator:
+    title: OTP code generator
+    description: Generate and validate time-based OTP (one time password) for multi-factor authentication.
+
+    secretLabel: Secret
+    secretPlaceholder: Paste your TOTP secret...
+    generate: Generate a new random secret
+    timeLeft: Next in {second}s
+    keyUri: Open Key URI in new tab
+    hexadecimalLabel: Secret in hexadecimal
+    hexadecimalPlaceholder: Secret in hex will be displayed here
+    epochLabel: Epoch
+    epochPlaceholder: Epoch in sec will be displayed here
+    iteration: Iteration
+    countLabel: 'Count:'
+    countPlaceholder: Iteration count will be displayed here
+    paddedHexLabel: 'Padded hex:'
+    paddedHexPlaceholder: Iteration count in hex will be displayed here
+
+    previous: Previous
+    currentOTP: Current OTP
+    next: Next
+    copied: Copied !
+    copyPreviousOTP: Copy previous OTP
+    copyCurrentOTP: Copy current OTP
+    copyNextOTP: Copy next OTP
+
+    typeErrorMessage: Secret should be a base32 string
+    invalidMessage: Please set a secret

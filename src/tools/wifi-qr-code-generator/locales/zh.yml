@@ -1,0 +1,20 @@
+tools:
+  wifi-qrcode-generator:
+    title: WiFi 二维码生成器
+    description: 生成并下载用于快速连接 WiFi 网络的二维码。
+
+    encryption: 加密方法
+    ssidLabel: 'SSID:'
+    ssidPlaceholder: '您的 WiFi SSID...'
+    hiddenSSID: 隐藏 SSID
+    passwordLabel: '密码:'
+    passwordPlaceholder: '您的 WiFi 密码...'
+    eapMethod: EAP 方法
+    eapIdentityLabel: '身份:'
+    eapIdentityPlaceholder: '您的 EAP 身份...'
+    anonymous: '匿名?'
+    eapPhase2Method: 'EAP 第2阶段方法'
+    foreground: '前景色:'
+    background: '背景色:'
+    wifiQrcode: WiFi 二维码
+    downloadBtn: 下载二维码

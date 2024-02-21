@@ -1,0 +1,18 @@
+tools:
+  text-to-unicode:
+    title: Text to Unicode
+    description: Parse and convert text to unicode and vice-versa
+
+    textToUnicode: Text to Unicode
+    inputTextLabel: Enter text to convert to unicode
+    inputTextPlaceholder: "e.g. 'Hello Avengers'"
+    unicodeFromTextLabel: Unicode from your text
+    unicodeFromTextPlaceholder: The unicode representation of your text will be here
+    unicodeToText: Unicode to Text
+    inputUnicodeLabel: Enter unicode to convert to text
+    inputUnicodePlaceholder: Input Unicode
+    textFromUnicodeLabel: Text from your Unicode
+    textFromUnicodePlaceholder: The text representation of your unicode will be here
+
+    copyUnicode: Copy unicode to clipboard
+    copyText: Copy text to clipboard

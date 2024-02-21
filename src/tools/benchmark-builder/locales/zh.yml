@@ -1,0 +1,26 @@
+tools:
+  benchmark-builder:
+    title: 基准测试生成器
+    description: 使用这个非常简单的在线基准测试生成器轻松比较任务的执行时间。
+
+    header:
+      position: 位置
+      title: 套件
+      size: 样本数
+      mean: 平均值
+      variance: 方差
+    suiteNameLabel: 套件名称
+    suiteNamePlaceholder: 输入套件名称...
+    suiteValues: 套件数值
+    suiteTitle: 套件 {index}
+    deleteSuite: 删除套件
+    addSuite: 添加套件
+    resetSuites: 重置套件
+    unitLabel: 单位
+    unitPlaceholder: '单位（例如：毫秒）'
+    setYourMeasure: 设置您的度量...
+    deleteThisValue: 删除此数值
+    addAMeasure: 添加一个度量
+
+    copyAsMarkdown: 复制为 markdown 表格
+    copyAsBulletList: 复制为项目列表

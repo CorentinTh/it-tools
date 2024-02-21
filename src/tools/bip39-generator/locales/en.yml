@@ -1,0 +1,18 @@
+tools:
+  bip39-generator:
+    title: BIP39 passphrase generator
+    description: Generate BIP39 passphrase from existing or random mnemonic, or get the mnemonic from the passphrase.
+
+    languageLabel: 'Language:'
+    entropyLabel: 'Entropy (seed):'
+    entropyPlaceholder: Your string...
+    passphraseLabel: 'Passphrase (mnemonic):'
+    passphrasePlaceholder: Your mnemonic...
+
+    validation:
+      lengthError: 'Entropy length should be >= 16, <= 32 and be a multiple of 4'
+      stringTypeError: Entropy should be an hexadecimal string
+      mnemonicError: Invalid mnemonic
+    copied:
+      entropy: Entropy copied to the clipboard
+      passphrase: Passphrase copied to the clipboard

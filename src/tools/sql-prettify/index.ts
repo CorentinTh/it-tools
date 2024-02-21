@@ -1,11 +1,11 @@
 import { Database } from '@vicons/tabler';
 import { defineTool } from '../tool';
-import { translate } from '@/plugins/i18n.plugin';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: translate('tools.sql-prettify.title'),
+  name: t('tools.sql-prettify.title'),
   path: '/sql-prettify',
-  description: translate('tools.sql-prettify.description'),
+  description: t('tools.sql-prettify.description'),
   keywords: [
     'sql',
     'prettify',

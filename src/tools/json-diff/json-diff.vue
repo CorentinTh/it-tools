@@ -5,6 +5,8 @@ import DiffsViewer from './diff-viewer/diff-viewer.vue';
 import { withDefaultOnError } from '@/utils/defaults';
 import { isNotThrowing } from '@/utils/boolean';
 
+const { t } = useI18n();
+
 const rawLeftJson = ref('');
 const rawRightJson = ref('');
 
@@ -14,7 +16,7 @@ const rightJson = computed(() => withDefaultOnError(() => JSON5.parse(rawRightJs
 const jsonValidationRules = [
   {
     validator: (value: string) => value === '' || isNotThrowing(() => JSON5.parse(value)),
-    message: 'Invalid JSON format',
+    message: t('tools.json-diff.invalidJSONFormat'),
   },
 ];
 </script>
@@ -23,8 +25,8 @@ const jsonValidationRules = [
   <c-input-text
     v-model:value="rawLeftJson"
     :validation-rules="jsonValidationRules"
-    label="Your first JSON"
-    placeholder="Paste your first JSON here..."
+    :label="t('tools.json-diff.inputLable')"
+    :placeholder="t('tools.json-diff.inputPlaceholder')"
     rows="20"
     multiline
     test-id="leftJson"
@@ -35,8 +37,8 @@ const jsonValidationRules = [
   <c-input-text
     v-model:value="rawRightJson"
     :validation-rules="jsonValidationRules"
-    label="Your JSON to compare"
-    placeholder="Paste your JSON to compare here..."
+    :label="t('tools.json-diff.outputLable')"
+    :placeholder="t('tools.json-diff.outputPlaceholder')"
     rows="20"
     multiline
     test-id="rightJson"

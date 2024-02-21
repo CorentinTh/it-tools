@@ -1,0 +1,12 @@
+tools:
+  yaml-prettify:
+    title: YAML 格式化工具
+    description: 将您的 YAML 字符串格式化为易读的人类友好格式。
+
+    sortKeys: '排序键：'
+    indentSize: '缩进大小：'
+    inputLabel: 您的原始 YAML
+    inputPlaceholder: 在此粘贴您的原始 YAML…
+    outputLabel: 您的 YAML 的格式化版本
+
+    invalidMessage: 提供的 YAML 不是有效的。

@@ -1,0 +1,30 @@
+tools:
+  otp-generator:
+    title: OTP 验证码生成器
+    description: 生成和验证基于时间的 OTP（一次性密码）以进行多因素身份验证。
+
+    secretLabel: 密钥
+    secretPlaceholder: 粘贴您的 TOTP 密钥...
+    generate: 生成一个新的随机密钥
+    timeLeft: 还剩 {second} 秒
+    keyUri: 在新标签页中打开 Key URI
+    hexadecimalLabel: 十六进制密钥
+    hexadecimalPlaceholder: 十六进制密钥将显示在此处
+    epochLabel: 历元
+    epochPlaceholder: 秒数将显示在此处
+    iteration: 迭代
+    countLabel: '计数：'
+    countPlaceholder: 迭代计数将显示在此处
+    paddedHexLabel: '填充的十六进制：'
+    paddedHexPlaceholder: 十六进制迭代计数将显示在此处
+
+    previous: 上一个
+    currentOTP: 当前 OTP
+    next: 下一个
+    copied: 已复制！
+    copyPreviousOTP: 复制上一个 OTP
+    copyCurrentOTP: 复制当前 OTP
+    copyNextOTP: 复制下一个 OTP
+
+    typeErrorMessage: 密钥应为 base32 字符串
+    invalidMessage: 请设置一个密钥

@@ -1,21 +1,22 @@
 import type { OGSchemaType } from '../OGSchemaType.type';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 export const musicSong: OGSchemaType = {
-  name: 'Song details',
+  name: t('tools.og-meta-generator.songDetails.title'),
   elements: [
-    { type: 'input', label: 'Duration', placeholder: 'The duration of the song...', key: 'music:duration' },
-    { type: 'input', label: 'Album', placeholder: 'The album this song is from...', key: 'music:album' },
+    { type: 'input', label: t('tools.og-meta-generator.songDetails.duration.lebel'), placeholder: t('tools.og-meta-generator.songDetails.duration.placeholder'), key: 'music:duration' },
+    { type: 'input', label: t('tools.og-meta-generator.songDetails.album.lebel'), placeholder: t('tools.og-meta-generator.songDetails.album.placeholder'), key: 'music:album' },
     {
       type: 'input',
-      label: 'Disc',
-      placeholder: 'Which disc of the album this song is on...',
+      label: t('tools.og-meta-generator.songDetails.disc.lebel'),
+      placeholder: t('tools.og-meta-generator.songDetails.disc.placeholder'),
       key: 'music:album:disk',
     },
-    { type: 'input', label: 'Track', placeholder: ' Which track this song is...', key: 'music:album:track' },
+    { type: 'input', label: t('tools.og-meta-generator.songDetails.track.lebel'), placeholder: t('tools.og-meta-generator.songDetails.track.placeholder'), key: 'music:album:track' },
     {
       type: 'input-multiple',
-      label: 'Musician',
-      placeholder: 'The musician that made this song...',
+      label: t('tools.og-meta-generator.songDetails.musician.lebel'),
+      placeholder: t('tools.og-meta-generator.songDetails.musician.placeholder'),
       key: 'music:musician',
     },
   ],

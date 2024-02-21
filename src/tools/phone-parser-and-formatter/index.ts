@@ -1,11 +1,11 @@
 import { Phone } from '@vicons/tabler';
 import { defineTool } from '../tool';
-import { translate } from '@/plugins/i18n.plugin';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: translate('tools.phone-parser-and-formatter.title'),
+  name: t('tools.phone-parser-and-formatter.title'),
   path: '/phone-parser-and-formatter',
-  description: translate('tools.phone-parser-and-formatter.description'),
+  description: t('tools.phone-parser-and-formatter.description'),
   keywords: [
     'phone',
     'parser',

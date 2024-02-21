@@ -1,0 +1,13 @@
+tools:
+  roman-numeral-converter:
+    title: 罗马数字转换器
+    description: 将罗马数字转换为阿拉伯数字，以及将阿拉伯数字转换为罗马数字。
+
+    arabicToRoman: 阿拉伯数字转罗马数字
+    romanToArabic: 罗马数字转阿拉伯数字
+    copy: 复制
+
+    validationNumeral: 我们只能转换 {min} 到 {max} 之间的数字
+    validationRoman: 您输入的内容不是有效的罗马数字
+    copyRoman: 罗马数字已复制到剪贴板
+    copyArabic: 阿拉伯数字已复制到剪贴板

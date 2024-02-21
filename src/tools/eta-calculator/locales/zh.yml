@@ -1,0 +1,17 @@
+tools:
+  eta-calculator:
+    title: 预计到达时间计算器
+    description: 一个预计到达时间（ETA）计算器，用于了解任务的大致结束时间，例如下载结束的时间。
+
+    tips: 以一个具体的例子来说，如果你用 3 分钟洗 5 个盘子，而你有 500 个盘子要洗，那么你需要 5 个小时来洗完所有盘子。
+    unitCount: 要消耗的元素数量
+    startedAt: 消耗开始于
+    unitPerTimeSpan: 每个时间段消耗的单位数量
+    in: 用
+    milliseconds: 毫秒
+    seconds: 秒
+    minutes: 分钟
+    hours: 小时
+    days: 天
+    totalDuration: 总持续时间
+    endAt: 它将在以下时间结束

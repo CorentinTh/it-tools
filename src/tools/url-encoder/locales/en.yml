@@ -1,0 +1,23 @@
+tools:
+  url-encoder:
+    title: Encode/decode url formatted strings
+    description: Encode to url-encoded format (also known as "percent-encoded") or decode from it.
+
+    encode:
+      title: Encode
+      inputLabel: 'Your string :'
+      inputPlaceholder: The string to encode
+      outputLabel: 'Your string encoded :'
+      outputPlaceholder: Your string encoded
+      copied: Encoded string copied to the clipboard
+      inValidMessage: Impossible to parse this string
+    decode:
+      title: Decode
+      inputLabel: 'Your encoded string :'
+      inputPlaceholder: The string to decode
+      outputLabel: 'Your string decoded :'
+      outputPlaceholder: Your string decoded
+      copied: Decoded string copied to the clipboard
+      inValidMessage: Impossible to parse this string
+
+    copy: Copy

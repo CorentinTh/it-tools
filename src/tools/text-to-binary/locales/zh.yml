@@ -1,0 +1,22 @@
+tools:
+  text-to-binary:
+    title: 文本转 ASCII 二进制
+    description: 将文本转换为其 ASCII 二进制表示，反之亦然。
+
+    textToBinary:
+      title: 文本转 ASCII 二进制
+      inputLabel: 输入要转换为二进制的文本
+      inputPlaceholder: 例如 "Hello world"
+      outputLabel: 您的文本的二进制
+      outputPlaceholder: 您的文本的二进制表示将显示在这里
+      copyBinary: 复制二进制到剪贴板
+    binaryToText:
+      title: ASCII 二进制转文本
+      inputLabel: 输入要转换为文本的二进制
+      inputPlaceholder: 例如 "01001000 01100101 01101100 01101100 01101111"
+      outputLabel: 您的二进制的文本
+      outputPlaceholder: 您的二进制的文本表示将显示在这里
+      copyText: 复制文本到剪贴板
+
+    invalidMessage: 二进制应为有效的 ASCII 二进制字符串，且位数为 8 的倍数
+    invalidBinaryString: 无效的二进制字符串

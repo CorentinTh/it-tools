@@ -1,11 +1,11 @@
 import { Keyboard } from '@vicons/tabler';
 import { defineTool } from '../tool';
-import { translate } from '@/plugins/i18n.plugin';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: translate('tools.keycode-info.title'),
+  name: t('tools.keycode-info.title'),
   path: '/keycode-info',
-  description: translate('tools.keycode-info.description'),
+  description: t('tools.keycode-info.description'),
   keywords: [
     'keycode',
     'info',

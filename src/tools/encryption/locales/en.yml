@@ -1,0 +1,24 @@
+tools:
+  encryption:
+    title: Encrypt / decrypt text
+    description: Encrypt and decrypt text clear text using crypto algorithm like AES, TripleDES, Rabbit or RC4.
+
+    encrypt:
+      title: Encrypt
+      inputLabel: 'Your text:'
+      inputPlaceholder: The string to cypher
+      secretLabel: 'Your secret key:'
+      algoLabel: 'Encryption algorithm:'
+      outputLabel: 'Your text encrypted:'
+      outputPlaceholder: Your string hash
+    decrypt:
+      title: Decrypt
+      inputLabel: 'Your encrypted text:'
+      inputPlaceholder: The string to cypher
+      secretLabel: 'Your secret key:'
+      algoLabel: 'Encryption algorithm:'
+      outputLabel: 'Your decrypted text:'
+      outputPlaceholder: Your string hash
+      decryptError: Error while decrypting
+
+    errorMessage: Unable to decrypt your text

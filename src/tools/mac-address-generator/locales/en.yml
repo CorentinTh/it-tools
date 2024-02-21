@@ -1,0 +1,17 @@
+tools:
+  mac-address-generator:
+    title: MAC address generator
+    description: Enter the quantity and prefix. MAC addresses will be generated in your chosen case (uppercase or lowercase)
+
+    quantity: 'Quantity:'
+    prefixLabel: 'MAC address prefix:'
+    prefixPlaceholder: 'Set a prefix, e.g. 64:16:7F'
+    case: 'Case:'
+    separator: 'Separator:'
+    uppercase: Uppercase
+    lowercase: Lowercase
+    none: None
+
+    refreshBtn: Refresh
+    copyBtn: Copy
+    copied: MAC addresses copied to the clipboard

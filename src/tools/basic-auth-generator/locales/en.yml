@@ -1,0 +1,15 @@
+tools:
+  basic-auth-generator:
+    title: Basic auth generator
+    description: Generate a base64 basic auth header from an username and a password.
+
+    username:
+      inputLabel: Username
+      inputPlaceholder: Your username...
+    password:
+      inputLabel: Password
+      inputPlaceholder: Your password...
+    outputTitle: 'Authorization header:'
+    copyHeader: Copy header
+
+    copied: Header copied to the clipboard

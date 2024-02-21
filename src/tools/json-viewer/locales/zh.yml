@@ -1,0 +1,12 @@
+tools:
+  json-prettify:
+    title: JSON 格式化工具
+    description: 将您的 JSON 字符串美化为易读的格式。
+
+    sortKeys: '排序键：'
+    indentSize: '缩进大小：'
+    rawJSONLabel: 您的原始 JSON
+    rawJSONPlaceholder: 在此粘贴您的原始 JSON…
+    prettifyJSON: 您的 JSON 的美化版本
+
+    invalidMessage: 提供的 JSON 不是有效的。

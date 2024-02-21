@@ -1,0 +1,12 @@
+tools:
+  hash-text:
+    title: 文本转哈希
+    description: '使用所需的函数对文本字符串进行哈希计算：MD5、SHA1、SHA256、SHA224、SHA512、SHA384、SHA3或RIPEMD160'
+
+    textLabel: '要进行哈希的文本：'
+    textPlaceholder: '要进行哈希的字符串...'
+    hashLabel: '摘要编码'
+    binary: '二进制（基数2）'
+    hexadecimal: '十六进制（基数16）'
+    base64: 'Base64（基数64）'
+    base64url: 'Base64url（带有URL安全字符的基数64）'

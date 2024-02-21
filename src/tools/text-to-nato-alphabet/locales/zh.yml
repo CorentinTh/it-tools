@@ -1,0 +1,11 @@
+tools:
+  text-to-nato-alphabet:
+    title: 文本转换为北约音标字母
+    description: 将文本转换为北约音标字母，用于口头传输。
+
+    inputLabel: 要转换为北约音标字母的文本
+    inputPlaceholder: 在这里输入您的文本...
+    outputLabel: 北约音标字母文本
+    copy: 复制北约字符串
+
+    copied: 已复制北约音标字母字符串。

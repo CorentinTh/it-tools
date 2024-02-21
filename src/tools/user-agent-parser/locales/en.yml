@@ -1,0 +1,30 @@
+tools:
+  user-agent-parser:
+    title: User-agent parser
+    description: Detect and parse Browser, Engine, OS, CPU, and Device type/model from an user-agent string.
+
+    name: Name
+    version: Version
+    model: Model
+    type: Type
+    vendor: Vendor
+    architecture: Architecture
+
+    browser: Browser
+    browserNameFallback: No browser name available
+    browserVersionFallback: No browser version available
+    engine: Engine
+    engineNameFallback: No engine name available
+    engineVersionFallback: No engine version available
+    os: OS
+    osNameFallback: No OS name available
+    osVersionFallback: No OS version available
+    device: Device
+    deviceModelFallback: No device model available
+    deviceTypeFallback: No device type available
+    deviceVendorFallback: No device vendor available
+    cpu: CPU
+    cpuArchitectureFallback: No CPU architecture available
+
+    label: User agent string
+    placeholder: Put your user-agent here...

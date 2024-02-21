@@ -1,29 +1,30 @@
 import type { OGSchemaType } from '../OGSchemaType.type';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 export const videoMovie: OGSchemaType = {
-  name: 'Movie details',
+  name: t('tools.og-meta-generator.videoMovie.title'),
   elements: [
     {
       type: 'input-multiple',
-      label: 'Actor',
+      label: t('tools.og-meta-generator.videoMovie.actor.label'),
       key: 'video:actor',
-      placeholder: 'Name of the actress/actor...',
+      placeholder: t('tools.og-meta-generator.videoMovie.actor.placeholder'),
     },
-    // { type: 'input', label: 'Actor role', key: 'video:actor:role', placeholder: 'The role they played...' },
+    // { type: 'input', label: t('tools.og-meta-generator.videoMovie.actorRole.label'), key: 'video:actor:role', placeholder: t('tools.og-meta-generator.videoMovie.actorRole.placeholder') },
     {
       type: 'input-multiple',
-      label: 'Director',
+      label: t('tools.og-meta-generator.videoMovie.director.label'),
       key: 'video:director',
-      placeholder: 'Name of the director...',
+      placeholder: t('tools.og-meta-generator.videoMovie.director.placeholder'),
     },
-    { type: 'input-multiple', label: 'Writer', key: 'video:writer', placeholder: 'Writers of the movie...' },
-    { type: 'input', label: 'Duration', key: 'video:duration', placeholder: 'The movie\'s length in seconds...' },
+    { type: 'input-multiple', label: t('tools.og-meta-generator.videoMovie.writer.label'), key: 'video:writer', placeholder: t('tools.og-meta-generator.videoMovie.writer.placeholder') },
+    { type: 'input', label: t('tools.og-meta-generator.videoMovie.duration.label'), key: 'video:duration', placeholder: t('tools.og-meta-generator.videoMovie.duration.placeholder') },
     {
       type: 'input',
-      label: 'Release date',
+      label: t('tools.og-meta-generator.videoMovie.releaseDate.label'),
       key: 'video:release_date',
-      placeholder: 'The date the movie was released...',
+      placeholder: t('tools.og-meta-generator.videoMovie.releaseDate.placeholder'),
     },
-    { type: 'input', label: 'Tag', key: 'video:tag', placeholder: 'Tag words associated with this movie...' },
+    { type: 'input', label: t('tools.og-meta-generator.videoMovie.tag.label'), key: 'video:tag', placeholder: t('tools.og-meta-generator.videoMovie.tag.placeholder') },
   ],
 };

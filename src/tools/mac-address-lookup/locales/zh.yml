@@ -1,0 +1,12 @@
+tools:
+  mac-address-lookup:
+    title: MAC 地址查询
+    description: 通过 MAC 地址查找设备的供应商和制造商。
+
+    MACAddressLabel: 'MAC 地址:'
+    MACAddressPlaceholder: 输入 MAC 地址
+    vendorInfo: '供应商信息:'
+    unknownAddress: 此地址的供应商未知
+    copyBtn: 复制供应商信息
+
+    copied: 供应商信息已复制到剪贴板

@@ -1,11 +1,11 @@
 import { Tags } from '@vicons/tabler';
 import { defineTool } from '../tool';
-import { translate } from '@/plugins/i18n.plugin';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: translate('tools.og-meta-generator.title'),
+  name: t('tools.og-meta-generator.title'),
   path: '/og-meta-generator',
-  description: translate('tools.og-meta-generator.description'),
+  description: t('tools.og-meta-generator.description'),
   keywords: [
     'meta',
     'tag',

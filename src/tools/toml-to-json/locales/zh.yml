@@ -1,0 +1,10 @@
+tools:
+  toml-to-json:
+    title: TOML 转 JSON
+    description: 解析并转换 TOML 到 JSON。
+
+    inputLabel: 您的 TOML
+    inputPlaceholder: 在这里粘贴您的 TOML...
+    outputLabel: 从您的 TOML 得到的 JSON
+
+    inValidMessage: 提供的 TOML 不合法。

@@ -1,0 +1,38 @@
+tools:
+  password-strength-analyser:
+    title: Password strength analyser
+    description: Discover the strength of your password with this client side only password strength analyser and crack time estimation tool.
+
+    passwordPlaceholder: Enter a password...
+    bruteForceDuration: Duration to crack this password with brute force
+    note: 'Note: '
+    noteInfor: The computed strength is based on the time it would take to crack the password using a brute force approach, it does not take into account the possibility of a dictionary attack.
+
+    details:
+      length: 'Password length:'
+      entropy: 'Entropy:'
+      characterSize: 'Character set size:'
+      score: 'Score:'
+
+    instantly: Instantly
+    lessThanASecond: Less than a second
+    millenium: millenium
+    century: century
+    decade: decade
+    year: year
+    month: month
+    week: week
+    day: day
+    hour: hour
+    minute: minute
+    second: second
+    millennia: millennia
+    centuries: centuries
+    decades: decades
+    years: years
+    months: months
+    weeks: weeks
+    days: days
+    hours: hours
+    minutes: minutes
+    seconds: seconds

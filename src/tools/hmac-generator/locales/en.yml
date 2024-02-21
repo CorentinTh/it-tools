@@ -1,0 +1,26 @@
+tools:
+  hmac-generator:
+    title: Hmac generator
+    description: Computes a hash-based message authentication code (HMAC) using a secret key and your favorite hashing function.
+
+    plainText:
+      label: Plain text to compute the hash
+      placeholder: Plain text to compute the hash...
+    secret:
+      label: Secret key
+      placeholder: Enter the secret key...
+    hashFunction:
+      label: Hashing function
+      placeholder: Select an hashing function...
+    encoding:
+      label: Output encoding
+      placeholder: Select the result encoding...
+      binary: Binary (base 2)
+      hexadecimal: Hexadecimal (base 16)
+      base64: Base64 (base 64)
+      Base64Url: Base64-url (base 64 with url safe chars)
+    result:
+      label: HMAC of your text
+      placeholder: The result of the HMAC...
+    button:
+      copy: Copy HMAC

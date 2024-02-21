@@ -1,0 +1,7 @@
+tools:
+  math-evaluator:
+    title: 数学表达式求值器
+    description: 用于计算数学表达式的计算器。您可以使用函数如sqrt，cos，sin，abs等。
+
+    inputPlaceholder: '您的数学表达式（例如：2*sqrt(6)）...'
+    result: 结果

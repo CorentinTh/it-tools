@@ -1,0 +1,22 @@
+tools:
+  text-to-binary:
+    title: Text to ASCII binary
+    description: Convert text to its ASCII binary representation and vice versa.
+
+    textToBinary:
+      title: Text to ASCII binary
+      inputLabel: Enter text to convert to binary
+      inputPlaceholder: e.g. "Hello world"
+      outputLabel: Binary from your text
+      outputPlaceholder: The binary representation of your text will be here
+      copyBinary: Copy binary to clipboard
+    binaryToText:
+      title: ASCII binary to text
+      inputLabel: Enter binary to convert to text
+      inputPlaceholder: e.g. "01001000 01100101 01101100 01101100 01101111"
+      outputLabel: Text from your binary
+      outputPlaceholder: The text representation of your binary will be here
+      copyText: Copy text to clipboard
+
+    invalidMessage: Binary should be a valid ASCII binary string with multiples of 8 bits
+    invalidBinaryString: Invalid binary string

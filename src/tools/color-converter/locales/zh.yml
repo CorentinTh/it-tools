@@ -1,0 +1,9 @@
+tools:
+  color-converter:
+    title: 颜色转换器
+    description: 在不同格式之间转换颜色（十六进制、RGB、HSL 和 CSS 名称）。
+
+    colorPicker: 颜色选择器
+    name: 名称
+
+    invalidMessage: '无效的 {format} 格式。'

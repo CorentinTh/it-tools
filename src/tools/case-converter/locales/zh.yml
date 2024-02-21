@@ -1,0 +1,22 @@
+tools:
+  case-converter:
+    title: 大小写转换器
+    description: 更改字符串的大小写，并在不同格式之间进行选择
+
+    inputLabel: '您的字符串：'
+    inputPlaceholder: 您的字符串...
+
+    lowercase: '小写：'
+    uppercase: '大写：'
+    camelcase: '驼峰式：'
+    capitalcase: '首字母大写：'
+    constantcase: '常量式：'
+    dotcase: '点式：'
+    headercase: '标题式：'
+    nocase: '无格式：'
+    paramcase: '参数式：'
+    pascalcase: '帕斯卡式：'
+    pathcase: '路径式：'
+    sentencecase: '句式：'
+    snakecase: '蛇式：'
+    mockingcase: '嘲讽式：'

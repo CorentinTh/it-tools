@@ -1,0 +1,9 @@
+tools:
+  color-converter:
+    title: Color converter
+    description: Convert color between the different formats (hex, rgb, hsl and css name).
+
+    colorPicker: color picker
+    name: name
+
+    invalidMessage: 'Invalid {format} format.' 

@@ -1,0 +1,10 @@
+tools:
+  json-minify:
+    title: JSON 压缩
+    description: 通过删除不必要的空格来压缩和压缩您的 JSON。
+
+    inputLabel: 您的原始 JSON
+    inputPlaceholder: 在此粘贴您的原始 JSON...
+    outputLabel: 您的 JSON 的压缩版本
+
+    invalidMessage: 提供的 JSON 不是有效的。

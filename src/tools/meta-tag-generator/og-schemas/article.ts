@@ -1,33 +1,44 @@
 import type { OGSchemaType } from '../OGSchemaType.type';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 export const article: OGSchemaType = {
-  name: 'Article',
+  name: t('tools.og-meta-generator.article.title'),
   elements: [
     {
       type: 'input',
-      label: 'Publishing date',
+      label: t('tools.og-meta-generator.article.publishingDate.label'),
       key: 'article:published_time',
-      placeholder: 'When the article was first published...',
+      placeholder: t('tools.og-meta-generator.article.publishingDate.placeholder'),
     },
     {
       type: 'input',
-      label: 'Modification date',
+      label: t('tools.og-meta-generator.article.modificationDate.label'),
       key: 'article:modified_time',
-      placeholder: 'When the article was last changed...',
+      placeholder: t('tools.og-meta-generator.article.modificationDate.placeholder'),
     },
     {
       type: 'input',
-      label: 'Expiration date',
+      label: t('tools.og-meta-generator.article.expirationDate.label'),
       key: 'article:expiration_time',
-      placeholder: 'When the article is out of date after...',
+      placeholder: t('tools.og-meta-generator.article.expirationDate.placeholder'),
     },
-    { type: 'input', label: 'Author', key: 'article:author', placeholder: 'Writers of the article...' },
     {
       type: 'input',
-      label: 'Section',
-      key: 'article:section',
-      placeholder: 'A high-level section name. E.g. Technology..',
+      label: t('tools.og-meta-generator.article.author.label'),
+      key: 'article:author',
+      placeholder: t('tools.og-meta-generator.article.author.placeholder'),
     },
-    { type: 'input', label: 'Tag', key: 'article:tag', placeholder: 'Tag words associated with this article...' },
+    {
+      type: 'input',
+      label: t('tools.og-meta-generator.article.section.label'),
+      key: 'article:section',
+      placeholder: t('tools.og-meta-generator.article.section.placeholder'),
+    },
+    {
+      type: 'input',
+      label: t('tools.og-meta-generator.article.tag.label'),
+      key: 'article:tag',
+      placeholder: t('tools.og-meta-generator.article.tag.placeholder'),
+    },
   ],
 };

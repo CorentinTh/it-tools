@@ -1,21 +1,22 @@
 import type { OGSchemaType } from '../OGSchemaType.type';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 export const profile: OGSchemaType = {
-  name: 'Profile',
+  name: t('tools.og-meta-generator.profile.title'),
   elements: [
     {
       type: 'input',
-      label: 'First name',
-      placeholder: 'Enter the first name of the person...',
+      label: t('tools.og-meta-generator.profile.firstName.lebel'),
+      placeholder: t('tools.og-meta-generator.profile.firstName.placeholder'),
       key: 'profile:first_name',
     },
     {
       type: 'input',
-      label: 'Last name',
-      placeholder: 'Enter the last name of the person...',
+      label: t('tools.og-meta-generator.profile.lastName.lebel'),
+      placeholder: t('tools.og-meta-generator.profile.lastName.placeholder'),
       key: 'profile:last_name',
     },
-    { type: 'input', label: 'Username', placeholder: 'Enter the username of the person...', key: 'profile:username' },
-    { type: 'input', label: 'Gender', placeholder: 'Enter the gender of the person...', key: 'profile:gender' },
+    { type: 'input', label: t('tools.og-meta-generator.profile.username.lebel'), placeholder: t('tools.og-meta-generator.profile.username.placeholder'), key: 'profile:username' },
+    { type: 'input', label: t('tools.og-meta-generator.profile.gender.lebel'), placeholder: t('tools.og-meta-generator.profile.gender.placeholder'), key: 'profile:gender' },
   ],
 };

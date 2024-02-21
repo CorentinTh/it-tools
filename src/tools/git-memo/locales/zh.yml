@@ -1,0 +1,4 @@
+tools:
+  git-memo:
+    title: Git 备忘录
+    description: Git 是一款分布式版本管理软件。使用这个备忘录，您将快速访问最常用的 Git 命令。

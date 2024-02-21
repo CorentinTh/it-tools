@@ -1,0 +1,7 @@
+tools:
+  numeronym-generator:
+    title: 数字缩略词生成器
+    description: 数字缩略词是一种使用数字形成缩略词的词。例如，"i18n" 是 "internationalization" 的数字缩略词，其中的 18 代表单词中第一个 i 和最后一个 n 之间的字母数量。
+
+    inputPlaceholder: "输入一个单词，例如 'internationalization'"
+    outputPlaceholder: "您的数字缩略词将显示在此处，例如 'i18n'"

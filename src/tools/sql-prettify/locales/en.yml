@@ -1,0 +1,19 @@
+tools:
+  sql-prettify:
+    title: SQL prettify and format
+    description: Format and prettify your SQL queries online (it supports various SQL dialects).
+
+    dialect: Dialect
+    keywordCase: Keyword case
+    indentStyle: Indent style
+    sql: Standard SQL
+    upper: UPPERCASE
+    lower: lowercase
+    preserve: Preserve
+    standard: Standard
+    tabularLeft: Tabular left
+    tabularRight: Tabular right
+
+    inputLabel: Your SQL query
+    inputPlaceholder: Put your SQL query here...
+    outputLabel: Prettify version of your query

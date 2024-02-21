@@ -1,0 +1,12 @@
+tools:
+  xml-formatter:
+    title: XML formatter
+    description: Prettify your XML string to a human friendly readable format.
+
+    collapseContent: 'Collapse content:'
+    indentSize: 'Indent size:'
+    inputLabel: Your XML
+    inputPlaceholder: Paste your XML here...
+    outputLabel: Formatted XML from your XML
+
+    invalidMessage: Provided XML is not valid.

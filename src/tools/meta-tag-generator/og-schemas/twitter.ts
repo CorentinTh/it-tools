@@ -1,30 +1,31 @@
 import type { OGSchemaType } from '../OGSchemaType.type';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 export const twitter: OGSchemaType = {
-  name: 'Twitter',
+  name: t('tools.og-meta-generator.twitter.title'),
   elements: [
     {
       type: 'select',
       options: [
-        { label: 'Summary', value: 'summary' },
-        { label: 'Summary with large image', value: 'summary_large_image' },
-        { label: 'Application', value: 'app' },
-        { label: 'Player', value: 'player' },
+        { label: t('tools.og-meta-generator.twitter.card.summary'), value: 'summary' },
+        { label: t('tools.og-meta-generator.twitter.card.summaryWithLargeImage'), value: 'summary_large_image' },
+        { label: t('tools.og-meta-generator.twitter.card.application'), value: 'app' },
+        { label: t('tools.og-meta-generator.twitter.card.player'), value: 'player' },
       ],
-      label: 'Card type',
-      placeholder: 'The Twitter card type...',
+      label: t('tools.og-meta-generator.twitter.card.label'),
+      placeholder: t('tools.og-meta-generator.twitter.card.placeholder'),
       key: 'twitter:card',
     },
     {
       type: 'input',
-      label: 'Site account',
-      placeholder: 'The name of the Twitter account of the site (ex: @ittoolsdottech)...',
+      label: t('tools.og-meta-generator.twitter.site.label'),
+      placeholder: t('tools.og-meta-generator.twitter.site.placeholder', { example: '@ittoolsdottech' }),
       key: 'twitter:site',
     },
     {
       type: 'input',
-      label: 'Creator acc.',
-      placeholder: 'The name of the Twitter account of the creator (ex: @cthmsst)...',
+      label: t('tools.og-meta-generator.twitter.creator.label'),
+      placeholder: t('tools.og-meta-generator.twitter.creator.placeholder', { example: '@cthmsst' }),
       key: 'twitter:creator',
     },
   ],

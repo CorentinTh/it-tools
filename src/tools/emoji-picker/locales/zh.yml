@@ -1,0 +1,12 @@
+tools:
+  emoji-picker:
+    title: 表情选择器
+    description: 轻松复制和粘贴表情符号，并获取每个表情符号的 Unicode 和代码点值。
+
+    searchPlaceholder: 搜索表情符号（例如“smile”）...
+    noResults: 没有结果
+    searchResult: 搜索结果
+
+    emojiCopied: 表情符号 {emoji} 已复制到剪贴板
+    codePointsCopied: 代码点 {codePoints} 已复制到剪贴板
+    unicodeCopied: Unicode {unicode} 已复制到剪贴板

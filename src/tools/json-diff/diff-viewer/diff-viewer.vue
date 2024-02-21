@@ -5,6 +5,8 @@ import { DiffRootViewer } from './diff-viewer.models';
 import { useAppTheme } from '@/ui/theme/themes';
 
 const props = defineProps<{ leftJson: unknown; rightJson: unknown }>();
+
+const { t } = useI18n();
 const onlyShowDifferences = ref(false);
 const { leftJson, rightJson } = toRefs(props);
 const appTheme = useAppTheme();
@@ -20,14 +22,14 @@ const showResults = computed(() => !_.isUndefined(leftJson.value) && !_.isUndefi
 <template>
   <div v-if="showResults">
     <div flex justify-center>
-      <n-form-item label="Only show differences" label-placement="left">
+      <n-form-item :label="t('tools.json-diff.onlyShowDifferences')" label-placement="left">
         <n-switch v-model:value="onlyShowDifferences" />
       </n-form-item>
     </div>
 
     <c-card data-test-id="diff-result">
       <div v-if="jsonAreTheSame" text-center op-70>
-        The provided JSONs are the same
+        {{ t('tools.json-diff.jsonAreTheSame') }}
       </div>
       <DiffRootViewer v-else :diff="result" />
     </c-card>

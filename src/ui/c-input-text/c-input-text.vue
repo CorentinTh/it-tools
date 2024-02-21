@@ -3,6 +3,7 @@ import { useAppTheme } from '../theme/themes';
 import { useTheme } from './c-input-text.theme';
 import { generateRandomId } from '@/utils/random';
 import { type UseValidationRule, useValidation } from '@/composable/validation';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 const props = withDefaults(
   defineProps<{
@@ -35,7 +36,7 @@ const props = withDefaults(
   {
     value: '',
     id: generateRandomId,
-    placeholder: 'Input text',
+    placeholder: t('ui.inputText.placeholder'),
     label: undefined,
     readonly: false,
     disabled: false,

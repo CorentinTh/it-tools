@@ -1,3 +1,5 @@
+import { translate as t } from '@/plugins/i18n.plugin';
+
 export { lighten, darken, setOpacity };
 
 const clampHex = (value: number) => Math.max(0, Math.min(255, Math.round(value)));
@@ -29,5 +31,5 @@ function setOpacity(color: string, opacity: number): string {
   if (color.length === 9) {
     return `${color.slice(0, 7)}${alpha}`;
   }
-  throw new Error('Invalid hex color');
+  throw new Error(t('ui.color.invalidHexColor'));
 }

@@ -1,0 +1,14 @@
+tools:
+  lorem-ipsum-generator:
+    title: Lorem ipsum generator
+    description: Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.
+
+    paragraphs: Paragraphs
+    sentences: Sentences per paragraph
+    words: Words per sentence
+    startWithLoremIpsum: Start with lorem ipsum ?
+    asHTML: As html ?
+    loremIpsumText: Your lorem ipsum...
+
+    copyBtn: Copy
+    copied: Lorem ipsum copied to the clipboard

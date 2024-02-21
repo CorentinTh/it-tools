@@ -1,0 +1,12 @@
+tools:
+  yaml-prettify:
+    title: YAML prettify and format
+    description: Prettify your YAML string to a human friendly readable format.
+
+    sortKeys: 'Sort keys :'
+    indentSize: 'Indent size :'
+    inputLabel: Your raw YAML
+    inputPlaceholder: Paste your raw YAML here...
+    outputLabel: Prettified version of your YAML
+
+    invalidMessage: Provided YAML is not valid.

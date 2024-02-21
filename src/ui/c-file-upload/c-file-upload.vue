@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import _ from 'lodash';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 const props = withDefaults(defineProps<{
   multiple?: boolean
@@ -8,7 +9,7 @@ const props = withDefaults(defineProps<{
 }>(), {
   multiple: false,
   accept: undefined,
-  title: 'Drag and drop files here, or click to select files',
+  title: t('ui.fileUpload.tips'),
 });
 
 const emit = defineEmits<{
@@ -82,13 +83,13 @@ function handleUpload(files: FileList | null | undefined) {
       <div my-4 w-full flex items-center justify-center op-70>
         <div class="h-1px max-w-100px flex-1 bg-gray-300 op-50" />
         <div class="mx-2 text-gray-400">
-          or
+          {{ t('ui.fileUpload.or') }}
         </div>
         <div class="h-1px max-w-100px flex-1 bg-gray-300 op-50" />
       </div>
 
       <c-button>
-        Browse files
+        {{ t('ui.fileUpload.browseFileBtn') }}
       </c-button>
     </slot>
   </div>

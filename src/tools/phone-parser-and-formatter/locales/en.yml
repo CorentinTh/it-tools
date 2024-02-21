@@ -1,0 +1,31 @@
+tools:
+  phone-parser-and-formatter:
+    title: Phone parser and formatter
+    description: Parse, validate and format phone numbers. Get information about the phone number, like the country code, type, etc.
+
+    country: Country
+    countryCallingCode: Country calling code
+    isValid: Is valid?
+    isPossible: Is possible?
+    type: Type
+    internationalFormat: International format
+    nationalFormat: National format
+    E164Format: E.164 format
+    RFC3966Format: RFC3966 format
+    defaultCountryCode: 'Default country code:'
+    phoneNumberLabel: 'Phone number:'
+    phoneNumberPlaceholder: Enter a phone number
+    unknown: Unknown
+    mobile: Mobile
+    fixedLine: Fixed line
+    fixedLineOrMobile: Fixed line or mobile
+    personalNumber: Personal number
+    premiumRate: Premium rate
+    sharedCost: Shared cost
+    tollFree: Toll free
+    UAN: Universal access number
+    voicemail: Voicemail
+    VoIP: VoIP
+    pager: Pager
+
+    invalidMessage: Invalid phone number

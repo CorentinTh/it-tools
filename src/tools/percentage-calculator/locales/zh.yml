@@ -1,0 +1,13 @@
+tools:
+  percentage-calculator:
+    title: 百分比计算器
+    description: 轻松计算从一个值到另一个值的百分比，或从一个百分比到一个值。
+
+    whatIs: 什么是
+    percentageX: '% 对于'
+    XIsWhatPercentOfY: X 是 Y 的百分之多少
+    percentOf: 是百分之几
+    percentage: 百分比的增长/减少是多少
+    from: 从
+    to: 到
+    result: 结果

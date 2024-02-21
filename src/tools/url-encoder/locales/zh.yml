@@ -1,0 +1,23 @@
+tools:
+  url-encoder:
+    title: 编码/解码 URL 格式化字符串
+    description: 编码为 URL 编码格式（也称为 "百分比编码"）或从中解码。
+
+    encode:
+      title: 编码
+      inputLabel: '您的字符串：'
+      inputPlaceholder: 要编码的字符串
+      outputLabel: '您的字符串编码：'
+      outputPlaceholder: 您的字符串编码
+      copied: 编码字符串已复制到剪贴板
+      inValidMessage: 无法解析此字符串
+    decode:
+      title: 解码
+      inputLabel: '您的编码字符串：'
+      inputPlaceholder: 要解码的字符串
+      outputLabel: '您的字符串解码：'
+      outputPlaceholder: 您的字符串解码
+      copied: 解码字符串已复制到剪贴板
+      inValidMessage: 无法解析此字符串
+
+    copy: 复制

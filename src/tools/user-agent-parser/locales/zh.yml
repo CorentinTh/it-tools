@@ -1,0 +1,30 @@
+tools:
+  user-agent-parser:
+    title: User-agent 解析器
+    description: 从用户代理字符串中检测和解析浏览器、引擎、操作系统、CPU 和设备类型/型号。
+
+    name: 名称
+    version: 版本
+    model: 型号
+    type: 类型
+    vendor: 供应商
+    architecture: 架构
+
+    browser: 浏览器
+    browserNameFallback: 没有可用的浏览器名称
+    browserVersionFallback: 没有可用的浏览器版本
+    engine: 引擎
+    engineNameFallback: 没有可用的引擎名称
+    engineVersionFallback: 没有可用的引擎版本
+    os: 操作系统
+    osNameFallback: 没有可用的操作系统名称
+    osVersionFallback: 没有可用的操作系统版本
+    device: 设备
+    deviceModelFallback: 没有可用的设备型号
+    deviceTypeFallback: 没有可用的设备类型
+    deviceVendorFallback: 没有可用的设备供应商
+    cpu: 中央处理器
+    cpuArchitectureFallback: 没有可用的 CPU 架构
+
+    label: 用户代理字符串
+    placeholder: 在此处输入您的用户代理字符串...

@@ -1,0 +1,18 @@
+tools:
+  bip39-generator:
+    title: BIP39 助记词生成器
+    description: 从现有或随机助记词生成 BIP39 助记词，或从助记词获取助记词。
+
+    languageLabel: '语言：'
+    entropyLabel: '熵（种子）：'
+    entropyPlaceholder: 您的字符串...
+    passphraseLabel: '助记词（口令）：'
+    passphrasePlaceholder: 您的助记词...
+
+    validation:
+      lengthError: '熵的长度应为 >= 16，<= 32，并且是4的倍数'
+      stringTypeError: 熵应为十六进制字符串
+      mnemonicError: 无效的助记词
+    copied:
+      entropy: 熵已复制到剪贴板
+      passphrase: 助记词已复制到剪贴板

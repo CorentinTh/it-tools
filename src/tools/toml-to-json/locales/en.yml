@@ -1,0 +1,10 @@
+tools:
+  toml-to-json:
+    title: TOML to JSON
+    description: Parse and convert TOML to JSON.
+
+    inputLabel: Your TOML
+    inputPlaceholder: Paste your TOML here...
+    outputLabel: JSON from your TOML
+
+    inValidMessage: Provided TOML is not valid.

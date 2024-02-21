@@ -1,11 +1,11 @@
 import { DeviceDesktop } from '@vicons/tabler';
 import { defineTool } from '../tool';
-import { translate } from '@/plugins/i18n.plugin';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: translate('tools.device-information.title'),
+  name: t('tools.device-information.title'),
   path: '/device-information',
-  description: translate('tools.device-information.description'),
+  description: t('tools.device-information.description'),
   keywords: [
     'device',
     'information',

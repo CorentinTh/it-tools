@@ -1,0 +1,202 @@
+tools:
+  http-status-codes:
+    title: HTTP 状态码
+    description: 所有 HTTP 状态码及其名称和含义的列表。
+
+    searchPlaceholder: 搜索 HTTP 状态码...
+    searchResults: 搜索结果
+
+    1xx: 1xx 信息性响应
+    100:
+      name: 继续
+      description: 等待客户端发送请求主体。
+    101:
+      name: 切换协议
+      description: 服务器已同意切换协议。
+    102:
+      name: 处理中
+      description: 服务器正在处理请求，但尚未有响应可用。
+    103:
+      name: 早期提示
+      description: 服务器在最终 HTTP 消息之前返回一些响应头。
+    2xx: 2xx 成功
+    200:
+      name: OK
+      description: 成功的标准 HTTP 请求响应。
+    201:
+      name: 已创建
+      description: 请求已成功，导致创建新资源。
+    202:
+      name: 已接受
+      description: 请求已被接受处理，但处理尚未完成。
+    203:
+      name: 非权威信息
+      description: 请求成功，但原始请求的内容已被转换代理修改。
+    204:
+      name: 无内容
+      description: 服务器成功处理请求，但未返回任何内容。
+    205:
+      name: 重置内容
+      description: 服务器指示重新初始化发送此请求的文档视图。
+    206:
+      name: 部分内容
+      description: 服务器仅因客户端发送的范围头而传送资源的部分。
+    207:
+      name: 多状态
+      description: 接下来的消息主体是 XML 消息，可以包含许多独立的响应代码。
+    208:
+      name: 已报告
+      description: DAV 绑定的成员已在响应的前一部分中枚举。
+    226:
+      name: 使用 IM
+      description: 服务器已满足对资源的请求，响应是结果的表示。
+    3xx: 3xx 重定向
+    300:
+      name: 多种选择
+      description: 表示客户端可以跟随的资源的多个选项。
+    301:
+      name: 永久移动
+      description: 此次及所有后续请求应重定向到给定的 URI。
+    302:
+      name: 找到
+      description: 重定向到另一个 URL。这是一个违反标准的行业实践示例。
+    303:
+      name: 查看其他
+      description: 请求的响应可以在另一个 URI 下使用 GET 方法找到。
+    304:
+      name: 未修改
+      description: 表示资源自请求标头指定的版本以来未被修改。
+    305:
+      name: 使用代理
+      description: 请求的资源仅通过代理提供，响应中提供了代理的地址。
+    306:
+      name: 切换代理
+      description: 不再使用。最初的含义是“后续请求应使用指定的代理”。
+    307:
+      name: 临时重定向
+      description: 在这种情况下，应重复使用另一个 URI 进行请求；但是，将来的请求仍应使用原始 URI。
+    308:
+      name: 永久重定向
+      description: 请求和所有后续请求应重复使用另一个 URI。
+    4xx: 4xx 客户端错误
+    400:
+      name: 错误请求
+      description: 由于明显的客户端错误，服务器无法处理请求或不会处理请求。
+    401:
+      name: 未经授权
+      description: 类似于 403 Forbidden，但专门用于在需要验证但验证失败或尚未提供的情况下使用。
+    402:
+      name: 需要付款
+      description: 保留以备将来使用。最初的意图是，该代码可能作为某种数字货币或微支付方案的一部分使用。
+    403:
+      name: 禁止
+      description: 请求有效，但服务器拒绝执行操作。用户可能没有资源所需的必要权限。
+    404:
+      name: 未找到
+      description: 请求的资源未找到，但将来可能会可用。
+    405:
+      name: 方法不允许
+      description: 请求方法不受请求资源支持。
+    406:
+      name: 不可接受
+      description: 请求的资源能够生成的内容不符合请求中发送的 Accept 标头。
+    407:
+      name: 需要代理身份验证
+      description: 客户端必须首先通过代理进行身份验证。
+    408:
+      name: 请求超时
+      description: 服务器在等待请求时超时。
+    409:
+      name: 冲突
+      description: 表示由于请求中的冲突（如编辑冲突）无法处理请求。
+    410:
+      name: 已消失
+      description: 表示请求的资源不再可用，也不会再次可用。
+    411:
+      name: 需要长度
+      description: 请求未指定所需资源的长度。
+    412:
+      name: 前提条件失败
+      description: 服务器未满足请求者对请求的其中一个前提条件。
+    413:
+      name: 负载过大
+      description: 请求的大小超过服务器愿意或能够处理的范围。
+    414:
+      name: URI 过长
+      description: 提供的 URI 对服务器来说太长，无法处理。
+    415:
+      name: 不支持的媒体类型
+      description: 请求实体具有服务器或资源不支持的媒体类型。
+    416:
+      name: 范围不可满足
+      description: 客户端请求文件的一部分，但服务器无法提供该部分。
+    417:
+      name: 预期失败
+      description: 服务器无法满足 Expect 请求标头字段的要求。
+    418:
+      name: 我是茶壶
+      description: 服务器拒绝使用茶壶煮咖啡。
+    421:
+      name: 请求错误
+      description: 请求指向无法生成响应的服务器。
+    422:
+      name: 无法处理的实体
+      description: 请求格式正确，但由于语义错误无法进行后续处理。
+    423:
+      name: 已锁定
+      description: 正在访问的资源已被锁定。
+    424:
+      name: 失败的依赖
+      description: 由于先前请求的失败，请求失败。
+    425:
+      name: 太早
+      description: 表示服务器不愿冒险处理可能会被重播的请求。
+    426:
+      name: 需要升级
+      description: 客户端应切换到其他协议，如 TLS/1.0。
+    428:
+      name: 需要前提条件
+      description: 源服务器要求请求是有条件的。
+    429:
+      name: 请求过多
+      description: 用户在一定时间内发送了太多请求。
+    431:
+      name: 请求头字段太大
+      description: 服务器不愿处理请求，因为单个标头字段或所有标头字段的总和太大。
+    451:
+      name: 因法律原因不可用
+      description: 服务器操作员收到法律要求拒绝访问资源或包含请求的资源集。
+    5xx: 5xx 服务器错误
+    500:
+      name: 内部服务器错误
+      description: 遇到意外情况并且没有更具体消息适用时给出的通用错误消息。
+    501:
+      name: 未实现
+      description: 服务器不识别请求方法，或缺乏实现请求的能力。
+    502:
+      name: 错误网关
+      description: 服务器作为网关或代理行事，并从上游服务器接收到无效响应。
+    503:
+      name: 服务不可用
+      description: 服务器当前不可用（因为过载或正在维护）。
+    504:
+      name: 网关超时
+      description: 服务器作为网关或代理行事，未从上游服务器收到及时响应。
+    505:
+      name: 不支持的 HTTP 版本
+      description: 服务器不支持请求中使用的 HTTP 协议版本。
+    506:
+      name: 变体也进行协商
+      description: 用于请求结果的透明内容协商导致循环引用。
+    507:
+      name: 存储空间不足
+      description: 服务器无法存储完成请求所需的表示。
+    508:
+      name: 检测到循环
+      description: 服务器在处理请求时检测到无限循环。
+    510:
+      name: 未扩展
+      description: 服务器需要进一步扩展请求才能满足它。
+    511:
+      name: 需要网络认证
+      description: 客户端需要进行身份验证以获得网络访问权限。

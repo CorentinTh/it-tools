@@ -1,0 +1,12 @@
+tools:
+  rsa-key-pair-generator:
+    title: RSA key pair generator
+    description: Generate new random RSA private and public key pem certificates.
+
+    bits: 'Bits :'
+    publicKey: Public key
+    privateKey: Private key
+    button:
+      refresh: Refresh key-pair
+
+    validationError: 'Bits should be 256 <= bits <= 16384 and be a multiple of 8'

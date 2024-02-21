@@ -1,0 +1,19 @@
+tools:
+  html-entities:
+    title: 转义 HTML 实体
+    description: 转义或取消转义 HTML 实体（将 <,>, &, " 和 ' 替换为它们的 HTML 版本）
+
+    escape:
+      title: 转义 HTML 实体
+      inputLabel: '输入字符串：'
+      inputPlaceholder: 要转义的字符串
+      outputLabel: '转义后的字符串：'
+      outputPlaceholder: 转义后的字符串
+    unescape:
+      title: 取消转义 HTML 实体
+      inputLabel: '输入转义后的字符串：'
+      inputPlaceholder: 要取消转义的字符串
+      outputLabel: '取消转义后的字符串：'
+      outputPlaceholder: 取消转义后的字符串
+
+    copy: 复制

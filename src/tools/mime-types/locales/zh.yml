@@ -1,0 +1,23 @@
+tools:
+  mime-types:
+    title: MIME 类型
+    description: 将 MIME 类型转换为扩展名，反之亦然。
+
+    mimeType:
+      title: MIME 类型转扩展名
+      description: 知道哪些文件扩展名与特定 MIME 类型相关联
+      placeholder: '在此处选择您的 MIME 类型...（例如：application/pdf）'
+      extensionsFound:
+        before: '具有'
+        after: ' MIME 类型的文件扩展名：'
+    extension:
+      title: 文件扩展名转 MIME 类型
+      description: 知道哪种 MIME 类型与文件扩展名相关联
+      placeholder: '在此处选择您的 MIME 类型...（例如：application/pdf）'
+      selectedExtension:
+        before: '与扩展名'
+        after: '相关联的 MIME 类型：'
+        ext: '扩展名：'
+    table:
+      mimeTypes: MIME 类型
+      extensions: 扩展名

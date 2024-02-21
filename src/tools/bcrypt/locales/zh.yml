@@ -1,0 +1,22 @@
+tools:
+  bcrypt:
+    title: Bcrypt 加密
+    description: 使用 bcrypt 对文本字符串进行哈希计算和比较。Bcrypt 是基于 Blowfish 密码算法的密码哈希函数。
+
+    copied: 哈希字符串已复制到剪贴板
+    hash:
+      title: 哈希
+      placeholder: 要加密的字符串...
+      label: '您的字符串：'
+      saltCount: '盐计数：'
+      saltCountPlaceholder: 盐轮数...
+      copy: 复制哈希
+    compare:
+      title: 与哈希值比较字符串
+      stringLabel: '您的字符串：'
+      stringPlaceholder: 要比较的字符串...
+      hashLabel: '您的哈希值：'
+      hashPlaceholder: 要比较的哈希值...
+      match: 它们是否匹配？
+      yes: 是
+      no: 否

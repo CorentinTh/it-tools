@@ -1,0 +1,12 @@
+tools:
+  xml-formatter:
+    title: XML 格式化工具
+    description: 将您的 XML 字符串美化为易读的人类友好格式。
+
+    collapseContent: '折叠内容：'
+    indentSize: '缩进大小：'
+    inputLabel: 您的 XML
+    inputPlaceholder: 在此粘贴您的 XML...
+    outputLabel: 根据您的 XML 格式化的 XML
+
+    invalidMessage: 提供的 XML 不合法。

@@ -1,0 +1,22 @@
+tools:
+  camera-recorder:
+    title: Camera recorder
+    description: Take a picture or record a video from your webcam or camera.
+
+    unSupported: Your browser does not support recording video from camera
+    needPermissionGranted: You need to grant permission to use your camera and microphone
+    permissionCannotBePrompted: Your browser has blocked permission request or does not support it. You need to grant permission manually in your browser settings (usually the lock icon in the address bar).
+    grantPermission: Grant permission
+    cameraLabel: 'Video:'
+    cameraPlaceholder: Select camera
+    microphoneLabel: 'Audio:'
+    microphonePlaceholder: Select microphone
+    startWebcam: Start webcam
+    takeScreenshot: Take screenshot
+    startRecording: Start recording
+    pause: Pause
+    resume: Resume
+    stop: Stop
+    unSupportRecord: Video recording is not supported in your browser
+    screenshot: screenshot
+    video: Video

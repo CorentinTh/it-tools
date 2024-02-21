@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useCopy } from '@/composable/copy';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 const props = withDefaults(defineProps<{ value: string; label?: string; copyable?: boolean }>(), { label: undefined, copyable: true });
 const { value, label } = toRefs(props);
@@ -24,7 +25,7 @@ const toggleModal = useToggle(isModalOpen);
 
     <div mt-4 flex justify-center>
       <c-button class="w-full" @click="copy">
-        {{ isJustCopied ? 'Copied!' : 'Copy' }}
+        {{ isJustCopied ? t('ui.modalValue.copied') : t('ui.modalValue.copy') }}
       </c-button>
     </div>
   </c-modal>

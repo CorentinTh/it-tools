@@ -1,0 +1,16 @@
+tools:
+  qrcode-generator:
+    title: 二维码生成器
+    description: 生成并下载一个网址或文本的二维码，并自定义背景和前景颜色。
+
+    low: 低
+    medium: 中
+    quartile: 四分之一
+    high: 高
+
+    textLabel: '文本：'
+    textPlaceholder: '您的链接或文本...'
+    foreground: '前景色：'
+    background: '背景色：'
+    errorCorrectionLevels: '错误纠正等级：'
+    downloadBtn: 下载二维码

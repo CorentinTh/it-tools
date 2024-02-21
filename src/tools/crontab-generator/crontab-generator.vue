@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import cronstrue from 'cronstrue';
+import 'cronstrue/locales/zh_CN';
+import 'cronstrue/locales/fr';
 import { isValidCron } from 'cron-validator';
 import { useStyleStore } from '@/stores/style.store';
 
@@ -9,84 +11,86 @@ function isCronValid(v: string) {
 
 const styleStore = useStyleStore();
 
+const { t, locale } = useI18n();
 const cron = ref('40 * * * *');
 const cronstrueConfig = reactive({
   verbose: true,
   dayOfWeekStartIndexZero: true,
   use24HourTimeFormat: true,
   throwExceptionOnParseError: true,
+  locale: locale.value === 'zh' ? 'zh_CN' : locale,
 });
 
 const helpers = [
   {
     symbol: '*',
-    meaning: 'Any value',
+    meaning: t('tools.crontab-generator.anyMeaning'),
     example: '* * * *',
-    equivalent: 'Every minute',
+    equivalent: t('tools.crontab-generator.anyExample'),
   },
   {
     symbol: '-',
-    meaning: 'Range of values',
+    meaning: t('tools.crontab-generator.rangeMeaning'),
     example: '1-10 * * *',
-    equivalent: 'Minutes 1 through 10',
+    equivalent: t('tools.crontab-generator.rangeExample'),
   },
   {
     symbol: ',',
-    meaning: 'List of values',
+    meaning: t('tools.crontab-generator.listMeaning'),
     example: '1,10 * * *',
-    equivalent: 'At minutes 1 and 10',
+    equivalent: t('tools.crontab-generator.listExample'),
   },
   {
     symbol: '/',
-    meaning: 'Step values',
+    meaning: t('tools.crontab-generator.stepMeaning'),
     example: '*/10 * * *',
-    equivalent: 'Every 10 minutes',
+    equivalent: t('tools.crontab-generator.stepExample'),
   },
   {
     symbol: '@yearly',
-    meaning: 'Once every year at midnight of 1 January',
+    meaning: t('tools.crontab-generator.yearlyMeaning'),
     example: '@yearly',
     equivalent: '0 0 1 1 *',
   },
   {
     symbol: '@annually',
-    meaning: 'Same as @yearly',
+    meaning: t('tools.crontab-generator.annuallyMeaning', { yearly: '@yearly' }),
     example: '@annually',
     equivalent: '0 0 1 1 *',
   },
   {
     symbol: '@monthly',
-    meaning: 'Once a month at midnight on the first day',
+    meaning: t('tools.crontab-generator.monthlyMeaning'),
     example: '@monthly',
     equivalent: '0 0 1 * *',
   },
   {
     symbol: '@weekly',
-    meaning: 'Once a week at midnight on Sunday morning',
+    meaning: t('tools.crontab-generator.weeklyMeaning'),
     example: '@weekly',
     equivalent: '0 0 * * 0',
   },
   {
     symbol: '@daily',
-    meaning: 'Once a day at midnight',
+    meaning: t('tools.crontab-generator.dailyMeaning'),
     example: '@daily',
     equivalent: '0 0 * * *',
   },
   {
     symbol: '@midnight',
-    meaning: 'Same as @daily',
+    meaning: t('tools.crontab-generator.midnightMeaning', { daily: '@daily' }),
     example: '@midnight',
     equivalent: '0 0 * * *',
   },
   {
     symbol: '@hourly',
-    meaning: 'Once an hour at the beginning of the hour',
+    meaning: t('tools.crontab-generator.hourlyMeaning'),
     example: '@hourly',
     equivalent: '0 * * * *',
   },
   {
     symbol: '@reboot',
-    meaning: 'Run at startup',
+    meaning: t('tools.crontab-generator.rebootMeaning'),
     example: '',
     equivalent: '',
   },
@@ -102,7 +106,7 @@ const cronString = computed(() => {
 const cronValidationRules = [
   {
     validator: (value: string) => isCronValid(value),
-    message: 'This cron is invalid',
+    message: t('tools.crontab-generator.invalidMessage'),
   },
 ];
 </script>
@@ -127,13 +131,13 @@ const cronValidationRules = [
 
     <div flex justify-center>
       <n-form :show-feedback="false" label-width="170" label-placement="left">
-        <n-form-item label="Verbose">
+        <n-form-item :label="t('tools.crontab-generator.verbose')">
           <n-switch v-model:value="cronstrueConfig.verbose" />
         </n-form-item>
-        <n-form-item label="Use 24 hour time format">
+        <n-form-item :label="t('tools.crontab-generator.use24HourTimeFormat')">
           <n-switch v-model:value="cronstrueConfig.use24HourTimeFormat" />
         </n-form-item>
-        <n-form-item label="Days start at 0">
+        <n-form-item :label="t('tools.crontab-generator.dayOfWeekStartIndexZero')">
           <n-switch v-model:value="cronstrueConfig.dayOfWeekStartIndexZero" />
         </n-form-item>
       </n-form>
@@ -141,29 +145,29 @@ const cronValidationRules = [
   </c-card>
   <c-card>
     <pre>
-┌──────────── [optional] seconds (0 - 59)
-| ┌────────── minute (0 - 59)
-| | ┌──────── hour (0 - 23)
-| | | ┌────── day of month (1 - 31)
-| | | | ┌──── month (1 - 12) OR jan,feb,mar,apr ...
-| | | | | ┌── day of week (0 - 6, sunday=0) OR sun,mon ...
+┌──────────── {{ t('tools.crontab-generator.secondDesc') }}
+| ┌────────── {{ t('tools.crontab-generator.minuteDesc') }}
+| | ┌──────── {{ t('tools.crontab-generator.hourDesc') }}
+| | | ┌────── {{ t('tools.crontab-generator.dayOfMonthDesc') }}
+| | | | ┌──── {{ t('tools.crontab-generator.monthDesc') }}
+| | | | | ┌── {{ t('tools.crontab-generator.dayOfWeekDesc') }}
 | | | | | |
-* * * * * * command</pre>
+* * * * * * {{ t('tools.crontab-generator.command') }}</pre>
 
     <div v-if="styleStore.isSmallScreen">
       <c-card v-for="{ symbol, meaning, example, equivalent } in helpers" :key="symbol" mb-3 important:border-none>
         <div>
-          Symbol: <strong>{{ symbol }}</strong>
+          {{ t('tools.crontab-generator.symbol') }} <strong>{{ symbol }}</strong>
         </div>
         <div>
-          Meaning: <strong>{{ meaning }}</strong>
+          {{ t('tools.crontab-generator.meaning') }} <strong>{{ meaning }}</strong>
         </div>
         <div>
-          Example:
+          {{ t('tools.crontab-generator.example') }}
           <strong><code>{{ example }}</code></strong>
         </div>
         <div>
-          Equivalent: <strong>{{ equivalent }}</strong>
+          {{ t('tools.crontab-generator.equivalent') }} <strong>{{ equivalent }}</strong>
         </div>
       </c-card>
     </div>

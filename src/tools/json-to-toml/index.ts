@@ -1,11 +1,11 @@
 import { Braces } from '@vicons/tabler';
 import { defineTool } from '../tool';
-import { translate } from '@/plugins/i18n.plugin';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: translate('tools.json-to-toml.title'),
+  name: t('tools.json-to-toml.title'),
   path: '/json-to-toml',
-  description: translate('tools.json-to-toml.description'),
+  description: t('tools.json-to-toml.description'),
   keywords: ['json', 'parse', 'toml', 'convert', 'transform'],
   component: () => import('./json-to-toml.vue'),
   icon: Braces,

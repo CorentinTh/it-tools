@@ -1,0 +1,24 @@
+tools:
+  encryption:
+    title: 加密/解密文本
+    description: 使用 AES、TripleDES、Rabbit 或 RC4 等加密算法对文本进行加密和解密。
+
+    encrypt:
+      title: 加密
+      inputLabel: '您的文本：'
+      inputPlaceholder: 要加密的字符串
+      secretLabel: '您的密钥：'
+      algoLabel: '加密算法：'
+      outputLabel: '加密后的文本：'
+      outputPlaceholder: 您的字符串哈希值
+    decrypt:
+      title: 解密
+      inputLabel: '您的加密文本：'
+      inputPlaceholder: 要解密的字符串
+      secretLabel: '您的密钥：'
+      algoLabel: '加密算法：'
+      outputLabel: '解密后的文本：'
+      outputPlaceholder: 您的字符串哈希值
+      decryptError: 解密时出错
+
+    errorMessage: 无法解密您的文本

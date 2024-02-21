@@ -1,0 +1,10 @@
+tools:
+  json-minify:
+    title: JSON minify
+    description: Minify and compress your JSON by removing unnecessary white spaces.
+
+    inputLabel: Your raw JSON
+    inputPlaceholder: Paste your raw JSON here...
+    outputLabel: Minified version of your JSON
+
+    invalidMessage: Provided JSON is not valid.

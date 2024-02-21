@@ -5,6 +5,7 @@ import type { CSelectOption } from './c-select.types';
 import { useTheme } from './c-select.theme';
 import { clamp } from '@/modules/shared/number.models';
 import { useFuzzySearch } from '@/composable/fuzzySearch';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 const props = withDefaults(
   defineProps<{
@@ -156,7 +157,7 @@ function onSearchInput() {
               {{ selectedOption.label }}
             </span>
             <span v-else class="placeholder" lh-normal>
-              {{ placeholder ?? 'Select an option' }}
+              {{ placeholder ?? t('ui.select.placeholder') }}
             </span>
           </slot>
         </div>
@@ -169,7 +170,7 @@ function onSearchInput() {
           <template v-if="!filteredOptions.length">
             <slot name="empty">
               <div px-4 py-1 opacity-70>
-                No results found
+                {{ t('ui.select.empty') }}
               </div>
             </slot>
           </template>

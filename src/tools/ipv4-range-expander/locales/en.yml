@@ -1,0 +1,18 @@
+tools:
+  ipv4-range-expander:
+    title: IPv4 range expander
+    description: Given a start and an end IPv4 address this tool calculates a valid IPv4 network with its CIDR notation.
+
+    startAddressPlaceholder: Start IPv4 address...
+    endAddressPlaceholder: End IPv4 address...
+    startAddress: Start address
+    endAddress: End address
+    addressesInRange: Addresses in range
+    CIDR: CIDR
+    oldValue: old value
+    newValue: new value
+
+    errorMessage: Invalid combination of start and end IPv4 address
+    errorDesc: The end IPv4 address is lower than the start IPv4 address. This is not valid and no result could be calculated. In the most cases the solution to solve this problem is to change start and end address.
+    switchStartEnd: Switch start and end IPv4 address
+    invalidMessage: Invalid ipv4 address

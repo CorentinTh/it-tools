@@ -1,0 +1,26 @@
+tools:
+  hmac-generator:
+    title: HMAC 生成器
+    description: 使用密钥和您喜欢的哈希函数计算基于哈希的消息认证码（HMAC）。
+
+    plainText:
+      label: 要计算哈希的明文
+      placeholder: 要计算哈希的明文...
+    secret:
+      label: 密钥
+      placeholder: 输入密钥...
+    hashFunction:
+      label: 哈希函数
+      placeholder: 选择一个哈希函数...
+    encoding:
+      label: 输出编码
+      placeholder: 选择结果的编码方式...
+      binary: 二进制（基数2）
+      hexadecimal: 十六进制（基数16）
+      base64: Base64（基数64）
+      Base64Url: Base64-url（带有URL安全字符的基数64）
+    result:
+      label: 您的文本的 HMAC
+      placeholder: HMAC 的结果...
+    button:
+      copy: 复制 HMAC

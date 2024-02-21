@@ -1,0 +1,13 @@
+tools:
+  json-diff:
+    title: JSON diff
+    description: Compare two JSON objects and get the differences between them.
+
+    inputLable: Your first JSON
+    inputPlaceholder: Paste your first JSON here...
+    outputLable: Your JSON to compare
+    outputPlaceholder: Paste your JSON to compare here...
+    onlyShowDifferences: Only show differences
+    jsonAreTheSame: The provided JSONs are the same
+
+    invalidJSONFormat: Invalid JSON format

@@ -1,0 +1,26 @@
+tools:
+  base64-string-converter:
+    title: Base64 string encoder/decoder
+    description: Simply encode and decode string into a their base64 representation.
+
+    stringToBase64:
+      title: String to base64
+      encodeUrl: Encode URL safe
+      inputLabel: String to encode
+      inputPlaceholder: Put your string here...
+      outputLabel: Base64 of string
+      outputPlaceholder: The base64 encoding of your string will be here
+    base64ToString:
+      title: Base64 to string
+      decodeUrl: Decode URL safe
+      inputLabel: Base64 string to decode
+      inputPlaceholder: Your base64 string...
+      outputLabel: Decoded string
+      outputPlaceholder: The decoded string will be here
+    buttons:
+      copyBase64: Copy base64
+      copyDecodedString: Copy decoded string
+
+    base64Copied: Base64 string copied to the clipboard
+    stringCopied: String copied to the clipboard
+    base64InvalidMessage: Invalid base64 string

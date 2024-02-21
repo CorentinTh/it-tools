@@ -1,0 +1,14 @@
+tools:
+  lorem-ipsum-generator:
+    title: Lorem Ipsum 生成器
+    description: Lorem Ipsum 是一种常用的占位文本，用于展示文档或字体的视觉形式，而不依赖于有意义的内容。
+
+    paragraphs: 段落
+    sentences: 每段句子数
+    words: 每句字数
+    startWithLoremIpsum: 以 Lorem Ipsum 开头？
+    asHTML: 作为 HTML？
+    loremIpsumText: 您的 Lorem Ipsum...
+
+    copyBtn: 复制
+    copied: Lorem Ipsum 已复制到剪贴板

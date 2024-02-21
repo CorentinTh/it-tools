@@ -1,0 +1,24 @@
+tools:
+  base-converter:
+    title: 整数进制转换器
+    description: 在不同进制（十进制、十六进制、二进制、八进制、base64 等）之间转换数字
+
+    inputLabel: 输入数字
+    inputPlaceholder: '在此处输入您的数字（例如：42）'
+    inputBaseLabel: 输入进制
+    inputBasePlaceholder: '在此处输入您的输入进制（例如：10）'
+
+    binaryLabel: 二进制（2）
+    binaryPlaceholder: 二进制版本将显示在这里...
+    octalLabel: 八进制（8）
+    octalPlaceholder: 八进制版本将显示在这里...
+    decimalLabel: 十进制（10）
+    decimalPlaceholder: 十进制版本将显示在这里...
+    hexadecimalLabel: 十六进制（16）
+    hexadecimalPlaceholder: 十六进制版本将显示在这里...
+    base64Label: Base64（64）
+    base64Placeholder: Base64版本将显示在这里...
+
+    custom: '自定义：'
+    copyable: 输出进制 {outputBase} 将显示在这里...
+    invalidMessage: '无效的数字 "{digit}"，对于进制 {fromBase}。'

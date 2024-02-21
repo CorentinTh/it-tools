@@ -1,0 +1,10 @@
+tools:
+  text-statistics:
+    title: Text statistics
+    description: Get information about a text, the amount of characters, the amount of words, it's size, ...
+
+    inputPlaceholder: Your text...
+    characterCount: Character count
+    wordCount: Word count
+    lineCount: Line count
+    byteSize: Byte size

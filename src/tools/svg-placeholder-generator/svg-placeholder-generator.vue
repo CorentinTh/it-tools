@@ -4,6 +4,7 @@ import { useCopy } from '@/composable/copy';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 import { textToBase64 } from '@/utils/base64';
 
+const { t } = useI18n();
 const width = ref(600);
 const height = ref(350);
 const fontSize = ref(26);
@@ -35,57 +36,57 @@ const { download } = useDownloadFileFromBase64({ source: base64 });
   <div>
     <n-form label-placement="left" label-width="100">
       <div flex gap-3>
-        <n-form-item label="Width (in px)" flex-1>
-          <n-input-number v-model:value="width" placeholder="SVG width..." min="1" />
+        <n-form-item :label="t('tools.svg-placeholder-generator.widthLabel')" flex-1>
+          <n-input-number v-model:value="width" :placeholder="t('tools.svg-placeholder-generator.widthPlaceholder')" min="1" />
         </n-form-item>
-        <n-form-item label="Background" flex-1>
+        <n-form-item :label="t('tools.svg-placeholder-generator.backgroundLabel')" flex-1>
           <n-color-picker v-model:value="bgColor" :modes="['hex']" />
         </n-form-item>
       </div>
       <div flex gap-3>
-        <n-form-item label="Height (in px)" flex-1>
-          <n-input-number v-model:value="height" placeholder="SVG height..." min="1" />
+        <n-form-item :label="t('tools.svg-placeholder-generator.heightLabel')" flex-1>
+          <n-input-number v-model:value="height" :placeholder="t('tools.svg-placeholder-generator.heightPlaceholder')" min="1" />
         </n-form-item>
-        <n-form-item label="Text color" flex-1>
+        <n-form-item :label="t('tools.svg-placeholder-generator.textColorLabel')" flex-1>
           <n-color-picker v-model:value="fgColor" :modes="['hex']" />
         </n-form-item>
       </div>
       <div flex gap-3>
-        <n-form-item label="Font size" flex-1>
-          <n-input-number v-model:value="fontSize" placeholder="Font size..." min="1" />
+        <n-form-item :label="t('tools.svg-placeholder-generator.fontSizeLabel')" flex-1>
+          <n-input-number v-model:value="fontSize" :placeholder="t('tools.svg-placeholder-generator.fontSizePlaceholder')" min="1" />
         </n-form-item>
 
         <c-input-text
           v-model:value="customText"
-          label="Custom text"
-          :placeholder="`Default is ${width}x${height}`"
+          :label="t('tools.svg-placeholder-generator.customTextLabel')"
+          :placeholder="t('tools.svg-placeholder-generator.customTextPlaceholder', { width, height })"
           label-position="left"
           label-width="100px"
           label-align="right"
           flex-1
         />
       </div>
-      <n-form-item label="Use exact size" label-placement="left">
+      <n-form-item :label="t('tools.svg-placeholder-generator.useExactSize')" label-placement="left">
         <n-switch v-model:value="useExactSize" />
       </n-form-item>
     </n-form>
 
-    <n-form-item label="SVG HTML element">
+    <n-form-item :label="t('tools.svg-placeholder-generator.svgString')">
       <TextareaCopyable :value="svgString" copy-placement="none" />
     </n-form-item>
-    <n-form-item label="SVG in Base64">
+    <n-form-item :label="t('tools.svg-placeholder-generator.base64')">
       <TextareaCopyable :value="base64" copy-placement="none" />
     </n-form-item>
 
     <div flex justify-center gap-3>
       <c-button @click="copySVG()">
-        Copy svg
+        {{ t('tools.svg-placeholder-generator.copySvg') }}
       </c-button>
       <c-button @click="copyBase64()">
-        Copy base64
+        {{ t('tools.svg-placeholder-generator.copyBase64') }}
       </c-button>
       <c-button @click="download()">
-        Download svg
+        {{ t('tools.svg-placeholder-generator.downloadSvg') }}
       </c-button>
     </div>
   </div>

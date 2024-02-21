@@ -1,0 +1,20 @@
+tools:
+  wifi-qrcode-generator:
+    title: WiFi QR Code generator
+    description: Generate and download QR-codes for quick connections to WiFi networks.
+
+    encryption: Encryption method
+    ssidLabel: 'SSID:'
+    ssidPlaceholder: 'Your WiFi SSID...'
+    hiddenSSID: Hidden SSID
+    passwordLabel: 'Password:'
+    passwordPlaceholder: 'Your WiFi Password...'
+    eapMethod: EAP method
+    eapIdentityLabel: 'Identity:'
+    eapIdentityPlaceholder: 'Your EAP Identity...'
+    anonymous: 'Anonymous?'
+    eapPhase2Method: 'EAP Phase 2 method'
+    foreground: 'Foreground color:'
+    background: 'Background color:'
+    wifiQrcode: wifi-qrcode
+    downloadBtn: Download qr-code

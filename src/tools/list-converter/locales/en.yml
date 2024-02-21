@@ -1,0 +1,28 @@
+tools:
+  list-converter:
+    title: List converter
+    description: This tool can process column-based data and apply various changes (transpose, add prefix and suffix, reverse list, sort list, lowercase values, truncate values) to each row.
+
+    trimListItems: Trim list items
+    removeDuplicates: Remove duplicates
+    convertToLowercase: Convert to lowercase
+    keepLineBreaks: Keep line breaks
+
+    sortListLabel: Sort list
+    sortListPlaceholder: Sort alphabetically
+    separatorLabel: Separator
+    separatorPlaceholder: ','
+    wrapItem: Wrap item
+    itemPrefix: Item prefix
+    itemSuffix: Item suffix
+    wrapList: Wrap list
+    listPrefix: List prefix
+    listSuffix: List suffix
+
+    inputLabel: Your input data
+    inputPlaceholder: Paste your input data here...
+    outputLabel: Your transformed data
+
+    sortOrder:
+      asc: Sort ascending
+      desc: Sort descending

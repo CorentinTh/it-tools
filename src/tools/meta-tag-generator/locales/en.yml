@@ -1,0 +1,199 @@
+tools:
+  og-meta-generator:
+    title: Open graph meta generator
+    description: Generate open-graph and socials html meta tags for your website.
+
+    yourMetaTags: Your meta tags
+
+    article:
+      title: Article
+      publishingDate:
+        label: Publishing date
+        placeholder: When the article was first published...
+      modificationDate:
+        label: Modification date
+        placeholder: When the article was last changed...
+      expirationDate:
+        label: Expiration date
+        placeholder: When the article is out of date after...
+      author:
+        label: Author
+        placeholder: Writers of the article...
+      section:
+        label: Section
+        placeholder: A high-level section name. E.g. Technology..
+      tag:
+        label: Tag
+        placeholder: Tag words associated with this article...
+    book:
+      title: Book
+      author:
+        label: Author
+        placeholder: Who wrote this book...
+      ISBN:
+        label: ISBN
+        placeholder: The International Standard Book Number...
+      releaseDate:
+        label: Release date
+        placeholder: The date the book was released...
+      tag:
+        label: Tag
+        placeholder: Tag words associated with this book...
+    image:
+      title: Image
+      imageUrl:
+        label: Image url
+        placeholder: The url of your website social image...
+      imageAlt:
+        label: Image alt
+        placeholder: The alternative text of your website social image...
+      width:
+        label: Width
+        placeholder: Width in px of your website social image...
+      height:
+        label: Height
+        placeholder: Height in px of your website social image...
+    albumDetails:
+      title: Album details
+      song:
+        label: Song
+        placeholder: The song on this album...
+      disc:
+        label: Disc
+        placeholder: The same as music:album:disc but in reverse...
+      track:
+        label: Track
+        placeholder: The same as music:album:track but in reverse...
+      musician:
+        label: Musician
+        placeholder: The musician that made this song...
+      releaseDate:
+        label: Release date
+        placeholder: The date the album was released...
+    playlistDetails:
+      title: Playlist details
+      song:
+        label: Song
+        placeholder: The song on this album...
+      disc:
+        label: Disc
+        placeholder: The same as music:album:disc but in reverse...
+      track:
+        label: Track
+        placeholder: The same as music:album:track but in reverse...
+      creator:
+        label: Creator
+        placeholder: The creator of this playlist...
+    radioStationDetails:
+      title: Radio station details
+      creator:
+        label: Creator
+        placeholder: The creator of this radio station...
+    songDetails:
+      title: Song details
+      duration:
+        lebel: Duration
+        placeholder: The duration of the song...
+      album:
+        lebel: Album
+        placeholder: The album this song is from...
+      disc:
+        lebel: Disc
+        placeholder: Which disc of the album this song is on...
+      track:
+        lebel: Track
+        placeholder: Which track this song is...
+      musician:
+        lebel: Musician
+        placeholder: The musician that made this song...
+    profile:
+      title: Profile
+      firstName:
+        lebel: First name
+        placeholder: Enter the first name of the person...
+      lastName:
+        lebel: Last name
+        placeholder: Enter the last name of the person...
+      username:
+        lebel: Username
+        placeholder: Enter the username of the person...
+      gender:
+        lebel: Gender
+        placeholder: Enter the gender of the person...
+    twitter:
+      title: Twitter
+      card:
+        label: Card type
+        placeholder: The Twitter card type...
+        summary: Summary
+        summaryWithLargeImage: Summary with large image
+        application: Application
+        player: Player
+      site:
+        label: Site account
+        placeholder: 'The name of the Twitter account of the site (ex: {example})...'
+      creator:
+        label: Creator acc.
+        placeholder: 'The name of the Twitter account of the creator (ex: {example})...'
+    videoEpisode:
+      title: Video episode details
+      series:
+        label: Series
+        placeholder: Which series this episode belongs to...
+    videoMovie:
+      title: Movie details
+      actor:
+        label: Actor
+        placeholder: Name of the actress/actor...
+      actorRole:
+        label: Actor role
+        placeholder: The role they played...
+      director:
+        label: Director
+        placeholder: Name of the director...
+      writer:
+        label: Writer
+        placeholder: Writers of the movie...
+      duration:
+        label: Duration
+        placeholder: The movie's length in seconds...
+      releaseDate:
+        label: Release date
+        placeholder: The date the movie was released...
+      tag:
+        label: Tag
+        placeholder: Tag words associated with this movie...
+    videoOther:
+      title: Other video details
+    videoTVShow:
+      title: TV show details
+    website:
+      title: General information
+      pageType:
+        label: Page type
+        placeholder: Select the type of your website...
+      pageTitle:
+        label: Title
+        placeholder: Enter the title of your website...
+      description:
+        label: Description
+        placeholder: Enter the description of your website...
+      url:
+        label: Page URL
+        placeholder: Enter the url of your website...
+      web: Website
+      article: Article
+      book: Book
+      profile: Profile
+      music:
+        label: Music
+        song: Song
+        musicAlbum: Music album
+        playlist: Playlist
+        radioStation: Radio station
+      video:
+        label: Music
+        movie: Movie
+        episode: Episode
+        tvShow: TV show
+        otherVideo: Other video

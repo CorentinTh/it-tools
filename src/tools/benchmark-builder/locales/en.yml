@@ -1,0 +1,26 @@
+tools:
+  benchmark-builder:
+    title: Benchmark builder
+    description: Easily compare execution time of tasks with this very simple online benchmark builder.
+
+    header:
+      position: Position
+      title: Suite
+      size: Samples
+      mean: Mean
+      variance: Variance
+    suiteNameLabel: Suite name
+    suiteNamePlaceholder: Suite name...
+    suiteValues: Suite values
+    suiteTitle: Suite {index}
+    deleteSuite: Delete suite
+    addSuite: Add suite
+    resetSuites: Reset suites
+    unitLabel: Unit
+    unitPlaceholder: 'Unit (eg: ms)'
+    setYourMeasure: Set your measure...
+    deleteThisValue: Delete this value
+    addAMeasure: Add a measure
+
+    copyAsMarkdown: Copy as markdown table
+    copyAsBulletList: Copy as bullet list

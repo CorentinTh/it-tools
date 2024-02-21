@@ -1,0 +1,31 @@
+tools:
+  phone-parser-and-formatter:
+    title: 电话号码解析和格式化工具
+    description: 解析、验证和格式化电话号码。获取有关电话号码的信息，如国家代码、类型等。
+
+    country: 国家
+    countryCallingCode: 国家区号
+    isValid: 是否有效？
+    isPossible: 是否可能？
+    type: 类型
+    internationalFormat: 国际格式
+    nationalFormat: 国内格式
+    E164Format: E.164 格式
+    RFC3966Format: RFC3966 格式
+    defaultCountryCode: '默认国家代码:'
+    phoneNumberLabel: '电话号码:'
+    phoneNumberPlaceholder: 输入电话号码
+    unknown: 未知
+    mobile: 移动电话
+    fixedLine: 固定电话
+    fixedLineOrMobile: 固定电话或移动电话
+    personalNumber: 个人号码
+    premiumRate: 高费率
+    sharedCost: 共享费用
+    tollFree: 免费电话
+    UAN: 通用访问号码
+    voicemail: 语音信箱
+    VoIP: 互联网电话
+    pager: 传呼机
+
+    invalidMessage: 无效的电话号码

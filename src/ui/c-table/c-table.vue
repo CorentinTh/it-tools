@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import _ from 'lodash';
 import type { HeaderConfiguration } from './c-table.types';
+import { translate as t } from '@/plugins/i18n.plugin';
 
-const props = withDefaults(defineProps<{ data?: Record<string, unknown>[]; headers?: HeaderConfiguration ; hideHeaders?: boolean; description?: string }>(), { data: () => [], headers: undefined, hideHeaders: false, description: 'Data table' });
+const props = withDefaults(defineProps<{ data?: Record<string, unknown>[]; headers?: HeaderConfiguration ; hideHeaders?: boolean; description?: string }>(), { data: () => [], headers: undefined, hideHeaders: false, description: t('ui.table.description') });
 const { data, headers: rawHeaders, hideHeaders } = toRefs(props);
 
 const headers = computed(() => {

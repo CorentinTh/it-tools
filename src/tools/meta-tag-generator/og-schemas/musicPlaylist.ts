@@ -1,21 +1,22 @@
 import type { OGSchemaType } from '../OGSchemaType.type';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 export const musicPlaylist: OGSchemaType = {
-  name: 'Playlist details',
+  name: t('tools.og-meta-generator.playlistDetails.title'),
   elements: [
-    { type: 'input', label: 'Song', key: 'music:song', placeholder: 'The song on this album...' },
+    { type: 'input', label: t('tools.og-meta-generator.playlistDetails.song.label'), key: 'music:song', placeholder: t('tools.og-meta-generator.playlistDetails.song.placeholder') },
     {
       type: 'input',
-      label: 'Disc',
+      label: t('tools.og-meta-generator.playlistDetails.disc.label'),
       key: 'music:song:disc',
-      placeholder: 'The same as music:album:disc but in reverse...',
+      placeholder: t('tools.og-meta-generator.playlistDetails.disc.placeholder'),
     },
     {
       type: 'input',
-      label: 'Track',
+      label: t('tools.og-meta-generator.playlistDetails.track.label'),
       key: 'music:song:track',
-      placeholder: 'The same as music:album:track but in reverse...',
+      placeholder: t('tools.og-meta-generator.playlistDetails.track.placeholder'),
     },
-    { type: 'input', label: 'Creator', key: 'music:creator', placeholder: 'The creator of this playlist...' },
+    { type: 'input', label: t('tools.og-meta-generator.playlistDetails.creator.label'), key: 'music:creator', placeholder: t('tools.og-meta-generator.playlistDetails.creator.placeholder') },
   ],
 };

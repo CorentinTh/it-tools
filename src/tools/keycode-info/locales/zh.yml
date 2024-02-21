@@ -1,0 +1,17 @@
+tools:
+  keycode-info:
+    title: 按键信息
+    description: 查找任何按键的 JavaScript 按键码、代码、位置和修饰键。
+
+    keyLabel: '按键：'
+    keyPlaceholder: '按键名称...'
+    keycodeLabel: '按键码：'
+    keycodePlaceholder: '按键码...'
+    codeLabel: '代码：'
+    codePlaceholder: '代码...'
+    locationLabel: '位置：'
+    locationPlaceholder: '位置...'
+    modifiersLabel: '修饰键：'
+    modifiersPlaceholder: '无'
+
+    tips: 按下您键盘上想要获取信息的按键
