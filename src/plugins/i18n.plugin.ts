@@ -3,9 +3,11 @@ import { get } from '@vueuse/core';
 import type { Plugin } from 'vue';
 import { createI18n } from 'vue-i18n';
 
+const localeLang = navigator.language || navigator.languages[0] || 'en';
+
 const i18n = createI18n({
   legacy: false,
-  locale: 'en',
+  locale: localeLang.split('-')[0],
   fallbackLocale: 'en',
   messages,
 });
