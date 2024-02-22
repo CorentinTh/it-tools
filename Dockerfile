@@ -19,7 +19,7 @@ COPY . .
 RUN pnpm build
 
 # production stage
-FROM nginxinc/nginx-unprivileged:1.25.2-alpine AS production-stage
+FROM nginxinc/nginx-unprivileged:1.25.4-alpine AS production-stage
 
 USER root
 
