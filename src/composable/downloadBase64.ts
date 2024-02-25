@@ -6,6 +6,7 @@ export {
   getMimeTypeFromBase64,
   getMimeTypeFromExtension, getExtensionFromMimeType,
   useDownloadFileFromBase64, useDownloadFileFromBase64Refs,
+  previewImageFromBase64,
 };
 
 const commonMimeTypesSignatures = {
@@ -91,4 +92,27 @@ function useDownloadFileFromBase64Refs(
       downloadFromBase64({ sourceValue: source.value, filename: filename?.value, extension: extension?.value });
     },
   };
+}
+
+function previewImageFromBase64(base64String: string): HTMLImageElement {
+  if (base64String === '') {
+    throw new Error('Base64 string is empty');
+  }
+
+  const img = document.createElement('img');
+  img.src = base64String;
+
+  const container = document.createElement('div');
+  container.appendChild(img);
+
+  const previewContainer = document.getElementById('previewContainer');
+  if (previewContainer) {
+    previewContainer.innerHTML = '';
+    previewContainer.appendChild(container);
+  }
+  else {
+    throw new Error('Preview container element not found');
+  }
+
+  return img;
 }
