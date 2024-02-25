@@ -72,8 +72,8 @@ dependencies:
     specifier: ^2.29.3
     version: 2.29.3
   docker2kube:
-    specifier: ^0.0.13
-    version: 0.0.13
+    specifier: ^0.0.14
+    version: 0.0.14
   dompurify:
     specifier: ^3.0.6
     version: 3.0.6
@@ -3375,7 +3375,7 @@ packages:
     dependencies:
       '@unhead/dom': 0.5.1
       '@unhead/schema': 0.5.1
-      '@vueuse/shared': 10.7.2(vue@3.3.4)
+      '@vueuse/shared': 10.8.0(vue@3.3.4)
       unhead: 0.5.1
       vue: 3.3.4
     transitivePeerDependencies:
@@ -4017,8 +4017,8 @@ packages:
       - vue
     dev: false
 
-  /@vueuse/shared@10.7.2(vue@3.3.4):
-    resolution: {integrity: sha512-qFbXoxS44pi2FkgFjPvF4h7c9oMDutpyBdcJdMYIMg9XyXli2meFMuaKn+UMgsClo//Th6+beeCgqweT/79BVA==}
+  /@vueuse/shared@10.8.0(vue@3.3.4):
+    resolution: {integrity: sha512-dUdy6zwHhULGxmr9YUg8e+EnB39gcM4Fe2oKBSrh3cOsV30JcMPtsyuspgFCUo5xxFNaeMf/W2yyKfST7Bg8oQ==}
     dependencies:
       vue-demi: 0.14.7(vue@3.3.4)
     transitivePeerDependencies:
@@ -4936,8 +4936,8 @@ packages:
     resolution: {integrity: sha512-c68LpLbO+7kP/b1Hr1qs8/BJ09F5khZGTxqxZuhzxpmwJKOgRFHJWIb9/KmqnqHhLdO55aOxFH/EGBvUQbL/RQ==}
     dev: false
 
-  /docker2kube@0.0.13:
-    resolution: {integrity: sha512-cdtsb6OhYmXMwaidUOe2a76RzBD65HZVZ/gU5cCTLnfZ61y5QpQNurLiXxMgSakRmzVvw9vzlERFl8Hs1eaFjA==}
+  /docker2kube@0.0.14:
+    resolution: {integrity: sha512-FMBWcifYlX60uKe9sbBeKwukWNR9lofk3A6M74aoevjjPDkg66AV9Zmh6JCtV8wm2t6Yvqaoxuguq1sCzEX8cg==}
     dependencies:
       yaml: 2.3.4
     dev: false

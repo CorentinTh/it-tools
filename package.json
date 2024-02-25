@@ -57,7 +57,7 @@
     "cronstrue": "^2.26.0",
     "crypto-js": "^4.1.1",
     "date-fns": "^2.29.3",
-    "docker2kube": "^0.0.13",
+    "docker2kube": "^0.0.14",
     "dompurify": "^3.0.6",
     "emojilib": "^3.0.10",
     "figue": "^1.2.0",
