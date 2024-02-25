@@ -2,6 +2,7 @@ import { describe, expect, test } from 'vitest';
 import {
   dateToExcelFormat,
   excelFormatToDate,
+  fromTimestamp,
   isExcelFormat,
   isISO8601DateTimeString,
   isISO9075DateString,
@@ -112,6 +113,46 @@ describe('date-time-converter models', () => {
     test('should return false for invalid Unix timestamps in milliseconds', () => {
       expect(isTimestamp('foo')).toBe(false);
       expect(isTimestamp('')).toBe(false);
+    });
+
+    test('should return true for valid Unix timestamps in microseconds', () => {
+      expect(isTimestamp('1701227351995845')).toBe(true);
+    });
+
+    test('should return false for invalid Unix timestamps in microseconds', () => {
+      expect(isTimestamp('170122735199584')).toBe(false);
+      expect(isTimestamp('17012273519958')).toBe(false);
+    });
+  });
+
+  describe('isTimestampMicroSeconds', () => {
+    test('should return true for valid Unix timestamps in microseconds', () => {
+      expect(isTimestamp('1649792026123123')).toBe(true);
+      expect(isTimestamp('1701227351995845')).toBe(true);
+      expect(isTimestamp('0')).toBe(true);
+    });
+
+    test('should return false for invalid Unix timestamps in microseconds', () => {
+      expect(isTimestamp('foo')).toBe(false);
+      expect(isTimestamp('')).toBe(false);
+    });
+
+    test('should return false for invalid Unix timestamps not in microseconds', () => {
+      expect(isTimestamp('170122735199584')).toBe(false);
+      expect(isTimestamp('17012273519958')).toBe(false);
+    });
+  });
+
+  describe('fromTimestamp', () => {
+    test('should return valid Date for valid Unix timestamps in microseconds', () => {
+      expect(fromTimestamp('1649792026123123').toString()).toBe(new Date(1649792026123).toString());
+      expect(fromTimestamp('1701227351995845').toString()).toBe(new Date(1701227351995).toString());
+      expect(fromTimestamp('0').toString()).toBe(new Date(0).toString());
+    });
+
+    test('should return Date(0) for invalid Unix timestamps not in microseconds', () => {
+      expect(fromTimestamp('170122735199584').toString()).toBe(new Date(0).toString());
+      expect(fromTimestamp('17012273519958').toString()).toBe(new Date(0).toString());
     });
   });
 
