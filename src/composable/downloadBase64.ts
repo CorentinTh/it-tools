@@ -1,8 +1,13 @@
-import { extension as getExtensionFromMime } from 'mime-types';
+import { extension as getExtensionFromMimeType, extension as getMimeTypeFromExtension } from 'mime-types';
 import type { Ref } from 'vue';
 import _ from 'lodash';
 
-export { getMimeTypeFromBase64, useDownloadFileFromBase64 };
+export {
+  getMimeTypeFromBase64,
+  getMimeTypeFromExtension, getExtensionFromMimeType,
+  useDownloadFileFromBase64, useDownloadFileFromBase64Refs,
+  previewImageFromBase64,
+};
 
 const commonMimeTypesSignatures = {
   'JVBERi0': 'application/pdf',
@@ -36,30 +41,78 @@ function getFileExtensionFromMimeType({
   defaultExtension?: string
 }) {
   if (mimeType) {
-    return getExtensionFromMime(mimeType) ?? defaultExtension;
+    return getExtensionFromMimeType(mimeType) ?? defaultExtension;
   }
 
   return defaultExtension;
 }
 
-function useDownloadFileFromBase64({ source, filename }: { source: Ref<string>; filename?: string }) {
+function downloadFromBase64({ sourceValue, filename, extension, fileMimeType }:
+{ sourceValue: string; filename?: string; extension?: string; fileMimeType?: string }) {
+  if (sourceValue === '') {
+    throw new Error('Base64 string is empty');
+  }
+
+  const defaultExtension = extension ?? 'txt';
+  const { mimeType } = getMimeTypeFromBase64({ base64String: sourceValue });
+  let base64String = sourceValue;
+  if (!mimeType) {
+    const targetMimeType = fileMimeType ?? getMimeTypeFromExtension(defaultExtension);
+    base64String = `data:${targetMimeType};base64,${sourceValue}`;
+  }
+
+  const cleanExtension = extension ?? getFileExtensionFromMimeType(
+    { mimeType, defaultExtension });
+  let cleanFileName = filename ?? `file.${cleanExtension}`;
+  if (extension && !cleanFileName.endsWith(`.${extension}`)) {
+    cleanFileName = `${cleanFileName}.${cleanExtension}`;
+  }
+
+  const a = document.createElement('a');
+  a.href = base64String;
+  a.download = cleanFileName;
+  a.click();
+}
+
+function useDownloadFileFromBase64(
+  { source, filename, extension, fileMimeType }:
+  { source: Ref<string>; filename?: string; extension?: string; fileMimeType?: string }) {
   return {
     download() {
-      if (source.value === '') {
-        throw new Error('Base64 string is empty');
-      }
-
-      const { mimeType } = getMimeTypeFromBase64({ base64String: source.value });
-      const base64String = mimeType
-        ? source.value
-        : `data:text/plain;base64,${source.value}`;
-
-      const cleanFileName = filename ?? `file.${getFileExtensionFromMimeType({ mimeType })}`;
-
-      const a = document.createElement('a');
-      a.href = base64String;
-      a.download = cleanFileName;
-      a.click();
+      downloadFromBase64({ sourceValue: source.value, filename, extension, fileMimeType });
     },
   };
+}
+
+function useDownloadFileFromBase64Refs(
+  { source, filename, extension }:
+  { source: Ref<string>; filename?: Ref<string>; extension?: Ref<string> }) {
+  return {
+    download() {
+      downloadFromBase64({ sourceValue: source.value, filename: filename?.value, extension: extension?.value });
+    },
+  };
+}
+
+function previewImageFromBase64(base64String: string): HTMLImageElement {
+  if (base64String === '') {
+    throw new Error('Base64 string is empty');
+  }
+
+  const img = document.createElement('img');
+  img.src = base64String;
+
+  const container = document.createElement('div');
+  container.appendChild(img);
+
+  const previewContainer = document.getElementById('previewContainer');
+  if (previewContainer) {
+    previewContainer.innerHTML = '';
+    previewContainer.appendChild(container);
+  }
+  else {
+    throw new Error('Preview container element not found');
+  }
+
+  return img;
 }
