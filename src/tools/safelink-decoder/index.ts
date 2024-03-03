@@ -8,5 +8,5 @@ export const tool = defineTool({
   keywords: ['outlook', 'safelink', 'decoder'],
   component: () => import('./safelink-decoder.vue'),
   icon: Mailbox,
-  createdAt: new Date('2024-02-25'),
+  createdAt: new Date('2024-03-09'),
 });
