@@ -8,6 +8,7 @@ const width = useStorage('ascii-text-drawer:width', 80);
 const output = ref('');
 const errored = ref(false);
 const processing = ref(false);
+
 figlet.defaults({ fontPath: '//unpkg.com/figlet@1.6.0/fonts/' });
 
 watchEffect(async () => {
@@ -46,6 +47,8 @@ const fonts = ['1Row', '3-D', '3D Diagonal', '3D-ASCII', '3x5', '4Max', '5 Line 
       label="Your text:"
       placeholder="Your text to draw"
       raw-text
+      multiline
+      rows="4"
     />
 
     <n-divider />
@@ -63,7 +66,7 @@ const fonts = ['1Row', '3-D', '3D Diagonal', '3D-ASCII', '3x5', '4Max', '5 Line 
       </n-gi>
       <n-gi span="2">
         <n-form-item label="Width:" label-placement="top" label-width="100" :show-feedback="false">
-          <n-input-number v-model:value="width" min="0" max="10000" w-100px />
+          <n-input-number v-model:value="width" min="0" max="10000" w-full placeholder="Width of the text" />
         </n-form-item>
       </n-gi>
     </n-grid>
@@ -72,6 +75,7 @@ const fonts = ['1Row', '3-D', '3D Diagonal', '3D-ASCII', '3x5', '4Max', '5 Line 
 
     <div v-if="processing" flex items-center justify-center>
       <n-spin size="medium" />
+      <span class="ml-2">Loading font...</span>
     </div>
 
     <c-alert v-if="errored" mt-1 text-center type="error">
