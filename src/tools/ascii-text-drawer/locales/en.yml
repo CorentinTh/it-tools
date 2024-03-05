@@ -1,0 +1,15 @@
+tools:
+  ascii-text-drawer:
+    title: ASCII Art Text Generator
+    description: Create ASCII art text with many fonts and styles.
+
+    inputLabel: 'Your text:'
+    inputPlaceholder: Your text to draw
+    fontLabel: 'Font:'
+    fontPlaceholder: Select font to use
+    widthLabel: 'Width:'
+    widthPlaceholder: Width of the text
+    loadingFont: Loading font...
+    outputLabel: 'Ascii Art text:'
+
+    errored: Current settings resulted in error.

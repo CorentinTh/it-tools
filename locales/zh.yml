@@ -76,6 +76,20 @@ ui:
     copyToClipboard: 复制到剪贴板
   color:
     invalidHexColor: 无效的十六进制颜色
+components:
+  formatTransformer:
+    inputLabel: 输入
+    inputPlaceholder: 输入...
+    outputLabel: 输出
+  inputCopyable:
+    copied: 已复制！
+    copyToClipboard: 复制到剪贴板
+  spanCopyable:
+    copyToClipboard: 复制到剪贴板
+    copied: 已复制！
+  textareaCopyable:
+    copyToClipboard: 复制到剪贴板
+    copied: 已复制！
 tools:
   categories:
     favorite-tools: '我的收藏'

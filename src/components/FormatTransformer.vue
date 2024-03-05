@@ -2,6 +2,7 @@
 import _ from 'lodash';
 import type { UseValidationRule } from '@/composable/validation';
 import CInputText from '@/ui/c-input-text/c-input-text.vue';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 const props = withDefaults(
   defineProps<{
@@ -16,10 +17,10 @@ const props = withDefaults(
   {
     transformer: _.identity,
     inputValidationRules: () => [],
-    inputLabel: 'Input',
+    inputLabel: t('components.formatTransformer.inputLabel'),
     inputDefault: '',
-    inputPlaceholder: 'Input...',
-    outputLabel: 'Output',
+    inputPlaceholder: t('components.formatTransformer.inputPlaceholder'),
+    outputLabel: t('components.formatTransformer.outputLabel'),
     outputLanguage: '',
   },
 );

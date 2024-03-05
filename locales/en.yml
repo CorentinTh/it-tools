@@ -76,6 +76,20 @@ ui:
     copyToClipboard: Copy to clipboard
   color:
     invalidHexColor: Invalid hex color
+components:
+  formatTransformer:
+    inputLabel: Input
+    inputPlaceholder: Input...
+    outputLabel: Output
+  inputCopyable:
+    copied: Copied!
+    copyToClipboard: Copy to clipboard
+  spanCopyable:
+    copyToClipboard: Copy to clipboard
+    copied: Copied!
+  textareaCopyable:
+    copyToClipboard: Copy to clipboard
+    copied: Copied!
 tools:
   categories:
     favorite-tools: 'Your favorite tools'

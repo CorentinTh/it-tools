@@ -1,0 +1,15 @@
+tools:
+  ascii-text-drawer:
+    title: ASCII 艺术文本生成器
+    description: 使用多种字体和样式创建 ASCII 艺术文本。
+
+    inputLabel: '您的文本：'
+    inputPlaceholder: 要绘制的文本
+    fontLabel: '字体：'
+    fontPlaceholder: 选择要使用的字体
+    widthLabel: '宽度：'
+    widthPlaceholder: 文本的宽度
+    loadingFont: 正在加载字体...
+    outputLabel: 'ASCII 艺术文本：'
+
+    errored: 当前设置导致错误。
