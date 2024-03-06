@@ -23,6 +23,9 @@ dependencies:
   '@tiptap/vue-3':
     specifier: 2.0.3
     version: 2.0.3(@tiptap/core@2.1.12)(@tiptap/pm@2.1.6)(vue@3.3.4)
+  '@types/figlet':
+    specifier: ^1.5.8
+    version: 1.5.8
   '@vicons/material':
     specifier: ^0.12.0
     version: 0.12.0
@@ -71,6 +74,9 @@ dependencies:
   emojilib:
     specifier: ^3.0.10
     version: 3.0.10
+  figlet:
+    specifier: ^1.7.0
+    version: 1.7.0
   figue:
     specifier: ^1.2.0
     version: 1.2.0
@@ -2902,6 +2908,10 @@ packages:
   /@types/estree@1.0.0:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
 
+  /@types/figlet@1.5.8:
+    resolution: {integrity: sha512-G22AUvy4Tl95XLE7jmUM8s8mKcoz+Hr+Xm9W90gJsppJq9f9tHvOGkrpn4gRX0q/cLtBdNkWtWCKDg2UDZoZvQ==}
+    dev: false
+
   /@types/fs-extra@11.0.1:
     resolution: {integrity: sha512-MxObHvNl4A69ofaTRU8DFqvgzzv8s9yRtaPPm5gud9HDNvpB3GPQFvNuTWAI59B9huVGV5jXYJwbCsmBsOGYWA==}
     dependencies:
@@ -5584,6 +5594,12 @@ packages:
       node-domexception: 1.0.0
       web-streams-polyfill: 3.2.1
     dev: true
+
+  /figlet@1.7.0:
+    resolution: {integrity: sha512-gO8l3wvqo0V7wEFLXPbkX83b7MVjRrk1oRLfYlZXol8nEpb/ON9pcKLI4qpBv5YtOTfrINtqb7b40iYY2FTWFg==}
+    engines: {node: '>= 0.4.0'}
+    hasBin: true
+    dev: false
 
   /figue@1.2.0:
     resolution: {integrity: sha512-CXKr12kiNWjKtUK3X+YHeXKepn80s9Rg6pgZXoLQYEybgwaGJ9uGW4DrBrVK30ZWZf1mcvTbXF56AcovG7gLVw==}
