@@ -77,6 +77,7 @@ tools:
   chronometer:
     title: 計時器
     description: 監控事物的持續時間。基本上是一種具有簡單計時器功能的計時器。
+  
   token-generator:
     title: Token 生成器
     description: 使用您想要的字元、大寫或小寫字母、數字和/或符號生成隨機字串。
