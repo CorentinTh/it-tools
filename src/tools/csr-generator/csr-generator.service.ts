@@ -57,7 +57,7 @@ async function generateCSR(config: {
   }, {
     name: 'emailAddress',
     value: config.contactEmail,
-  }].filter(attr => attr.value));
+  }].filter(attr => attr.value !== null && attr.value?.trim() !== ''));
 
   // sign certification request
   csr.sign(privateKey);

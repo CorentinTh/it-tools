@@ -158,7 +158,7 @@ const [certs, refreshCerts] = computedRefreshableAsync(
 
     <div v-if="commonNameValidation.isValid">
       <div>
-        <h3>Certifacate Signing Request</h3>
+        <h3>Certificate Signing Request</h3>
         <TextareaCopyable :value="certs.csrPem" />
       </div>
 
