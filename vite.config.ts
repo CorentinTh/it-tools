@@ -11,6 +11,7 @@ import Icons from 'unplugin-icons/vite';
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
 import { defineConfig } from 'vite';
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import { VitePWA } from 'vite-plugin-pwa';
 import markdown from 'vite-plugin-vue-markdown';
 import svgLoader from 'vite-svg-loader';
@@ -97,6 +98,7 @@ export default defineConfig({
       resolvers: [NaiveUiResolver(), IconsResolver({ prefix: 'icon' })],
     }),
     Unocss(),
+    nodePolyfills(),
   ],
   base: baseUrl,
   resolve: {
