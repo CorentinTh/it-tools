@@ -58,6 +58,7 @@
     "date-fns": "^2.29.3",
     "dompurify": "^3.0.6",
     "emojilib": "^3.0.10",
+    "fanger": "^0.3.1",
     "figlet": "^1.7.0",
     "figue": "^1.2.0",
     "fuse.js": "^6.6.2",
