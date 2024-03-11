@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import InputCopyable from '../../components/InputCopyable.vue';
-import { convertBase } from './integer-base-converter.model';
+import { convertBase, hasNumberPrefix } from './integer-base-converter.model';
 import { getErrorMessageIfThrows } from '@/utils/error';
 
 const inputProps = {
@@ -14,6 +14,8 @@ const inputProps = {
 const input = ref('42');
 const inputBase = ref(10);
 const outputBase = ref(42);
+
+const hasInputNumberPrefix = computed(() => hasNumberPrefix(input.value));
 
 function errorlessConvert(...args: Parameters<typeof convertBase>) {
   try {
@@ -36,7 +38,7 @@ const error = computed(() =>
     <c-card>
       <c-input-text v-model:value="input" label="Input number" placeholder="Put your number here (ex: 42)" label-position="left" label-width="110px" mb-2 label-align="right" />
 
-      <n-form-item label="Input base" label-placement="left" label-width="110" :show-feedback="false">
+      <n-form-item v-if="!hasInputNumberPrefix" label="Input base" label-placement="left" label-width="110" :show-feedback="false">
         <n-input-number v-model:value="inputBase" max="64" min="2" placeholder="Put your input base here (ex: 10)" w-full />
       </n-form-item>
 
