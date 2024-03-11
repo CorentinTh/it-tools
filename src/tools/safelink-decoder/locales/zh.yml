@@ -1,0 +1,10 @@
+tools:
+  safelink-decoder:
+    title: Outlook 安全链接解码器
+    description: 解码 Outlook 安全链接
+
+    inputLabel: '您的输入 Outlook 安全链接:'
+    inputPlaceholder: 您的输入 Outlook 安全链接...
+    outputLabel: '解码后的 URL:'
+
+    invalidMessage: 提供的安全链接无效
