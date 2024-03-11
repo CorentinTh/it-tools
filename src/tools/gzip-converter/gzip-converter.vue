@@ -33,6 +33,8 @@ const compressedZlibOutput = computed(() => withDefaultOnError(() => Base64.from
         <h3>GZIP compressed string</h3>
         <TextareaCopyable
           :value="compressedGzipOutput"
+          :word-wrap="true"
+          multiline
           placeholder="The GZip compressed version of your string will be here"
           mb-5
         />
@@ -42,6 +44,8 @@ const compressedZlibOutput = computed(() => withDefaultOnError(() => Base64.from
         <h3>Zlib compressed string</h3>
         <TextareaCopyable
           :value="compressedZlibOutput"
+          :word-wrap="true"
+          multiline
           placeholder="The Zlib compressed version of your string will be here"
           mb-5
         />
@@ -51,6 +55,8 @@ const compressedZlibOutput = computed(() => withDefaultOnError(() => Base64.from
         <h3>Deflate compressed string</h3>
         <TextareaCopyable
           :value="compressedDeflateOutput"
+          :word-wrap="true"
+          multiline
           placeholder="The Deflate compressed version of your string will be here"
           mb-5
         />
@@ -71,6 +77,8 @@ const compressedZlibOutput = computed(() => withDefaultOnError(() => Base64.from
         <h3>Decompressed string</h3>
         <TextareaCopyable
           v-model:value="decompressedOutput"
+          :word-wrap="true"
+          multiline
           placeholder="The decompressed string will be here"
           mb-5
         />
