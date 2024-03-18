@@ -125,6 +125,9 @@ dependencies:
   oui-data:
     specifier: ^1.0.10
     version: 1.0.10
+  path2d-polyfill:
+    specifier: ^3.0.1
+    version: 3.0.1
   pdf-signature-reader:
     specifier: ^1.4.2
     version: 1.4.2
@@ -7595,12 +7598,24 @@ packages:
     dev: false
     optional: true
 
+  /path2d-polyfill@3.0.1:
+    resolution: {integrity: sha512-mjkng+wI/BaMe+rcOqGntChdNRed4VbJYIZa1arqsCATuU1pr7sle3gns2Nkj0G79NIBEzqRpTQI/9px0sGBgw==}
+    engines: {node: '>=18'}
+    dependencies:
+      path2d: 0.1.2
+    dev: false
+
   /path2d@0.1.1:
     resolution: {integrity: sha512-/+S03c8AGsDYKKBtRDqieTJv2GlkMb0bWjnqOgtF6MkjdUQ9a8ARAtxWf9NgKLGm2+WQr6+/tqJdU8HNGsIDoA==}
     engines: {node: '>=6'}
     requiresBuild: true
     dev: false
     optional: true
+
+  /path2d@0.1.2:
+    resolution: {integrity: sha512-LW++2uxgHNL/FANhgGTPo/yDDQcgsVbKotwIVbpTgTBgRlKUpjOpjp3s3+KjG4OWCQ/r6z+WLDljH1/fC03PWw==}
+    engines: {node: '>=6'}
+    dev: false
 
   /pathe@1.1.1:
     resolution: {integrity: sha512-d+RQGp0MAYTIaDBIMmOfMwz3E+LOZnxx1HZd5R18mmCZY0QBlK0LDZfPc8FW8Ed2DlvsuE6PRjroDY+wg4+j/Q==}
