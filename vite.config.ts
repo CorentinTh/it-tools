@@ -113,4 +113,12 @@ export default defineConfig({
   build: {
     target: 'esnext',
   },
+  optimizeDeps: {
+    include: ['pdfjs-dist'], // optionally specify dependency name
+    esbuildOptions: {
+      supported: {
+        'top-level-await': true,
+      },
+    },
+  },
 });
