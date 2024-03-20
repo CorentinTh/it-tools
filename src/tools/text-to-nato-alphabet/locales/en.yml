@@ -1,4 +1,0 @@
-tools:
-  text-to-nato-alphabet:
-    title: Text to NATO alphabet
-    description: Transform text into NATO phonetic alphabet for oral transmission.
