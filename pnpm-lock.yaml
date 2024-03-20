@@ -69,8 +69,8 @@ dependencies:
     specifier: ^2.29.3
     version: 2.29.3
   decomposerize:
-    specifier: ^1.2.4
-    version: 1.2.4
+    specifier: ^1.3.0
+    version: 1.3.0
   dompurify:
     specifier: ^3.0.6
     version: 3.0.6
@@ -2163,7 +2163,7 @@ packages:
       '@monaco-editor/loader': 1.4.0(monaco-editor@0.43.0)
       monaco-editor: 0.43.0
       vue: 3.3.4
-      vue-demi: 0.14.6(vue@3.3.4)
+      vue-demi: 0.14.7(vue@3.3.4)
     dev: false
 
   /@humanwhocodes/config-array@0.11.10:
@@ -3405,7 +3405,7 @@ packages:
     dependencies:
       '@unhead/dom': 0.5.1
       '@unhead/schema': 0.5.1
-      '@vueuse/shared': 10.7.2(vue@3.3.4)
+      '@vueuse/shared': 10.9.0(vue@3.3.4)
       unhead: 0.5.1
       vue: 3.3.4
     transitivePeerDependencies:
@@ -4047,10 +4047,10 @@ packages:
       - vue
     dev: false
 
-  /@vueuse/shared@10.7.2(vue@3.3.4):
-    resolution: {integrity: sha512-qFbXoxS44pi2FkgFjPvF4h7c9oMDutpyBdcJdMYIMg9XyXli2meFMuaKn+UMgsClo//Th6+beeCgqweT/79BVA==}
+  /@vueuse/shared@10.9.0(vue@3.3.4):
+    resolution: {integrity: sha512-Uud2IWncmAfJvRaFYzv5OHDli+FbOzxiVEQdLCKQKLyhz94PIyFC3CHcH7EDMwIn8NPtD06+PNbC/PiO0LGLtw==}
     dependencies:
-      vue-demi: 0.14.6(vue@3.3.4)
+      vue-demi: 0.14.7(vue@3.3.4)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -4622,8 +4622,8 @@ packages:
       yamljs: 0.3.0
     dev: false
 
-  /composeverter@1.6.2:
-    resolution: {integrity: sha512-nlHQYYnsivmTnDrbVs7sVR/Z4WwACiaRI9MZYBdzMhrRrdMW17uGuYNikO/yCMoN+IkeBflSBFcUp7grF88g8Q==}
+  /composeverter@1.7.2:
+    resolution: {integrity: sha512-gRSCkSU8wJQvmTHQ23wBd2gCdUsns95k3lL7YszZBu5EyA3eac46mI7nVgvk1pZTM0mOmj/E5yurtdYkuVNZRA==}
     dependencies:
       ajv: 8.12.0
       ajv-errors: 3.0.0(ajv@8.12.0)
@@ -4861,11 +4861,11 @@ packages:
   /decimal.js@10.4.3:
     resolution: {integrity: sha512-VBBaLc1MgL5XpzgIP7ny5Z6Nx3UrRkIViUkPUdtl9aya5amy3De1gsUUSB1g3+3sExYNjCAsAznmukyxCb1GRA==}
 
-  /decomposerize@1.2.4:
-    resolution: {integrity: sha512-ON5UBObjuK313+/ftm+k/DDRgTjHJ+4SA4zEDXE6BpXB26FXWKmAj2k8NhzEvaLI9E3Cdvaw2KKV0vJh3hAgHw==}
+  /decomposerize@1.3.0:
+    resolution: {integrity: sha512-ry0OwNq9Bt3hxAeN/v+LI4qD/cH25whWZHZhew7RhvOKqGUu6+tmXDcqPSBQeXxJ7Qr/TZRfGm00IzcyxDvScw==}
     hasBin: true
     dependencies:
-      composeverter: 1.6.2
+      composeverter: 1.7.2
       core-js: 2.6.12
       yaml: 1.10.2
     dev: false
@@ -9260,6 +9260,21 @@ packages:
 
   /vue-demi@0.14.6(vue@3.3.4):
     resolution: {integrity: sha512-8QA7wrYSHKaYgUxDA5ZC24w+eHm3sYCbp0EzcDwKqN3p6HqtTCGR/GVsPyZW92unff4UlcSh++lmqDWN3ZIq4w==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.3.4
+    dev: false
+
+  /vue-demi@0.14.7(vue@3.3.4):
+    resolution: {integrity: sha512-EOG8KXDQNwkJILkx/gPcoL/7vH+hORoBaKgGe+6W7VFMvCYJfmF2dGbvgDroVnI8LU7/kTu8mbjRZGBU1z9NTA==}
     engines: {node: '>=12'}
     hasBin: true
     requiresBuild: true
