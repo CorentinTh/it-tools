@@ -1,0 +1,202 @@
+tools:
+  http-status-codes:
+    title: Codes d'état HTTP
+    description: La liste de tous les codes d'état HTTP, leur nom et leur signification.
+
+    searchPlaceholder: Rechercher un code d'état HTTP...
+    searchResults: Résultats de la recherche
+
+    1xx: 1xx réponse d'information
+    100:
+      name: Continuer
+      description: En attente que le client émette le corps de la requête.
+    101:
+      name: Changement de protocole
+      description: Le serveur a accepté de changer de protocole.
+    102:
+      name: Traitement
+      description: Le serveur traite la requête, mais aucune réponse n'est encore disponible.
+    103:
+      name: Premiers indices
+      description: Le serveur renvoie certains en-têtes de réponse avant le message HTTP final.
+    2xx: 2xx succès
+    200:
+      name: OK
+      description: Réponse standard pour les requêtes HTTP réussies.
+    201:
+      name: Créé
+      description: La requête a été satisfaite, entraînant la création d'une nouvelle ressource.
+    202:
+      name: Accepté
+      description: La requête a été acceptée pour traitement, mais le traitement n'est pas encore terminé.
+    203:
+      name: Information non autorisée
+      description: La requête est réussie mais le contenu de la requête originale a été modifié par un proxy de transformation.
+    204:
+      name: Pas de contenu
+      description: Le serveur a traité avec succès la requête et ne renvoie aucun contenu.
+    205:
+      name: Réinitialiser le contenu
+      description: Le serveur indique de réinitialiser la vue du document qui a envoyé cette requête.
+    206:
+      name: Contenu partiel
+      description: Le serveur ne livre qu'une partie de la ressource en raison d'un en-tête de plage envoyé par le client.
+    207:
+      name: Multi-Status
+      description: Le corps du message qui suit est un message XML et peut contenir plusieurs codes de réponse distincts.
+    208:
+      name: Déjà signalé
+      description: Les membres d'une liaison DAV ont déjà été énumérés dans une partie précédente de la réponse (multistatus).
+    226:
+      name: IM utilisé
+      description: Le serveur a satisfait une demande pour la ressource et la réponse est une représentation du résultat.
+    3xx: 3xx redirection
+    300:
+      name: Choix multiples
+      description: Indique plusieurs options pour la ressource que le client peut suivre.
+    301:
+      name: Déplacé de façon permanente
+      description: Cette demande et toutes les demandes futures doivent être dirigées vers l'URI donné.
+    302:
+      name: Trouvé
+      description: Rediriger vers une autre URL. C'est un exemple de pratique industrielle contredisant la norme.
+    303:
+      name: Voir autre
+      description: La réponse à la demande peut être trouvée sous un autre URI en utilisant une méthode GET.
+    304:
+      name: Non modifié
+      description: Indique que la ressource n'a pas été modifiée depuis la version spécifiée par les en-têtes de requête.
+    305:
+      name: Utiliser un proxy
+      description: La ressource demandée est disponible uniquement via un proxy, dont l'adresse est fournie dans la réponse.
+    306:
+      name: Changer de proxy
+      description: Plus utilisé. À l'origine signifiait "Les demandes ultérieures doivent utiliser le proxy spécifié."
+    307:
+      name: Redirection temporaire
+      description: Dans ce cas, la demande doit être répétée avec un autre URI; cependant, les demandes futures doivent toujours utiliser l'URI d'origine.
+    308:
+      name: Redirection permanente
+      description: La demande et toutes les demandes futures doivent être répétées en utilisant un autre URI.
+    4xx: 4xx erreur client
+    400:
+      name: Requête incorrecte
+      description: Le serveur ne peut pas ou ne traitera pas la demande en raison d'une erreur apparente du client.
+    401:
+      name: Non autorisé
+      description: Similaire à 403 Interdit, mais spécifiquement utilisé lorsque l'authentification est requise et a échoué ou n'a pas encore été fournie.
+    402:
+      name: Paiement requis
+      description: Réservé pour une utilisation future. L'intention initiale était que ce code pourrait être utilisé dans le cadre d'une sorte de système de monnaie numérique ou de micropaiement.
+    403:
+      name: Interdit
+      description: La demande était valide, mais le serveur refuse l'action. L'utilisateur pourrait ne pas avoir les autorisations nécessaires pour une ressource.
+    404:
+      name: Non trouvé
+      description: La ressource demandée n'a pas pu être trouvée mais pourrait être disponible à l'avenir.
+    405:
+      name: Méthode non autorisée
+      description: Une méthode de requête n'est pas prise en charge pour la ressource demandée.
+    406:
+      name: Non acceptable
+      description: La ressource demandée est capable de générer uniquement un contenu non acceptable selon les en-têtes Accept envoyés dans la requête.
+    407:
+      name: Authentification proxy requise
+      description: Le client doit d'abord s'authentifier auprès du proxy.
+    408:
+      name: Délai d'attente de la requête
+      description: Le serveur a expiré en attendant la requête.
+    409:
+      name: Conflit
+      description: Indique que la demande n'a pas pu être traitée en raison d'un conflit dans la demande, comme un conflit de modification.
+    410:
+      name: Parti
+      description: Indique que la ressource demandée n'est plus disponible et ne le sera plus à l'avenir.
+    411:
+      name: Longueur requise
+      description: La requête n'a pas spécifié la longueur de son contenu, ce qui est requis par la ressource demandée.
+    412:
+      name: Échec de la condition préalable
+      description: Le serveur ne remplit pas l'une des conditions préalables que le demandeur a mises sur la demande.
+    413:
+      name: Charge utile trop importante
+      description: La requête est plus grande que ce que le serveur est prêt ou capable de traiter.
+    414:
+      name: URI trop long
+      description: L'URI fourni était trop long pour que le serveur le traite.
+    415:
+      name: Type de support non pris en charge
+      description: L'entité de la requête a un type de support que le serveur ou la ressource ne prend pas en charge.
+    416:
+      name: Plage non satisfaisante
+      description: Le client a demandé une partie du fichier, mais le serveur ne peut pas fournir cette partie.
+    417:
+      name: Échec de l'attente
+      description: Le serveur ne peut pas répondre aux exigences du champ d'en-tête de demande Expect.
+    418:
+      name: Je suis une théière
+      description: Le serveur refuse la tentative de préparer du café avec une théière.
+    421:
+      name: Demande mal dirigée
+      description: La demande a été dirigée vers un serveur qui n'est pas capable de produire une réponse.
+    422:
+      name: Entité non traitable
+      description: La demande était bien formée mais n'a pas pu être suivie en raison d'erreurs sémantiques.
+    423:
+      name: Verrouillé
+      description: La ressource à laquelle on accède est verrouillée.
+    424:
+      name: Échec de la dépendance
+      description: La demande a échoué en raison de l'échec d'une demande précédente.
+    425:
+      name: Trop tôt
+      description: Indique que le serveur ne veut pas risquer de traiter une demande qui pourrait être rejouée.
+    426:
+      name: Mise à niveau requise
+      description: Le client doit passer à un protocole différent tel que TLS/1.0.
+    428:
+      name: Condition préalable requise
+      description: Le serveur d'origine exige que la demande soit conditionnelle.
+    429:
+      name: Trop de requêtes
+      description: L'utilisateur a envoyé trop de requêtes dans un laps de temps donné.
+    431:
+      name: Champs d'en-tête de la requête trop grands
+      description: Le serveur refuse de traiter la demande car soit un champ d'en-tête individuel, soit tous les champs d'en-tête collectivement, sont trop grands.
+    451:
+      name: Indisponible pour des raisons légales
+      description: Un opérateur de serveur a reçu une demande légale de refuser l'accès à une ressource ou à un ensemble de ressources incluant la ressource demandée.
+    5xx: 5xx erreur serveur
+    500:
+      name: Erreur interne du serveur
+      description: Un message d'erreur générique, donné lorsqu'une condition inattendue est rencontrée et qu'aucun message plus spécifique n'est approprié.
+    501:
+      name: Non implémenté
+      description: Le serveur ne reconnaît pas la méthode de requête, ou il lui manque la capacité de répondre à la demande.
+    502:
+      name: Mauvaise passerelle
+      description: Le serveur agissait en tant que passerelle ou proxy et a reçu une réponse invalide du serveur amont.
+    503:
+      name: Service non disponible
+      description: Le serveur est actuellement indisponible (car il est surchargé ou en maintenance).
+    504:
+      name: Délai d'attente de la passerelle
+      description: Le serveur agissait en tant que passerelle ou proxy et n'a pas reçu de réponse en temps voulu du serveur amont.
+    505:
+      name: Version HTTP non prise en charge
+      description: Le serveur ne prend pas en charge la version du protocole HTTP utilisée dans la requête.
+    506:
+      name: Variant négocié également
+      description: La négociation transparente du contenu pour la demande entraîne une référence circulaire.
+    507:
+      name: Espace insuffisant
+      description: Le serveur est incapable de stocker la représentation nécessaire pour compléter la demande.
+    508:
+      name: Boucle détectée
+      description: Le serveur a détecté une boucle infinie lors du traitement de la demande.
+    510:
+      name: Non étendu
+      description: Des extensions supplémentaires à la demande sont nécessaires pour que le serveur puisse la satisfaire.
+    511:
+      name: Authentification réseau requise
+      description: Le client doit s'authentifier pour accéder au réseau.

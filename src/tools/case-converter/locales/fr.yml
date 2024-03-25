@@ -1,0 +1,22 @@
+tools:
+  case-converter:
+    title: Convertisseur de cas
+    description: Changez le cas d'une chaîne et choisissez entre différents formats
+
+    inputLabel: 'Votre chaîne :'
+    inputPlaceholder: 'Votre chaîne...'
+
+    lowercase: 'Minuscules :'
+    uppercase: 'Majuscules :'
+    camelcase: 'Camelcase :'
+    capitalcase: 'Capitalcase :'
+    constantcase: 'Constantcase :'
+    dotcase: 'Dotcase :'
+    headercase: 'Headercase :'
+    nocase: 'Nocase :'
+    paramcase: 'Paramcase :'
+    pascalcase: 'Pascalcase :'
+    pathcase: 'Pathcase :'
+    sentencecase: 'Sentencecase :'
+    snakecase: 'Snakecase :'
+    mockingcase: 'Mockingcase :'

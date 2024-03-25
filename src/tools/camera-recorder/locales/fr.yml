@@ -1,0 +1,22 @@
+tools:
+  camera-recorder:
+    title: Enregistreur de caméra
+    description: Prenez une photo ou enregistrez une vidéo depuis votre webcam ou votre appareil photo.
+
+    unSupported: "Votre navigateur ne prend pas en charge l'enregistrement vidéo depuis la caméra"
+    needPermissionGranted: Vous devez accorder la permission pour utiliser votre caméra et votre microphone
+    permissionCannotBePrompted: "Votre navigateur a bloqué la demande de permission ou ne la prend pas en charge. Vous devez accorder la permission manuellement dans les paramètres de votre navigateur (généralement l'icône de cadenas dans la barre d'adresse)."
+    grantPermission: Accorder la permission
+    cameraLabel: 'Vidéo:'
+    cameraPlaceholder: Sélectionnez la caméra
+    microphoneLabel: 'Audio:'
+    microphonePlaceholder: Sélectionnez le microphone
+    startWebcam: Démarrer la webcam
+    takeScreenshot: Prendre une capture d'écran
+    startRecording: Démarrer l'enregistrement
+    pause: Pause
+    resume: Reprendre
+    stop: Arrêter
+    unSupportRecord: "L'enregistrement vidéo n'est pas pris en charge dans votre navigateur"
+    screenshot: capture d'écran
+    video: Vidéo

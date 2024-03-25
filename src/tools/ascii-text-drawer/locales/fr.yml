@@ -1,0 +1,15 @@
+tools:
+  ascii-text-drawer:
+    title: Générateur de texte art ASCII
+    description: Créez du texte art ASCII avec de nombreuses polices et styles.
+
+    inputLabel: 'Votre texte :'
+    inputPlaceholder: Votre texte à dessiner
+    fontLabel: 'Police :'
+    fontPlaceholder: Sélectionnez la police à utiliser
+    widthLabel: 'Largeur :'
+    widthPlaceholder: Largeur du texte
+    loadingFont: Chargement de la police...
+    outputLabel: 'Texte art ASCII :'
+
+    errored: Les paramètres actuels ont entraîné une erreur.

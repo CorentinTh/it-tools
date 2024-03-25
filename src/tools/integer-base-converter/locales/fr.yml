@@ -1,0 +1,24 @@
+tools:
+  base-converter:
+    title: Convertisseur de base entière
+    description: Convertir des nombres entre différentes bases (décimale, hexadécimale, binaire, octale, base64, ...)
+
+    inputLabel: Nombre d'entrée
+    inputPlaceholder: 'Mettez votre nombre ici (ex: 42)'
+    inputBaseLabel: Base d'entrée
+    inputBasePlaceholder: "Mettez votre base d'entrée ici (ex: 10)"
+
+    binaryLabel: Binaire (2)
+    binaryPlaceholder: La version binaire sera affichée ici...
+    octalLabel: Octal (8)
+    octalPlaceholder: La version octale sera affichée ici...
+    decimalLabel: Décimale (10)
+    decimalPlaceholder: La version décimale sera affichée ici...
+    hexadecimalLabel: Hexadécimale (16)
+    hexadecimalPlaceholder: La version hexadécimale sera affichée ici...
+    base64Label: Base64 (64)
+    base64Placeholder: La version Base64 sera affichée ici...
+
+    custom: 'Personnalisé :'
+    copyable: La base {outputBase} sera affichée ici...
+    invalidMessage: 'Chiffre "{digit}" invalide pour la base {fromBase}.'

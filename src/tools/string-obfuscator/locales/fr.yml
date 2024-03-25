@@ -1,0 +1,10 @@
+tools:
+  string-obfuscator:
+    title: Obfuscateur de chaîne
+    description: Obfusque une chaîne (comme un secret, un IBAN ou un jeton) pour la rendre partageable et identifiable sans révéler son contenu.
+
+    inputLabel: 'Chaîne à obfusquer :'
+    inputPlaceholder: Entrez la chaîne à obfusquer
+    keepFirst: 'Garder le début :'
+    keepLast: 'Garder la fin :'
+    KeepSpaces: 'Garder les espaces :'

@@ -56,6 +56,7 @@ toolCard:
   new: '新'
 search:
   label: '搜索'
+  placeholder: '搜索工具或指令...'
 ui:
   fileUpload:
     tips: 拖放文件到此处，或点击选择文件

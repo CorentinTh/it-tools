@@ -1,0 +1,18 @@
+tools:
+  bip39-generator:
+    title: Générateur de phrase secrète BIP39
+    description: Génère une phrase secrète BIP39 à partir d'une mnémonique existante ou aléatoire, ou obtenez la mnémonique à partir de la phrase secrète.
+
+    languageLabel: 'Langue :'
+    entropyLabel: 'Entropie (graine) :'
+    entropyPlaceholder: Votre chaîne...
+    passphraseLabel: 'Phrase secrète (mnémonique) :'
+    passphrasePlaceholder: Votre mnémonique...
+
+    validation:
+      lengthError: "La longueur de l'entropie doit être >= 16, <= 32 et être un multiple de 4"
+      stringTypeError: L'entropie doit être une chaîne hexadécimale
+      mnemonicError: Mnémonique invalide
+    copied:
+      entropy: Entropie copiée dans le presse-papiers
+      passphrase: Phrase secrète copiée dans le presse-papiers

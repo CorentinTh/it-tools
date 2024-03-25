@@ -1,0 +1,10 @@
+tools:
+  json-to-yaml-converter:
+    title: Convertisseur JSON en YAML
+    description: Convertissez simplement du JSON en YAML avec ce convertisseur en ligne en direct.
+
+    inputLabel: Votre JSON
+    inputPlaceholder: Collez votre JSON ici...
+    outputLabel: YAML à partir de votre JSON
+
+    invalidMessage: Le JSON fourni n'est pas valide.

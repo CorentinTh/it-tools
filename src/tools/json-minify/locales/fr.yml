@@ -1,0 +1,10 @@
+tools:
+  json-minify:
+    title: JSON minify
+    description: Minifiez et compressez votre JSON en supprimant les espaces inutiles.
+
+    inputLabel: Votre JSON brut
+    inputPlaceholder: Collez votre JSON brut ici...
+    outputLabel: Version minifiée de votre JSON
+
+    invalidMessage: Le JSON fourni n'est pas valide.

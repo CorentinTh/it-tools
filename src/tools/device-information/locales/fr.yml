@@ -1,0 +1,17 @@
+tools:
+  device-information:
+    title: Informations sur l'appareil
+    description: Obtenez des informations sur votre appareil actuel (taille de l'écran, ratio de pixels, agent utilisateur, ...)
+
+    screen: Écran
+    screenSize: Taille de l'écran
+    orientation: Orientation
+    orientationAngle: Angle d'orientation
+    colorDepth: Profondeur de couleur
+    pixelRatio: Ratio de pixels
+    windowSize: Taille de la fenêtre
+    device: Appareil
+    browserVendor: Fournisseur du navigateur
+    languages: Langues
+    platform: Plateforme
+    userAgent: Agent utilisateur

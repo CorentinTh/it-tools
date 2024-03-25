@@ -1,0 +1,24 @@
+tools:
+  encryption:
+    title: Chiffrer / déchiffrer du texte
+    description: Chiffrer et déchiffrer du texte en clair en utilisant des algorithmes de cryptage comme AES, TripleDES, Rabbit ou RC4.
+
+    encrypt:
+      title: Chiffrer
+      inputLabel: 'Votre texte :'
+      inputPlaceholder: La chaîne à chiffrer
+      secretLabel: 'Votre clé secrète :'
+      algoLabel: 'Algorithme de chiffrement :'
+      outputLabel: 'Votre texte chiffré :'
+      outputPlaceholder: Votre hachage de chaîne
+    decrypt:
+      title: Déchiffrer
+      inputLabel: 'Votre texte chiffré :'
+      inputPlaceholder: La chaîne à chiffrer
+      secretLabel: 'Votre clé secrète :'
+      algoLabel: 'Algorithme de chiffrement :'
+      outputLabel: 'Votre texte déchiffré :'
+      outputPlaceholder: Votre hachage de chaîne
+      decryptError: Erreur lors du déchiffrement
+
+    errorMessage: Impossible de déchiffrer votre texte

@@ -1,0 +1,12 @@
+tools:
+  slugify-string:
+    title: Chaîne de caractères slugifiée
+    description: Rend une chaîne de caractères sûre pour les URL, les noms de fichiers et les identifiants.
+
+    inputLabel: Votre chaîne à slugifier
+    inputPlaceholder: 'Mettez votre chaîne ici (ex : Mon chemin de fichier)'
+    outputLabel: Votre slug
+    outputPlaceholder: 'Votre slug sera généré ici (ex : mon-chemin-de-fichier)'
+    copyBtn: Copier le slug
+
+    copied: Slug copié dans le presse-papiers

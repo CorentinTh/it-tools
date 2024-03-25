@@ -1,0 +1,13 @@
+tools:
+  roman-numeral-converter:
+    title: Convertisseur de chiffres romains
+    description: Convertit les chiffres romains en nombres et les nombres en chiffres romains.
+
+    arabicToRoman: Arabe en romain
+    romanToArabic: Romain en arabe
+    copy: Copier
+
+    validationNumeral: Nous ne pouvons convertir que des nombres entre {min} et {max}
+    validationRoman: L'entrée que vous avez saisie n'est pas un nombre romain valide
+    copyRoman: Nombre romain copié dans le presse-papiers
+    copyArabic: Nombre arabe copié dans le presse-papiers

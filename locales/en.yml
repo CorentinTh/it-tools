@@ -56,6 +56,7 @@ toolCard:
   new: New
 search:
   label: Search
+  placeholder: Type to search a tool or a command...
 ui:
   fileUpload:
     tips: Drag and drop files here, or click to select files

@@ -1,0 +1,12 @@
+tools:
+  rsa-key-pair-generator:
+    title: Générateur de paire de clés RSA
+    description: Génère de nouveaux certificats pem de clés privées et publiques RSA aléatoires.
+
+    bits: 'Bits :'
+    publicKey: Clé publique
+    privateKey: Clé privée
+    button:
+      refresh: Actualiser la paire de clés
+
+    validationError: 'Les bits doivent être de 256 <= bits <= 16384 et être un multiple de 8'

@@ -1,0 +1,22 @@
+tools:
+  bcrypt:
+    title: Bcrypt
+    description: Hache et compare une chaîne de texte en utilisant bcrypt. Bcrypt est une fonction de hachage de mot de passe basée sur le chiffrement Blowfish.
+
+    copied: 'Chaîne hachée copiée dans le presse-papiers'
+    hash:
+      title: Hachage
+      placeholder: 'Votre chaîne à bcrypt...'
+      label: 'Votre chaîne : '
+      saltCount: 'Nombre de sel : '
+      saltCountPlaceholder: 'Tours de sel...'
+      copy: 'Copier le hachage'
+    compare:
+      title: Comparer une chaîne avec un hachage
+      stringLabel: 'Votre chaîne : '
+      stringPlaceholder: 'Votre chaîne à comparer...'
+      hashLabel: 'Votre hachage : '
+      hashPlaceholder: 'Votre hachage à comparer...'
+      match: Est-ce qu'ils correspondent ?
+      yes: Oui
+      no: Non

@@ -1,0 +1,7 @@
+tools:
+  numeronym-generator:
+    title: Générateur de numéronymes
+    description: Un numéronyme est un mot où un nombre est utilisé pour former une abréviation. Par exemple, "i18n" est un numéronyme de "internationalization" où 18 représente le nombre de lettres entre le premier i et le dernier n dans le mot.
+
+    inputPlaceholder: Entrez un mot, par exemple "internationalization"
+    outputPlaceholder: Votre numéronyme apparaîtra ici, par exemple "i18n"

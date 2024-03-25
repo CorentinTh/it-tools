@@ -1,0 +1,8 @@
+tools:
+  chronometer:
+    title: Chronomètre
+    description: Surveillez la durée d'une chose. Fondamentalement un chronomètre avec des fonctionnalités de chronométrage simples.
+
+    start: Démarrer
+    stop: Arrêter
+    reset: Réinitialiser

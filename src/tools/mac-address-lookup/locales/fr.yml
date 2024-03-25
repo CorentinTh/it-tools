@@ -1,0 +1,12 @@
+tools:
+  mac-address-lookup:
+    title: Recherche d'adresse MAC
+    description: Trouvez le fournisseur et le fabricant d'un appareil par son adresse MAC.
+
+    MACAddressLabel: 'Adresse MAC :'
+    MACAddressPlaceholder: Entrez une adresse MAC
+    vendorInfo: 'Informations sur le fournisseur :'
+    unknownAddress: Fournisseur inconnu pour cette adresse
+    copyBtn: Copier les informations sur le fournisseur
+
+    copied: Informations sur le fournisseur copiées dans le presse-papiers

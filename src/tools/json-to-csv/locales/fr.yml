@@ -1,0 +1,10 @@
+tools:
+  json-to-csv:
+    title: JSON vers CSV
+    description: Convertit du JSON en CSV avec détection automatique de l'en-tête.
+
+    inputLabel: Votre JSON brut
+    inputPlaceholder: Collez votre JSON brut ici...
+    outputLabel: Version CSV de votre JSON
+
+    invalidMessage: Le JSON fourni n'est pas valide.

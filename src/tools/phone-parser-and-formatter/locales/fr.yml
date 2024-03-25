@@ -1,0 +1,31 @@
+tools:
+  phone-parser-and-formatter:
+    title: Analyseur et formateur de numéro de téléphone
+    description: Analyse, valide et formate les numéros de téléphone. Obtenez des informations sur le numéro de téléphone, telles que le code pays, le type, etc.
+
+    country: Pays
+    countryCallingCode: Code d'appel du pays
+    isValid: Est valide ?
+    isPossible: Est possible ?
+    type: Type
+    internationalFormat: Format international
+    nationalFormat: Format national
+    E164Format: Format E.164
+    RFC3966Format: Format RFC3966
+    defaultCountryCode: 'Code pays par défaut :'
+    phoneNumberLabel: 'Numéro de téléphone :'
+    phoneNumberPlaceholder: Entrez un numéro de téléphone
+    unknown: Inconnu
+    mobile: Mobile
+    fixedLine: Ligne fixe
+    fixedLineOrMobile: Ligne fixe ou mobile
+    personalNumber: Numéro personnel
+    premiumRate: Tarification spéciale
+    sharedCost: Coût partagé
+    tollFree: Appel gratuit
+    UAN: Numéro d'accès universel
+    voicemail: Boîte vocale
+    VoIP: VoIP
+    pager: Pager
+
+    invalidMessage: Numéro de téléphone invalide

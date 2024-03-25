@@ -50,6 +50,41 @@ toolCard:
   new: Nouveau
 search:
   label: Rechercher
+  placeholder: 'Tapez pour rechercher un outil ou une commande...'
+ui:
+  fileUpload:
+    tips: 'Glissez-déposez des fichiers ici, ou cliquez pour sélectionner des fichiers'
+    or: ou
+    browseFileBtn: 'Parcourir les fichiers'
+  inputText:
+    placeholder: "Texte d'entrée"
+  modalValue:
+    copied: 'Copié !'
+    copy: Copier
+  select:
+    placeholder: 'Sélectionnez une option'
+    empty: Aucun résultat trouvé
+  table:
+    description: Table de données
+  textCopyable:
+    copied: 'Copié !'
+    copyToClipboard: Copier dans le presse-papiers
+  color:
+    invalidHexColor: Couleur hexadécimale invalide
+components:
+  formatTransformer:
+    inputLabel: Entrée
+    inputPlaceholder: Entrée...
+    outputLabel: Sortie
+  inputCopyable:
+    copied: 'Copié !'
+    copyToClipboard: Copier dans le presse-papiers
+  spanCopyable:
+    copyToClipboard: Copier dans le presse-papiers
+    copied: 'Copié !'
+  textareaCopyable:
+    copyToClipboard: Copier dans le presse-papiers
+    copied: 'Copié !'
 tools:
   categories:
     favorite-tools: 'Vos outils favoris'

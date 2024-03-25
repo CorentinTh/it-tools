@@ -1,0 +1,26 @@
+tools:
+  base64-string-converter:
+    title: 'Encodeur/décodeur de chaîne Base64'
+    description: 'Encodez et décodez simplement une chaîne en sa représentation Base64.'
+
+    stringToBase64:
+      title: 'Chaîne en Base64'
+      encodeUrl: 'Encoder en toute sécurité URL'
+      inputLabel: 'Chaîne à encoder'
+      inputPlaceholder: 'Mettez votre chaîne ici...'
+      outputLabel: 'Base64 de la chaîne'
+      outputPlaceholder: "L'encodage Base64 de votre chaîne apparaîtra ici"
+    base64ToString:
+      title: 'Base64 en chaîne'
+      decodeUrl: 'Décoder en toute sécurité URL'
+      inputLabel: 'Chaîne Base64 à décoder'
+      inputPlaceholder: 'Votre chaîne Base64...'
+      outputLabel: 'Chaîne décodée'
+      outputPlaceholder: 'La chaîne décodée apparaîtra ici'
+    buttons:
+      copyBase64: 'Copier Base64'
+      copyDecodedString: 'Copier la chaîne décodée'
+
+    base64Copied: 'Chaîne Base64 copiée dans le presse-papiers'
+    stringCopied: 'Chaîne copiée dans le presse-papiers'
+    base64InvalidMessage: 'Chaîne Base64 invalide'

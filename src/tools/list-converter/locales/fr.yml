@@ -1,0 +1,28 @@
+tools:
+  list-converter:
+    title: Convertisseur de liste
+    description: Cet outil peut traiter des données basées sur des colonnes et appliquer divers changements (transposer, ajouter un préfixe et un suffixe, inverser la liste, trier la liste, mettre en minuscule, tronquer les valeurs) à chaque ligne.
+
+    trimListItems: Trimmer les éléments de la liste
+    removeDuplicates: Supprimer les doublons
+    convertToLowercase: Convertir en minuscule
+    keepLineBreaks: Garder les sauts de ligne
+
+    sortListLabel: Trier la liste
+    sortListPlaceholder: Trier par ordre alphabétique
+    separatorLabel: Séparateur
+    separatorPlaceholder: ','
+    wrapItem: Envelopper l'élément
+    itemPrefix: Préfixe d'élément
+    itemSuffix: Suffixe d'élément
+    wrapList: Envelopper la liste
+    listPrefix: Préfixe de liste
+    listSuffix: Suffixe de liste
+
+    inputLabel: Vos données d'entrée
+    inputPlaceholder: Collez vos données d'entrée ici...
+    outputLabel: Vos données transformées
+
+    sortOrder:
+      asc: Trier par ordre croissant
+      desc: Trier par ordre décroissant

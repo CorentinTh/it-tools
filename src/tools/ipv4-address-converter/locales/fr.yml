@@ -1,0 +1,15 @@
+tools:
+  ipv4-address-converter:
+    title: Convertisseur d'adresse IPv4
+    description: Convertit une adresse IP en décimal, binaire, hexadécimal ou même en IPv6
+
+    ipv4AddressLabel: "L'adresse IPv4:"
+    ipv4AddressPlaceholder: L'adresse IPv4...
+    decimal: 'Décimal: '
+    hexadecimal: 'Hexadécimal: '
+    binary: 'Binaire: '
+    ipv6: 'IPv6: '
+    ipv6Short: 'IPv6 (court): '
+
+    errorPlaceholder: Indiquez une adresse IPv4 correcte
+    invalidMessage: Adresse IPv4 invalide

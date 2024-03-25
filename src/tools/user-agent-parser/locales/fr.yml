@@ -1,0 +1,30 @@
+tools:
+  user-agent-parser:
+    title: Analyseur d'agent utilisateur
+    description: Détecte et analyse le navigateur, le moteur, le système d'exploitation, le processeur et le type/modèle de périphérique à partir d'une chaîne d'agent utilisateur.
+
+    name: Nom
+    version: Version
+    model: Modèle
+    type: Type
+    vendor: Fournisseur
+    architecture: Architecture
+
+    browser: Navigateur
+    browserNameFallback: Aucun nom de navigateur disponible
+    browserVersionFallback: Aucune version de navigateur disponible
+    engine: Moteur
+    engineNameFallback: Aucun nom de moteur disponible
+    engineVersionFallback: Aucune version de moteur disponible
+    os: Système d'exploitation
+    osNameFallback: Aucun nom de système d'exploitation disponible
+    osVersionFallback: Aucune version de système d'exploitation disponible
+    device: Périphérique
+    deviceModelFallback: Aucun modèle de périphérique disponible
+    deviceTypeFallback: Aucun type de périphérique disponible
+    deviceVendorFallback: Aucun fournisseur de périphérique disponible
+    cpu: Processeur
+    cpuArchitectureFallback: Aucune architecture de processeur disponible
+
+    label: Chaîne d'agent utilisateur
+    placeholder: Entrez votre agent utilisateur ici...

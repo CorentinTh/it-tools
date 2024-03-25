@@ -1,0 +1,24 @@
+tools:
+  ipv4-subnet-calculator:
+    title: Calculateur de sous-réseau IPv4
+    description: Analysez vos blocs CIDR IPv4 et obtenez toutes les informations dont vous avez besoin sur votre sous-réseau.
+
+    ipv4AddressLabel: Une adresse IPv4 avec ou sans masque
+    ipv4AddressPlaceholder: L'adresse IPv4...
+    netmask: Masque de sous-réseau
+    networkAddress: Adresse du réseau
+    networkMask: Masque du réseau
+    networkMaskInBinary: Masque du réseau en binaire
+    CIDRNotation: Notation CIDR
+    wildcardMask: Masque de joker
+    networkSize: Taille du réseau
+    firstAddress: Première adresse
+    lastAddress: Dernière adresse
+    broadcastAddress: Adresse de diffusion
+    broadcastFallback: Pas d'adresse de diffusion avec ce masque
+    IPClass: Classe IP
+    IPClassFallback: Type de classe inconnu
+
+    previousBlock: Bloc précédent
+    nextBlock: Bloc suivant
+    invalidMessage: Nous ne pouvons pas analyser cette adresse, vérifiez le format

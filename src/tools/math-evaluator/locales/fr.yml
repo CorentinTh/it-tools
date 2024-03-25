@@ -1,0 +1,7 @@
+tools:
+  math-evaluator:
+    title: Évaluateur mathématique
+    description: Une calculatrice pour évaluer des expressions mathématiques. Vous pouvez utiliser des fonctions telles que sqrt, cos, sin, abs, etc.
+
+    inputPlaceholder: 'Votre expression mathématique (ex : 2*sqrt(6) )...'
+    result: Résultat

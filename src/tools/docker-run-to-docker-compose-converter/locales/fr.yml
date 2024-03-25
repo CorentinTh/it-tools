@@ -1,0 +1,12 @@
+tools:
+  docker-run-to-docker-compose-converter:
+    title: Convertisseur de Docker run en Docker compose
+    description: Transforme les commandes docker run en fichiers docker-compose !
+
+    inputLabel: 'Votre commande docker run :'
+    inputPlaceholder: Votre commande docker run à convertir...
+    downloadBtn: Télécharger docker-compose.yml
+
+    notComposable: Ces options ne sont pas transposables en docker-compose
+    notImplemented: Ces options ne sont pas encore implémentées et n'ont donc pas été traduites en docker-compose
+    errors: Les erreurs suivantes se sont produites

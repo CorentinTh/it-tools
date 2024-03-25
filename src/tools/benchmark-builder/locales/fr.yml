@@ -1,0 +1,26 @@
+tools:
+  benchmark-builder:
+    title: Constructeur de benchmark
+    description: Comparez facilement le temps d'exécution des tâches avec ce constructeur de benchmark en ligne très simple.
+
+    header:
+      position: Position
+      title: Suite
+      size: Samples
+      mean: Moyenne
+      variance: Variance
+    suiteNameLabel: Nom de la suite
+    suiteNamePlaceholder: Nom de la suite...
+    suiteValues: Valeurs de la suite
+    suiteTitle: Suite {index}
+    deleteSuite: Supprimer la suite
+    addSuite: Ajouter une suite
+    resetSuites: Réinitialiser les suites
+    unitLabel: Unité
+    unitPlaceholder: 'Unité (par ex : ms)'
+    setYourMeasure: Définissez votre mesure...
+    deleteThisValue: Supprimer cette valeur
+    addAMeasure: Ajouter une mesure
+
+    copyAsMarkdown: Copier en tant que tableau markdown
+    copyAsBulletList: Copier en tant que liste à puces

@@ -1,0 +1,199 @@
+tools:
+  og-meta-generator:
+    title: Générateur de métadonnées Open Graph
+    description: Génère des balises meta HTML Open Graph et sociales pour votre site web.
+
+    yourMetaTags: Vos balises meta
+
+    article:
+      title: Article
+      publishingDate:
+        label: Date de publication
+        placeholder: Quand l'article a été publié pour la première fois...
+      modificationDate:
+        label: Date de modification
+        placeholder: Quand l'article a été modifié pour la dernière fois...
+      expirationDate:
+        label: Date d'expiration
+        placeholder: Quand l'article est obsolète...
+      author:
+        label: Auteur
+        placeholder: Auteurs de l'article...
+      section:
+        label: Section
+        placeholder: Nom de section de haut niveau. Par ex. Technologie...
+      tag:
+        label: Tag
+        placeholder: Mots-clés associés à cet article...
+    book:
+      title: Livre
+      author:
+        label: Auteur
+        placeholder: Qui a écrit ce livre...
+      ISBN:
+        label: ISBN
+        placeholder: Le numéro ISBN (International Standard Book Number)...
+      releaseDate:
+        label: Date de sortie
+        placeholder: Date de sortie du livre...
+      tag:
+        label: Tag
+        placeholder: Mots-clés associés à ce livre...
+    image:
+      title: Image
+      imageUrl:
+        label: URL de l'image
+        placeholder: L'URL de l'image sociale de votre site web...
+      imageAlt:
+        label: Texte alternatif de l'image
+        placeholder: Le texte alternatif de l'image sociale de votre site web...
+      width:
+        label: Largeur
+        placeholder: Largeur en pixels de l'image sociale de votre site web...
+      height:
+        label: Hauteur
+        placeholder: Hauteur en pixels de l'image sociale de votre site web...
+    albumDetails:
+      title: Détails de l'album
+      song:
+        label: Chanson
+        placeholder: La chanson de cet album...
+      disc:
+        label: Disque
+        placeholder: Identique à music:album:disc mais en sens inverse...
+      track:
+        label: Piste
+        placeholder: Identique à music:album:track mais en sens inverse...
+      musician:
+        label: Musicien
+        placeholder: Le musicien qui a créé cette chanson...
+      releaseDate:
+        label: Date de sortie
+        placeholder: Date de sortie de l'album...
+    playlistDetails:
+      title: Détails de la playlist
+      song:
+        label: Chanson
+        placeholder: La chanson de cette playlist...
+      disc:
+        label: Disque
+        placeholder: Identique à music:album:disc mais en sens inverse...
+      track:
+        label: Piste
+        placeholder: Identique à music:album:track mais en sens inverse...
+      creator:
+        label: Créateur
+        placeholder: Le créateur de cette playlist...
+    radioStationDetails:
+      title: Détails de la station de radio
+      creator:
+        label: Créateur
+        placeholder: Le créateur de cette station de radio...
+    songDetails:
+      title: Détails de la chanson
+      duration:
+        lebel: Durée
+        placeholder: La durée de la chanson...
+      album:
+        lebel: Album
+        placeholder: L'album dont est issue cette chanson...
+      disc:
+        lebel: Disque
+        placeholder: Sur quel disque de l'album se trouve cette chanson...
+      track:
+        lebel: Piste
+        placeholder: Quelle piste est cette chanson...
+      musician:
+        lebel: Musicien
+        placeholder: Le musicien qui a créé cette chanson...
+    profile:
+      title: Profil
+      firstName:
+        lebel: Prénom
+        placeholder: Entrez le prénom de la personne...
+      lastName:
+        lebel: Nom de famille
+        placeholder: Entrez le nom de famille de la personne...
+      username:
+        lebel: Nom d'utilisateur
+        placeholder: Entrez le nom d'utilisateur de la personne...
+      gender:
+        lebel: Genre
+        placeholder: Entrez le genre de la personne...
+    twitter:
+      title: Twitter
+      card:
+        label: Type de carte
+        placeholder: Le type de carte Twitter...
+        summary: Résumé
+        summaryWithLargeImage: Résumé avec grande image
+        application: Application
+        player: Lecteur
+      site:
+        label: Compte du site
+        placeholder: 'Le nom du compte Twitter du site (ex : {example})...'
+      creator:
+        label: Compte du créateur
+        placeholder: 'Le nom du compte Twitter du créateur (ex : {example})...'
+    videoEpisode:
+      title: Détails de l'épisode vidéo
+      series:
+        label: Série
+        placeholder: À quelle série cet épisode appartient...
+    videoMovie:
+      title: Détails du film
+      actor:
+        label: Acteur
+        placeholder: Nom de l'actrice / acteur...
+      actorRole:
+        label: Rôle de l'acteur
+        placeholder: Le rôle qu'ils ont joué...
+      director:
+        label: Réalisateur
+        placeholder: Nom du réalisateur...
+      writer:
+        label: Scénariste
+        placeholder: Scénaristes du film...
+      duration:
+        label: Durée
+        placeholder: La durée du film en secondes...
+      releaseDate:
+        label: Date de sortie
+        placeholder: Date de sortie du film...
+      tag:
+        label: Tag
+        placeholder: Mots-clés associés à ce film...
+    videoOther:
+      title: Autres détails vidéo
+    videoTVShow:
+      title: Détails de l'émission de télévision
+    website:
+      title: Informations générales
+      pageType:
+        label: Type de page
+        placeholder: Sélectionnez le type de votre site web...
+      pageTitle:
+        label: Titre
+        placeholder: Entrez le titre de votre site web...
+      description:
+        label: Description
+        placeholder: Entrez la description de votre site web...
+      url:
+        label: URL de la page
+        placeholder: Entrez l'URL de votre site web...
+      web: Site web
+      article: Article
+      book: Livre
+      profile: Profil
+      music:
+        label: Musique
+        song: Chanson
+        musicAlbum: Album musical
+        playlist: Playlist
+        radioStation: Station de radio
+      video:
+        label: Vidéo
+        movie: Film
+        episode: Épisode
+        tvShow: Émission de télévision
+        otherVideo: Autre vidéo

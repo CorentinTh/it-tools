@@ -1,0 +1,15 @@
+tools:
+  basic-auth-generator:
+    title: Générateur d'authentification de base
+    description: Génère un en-tête d'authentification de base64 à partir d'un nom d'utilisateur et d'un mot de passe.
+
+    username:
+      inputLabel: Nom d'utilisateur
+      inputPlaceholder: Votre nom d'utilisateur...
+    password:
+      inputLabel: 'Mot de passe'
+      inputPlaceholder: 'Votre mot de passe...'
+    outputTitle: "En-tête d'autorisation:"
+    copyHeader: "Copier l'en-tête"
+
+    copied: 'En-tête copié dans le presse-papiers'

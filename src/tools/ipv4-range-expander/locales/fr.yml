@@ -1,0 +1,18 @@
+tools:
+  ipv4-range-expander:
+    title: Extension de plage IPv4
+    description: Étant donné une adresse IPv4 de début et de fin, cet outil calcule un réseau IPv4 valide avec sa notation CIDR.
+
+    startAddressPlaceholder: Adresse IPv4 de début...
+    endAddressPlaceholder: Adresse IPv4 de fin...
+    startAddress: Adresse de début
+    endAddress: Adresse de fin
+    addressesInRange: Adresses dans la plage
+    CIDR: CIDR
+    oldValue: ancienne valeur
+    newValue: nouvelle valeur
+
+    errorMessage: Combinaison invalide d'adresse IPv4 de début et de fin
+    errorDesc: L'adresse IPv4 de fin est inférieure à l'adresse IPv4 de début. Ceci n'est pas valide et aucun résultat ne peut être calculé. Dans la plupart des cas, la solution pour résoudre ce problème est de changer l'adresse de début et de fin.
+    switchStartEnd: Permuter l'adresse IPv4 de début et de fin
+    invalidMessage: Adresse IPv4 invalide

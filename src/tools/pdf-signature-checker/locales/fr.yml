@@ -1,0 +1,9 @@
+tools:
+  pdf-signature-checker:
+    title: Vérificateur de signature PDF
+    description: Vérifiez les signatures d'un fichier PDF. Un fichier PDF signé contient une ou plusieurs signatures qui peuvent être utilisées pour déterminer si le contenu du fichier a été modifié depuis sa signature.
+    
+    upload:
+      tip: Faites glisser et déposez un fichier PDF ici, ou cliquez pour sélectionner un fichier
+      error: Aucune signature trouvée dans le fichier fourni.
+      parsed: 'Certificats de signature {index} :'

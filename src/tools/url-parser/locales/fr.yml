@@ -1,0 +1,17 @@
+tools:
+  url-parser:
+    title: Analyseur d'URL
+    description: Analyse une chaîne d'URL pour obtenir toutes les parties différentes (protocole, origine, paramètres, port, nom d'utilisateur-mot de passe, ...)
+
+    inputLabel: 'Votre URL à analyser :'
+    inputPlaceholder: Votre URL à analyser...
+
+    protocol: Protocole
+    username: Nom d'utilisateur
+    password: Mot de passe
+    hostname: Nom de l'hôte
+    port: Port
+    path: Chemin
+    params: Paramètres
+
+    inValidMessage: URL non valide

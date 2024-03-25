@@ -1,0 +1,26 @@
+tools:
+  hmac-generator:
+    title: Générateur HMAC
+    description: Calcule un code d'authentification de message basé sur un hachage (HMAC) en utilisant une clé secrète et votre fonction de hachage préférée.
+
+    plainText:
+      label: Texte en clair pour calculer le hachage
+      placeholder: Texte en clair pour calculer le hachage...
+    secret:
+      label: Clé secrète
+      placeholder: Entrez la clé secrète...
+    hashFunction:
+      label: Fonction de hachage
+      placeholder: Sélectionnez une fonction de hachage...
+    encoding:
+      label: Encodage de sortie
+      placeholder: Sélectionnez l'encodage du résultat...
+      binary: Binaire (base 2)
+      hexadecimal: Hexadécimal (base 16)
+      base64: Base64 (base 64)
+      Base64Url: Base64-url (base 64 avec des caractères sûrs pour les URL)
+    result:
+      label: HMAC de votre texte
+      placeholder: Le résultat du HMAC...
+    button:
+      copy: Copier le HMAC

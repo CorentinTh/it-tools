@@ -1,0 +1,13 @@
+tools:
+  ipv6-ula-generator:
+    title: Générateur ULA IPv6
+    description: Génère vos propres adresses IP locales et non routables sur votre réseau conformément à la RFC4193.
+
+    macAddressLabel: 'Adresse MAC:'
+    macAddressPlaceholder: 'Saisissez une adresse MAC'
+    IPv6ULA: 'ULA IPv6:'
+    firstRoutableBlock: 'Premier bloc routable:'
+    lastRoutableBlock: 'Dernier bloc routable:'
+
+    info: Info
+    infoDetail: Cet outil utilise la première méthode suggérée par l'IETF en utilisant le timestamp actuel plus l'adresse MAC, hachée en sha1, et les 40 bits inférieurs pour générer votre ULA aléatoire.

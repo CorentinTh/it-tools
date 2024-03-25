@@ -1,0 +1,17 @@
+tools:
+  eta-calculator:
+    title: Calculateur d'ETA
+    description: Un calculateur d'ETA (Heure d'Arrivée Estimée) pour connaître l'heure approximative de fin d'une tâche, par exemple le moment de la fin d'un téléchargement.
+
+    tips: Avec un exemple concret, si vous lavez 5 assiettes en 3 minutes et que vous avez 500 assiettes à laver, il vous faudra 5 heures pour tout laver.
+    unitCount: Quantité d'élément à consommer
+    startedAt: La consommation a commencé à
+    unitPerTimeSpan: Quantité d'unité consommée par intervalle de temps
+    in: en
+    milliseconds: millisecondes
+    seconds: secondes
+    minutes: minutes
+    hours: heures
+    days: jours
+    totalDuration: Durée totale
+    endAt: Cela se terminera à

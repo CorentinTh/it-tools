@@ -1,0 +1,15 @@
+tools:
+  token-generator:
+    title: Générateur de jeton
+    description: Génère une chaîne aléatoire avec les caractères que vous souhaitez, en lettres majuscules ou minuscules, chiffres et/ou symboles.
+
+    uppercase: Majuscules (ABC...)
+    lowercase: Minuscules (abc...)
+    numbers: Chiffres (123...)
+    symbols: Symboles (!-;...)
+    length: Longueur
+    tokenPlaceholder: Le jeton...
+    copied: Jeton copié dans le presse-papiers
+    button:
+      copy: Copier
+      refresh: Rafraîchir

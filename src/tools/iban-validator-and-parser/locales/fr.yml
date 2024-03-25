@@ -1,0 +1,22 @@
+tools:
+  iban-validator-and-parser:
+    title: Validateur et analyseur d'IBAN
+    description: Validez et analysez les numéros IBAN. Vérifiez si l'IBAN est valide et obtenez le pays, le BBAN, s'il s'agit d'un QR-IBAN et le format convivial de l'IBAN.
+
+    inputPlaceholder: Entrez un IBAN à vérifier la validité...
+    ibanExamples: Exemples d'IBAN valides
+
+    isIbanValid: L'IBAN est-il valide ?
+    IBANErrors: Erreurs d'IBAN
+    isQRIBAN: L'IBAN est-il un QR-IBAN ?
+    countryCode: Code pays
+    BBAN: BBAN
+    IBANFriendlyFormat: Format convivial de l'IBAN
+    noIBANProvided: Aucun IBAN fourni
+    noIBANCountry: Aucun pays d'IBAN
+    wrongBBANLength: Longueur BBAN incorrecte
+    wrongBBANFormat: Format BBAN incorrect
+    checksumNotNumber: Le checksum n'est pas un nombre
+    wrongIBANChecksum: Checksum IBAN incorrect
+    wrongAccountBankBranchChecksum: Checksum de compte bancaire incorrect
+    QRIBANNotAllowed: QR-IBAN non autorisé

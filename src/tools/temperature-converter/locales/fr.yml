@@ -1,0 +1,13 @@
+tools:
+  temperature-converter:
+    title: Convertisseur de température
+    description: Conversions des degrés de température pour Kelvin, Celsius, Fahrenheit, Rankine, Delisle, Newton, Réaumur et Rømer.
+
+    kelvin: Kelvin
+    celsius: Celsius
+    fahrenheit: Fahrenheit
+    rankine: Rankine
+    delisle: Delisle
+    newton: Newton
+    reaumur: Réaumur
+    romer: Rømer

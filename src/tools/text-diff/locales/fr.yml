@@ -1,0 +1,4 @@
+tools:
+  text-diff:
+    title: Différence de texte
+    description: Comparez deux textes et voyez les différences entre eux.

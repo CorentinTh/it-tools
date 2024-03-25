@@ -1,0 +1,38 @@
+tools:
+  crontab-generator:
+    title: Générateur de crontab
+    description: Valide et génère un crontab et obtient la description lisible de la planification cron.
+
+    anyMeaning: Toute valeur
+    anyExample: Chaque minute
+    rangeMeaning: Plage de valeurs
+    rangeExample: Minutes 1 à 10
+    listMeaning: Liste de valeurs
+    listExample: Aux minutes 1 et 10
+    stepMeaning: Valeurs de pas
+    stepExample: Toutes les 10 minutes
+    yearlyMeaning: Une fois par an à minuit le 1er janvier
+    annuallyMeaning: Identique à {yearly}
+    monthlyMeaning: Une fois par mois à minuit le premier jour
+    weeklyMeaning: Une fois par semaine à minuit le dimanche matin
+    dailyMeaning: Une fois par jour à minuit
+    midnightMeaning: Identique à {daily}
+    hourlyMeaning: Une fois par heure au début de l'heure
+    rebootMeaning: Exécuter au démarrage
+
+    verbose: Verbose
+    use24HourTimeFormat: Utiliser le format de l'heure en 24 heures
+    dayOfWeekStartIndexZero: Les jours commencent à 0
+    secondDesc: '[optionnel] secondes (0 - 59)'
+    minuteDesc: 'minute (0 - 59)'
+    hourDesc: 'heure (0 - 23)'
+    dayOfMonthDesc: 'jour du mois (1 - 31)'
+    monthDesc: 'mois (1 - 12) OU janv.,fév.,mars,avril...'
+    dayOfWeekDesc: 'jour de la semaine (0 - 6, dimanche=0) OU dim.,lun...'
+    command: commande
+    symbol: 'Symbole:'
+    meaning: 'Signification:'
+    example: 'Exemple:'
+    equivalent: 'Équivalent:'
+
+    invalidMessage: Ce cron est invalide

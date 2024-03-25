@@ -1,0 +1,10 @@
+tools:
+  safelink-decoder:
+    title: Décodeur de liens Outlook Safelink
+    description: Décoder les liens Outlook SafeLink
+
+    inputLabel: "Votre URL SafeLink Outlook d'entrée :"
+    inputPlaceholder: Votre URL SafeLink Outlook d'entrée...
+    outputLabel: 'URL décodée en sortie :'
+
+    invalidMessage: URL SafeLinks fournie invalide

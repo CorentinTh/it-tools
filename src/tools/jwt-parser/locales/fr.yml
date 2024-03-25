@@ -1,0 +1,98 @@
+tools:
+  jwt-parser:
+    title: Analyseur JWT
+    description: Analyse et décode votre jeton JSON Web Token (JWT) et affiche son contenu.
+
+    label: JWT à décoder
+    placeholder: Mettez votre jeton ici...
+    header: En-tête
+    payload: Charge utile
+
+    invalidJWT: JWT invalide
+
+    HS256: 'HMAC utilisant SHA-256'
+    HS384: 'HMAC utilisant SHA-384'
+    HS512: 'HMAC utilisant SHA-512'
+    RS256: 'RSASSA-PKCS1-v1_5 utilisant SHA-256'
+    RS384: 'RSASSA-PKCS1-v1_5 utilisant SHA-384'
+    RS512: 'RSASSA-PKCS1-v1_5 utilisant SHA-512'
+    ES256: 'ECDSA utilisant P-256 et SHA-256'
+    ES384: 'ECDSA utilisant P-384 et SHA-384'
+    ES512: 'ECDSA utilisant P-521 et SHA-512'
+    PS256: 'RSASSA-PSS utilisant SHA-256 et MGF1 avec SHA-256'
+    PS384: 'RSASSA-PSS utilisant SHA-384 et MGF1 avec SHA-384'
+    PS512: 'RSASSA-PSS utilisant SHA-512 et MGF1 avec SHA-512'
+    none: 'Aucune signature numérique ou MAC effectuée'
+
+    typ: 'Type'
+    alg: 'Algorithme'
+    iss: 'Émetteur'
+    sub: 'Sujet'
+    aud: 'Audience'
+    exp: Heure d'expiration
+    nbf: 'Pas avant'
+    iat: 'Émis à'
+    jti: 'ID JWT'
+    name: 'Nom complet'
+    givenName: 'Prénom(s)'
+    familyName: 'Nom(s) de famille'
+    middleName: 'Deuxième(s) prénom(s)'
+    nickname: Nom d'usage
+    preferredUsername: Nom abrégé par lequel l'Utilisateur final souhaite être désigné
+    profile: URL de la page de profil
+    picture: URL de l'image de profil
+    website: URL de la page web ou du blog
+    email: Adresse e-mail préférée
+    emailVerified: Vrai si l'adresse e-mail a été vérifiée; sinon faux
+    gender: Genre
+    birthdate: Date de naissance
+    zoneinfo: Fuseau horaire
+    locale: Paramètre régional
+    phoneNumber: Numéro de téléphone préféré
+    phoneNumberVerified: 'Vrai si le numéro de téléphone a été vérifié; sinon faux'
+    address: Adresse postale préférée
+    updatedAt: 'Heure à laquelle les informations ont été mises à jour pour la dernière fois'
+    azp: 'Partie autorisée - la partie à laquelle le jeton ID a été délivré'
+    nonce: 'Valeur utilisée pour associer une session Client à un jeton ID'
+    authTime: Heure à laquelle l'authentification a eu lieu
+    atHash: Valeur de hachage du jeton d'accès
+    cHash: 'Valeur de hachage du code'
+    acr: Référence de classe de contexte d'authentification
+    amr: Références de méthodes d'authentification
+    subJwk: Clé publique utilisée pour vérifier la signature d'un jeton ID
+    cnf: Confirmation
+    sipFromTag: Valeur du paramètre champ d'en-tête SIP From tag
+    sipDate: Valeur du champ d'en-tête SIP Date
+    sipCallid: Valeur du champ d'en-tête SIP Call-Id
+    sipCseqNum: Valeur du paramètre numérique d'en-tête SIP CSeq
+    sipViaBranch: Valeur du paramètre d'en-tête SIP Via branch
+    orig: Chaîne d'identité d'origine
+    dest: Chaîne d'identité de destination
+    mky: Chaîne d'empreinte de clé média
+    events: Événements de sécurité
+    toe: Heure de l'événement
+    txn: Identifiant de transaction
+    rph: Autorisation d'en-tête de priorité de ressource
+    sid: ID de session
+    vot: Valeur du vecteur de confiance
+    vtm: URL du trustmark du vecteur de confiance
+    attest: Niveau d'attestation tel que défini dans le cadre SHAKEN
+    origid: Identifiant d'origine tel que défini dans le cadre SHAKEN
+    act: Acteur
+    scope: Valeurs de portée
+    clientId: Identifiant du Client
+    mayAct: Acteur autorisé - la partie autorisée à devenir l'acteur
+    jcard: Données jCard
+    atUseNbr: Nombre de demandes API pour lesquelles le jeton d'accès peut être utilisé
+    div: Cible détournée d'un appel
+    opt: "PASSporT d'origine (sous forme complète)"
+    vc: Justificatif vérifiable tel que spécifié dans la Recommandation W3C
+    vp: Présentation vérifiable telle que spécifiée dans la Recommandation W3C
+    sph: En-tête de priorité SIP
+    aceProfile: Profil ACE avec lequel un jeton est censé être utilisé.
+    cnonce: Nonce du Client
+    exi: Expire dans
+    roles: Rôles
+    groups: Groupes
+    entitlements: Droits
+    tokenIntrospection: Réponse d'inspection de jeton

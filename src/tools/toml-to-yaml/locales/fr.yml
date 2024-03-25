@@ -1,0 +1,10 @@
+tools:
+  toml-to-yaml:
+    title: TOML vers YAML
+    description: Analyser et convertir TOML en YAML.
+
+    inputLabel: Votre TOML
+    inputPlaceholder: Collez votre TOML ici...
+    outputLabel: YAML à partir de votre TOML
+
+    inValidMessage: Le TOML fourni n'est pas valide.

@@ -1,0 +1,17 @@
+tools:
+  keycode-info:
+    title: Informations sur le code de touche
+    description: Trouvez le code, l'emplacement et les modificateurs javascript de n'importe quelle touche enfoncée.
+
+    keyLabel: 'Touche :'
+    keyPlaceholder: 'Nom de la touche...'
+    keycodeLabel: 'Code de touche :'
+    keycodePlaceholder: 'Code de touche...'
+    codeLabel: 'Code :'
+    codePlaceholder: 'Code...'
+    locationLabel: 'Emplacement :'
+    locationPlaceholder: 'Code...'
+    modifiersLabel: 'Modificateurs :'
+    modifiersPlaceholder: 'Aucun'
+
+    tips: Appuyez sur la touche de votre clavier dont vous voulez obtenir des informations

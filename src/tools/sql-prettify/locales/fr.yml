@@ -1,0 +1,19 @@
+tools:
+  sql-prettify:
+    title: Mise en forme et embellissement SQL
+    description: Mettez en forme et embellissez vos requêtes SQL en ligne (il prend en charge divers dialectes SQL).
+
+    dialect: Dialecte
+    keywordCase: Cas des mots-clés
+    indentStyle: Style d'indentation
+    sql: SQL standard
+    upper: MAJUSCULE
+    lower: minuscule
+    preserve: Préserver
+    standard: Standard
+    tabularLeft: Tabulaire à gauche
+    tabularRight: Tabulaire à droite
+
+    inputLabel: Votre requête SQL
+    inputPlaceholder: Entrez votre requête SQL ici...
+    outputLabel: Version mise en forme de votre requête

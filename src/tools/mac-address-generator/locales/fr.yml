@@ -1,0 +1,17 @@
+tools:
+  mac-address-generator:
+    title: Générateur d'adresse MAC
+    description: Entrez la quantité et le préfixe. Les adresses MAC seront générées dans le cas choisi (majuscules ou minuscules).
+
+    quantity: 'Quantité:'
+    prefixLabel: "Préfixe de l'adresse MAC:"
+    prefixPlaceholder: 'Définir un préfixe, par exemple 64:16:7F'
+    case: 'Casse:'
+    separator: 'Séparateur:'
+    uppercase: Majuscules
+    lowercase: Minuscules
+    none: Aucun
+
+    refreshBtn: Actualiser
+    copyBtn: Copier
+    copied: Adresses MAC copiées dans le presse-papiers

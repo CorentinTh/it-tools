@@ -1,0 +1,22 @@
+tools:
+  text-to-binary:
+    title: Texte en binaire ASCII
+    description: Convertit un texte en sa représentation binaire ASCII et vice versa.
+
+    textToBinary:
+      title: Texte en binaire ASCII
+      inputLabel: Entrez le texte à convertir en binaire
+      inputPlaceholder: par ex. "Bonjour le monde"
+      outputLabel: Binaire de votre texte
+      outputPlaceholder: La représentation binaire de votre texte sera affichée ici
+      copyBinary: Copier le binaire dans le presse-papiers
+    binaryToText:
+      title: Binaire ASCII en texte
+      inputLabel: Entrez le binaire à convertir en texte
+      inputPlaceholder: par ex. "01001000 01100101 01101100 01101100 01101111"
+      outputLabel: Texte de votre binaire
+      outputPlaceholder: La représentation textuelle de votre binaire sera affichée ici
+      copyText: Copier le texte dans le presse-papiers
+
+    invalidMessage: Le binaire doit être une chaîne binaire ASCII valide avec des multiples de 8 bits
+    invalidBinaryString: Chaîne binaire invalide

@@ -1,0 +1,20 @@
+tools:
+  date-converter:
+    title: Convertisseur de date et d'heure
+    description: Convertit la date et l'heure dans divers formats différents.
+
+    inputPlaceholder: Entrez votre chaîne de date ici...
+    invalidDatePlaceholder: Date invalide...
+
+    localDate: Chaîne de date locale JS
+    ISO8601: ISO 8601
+    ISO9075: ISO 9075
+    RFC3339: RFC 3339
+    RFC7231: RFC 7231
+    unixTimestamp: Horodatage Unix
+    timestamp: Horodatage
+    UTCformat: Format UTC
+    mongoObjectID: ID d'objet Mongo
+    excelDate: Date/heure Excel
+
+    invalidMessage: Cette date est invalide pour ce format

@@ -1,0 +1,30 @@
+tools:
+  otp-generator:
+    title: Générateur de code OTP
+    description: Génère et valide des OTP (mot de passe à usage unique) basés sur le temps pour l'authentification multi-facteurs.
+
+    secretLabel: Secret
+    secretPlaceholder: Collez votre secret TOTP...
+    generate: Générer un nouveau secret aléatoire
+    timeLeft: Prochain dans {second}s
+    keyUri: Ouvrir l'URI de la clé dans un nouvel onglet
+    hexadecimalLabel: Secret en hexadécimal
+    hexadecimalPlaceholder: Le secret en hexadécimal sera affiché ici
+    epochLabel: Epoch
+    epochPlaceholder: L'Epoch en sec sera affiché ici
+    iteration: Itération
+    countLabel: 'Compte:'
+    countPlaceholder: Le nombre d'itérations sera affiché ici
+    paddedHexLabel: 'Hexadécimal rembourré:'
+    paddedHexPlaceholder: Le nombre d'itérations en hexadécimal sera affiché ici
+
+    previous: Précédent
+    currentOTP: OTP actuel
+    next: Suivant
+    copied: Copié !
+    copyPreviousOTP: Copier l'OTP précédent
+    copyCurrentOTP: Copier l'OTP actuel
+    copyNextOTP: Copier l'OTP suivant
+
+    typeErrorMessage: Le secret doit être une chaîne base32
+    invalidMessage: Veuillez définir un secret

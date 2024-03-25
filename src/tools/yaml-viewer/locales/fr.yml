@@ -1,0 +1,12 @@
+tools:
+  yaml-prettify:
+    title: Mise en forme et formatage YAML
+    description: Mettez en forme votre chaîne YAML dans un format lisible convivial pour l'homme.
+
+    sortKeys: 'Trier les clés :'
+    indentSize: "Taille de l'indentation :"
+    inputLabel: Votre YAML brut
+    inputPlaceholder: Collez votre YAML brut ici...
+    outputLabel: Version mise en forme de votre YAML
+
+    invalidMessage: Le YAML fourni n'est pas valide.

@@ -1,0 +1,18 @@
+tools:
+  text-to-unicode:
+    title: Texte vers Unicode
+    description: Analyser et convertir du texte en Unicode et vice versa
+
+    textToUnicode: Texte vers Unicode
+    inputTextLabel: Entrez le texte à convertir en Unicode
+    inputTextPlaceholder: 'par exemple "Bonjour les Avengers"'
+    unicodeFromTextLabel: Unicode de votre texte
+    unicodeFromTextPlaceholder: La représentation Unicode de votre texte sera ici
+    unicodeToText: Unicode vers Texte
+    inputUnicodeLabel: Entrez l'Unicode à convertir en texte
+    inputUnicodePlaceholder: Entrer l'Unicode
+    textFromUnicodeLabel: Texte de votre Unicode
+    textFromUnicodePlaceholder: La représentation texte de votre Unicode sera ici
+
+    copyUnicode: Copier l'Unicode dans le presse-papiers
+    copyText: Copier le texte dans le presse-papiers

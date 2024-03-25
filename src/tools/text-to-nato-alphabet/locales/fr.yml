@@ -1,0 +1,11 @@
+tools:
+  text-to-nato-alphabet:
+    title: Texte en alphabet phonétique de l'OTAN
+    description: Transformez du texte en alphabet phonétique de l'OTAN pour une transmission orale.
+
+    inputLabel: Votre texte à convertir en alphabet phonétique de l'OTAN
+    inputPlaceholder: Mettez votre texte ici...
+    outputLabel: Votre texte en alphabet phonétique de l'OTAN
+    copy: Copier la chaîne de l'OTAN
+
+    copied: Chaîne de l'alphabet de l'OTAN copiée.

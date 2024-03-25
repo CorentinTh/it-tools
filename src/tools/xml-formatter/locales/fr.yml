@@ -1,0 +1,12 @@
+tools:
+  xml-formatter:
+    title: Formateur XML
+    description: Embellissez votre chaîne XML dans un format lisible et convivial pour l'homme.
+
+    collapseContent: 'Réduire le contenu :'
+    indentSize: "Taille de l'indentation :"
+    inputLabel: Votre XML
+    inputPlaceholder: Collez votre XML ici...
+    outputLabel: XML formaté à partir de votre XML
+
+    invalidMessage: Le XML fourni n'est pas valide.

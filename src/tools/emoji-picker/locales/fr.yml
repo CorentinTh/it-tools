@@ -1,0 +1,12 @@
+tools:
+  emoji-picker:
+    title: Sélecteur d'emoji
+    description: Copiez et collez facilement des emojis et obtenez la valeur unicode et les points de code de chaque emoji.
+
+    searchPlaceholder: Rechercher des emojis (par ex. "sourire")...
+    noResults: Aucun résultat
+    searchResult: Résultat de la recherche
+
+    emojiCopied: Emoji {emoji} copié dans le presse-papiers
+    codePointsCopied: Points de code {codePoints} copiés dans le presse-papiers
+    unicodeCopied: Unicode {unicode} copié dans le presse-papiers

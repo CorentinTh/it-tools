@@ -1,0 +1,19 @@
+tools:
+  html-entities:
+    title: Échapper aux entités HTML
+    description: Échappe ou déséchappe les entités HTML (remplace <,>, &, " et ' par leur version HTML)
+
+    escape:
+      title: Échapper aux entités HTML
+      inputLabel: 'Votre chaîne :'
+      inputPlaceholder: La chaîne à échapper
+      outputLabel: 'Votre chaîne échappée :'
+      outputPlaceholder: Votre chaîne échappée
+    unescape:
+      title: Déséchapper les entités HTML
+      inputLabel: 'Votre chaîne échappée :'
+      inputPlaceholder: La chaîne à déséchapper
+      outputLabel: 'Votre chaîne déséchappée :'
+      outputPlaceholder: Votre chaîne déséchappée
+
+    copy: Copier

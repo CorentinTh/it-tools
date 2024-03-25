@@ -1,0 +1,12 @@
+tools:
+  json-prettify:
+    title: Mise en forme et formatage JSON
+    description: Mettez en forme votre chaîne JSON pour un format lisible par l'homme.
+
+    sortKeys: 'Trier les clés :'
+    indentSize: "Taille de l'indentation :"
+    rawJSONLabel: Votre JSON brut
+    rawJSONPlaceholder: Collez votre JSON brut ici...
+    prettifyJSON: Version mise en forme de votre JSON
+
+    invalidMessage: Le JSON fourni n'est pas valide.

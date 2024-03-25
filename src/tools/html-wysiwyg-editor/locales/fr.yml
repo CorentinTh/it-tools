@@ -1,0 +1,21 @@
+tools:
+  html-wysiwyg-editor:
+    title: Éditeur HTML WYSIWYG
+    description: Éditeur HTML en ligne avec un éditeur WYSIWYG riche en fonctionnalités, obtenez immédiatement le code source du contenu.
+
+    bold: Gras
+    italic: Italique
+    strike: Barré
+    inlineCode: Code en ligne
+    heading1: Titre 1
+    heading2: Titre 2
+    heading3: Titre 3
+    heading4: Titre 4
+    bulletList: Liste à puces
+    orderedList: Liste ordonnée
+    codeBlock: Bloc de code
+    blockquote: Citation en bloc
+    hardBreak: Saut de ligne forcé
+    clearFormat: Effacer le formatage
+    undo: Annuler
+    redo: Rétablir

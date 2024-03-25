@@ -1,0 +1,38 @@
+tools:
+  password-strength-analyser:
+    title: Analyseur de force de mot de passe
+    description: Découvrez la force de votre mot de passe avec cet outil d'estimation du temps de craquage de mot de passe côté client.
+
+    passwordPlaceholder: Entrez un mot de passe...
+    bruteForceDuration: Durée pour craquer ce mot de passe par force brute
+    note: 'Remarque : '
+    noteInfor: La force calculée est basée sur le temps nécessaire pour craquer le mot de passe en utilisant une approche de force brute, elle ne prend pas en compte la possibilité d'une attaque par dictionnaire.
+
+    details:
+      length: 'Longueur du mot de passe :'
+      entropy: 'Entropie :'
+      characterSize: "Taille de l'ensemble de caractères :"
+      score: 'Score :'
+
+    instantly: Instantanément
+    lessThanASecond: Moins d'une seconde
+    millenium: millénaire
+    century: siècle
+    decade: décennie
+    year: an
+    month: mois
+    week: semaine
+    day: jour
+    hour: heure
+    minute: minute
+    second: seconde
+    millennia: millénaires
+    centuries: siècles
+    decades: décennies
+    years: ans
+    months: mois
+    weeks: semaines
+    days: jours
+    hours: heures
+    minutes: minutes
+    seconds: secondes

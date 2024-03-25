@@ -1,0 +1,4 @@
+tools:
+  git-memo:
+    title: Feuille de triche Git
+    description: Git est un logiciel de gestion de version décentralisé. Avec cette feuille de triche, vous aurez un accès rapide aux commandes Git les plus courantes.

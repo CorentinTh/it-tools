@@ -1,0 +1,14 @@
+tools:
+  lorem-ipsum-generator:
+    title: Générateur de Lorem Ipsum
+    description: Lorem ipsum est un texte fictif couramment utilisé pour démontrer la forme visuelle d'un document ou d'une police de caractères sans se fier à un contenu significatif.
+
+    paragraphs: Paragraphes
+    sentences: Phrases par paragraphe
+    words: Mots par phrase
+    startWithLoremIpsum: Commencer par lorem ipsum ?
+    asHTML: En tant que html ?
+    loremIpsumText: Votre Lorem Ipsum...
+
+    copyBtn: Copier
+    copied: Lorem ipsum copié dans le presse-papiers

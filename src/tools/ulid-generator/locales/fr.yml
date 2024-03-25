@@ -1,0 +1,12 @@
+tools:
+  ulid-generator:
+    title: Générateur ULID
+    description: Génère un identifiant unique universellement lexicographiquement triable aléatoire (ULID).
+
+    quantity: 'Quantité : '
+    format: 'Format : '
+
+    copied: ULIDs copiés dans le presse-papiers
+    button:
+      refresh: Actualiser
+      copy: Copier

@@ -1,0 +1,16 @@
+tools:
+  qrcode-generator:
+    title: Générateur de code QR
+    description: Génère et télécharge un code QR pour une URL ou simplement un texte et personnalise les couleurs d'arrière-plan et de premier plan.
+
+    low: faible
+    medium: moyen
+    quartile: quartile
+    high: élevé
+
+    textLabel: 'Texte:'
+    textPlaceholder: 'Votre lien ou texte...'
+    foreground: 'Couleur du premier plan:'
+    background: "Couleur de l'arrière-plan:"
+    errorCorrectionLevels: "Niveaux de correction d'erreur:"
+    downloadBtn: Télécharger le code QR

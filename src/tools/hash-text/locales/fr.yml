@@ -1,0 +1,12 @@
+tools:
+  hash-text:
+    title: Hacher du texte
+    description: 'Hachez une chaîne de texte en utilisant la fonction dont vous avez besoin : MD5, SHA1, SHA256, SHA224, SHA512, SHA384, SHA3 ou RIPEMD160'
+
+    textLabel: 'Votre texte à hacher :'
+    textPlaceholder: 'Votre chaîne à hacher...'
+    hashLabel: Encodage de hachage
+    binary: Binaire (base 2)
+    hexadecimal: Hexadécimal (base 16)
+    base64: Base64 (base 64)
+    base64url: Base64url (base 64 avec des caractères sûrs pour les URL)

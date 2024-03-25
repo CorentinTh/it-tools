@@ -1,0 +1,23 @@
+tools:
+  mime-types:
+    title: Types MIME
+    description: Convertir les types MIME en extensions et vice versa.
+
+    mimeType:
+      title: Type MIME vers extension
+      description: Découvrez quelles extensions de fichier sont associées à un type MIME
+      placeholder: 'Sélectionnez votre type MIME ici... (ex : application/pdf)'
+      extensionsFound:
+        before: 'Extensions des fichiers avec le '
+        after: ' type MIME :'
+    extension:
+      title: Extension de fichier vers type MIME
+      description: Découvrez quel type MIME est associé à une extension de fichier
+      placeholder: 'Sélectionnez votre type MIME ici... (ex : application/pdf)'
+      selectedExtension:
+        before: "Type MIME associé à l'extension"
+        after: ' fichier'
+        ext: 'extension :'
+    table:
+      mimeTypes: Types MIME
+      extensions: Extensions

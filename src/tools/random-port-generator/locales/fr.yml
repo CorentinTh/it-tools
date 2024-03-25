@@ -1,0 +1,8 @@
+tools:
+  random-port-generator:
+    title: Générateur de port aléatoire
+    description: Génère des numéros de port aléatoires en dehors de la plage des ports "connus" (0-1023).
+
+    copyBtn: Copier
+    refreshBtn: Rafraîchir
+    copied: Port copié dans le presse-papiers

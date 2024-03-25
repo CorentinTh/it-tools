@@ -1,0 +1,23 @@
+tools:
+  url-encoder:
+    title: Encoder/décoder des chaînes au format URL
+    description: Encodez au format URL-encodé (également appelé "encodage en pourcentage") ou décodez à partir de celui-ci.
+
+    encode:
+      title: Encoder
+      inputLabel: 'Votre chaîne :'
+      inputPlaceholder: La chaîne à encoder
+      outputLabel: 'Votre chaîne encodée :'
+      outputPlaceholder: Votre chaîne encodée
+      copied: Chaîne encodée copiée dans le presse-papiers
+      inValidMessage: Impossible de parser cette chaîne
+    decode:
+      title: Décoder
+      inputLabel: 'Votre chaîne encodée :'
+      inputPlaceholder: La chaîne à décoder
+      outputLabel: 'Votre chaîne décoder :'
+      outputPlaceholder: Votre chaîne décoder
+      copied: Chaîne décoder copiée dans le presse-papiers
+      inValidMessage: Impossible de parser cette chaîne
+
+    copy: Copier
