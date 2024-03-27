@@ -225,6 +225,10 @@ tools:
     title: JSON美化和格式化
     description: 将JSON字符串修饰为友好的可读格式。
 
+  json-sort-master:
+    title: JSON排序大师
+    description: 按键和值对您的JSON进行排序。
+    
   docker-run-to-docker-compose-converter:
     title: Docker Run 到 docker-compose 转换器
     description: 将 docker run 命令行转换为 docker-compose 文件!

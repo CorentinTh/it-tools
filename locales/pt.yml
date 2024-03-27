@@ -69,3 +69,7 @@ tools:
     measurement: 'Medidas'
     text: 'Texto'
     data: 'Dados'
+
+  json-sort-master:
+    title: 'Mestre de classificação JSON'
+    description: 'Ordene seu JSON por chaves e valores.'

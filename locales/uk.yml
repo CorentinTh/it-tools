@@ -69,3 +69,7 @@ tools:
     measurement: Вимірювання
     text: Текст
     data: Дані
+
+  json-sort-master:
+    title: JSON сортувальник
+    description: Сортуйте ваш JSON за ключами та значеннями.
