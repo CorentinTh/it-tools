@@ -20,7 +20,7 @@ function sortObjectKeys<T>(obj: T, sortMethod: string): T {
     }, {} as Record<string, unknown>) as T;
 }
 
-function sortObjectValues(obj: any, sortMethod: string, keyName: string): any {
+function sortObjectValues<T>(obj: T, sortMethod: string, keyName: string): T {
   if (Array.isArray(obj)) {
     return obj.sort((a, b) => {
       const valueA = a[keyName];
