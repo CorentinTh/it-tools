@@ -303,6 +303,10 @@ tools:
   ipv4-subnet-calculator:
     title: IPv4 subnet calculator
     description: Parse your IPv4 CIDR blocks and get all the info you need about your sub network.
+  
+  ipv6-subnet-calculator:
+    title: IPv6 subnet calculator
+    description: Parse your IPv6 CIDR blocks and get all the info you need about your sub network.
 
   og-meta-generator:
     title: Open graph meta generator
