@@ -28,6 +28,8 @@ import { tool as jsonDiff } from './json-diff';
 import { tool as ipv4RangeExpander } from './ipv4-range-expander';
 import { tool as httpStatusCodes } from './http-status-codes';
 import { tool as yamlToJson } from './yaml-to-json-converter';
+import { tool as javascriptToJson } from './javascript-to-json';
+import { tool as jsonToJavascript } from './json-to-javascript';
 import { tool as jsonToYaml } from './json-to-yaml-converter';
 import { tool as ipv6UlaGenerator } from './ipv6-ula-generator';
 import { tool as ipv4AddressConverter } from './ipv4-address-converter';
@@ -102,6 +104,8 @@ export const toolsByCategory: ToolCategory[] = [
       textToUnicode,
       yamlToJson,
       yamlToToml,
+      javascriptToJson,
+      jsonToJavascript,
       jsonToYaml,
       jsonToToml,
       listConverter,
