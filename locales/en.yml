@@ -340,6 +340,10 @@ tools:
     title: String obfuscator
     description: Obfuscate a string (like a secret, an IBAN, or a token) to make it shareable and identifiable without revealing its content.
 
+  data-storage-unit-converter:
+    title: Data storage unit converter
+    description: Convert data storage units (bytes, kilobytes, megabytes, gigabytes, terabytes, petabytes)
+
   base-converter:
     title: Integer base converter
     description: Convert number between different bases (decimal, hexadecimal, binary, octal, base64, ...)
