@@ -7,6 +7,7 @@ function escapeXml(unsafe: string) {
       case '\'': return '&apos;';
       case '"': return '&quot;';
     }
+    return '';
   });
 }
 
