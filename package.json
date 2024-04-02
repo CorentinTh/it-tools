@@ -76,7 +76,7 @@
     "netmask": "^2.0.2",
     "node-forge": "^1.3.1",
     "oui-data": "^1.0.10",
-    "pdf-signature-reader": "^1.4.2",
+    "pdf-signature-reader": "^1.4.3",
     "pinia": "^2.0.34",
     "plausible-tracker": "^0.3.8",
     "qrcode": "^1.5.1",
