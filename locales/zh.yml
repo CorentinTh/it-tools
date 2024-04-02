@@ -336,6 +336,10 @@ tools:
     title: 字符串混淆器
     description: 混淆字符串（如秘密、IBAN 或令牌），使其可共享和可识别，而不泄露其内容。
 
+  text-case-transformer:
+    title: 文本大小写转换器
+    description: 将文本转换为不同的大小写（大写、小写、单词首字母大写、句子首字母大写、去除标点符号、去除多余空格、反转文本）
+    
   base-converter:
     title: 整数基转换器
     description: 在不同的基数（十进制、十六进制、二进制、八进制、base64…）之间转换数字

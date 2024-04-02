@@ -12,6 +12,7 @@ import { tool as macAddressGenerator } from './mac-address-generator';
 import { tool as textToBinary } from './text-to-binary';
 import { tool as ulidGenerator } from './ulid-generator';
 import { tool as ibanValidatorAndParser } from './iban-validator-and-parser';
+import { tool as textCaseTransformer } from './text-case-transformer';
 import { tool as stringObfuscator } from './string-obfuscator';
 import { tool as textDiff } from './text-diff';
 import { tool as emojiPicker } from './emoji-picker';
@@ -168,6 +169,7 @@ export const toolsByCategory: ToolCategory[] = [
       loremIpsumGenerator,
       textStatistics,
       emojiPicker,
+      textCaseTransformer,
       stringObfuscator,
       textDiff,
       numeronymGenerator,

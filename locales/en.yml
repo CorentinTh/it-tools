@@ -332,6 +332,10 @@ tools:
     title: JSON minify
     description: Minify and compress your JSON by removing unnecessary white spaces.
 
+  text-case-transformer:
+    title: Text case transformer
+    description: Transform text to different cases (upper, lower, capitalize words, capitalize sentences, remove punctuations, remove extra spaces, reverse text)
+
   ulid-generator:
     title: ULID generator
     description: Generate random Universally Unique Lexicographically Sortable Identifier (ULID).
