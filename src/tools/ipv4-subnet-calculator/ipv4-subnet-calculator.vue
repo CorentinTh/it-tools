@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight } from '@vicons/tabler';
 import { getIPClass } from './ipv4-subnet-calculator.models';
 import { withDefaultOnError } from '@/utils/defaults';
 import { isNotThrowing } from '@/utils/boolean';
+import Network from '@/libs/ip_calculator/network';
 import SpanCopyable from '@/components/SpanCopyable.vue';
 
 const ip = useStorage('ipv4-subnet-calculator:ip', '192.168.0.1/24');
@@ -12,6 +13,7 @@ const ip = useStorage('ipv4-subnet-calculator:ip', '192.168.0.1/24');
 const getNetworkInfo = (address: string) => new Netmask(address.trim());
 
 const networkInfo = computed(() => withDefaultOnError(() => getNetworkInfo(ip.value), undefined));
+const networkOtherInfo = computed(() => withDefaultOnError(() => new Network(networkInfo.value?.base || '', networkInfo.value?.bitmask || 32), undefined));
 
 const ipValidationRules = [
   {
@@ -54,6 +56,10 @@ const sections: {
     getValue: ({ size }) => String(size),
   },
   {
+    label: 'Subnets count',
+    getValue: () => networkOtherInfo.value?.networkCount()?.toString() || '',
+  },
+  {
     label: 'First address',
     getValue: ({ first }) => first,
   },
@@ -67,9 +73,29 @@ const sections: {
     undefinedFallback: 'No broadcast address with this mask',
   },
   {
+    label: 'ARPA',
+    getValue: () => networkOtherInfo.value?.toARPA()?.toString() || '',
+  },
+  {
+    label: 'IPv4 Mapped Address',
+    getValue: () => networkOtherInfo.value?.toIPv4MappedAddress()?.toString() || '',
+  },
+  {
+    label: 'IPv4 Mapped Address (decimal)',
+    getValue: () => networkOtherInfo.value?.toIPv4MappedAddressDecimal()?.toString() || '',
+  },
+  {
+    label: '6to4 prefix',
+    getValue: () => networkOtherInfo.value?.to6to4Prefix()?.toString() || '',
+  },
+  {
     label: 'IP class',
     getValue: ({ base: ip }) => getIPClass({ ip }),
     undefinedFallback: 'Unknown class type',
+  },
+  {
+    label: 'Type',
+    getValue: ({ base: ip, bitmask }) => withDefaultOnError(() => (new Network(ip, bitmask)).printInfo()?.toString() || '', ''),
   },
 ];
 
