@@ -1,5 +1,5 @@
 import { type MaybeRef, get } from '@vueuse/core';
-
+import { yamlParse } from 'composeverter';
 import yaml from 'yaml';
 
 export { formatYaml };
@@ -13,7 +13,7 @@ function formatYaml({
   sortKeys?: MaybeRef<boolean>
   indentSize?: MaybeRef<number>
 }) {
-  const parsedYaml = yaml.parse(get(rawYaml));
+  const parsedYaml = yamlParse(get(rawYaml));
 
   const formattedYAML = yaml.stringify(parsedYaml, {
     sortMapEntries: get(sortKeys),
