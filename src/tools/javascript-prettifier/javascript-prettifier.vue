@@ -2,9 +2,9 @@
 import beautify from 'js-beautify';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 
-const inputCSS = ref('');
-const outputCSS = computed(() => {
-  return beautify.css(inputCSS.value, {
+const inputJS = ref('');
+const outputJS = computed(() => {
+  return beautify(inputJS.value, {
     indent_char: ' ',
     indent_size: 2,
     eol: '\n',
@@ -15,21 +15,21 @@ const outputCSS = computed(() => {
 <template>
   <div>
     <c-input-text
-      v-model:value="inputCSS"
+      v-model:value="inputJS"
       multiline raw-text
-      placeholder="Your CSS content..."
+      placeholder="Your JS content..."
       rows="8"
       autofocus
-      label="Your CSS to format (can paste from clipboard):"
+      label="Your JS to format (can paste from clipboard):"
     />
 
     <n-divider />
 
-    <n-form-item label="Output prettified CSS:">
+    <n-form-item label="Output prettified JS:">
       <TextareaCopyable
-        :value="outputCSS"
+        :value="outputJS"
         multiline
-        language="css"
+        language="javascript"
         word-wrap
       />
     </n-form-item>

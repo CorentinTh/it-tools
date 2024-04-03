@@ -6,6 +6,7 @@ import { tool as asciiTextDrawer } from './ascii-text-drawer';
 
 import { tool as textToUnicode } from './text-to-unicode';
 import { tool as safelinkDecoder } from './safelink-decoder';
+import { tool as javascriptPrettifier } from './javascript-prettifier';
 import { tool as cssPrettifier } from './css-prettifier';
 import { tool as htmlPrettifier } from './html-prettifier';
 import { tool as pdfSignatureChecker } from './pdf-signature-checker';
@@ -152,6 +153,7 @@ export const toolsByCategory: ToolCategory[] = [
       yamlViewer,
       cssPrettifier,
       htmlPrettifier,
+      javascriptPrettifier,
     ],
   },
   {

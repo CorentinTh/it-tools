@@ -9,7 +9,7 @@ const outputHtml = computed(() => {
     indent_inner_html: true,
     indent_char: ' ',
     indent_size: 2,
-    sep: '\n',
+    eol: '\n',
   });
 });
 </script>
