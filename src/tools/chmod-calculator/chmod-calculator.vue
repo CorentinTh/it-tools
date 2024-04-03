@@ -2,9 +2,10 @@
 import { useThemeVars } from 'naive-ui';
 
 import InputCopyable from '../../components/InputCopyable.vue';
-import { computeChmodOctalRepresentation, computeChmodSymbolicRepresentation } from './chmod-calculator.service';
+import { computeChmodOctalRepresentation, computeChmodSymbolicRepresentation, computePermissionsFromChmodOctalRepresentation } from './chmod-calculator.service';
 
 import type { Group, Scope } from './chmod-calculator.types';
+import { useValidation } from '@/composable/validation';
 
 const themeVars = useThemeVars();
 
@@ -19,7 +20,36 @@ const permissions = ref({
   owner: { read: false, write: false, execute: false },
   group: { read: false, write: false, execute: false },
   public: { read: false, write: false, execute: false },
+  flags: { setuid: false, setgid: false, stickybit: false },
 });
+
+const permissionsInput = ref('000');
+const permissionsInputValidation = useValidation({
+  source: permissionsInput,
+  rules: [
+    {
+      message: 'Invalid octal permission string',
+      validator: (value) => {
+        try {
+          computePermissionsFromChmodOctalRepresentation(value.trim());
+          return true;
+        }
+        catch {
+          return false;
+        }
+      },
+    },
+  ],
+});
+watch(
+  permissionsInput,
+  (newPermissions) => {
+    if (!permissionsInputValidation.isValid) {
+      return;
+    }
+    permissions.value = computePermissionsFromChmodOctalRepresentation(newPermissions.trim());
+  },
+);
 
 const octal = computed(() => computeChmodOctalRepresentation({ permissions: permissions.value }));
 const symbolic = computed(() => computeChmodSymbolicRepresentation({ permissions: permissions.value }));
@@ -27,6 +57,14 @@ const symbolic = computed(() => computeChmodSymbolicRepresentation({ permissions
 
 <template>
   <div>
+    <c-input-text
+      v-model:value="permissionsInput"
+      placeholder="Put your octal permissions here..."
+      label="Copy your octal permissions"
+      :validation="permissionsInputValidation"
+      mb-2
+    />
+    <n-divider />
     <n-table :bordered="false" :bottom-bordered="false" single-column class="permission-table">
       <thead>
         <tr>
@@ -50,6 +88,20 @@ const symbolic = computed(() => computeChmodSymbolicRepresentation({ permissions
           <td v-for="group of groups" :key="group" class="text-center">
             <!-- <n-switch v-model:value="permissions[group][scope]" /> -->
             <n-checkbox v-model:checked="permissions[group][scope]" size="large" />
+          </td>
+        </tr>
+        <tr>
+          <td class="line-header">
+            Flags
+          </td>
+          <td class="text-center">
+            <n-checkbox v-model:checked="permissions.flags.setuid" size="large" />
+          </td>
+          <td class="text-center">
+            <n-checkbox v-model:checked="permissions.flags.setgid" size="large" />
+          </td>
+          <td class="text-center">
+            <n-checkbox v-model:checked="permissions.flags.stickybit" size="large" />
           </td>
         </tr>
       </tbody>
