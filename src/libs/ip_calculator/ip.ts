@@ -13,12 +13,16 @@ const IPv6MAX = (BigInt(2) ** BigInt(128)) - BigInt(1);
 */
 
 export default class IP {
+  integer: bigint;
+  short: string;
+  version: number;
+  address: string;
   /**
     * @constructor
     */
-  constructor(address) {
-    this.integer = 0;
-    this.short = 0;
+  constructor(address: string) {
+    this.integer = 0n;
+    this.short = '';
     this.version = this._checkVersion(address);
     this.address = this._checkAddress(address, this.version);
   }
@@ -34,7 +38,7 @@ export default class IP {
     if (this.version === 4) {
       const splittedAddr = this.address.split('.').reverse();
       bigInt = splittedAddr.reduce((bigInt, octet, index) => {
-        return (octet * 256 ** index + bigInt
+        return (Number(octet) * 256 ** index + bigInt
         );
       }, 0);
     }
@@ -51,7 +55,7 @@ export default class IP {
     * @param {bigint} bigInt
     * @return {string} -> "184.170.96.196"
     */
-  toDottedNotation(bigInt) {
+  toDottedNotation(bigInt: bigint) {
     if (this.version === 4) {
       return (
         [(bigInt >> BigInt(24) & BigInt(255)), (bigInt >> BigInt(16) & BigInt(255)),
@@ -78,15 +82,14 @@ export default class IP {
     * @return {string} -> 01111111000000000000000000000001
     */
   toBinary() {
-    if (this.integer === 0) {
+    if (this.integer === 0n) {
       this.toInteger();
     }
     let binary = this.integer.toString(2);
-    const v = this.version;
-    const marks = { 4: 32, 6: 128 };
+    const markLen = this.version === 4 ? 32 : 128;
 
-    if (binary.length < marks[v]) {
-      while (binary.length < marks[v]) {
+    if (binary.length < markLen) {
+      while (binary.length < markLen) {
         binary = `0${binary}`;
       }
     }
@@ -98,7 +101,7 @@ export default class IP {
     * @return {string} -> 7f000001
     */
   toHEX() {
-    if (this.integer === 0) {
+    if (this.integer === 0n) {
       this.toInteger();
     }
     return this.integer.toString(16);
@@ -109,7 +112,7 @@ export default class IP {
     * IP('127.1.0.0').toCompressed
     * @return {string} -> "127.1"
     */
-  toCompressed(addr, ver) {
+  toCompressed(addr: string, ver: number) {
     if (ver === 4) {
       const splittedAddr = addr.split('.');
       const sRange = [[1, 3], [2, 2], [3, 1], [0, 0]];
@@ -132,11 +135,11 @@ export default class IP {
       // 'N/A' - _longestZerosGroup fn return in case if there is NO
       // '0000' blocks in address
       if (startOfLongest !== 'N/A' || longestLength !== 'N/A') {
-        splitted.splice(startOfLongest, longestLength, '');
+        splitted.splice(Number(startOfLongest), Number(longestLength), '');
         if (startOfLongest === 0) {
           splitted.unshift('');
         }
-        if (startOfLongest + longestLength === 8) {
+        if (Number(startOfLongest) + Number(longestLength) === 8) {
           splitted.push('');
         }
       }
@@ -172,7 +175,7 @@ export default class IP {
     * @param {string} addr
     * @return {number}  -> 4 or 6
     */
-  _checkVersion(addr) {
+  _checkVersion(addr: string) {
     // matches all possible chars in both versions of IP
     const reGen = /^[0-9a-f.:]+$/i;
     if (reGen.test(addr)) {
@@ -184,14 +187,14 @@ export default class IP {
       const reNum = /^[0-9]+$/;
 
       if (reNum.test(addr)) {
-        addr = BigInt(addr);
-        if (addr > IPv6MAX || addr <= 0) {
+        const parsedAddr = BigInt(addr);
+        if (parsedAddr > IPv6MAX || parsedAddr <= 0) {
           throw new Error('Tips: IP address cant be bigger than 2 to the 128-th power or negative number');
         }
-        else if (addr <= IPv4MAX) {
+        else if (parsedAddr <= IPv4MAX) {
           return 4;
         }
-        else if (addr > IPv4MAX) {
+        else if (parsedAddr > IPv4MAX) {
           return 6;
         }
       }
@@ -210,18 +213,14 @@ export default class IP {
     * @private
     * @return {string} as a valid address
     */
-  _checkAddress(addr, v) {
+  _checkAddress(addr: string, v: number) {
     const reNum = /^[0-9]+$/;
     if (reNum.test(addr)) {
       this.integer = BigInt(addr);
       return this.toDottedNotation(this.integer);
     }
 
-    const marks = {
-      4: ['.', this._isIPv4, 4],
-      6: [':', this._isIPv6, 8],
-    };
-    const splittedAddr = addr.split(marks[v][0]);
+    const splittedAddr = addr.split(v === 4 ? '.' : ':');
 
     if (v === 6 && splittedAddr.length < 8) {
       const dbColon = (addr.match(/::/g) || []).length;
@@ -230,8 +229,8 @@ export default class IP {
       }
     }
 
-    if (marks[v][1].call(this, splittedAddr)) { // TODO: make ifs more readable
-      if (splittedAddr.length === marks[v][2] && this.short === 0) {
+    if ((v === 4 ? this._isIPv4 : this._isIPv6).call(this, splittedAddr)) { // TODO: make ifs more readable
+      if (splittedAddr.length === (v === 4 ? 4 : 8) && this.short === '') {
         return addr;
       }
       else {
@@ -248,16 +247,16 @@ export default class IP {
     * @private
     * @return {boolean} whether splitted address is valid IPv6 or not
     */
-  _isIPv6(splittedAddr) {
+  _isIPv6(splittedAddr: string[]) {
     if (splittedAddr.length <= 8) {
       let checked = false;
       const [isShort, cleanedAddr] = this._isShort(splittedAddr);
 
       const regex = /^[0-9a-f]{1,4}$/i;
-      const isValid = function (hextet) {
+      const isValid = function (hextet: string) {
         return regex.test(hextet);
       };
-      checked = cleanedAddr.every(isValid);
+      checked = (cleanedAddr as string[]).every(isValid);
 
       if (checked && isShort) {
         this.short = splittedAddr.join(':');
@@ -274,13 +273,13 @@ export default class IP {
     * @private
     * @return {boolean} whether splitted address is valid IPv4 or not
     */
-  _isIPv4(splittedAddr) {
+  _isIPv4(splittedAddr: string[]) {
     if (splittedAddr.length <= 4) {
       if (splittedAddr.length < 4) {
         this.short = splittedAddr.join('.');
       }
-      const isValid = function (octet) {
-        return (!!((octet <= 255 && octet >= 0)));
+      const isValid = function (octet: string) {
+        return (!!((Number(octet) <= 255 && Number(octet) >= 0)));
       };
       return splittedAddr.every(isValid);
     }
@@ -295,7 +294,7 @@ export default class IP {
      * @param  {array} splittedAddr
      * @return {array} with both results boolean and cleaned array
      */
-  _isShort(splittedAddr) {
+  _isShort(splittedAddr: string[]) {
     let isShort = false;
     const cleanedAddr = [...splittedAddr];
     for (let i = 0; i < cleanedAddr.length; i++) {
@@ -320,7 +319,7 @@ export default class IP {
     * @param  {array} splittedAddr
     * @return {string} -> "0000:0000:0000:0000:0000:0000:0000:0001"
     */
-  _toRepresentation(splittedAddr) {
+  _toRepresentation(splittedAddr: string[]) {
     if (this.version === 4) {
       for (let i = 0; i <= 4; i++) {
         if (splittedAddr[i] === '') {
@@ -383,7 +382,7 @@ export default class IP {
  * @param  {array} zeros
  * @return {array} -> [0, 7]
  */
-function _longestZerosGroup(splittedAddr) {
+function _longestZerosGroup(splittedAddr: string[]) {
   let curr = 0;
   let currLongest = 0;
   let startOfLongest = 0;
