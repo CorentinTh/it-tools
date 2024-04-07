@@ -92,6 +92,9 @@ dependencies:
   ibantools:
     specifier: ^4.3.3
     version: 4.3.3
+  isbn3:
+    specifier: ^1.1.44
+    version: 1.1.45
   json5:
     specifier: ^2.2.3
     version: 2.2.3
@@ -6433,6 +6436,12 @@ packages:
   /isarray@2.0.5:
     resolution: {integrity: sha512-xHjhDr3cNBK0BzdUJSPXZntQUx/mwMS5Rw4A7lPJ90XGAO6ISP/ePDNuo0vhqOZU+UD5JoodwCAAoZQd3FeAKw==}
     dev: true
+
+  /isbn3@1.1.45:
+    resolution: {integrity: sha512-9oD3yItVFRlYhm/K6RI2K6f+Dti0unzG74X9I7D+xVKMK3TbRl2PMvnWgK6scKnvk4t0BZFyNIznX4H45RrwzQ==}
+    engines: {node: '>= 6.4.0'}
+    hasBin: true
+    dev: false
 
   /isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
