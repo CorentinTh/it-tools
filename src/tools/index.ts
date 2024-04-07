@@ -72,6 +72,7 @@ import { tool as romanNumeralConverter } from './roman-numeral-converter';
 import { tool as sqlPrettify } from './sql-prettify';
 import { tool as svgPlaceholderGenerator } from './svg-placeholder-generator';
 import { tool as temperatureConverter } from './temperature-converter';
+import { tool as smartTextReplacer } from './smart-text-replacer';
 import { tool as textStatistics } from './text-statistics';
 import { tool as tokenGenerator } from './token-generator';
 import type { ToolCategory } from './tools.types';
@@ -170,6 +171,7 @@ export const toolsByCategory: ToolCategory[] = [
       emojiPicker,
       stringObfuscator,
       textDiff,
+      smartTextReplacer,
       numeronymGenerator,
       asciiTextDrawer,
     ],
