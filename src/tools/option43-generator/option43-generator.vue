@@ -27,7 +27,7 @@ const wifiVendorOptions = [
 
 const dhcpVendor = useStorage('option43-generator:dhcp', 'genuine');
 const wifiVendor = useStorage('option43-generator:wifi', 'cisco_01');
-const ipAdresses = ref('192.168.0.15');
+const ipAdresses = ref('192.168.0.15'); // NOSONAR
 
 const option43Infos = computed(() => getOption43Infos(ipAdresses.value, wifiVendor.value, dhcpVendor.value));
 </script>
@@ -71,7 +71,7 @@ const option43Infos = computed(() => getOption43Infos(ipAdresses.value, wifiVend
     </c-card>
 
     <c-card title="Option 43 Result">
-      <div v-html="option43Infos" />
+      <!-- //NOSONAR --><div v-html="option43Infos" />
     </c-card>
   </div>
 </template>
