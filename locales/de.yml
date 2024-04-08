@@ -36,7 +36,7 @@ about:
 
     ## Technologien
 
-    IT-Tools wurde mit Vue.js (Vue 3) und der Naive UI-Komponentenbibliothek erstellt und wird von Vercel gehostet und kontinuierlich bereitgestellt. In einigen Tools werden Drittanbieter-Open-Source-Bibliotheken verwendet. Du findest die vollständige Liste in der [package.json](https://github.com/CorentinTh/it-tools/blob/main/package.json)-Datei des Repositorys.
+    IT-Tools wurde mit Vue.js (Vue 3) und der Komponentenbibliothek Naive UI erstellt und wird von Vercel gehostet und kontinuierlich bereitgestellt. In einigen Tools werden Drittanbieter-Open-Source-Bibliotheken verwendet. Du findest die vollständige Liste in der [package.json](https://github.com/CorentinTh/it-tools/blob/main/package.json)-Datei des Repositorys.
 
     ## Einen Fehler gefunden? Ein Tool fehlt?
 
