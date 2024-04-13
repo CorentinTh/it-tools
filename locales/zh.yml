@@ -387,3 +387,13 @@ tools:
   text-to-binary:
     title: 文本到 ASCII 二进制
     description: 将文本转换为其 ASCII 二进制表示形式，反之亦然。
+  sip-auth:
+    title: SIP 认证校验
+    description: 这个工具能够帮你验证 SIP 授权头。该工具所有运算过程都在浏览器中进行，并不会通过网络传输敏感信息，所以请放心使用。
+    password: SIP 密码
+    password-tips: 输入密码...
+    message: SIP 消息文本
+    message-tips: 在此处粘贴您的 SIP 消息...
+    result: 检测结果
+    sucess: 成功
+    failure: 失败
