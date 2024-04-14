@@ -66,6 +66,7 @@
     "ip-address": "^9.0.5",
     "ip-bigint": "^8.0.2",
     "ip-cidr": "^4.0.0",
+    "ip-matching": "^2.1.2",
     "is-cidr": "^5.0.3",
     "is-ip": "^5.0.1",
     "json5": "^2.2.3",
