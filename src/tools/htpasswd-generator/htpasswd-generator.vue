@@ -6,6 +6,7 @@ import TextareaCopyable from '@/components/TextareaCopyable.vue';
 const username = ref('');
 const password = ref('');
 const hashMethod = ref('bcrypt');
+const saltCount = ref(10);
 
 const htpasswd = computed(() => {
   if (username.value === '' || password.value === '') {
@@ -16,7 +17,7 @@ const htpasswd = computed(() => {
     hash = md5(password.value);
   }
   else {
-    hash = hashSync(password.value, 10);
+    hash = hashSync(password.value, saltCount.value);
   }
   return `${username.value}:${hash}`;
 });
@@ -45,6 +46,10 @@ const htpasswd = computed(() => {
       label="Hash method:"
       :options="['bcrypt', 'md5']"
     />
+
+    <n-form-item v-if="hashMethod === 'bcrypt'" label="Salt count: " label-placement="left" label-width="120">
+      <n-input-number v-model:value="saltCount" placeholder="Salt rounds..." :max="100" :min="0" w-full />
+    </n-form-item>
 
     <n-divider />
 
