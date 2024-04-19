@@ -187,7 +187,7 @@ tools:
 
   toml-to-yaml:
     title: TOML 到 YAML
-    description: Parse and convert TOML to YAML.
+    description: 解析TOML并将其转换为YAML。
 
   math-evaluator:
     title: 数学计算器
@@ -387,3 +387,7 @@ tools:
   text-to-binary:
     title: 文本到 ASCII 二进制
     description: 将文本转换为其 ASCII 二进制表示形式，反之亦然。
+
+  outlook_safelink_decoder:
+    title: Outlook 安全链接解码器
+    description: 解码 Outlook 中的安全链接，以获取原始 URL。
