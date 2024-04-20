@@ -39,11 +39,6 @@ const isClean = computed(() => withDefaultOnError(() => TidyURL.clean(inputUrl.v
         mb-5
         mt-5
       />
-      <n-p text-center>
-        <n-a :href="cleanedUrl?.url" target="_blank" rel="noopener noreferrer">
-          {{ cleanedUrl?.url }}
-        </n-a>
-      </n-p>
     </div>
   </c-card>
 </template>
