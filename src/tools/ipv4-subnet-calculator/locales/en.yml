@@ -1,4 +1,0 @@
-tools:
-  ipv4-subnet-calculator:
-    title: IPv4 subnet calculator
-    description: Parse your IPv4 CIDR blocks and get all the info you need about your sub network.

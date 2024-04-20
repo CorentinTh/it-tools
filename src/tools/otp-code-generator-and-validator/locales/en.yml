@@ -1,4 +1,0 @@
-tools:
-  otp-generator:
-    title: OTP code generator
-    description: Generate and validate time-based OTP (one time password) for multi-factor authentication.
