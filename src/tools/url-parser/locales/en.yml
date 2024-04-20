@@ -1,4 +1,0 @@
-tools:
-  url-parser:
-    title: Url parser
-    description: Parse an url string to get all the different parts (protocol, origin, params, port, username-password, ...)
