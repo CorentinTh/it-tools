@@ -1,5 +1,5 @@
 function escapeXml(unsafe: string) {
-  return unsafe.replace(/[<>&'"]/g, (c: string | undefined) => {
+  return unsafe.replace(/[<>&'"]/g, (c: string) => {
     switch (c) {
       case '<': return '&lt;';
       case '>': return '&gt;';
@@ -7,6 +7,7 @@ function escapeXml(unsafe: string) {
       case '\'': return '&apos;';
       case '"': return '&quot;';
     }
+    return c;
   });
 }
 
