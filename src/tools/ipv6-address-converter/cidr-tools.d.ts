@@ -14,6 +14,7 @@ declare module 'cidr-tools' {
     start: bigint;
     end: bigint;
     single: boolean;
+    ip: string;
   };
   
   type NormalizeOpts = {

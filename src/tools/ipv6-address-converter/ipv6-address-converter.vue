@@ -3,9 +3,10 @@ import { isIPv6 } from 'is-ip';
 import { parse } from 'cidr-tools';
 import { stringifyIp } from 'ip-bigint';
 import { convertBase } from '../integer-base-converter/integer-base-converter.model';
+import { getIPNetworkType, toARPA, toMicrosoftTranscription } from '@/utils/ip';
 import { useValidation } from '@/composable/validation';
 
-const rawIpAddress = useStorage('ipv6-converter:ip', '2001:db8:0:85a3::ac1f:8001');
+const rawIpAddress = useStorage('ipv6-converter:ip', '2001:db8:0:85a3::ac1f:8001'); // NOSONAR
 
 const convertedSections = computed(() => {
   try {
@@ -36,6 +37,18 @@ const convertedSections = computed(() => {
       {
         label: 'Ipv6 (long): ',
         value: stringifyIp({ number: ipInDecimal, version: 6 }, { compress: false }),
+      },
+      {
+        label: 'ARPA: ',
+        value: toARPA(parsedIPv6.ip),
+      },
+      {
+        label: 'Microsoft Transcription: ',
+        value: toMicrosoftTranscription(parsedIPv6.ip),
+      },
+      {
+        label: 'Type: ',
+        value: getIPNetworkType(parsedIPv6.ip),
       },
     ];
   }
