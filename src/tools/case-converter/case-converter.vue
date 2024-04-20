@@ -12,7 +12,7 @@ import {
   sentenceCase,
   snakeCase,
 } from 'change-case';
-import InputCopyable from '../../components/InputCopyable.vue';
+import InputCopyable from '@/components/InputCopyable.vue';
 
 const baseConfig = {
   stripRegexp: /[^A-Za-zÀ-ÖØ-öø-ÿ]+/gi,

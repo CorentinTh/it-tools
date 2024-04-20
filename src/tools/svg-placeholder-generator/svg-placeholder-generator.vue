@@ -20,7 +20,7 @@ const svgString = computed(() => {
   return `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}"${size}>
   <rect width="${w}" height="${h}" fill="${bgColor.value}"></rect>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="monospace" font-size="${fontSize.value}px" fill="${fgColor.value}">${text}</text>   
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="monospace" font-size="${fontSize.value}px" fill="${fgColor.value}">${text}</text>
 </svg>
   `.trim();
 });

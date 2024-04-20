@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { parse as parseToml } from 'iarna-toml-esm';
-import { withDefaultOnError } from '../../utils/defaults';
+import { withDefaultOnError } from '@/utils/defaults';
 import { isValidToml } from './toml.services';
 import type { UseValidationRule } from '@/composable/validation';
 

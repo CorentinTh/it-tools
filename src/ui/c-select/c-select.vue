@@ -3,6 +3,7 @@ import { useAppTheme } from '../theme/themes';
 import type { CLabelProps } from '../c-label/c-label.types';
 import type { CSelectOption } from './c-select.types';
 import { useTheme } from './c-select.theme';
+import CLabel from '@/ui/c-label/c-label.vue';
 import { clamp } from '@/modules/shared/number.models';
 import { useFuzzySearch } from '@/composable/fuzzySearch';
 
@@ -138,7 +139,7 @@ function onSearchInput() {
 </script>
 
 <template>
-  <c-label v-bind="props">
+  <CLabel v-bind="props">
     <div ref="elementRef" relative class="c-select" w-full>
       <div
         flex flex-nowrap cursor-pointer items-center
@@ -190,7 +191,7 @@ function onSearchInput() {
         </div>
       </transition>
     </div>
-  </c-label>
+  </CLabel>
 </template>
 
 <style lang="less" scoped>

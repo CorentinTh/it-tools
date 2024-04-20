@@ -1,8 +1,8 @@
-import { createApp } from 'vue';
+import { createSSRApp } from 'vue';
 import { createPinia } from 'pinia';
 import { createHead } from '@vueuse/head';
 
-import { registerSW } from 'virtual:pwa-register';
+// import { registerSW } from 'virtual:pwa-register';
 import { plausible } from './plugins/plausible.plugin';
 
 import 'virtual:uno.css';
@@ -13,15 +13,28 @@ import App from './App.vue';
 import router from './router';
 import { i18nPlugin } from './plugins/i18n.plugin';
 
-registerSW();
+// registerSW();
 
-const app = createApp(App);
+// const app = createApp(App);
 
-app.use(createPinia());
-app.use(createHead());
-app.use(i18nPlugin);
-app.use(router);
-app.use(naive);
-app.use(plausible);
+// app.use(createPinia());
+// app.use(createHead());
+// app.use(i18nPlugin);
+// app.use(router);
+// app.use(naive);
+// // app.use(plausible);
+//
+// app.mount('#app');
+export function createApp() {
+  const app = createSSRApp(App);
+  const pinia = createPinia();
+  app.use(pinia);
+  app.use(createHead());
+  app.use(i18nPlugin);
+  app.use(router);
+  app.use(plausible);
+  app.use(naive);
+  // 其他插件...
 
-app.mount('#app');
+  return { app, router, pinia, i18n: i18nPlugin };
+}

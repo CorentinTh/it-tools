@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import InputCopyable from '../../components/InputCopyable.vue';
+import InputCopyable from '@/components/InputCopyable.vue';
 import { isNotThrowing } from '@/utils/boolean';
 import { withDefaultOnError } from '@/utils/defaults';
 

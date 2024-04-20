@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useThemeVars } from 'naive-ui';
 
-import InputCopyable from '../../components/InputCopyable.vue';
+import InputCopyable from '@/components/InputCopyable.vue';
 import { computeChmodOctalRepresentation, computeChmodSymbolicRepresentation } from './chmod-calculator.service';
 
 import type { Group, Scope } from './chmod-calculator.types';

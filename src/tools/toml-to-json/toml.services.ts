@@ -1,5 +1,5 @@
 import { parse as parseToml } from 'iarna-toml-esm';
-import { isNotThrowing } from '../../utils/boolean';
+import { isNotThrowing } from '@/utils/boolean';
 
 export { isValidToml };
 

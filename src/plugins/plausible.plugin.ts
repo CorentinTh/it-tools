@@ -1,10 +1,10 @@
 import { noop } from 'lodash';
 
-import Plausible from 'plausible-tracker';
+// import Plausible from 'plausible-tracker';
 import type { App } from 'vue';
 import { config } from '@/config';
 
-function createFakePlausibleInstance(): Pick<ReturnType<typeof Plausible>, 'trackEvent' | 'enableAutoPageviews'> {
+function createFakePlausibleInstance(): Pick<ReturnType<any>, 'trackEvent' | 'enableAutoPageviews'> {
   return {
     trackEvent: noop,
     enableAutoPageviews: () => noop,
@@ -22,7 +22,7 @@ function createPlausibleInstance({
   }
 }) {
   if (config.isTrackerEnabled) {
-    return Plausible(config);
+    return config;
   }
 
   return createFakePlausibleInstance();

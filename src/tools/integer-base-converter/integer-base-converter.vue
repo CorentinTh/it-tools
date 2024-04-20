@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import InputCopyable from '../../components/InputCopyable.vue';
+import InputCopyable from '@/components/InputCopyable.vue';
 import { convertBase } from './integer-base-converter.model';
 import { getErrorMessageIfThrows } from '@/utils/error';
 

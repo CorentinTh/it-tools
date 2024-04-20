@@ -7,7 +7,7 @@ import type { PaletteOption } from './command-palette.types';
 const isModalOpen = ref(false);
 const inputRef = ref();
 const router = useRouter();
-const isMac = computed(() => window.navigator.userAgent.toLowerCase().includes('mac'));
+const isMac = computed(() => true);
 
 const commandPaletteStore = useCommandPaletteStore();
 const { searchPrompt, filteredSearchResult } = storeToRefs(commandPaletteStore);
