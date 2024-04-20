@@ -2,14 +2,13 @@
 import { convertBase } from '../integer-base-converter/integer-base-converter.model';
 import { getIPClass } from '../ipv4-subnet-calculator/ipv4-subnet-calculator.models';
 import { ipv4ToInt, ipv4ToIpv6, isValidIpv4 } from './ipv4-address-converter.service';
+import { getIPNetworkType, to6to4Prefix, toARPA, toIPv4MappedAddressDecimal } from '@/utils/ip';
 import { useValidation } from '@/composable/validation';
-import Network from '@/libs/ip_calculator/network';
 
-const rawIpAddress = useStorage('ipv4-converter:ip', '192.168.1.1');
+const rawIpAddress = useStorage('ipv4-converter:ip', '192.168.1.1'); // NOSONAR
 
 const convertedSections = computed(() => {
   const ipInDecimal = ipv4ToInt({ ip: rawIpAddress.value });
-  const networkInfo = new Network(rawIpAddress.value || '', 32);
 
   return [
     {
@@ -34,11 +33,11 @@ const convertedSections = computed(() => {
     },
     {
       label: 'Ipv6 (decimal): ',
-      value: networkInfo.toIPv4MappedAddressDecimal()?.toString() || '',
+      value: toIPv4MappedAddressDecimal(rawIpAddress.value),
     },
     {
       label: '6to4 prefix',
-      value: networkInfo.to6to4Prefix()?.toString() || '',
+      value: to6to4Prefix(rawIpAddress.value),
     },
     {
       label: 'CIDR notation',
@@ -46,7 +45,7 @@ const convertedSections = computed(() => {
     },
     {
       label: 'ARPA',
-      value: networkInfo.toARPA()?.toString() || '',
+      value: toARPA(rawIpAddress.value),
     },
     {
       label: 'IP class',
@@ -54,7 +53,7 @@ const convertedSections = computed(() => {
     },
     {
       label: 'Type',
-      value: networkInfo.printInfo()?.toString() || '',
+      value: getIPNetworkType(rawIpAddress.value),
     },
   ];
 });
