@@ -1,4 +1,4 @@
 /* TEAM */
-Developer: Corentin Thomasset
-Site: https://github.com/CorentinTh
-Twitter: @cthmsst
+Developer: Ne0
+Site: https://github.com/zeeklog
+Twitter: @neo2028

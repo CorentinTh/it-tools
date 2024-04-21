@@ -8,6 +8,11 @@ import { storeToRefs } from 'pinia';
 import HeroGradient from '../assets/hero-gradient.svg?component';
 import MenuLayout from '../components/MenuLayout.vue';
 import NavbarButtons from '../components/NavbarButtons.vue';
+import CLink from '@/ui/c-link/c-link.vue';
+import CTooltip from '@/ui/c-tooltip/c-tooltip.vue';
+import CButton from '@/ui/c-button/c-button.vue';
+import CommandPalette from '@/modules/command-palette/command-palette.vue';
+import LocaleSelector from '@/modules/i18n/components/locale-selector.vue';
 import { useStyleStore } from '@/stores/style.store';
 import { config } from '@/config';
 import type { ToolCategory } from '@/tools/tools.types';
@@ -50,7 +55,7 @@ const tools = computed<ToolCategory[]>(() => [
 
       <div class="sider-content">
         <div v-if="styleStore.isSmallScreen" flex flex-col items-center>
-          <locale-selector w="90%" />
+          <LocaleSelector w="90%" />
 
           <div flex justify-center>
             <NavbarButtons />
@@ -63,27 +68,27 @@ const tools = computed<ToolCategory[]>(() => [
           <div>
             IT-Tools
 
-            <c-link target="_blank" rel="noopener" :href="`https://github.com/CorentinTh/it-tools/tree/v${version}`">
+            <CLink target="_blank" rel="noopener" :href="`https://github.com/CorentinTh/it-tools/tree/v${version}`">
               v{{ version }}
-            </c-link>
+            </CLink>
 
             <template v-if="commitSha && commitSha.length > 0">
               -
-              <c-link
+              <CLink
                 target="_blank"
                 rel="noopener"
                 type="primary"
                 :href="`https://github.com/CorentinTh/it-tools/tree/${commitSha}`"
               >
                 {{ commitSha }}
-              </c-link>
+              </CLink>
             </template>
           </div>
           <div>
             © {{ new Date().getFullYear() }}
-            <c-link target="_blank" rel="noopener" href="https://github.com/CorentinTh">
+            <CLink target="_blank" rel="noopener" href="https://github.com/CorentinTh">
               Corentin Thomasset
-            </c-link>
+            </CLink>
           </div>
         </div>
       </div>
@@ -91,37 +96,37 @@ const tools = computed<ToolCategory[]>(() => [
 
     <template #content>
       <div flex items-center justify-center gap-2>
-        <c-button
+        <CButton
           circle
           variant="text"
           :aria-label="$t('home.toggleMenu')"
           @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed"
         >
           <NIcon size="25" :component="Menu2" />
-        </c-button>
+        </CButton>
 
-        <c-tooltip :tooltip="$t('home.home')" position="bottom">
-          <c-button to="/" circle variant="text" :aria-label="$t('home.home')">
+        <CTooltip :tooltip="$t('home.home')" position="bottom">
+          <CButton to="/" circle variant="text" :aria-label="$t('home.home')">
             <NIcon size="25" :component="Home2" />
-          </c-button>
-        </c-tooltip>
+          </CButton>
+        </CTooltip>
 
-        <c-tooltip :tooltip="$t('home.uiLib')" position="bottom">
-          <c-button v-if="config.app.env === 'development'" to="/c-lib" circle variant="text" :aria-label="$t('home.uiLib')">
+        <CTooltip :tooltip="$t('home.uiLib')" position="bottom">
+          <CButton v-if="config.app.env === 'development'" to="/c-lib" circle variant="text" :aria-label="$t('home.uiLib')">
             <icon-mdi:brush-variant text-20px />
-          </c-button>
-        </c-tooltip>
+          </CButton>
+        </CTooltip>
 
-        <command-palette />
+        <CommandPalette />
 
-        <locale-selector v-if="!styleStore.isSmallScreen" />
+        <LocaleSelector v-if="!styleStore.isSmallScreen" />
 
         <div>
           <NavbarButtons v-if="!styleStore.isSmallScreen" />
         </div>
 
-        <c-tooltip position="bottom" :tooltip="$t('home.support')">
-          <c-button
+        <CTooltip position="bottom" :tooltip="$t('home.support')">
+          <CButton
             round
             href="https://www.buymeacoffee.com/cthmsst"
             rel="noopener"
@@ -132,8 +137,8 @@ const tools = computed<ToolCategory[]>(() => [
           >
             {{ $t('home.buyMeACoffee') }}
             <NIcon v-if="!styleStore.isSmallScreen" :component="Heart" ml-2 />
-          </c-button>
-        </c-tooltip>
+          </CButton>
+        </CTooltip>
       </div>
       <slot />
     </template>

@@ -30,5 +30,9 @@ app.use(plausible);
 app.use(naive);
 
 router.isReady().then(() => {
+  console.log('---- Router is ready, now mounting the app...');
   app.mount('#app', true);
+  console.log('---- App has been mounted successfully.');
+}).catch((err) => {
+  console.log(err);
 });

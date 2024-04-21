@@ -11,6 +11,7 @@ import Icons from 'unplugin-icons/vite';
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
 import { defineConfig } from 'vite';
+
 // import { VitePWA } from 'vite-plugin-pwa';
 import markdown from 'vite-plugin-vue-markdown';
 import svgLoader from 'vite-svg-loader';
@@ -114,5 +115,13 @@ export default defineConfig({
   },
   build: {
     target: 'esnext',
+    rollupOptions: {
+      // 指定入口文件
+      input: {
+        main: './src/entry-client.ts',
+        // 你也可以在这里指定服务器端入口，例如：
+        server: './src/entry-server.ts',
+      },
+    },
   },
 });

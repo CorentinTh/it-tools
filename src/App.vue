@@ -18,6 +18,10 @@ syncRef(
   locale,
   useStorage('locale', locale),
 );
+
+onMounted(() => {
+  console.log('APP MOUNTED');
+});
 </script>
 
 <template>

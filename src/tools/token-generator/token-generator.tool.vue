@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { createToken } from './token-generator.service';
+import CInputText from '@/ui/c-input-text/c-input-text.vue';
 import { useCopy } from '@/composable/copy';
 import { useQueryParam } from '@/composable/queryParams';
 import { computedRefreshable } from '@/composable/computedRefreshable';
@@ -55,7 +56,7 @@ const { copy } = useCopy({ source: token, text: t('tools.token-generator.copied'
         <n-slider v-model:value="length" :step="1" :min="1" :max="512" />
       </n-form-item>
 
-      <c-input-text
+      <CInputText
         v-model:value="token"
         multiline
         :placeholder="t('tools.token-generator.tokenPlaceholder')"
