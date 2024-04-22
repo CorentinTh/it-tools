@@ -6,7 +6,7 @@ test.describe('Tool - Token generator', () => {
   });
 
   test('Has title', async ({ page }) => {
-    await expect(page).toHaveTitle('Token generator - IT Tools');
+    await expect(page).toHaveTitle('Token generator - Zeeklog Online Tools');
   });
 
   test('New token on refresh', async ({ page }) => {

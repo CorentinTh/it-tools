@@ -2,23 +2,23 @@
   "name": "it-tools",
   "version": "2023.12.21-5ed3693",
   "type": "module",
-  "description": "Collection of handy online tools for developers, with great UX. ",
+  "description": "Collection of handy online tools for developers, with great UX and SSR",
   "keywords": [
     "productivity",
     "converter",
     "website",
     "vuejs",
     "tools",
-    "frontend",
+    "online tools",
     "tool",
     "developer-tools",
     "developer-productivity"
   ],
-  "author": "Corentin Th <corentin.thomasset74+it-tools@gmail.com> (https://github.com/CorentinTh)",
+  "author": "Corentin Th <corentin.thomasset74+it-tools@gmail.com> (https://github.com/zeeklog)",
   "license": "GNU GPLv3",
   "repository": {
     "type": "git",
-    "url": "https://github.com/CorentinTh/it-tools"
+    "url": "https://github.com/zeeklog/it-tools"
   },
   "scripts": {
     "dev": "vite",

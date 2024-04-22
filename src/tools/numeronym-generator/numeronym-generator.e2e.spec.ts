@@ -6,7 +6,7 @@ test.describe('Tool - Numeronym generator', () => {
   });
 
   test('Has correct title', async ({ page }) => {
-    await expect(page).toHaveTitle('Numeronym generator - IT Tools');
+    await expect(page).toHaveTitle('Numeronym generator - Zeeklog Online Tools');
   });
 
   test('a numeronym is generated when a word is entered', async ({ page }) => {

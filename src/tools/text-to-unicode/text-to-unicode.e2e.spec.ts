@@ -6,7 +6,7 @@ test.describe('Tool - Text to Unicode', () => {
   });
 
   test('Has correct title', async ({ page }) => {
-    await expect(page).toHaveTitle('Text to Unicode - IT Tools');
+    await expect(page).toHaveTitle('Text to Unicode - Zeeklog Online Tools');
   });
 
   test('Text to unicode conversion', async ({ page }) => {

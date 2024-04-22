@@ -6,6 +6,6 @@ test.describe('Tool - Http status codes', () => {
   });
 
   test('Has correct title', async ({ page }) => {
-    await expect(page).toHaveTitle('HTTP status codes - IT Tools');
+    await expect(page).toHaveTitle('HTTP status codes - Zeeklog Online Tools');
   });
 });

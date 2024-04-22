@@ -41,16 +41,16 @@ const tools = computed<ToolCategory[]>(() => [
   <MenuLayout class="menu-layout" :class="{ isSmallScreen: styleStore.isSmallScreen }">
     <template #sider>
       <RouterLink to="/" class="hero-wrapper">
-<!--        <HeroGradient class="gradient" />-->
-        <div class="text-wrapper">
-          <div class="title">
-            IT - TOOLS
-          </div>
-          <div class="divider" />
-          <div class="subtitle">
-            {{ $t('home.subtitle') }}
-          </div>
-        </div>
+        <h2 class='text-center logo'>极客日志</h2>
+<!--        <div class="text-wrapper">-->
+<!--          <div class="title">-->
+<!--            IT - TOOLS-->
+<!--          </div>-->
+<!--          <div class="divider" />-->
+<!--          <div class="subtitle">-->
+<!--            {{ $t('home.subtitle') }}-->
+<!--          </div>-->
+<!--        </div>-->
       </RouterLink>
 
       <div class="sider-content">
@@ -68,7 +68,7 @@ const tools = computed<ToolCategory[]>(() => [
           <div>
             IT-Tools
 
-            <CLink target="_blank" rel="noopener" :href="`https://github.com/CorentinTh/it-tools/tree/v${version}`">
+            <CLink target="_blank" rel="noopener" :href="`https://github.com/zeeklog/it-tools/tree/v${version}`">
               v{{ version }}
             </CLink>
 
@@ -78,7 +78,7 @@ const tools = computed<ToolCategory[]>(() => [
                 target="_blank"
                 rel="noopener"
                 type="primary"
-                :href="`https://github.com/CorentinTh/it-tools/tree/${commitSha}`"
+                :href="`https://github.com/zeeklog/it-tools/tree/${commitSha}`"
               >
                 {{ commitSha }}
               </CLink>
@@ -86,8 +86,8 @@ const tools = computed<ToolCategory[]>(() => [
           </div>
           <div>
             © {{ new Date().getFullYear() }}
-            <CLink target="_blank" rel="noopener" href="https://github.com/CorentinTh">
-              Corentin Thomasset
+            <CLink target="_blank" rel="noopener" href="https://github.com/zeeklog">
+              Ne0inHK
             </CLink>
           </div>
         </div>
@@ -146,6 +146,10 @@ const tools = computed<ToolCategory[]>(() => [
 </template>
 
 <style lang="less" scoped>
+.logo {
+  text-decoration: unset;
+  color: #000000;
+}
 // ::v-deep(.n-layout-scroll-container) {
 //     @percent: 4%;
 //     @position: 25px;
@@ -178,14 +182,14 @@ const tools = computed<ToolCategory[]>(() => [
 }
 
 .sider-content {
-  //padding-top: 160px;
+  //padding-top: 3em;
   padding-bottom: 200px;
 }
 
 .hero-wrapper {
-  position: absolute;
+  //position: absolute;
   display: block;
-  left: 0;
+  //left: 0;
   width: 100%;
   z-index: 10;
   overflow: hidden;

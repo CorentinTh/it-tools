@@ -8,7 +8,7 @@ import { config } from '@/config';
 
 const toolStore = useToolStore();
 
-useHead({ title: 'IT Tools - Handy online tools for developers' });
+useHead({ title: 'Zeeklog Online Tools - Handy online tools for developers' });
 const { t } = useI18n();
 </script>
 
@@ -19,7 +19,7 @@ const { t } = useI18n();
         <ColoredCard :title="$t('home.follow.title')" :icon="Heart">
           {{ $t('home.follow.p1') }}
           <a
-            href="https://github.com/CorentinTh/it-tools"
+            href="https://github.com/zeeklog/it-tools"
             rel="noopener"
             target="_blank"
             :aria-label="$t('home.follow.githubRepository')"
