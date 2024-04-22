@@ -41,7 +41,7 @@ const tools = computed<ToolCategory[]>(() => [
   <MenuLayout class="menu-layout" :class="{ isSmallScreen: styleStore.isSmallScreen }">
     <template #sider>
       <RouterLink to="/" class="hero-wrapper">
-        <HeroGradient class="gradient" />
+<!--        <HeroGradient class="gradient" />-->
         <div class="text-wrapper">
           <div class="title">
             IT - TOOLS
@@ -96,14 +96,14 @@ const tools = computed<ToolCategory[]>(() => [
 
     <template #content>
       <div flex items-center justify-center gap-2>
-        <CButton
-          circle
-          variant="text"
-          :aria-label="$t('home.toggleMenu')"
-          @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed"
-        >
-          <NIcon size="25" :component="Menu2" />
-        </CButton>
+<!--        <CButton-->
+<!--          circle-->
+<!--          variant="text"-->
+<!--          :aria-label="$t('home.toggleMenu')"-->
+<!--          @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed"-->
+<!--        >-->
+<!--          <NIcon size="25" :component="Menu2" />-->
+<!--        </CButton>-->
 
         <CTooltip :tooltip="$t('home.home')" position="bottom">
           <CButton to="/" circle variant="text" :aria-label="$t('home.home')">
@@ -125,20 +125,20 @@ const tools = computed<ToolCategory[]>(() => [
           <NavbarButtons v-if="!styleStore.isSmallScreen" />
         </div>
 
-        <CTooltip position="bottom" :tooltip="$t('home.support')">
-          <CButton
-            round
-            href="https://www.buymeacoffee.com/cthmsst"
-            rel="noopener"
-            target="_blank"
-            class="support-button"
-            :bordered="false"
-            @click="() => tracker.trackEvent({ eventName: 'Support button clicked' })"
-          >
-            {{ $t('home.buyMeACoffee') }}
-            <NIcon v-if="!styleStore.isSmallScreen" :component="Heart" ml-2 />
-          </CButton>
-        </CTooltip>
+<!--        <CTooltip position="bottom" :tooltip="$t('home.support')">-->
+<!--          <CButton-->
+<!--            round-->
+<!--            href="https://www.buymeacoffee.com/cthmsst"-->
+<!--            rel="noopener"-->
+<!--            target="_blank"-->
+<!--            class="support-button"-->
+<!--            :bordered="false"-->
+<!--            @click="() => tracker.trackEvent({ eventName: 'Support button clicked' })"-->
+<!--          >-->
+<!--            {{ $t('home.buyMeACoffee') }}-->
+<!--            <NIcon v-if="!styleStore.isSmallScreen" :component="Heart" ml-2 />-->
+<!--          </CButton>-->
+<!--        </CTooltip>-->
       </div>
       <slot />
     </template>
@@ -178,7 +178,7 @@ const tools = computed<ToolCategory[]>(() => [
 }
 
 .sider-content {
-  padding-top: 160px;
+  //padding-top: 160px;
   padding-bottom: 200px;
 }
 

@@ -22,7 +22,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && NODE_OPTIONS=--max_old_space_size=4096 vite build",
+    "build": "vue-tsc --noEmit && vite build",
     "build:ssr": "node server.js",
     "preview": "vite preview --port 5050",
     "test": "npm run test:unit",
