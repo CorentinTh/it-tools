@@ -391,3 +391,11 @@ tools:
   text-to-binary:
     title: Text to ASCII binary
     description: Convert text to its ASCII binary representation and vice versa.
+  sip-auth:
+    password: SIP password
+    password-tips: Enter a password...
+    message: SIP message
+    message-tips: Paste your SIP message here...
+    result: Result
+    sucess: Sucess
+    failure: Failure
