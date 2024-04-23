@@ -9,26 +9,31 @@ function prettifyExponentialNotation(exponentialNotation: number) {
   return exponent ? `${prettyBase}e${exponent}` : prettyBase;
 }
 
-function getHumanFriendlyDuration({ seconds }: { seconds: number }) {
+function getHumanFriendlyDuration({ seconds }: { seconds: number }, t: (message: string, options?: any) => string) {
   if (seconds <= 0.001) {
-    return 'Instantly';
+    return t('passwordStrengthAnalyser.instantly');
   }
 
   if (seconds <= 1) {
-    return 'Less than a second';
+    return t('passwordStrengthAnalyser.lessThanOneSecond');
   }
 
   const timeUnits = [
-    { unit: 'millenium', secondsInUnit: 31536000000, format: prettifyExponentialNotation, plural: 'millennia' },
-    { unit: 'century', secondsInUnit: 3153600000, plural: 'centuries' },
-    { unit: 'decade', secondsInUnit: 315360000, plural: 'decades' },
-    { unit: 'year', secondsInUnit: 31536000, plural: 'years' },
-    { unit: 'month', secondsInUnit: 2592000, plural: 'months' },
-    { unit: 'week', secondsInUnit: 604800, plural: 'weeks' },
-    { unit: 'day', secondsInUnit: 86400, plural: 'days' },
-    { unit: 'hour', secondsInUnit: 3600, plural: 'hours' },
-    { unit: 'minute', secondsInUnit: 60, plural: 'minutes' },
-    { unit: 'second', secondsInUnit: 1, plural: 'seconds' },
+    {
+      unit: t('passwordStrengthAnalyser.millenium'),
+      secondsInUnit: 31536000000,
+      format: prettifyExponentialNotation,
+      plural: t('passwordStrengthAnalyser.millennia'),
+    },
+    { unit: t('passwordStrengthAnalyser.century'), secondsInUnit: 3153600000, plural: t('passwordStrengthAnalyser.centuries') },
+    { unit: t('passwordStrengthAnalyser.decade'), secondsInUnit: 315360000, plural: t('passwordStrengthAnalyser.decades') },
+    { unit: t('passwordStrengthAnalyser.year'), secondsInUnit: 31536000, plural: t('passwordStrengthAnalyser.years') },
+    { unit: t('passwordStrengthAnalyser.month'), secondsInUnit: 2592000, plural: t('passwordStrengthAnalyser.months') },
+    { unit: t('passwordStrengthAnalyser.week'), secondsInUnit: 604800, plural: t('passwordStrengthAnalyser.weeks') },
+    { unit: t('passwordStrengthAnalyser.day'), secondsInUnit: 86400, plural: t('passwordStrengthAnalyser.days') },
+    { unit: t('passwordStrengthAnalyser.hour'), secondsInUnit: 3600, plural: t('passwordStrengthAnalyser.hours') },
+    { unit: t('passwordStrengthAnalyser.minute'), secondsInUnit: 60, plural: t('passwordStrengthAnalyser.minutes') },
+    { unit: t('passwordStrengthAnalyser.second'), secondsInUnit: 1, plural: t('passwordStrengthAnalyser.seconds') },
   ];
 
   return _.chain(timeUnits)
@@ -49,7 +54,10 @@ function getHumanFriendlyDuration({ seconds }: { seconds: number }) {
     .value();
 }
 
-function getPasswordCrackTimeEstimation({ password, guessesPerSecond = 1e9 }: { password: string; guessesPerSecond?: number }) {
+function getPasswordCrackTimeEstimation(
+  { password, guessesPerSecond = 1e9 }: { password: string; guessesPerSecond?: number },
+  t: (message: string, options?: any) => string,
+) {
   const charsetLength = getCharsetLength({ password });
   const passwordLength = password.length;
 
@@ -57,7 +65,7 @@ function getPasswordCrackTimeEstimation({ password, guessesPerSecond = 1e9 }: { 
 
   const secondsToCrack = 2 ** entropy / guessesPerSecond;
 
-  const crackDurationFormatted = getHumanFriendlyDuration({ seconds: secondsToCrack });
+  const crackDurationFormatted = getHumanFriendlyDuration({ seconds: secondsToCrack }, t);
 
   const score = Math.min(entropy / 128, 1);
 

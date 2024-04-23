@@ -1,24 +1,25 @@
 <script setup lang="ts">
 import { getPasswordCrackTimeEstimation } from './password-strength-analyser.service';
 
+const { t } = useI18n();
 const password = ref('');
-const crackTimeEstimation = computed(() => getPasswordCrackTimeEstimation({ password: password.value }));
+const crackTimeEstimation = computed(() => getPasswordCrackTimeEstimation({ password: password.value }, t));
 
 const details = computed(() => [
   {
-    label: 'Password length:',
+    label: t('passwordStrengthAnalyser.pdwlength'),
     value: crackTimeEstimation.value.passwordLength,
   },
   {
-    label: 'Entropy:',
+    label: t('passwordStrengthAnalyser.crackDuration'),
     value: Math.round(crackTimeEstimation.value.entropy * 100) / 100,
   },
   {
-    label: 'Character set size:',
+    label: t('passwordStrengthAnalyser.charsetLength'),
     value: crackTimeEstimation.value.charsetLength,
   },
   {
-    label: 'Score:',
+    label: t('passwordStrengthAnalyser.score'),
     value: `${Math.round(crackTimeEstimation.value.score * 100)} / 100`,
   },
 ]);
@@ -29,7 +30,7 @@ const details = computed(() => [
     <c-input-text
       v-model:value="password"
       type="password"
-      placeholder="Enter a password..."
+      :placeholder="$t('passwordStrengthAnalyser.passwordPlaceholder')"
       clearable
       autofocus
       raw-text
@@ -38,14 +39,14 @@ const details = computed(() => [
 
     <c-card text-center>
       <div op-60>
-        Duration to crack this password with brute force
+        {{ $t('passwordStrengthAnalyser.crackTimeEstimation') }}
       </div>
       <div text-2xl data-test-id="crack-duration">
         {{ crackTimeEstimation.crackDurationFormatted }}
       </div>
     </c-card>
     <c-card>
-      <div v-for="({ label, value }) of details" :key="label" flex gap-3>
+      <div v-for="{ label, value } of details" :key="label" flex gap-3>
         <div flex-1 text-right op-60>
           {{ label }}
         </div>
@@ -55,8 +56,8 @@ const details = computed(() => [
       </div>
     </c-card>
     <div op-70>
-      <span font-bold>Note: </span>
-      The computed strength is based on the time it would take to crack the password using a brute force approach, it does not take into account the possibility of a dictionary attack.
+      <span font-bold>{{ $t('passwordStrengthAnalyser.note') }} </span>
+      {{ $t('passwordStrengthAnalyser.noteDescription') }}
     </div>
   </div>
 </template>

@@ -1,69 +1,87 @@
+'404':
+  notFound: 404 Not Found
+  sorry: Désolé, cette page n'existe pas
+  maybe: >-
+    Peut-être que le cache fait des siennes, essayez de forcer le
+    rafraîchissement ?
+  backHome: Retour à l'accueil
 home:
   categories:
-    newestTools: 'Les nouveaux outils'
-    favoriteTools: 'Vos outils favoris'
-    allTools: 'Tous les outils'
-  subtitle: 'Outils pour les développeurs'
-  toggleMenu: 'Menu'
+    newestTools: Les nouveaux outils
+    favoriteTools: Vos outils favoris
+    allTools: Tous les outils
+  subtitle: Outils pour les développeurs
+  toggleMenu: Menu
   home: Accueil
-  uiLib: 'UI Lib'
-  buyMeACoffee: 'Soutenez IT-Tools'
+  uiLib: UI Lib
+  buyMeACoffee: Soutenez IT-Tools
   follow:
-    title: 'Vous aimez it-tools ?'
-    p1: 'Soutenez-nous avec une star sur'
-    githubRepository: "le dépôt GitHub d'IT-Tools"
-    p2: 'ou suivez-nous sur'
-    twitterAccount: "le compte Twitter d'IT-Tools"
-    thankYou: 'Merci !'
+    title: Vous aimez it-tools ?
+    p1: Soutenez-nous avec une star sur
+    githubRepository: le dépôt GitHub d'IT-Tools
+    p2: ou suivez-nous sur
+    twitterAccount: le compte Twitter d'IT-Tools
+    thankYou: Merci !
   nav:
-    github: 'Dépôt GitHub'
-    githubRepository: "Dépôt GitHub d'IT-Tools"
-    twitter: 'Compte Twitter'
-    twitterAccount: "Compte Twitter d'IT-Tools"
-    about: "À propos d'IT-Tools"
-    aboutLabel: 'À propos'
-    darkMode: 'Mode sombre'
-    lightMode: 'Mode clair'
-    mode: 'Basculer le mode sombre/clair'
+    github: Dépôt GitHub
+    githubRepository: Dépôt GitHub d'IT-Tools
+    twitter: Compte Twitter
+    twitterAccount: Compte Twitter d'IT-Tools
+    about: À propos d'IT-Tools
+    aboutLabel: À propos
+    darkMode: Mode sombre
+    lightMode: Mode clair
+    mode: Basculer le mode sombre/clair
+  support: Accompagner le développement d'outils informatiques
 about:
   content: >
     # À propos de IT-Tools
 
-    Ce merveilleux site, fait avec ❤ par [Corentin Thomasset](https://github.com/CorentinTh), regroupe des outils utiles pour les développeurs et les personnes travaillant dans l'informatique. Si vous le trouvez utile, n'hésitez pas à le partager et n'oubliez pas de le mettre dans vos favoris !
+    Ce merveilleux site, fait avec ❤ par [Corentin
+    Thomasset](https://github.com/CorentinTh), regroupe des outils utiles pour
+    les développeurs et les personnes travaillant dans l'informatique. Si vous
+    le trouvez utile, n'hésitez pas à le partager et n'oubliez pas de le mettre
+    dans vos favoris !
 
-    IT Tools est open-source (sous licence MIT) et gratuit, et le restera toujours, mais cela me coûte de l'argent pour l'héberger et renouveler le nom de domaine. Si vous voulez soutenir mon travail, et m'encourager à ajouter plus d'outils, n'hésitez pas à me [soutenir](https://www.buymeacoffee.com/cthmsst).
+    IT Tools est open-source (sous licence MIT) et gratuit, et le restera
+    toujours, mais cela me coûte de l'argent pour l'héberger et renouveler le
+    nom de domaine. Si vous voulez soutenir mon travail, et m'encourager à
+    ajouter plus d'outils, n'hésitez pas à me
+    [soutenir](https://www.buymeacoffee.com/cthmsst).
 
     ## Technologies
 
-    IT Tools est fait en Vue.js (Vue 3) avec la bibliothèque de composants Naive UI et est hébergé et déployé en continu par Vercel. Des bibliothèques open-source tierces sont utilisées dans certains outils, vous pouvez trouver la liste complète dans le fichier [package.json](https://github.com/CorentinTh/it-tools/blob/main/package.json) du dépôt.
+    IT Tools est fait en Vue.js (Vue 3) avec la bibliothèque de composants Naive
+    UI et est hébergé et déployé en continu par Vercel. Des bibliothèques
+    open-source tierces sont utilisées dans certains outils, vous pouvez trouver
+    la liste complète dans le fichier
+    [package.json](https://github.com/CorentinTh/it-tools/blob/main/package.json)
+    du dépôt.
 
     ## Vous avez trouvé un bug ? Un outil manque ?
 
-    Si vous avez besoin d'un outil qui n'est pas encore présent ici, et que vous pensez qu'il peut être utile, vous êtes invité à soumettre une demande de fonctionnalité dans la [section issue](https://github.com/CorentinTh/it-tools/issues/new/choose) du dépôt GitHub.
-
-404:
-  notFound: '404 Not Found'
-  sorry: "Désolé, cette page n'existe pas"
-  maybe: 'Peut-être que le cache fait des siennes, essayez de forcer le rafraîchissement ?'
-  backHome: "Retour à l'accueil"
+    Si vous avez besoin d'un outil qui n'est pas encore présent ici, et que vous
+    pensez qu'il peut être utile, vous êtes invité à soumettre une demande de
+    fonctionnalité dans la [section
+    issue](https://github.com/CorentinTh/it-tools/issues/new/choose) du dépôt
+    GitHub.
 toolCard:
   new: Nouveau
 search:
   label: Rechercher
 tools:
   categories:
-    favorite-tools: 'Vos outils favoris'
+    favorite-tools: Vos outils favoris
     crypto: Cryptographie
     converter: Convertisseur
     web: Web
-    images and videos: 'Images & Vidéos'
+    images and videos: Images & Vidéos
     development: Développement
     network: Réseau
     math: Math
     measurement: Mesure
     text: Texte
     data: Données
-
   token-generator:
     title: Générateur de token
     description: >-
@@ -79,3 +97,405 @@ tools:
     copied: Le token a été copié
     length: Longueur
     tokenPlaceholder: Le token...
+  base-converter:
+    description: >-
+      Convertir des nombres entre différentes bases (décimales, hexadécimales,
+      binaires, octales, base64...)
+    title: convertisseur de base entière
+  base64-file-converter:
+    description: >-
+      Convertissez une chaîne, un fichier ou une image en sa représentation
+      Base64.
+    title: Convertisseur de fichiers Base64
+  base64-string-converter:
+    description: >-
+      Encodez et décodez simplement la chaîne dans sa représentation au format
+      Base64.
+    title: Encodage/décodage de chaîne Base64
+  basic-auth-generator:
+    description: >-
+      Générez des en-têtes d'authentification de base base64 à partir du nom
+      d'utilisateur et du mot de passe.
+    title: Générateur d'authentification de base
+  bcrypt:
+    description: >-
+      Utilisez bcrypt pour hacher et comparer des chaînes de texte. 
+
+      Bcrypt est une fonction de hachage de mot de passe basée sur les mots de
+      passe Blowfish.
+    title: chiffrement
+  benchmark-builder:
+    description: >-
+      Un simple générateur de benchmark en ligne facilite la comparaison des
+      temps d'exécution des tâches.
+    title: Générateur de benchmark
+  bip39-generator:
+    description: >-
+      Générez une phrase secrète BIP39 à partir d'un mnémonique existant ou
+      aléatoire, ou obtenez un mnémonique à partir d'une phrase secrète.
+    title: Générateur de mot de passe BIP39
+  camera-recorder:
+    description: >-
+      Prenez des photos ou enregistrez des vidéos depuis votre webcam ou votre
+      appareil photo.
+    title: caméscope
+  case-converter:
+    description: Changez la casse des chaînes et choisissez entre différents formats
+    title: Conversion de cas
+  chmod-calculator:
+    description: >-
+      Utilisez cette calculatrice chmod en ligne pour calculer les autorisations
+      et les commandes chmod.
+    title: Calculatrice Chmod
+  chronometer:
+    description: |-
+      Surveillez la durée des choses. 
+      Fondamentalement, une minuterie avec une fonction de minuterie simple.
+    title: minuteur
+  color-converter:
+    description: >-
+      Convertir les couleurs entre différents formats (noms hexadécimaux, RVB,
+      HSL et CSS)
+    title: Sélecteur de couleurs
+  crontab-generator:
+    description: >-
+      Vérifiez et générez la crontab et obtenez une description lisible par
+      l'homme de la planification cron.
+    title: Génération d'expressions Crontab
+  date-converter:
+    description: Convertir les dates et les heures en différents formats
+    title: convertisseur date-heure
+  device-information:
+    description: >-
+      Obtenez des informations sur l'appareil actuel (taille de l'écran, rapport
+      de pixels, agent utilisateur...)
+    title: Informations sur l'appareil
+  docker-run-to-docker-compose-converter:
+    description: "Convertissez la ligne de commande Docker Run en fichier Docker-compose\_!"
+    title: Convertisseur Docker Run en docker-compose
+  emoji-picker:
+    description: >-
+      Copiez et collez facilement Emoji et obtenez la valeur Unicode et les
+      points de code de chaque emoji.
+    title: Sélecteur d'émoticônes
+  encryption:
+    description: >-
+      Cryptez et déchiffrez le texte brut à l'aide d'algorithmes de cryptage
+      tels que AES, TripleDES, Rabbit ou RC4.
+    title: Chiffrer/déchiffrer le texte
+  eta-calculator:
+    description: >-
+      Calculateur ETA (heure d'arrivée estimée) pour connaître l'heure
+      approximative de fin d'une tâche, comme le moment de fin d'un
+      téléchargement.
+    title: Calculateur d'ETA
+  git-memo:
+    description: >-
+      Git est un logiciel de gestion de versions décentralisé. 
+
+      Utilisez cette aide-mémoire pour vous donner un accès rapide aux commandes
+      git les plus courantes.
+    title: Mémo Git
+  hash-text:
+    description: "Hachez la chaîne de texte à l'aide de la fonction souhaitée\_: MD5, SHA1, SHA256, SHA224, SHA512, SHA384, SHA3 ou RIPEMD160."
+    title: Texte de hachage
+  hmac-generator:
+    description: >-
+      Calculez un code d'authentification de message basé sur le hachage (HMAC)
+      à l'aide de la clé et de votre fonction de hachage préférée.
+    title: Générateur Hmac
+  html-entities:
+    description: Échapper ou annuler l'échappement des entités HTML (remplacer <, >,
+    title: Échapper aux entités HTML
+  html-wysiwyg-editor:
+    description: >-
+      L'éditeur HTML en ligne dispose d'un éditeur WYSIWYG riche en
+      fonctionnalités pour obtenir instantanément le code source de votre
+      contenu.
+    title: Éditeur HTML WYSIWYG
+  http-status-codes:
+    description: >-
+      Liste de tous les statuts HTTP avec explications de leurs noms et
+      significations.
+    title: Code d'état HTTP
+  iban-validator-and-parser:
+    description: >-
+      Vérifiez et analysez les numéros IBAN. 
+
+      Vérifiez si l'IBAN est valide et obtenez le BBAN du pays s'il est au
+      format QR-IBAN et IBAN convivial.
+    title: Validateur et analyseur IBAN
+  ipv4-address-converter:
+    description: >-
+      Convertir l'adresse IP en décimal, binaire, hexadécimal ou événement en
+      ipv6
+    title: Convertisseur d'adresse IPv4
+  ipv4-range-expander:
+    description: >-
+      Étant donné une adresse IPv4 de début et de fin, cet outil calcule un
+      réseau IPv4 valide à l'aide de sa représentation CIDR.
+    title: Extension de portée IPv4
+  ipv4-subnet-calculator:
+    description: >-
+      Analysez le bloc CIDR IPv4 et obtenez toutes les informations requises sur
+      le sous-réseau.
+    title: Calculateur de sous-réseau IPv4
+  ipv6-ula-generator:
+    description: >-
+      Générez votre propre adresse IP locale non routable sur le réseau
+      conformément à la RFC4193.
+    title: Générateur d'ULA IPv6
+  json-diff:
+    description: Comparez deux objets JSON et obtenez la différence entre eux.
+    title: Comparaison des différences JSON
+  json-minify:
+    description: Réduisez et compressez JSON en supprimant les espaces inutiles.
+    title: Compression JSON
+  json-prettify:
+    description: Modifiez la chaîne JSON dans un format convivial et lisible.
+    title: Embellissement et formatage JSON
+  json-to-csv:
+    description: Convertissez JSON en CSV à l'aide de la détection automatique d'en-tête.
+    title: JSON en CSV
+  json-to-toml:
+    description: Analysez JSON et convertissez-le en TOML.
+    title: JSON vers TOML
+  json-to-yaml-converter:
+    description: La conversion en ligne convertit JSON en YAML.
+    title: Convertisseur JSON en YAML
+  jwt-parser:
+    description: Analysez et décodez le jeton Web JSON (jwt) et affichez son contenu.
+    title: analyseur JWT
+  keycode-info:
+    description: >-
+      Recherchez le code, le code, la position et le modificateur de la touche
+      javascript pour toute touche enfoncée.
+    title: Informations sur le code clé
+  list-converter:
+    description: >-
+      L'outil peut traiter des données basées sur un tableau et appliquer
+      diverses modifications (transposition, ajout de préfixe et de suffixe,
+      liste inversée, liste triée, valeurs minuscules, valeurs tronquées) à
+      chaque ligne.
+    title: Convertisseur de liste
+  lorem-ipsum-generator:
+    description: >-
+      Lorem ipsum est un type de texte d'espace réservé souvent utilisé pour
+      présenter la forme visuelle d'un document ou d'une police sans s'appuyer
+      sur un contenu significatif.
+    title: Générateur de Lorem ipsum
+  mac-address-generator:
+    description: >-
+      Entrez la quantité et le préfixe. 
+
+      L'adresse MAC sera générée dans le cas de votre choix (majuscule ou
+      minuscule)
+    title: Générateur d'adresse MAC
+  mac-address-lookup:
+    description: >-
+      Recherchez le fournisseur et le fabricant de votre appareil grâce à son
+      adresse MAC.
+    title: Recherche d'adresse MAC
+  math-evaluator:
+    description: |-
+      Calculatrice pour calculer des expressions mathématiques. 
+      Vous pouvez utiliser sqrt, cos, sin, abs et d'autres fonctions.
+    title: calculatrice mathématique
+  mime-types:
+    description: Convertissez le type MIME en extension et vice versa.
+    title: type mime
+  numeronym-generator:
+    description: >-
+      Un nom numérique est un mot abrégé par des chiffres. 
+
+      Par exemple, « i18n » est le nom d'« internationalisation », où 18
+      représente le nombre de lettres entre le premier i et le dernier n du mot.
+    title: Générateur de noms numériques
+  og-meta-generator:
+    description: >-
+      Générez des graphiques ouverts et des balises méta HTML sociales pour
+      votre site Web.
+    title: Générateur d'éléments graphiques ouverts
+  otp-generator:
+    description: >-
+      Générez et vérifiez des OTP (mots de passe à usage unique) temporels pour
+      l'authentification multifacteur.
+    title: Générateur de code OTP
+  password-strength-analyser:
+    description: >-
+      Découvrez la force de vos mots de passe avec cet analyseur de force de mot
+      de passe et cet outil d'estimation du temps de crack.
+    title: Analyseur de force de mot de passe
+  pdf-signature-checker:
+    description: >-
+      Vérifiez la signature des fichiers PDF. 
+
+      Un fichier PDF signé contient une ou plusieurs signatures qui peuvent être
+      utilisées pour déterminer si le contenu du fichier a été modifié depuis sa
+      signature.
+    title: Vérificateur de signature PDF
+  percentage-calculator:
+    description: >-
+      Calculez facilement le pourcentage d'une valeur à une autre, ou du
+      pourcentage à la valeur.
+    title: calculateur de pourcentage
+  phone-parser-and-formatter:
+    description: >-
+      Analyser, valider et formater les numéros de téléphone. 
+
+      Obtenez des informations sur le numéro de téléphone telles que l'indicatif
+      du pays, le type, etc.
+    title: Analyseur et formateur téléphonique
+  qrcode-generator:
+    description: >-
+      Générez et téléchargez des codes QR pour l'URL ou le texte et
+      personnalisez les couleurs d'arrière-plan et de premier plan.
+    title: Générateur de codes QR
+  random-port-generator:
+    description: >-
+      Générez un numéro de port aléatoire en dehors de la plage de ports «
+      connue » (0-1023).
+    title: Génération de ports aléatoires
+  roman-numeral-converter:
+    description: >-
+      Convertissez les chiffres romains en chiffres et les nombres en chiffres
+      romains.
+    title: Convertisseur de chiffres romains
+  rsa-key-pair-generator:
+    description: >-
+      Générez de nouveaux certificats pem de clé privée et publique RSA
+      aléatoires.
+    title: Générateur de paires de clés RSA
+  slugify-string:
+    description: >-
+      Conservez les URL de chaîne, les noms de fichiers et les identifiants en
+      sécurité.
+    title: chaîne de brouillage
+  sql-prettify:
+    description: >-
+      Formatez et embellissez vos requêtes SQL en ligne (il prend en charge
+      différents dialectes SQL).
+    title: Embellissement et formatage SQL
+  string-obfuscator:
+    description: >-
+      Masquez une chaîne (telle qu'un secret, un IBAN ou un jeton) pour la
+      rendre partageable et identifiable sans révéler son contenu.
+    title: obfuscateur de chaîne
+  svg-placeholder-generator:
+    description: >-
+      Générez des images SVG à utiliser comme espaces réservés dans votre
+      application.
+    title: Générateur d'espace réservé SVG
+  temperature-converter:
+    description: >-
+      Conversions de degrés de température Kelvin, Celsius, Fahrenheit, Rankin,
+      Dreyer, Newton, Reaumore et Romer.
+    title: convertisseur de température
+  text-diff:
+    description: Comparez deux textes et voyez les différences entre eux.
+    title: comparaison de texte
+  text-statistics:
+    description: >-
+      Obtenez des informations sur le texte, le nombre de caractères, le nombre
+      de mots, la taille, etc.
+    title: statistiques de texte
+  text-to-binary:
+    description: Convertissez le texte en sa représentation binaire ASCII et vice versa.
+    title: Texte en binaire ASCII
+  text-to-nato-alphabet:
+    description: >-
+      Convertissez le texte en alphabet phonétique OTAN pour la transmission
+      orale.
+    title: Texte à l'alphabet OTAN
+  text-to-unicode:
+    description: Analyser et convertir du texte en Unicode et vice versa
+    title: Texte en Unicode
+  toml-to-json:
+    description: Analysez TOML et convertissez-le en JSON.
+    title: TOML vers JSON
+  toml-to-yaml:
+    description: Analysez et convertissez TOML en YAML.
+    title: TOML en YAML
+  ulid-generator:
+    description: >-
+      Génère un identifiant triable par dictionnaire (ULID) aléatoire et
+      universellement unique.
+    title: Générateur d'ULID
+  url-encoder:
+    description: "Encodez ou décodez à partir du format codé par URL (également appelé «\_encodage en pourcentage\_»)."
+    title: Encoder/décoder la chaîne de format d'URL
+  url-parser:
+    description: >-
+      Analysez la chaîne d'url pour obtenir toutes les différentes parties
+      (protocole, source, paramètres, port, nom d'utilisateur, mot de passe...)
+    title: Analyseur d'URL
+  user-agent-parser:
+    description: >-
+      Détectez et analysez le navigateur, le moteur, le système d’exploitation,
+      le processeur et le type/modèle de périphérique à partir de la chaîne de
+      l’agent utilisateur.
+    title: Analyseur d'agent utilisateur
+  uuid-generator:
+    description: >-
+      Un identifiant universellement unique (UUID) est un nombre de 128 bits
+      utilisé pour identifier des informations dans un système informatique. 
+
+      Le nombre d'UUID possibles est de 16^32, soit 2^128 ou environ 3,4x10^38
+      (c'est un grand nombre !).
+    title: Générateur d'UUID
+  wifi-qrcode-generator:
+    description: >-
+      Générez et téléchargez des codes QR pour vous connecter rapidement aux
+      réseaux WiFi.
+    title: Générateur de code QR Wi-Fi
+  xml-formatter:
+    description: Modifiez la chaîne XML dans un format convivial et lisible.
+    title: Formatage XML
+  yaml-prettify:
+    description: Modifiez la chaîne YAML dans un format convivial et lisible.
+    title: Embellissement et formatage YAML
+  yaml-to-json-converter:
+    description: Convertissez YAML en JSON à l’aide de ce convertisseur en ligne.
+    title: Convertisseur YAML en JSON
+  yaml-to-toml:
+    description: Analysez YAML et convertissez-le en TOML.
+    title: YAML en TOML
+bcrypt:
+  compareHash: "Valeur de hachage\_:"
+  comparePlaceholder: Les chaînes à comparer...
+  compareResult: Est-ce que ça correspond ?
+  compareString: 'Chaîne:'
+  copyHash: copier le hachage
+  hash: Hacher
+  hashedStringCopied: Chaîne de hachage copiée dans le presse-papiers
+  input: 'texte:'
+  match: Oui
+  mismatch: Non
+  placeholder: La chaîne à écrire
+  salt: "Longueur du sel de chiffrement\_:"
+  saltRounds: Temps de hachage
+favoriteButton:
+  add: Ajouter aux Favoris
+  remove: Annuler les favoris
+hash-text:
+  encoding:
+    label: algorithme de synthèse
+  input:
+    label: "Texte à hacher\_:"
+    placeholder: Texte à hacher...
+ulid-generator:
+  button:
+    copy: copie
+    refresh: rafraîchir
+  copied: ULID copiés dans le presse-papiers
+  format: 'format:'
+  quantity: quantité
+uuid-generator:
+  button:
+    copy: copie
+    refresh: rafraîchir
+  copied: copier dans le presse-papier
+  name: nom
+  namespace: Espaces de noms
+  quantity: quantité
+  version: Version UUID
