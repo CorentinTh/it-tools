@@ -6,7 +6,7 @@ test.describe('Tool - JSON diff', () => {
   });
 
   test('Has correct title', async ({ page }) => {
-    await expect(page).toHaveTitle('JSON diff - IT Tools');
+    await expect(page).toHaveTitle('JSON diff - Zeeklog Online Tools');
   });
 
   test('Identical JSONs have a custom result message', async ({ page }) => {

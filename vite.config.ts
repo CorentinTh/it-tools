@@ -16,7 +16,8 @@ import { defineConfig } from 'vite';
 import markdown from 'vite-plugin-vue-markdown';
 import svgLoader from 'vite-svg-loader';
 import { configDefaults } from 'vitest/config';
-import ssr from 'vite-plugin-ssr/plugin';
+
+import { ssr } from 'vite-plugin-ssr/plugin';
 
 const baseUrl = process.env.BASE_URL ?? '/';
 
@@ -59,7 +60,7 @@ export default defineConfig({
     //   registerType: 'autoUpdate',
     //   strategies: 'generateSW',
     //   manifest: {
-    //     name: 'IT Tools',
+    //     name: 'Zeeklog Online Tools',
     //     description: 'Aggregated set of useful tools for developers.',
     //     display: 'standalone',
     //     lang: 'fr-FR',

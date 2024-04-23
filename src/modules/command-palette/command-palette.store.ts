@@ -48,7 +48,7 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
     },
     {
       name: 'Github repository',
-      href: 'https://github.com/CorentinTh/it-tools',
+      href: 'https://github.com/zeeklog/it-tools',
       category: 'External',
       description: 'View the source code of it-tools on Github.',
       keywords: ['github', 'repo', 'repository', 'source', 'code'],
@@ -57,7 +57,7 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
     {
       name: 'Report a bug or an issue',
       description: 'Report a bug or an issue to help improve it-tools.',
-      href: 'https://github.com/CorentinTh/it-tools/issues/new/choose',
+      href: 'https://github.com/zeeklog/it-tools/issues/new/choose',
       category: 'Actions',
       keywords: ['report', 'issue', 'bug', 'problem', 'error'],
       icon: BugIcon,

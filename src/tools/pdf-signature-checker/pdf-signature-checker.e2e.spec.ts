@@ -6,6 +6,6 @@ test.describe('Tool - Pdf signature checker', () => {
   });
 
   test('Has correct title', async ({ page }) => {
-    await expect(page).toHaveTitle('PDF signature checker - IT Tools');
+    await expect(page).toHaveTitle('PDF signature checker - Zeeklog Online Tools');
   });
 });

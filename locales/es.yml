@@ -20,7 +20,7 @@ home:
     github: 'Repositorio en github'
     githubRepository: 'IT-Tools GitHub repository'
     twitter: 'Cuenta de Twitter'
-    twitterAccount: 'Cuenta de twitter de IT Tools'
+    twitterAccount: 'Cuenta de twitter de Zeeklog Online Tools'
     about: 'Sobre  IT-Tools'
     aboutLabel: 'Sobre'
     darkMode: 'Modo obscuro'
@@ -30,19 +30,19 @@ about:
   content: >
     # Sobre IT-Tools
 
-    Este maravilloso sitio web, hecho con ❤ por [Corentin Thomasset](https://github.com/CorentinTh) , agrega herramientas útiles para desarrolladores y personas que trabajan en IT. Si lo encuentra útil, no dude en compartirlo con las personas que crea que también pueden encontrarlo útil y ¡no olvide marcarlo como favorito en su barra de accesos directos!
+    Este maravilloso sitio web, hecho con ❤ por [Ne0inHK](https://github.com/zeeklog) , agrega herramientas útiles para desarrolladores y personas que trabajan en IT. Si lo encuentra útil, no dude en compartirlo con las personas que crea que también pueden encontrarlo útil y ¡no olvide marcarlo como favorito en su barra de accesos directos!
 
-    IT Tools es de código abierto (under the MIT license) y gratis, y siempre lo será, pero me cuesta dinero alojar y renovar el nombre de dominio. Si desea apoyar mi trabajo y animarme a agregar más herramientas, considere apoyarme a través de[sponsoring me](https://www.buymeacoffee.com/cthmsst).
+    Zeeklog Online Tools es de código abierto (under the MIT license) y gratis, y siempre lo será, pero me cuesta dinero alojar y renovar el nombre de dominio. Si desea apoyar mi trabajo y animarme a agregar más herramientas, considere apoyarme a través de[sponsoring me](https://www.buymeacoffee.com/cthmsst).
 
     ## Tecnologías
 
-    IT Tools está creado en Vue.js (Vue 3) con la biblioteca de componentes Naive UI y Vercel lo aloja y lo implementa continuamente. En algunas herramientas se utilizan bibliotecas de código abierto de terceros; puede encontrar la lista completa en [package.json](https://github.com/CorentinTh/it-tools/blob/main/package.json) archivo del repositorio.
+    Zeeklog Online Tools está creado en Vue.js (Vue 3) con la biblioteca de componentes Naive UI y Vercel lo aloja y lo implementa continuamente. En algunas herramientas se utilizan bibliotecas de código abierto de terceros; puede encontrar la lista completa en [package.json](https://github.com/zeeklog/it-tools/blob/main/package.json) archivo del repositorio.
 
     ## ¿Encontraste un error? ¿Falta una herramienta?
-    
-    Si necesita una herramienta que actualmente no está presente aquí y cree que puede ser útil, puede enviar una solicitud de función en el [issues section](https://github.com/CorentinTh/it-tools/issues/new/choose) en el repositorio de GitHub.
 
-    Y si encontró un error o algo no funciona como se esperaba, presente un reporte de error en el [issues section](https://github.com/CorentinTh/it-tools/issues/new/choose) en el repositorio de GitHub.
+    Si necesita una herramienta que actualmente no está presente aquí y cree que puede ser útil, puede enviar una solicitud de función en el [issues section](https://github.com/zeeklog/it-tools/issues/new/choose) en el repositorio de GitHub.
+
+    Y si encontró un error o algo no funciona como se esperaba, presente un reporte de error en el [issues section](https://github.com/zeeklog/it-tools/issues/new/choose) en el repositorio de GitHub.
 
 404:
   notFound: '404 Not Found'

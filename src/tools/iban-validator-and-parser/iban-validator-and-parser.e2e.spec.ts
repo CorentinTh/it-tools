@@ -18,7 +18,7 @@ test.describe('Tool - Iban validator and parser', () => {
   });
 
   test('Has correct title', async ({ page }) => {
-    await expect(page).toHaveTitle('IBAN validator and parser - IT Tools');
+    await expect(page).toHaveTitle('IBAN validator and parser - Zeeklog Online Tools');
   });
 
   test('iban info are extracted from a valid iban', async ({ page }) => {

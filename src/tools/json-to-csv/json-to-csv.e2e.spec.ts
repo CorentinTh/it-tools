@@ -6,7 +6,7 @@ test.describe('Tool - JSON to CSV', () => {
   });
 
   test('Has correct title', async ({ page }) => {
-    await expect(page).toHaveTitle('JSON to CSV - IT Tools');
+    await expect(page).toHaveTitle('JSON to CSV - Zeeklog Online Tools');
   });
 
   test('Provided json is converted to csv', async ({ page }) => {

@@ -1,7 +1,7 @@
 import { renderToString } from '@vue/server-renderer';
 import { setup } from '@css-render/vue3-ssr';
 import { createApp } from './main';
-// import 'virtual:uno.css';
+import 'virtual:uno.css';
 
 /**
  * Render page with naive ui

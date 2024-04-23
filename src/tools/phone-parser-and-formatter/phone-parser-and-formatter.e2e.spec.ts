@@ -6,6 +6,6 @@ test.describe('Tool - Phone parser and formatter', () => {
   });
 
   test('Has correct title', async ({ page }) => {
-    await expect(page).toHaveTitle('Phone parser and formatter - IT Tools');
+    await expect(page).toHaveTitle('Phone parser and formatter - Zeeklog Online Tools');
   });
 });
