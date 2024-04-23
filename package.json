@@ -26,6 +26,7 @@
     "build:client": "vue-tsc --noEmit && vite build",
     "build:server": "vue-tsc --noEmit && vite build --ssr src/entry-server.ts",
     "build:ssr": "vue-tsc --noEmit && vite build --outDir dist",
+    "build&serve": "cross-env npm run build && NODE_ENV=production node server.js",
     "serve": "cross-env NODE_ENV=production node server.js",
     "preview": "vite preview --port 5050"
   },
