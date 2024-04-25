@@ -307,9 +307,14 @@ tools:
   hash-text:
     title: Mã hóa văn bản
     description: 'Mã hóa một chuỗi văn bản bằng cách sử dụng các hàm bạn cần: MD5, SHA1, SHA256, SHA224, SHA512, SHA384, SHA3 hoặc RIPEMD160'
+
   json-to-toml:
     title: Chuyển đổi JSON sang TOML
     description: Phân tích và chuyển đổi JSON sang TOML.
+  
+  json-to-ts:
+    title: Chuyển đổi JSON sang TS
+    description: Phân tích và chuyển đổi JSON sang TS.
 
   device-information:
     title: Thông tin thiết bị

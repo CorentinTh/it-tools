@@ -320,6 +320,10 @@ tools:
     title: JSON to TOML
     description: Parse and convert JSON to TOML.
 
+  json-to-ts:
+    title: JSON to TS
+    description: Parse and convert JSON to TS.
+
   device-information:
     title: Device information
     description: Get information about your current device (screen size, pixel-ratio, user agent, ...)
