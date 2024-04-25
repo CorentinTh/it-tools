@@ -25,7 +25,7 @@ const rules: UseValidationRule<string>[] = [
     input-label="Your JSON"
     input-placeholder="Paste your JSON here..."
     output-label="TS from your JSON"
-    output-language="toml"
+    output-language="ts"
     :input-validation-rules="rules"
     :transformer="transformer"
   />
