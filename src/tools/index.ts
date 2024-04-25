@@ -5,6 +5,7 @@ import { tool as basicAuthGenerator } from './basic-auth-generator';
 import { tool as asciiTextDrawer } from './ascii-text-drawer';
 
 import { tool as textToUnicode } from './text-to-unicode';
+import { tool as softwareLicenceCompatibility } from './software-licence-compatibility';
 import { tool as safelinkDecoder } from './safelink-decoder';
 import { tool as pdfSignatureChecker } from './pdf-signature-checker';
 import { tool as numeronymGenerator } from './numeronym-generator';
@@ -127,6 +128,7 @@ export const toolsByCategory: ToolCategory[] = [
       userAgentParser,
       httpStatusCodes,
       jsonDiff,
+      softwareLicenceCompatibility,
       safelinkDecoder,
     ],
   },
