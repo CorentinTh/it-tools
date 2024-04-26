@@ -38,6 +38,7 @@
     "@it-tools/bip39": "^0.0.4",
     "@it-tools/oggen": "^1.3.0",
     "@sindresorhus/slugify": "^2.2.1",
+    "@tiptap/core": "2.1.12",
     "@tiptap/pm": "2.1.6",
     "@tiptap/starter-kit": "2.1.6",
     "@tiptap/vue-3": "2.0.3",
