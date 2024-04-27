@@ -1,0 +1,5 @@
+import{_ as n}from"./chunk-30e914ce.js";import{l as r}from"./chunk-231c3e11.js";import{w as a}from"./chunk-4d6daddf.js";import{d as p,j as m,k as s}from"./chunk-449c23a2.js";import"./chunk-f1ca2155.js";import"./chunk-a740628f.js";import"./chunk-767079b6.js";import"./chunk-55ba3dae.js";import"../entries/src_pages_Home.page.16dc467b.js";import"./chunk-cf010ec4.js";import"./chunk-ee54c1e8.js";import"./chunk-baa77311.js";import"./chunk-78769b89.js";import"./chunk-6deddc2e.js";import"./chunk-9a43cce8.js";import"./chunk-340feaf0.js";const l=`{
+	"hello": [
+		"world"
+	]
+}`,B=p({__name:"json-minify",setup(u){const t=o=>a(()=>JSON.stringify(r.parse(o),null,0),""),i=[{validator:o=>o===""||r.parse(o),message:"Provided JSON is not valid."}];return(o,f)=>{const e=n;return m(),s(e,{"input-label":"Your raw JSON","input-default":l,"input-placeholder":"Paste your raw JSON here...","output-label":"Minified version of your JSON","output-language":"json","input-validation-rules":i,transformer:t})}}});export{B as default};

@@ -1,0 +1,1 @@
+function d({value:s,fromBase:r,toBase:n}){const t="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/".split(""),i=t.slice(0,r),u=t.slice(0,n);let e=s.split("").reverse().reduce((o,l,a)=>{if(!i.includes(l))throw new Error(`Invalid digit "${l}" for base ${r}.`);return o+=i.indexOf(l)*r**a},0),c="";for(;e>0;)c=u[e%n]+c,e=(e-e%n)/n;return c||"0"}export{d as c};

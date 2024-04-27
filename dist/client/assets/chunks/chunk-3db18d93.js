@@ -1,0 +1,1 @@
+import{j as e,D as o,E as t}from"./chunk-449c23a2.js";const n={viewBox:"0 0 24 24",width:"1.2em",height:"1.2em"},c=t("path",{fill:"currentColor",d:"M19 21H8V7h11m0-2H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2m-3-4H4a2 2 0 0 0-2 2v14h2V3h12V1Z"},null,-1),a=[c];function s(_,h){return e(),o("svg",n,a)}const i={name:"mdi-content-copy",render:s};export{i as _};
