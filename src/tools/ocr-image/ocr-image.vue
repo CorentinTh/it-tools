@@ -4,6 +4,7 @@ import { createWorker } from 'tesseract.js';
 import { getDocument } from 'pdfjs-dist';
 import * as pdfJS from 'pdfjs-dist';
 import pdfJSWorkerURL from 'pdfjs-dist/build/pdf.worker?url';
+import { textStatistics } from '../text-statistics/text-statistics.service';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 import { useQueryParamOrStorage } from '@/composable/queryParams';
 
@@ -115,6 +116,7 @@ const languagesOptions = Array.from(languages.map(l => ({
 
 const language = useQueryParamOrStorage({ name: 'lang', storageName: 'ocr-image:lang', defaultValue: 'eng' });
 
+const pageSeparator = '\n=============\n';
 const ocrInProgress = ref(false);
 const fileInput = ref() as Ref<File>;
 const ocrText = computedAsync(async () => {
@@ -125,6 +127,8 @@ const ocrText = computedAsync(async () => {
     return e.toString();
   }
 });
+const stats = computed(() => textStatistics(ocrText.value?.replace(new RegExp(pageSeparator, 'g'), ' ') || ''));
+const pageCount = computed(() => ocrText.value?.split(new RegExp(pageSeparator, 'g')).length || 0);
 
 async function onUpload(file: File) {
   if (file) {
@@ -180,7 +184,7 @@ async function ocr(file: File, language: string) {
   }
   await worker.terminate();
   ocrInProgress.value = false;
-  return allTexts.join('\n=============\n');
+  return allTexts.join(pageSeparator);
 };
 </script>
 
@@ -215,6 +219,28 @@ async function ocr(file: File, language: string) {
         size="small"
       />
     </div>
+
+    <c-card v-if="!ocrInProgress && stats" title="Statistics">
+      <n-space mt-3>
+        <n-statistic label="Character count" :value="stats.chars" />
+        <n-statistic label="Word count" :value="stats.words" />
+        <n-statistic label="Line count" :value="stats.lines" />
+        <n-statistic label="Pages count" :value="pageCount" />
+        <n-statistic label="Sentences count" :value="stats.sentences" />
+      </n-space>
+
+      <n-divider />
+
+      <n-space>
+        <n-statistic label="Chars (no spaces)" :value="stats.chars_no_spaces" />
+        <n-statistic label="Uppercase chars" :value="stats.chars_upper" />
+        <n-statistic label="Lowercase chars" :value="stats.chars_lower" />
+        <n-statistic label="Digit chars" :value="stats.chars_digits" />
+        <n-statistic label="Punctuations" :value="stats.chars_puncts" />
+        <n-statistic label="Spaces chars" :value="stats.chars_spaces" />
+        <n-statistic label="Word count (no punct)" :value="stats.words_no_puncs" />
+      </n-space>
+    </c-card>
   </div>
 </template>
 
