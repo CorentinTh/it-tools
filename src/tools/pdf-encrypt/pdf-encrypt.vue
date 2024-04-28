@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Base64 } from 'js-base64';
-import createQPDFModule from '@/libs/qpdf/qpdf';
+import createQPDFModule from 'qpdf-wasm-esm-embedded';
 import { useDownloadFileFromBase64Refs } from '@/composable/downloadBase64';
 
 const status = ref<'idle' | 'done' | 'error' | 'processing'>('idle');
@@ -19,6 +19,7 @@ const userPassword = ref('');
 const ownerPassword = ref('');
 
 const base64OutputPDF = ref('');
+const logs = ref<string[]>([]);
 const fileName = ref('');
 const fileExtension = ref('pdf');
 const { download } = useDownloadFileFromBase64Refs(
@@ -42,6 +43,7 @@ async function onProcessClicked() {
   status.value = 'processing';
   try {
     const options = [
+      '--verbose',
       '--encrypt',
     ];
     options.push(`${userPassword.value}`);
@@ -75,7 +77,15 @@ async function onProcessClicked() {
 }
 
 async function callMainWithInOutPdf(data: ArrayBuffer, args: string[], expected_exitcode: number) {
-  const mod = await createQPDFModule();
+  logs.value = [];
+  const mod = await createQPDFModule({
+    print(text: string) {
+      logs.value.push(text);
+    },
+    printErr(text: string) {
+      logs.value.push(text);
+    },
+  });
   mod.FS.writeFile('in.pdf', new Uint8Array(data));
   const ret = mod.callMain(args);
   if (expected_exitcode !== ret) {
@@ -190,5 +200,9 @@ const modificationRestrictionOptions = [
         size="small"
       />
     </div>
+
+    <c-card title="Logs">
+      <pre>{{ logs.join('\n') }}</pre>
+    </c-card>
   </div>
 </template>

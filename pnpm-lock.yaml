@@ -143,6 +143,9 @@ dependencies:
   plausible-tracker:
     specifier: ^0.3.8
     version: 0.3.8
+  qpdf-wasm-esm-embedded:
+    specifier: ^1.1.1
+    version: 1.1.1
   qrcode:
     specifier: ^1.5.1
     version: 1.5.1
@@ -7687,6 +7690,12 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
+  /qpdf-wasm-esm-embedded@1.1.1:
+    resolution: {integrity: sha512-e6Pb8jRw+VflZQvsS+eOfYF9BqjubvTBnxJc44LhI1btg2WYNKE5/lGMmzWZ2gd9YrdWByf8IdNZw6S7+7t27w==}
+    dependencies:
+      '@types/emscripten': 1.39.10
+    dev: false
+
   /qrcode@1.5.1:
     resolution: {integrity: sha512-nS8NJ1Z3md8uTjKtP+SGGhfqmTCs5flU/xR623oI0JX+Wepz9R8UrRVCTBTJm3qGw3rH6jJ6MUHjkDx15cxSSg==}
     engines: {node: '>=10.13.0'}
@@ -9456,6 +9465,7 @@ packages:
 
   /workbox-google-analytics@7.0.0:
     resolution: {integrity: sha512-MEYM1JTn/qiC3DbpvP2BVhyIH+dV/5BjHk756u9VbwuAhu0QHyKscTnisQuz21lfRpOwiS9z4XdqeVAKol0bzg==}
+    deprecated: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
     dependencies:
       workbox-background-sync: 7.0.0
       workbox-core: 7.0.0
