@@ -54,8 +54,8 @@ dependencies:
     specifier: ^2.9.3
     version: 2.9.3
   composerize:
-    specifier: ^1.6.8
-    version: 1.6.8
+    specifier: ^1.6.10
+    version: 1.6.10
   country-code-lookup:
     specifier: ^0.1.0
     version: 0.1.0
@@ -4581,8 +4581,8 @@ packages:
     resolution: {integrity: sha512-8njCHOTtFFLtegk6zQo0kkVX1rngygb/KQI6z1qZxlFI3scluC+LVTCFbrkWjBv4vvLlbQ9t88IPMC6k95VTTg==}
     dev: false
 
-  /composerize@1.6.8:
-    resolution: {integrity: sha512-jHSyO7gzJ0A7fW9+rlns+M/xOYwqCcVib8dT+sQt6uRGY7WbDsyJW+LD5WLGnzXBjFvwjuqg3la7Jh809JtpaA==}
+  /composerize@1.6.10:
+    resolution: {integrity: sha512-5xvrMVynNwZgxpbQsHwZo3gLzhEFyxFD1Kz9KzOh6k7eJ37SHMdUnZLEr4yl18W/FrnTM1a6vPAnNoGmjxTGwQ==}
     hasBin: true
     dependencies:
       composeverter: 1.7.2
@@ -9461,6 +9461,7 @@ packages:
 
   /workbox-google-analytics@7.0.0:
     resolution: {integrity: sha512-MEYM1JTn/qiC3DbpvP2BVhyIH+dV/5BjHk756u9VbwuAhu0QHyKscTnisQuz21lfRpOwiS9z4XdqeVAKol0bzg==}
+    deprecated: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
     dependencies:
       workbox-background-sync: 7.0.0
       workbox-core: 7.0.0
