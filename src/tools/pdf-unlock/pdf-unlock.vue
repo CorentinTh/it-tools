@@ -28,6 +28,7 @@ async function onPDFFileUploaded(uploadedFile: File) {
       [
         '--decrypt',
         '--warning-exit-0',
+        '--verbose',
         'in.pdf',
         'out.pdf',
       ],
