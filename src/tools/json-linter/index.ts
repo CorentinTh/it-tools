@@ -1,12 +1,12 @@
-import { ArrowsShuffle } from '@vicons/tabler';
+import { Braces } from '@vicons/tabler';
 import { defineTool } from '../tool';
 
 export const tool = defineTool({
-  name: 'Json linter',
+  name: 'JSON Linter',
   path: '/json-linter',
-  description: '',
-  keywords: ['json', 'linter'],
+  description: 'Check and lint JSON content',
+  keywords: ['json', 'linter', 'check'],
   component: () => import('./json-linter.vue'),
-  icon: ArrowsShuffle,
-  createdAt: new Date('2024-03-27'),
+  icon: Braces,
+  createdAt: new Date('2024-03-20'),
 });

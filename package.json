@@ -65,6 +65,7 @@
     "iarna-toml-esm": "^3.0.5",
     "ibantools": "^4.3.3",
     "json5": "^2.2.3",
+    "jsonlint-mod": "^1.7.6",
     "jwt-decode": "^3.1.2",
     "libphonenumber-js": "^1.10.28",
     "lodash": "^4.17.21",

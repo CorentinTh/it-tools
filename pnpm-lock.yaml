@@ -95,6 +95,9 @@ dependencies:
   json5:
     specifier: ^2.2.3
     version: 2.2.3
+  jsonlint-mod:
+    specifier: ^1.7.6
+    version: 1.7.6
   jwt-decode:
     specifier: ^3.1.2
     version: 3.1.2
@@ -3351,7 +3354,7 @@ packages:
     dependencies:
       '@unhead/dom': 0.5.1
       '@unhead/schema': 0.5.1
-      '@vueuse/shared': 10.7.2(vue@3.3.4)
+      '@vueuse/shared': 10.9.0(vue@3.3.4)
       unhead: 0.5.1
       vue: 3.3.4
     transitivePeerDependencies:
@@ -3993,10 +3996,10 @@ packages:
       - vue
     dev: false
 
-  /@vueuse/shared@10.7.2(vue@3.3.4):
-    resolution: {integrity: sha512-qFbXoxS44pi2FkgFjPvF4h7c9oMDutpyBdcJdMYIMg9XyXli2meFMuaKn+UMgsClo//Th6+beeCgqweT/79BVA==}
+  /@vueuse/shared@10.9.0(vue@3.3.4):
+    resolution: {integrity: sha512-Uud2IWncmAfJvRaFYzv5OHDli+FbOzxiVEQdLCKQKLyhz94PIyFC3CHcH7EDMwIn8NPtD06+PNbC/PiO0LGLtw==}
     dependencies:
-      vue-demi: 0.14.6(vue@3.3.4)
+      vue-demi: 0.14.7(vue@3.3.4)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -4004,6 +4007,10 @@ packages:
 
   /@zhead/schema@1.0.0-beta.13:
     resolution: {integrity: sha512-P1A1vRGFBhITco8Iw4/hvnDYoE/SoVrd71dW1pBFdXJb3vP+pBtoOuhbEKy0ROJGOyzQuqvFibcwzyLlWMqNiQ==}
+    dev: false
+
+  /JSV@4.0.2:
+    resolution: {integrity: sha512-ZJ6wx9xaKJ3yFUhq5/sk82PJMuUyLk277I8mQeyDgCTjGdjWJIvPfaU5LIXaMuaN2UO1X3kZH4+lgphublZUHw==}
     dev: false
 
   /abab@2.0.6:
@@ -6606,6 +6613,16 @@ packages:
       graceful-fs: 4.2.11
     dev: true
 
+  /jsonlint-mod@1.7.6:
+    resolution: {integrity: sha512-oGuk6E1ehmIpw0w9ttgb2KsDQQgGXBzZczREW8OfxEm9eCQYL9/LCexSnh++0z3AiYGcXpBgqDSx9AAgzl/Bvg==}
+    engines: {node: '>= 0.6'}
+    hasBin: true
+    dependencies:
+      JSV: 4.0.2
+      chalk: 2.4.2
+      underscore: 1.13.6
+    dev: false
+
   /jsonpointer@5.0.1:
     resolution: {integrity: sha512-p/nXbhSEcu3pZRdkW1OfJhpsVtW1gd4Wa1fnQc9YLiTfAjn0312eMKimbdIQzuZl9aa9xUGaRlP9T/CJE/ditQ==}
     engines: {node: '>=0.10.0'}
@@ -8632,6 +8649,10 @@ packages:
       mlly: 1.4.2
     dev: true
 
+  /underscore@1.13.6:
+    resolution: {integrity: sha512-+A5Sja4HP1M08MaXya7p5LvjuM7K6q/2EaC0+iovj/wOcMsTzMvDFbasi/oSapiwOlt252IqsKqPjCl7huKS0A==}
+    dev: false
+
   /undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
     dev: true
@@ -9151,8 +9172,8 @@ packages:
       vue: 3.3.4
     dev: false
 
-  /vue-demi@0.14.6(vue@3.3.4):
-    resolution: {integrity: sha512-8QA7wrYSHKaYgUxDA5ZC24w+eHm3sYCbp0EzcDwKqN3p6HqtTCGR/GVsPyZW92unff4UlcSh++lmqDWN3ZIq4w==}
+  /vue-demi@0.14.7(vue@3.3.4):
+    resolution: {integrity: sha512-EOG8KXDQNwkJILkx/gPcoL/7vH+hORoBaKgGe+6W7VFMvCYJfmF2dGbvgDroVnI8LU7/kTu8mbjRZGBU1z9NTA==}
     engines: {node: '>=12'}
     hasBin: true
     requiresBuild: true
@@ -9442,6 +9463,7 @@ packages:
 
   /workbox-google-analytics@7.0.0:
     resolution: {integrity: sha512-MEYM1JTn/qiC3DbpvP2BVhyIH+dV/5BjHk756u9VbwuAhu0QHyKscTnisQuz21lfRpOwiS9z4XdqeVAKol0bzg==}
+    deprecated: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
     dependencies:
       workbox-background-sync: 7.0.0
       workbox-core: 7.0.0
