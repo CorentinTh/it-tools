@@ -1,10 +1,11 @@
 import { Devices } from '@vicons/tabler';
 import { defineTool } from '../tool';
+import { translate } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: 'MAC address generator',
+  name: translate('tools.mac-address-generator.title'),
   path: '/mac-address-generator',
-  description: 'Enter the quantity and prefix. MAC addresses will be generated in your chosen case (uppercase or lowercase)',
+  description: translate('tools.mac-address-generator.description'),
   keywords: ['mac', 'address', 'generator', 'random', 'prefix'],
   component: () => import('./mac-address-generator.vue'),
   icon: Devices,
