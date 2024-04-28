@@ -8,17 +8,15 @@ const jsonContent = ref(
   }`,
 );
 
-const conversionResult = computed(() => {
+const conversionError = computed(() => {
   try {
     linter.parse(jsonContent.value);
-    return JSON.stringify(JSON.parse(jsonContent.value), null, 2);
+    return null;
   }
   catch (e: any) {
-    return e.toString().split('\n').map((err: string) => ({ line: -1, message: err, helpLink: '' }));
+    return e.toString();
   }
 });
-
-const errors = computed(() => conversionResult.value);
 
 const MONACO_EDITOR_OPTIONS = {
   automaticLayout: true,
@@ -41,15 +39,11 @@ const MONACO_EDITOR_OPTIONS = {
       </div>
     </c-label>
 
-    <div v-if="errors.length > 0">
+    <div v-if="conversionError">
       <n-alert title="The following errors occured" type="error" mt-5>
-        <ul>
-          <li v-for="(message, index) of errors" :key="index">
-            {{ message.message }} (<n-a v-if="message.helpLink" target="_blank" rel="noreferer noopener">
-              See JSON help
-            </n-a>)
-          </li>
-        </ul>
+        <pre>
+        {{ conversionError }}
+        </pre>
       </n-alert>
     </div>
     <div v-else>
