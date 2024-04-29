@@ -380,3 +380,7 @@ tools:
   text-to-binary:
     title: Chuyển đổi văn bản thành nhị phân ASCII
     description: Chuyển đổi văn bản thành biểu diễn nhị phân ASCII của nó và ngược lại.
+
+  outlook_safelink_decoder:
+    title: Giải mã liên kết an toàn Outlook
+    description: Giải mã các liên kết an toàn trong Outlook để lấy lại URL gốc.
