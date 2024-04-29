@@ -2,6 +2,7 @@
 import { Copy } from '@vicons/tabler';
 import { useElementSize } from '@vueuse/core';
 import hljs from 'highlight.js/lib/core';
+import javascriptHljs from 'highlight.js/lib/languages/javascript';
 import jsonHljs from 'highlight.js/lib/languages/json';
 import sqlHljs from 'highlight.js/lib/languages/sql';
 import xmlHljs from 'highlight.js/lib/languages/xml';
@@ -24,6 +25,7 @@ const props = withDefaults(
     copyMessage: 'Copy to clipboard',
   },
 );
+hljs.registerLanguage('javascript', javascriptHljs);
 hljs.registerLanguage('sql', sqlHljs);
 hljs.registerLanguage('json', jsonHljs);
 hljs.registerLanguage('html', xmlHljs);
