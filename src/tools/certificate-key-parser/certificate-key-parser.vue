@@ -15,6 +15,7 @@ import type {
   PrivateKey, Signature, SignatureFormatType,
 } from 'sshpk';
 import { Base64 } from 'js-base64';
+import * as openpgp from 'openpgp';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 
 function buf2Hex(buffer: ArrayBuffer) { // buffer is an ArrayBuffer
@@ -59,7 +60,7 @@ interface LabelValue {
   value: string
   multiline?: boolean
 }
-const parsedSections = computed<LabelValue[]>(() => {
+const parsedSections = computedAsync<LabelValue[]>(async () => {
   try {
     certificateX509DER.value = '';
     const onErrorReturnErrorMessage = (func: () => any) => {
@@ -73,6 +74,14 @@ const parsedSections = computed<LabelValue[]>(() => {
     const canParse = (value: string | Buffer, parseFunction: (value: string | Buffer) => any) => {
       try {
         return parseFunction(value);
+      }
+      catch {
+        return null;
+      }
+    };
+    const canParseAsync = async (value: string | Buffer, parseFunction: (value: string | Buffer) => Promise<any>) => {
+      try {
+        return await parseFunction(value);
       }
       catch {
         return null;
@@ -259,6 +268,74 @@ const parsedSections = computed<LabelValue[]>(() => {
         {
           label: 'Fingerprint (base64): ',
           value: fingerprint.toString('base64'),
+        },
+      ] as LabelValue[];
+    }
+
+    const pgpPrivateKey = await canParseAsync(inputKeyOrCertificateValue, value => openpgp.readPrivateKey({ armoredKey: value.toString() })) as openpgp.Key;
+    if (pgpPrivateKey) {
+      return [
+        {
+          label: 'Type: ',
+          value: 'PGP Private Key',
+        },
+        {
+          label: ': ',
+          value: pgpPrivateKey.getCreationTime().toString(),
+        },
+        {
+          label: ': ',
+          value: (await pgpPrivateKey.getExpirationTime())?.toString() || '',
+        },
+        {
+          label: 'Algorithm Info: ',
+          value: JSON.stringify(pgpPrivateKey.getAlgorithmInfo()),
+        },
+        {
+          label: 'Fingerprint: ',
+          value: pgpPrivateKey.getFingerprint(),
+        },
+        {
+          label: 'User ID(s): ',
+          value: pgpPrivateKey.getUserIDs().join(', '),
+        },
+        {
+          label: 'Key ID(s): ',
+          value: pgpPrivateKey.getKeyIDs().map(k => k.toString()).join(' ; '),
+        },
+      ] as LabelValue[];
+    }
+
+    const pgpPublicKey = await canParseAsync(inputKeyOrCertificateValue, value => openpgp.readKey({ armoredKey: value.toString() })) as openpgp.Key;
+    if (pgpPublicKey) {
+      return [
+        {
+          label: 'Type: ',
+          value: 'PGP Public Key',
+        },
+        {
+          label: ': ',
+          value: pgpPublicKey.getCreationTime().toString(),
+        },
+        {
+          label: ': ',
+          value: (await pgpPublicKey.getExpirationTime())?.toString() || '',
+        },
+        {
+          label: 'Algorithm Info: ',
+          value: JSON.stringify(pgpPublicKey.getAlgorithmInfo()),
+        },
+        {
+          label: 'Fingerprint: ',
+          value: pgpPublicKey.getFingerprint(),
+        },
+        {
+          label: 'User ID(s): ',
+          value: pgpPublicKey.getUserIDs().join(', '),
+        },
+        {
+          label: 'Key ID(s): ',
+          value: pgpPublicKey.getKeyIDs().map(k => k.toString()).join(' ; '),
         },
       ] as LabelValue[];
     }
