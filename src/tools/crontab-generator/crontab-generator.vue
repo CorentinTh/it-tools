@@ -1,11 +1,6 @@
 <script setup lang="ts">
 import cronstrue from 'cronstrue';
-import { isValidCron } from 'cron-validator';
 import { useStyleStore } from '@/stores/style.store';
-
-function isCronValid(v: string) {
-  return isValidCron(v, { allowBlankDay: true, alias: true, seconds: true });
-}
 
 const styleStore = useStyleStore();
 
@@ -16,6 +11,16 @@ const cronstrueConfig = reactive({
   use24HourTimeFormat: true,
   throwExceptionOnParseError: true,
 });
+
+function isCronValid(v: string) {
+  try {
+    cronstrue.toString(v, cronstrueConfig);
+    return true;
+  }
+  catch (_) {
+    return false;
+  }
+}
 
 const helpers = [
   {
