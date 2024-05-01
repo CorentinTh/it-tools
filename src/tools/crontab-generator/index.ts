@@ -20,6 +20,7 @@ export const tool = defineTool({
     'day',
     'minute',
     'second',
+    'aws',
   ],
   component: () => import('./crontab-generator.vue'),
   icon: Alarm,
