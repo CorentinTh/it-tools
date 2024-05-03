@@ -95,7 +95,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "0.41.0",
-    "@iconify-json/mdi": "1.1.50",
+    "@iconify-json/mdi": "1.1.66",
     "@intlify/unplugin-vue-i18n": "2.0.0",
     "@playwright/test": "1.32.3",
     "@rushstack/eslint-patch": "1.2.0",
