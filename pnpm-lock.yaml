@@ -73,7 +73,7 @@ dependencies:
     version: 3.0.6
   emojilib:
     specifier: ^3.0.10
-    version: 3.0.10
+    version: 3.0.12
   figlet:
     specifier: ^1.7.0
     version: 1.7.0
@@ -5084,8 +5084,8 @@ packages:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
     dev: false
 
-  /emojilib@3.0.10:
-    resolution: {integrity: sha512-VQtCRroFykPTJaoEBEGFg5tI+rEluabjuaVDDbSftDtiRJ5GuqRG/LGV1mmDzkJP4bh5rzuEBOafMN68/YXQcQ==}
+  /emojilib@3.0.12:
+    resolution: {integrity: sha512-b52zmWqBwv9juk6lKaTdYxRQSnpsnT58Sj/x6fE8fZWcsNd43gAPXUbtjLKJvVlPS9FFNCN6nB9Vh1xipnCzXw==}
     dev: false
 
   /encode-utf8@1.0.3:
