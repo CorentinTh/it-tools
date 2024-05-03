@@ -194,8 +194,8 @@ devDependencies:
     specifier: 1.2.0
     version: 1.2.0
   '@tsconfig/node18':
-    specifier: 18.2.0
-    version: 18.2.0
+    specifier: 18.2.4
+    version: 18.2.4
   '@types/bcryptjs':
     specifier: 2.4.2
     version: 2.4.2
@@ -2578,8 +2578,8 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: true
 
-  /@tsconfig/node18@18.2.0:
-    resolution: {integrity: sha512-yhxwIlFVSVcMym3O31HoMnRXpoenmpIxcj4Yoes2DUpe+xCJnA7ECQP1Vw889V0jTt/2nzvpLQ/UuMYCd3JPIg==}
+  /@tsconfig/node18@18.2.4:
+    resolution: {integrity: sha512-5xxU8vVs9/FNcvm3gE07fPbn9tl6tqGGWA9tSlwsUEkBxtRnTsNmwrV8gasZ9F/EobaSv9+nu8AxUKccw77JpQ==}
     dev: true
 
   /@types/bcryptjs@2.4.2:

@@ -99,7 +99,7 @@
     "@intlify/unplugin-vue-i18n": "2.0.0",
     "@playwright/test": "1.32.3",
     "@rushstack/eslint-patch": "1.2.0",
-    "@tsconfig/node18": "18.2.0",
+    "@tsconfig/node18": "18.2.4",
     "@types/bcryptjs": "2.4.2",
     "@types/crypto-js": "4.1.1",
     "@types/dompurify": "3.0.5",
