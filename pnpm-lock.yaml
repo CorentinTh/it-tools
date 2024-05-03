@@ -197,8 +197,8 @@ devDependencies:
     specifier: 18.2.4
     version: 18.2.4
   '@types/bcryptjs':
-    specifier: 2.4.2
-    version: 2.4.2
+    specifier: 2.4.6
+    version: 2.4.6
   '@types/crypto-js':
     specifier: 4.1.1
     version: 4.1.1
@@ -2582,8 +2582,8 @@ packages:
     resolution: {integrity: sha512-5xxU8vVs9/FNcvm3gE07fPbn9tl6tqGGWA9tSlwsUEkBxtRnTsNmwrV8gasZ9F/EobaSv9+nu8AxUKccw77JpQ==}
     dev: true
 
-  /@types/bcryptjs@2.4.2:
-    resolution: {integrity: sha512-LiMQ6EOPob/4yUL66SZzu6Yh77cbzJFYll+ZfaPiPPFswtIlA/Fs1MzdKYA7JApHU49zQTbJGX3PDmCpIdDBRQ==}
+  /@types/bcryptjs@2.4.6:
+    resolution: {integrity: sha512-9xlo6R2qDs5uixm0bcIqCeMCE6HiQsIyel9KQySStiyqNl2tnj2mP3DX1Nf56MD6KMenNNlBBsy3LJ7gUEQPXQ==}
     dev: true
 
   /@types/chai-subset@1.3.3:
