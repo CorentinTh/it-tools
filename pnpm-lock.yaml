@@ -182,8 +182,8 @@ devDependencies:
     specifier: 0.41.0
     version: 0.41.0(eslint@8.47.0)(typescript@5.2.2)
   '@iconify-json/mdi':
-    specifier: 1.1.50
-    version: 1.1.50
+    specifier: 1.1.66
+    version: 1.1.66
   '@intlify/unplugin-vue-i18n':
     specifier: 2.0.0
     version: 2.0.0(rollup@2.79.1)(vue-i18n@9.9.1)
@@ -1900,8 +1900,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@iconify-json/mdi@1.1.50:
-    resolution: {integrity: sha512-SgbT5w5eHCdOG74ZWPz7HlTGk6VsifIJhNi6lAsxj/5Nlqt6Cz4LlQmSa9eecU9p075Jub2aAx/o7YI+GCahRQ==}
+  /@iconify-json/mdi@1.1.66:
+    resolution: {integrity: sha512-7KPF2RVUUWav/hXCM8Ti/smqu3cmgePJpiX9CSkldiL+80+eBRBeKlc4vPOc9jhAItlqIU1vKsbKoPP0JIfgbg==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true
