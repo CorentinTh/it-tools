@@ -130,7 +130,7 @@ dependencies:
     version: 1.0.10
   pdf-signature-reader:
     specifier: ^1.4.2
-    version: 1.4.2
+    version: 1.4.3
   pinia:
     specifier: ^2.0.34
     version: 2.0.34(typescript@5.2.2)(vue@3.3.4)
@@ -3282,7 +3282,7 @@ packages:
       debug: 4.3.4
       globby: 11.1.0
       is-glob: 4.0.3
-      semver: 7.5.4
+      semver: 7.6.0
       ts-api-utils: 1.0.1(typescript@5.2.2)
       typescript: 5.2.2
     transitivePeerDependencies:
@@ -7494,8 +7494,8 @@ packages:
       through: 2.3.8
     dev: true
 
-  /pdf-signature-reader@1.4.2:
-    resolution: {integrity: sha512-qQbmFv6nv4SQt2gmaalaREhHu3x2XyLG2+zL4Gl4D2TL2Zfii1EKxlFhJDsduP8s06t26snDoSwEAQtJOtprmQ==}
+  /pdf-signature-reader@1.4.3:
+    resolution: {integrity: sha512-hBIeID5dxNKOpMdfVhrpczkNC56gTzWBOzAv7PXxxvxVDsqOOeP86M/Jiy96cA2FogXEIzJrXccKGhirJZ+6Gg==}
     dependencies:
       base64-js: 1.5.1
       ieee754: 1.2.1
