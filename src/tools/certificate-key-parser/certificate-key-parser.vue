@@ -16,6 +16,7 @@ import type {
 } from 'sshpk';
 import { Base64 } from 'js-base64';
 import * as openpgp from 'openpgp';
+import * as forge from 'node-forge';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 
 function buf2Hex(buffer: ArrayBuffer) { // buffer is an ArrayBuffer
@@ -254,6 +255,67 @@ const parsedSections = computedAsync<LabelValue[]>(async () => {
       ] as LabelValue[];
     }
 
+    const csr = canParse(inputKeyOrCertificateValue, (value) => {
+      return forge.pki.certificationRequestFromPem(value.toString(), true, false);
+    }) as forge.pki.Certificate;
+    if (csr) {
+      return [
+        {
+          label: 'Type: ',
+          value: 'Certificate Signing Request',
+        },
+        {
+          label: 'Subject: ',
+          value: csr.subject.attributes.map(a => JSON.stringify(a, null, 2)).join('\n'),
+          multiline: true,
+        },
+        {
+          label: 'Issuer: ',
+          value: csr.issuer?.toString(),
+          multiline: true,
+        },
+        {
+          label: 'Validity: ',
+          value: JSON.stringify(csr.validity, null, 2),
+        },
+        {
+          label: 'Signature: ',
+          value: csr.signature,
+        },
+        {
+          label: 'Signature Oid: ',
+          value: csr.signatureOid?.toString(),
+        },
+        {
+          label: 'Signature parameters: ',
+          value: JSON.stringify(csr.signatureParameters, null, 2),
+        },
+        {
+          label: 'Signing info: ',
+          value: JSON.stringify(csr.siginfo, null, 2),
+        },
+        {
+          label: 'Serial: ',
+          value: csr.serialNumber?.toString(),
+        },
+        {
+          label: 'Extensions: ',
+          value: JSON.stringify(csr.extensions, null, 2),
+          multiline: true,
+        },
+        {
+          label: 'Public Key: ',
+          value: onErrorReturnErrorMessage(() => forge.pki.publicKeyToPem(csr.publicKey)),
+          multiline: true,
+        },
+        {
+          label: 'Public Key Fingerprint:',
+          value: onErrorReturnErrorMessage(() => forge.pki.getPublicKeyFingerprint(csr.publicKey)?.toHex()),
+          multiline: true,
+        },
+      ] as LabelValue[];
+    }
+
     const fingerprint = canParse(inputKeyOrCertificateValue, value => parseFingerprint(value.toString())) as Fingerprint;
     if (fingerprint) {
       return [
@@ -280,11 +342,11 @@ const parsedSections = computedAsync<LabelValue[]>(async () => {
           value: 'PGP Private Key',
         },
         {
-          label: ': ',
+          label: 'Creation Time: ',
           value: pgpPrivateKey.getCreationTime().toString(),
         },
         {
-          label: ': ',
+          label: 'Expiration Time: ',
           value: (await pgpPrivateKey.getExpirationTime())?.toString() || '',
         },
         {
@@ -301,7 +363,7 @@ const parsedSections = computedAsync<LabelValue[]>(async () => {
         },
         {
           label: 'Key ID(s): ',
-          value: pgpPrivateKey.getKeyIDs().map(k => k.toString()).join(' ; '),
+          value: pgpPrivateKey.getKeyIDs().map(k => k.toHex()).join(' ; '),
         },
       ] as LabelValue[];
     }
@@ -314,11 +376,11 @@ const parsedSections = computedAsync<LabelValue[]>(async () => {
           value: 'PGP Public Key',
         },
         {
-          label: ': ',
+          label: 'Creation Time: ',
           value: pgpPublicKey.getCreationTime().toString(),
         },
         {
-          label: ': ',
+          label: 'Expiration Time: ',
           value: (await pgpPublicKey.getExpirationTime())?.toString() || '',
         },
         {
@@ -335,7 +397,7 @@ const parsedSections = computedAsync<LabelValue[]>(async () => {
         },
         {
           label: 'Key ID(s): ',
-          value: pgpPublicKey.getKeyIDs().map(k => k.toString()).join(' ; '),
+          value: pgpPublicKey.getKeyIDs().map(k => k.toHex()).join(' ; '),
         },
       ] as LabelValue[];
     }
