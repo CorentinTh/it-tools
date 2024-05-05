@@ -2,7 +2,7 @@
 import { useThemeVars } from 'naive-ui';
 
 import InputCopyable from '../../components/InputCopyable.vue';
-import { computeChmodOctalRepresentation, computeChmodSymbolicRepresentation, computePermissionsFromChmodOctalRepresentation } from './chmod-calculator.service';
+import { computeChmodOctalRepresentation, computeChmodSymbolicRepresentation, computePermissionsFromChmodOctalRepresentation, computePermissionsFromChmodSymbolicRepresentation } from './chmod-calculator.service';
 
 import type { Group, Scope } from './chmod-calculator.types';
 import { useValidation } from '@/composable/validation';
@@ -23,9 +23,9 @@ const permissions = ref({
   flags: { setuid: false, setgid: false, stickybit: false },
 });
 
-const permissionsInput = ref('000');
-const permissionsInputValidation = useValidation({
-  source: permissionsInput,
+const octalPermissionsInput = ref('000');
+const octalPermissionsInputValidation = useValidation({
+  source: octalPermissionsInput,
   rules: [
     {
       message: 'Invalid octal permission string',
@@ -42,12 +42,40 @@ const permissionsInputValidation = useValidation({
   ],
 });
 watch(
-  permissionsInput,
+  octalPermissionsInput,
   (newPermissions) => {
-    if (!permissionsInputValidation.isValid) {
+    if (!octalPermissionsInputValidation.isValid) {
       return;
     }
     permissions.value = computePermissionsFromChmodOctalRepresentation(newPermissions.trim());
+  },
+);
+
+const symbolicPermissionsInput = ref('---------');
+const symbolicPermissionsInputValidation = useValidation({
+  source: symbolicPermissionsInput,
+  rules: [
+    {
+      message: 'Invalid symbolic permission string',
+      validator: (value) => {
+        try {
+          computePermissionsFromChmodSymbolicRepresentation(value.trim());
+          return true;
+        }
+        catch {
+          return false;
+        }
+      },
+    },
+  ],
+});
+watch(
+  symbolicPermissionsInput,
+  (newPermissions) => {
+    if (!symbolicPermissionsInputValidation.isValid) {
+      return;
+    }
+    permissions.value = computePermissionsFromChmodSymbolicRepresentation(newPermissions.trim());
   },
 );
 
@@ -58,13 +86,25 @@ const symbolic = computed(() => computeChmodSymbolicRepresentation({ permissions
 <template>
   <div>
     <c-input-text
-      v-model:value="permissionsInput"
+      v-model:value="octalPermissionsInput"
       placeholder="Put your octal permissions here..."
       label="Copy your octal permissions"
-      :validation="permissionsInputValidation"
+      :validation="octalPermissionsInputValidation"
       mb-2
     />
+
     <n-divider />
+
+    <c-input-text
+      v-model:value="symbolicPermissionsInput"
+      placeholder="Put your symbolic permissions here..."
+      label="Copy your symbolic permissions"
+      :validation="symbolicPermissionsInputValidation"
+      mb-2
+    />
+
+    <n-divider />
+
     <n-table :bordered="false" :bottom-bordered="false" single-column class="permission-table">
       <thead>
         <tr>
