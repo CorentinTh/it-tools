@@ -290,8 +290,8 @@ devDependencies:
     specifier: 4.5.3
     version: 4.5.3(@types/node@18.19.32)(less@4.1.3)
   vite-plugin-pwa:
-    specifier: 0.16.0
-    version: 0.16.0(vite@4.5.3)(workbox-build@7.1.0)(workbox-window@7.0.0)
+    specifier: 0.20.0
+    version: 0.20.0(vite@4.5.3)(workbox-build@7.1.0)(workbox-window@7.0.0)
   vite-plugin-vue-markdown:
     specifier: 0.23.8
     version: 0.23.8(rollup@2.79.1)(vite@4.5.3)
@@ -5579,6 +5579,17 @@ packages:
       merge2: 1.4.1
       micromatch: 4.0.5
 
+  /fast-glob@3.3.2:
+    resolution: {integrity: sha512-oX2ruAFQwf/Orj8m737Y5adxDQO0LAB7/S5MnxCdTNDd4p6BsyIVsv9JQsATbTSq8KHRpLwIHbVlUNatxd+1Ow==}
+    engines: {node: '>=8.6.0'}
+    dependencies:
+      '@nodelib/fs.stat': 2.0.5
+      '@nodelib/fs.walk': 1.2.8
+      glob-parent: 5.1.2
+      merge2: 1.4.1
+      micromatch: 4.0.5
+    dev: true
+
   /fast-json-stable-stringify@2.1.0:
     resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
     dev: true
@@ -7568,8 +7579,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /pretty-bytes@6.1.0:
-    resolution: {integrity: sha512-Rk753HI8f4uivXi4ZCIYdhmG1V+WKzvRMg/X+M42a6t7D07RcmopXJMDNk6N++7Bl75URRGsb40ruvg7Hcp2wQ==}
+  /pretty-bytes@6.1.1:
+    resolution: {integrity: sha512-mQUvGU6aUFQ+rNvTIAcZuWGRT9a6f6Yrg9bHs4ImKF+HZCEK+plBvnAZYSIQztknZF2qnzNtr6F8s0+IuptdlQ==}
     engines: {node: ^14.13.1 || >=16.0.0}
     dev: true
 
@@ -9083,17 +9094,21 @@ packages:
       - terser
     dev: true
 
-  /vite-plugin-pwa@0.16.0(vite@4.5.3)(workbox-build@7.1.0)(workbox-window@7.0.0):
-    resolution: {integrity: sha512-E+AQRzHxqNU4ZhEeR8X37/foZB+ezJEhXauE/mcf1UITY6k2Pa1dtlFl+BQu57fTdiVlWim5S0Qy44Yap93Dkg==}
+  /vite-plugin-pwa@0.20.0(vite@4.5.3)(workbox-build@7.1.0)(workbox-window@7.0.0):
+    resolution: {integrity: sha512-/kDZyqF8KqoXRpMUQtR5Atri/7BWayW8Gp7Kz/4bfstsV6zSFTxjREbXZYL7zSuRL40HGA+o2hvUAFRmC+bL7g==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
-      vite: ^3.1.0 || ^4.0.0
-      workbox-build: ^7.0.0
-      workbox-window: ^7.0.0
+      '@vite-pwa/assets-generator': ^0.2.4
+      vite: ^3.1.0 || ^4.0.0 || ^5.0.0
+      workbox-build: ^7.1.0
+      workbox-window: ^7.1.0
+    peerDependenciesMeta:
+      '@vite-pwa/assets-generator':
+        optional: true
     dependencies:
       debug: 4.3.4
-      fast-glob: 3.3.1
-      pretty-bytes: 6.1.0
+      fast-glob: 3.3.2
+      pretty-bytes: 6.1.1
       vite: 4.5.3(@types/node@18.19.32)(less@4.1.3)
       workbox-build: 7.1.0
       workbox-window: 7.0.0
