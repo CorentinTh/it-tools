@@ -236,8 +236,8 @@ devDependencies:
     specifier: 0.57.1
     version: 0.57.1(eslint@8.47.0)(typescript@5.2.2)
   '@vitejs/plugin-vue':
-    specifier: 4.3.2
-    version: 4.3.2(vite@4.4.9)(vue@3.3.4)
+    specifier: 4.6.2
+    version: 4.6.2(vite@4.4.9)(vue@3.3.4)
   '@vitejs/plugin-vue-jsx':
     specifier: 3.0.2
     version: 3.0.2(vite@4.4.9)(vue@3.3.4)
@@ -3705,11 +3705,11 @@ packages:
       - supports-color
     dev: true
 
-  /@vitejs/plugin-vue@4.3.2(vite@4.4.9)(vue@3.3.4):
-    resolution: {integrity: sha512-iDDhGruwhKkwNwT5qgtGaeTxF4ULs52xpQbsC27F01kf3aQBHtrDP738pmHw4oclVAUA3m+Vk8gxhDV5KbfM+A==}
+  /@vitejs/plugin-vue@4.6.2(vite@4.4.9)(vue@3.3.4):
+    resolution: {integrity: sha512-kqf7SGFoG+80aZG6Pf+gsZIVvGSCKE98JbiWqcCV9cThtg91Jav0yvYFC9Zb+jKetNGF6ZKeoaxgZfND21fWKw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
-      vite: ^4.0.0
+      vite: ^4.0.0 || ^5.0.0
       vue: ^3.2.25
     dependencies:
       vite: 4.4.9(@types/node@18.19.32)(less@4.1.3)
