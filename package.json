@@ -119,7 +119,7 @@
     "@vue/runtime-dom": "3.3.4",
     "@vue/test-utils": "2.4.6",
     "@vue/tsconfig": "0.4.0",
-    "consola": "3.0.2",
+    "consola": "3.2.3",
     "eslint": "8.57.0",
     "hygen": "6.2.11",
     "jsdom": "22.1.0",
