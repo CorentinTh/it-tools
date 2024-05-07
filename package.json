@@ -98,7 +98,7 @@
     "@iconify-json/mdi": "1.1.66",
     "@intlify/unplugin-vue-i18n": "2.0.0",
     "@playwright/test": "1.44.0",
-    "@rushstack/eslint-patch": "1.2.0",
+    "@rushstack/eslint-patch": "1.10.2",
     "@tsconfig/node18": "18.2.4",
     "@types/bcryptjs": "2.4.6",
     "@types/crypto-js": "4.1.1",
