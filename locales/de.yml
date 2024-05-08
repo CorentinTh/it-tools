@@ -121,3 +121,110 @@ tools:
     description: >-
       Berechne einfach Prozentsätze von einem Wert zu einem anderen Wert oder
       von einem Prozentsatz zu einem Wert.
+  svg-placeholder-generator:
+    title: SVG-Platzhalter-Generator
+    description: >-
+      Generiere SVG-Bilder, die als Platzhalter in deinen Anwendungen verwendet
+      werden können.
+  json-to-csv:
+    title: JSON zu CSV
+    description: Konvertiere JSON mit automatischer Headererkennung in CSV.
+  camera-recorder:
+    title: Kamera-Rekorder
+    description: Mache ein Foto oder nimm ein Video von deiner Webcam oder Kamera auf.
+  keycode-info:
+    title: Keycode-Info
+    description: >-
+      Finde den JavaScript-Keycode, den Code, den Standort und die Modifikatoren
+      einer beliebigen gedrückten Taste.
+  emoji-picker:
+    title: Emoji-Picker
+    description: >-
+      Einfaches Kopieren und Einfügen von Emojis. Erhalte außerdem den Unicode-
+      und Codepunkt-Wert jedes Emojis.
+  color-converter:
+    title: Farbkonverter
+    description: >-
+      Konvertiere Farben zwischen den verschiedenen Formaten (Hex, RGB, HSL und
+      CSS-Name).
+  bcrypt:
+    title: Bcrypt
+    description: >-
+      Hashen und Vergleichen von Strings mit bcrypt. Bcrypt ist eine auf der
+      Blowfish-Chiffre basierende Hash-Funktion.
+  crontab-generator:
+    title: Crontab-Generator
+    description: >-
+      Überprüfe und generiere Crontab und erhalte die menschenlesbare
+      Beschreibung des Cron-Zeitplans.
+  http-status-codes:
+    title: HTTP-Statuscodes
+    description: Liste aller HTTP-Statuscodes, ihrer Namen und ihrer Bedeutung.
+  sql-prettify:
+    title: SQL verschönern und formatieren
+    description: >-
+      Formatiere und verschönere deine SQL-Abfragen online (unterstützt
+      verschiedene SQL-Dialekte).
+  benchmark-builder:
+    title: Benchmark-Builder
+    description: >-
+      Vergleiche ganz einfach die Ausführungszeit von Aufgaben mit diesem sehr
+      einfachen Online-Benchmark-Builder.
+  git-memo:
+    title: Git-Spickzettel
+    description: >-
+      Git ist eine dezentrale Versionsverwaltungssoftware. Mit diesem
+      Spickzettel hast du schnellen Zugriff auf die gängigsten Git-Befehle.
+  slugify-string:
+    title: Slugify String
+    description: Mache einen String URL-, Dateinamen- und ID-sicher.
+  encryption:
+    title: Text verschlüsseln / entschlüsseln
+    description: >-
+      Verschlüssele und entschlüssele Klartext mithilfe von Kryptoalgorithmen
+      wie AES, TripleDES, Rabbit oder RC4.
+  random-port-generator:
+    title: Zufälliger Port-Generator
+    description: >-
+      Generiere zufällige Portnummern außerhalb des Bereichs der "bekannten"
+      Ports (0-1023).
+  yaml-prettify:
+    title: YAML verschönern und formatieren
+    description: Verschönere deinen YAML-String in ein menschenlesbares Format.
+  eta-calculator:
+    title: ETA-Rechner
+    description: >-
+      Ein ETA (Estimated Time of Arrival)-Rechner, um die ungefähre Endzeit
+      einer Aufgabe zu erfahren, z. B. den Zeitpunkt des Endes eines Downloads.
+  roman-numeral-converter:
+    title: Römische Zahlen Konverter
+    description: >-
+      Konvertiere römische Zahlen in Dezimalzahlen und Dezimalzahlen in römische
+      Zahlen.
+  hmac-generator:
+    title: HMAC-Generator
+    description: >-
+      Berechnet einen hashbasierten Nachrichtenauthentifizierungscode (HMAC)
+      unter Verwendung eines geheimen Schlüssels und deiner bevorzugten
+      Hash-Funktion.
+  bip39-generator:
+    title: BIP39-Passphrasengenerator
+    description: >-
+      Generiere BIP39-Passphrasen aus vorhandener oder zufälliger Mnemonik oder
+      erhalte die Mnemonik aus der Passphrase.
+  base64-file-converter:
+    title: Base64-Dateikonverter
+    description: Konvertiere Strings, Dateien oder Bilder in ihre Base64-Repräsentation.
+  list-converter:
+    title: Listenkonverter
+    description: >-
+      Dieses Tool kann spaltenbasierte Daten verarbeiten und verschiedene
+      Änderungen (transponieren, Präfix und Suffix hinzufügen, Liste umkehren,
+      Liste sortieren, Werte in Kleinbuchstaben umwandeln, Werte abschneiden)
+      auf jede Zeile anwenden.
+  base64-string-converter:
+    title: Base64-String-Encoder/Decoder
+    description: Codiere und decodiere Strings einfach in ihre Base64-Repräsentation.
+  toml-to-yaml:
+    title: TOML zu YAML
+    description: Parse und konvertiere TOML zu YAML.
