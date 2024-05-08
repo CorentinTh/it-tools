@@ -228,3 +228,115 @@ tools:
   toml-to-yaml:
     title: TOML zu YAML
     description: Parse und konvertiere TOML zu YAML.
+  math-evaluator:
+    title: Mathematischer Auswerter
+    description: >-
+      Ein Taschenrechner zum Auswerten mathematischer Ausdrücke. Du kannst
+      Funktionen wie sqrt, cos, sin, abs usw. verwenden.
+  json-to-yaml-converter:
+    title: JSON zu YAML
+    description: Konvertiere JSON einfach in YAML mit diesem Live-Online-Konverter.
+  url-parser:
+    title: URL-Parser
+    description: >-
+      Parse eine URL-Zeichenfolge, um alle verschiedenen Teile (Protokoll,
+      Ursprung, Parameter, Port, Benutzername-Passwort usw.) zu erhalten.
+  iban-validator-and-parser:
+    title: IBAN-Validator und -Parser
+    description: >-
+      Validiere und parse IBAN-Nummern. Überprüfe, ob die IBAN gültig ist, und
+      erhalte das Land, BBAN, ob es sich um eine QR-IBAN handelt und das
+      IBAN-freundliche Format.
+  user-agent-parser:
+    title: User-Agent-Parser
+    description: >-
+      Erkenne und parse Browser, Engine, Betriebssystem, CPU und
+      Gerätetyp/-modell aus einer User-Agent-Zeichenfolge.
+  numeronym-generator:
+    title: Numeronym-Generator
+    description: >-
+      Ein Numeronym ist ein Wort, bei dem eine Zahl verwendet wird, um eine
+      Abkürzung zu bilden. Zum Beispiel ist "i18n" ein Numeronym für
+      "internationalization", wobei 18 für die Anzahl der Buchstaben zwischen
+      dem ersten "i" und dem letzten "n" im Wort steht.
+  case-converter:
+    title: Fall-Konverter
+    description: >-
+      Ändere den Fall eines Strings und wähle zwischen verschiedenen Formaten
+      aus.
+  html-entities:
+    title: HTML-Entity-Escape
+    description: >-
+      Escape oder unescape HTML-Entitäten (ersetze <,>, &, " und \' durch ihre
+      HTML-Version).
+  json-prettify:
+    title: JSON verschönern und formatieren
+    description: Verschönere deinen JSON-String in ein menschenlesbares Format.
+  docker-run-to-docker-compose-converter:
+    title: Docker run zu Docker compose Konverter
+    description: Wandle docker run-Befehle in docker-compose-Dateien um!
+  mac-address-lookup:
+    title: MAC-Adressensuche
+    description: Finde den Anbieter und Hersteller eines Geräts anhand seiner MAC-Adresse.
+  mime-types:
+    title: MIME-Typen
+    description: Konvertiere MIME-Typen in Erweiterungen und umgekehrt.
+  toml-to-json:
+    title: TOML zu JSON
+    description: Parse und konvertiere TOML zu JSON.
+  lorem-ipsum-generator:
+    title: Lorem Ipsum Generator
+    description: >-
+      Lorem Ipsum ist ein Platzhaltertext, der häufig verwendet wird, um die
+      visuelle Form eines Dokuments oder einer Schriftart ohne Verwendung von
+      bedeutendem Inhalt zu demonstrieren.
+  qrcode-generator:
+    title: QR-Code-Generator
+    description: >-
+      Generiere und downloade QR-Codes für eine URL oder einfach einen Text und
+      passe die Hintergrund- und Vordergrundfarben an.
+  wifi-qrcode-generator:
+    title: WLAN-QR-Code-Generator
+    description: >-
+      Generiere und lade QR-Codes für schnelle Verbindungen zu WLAN-Netzwerken
+      herunter.
+  xml-formatter:
+    title: XML-Formatter
+    description: Verschönere deinen XML-String in ein menschenlesbares Format.
+  temperature-converter:
+    title: Temperaturkonverter
+    description: >-
+      Temperaturgradumrechnungen für Kelvin, Celsius, Fahrenheit, Rankine,
+      Delisle, Newton, Réaumur und Rømer.
+  chmod-calculator:
+    title: Chmod-Rechner
+    description: >-
+      Berechne deine Chmod-Berechtigungen und -Befehle mit diesem
+      Online-Chmod-Rechner.
+  rsa-key-pair-generator:
+    title: RSA-Schlüsselpaar-Generator
+    description: Generiere neue zufällige RSA-Private- und Public-Key-PEM-Zertifikate.
+  html-wysiwyg-editor:
+    title: HTML-WYSIWYG-Editor
+    description: >-
+      Online-HTML-Editor mit funktionsreichem WYSIWYG-Editor, erhalte sofort den
+      Quellcode des Inhalts.
+  yaml-to-toml:
+    title: YAML zu TOML
+    description: Parse und konvertiere YAML zu TOML.
+  mac-address-generator:
+    title: MAC-Adressen-Generator
+    description: >-
+      Gebe die Menge und das Präfix ein. MAC-Adressen werden in deiner gewählten
+      Schreibweise (Groß- oder Kleinbuchstaben) generiert.
+  json-diff:
+    title: JSON-Unterschied
+    description: Vergleiche zwei JSON-Objekte und erhalte die Unterschiede zwischen ihnen.
+  jwt-parser:
+    title: JWT-Parser
+    description: >-
+      Parse und decodiere deinen JSON-Web-Token (JWT) und zeige dessen Inhalt
+      an.
+  date-converter:
+    title: Datum-Uhrzeit-Konverter
+    description: Konvertiere Datum und Uhrzeit in verschiedene Formate.
