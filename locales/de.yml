@@ -267,7 +267,7 @@ tools:
   html-entities:
     title: HTML-Entity-Escape
     description: >-
-      Escape oder unescape HTML-Entitäten (ersetze <,>, &, " und \' durch ihre
+      Escape oder unescape HTML-Entitäten (ersetze <, >, &, " und ' durch ihre
       HTML-Version).
   json-prettify:
     title: JSON verschönern und formatieren
@@ -340,3 +340,116 @@ tools:
   date-converter:
     title: Datum-Uhrzeit-Konverter
     description: Konvertiere Datum und Uhrzeit in verschiedene Formate.
+  phone-parser-and-formatter:
+    title: Telefonnummer-Parser und -Formatter
+    description: >-
+      Parse, validiere und formatiere Telefonnummern. Erhalte Informationen zur
+      Telefonnummer, wie z. B. die Landesvorwahl, den Typ usw.
+  ipv4-subnet-calculator:
+    title: IPv4-Subnetzrechner
+    description: >-
+      Parse deine IPv4-CIDR-Blöcke und erhalte alle Informationen, die du über
+      dein Subnetz benötigst.
+  og-meta-generator:
+    title: Open Graph Meta-Generator
+    description: Generiere Open Graph- und Social-HTML-Metatags für deine Website.
+  ipv6-ula-generator:
+    title: IPv6-ULA-Generator
+    description: >-
+      Generiere deine eigenen lokalen, nicht routbaren IP-Adressen in deinem
+      Netzwerk gemäß RFC4193.
+  hash-text:
+    title: Text hashen
+    description: >-
+      Hashe einen Text-String mit der von dir benötigten Funktion: MD5, SHA1,
+      SHA256, SHA224, SHA512, SHA384, SHA3 oder RIPEMD160
+  json-to-toml:
+    title: JSON zu TOML
+    description: Parse und konvertiere JSON zu TOML.
+  device-information:
+    title: Geräteinformationen
+    description: >-
+      Informationen zu deinem aktuellen Gerät (Bildschirmgröße, Pixelverhältnis,
+      Benutzeragent, ...) erhalten.
+  pdf-signature-checker:
+    title: PDF-Signaturprüfer
+    description: >-
+      Überprüfe die Signaturen einer PDF-Datei. Eine signierte PDF-Datei enthält
+      eine oder mehrere Signaturen, die verwendet werden können, um
+      festzustellen, ob der Inhalt der Datei seit dem Zeitpunkt der Signierung
+      geändert wurde.
+  json-minify:
+    title: JSON minifizieren
+    description: >-
+      Minifiziere und komprimiere dein JSON, indem unnötige Leerzeichen entfernt
+      werden.
+  ulid-generator:
+    title: ULID-Generator
+    description: >-
+      Generiere zufällige Universally Unique Lexicographically Sortable
+      Identifier (ULID).
+  string-obfuscator:
+    title: String-Verschleierer
+    description: >-
+      Verschleiere einen String (wie ein Secret, eine IBAN oder ein Token), um
+      ihn weitergeben zu können und identifizierbar zu machen, ohne seinen
+      Inhalt preiszugeben.
+  base-converter:
+    title: Ganzzahl-Basiskonverter
+    description: >-
+      Konvertiere Zahlen zwischen verschiedenen Basen (Dezimal, Hexadezimal,
+      Binär, Oktal, Base64, ...).
+  yaml-to-json-converter:
+    title: YAML zu JSON
+    description: Konvertiere YAML einfach in JSON mit diesem Live-Online-Konverter.
+  uuid-generator:
+    title: UUID-Generator
+    description: >-
+      Ein Universally Unique Identifier (UUID) ist eine 128-Bit-Nummer, die zur
+      Identifizierung von Informationen in Computersystemen verwendet wird. Die
+      Anzahl der möglichen UUIDs beträgt 16^32, was 2^128 oder etwa 3,4x10^38
+      entspricht (was ziemlich viel ist!).
+  ipv4-address-converter:
+    title: IPv4-Adresskonverter
+    description: >-
+      Konvertiere eine IP-Adresse in Dezimal, Binär, Hexadezimal oder sogar in
+      IPv6.
+  text-statistics:
+    title: Textstatistiken
+    description: >-
+      Informationen zu einem Text erhalten, wie die Anzahl der Zeichen, die
+      Anzahl der Wörter, die Größe usw.
+  text-to-nato-alphabet:
+    title: Text zu NATO-Alphabet
+    description: >-
+      Wandle Text in das NATO-Phonetik-Alphabet für die mündliche Übermittlung
+      um.
+  basic-auth-generator:
+    title: Basic-Auth-Generator
+    description: >-
+      Generiere einen Base64-Basic-Auth-Header aus einem Benutzernamen und einem
+      Passwort.
+  text-to-unicode:
+    title: Text zu Unicode
+    description: Parse und konvertiere Text in Unicode und umgekehrt.
+  ipv4-range-expander:
+    title: IPv4-Bereichserweiterer
+    description: >-
+      Bei Angabe einer Start- und End-IPv4-Adresse berechnet dieses Tool ein
+      gültiges IPv4-Netzwerk mit seiner CIDR-Notation.
+  text-diff:
+    title: Textunterschied
+    description: Vergleiche zwei Texte und sieh die Unterschiede zwischen ihnen.
+  otp-generator:
+    title: OTP-Code-Generator
+    description: >-
+      Generiere und validiere zeitbasierte OTPs (Einmalpasswörter) für
+      Multi-Faktor-Authentifizierung.
+  url-encoder:
+    title: Kodieren/Decodieren von URL-formatierten Zeichenfolgen
+    description: >-
+      Kodiere zum URL-kodierten Format (auch als "prozentkodiert" bekannt) oder
+      decodiere es.
+  text-to-binary:
+    title: Text zu ASCII-Binär
+    description: Konvertiere Text in seine ASCII-Binärrepräsentation und umgekehrt.
