@@ -6,17 +6,18 @@ import { getIPClass } from './ipv4-subnet-calculator.models';
 import { withDefaultOnError } from '@/utils/defaults';
 import { isNotThrowing } from '@/utils/boolean';
 import SpanCopyable from '@/components/SpanCopyable.vue';
+import { getIPNetworkType, getNetworksCount, getSubnets, parseAsCIDR, to6to4Prefix, toARPA, toIPv4MappedAddress, toIPv4MappedAddressDecimal } from '@/utils/ip';
 
 const ip = useStorage('ipv4-subnet-calculator:ip', '192.168.0.1/24');
 
-const getNetworkInfo = (address: string) => new Netmask(address.trim());
+const getNetworkInfo = (address: string) => new Netmask(parseAsCIDR(address.trim()) || address.trim());
 
 const networkInfo = computed(() => withDefaultOnError(() => getNetworkInfo(ip.value), undefined));
 
 const ipValidationRules = [
   {
     message: 'We cannot parse this address, check the format',
-    validator: (value: string) => isNotThrowing(() => getNetworkInfo(value.trim())),
+    validator: (value: string) => isNotThrowing(() => getNetworkInfo(value)),
   },
 ];
 
@@ -54,6 +55,14 @@ const sections: {
     getValue: ({ size }) => String(size),
   },
   {
+    label: 'Subnets count',
+    getValue: ({ base: ip, bitmask }) => getNetworksCount(`${ip}/${bitmask}`)?.toString() || '',
+  },
+  {
+    label: 'Subnets',
+    getValue: ({ base: ip, bitmask }) => getSubnets(`${ip}/${bitmask}`).join(', '),
+  },
+  {
     label: 'First address',
     getValue: ({ first }) => first,
   },
@@ -67,9 +76,29 @@ const sections: {
     undefinedFallback: 'No broadcast address with this mask',
   },
   {
+    label: 'ARPA',
+    getValue: ({ base: ip }) => toARPA(ip),
+  },
+  {
+    label: 'IPv4 Mapped Address',
+    getValue: ({ base: ip }) => toIPv4MappedAddress(ip),
+  },
+  {
+    label: 'IPv4 Mapped Address (decimal)',
+    getValue: ({ base: ip }) => toIPv4MappedAddressDecimal(ip),
+  },
+  {
+    label: '6to4 prefix',
+    getValue: ({ base: ip }) => to6to4Prefix(ip),
+  },
+  {
     label: 'IP class',
     getValue: ({ base: ip }) => getIPClass({ ip }),
     undefinedFallback: 'Unknown class type',
+  },
+  {
+    label: 'Type',
+    getValue: ({ base: ip }) => getIPNetworkType(ip),
   },
 ];
 
@@ -86,7 +115,7 @@ function switchToBlock({ count = 1 }: { count?: number }) {
   <div>
     <c-input-text
       v-model:value="ip"
-      label="An IPv4 address with or without mask"
+      label="An IPv4 address with or without mask (CIDR/IP Range/Wildcard IP/IP Mask)"
       placeholder="The ipv4 address..."
       :validation-rules="ipValidationRules"
       mb-4
