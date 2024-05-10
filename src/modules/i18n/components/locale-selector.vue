@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { it } from 'node:test';
-
 const { availableLocales, locale } = useI18n();
 
 const localesLong: Record<string, string> = {
