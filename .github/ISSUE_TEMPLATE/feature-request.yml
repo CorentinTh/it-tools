@@ -1,0 +1,56 @@
+name: 🚀 New feature proposal
+description: Propose a new feature to be added to IT-Tools.
+labels: ['enhancement', 'triage']
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your interest in the project and taking the time to fill out this feature report!
+
+  - type: dropdown
+    id: request-type
+    attributes:
+      label: What type of request is this?
+      options:
+        - New tool idea
+        - New feature for an existing tool
+        - Deployment or CI/CD improvement
+        - Self-hosting improvement
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Clear and concise description of the feature you are proposing
+      description: A clear and concise description of what the feature is.
+      placeholder: 'Example: a token generator tool'
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternative
+    attributes:
+      label: Is their example of this tool in the wild?
+      description: Provide link to already existing tool (like websites, apps, cli, ...) or npm packages that could be used or provide inspiration for the feature.
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Any other context or screenshots about the feature request here.
+
+  - type: checkboxes
+    id: checkboxes
+    attributes:
+      label: Validations
+      description: Before submitting the issue, please make sure you do the following
+      options:
+        - label: Check the feature is not already implemented in the project.
+          required: true
+        - label: Check that there isn't already an issue that request the same feature to avoid creating a duplicate.
+          required: true
+        - label: Check that the feature can be implemented in a client side only app (IT-Tools is client side only, no server).
+          required: true
