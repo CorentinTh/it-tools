@@ -1,4 +1,4 @@
-name: Bug Report
+name: 🐞 Bug Report
 description: File a bug report.
 labels: ['bug', 'triage']
 assignees:
@@ -42,7 +42,7 @@ body:
       label: Where did you encounter the bug?
       options:
         - Public app (it-tools.tech)
-        - Self hosting
+        - A self hosted
         - Other (installations, docker, etc.)
     validations:
       required: true
