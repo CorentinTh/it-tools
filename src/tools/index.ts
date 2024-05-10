@@ -6,6 +6,9 @@ import { tool as asciiTextDrawer } from './ascii-text-drawer';
 
 import { tool as textToUnicode } from './text-to-unicode';
 import { tool as safelinkDecoder } from './safelink-decoder';
+import { tool as javascriptPrettifier } from './javascript-prettifier';
+import { tool as cssPrettifier } from './css-prettifier';
+import { tool as htmlPrettifier } from './html-prettifier';
 import { tool as pdfSignatureChecker } from './pdf-signature-checker';
 import { tool as numeronymGenerator } from './numeronym-generator';
 import { tool as macAddressGenerator } from './mac-address-generator';
@@ -148,6 +151,9 @@ export const toolsByCategory: ToolCategory[] = [
       dockerRunToDockerComposeConverter,
       xmlFormatter,
       yamlViewer,
+      cssPrettifier,
+      htmlPrettifier,
+      javascriptPrettifier,
     ],
   },
   {
