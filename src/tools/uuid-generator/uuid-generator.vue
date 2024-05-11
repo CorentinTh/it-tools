@@ -104,7 +104,6 @@ const { copy } = useCopy({ source: uuids, text: 'UUIDs copied to the clipboard' 
       class="uuid-display"
     />
 
-
     <div flex justify-center gap-3>
       <c-button autofocus @click="copy()">
         Copy
