@@ -29,5 +29,3 @@ const rules: UseValidationRule<string>[] = [
     :transformer="transformer"
   />
 </template>
-
-<style lang="less" scoped></style>

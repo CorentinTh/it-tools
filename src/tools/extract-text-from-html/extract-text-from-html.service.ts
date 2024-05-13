@@ -1,7 +1,8 @@
 function validateHtml(value: string) {
   try {
     new DOMParser().parseFromString(value, 'text/html');
-  } catch (error) {
+  }
+  catch (error) {
     return false;
   }
 
