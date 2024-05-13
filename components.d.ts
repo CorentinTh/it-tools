@@ -158,6 +158,7 @@ declare module '@vue/runtime-core' {
     RomanNumeralConverter: typeof import('./src/tools/roman-numeral-converter/roman-numeral-converter.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    RsaEncryption: typeof import('./src/tools/rsa-encryption/rsa-encryption.vue')['default']
     RsaKeyPairGenerator: typeof import('./src/tools/rsa-key-pair-generator/rsa-key-pair-generator.vue')['default']
     SafelinkDecoder: typeof import('./src/tools/safelink-decoder/safelink-decoder.vue')['default']
     SlugifyString: typeof import('./src/tools/slugify-string/slugify-string.vue')['default']
