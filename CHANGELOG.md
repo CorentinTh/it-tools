@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## Version 2024.05.10-33e5294
+
+### Features
+- **i18n**: added German translation (#1038) (2c2fb21)
+- **new tool**: Outlook Safelink Decoder (#911) (d3b32cc)
+- **new tool**: ascii art generator (#886) (fe349ad)
+- **i18n**: get locales on build (#880) (dc04615)
+- **i18n**: added vi tools translations (#876) (079aa21)
+- **i18n**: added zh tools translations (#874) (9c6b122)
+- **i18n**: added missing locale files in tools (#863) (7f5fa00)
+- **i18n**: added vietnamese language (#859) (1334bff)
+- **i18n**: added spanish language (#854) (85b50bb)
+- **i18n**: added portuguese language (#813) (c65ffb6)
+- **i18n**: added ukrainian language (#827) (693f362)
+- **new-tool**: yaml formater (#779) (fc06f01)
+- **new-tool**: added unicode conversion utilities (#858) (c46207f)
+
+### Bug fixes
+- **language**: English language cleanup (#1036) (221ddfa)
+- **url-encoder, validation**: typo in validation of url-encoder.vue #1024 (cb5b462)
+- **integer base converter**: support bigint (#872) (9eac9cb)
+- **bcrypt tool**: allow salt rounds up to 100 (#987) (23f82d9)
+
+### Refactoring
+- **lint**: removed extra semi (33e5294)
+- **auto-imports**: regen auto imports (1242842)
+- **home**: lightened tool cards (#882) (a07806c)
+- **home**: removed n-grid to prevent layout shift (#881) (10e56b3)
+- **i18n**: added locales per tool (#861) (95698cb)
+
+### Chores
+- **issues**: improved issues template (2852c30)
+- **issues**: improved bug issue template (#1046) (a799234)
+
 ## Version 2023.12.21-5ed3693
 
 ### Features
