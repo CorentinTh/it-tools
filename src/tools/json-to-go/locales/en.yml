@@ -1,0 +1,7 @@
+tools:
+  json-to-go:
+    title: JSON to Go
+    description: Convert JSON to Go struct
+    definitions: Inline type definitions
+    omitempty: omitempty
+    example: example

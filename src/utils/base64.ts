@@ -1,7 +1,7 @@
 export { textToBase64, base64ToText, isValidBase64, removePotentialDataAndMimePrefix };
 
 function textToBase64(str: string, { makeUrlSafe = false }: { makeUrlSafe?: boolean } = {}) {
-  const encoded = window.btoa(str);
+  const encoded = encode(str);
   return makeUrlSafe ? makeUriSafe(encoded) : encoded;
 }
 
@@ -16,13 +16,18 @@ function base64ToText(str: string, { makeUrlSafe = false }: { makeUrlSafe?: bool
   }
 
   try {
-    return window.atob(cleanStr);
+    return decode(cleanStr);
   }
   catch (_) {
     throw new Error('Incorrect base64 string');
   }
 }
-
+function encode(str: string) {
+  return window.btoa(unescape(encodeURIComponent(str)));
+}
+function decode(str: string) {
+  return decodeURIComponent(escape(window.atob(str)));
+}
 function removePotentialDataAndMimePrefix(str: string) {
   return str.replace(/^data:.*?;base64,/, '');
 }
