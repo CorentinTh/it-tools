@@ -5,6 +5,7 @@ import { tool as basicAuthGenerator } from './basic-auth-generator';
 import { tool as asciiTextDrawer } from './ascii-text-drawer';
 
 import { tool as textToUnicode } from './text-to-unicode';
+import { tool as mimeConverter } from './mime-converter';
 import { tool as safelinkDecoder } from './safelink-decoder';
 import { tool as pdfSignatureChecker } from './pdf-signature-checker';
 import { tool as numeronymGenerator } from './numeronym-generator';
@@ -107,6 +108,7 @@ export const toolsByCategory: ToolCategory[] = [
       listConverter,
       tomlToJson,
       tomlToYaml,
+      mimeConverter,
     ],
   },
   {
