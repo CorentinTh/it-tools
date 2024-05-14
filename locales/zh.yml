@@ -316,6 +316,10 @@ tools:
     title: JSON 转 TOML
     description: 解析JSON并将其转换为TOML。
 
+  json-to-ts:
+    title: JSON 转 TS
+    description: 解析JSON并将其转换为TS。
+
   device-information:
     title: 设备信息
     description: 获取有关当前设备的信息（屏幕大小、像素比率、用户代理…）
