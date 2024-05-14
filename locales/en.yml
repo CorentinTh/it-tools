@@ -389,5 +389,5 @@ tools:
     description: Encode text to URL-encoded format (also known as "percent-encoded"), or decode from it.
 
   text-to-binary:
-    title: Text to ASCII binary
-    description: Convert text to its ASCII binary representation and vice-versa.
+    title: Text to UTF-8 binary
+    description: Convert text to its UTF-8 binary representation and vice-versa.
