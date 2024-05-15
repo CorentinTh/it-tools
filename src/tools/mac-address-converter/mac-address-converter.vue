@@ -1,29 +1,25 @@
 <script setup lang="ts">
 import InputCopyable from '../../components/InputCopyable.vue';
-
-function convertMac(mac: string, group: number = 2, char: string = ':'): string {
-  mac = mac.replace(/[\W_]+/g, '');
-  return mac.match(new RegExp(`.{1,${group}}`, 'g'))!.join(char);
-}
+import { convertMacCISCO, convertMacCanonical, convertMacCanonicalIEEE, convertMacCanonicalIETF } from './mac-address-converter.service';
 
 const input = ref('AA:BB:CC:DD:EE:FF');
 
 const formats = computed(() => [
   {
     label: 'Canonical IETF Format:',
-    value: convertMac(input.value.toLocaleLowerCase()),
+    value: convertMacCanonicalIETF(input.value),
   },
   {
     label: 'Canonical Format:',
-    value: convertMac(input.value, 2, '.'),
+    value: convertMacCanonical(input.value),
   },
   {
     label: 'Canonical IEEE Format:',
-    value: convertMac(input.value.toLocaleUpperCase(), 2, '-'),
+    value: convertMacCanonicalIEEE(input.value),
   },
   {
     label: 'Cisco:',
-    value: convertMac(input.value.toLocaleLowerCase(), 4, '.'),
+    value: convertMacCISCO(input.value),
   },
 ]);
 
