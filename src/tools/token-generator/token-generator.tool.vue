@@ -32,27 +32,22 @@ const { copy } = useCopy({ source: tokens, text: t('tools.token-generator.copied
   <div>
     <c-card>
       <n-form label-placement="left" label-width="140">
-        <div flex justify-center>
-          <div>
-            <n-form-item :label="t('tools.token-generator.uppercase')">
-              <n-switch v-model:value="withUppercase" />
-            </n-form-item>
+        <n-space justify="center">
+          <n-form-item :label="t('tools.token-generator.uppercase')">
+            <n-switch v-model:value="withUppercase" />
+          </n-form-item>
 
-            <n-form-item :label="t('tools.token-generator.lowercase')">
-              <n-switch v-model:value="withLowercase" />
-            </n-form-item>
-          </div>
+          <n-form-item :label="t('tools.token-generator.lowercase')">
+            <n-switch v-model:value="withLowercase" />
+          </n-form-item>
+          <n-form-item :label="t('tools.token-generator.numbers')">
+            <n-switch v-model:value="withNumbers" />
+          </n-form-item>
 
-          <div>
-            <n-form-item :label="t('tools.token-generator.numbers')">
-              <n-switch v-model:value="withNumbers" />
-            </n-form-item>
-
-            <n-form-item :label="t('tools.token-generator.symbols')">
-              <n-switch v-model:value="withSymbols" />
-            </n-form-item>
-          </div>
-        </div>
+          <n-form-item :label="t('tools.token-generator.symbols')">
+            <n-switch v-model:value="withSymbols" />
+          </n-form-item>
+        </n-space>
       </n-form>
 
       <n-form-item label="Denied Characters" label-placement="left">
@@ -67,7 +62,7 @@ const { copy } = useCopy({ source: tokens, text: t('tools.token-generator.copied
         <n-input-number v-model:value="length" size="small" />
       </n-form-item>
 
-      <n-form-item :label="t('tools.token-generator.count')" label-placement="left">
+      <n-form-item label="Number of token to generate" label-placement="left">
         <n-input-number v-model:value="count" size="small" />
       </n-form-item>
 
