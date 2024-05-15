@@ -43,7 +43,7 @@ describe('text-to-unicode', () => {
   interface TestConfig {
     text: string
     results: Record<ConverterId, string>
-    skipPrintableAscii?: boolean
+    skipAscii?: boolean
   };
   const tests: TestConfig[] = [
     {
@@ -57,7 +57,7 @@ describe('text-to-unicode', () => {
     },
     {
       text: 'ABC',
-      skipPrintableAscii: true,
+      skipAscii: true,
       results: {
         fullUnicode: 'ABC',
         utf16: 'ABC',
@@ -67,7 +67,7 @@ describe('text-to-unicode', () => {
     },
     {
       text: ALL_PRINTABLE_ASCII,
-      skipPrintableAscii: true,
+      skipAscii: true,
       results: {
         // eslint-disable-next-line unicorn/escape-case
         fullUnicode: String.raw` !\u0022#$%&\u0027()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\u005c]^_${'`'}abcdefghijklmnopqrstuvwxyz{|}~`,
@@ -90,7 +90,7 @@ describe('text-to-unicode', () => {
     },
     {
       text: 'a 💩 b',
-      skipPrintableAscii: true,
+      skipAscii: true,
       results: {
         // eslint-disable-next-line unicorn/escape-case
         fullUnicode: String.raw`a \u{1f4a9} b`,
@@ -102,13 +102,13 @@ describe('text-to-unicode', () => {
     },
   ];
 
-  for (const { text, skipPrintableAscii: skipAscii, results } of tests) {
+  for (const { text, skipAscii, results } of tests) {
     describe(`${text} (skipAscii=${skipAscii})`, () => {
       for (const [key, result] of Object.entries(results)) {
         describe(key, () => {
           const converter = converters[key as ConverterId];
           it('Escaping', () => {
-            expect(converter.escape(text, skipAscii)).toBe(result);
+            expect(converter.escape(text, skipAscii ?? false)).toBe(result);
           });
           it('Unescaping', () => {
             expect(converter.unescape(result)).toBe(text);

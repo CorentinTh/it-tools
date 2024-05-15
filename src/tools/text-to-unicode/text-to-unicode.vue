@@ -27,7 +27,7 @@ const { copy: copyText } = useCopy({ source: textFromUnicode });
         v-model:value="converterId"
         searchable
         label="Conversion type:"
-        :options="Object.entries(converters).map(([key, val]) => ({ label: val.name, value: key }))"
+        :options="Object.entries(converters).map(([key, val]) => ({ label: val.config.name, value: key }))"
       />
     </div>
     <c-card class="card" title="Text to Unicode">

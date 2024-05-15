@@ -4,11 +4,11 @@ export const SKIP_ASCII_JS = /([ -!#-&(-\[\]-~]+)/g;
 export const SKIP_ASCII_HTML = /([ -!#-%(-;=?-~]+)/g;
 
 function codeUnits(text: string): number[] {
-  return text.split('').map(char => char.codePointAt(0));
+  return text.split('').map(char => char.codePointAt(0)!);
 }
 
 function codePoints(text: string): number[] {
-  return [...text].map(char => char.codePointAt(0));
+  return [...text].map(char => char.codePointAt(0)!);
 }
 
 interface ConverterConfig {
