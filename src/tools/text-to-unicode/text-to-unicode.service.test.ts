@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { type ConverterId, SKIP_PRINTABLE_ASCII_RE, converters } from './text-to-unicode.service';
+import { type ConverterId, SKIP_ASCII_HTML, SKIP_ASCII_JS, converters } from './text-to-unicode.service';
 
 describe('text-to-unicode (legacy tests)', () => {
-  const convertTextToUnicode = converters.decimalEntities.escape;
+  const convertTextToUnicode = (text: string) => converters.decimalEntities.escape(text, false);
   const convertUnicodeToText = converters.decimalEntities.unescape;
 
   describe('convertTextToUnicode', () => {
@@ -19,6 +19,23 @@ describe('text-to-unicode (legacy tests)', () => {
       expect(convertUnicodeToText('&#108;&#105;&#110;&#107;&#101;&#32;&#116;&#104;&#101;&#32;&#115;&#116;&#114;&#105;&#110;&#103;&#32;&#99;&#111;&#110;&#118;&#101;&#114;&#116;&#32;&#116;&#111;&#32;&#117;&#110;&#105;&#99;&#111;&#100;&#101;')).toBe('linke the string convert to unicode');
       expect(convertUnicodeToText('')).toBe('');
     });
+  });
+});
+
+const ALL_PRINTABLE_ASCII = ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
+
+describe('text-to-unicode regexes', () => {
+  // eslint-disable-next-line prefer-regex-literals
+  const skipAsciiJs = new RegExp(String.raw`([[ -~]--['"\\]]+)`, 'gv');
+  // eslint-disable-next-line prefer-regex-literals
+  const skipAsciiHtml = new RegExp(String.raw`([[ -~]--[<>&'"]]+)`, 'gv');
+
+  it('regexes are equivalent to `v`-flag versions', () => {
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/unicodeSets
+    // regexes in `text-to-unicode.service.ts` can be replaced with `v`-flag versions once unicodeSets reaches
+    // sufficient in-browser support
+    expect(ALL_PRINTABLE_ASCII.match(skipAsciiJs)).toStrictEqual(ALL_PRINTABLE_ASCII.match(SKIP_ASCII_JS));
+    expect(ALL_PRINTABLE_ASCII.match(skipAsciiHtml)).toStrictEqual(ALL_PRINTABLE_ASCII.match(SKIP_ASCII_HTML));
   });
 });
 
@@ -46,6 +63,18 @@ describe('text-to-unicode', () => {
         utf16: 'ABC',
         hexEntities: 'ABC',
         decimalEntities: 'ABC',
+      },
+    },
+    {
+      text: ALL_PRINTABLE_ASCII,
+      skipPrintableAscii: true,
+      results: {
+        // eslint-disable-next-line unicorn/escape-case
+        fullUnicode: String.raw` !\u0022#$%&\u0027()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\u005c]^_${'`'}abcdefghijklmnopqrstuvwxyz{|}~`,
+        // eslint-disable-next-line unicorn/escape-case
+        utf16: String.raw` !\u0022#$%&\u0027()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\u005c]^_${'`'}abcdefghijklmnopqrstuvwxyz{|}~`,
+        hexEntities: String.raw` !&#x22;#$%&#x26;&#x27;()*+,-./0123456789:;&#x3c;=&#x3e;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_${'`'}abcdefghijklmnopqrstuvwxyz{|}~`,
+        decimalEntities: String.raw` !&#34;#$%&#38;&#39;()*+,-./0123456789:;&#60;=&#62;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_${'`'}abcdefghijklmnopqrstuvwxyz{|}~`,
       },
     },
     {
@@ -79,7 +108,7 @@ describe('text-to-unicode', () => {
         describe(key, () => {
           const converter = converters[key as ConverterId];
           it('Escaping', () => {
-            expect(converter.escape(text, skipAscii ? SKIP_PRINTABLE_ASCII_RE : undefined)).toBe(result);
+            expect(converter.escape(text, skipAscii)).toBe(result);
           });
           it('Unescaping', () => {
             expect(converter.unescape(result)).toBe(text);

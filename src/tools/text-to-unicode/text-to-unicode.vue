@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type ConverterId, SKIP_PRINTABLE_ASCII_RE, converters } from './text-to-unicode.service';
+import { type ConverterId, converters } from './text-to-unicode.service';
 import { useCopy } from '@/composable/copy';
 
 const converterId = ref<ConverterId>('fullUnicode');
@@ -9,7 +9,7 @@ const inputText = ref('');
 const unicodeFromText = computed(() =>
   inputText.value.trim() === ''
     ? ''
-    : converters[converterId.value].escape(inputText.value, skipAscii.value ? SKIP_PRINTABLE_ASCII_RE : undefined),
+    : converters[converterId.value].escape(inputText.value, skipAscii.value),
 );
 const { copy: copyUnicode } = useCopy({ source: unicodeFromText });
 
@@ -52,7 +52,7 @@ const { copy: copyText } = useCopy({ source: textFromUnicode });
         test-id="text-to-unicode-output"
       />
       <div mt-2 flex justify-start>
-        <n-form-item label="Skip ASCII?" :show-feedback="false" label-placement="left">
+        <n-form-item label="Skip ASCII chars with no special meaning?" :show-feedback="false" label-placement="left">
           <n-switch v-model:value="skipAscii" />
         </n-form-item>
       </div>
