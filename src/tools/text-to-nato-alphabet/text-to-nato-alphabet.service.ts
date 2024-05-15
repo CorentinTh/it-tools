@@ -1,3 +1,4 @@
+import hangul from 'korean-unpacker';
 import allAlphabets from './nato.alphabets.json';
 
 type AllALphabetsKeys = keyof typeof allAlphabets[0];
@@ -14,8 +15,8 @@ function textToNatoAlphabet({ text, langOrCountry = '(International)' }: { text:
         .join('|')
         }|.)`,
     'gi');
-  return text
-    .replace(/\s/g, ' ')
+  return hangul.unpack(text)
+    .replace(/\s+/g, ' ')
     .replace(
       charRegex,
       (character) => {
@@ -24,9 +25,10 @@ function textToNatoAlphabet({ text, langOrCountry = '(International)' }: { text:
         const alphabetLetter = allAlphabets.find(letter => letter.Letter === searchChar);
         if (alphabetLetter && alphabetLetter[langOrCountry as AllALphabetsKeys]) {
           const natoWord = alphabetLetter[langOrCountry as AllALphabetsKeys] || '';
-          return ` ${isUpper ? natoWord.toUpperCase() : natoWord.toLowerCase()} `;
+          return ` ${isUpper ? natoWord.toUpperCase() : natoWord.toLowerCase()}`;
         }
 
-        return ` (${character}) `;
-      });
+        return ` (${character})`;
+      })
+    .trim();
 }
