@@ -1,23 +1,9 @@
 <script setup lang="ts">
 import RandExp from 'randexp';
+import { render } from '@regexper/render';
+import { matchRegex } from './regex-tester.service';
 import { useValidation } from '@/composable/validation';
 import { useQueryParamOrStorage } from '@/composable/queryParams';
-
-interface RegExpGroupIndices {
-  [name: string]: [number, number]
-}
-interface RegExpIndices extends Array<[number, number]> {
-  groups: RegExpGroupIndices
-}
-interface RegExpExecArrayWithIndices extends RegExpExecArray {
-  indices: RegExpIndices
-}
-interface GroupCapture {
-  name: string
-  value: string
-  start: number
-  end: number
-};
 
 const regex = useQueryParamOrStorage({ name: 'regex', storageName: 'regex-tester:regex', defaultValue: '' });
 const text = ref('');
@@ -27,6 +13,7 @@ const multiline = ref(false);
 const dotAll = ref(true);
 const unicode = ref(true);
 const unicodeSets = ref(false);
+const visualizerSVG = ref() as Ref<SVGSVGElement>;
 
 const regexValidation = useValidation({
   source: regex,
@@ -42,10 +29,6 @@ const regexValidation = useValidation({
   ],
 });
 const results = computed(() => {
-  if (regex.value === '' || text.value === '') {
-    return [];
-  }
-
   let flags = 'd';
   if (global.value) {
     flags += 'g';
@@ -67,40 +50,7 @@ const results = computed(() => {
   }
 
   try {
-    const re = new RegExp(regex.value, flags);
-    const results = [];
-    let match = re.exec(text.value) as RegExpExecArrayWithIndices;
-    while (match !== null) {
-      const indices = match.indices;
-      const captures: Array<GroupCapture> = [];
-      Object.entries(match).forEach(([captureName, captureValue]) => {
-        if (captureName !== '0' && captureName.match(/\d+/)) {
-          captures.push({
-            name: captureName,
-            value: captureValue,
-            start: indices[Number(captureName)][0],
-            end: indices[Number(captureName)][1],
-          });
-        }
-      });
-      const groups: Array<GroupCapture> = [];
-      Object.entries(match.groups || {}).forEach(([groupName, groupValue]) => {
-        groups.push({
-          name: groupName,
-          value: groupValue,
-          start: indices.groups[groupName][0],
-          end: indices.groups[groupName][1],
-        });
-      });
-      results.push({
-        index: match.index,
-        value: match[0],
-        captures,
-        groups,
-      });
-      match = re.exec(text.value) as RegExpExecArrayWithIndices;
-    }
-    return results;
+    return matchRegex(regex.value, text.value, flags);
   }
   catch (_) {
     return [];
@@ -116,6 +66,19 @@ const sample = computed(() => {
     return '';
   }
 });
+
+watchEffect(
+  async () => {
+    const regexValue = regex.value;
+    const svg = visualizerSVG.value;
+    svg.childNodes.forEach(n => n.remove());
+    try {
+      await render(regexValue, svg);
+    }
+    catch (_) {
+    }
+  },
+);
 </script>
 
 <template>
@@ -164,7 +127,7 @@ const sample = computed(() => {
       />
     </c-card>
 
-    <c-card title="Matches" mb-1>
+    <c-card title="Matches" mb-1 mt-3>
       <n-table v-if="results?.length > 0">
         <thead>
           <tr>
@@ -208,8 +171,12 @@ const sample = computed(() => {
       </c-alert>
     </c-card>
 
-    <c-card title="Sample matching text">
-      <pre style="white-space: pre-wrap">{{ sample }}</pre>
+    <c-card title="Sample matching text" mt-3>
+      <pre style="white-space: pre-wrap; word-break: break-all;">{{ sample }}</pre>
+    </c-card>
+
+    <c-card title="Regex Diagram" style="overflow-x: scroll;"  mt-3>
+      <svg ref="visualizerSVG" />
     </c-card>
   </div>
 </template>
