@@ -3,9 +3,11 @@ import _ from 'lodash';
 import { type Ref, reactive, watch } from 'vue';
 
 type ValidatorReturnType = unknown;
+type GetErrorMessageReturnType = string;
 
 export interface UseValidationRule<T> {
   validator: (value: T) => ValidatorReturnType
+  getErrorMessage?: (value: T) => GetErrorMessageReturnType
   message: string
 }
 
@@ -21,6 +23,15 @@ export function isFalsyOrHasThrown(cb: () => ValidatorReturnType): boolean {
   }
   catch (_) {
     return true;
+  }
+}
+
+export function getErrorMessageOrThrown(cb: () => GetErrorMessageReturnType): string {
+  try {
+    return cb() || '';
+  }
+  catch (e: any) {
+    return e.toString();
   }
 }
 
@@ -61,7 +72,13 @@ export function useValidation<T>({
 
       for (const rule of get(rules)) {
         if (isFalsyOrHasThrown(() => rule.validator(source.value))) {
-          state.message = rule.message;
+          if (rule.getErrorMessage) {
+            const getErrorMessage = rule.getErrorMessage;
+            state.message = rule.message.replace('{0}', getErrorMessageOrThrown(() => getErrorMessage(source.value)));
+          }
+          else {
+            state.message = rule.message;
+          }
           state.status = 'error';
         }
       }
