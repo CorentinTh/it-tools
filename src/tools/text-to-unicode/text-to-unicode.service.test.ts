@@ -3,7 +3,7 @@ import { type ConverterId, SKIP_ASCII_HTML, SKIP_ASCII_JS, converters } from './
 
 describe('text-to-unicode (legacy tests)', () => {
   const convertTextToUnicode = (text: string) => converters.decimalEntities.escape(text, false);
-  const convertUnicodeToText = converters.decimalEntities.unescape;
+  const convertUnicodeToText = (escaped: string) => converters.decimalEntities.unescape(escaped);
 
   describe('convertTextToUnicode', () => {
     it('a text string is converted to unicode representation', () => {
