@@ -11,6 +11,9 @@ describe('integer-base-converter', () => {
         expect(convertBase({ value: '10100101', fromBase: 2, toBase: 16 })).toEqual('a5');
         expect(convertBase({ value: '192654', fromBase: 10, toBase: 8 })).toEqual('570216');
         expect(convertBase({ value: 'zz', fromBase: 64, toBase: 10 })).toEqual('2275');
+        expect(convertBase({ value: '42540766411283223938465490632011909384', fromBase: 10, toBase: 10 })).toEqual('42540766411283223938465490632011909384');
+        expect(convertBase({ value: '42540766411283223938465490632011909384', fromBase: 10, toBase: 16 })).toEqual('20010db8000085a300000000ac1f8908');
+        expect(convertBase({ value: '20010db8000085a300000000ac1f8908', fromBase: 16, toBase: 10 })).toEqual('42540766411283223938465490632011909384');
       });
     });
   });
