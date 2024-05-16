@@ -392,6 +392,6 @@ tools:
     title: Text to ASCII binary
     description: Convert text to its ASCII binary representation and vice-versa.
 
-  unicode-to-java-entites:
+  unicode-to-java-entities:
     title: Unicode Characters to Java Entities Converter
     description: Unicode Characters to Java Entities Converter and vice-versa

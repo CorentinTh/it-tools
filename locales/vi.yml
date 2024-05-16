@@ -381,6 +381,6 @@ tools:
     title: Chuyển đổi văn bản thành nhị phân ASCII
     description: Chuyển đổi văn bản thành biểu diễn nhị phân ASCII của nó và ngược lại.
 
-  unicode-to-java-entites:
+  unicode-to-java-entities:
     title: Chuyển đổi ký tự Unicode sang thực thể Java
     description: Chuyển đổi ký tự Unicode sang thực thể Java và ngược lại
