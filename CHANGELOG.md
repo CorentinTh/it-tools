@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## Version 2024.05.10-33e5294
+## Version 2024.05.13-a0bc346
 
 ### Features
 - **i18n**: added German translation (#1038) (2c2fb21)
@@ -33,12 +33,20 @@ All notable changes to this project will be documented in this file. See [standa
 - **i18n**: added locales per tool (#861) (95698cb)
 
 ### Chores
+- **issues**: prevent empty issues (#1078) (a0bc346)
+- **issues**: removed old issue templates (#1077) (5a7b0f9)
+- **node**: upgraded node version in CI workflows (b59942a)
+- **version**: release 2024.05.10-33e5294 (38d5687)
 - **issues**: improved issues template (2852c30)
 - **issues**: improved bug issue template (#1046) (a799234)
+
+### Documentation
+- **changelog**: update changelog for 2024.05.10-33e5294 (9dfd347)
 
 ## Version 2023.12.21-5ed3693
 
 ### Features
+
 - **i18n**: improve chinese i18n (#757) (2e56641)
 - **i18n**: add tooltip and favoriteButton i18n (#756) (a1037cf)
 - **i18n**: add Chinese translation base (#718) (8f99eb6)
@@ -46,6 +54,7 @@ All notable changes to this project will be documented in this file. See [standa
 - **new tool**: numeronym generator (#729) (e07e2ae)
 
 ### Bug fixes
+
 - **jwt-parser**: jwt claim array support (#799) (5ed3693)
 - **camera-recorder**: stop camera on navigation (#782) (80e46c9)
 - **doc**: updated create new tool command in readme (#762) (7a70dbb)
@@ -54,6 +63,7 @@ All notable changes to this project will be documented in this file. See [standa
 - **eta**: corrected example (#737) (821cbea)
 
 ### Refactoring
+
 - **about, i18n**: improved i18n dx with markdown (#753) (bd3edcb)
 - **token, i18n**: complete fr translation (#752) (de1ee69)
 - **uuid generator**: uuid version picker (#751) (38586ca)
@@ -63,6 +73,7 @@ All notable changes to this project will be documented in this file. See [standa
 - **bcrypt**: fix input label align (#721) (093ff31)
 
 ### Chores
+
 - **deps**: switched from oui to oui-data for mac address lookup (#693) (0fe9a20)
 - **deps**: update unocss monorepo to ^0.57.0 (#638) (2e396d8)
 - **docker**: added armv7 plateform for docker releases (#722) (fe1de8c)
@@ -70,19 +81,23 @@ All notable changes to this project will be documented in this file. See [standa
 ## Version 2023.11.02-7d94e11
 
 ### Features
+
 - **i18n**: language selector (#710) (e86fd96)
 
 ### Bug fixes
+
 - **dockerfile**: revert replacement of nginx image with non-privileged one (#716) (7d94e11)
 - **encryption**: alert on decryption error (#711) (02b0d0d)
 
 ### Refactoring
+
 - **math-evaluator**: improved description (e87f4b1)
 - **math-evaluator**: improved search and UX (#713) (58de897)
 
 ## Version 2023.11.01-e164afb
 
 ### Features
+
 - **command-palette**: clear prompt on palette close (#708) (d013696)
 - **command-palette**: added about page in command palette (99b1eb9)
 - **new tool**: random MAC address generator (#657) (cc3425d)
@@ -101,11 +116,13 @@ All notable changes to this project will be documented in this file. See [standa
 - **new tool**: text diff and comparator (#588) (81bfe57)
 
 ### Bug fixes
+
 - **deps**: fix issue on slugify (#593) (#673) (720201a)
 - **deps**: update dependency monaco-editor to ^0.43.0 (#620) (e371ef7)
 - **deps**: update dependency sql-formatter to v13 (#606) (c7d4562)
 
 ### Refactoring
+
 - **ui**: better ui demo preview menu (#664) (015c673)
 - **color-converter**: improved color-converter UX (#701) (abb8335)
 - **docker**: improved docker config (#700) (020e9cb)
@@ -122,6 +139,7 @@ All notable changes to this project will be documented in this file. See [standa
 - **bcrypt**: fix typo (#604) (e18bae1)
 
 ### Chores
+
 - **deps**: clean unused dependencies (#709) (e164afb)
 - **deps**: update docker/setup-qemu-action action to v3 (#627) (4365226)
 - **deps**: update docker/setup-buildx-action action to v3 (#626) (57ecda1)
@@ -136,19 +154,23 @@ All notable changes to this project will be documented in this file. See [standa
 - **deps**: update dependency typescript to ~5.2.0 (#587) (f3e14fc)
 
 ### Doc
+
 - **readme**: added contributors list (#622) (557b304)
 - **hosting**: added cloudron in the other hosting solutions section (#589) (06c3547)
 
 ## Version 2023.08.21-6f93cba
 
 ### Features
+
 - **copy**: support legacy copy to clipboard for older browser (#581) (6f93cba)
 - **new tool**: string obfuscator (#575) (c58d6e3)
 
 ### Bug fixes
+
 - **deps**: update dependency sql-formatter to v12 (#520) (2bcb77a)
 
 ### Chores
+
 - **deps**: switched to fucking typescript v5 (#501) (76b2761)
 - **deps**: update dependency @antfu/eslint-config to ^0.40.0 (#552) (6ff9a01)
 - **deps**: update dependency prettier to v3 (#564) (a2b9b15)
@@ -158,6 +180,7 @@ All notable changes to this project will be documented in this file. See [standa
 ## Version 2023.08.16-9bd4ad4
 
 ### Features
+
 - **Case Converter**: Add lowercase and uppercase (#534) (7b6232a)
 - **new tool**: emoji picker (#551) (93f7cf0)
 - **ui**: added c-select in the ui lib (#550) (dfa1ba8)
@@ -178,6 +201,7 @@ All notable changes to this project will be documented in this file. See [standa
 - **base64-string-converter**: switch to encode and decode url safe base64 strings (#392) (0b20f1c)
 
 ### Bug fixes
+
 - **deps**: update dependency uuid to v9 (#566) (5e12991)
 - **deps**: update dependency mathjs to v11 (#519) (7924456)
 - **deps**: update dependency @vueuse/router to v10 (#516) (ea0f27c)
@@ -197,6 +221,7 @@ All notable changes to this project will be documented in this file. See [standa
 - **ipv4-converter**: removed readonly on input (7aed9c5)
 
 ### Refactoring
+
 - **navbar**: consistent spacing in navbar buttons (#507) (30f88fc)
 - **ui**: remove n-text (#506) (72c98a3)
 - **ui**: replaced some n-input to c-input (#505) (05ea545)
@@ -209,6 +234,7 @@ All notable changes to this project will be documented in this file. See [standa
 - **ui**: replaced some n-input with c-input-text (f7fc779)
 
 ### Chores
+
 - **deps**: update dependency vitest to ^0.34.0 (#562) (9bd4ad4)
 - **deps**: update dependency node to v18.17.1 (#560) (65a9474)
 - **deps**: update dependency unocss to ^0.55.0 (#561) (85cc7a8)
@@ -249,47 +275,58 @@ All notable changes to this project will be documented in this file. See [standa
 - **lint**: switched to a better lint config (33c9b66)
 
 ### Refacor
+
 - **transformers**: use monospace font for JSON and SQL text areas (#476) (ba4876d)
 
 ### Documentation
+
 - **ide**: updated vscode extensions settings (#472) (847323c)
 
 ### Chors
+
 - **deps**: updated vueuse dependency version (8515c24)
 
 ## Version 2023.05.14-77f2efc
 
 ### Features
+
 - **list-converter**: a small converter who deals with column based data and do some stuff with it (#387) (83a7b3b)
 - **new tool**: phone parser and normalizer (ce3150c)
 
 ### Bug fixes
+
 - **phone-parser**: use default country code (a43c546)
 - **home**: prevent weird blue border on card (3f6c8f0)
 
 ### Refactoring
+
 - **ui**: replaced some n-input with c-input-text (77f2efc)
 
 ### Chores
+
 - **issues**: updated new tool request issue template (edae4c6)
 
 ### Ui-lib
+
 - **new-component**: added text input component in the c-lib (aad8d84)
 - **button**: size variants (401f13f)
 
 ## Version 2023.04.23-92bd835
 
 ### Features
+
 - **ui-lib**: demo pages for c-lib components (92bd835)
 - **new-tool**: diff of two json objects (362f2fa)
 - **ipv4-range-expander**: expands a given IPv4 start and end address to a valid IPv4 subnet (#366) (df989e2)
 - **date converter**: auto focus main input (6d22025)
 
 ### Bug fixes
+
 - **ts**: cleaned legacy typechecking warning (e88c1d5)
 - **mac-address-lookup**: added copy handler on button click (c311e38)
 
 ### Refactoring
+
 - **ui-lib**: prevent c-button to shrink (61ece23)
 - **ui**: replaced naive ui cards with custom ones (f080933)
 - **clean**: removed unused lodash import (bb32513)
@@ -299,48 +336,60 @@ All notable changes to this project will be documented in this file. See [standa
 ## Version 2023.04.14-dbad773
 
 ### Features
+
 - **new-tool**: http status codes (8355bd2)
 
 ### Refactoring
+
 - **uuid-generator**: prevent NaN in quantity (6fb4994)
 
 ### Chores
+
 - **release**: create a github release on new version (dbad773)
 - **version**: reset CHANGELOG content to support new format (85cb0ff)
 
 ## Version 2023.04.14-f9b77b7
 
 ### Features
+
 - **new-tool**: http status codes (8355bd2)
 
 ### Refactoring
+
 - **uuid-generator**: prevent NaN in quantity (6fb4994)
 
 ### Chores
+
 - **release**: create a github release on new version (f9b77b7)
 - **version**: reset CHANGELOG content to support new format (85cb0ff)
 
 ## Version 2023.04.14-2f0d239
 
 ### Features
+
 - **new-tool**: http status codes (8355bd2)
 
 ### Refactoring
+
 - **uuid-generator**: prevent NaN in quantity (6fb4994)
 
 ### Chores
+
 - **release**: create a github release on new version (2f0d239)
 - **version**: reset CHANGELOG content to support new format (85cb0ff)
 
 ## Version 2023.04.14-474cae4
 
 ### Features
+
 - **new-tool**: http status codes (8355bd2)
 
 ### Refactoring
+
 - **uuid-generator**: prevent NaN in quantity (6fb4994)
 
 ### Chores
+
 - **release**: create a github release on new version (474cae4)
 - **version**: reset CHANGELOG content to support new format (85cb0ff)
 
