@@ -37,6 +37,7 @@
   "dependencies": {
     "@it-tools/bip39": "^0.0.4",
     "@it-tools/oggen": "^1.3.0",
+    "@originjs/vite-plugin-commonjs": "^1.0.3",
     "@sindresorhus/slugify": "^2.2.1",
     "@tiptap/pm": "2.1.6",
     "@tiptap/starter-kit": "2.1.6",
@@ -64,6 +65,7 @@
     "highlight.js": "^11.7.0",
     "iarna-toml-esm": "^3.0.5",
     "ibantools": "^4.3.3",
+    "json-editor-vue3": "^1.1.1",
     "json5": "^2.2.3",
     "jwt-decode": "^3.1.2",
     "libphonenumber-js": "^1.10.28",
