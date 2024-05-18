@@ -1,6 +1,8 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+import { tool as jsonToPhpArray } from './json-to-php-array';
+import { tool as phpArrayToJson } from './php-array-to-json';
 
 import { tool as asciiTextDrawer } from './ascii-text-drawer';
 
@@ -128,6 +130,8 @@ export const toolsByCategory: ToolCategory[] = [
       httpStatusCodes,
       jsonDiff,
       safelinkDecoder,
+      jsonToPhpArray,
+      phpArrayToJson,
     ],
   },
   {
