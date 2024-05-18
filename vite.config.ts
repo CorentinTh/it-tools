@@ -15,6 +15,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 import markdown from 'vite-plugin-vue-markdown';
 import svgLoader from 'vite-svg-loader';
 import { configDefaults } from 'vitest/config';
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
 
 const baseUrl = process.env.BASE_URL ?? '/';
 
@@ -97,6 +98,9 @@ export default defineConfig({
       resolvers: [NaiveUiResolver(), IconsResolver({ prefix: 'icon' })],
     }),
     Unocss(),
+    nodePolyfills({
+      exclude: ['fs'],
+    }),
   ],
   base: baseUrl,
   resolve: {
@@ -112,5 +116,11 @@ export default defineConfig({
   },
   build: {
     target: 'esnext',
+    rollupOptions: {
+      external: ['./out/isolated_vm'],
+    },
+  },
+  optimizeDeps: {
+    exclude: ['isolated-vm'],
   },
 });
