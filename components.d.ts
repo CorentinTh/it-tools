@@ -10,7 +10,6 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     '404.page': typeof import('./src/pages/404.page.vue')['default']
-    About: typeof import('./src/pages/About.vue')['default']
     App: typeof import('./src/App.vue')['default']
     AsciiTextDrawer: typeof import('./src/tools/ascii-text-drawer/ascii-text-drawer.vue')['default']
     'Base.layout': typeof import('./src/layouts/base.layout.vue')['default']
@@ -90,6 +89,9 @@ declare module '@vue/runtime-core' {
     IbanValidatorAndParser: typeof import('./src/tools/iban-validator-and-parser/iban-validator-and-parser.vue')['default']
     'IconMdi:brushVariant': typeof import('~icons/mdi/brush-variant')['default']
     'IconMdi:kettleSteamOutline': typeof import('~icons/mdi/kettle-steam-outline')['default']
+    IconMdiArrowDown: typeof import('~icons/mdi/arrow-down')['default']
+    IconMdiArrowRightBottom: typeof import('~icons/mdi/arrow-right-bottom')['default']
+    IconMdiCamera: typeof import('~icons/mdi/camera')['default']
     IconMdiChevronDown: typeof import('~icons/mdi/chevron-down')['default']
     IconMdiChevronRight: typeof import('~icons/mdi/chevron-right')['default']
     IconMdiClose: typeof import('~icons/mdi/close')['default']
@@ -166,6 +168,7 @@ declare module '@vue/runtime-core' {
     StringObfuscator: typeof import('./src/tools/string-obfuscator/string-obfuscator.vue')['default']
     SvgPlaceholderGenerator: typeof import('./src/tools/svg-placeholder-generator/svg-placeholder-generator.vue')['default']
     TemperatureConverter: typeof import('./src/tools/temperature-converter/temperature-converter.vue')['default']
+    'Test.page': typeof import('./src/pages/test.page.vue')['default']
     TextareaCopyable: typeof import('./src/components/TextareaCopyable.vue')['default']
     TextDiff: typeof import('./src/tools/text-diff/text-diff.vue')['default']
     TextStatistics: typeof import('./src/tools/text-statistics/text-statistics.vue')['default']

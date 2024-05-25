@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { layouts } from './layouts/index';
 import HomePage from './pages/Home.page.vue';
 import NotFound from './pages/404.page.vue';
+import test from './pages/test.page.vue';
 import { tools } from './tools';
 import { config } from './config';
 import { routes as demoRoutes } from './ui/demo/demo.routes';
@@ -24,12 +25,12 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomePage,
+      component: test,
     },
     {
       path: '/about',
       name: 'about',
-      component: () => import('./pages/About.vue'),
+      component: HomePage,
     },
     ...toolsRoutes,
     ...toolsRedirectRoutes,

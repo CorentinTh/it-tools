@@ -35,6 +35,11 @@ const { t } = useI18n();
           <n-icon :component="Heart" />
         </ColoredCard>
       </div>
+      <n-grid v-if="config.showBanner" x-gap="12" y-gap="12" cols="1 400:2 800:3 1200:4 2000:8">
+        <n-gi>
+          <p>testing this </p>
+        </n-gi>
+      </n-grid>
 
       <transition name="height">
         <div v-if="toolStore.favoriteTools.length > 0">
