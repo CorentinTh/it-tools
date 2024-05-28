@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { useCopy } from '@/composable/copy';
+
 const inputValue = ref('');
 const outputValue = ref('');
+const { copy } = useCopy({ source: outputValue, text: 'Output copied to the clipboard' });
 
 function toSentenceCase(input: string) {
   return input.replace(/.+?[\.\?\!](\s|$)/g, (sentence) => {
@@ -49,8 +52,8 @@ function handleCaseChange(type: string) {
 <template>
   <div>
     <c-input-text
-      v-model:value="inputValue" rows="3" placeholder="Enter your text..."
-      multiline monospace autosize mt-5
+      v-model:value="inputValue" label="Input" rows="3" placeholder="Enter your text..." multiline monospace
+      autosize mt-5
     />
   </div>
 
@@ -82,7 +85,10 @@ function handleCaseChange(type: string) {
       </c-button>
     </div>
   </div>
-  <div>
-    <TextareaCopyable :value="outputValue" mb-1 mt-1 copy-placement="outside" />
+  <c-input-text :value="outputValue" rows="3" label="Output" readonly multiline monospace autosize mt-5 />
+  <div mt-5 flex justify-center>
+    <c-button @click="copy()">
+      Copy Output
+    </c-button>
   </div>
 </template>

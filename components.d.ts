@@ -92,6 +92,7 @@ declare module '@vue/runtime-core' {
     'IconMdi:contentCopy': typeof import('~icons/mdi/content-copy')['default']
     'IconMdi:kettleSteamOutline': typeof import('~icons/mdi/kettle-steam-outline')['default']
     IconMdiArrowDown: typeof import('~icons/mdi/arrow-down')['default']
+    IconMdiArrowRightBottom: typeof import('~icons/mdi/arrow-right-bottom')['default']
     IconMdiChevronDown: typeof import('~icons/mdi/chevron-down')['default']
     IconMdiChevronRight: typeof import('~icons/mdi/chevron-right')['default']
     IconMdiClose: typeof import('~icons/mdi/close')['default']
