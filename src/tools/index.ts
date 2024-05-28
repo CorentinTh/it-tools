@@ -81,6 +81,7 @@ import { tool as uuidGenerator } from './uuid-generator';
 import { tool as macAddressLookup } from './mac-address-lookup';
 import { tool as xmlFormatter } from './xml-formatter';
 import { tool as yamlViewer } from './yaml-viewer';
+import { tool as textCaseConverter } from './text-case-converter';
 
 export const toolsByCategory: ToolCategory[] = [
   {
@@ -172,6 +173,7 @@ export const toolsByCategory: ToolCategory[] = [
       textDiff,
       numeronymGenerator,
       asciiTextDrawer,
+      textCaseConverter,
     ],
   },
   {

@@ -387,3 +387,6 @@ tools:
   text-to-binary:
     title: 文本到 ASCII 二进制
     description: 将文本转换为其 ASCII 二进制表示形式，反之亦然。
+  text-case-converter:
+    title: 文本大小写转换器
+    description: 将文本或字符串转换为大写、小写、标题大小写和句子大小写。
