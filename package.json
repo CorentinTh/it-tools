@@ -132,7 +132,7 @@
     "unplugin-icons": "^0.17.0",
     "unplugin-vue-components": "^0.25.0",
     "vite": "^4.4.9",
-    "vite-plugin-pwa": "^0.16.0",
+    "vite-plugin-pwa": "^0.20.0",
     "vite-plugin-vue-markdown": "^0.23.5",
     "vite-svg-loader": "^4.0.0",
     "vitest": "^0.34.0",
