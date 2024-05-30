@@ -5,6 +5,7 @@ export function createToken({
   withLowercase = true,
   withNumbers = true,
   withSymbols = false,
+  deniedChars = '',
   length = 64,
   alphabet,
 }: {
@@ -12,6 +13,7 @@ export function createToken({
   withLowercase?: boolean
   withNumbers?: boolean
   withSymbols?: boolean
+  deniedChars?: string
   length?: number
   alphabet?: string
 }) {
@@ -20,7 +22,7 @@ export function createToken({
     withLowercase ? 'abcdefghijklmopqrstuvwxyz' : '',
     withNumbers ? '0123456789' : '',
     withSymbols ? '.,;:!?./-"\'#{([-|\\@)]=}*+' : '',
-  ].join('');
+  ].filter(c => !(deniedChars?.includes(c))).join(''); ;
 
   return shuffleString(allAlphabet.repeat(length)).substring(0, length);
 }
