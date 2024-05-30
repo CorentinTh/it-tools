@@ -48,7 +48,7 @@
     "@vueuse/head": "^1.0.0",
     "@vueuse/router": "^10.0.0",
     "bcryptjs": "^2.4.3",
-    "change-case": "^4.1.2",
+    "change-case": "^5.0.0",
     "colord": "^2.9.3",
     "composerize-ts": "^0.6.2",
     "country-code-lookup": "^0.1.0",
