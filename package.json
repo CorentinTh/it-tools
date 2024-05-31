@@ -74,6 +74,8 @@
     "mime-types": "^2.1.35",
     "monaco-editor": "^0.43.0",
     "naive-ui": "^2.35.0",
+    "nanoid": "^5.0.7",
+    "nanoid-dictionary": "^4.3.0",
     "netmask": "^2.0.2",
     "node-forge": "^1.3.1",
     "oui-data": "^1.0.10",
