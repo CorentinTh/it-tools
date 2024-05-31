@@ -19,7 +19,7 @@ const themeVars = useThemeVars();
 const styleStore = useStyleStore();
 const version = config.app.version;
 const commitSha = config.app.lastCommitSha.slice(0, 7);
-
+const showModal = ref(false);
 const { tracker } = useTracker();
 const { t } = useI18n();
 
@@ -27,9 +27,12 @@ const toolStore = useToolStore();
 const { favoriteTools, toolsByCategory } = storeToRefs(toolStore);
 
 const tools = computed<ToolCategory[]>(() => [
-  ...(favoriteTools.value.length > 0 ? [{ name: t('tools.categories.favorite-tools'), components: favoriteTools.value }] : []),
+  ...(favoriteTools.value.length > 0
+    ? [{ name: t('tools.categories.favorite-tools'), components: favoriteTools.value }]
+    : []),
   ...toolsByCategory.value,
 ]);
+const showCover = () => (showModal.value = true);
 </script>
 
 <template>
@@ -38,9 +41,7 @@ const tools = computed<ToolCategory[]>(() => [
       <RouterLink to="/" class="hero-wrapper">
         <HeroGradient class="gradient" />
         <div class="text-wrapper">
-          <div class="title">
-            IT - TOOLS
-          </div>
+          <div class="title">IT - TOOLS</div>
           <div class="divider" />
           <div class="subtitle">
             {{ $t('home.subtitle') }}
@@ -81,9 +82,7 @@ const tools = computed<ToolCategory[]>(() => [
           </div>
           <div>
             © {{ new Date().getFullYear() }}
-            <c-link target="_blank" rel="noopener" href="https://github.com/CorentinTh">
-              Corentin Thomasset
-            </c-link>
+            <c-link target="_blank" rel="noopener" href="https://github.com/CorentinTh"> Corentin Thomasset </c-link>
           </div>
         </div>
       </div>
@@ -106,12 +105,6 @@ const tools = computed<ToolCategory[]>(() => [
           </c-button>
         </c-tooltip>
 
-        <c-tooltip :tooltip="$t('home.uiLib')" position="bottom">
-          <c-button v-if="config.app.env === 'development'" to="/c-lib" circle variant="text" :aria-label="$t('home.uiLib')">
-            <icon-mdi:brush-variant text-20px />
-          </c-button>
-        </c-tooltip>
-
         <command-palette />
 
         <locale-selector v-if="!styleStore.isSmallScreen" />
@@ -123,12 +116,16 @@ const tools = computed<ToolCategory[]>(() => [
         <c-tooltip position="bottom" :tooltip="$t('home.support')">
           <c-button
             round
-            href="https://www.buymeacoffee.com/cthmsst"
             rel="noopener"
             target="_blank"
             class="support-button"
             :bordered="false"
-            @click="() => tracker.trackEvent({ eventName: 'Support button clicked' })"
+            @click="
+              () => {
+                showCover();
+                tracker.trackEvent({ eventName: 'Support button clicked' });
+              }
+            "
           >
             {{ $t('home.buyMeACoffee') }}
             <NIcon v-if="!styleStore.isSmallScreen" :component="Heart" ml-2 />
@@ -138,6 +135,11 @@ const tools = computed<ToolCategory[]>(() => [
       <slot />
     </template>
   </MenuLayout>
+  <n-modal v-model:show="showModal" preset="card" style="width: 600px; text-align: center">
+    <template #default>
+      <img style="width: 200px" src="@/assets/images/IMG_2470.jpeg" />
+    </template>
+  </n-modal>
 </template>
 
 <style lang="less" scoped>
