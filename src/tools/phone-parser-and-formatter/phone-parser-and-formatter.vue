@@ -9,9 +9,10 @@ import {
 import { withDefaultOnError } from '@/utils/defaults';
 import { booleanToHumanReadable } from '@/utils/boolean';
 import { useValidation } from '@/composable/validation';
+import { useQueryParamOrStorage } from '@/composable/queryParams';
 
 const rawPhone = ref('');
-const defaultCountryCode = ref(getDefaultCountryCode());
+const defaultCountryCode = useQueryParamOrStorage({ name: 'country', storageName: 'phone-parser:country', defaultValue: getDefaultCountryCode() });
 const validation = useValidation({
   source: rawPhone,
   rules: [
