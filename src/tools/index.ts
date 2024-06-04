@@ -6,6 +6,7 @@ import { tool as asciiTextDrawer } from './ascii-text-drawer';
 
 import { tool as textToUnicode } from './text-to-unicode';
 import { tool as safelinkDecoder } from './safelink-decoder';
+import { tool as nanoMemo } from './nano-memo';
 import { tool as pdfSignatureChecker } from './pdf-signature-checker';
 import { tool as numeronymGenerator } from './numeronym-generator';
 import { tool as macAddressGenerator } from './mac-address-generator';
@@ -137,7 +138,6 @@ export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Development',
     components: [
-      gitMemo,
       randomPortGenerator,
       crontabGenerator,
       jsonViewer,
@@ -148,6 +148,13 @@ export const toolsByCategory: ToolCategory[] = [
       dockerRunToDockerComposeConverter,
       xmlFormatter,
       yamlViewer,
+    ],
+  },
+  {
+    name: 'CheatSheets',
+    components: [
+      gitMemo,
+      nanoMemo,
     ],
   },
   {
