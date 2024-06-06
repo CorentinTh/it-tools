@@ -76,6 +76,18 @@ async function onUpload(file: File) {
     fileInput.value = file;
   }
 }
+
+function onPaste(event: ClipboardEvent) {
+  if (event.clipboardData) {
+    const { items } = event.clipboardData;
+    for (const item of items) {
+      const file = item.getAsFile();
+      if (item.kind === 'file' && file) {
+        fileInput.value = file;
+      }
+    }
+  }
+}
 </script>
 
 <template>
@@ -121,8 +133,8 @@ async function onUpload(file: File) {
     </div>
   </c-card>
 
-  <c-card title="File to base64">
-    <c-file-upload title="Drag and drop a file here, or click to select a file" @file-upload="onUpload" />
+  <c-card title="File to base64" @paste="onPaste">
+    <c-file-upload title="Drag and drop a file here, Focus this card and paste a file here, or click to select a file" @file-upload="onUpload" />
     <c-input-text :value="fileBase64" multiline readonly placeholder="File in base64 will be here" rows="5" my-2 />
 
     <div flex justify-center>
