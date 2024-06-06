@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { v1 as generateUuidV1, v3 as generateUuidV3, v4 as generateUuidV4, v5 as generateUuidV5, NIL as nilUuid } from 'uuid';
+import { uuidv7 as generateUuidV7 } from 'uuidv7'; // 'uuid' package support for v7 is still in beta
 import { useCopy } from '@/composable/copy';
 import { computedRefreshable } from '@/composable/computedRefreshable';
 import { withDefaultOnError } from '@/utils/defaults';
 
-const versions = ['NIL', 'v1', 'v3', 'v4', 'v5'] as const;
+const versions = ['NIL', 'v1', 'v3', 'v4', 'v5', 'v7'] as const;
 
 const version = useStorage<typeof versions[number]>('uuid-generator:version', 'v4');
 const count = useStorage('uuid-generator:quantity', 1);
@@ -34,6 +35,7 @@ const generators = {
   v3: () => generateUuidV3(v35Args.value.name, v35Args.value.namespace),
   v4: () => generateUuidV4(),
   v5: () => generateUuidV5(v35Args.value.name, v35Args.value.namespace),
+  v7: () => generateUuidV7(),
 };
 
 const [uuids, refreshUUIDs] = computedRefreshable(() => withDefaultOnError(() =>
