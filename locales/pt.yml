@@ -69,3 +69,7 @@ tools:
     measurement: 'Medidas'
     text: 'Texto'
     data: 'Dados'
+
+  csv-to-json:
+    title: CSV para JSON
+    description: Converte CSV para JSON com detecção automática de cabeçalhos.
