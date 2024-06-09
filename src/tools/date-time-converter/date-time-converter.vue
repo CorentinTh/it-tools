@@ -10,12 +10,12 @@ import {
   isDate,
   isValid,
   parseISO,
-  parseJSON,
 } from 'date-fns';
 import type { DateFormat, ToDateMapper } from './date-time-converter.types';
 import {
   dateToExcelFormat,
   excelFormatToDate,
+  fromTimestamp,
   isExcelFormat,
   isISO8601DateTimeString,
   isISO9075DateString,
@@ -73,7 +73,7 @@ const formats: DateFormat[] = [
   {
     name: 'Timestamp',
     fromDate: date => String(getTime(date)),
-    toDate: ms => parseJSON(+ms),
+    toDate: ms => fromTimestamp(ms),
     formatMatcher: date => isTimestamp(date),
   },
   {

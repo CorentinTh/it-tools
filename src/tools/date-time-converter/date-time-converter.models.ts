@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import { addMilliseconds } from 'date-fns';
 
 export {
   isISO8601DateTimeString,
@@ -12,6 +13,8 @@ export {
   dateToExcelFormat,
   excelFormatToDate,
   isExcelFormat,
+  fromTimestamp,
+  isTimestampMicroSeconds,
 };
 
 const ISO8601_REGEX
@@ -35,7 +38,9 @@ const isISO9075DateString = createRegexMatcher(ISO9075_REGEX);
 const isRFC3339DateString = createRegexMatcher(RFC3339_REGEX);
 const isRFC7231DateString = createRegexMatcher(RFC7231_REGEX);
 const isUnixTimestamp = createRegexMatcher(/^[0-9]{1,10}$/);
-const isTimestamp = createRegexMatcher(/^[0-9]{1,13}$/);
+const isTimestamp = createRegexMatcher(/^([0-9]{1,13}|[0-9]{16})$/);
+const isTimestampMilliSeconds = createRegexMatcher(/^[0-9]{1,13}$/);
+const isTimestampMicroSeconds = createRegexMatcher(/^[0-9]{16}$/);
 const isMongoObjectId = createRegexMatcher(/^[0-9a-fA-F]{24}$/);
 
 const isExcelFormat = createRegexMatcher(EXCEL_FORMAT_REGEX);
@@ -59,4 +64,15 @@ function dateToExcelFormat(date: Date) {
 
 function excelFormatToDate(excelFormat: string | number) {
   return new Date((Number(excelFormat) - 25569) * 86400 * 1000);
+}
+
+function fromTimestamp(timestamp: string, type: 'auto' | 'milliseconds' | 'microseconds' = 'auto') {
+  let milliSeconds = 0;
+  if (type === 'microseconds' || isTimestampMicroSeconds(timestamp)) {
+    milliSeconds = Number(timestamp) / 1000;
+  }
+  else if (type === 'milliseconds' || isTimestampMilliSeconds(timestamp)) {
+    milliSeconds = Number(timestamp);
+  }
+  return addMilliseconds(new Date(0), milliSeconds);
 }
