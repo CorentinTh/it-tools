@@ -57,6 +57,7 @@ import { tool as gitMemo } from './git-memo';
 import { tool as hashText } from './hash-text';
 import { tool as hmacGenerator } from './hmac-generator';
 import { tool as htmlEntities } from './html-entities';
+import { tool as storageUnitConverter } from './data-storage-unit-converter';
 import { tool as baseConverter } from './integer-base-converter';
 import { tool as jsonViewer } from './json-viewer';
 import { tool as jwtParser } from './jwt-parser';
@@ -92,6 +93,7 @@ export const toolsByCategory: ToolCategory[] = [
     components: [
       dateTimeConverter,
       baseConverter,
+      storageUnitConverter,
       romanNumeralConverter,
       base64StringConverter,
       base64FileConverter,

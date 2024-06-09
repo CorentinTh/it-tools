@@ -336,6 +336,10 @@ tools:
     title: 字符串混淆器
     description: 混淆字符串（如秘密、IBAN 或令牌），使其可共享和可识别，而不泄露其内容。
 
+  data-storage-unit-converter:
+    title: 数据存储单位转换器
+    description: 在不同数据存储单位（字节、千字节、兆字节、千兆字节、太字节、拍字节）之间转换数字
+
   base-converter:
     title: 整数基转换器
     description: 在不同的基数（十进制、十六进制、二进制、八进制、base64…）之间转换数字
