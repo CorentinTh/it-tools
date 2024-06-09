@@ -135,9 +135,8 @@ async function onUpload(uploadedFile: File) {
 
   status.value = 'processing';
   try {
-    status.value = 'done';
-
     hashes.value = await hashFileAsync(uploadedFile);
+    status.value = 'done';
   }
   catch (e) {
     status.value = 'error';
