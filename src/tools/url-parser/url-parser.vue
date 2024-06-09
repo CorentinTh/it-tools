@@ -3,9 +3,32 @@ import InputCopyable from '../../components/InputCopyable.vue';
 import { isNotThrowing } from '@/utils/boolean';
 import { withDefaultOnError } from '@/utils/defaults';
 
-const urlToParse = ref('https://me:pwd@it-tools.tech:3000/url-parser?key1=value&key2=value2#the-hash');
+const urlToParse = ref('https://me:pwd@it-tools.tech:3000/url-parser?key=value&keyarr=value1&keyarr=value2&otherarg#the-hash');
 
 const urlParsed = computed(() => withDefaultOnError(() => new URL(urlToParse.value), undefined));
+const urlParsedParams = computed(() => {
+  const params: { key: string; value: string }[] = [];
+  const usedKeys = new Set();
+  for (const key of (urlParsed.value?.searchParams.keys() ?? [])) {
+    // searchParams.keys() reports as many times the key as it appears in the params, so use only first occurrence
+    if (usedKeys.has(key)) {
+      continue;
+    }
+    usedKeys.add(key);
+    const values = urlParsed.value?.searchParams.getAll(key) ?? [];
+    if (values.length > 1) {
+      // print out multiple values at the place of the first occurrence of param
+      let index = 0;
+      values.forEach((value) => {
+        params.push({ key: `${key}[${index}]`, value: (value ?? '') });
+        index += 1;
+      });
+      continue;
+    }
+    params.push({ key, value: (urlParsed.value?.searchParams.get(key) ?? '') });
+  }
+  return params;
+});
 const urlValidationRules = [
   {
     validator: (value: string) => isNotThrowing(() => new URL(value)),
@@ -49,8 +72,8 @@ const properties: { title: string; key: keyof URL }[] = [
     />
 
     <div
-      v-for="[k, v] in Object.entries(Object.fromEntries(urlParsed?.searchParams.entries() ?? []))"
-      :key="k"
+      v-for="param in urlParsedParams"
+      :key="param.key"
       mb-2
       w-full
       flex
@@ -59,8 +82,8 @@ const properties: { title: string; key: keyof URL }[] = [
         <icon-mdi-arrow-right-bottom />
       </div>
 
-      <InputCopyable :value="k" readonly />
-      <InputCopyable :value="v" readonly />
+      <InputCopyable :value="param.key" readonly />
+      <InputCopyable :value="param.value" readonly />
     </div>
   </c-card>
 </template>
