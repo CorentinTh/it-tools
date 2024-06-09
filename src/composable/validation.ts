@@ -6,7 +6,7 @@ type ValidatorReturnType = unknown;
 
 export interface UseValidationRule<T> {
   validator: (value: T) => ValidatorReturnType
-  message: string
+  message: any
 }
 
 export function isFalsyOrHasThrown(cb: () => ValidatorReturnType): boolean {
@@ -56,7 +56,6 @@ export function useValidation<T>({
   watch(
     [source, ...watchRefs],
     () => {
-      state.message = '';
       state.status = undefined;
 
       for (const rule of get(rules)) {

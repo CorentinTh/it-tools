@@ -1,0 +1,9 @@
+tools:
+  json-to-toml:
+    title: 'JSON to TOML'
+    description: '使用这个在线转换工具，简单地将JSON转换为TOML。'
+    invalid: '提供的JSON有问题'
+    your-json: '原始JSON'
+    toml-from-json: '转换后的TOML'
+    placeholder:
+      your-json: '在这粘贴你的JSON...'
