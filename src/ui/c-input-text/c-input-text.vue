@@ -31,6 +31,7 @@ const props = withDefaults(
     autosize?: boolean
     autofocus?: boolean
     monospace?: boolean
+    pasteHtml?: boolean
   }>(),
   {
     value: '',
@@ -58,13 +59,14 @@ const props = withDefaults(
     autosize: false,
     autofocus: false,
     monospace: false,
+    pasteHtml: false,
   },
 );
 const emit = defineEmits(['update:value']);
 const value = useVModel(props, 'value', emit);
 const showPassword = ref(false);
 
-const { id, placeholder, label, validationRules, labelPosition, labelWidth, labelAlign, autosize, readonly, disabled, clearable, type, multiline, rows, rawText, autofocus, monospace } = toRefs(props);
+const { id, placeholder, label, validationRules, labelPosition, labelWidth, labelAlign, autosize, readonly, disabled, clearable, type, multiline, rows, rawText, autofocus, monospace, pasteHtml } = toRefs(props);
 
 const validation
   = props.validation
@@ -80,6 +82,28 @@ const appTheme = useAppTheme();
 const textareaRef = ref<HTMLTextAreaElement>();
 const inputRef = ref<HTMLInputElement>();
 const inputWrapperRef = ref<HTMLElement>();
+
+interface HTMLElementWithValue {
+  value?: string
+}
+
+function onPasteInputHtml(evt: ClipboardEvent) {
+  if (!pasteHtml.value) {
+    return false;
+  }
+
+  const target = (evt.target as HTMLElementWithValue);
+  if (!target) {
+    return false;
+  }
+  evt.preventDefault();
+  const textHtmlData = evt.clipboardData?.getData('text/html');
+  if (textHtmlData && textHtmlData !== '') {
+    value.value = textHtmlData;
+    return true;
+  }
+  return false;
+}
 
 watch(
   [value, autosize, multiline, inputWrapperRef, textareaRef],
@@ -171,6 +195,7 @@ defineExpose({
           :autocorrect="autocorrect ?? (rawText ? 'off' : undefined)"
           :spellcheck="spellcheck ?? (rawText ? false : undefined)"
           :rows="rows"
+          @paste="onPasteInputHtml"
         />
 
         <input
@@ -192,6 +217,7 @@ defineExpose({
           :autocomplete="autocomplete ?? (rawText ? 'off' : undefined)"
           :autocorrect="autocorrect ?? (rawText ? 'off' : undefined)"
           :spellcheck="spellcheck ?? (rawText ? false : undefined)"
+          @paste="onPasteInputHtml"
         >
 
         <c-button v-if="clearable && value" variant="text" circle size="small" @click="value = ''">
