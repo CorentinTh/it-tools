@@ -1,6 +1,7 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+import { tool as jsonSortMaster } from './json-sort-master';
 
 import { tool as asciiTextDrawer } from './ascii-text-drawer';
 
@@ -104,6 +105,7 @@ export const toolsByCategory: ToolCategory[] = [
       yamlToToml,
       jsonToYaml,
       jsonToToml,
+      jsonSortMaster,
       listConverter,
       tomlToJson,
       tomlToYaml,
