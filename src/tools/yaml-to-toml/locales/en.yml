@@ -1,0 +1,9 @@
+tools:
+  yaml-to-toml:
+    title: 'YAML to TOML converter'
+    description: 'Parse and convert YAML to TOML.'
+    invalid: 'Provided JSON is not valid.'
+    your-yaml: 'Your YAML'
+    toml-from-yaml: 'TOML from your YAML'
+    placeholder:
+      your-yaml: 'Paste your YAML here...'

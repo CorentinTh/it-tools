@@ -5,21 +5,22 @@ import type { UseValidationRule } from '@/composable/validation';
 import { isNotThrowing } from '@/utils/boolean';
 import { withDefaultOnError } from '@/utils/defaults';
 
+const { t } = useI18n();
 const transformer = (value: string) => withDefaultOnError(() => stringify(JSON5.parse(value)), '');
 
 const rules: UseValidationRule<string>[] = [
   {
     validator: (value: string) => value === '' || isNotThrowing(() => stringify(JSON5.parse(value))),
-    message: 'Provided JSON is not valid.',
+    message: computed(() => t('tools.json-to-yaml-converter.invalid')),
   },
 ];
 </script>
 
 <template>
   <format-transformer
-    input-label="Your JSON"
-    input-placeholder="Paste your JSON here..."
-    output-label="YAML from your JSON"
+    :input-label="t('tools.json-to-yaml-converter.your-json')"
+    :input-placeholder="t('tools.json-to-yaml-converter.placeholder.your-json')"
+    :output-label="t('tools.json-to-yaml-converter.yaml-from-json')"
     output-language="yaml"
     :input-validation-rules="rules"
     :transformer="transformer"

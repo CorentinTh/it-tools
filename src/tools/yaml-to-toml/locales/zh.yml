@@ -1,0 +1,9 @@
+tools:
+  yaml-to-toml:
+    title: 'YAML to TOML'
+    description: '解析并转换 YAML 到 TOML.'
+    invalid: '提供的YAML有问题'
+    your-yaml: '原始YAML'
+    toml-from-yaml: '转换后的TOML'
+    placeholder:
+      your-yaml: '在这粘贴你的YAML...'
