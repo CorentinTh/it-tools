@@ -1,10 +1,11 @@
 import { defineTool } from '../tool';
+import { translate } from '@/plugins/i18n.plugin';
 import Bank from '~icons/mdi/bank';
 
 export const tool = defineTool({
-  name: 'IBAN validator and parser',
+  name: translate('tools.iban-validator-and-parser.title'),
   path: '/iban-validator-and-parser',
-  description: 'Validate and parse IBAN numbers. Check if IBAN is valid and get the country, BBAN, if it is a QR-IBAN and the IBAN friendly format.',
+  description: translate('tools.iban-validator-and-parser.description'),
   keywords: ['iban', 'validator', 'and', 'parser', 'bic', 'bank'],
   component: () => import('./iban-validator-and-parser.vue'),
   icon: Bank,

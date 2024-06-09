@@ -89,7 +89,7 @@ const CRCValues = computed(() => withDefaultOnError(() => {
 
 watch(text,
   (_, newValue) => {
-    if (newValue === ''){
+    if (newValue === '') {
       return;
     }
 
