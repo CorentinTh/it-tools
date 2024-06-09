@@ -18,6 +18,10 @@ test.describe('IT Tool', () => {
     const errors: Array<Error> = [];
 
     page.on('pageerror', (error) => {
+      // ignore errors related to physical devices (ie camera recorder)
+      if (error.message.match(/Requested device not found/)) {
+        return;
+      }
       errors.push(error);
     });
 
