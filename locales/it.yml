@@ -1,0 +1,377 @@
+home:
+  categories:
+    newestTools: Strumenti più recenti
+    favoriteTools: I tuoi strumenti preferiti
+    allTools: Tutti gli strumenti
+  subtitle: Strumenti utili per gli sviluppatori
+  toggleMenu: Menu a tendina
+  home: Home
+  uiLib: 'UI Lib'
+  support: Supporta lo sviluppo di IT-Tools
+  buyMeACoffee: Offrimi un caffè
+  follow:
+    title: Ti piacciono gli strumenti?
+    p1: 
+    githubRepository: Repository GitHub di IT-Tools
+    p2: o seguiteci su
+    twitterAccount: Account Twitter di IT-Tools
+    thankYou: Grazie!
+  nav:
+    github: Repository GitHub
+    githubRepository: Repository GitHub di IT-Tools
+    twitter: Account Twitter
+    twitterAccount: Account Twitter di IT-Tools
+    about: Informazioni su IT-Tools
+    aboutLabel: Informazioni
+    darkMode: Modalità scura
+    lightMode: Modalità chiara
+    mode: Cambia modalità scura/chiara
+about:
+
+404:
+  notFound: 404 Non trovato
+  sorry: Spiacente, questa pagina non sembra esistere
+  maybe: Forse la cache sta facendo cose strane, dovremmo provare a fare un refresh forzato?
+  backHome: Ritorno alla home
+favoriteButton:
+  remove: Rimuovi dai preferiti
+  add: Aggiungi ai preferiti
+toolCard:
+  new: Nuovo
+search:
+  label: Cerca
+tools:
+  categories:
+    favorite-tools: I tuoi strumenti preferiti
+    crypto: Crittografia
+    converter: Convertitore
+    web: Web
+    images and videos: Immagini & Video
+    development: Sviluppo
+    network: Rete
+    math: Matematica
+    measurement: Misurazione
+    text: Testo
+    data: Dati
+
+  password-strength-analyser:
+    title: Analizzatore della resistenza delle password
+    description: 
+
+  chronometer:
+    title: Cronometro
+    description: 
+
+  token-generator:
+    title: Generatore di token
+    description: 
+
+    uppercase: Maiuscole (ABC...)
+    lowercase: Minuscole (abc...)
+    numbers: Numeri (123...)
+    symbols: Simboli (!-;...)
+    length: Lunghezza
+    tokenPlaceholder: Il token...
+    copied: Token copiato negli appunti
+    button:
+      copy: Copia
+      refresh: Aggiorna
+  percentage-calculator:
+    title: Calcolatore di percentuale
+    description: Calcolare facilmente le percentuali da un valore a un altro valore o da una percentuale a un valore.
+
+  svg-placeholder-generator:
+    title: Generatore di placeholder SVG
+    description: Genera immagini svg da utilizzare come placeholder nelle applicazioni.
+
+  json-to-csv:
+    title: Da JSON a CSV
+    description: Convertire da JSON a CSV con rilevamento automatico delle intestazioni.
+
+  camera-recorder:
+    title: 
+    description: 
+
+  keycode-info:
+    title: 
+    description: 
+
+  emoji-picker:
+    title: Selezionatore di emoji
+    description: 
+
+  color-converter:
+    title: Convertitore di colori
+    description: Converte i colori tra i diversi formati (hex, rgb, hsl e nome css)
+
+  bcrypt:
+    title: Bcrypt
+    description: 
+
+  crontab-generator:
+    title: Generatore di Crontab
+    description: 
+
+  http-status-codes:
+    title: Codici di stato HTTP
+    description: L'elenco di tutti i codici di stato HTTP, il loro nome e il loro significato.
+
+  sql-prettify:
+    title: SQL, preconfigurazione e formattazione
+    description: 
+
+  benchmark-builder:
+    title: Costruttore di benchmark
+    description: Confronta facilmente i tempi di esecuzione delle attività con questo semplicissimo strumento di benchmark online.
+
+  git-memo:
+    title: Git cheatsheet
+    description: 
+
+  slugify-string:
+    title:
+    description:
+
+  encryption:
+    title: 
+    description: 
+
+  random-port-generator:
+    title: Generatore di porte casuali
+    description: Genera numeri di porta casuali al di fuori dell'intervallo di porte "note" (0-1023).
+
+  yaml-prettify:
+    title: 
+    description: 
+
+  eta-calculator:
+    title: 
+    description: 
+
+  roman-numeral-converter:
+    title: Convertitore di numeri romani
+    description: Conversione di numeri romani in numeri e conversione di numeri in numeri romani.
+
+  hmac-generator:
+    title: 
+    description: 
+
+  bip39-generator:
+    title: Generatore di passphrase BIP39
+    description: 
+
+  base64-file-converter:
+    title: Convertitore di file Base64.
+    description: Converte una stringa, un file o un'immagine nella sua versione in base64.
+
+  list-converter:
+    title: 
+    description:
+
+  base64-string-converter:
+    title: Codificatore/decodificatore di stringhe Base64
+    description: Codifica e decodifica semplicemente le stringhe nella loro versione in base64.
+
+  toml-to-yaml:
+    title: Da TOML a YAML
+    description: Analizza e converti TOML in YAML.
+
+  math-evaluator:
+    title: 
+    description: 
+
+  json-to-yaml-converter:
+    title: Convertitore da JSON a YAML
+    description:
+
+  url-parser:
+    title:
+    description:
+
+  iban-validator-and-parser:
+    title: Validatore e analizzatore di IBAN
+    description: 
+
+  user-agent-parser:
+    title: 
+    description: 
+
+  numeronym-generator:
+    title: 
+    description: 
+
+  case-converter:
+    title: 
+    description: 
+
+  html-entities:
+    title: 
+    description: 
+
+  json-prettify:
+    title: 
+    description: 
+
+  docker-run-to-docker-compose-converter:
+    title: Convertitore da Docker run a Docker compose
+    description: Trasforma i comandi "docker run" in file docker-compose!
+
+  mac-address-lookup:
+    title: 
+    description: Trova il fornitore e il produttore di un dispositivo in base al suo indirizzo MAC.
+
+  mime-types:
+    title: Tipi MIME
+    description: Converte i tipi MIME in estensioni di file e viceversa.
+
+  toml-to-json:
+    title: Da TOML a JSON
+    description: Analizza e converte TOML in JSON.
+
+  lorem-ipsum-generator:
+    title: Generatore Lorem ipsum
+    description: 
+
+  qrcode-generator:
+    title: Generatore di codici QR
+    description:
+
+  wifi-qrcode-generator:
+    title: Generatore di codici QR WiFi
+    description:
+
+  xml-formatter:
+    title: Formattatore XML
+    description:
+
+  temperature-converter:
+    title: 
+    description: 
+
+  chmod-calculator:
+    title: 
+    description: 
+
+  rsa-key-pair-generator:
+    title: Generatore di coppie di chiavi RSA
+    description: Generare una nuova coppia casuale di chiavi RSA private e pubbliche per certificati pem.
+
+  html-wysiwyg-editor:
+    title: Editor HTML WYSIWYG
+    description: 
+
+  yaml-to-toml:
+    title: Da YAML a TOML
+    description: Analizza e converte YAML in TOML.
+
+  mac-address-generator:
+    title: Generatore di indirizzi MAC
+    description: 
+
+  json-diff:
+    title: 
+    description: Confronta due oggetti JSON e individua le differenze.
+
+  jwt-parser:
+    title: Analizzatore JWT
+    description: Analizza e decodifica il token web JSON (jwt) e ne visualizza il contenuto.
+
+  date-converter:
+    title: Convertitore data-ora
+    description: Convertire la data e l'ora nei vari formati
+
+  phone-parser-and-formatter:
+    title:  
+    description: Analizza, convalida e formatta i numeri di telefono. Ottenere informazioni sul numero di telefono, come il codice del paese, il tipo, ecc.
+
+  ipv4-subnet-calculator:
+    title: Calcolatore di sottorete IPv4
+    description: Analizza i blocchi CIDR IPv4 e ottiene tutte le informazioni necessarie per la sottorete.
+
+  og-meta-generator:
+    title: 
+    description: 
+
+  ipv6-ula-generator:
+    title: 
+    description: 
+
+  hash-text:
+    title: Testo Hash
+    description:
+
+  json-to-toml:
+    title: Da JSON a TOML
+    description: Analizza e converte JSON in TOML.
+
+  device-information:
+    title: 
+    description: Ottiene informazioni sul dispositivo attuale (dimensioni dello schermo, rapporto pixel, user agent, ...)
+
+  pdf-signature-checker:
+    title: 
+    description: 
+
+  json-minify:
+    title:
+    description: 
+
+  ulid-generator:
+    title: Generatore ULID
+    description:
+
+  string-obfuscator:
+    title: 
+    description: 
+
+  base-converter:
+    title: 
+    description: 
+
+  yaml-to-json-converter:
+    title: Convertitore da YAML a JSON
+    description:
+
+  uuid-generator:
+    title: Generatore di UUID
+    description: Un UUID (Universally Unique Identifier) è un numero di 128 bit utilizzato per identificare le informazioni nei sistemi informatici. I numeri possibili di UUID sono 16^32, cioè 2^128 o circa 3,4x10^38 (che sono tanti!).
+
+  ipv4-address-converter:
+    title: Convertitore di indirizzi IPv4
+    description: Convertire un indirizzo IP in decimale, binario, esadecimale o anche in una rappresentazione IPv6.
+
+  text-statistics:
+    title: Statistiche sul testo
+    description:
+
+  text-to-nato-alphabet:
+    title: 
+    description: Trasforma il testo in alfabeto fonetico NATO per la comunicazione orale.
+
+  basic-auth-generator:
+    title: 
+    description: 
+
+  text-to-unicode:
+    title: Da testo a Unicode
+    description: Analizzare e convertire il testo in unicode e viceversa
+
+  ipv4-range-expander:
+    title: 
+    description: Dato un indirizzo IPv4 iniziale e uno finale, questo strumento calcola una sottorete IPv4 valida con la sua notazione CIDR.
+
+  text-diff:
+    title:
+    description: Confrontare due testi e vedere le differenze tra loro.
+
+  otp-generator:
+    title: Generatore di codici OTP
+    description: 
+
+  url-encoder:
+    title: 
+    description: Codifica il testo in formato URL (noto anche come "percent-encoded") o lo decodifica.
+
+  text-to-binary:
+    title: Da testo a binario ASCII
+    description: Converte il testo nella sua rappresentazione binaria ASCII e viceversa.
