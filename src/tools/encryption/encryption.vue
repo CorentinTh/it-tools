@@ -9,7 +9,7 @@ const cypherInput = ref('Lorem ipsum dolor sit amet');
 const cypherAlgo = ref<keyof typeof algos>('AES');
 const cypherSecret = ref('my secret key');
 const cypherSecretEncoding = ref<KeyEncoding>('Text');
-const [cypherOutput, cypherError] = computedCatch(() => algos[cypherAlgo.value].encrypt(cypherInput.value, cypherSecretEncoding.value === 'Text' ? cypherSecret.value : enc.Hex.parse(cypherSecret.value), { iv: enc.Hex.parse('00000000000000000000000000000000') }).toString(), {
+const [cypherOutput, cypherError] = computedCatch(() => algos[cypherAlgo.value].encrypt(cypherInput.value, cypherSecretEncoding.value === 'Text' ? cypherSecret.value : enc.Hex.parse(cypherSecret.value), { iv: enc.Hex.parse('') }).toString(), {
   defaultValue: '',
   defaultErrorMessage: 'Unable to cypher your text',
 });
@@ -18,7 +18,7 @@ const decryptInput = ref('U2FsdGVkX1/EC3+6P5dbbkZ3e1kQ5o2yzuU0NHTjmrKnLBEwreV489
 const decryptAlgo = ref<keyof typeof algos>('AES');
 const decryptSecret = ref('my secret key');
 const decryptSecretEncoding = ref<KeyEncoding>('Text');
-const [decryptOutput, decryptError] = computedCatch(() => algos[decryptAlgo.value].decrypt(decryptInput.value, decryptSecretEncoding.value === 'Text' ? decryptSecret.value : enc.Hex.parse(decryptSecret.value), { iv: enc.Hex.parse('00000000000000000000000000000000') }).toString(enc.Utf8), {
+const [decryptOutput, decryptError] = computedCatch(() => algos[decryptAlgo.value].decrypt(decryptInput.value, decryptSecretEncoding.value === 'Text' ? decryptSecret.value : enc.Hex.parse(decryptSecret.value), { iv: enc.Hex.parse('') }).toString(enc.Utf8), {
   defaultValue: '',
   defaultErrorMessage: 'Unable to decrypt your text',
 });
