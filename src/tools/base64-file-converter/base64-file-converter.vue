@@ -81,9 +81,15 @@ function onPaste(event: ClipboardEvent) {
   if (event.clipboardData) {
     const { items } = event.clipboardData;
     for (const item of items) {
-      const file = item.getAsFile();
-      if (item.kind === 'file' && file) {
-        fileInput.value = file;
+      if (item.kind === 'file') {
+        fileInput.value = item.getAsFile()!;
+      }
+      else if (item.kind === 'string' && item.type.match('^text/plain')) {
+        item.getAsString(s => base64Input.value = s);
+      }
+      else {
+        // eslint-disable-next-line no-console
+        console.info('Unsupport clipboardData', item);
       }
     }
   }
@@ -91,7 +97,7 @@ function onPaste(event: ClipboardEvent) {
 </script>
 
 <template>
-  <c-card title="Base64 to file">
+  <c-card title="Base64 to file" @paste="onPaste">
     <n-grid cols="3" x-gap="12">
       <n-gi span="2">
         <c-input-text
