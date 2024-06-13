@@ -27,6 +27,7 @@ const algos = {
 } as const;
 
 type Encoding = keyof typeof enc | 'Bin';
+type KeyEncoding = 'Text' | 'Hex';
 
 function formatWithEncoding(words: lib.WordArray, encoding: Encoding) {
   if (encoding === 'Bin') {
@@ -39,17 +40,36 @@ const plainText = ref('');
 const secret = ref('');
 const hashFunction = ref<keyof typeof algos>('SHA256');
 const encoding = ref<Encoding>('Hex');
-const hmac = computed(() =>
-  formatWithEncoding(algos[hashFunction.value](plainText.value, secret.value), encoding.value),
-);
+const keyEncoding = ref<KeyEncoding>('Text');
+const hmac = computed(() => {
+  // normalize secret according to the key encoding
+  const key = keyEncoding.value === 'Text' ? secret.value : enc.Hex.parse(secret.value);
+  return formatWithEncoding(algos[hashFunction.value](plainText.value, key), encoding.value);
+});
 const { copy } = useCopy({ source: hmac });
 </script>
 
 <template>
   <div flex flex-col gap-4>
     <c-input-text v-model:value="plainText" multiline raw-text placeholder="Plain text to compute the hash..." rows="3" autosize autofocus label="Plain text to compute the hash" />
-    <c-input-text v-model:value="secret" raw-text placeholder="Enter the secret key..." label="Secret key" clearable />
-
+    <div flex gap-2>
+      <c-input-text v-model:value="secret" placeholder="Enter the secret key..." label="Secret key" raw-text clearable flex-1 />
+      <c-select
+        v-model:value="keyEncoding" label="Key encoding"
+        flex-1
+        placeholder="Select the key encoding..."
+        :options="[
+          {
+            label: 'Plain Text',
+            value: 'Text',
+          },
+          {
+            label: 'Hexadecimal Text',
+            value: 'Hex',
+          },
+        ]"
+      />
+    </div>
     <div flex gap-2>
       <c-select
         v-model:value="hashFunction" label="Hashing function"
