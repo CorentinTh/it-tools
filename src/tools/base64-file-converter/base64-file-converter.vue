@@ -76,10 +76,28 @@ async function onUpload(file: File) {
     fileInput.value = file;
   }
 }
+
+function onPaste(event: ClipboardEvent) {
+  if (event.clipboardData) {
+    const { items } = event.clipboardData;
+    for (const item of items) {
+      if (item.kind === 'file') {
+        fileInput.value = item.getAsFile()!;
+      }
+      else if (item.kind === 'string' && item.type.match('^text/plain')) {
+        item.getAsString(s => base64Input.value = s);
+      }
+      else {
+        // eslint-disable-next-line no-console
+        console.info('Unsupport clipboardData', item);
+      }
+    }
+  }
+}
 </script>
 
 <template>
-  <c-card title="Base64 to file">
+  <c-card title="Base64 to file" @paste="onPaste">
     <n-grid cols="3" x-gap="12">
       <n-gi span="2">
         <c-input-text
@@ -121,8 +139,8 @@ async function onUpload(file: File) {
     </div>
   </c-card>
 
-  <c-card title="File to base64">
-    <c-file-upload title="Drag and drop a file here, or click to select a file" @file-upload="onUpload" />
+  <c-card title="File to base64" @paste="onPaste">
+    <c-file-upload title="Drag and drop a file here, Focus this card and paste a file here, or click to select a file" @file-upload="onUpload" />
     <c-input-text :value="fileBase64" multiline readonly placeholder="File in base64 will be here" rows="5" my-2 />
 
     <div flex justify-center>
