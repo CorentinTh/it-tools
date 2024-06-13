@@ -43,6 +43,7 @@ about:
     Se avete bisogno di uno strumento che attualmente non è già presente e pensate che possa essere utile, siete invitati ad inviare una richiesta di funzionalità nella sezione [issues](https://github.com/CorentinTh/it-tools/issues/new/choose) del repository GitHub.
 
     Se avete trovato un bug o qualcosa che non funziona come previsto, inviate una segnalazione di bug nella sezione [issues](https://github.com/CorentinTh/it-tools/issues/new/choose) del repository GitHub.
+
 404:
   notFound: 404 Non trovato
   sorry: Spiacente, questa pagina non sembra esistere
@@ -68,6 +69,7 @@ tools:
     measurement: Misurazione
     text: Testo
     data: Dati
+
   password-strength-analyser:
     title: Analizzatore della resistenza delle password
     description: Scoprite la forza della vostra password con questo strumento client-side-only di analisi della forza delle password e che stima il tempo di cracking.
@@ -90,6 +92,7 @@ tools:
     button:
       copy: Copia
       refresh: Aggiorna
+
   percentage-calculator:
     title: Calcolatore di percentuale
     description: Calcolare facilmente le percentuali da un valore ad un altro valore o da una percentuale ad un valore.
@@ -131,7 +134,7 @@ tools:
     description: L'elenco di tutti i codici di stato HTTP, il loro nome e il loro significato.
 
   sql-prettify:
-    title: SQL, preconfigurazione e formattazione
+    title: SQL, semplificazione e formattazione
     description: Formattare e preconfigurare le query SQL online (supporta diversi linguaggi SQL).
 
   benchmark-builder:
@@ -152,11 +155,11 @@ tools:
 
   random-port-generator:
     title: Generatore di porte casuali
-    description: 'Genera numeri di porta casuali al di fuori dell'intervallo di porte "note" (0-1023).'
+    description: Genera numeri di porta casuali al di fuori dell'intervallo di porte "note" (0-1023).
 
   yaml-prettify:
-    title: Preconfigura e Formatta YAML
-    description: Preconfigura la tua stringa YAML in un formato amichevole e leggibile dall'uomo.
+    title: Semplifica e Formatta YAML
+    description: Semplifica la tua stringa YAML in un formato amichevole e leggibile dall'uomo.
 
   eta-calculator:
     title: Calcolatore ETA
@@ -212,19 +215,19 @@ tools:
 
   numeronym-generator:
     title: Generatore numeronimo
-    description: 'Un numeronimo è una parola in cui un numero è usato per formare un'abbreviazione. Ad esempio, "i18n" è un numeronimo di "internationalization", dove 18 rappresenta il numero di lettere tra la prima i e l'ultima n della parola.'
+    description: Un numeronimo è una parola in cui un numero è usato per formare un'abbreviazione. Ad esempio, "i18n" è un numeronimo di "internationalization", dove 18 rappresenta il numero di lettere tra la prima i e l'ultima n della parola.
 
   case-converter:
     title: Convertitore di carattere 
     description: Trasforma il carattere di una stringa e sceglie tra diversi formati
 
   json-prettify: 
-    title: Preconfigura e Formatta JSON
-    description: "Preconfigura la stringa JSON in un formato facile da leggere per l'uomo."
+    title: Semplifica e Formatta JSON
+    description: Semplifica la stringa JSON in un formato facile da leggere per l'uomo.
 
   docker-run-to-docker-compose-converter:
     title: Convertitore da Docker run a Docker compose
-    description: 'Trasforma i comandi "docker run" in file docker-compose!'
+    description: Trasforma i comandi "docker run" in file docker-compose!
 
   mac-address-lookup:
     title: Ricerca dell'indirizzo MAC
@@ -308,7 +311,7 @@ tools:
 
   hash-text:
     title: Testo Hash
-    description: "Esegue l'hash di una stringa di testo utilizzando la funzione desiderata: MD5, SHA1, SHA256, SHA224, SHA512, SHA384, SHA3 o RIPEMD160".
+    description: "Esegue l'hash di una stringa di testo utilizzando la funzione desiderata: MD5, SHA1, SHA256, SHA224, SHA512, SHA384, SHA3 o RIPEMD160."
 
   json-to-toml:
     title: Da JSON a TOML
