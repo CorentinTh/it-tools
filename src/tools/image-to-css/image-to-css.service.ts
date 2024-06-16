@@ -2,7 +2,17 @@ import { stringToUrl } from 'svg-to-url';
 
 export type CSSType = 'Background' | 'Border' | 'ListItemBullet' | 'Url';
 
-function fileToDataUrl(file: File) {
+async function fileToDataUrl(file: File) {
+  if (file.type === 'image/svg+xml'){
+    const svgContent = (await (new Promise<string>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsText(file);
+      reader.onload = () => resolve(reader.result?.toString() ?? '');
+      reader.onerror = error => reject(error);
+    })));
+    return svgToDataUrl(svgContent);
+  }
+
   return new Promise<string>((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -20,6 +30,9 @@ export async function imageToCSS(
   image: File | string,
   type: CSSType,
 ) {
+  if (image === '' || !image) {
+    return '';
+  }
   const dataURI = image instanceof File ? await fileToDataUrl(image) : svgToDataUrl(image);
   switch (type) {
     case 'Background':

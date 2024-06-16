@@ -82,6 +82,7 @@
     "plausible-tracker": "^0.3.8",
     "qrcode": "^1.5.1",
     "sql-formatter": "^13.0.0",
+    "svg-to-url": "^4.0.0",
     "ua-parser-js": "^1.0.35",
     "ulid": "^2.3.0",
     "unicode-emoji-json": "^0.4.0",

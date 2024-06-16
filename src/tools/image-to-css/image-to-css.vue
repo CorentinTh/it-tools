@@ -61,13 +61,13 @@ watch(svgContent, (_, newValue) => {
       placeholder="Select CSS Type"
     />
 
-    <n-divider />
+    <div v-if="cssCode !== ''">
+      <n-divider />
 
-    <div>
       <h3>CSS Code</h3>
       <TextareaCopyable
         :value="cssCode"
-        :word-wrap="true"
+        word-wrap
       />
     </div>
   </div>
