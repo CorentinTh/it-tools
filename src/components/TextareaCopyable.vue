@@ -7,6 +7,12 @@ import sqlHljs from 'highlight.js/lib/languages/sql';
 import xmlHljs from 'highlight.js/lib/languages/xml';
 import yamlHljs from 'highlight.js/lib/languages/yaml';
 import iniHljs from 'highlight.js/lib/languages/ini';
+import bashHljs from 'highlight.js/lib/languages/bash';
+import markdownHljs from 'highlight.js/lib/languages/markdown';
+import jsHljs from 'highlight.js/lib/languages/javascript';
+import cssHljs from 'highlight.js/lib/languages/css';
+import goHljs from 'highlight.js/lib/languages/go';
+import csharpHljs from 'highlight.js/lib/languages/csharp';
 import { useCopy } from '@/composable/copy';
 
 const props = withDefaults(
@@ -30,6 +36,12 @@ hljs.registerLanguage('html', xmlHljs);
 hljs.registerLanguage('xml', xmlHljs);
 hljs.registerLanguage('yaml', yamlHljs);
 hljs.registerLanguage('toml', iniHljs);
+hljs.registerLanguage('bash', bashHljs);
+hljs.registerLanguage('markdown', markdownHljs);
+hljs.registerLanguage('css', cssHljs);
+hljs.registerLanguage('javascript', jsHljs);
+hljs.registerLanguage('go', goHljs);
+hljs.registerLanguage('csharp', csharpHljs);
 
 const { value, language, followHeightOf, copyPlacement, copyMessage } = toRefs(props);
 const { height } = followHeightOf.value ? useElementSize(followHeightOf) : { height: ref(null) };
