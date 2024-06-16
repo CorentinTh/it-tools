@@ -61,6 +61,7 @@
     "figlet": "^1.7.0",
     "figue": "^1.2.0",
     "fuse.js": "^6.6.2",
+    "generate-schema": "^2.6.0",
     "highlight.js": "^11.7.0",
     "iarna-toml-esm": "^3.0.5",
     "ibantools": "^4.3.3",
