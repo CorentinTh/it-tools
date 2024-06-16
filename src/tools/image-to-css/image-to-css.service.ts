@@ -3,7 +3,7 @@ import { stringToUrl } from 'svg-to-url';
 export type CSSType = 'Background' | 'Border' | 'ListItemBullet' | 'Url';
 
 async function fileToDataUrl(file: File) {
-  if (file.type === 'image/svg+xml'){
+  if (file.type === 'image/svg+xml') {
     const svgContent = (await (new Promise<string>((resolve, reject) => {
       const reader = new FileReader();
       reader.readAsText(file);
