@@ -22,6 +22,7 @@ const props = withDefaults(
     language?: string
     copyPlacement?: 'top-right' | 'bottom-right' | 'outside' | 'none'
     copyMessage?: string
+    wordWrap?: boolean
   }>(),
   {
     followHeightOf: null,
@@ -59,7 +60,7 @@ const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : copyMessage.
         :style="height ? `min-height: ${height - 40 /* card padding */ + 10 /* negative margin compensation */}px` : ''"
       >
         <n-config-provider :hljs="hljs">
-          <n-code :code="value" :language="language" :trim="false" data-test-id="area-content" />
+          <n-code :code="value" :language="language" :word-wrap="wordWrap" :trim="false" data-test-id="area-content" />
         </n-config-provider>
       </n-scrollbar>
       <div absolute right-10px top-10px>
