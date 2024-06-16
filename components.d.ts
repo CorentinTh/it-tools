@@ -109,6 +109,7 @@ declare module '@vue/runtime-core' {
     JsonDiff: typeof import('./src/tools/json-diff/json-diff.vue')['default']
     JsonMinify: typeof import('./src/tools/json-minify/json-minify.vue')['default']
     JsonToCsv: typeof import('./src/tools/json-to-csv/json-to-csv.vue')['default']
+    JsonToSchema: typeof import('./src/tools/json-to-schema/json-to-schema.vue')['default']
     JsonToToml: typeof import('./src/tools/json-to-toml/json-to-toml.vue')['default']
     JsonToYaml: typeof import('./src/tools/json-to-yaml-converter/json-to-yaml.vue')['default']
     JsonViewer: typeof import('./src/tools/json-viewer/json-viewer.vue')['default']
