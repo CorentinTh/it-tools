@@ -82,11 +82,13 @@
     "plausible-tracker": "^0.3.8",
     "qrcode": "^1.5.1",
     "sql-formatter": "^13.0.0",
+    "svg-to-url": "^4.0.0",
     "ua-parser-js": "^1.0.35",
     "ulid": "^2.3.0",
     "unicode-emoji-json": "^0.4.0",
     "unplugin-auto-import": "^0.16.4",
     "uuid": "^9.0.0",
+    "vite-plugin-node-polyfills": "^0.22.0",
     "vue": "^3.3.4",
     "vue-i18n": "^9.9.1",
     "vue-router": "^4.1.6",
@@ -138,5 +140,6 @@
     "vitest": "^0.34.0",
     "workbox-window": "^7.0.0",
     "zx": "^7.2.1"
-  }
+  },
+  "packageManager": "pnpm@8.15.3"
 }
