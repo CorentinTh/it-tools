@@ -1,4 +1,0 @@
-tools:
-  http-status-codes:
-    title: HTTP status codes
-    description: The list of all HTTP status codes their name and their meaning.

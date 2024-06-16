@@ -1,4 +1,0 @@
-tools:
-  ipv4-range-expander:
-    title: IPv4 range expander
-    description: Given a start and an end IPv4 address this tool calculates a valid IPv4 network with its CIDR notation.

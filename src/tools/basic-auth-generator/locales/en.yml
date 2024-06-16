@@ -1,4 +1,0 @@
-tools:
-  basic-auth-generator:
-    title: Basic auth generator
-    description: Generate a base64 basic auth header from an username and a password.

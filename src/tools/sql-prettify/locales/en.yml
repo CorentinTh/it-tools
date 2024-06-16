@@ -1,4 +1,0 @@
-tools:
-  sql-prettify:
-    title: SQL prettify and format
-    description: Format and prettify your SQL queries online (it supports various SQL dialects).

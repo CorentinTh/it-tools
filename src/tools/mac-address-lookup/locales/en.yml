@@ -1,4 +1,0 @@
-tools:
-  mac-address-lookup:
-    title: MAC address lookup
-    description: Find the vendor and manufacturer of a device by its MAC address.

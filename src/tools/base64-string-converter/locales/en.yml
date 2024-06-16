@@ -1,4 +1,0 @@
-tools:
-  base64-string-converter:
-    title: Base64 string encoder/decoder
-    description: Simply encode and decode string into a their base64 representation.

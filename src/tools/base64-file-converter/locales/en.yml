@@ -1,4 +1,0 @@
-tools:
-  base64-file-converter:
-    title: Base64 file converter
-    description: Convert string, files or images into a it\'s base64 representation.
