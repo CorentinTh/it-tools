@@ -13,7 +13,9 @@ import jsHljs from 'highlight.js/lib/languages/javascript';
 import cssHljs from 'highlight.js/lib/languages/css';
 import goHljs from 'highlight.js/lib/languages/go';
 import csharpHljs from 'highlight.js/lib/languages/csharp';
+import { Base64 } from 'js-base64';
 import { useCopy } from '@/composable/copy';
+import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 
 const props = withDefaults(
   defineProps<{
@@ -23,12 +25,16 @@ const props = withDefaults(
     copyPlacement?: 'top-right' | 'bottom-right' | 'outside' | 'none'
     copyMessage?: string
     wordWrap?: boolean
+    downloadFileName?: string
+    downloadButtonText?: string
   }>(),
   {
     followHeightOf: null,
     language: 'txt',
     copyPlacement: 'top-right',
     copyMessage: 'Copy to clipboard',
+    downloadFileName: '',
+    downloadButtonText: 'Download',
   },
 );
 hljs.registerLanguage('sql', sqlHljs);
@@ -44,11 +50,18 @@ hljs.registerLanguage('javascript', jsHljs);
 hljs.registerLanguage('go', goHljs);
 hljs.registerLanguage('csharp', csharpHljs);
 
-const { value, language, followHeightOf, copyPlacement, copyMessage } = toRefs(props);
+const { value, language, followHeightOf, copyPlacement, copyMessage, downloadFileName, downloadButtonText } = toRefs(props);
 const { height } = followHeightOf.value ? useElementSize(followHeightOf) : { height: ref(null) };
 
 const { copy, isJustCopied } = useCopy({ source: value, createToast: false });
 const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : copyMessage.value);
+
+const valueBase64 = computed(() => Base64.encode(value.value));
+const { download } = useDownloadFileFromBase64(
+  {
+    source: valueBase64,
+    filename: downloadFileName,
+  });
 </script>
 
 <template>
@@ -79,6 +92,11 @@ const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : copyMessage.
     <div v-if="copyPlacement === 'outside'" mt-4 flex justify-center>
       <c-button @click="copy()">
         {{ tooltipText }}
+      </c-button>
+    </div>
+    <div v-if="downloadFileName !== '' && value !== ''" mt-5 flex justify-center>
+      <c-button secondary @click="download">
+        {{ downloadButtonText }}
       </c-button>
     </div>
   </div>
