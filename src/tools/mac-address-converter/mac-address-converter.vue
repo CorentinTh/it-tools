@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import InputCopyable from '../../components/InputCopyable.vue';
-import { convertMacCISCO, convertMacCanonical, convertMacCanonicalIEEE, convertMacCanonicalIETF } from './mac-address-converter.service';
+import {
+  convertMacCISCO, convertMacCanonical,
+  convertMacCanonicalIEEE, convertMacCanonicalIETF,
+  convertMacToEUI64CISCO, convertMacToEUI64CanonicalIEEE,
+  convertMacToEUI64CanonicalIETF, convertMacToLinkLocalIPv6,
+  convertMacToNumber,
+} from './mac-address-converter.service';
 
 const input = ref('AA:BB:CC:DD:EE:FF');
 
@@ -20,6 +26,42 @@ const formats = computed(() => [
   {
     label: 'Cisco:',
     value: convertMacCISCO(input.value),
+  },
+  {
+    label: 'Hex:',
+    value: convertMacToNumber(input.value).toString(16),
+  },
+  {
+    label: 'Decimal:',
+    value: convertMacToNumber(input.value).toString(10),
+  },
+  {
+    label: 'EUI-64 Canonical IETF Format:',
+    value: convertMacToEUI64CanonicalIETF(input.value, false),
+  },
+  {
+    label: 'EUI-64 Canonical IEEE Format:',
+    value: convertMacToEUI64CanonicalIEEE(input.value, false),
+  },
+  {
+    label: 'EUI-64 Cisco:',
+    value: convertMacToEUI64CISCO(input.value, false),
+  },
+  {
+    label: 'EUI-64 IPv6 Canonical IETF Format:',
+    value: convertMacToEUI64CanonicalIETF(input.value, true),
+  },
+  {
+    label: 'EUI-64 IPv6 Canonical IEEE Format:',
+    value: convertMacToEUI64CanonicalIEEE(input.value, true),
+  },
+  {
+    label: 'EUI-64 IPv6 Cisco:',
+    value: convertMacToEUI64CISCO(input.value, true),
+  },
+  {
+    label: 'Link-Local IPv6:',
+    value: convertMacToLinkLocalIPv6(input.value),
   },
 ]);
 
