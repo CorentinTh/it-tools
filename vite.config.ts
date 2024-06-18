@@ -16,7 +16,7 @@ import markdown from 'vite-plugin-vue-markdown';
 import svgLoader from 'vite-svg-loader';
 import { configDefaults } from 'vitest/config';
 
-const baseUrl = process.env.BASE_URL ?? '/';
+const baseUrl = process.env.BASE_URL ?? '/tools';
 
 // https://vitejs.dev/config/
 export default defineConfig({
