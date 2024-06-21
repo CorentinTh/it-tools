@@ -453,3 +453,9 @@ tools:
   text-to-binary:
     title: Text zu ASCII-Binär
     description: Konvertiere Text in seine ASCII-Binärrepräsentation und umgekehrt.
+  safelink-decoder:
+    title: Outlook Safelink-Decoder
+    description: Outlook Safelinks decodieren
+  ascii-text-drawer:
+    title: ASCII-Art-Text-Generator
+    description: ASCII-Art-Text mit vielen Schriftarten und Stilen erstellen.
