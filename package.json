@@ -138,5 +138,6 @@
     "vitest": "^0.34.0",
     "workbox-window": "^7.0.0",
     "zx": "^7.2.1"
-  }
+  },
+  "packageManager": "pnpm@8.15.3"
 }
