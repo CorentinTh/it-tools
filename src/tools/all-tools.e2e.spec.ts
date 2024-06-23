@@ -1,15 +1,37 @@
 import { expect, test } from '@playwright/test';
-import _ from 'lodash';
-import { toolsByCategory } from './index';
 
-for (const tool of _.flatten(toolsByCategory.map(category => category.components))) {
-  test.describe(`Tool - ${tool.name}`, () => {
-    test.beforeEach(async ({ page }) => {
-      await page.goto(tool.path);
+test.describe('IT Tool', () => {
+  test('Loads all tools correctly', async ({ page }) => {
+    test.slow();
+
+    const allTools: string[] = [];
+
+    await page.goto('/');
+    await page.waitForSelector('.it-tool-link');
+    const allLinks = await page.locator('.it-tool-link').all();
+    for (const a of allLinks) {
+      allTools.push((await a.getAttribute('href')) || '/');
+    }
+
+    expect(allTools.length).toBeGreaterThan(0);
+
+    const errors: Array<Error> = [];
+
+    page.on('pageerror', (error) => {
+      errors.push(error);
     });
 
-    test('Loads correctly (has correct title)', async ({ page }) => {
-      await expect(page).toHaveTitle(`${tool.name} - IT Tools`);
-    });
+    for (const toolHref of allTools) {
+      await test.step(toolHref, async () => {
+        errors.splice(0, errors.length);
+
+        await page.goto(toolHref);
+        await page.waitForSelector('.tool-header');
+
+        await expect(page).toHaveTitle(/.+ - IT Tools/);
+
+        expect(errors).toHaveLength(0);
+      });
+    }
   });
-}
+});
