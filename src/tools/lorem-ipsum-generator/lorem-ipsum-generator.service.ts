@@ -1,185 +1,39 @@
+import _ from 'lodash';
+import loremIpsumJapanese from 'lorem-ipsum-japanese';
+import chinesegen from 'chinesegen';
+import languageLorems from './lorem-ipsum.i18n.json';
 import { randFromArray } from '@/utils/random';
 
-const vocabulary = [
-  'a',
-  'ac',
-  'accumsan',
-  'ad',
-  'adipiscing',
-  'aenean',
-  'aliquam',
-  'aliquet',
-  'amet',
-  'ante',
-  'aptent',
-  'arcu',
-  'at',
-  'auctor',
-  'bibendum',
-  'blandit',
-  'class',
-  'commodo',
-  'condimentum',
-  'congue',
-  'consectetur',
-  'consequat',
-  'conubia',
-  'convallis',
-  'cras',
-  'cubilia',
-  'cum',
-  'curabitur',
-  'curae',
-  'dapibus',
-  'diam',
-  'dictum',
-  'dictumst',
-  'dignissim',
-  'dolor',
-  'donec',
-  'dui',
-  'duis',
-  'egestas',
-  'eget',
-  'eleifend',
-  'elementum',
-  'elit',
-  'enim',
-  'erat',
-  'eros',
-  'est',
-  'et',
-  'etiam',
-  'eu',
-  'euismod',
-  'facilisi',
-  'faucibus',
-  'felis',
-  'fermentum',
-  'feugiat',
-  'fringilla',
-  'fusce',
-  'gravida',
-  'habitant',
-  'habitasse',
-  'hac',
-  'hendrerit',
-  'himenaeos',
-  'iaculis',
-  'id',
-  'imperdiet',
-  'in',
-  'inceptos',
-  'integer',
-  'interdum',
-  'ipsum',
-  'justo',
-  'lacinia',
-  'lacus',
-  'laoreet',
-  'lectus',
-  'leo',
-  'ligula',
-  'litora',
-  'lobortis',
-  'lorem',
-  'luctus',
-  'maecenas',
-  'magna',
-  'magnis',
-  'malesuada',
-  'massa',
-  'mattis',
-  'mauris',
-  'metus',
-  'mi',
-  'molestie',
-  'mollis',
-  'montes',
-  'morbi',
-  'mus',
-  'nam',
-  'nascetur',
-  'natoque',
-  'nec',
-  'neque',
-  'netus',
-  'nisi',
-  'nisl',
-  'non',
-  'nostra',
-  'nulla',
-  'nullam',
-  'nunc',
-  'odio',
-  'orci',
-  'ornare',
-  'parturient',
-  'pellentesque',
-  'penatibus',
-  'per',
-  'pharetra',
-  'phasellus',
-  'placerat',
-  'platea',
-  'porta',
-  'porttitor',
-  'posuere',
-  'potenti',
-  'praesent',
-  'pretium',
-  'primis',
-  'proin',
-  'pulvinar',
-  'purus',
-  'quam',
-  'quis',
-  'quisque',
-  'rhoncus',
-  'ridiculus',
-  'risus',
-  'rutrum',
-  'sagittis',
-  'sapien',
-  'scelerisque',
-  'sed',
-  'sem',
-  'semper',
-  'senectus',
-  'sit',
-  'sociis',
-  'sociosqu',
-  'sodales',
-  'sollicitudin',
-  'suscipit',
-  'suspendisse',
-  'taciti',
-  'tellus',
-  'tempor',
-  'tempus',
-  'tincidunt',
-  'torquent',
-  'tortor',
-  'turpis',
-  'ullamcorper',
-  'ultrices',
-  'ultricies',
-  'urna',
-  'varius',
-  'vehicula',
-  'vel',
-  'velit',
-  'venenatis',
-  'vestibulum',
-  'vitae',
-  'vivamus',
-  'viverra',
-  'volutpat',
-  'vulputate',
-];
 const firstSentence = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
 
-function generateSentence(length: number) {
+export function getSupportedLanguages() {
+  return _.union(
+    _.flatten(_.chain(languageLorems).map(l => l.languages).value()),
+    ['Japanese', 'Chinese'])
+    .sort();
+}
+
+function generateSentence(language: string, length: number) {
+  if (language === 'Japanese') {
+    return loremIpsumJapanese({
+      count: length,
+      units: 'words',
+    });
+  }
+  if (language === 'Chinese') {
+    return chinesegen({ count: length }).text;
+  }
+
+  if (language === 'Emoticon') {
+    const loremIcons = _.find(languageLorems, ({ languages }) => languages.includes(language))?.loremIpsum || '';
+    const iconsChars = [...loremIcons];
+    return Array.from({ length })
+      .map(() => randFromArray(iconsChars))
+      .join(' ');
+  }
+
+  const vocabulary = _.find(languageLorems, ({ languages }) => languages.includes(language))?.loremIpsum?.split(' ') || [];
+
   const sentence = Array.from({ length })
     .map(() => randFromArray(vocabulary))
     .join(' ');
@@ -193,15 +47,17 @@ export function generateLoremIpsum({
   wordCount = 10,
   startWithLoremIpsum = true,
   asHTML = false,
+  language = 'English',
 }: {
   paragraphCount?: number
   sentencePerParagraph?: number
   wordCount?: number
   startWithLoremIpsum?: boolean
   asHTML?: boolean
+  language?: string
 }) {
   const paragraphs = Array.from({ length: paragraphCount }).map(() =>
-    Array.from({ length: sentencePerParagraph }).map(() => generateSentence(wordCount)),
+    Array.from({ length: sentencePerParagraph }).map(() => generateSentence(language, wordCount)),
   );
 
   if (startWithLoremIpsum) {
