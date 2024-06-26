@@ -10,6 +10,8 @@ export interface Tool {
   redirectFrom?: string[]
   isNew: boolean
   createdAt?: Date
+  npmPackages?: string[]
+  footer?: string
 }
 
 export interface ToolCategory {

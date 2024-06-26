@@ -2,6 +2,7 @@
 import { useRoute } from 'vue-router';
 import { useHead } from '@vueuse/head';
 import type { HeadObject } from '@vueuse/head';
+import VueMarkdown from 'vue-markdown-render';
 
 import BaseLayout from './base.layout.vue';
 import FavoriteButton from '@/components/FavoriteButton.vue';
@@ -28,6 +29,19 @@ const { t } = useI18n();
 const i18nKey = computed<string>(() => route.path.trim().replace('/', ''));
 const toolTitle = computed<string>(() => t(`tools.${i18nKey.value}.title`, String(route.meta.name)));
 const toolDescription = computed<string>(() => t(`tools.${i18nKey.value}.description`, String(route.meta.description)));
+const toolFooter = computed<string>(() => {
+  const createLink = (linkText: string, url: string) => {
+    return `[${linkText.replace('[', '\\[').replace(']', '\\]')}](${url.replace('(', '%28').replace(')', '%29')})`;
+  };
+  const footer = t(`tools.${i18nKey.value}.footer`, String(route.meta.footer));
+  const npmPackages = (route.meta.npmPackages as string[] || [])
+    .map(
+      packageName => createLink(
+        packageName,
+        packageName.includes('://') ? packageName : `https://www.npmjs.com/package/${packageName}`),
+    );
+  return ((npmPackages.length > 0 ? `Made with ${npmPackages.join(', ')}\n` : '') + footer).trim();
+});
 </script>
 
 <template>
@@ -55,6 +69,10 @@ const toolDescription = computed<string>(() => t(`tools.${i18nKey.value}.descrip
     <div class="tool-content">
       <slot />
     </div>
+
+    <div class="tool-footer">
+      <VueMarkdown :source="toolFooter" />
+    </div>
   </BaseLayout>
 </template>
 
@@ -66,9 +84,11 @@ const toolDescription = computed<string>(() => t(`tools.${i18nKey.value}.descrip
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 16px;
+  overflow-x: auto;
 
   ::v-deep(& > *) {
     flex: 0 1 600px;
+    min-width:0;
   }
 }
 
@@ -103,6 +123,10 @@ const toolDescription = computed<string>(() => t(`tools.${i18nKey.value}.descrip
 
       opacity: 0.7;
     }
+  }
+  .tool-footer {
+    opacity: 0.7;
+    font-size: 12px;
   }
 }
 </style>
