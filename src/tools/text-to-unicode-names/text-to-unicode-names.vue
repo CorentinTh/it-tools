@@ -2,7 +2,7 @@
 import { convertTextToUnicodeNames } from './text-to-unicode-names.service';
 
 const inputText = ref('');
-const unicodeNamesFromText = computed(() => convertTextToUnicodeNames(inputText.value));
+const unicodeNamesFromText = computed(() => convertTextToUnicodeNames(inputText.value, { separator: '\n' }));
 </script>
 
 <template>
