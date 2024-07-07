@@ -34,7 +34,7 @@ test.describe('IT Tool', () => {
 
         await expect(page).toHaveTitle(/.+ - IT Tools/);
 
-        expect(errors).toHaveLength(0);
+        expect(errors, `${toolHref} to have no JS error`).toHaveLength(0);
       });
     }
   });
