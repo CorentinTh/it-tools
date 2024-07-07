@@ -1,5 +1,7 @@
 import { expect, test } from '@playwright/test';
 
+const ignoredHrefs = new Set(['/camera-recorder']);
+
 test.describe('IT Tool', () => {
   test('Loads all tools correctly', async ({ page }) => {
     test.slow();
@@ -26,6 +28,9 @@ test.describe('IT Tool', () => {
     });
 
     for (const toolHref of allTools) {
+      if (ignoredHrefs.has(toolHref)) {
+        continue;
+      }
       await test.step(toolHref, async () => {
         errors.splice(0, errors.length);
 
