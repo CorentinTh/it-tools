@@ -7,7 +7,7 @@ const themeVars = useThemeVars();
 
 <template>
   <div>
-    <Memo />
+    <Memo style="overflow-x: auto;" />
   </div>
 </template>
 
@@ -17,6 +17,9 @@ const themeVars = useThemeVars();
   padding: 15px 22px;
   background-color: v-bind('themeVars.cardColor');
   border-radius: 4px;
-  overflow: auto;
+  white-space: pre-wrap;
+}
+::v-deep(a) {
+  color: v-bind('themeVars.textColor3');
 }
 </style>
