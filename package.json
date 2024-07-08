@@ -1,6 +1,6 @@
 {
   "name": "it-tools",
-  "version": "2023.12.21-5ed3693",
+  "version": "2024.5.13-a0bc346",
   "description": "Collection of handy online tools for developers, with great UX. ",
   "keywords": [
     "productivity",
@@ -71,6 +71,7 @@
     "ip-matching": "^2.1.2",
     "is-cidr": "^5.0.3",
     "is-ip": "^5.0.1",
+    "js-base64": "^3.7.6",
     "json5": "^2.2.3",
     "jwt-decode": "^3.1.2",
     "libphonenumber-js": "^1.10.28",
