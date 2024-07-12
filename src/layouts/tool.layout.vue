@@ -7,6 +7,8 @@ import VueMarkdown from 'vue-markdown-render';
 import BaseLayout from './base.layout.vue';
 import FavoriteButton from '@/components/FavoriteButton.vue';
 import type { Tool } from '@/tools/tools.types';
+import { useTheme } from '@/ui/c-link/c-link.theme';
+import { useThemeVars } from 'naive-ui';
 
 const route = useRoute();
 
@@ -33,7 +35,10 @@ const toolFooter = computed<string>(() => {
   const createLink = (linkText: string, url: string) => {
     return `[${linkText.replace('[', '\\[').replace(']', '\\]')}](${url.replace('(', '%28').replace(')', '%29')})`;
   };
-  const footer = t(`tools.${i18nKey.value}.footer`, String(route.meta.footer));
+  let footer = t(`tools.${i18nKey.value}.footer`, String(route.meta.footer));
+  if (footer === 'undefined') {
+    footer = '';
+  }
   const npmPackages = (route.meta.npmPackages as string[] || [])
     .map(
       packageName => createLink(
@@ -42,6 +47,7 @@ const toolFooter = computed<string>(() => {
     );
   return ((npmPackages.length > 0 ? `Made with ${npmPackages.join(', ')}\n` : '') + footer).trim();
 });
+const themeVars = useThemeVars();
 </script>
 
 <template>
@@ -124,9 +130,15 @@ const toolFooter = computed<string>(() => {
       opacity: 0.7;
     }
   }
-  .tool-footer {
+}
+.tool-footer {
     opacity: 0.7;
     font-size: 12px;
+    text-align: center;
+
+    ::v-deep(a) {
+      color: v-bind('themeVars.textColor1');
+      font-style: italic;
+    }
   }
-}
 </style>
