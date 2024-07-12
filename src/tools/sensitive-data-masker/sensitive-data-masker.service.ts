@@ -1,4 +1,4 @@
-import { maskString } from 'data-guardian';
+import { type SensitiveContentKey, maskString } from 'data-guardian';
 import ipRegex from 'ip-regex';
 
 const jwtRegex = /\b([a-zA-Z0-9_=]{5,})\.([a-zA-Z0-9_=]{5,})\.([a-zA-Z0-9_\-\+\/=]{5,})\b/g;
@@ -29,6 +29,6 @@ export function maskSensitiveData({
   }, {
     excludeMatchers: [...excludedMatchers, ...[
       'passwordMention', 'password', 'passwordSubstring',
-    ]],
+    ]] as SensitiveContentKey[],
   });
 }
