@@ -4,11 +4,10 @@ import { useHead } from '@vueuse/head';
 import type { HeadObject } from '@vueuse/head';
 import VueMarkdown from 'vue-markdown-render';
 
+import { useThemeVars } from 'naive-ui';
 import BaseLayout from './base.layout.vue';
 import FavoriteButton from '@/components/FavoriteButton.vue';
 import type { Tool } from '@/tools/tools.types';
-import { useTheme } from '@/ui/c-link/c-link.theme';
-import { useThemeVars } from 'naive-ui';
 
 const route = useRoute();
 
