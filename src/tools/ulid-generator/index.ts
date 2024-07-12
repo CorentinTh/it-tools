@@ -10,4 +10,5 @@ export const tool = defineTool({
   component: () => import('./ulid-generator.vue'),
   icon: SortDescendingNumbers,
   createdAt: new Date('2023-09-11'),
+  npmPackages: ['ulid'],
 });

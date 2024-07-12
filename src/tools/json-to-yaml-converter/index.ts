@@ -10,4 +10,5 @@ export const tool = defineTool({
   component: () => import('./json-to-yaml.vue'),
   icon: Braces,
   createdAt: new Date('2023-04-10'),
+  npmPackages: ['yaml', 'json5'],
 });

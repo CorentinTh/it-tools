@@ -9,4 +9,5 @@ export const tool = defineTool({
   keywords: ['uuid', 'v4', 'random', 'id', 'alphanumeric', 'identity', 'token', 'string', 'identifier', 'unique', 'v1', 'v3', 'v5', 'nil'],
   component: () => import('./uuid-generator.vue'),
   icon: Fingerprint,
+  npmPackages: ['uuid'],
 });

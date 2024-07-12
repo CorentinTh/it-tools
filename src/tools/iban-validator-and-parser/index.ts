@@ -10,4 +10,5 @@ export const tool = defineTool({
   component: () => import('./iban-validator-and-parser.vue'),
   icon: Bank,
   createdAt: new Date('2023-08-26'),
+  npmPackages: ['ibantools'],
 });

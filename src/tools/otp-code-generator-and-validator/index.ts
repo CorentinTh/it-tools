@@ -25,4 +25,5 @@ export const tool = defineTool({
   ],
   component: () => import('./otp-code-generator-and-validator.vue'),
   icon: DeviceMobile,
+  npmPackages: ['crypto-js'],
 });

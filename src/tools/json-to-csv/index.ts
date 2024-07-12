@@ -10,4 +10,5 @@ export const tool = defineTool({
   component: () => import('./json-to-csv.vue'),
   icon: List,
   createdAt: new Date('2023-06-18'),
+  npmPackages: ['json5'],
 });

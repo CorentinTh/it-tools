@@ -10,4 +10,5 @@ export const tool = defineTool({
   component: () => import('./pdf-signature-checker.vue'),
   icon: FileCertIcon,
   createdAt: new Date('2023-12-09'),
+  npmPackages: ['pdf-signature-reader'],
 });

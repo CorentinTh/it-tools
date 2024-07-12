@@ -23,4 +23,5 @@ export const tool = defineTool({
   ],
   component: () => import('./case-converter.vue'),
   icon: LetterCaseToggle,
+  npmPackages: ['change-case'],
 });

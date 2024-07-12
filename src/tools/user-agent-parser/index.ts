@@ -10,4 +10,5 @@ export const tool = defineTool({
   component: () => import('./user-agent-parser.vue'),
   icon: Browser,
   createdAt: new Date('2023-04-06'),
+  npmPackages: ['ua-parser-js'],
 });
