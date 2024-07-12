@@ -95,6 +95,9 @@ dependencies:
   ibantools:
     specifier: ^4.3.3
     version: 4.3.3
+  ip-regex:
+    specifier: ^5.0.0
+    version: 5.0.0
   js-base64:
     specifier: ^3.7.6
     version: 3.7.7
@@ -6194,6 +6197,11 @@ packages:
     dependencies:
       ip-address: 7.1.0
       jsbn: 1.1.0
+    dev: false
+
+  /ip-regex@5.0.0:
+    resolution: {integrity: sha512-fOCG6lhoKKakwv+C6KdsOnGvgXnmgfmp0myi3bcNwj3qfwPAxRKWEuFhvEFF7ceYIz6+1jRZ+yguLFAmUNPEfw==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: false
 
   /is-alphabetical@1.0.4:
