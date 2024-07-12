@@ -18,15 +18,15 @@ describe('sensitive-data-masker', () => {
 }`;
 
     it('should maks sensitive data', () => {
-      expect(maskSensitiveData(
-        data,
-      )).toBe(`{
+      expect(maskSensitiveData({
+        value: data,
+      })).toBe(`{
   email: 'jo****************om',
   creditCard: '12***************76',
   id: '3f********************************7b',
   name: 'John',
   surname: 'Doe',
-  phone: '+35**********67',
+  phone: '+3***********67',
   url: 'tr***********om',
   ip4: '83*******56',
   ip6: '20*************************01',
@@ -35,20 +35,39 @@ describe('sensitive-data-masker', () => {
 }`);
     });
     it('should maks sensitive data (with custom regex)', () => {
-      expect(maskSensitiveData(
-        data,
-        'John\nDoe',
-      )).toBe(`{
+      expect(maskSensitiveData({
+        value: data,
+        customRegex: 'John\nDoe',
+      })).toBe(`{
   email: 'jo****************om',
   creditCard: '12***************76',
   id: '3f********************************7b',
   name: '****',
   surname: '***',
-  phone: '+35**********67',
+  phone: '+3***********67',
   url: 'tr***********om',
   ip4: '83*******56',
   ip6: '20*************************01',
   mac: '3D*************4F',
+  token: 'ey*****************************************************************************************************************************************************************b8',
+}`);
+    });
+
+    it('should maks sensitive data (with excluded matchers)', () => {
+      expect(maskSensitiveData({
+        value: data,
+        excludedMatchers: ['mac', 'ipv4'],
+      })).toBe(`{
+  email: 'jo****************om',
+  creditCard: '12***************76',
+  id: '3f********************************7b',
+  name: 'John',
+  surname: 'Doe',
+  phone: '+3***********67',
+  url: 'tr***********om',
+  ip4: '83.24.45.56',
+  ip6: '20*************************01',
+  mac: '3D:F2:C9:A6:B3:4F',
   token: 'ey*****************************************************************************************************************************************************************b8',
 }`);
     });

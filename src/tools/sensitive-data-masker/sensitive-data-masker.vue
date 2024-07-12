@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { maskSensitiveData } from './sensitive-data-masker.service';
+import { type MatcherNames, maskSensitiveData } from './sensitive-data-masker.service';
 import { withDefaultOnError } from '@/utils/defaults';
 
 const defaultValue = `{
@@ -17,12 +17,18 @@ const defaultValue = `{
 }`;
 
 const customRegex = useStorage('sensitive-data:regex', '');
+const excludedMatchers = useStorage('sensitive-data:exclude', [] as string[]);
+const allMatchers = [
+  'uuid', 'creditCard', 'ssn', 'url', 'ipv4', 'email',
+  'passwordInUri', 'mac', 'ipv6', 'urlWithOrWithoutPrefix',
+  'jwt', 'phone'];
 
 function transformer(value: string) {
-  return withDefaultOnError(() => maskSensitiveData(
+  return withDefaultOnError(() => maskSensitiveData({
     value,
-    customRegex.value,
-  ), '');
+    customRegex: customRegex.value,
+    excludedMatchers: excludedMatchers.value as MatcherNames[],
+  }), '');
 }
 </script>
 
@@ -35,6 +41,16 @@ function transformer(value: string) {
       raw-text
       multiline
       rows="4"
+      mb-2
+    />
+
+    <n-select
+      v-model:value="excludedMatchers"
+      placeholder="No Fallback"
+      multiple
+      :fallback-option="false"
+      :options="allMatchers.map(v => ({ label: v, value: v }))"
+      mb-2
     />
 
     <format-transformer
