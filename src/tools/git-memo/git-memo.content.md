@@ -37,7 +37,7 @@ git commit --amend --no-edit
 
 ## Branches
 
-Lists all local branches in your repository (use -a for remote local and remote branches):
+Lists all local branches in your repository (use -a for local and remote branches):
 
 ```shell
 git branch
