@@ -38,7 +38,8 @@ describe('base64 utils', () => {
 
     it('should throw for incorrect base64 string', () => {
       expect(() => base64ToText('a')).to.throw('Incorrect base64 string');
-      expect(() => base64ToText(' ')).to.throw('Incorrect base64 string');
+      // should not really be false because trimming of space is now implied
+      // expect(() => base64ToText(' ')).to.throw('Incorrect base64 string');
       expect(() => base64ToText('é')).to.throw('Incorrect base64 string');
       // missing final '='
       expect(() => base64ToText('bG9yZW0gaXBzdW0')).to.throw('Incorrect base64 string');
@@ -56,17 +57,17 @@ describe('base64 utils', () => {
 
     it('should return false for incorrect base64 string', () => {
       expect(isValidBase64('a')).to.eql(false);
-      expect(isValidBase64(' ')).to.eql(false);
       expect(isValidBase64('é')).to.eql(false);
       expect(isValidBase64('data:text/plain;notbase64,YQ==')).to.eql(false);
       // missing final '='
       expect(isValidBase64('bG9yZW0gaXBzdW0')).to.eql(false);
     });
 
-    it('should return false for untrimmed correct base64 string', () => {
-      expect(isValidBase64('bG9yZW0gaXBzdW0= ')).to.eql(false);
-      expect(isValidBase64(' LTE=')).to.eql(false);
-      expect(isValidBase64(' YQ== ')).to.eql(false);
+    it('should return true for untrimmed correct base64 string', () => {
+      expect(isValidBase64('bG9yZW0gaXBzdW0= ')).to.eql(true);
+      expect(isValidBase64(' LTE=')).to.eql(true);
+      expect(isValidBase64(' YQ== ')).to.eql(true);
+      expect(isValidBase64(' ')).to.eql(true);
     });
   });
 

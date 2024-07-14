@@ -1,11 +1,13 @@
 import { extension as getExtensionFromMimeType, extension as getMimeTypeFromExtension } from 'mime-types';
-import type { Ref } from 'vue';
+import type { MaybeRef, Ref } from 'vue';
 import _ from 'lodash';
+import { get } from '@vueuse/core';
 
 export {
   getMimeTypeFromBase64,
   getMimeTypeFromExtension, getExtensionFromMimeType,
   useDownloadFileFromBase64, useDownloadFileFromBase64Refs,
+  previewImageFromBase64,
 };
 
 const commonMimeTypesSignatures = {
@@ -74,13 +76,36 @@ function downloadFromBase64({ sourceValue, filename, extension, fileMimeType }:
 }
 
 function useDownloadFileFromBase64(
-  { source, filename, extension, fileMimeType }:
-  { source: Ref<string>; filename?: string; extension?: string; fileMimeType?: string }) {
+  { source, filename, extension }:
+  { source: MaybeRef<string>; filename?: MaybeRef<string>; extension?: MaybeRef<string> }) {
   return {
     download() {
-      downloadFromBase64({ sourceValue: source.value, filename, extension, fileMimeType });
+      downloadFromBase64({ sourceValue: get(source), filename: get(filename), extension: get(extension) });
     },
   };
+}
+
+function previewImageFromBase64(base64String: string): HTMLImageElement {
+  if (base64String === '') {
+    throw new Error('Base64 string is empty');
+  }
+
+  const img = document.createElement('img');
+  img.src = base64String;
+
+  const container = document.createElement('div');
+  container.appendChild(img);
+
+  const previewContainer = document.getElementById('previewContainer');
+  if (previewContainer) {
+    previewContainer.innerHTML = '';
+    previewContainer.appendChild(container);
+  }
+  else {
+    throw new Error('Preview container element not found');
+  }
+
+  return img;
 }
 
 function useDownloadFileFromBase64Refs(
