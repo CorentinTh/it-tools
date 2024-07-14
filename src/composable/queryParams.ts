@@ -17,6 +17,12 @@ const transformers = {
     fromQuery: (value: string) => value.toLowerCase() === 'true',
     toQuery: (value: boolean) => (value ? 'true' : 'false'),
   },
+  object: {
+    fromQuery: (value: string) => {
+      return JSON.parse(value);
+    },
+    toQuery: (value: object) => JSON.stringify(value),
+  },
 };
 
 function useQueryParam<T>({ name, defaultValue }: { name: string; defaultValue: T }) {
@@ -35,30 +41,26 @@ function useQueryParam<T>({ name, defaultValue }: { name: string; defaultValue: 
   });
 }
 
-function useQueryParamOrStorage<T>({ name, storageName, defaultValue }: { name: string; storageName: string; defaultValue?: T }) {
+function useQueryParamOrStorage<T>({ name, storageName, defaultValue }: { name: string; storageName: string; defaultValue: T }) {
   const type = typeof defaultValue;
   const transformer = transformers[type as keyof typeof transformers] ?? transformers.string;
 
   const storageRef = useStorage(storageName, defaultValue);
-  const storageDefaultValue = storageRef.value ?? defaultValue;
+  const proxyDefaultValue = transformer.toQuery(defaultValue as never);
+  const proxy = useRouteQuery(name, proxyDefaultValue);
 
-  const proxy = useRouteQuery(name, transformer.toQuery(storageDefaultValue as never));
+  const r = ref(defaultValue);
 
-  const ref = computed<T>({
-    get() {
-      return transformer.fromQuery(proxy.value) as unknown as T;
-    },
-    set(value) {
+  watch(r,
+    (value) => {
       proxy.value = transformer.toQuery(value as never);
+      storageRef.value = value as never;
     },
-  });
+    { deep: true });
 
-  watch(
-    ref,
-    (newValue) => {
-      storageRef.value = newValue;
-    },
-  );
+  r.value = (proxy.value && proxy.value !== proxyDefaultValue
+    ? transformer.fromQuery(proxy.value) as unknown as T
+    : storageRef.value as T) as never;
 
-  return ref;
+  return r;
 }
