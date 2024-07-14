@@ -8,7 +8,7 @@ import type {
 } from 'pp-qr-code';
 import qrcodeConsole from 'qrcode-terminal-nooctal';
 import { useQRCodeStyling } from './useQRCode';
-import { useDownloadFileFromBase64Refs } from '@/composable/downloadBase64';
+import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 import { useQueryParamOrStorage } from '@/composable/queryParams';
 
 const foreground = useQueryParamOrStorage({ name: 'fg', storageName: 'qr-code-gen:fg', defaultValue: '#000000ff' });
@@ -83,7 +83,7 @@ const qrcodeTerminal = computedAsync(() => {
 
 const filename = ref('qr-code');
 const extension = computed(() => outputType.value.toString());
-const { download } = useDownloadFileFromBase64Refs({ source: qrcode, filename, extension });
+const { download } = useDownloadFileFromBase64({ source: qrcode, filename, extension });
 </script>
 
 <template>
