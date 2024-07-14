@@ -5,13 +5,36 @@ import {
 } from './markdown-toc-generator.service';
 import { useQueryParamOrStorage } from '@/composable/queryParams';
 
-const markdown = ref('');
+const markdown = ref(`# Some main title
+
+[TOC]
+
+## First Title
+
+Some text 
+
+## Second  Spaced  Title
+
+Some text
+
+### Title with Link [TOC](http://it-tools.tech)
+
+\`\`\`
+## some bash code
+echo 'test';
+\`\`\`
+
+### Title with code \`var\`
+
+Some text
+
+## Last Title`);
 const generateAnchors = useQueryParamOrStorage({ name: 'anchors', storageName: 'md-toc-gen:anchors', defaultValue: true });
 const indentChars = useQueryParamOrStorage({ name: 'bullets', storageName: 'md-toc-gen:bullets', defaultValue: '-*+' });
-const indentSpaces = ref(2);
+const indentSpaces = ref(3);
 const maxLevel = useQueryParamOrStorage({ name: 'max', storageName: 'md-toc-gen:max', defaultValue: -1 });
 const anchorPrefix = useQueryParamOrStorage({ name: 'prefix', storageName: 'md-toc-gen:prefix', defaultValue: '' });
-const concatSpaces = useQueryParamOrStorage({ name: 'concat', storageName: 'md-toc-gen:concat', defaultValue: true });
+const concatSpaces = useQueryParamOrStorage({ name: 'concat', storageName: 'md-toc-gen:concat', defaultValue: false });
 const commentStyle = useQueryParamOrStorage({ name: 'comment', storageName: 'md-toc-gen:comment', defaultValue: 'html' });
 
 const markdownWithTOC = computed(() => withDefaultOnError(() => {
@@ -31,42 +54,57 @@ const markdownWithTOC = computed(() => withDefaultOnError(() => {
 <template>
   <div>
     <c-card title="Options" mb-2>
-      <n-form-item label="Generate Anchors" label-placement="left">
-        <n-checkbox v-model:checked="generateAnchors" mr-2 />
-      </n-form-item>
+      <n-space>
+        <n-form-item label-placement="left">
+          <n-checkbox v-model:checked="generateAnchors">
+            Generate Anchors
+          </n-checkbox>
+        </n-form-item>
+        <n-form-item label="Max Heading Level:" label-placement="left">
+          <n-input-number
+            v-model:value="maxLevel"
+            placeholder="Max Heading Level..."
+            :max="6" :min="-1"
+          />
+        </n-form-item>
+      </n-space>
 
-      <c-input-text
-        v-model:value="indentChars"
-        label="Bullet Chars"
-        placeholder="Bullet Chars"
-        mb-2
-      />
-
-      <n-form-item label="Indents: " label-placement="left">
-        <n-input-number v-model:value="indentSpaces" placeholder="Indents..." :max="10" :min="1" w-full />
-      </n-form-item>
-
-      <n-form-item label="Max Heading Level: " label-placement="left">
-        <n-input-number v-model:value="maxLevel" placeholder="Max Heading Level..." :max="6" :min="-1" w-full />
-      </n-form-item>
-
-      <c-input-text
-        v-model:value="anchorPrefix"
-        label="Anchors Prefix"
-        placeholder="Anchors Prefix"
-        mb-2
-      />
-
-      <n-form-item label="Concat Spaces" label-placement="left">
-        <n-checkbox v-model:checked="concatSpaces" mr-2 />
-      </n-form-item>
-
-      <c-select
-        v-model:value="commentStyle"
-        label="Comment Styles"
-        :options="['html', 'liquid']"
-        placeholder="Comment Styles"
-      />
+      <details>
+        <summary>Advanced</summary>
+        <n-space>
+          <n-form-item label-placement="left">
+            <n-checkbox v-model:checked="concatSpaces">
+              Concat Spaces
+            </n-checkbox>
+          </n-form-item>
+          <c-input-text
+            v-model:value="indentChars"
+            label="Bullet Chars"
+            label-position="left"
+            placeholder="Bullet Chars"
+          />
+          <c-input-text
+            v-model:value="anchorPrefix"
+            label="Anchors Prefix"
+            label-position="left"
+            placeholder="Anchors Prefix"
+          />
+          <n-form-item label="Indents: " label-placement="left">
+            <n-input-number
+              v-model:value="indentSpaces"
+              placeholder="Indents..."
+              :max="10" :min="1"
+            />
+          </n-form-item>
+          <c-select
+            v-model:value="commentStyle"
+            label="Comment Styles"
+            label-position="left"
+            :options="['html', 'liquid']"
+            placeholder="Comment Styles"
+          />
+        </n-space>
+      </details>
     </c-card>
 
     <c-card title="Input markdown" mb-2>
@@ -74,10 +112,8 @@ const markdownWithTOC = computed(() => withDefaultOnError(() => {
       <c-input-text
         v-model:value="markdown"
         placeholder="Put your markdown here..."
-        multline
+        multiline
         rows="8"
-        mb-2
-        mt-2
       />
     </c-card>
 
