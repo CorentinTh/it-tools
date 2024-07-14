@@ -1,4 +1,3 @@
-
 ## Configuration
 
 Set the global config
