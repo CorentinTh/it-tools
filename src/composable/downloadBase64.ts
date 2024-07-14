@@ -43,11 +43,17 @@ function getFileExtensionFromMimeType({
 }) {
   if (mimeType) {
     return getExtensionFromMimeType(mimeType) ?? defaultExtension;
+    return getExtensionFromMimeType(mimeType) ?? defaultExtension;
   }
 
   return defaultExtension;
 }
 
+function downloadFromBase64({ sourceValue, filename, extension, fileMimeType }:
+{ sourceValue: string; filename?: string; extension?: string; fileMimeType?: string }) {
+  if (sourceValue === '') {
+    throw new Error('Base64 string is empty');
+  }
 function downloadFromBase64({ sourceValue, filename, extension, fileMimeType }:
 { sourceValue: string; filename?: string; extension?: string; fileMimeType?: string }) {
   if (sourceValue === '') {
@@ -61,7 +67,20 @@ function downloadFromBase64({ sourceValue, filename, extension, fileMimeType }:
     const targetMimeType = fileMimeType ?? getMimeTypeFromExtension(defaultExtension);
     base64String = `data:${targetMimeType};base64,${sourceValue}`;
   }
+  const defaultExtension = extension ?? 'txt';
+  const { mimeType } = getMimeTypeFromBase64({ base64String: sourceValue });
+  let base64String = sourceValue;
+  if (!mimeType) {
+    const targetMimeType = fileMimeType ?? getMimeTypeFromExtension(defaultExtension);
+    base64String = `data:${targetMimeType};base64,${sourceValue}`;
+  }
 
+  const cleanExtension = extension ?? getFileExtensionFromMimeType(
+    { mimeType, defaultExtension });
+  let cleanFileName = filename ?? `file.${cleanExtension}`;
+  if (extension && !cleanFileName.endsWith(`.${extension}`)) {
+    cleanFileName = `${cleanFileName}.${cleanExtension}`;
+  }
   const cleanExtension = extension ?? getFileExtensionFromMimeType(
     { mimeType, defaultExtension });
   let cleanFileName = filename ?? `file.${cleanExtension}`;
@@ -83,6 +102,29 @@ function useDownloadFileFromBase64(
       downloadFromBase64({ sourceValue: get(source), filename: get(filename), extension: get(extension) });
     },
   };
+}
+
+function previewImageFromBase64(base64String: string): HTMLImageElement {
+  if (base64String === '') {
+    throw new Error('Base64 string is empty');
+  }
+
+  const img = document.createElement('img');
+  img.src = base64String;
+
+  const container = document.createElement('div');
+  container.appendChild(img);
+
+  const previewContainer = document.getElementById('previewContainer');
+  if (previewContainer) {
+    previewContainer.innerHTML = '';
+    previewContainer.appendChild(container);
+  }
+  else {
+    throw new Error('Preview container element not found');
+  }
+
+  return img;
 }
 
 function previewImageFromBase64(base64String: string): HTMLImageElement {
