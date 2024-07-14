@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Base64 } from 'js-base64';
 import heicConvert from 'heic-convert/browser';
-import { useDownloadFileFromBase64Refs } from '@/composable/downloadBase64';
+import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 
 const status = ref<'idle' | 'done' | 'error' | 'processing'>('idle');
 const file = ref<File | null>(null);
@@ -13,7 +13,7 @@ const formats = [
   { value: 'jpg', label: 'JPEG' },
   { value: 'png', label: 'PNG' },
 ];
-const { download } = useDownloadFileFromBase64Refs(
+const { download } = useDownloadFileFromBase64(
   {
     source: base64OutputImage,
     filename: fileName,
