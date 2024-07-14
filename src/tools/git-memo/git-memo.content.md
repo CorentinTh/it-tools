@@ -1,3 +1,4 @@
+
 ## Configuration
 
 Set the global config
@@ -33,6 +34,26 @@ Add new modifications to the last commit
 
 ```shell
 git commit --amend --no-edit
+```
+
+## Branches
+
+Lists all local branches in your repository (use -a for remote local and remote branches):
+
+```shell
+git branch
+```
+
+Switch to an existing branch:
+
+```shell
+git switch [branch name]
+```
+
+Create a new branch:
+
+```shell
+git checkout -b [branch name]
 ```
 
 ## I’ve made a mistake
