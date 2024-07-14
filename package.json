@@ -35,6 +35,7 @@
     "release": "node ./scripts/release.mjs"
   },
   "dependencies": {
+    "@chenfengyuan/vue-barcode": "^2.0.2",
     "@it-tools/bip39": "^0.0.4",
     "@it-tools/oggen": "^1.3.0",
     "@sindresorhus/slugify": "^2.2.1",
@@ -47,6 +48,7 @@
     "@vueuse/core": "^10.3.0",
     "@vueuse/head": "^1.0.0",
     "@vueuse/router": "^10.0.0",
+    "@zxing/library": "^0.21.0",
     "bcryptjs": "^2.4.3",
     "change-case": "^4.1.2",
     "colord": "^2.9.3",
@@ -64,7 +66,8 @@
     "highlight.js": "^11.7.0",
     "iarna-toml-esm": "^3.0.5",
     "ibantools": "^4.3.3",
-    "js-base64": "^3.7.6",
+    "js-base64": "^3.7.7",
+    "jsbarcode": "^3.11.6",
     "json5": "^2.2.3",
     "jwt-decode": "^3.1.2",
     "libphonenumber-js": "^1.10.28",
