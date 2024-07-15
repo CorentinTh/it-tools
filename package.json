@@ -87,6 +87,7 @@
     "unicode-emoji-json": "^0.4.0",
     "unplugin-auto-import": "^0.16.4",
     "uuid": "^9.0.0",
+    "uuidv7": "^1.0.0",
     "vue": "^3.3.4",
     "vue-i18n": "^9.9.1",
     "vue-router": "^4.1.6",
