@@ -1,39 +1,25 @@
 <script setup lang="ts">
 import type { CKeyValueListItems } from '@/ui/c-key-value-list/c-key-value-list.types';
 
-const ipOrDomain = ref('8.8.8.8');
+const ip = ref('8.8.8.8');
 const errorMessage = ref('');
 
 const fields: Array<{ field: string; name: string }> = [
-  { field: 'message', name: 'Message' },
-  { field: 'continent', name: 'Continent Name' },
-  { field: 'continentCode', name: 'Continent code' },
-  { field: 'country', name: 'Country Name' },
-  { field: 'countryCode', name: 'Country Code' },
+  { field: 'ip', name: 'IP' },
+  { field: 'hostname', name: 'Host Name' },
+  { field: 'country', name: 'Country Code' },
   { field: 'region', name: 'Region/state Code' },
-  { field: 'regionName', name: 'Region/state Name' },
   { field: 'city', name: 'City' },
-  { field: 'district', name: 'District' },
-  { field: 'zip', name: 'Zip Code' },
-  { field: 'lat', name: 'Latitude' },
-  { field: 'lon', name: 'Longitude' },
+  { field: 'postal', name: 'Postal Code' },
+  { field: 'loc', name: 'Latitude/Longitude' },
   { field: 'timezone', name: 'Timezone' },
-  { field: 'offset', name: 'Timezone UTC DST offset (in seconds)' },
-  { field: 'currency', name: 'National Currency' },
-  { field: 'isp', name: 'ISP Name' },
   { field: 'org', name: 'Organization Name' },
-  { field: 'as', name: 'AS Number and Organization' },
-  { field: 'asname', name: 'AS name (RIR)' },
-  { field: 'reverse', name: 'Reverse DNS of the IP' },
-  { field: 'mobile', name: 'Mobile (cellular) connection' },
-  { field: 'proxy', name: 'Proxy, VPN or Tor exit address' },
-  { field: 'hosting', name: 'Hosting, colocated or data center' },
-  { field: 'query', name: 'IP used for the query' },
 ];
 
 const geoInfos = ref<CKeyValueListItems>([]);
 const geoInfosData = ref<any>({});
 const status = ref<'pending' | 'error' | 'success'>('pending');
+const token = useStorage('ip-geoloc:token', '');
 
 const openStreetMapUrl = computed(
   () => {
@@ -47,7 +33,10 @@ async function onGetInfos() {
   try {
     status.value = 'pending';
 
-    const geoInfoQueryResponse = await fetch(`http://ip-api.com/json/${ipOrDomain.value}`);
+    const geoInfoQueryResponse = await fetch(
+      token.value !== ''
+        ? `https://ipinfo.io/${ip.value}/json?token=${token.value}`
+        : `https://ipinfo.io/${ip.value}/json`);
     if (!geoInfoQueryResponse.ok) {
       throw geoInfoQueryResponse.statusText;
     }
@@ -80,14 +69,28 @@ async function onGetInfos() {
   <div>
     <div flex items-center gap-2>
       <c-input-text
-        v-model:value="ipOrDomain"
-        placeholder="Enter an IPv4/6 or a domain name"
+        v-model:value="ip"
+        placeholder="Enter an IPv4/6"
         @update:value="() => { status = 'pending' }"
       />
       <c-button align-center @click="onGetInfos">
         Get GEO Location Infos
       </c-button>
     </div>
+
+    <details mt-2>
+      <summary>Optional ipinfo.io token</summary>
+      <c-input-text
+        v-model:value="token"
+        placeholder="Optional ipinfo.io token"
+        @update:value="() => { status = 'pending' }"
+      />
+      <n-p>
+        <n-a href="https://ipinfo.io/">
+          Signup for a free token
+        </n-a>
+      </n-p>
+    </details>
 
     <n-divider />
 
