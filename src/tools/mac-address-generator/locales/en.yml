@@ -1,4 +1,0 @@
-tools:
-  mac-address-generator:
-    title: MAC address generator
-    description: Enter the quantity and prefix. MAC addresses will be generated in your chosen case (uppercase or lowercase)

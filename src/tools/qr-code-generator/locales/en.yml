@@ -1,4 +1,0 @@
-tools:
-  qrcode-generator:
-    title: QR Code generator
-    description: Generate and download QR-code for an url or just a text and customize the background and foreground colors.
