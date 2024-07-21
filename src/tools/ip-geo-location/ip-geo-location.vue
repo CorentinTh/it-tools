@@ -17,14 +17,15 @@ const fields: Array<{ field: string; name: string }> = [
 ];
 
 const geoInfos = ref<CKeyValueListItems>([]);
-const geoInfosData = ref<any>({});
+const geoInfosData = ref<{
+  loc?: string
+}>({});
 const status = ref<'pending' | 'error' | 'success'>('pending');
 const token = useStorage('ip-geoloc:token', '');
 
 const openStreetMapUrl = computed(
   () => {
-    const gpsLatitude = geoInfosData.value.lat;
-    const gpsLongitude = geoInfosData.value.lon;
+    const [gpsLatitude, gpsLongitude] = geoInfosData.value.loc?.split(',') || [];
     return gpsLatitude && gpsLongitude ? `https://www.openstreetmap.org/?mlat=${gpsLatitude}&mlon=${gpsLongitude}#map=18/${gpsLatitude}/${gpsLongitude}` : undefined;
   },
 );
