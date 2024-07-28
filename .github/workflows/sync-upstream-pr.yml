@@ -1,0 +1,51 @@
+name: Create Upstream PRs
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  create_prs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Forked Repository
+        uses: actions/checkout@v2
+        with:
+          repository: jonholdermanE/it-tools
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Add Upstream Remote
+        run: git remote add upstream https://github.com/CorentinTh/it-tools.git
+
+      - name: Fetch All PRs from Upstream
+        run: git fetch upstream '+refs/pull/*/head:refs/remotes/upstream-pr/*'
+
+      - name: Create PRs in Forked Repository
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Fetch the list of open PRs from the upstream repository
+          prs=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+              https://api.github.com/repos/CorentinTh/it-tools/pulls?state=open)
+
+          for pr in $(echo "$prs" | jq -r '.[] | @base64'); do
+            _jq() {
+              echo ${pr} | base64 --decode | jq -r ${1}
+            }
+
+            pr_number=$(_jq '.number')
+            pr_title=$(_jq '.title')
+            pr_body=$(_jq '.body')
+            pr_user_login=$(_jq '.user.login')
+
+            branch_name="pr-$pr_number"
+            git checkout -b $branch_name upstream-pr/$pr_number
+            git push origin $branch_name
+
+            # Create a PR in the forked repository with the same title and body
+            curl -X POST -H "Authorization: token $GITHUB_TOKEN" \
+            -d "{\"title\":\"$pr_title\",\"body\":\"$pr_body\",\"head\":\"$branch_name\",\"base\":\"main\"}" \
+            https://api.github.com/repos/YOUR-USERNAME/it-tools/pulls
+          done
