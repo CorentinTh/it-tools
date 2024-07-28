@@ -1,0 +1,107 @@
+<script setup lang="ts">
+import { isNotThrowing } from '@/utils/boolean';
+import { raidCalculations } from './raid-calculator.service';
+
+const diskTotal = ref(2);
+const diskSize = ref(100);
+const diskUnit = ref(Math.pow(10, 9));
+const raidType = ref('raid_0');
+const raidInfo = computed(() => raidCalculations[raidType.value].about);
+const raidRequirements = computed(() => raidCalculations[raidType.value].requirements);
+const inputsValid = computed(() => validateSetup());
+
+const calculatedCapacity = computed(() => {
+  // make sure values exist
+  if(diskTotal.value === undefined || diskSize.value === undefined)
+  {
+    return '';
+  }
+
+  return formatBytes(raidCalculations[raidType.value].capacity(diskTotal.value, diskSize.value, diskUnit.value));
+
+});
+
+const calculatedFaultTolerance = computed(() => {
+  // make sure values exist
+  if(diskTotal.value === undefined || diskSize.value === undefined)
+  {
+    return '';
+  }
+
+  return raidCalculations[raidType.value].fault(diskTotal.value, diskSize.value, diskUnit.value);
+
+});
+
+function validateSetup(){
+  // validate the selected RAID type against parameters
+  return raidCalculations[raidType.value].validate(diskTotal.value, diskSize.value);
+}
+
+// similar to the utility function but uses base 10 instead of base 2
+function formatBytes(bytes: number, decimals = 2) {
+  if (bytes === 0) {
+    return '0 Bytes';
+  }
+
+  const k = Math.pow(10, 3);
+  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+  return `${Number.parseFloat((bytes / k ** i).toFixed(decimals))} ${sizes[i]}`;
+}
+</script>
+
+<template>
+  <div>
+    <c-card>
+      <n-form-item label="Number of disks" label-placement="left" label-width="150" mb-2>
+        <n-input-number v-model:value="diskTotal" max="10000" min="2" placeholder="Number of disks (ex: 2)" w-full />
+      </n-form-item>
+
+      <n-form-item label="Disk size" label-placement="left" label-width="150" mb-2>
+        <n-input-number v-model:value="diskSize" max="10000" min="1" placeholder="Disk size (ex: 100)" w-full />
+        <div flex items-baseline gap-2>
+          <c-select
+            v-model:value="diskUnit"
+            min-w-130px
+            :options="[
+              { label: 'MB', value: Math.pow(10, 6) },
+              { label: 'GB', value: Math.pow(10, 9) },
+              { label: 'TB', value: Math.pow(10, 12) },
+              { label: 'PB', value: Math.pow(10, 15) },
+            ]"
+          />
+        </div>
+      </n-form-item>
+      <n-form-item label="RAID Type" label-placement="left" label-width="150" mb-2>
+        <c-select
+          v-model:value="raidType"
+          w-full
+          :options="[
+            { label: 'RAID 0 (stripe)', value: 'raid_0' },
+            { label: 'RAID 1 (mirror)', value: 'raid_1' },
+            { label: 'RAID 5 (parity)', value: 'raid_5' },
+            { label: 'RAID 6 (double parity)', value: 'raid_6' },
+            { label: 'RAID 10 (mirror + stripe)', value: 'raid_10' },
+          ]"
+        />
+      </n-form-item>
+      <p class="raidError" v-if="!inputsValid">{{ raidRequirements }}</p>
+      <p v-else v-html="raidInfo"></p>
+    </c-card>
+    <c-card title="Results">
+      <n-statistic label="Capacity" mb-2 v-if="inputsValid">
+        {{ calculatedCapacity }}
+      </n-statistic>
+      <n-statistic label="Fault Tolerance" mb-2 v-if="inputsValid">
+        {{ calculatedFaultTolerance }}
+      </n-statistic>
+    </c-card>
+  </div>
+</template>
+
+<style lang="less" scoped>
+.raidError {
+  color: rgb(208, 48, 80)
+}
+</style>
