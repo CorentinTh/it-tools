@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isNotThrowing } from '@/utils/boolean';
+import { formatBytes, UNIT_BASE } from '@/utils/convert';
 import { raidCalculations } from './raid-calculator.service';
 
 const diskTotal = ref(2);
@@ -17,7 +17,7 @@ const calculatedCapacity = computed(() => {
     return '';
   }
 
-  return formatBytes(raidCalculations[raidType.value].capacity(diskTotal.value, diskSize.value, diskUnit.value));
+  return formatBytes(raidCalculations[raidType.value].capacity(diskTotal.value, diskSize.value, diskUnit.value), 2, UNIT_BASE.BASE_10);
 
 });
 
@@ -35,19 +35,6 @@ const calculatedFaultTolerance = computed(() => {
 function validateSetup(){
   // validate the selected RAID type against parameters
   return raidCalculations[raidType.value].validate(diskTotal.value, diskSize.value);
-}
-
-// similar to the utility function but uses base 10 instead of base 2
-function formatBytes(bytes: number, decimals = 2) {
-  if (bytes === 0) {
-    return '0 Bytes';
-  }
-
-  const k = Math.pow(10, 3);
-  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-  const i = Math.floor(Math.log(bytes) / Math.log(k));
-
-  return `${Number.parseFloat((bytes / k ** i).toFixed(decimals))} ${sizes[i]}`;
 }
 </script>
 
