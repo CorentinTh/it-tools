@@ -64,6 +64,7 @@ function formatBytes(bytes: number, decimals = 2) {
           <c-select
             v-model:value="diskUnit"
             min-w-130px
+            ml-1
             :options="[
               { label: 'MB', value: Math.pow(10, 6) },
               { label: 'GB', value: Math.pow(10, 9) },
