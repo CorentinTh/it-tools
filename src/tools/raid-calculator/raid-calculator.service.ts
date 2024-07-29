@@ -2,7 +2,7 @@ export { raidCalculations };
 
 const raidCalculations = {
   raid_0: {
-    about: 'RAID 0 splits data evenly across 2 or more disks with redunancy or fault tolerance. More info: <a href="https://en.wikipedia.org/wiki/Standard_RAID_levels#RAID_0">Wikipedia</a>',
+    about: 'RAID 0 the splits data evenly across 2 or more disks without redunancy or fault tolerance creating one large storage space. More info: <a href="https://en.wikipedia.org/wiki/Standard_RAID_levels#RAID_0" target="_blank">Wikipedia</a>',
     requirements: 'RAID 0 requires at least 1 disk',
     validate: function(num, size){
       return num > 1
@@ -19,7 +19,7 @@ const raidCalculations = {
     }
   },
   raid_1: {
-    about: 'RAID 1 consists of an exact copy of the data across two or moe disks. The array will operate as long as at least one drive is operational.  More info: <a href="https://en.wikipedia.org/wiki/Standard_RAID_levels#RAID_1">Wikipedia</a>',
+    about: 'RAID 1 consists of an exact copy of the data (mirror) across two or more disks. The array will operate as long as at least one drive is operational.  More info: <a href="https://en.wikipedia.org/wiki/Standard_RAID_levels#RAID_1" target="_blank">Wikipedia</a>',
     requirements: 'RAID 1 requires at least 1 disk',
     validate: function(num, size){
       return num > 1
@@ -38,7 +38,7 @@ const raidCalculations = {
     }
   },
   raid_5: {
-    about: 'This is RAID 5',
+    about: 'RAID 5 uses block level striping with parity. This allows for fault tolerance with a storage reduction equal to one drive for the parity information. More info: <a href="https://en.wikipedia.org/wiki/Standard_RAID_levels#RAID_5" target="_blank">Wikipedia</a>',
     requirements: 'RAID 5 requires at least 3 disks',
     validate: function(num, size){
       return num >= 3
@@ -56,7 +56,7 @@ const raidCalculations = {
     }
   },
   raid_6: {
-    about: 'This is RAID 6',
+    about: 'RAID 6 is similiar to RAID 5 but with an additional parity block. This allows for an additional disk failure at the cost of storage reduction equal to two drives. More info: <a href="https://en.wikipedia.org/wiki/Standard_RAID_levels#RAID_6" target="_blank">Wikipedia</a>',
     requirements: 'RAID 6 requires at least 4 disks',
     validate: function(num, size){
       return num >= 4
@@ -74,7 +74,7 @@ const raidCalculations = {
     }
   },
   raid_10: {
-    about: 'RAID 10 is generally recognized as a stripe of mirrors (RAID 1 + RAID 2). Each set of drives is mirrored and striped together so that each drive in the set is fault tolerant within the group. More info: <a href="https://en.wikipedia.org/wiki/Nested_RAID_levels#RAID_10_(RAID_1+0)">Wikipedia</a>',
+    about: 'RAID 10 is generally recognized as a stripe of mirrors (RAID 1 + RAID 0). Each set of drives is mirrored and striped together so that each drive in the set is fault tolerant within the group. More info: <a href="https://en.wikipedia.org/wiki/Nested_RAID_levels#RAID_10_(RAID_1+0)" target="_blank">Wikipedia</a>',
     requirements: 'RAID 10 requires an even number of at least 4 disks',
     validate: function(num, size){
       return num >= 4 && num % 2 == 0
@@ -87,8 +87,8 @@ const raidCalculations = {
       return `${num - 2}x read speed gain and write speed penalty (due to parity calculations)`;
     },
     fault: function(num, size, unit){
-      // always 2 drive failures
-      return "At least 1 drive failure per mirrored set";
+      // one per mirror
+      return "1 drive failure per mirrored set";
     }
   }
 }
