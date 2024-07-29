@@ -88,7 +88,7 @@ function formatBytes(bytes: number, decimals = 2) {
         />
       </n-form-item>
       <p class="raidError" v-if="!inputsValid">{{ raidRequirements }}</p>
-      <p v-else v-html="raidInfo"></p>
+      <p v-html="raidInfo"></p>
     </c-card>
     <c-card title="Results">
       <n-statistic label="Capacity" mb-2 v-if="inputsValid">
