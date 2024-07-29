@@ -11,20 +11,10 @@ const raidRequirements = computed(() => raidCalculations[raidType.value].require
 const inputsValid = computed(() => validateSetup());
 
 const calculatedCapacity = computed(() => {
-  // make sure values exist
-  if (diskTotal.value === undefined || diskSize.value === undefined) {
-    return '';
-  }
-
   return formatBytes(raidCalculations[raidType.value].capacity(diskTotal.value, diskSize.value, diskUnit.value), 2, UNIT_BASE.BASE_10);
 });
 
 const calculatedFaultTolerance = computed(() => {
-  // make sure values exist
-  if (diskTotal.value === undefined || diskSize.value === undefined) {
-    return '';
-  }
-
   return raidCalculations[raidType.value].fault(diskTotal.value, diskSize.value, diskUnit.value);
 });
 
