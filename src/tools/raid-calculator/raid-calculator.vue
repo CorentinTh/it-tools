@@ -91,12 +91,20 @@ function formatBytes(bytes: number, decimals = 2) {
       <p v-html="raidInfo"></p>
     </c-card>
     <c-card title="Results">
-      <n-statistic label="Capacity" mb-2 v-if="inputsValid">
-        {{ calculatedCapacity }}
-      </n-statistic>
-      <n-statistic label="Fault Tolerance" mb-2 v-if="inputsValid">
-        {{ calculatedFaultTolerance }}
-      </n-statistic>
+      <n-table v-if="inputsValid">
+        <tbody>
+          <tr>
+            <td font-bold width="30%">Capacity</td>
+            <td>{{ calculatedCapacity }}</td>
+          </tr>
+          <tr>
+            <td font-bold  width="30%">Fault Tolerance</td>
+            <td :value="calculatedFaultTolerance">
+              {{ calculatedFaultTolerance }}
+            </td>
+          </tr>
+        </tbody>
+      </n-table>
     </c-card>
   </div>
 </template>
