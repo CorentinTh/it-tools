@@ -28,6 +28,10 @@ const calculatedFaultTolerance = computed(() => {
   return raidCalculations[raidType.value].fault(diskTotal.value, diskSize.value, diskUnit.value);
 });
 
+const calculatedSpaceEfficiency = computed(() => {
+  return raidCalculations[raidType.value].efficiency(diskTotal.value);
+});
+
 function validateSetup() {
   // validate the selected RAID type against parameters
   return raidCalculations[raidType.value].validate(diskTotal.value, diskSize.value);
@@ -90,8 +94,16 @@ function validateSetup() {
             <td font-bold width="30%">
               Fault Tolerance
             </td>
-            <td :value="calculatedFaultTolerance">
+            <td>
               {{ calculatedFaultTolerance }}
+            </td>
+          </tr>
+          <tr>
+            <td font-bold width="30%">
+              Space Efficiency
+            </td>
+            <td>
+              {{ calculatedSpaceEfficiency }}%
             </td>
           </tr>
         </tbody>

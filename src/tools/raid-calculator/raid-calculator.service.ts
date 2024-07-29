@@ -11,6 +11,10 @@ const raidCalculations = {
       // total disks * size
       return (num * size) * unit;
     },
+    efficiency(num) {
+      // uses 100% of space
+      return 100;
+    },
     fault(num, size, unit) {
       return 'None';
     },
@@ -24,6 +28,10 @@ const raidCalculations = {
     capacity(num, size, unit) {
       // total size is size of a single drive
       return size * unit;
+    },
+    efficiency(num) {
+      // 1/N
+      return (1 / num) * 100;
     },
     fault(num, size, unit) {
       // FT = total - 1
@@ -40,6 +48,10 @@ const raidCalculations = {
       // (N-1) * S (one drive for parity)
       return ((num - 1) * size) * unit;
     },
+    efficiency(num) {
+      // 1 - (1/N)
+      return (1 - (1 / num)) * 100;
+    },
     fault(num, size, unit) {
       // always 1 failure
       return '1 drive failure';
@@ -55,6 +67,10 @@ const raidCalculations = {
       // (N-2) * S (2 parity)
       return ((num - 2) * size) * unit;
     },
+    efficiency(num) {
+      // 1 - (2/N)
+      return (1 - (2 / num)) * 100;
+    },
     fault(num, size, unit) {
       // always 2 drive failures
       return '2 drive failures';
@@ -69,6 +85,10 @@ const raidCalculations = {
     capacity(num, size, unit) {
       // Total disks (stripe)/2 (mirror)
       return ((num * size) / 2) * unit;
+    },
+    efficiency(num) {
+      // 1/2 (1/strips per stripe, 2 in this case)
+      return 50;
     },
     fault(num, size, unit) {
       // one per mirror
