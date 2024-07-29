@@ -11,9 +11,6 @@ const raidCalculations = {
       // total disks * size
       return (num * size) * unit;
     },
-    speed: function(num, size, unit){
-      return `${num}x read and ${num}x write speed gain`;
-    },
     fault: function(num, size, unit){
       return "None";
     }
@@ -27,10 +24,6 @@ const raidCalculations = {
     capacity: function(num, size, unit){
       // total size is size of a single drive
       return size * unit;
-    },
-    speed: function(num, size, unit){
-      // potential for all drives read at once
-      return `Potential ${num}x read and no write speed gain`;
     },
     fault: function(num, size, unit){
       // FT = total - 1
@@ -47,9 +40,6 @@ const raidCalculations = {
       // (N-1) * S (one drive for parity)
       return ((num - 1) * size) * unit;
     },
-    speed: function(num, size, unit){
-      return `${num - 1}x read speed gain and write speed penalty (due to parity calculations)`;
-    },
     fault: function(num, size, unit){
       // always 1 failure
       return "1 drive failure";
@@ -65,9 +55,6 @@ const raidCalculations = {
       // (N-2) * S (2 parity)
       return ((num - 2) * size) * unit;
     },
-    speed: function(num, size, unit){
-      return `${num - 2}x read speed gain and write speed penalty (due to parity calculations)`;
-    },
     fault: function(num, size, unit){
       // always 2 drive failures
       return "2 drive failures";
@@ -82,9 +69,6 @@ const raidCalculations = {
     capacity: function(num, size, unit){
       // Total disks (stripe)/2 (mirror)
       return ((num * size) / 2) * unit;
-    },
-    speed: function(num, size, unit){
-      return `${num - 2}x read speed gain and write speed penalty (due to parity calculations)`;
     },
     fault: function(num, size, unit){
       // one per mirror
