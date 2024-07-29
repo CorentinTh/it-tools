@@ -1,6 +1,6 @@
 export enum UNIT_BASE {
   BASE_2 = 1024,
-  BASE_10 = 1000
+  BASE_10 = 1000,
 }
 
 export function formatBytes(bytes: number, decimals = 2, base: UNIT_BASE = UNIT_BASE.BASE_2) {

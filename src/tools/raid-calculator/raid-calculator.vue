@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { formatBytes, UNIT_BASE } from '@/utils/convert';
 import { raidCalculations } from './raid-calculator.service';
+import { UNIT_BASE, formatBytes } from '@/utils/convert';
 
 const diskTotal = ref(2);
 const diskSize = ref(100);
-const diskUnit = ref(Math.pow(10, 9));
+const diskUnit = ref(10 ** 9);
 const raidType = ref('raid_0');
 const raidInfo = computed(() => raidCalculations[raidType.value].about);
 const raidRequirements = computed(() => raidCalculations[raidType.value].requirements);
@@ -12,27 +12,23 @@ const inputsValid = computed(() => validateSetup());
 
 const calculatedCapacity = computed(() => {
   // make sure values exist
-  if(diskTotal.value === undefined || diskSize.value === undefined)
-  {
+  if (diskTotal.value === undefined || diskSize.value === undefined) {
     return '';
   }
 
   return formatBytes(raidCalculations[raidType.value].capacity(diskTotal.value, diskSize.value, diskUnit.value), 2, UNIT_BASE.BASE_10);
-
 });
 
 const calculatedFaultTolerance = computed(() => {
   // make sure values exist
-  if(diskTotal.value === undefined || diskSize.value === undefined)
-  {
+  if (diskTotal.value === undefined || diskSize.value === undefined) {
     return '';
   }
 
   return raidCalculations[raidType.value].fault(diskTotal.value, diskSize.value, diskUnit.value);
-
 });
 
-function validateSetup(){
+function validateSetup() {
   // validate the selected RAID type against parameters
   return raidCalculations[raidType.value].validate(diskTotal.value, diskSize.value);
 }
@@ -53,10 +49,10 @@ function validateSetup(){
             min-w-130px
             ml-1
             :options="[
-              { label: 'MB', value: Math.pow(10, 6) },
-              { label: 'GB', value: Math.pow(10, 9) },
-              { label: 'TB', value: Math.pow(10, 12) },
-              { label: 'PB', value: Math.pow(10, 15) },
+              { label: 'MB', value: 10 ** 6 },
+              { label: 'GB', value: 10 ** 9 },
+              { label: 'TB', value: 10 ** 12 },
+              { label: 'PB', value: 10 ** 15 },
             ]"
           />
         </div>
@@ -74,18 +70,26 @@ function validateSetup(){
           ]"
         />
       </n-form-item>
-      <p class="raidError" v-if="!inputsValid">{{ raidRequirements }}</p>
-      <p v-html="raidInfo"></p>
+      <p v-if="!inputsValid" class="raidError">
+        {{ raidRequirements }}
+      </p>
+      <p v-html="raidInfo" />
     </c-card>
     <c-card title="Results">
       <n-table v-if="inputsValid">
         <tbody>
           <tr>
-            <td font-bold width="30%">Capacity</td>
-            <td>{{ calculatedCapacity }}</td>
+            <td font-bold width="30%">
+              Capacity
+            </td>
+            <td>
+              {{ calculatedCapacity }}
+            </td>
           </tr>
           <tr>
-            <td font-bold  width="30%">Fault Tolerance</td>
+            <td font-bold width="30%">
+              Fault Tolerance
+            </td>
             <td :value="calculatedFaultTolerance">
               {{ calculatedFaultTolerance }}
             </td>
