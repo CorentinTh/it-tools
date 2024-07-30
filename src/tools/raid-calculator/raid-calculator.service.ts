@@ -97,12 +97,12 @@ const raidCalculations = {
   },
   raid_50: {
     about: 'RAID 50 stripes multiple RAID 5 arrays together (RAID 5 + RAID 0). Each RAID 5 set can sustain a single drive failure. More info: <a href="https://en.wikipedia.org/wiki/Nested_RAID_levels#RAID_50_(RAID_5+0)" target="_blank">Wikipedia</a>',
-    requirements: 'RAID 50 requires at least 6 disks total with 3 minimum per stripe. Stripes must contain an equal number of disks.',
+    requirements: 'RAID 50 requires at least 6 disks with 3 minimum per stripe. Stripes must contain an equal number of disks.',
     validate(num, size, stripeSize) {
       return num >= 6 && stripeSize >= 3 && num % stripeSize === 0;
     },
     capacity(num, size, stripeSize, unit) {
-      // RAID 5 per strip
+      // RAID 5 per stripe
       const perStripe = ((stripeSize - 1) * size) * unit;
 
       // sum each stripe
@@ -113,8 +113,30 @@ const raidCalculations = {
       return (1 - (1 / stripeSize)) * 100;
     },
     fault(num, size, unit) {
-      // one per mirror
+      // one per set
       return '1 drive failure per RAID 5 set';
+    },
+  },
+  raid_60: {
+    about: 'RAID 60 stripes multiple RAID 6 arrays together (RAID 6 + RAID 0). Each RAID 6 set can sustain a two drive failures. More info: <a href="https://en.wikipedia.org/wiki/Nested_RAID_levels#RAID_60_(RAID_6+0)" target="_blank">Wikipedia</a>',
+    requirements: 'RAID 50 requires at least 8 disks with 4 minimum per stripe. Stripes must contain an equal number of disks.',
+    validate(num, size, stripeSize) {
+      return num >= 8 && stripeSize >= 4 && num % stripeSize === 0;
+    },
+    capacity(num, size, stripeSize, unit) {
+      // RAID 6 per stripe
+      const perStripe = ((stripeSize - 2) * size) * unit;
+
+      // sum each stripe
+      return perStripe * (num / stripeSize);
+    },
+    efficiency(num, stripeSize) {
+      // 1 - (2 / strips per stripe)
+      return (1 - (2 / stripeSize)) * 100;
+    },
+    fault(num, size, unit) {
+      // 2 per set
+      return '2 drive failures per RAID 6 set';
     },
   },
 };

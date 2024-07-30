@@ -4,7 +4,7 @@ import { defineTool } from '../tool';
 export const tool = defineTool({
   name: 'RAID Calculator',
   path: '/raid-calculator',
-  description: 'Calculate storage capacity and fault tolerance of an array based on the number of disks, size, and RAID type',
+  description: 'Calculate storage capacity, fault tolerance and space efficiency of an array based on the number of disks, size, and RAID type',
   keywords: ['raid', 'calculator'],
   component: () => import('./raid-calculator.vue'),
   icon: Database,
