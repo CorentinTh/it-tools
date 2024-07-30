@@ -12,11 +12,10 @@ const raidRequirements = computed(() => raidCalculations[raidType.value].require
 const inputsValid = computed(() => validateSetup());
 
 const totalStripes = computed(() => {
-  if(inputsValid.value){
+  if (inputsValid.value) {
     return `${diskTotal.value / diskPerStripe.value} stripes total`;
   }
-  else
-  {
+  else {
     return '';
   }
 });
