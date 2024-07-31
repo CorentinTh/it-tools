@@ -83,7 +83,10 @@ function validateSetup() {
       <p v-if="!inputsValid" class="raidError">
         {{ raidRequirements }}
       </p>
-      <p v-html="raidInfo" />
+      <p>
+        {{ raidInfo }}<br /><br />
+        For more information on RAID types, see <a href="https://en.wikipedia.org/wiki/Standard_RAID_levels" target="_blank">Wikipedia</a>.
+      </p>
     </c-card>
     <c-card title="Results">
       <n-table v-if="inputsValid">
