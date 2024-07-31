@@ -1,12 +1,12 @@
 export { raidCalculations };
 
 interface RaidType {
-  about: string,
-  requirements: string,
-  validate(num: number, size: number, stripeSize: number): boolean,
-  capacity(num: number, size: number, stripeSize: number, unit: number): number,
-  efficiency(num: number, stripeSize: number): number,
-  fault(num: number, size: number, unit: number): string,
+  about: string
+  requirements: string
+  validate(num: number, size: number, stripeSize: number): boolean
+  capacity(num: number, size: number, stripeSize: number, unit: number): number
+  efficiency(num: number, stripeSize: number): number
+  fault(num: number, size: number, unit: number): string
 }
 
 const raidCalculations: { [key: string]: RaidType } = {
