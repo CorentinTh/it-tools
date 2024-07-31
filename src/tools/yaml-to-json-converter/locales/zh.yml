@@ -1,0 +1,9 @@
+tools:
+  yaml-to-json-converter:
+    title: 'YAML to JSON'
+    description: '使用这个在线转换工具，简单地将YAML转换为JSON'
+    invalid: '提供的YAML有问题'
+    your-yaml: '原始YAML'
+    json-from-yaml: '转换后的JSON'
+    placeholder:
+      your-yaml: '在这粘贴你的YAML...'
