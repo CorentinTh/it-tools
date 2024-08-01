@@ -85,7 +85,7 @@ function validateSetup() {
       </p>
       <p>
         {{ raidInfo }}<br /><br />
-        For more information on RAID types, see <a href="https://en.wikipedia.org/wiki/Standard_RAID_levels" target="_blank">Wikipedia</a>.
+        For more information on RAID types, see <a href="https://en.wikipedia.org/wiki/Standard_RAID_levels" target="_blank" rel="noopener">Wikipedia</a>.
       </p>
     </c-card>
     <c-card title="Results">
