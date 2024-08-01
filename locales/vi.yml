@@ -221,6 +221,10 @@ tools:
     title: Định dạng và làm đẹp JSON
     description: Định dạng chuỗi JSON của bạn thành một định dạng dễ đọc và thân thiện với con người.
 
+  json-sort-master:
+    title: Sắp xếp JSON
+    description: Sắp xếp JSON của bạn theo các khóa và giá trị.
+    
   docker-run-to-docker-compose-converter:
     title: Chuyển đổi lệnh docker run thành tệp docker-compose
     description: Chuyển đổi các lệnh docker run thành tệp docker-compose!

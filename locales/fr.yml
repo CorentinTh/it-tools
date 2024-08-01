@@ -79,3 +79,7 @@ tools:
     copied: Le token a été copié
     length: Longueur
     tokenPlaceholder: Le token...
+
+  json-sort-master:
+    title: Maître de tri JSON
+    description: Triez votre JSON par clés et valeurs.
