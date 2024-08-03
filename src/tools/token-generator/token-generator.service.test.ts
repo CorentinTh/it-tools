@@ -106,7 +106,7 @@ describe('token-generator', () => {
       });
 
       expect(token).toHaveLength(256);
-      expect(token).toMatch(/^[0-9]+$/);
+      expect(token).toMatch(/^[03456789]+$/);
     });
   });
 });
