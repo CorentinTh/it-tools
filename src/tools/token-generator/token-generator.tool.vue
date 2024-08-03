@@ -50,7 +50,7 @@ const { copy } = useCopy({ source: tokens, text: t('tools.token-generator.copied
         </n-space>
       </n-form>
 
-      <n-form-item label="Denied Characters" label-placement="left">
+      <n-form-item label="Denied Characters (ie, visually similar { oO01lI } or punctuations)" label-placement="top">
         <c-input-text
           v-model:value="deniedChars"
           placeholder="Put characters to deny from token"
