@@ -17,12 +17,12 @@ export function createToken({
   length?: number
   alphabet?: string
 }) {
-  const allAlphabet = alphabet ?? [
-    withUppercase ? 'ABCDEFGHIJKLMOPQRSTUVWXYZ' : '',
-    withLowercase ? 'abcdefghijklmopqrstuvwxyz' : '',
-    withNumbers ? '0123456789' : '',
-    withSymbols ? '.,;:!?./-"\'#{([-|\\@)]=}*+' : '',
-  ].filter(c => !(deniedChars?.includes(c))).join(''); ;
+  const allAlphabet = (alphabet ?? (
+    (withUppercase ? 'ABCDEFGHIJKLMOPQRSTUVWXYZ' : '')
+    + (withLowercase ? 'abcdefghijklmopqrstuvwxyz' : '')
+    + (withNumbers ? '0123456789' : '')
+    + (withSymbols ? '.,;:!?./-"\'#{([-|\\@)]=}*+' : '')
+  )).split('').filter(c => !(deniedChars?.includes(c))).join('');
 
   return shuffleString(allAlphabet.repeat(length)).substring(0, length);
 }
