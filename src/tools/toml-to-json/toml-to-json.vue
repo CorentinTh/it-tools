@@ -22,5 +22,6 @@ const rules: UseValidationRule<string>[] = [
     output-language="json"
     :input-validation-rules="rules"
     :transformer="transformer"
+    download-file-name="output.json"
   />
 </template>
