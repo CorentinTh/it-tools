@@ -63,7 +63,7 @@ const { download } = useDownloadFileFromBase64(
     monospace
   />
 
-  <div>
+  <div overflow-auto>
     <div mb-5px>
       {{ outputLabel }}
     </div>
