@@ -388,6 +388,10 @@ tools:
     title: Encode/decode URL-formatted strings
     description: Encode text to URL-encoded format (also known as "percent-encoded"), or decode from it.
 
+  smart-text-replacer:
+    title: Smart text replacer
+    description: Search and replace a word on single or multiple occurrences just like windows notepad search and replace.
+
   text-to-binary:
     title: Text to ASCII binary
     description: Convert text to its ASCII binary representation and vice-versa.

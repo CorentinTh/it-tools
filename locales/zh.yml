@@ -387,3 +387,7 @@ tools:
   text-to-binary:
     title: 文本到 ASCII 二进制
     description: 将文本转换为其 ASCII 二进制表示形式，反之亦然。
+
+  smart-text-replacer:
+    title: 智能文本替换器
+    description: 像windows记事本一样搜索和替换单个或多个出现的单词。
