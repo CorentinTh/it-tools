@@ -58,6 +58,7 @@ declare module '@vue/runtime-core' {
     CrontabGenerator: typeof import('./src/tools/crontab-generator/crontab-generator.vue')['default']
     CSelect: typeof import('./src/ui/c-select/c-select.vue')['default']
     'CSelect.demo': typeof import('./src/ui/c-select/c-select.demo.vue')['default']
+    CsvToJson: typeof import('./src/tools/csv-to-json/csv-to-json.vue')['default']
     CTable: typeof import('./src/ui/c-table/c-table.vue')['default']
     'CTable.demo': typeof import('./src/ui/c-table/c-table.demo.vue')['default']
     CTextCopyable: typeof import('./src/ui/c-text-copyable/c-text-copyable.vue')['default']
