@@ -1,0 +1,393 @@
+home:
+  categories:
+    newestTools: Nyeste værktøjer
+    favoriteTools: 'Dine favorit værktøjer'
+    allTools: 'Alle værktøjerne'
+  subtitle: 'Handy værktøjer for udviklere'
+  toggleMenu: 'Åben/luk menu'
+  home: Hjem
+  uiLib: 'UI Bibliotek'
+  support: 'Støt IT-Tools udviklingen'
+  buyMeACoffee: 'Køb mig en kaffe'
+  follow:
+    title: 'Kan du lide it-tools?'
+    p1: 'Giv os en stjerne på'
+    githubRepository: 'IT-Tools GitHub repo'
+    p2: 'eller følg os på'
+    twitterAccount: 'IT-Tools Twitter konto'
+    thankYou: 'Mange tak!'
+  nav:
+    github: 'GitHub repository'
+    githubRepository: 'IT-Tools GitHub repo'
+    twitter: 'Twitter konto'
+    twitterAccount: 'IT Tools Twitter konto'
+    about: 'Omkring IT-Tools'
+    aboutLabel: 'Omkring'
+    darkMode: 'Mørk tilstand'
+    lightMode: 'Lys tilstand'
+    mode: 'Skift mellem mørk/lys tilstand'
+about:
+  content: >
+    # Omkring IT-Tools
+
+    Denne vidunderlige hjemmeside, lavet med ❤ af [Corentin Thomasset](https://github.com/CorentinTh), samler nyttige værktøjer for udviklere og folk der arbejder indenfor IT. Hvis du finder den nyttig, følg dig velkommen til at dele den med folk du tænker måske også kunne finde den nyttig og glem ikke at bogmærke den til din genvejs linje!
+
+    IT Tools er open-source (under MIT licensen) og gratis, og vil altid være det, men det koster penge for mig at hoste og forny domænenavnet. Hvis du vil støtte mit arbejde, og motivere mig til at tilføje flere værktøjer, overvej venligst at støtte ved at [sponsorere mig](https://www.buymeacoffee.com/cthmsst).
+
+    ## Teknologier
+
+    IT Tools er lavet i Vue.js (Vue 3) med [Naive UI komponent bibliotek](https://www.naiveui.com/en-US/os-theme) og er hosted & kontinuerligt udrullet af Vercel. Tredje-parts open-source biblioteker bliver brugt i nogle værktøjer, du kan finde den komplette liste i [package.json](https://github.com/CorentinTh/it-tools/blob/main/package.json)-filen i repoet.
+
+    ## Fundet en bug? Et værktøj der mangler?
+
+    Hvis du har brug for et værktøj der ikke er implementeret her, og du tænker kan være nyttig, er du velkommen til at sende en feature forespørgsel i [problemer sektionen](https://github.com/CorentinTh/it-tools/issues/new/choose) i GitHub repoet.
+
+    Og hvis du finder en bug, eller noget der ikke virker som forventet, vær venlig at send en bug rapport i [problemer sektionen](https://github.com/CorentinTh/it-tools/issues/new/choose) i GitHub repoet
+
+404:
+  notFound: '404 Ikke Fundet'
+  sorry: 'Undskyld, dette side ser ikke ud til at eksistere'
+  maybe: 'Måske chachen laver nogle finurlige ting, prøv at lave et force-refresh?'
+  backHome: 'Tilbage hjem'
+favoriteButton:
+  remove: 'Fjern fra favoritter'
+  add: 'Tilføj til favoritter'
+toolCard:
+  new: Ny
+search:
+  label: Søg
+tools:
+  categories:
+    favorite-tools: 'Dine favorit værktøjer'
+    crypto: Crypto
+    converter: Konverter
+    web: Web
+    images and videos: 'Billeder & Videoer'
+    development: Udvikling
+    network: Netværk
+    math: Matematik
+    measurement: Måling
+    text: Tekst
+    data: Data
+
+  password-strength-analyser:
+    title: Kodeords styrke analysator
+    description: Afslør styrken af dit kodeord med denne client-side-only kodeords styrke analysator og knæk tids estimator værktøj.
+
+  chronometer:
+    title: Stop-ur
+    description: Overvåg varigheden af en ting. Det er sådan set bare et stop-ur med simple stop-urs egenskaber.
+
+  token-generator:
+    title: Token generator
+    description: Generér tilføj streng med de tegn du vil, store og små bogstaver, tal og/eller symboler.
+
+    uppercase: Store bogstaver (ABC...)
+    lowercase: Små bogstaver (abc...)
+    numbers: Tal (123...)
+    symbols: Symboler (!-;...)
+    length: Længde
+    tokenPlaceholder: 'Tokenen...'
+    copied: Token kopieret til udklipsholderen
+    button:
+      copy: Kopiér
+      refresh: Opdater
+  percentage-calculator:
+    title: Procent lommeregner
+    description: Udregn nemt procenter fra en værdi til en anden værdi, eller fra en procent til en værdi.
+
+  svg-placeholder-generator:
+    title: SVG pladsholder generator
+    description: Generér svg billeder til brug som en pladsholder i dine applikationer.
+
+  json-to-csv:
+    title: JSON til CSV
+    description: Konvertér JSON til CSV med automatisk hoved-detektering.
+
+  camera-recorder:
+    title: Kamera optager
+    description: Tag et billede eller optag en video fra dit webkamera eller kamera.
+
+  keycode-info:
+    title: Keycode info
+    description: Find javascript keycode, kode, lokation og modifikationer af hvilken som helst trykket tast.
+
+  emoji-picker:
+    title: Emoji vælger
+    description: Kopiér og indsæt emojier nemt og få unicode og kode point værdi af hver emoji.
+
+  color-converter:
+    title: Farve konvertering
+    description: Konverter farve mellem forskellige formatter (hex, rgb, hsl og css navn)
+
+  bcrypt:
+    title: Bcrypt
+    description: Hash og sammelign tekst streng ved brug af bcrypt. Bcrypt er en kodeords-hashing funktion baseret på Blowfish chifferen.
+
+  crontab-generator:
+    title: Crontab generator
+    description: Validér og generer crontab og få den menneske-læselige beskrivelse af cron tidsplanen.
+
+  http-status-codes:
+    title: HTTP status koder
+    description: Listen af alle HTTP status koder, deres navn, og hvad de betyder.
+
+  sql-prettify:
+    title: SQL prettify og formater
+    description: Formater og prettify dine SQL forespørgsler online (den understøtter adskellige SQL dialekter).
+
+  benchmark-builder:
+    title: Benchmark bygger
+    description: Sammenlign nemt udførelsestiden for opgaver med denne meget enkle online benchmark-bygger.
+
+  git-memo:
+    title: Git snydeark
+    description: Git er et decentraliseret versionsstyringssoftware. Med dette snydeark får du hurtig adgang til de mest almindelige git-kommandoer.
+
+  slugify-string:
+    title: Slugify streng
+    description: Gør en streng URL, filnavn og id sikker.
+
+  encryption:
+    title: Krypter / dekrypter tekst
+    description: Krypter klartekst og dekrypter chiffertekst ved hjælp af kryptografialgoritmer som AES, TripleDES, Rabbit eller RC4.
+
+  random-port-generator:
+    title: Tilfældig port-generator
+    description: Generer tilfældige portnumre uden for området af "kendte" porte (0-1023).
+
+  yaml-prettify:
+    title: YAML prettify og format
+    description: Prettify din YAML-streng til et venligt, menneskeligt læsbart format.
+
+  eta-calculator:
+    title: ETA beregner
+    description: En ETA (Forventet Ankomsttid) beregner til at bestemme den omtrentlige sluttid for en opgave, for eksempel sluttiden og varigheden af en filoverførsel.
+
+  roman-numeral-converter:
+    title: Romertal konverter
+    description: Konverter romertal til tal og konverter tal til romertal.
+
+  hmac-generator:
+    title: HMAC generator
+    description: Beregn en hash-baseret meddelelsesautentificeringskode (HMAC) ved hjælp af en hemmelig nøgle og din foretrukne hash-funktion.
+
+  bip39-generator:
+    title: BIP39 adgangskode generator
+    description: Generer en BIP39 adgangskode fra en eksisterende eller tilfældig mnemonic, eller få mnemonic fra adgangskoden.
+
+  base64-file-converter:
+    title: Base64 filkonverter
+    description: Konverter en streng, fil eller billede til dens base64-repræsentation.
+
+  list-converter:
+    title: Liste konverter
+    description: Dette værktøj kan behandle kolonnebaserede data og anvende forskellige ændringer (transponere, tilføje præfiks og suffiks, vende liste, sortere liste, små bogstaver værdier, afkorte værdier) til hver række.
+
+  base64-string-converter:
+    title: Base64 streng koder/afkoder
+    description: Simpelt kod og afkod strenge til deres base64-repræsentation.
+
+  toml-to-yaml:
+    title: TOML til YAML
+    description: Fortolk og konverter TOML til YAML.
+
+  math-evaluator:
+    title: Matematik evalueringsværktøj
+    description: En lommeregner til evaluering af matematiske udtryk. Du kan bruge funktioner som sqrt, cos, sin, abs, osv.
+
+  json-to-yaml-converter:
+    title: JSON til YAML konverter
+    description: Konverter nemt JSON til YAML med denne online live konverter.
+
+  url-parser:
+    title: URL fortolker
+    description: Fortolk en URL til dens separate bestanddele (protokol, oprindelse, parametre, port, brugernavn-adgangskode, ...)
+
+  iban-validator-and-parser:
+    title: IBAN validator og fortolker
+    description: Valider og fortolk IBAN-numre. Tjek om en IBAN er gyldig og få landet, BBAN, om det er en QR-IBAN og IBAN-venligt format.
+
+  user-agent-parser:
+    title: User-agent fortolker
+    description: Registrer og fortolk Browser, Engine, OS, CPU og enhedstype/model fra en user-agent-streng.
+
+  numeronym-generator:
+    title: Numeronym generator
+    description: Et numeronym er et ord, hvor et tal bruges til at danne en forkortelse. For eksempel er "i18n" et numeronym for "internationalization", hvor 18 står for antallet af bogstaver mellem det første i og det sidste n i ordet.
+
+  case-converter:
+    title: Case konverter
+    description: Transformér skriftstørrelsen af en streng og vælg mellem forskellige formater.
+
+  html-entities:
+    title: Undslip HTML
+    description: Undslip og omvendt HTML (erstat tegn som <, >, &, " og \' med deres HTML-version).
+
+  json-prettify:
+    title: JSON prettify og formatér
+    description: Prettify din JSON-streng til et venligt, menneskeligt læsbart format.
+
+  docker-run-to-docker-compose-converter:
+    title: Docker run til Docker compose konverter
+    description: Omform "docker run" kommandoer til docker-compose filer!
+
+  mac-address-lookup:
+    title: Slå MAC adresse op
+    description: Find producenten og fabrikanten af en enhed ud fra dens MAC adresse.
+
+  mime-types:
+    title: MIME typer
+    description: Konverter MIME-typer til filendelser og omvendt.
+
+  toml-to-json:
+    title: TOML til JSON
+    description: Fortolk og konverter TOML til JSON.
+
+  lorem-ipsum-generator:
+    title: Lorem ipsum generator
+    description: Lorem ipsum er en pladsholdertekst, der almindeligvis bruges til at demonstrere den visuelle form af et dokument eller en skrifttype uden at være afhængig af meningsfuldt indhold.
+
+  qrcode-generator:
+    title: QR kode generator
+    description: Generer og download en QR kode til en URL (eller bare almindelig tekst), og tilpas baggrunds- og forgrundsfarverne.
+
+  wifi-qrcode-generator:
+    title: WiFi QR kode generator
+    description: Generer og download QR koder for hurtige forbindelser til WiFi-netværk.
+
+  xml-formatter:
+    title: XML formatter
+    description: Formatér din XML-streng til et venligt, menneskeligt læsbart format.
+
+  temperature-converter:
+    title: Temperaturkonverter
+    description: Temperaturkonverteringer for Kelvin, Celsius, Fahrenheit, Rankine, Delisle, Newton, Réaumur og Rømer.
+
+  chmod-calculator:
+    title: Chmod beregner
+    description: Beregn dine chmod tilladelser og kommandoer med denne online chmod beregner.
+
+  rsa-key-pair-generator:
+    title: RSA nøglepar generator
+    description: Generer et nyt tilfældigt RSA privat og offentligt pem certifikat nøglepar.
+
+  html-wysiwyg-editor:
+    title: HTML WYSIWYG editor
+    description: Online, funktionsrig WYSIWYG HTML editor som genererer kildeteksten til indholdet med det samme.
+
+  yaml-to-toml:
+    title: YAML til TOML
+    description: Fortolk og konverter YAML til TOML.
+
+  mac-address-generator:
+    title: MAC adresse generator
+    description: Indtast mængde og præfiks. MAC adresser vil blive genereret i din valgte skrivemåde (store bogstaver eller små bogstaver).
+
+  json-diff:
+    title: JSON difference
+    description: Sammenlign to JSON objekter og få forskellene mellem dem.
+
+  jwt-parser:
+    title: JWT fortolker
+    description: Fortolk og afkod din JSON Web Token (jwt) og vis dens indhold.
+
+  date-converter:
+    title: Dato-tid konverter
+    description: Konverter dato og tid til forskellige formater.
+
+  phone-parser-and-formatter:
+    title: Telefon fortolker og formatter
+    description: Fortolk, valider og formatér telefonnumre. Få information om telefonnummeret, såsom landekode, type, osv.
+
+  ipv4-subnet-calculator:
+    title: IPv4 subnet beregner
+    description: Fortolk dine IPv4 CIDR blokke og få alle de oplysninger, du har brug for om dit subnet.
+
+  og-meta-generator:
+    title: Open graph meta generator
+    description: Generer open-graph og sociale HTML meta tags til din hjemmeside.
+
+  ipv6-ula-generator:
+    title: IPv6 ULA generator
+    description: Generer dine egne lokale, ikke-rutbare IP adresser til dit netværk i henhold til RFC4193.
+
+  hash-text:
+    title: Hash tekst
+    description: Hash en tekststreng ved hjælp af den funktion, du har brug for: MD5, SHA1, SHA256, SHA224, SHA512, SHA384, SHA3 eller RIPEMD160.
+
+  json-to-toml:
+    title: JSON til TOML
+    description: Fortolk og konverter JSON til TOML.
+
+  device-information:
+    title: Enhedsoplysninger
+    description: Få oplysninger om din nuværende enhed (skærmstørrelse, pixel-forhold, user agent, ...)
+
+  pdf-signature-checker:
+    title: PDF signaturkontrol
+    description: Verificer signaturerne i en PDF-fil. En underskrevet PDF-fil indeholder en eller flere signaturer, der kan bruges til at bestemme, om filens indhold er blevet ændret, siden filen blev underskrevet.
+
+  json-minify:
+    title: JSON minificering
+    description: Minificer og komprimer din JSON ved at fjerne unødvendige mellemrum.
+
+  ulid-generator:
+    title: ULID generator
+    description: Generer tilfældige Universelt Unikke Leksikografisk Sorterbare Identifikatorer (ULID).
+
+  string-obfuscator:
+    title: Streng obfuskator
+    description: Obfuskér en streng (som en hemmelighed, en IBAN eller en token) for at gøre den delbar og identificerbar uden at afsløre dens indhold.
+
+  base-converter:
+    title: Heltalsbase-konverter
+    description: Konverter et tal mellem forskellige baser (decimal, hexadecimal, binær, oktal, base64, ...)
+
+  yaml-to-json-converter:
+    title: YAML til JSON konverter
+    description: Konverter nemt YAML til JSON med denne online live konverter.
+
+  uuid-generator:
+    title: UUID generator
+    description: En Universelt Unik Identifikator (UUID) er et 128-bit nummer, der bruges til at identificere information i computersystemer. Antallet af mulige UUID'er er 16^32, hvilket er 2^128 eller omkring 3,4x10^38 (hvilket er mange!).
+
+  ipv4-address-converter:
+    title: IPv4 adressekonverter
+    description: Konverter en IP-adresse til decimal, binær, hexadecimal eller endda en IPv6 repræsentation af den.
+
+  text-statistics:
+    title: Tekststatistik
+    description: Få information om en tekst, antallet af tegn, antallet af ord, dens størrelse i bytes, ...
+
+  text-to-nato-alphabet:
+    title: Tekst til NATO-alfabet
+    description: Omsæt tekst til NATO-fonetisk alfabet til mundtlig transmission.
+
+  basic-auth-generator:
+    title: Basic auth generator
+    description: Generer en base64 basic auth header fra et brugernavn og kodeord.
+
+  text-to-unicode:
+    title: Tekst til Unicode
+    description: Fortolk og konverter tekst til unicode og omvendt.
+
+  ipv4-range-expander:
+    title: IPv4 rækkeudvider
+    description: Givet en start- og slut-IPv4-adresse, beregner dette værktøj et gyldigt IPv4-under netværk sammen med dets CIDR-notation.
+
+  text-diff:
+    title: Tekst difference
+    description: Sammenlign to tekster og se differencen mellem dem.
+
+  otp-generator:
+    title: OTP kode generator
+    description: Generer og valider tids-baseret OTP (one time password) til multi-faktor autenticitet.
+
+  url-encoder:
+    title: Kod/afkod URL-formatteret strenge
+    description: Kod tekst til URL-kodet format (også kendt som "procent-kodet"), eller afkod fra det.
+
+  text-to-binary:
+    title: Teskt til ASCII binær
+    description: Konvertér tekst til dens ASCII binære repræsentation og omvendt.
