@@ -69,3 +69,7 @@ tools:
     measurement: Вимірювання
     text: Текст
     data: Дані
+
+  csv-to-json:
+    title: 'CSV в JSON'
+    description: 'Конвертуйте CSV в JSON з автоматичним визначенням заголовків.'
