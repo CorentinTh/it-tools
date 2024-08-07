@@ -119,5 +119,6 @@ function transformer(value: string) {
     input-placeholder="Paste your input data here..."
     output-label="Your transformed data"
     :transformer="transformer"
+    download-file-name="output.txt"
   />
 </template>

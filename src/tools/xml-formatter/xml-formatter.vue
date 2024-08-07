@@ -42,5 +42,6 @@ const rules: UseValidationRule<string>[] = [
     :input-validation-rules="rules"
     :transformer="transformer"
     :input-default="defaultValue"
+    download-file-name="output.xml"
   />
 </template>

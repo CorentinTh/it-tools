@@ -23,5 +23,6 @@ const rules: UseValidationRule<string>[] = [
     output-language="yaml"
     :input-validation-rules="rules"
     :transformer="transformer"
+    download-file-name="output.yaml"
   />
 </template>

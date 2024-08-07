@@ -28,5 +28,6 @@ const rules: UseValidationRule<string>[] = [
     output-label="CSV version of your JSON"
     :input-validation-rules="rules"
     :transformer="transformer"
+    download-file-name="output.csv"
   />
 </template>

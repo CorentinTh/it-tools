@@ -24,5 +24,6 @@ const rules: UseValidationRule<string>[] = [
     output-language="toml"
     :input-validation-rules="rules"
     :transformer="transformer"
+    download-file-name="output.toml"
   />
 </template>
