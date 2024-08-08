@@ -1,11 +1,9 @@
 <script lang="ts" setup>
 import { NIcon, useThemeVars } from 'naive-ui';
 
-import { RouterLink } from 'vue-router';
 import { Heart, Home2, Menu2 } from '@vicons/tabler';
 
 import { storeToRefs } from 'pinia';
-import HeroGradient from '../assets/hero-gradient.svg?component';
 import MenuLayout from '../components/MenuLayout.vue';
 import NavbarButtons from '../components/NavbarButtons.vue';
 import { useStyleStore } from '@/stores/style.store';
@@ -35,6 +33,7 @@ const tools = computed<ToolCategory[]>(() => [
 <template>
   <MenuLayout class="menu-layout" :class="{ isSmallScreen: styleStore.isSmallScreen }">
     <template #sider>
+      <!-- altitudems: remove hero
       <RouterLink to="/" class="hero-wrapper">
         <HeroGradient class="gradient" />
         <div class="text-wrapper">
@@ -47,6 +46,7 @@ const tools = computed<ToolCategory[]>(() => [
           </div>
         </div>
       </RouterLink>
+      -->
 
       <div class="sider-content">
         <div v-if="styleStore.isSmallScreen" flex flex-col items-center>
