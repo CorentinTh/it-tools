@@ -45,8 +45,8 @@ jobs:
           tags: |
             # corentinth/it-tools:latest
             # corentinth/it-tools:${{ env.RELEASE_VERSION }}
-            ghcr.io/corentinth/it-tools:latest
-            ghcr.io/corentinth/it-tools:${{ env.RELEASE_VERSION}}
+            ghcr.io/altitudems/it-tools:latest
+            ghcr.io/altitudems/it-tools:${{ env.RELEASE_VERSION}}
 
   github-release:
     runs-on: ubuntu-latest
