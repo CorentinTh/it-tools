@@ -352,6 +352,22 @@ tools:
     title: UUIDs generator
     description: A Universally Unique Identifier (UUID) is a 128-bit number used to identify information in computer systems. The number of possible UUIDs is 16^32, which is 2^128 or about 3.4x10^38 (which is a lot!).
 
+  nanoid-generator:
+    title: NanoIDs generator
+    description: Generate random, unique, and URL-friendly IDs for your applications.
+    uppercase: Uppercase
+    lowercase: Lowercase
+    numbers: Numbers
+    symbols: Symbols
+    excludeLookalikes: Exclude lookalikes
+    length: Length
+    quantity: Quantity
+    copied: NanoID copied to the clipboard
+    button:
+      copy: Copy
+      refresh: Refresh
+
+
   ipv4-address-converter:
     title: IPv4 address converter
     description: Convert an IP address into decimal, binary, hexadecimal, or even an IPv6 representation of it.
