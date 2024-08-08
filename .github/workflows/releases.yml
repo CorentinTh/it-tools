@@ -43,8 +43,6 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            # corentinth/it-tools:latest
-            # corentinth/it-tools:${{ env.RELEASE_VERSION }}
             ghcr.io/altitudems/it-tools:latest
             ghcr.io/altitudems/it-tools:${{ env.RELEASE_VERSION}}
 
@@ -93,9 +91,6 @@ jobs:
           body: |
             ## Docker images
 
-            - Docker Hub
-              - `altitudems/it-tools:latest`
-              - `altitudems/it-tools:${{ env.RELEASE_VERSION }}`
             - GitHub Container Registry
               - `ghcr.io/altitudems/it-tools:latest`
               - `ghcr.io/altitudems/it-tools:${{ env.RELEASE_VERSION}}`
