@@ -9,4 +9,5 @@ export const tool = defineTool({
   keywords: ['slugify', 'string', 'escape', 'emoji', 'special', 'character', 'space', 'trim'],
   component: () => import('./slugify-string.vue'),
   icon: AbcRound,
+  npmPackages: ['@sindresorhus/slugify'],
 });

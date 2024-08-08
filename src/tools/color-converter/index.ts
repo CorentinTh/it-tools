@@ -10,4 +10,5 @@ export const tool = defineTool({
   component: () => import('./color-converter.vue'),
   icon: Palette,
   redirectFrom: ['/color-picker-converter'],
+  npmPackages: ['colord'],
 });

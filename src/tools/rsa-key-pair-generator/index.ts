@@ -9,4 +9,5 @@ export const tool = defineTool({
   keywords: ['rsa', 'key', 'pair', 'generator', 'public', 'private', 'secret', 'ssh', 'pem'],
   component: () => import('./rsa-key-pair-generator.vue'),
   icon: Certificate,
+  npmPackages: ['node-forge'],
 });

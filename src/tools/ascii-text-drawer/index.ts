@@ -9,4 +9,5 @@ export const tool = defineTool({
   component: () => import('./ascii-text-drawer.vue'),
   icon: Artboard,
   createdAt: new Date('2024-03-03'),
+  npmPackages: ['figlet'],
 });

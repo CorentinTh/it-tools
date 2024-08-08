@@ -9,4 +9,5 @@ export const tool = defineTool({
   keywords: ['bcrypt', 'hash', 'compare', 'password', 'salt', 'round', 'storage', 'crypto'],
   component: () => import('./bcrypt.vue'),
   icon: LockSquare,
+  npmPackages: ['bcryptjs'],
 });

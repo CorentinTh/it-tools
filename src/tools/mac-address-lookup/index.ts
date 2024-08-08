@@ -10,4 +10,5 @@ export const tool = defineTool({
   component: () => import('./mac-address-lookup.vue'),
   icon: Devices,
   createdAt: new Date('2023-04-06'),
+  npmPackages: ['oui-data'],
 });

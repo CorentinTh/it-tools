@@ -10,4 +10,5 @@ export const tool = defineTool({
   component: () => import('./json-viewer.vue'),
   icon: Braces,
   redirectFrom: ['/json-viewer'],
+  npmPackages: ['json5'],
 });

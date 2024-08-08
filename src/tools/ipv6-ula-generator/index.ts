@@ -10,4 +10,5 @@ export const tool = defineTool({
   component: () => import('./ipv6-ula-generator.vue'),
   icon: BuildingFactory,
   createdAt: new Date('2023-04-09'),
+  npmPackages: ['crypto-js'],
 });

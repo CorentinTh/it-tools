@@ -10,4 +10,5 @@ export const tool = defineTool({
   component: () => import('./encryption.vue'),
   icon: Lock,
   redirectFrom: ['/cypher'],
+  npmPackages: ['crypto-s'],
 });

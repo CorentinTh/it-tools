@@ -23,4 +23,5 @@ export const tool = defineTool({
   ],
   component: () => import('./crontab-generator.vue'),
   icon: Alarm,
+  npmPackages: ['cronstrue'],
 });

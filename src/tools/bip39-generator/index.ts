@@ -9,4 +9,5 @@ export const tool = defineTool({
   keywords: ['BIP39', 'passphrase', 'generator', 'mnemonic', 'entropy'],
   component: () => import('./bip39-generator.vue'),
   icon: AlignJustified,
+  npmPackages: ['@it-tools/bip39'],
 });
