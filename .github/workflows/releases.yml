@@ -1,6 +1,7 @@
 name: Release new versions
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - 'v*.*.*'
