@@ -173,7 +173,6 @@ const tools = computed<ToolCategory[]>(() => [
 }
 
 .sider-content {
-  padding-top: 160px;
   padding-bottom: 200px;
 }
 
