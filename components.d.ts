@@ -154,6 +154,7 @@ declare module '@vue/runtime-core' {
     PhoneParserAndFormatter: typeof import('./src/tools/phone-parser-and-formatter/phone-parser-and-formatter.vue')['default']
     QrCodeGenerator: typeof import('./src/tools/qr-code-generator/qr-code-generator.vue')['default']
     RandomPortGenerator: typeof import('./src/tools/random-port-generator/random-port-generator.vue')['default']
+    RemoveExif: typeof import('./src/tools/remove-exif/remove-exif.vue')['default']
     ResultRow: typeof import('./src/tools/ipv4-range-expander/result-row.vue')['default']
     RomanNumeralConverter: typeof import('./src/tools/roman-numeral-converter/roman-numeral-converter.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
