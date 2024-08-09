@@ -2,7 +2,7 @@ import { Braces } from '@vicons/tabler';
 import { defineTool } from '../tool';
 
 export const tool = defineTool({
-  name: 'Json to XML',
+  name: 'JSON to XML',
   path: '/json-to-xml',
   description: 'Convert JSON to XML',
   keywords: ['json', 'xml'],
