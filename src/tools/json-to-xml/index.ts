@@ -8,5 +8,5 @@ export const tool = defineTool({
   keywords: ['json', 'xml'],
   component: () => import('./json-to-xml.vue'),
   icon: Braces,
-  createdAt: new Date('2024-06-30'),
+  createdAt: new Date('2024-08-09'),
 });
