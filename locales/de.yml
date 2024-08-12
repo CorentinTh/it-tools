@@ -459,3 +459,9 @@ tools:
   ascii-text-drawer:
     title: ASCII-Art-Text-Generator
     description: ASCII-Art-Text mit vielen Schriftarten und Stilen erstellen.
+  json-to-xml:
+    title: JSON zu XML
+    description: JSON in XML konvertieren
+  xml-to-json:
+    title: XML zu JSON
+    description: XML in JSON konvertieren

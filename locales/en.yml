@@ -399,3 +399,11 @@ tools:
   ascii-text-drawer:
     title: ASCII Art Text Generator
     description: Create ASCII art text with many fonts and styles.
+
+  json-to-xml:
+    title: JSON to XML
+    description: Convert JSON to XML
+
+  xml-to-json:
+    title: XML to JSON
+    description: Convert XML to JSON
