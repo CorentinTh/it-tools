@@ -1,91 +1,74 @@
 <!-- AspectRatioCalculator.vue -->
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
-import { NDivider, NInputNumber, NSelect, NSpace } from 'naive-ui';
+import { ref } from 'vue';
+import { NButton, NInputNumber, NRadio, NRadioGroup, NSpace } from 'naive-ui';
 import {
-  type AspectRatio,
   calculateAspectRatio,
   calculateDimensions,
-  simplifyRatio,
 } from './aspect-ratio-calculator.service';
 
 const width = ref<number | null>(null);
 const height = ref<number | null>(null);
 const r1 = ref<number | null>(null);
 const r2 = ref<number | null>(null);
+const mode = ref<'ratio' | 'dimensions'>('ratio');
+const result = ref<string | null>(null);
 
-const presets = [
-  { label: 'HD Video 16:9', value: '16:9' },
-  { label: 'SD Video 4:3', value: '4:3' },
-  { label: 'Widescreen 21:9', value: '21:9' },
-  { label: 'Square 1:1', value: '1:1' },
-];
-const selectedPreset = ref(null);
-
-const aspectRatio = computed((): AspectRatio | null => {
-  if (r1.value && r2.value) {
-    return simplifyRatio(r1.value, r2.value);
+function calculateResult() {
+  if (mode.value === 'ratio' && width.value && height.value) {
+    const ratio = calculateAspectRatio(width.value, height.value);
+    r1.value = ratio.r1;
+    r2.value = ratio.r2;
+    result.value = `Aspect Ratio: ${ratio.r1}:${ratio.r2}`;
   }
-  return null;
-});
-
-function updateDimensions(changedField: 'width' | 'height') {
-  if (aspectRatio.value) {
-    if (changedField === 'width' && width.value) {
-      const newDimensions = calculateDimensions(width.value, aspectRatio.value, true);
-      height.value = newDimensions.height;
-    }
-    else if (changedField === 'height' && height.value) {
-      const newDimensions = calculateDimensions(height.value, aspectRatio.value, false);
-      width.value = newDimensions.width;
-    }
-  }
-}
-
-function handlePresetChange(value: string) {
-  const [newR1, newR2] = value.split(':').map(Number);
-  r1.value = newR1;
-  r2.value = newR2;
-  if (width.value) {
-    updateDimensions('width');
-  }
-  else if (height.value) {
-    updateDimensions('height');
-  }
-}
-
-watch([r1, r2], () => {
-  if (r1.value && r2.value) {
+  else if (mode.value === 'dimensions' && r1.value && r2.value) {
     if (width.value) {
-      updateDimensions('width');
+      const dimensions = calculateDimensions(width.value, { r1: r1.value, r2: r2.value }, true);
+      height.value = dimensions.height;
+      result.value = `Dimensions: ${dimensions.width}x${dimensions.height}`;
     }
     else if (height.value) {
-      updateDimensions('height');
+      const dimensions = calculateDimensions(height.value, { r1: r1.value, r2: r2.value }, false);
+      width.value = dimensions.width;
+      result.value = `Dimensions: ${dimensions.width}x${dimensions.height}`;
+    }
+    else {
+      result.value = 'Please enter either width or height to calculate dimensions';
     }
   }
-});
+  else {
+    result.value = 'Please fill in the required fields';
+  }
+}
+
+function clearAll() {
+  width.value = null;
+  height.value = null;
+  r1.value = null;
+  r2.value = null;
+  result.value = null;
+}
 </script>
 
 <template>
   <NSpace vertical :size="24">
-    <div>
-      <h3>Common Presets</h3>
-      <NSelect
-        v-model:value="selectedPreset"
-        :options="presets"
-        placeholder="Select a preset"
-        @update:value="handlePresetChange"
-      />
-    </div>
+    <NRadioGroup v-model:value="mode">
+      <NRadio value="ratio">
+        Calculate Aspect Ratio
+      </NRadio>
+      <NRadio value="dimensions">
+        Calculate Dimensions
+      </NRadio>
+    </NRadioGroup>
 
     <div class="input-group">
       <div class="input-pair">
         <label>Pixels width</label>
-        <NInputNumber v-model:value="width" placeholder="Pixels width" :min="1" @update:value="() => updateDimensions('width')" />
+        <NInputNumber v-model:value="width" placeholder="Pixels width" :min="1" />
       </div>
       <div class="input-pair">
         <label>Pixels height</label>
-        <NInputNumber v-model:value="height" placeholder="Pixels height" :min="1" @update:value="() => updateDimensions('height')" />
+        <NInputNumber v-model:value="height" placeholder="Pixels height" :min="1" />
       </div>
     </div>
 
@@ -102,25 +85,23 @@ watch([r1, r2], () => {
         <NInputNumber v-model:value="r2" placeholder="Ratio height" :min="1" />
       </div>
     </div>
+
+    <div class="button-container">
+      <NButton type="primary" @click="calculateResult">
+        Calculate
+      </NButton>
+      <NButton @click="clearAll">
+        Clear All
+      </NButton>
+    </div>
+
+    <div v-if="result" class="result">
+      {{ result }}
+    </div>
   </NSpace>
 </template>
 
 <style scoped>
-h2 {
-  font-size: 24px;
-  margin-bottom: 8px;
-}
-
-h3 {
-  font-size: 18px;
-  margin-bottom: 8px;
-}
-
-p {
-  margin-bottom: 24px;
-  color: #a0a0a0;
-}
-
 .input-group {
   display: flex;
   align-items: flex-end;
@@ -135,7 +116,6 @@ p {
 
 .input-pair label {
   margin-bottom: 4px;
-  color: #a0a0a0;
 }
 
 .separator {
@@ -145,24 +125,23 @@ p {
   font-weight: bold;
 }
 
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.button-container .n-button {
+  flex: 1;
+}
+
 .result {
   font-size: 18px;
-  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
 }
 
 :deep(.n-input-number) {
   width: 100%;
-}
-
-:deep(.n-input-number-input) {
-  text-align: left;
-}
-
-:deep(.n-select) {
-  width: 100%;
-}
-
-:deep(.n-divider) {
-  margin: 16px 0;
 }
 </style>

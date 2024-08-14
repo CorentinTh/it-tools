@@ -3,7 +3,6 @@
 import { describe, expect, it } from 'vitest';
 import {
   type AspectRatio,
-  type Dimensions,
   calculateAspectRatio,
   calculateDimensions,
   simplifyRatio,
