@@ -57,6 +57,7 @@
     "crypto-js": "^4.1.1",
     "date-fns": "^2.29.3",
     "dompurify": "^3.0.6",
+    "email-normalizer": "^1.0.0",
     "emojilib": "^3.0.10",
     "figlet": "^1.7.0",
     "figue": "^1.2.0",
