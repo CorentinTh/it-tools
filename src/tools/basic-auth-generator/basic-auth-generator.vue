@@ -7,12 +7,12 @@ const password = ref('');
 const header = computed(() => `Authorization: Basic ${textToBase64(`${username.value}:${password.value}`)}`);
 const { t } = useI18n();
 
-const { copy } = useCopy({ source: header, text: t('tools.basic-auth-generator.copied') });
+const { copy } = useCopy({ source: header, text: 't('tools.basic-auth-generator.copied')'' });
 </script>
 
 <template>
   <div>
-    <c-input-text v-model:value="username" label="t('tools.basic-auth-generator.username')" placeholder="t('tools.basic-auth-generator.yourusername')" clearable raw-text mb-5 />
+    <c-input-text v-model:value="username" label=t('tools.basic-auth-generator.username') placeholder="t('tools.basic-auth-generator.yourusername')" clearable raw-text mb-5 />
     <c-input-text
       v-model:value="password"
       label="t('tools.basic-auth-generator.password')"
