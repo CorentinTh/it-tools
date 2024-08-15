@@ -101,6 +101,10 @@ tools:
     description: >-
       Überwache die Dauer einer Sache. Im Grunde ein Chronometer mit einfachen
       Chronometerfunktionen.
+    button:
+      start: Start
+      stop: Stopp
+      reset: Zurücksetzen
   token-generator:
     title: Token-Generator
     description: >-
@@ -429,6 +433,13 @@ tools:
     description: >-
       Generiere einen Base64-Basic-Auth-Header aus einem Benutzernamen und einem
       Passwort.
+    button:
+      copy: Header kopieren
+    copied: Header in die Zwischenablage kopiert
+    password: Passwort
+    username: Benutzername
+    yourpassword: Dein Passwort...
+    yourusername: Dein Benutzername...
   text-to-unicode:
     title: Text zu Unicode
     description: Parse und konvertiere Text in Unicode und umgekehrt.
@@ -468,5 +479,5 @@ tools:
   email-normalizer:
     title: E-Mail-Normalisierung
     description: >-
-      Vereinheitlichen von E-Mail-Adressen auf ein Standardformat für einen einfacheren
-      Vergleich. Nützlich für Deduplizierung und Datenbereinigung.
+      Vereinheitlichen von E-Mail-Adressen auf ein Standardformat für einen
+      einfacheren Vergleich. Nützlich für Deduplizierung und Datenbereinigung.
