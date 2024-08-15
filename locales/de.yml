@@ -465,3 +465,8 @@ tools:
   xml-to-json:
     title: XML zu JSON
     description: XML in JSON konvertieren
+  email-normalizer:
+    title: E-Mail-Normalisierung
+    description: >-
+      Vereinheitlichen von E-Mail-Adressen auf ein Standardformat für einen einfacheren
+      Vergleich. Nützlich für Deduplizierung und Datenbereinigung.

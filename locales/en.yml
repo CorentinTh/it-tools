@@ -407,3 +407,8 @@ tools:
   xml-to-json:
     title: XML to JSON
     description: Convert XML to JSON
+  
+  email-normalizer:
+    title: Email normalizer
+    description: Normalize email addresses to a standard format for easier comparison. Useful for deduplication and data cleaning.
+    
