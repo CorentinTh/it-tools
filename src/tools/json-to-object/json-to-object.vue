@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import JSON5 from 'json5';
+import stringifyObject from 'stringify-object';
 import type { UseValidationRule } from '@/composable/validation';
 import { isNotThrowing } from '@/utils/boolean';
 import { withDefaultOnError } from '@/utils/defaults';
-import stringifyObject from "stringify-object"
 
-const transformer = (value: string) => withDefaultOnError(() => stringifyObject(JSON5.parse(value), {
-	indent: '  ',
-	singleQuotes: false
-}), '');
-
+function transformer(value: string) {
+  return withDefaultOnError(() => stringifyObject(JSON5.parse(value), {
+    indent: '  ',
+    singleQuotes: false,
+  }), '');
+}
 
 const rules: UseValidationRule<string>[] = [
   {
