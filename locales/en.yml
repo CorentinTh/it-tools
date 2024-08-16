@@ -392,5 +392,5 @@ tools:
     title: Text to ASCII binary
     description: Convert text to its ASCII binary representation and vice-versa.
   json-to-object:
-    title: JSON to Obfuscatebject
+    title: JSON to object
     description: Parse and convert JSON to object.
