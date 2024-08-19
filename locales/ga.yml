@@ -3,7 +3,7 @@ home:
     newestTools: Uirlisí is déanaí
     favoriteTools: 'Na huirlisí is fearr leat'
     allTools: 'Gach na huirlisí'
-  subtitle: 'Uirlisí láimhe d'fhorbróirí'
+  subtitle: 'Uirlisí láimhe d''fhorbróirí'
   toggleMenu: 'Scoránaigh roghchlár'
   home: Baile
   uiLib: 'Chomhéadain Lib'
@@ -47,7 +47,7 @@ about:
 404:
   notFound: '404 Gan Aimsiú'
   sorry: 'Ár leithscéal, ní cosúil go bhfuil an leathanach seo ann'
-  maybe: 'B'fhéidir go bhfuil an taisce ag déanamh rudaí deacra, bain triail as fórsa-athnuachan?'
+  maybe: 'B''fhéidir go bhfuil an taisce ag déanamh rudaí deacra, bain triail as fórsa-athnuachan?'
   backHome: 'Ar ais sa bhaile'
 favoriteButton:
   remove: 'Bain ó cheanáin'
@@ -314,7 +314,7 @@ tools:
 
   hash-text:
     title: Téacs hash
-    description: Hash teaghrán téacs ag baint úsáide as an bhfeidhm atá uait: MD5, SHA1, SHA256, SHA224, SHA512, SHA384, SHA3 nó RIPEMD160
+    description: "Hash teaghrán téacs ag baint úsáide as an bhfeidhm atá uait: MD5, SHA1, SHA256, SHA224, SHA512, SHA384, SHA3 nó RIPEMD160"
 
   json-to-toml:
     title: JSON chuig TOML
