@@ -47,6 +47,7 @@
     "@vueuse/core": "^10.3.0",
     "@vueuse/head": "^1.0.0",
     "@vueuse/router": "^10.0.0",
+    "@xmldom/xmldom": "^0.8.10",
     "bcryptjs": "^2.4.3",
     "change-case": "^4.1.2",
     "colord": "^2.9.3",
@@ -94,6 +95,7 @@
     "vue-tsc": "^1.8.1",
     "xml-formatter": "^3.3.2",
     "xml-js": "^1.6.11",
+    "xpath": "^0.0.34",
     "yaml": "^2.2.1"
   },
   "devDependencies": {
