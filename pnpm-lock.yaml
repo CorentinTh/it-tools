@@ -146,6 +146,9 @@ dependencies:
   qrcode:
     specifier: ^1.5.1
     version: 1.5.1
+  silly-password-generator:
+    specifier: ^1.0.28
+    version: 1.0.28
   sql-formatter:
     specifier: ^13.0.0
     version: 13.0.0
@@ -3360,7 +3363,7 @@ packages:
     dependencies:
       '@unhead/dom': 0.5.1
       '@unhead/schema': 0.5.1
-      '@vueuse/shared': 10.11.1(vue@3.3.4)
+      '@vueuse/shared': 11.0.1(vue@3.3.4)
       unhead: 0.5.1
       vue: 3.3.4
     transitivePeerDependencies:
@@ -3993,19 +3996,19 @@ packages:
       - vue
     dev: false
 
-  /@vueuse/shared@10.11.1(vue@3.3.4):
-    resolution: {integrity: sha512-LHpC8711VFZlDaYUXEBbFBCQ7GS3dVU9mjOhhMhXP6txTV4EhYQg/KGnQuvt/sPAtoUKq7VVUnL6mVtFoL42sA==}
+  /@vueuse/shared@10.3.0(vue@3.3.4):
+    resolution: {integrity: sha512-kGqCTEuFPMK4+fNWy6dUOiYmxGcUbtznMwBZLC1PubidF4VZY05B+Oht7Jh7/6x4VOWGpvu3R37WHi81cKpiqg==}
     dependencies:
-      vue-demi: 0.14.10(vue@3.3.4)
+      vue-demi: 0.14.5(vue@3.3.4)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
     dev: false
 
-  /@vueuse/shared@10.3.0(vue@3.3.4):
-    resolution: {integrity: sha512-kGqCTEuFPMK4+fNWy6dUOiYmxGcUbtznMwBZLC1PubidF4VZY05B+Oht7Jh7/6x4VOWGpvu3R37WHi81cKpiqg==}
+  /@vueuse/shared@11.0.1(vue@3.3.4):
+    resolution: {integrity: sha512-eAPf5CQB3HR0S76HqrhjBqFYstZfiHWZq8xF9EQmobGBkrhPfErJEhr8aMNQMqd6MkENIx2pblIEfJGlHpClug==}
     dependencies:
-      vue-demi: 0.14.5(vue@3.3.4)
+      vue-demi: 0.14.10(vue@3.3.4)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -8106,6 +8109,13 @@ packages:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
     dev: true
 
+  /silly-password-generator@1.0.28:
+    resolution: {integrity: sha512-wan9blB6e/5jVmfHDiXRRuwaoA2xnEtA9kZSvOnC7xwbLo+nFjyUm5JaN1MDA0vmuxJ5hoVbVxonkpPIWlipdg==}
+    dependencies:
+      lodash: 4.17.21
+      zxcvbn: 4.4.2
+    dev: false
+
   /sirv@2.0.3:
     resolution: {integrity: sha512-O9jm9BsID1P+0HOi81VpXPoDxYP374pkOLzACAoyUQ/3OUVndNpsz6wMnY2z+yOxzbllCKZrM+9QrWsv4THnyA==}
     engines: {node: '>= 10'}
@@ -9680,3 +9690,7 @@ packages:
       which: 3.0.0
       yaml: 2.2.1
     dev: true
+
+  /zxcvbn@4.4.2:
+    resolution: {integrity: sha512-Bq0B+ixT/DMyG8kgX2xWcI5jUvCwqrMxSFam7m0lAf78nf04hv6lNCsyLYdyYTrCVMqNDY/206K7eExYCeSyUQ==}
+    dev: false
