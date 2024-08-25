@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { formatMsDuration } from '../eta-calculator/eta-calculator.service';
 import { getStringSizeInBytes, textStatistics } from './text-statistics.service';
 import { formatBytes } from '@/utils/convert';
 
@@ -16,6 +17,14 @@ const stats = computed(() => textStatistics(text.value));
       <n-statistic label="Sentences count" :value="stats.sentences" />
       <n-statistic label="Line count" :value="stats.lines" />
       <n-statistic label="Byte size" :value="formatBytes(getStringSizeInBytes(text))" />
+    </n-space>
+
+    <n-divider />
+
+    <n-space mt-3>
+      <n-statistic label="Unique Word count" :value="stats.words_uniques" />
+      <n-statistic label="Unique Word count (case insensitive)" :value="stats.words_uniques_ci" />
+      <n-statistic label="Read Time" :value="formatMsDuration(stats.read_time * 1000)" />
     </n-space>
 
     <n-divider />
