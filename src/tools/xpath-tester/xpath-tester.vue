@@ -12,7 +12,7 @@ const selectedNodes = computed(() => {
     return XPathEngine.select(xpath.value, doc);
   }
   catch (e: any) {
-    return e.toString();
+    return [e.toString()];
   }
 });
 
