@@ -63,7 +63,7 @@ function downloadFile(data: Uint8Array, fileName: string, fileType: string) {
         <n-table>
           <thead>
             <tr>
-              <th>Attachment</th><th />
+              <th scope="col">Attachment</th><th scope="col" />
             </tr>
           </thead>
           <tbody>
