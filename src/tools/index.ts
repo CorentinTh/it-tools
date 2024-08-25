@@ -172,20 +172,13 @@ export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Text',
     components: [
-      
       loremIpsumGenerator,
-     
       textStatistics,
-     
       emojiPicker,
-     
       stringObfuscator,
-     
       textDiff,
-     
       numeronymGenerator,
       aiPromptSplitter,
-    ,
       asciiTextDrawer,
     ],
   },
