@@ -4,13 +4,14 @@ import parseTorrent, { toMagnetURI } from 'parse-torrent';
 import { withDefaultOnError } from '@/utils/defaults';
 import { useValidation } from '@/composable/validation';
 
+const inputType = ref<'file' | 'content'>('file');
 const torrentContent = ref('');
 const fileInput = ref() as Ref<File | null>;
 const torrentInfosRaw = computedAsync(async () => {
   const file = fileInput.value;
   const content = torrentContent.value;
   try {
-    if (file) {
+    if (inputType.value === 'file' && file) {
       return await parseTorrent(new Uint8Array(await file.arrayBuffer()));
     }
     else {
@@ -53,14 +54,27 @@ const { attrs: validationAttrs } = useValidation({
 
 <template>
   <div>
+    <n-radio-group v-model:value="inputType" name="radiogroup" mb-2 flex justify-center>
+      <n-space>
+        <n-radio
+          value="file"
+          label="File"
+        />
+        <n-radio
+          value="content"
+          label="Content"
+        />
+      </n-space>
+    </n-radio-group>
+
     <c-file-upload
+      v-if="inputType === 'file'"
       title="Drag and drop torrent file here, or click to select a file"
       @file-upload="onUpload"
     />
 
-    <n-p text-center>OR</n-p>
-
     <c-input-text
+      v-if="inputType === 'content'"
       v-model:value="torrentContent"
       label="Torrent/Magnet Content"
       placeholder="Paste your Torrent/Magnet content here"
