@@ -2,11 +2,11 @@ import { Markdown } from '@vicons/tabler';
 import { defineTool } from '../tool';
 
 export const tool = defineTool({
-  name: 'Markdown to html',
+  name: 'Markdown to Html',
   path: '/markdown-to-html',
-  description: '',
-  keywords: ['markdown', 'html', 'converter'],
+  description: 'Convert Markdown to Html and allow to print (as PDF)',
+  keywords: ['markdown', 'html', 'converter', 'pdf'],
   component: () => import('./markdown-to-html.vue'),
   icon: Markdown,
-  createdAt: new Date('2024-02-25'),
+  createdAt: new Date('2024-08-15'),
 });

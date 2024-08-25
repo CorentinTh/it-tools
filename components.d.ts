@@ -128,6 +128,7 @@ declare module '@vue/runtime-core' {
     MetaTagGenerator: typeof import('./src/tools/meta-tag-generator/meta-tag-generator.vue')['default']
     MimeTypes: typeof import('./src/tools/mime-types/mime-types.vue')['default']
     NavbarButtons: typeof import('./src/components/NavbarButtons.vue')['default']
+    NButton: typeof import('naive-ui')['NButton']
     NCode: typeof import('naive-ui')['NCode']
     NCollapseTransition: typeof import('naive-ui')['NCollapseTransition']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
