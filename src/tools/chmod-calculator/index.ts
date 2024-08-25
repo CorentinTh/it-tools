@@ -16,6 +16,7 @@ export const tool = defineTool({
     'recursive',
     'generator',
     'octal',
+    'umask',
   ],
   component: () => import('./chmod-calculator.vue'),
   icon: FileInvoice,

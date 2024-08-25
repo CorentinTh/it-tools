@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { computeChmodOctalRepresentation, computeChmodSymbolicRepresentation, computePermissionsFromChmodOctalRepresentation, computePermissionsFromChmodSymbolicRepresentation } from './chmod-calculator.service';
+import { computeChmodOctalRepresentation, computeChmodSymbolicRepresentation, computePermissionsFromChmodOctalRepresentation, computePermissionsFromChmodSymbolicRepresentation, computeUmaskRepresentation } from './chmod-calculator.service';
 
 describe('chmod-calculator', () => {
   describe('computeChmodOctalRepresentation', () => {
@@ -451,6 +451,108 @@ describe('chmod-calculator', () => {
         group: { read: false, write: true, execute: false },
         public: { read: false, write: true, execute: true },
         flags: { setuid: false, setgid: false, stickybit: true },
+      });
+    });
+  });
+
+  describe('computeUmaskRepresentation', () => {
+    it('get the umask from permissions', () => {
+      expect(
+        computeUmaskRepresentation({
+          permissions: {
+            owner: { read: true, write: true, execute: true },
+            group: { read: true, write: true, execute: true },
+            public: { read: true, write: true, execute: true },
+            flags: { setuid: false, setgid: false, stickybit: false },
+          },
+        }),
+      ).to.deep.eq({
+        octal: '000',
+        symbolic: 'umask u=rwx,g=rwx,o=rwx',
+      });
+
+      expect(
+        computeUmaskRepresentation({
+          permissions: {
+            owner: { read: false, write: false, execute: false },
+            group: { read: false, write: false, execute: false },
+            public: { read: false, write: false, execute: false },
+            flags: { setuid: false, setgid: false, stickybit: false },
+          },
+        }),
+      ).to.deep.eq({
+        octal: '777',
+        symbolic: 'umask u=,g=,o=',
+      });
+
+      expect(
+        computeUmaskRepresentation({
+          permissions: {
+            owner: { read: false, write: true, execute: false },
+            group: { read: false, write: true, execute: true },
+            public: { read: true, write: false, execute: true },
+            flags: { setuid: false, setgid: false, stickybit: false },
+          },
+        }),
+      ).to.deep.eq({
+        octal: '542',
+        symbolic: 'umask u=w,g=wx,o=rx',
+      });
+
+      expect(
+        computeUmaskRepresentation({
+          permissions: {
+            owner: { read: true, write: false, execute: false },
+            group: { read: false, write: true, execute: false },
+            public: { read: false, write: false, execute: true },
+            flags: { setuid: false, setgid: false, stickybit: false },
+          },
+        }),
+      ).to.deep.eq({
+        octal: '356',
+        symbolic: 'umask u=r,g=w,o=x',
+      });
+
+      expect(
+        computeUmaskRepresentation({
+          permissions: {
+            owner: { read: false, write: false, execute: true },
+            group: { read: false, write: true, execute: false },
+            public: { read: true, write: false, execute: false },
+            flags: { setuid: false, setgid: false, stickybit: false },
+          },
+        }),
+      ).to.deep.eq({
+        octal: '653',
+        symbolic: 'umask u=x,g=w,o=r',
+      });
+
+      expect(
+        computeUmaskRepresentation({
+          permissions: {
+            owner: { read: false, write: true, execute: false },
+            group: { read: false, write: true, execute: false },
+            public: { read: false, write: true, execute: false },
+            flags: { setuid: false, setgid: false, stickybit: false },
+          },
+        }),
+      ).to.deep.eq({
+        octal: '555',
+        symbolic: 'umask u=w,g=w,o=w',
+      });
+
+      expect(
+        computeUmaskRepresentation({
+          permissions: {
+            owner: { read: false, write: false, execute: true },
+            group: { read: false, write: true, execute: false },
+            public: { read: true, write: false, execute: false },
+            flags: { setuid: true, setgid: true, stickybit: true },
+          },
+        }),
+      ).to.deep.eq({
+        octal: '653',
+        symbolic: 'umask u=x,g=w,o=r',
       });
     });
   });

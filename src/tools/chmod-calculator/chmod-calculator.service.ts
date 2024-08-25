@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import type { GroupPermissions, Permissions, SpecialPermissions } from './chmod-calculator.types';
 
-export { computeChmodOctalRepresentation, computeChmodSymbolicRepresentation, computePermissionsFromChmodOctalRepresentation, computePermissionsFromChmodSymbolicRepresentation };
+export { computeUmaskRepresentation, computeChmodOctalRepresentation, computeChmodSymbolicRepresentation, computePermissionsFromChmodOctalRepresentation, computePermissionsFromChmodSymbolicRepresentation };
 
 function computeChmodOctalRepresentation({ permissions }: { permissions: Permissions }): string {
   const permissionValue = { read: 4, write: 2, execute: 1 };
@@ -85,4 +85,31 @@ function computePermissionsFromChmodSymbolicRepresentation(symbolicPermissions: 
   const octalString = `${(flags > 0 ? flags : '')}${owner}${groups}${all}`;
 
   return computePermissionsFromChmodOctalRepresentation(octalString);
+}
+
+function computeUmaskRepresentation({ permissions }: { permissions: Permissions }): {
+  octal: string
+  symbolic: string
+} {
+  const permissionValue = { read: 'r', write: 'w', execute: 'x' };
+  const getGroupPermissionValue = (permission: GroupPermissions) =>
+    _.reduce(permission, (acc, isPermSet, key) => acc + ((isPermSet ? _.get(permissionValue, key, '') : '')), '');
+
+  const symbolic = `umask u=${getGroupPermissionValue(permissions.owner)},g=${getGroupPermissionValue(permissions.group)},o=${getGroupPermissionValue(permissions.public)}`;
+  const octal = (0o777 - Number.parseInt(
+    computeChmodOctalRepresentation({
+      permissions:
+      {
+        owner: permissions.owner,
+        group: permissions.group,
+        public: permissions.public,
+        flags: { setuid: false, setgid: false, stickybit: false },
+      },
+    }), 8))
+    .toString(8)
+    .padStart(3, '0');
+
+  return {
+    symbolic, octal,
+  };
 }

@@ -2,7 +2,7 @@
 import { useThemeVars } from 'naive-ui';
 
 import InputCopyable from '../../components/InputCopyable.vue';
-import { computeChmodOctalRepresentation, computeChmodSymbolicRepresentation, computePermissionsFromChmodOctalRepresentation, computePermissionsFromChmodSymbolicRepresentation } from './chmod-calculator.service';
+import { computeChmodOctalRepresentation, computeChmodSymbolicRepresentation, computePermissionsFromChmodOctalRepresentation, computePermissionsFromChmodSymbolicRepresentation, computeUmaskRepresentation } from './chmod-calculator.service';
 
 import type { Group, Scope } from './chmod-calculator.types';
 import { useValidation } from '@/composable/validation';
@@ -81,6 +81,7 @@ watch(
 
 const octal = computed(() => computeChmodOctalRepresentation({ permissions: permissions.value }));
 const symbolic = computed(() => computeChmodSymbolicRepresentation({ permissions: permissions.value }));
+const umask = computed(() => computeUmaskRepresentation({ permissions: permissions.value }));
 </script>
 
 <template>
@@ -155,6 +156,11 @@ const symbolic = computed(() => computeChmodSymbolicRepresentation({ permissions
     </div>
 
     <InputCopyable :value="`chmod ${octal} path`" readonly />
+
+    <c-card title="Umask">
+      <InputCopyable :value="umask.octal" readonly />
+      <InputCopyable :value="umask.symbolic" readonly />
+    </c-card>
   </div>
 </template>
 
