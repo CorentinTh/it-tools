@@ -37,7 +37,7 @@ function printHtml() {
 
     <div flex justify-center>
       <n-button @click="printHtml">
-        Print (ie, use a PDF Printer to get a PDF file)
+        Print as PDF
       </n-button>
     </div>
   </div>
