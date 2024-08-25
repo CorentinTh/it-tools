@@ -9,7 +9,8 @@ const xml = ref('<book><title>Harry Potter</title></book>');
 const selectedNodes = computed(() => {
   try {
     const doc = new DOMParser().parseFromString(xml.value, 'text/xml');
-    return XPathEngine.select(xpath.value, doc);
+    const result = XPathEngine.select(xpath.value, doc);
+    return Array.isArray(result) ? result : [result];
   }
   catch (e: any) {
     return [e.toString()];
