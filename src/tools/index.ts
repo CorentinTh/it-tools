@@ -7,6 +7,7 @@ import { tool as asciiTextDrawer } from './ascii-text-drawer';
 
 import { tool as textToUnicode } from './text-to-unicode';
 import { tool as safelinkDecoder } from './safelink-decoder';
+import { tool as mongoObjectidConverter } from './mongo-objectid-converter';
 import { tool as xmlToJson } from './xml-to-json';
 import { tool as jsonToXml } from './json-to-xml';
 import { tool as markdownToHtml } from './markdown-to-html';
@@ -156,6 +157,7 @@ export const toolsByCategory: ToolCategory[] = [
       xmlFormatter,
       yamlViewer,
       emailNormalizer,
+      mongoObjectidConverter,
     ],
   },
   {
