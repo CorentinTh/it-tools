@@ -10,6 +10,8 @@ import iniHljs from 'highlight.js/lib/languages/ini';
 import markdownHljs from 'highlight.js/lib/languages/markdown';
 import { useCopy } from '@/composable/copy';
 
+const { t } = useI18n();
+// eslint-disable-next-line vue/define-macros-order
 const props = withDefaults(
   defineProps<{
     value: string
@@ -22,9 +24,10 @@ const props = withDefaults(
     followHeightOf: null,
     language: 'txt',
     copyPlacement: 'top-right',
-    copyMessage: 'Copy to clipboard',
+    copyMessage: t('copyClipboard.tooltip'),
   },
 );
+
 hljs.registerLanguage('sql', sqlHljs);
 hljs.registerLanguage('json', jsonHljs);
 hljs.registerLanguage('html', xmlHljs);
@@ -37,7 +40,7 @@ const { value, language, followHeightOf, copyPlacement, copyMessage } = toRefs(p
 const { height } = followHeightOf.value ? useElementSize(followHeightOf) : { height: ref(null) };
 
 const { copy, isJustCopied } = useCopy({ source: value, createToast: false });
-const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : copyMessage.value);
+const tooltipText = computed(() => isJustCopied.value ? t('copyClipboard.success') : copyMessage.value);
 </script>
 
 <template>
