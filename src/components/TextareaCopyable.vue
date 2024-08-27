@@ -10,23 +10,20 @@ import iniHljs from 'highlight.js/lib/languages/ini';
 import markdownHljs from 'highlight.js/lib/languages/markdown';
 import { useCopy } from '@/composable/copy';
 
+const props = defineProps<{
+  value: string
+  followHeightOf?: HTMLElement | null
+  language?: string
+  copyPlacement?: 'top-right' | 'bottom-right' | 'outside' | 'none'
+  copyMessage?: string
+}>();
 const { t } = useI18n();
-// eslint-disable-next-line vue/define-macros-order
-const props = withDefaults(
-  defineProps<{
-    value: string
-    followHeightOf?: HTMLElement | null
-    language?: string
-    copyPlacement?: 'top-right' | 'bottom-right' | 'outside' | 'none'
-    copyMessage?: string
-  }>(),
-  {
-    followHeightOf: null,
-    language: 'txt',
-    copyPlacement: 'top-right',
-    copyMessage: t('copyClipboard.tooltip'),
-  },
-);
+const defaultProps = withDefaults(props, {
+  followHeightOf: null,
+  language: 'txt',
+  copyPlacement: 'top-right',
+  copyMessage: t('copyClipboard.tooltip'),
+});
 
 hljs.registerLanguage('sql', sqlHljs);
 hljs.registerLanguage('json', jsonHljs);
