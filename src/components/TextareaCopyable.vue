@@ -10,21 +10,21 @@ import iniHljs from 'highlight.js/lib/languages/ini';
 import markdownHljs from 'highlight.js/lib/languages/markdown';
 import { useCopy } from '@/composable/copy';
 
-const props = defineProps<{
-  value: string
-  followHeightOf?: HTMLElement | null
-  language?: string
-  copyPlacement?: 'top-right' | 'bottom-right' | 'outside' | 'none'
-  copyMessage?: string
-}>();
-const { t } = useI18n();
-const defaultProps = withDefaults(props, {
-  followHeightOf: null,
-  language: 'txt',
-  copyPlacement: 'top-right',
-  copyMessage: t('copyClipboard.tooltip'),
-});
-
+const props = withDefaults(
+  defineProps<{
+    value: string
+    followHeightOf?: HTMLElement | null
+    language?: string
+    copyPlacement?: 'top-right' | 'bottom-right' | 'outside' | 'none'
+    copyMessage?: string
+  }>(),
+  {
+    followHeightOf: null,
+    language: 'txt',
+    copyPlacement: 'top-right',
+    copyMessage: 'Copy to clipboard',
+  },
+);
 hljs.registerLanguage('sql', sqlHljs);
 hljs.registerLanguage('json', jsonHljs);
 hljs.registerLanguage('html', xmlHljs);
@@ -37,7 +37,7 @@ const { value, language, followHeightOf, copyPlacement, copyMessage } = toRefs(p
 const { height } = followHeightOf.value ? useElementSize(followHeightOf) : { height: ref(null) };
 
 const { copy, isJustCopied } = useCopy({ source: value, createToast: false });
-const tooltipText = computed(() => isJustCopied.value ? t('copyClipboard.success') : copyMessage.value);
+const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : copyMessage.value);
 </script>
 
 <template>
