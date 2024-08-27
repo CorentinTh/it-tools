@@ -481,3 +481,11 @@ tools:
     description: >-
       Vereinheitlichen von E-Mail-Adressen auf ein Standardformat für einen
       einfacheren Vergleich. Nützlich für Deduplizierung und Datenbereinigung.
+  markdown-to-html:
+    title: Markdown zu HTML
+    description: Markdown in HTML konvertieren und (als PDF) ausdrucken
+    markdown: 'Dein zu konvertierender Markdown-Inhalt:'
+    markdownInput: Dein Markdown-Inhalt...
+    html: 'HTML-Ausgabe:'
+    button:
+      print: Als PDF drucken

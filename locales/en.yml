@@ -450,3 +450,11 @@ tools:
     description: >-
       Normalize email addresses to a standard format for easier comparison.
       Useful for deduplication and data cleaning.
+  markdown-to-html:
+    title: Markdown to HTML
+    description: Convert Markdown to HTML and allow to print (as PDF)
+    markdown: 'Your Markdown to convert:'
+    markdownInput: Your Markdown content...
+    html: 'Output HTML:'
+    button:
+      print: Print as PDF
