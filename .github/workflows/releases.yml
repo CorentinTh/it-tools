@@ -61,7 +61,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version-file: '.nvmrc' # Use the node version specified in .nvmrc
           cache: 'pnpm'
 
       - name: Install dependencies
