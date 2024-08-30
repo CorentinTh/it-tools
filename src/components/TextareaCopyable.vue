@@ -7,6 +7,7 @@ import sqlHljs from 'highlight.js/lib/languages/sql';
 import xmlHljs from 'highlight.js/lib/languages/xml';
 import yamlHljs from 'highlight.js/lib/languages/yaml';
 import iniHljs from 'highlight.js/lib/languages/ini';
+import markdownHljs from 'highlight.js/lib/languages/markdown';
 import { useCopy } from '@/composable/copy';
 
 const props = withDefaults(
@@ -30,6 +31,7 @@ hljs.registerLanguage('html', xmlHljs);
 hljs.registerLanguage('xml', xmlHljs);
 hljs.registerLanguage('yaml', yamlHljs);
 hljs.registerLanguage('toml', iniHljs);
+hljs.registerLanguage('markdown', markdownHljs);
 
 const { value, language, followHeightOf, copyPlacement, copyMessage } = toRefs(props);
 const { height } = followHeightOf.value ? useElementSize(followHeightOf) : { height: ref(null) };
