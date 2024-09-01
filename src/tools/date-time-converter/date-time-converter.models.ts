@@ -15,6 +15,9 @@ export {
   isExcelFormat,
   fromTimestamp,
   isTimestampMicroSeconds,
+  isJSDate,
+  fromJSDate,
+  toJSDate,
 };
 
 const ISO8601_REGEX
@@ -29,6 +32,8 @@ const RFC7231_REGEX = /^[A-Za-z]{3},\s[0-9]{2}\s[A-Za-z]{3}\s[0-9]{4}\s[0-9]{2}:
 
 const EXCEL_FORMAT_REGEX = /^-?\d+(\.\d+)?$/;
 
+const JS_DATE_REGEX = /^new\s+Date\(\s*(?:(\d+)\s*,\s*)(?:(\d|11)\s*,\s*(?:(\d+)\s*,\s*(?:(\d+)\s*,\s*(?:(\d+)\s*,\s*(?:(\d+)\s*,\s*)?)?)?)?)?(\d+)\)\s*;?$/;
+
 function createRegexMatcher(regex: RegExp) {
   return (date?: string) => !_.isNil(date) && regex.test(date);
 }
@@ -42,6 +47,14 @@ const isTimestamp = createRegexMatcher(/^([0-9]{1,13}|[0-9]{16})$/);
 const isTimestampMilliSeconds = createRegexMatcher(/^[0-9]{1,13}$/);
 const isTimestampMicroSeconds = createRegexMatcher(/^[0-9]{16}$/);
 const isMongoObjectId = createRegexMatcher(/^[0-9a-fA-F]{24}$/);
+
+const isJSDate = createRegexMatcher(JS_DATE_REGEX);
+function fromJSDate(date: string): Date {
+  const res = JS_DATE_REGEX.exec(date);
+  const parts = (res || []).filter(p => p !== undefined).map(p => Number.parseInt(p, 10)).slice(1);
+  return new (Function.prototype.bind.apply(Date, [null, ...parts]))();
+}
+const toJSDate = (date: Date) => `new Date(${date.getFullYear()}, ${date.getMonth()}, ${date.getDate()}, ${date.getHours()}, ${date.getMinutes()}, ${date.getSeconds()}, ${date.getMilliseconds()});`;
 
 const isExcelFormat = createRegexMatcher(EXCEL_FORMAT_REGEX);
 

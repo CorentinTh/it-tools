@@ -2,16 +2,19 @@ import { describe, expect, test } from 'vitest';
 import {
   dateToExcelFormat,
   excelFormatToDate,
+  fromJSDate,
   fromTimestamp,
   isExcelFormat,
   isISO8601DateTimeString,
   isISO9075DateString,
+  isJSDate,
   isMongoObjectId,
   isRFC3339DateString,
   isRFC7231DateString,
   isTimestamp,
   isUTCDateString,
   isUnixTimestamp,
+  toJSDate,
 } from './date-time-converter.models';
 
 describe('date-time-converter models', () => {
@@ -216,6 +219,38 @@ describe('date-time-converter models', () => {
       expect(excelFormatToDate('4242.4242')).toEqual(new Date('1911-08-12T10:10:50.880Z'));
       expect(excelFormatToDate('42738.22626859954')).toEqual(new Date('2017-01-03T05:25:49.607Z'));
       expect(excelFormatToDate('-1000')).toEqual(new Date('1897-04-04T00:00:00.000Z'));
+    });
+  });
+
+  describe('isJSDate', () => {
+    test('a JS date is a new Date()', () => {
+      expect(isJSDate('new Date(2000, 0)')).toBe(true);
+      expect(isJSDate('new Date(2000, 0, 1, 12, 12)')).toBe(true);
+      expect(isJSDate('new Date(2000, 0, 1, 12, 12, 12)')).toBe(true);
+      expect(isJSDate('new Date(2000, 0, 1, 12, 12, 12, 1)')).toBe(true);
+
+      expect(isJSDate('new Date(2000)')).toBe(false);
+      expect(isJSDate('')).toBe(false);
+      expect(isJSDate('foo')).toBe(false);
+      expect(isJSDate('1.1.1')).toBe(false);
+    });
+  });
+
+  describe('fromJSDate', () => {
+    test('convert a JS new Date() to date', () => {
+      expect(fromJSDate('new Date(2000, 0)')).toEqual(new Date(2000, 0));
+      expect(fromJSDate('new Date(2000, 0, 1, 12, 12)')).toEqual(new Date(2000, 0, 1, 12, 12));
+      expect(fromJSDate('new Date(2000, 0, 1, 12, 12, 12)')).toEqual(new Date(2000, 0, 1, 12, 12, 12));
+      expect(fromJSDate('new Date(2000, 0, 1, 12, 12, 12, 1)')).toEqual(new Date(2000, 0, 1, 12, 12, 12, 1));
+    });
+  });
+
+  describe('toJSDate', () => {
+    test('convert a date to JS new Date()', () => {
+      expect(toJSDate(new Date(2000, 0))).toEqual('new Date(2000, 0, 1, 0, 0, 0, 0);');
+      expect(toJSDate(new Date(2000, 0, 1, 12, 12))).toEqual('new Date(2000, 0, 1, 12, 12, 0, 0);');
+      expect(toJSDate(new Date(2000, 0, 1, 12, 12, 12))).toEqual('new Date(2000, 0, 1, 12, 12, 12, 0);');
+      expect(toJSDate(new Date(2000, 0, 1, 12, 12, 12, 1))).toEqual('new Date(2000, 0, 1, 12, 12, 12, 1);');
     });
   });
 });
