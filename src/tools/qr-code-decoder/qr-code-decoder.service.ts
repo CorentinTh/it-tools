@@ -70,7 +70,7 @@ export function parseQRData(qrContent: string | null) {
       },
     };
   }
-  if (/\w+:\/\//.test(qrContent)) {
+  if (/^(?:https?|ftp):\/\//.test(qrContent)) {
     return {
       type: 'Url',
       value: qrContent,

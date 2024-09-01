@@ -61,7 +61,7 @@ describe('qr-code-decoder', () => {
         authentication: 'WPA',
         hidden: 'false',
         name: 'ssid',
-        password: 'password',
+        password: 'password', // NOSONAR
       },
     });
     expect(parseQRData('BEGIN:VCALENDAR\nPRODID:-//xyz Corp//NONSGML PDA Calendar Version 1.0//EN\nVERSION:2.0\nBEGIN:VEVENT\nDTSTAMP:19960704T120000Z\nUID:uid1@example.com\nORGANIZER:mailto:jsmith@example.com\nDTSTART:19960918T143000Z\nDTEND:19960920T220000Z\nSTATUS:CONFIRMED\nCATEGORIES:CONFERENCE\nSUMMARY:Networld+Interop Conference\nDESCRIPTION:Networld+Interop Conference\n  and Exhibit\\nAtlanta World Congress Center\\n\n Atlanta\\, Georgia\nEND:VEVENT\nEND:VCALENDAR'))
