@@ -12,6 +12,7 @@ import {
   isRFC3339DateString,
   isRFC7231DateString,
   isTimestamp,
+  isTimestampMicroSeconds,
   isUTCDateString,
   isUnixTimestamp,
   toJSDate,
@@ -130,19 +131,18 @@ describe('date-time-converter models', () => {
 
   describe('isTimestampMicroSeconds', () => {
     test('should return true for valid Unix timestamps in microseconds', () => {
-      expect(isTimestamp('1649792026123123')).toBe(true);
-      expect(isTimestamp('1701227351995845')).toBe(true);
-      expect(isTimestamp('0')).toBe(true);
+      expect(isTimestampMicroSeconds('1649792026123123')).toBe(true);
+      expect(isTimestampMicroSeconds('1701227351995845')).toBe(true);
     });
 
     test('should return false for invalid Unix timestamps in microseconds', () => {
-      expect(isTimestamp('foo')).toBe(false);
-      expect(isTimestamp('')).toBe(false);
+      expect(isTimestampMicroSeconds('foo')).toBe(false);
+      expect(isTimestampMicroSeconds('')).toBe(false);
     });
 
     test('should return false for invalid Unix timestamps not in microseconds', () => {
-      expect(isTimestamp('170122735199584')).toBe(false);
-      expect(isTimestamp('17012273519958')).toBe(false);
+      expect(isTimestampMicroSeconds('170122735199584')).toBe(false);
+      expect(isTimestampMicroSeconds('17012273519958')).toBe(false);
     });
   });
 

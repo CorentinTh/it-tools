@@ -11,7 +11,7 @@ test.describe('Date time converter - json to yaml', () => {
 
   test('Format is auto detected from a date and the date is correctly converted', async ({ page }) => {
     const initialFormat = await page.getByTestId('date-time-converter-format-select').innerText();
-    expect(initialFormat.trim()).toEqual('Timestamp');
+    expect(initialFormat.trim()).toEqual('Unix timestamp');
 
     await page.getByTestId('date-time-converter-input').fill('2023-04-12T23:10:24+02:00');
 
@@ -22,6 +22,7 @@ test.describe('Date time converter - json to yaml', () => {
       'Wed Apr 12 2023 23:10:24 GMT+0200 (Central European Summer Time)',
     );
     expect((await page.getByTestId('ISO 8601').inputValue()).trim()).toEqual('2023-04-12T23:10:24+02:00');
+    expect((await page.getByTestId('ISO 8601 UTC').inputValue()).trim()).toEqual('2023-04-12T21:10:24.000Z');
     expect((await page.getByTestId('ISO 9075').inputValue()).trim()).toEqual('2023-04-12 23:10:24');
     expect((await page.getByTestId('Unix timestamp').inputValue()).trim()).toEqual('1681333824');
     expect((await page.getByTestId('RFC 7231').inputValue()).trim()).toEqual('Wed, 12 Apr 2023 21:10:24 GMT');
