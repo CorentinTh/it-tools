@@ -86,6 +86,9 @@ dependencies:
   figue:
     specifier: ^1.2.0
     version: 1.2.0
+  flatten-anything:
+    specifier: ^4.0.1
+    version: 4.0.1
   fuse.js:
     specifier: ^6.6.2
     version: 6.6.2
@@ -5651,6 +5654,14 @@ packages:
     dependencies:
       to-regex-range: 5.0.1
 
+  /filter-anything@4.0.2:
+    resolution: {integrity: sha512-tNBpTytI180+uGpKu4dFupbkA7rmEl+ZFo27mSeR8Ov80rpMDBbmLORGTsCkCN8s50aOS79P0sg3YUKz3Tr/4Q==}
+    engines: {node: '>=18'}
+    dependencies:
+      is-what: 5.0.2
+      ts-toolbelt: 9.6.0
+    dev: false
+
   /find-up@4.1.0:
     resolution: {integrity: sha512-PpOwAdQ/YlXQ2vj8a3h8IipDuYRi3wceVQQGYWxNINccq40Anw7BlsEXCMbt1Zt+OLA6Fq9suIpIWD0OsnISlw==}
     engines: {node: '>=8'}
@@ -5677,6 +5688,14 @@ packages:
   /flatted@3.2.7:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
     dev: true
+
+  /flatten-anything@4.0.1:
+    resolution: {integrity: sha512-Wz5tXB7Sgm54LHOqgbqvFlhKxzBZxA+TAv8AE28wfGpqk6zYkNauIS/ierU4VmNRokgzG2KnxhVYaUCXP+oPCQ==}
+    engines: {node: '>=18'}
+    dependencies:
+      filter-anything: 4.0.2
+      is-what: 5.0.2
+    dev: false
 
   /flex-js@1.0.5:
     resolution: {integrity: sha512-Z5uoLzOGtTB/nzaTVVBbwmxOHBzHovAGJHLXE1TUKsQuN1RRWMOWeA08J9RRKtAl9TH9tkaH6fpjA4sLf0DzQw==}
@@ -6447,6 +6466,11 @@ packages:
   /is-what@3.14.1:
     resolution: {integrity: sha512-sNxgpk9793nzSs7bA6JQJGeIuRBQhAaNGG77kzYQgMkrID+lS6SlK07K5LaptscDlSaIgH+GPFzf+d75FVxozA==}
     dev: true
+
+  /is-what@5.0.2:
+    resolution: {integrity: sha512-vI7Ui0qzNQ2ClDZd0bC7uqRk3T1imbX5cZODmVlqqdqiwmSIUX3CNSiRgFjFMJ987sVCMSa7xZeEDtpJduPg4A==}
+    engines: {node: '>=18'}
+    dev: false
 
   /is-wsl@2.2.0:
     resolution: {integrity: sha512-fKzAra0rGJUUBwGBgNkHZuToZcn+TtXHpeCgmkMJMMYx1sQDYaCSyjJBSCa2nH1DGm7s3n1oBnohoVTBaN7Lww==}
@@ -8547,6 +8571,10 @@ packages:
     dependencies:
       typescript: 5.2.2
     dev: true
+
+  /ts-toolbelt@9.6.0:
+    resolution: {integrity: sha512-nsZd8ZeNUzukXPlJmTBwUAuABDe/9qtVDelJeT/qW0ow3ZS3BsQJtNkan1802aM9Uf68/Y8ljw86Hu0h5IUW3w==}
+    dev: false
 
   /tslib@1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
