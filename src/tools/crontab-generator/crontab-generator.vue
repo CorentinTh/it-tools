@@ -2,6 +2,7 @@
 import cronstrue from 'cronstrue';
 import { isValidCron } from 'cron-validator';
 import { useStyleStore } from '@/stores/style.store';
+import { parseExpression } from 'cron-parser';
 
 function isCronValid(v: string) {
   return isValidCron(v, { allowBlankDay: true, alias: true, seconds: true });
@@ -21,7 +22,7 @@ const helpers = [
   {
     symbol: '*',
     meaning: 'Any value',
-    example: '* * * *',
+    example: '* * * *', 
     equivalent: 'Every minute',
   },
   {
@@ -92,9 +93,31 @@ const helpers = [
   },
 ];
 
+function getLastExecutionTimes(cronExpression: string) {
+  const interval = parseExpression(cronExpression);
+  const times = [];
+  
+  // Get the last five execution times
+  for (let i = 0; i < 5; i++) {
+    times.push(interval.next().toJSON());
+  }
+  return times;
+}
+
+
 const cronString = computed(() => {
   if (isCronValid(cron.value)) {
     return cronstrue.toString(cron.value, cronstrueConfig);
+  }
+  return ' ';
+});
+
+
+const executionTimesString = computed(() => {
+  if (isCronValid(cron.value)) {
+    const lastExecutionTimes = getLastExecutionTimes(cron.value);
+    const executionTimesString = lastExecutionTimes.join('<br>'); // 使用 <br> 标签
+    return `Next 5 execution times:<br>${executionTimesString}`; // 在这里也添加 <br> 标签
   }
   return ' ';
 });
@@ -122,6 +145,8 @@ const cronValidationRules = [
     <div class="cron-string">
       {{ cronString }}
     </div>
+
+    <div v-html="executionTimesString" class="cron-execution-string"></div>
 
     <n-divider />
 
@@ -183,6 +208,13 @@ const cronValidationRules = [
 .cron-string {
   text-align: center;
   font-size: 22px;
+  opacity: 0.8;
+  margin: 5px 0 15px;
+}
+
+.cron-execution-string{
+  text-align: center;
+  font-size: 14px;
   opacity: 0.8;
   margin: 5px 0 15px;
 }
