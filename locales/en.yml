@@ -281,6 +281,13 @@ tools:
     description: >-
       Generate and download a QR code for a URL (or just plain text), and
       customize the background and foreground colors.
+    error-resistance: 'Error resistance:'
+    background-color: 'Background color:'
+    foreground-color: 'Foreground color:'
+    text: 'Text:'
+    placeholder: Your link or text...
+    button:
+      download: Download QR code
   wifi-qrcode-generator:
     title: WiFi QR Code generator
     description: Generate and download QR codes for quick connections to WiFi networks.

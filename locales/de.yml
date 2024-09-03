@@ -299,6 +299,13 @@ tools:
     description: >-
       Generiere und downloade QR-Codes für eine URL oder einfach einen Text und
       passe die Hintergrund- und Vordergrundfarben an.
+    text: 'Text:'
+    placeholder: Dein Link oder Text...
+    foreground-color: 'Vordergrundfarbe:'
+    background-color: 'Hintergrundfarbe:'
+    error-resistance: 'Fehlerresistenz:'
+    button:
+      download: QR-Code herunterladen
   wifi-qrcode-generator:
     title: WLAN-QR-Code-Generator
     description: >-
