@@ -175,7 +175,7 @@ watchEffect(
       <pre style="white-space: pre-wrap; word-break: break-all;">{{ sample }}</pre>
     </c-card>
 
-    <c-card title="Regex Diagram" style="overflow-x: scroll;"  mt-3>
+    <c-card title="Regex Diagram" style="overflow-x: scroll;" mt-3>
       <svg ref="visualizerSVG" />
     </c-card>
   </div>
