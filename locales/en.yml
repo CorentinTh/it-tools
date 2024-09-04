@@ -7,7 +7,7 @@ home:
   toggleMenu: 'Toggle menu'
   home: Home
   uiLib: 'UI Lib'
-  support: 'Support IT Tools development'
+  support: 'Support IT-Tools development'
   buyMeACoffee: 'Buy me a coffee'
   follow:
     title: 'You like it-tools?'
@@ -15,7 +15,7 @@ home:
     githubRepository: 'IT-Tools GitHub repository'
     p2: 'or follow us on'
     twitterAccount: 'IT-Tools Twitter account'
-    thankYou: 'Thank you !'
+    thankYou: 'Thank you!'
   nav:
     github: 'GitHub repository'
     githubRepository: 'IT-Tools GitHub repository'
@@ -72,7 +72,7 @@ tools:
 
   password-strength-analyser:
     title: Password strength analyser
-    description: Discover the strength of your password with this client side only password strength analyser and crack time estimation tool.
+    description: Discover the strength of your password with this client-side-only password strength analyser and crack time estimation tool.
 
   chronometer:
     title: Chronometer
@@ -98,7 +98,7 @@ tools:
 
   svg-placeholder-generator:
     title: SVG placeholder generator
-    description: Generate svg images to use as placeholder in your applications.
+    description: Generate svg images to use as a placeholder in your applications.
 
   json-to-csv:
     title: JSON to CSV
@@ -126,11 +126,11 @@ tools:
 
   crontab-generator:
     title: Crontab generator
-    description: Validate and generate crontab and get the human readable description of the cron schedule.
+    description: Validate and generate crontab and get the human-readable description of the cron schedule.
 
   http-status-codes:
     title: HTTP status codes
-    description: The list of all HTTP status codes their name and their meaning.
+    description: The list of all HTTP status codes, their name, and their meaning.
 
   sql-prettify:
     title: SQL prettify and format
@@ -142,7 +142,7 @@ tools:
 
   git-memo:
     title: Git cheatsheet
-    description: Git is a decentralized version management software. With this cheatsheet you will have a quick access to the most common git commands.
+    description: Git is a decentralized version management software. With this cheatsheet, you will have quick access to the most common git commands.
 
   slugify-string:
     title: Slugify string
@@ -150,7 +150,7 @@ tools:
 
   encryption:
     title: Encrypt / decrypt text
-    description: Encrypt and decrypt text clear text using crypto algorithm like AES, TripleDES, Rabbit or RC4.
+    description: Encrypt clear text and decrypt ciphertext using crypto algorithms like AES, TripleDES, Rabbit or RC4.
 
   random-port-generator:
     title: Random port generator
@@ -158,11 +158,11 @@ tools:
 
   yaml-prettify:
     title: YAML prettify and format
-    description: Prettify your YAML string to a human friendly readable format.
+    description: Prettify your YAML string into a friendly, human-readable format.
 
   eta-calculator:
     title: ETA calculator
-    description: An ETA (Estimated Time of Arrival) calculator to know the approximate end time of a task, for example the moment of ending of a download.
+    description: An ETA (Estimated Time of Arrival) calculator to determine the approximate end time of a task, for example, the end time and duration of a file download.
 
   roman-numeral-converter:
     title: Roman numeral converter
@@ -174,11 +174,11 @@ tools:
 
   bip39-generator:
     title: BIP39 passphrase generator
-    description: Generate BIP39 passphrase from existing or random mnemonic, or get the mnemonic from the passphrase.
+    description: Generate a BIP39 passphrase from an existing or random mnemonic, or get the mnemonic from the passphrase.
 
   base64-file-converter:
     title: Base64 file converter
-    description: Convert string, files or images into a it\'s base64 representation.
+    description: Convert a string, file, or image into its base64 representation.
 
   list-converter:
     title: List converter
@@ -186,7 +186,7 @@ tools:
 
   base64-string-converter:
     title: Base64 string encoder/decoder
-    description: Simply encode and decode string into a their base64 representation.
+    description: Simply encode and decode strings into their base64 representation.
 
   toml-to-yaml:
     title: TOML to YAML
@@ -198,15 +198,15 @@ tools:
 
   json-to-yaml-converter:
     title: JSON to YAML converter
-    description: Simply convert JSON to YAML with this live online converter.
+    description: Simply convert JSON to YAML with this online live converter.
 
   url-parser:
-    title: Url parser
-    description: Parse an url string to get all the different parts (protocol, origin, params, port, username-password, ...)
+    title: URL parser
+    description: Parse a URL into its separate constituent parts (protocol, origin, params, port, username-password, ...)
 
   iban-validator-and-parser:
     title: IBAN validator and parser
-    description: Validate and parse IBAN numbers. Check if IBAN is valid and get the country, BBAN, if it is a QR-IBAN and the IBAN friendly format.
+    description: Validate and parse IBAN numbers. Check if an IBAN is valid and get the country, BBAN, if it is a QR-IBAN and the IBAN friendly format.
 
   user-agent-parser:
     title: User-agent parser
@@ -218,27 +218,27 @@ tools:
 
   case-converter:
     title: Case converter
-    description: Change the case of a string and chose between different formats
+    description: Transform the case of a string and choose between different formats
 
   html-entities:
-    title: Escape html entities
-    description: Escape or unescape html entities (replace <,>, &, " and \' to their html version)
+    title: Escape HTML entities
+    description: Escape or unescape HTML entities (replace characters like <,>, &, " and \' with their HTML version)
 
   json-prettify:
     title: JSON prettify and format
-    description: Prettify your JSON string to a human friendly readable format.
+    description: Prettify your JSON string into a friendly, human-readable format.
 
   docker-run-to-docker-compose-converter:
     title: Docker run to Docker compose converter
-    description: Turns docker run commands into docker-compose files!
+    description: Transforms "docker run" commands into docker-compose files!
 
   mac-address-lookup:
     title: MAC address lookup
     description: Find the vendor and manufacturer of a device by its MAC address.
 
   mime-types:
-    title: Mime types
-    description: Convert mime types to extensions and vice-versa.
+    title: MIME types
+    description: Convert MIME types to file extensions and vice-versa.
 
   toml-to-json:
     title: TOML to JSON
@@ -250,19 +250,19 @@ tools:
 
   qrcode-generator:
     title: QR Code generator
-    description: Generate and download QR-code for an url or just a text and customize the background and foreground colors.
+    description: Generate and download a QR code for a URL (or just plain text), and customize the background and foreground colors.
 
   wifi-qrcode-generator:
     title: WiFi QR Code generator
-    description: Generate and download QR-codes for quick connections to WiFi networks.
+    description: Generate and download QR codes for quick connections to WiFi networks.
 
   xml-formatter:
     title: XML formatter
-    description: Prettify your XML string to a human friendly readable format.
+    description: Prettify your XML string into a friendly, human-readable format.
 
   temperature-converter:
     title: Temperature converter
-    description: Temperature degrees conversions for Kelvin, Celsius, Fahrenheit, Rankine, Delisle, Newton, Réaumur and Rømer.
+    description: Degrees temperature conversions for Kelvin, Celsius, Fahrenheit, Rankine, Delisle, Newton, Réaumur, and Rømer.
 
   chmod-calculator:
     title: Chmod calculator
@@ -270,11 +270,11 @@ tools:
 
   rsa-key-pair-generator:
     title: RSA key pair generator
-    description: Generate new random RSA private and public key pem certificates.
+    description: Generate a new random RSA private and public pem certificate key pair.
 
   html-wysiwyg-editor:
     title: HTML WYSIWYG editor
-    description: Online HTML editor with feature-rich WYSIWYG editor, get the source code of the content immediately.
+    description: Online, feature-rich WYSIWYG HTML editor which generates the source code of the content immediately.
 
   yaml-to-toml:
     title: YAML to TOML
@@ -302,15 +302,15 @@ tools:
 
   ipv4-subnet-calculator:
     title: IPv4 subnet calculator
-    description: Parse your IPv4 CIDR blocks and get all the info you need about your sub network.
+    description: Parse your IPv4 CIDR blocks and get all the info you need about your subnet.
 
   og-meta-generator:
     title: Open graph meta generator
-    description: Generate open-graph and socials html meta tags for your website.
+    description: Generate open-graph and socials HTML meta tags for your website.
 
   ipv6-ula-generator:
     title: IPv6 ULA generator
-    description: Generate your own local, non-routable IP addresses on your network according to RFC4193.
+    description: Generate your own local, non-routable IP addresses for your network according to RFC4193.
 
   hash-text:
     title: Hash text
@@ -330,7 +330,7 @@ tools:
 
   json-minify:
     title: JSON minify
-    description: Minify and compress your JSON by removing unnecessary white spaces.
+    description: Minify and compress your JSON by removing unnecessary whitespace.
 
   ulid-generator:
     title: ULID generator
@@ -342,31 +342,31 @@ tools:
 
   base-converter:
     title: Integer base converter
-    description: Convert number between different bases (decimal, hexadecimal, binary, octal, base64, ...)
+    description: Convert a number between different bases (decimal, hexadecimal, binary, octal, base64, ...)
 
   yaml-to-json-converter:
     title: YAML to JSON converter
-    description: Simply convert YAML to JSON with this live online converter.
+    description: Simply convert YAML to JSON with this online live converter.
 
   uuid-generator:
     title: UUIDs generator
     description: A Universally Unique Identifier (UUID) is a 128-bit number used to identify information in computer systems. The number of possible UUIDs is 16^32, which is 2^128 or about 3.4x10^38 (which is a lot!).
 
   ipv4-address-converter:
-    title: Ipv4 address converter
-    description: Convert an ip address into decimal, binary, hexadecimal or event in ipv6
+    title: IPv4 address converter
+    description: Convert an IP address into decimal, binary, hexadecimal, or even an IPv6 representation of it.
 
   text-statistics:
     title: Text statistics
-    description: Get information about a text, the amount of characters, the amount of words, it\'s size, ...
+    description: Get information about a text, the number of characters, the number of words, its size in bytes, ...
 
   text-to-nato-alphabet:
     title: Text to NATO alphabet
-    description: Transform text into NATO phonetic alphabet for oral transmission.
+    description: Transform text into the NATO phonetic alphabet for oral transmission.
 
   basic-auth-generator:
     title: Basic auth generator
-    description: Generate a base64 basic auth header from an username and a password.
+    description: Generate a base64 basic auth header from a username and password.
 
   text-to-unicode:
     title: Text to Unicode
@@ -374,7 +374,7 @@ tools:
 
   ipv4-range-expander:
     title: IPv4 range expander
-    description: Given a start and an end IPv4 address this tool calculates a valid IPv4 network with its CIDR notation.
+    description: Given a start and an end IPv4 address, this tool calculates a valid IPv4 subnet along with its CIDR notation.
 
   text-diff:
     title: Text diff
@@ -385,9 +385,9 @@ tools:
     description: Generate and validate time-based OTP (one time password) for multi-factor authentication.
 
   url-encoder:
-    title: Encode/decode url formatted strings
-    description: Encode to url-encoded format (also known as "percent-encoded") or decode from it.
+    title: Encode/decode URL-formatted strings
+    description: Encode text to URL-encoded format (also known as "percent-encoded"), or decode from it.
 
   text-to-binary:
     title: Text to ASCII binary
-    description: Convert text to its ASCII binary representation and vice versa.
+    description: Convert text to its ASCII binary representation and vice-versa.
