@@ -477,6 +477,13 @@ tools:
   ascii-text-drawer:
     title: ASCII-Art-Text-Generator
     description: ASCII-Art-Text mit vielen Schriftarten und Stilen erstellen.
+    text: 'Dein Text:'
+    placeholder: Dein zu zeichnender Text
+    font: 'Schriftart:'
+    width: 'Breite:'
+    loading: Schriftart wird geladen...
+    error: Die aktuellen Einstellungen führten zu einem Fehler.
+    output: 'ASCII-Art-Text:'
   json-to-xml:
     title: JSON zu XML
     description: JSON in XML konvertieren

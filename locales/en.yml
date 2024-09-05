@@ -446,6 +446,13 @@ tools:
   ascii-text-drawer:
     title: ASCII Art Text Generator
     description: Create ASCII art text with many fonts and styles.
+    text: 'Your text:'
+    placeholder: Your text to draw
+    output: 'Ascii Art text:'
+    font: 'Font:'
+    width: 'Width:'
+    loading: Loading font...
+    error: Current settings resulted in error.
   json-to-xml:
     title: JSON to XML
     description: Convert JSON to XML
