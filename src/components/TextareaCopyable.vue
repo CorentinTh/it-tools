@@ -37,7 +37,7 @@ const { value, language, followHeightOf, copyPlacement, copyMessage } = toRefs(p
 const { height } = followHeightOf.value ? useElementSize(followHeightOf) : { height: ref(null) };
 
 const { copy, isJustCopied } = useCopy({ source: value, createToast: false });
-const tooltipText = computed(() => isJustCopied.value ? $t('copyClipboard.success') : copyMessage.value);
+const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : copyMessage.value);
 </script>
 
 <template>

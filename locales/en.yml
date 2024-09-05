@@ -72,9 +72,6 @@ toolCard:
   new: New
 search:
   label: Search
-copyClipboard:
-  tooltip: Copy to clipboard
-  success: Copied!
 tools:
   categories:
     favorite-tools: Your favorite tools

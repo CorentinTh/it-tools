@@ -78,9 +78,6 @@ toolCard:
   new: Neu
 search:
   label: Suche
-copyClipboard:
-  tooltip: In die Zwischenablage kopieren
-  success: Kopiert!
 tools:
   categories:
     favorite-tools: Deine Lieblingstools
