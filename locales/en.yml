@@ -403,6 +403,10 @@ tools:
     description: >-
       Get information about a text, the number of characters, the number of
       words, its size in bytes, ...
+    characters: Character count
+    words: Word count
+    lines: Line count
+    bytes: Byte size
   text-to-nato-alphabet:
     title: Text to NATO alphabet
     description: Transform text into the NATO phonetic alphabet for oral transmission.
@@ -443,6 +447,9 @@ tools:
   safelink-decoder:
     title: Outlook Safelink decoder
     description: Decode Outlook SafeLink links
+    input: 'Your input Outlook SafeLink Url:'
+    input-placeholder: Your input Outlook SafeLink Url...
+    output: 'Output decoded URL:'
   ascii-text-drawer:
     title: ASCII Art Text Generator
     description: Create ASCII art text with many fonts and styles.

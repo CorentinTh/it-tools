@@ -430,6 +430,10 @@ tools:
     description: >-
       Informationen zu einem Text erhalten, wie die Anzahl der Zeichen, die
       Anzahl der Wörter, die Größe usw.
+    characters: Anzahl Zeichen
+    words: Anzahl Wörter
+    lines: Anzahl Zeilen
+    bytes: Bytegröße
   text-to-nato-alphabet:
     title: Text zu NATO-Alphabet
     description: >-
@@ -474,6 +478,9 @@ tools:
   safelink-decoder:
     title: Outlook Safelink-Decoder
     description: Outlook Safelinks decodieren
+    input: 'Eingabe einer Outlook Safelink-URL:'
+    input-placeholder: Deine eingegebene Outlook Safelink-URL...
+    output: 'Ausgabe der decodierten URL:'
   ascii-text-drawer:
     title: ASCII-Art-Text-Generator
     description: ASCII-Art-Text mit vielen Schriftarten und Stilen erstellen.
