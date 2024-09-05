@@ -78,6 +78,9 @@ toolCard:
   new: Neu
 search:
   label: Suche
+copyClipboard:
+  tooltip: In die Zwischenablage kopieren
+  success: Kopiert!
 tools:
   categories:
     favorite-tools: Deine Lieblingstools
@@ -434,6 +437,7 @@ tools:
     words: Anzahl Wörter
     lines: Anzahl Zeilen
     bytes: Bytegröße
+    placeholder: Dein Text...
   text-to-nato-alphabet:
     title: Text zu NATO-Alphabet
     description: >-

@@ -72,6 +72,9 @@ toolCard:
   new: New
 search:
   label: Search
+copyClipboard:
+  tooltip: Copy to clipboard
+  success: Copied!
 tools:
   categories:
     favorite-tools: Your favorite tools
@@ -407,6 +410,7 @@ tools:
     words: Word count
     lines: Line count
     bytes: Byte size
+    placeholder: Your text...
   text-to-nato-alphabet:
     title: Text to NATO alphabet
     description: Transform text into the NATO phonetic alphabet for oral transmission.
