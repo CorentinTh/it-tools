@@ -487,9 +487,17 @@ tools:
   json-to-xml:
     title: JSON zu XML
     description: JSON in XML konvertieren
+    input: Dein JSON-Inhalt
+    input-placeholder: Füge hier deinen JSON-Inhalt ein...
+    output: Konvertiertes XML
+    error: Bereitgestelltes JSON ist ungültig.
   xml-to-json:
     title: XML zu JSON
     description: XML in JSON konvertieren
+    input: Dein XML-Inhalt
+    input-placeholder: Füge hier deinen XML-Inhalt ein...
+    output: Konvertiertes JSON
+    error: Bereitgestelltes XML ist ungültig.
   email-normalizer:
     title: E-Mail-Normalisierung
     description: >-

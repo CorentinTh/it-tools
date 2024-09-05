@@ -456,9 +456,17 @@ tools:
   json-to-xml:
     title: JSON to XML
     description: Convert JSON to XML
+    input: Your JSON content
+    input-placeholder: Paste your JSON content here...
+    output: Converted XML
+    error: Provided JSON is not valid.
   xml-to-json:
     title: XML to JSON
     description: Convert XML to JSON
+    input: Your XML content
+    input-placeholder: Paste your XML content here...
+    output: Converted JSON
+    error: Provided XML is not valid.
   email-normalizer:
     title: Email normalizer
     description: >-
