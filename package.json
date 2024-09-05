@@ -19,6 +19,7 @@
     "type": "git",
     "url": "https://github.com/CorentinTh/it-tools"
   },
+  "packageManager": "pnpm@9.3.0",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && NODE_OPTIONS=--max_old_space_size=4096 vite build",

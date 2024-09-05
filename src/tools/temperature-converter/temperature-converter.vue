@@ -22,7 +22,7 @@ type TemperatureScale = 'kelvin' | 'celsius' | 'fahrenheit' | 'rankine' | 'delis
 const units = reactive<
   Record<
     string | TemperatureScale,
-    { title: string; unit: string; ref: number; toKelvin: (v: number) => number; fromKelvin: (v: number) => number }
+    { title: string; unit: string; ref: number; toKelvin: (v: number) => number; fromKelvin: (v: number) => number; min?: number; max?: number; maxLimit?: boolean }
   >
       >({
         kelvin: {
@@ -59,6 +59,7 @@ const units = reactive<
           ref: 0,
           toKelvin: convertDelisleToKelvin,
           fromKelvin: convertKelvinToDelisle,
+          maxLimit: true,
         },
         newton: {
           title: 'Newton',
@@ -86,7 +87,9 @@ const units = reactive<
 function update(key: TemperatureScale) {
   const { ref: value, toKelvin } = units[key];
 
-  const kelvins = toKelvin(value) ?? 0;
+  let kelvins = toKelvin(value) ?? 0;
+
+  kelvins = kelvins < 0 ? 0 : kelvins;
 
   _.chain(units)
     .omit(key)
@@ -96,6 +99,18 @@ function update(key: TemperatureScale) {
     .value();
 }
 
+function setupLimit() {
+  _.forEach(units, (unit) => {
+    if (unit.maxLimit) {
+      unit.max = Math.ceil(unit.fromKelvin(0) * 100) / 100;
+    }
+    else {
+      unit.min = Math.floor(unit.fromKelvin(0) * 100) / 100;
+    }
+  });
+}
+
+setupLimit();
 update('kelvin');
 </script>
 
@@ -109,6 +124,8 @@ update('kelvin');
       <n-input-number
         v-model:value="units[key].ref"
         style="flex: 1"
+        :min="units[key].min"
+        :max="units[key].max"
         @update:value="() => update(key as TemperatureScale)"
       />
 
