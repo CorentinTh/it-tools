@@ -464,6 +464,14 @@ tools:
     description: >-
       Normalize email addresses to a standard format for easier comparison.
       Useful for deduplication and data cleaning.
+    input: 'Raw emails to normalize:'
+    output: 'Normalized emails:'
+    input-placeholder: Put your emails here (one per line)...
+    output-placeholder: Normalized emails will appear here...
+    button:
+      clear: Clear emails
+      copy: Copy normalized emails
+    copied: Normalized emails copied to the clipboard
   markdown-to-html:
     title: Markdown to HTML
     description: Convert Markdown to HTML and allow to print (as PDF)
