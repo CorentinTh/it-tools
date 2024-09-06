@@ -116,8 +116,8 @@ const cronString = computed(() => {
 const executionTimesString = computed(() => {
   if (isCronValid(cron.value)) {
     const lastExecutionTimes = getLastExecutionTimes(cron.value);
-    const executionTimesString = lastExecutionTimes.join('<br>'); // 使用 <br> 标签
-    return `Next 5 execution times:<br>${executionTimesString}`; // 在这里也添加 <br> 标签
+    const executionTimesString = lastExecutionTimes.join('\n');  
+    return `Next 5 execution times:\n${executionTimesString}`;  
   }
   return ' ';
 });
@@ -146,7 +146,7 @@ const cronValidationRules = [
       {{ cronString }}
     </div>
 
-    <div v-html="executionTimesString" class="cron-execution-string"></div>
+    <div class="cron-execution-string">{{ executionTimesString }}</div>
 
     <n-divider />
 
@@ -217,6 +217,7 @@ const cronValidationRules = [
   font-size: 14px;
   opacity: 0.8;
   margin: 5px 0 15px;
+  white-space: pre-wrap;
 }
 
 pre {
