@@ -1,11 +1,11 @@
 export interface Border {
-  label: string;
-  value: number;
-  max: number;
+  label: string
+  value: number
+  max: number
 }
 
 export interface Borders {
-  [key: string]: Border;
+  [key: string]: Border
 }
 
 // Asegúrate de que esta función esté correctamente exportada

@@ -1,85 +1,8 @@
-<template>
-  <div class="container">
-    <div class="square" :style="styleObject"></div>
-
-    <NCard title="Border Radius and Style Editor" class="controls">
-      <NForm>
-        <NFormItem label="Units">
-          <NSelect v-model:value="unit" :options="unitOptions" @update:value="updateCSSOutput" />
-        </NFormItem>
-
-        <div class="radius-controls">
-          <NFormItem label="Top Left" class="half-slider">
-            <NSlider
-              v-model:value="borders.topLeft.value"
-              :min="0"
-              :max="borders.topLeft.max"
-              :step="1"
-              @update:value="updateCSSOutput"
-            />
-            <span>{{ borders.topLeft.value + unit }}</span>
-          </NFormItem>
-          <NFormItem label="Top Right" class="half-slider">
-            <NSlider
-              v-model:value="borders.topRight.value"
-              :min="0"
-              :max="borders.topRight.max"
-              :step="1"
-              @update:value="updateCSSOutput"
-            />
-            <span>{{ borders.topRight.value + unit }}</span>
-          </NFormItem>
-        </div>
-        <div class="radius-controls">
-          <NFormItem label="Bottom Left" class="half-slider">
-            <NSlider
-              v-model:value="borders.bottomLeft.value"
-              :min="0"
-              :max="borders.bottomLeft.max"
-              :step="1"
-              @update:value="updateCSSOutput"
-            />
-            <span>{{ borders.bottomLeft.value + unit }}</span>
-          </NFormItem>
-          <NFormItem label="Bottom Right" class="half-slider">
-            <NSlider
-              v-model:value="borders.bottomRight.value"
-              :min="0"
-              :max="borders.bottomRight.max"
-              :step="1"
-              @update:value="updateCSSOutput"
-            />
-            <span>{{ borders.bottomRight.value + unit }}</span>
-          </NFormItem>
-        </div>
-        <div class="border-controls">
-          <NFormItem label="Border Width" class="border-width-slider">
-            <NSlider v-model:value="borderWidth" :min="0" :max="100" :step="1" @update:value="updateCSSOutput" />
-            <span>{{ borderWidth + 'px' }}</span>
-          </NFormItem>
-          <NFormItem label="Border Style" class="border-style-select">
-            <NSelect v-model:value="borderStyle" :options="borderStyles" @update:value="updateCSSOutput" />
-          </NFormItem>
-        </div>
-
-        <NFormItem label="Border Color">
-          <NColorPicker v-model:value="borderColor" @update:value="updateCSSOutput" />
-        </NFormItem>
-
-        <NFormItem label="CSS Properties">
-          <TextareaCopyable :value="cssOutput" language="css" />
-        </NFormItem>
-      </NForm>
-    </NCard>
-  </div>
-</template>
-
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue';
-import { NCard, NColorPicker, NForm, NFormItem, NSlider, NSelect } from 'naive-ui';
+import { NCard, NColorPicker, NForm, NFormItem, NSelect, NSlider } from 'naive-ui';
 import type { Borders } from './border-generator.service';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
-import { generateCSSOutput } from './border-generator.service';
 
 export default defineComponent({
   name: 'BorderRadiusViewer',
@@ -213,3 +136,79 @@ n-color-picker {
   width: 100%;
 }
 </style>
+
+<template>
+  <div class="container">
+    <div class="square" :style="styleObject" />
+
+    <NCard title="Border Radius and Style Editor" class="controls">
+      <NForm>
+        <NFormItem label="Units">
+          <NSelect v-model:value="unit" :options="unitOptions" @update:value="updateCSSOutput" />
+        </NFormItem>
+
+        <div class="radius-controls">
+          <NFormItem label="Top Left" class="half-slider">
+            <NSlider
+              v-model:value="borders.topLeft.value"
+              :min="0"
+              :max="borders.topLeft.max"
+              :step="1"
+              @update:value="updateCSSOutput"
+            />
+            <span>{{ borders.topLeft.value + unit }}</span>
+          </NFormItem>
+          <NFormItem label="Top Right" class="half-slider">
+            <NSlider
+              v-model:value="borders.topRight.value"
+              :min="0"
+              :max="borders.topRight.max"
+              :step="1"
+              @update:value="updateCSSOutput"
+            />
+            <span>{{ borders.topRight.value + unit }}</span>
+          </NFormItem>
+        </div>
+        <div class="radius-controls">
+          <NFormItem label="Bottom Left" class="half-slider">
+            <NSlider
+              v-model:value="borders.bottomLeft.value"
+              :min="0"
+              :max="borders.bottomLeft.max"
+              :step="1"
+              @update:value="updateCSSOutput"
+            />
+            <span>{{ borders.bottomLeft.value + unit }}</span>
+          </NFormItem>
+          <NFormItem label="Bottom Right" class="half-slider">
+            <NSlider
+              v-model:value="borders.bottomRight.value"
+              :min="0"
+              :max="borders.bottomRight.max"
+              :step="1"
+              @update:value="updateCSSOutput"
+            />
+            <span>{{ borders.bottomRight.value + unit }}</span>
+          </NFormItem>
+        </div>
+        <div class="border-controls">
+          <NFormItem label="Border Width" class="border-width-slider">
+            <NSlider v-model:value="borderWidth" :min="0" :max="100" :step="1" @update:value="updateCSSOutput" />
+            <span>{{ `${borderWidth}px` }}</span>
+          </NFormItem>
+          <NFormItem label="Border Style" class="border-style-select">
+            <NSelect v-model:value="borderStyle" :options="borderStyles" @update:value="updateCSSOutput" />
+          </NFormItem>
+        </div>
+
+        <NFormItem label="Border Color">
+          <NColorPicker v-model:value="borderColor" @update:value="updateCSSOutput" />
+        </NFormItem>
+
+        <NFormItem label="CSS Properties">
+          <TextareaCopyable :value="cssOutput" language="css" />
+        </NFormItem>
+      </NForm>
+    </NCard>
+  </div>
+</template>
