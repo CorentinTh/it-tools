@@ -78,7 +78,7 @@
 import { defineComponent, ref, computed } from 'vue';
 import { NSlider, NForm, NFormItem, NSelect, NCard, NColorPicker } from 'naive-ui';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
-import { Borders } from './border-radius-viewer.service';
+import { Borders } from './border-generator.service';
 
 export default defineComponent({
   name: 'BorderRadiusViewer',
@@ -211,4 +211,3 @@ n-color-picker {
   width: 100%;
 }
 </style>
-
