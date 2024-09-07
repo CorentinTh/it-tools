@@ -3,11 +3,10 @@ import { defineTool } from '../tool';
 
 export const tool = defineTool({
   name: 'Border Generator',
-  path: '/border-radius-viewer',
+  path: '/border-generator',
   description: 'Generate a complete CSS border properties.',
-  keywords: ['border', 'radius', 'viewer'],
-  component: () => import('./border-radius-viewer.vue'),
+  keywords: ['border', 'generator', 'css'],
+  component: () => import('./border-generator.vue'),
   icon: Square,
   createdAt: new Date('2024-09-06'),
 });
-
