@@ -1,4 +1,4 @@
-import { expect, describe, it } from 'vitest';
+import { describe ,expect, it } from 'vitest';
 import { generateCSSOutput } from './border-generator.service';
 import type { Borders } from './border-generator.service';
 
