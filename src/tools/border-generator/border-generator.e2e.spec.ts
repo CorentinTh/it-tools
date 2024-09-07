@@ -6,6 +6,6 @@ test.describe('Tool - Border generator', () => {
   });
 
   test('Has correct title', async ({ page }) => {
-    await expect(page).toHaveTitle('Border generator - IT Tools');
+    await expect(page).toHaveTitle('Border Generator - IT Tools');
   });
 });

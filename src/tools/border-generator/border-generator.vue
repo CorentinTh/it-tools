@@ -1,141 +1,3 @@
-<script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
-import { NSlider, NForm, NFormItem, NSelect, NCard, NColorPicker } from 'naive-ui';
-import TextareaCopyable from '@/components/TextareaCopyable.vue';
-import { Borders } from './border-generator.service';
-import { generateCSSOutput } from './border-generator.service';
-
-export default defineComponent({
-  name: 'BorderRadiusViewer',
-  components: {
-    NSlider,
-    NForm,
-    NFormItem,
-    NSelect,
-    NCard,
-    NColorPicker,
-    TextareaCopyable,
-  },
-  setup() {
-    const borders = ref<Borders>({
-      topLeft: { label: 'Top Left', value: 0, max: 100 },
-      topRight: { label: 'Top Right', value: 0, max: 100 },
-      bottomLeft: { label: 'Bottom Left', value: 0, max: 100 },
-      bottomRight: { label: 'Bottom Right', value: 0, max: 100 },
-    });
-    const unit = ref('px');
-    const borderWidth = ref<number>(0);
-    const borderStyle = ref('solid');
-    const borderColor = ref('#000000');
-    const unitOptions = [
-      { label: 'Pixels (px)', value: 'px' },
-      { label: 'Percentage (%)', value: '%' },
-    ];
-    const borderStyles = [
-      { label: 'Solid', value: 'solid' },
-      { label: 'Dashed', value: 'dashed' },
-      { label: 'Dotted', value: 'dotted' },
-      { label: 'Double', value: 'double' },
-      { label: 'Groove', value: 'groove' },
-      { label: 'Ridge', value: 'ridge' },
-      { label: 'Inset', value: 'inset' },
-      { label: 'Outset', value: 'outset' },
-      { label: 'None', value: 'none' },
-    ];
-    const styleObject = computed(() => ({
-      border: `${borderWidth.value}px ${borderStyle.value} ${borderColor.value}`,
-      borderRadius: `${borders.value.topLeft.value}${unit.value} ${borders.value.topRight.value}${unit.value} ${borders.value.bottomRight.value}${unit.value} ${borders.value.bottomLeft.value}${unit.value}`,
-    }));
-
-    const cssOutput = computed(
-      () =>
-        `border: ${borderWidth.value}px ${borderStyle.value} ${borderColor.value};
-border-radius: ${borders.value.topLeft.value}${unit.value} ${borders.value.topRight.value}${unit.value} ${borders.value.bottomRight.value}${unit.value} ${borders.value.bottomLeft.value}${unit.value};`,
-    );
-
-    function updateCSSOutput() {
-      // Forces update computed properties
-    }
-
-    return {
-      borders,
-      unit,
-      borderWidth,
-      borderStyle,
-      borderColor,
-      unitOptions,
-      borderStyles,
-      cssOutput,
-      updateCSSOutput,
-      styleObject,
-    };
-  },
-});
-</script>
-<style scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.square {
-  width: 250px;
-  height: 250px;
-  background-color: #f3f3f3;
-}
-
-.controls {
-  width: 100%;
-}
-
-.radius-controls,
-.border-controls {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 20px;
-}
-
-.half-slider,
-.border-width-slider {
-  position: relative;
-  padding: 10px 0;
-  width: 60%;
-}
-
-.half-slider span,
-.border-width-slider span {
-  position: absolute;
-  right: 0;
-  top: 30px;
-  background-color: #fff;
-  padding: 2px 6px;
-  border-radius: 5px;
-  font-size: 0.9em;
-  color: #333;
-}
-
-.border-style-select {
-  width: 30%;
-}
-
-n-slider {
-  width: calc(100% - 60px);
-}
-
-.controls .n-form-item__label {
-  min-width: 70px;
-  text-align: right;
-}
-
-n-select,
-n-color-picker {
-  width: 100%;
-}
-</style>
 <template>
   <div class="container">
     <div class="square" :style="styleObject"></div>
@@ -211,3 +73,143 @@ n-color-picker {
     </NCard>
   </div>
 </template>
+
+<script lang="ts">
+import { computed, defineComponent, ref } from 'vue';
+import { NCard, NColorPicker, NForm, NFormItem, NSlider, NSelect } from 'naive-ui';
+import type { Borders } from './border-generator.service';
+import TextareaCopyable from '@/components/TextareaCopyable.vue';
+import { generateCSSOutput } from './border-generator.service';
+
+export default defineComponent({
+  name: 'BorderRadiusViewer',
+  components: {
+    NSlider,
+    NForm,
+    NFormItem,
+    NSelect,
+    NCard,
+    NColorPicker,
+    TextareaCopyable,
+  },
+  setup() {
+    const borders = ref<Borders>({
+      topLeft: { label: 'Top Left', value: 0, max: 100 },
+      topRight: { label: 'Top Right', value: 0, max: 100 },
+      bottomLeft: { label: 'Bottom Left', value: 0, max: 100 },
+      bottomRight: { label: 'Bottom Right', value: 0, max: 100 },
+    });
+    const unit = ref('px');
+    const borderWidth = ref<number>(0);
+    const borderStyle = ref('solid');
+    const borderColor = ref('#000000');
+    const unitOptions = [
+      { label: 'Pixels (px)', value: 'px' },
+      { label: 'Percentage (%)', value: '%' },
+    ];
+    const borderStyles = [
+      { label: 'Solid', value: 'solid' },
+      { label: 'Dashed', value: 'dashed' },
+      { label: 'Dotted', value: 'dotted' },
+      { label: 'Double', value: 'double' },
+      { label: 'Groove', value: 'groove' },
+      { label: 'Ridge', value: 'ridge' },
+      { label: 'Inset', value: 'inset' },
+      { label: 'Outset', value: 'outset' },
+      { label: 'None', value: 'none' },
+    ];
+    const styleObject = computed(() => ({
+      border: `${borderWidth.value}px ${borderStyle.value} ${borderColor.value}`,
+      borderRadius: `${borders.value.topLeft.value}${unit.value} ${borders.value.topRight.value}${unit.value} ${borders.value.bottomRight.value}${unit.value} ${borders.value.bottomLeft.value}${unit.value}`,
+    }));
+
+    const cssOutput = computed(
+      () =>
+        `border: ${borderWidth.value}px ${borderStyle.value} ${borderColor.value};
+border-radius: ${borders.value.topLeft.value}${unit.value} ${borders.value.topRight.value}${unit.value} ${borders.value.bottomRight.value}${unit.value} ${borders.value.bottomLeft.value}${unit.value};`,
+    );
+
+    function updateCSSOutput() {
+      // Forces update computed properties
+    }
+
+    return {
+      borders,
+      unit,
+      borderWidth,
+      borderStyle,
+      borderColor,
+      unitOptions,
+      borderStyles,
+      cssOutput,
+      updateCSSOutput,
+      styleObject,
+    };
+  },
+});
+</script>
+
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.square {
+  width: 250px;
+  height: 250px;
+  background-color: #f3f3f3;
+}
+
+.controls {
+  width: 100%;
+}
+
+.radius-controls,
+.border-controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+}
+
+.half-slider,
+.border-width-slider {
+  position: relative;
+  padding: 10px 0;
+  width: 60%;
+}
+
+.half-slider span,
+.border-width-slider span {
+  position: absolute;
+  right: 0;
+  top: 30px;
+  background-color: #fff;
+  padding: 2px 6px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  color: #333;
+}
+
+.border-style-select {
+  width: 30%;
+}
+
+n-slider {
+  width: calc(100% - 60px);
+}
+
+.controls .n-form-item__label {
+  min-width: 70px;
+  text-align: right;
+}
+
+n-select,
+n-color-picker {
+  width: 100%;
+}
+</style>
