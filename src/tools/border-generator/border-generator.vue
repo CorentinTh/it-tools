@@ -72,71 +72,6 @@ border-radius: ${borders.value.topLeft.value}${unit.value} ${borders.value.topRi
 });
 </script>
 
-<style scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.square {
-  width: 250px;
-  height: 250px;
-  background-color: #f3f3f3;
-}
-
-.controls {
-  width: 100%;
-}
-
-.radius-controls,
-.border-controls {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 20px;
-}
-
-.half-slider,
-.border-width-slider {
-  position: relative;
-  padding: 10px 0;
-  width: 60%;
-}
-
-.half-slider span,
-.border-width-slider span {
-  position: absolute;
-  right: 0;
-  top: 30px;
-  background-color: #fff;
-  padding: 2px 6px;
-  border-radius: 5px;
-  font-size: 0.9em;
-  color: #333;
-}
-
-.border-style-select {
-  width: 30%;
-}
-
-n-slider {
-  width: calc(100% - 60px);
-}
-
-.controls .n-form-item__label {
-  min-width: 70px;
-  text-align: right;
-}
-
-n-select,
-n-color-picker {
-  width: 100%;
-}
-</style>
-
 <template>
   <div class="container">
     <div class="square" :style="styleObject" />
@@ -212,3 +147,68 @@ n-color-picker {
     </NCard>
   </div>
 </template>
+
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.square {
+  width: 250px;
+  height: 250px;
+  background-color: #f3f3f3;
+}
+
+.controls {
+  width: 100%;
+}
+
+.radius-controls,
+.border-controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+}
+
+.half-slider,
+.border-width-slider {
+  position: relative;
+  padding: 10px 0;
+  width: 60%;
+}
+
+.half-slider span,
+.border-width-slider span {
+  position: absolute;
+  right: 0;
+  top: 30px;
+  background-color: #fff;
+  padding: 2px 6px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  color: #333;
+}
+
+.border-style-select {
+  width: 30%;
+}
+
+n-slider {
+  width: calc(100% - 60px);
+}
+
+.controls .n-form-item__label {
+  min-width: 70px;
+  text-align: right;
+}
+
+n-select,
+n-color-picker {
+  width: 100%;
+}
+</style>
