@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('Tool - Border generator', () => {
   test.beforeEach(async ({ page }) => {
@@ -7,9 +7,5 @@ test.describe('Tool - Border generator', () => {
 
   test('Has correct title', async ({ page }) => {
     await expect(page).toHaveTitle('Border generator - IT Tools');
-  });
-
-  test('', async ({ page }) => {
-
   });
 });
