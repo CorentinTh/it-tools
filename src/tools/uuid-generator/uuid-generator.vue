@@ -96,8 +96,7 @@ const { copy } = useCopy({ source: uuids, text: 'UUIDs copied to the clipboard' 
       :value="uuids"
       multiline
       placeholder="Your uuids"
-      autosize
-      rows="1"
+      :rows="count"
       readonly
       raw-text
       monospace
