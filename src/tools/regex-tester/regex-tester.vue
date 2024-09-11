@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import RandExp from 'randexp';
 import { render } from '@regexper/render';
+import type { ShadowRootExpose } from 'vue-shadow-dom';
 import { matchRegex } from './regex-tester.service';
 import { useValidation } from '@/composable/validation';
 import { useQueryParamOrStorage } from '@/composable/queryParams';
@@ -13,7 +14,7 @@ const multiline = ref(false);
 const dotAll = ref(true);
 const unicode = ref(true);
 const unicodeSets = ref(false);
-const visualizerSVG = ref() as Ref<SVGSVGElement>;
+const visualizerSVG = ref<ShadowRootExpose>();
 
 const regexValidation = useValidation({
   source: regex,
@@ -70,12 +71,20 @@ const sample = computed(() => {
 watchEffect(
   async () => {
     const regexValue = regex.value;
-    const svg = visualizerSVG.value;
-    svg.childNodes.forEach(n => n.remove());
-    try {
-      await render(regexValue, svg);
-    }
-    catch (_) {
+    // shadow root is required:
+    // @regexper/render append a <defs><style> that broke svg transparency of icons in the whole site
+    const visualizer = visualizerSVG.value?.shadow_root;
+    if (visualizer) {
+      while (visualizer.lastChild) {
+        visualizer.removeChild(visualizer.lastChild);
+      }
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      try {
+        await render(regexValue, svg);
+      }
+      catch (_) {
+      }
+      visualizer.appendChild(svg);
     }
   },
 );
@@ -176,7 +185,9 @@ watchEffect(
     </c-card>
 
     <c-card title="Regex Diagram" style="overflow-x: scroll;" mt-3>
-      <svg ref="visualizerSVG" />
+      <shadow-root ref="visualizerSVG">
+&#xa0;
+      </shadow-root>
     </c-card>
   </div>
 </template>
