@@ -64,6 +64,8 @@ declare module '@vue/runtime-core' {
     'CTextCopyable.demo': typeof import('./src/ui/c-text-copyable/c-text-copyable.demo.vue')['default']
     CTooltip: typeof import('./src/ui/c-tooltip/c-tooltip.vue')['default']
     'CTooltip.demo': typeof import('./src/ui/c-tooltip/c-tooltip.demo.vue')['default']
+    DataStorageUnitConverter: typeof import('./src/tools/data-storage-unit-converter/data-storage-unit-converter.vue')['default']
+    DataTransferRateConverter: typeof import('./src/tools/data-transfer-rate-converter/data-transfer-rate-converter.vue')['default']
     DateTimeConverter: typeof import('./src/tools/date-time-converter/date-time-converter.vue')['default']
     'DemoHome.page': typeof import('./src/ui/demo/demo-home.page.vue')['default']
     DemoWrapper: typeof import('./src/ui/demo/demo-wrapper.vue')['default']
