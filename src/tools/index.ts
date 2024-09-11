@@ -1,6 +1,7 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+import { tool as smartTextReplacer } from './smart-text-replacer';
 import { tool as pdfSignatureChecker } from './pdf-signature-checker';
 import { tool as numeronymGenerator } from './numeronym-generator';
 import { tool as macAddressGenerator } from './mac-address-generator';
@@ -155,7 +156,15 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Text',
-    components: [loremIpsumGenerator, textStatistics, emojiPicker, stringObfuscator, textDiff, numeronymGenerator],
+    components: [
+      loremIpsumGenerator,
+      textStatistics,
+      emojiPicker,
+      stringObfuscator,
+      textDiff,
+      numeronymGenerator,
+      smartTextReplacer,
+    ],
   },
   {
     name: 'Data',
