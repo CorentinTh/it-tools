@@ -19,7 +19,7 @@ function decodeJwt({ jwt }: { jwt: string }) {
 
 function parseClaims({ claim, value }: { claim: string; value: unknown }) {
   const claimDescription = CLAIM_DESCRIPTIONS[claim];
-  const formattedValue = _.isPlainObject(value) ? JSON.stringify(value, null, 3) : _.toString(value);
+  const formattedValue = _.isPlainObject(value) || _.isArray(value) ? JSON.stringify(value, null, 3) : _.toString(value);
   const friendlyValue = getFriendlyValue({ claim, value });
 
   return {

@@ -1,10 +1,11 @@
 import { FileDiff } from '@vicons/tabler';
 import { defineTool } from '../tool';
+import { translate } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: 'Text diff',
+  name: translate('tools.text-diff.title'),
   path: '/text-diff',
-  description: 'Compare two texts and see the differences between them.',
+  description: translate('tools.text-diff.description'),
   keywords: ['text', 'diff', 'compare', 'string', 'text diff', 'code'],
   component: () => import('./text-diff.vue'),
   icon: FileDiff,
