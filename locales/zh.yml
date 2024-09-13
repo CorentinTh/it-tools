@@ -186,15 +186,15 @@ tools:
     description: 将字符串编码和解码为其 Base64 格式表示形式即可。
 
   toml-to-yaml:
-    title: TOML 到 YAML
-    description: Parse and convert TOML to YAML.
+    title: TOML 转 YAML
+    description: 解析TOML并将其转换为YAML。
 
   math-evaluator:
     title: 数学计算器
     description: 计算数学表达式的计算器。您可以使用sqrt、cos、sin、abs等函数。
 
   json-to-yaml-converter:
-    title: JSON到YAML转换器
+    title: JSON 转 YAML
     description: 在线转换将JSON转换为YAML。
 
   url-parser:
@@ -226,7 +226,7 @@ tools:
     description: 将JSON字符串修饰为友好的可读格式。
 
   docker-run-to-docker-compose-converter:
-    title: Docker Run 到 docker-compose 转换器
+    title: Docker Run 转 docker-compose
     description: 将 docker run 命令行转换为 docker-compose 文件!
 
   mac-address-lookup:
@@ -238,7 +238,7 @@ tools:
     description: 将mime类型转换为扩展，反之亦然。
 
   toml-to-json:
-    title: TOML 到 JSON
+    title: TOML 转 JSON
     description: 解析TOML并将其转换为JSON。
 
   lorem-ipsum-generator:
@@ -274,7 +274,7 @@ tools:
     description: 在线HTML编辑器具有功能丰富的所见即所得编辑器，立即获得内容的源代码。
 
   yaml-to-toml:
-    title: YAML 到 TOML
+    title: YAML 转 TOML
     description: 解析YAML并将其转换为TOML。
 
   mac-address-generator:
@@ -341,7 +341,7 @@ tools:
     description: 在不同的基数（十进制、十六进制、二进制、八进制、base64…）之间转换数字
 
   yaml-to-json-converter:
-    title: YAML到JSON转换器
+    title: YAML 转 JSON
     description: 使用此在线转换器将YAML转换为JSON。
 
   uuid-generator:
@@ -357,7 +357,7 @@ tools:
     description: 获取有关文本、字符数、字数、大小等的信息
 
   text-to-nato-alphabet:
-    title: 文本转北约字母表
+    title: 文本 转 北约字母表
     description: 将文本转换为北约拼音字母以进行口头传播。
 
   basic-auth-generator:
@@ -365,7 +365,7 @@ tools:
     description: 从用户名和密码生成 base64 基本身份验证标头。
 
   text-to-unicode:
-    title: 文本转 Unicode
+    title: 文本 转 Unicode
     description: 解析文本并将其转换为 unicode，反之亦然
 
   ipv4-range-expander:
@@ -385,5 +385,30 @@ tools:
     description: 编码为url编码格式（也称为“百分比编码”）或从中解码。
 
   text-to-binary:
-    title: 文本到 ASCII 二进制
+    title: 文本 转 ASCII
     description: 将文本转换为其 ASCII 二进制表示形式，反之亦然。
+
+  markdown-to-html:
+    title: Markdown 转 HTML
+    description: 将Markdown转换为Html并允许打印(以PDF格式)。
+
+  email-normalizer:
+    title: Email格式化
+    description: 将电子邮件地址规范化为标准格式，以便于比较。用于重复数据删除和数据清理。
+
+  safelink-decoder:
+    title: Outlook安全连接解码器
+    description: 解码Outlook安全连接
+
+  xml-to-json:
+    title: XML 转 JSON
+    description: 将XML转换为JSON。
+
+  json-to-xml:
+    title: JSON 转 XML
+    description: 将JSON转换为XML。
+
+  ascii-text-drawer:
+    title: ASCII 艺术画生成器
+    description: 生成各种字体或样式的ASCII 艺术画
+
