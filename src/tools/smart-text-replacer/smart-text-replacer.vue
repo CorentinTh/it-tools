@@ -16,7 +16,7 @@ const currentActiveIndex = ref(0);
 const totalMatches = ref(0);
 
 const highlightedText = computed(() => {
-  const findWhatValue = findWhat.value.trim();
+  const findWhatValue = findWhat.value;
   let strValue = str.value;
 
   if (!strValue) {
@@ -142,7 +142,7 @@ const { copy } = useCopy({ source: highlightedText });
       </div>
       <div flex-1>
         <div>Replace with:</div>
-        <c-input-text v-model:value="replaceWith" placeholder="(can include $1 or $<groupName>)" @keyup.enter="replaceSelected()" />
+        <c-input-text v-model:value="replaceWith" placeholder="Replacement expression" @keyup.enter="replaceSelected()" />
       </div>
     </div>
 
