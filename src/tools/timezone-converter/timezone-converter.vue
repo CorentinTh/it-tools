@@ -16,6 +16,8 @@ function convertMinsToHrsMins(minutes: number) {
 
 const otherTimezones = useStorage<{ name: string }[]>('timezone-conv:zones', [{ name: 'Etc/GMT' }]);
 const currentTimezone = useStorage<string>('timezone-conv:current', browserTimezone);
+const use24HourTimeFormat = useStorage<boolean>('timezone-conv:24h', true);
+
 const now = Date.now();
 const currentDatetimeRange = ref<[number, number]>([now, now]);
 const currentTimezoneOffset = computed(() => {
@@ -27,7 +29,7 @@ function convertToTimezone(tz: string, timestamp: number) {
     + getTimezoneOffset(currentTimezone.value, new Date()) * 60 * 1000
     - getTimezoneOffset(browserTimezone, new Date()) * 60 * 1000,
   ).toLocaleString(undefined,
-    { timeZone: tz, timeZoneName: undefined, hour12: false });
+    { timeZone: tz, timeZoneName: undefined, hour12: !use24HourTimeFormat.value });
 }
 
 const tzToCountriesInput = ref(browserTimezone);
@@ -58,12 +60,18 @@ const countryToTimezonesOutput = computed(() => ctz.getTimezonesForCountry(count
         mb-2
       />
 
-      <input-copyable
-        label="Current Timezone Offset (min)"
-        label-position="left"
-        :value="currentTimezoneOffset"
-        mb-2
-      />
+      <n-space justify="space-evenly">
+        <input-copyable
+          label="Current Timezone Offset (min)"
+          label-position="left"
+          :value="currentTimezoneOffset"
+          readonly
+          mb-2
+        />
+        <n-form-item label="Use 24 hour time format" label-placement="left">
+          <n-switch v-model:value="use24HourTimeFormat" />
+        </n-form-item>
+      </n-space>
 
       <c-card title="Date-Time in other timezones">
         <n-dynamic-input
@@ -92,9 +100,9 @@ const countryToTimezonesOutput = computed(() => ctz.getTimezonesForCountry(count
 
     <c-card title="Country to Timezones" mb-2>
       <c-select
+        v-model:value="countryToTimezonesInput"
         label="Country"
         label-position="left"
-        :value="countryToTimezonesInput"
         searchable
         :options="allCountries"
       />
@@ -110,9 +118,9 @@ const countryToTimezonesOutput = computed(() => ctz.getTimezonesForCountry(count
 
     <c-card title="Timezones to Countries" mb-2>
       <c-select
+        v-model:value="tzToCountriesInput"
         label="Timezone"
         label-position="left"
-        :value="tzToCountriesInput"
         searchable
         :options="allTimezones"
       />
