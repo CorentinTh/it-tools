@@ -17,6 +17,8 @@ function convertMinsToHrsMins(minutes: number) {
 const otherTimezones = useStorage<{ name: string }[]>('timezone-conv:zones', [{ name: 'Etc/GMT' }]);
 const currentTimezone = useStorage<string>('timezone-conv:current', browserTimezone);
 const use24HourTimeFormat = useStorage<boolean>('timezone-conv:24h', true);
+const format = computed(() => use24HourTimeFormat.value ? 'yyyy-MM-dd HH:mm:ss' : 'yyyy-MM-dd hh:mm:ss a');
+const timePickerProps = computed(() => use24HourTimeFormat.value ? ({ use12Hours: false }) : ({ use12Hours: true }));
 
 const now = Date.now();
 const currentDatetimeRange = ref<[number, number]>([now, now]);
@@ -55,14 +57,17 @@ const countryToTimezonesOutput = computed(() => ctz.getTimezonesForCountry(count
         mb-2
       />
       <n-date-picker
+        :key="format"
         v-model:value="currentDatetimeRange"
         type="datetimerange"
+        :format="format"
+        :time-picker-props="timePickerProps"
         mb-2
       />
 
       <n-space justify="space-evenly">
         <input-copyable
-          label="Current Timezone Offset (min)"
+          label="Current Timezone Offset"
           label-position="left"
           :value="currentTimezoneOffset"
           readonly
