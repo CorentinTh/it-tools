@@ -98,6 +98,9 @@ dependencies:
   ibantools:
     specifier: ^4.3.3
     version: 4.3.3
+  ical.js:
+    specifier: ^2.0.1
+    version: 2.0.1
   js-base64:
     specifier: ^3.7.6
     version: 3.7.7
@@ -152,6 +155,9 @@ dependencies:
   qrcode:
     specifier: ^1.5.1
     version: 1.5.1
+  qrcode-parser:
+    specifier: ^2.1.3
+    version: 2.1.3
   sql-formatter:
     specifier: ^13.0.0
     version: 13.0.0
@@ -6116,6 +6122,10 @@ packages:
     resolution: {integrity: sha512-RUTlGuFj3cU/Qfu5YIrsIZjW34/VDgKOz5fDr64Mc4NWP9b2i48vQ39r5xCl1yyFQeyEG/lASstIQHAUX18rRA==}
     dev: false
 
+  /ical.js@2.0.1:
+    resolution: {integrity: sha512-uYYb1CwTXbd9NP/xTtgQZ5ivv6bpUjQu9VM98s3X78L3XRu00uJW5ZtmnLwyxhztpf5fSiRyDpFW7ZNCePlaPw==}
+    dev: false
+
   /iconv-lite@0.6.3:
     resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
     engines: {node: '>=0.10.0'}
@@ -6639,6 +6649,10 @@ packages:
     resolution: {integrity: sha512-p/nXbhSEcu3pZRdkW1OfJhpsVtW1gd4Wa1fnQc9YLiTfAjn0312eMKimbdIQzuZl9aa9xUGaRlP9T/CJE/ditQ==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /jsqr@1.4.0:
+    resolution: {integrity: sha512-dxLob7q65Xg2DvstYkRpkYtmKm2sPJ9oFhrhmudT1dZvNFFTlroai3AWSpLey/w5vMcLBXRgOJsbXpdN9HzU/A==}
+    dev: false
 
   /jwt-decode@3.1.2:
     resolution: {integrity: sha512-UfpWE/VZn0iP50d8cz9NrZLM9lSWhcJ+0Gt/nm4by88UL+J1SiKN8/5dkjMmbEzwL2CAe+67GsegCbIKtbp75A==}
@@ -7728,6 +7742,12 @@ packages:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
     dev: true
+
+  /qrcode-parser@2.1.3:
+    resolution: {integrity: sha512-tyakoHUQXCjH1+RGiqxH3/6XqbQuXuSaW0CkUp1AlYT0+XA4ndG7bxxyyWpdnr0Z2Vuv0GRwgKSq6sOzNiQfog==}
+    dependencies:
+      jsqr: 1.4.0
+    dev: false
 
   /qrcode@1.5.1:
     resolution: {integrity: sha512-nS8NJ1Z3md8uTjKtP+SGGhfqmTCs5flU/xR623oI0JX+Wepz9R8UrRVCTBTJm3qGw3rH6jJ6MUHjkDx15cxSSg==}
