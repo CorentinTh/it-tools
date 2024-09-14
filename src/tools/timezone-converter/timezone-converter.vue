@@ -66,12 +66,9 @@ const countryToTimezonesOutput = computed(() => ctz.getTimezonesForCountry(count
       />
 
       <n-space justify="space-evenly">
-        <c-input-text
-          label="Current Timezone Offset"
-          label-position="left"
-          :value="currentTimezoneOffset"
-          readonly
-        />
+        <n-form-item label="Current Timezone Offset:" label-placement="left">
+          <n-input :value="currentTimezoneOffset" readonly style="width:5em" />
+        </n-form-item>
         <n-form-item label="Use 24 hour time format" label-placement="left">
           <n-switch v-model:value="use24HourTimeFormat" />
         </n-form-item>
