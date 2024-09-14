@@ -187,6 +187,7 @@ declare module '@vue/runtime-core' {
     UserAgentResultCards: typeof import('./src/tools/user-agent-parser/user-agent-result-cards.vue')['default']
     UuidGenerator: typeof import('./src/tools/uuid-generator/uuid-generator.vue')['default']
     WifiQrCodeGenerator: typeof import('./src/tools/wifi-qr-code-generator/wifi-qr-code-generator.vue')['default']
+    WpaPskGenerator: typeof import('./src/tools/wpa-psk-generator/wpa-psk-generator.vue')['default']
     XmlFormatter: typeof import('./src/tools/xml-formatter/xml-formatter.vue')['default']
     XmlToJson: typeof import('./src/tools/xml-to-json/xml-to-json.vue')['default']
     YamlToJson: typeof import('./src/tools/yaml-to-json-converter/yaml-to-json.vue')['default']
