@@ -160,7 +160,7 @@ dependencies:
     version: 0.3.8
   postal-mime:
     specifier: ^2.2.7
-    version: 2.2.7
+    version: 2.2.8
   qrcode:
     specifier: ^1.5.1
     version: 1.5.1
@@ -7960,8 +7960,8 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: false
 
-  /postal-mime@2.2.7:
-    resolution: {integrity: sha512-13BykdDhBz5QCJ3tVWKW6eTX3ghLqlxm6CxS91AanUptB53+csbIyDW4KdP+IzYZHF+xZ2CkTiBTK+k0/3vR8w==}
+  /postal-mime@2.2.8:
+    resolution: {integrity: sha512-dr4rxjQc97vzHBoh1mbiQA//LC0ZcS3R6nSPrNF//WBXcc+pfg3pfiYDBiBQdgMegdN324ISzbanVmjlfFA9Mg==}
     dev: false
 
   /postcss-selector-parser@6.0.13:
@@ -8217,6 +8217,11 @@ packages:
       randombytes: 2.1.0
       safe-buffer: 5.2.1
     dev: true
+
+  /punycode.js@2.3.1:
+    resolution: {integrity: sha512-uxFIHU0YlHYhDQtV4R9J6a52SLx28BCjT+4ieh7IGbgwVJWO+km431c4yRlREUAsAmt/uMjQUyQHNEPf0M39CA==}
+    engines: {node: '>=6'}
+    dev: false
 
   /punycode@1.4.1:
     resolution: {integrity: sha512-jmYNElW7yvO7TV33CjSmvSiE2yco3bV2czu/OzDKdMNVZQWfxCblURLhf+47syQRBntjfLdd/H0egrzIG+oaFQ==}
