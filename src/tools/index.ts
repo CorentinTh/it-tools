@@ -11,6 +11,7 @@ import { tool as textToUnicode } from './text-to-unicode';
 import { tool as safelinkDecoder } from './safelink-decoder';
 import { tool as xmlToJson } from './xml-to-json';
 import { tool as jsonToXml } from './json-to-xml';
+import { tool as markdownToHtml } from './markdown-to-html';
 import { tool as pdfSignatureChecker } from './pdf-signature-checker';
 import { tool as numeronymGenerator } from './numeronym-generator';
 import { tool as macAddressGenerator } from './mac-address-generator';
@@ -114,6 +115,7 @@ export const toolsByCategory: ToolCategory[] = [
       tomlToYaml,
       xmlToJson,
       jsonToXml,
+      markdownToHtml,
     ],
   },
   {
