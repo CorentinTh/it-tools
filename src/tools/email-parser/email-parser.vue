@@ -13,9 +13,11 @@ const parsedEmail = computedAsync(async () => {
   try {
     if (inputType.value === 'file' && file) {
       return await PostalMime.parse(await file.arrayBuffer());
-    } else if (inputType.value === 'content' && emailContentValue) {
+    }
+    else if (inputType.value === 'content' && emailContentValue) {
       return await PostalMime.parse(emailContentValue);
-    } else {
+    }
+    else {
       return null;
     }
   }

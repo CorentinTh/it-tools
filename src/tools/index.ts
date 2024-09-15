@@ -3,6 +3,7 @@ import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
 import { tool as emailNormalizer } from './email-normalizer';
 import { tool as emailParser } from './email-parser';
+import { tool as outlookParser } from './outlook-parser';
 
 import { tool as asciiTextDrawer } from './ascii-text-drawer';
 
@@ -167,6 +168,7 @@ export const toolsByCategory: ToolCategory[] = [
       macAddressGenerator,
       ipv6UlaGenerator,
       emailParser,
+      outlookParser,
     ],
   },
   {
