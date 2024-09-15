@@ -98,8 +98,11 @@ dependencies:
   ibantools:
     specifier: ^4.3.3
     version: 4.3.3
+  image-in-browser:
+    specifier: ^3.1.0
+    version: 3.1.0
   js-base64:
-    specifier: ^3.7.6
+    specifier: ^3.7.7
     version: 3.7.7
   json5:
     specifier: ^2.2.3
@@ -6141,6 +6144,10 @@ packages:
     resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}
     engines: {node: '>= 4'}
     dev: true
+
+  /image-in-browser@3.1.0:
+    resolution: {integrity: sha512-8VYDQU/AzN6cLrPEjF1W3QFLZS9clmEbztXE6WMBoxBJxOzjzSvC1kIusEQEc+IBFxsCbMKREFw/Cn3xVE8VMA==}
+    dev: false
 
   /image-size@0.5.5:
     resolution: {integrity: sha512-6TDAlDPZxUFCv+fuOkIoXT/V/f3Qbq8e37p+YOiYrUv3v9cc3/6x78VdfPgFVaB9dZYeLUfKgHRebpkm/oP2VQ==}
