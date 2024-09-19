@@ -30,7 +30,7 @@ docker run -d --name it-tools --restart unless-stopped -p 8080:80 ghcr.io/corent
 
 #### Using Docker Compose
 
-```sh
+```yml
 services:
   it-tools:
     container_name: it-tools
