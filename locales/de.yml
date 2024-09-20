@@ -535,6 +535,7 @@ tools:
     description: >-
       Teste einen regulären Ausdruck, erhalte eine Liste mit Treffern und ein
       Diagramm.
+    regex: Regex
     regex-input: 'Regex zum Testen:'
     regex-input-placeholder: Eingabe des zu testenden regulären Ausdrucks
     link: Siehe Spickzettel für reguläre Ausdrücke

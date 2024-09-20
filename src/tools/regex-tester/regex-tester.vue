@@ -93,7 +93,7 @@ watchEffect(
 
 <template>
   <div max-w-600px>
-    <c-card title="Regex" mb-1>
+    <c-card :title="t('tools.regex-tester.regex')" mb-1>
       <c-input-text
         v-model:value="regex"
         :label="t('tools.regex-tester.regex-input')"
