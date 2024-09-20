@@ -547,13 +547,9 @@ tools:
     groups: Gruppen
     sample: Beispiel für passenden Text
     diagram: Regex-Diagramm
-    global: Globale Suche
-    ignoreCase: Suche ohne Berücksichtigung der Groß-/Kleinschreibung
+    global: Globale Suche.
+    ignoreCase: Suche ohne Berücksichtigung der Groß-/Kleinschreibung.
     multiline: Ermöglicht die Übereinstimmung von ^ und $ neben Zeilenumbruchzeichen.
-    dotAll: |-
-      Ermöglicht . 
-      passend zu Zeilenumbruchzeichen.
-    unicode: |-
-      Unicode; 
-      behandelt ein Muster als eine Folge von Unicode-Codepunkten.
+    dotAll: Ermöglicht . passend zu Zeilenumbruchzeichen.
+    unicode: Unicode; behandelt ein Muster als eine Folge von Unicode-Codepunkten.
     unicodeSets: Ein Upgrade zum U-Modus mit mehr Unicode-Funktionen.
