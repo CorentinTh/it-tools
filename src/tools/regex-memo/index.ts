@@ -8,5 +8,5 @@ export const tool = defineTool({
   keywords: ['regex', 'regular', 'expression', 'javascript', 'memo', 'cheatsheet'],
   component: () => import('./regex-memo.vue'),
   icon: BrandJavascript,
-  createdAt: new Date('2024-09-14'),
+  createdAt: new Date('2024-09-20'),
 });
