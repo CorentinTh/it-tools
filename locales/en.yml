@@ -496,3 +496,27 @@ tools:
     html: 'Output HTML:'
     button:
       print: Print as PDF
+  regex-memo:
+    title: Regex cheatsheet
+    description: Javascript Regex/Regular Expression cheatsheet
+  regex-tester:
+    title: Regex Tester
+    description: Test a regular expression, get a list of matches and a diagram.
+    regex-input: 'Regex to test:'
+    regex-input-placeholder: Put the regex to test
+    link: See Regular Expression Cheatsheet
+    text-input: 'Text to match:'
+    text-input-placeholder: Put the text to match
+    matches: Matches
+    text-index: Index in text
+    value: Value
+    captures: Captures
+    groups: Groups
+    sample: Sample matching text
+    diagram: Regex Diagram
+    global: Global search
+    ignoreCase: Case-insensitive search
+    multiline: Allows ^ and $ to match next to newline characters.
+    dotAll: Allows . to match newline characters.
+    unicode: Unicode; treat a pattern as a sequence of Unicode code points.
+    unicodeSets: An upgrade to the u mode with more Unicode features.
