@@ -550,6 +550,6 @@ tools:
     global: Globale Suche.
     ignoreCase: Suche ohne Berücksichtigung der Groß-/Kleinschreibung.
     multiline: Ermöglicht die Übereinstimmung von ^ und $ neben Zeilenumbruchzeichen.
-    dotAll: Ermöglicht . passend zu Zeilenumbruchzeichen.
+    dotAll: Lässt . als Treffer für Zeilenumbruchzeichen zu.
     unicode: Unicode; behandelt ein Muster als eine Folge von Unicode-Codepunkten.
     unicodeSets: Ein Upgrade zum U-Modus mit mehr Unicode-Funktionen.
