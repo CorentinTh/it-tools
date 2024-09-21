@@ -78,6 +78,19 @@ toolCard:
   new: Neu
 search:
   label: Suche
+textareaCopyable:
+  copy: In die Zwischenablage kopieren
+  copied: Kopiert!
+spanCopyable:
+  copy: In die Zwischenablage kopieren
+  copied: Kopiert!
+inputCopyable:
+  copy: In die Zwischenablage kopieren
+  copied: Kopiert!
+formatTransformer:
+  input: Eingabe
+  input-placeholder: Eingabe...
+  output: Ausgabe
 tools:
   categories:
     favorite-tools: Deine Lieblingstools
@@ -553,4 +566,4 @@ tools:
     multiline: Ermöglicht die Übereinstimmung von ^ und $ neben Zeilenumbruchzeichen.
     dotAll: Lässt . als Treffer für Zeilenumbruchzeichen zu.
     unicode: Unicode; behandelt ein Muster als eine Folge von Unicode-Codepunkten.
-    unicodeSets: Ein Upgrade zum U-Modus mit mehr Unicode-Funktionen.
+    unicodeSets: Ein Upgrade zum u-Modus mit mehr Unicode-Funktionen.

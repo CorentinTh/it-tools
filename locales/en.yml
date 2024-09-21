@@ -72,6 +72,19 @@ toolCard:
   new: New
 search:
   label: Search
+textareaCopyable:
+  copy: Copy to clipboard
+  copied: Copied!
+spanCopyable:
+  copy: Copy to clipboard
+  copied: Copied!
+inputCopyable:
+  copy: Copy to clipboard
+  copied: Copied!
+formatTransformer:
+  input: Input
+  input-placeholder: Input...
+  output: Output
 tools:
   categories:
     favorite-tools: Your favorite tools
