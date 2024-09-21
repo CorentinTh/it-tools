@@ -11,6 +11,8 @@ describe('list-converter', () => {
         removeDuplicates: true,
         itemPrefix: '"',
         itemSuffix: '"',
+        removeItemPrefix: '',
+        removeItemSuffix: '',
         listPrefix: '',
         listSuffix: '',
         reverseList: false,
@@ -36,6 +38,8 @@ describe('list-converter', () => {
         removeDuplicates: true,
         itemPrefix: '',
         itemSuffix: '',
+        removeItemPrefix: '',
+        removeItemSuffix: '',
         listPrefix: '',
         listSuffix: '',
         reverseList: false,
@@ -52,6 +56,8 @@ describe('list-converter', () => {
         trimItems: true,
         itemPrefix: '<li>',
         itemSuffix: '</li>',
+        removeItemPrefix: '',
+        removeItemSuffix: '',
         listPrefix: '<ul>',
         listSuffix: '</ul>',
         keepLineBreaks: true,
@@ -70,6 +76,35 @@ describe('list-converter', () => {
 <li>2</li>
 <li>3</li>
 </ul>`;
+      expect(convert(input, options)).toEqual(expected);
+    });
+
+    it('should remove prefix and suffix', () => {
+      const options: ConvertOptions = {
+        separator: '',
+        trimItems: true,
+        itemPrefix: '',
+        itemSuffix: '',
+        removeItemPrefix: '\<li\>',
+        removeItemSuffix: '\</li\>',
+        listPrefix: '',
+        listSuffix: '',
+        keepLineBreaks: true,
+        lowerCase: false,
+        removeDuplicates: false,
+        reverseList: false,
+        sortList: null,
+      };
+      const input = `
+<li>1</li>
+<li>2</li>
+<li>3</li>
+        `;
+      const expected = `
+1
+2
+3
+`;
       expect(convert(input, options)).toEqual(expected);
     });
   });

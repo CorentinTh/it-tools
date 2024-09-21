@@ -5,6 +5,8 @@ export interface ConvertOptions {
   trimItems: boolean
   itemPrefix: string
   itemSuffix: string
+  removeItemPrefix: string
+  removeItemSuffix: string
   listPrefix: string
   listSuffix: string
   reverseList: boolean

@@ -23,6 +23,8 @@ const conversionConfig = useStorage<ConvertOptions>('list-converter:conversionCo
   keepLineBreaks: false,
   itemPrefix: '',
   itemSuffix: '',
+  removeItemPrefix: '',
+  removeItemSuffix: '',
   listPrefix: '',
   listSuffix: '',
   reverseList: false,
@@ -84,6 +86,19 @@ function transformer(value: string) {
               mb-2
               placeholder=","
             />
+
+            <n-form-item label="Unwrap item" label-placement="left" label-width="120" :show-feedback="false" mb-2>
+              <c-input-text
+                v-model:value="conversionConfig.removeItemPrefix"
+                placeholder="Remove item prefix regex"
+                test-id="removeItemPrefix"
+              />
+              <c-input-text
+                v-model:value="conversionConfig.removeItemSuffix"
+                placeholder="Remove item suffix regex"
+                test-id="removeItemSuffix"
+              />
+            </n-form-item>
 
             <n-form-item label="Wrap item" label-placement="left" label-width="120" :show-feedback="false" mb-2>
               <c-input-text

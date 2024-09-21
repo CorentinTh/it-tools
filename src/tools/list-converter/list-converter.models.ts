@@ -20,6 +20,8 @@ function convert(list: string, options: ConvertOptions): string {
     .thru(whenever(!_.isNull(options.sortList), parts => parts.sort(byOrder({ order: options.sortList }))))
     .map(whenever(options.trimItems, _.trim))
     .without('')
+    .map(p => options.removeItemPrefix ? p.replace(new RegExp(`^${options.removeItemPrefix}`, 'g'), '') : p)
+    .map(p => options.removeItemSuffix ? p.replace(new RegExp(`${options.removeItemSuffix}$`, 'g'), '') : p)
     .map(p => options.itemPrefix + p + options.itemSuffix)
     .join(options.separator + lineBreak)
     .thru(text => [options.listPrefix, text, options.listSuffix].join(lineBreak))
