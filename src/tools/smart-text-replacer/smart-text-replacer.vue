@@ -187,7 +187,7 @@ const { copy } = useCopy({ source: highlightedText });
       </n-form-item>
     </div>
     <c-card v-if="highlightedText" mt-60px max-w-600px flex items-center gap-5px font-mono>
-      <!-- //NOSONAR --><div flex-1 break-anywhere text-wrap style="white-space: pre" v-html="highlightedText" />
+      <!-- //NOSONAR --><div flex-1 break-anywhere text-wrap style="white-space: pre-wrap" v-html="highlightedText" />
 
       <c-button @click="copy()">
         <icon-mdi:content-copy />
