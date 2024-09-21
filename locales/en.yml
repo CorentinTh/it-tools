@@ -72,6 +72,7 @@ toolCard:
   new: New
 search:
   label: Search
+  placeholder: Type to search a tool or a command...
 textareaCopyable:
   copy: Copy to clipboard
   copied: Copied!

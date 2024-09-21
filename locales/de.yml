@@ -78,6 +78,7 @@ toolCard:
   new: Neu
 search:
   label: Suche
+  placeholder: Tippe, um ein Tool oder einen Befehl zu suchen...
 textareaCopyable:
   copy: In die Zwischenablage kopieren
   copied: Kopiert!
