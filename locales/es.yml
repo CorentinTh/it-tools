@@ -4,8 +4,8 @@ home:
     favoriteTools: 'Tus herramientas favoritas'
     allTools: 'Todas las herramientas'
   subtitle: 'Herramientas practicas para desarrolladores'
-  toggleMenu: 'Toggle menu'
-  home: Home
+  toggleMenu: 'Alternar menú'
+  home: Inicio
   uiLib: 'UI Lib'
   support: 'Apoyar el desarrollo de IT-Tools'
   buyMeACoffee: 'Buy me a coffee'
@@ -48,7 +48,7 @@ about:
   notFound: '404 Not Found'
   sorry: 'Lo sentimos, esta página no parece existir'
   maybe: 'Tal vez el caché esté haciendo cosas raras, ¿probamos a refrescar forzosamente?'
-  backHome: 'Back home'
+  backHome: 'Volver al inicio'
 favoriteButton:
   remove: 'Quitar de favoritos'
   add: 'Añadir a favoritos'
@@ -60,12 +60,16 @@ tools:
   categories:
     favorite-tools: 'Tus herramientas favoritas'
     crypto: Crypto
-    converter: Converter
+    converter: Conversor
     web: Web
-    images and videos: 'Images & Videos'
+    images and videos: 'Imágenes y vídeos'
     development: Development
     network: Network
     math: Math
     measurement: Measurement
     text: Text
     data: Data
+
+  csv-to-json:
+    title: CSV a JSON
+    description: Convierte CSV a JSON con detección automática de cabeceras.
