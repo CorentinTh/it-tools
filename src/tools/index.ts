@@ -10,6 +10,8 @@ import { tool as safelinkDecoder } from './safelink-decoder';
 import { tool as xmlToJson } from './xml-to-json';
 import { tool as jsonToXml } from './json-to-xml';
 import { tool as timezoneConverter } from './timezone-converter';
+import { tool as regexTester } from './regex-tester';
+import { tool as regexMemo } from './regex-memo';
 import { tool as markdownToHtml } from './markdown-to-html';
 import { tool as pdfSignatureChecker } from './pdf-signature-checker';
 import { tool as numeronymGenerator } from './numeronym-generator';
@@ -158,6 +160,8 @@ export const toolsByCategory: ToolCategory[] = [
       xmlFormatter,
       yamlViewer,
       emailNormalizer,
+      regexTester,
+      regexMemo,
     ],
   },
   {
