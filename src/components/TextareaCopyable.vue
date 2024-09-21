@@ -41,7 +41,7 @@ const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : copyMessage.
 </script>
 
 <template>
-  <div style="overflow-x: hidden; width: 100%">
+  <div style="overflow-x: hidden; width: 100%; max-width: 80vw; margin: auto">
     <c-card relative>
       <n-scrollbar
         x-scrollable

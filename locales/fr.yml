@@ -79,3 +79,7 @@ tools:
     copied: Le token a été copié
     length: Longueur
     tokenPlaceholder: Le token...
+
+  csv-to-json:
+    title: CSV vers JSON
+    description: Convertit les fichiers CSV en JSON avec détection automatique des en-têtes.
