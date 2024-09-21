@@ -568,3 +568,4 @@ tools:
     dotAll: Lässt . als Treffer für Zeilenumbruchzeichen zu.
     unicode: Unicode; behandelt ein Muster als eine Folge von Unicode-Codepunkten.
     unicodeSets: Ein Upgrade zum u-Modus mit mehr Unicode-Funktionen.
+    no-match: Kein Treffer

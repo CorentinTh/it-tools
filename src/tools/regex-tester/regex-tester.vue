@@ -177,7 +177,7 @@ watchEffect(
         </tbody>
       </n-table>
       <c-alert v-else>
-        No match
+        {{ t('tools.regex-tester.no-match') }}
       </c-alert>
     </c-card>
 

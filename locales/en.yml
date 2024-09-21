@@ -535,3 +535,4 @@ tools:
     unicode: Unicode; treat a pattern as a sequence of Unicode code points.
     unicodeSets: An upgrade to the u mode with more Unicode features.
     regex: Regex
+    no-match: No match
