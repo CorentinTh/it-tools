@@ -146,27 +146,23 @@ const { copy } = useCopy({ source: highlightedText });
       </div>
     </div>
 
-    <div mt-4 w-full flex gap-10px>
-      <div flex-2 flex items-baseline gap-10px>
-        <c-button @click="findNext()">
-          <label>Find Next</label>
-        </c-button>
-        <n-checkbox v-model:checked="matchCase">
-          <label>Match case</label>
-        </n-checkbox>
-        <n-checkbox v-model:checked="keepLineBreaks">
-          <label>Keep linebreaks</label>
-        </n-checkbox>
-      </div>
-      <div flex flex-1 justify-end gap-10px>
-        <c-button @click="replaceSelected()">
-          <label>Replace</label>
-        </c-button>
-        <c-button @click="replaceAll()">
-          <label>Replace All</label>
-        </c-button>
-      </div>
-    </div>
+    <n-space mt-4 gap-1 align="baseline" justify="space-between">
+      <c-button @click="findNext()">
+        <label>Find Next</label>
+      </c-button>
+      <c-button @click="replaceSelected()">
+        <label>Replace</label>
+      </c-button>
+      <c-button @click="replaceAll()">
+        <label>Replace All</label>
+      </c-button>
+      <n-checkbox v-model:checked="matchCase">
+        <label>Match case</label>
+      </n-checkbox>
+      <n-checkbox v-model:checked="keepLineBreaks">
+        <label>Keep linebreaks</label>
+      </n-checkbox>
+    </n-space>
 
     <n-divider />
 
