@@ -6,9 +6,34 @@ const input = ref<{ size: string; unit: string }>({ size: '0', unit: 'KB' });
 const output = ref<{ unit: string; precision: number; appendUnit: boolean }>({ unit: 'MB', precision: 3, appendUnit: false });
 
 const allUnits = [
-  'iB', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB',
-  'B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB',
-  'b', 'Kb', 'Mb', 'Gb', 'Tb', 'Pb', 'Eb', 'Zb', 'Yb'];
+  { value: 'B', label: 'Bytes (B)' },
+  { value: 'b', label: 'Bits (bit)' },
+  { value: 'iB', label: 'Bibytes (iB)' },
+  { value: 'KB', label: 'Kilobytes (KB)' },
+  { value: 'Kb', label: 'Kilobits (Kbit)' },
+  { value: 'KiB', label: 'Kibibytes (KiB)' },
+  { value: 'MB', label: 'Megabytes (MB)' },
+  { value: 'Mb', label: 'Megabits (Mbit)' },
+  { value: 'MiB', label: 'Mebibytes (MiB)' },
+  { value: 'GB', label: 'Gigabytes (GB)' },
+  { value: 'Gb', label: 'Gigabits (Gbit)' },
+  { value: 'GiB', label: 'Gibibytes (GiB)' },
+  { value: 'TB', label: 'Terabytes (TB)' },
+  { value: 'Tb', label: 'Terabits (Tbit)' },
+  { value: 'TiB', label: 'Tebibytes (TiB)' },
+  { value: 'PB', label: 'Petabytes (PB)' },
+  { value: 'Pb', label: 'Petabits (Pbit)' },
+  { value: 'PiB', label: 'Pebibytes (PiB)' },
+  { value: 'EB', label: 'Exabytes (EB)' },
+  { value: 'Eb', label: 'Exabits (Ebit)' },
+  { value: 'EiB', label: 'Exbibytes (EiB)' },
+  { value: 'ZB', label: 'Zettabytes (ZB)' },
+  { value: 'Zb', label: 'Zettabits (Zbit)' },
+  { value: 'ZiB', label: 'Zebibytes (ZiB)' },
+  { value: 'YB', label: 'Yottabytes (YB)' },
+  { value: 'Yb', label: 'Yottabits (Ybit)' },
+  { value: 'YiB', label: 'Yobibytes (YiB)' },
+];
 
 const convertedValue = computed(() => {
   try {
@@ -51,7 +76,7 @@ const convertedValue = computed(() => {
         />
 
         <n-form-item label="Precision:" label-placement="left">
-          <n-input-number v-model:value="output.precision" placeholder="Precision..." :max="10" :min="0" />
+          <n-input-number v-model:value="output.precision" style="width:100px" placeholder="Precision..." :max="10" :min="0" />
         </n-form-item>
 
         <n-checkbox v-model:checked="output.appendUnit">

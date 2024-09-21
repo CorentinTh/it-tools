@@ -4,9 +4,36 @@ import { type AllSupportedUnits, type BitsUnits, displayStorageAndRateUnits } fr
 import { amountTransferable, neededRate, transferTimeSeconds } from './data-transfer-rate-converter.service';
 
 const allStorateUnits = [
-  'iB', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB',
-  'B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-const allBitsUnits = ['b', 'Kb', 'Mb', 'Gb', 'Tb', 'Pb', 'Eb', 'Zb', 'Yb'];
+  { value: 'B', label: 'Bytes (B)' },
+  { value: 'iB', label: 'Bibytes (iB)' },
+  { value: 'KB', label: 'Kilobytes (KB)' },
+  { value: 'KiB', label: 'Kibibytes (KiB)' },
+  { value: 'MB', label: 'Megabytes (MB)' },
+  { value: 'MiB', label: 'Mebibytes (MiB)' },
+  { value: 'GB', label: 'Gigabytes (GB)' },
+  { value: 'GiB', label: 'Gibibytes (GiB)' },
+  { value: 'TB', label: 'Terabytes (TB)' },
+  { value: 'TiB', label: 'Tebibytes (TiB)' },
+  { value: 'PB', label: 'Petabytes (PB)' },
+  { value: 'PiB', label: 'Pebibytes (PiB)' },
+  { value: 'EB', label: 'Exabytes (EB)' },
+  { value: 'EiB', label: 'Exbibytes (EiB)' },
+  { value: 'ZB', label: 'Zettabytes (ZB)' },
+  { value: 'ZiB', label: 'Zebibytes (ZiB)' },
+  { value: 'YB', label: 'Yottabytes (YB)' },
+  { value: 'YiB', label: 'Yobibytes (YiB)' },
+];
+const allBitsUnits = [
+  { value: 'b', label: 'Bits (bit)' },
+  { value: 'Kb', label: 'Kilobits (Kbit)' },
+  { value: 'Mb', label: 'Megabits (Mbit)' },
+  { value: 'Gb', label: 'Gigabits (Gbit)' },
+  { value: 'Tb', label: 'Terabits (Tbit)' },
+  { value: 'Pb', label: 'Petabits (Pbit)' },
+  { value: 'Eb', label: 'Exabits (Ebit)' },
+  { value: 'Zb', label: 'Zettabits (Zbit)' },
+  { value: 'Yb', label: 'Yottabits (Ybit)' },
+];
 
 function convertToTimeDisplay(seconds: number) {
   if (seconds === 0) {
