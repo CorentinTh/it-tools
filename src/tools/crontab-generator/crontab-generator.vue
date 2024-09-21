@@ -29,7 +29,7 @@ watchEffect(() => {
   cronstrueConfig.tzOffset = -getTimezoneOffset(currentTimezone.value, new Date()) / 60;
 });
 
-const standardHelpers = [
+const commonHelpers = [
   {
     symbol: '*',
     meaning: 'Any value',
@@ -54,6 +54,10 @@ const standardHelpers = [
     example: '*/10 * * *',
     equivalent: 'Every 10 minutes',
   },
+];
+
+const standardHelpers = [
+  ...commonHelpers,
   {
     symbol: '@yearly',
     meaning: 'Once every year at midnight of 1 January',
@@ -105,30 +109,7 @@ const standardHelpers = [
 ];
 
 const awsHelpers = [
-  {
-    symbol: '*',
-    meaning: 'Any value',
-    example: '* * * *',
-    equivalent: 'Every minute',
-  },
-  {
-    symbol: '-',
-    meaning: 'Range of values',
-    example: '1-10 * * *',
-    equivalent: 'Minutes 1 through 10',
-  },
-  {
-    symbol: ',',
-    meaning: 'List of values',
-    example: '1,10 * * *',
-    equivalent: 'At minutes 1 and 10',
-  },
-  {
-    symbol: '/',
-    meaning: 'Step values',
-    example: '*/10 * * *',
-    equivalent: 'Every 10 minutes',
-  },
+  ...commonHelpers,
   {
     symbol: '?',
     meaning: 'One or another. In the Day-of-month field you could enter 7, and if you didn\'t care what day of the week the seventh was, you could enter ? in the Day-of-week field',
