@@ -15,7 +15,6 @@ import { VitePWA } from 'vite-plugin-pwa';
 import markdown from 'vite-plugin-vue-markdown';
 import svgLoader from 'vite-svg-loader';
 import { configDefaults } from 'vitest/config';
-import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
 
 const baseUrl = process.env.BASE_URL ?? '/';
 
@@ -98,9 +97,6 @@ export default defineConfig({
       resolvers: [NaiveUiResolver(), IconsResolver({ prefix: 'icon' })],
     }),
     Unocss(),
-    viteCommonjs({
-      include: ['jsoneditor'],
-    }),
   ],
   base: baseUrl,
   resolve: {
