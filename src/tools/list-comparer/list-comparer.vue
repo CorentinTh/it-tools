@@ -16,7 +16,6 @@ const compareResult = computed(() => {
     list2: list2.value,
     ignoreCase: compareConfig.value.ignoreCase,
     trimItems: compareConfig.value.trimItems,
-    noDuplicate: compareConfig.value.noDuplicate,
     separator: compareConfig.value.separator,
   });
 });
@@ -38,12 +37,6 @@ const compareResult = computed(() => {
         mb-2
       >
         <n-switch v-model:value="compareConfig.ignoreCase" />
-      </n-form-item>
-      <n-form-item
-        label="No duplicate"
-        label-placement="left"
-      >
-        <n-switch v-model:value="compareConfig.noDuplicate" />
       </n-form-item>
 
       <n-form-item

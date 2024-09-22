@@ -26,6 +26,9 @@ dependencies:
   '@tiptap/vue-3':
     specifier: 2.0.3
     version: 2.0.3(@tiptap/core@2.1.12)(@tiptap/pm@2.1.6)(vue@3.3.4)
+  '@types/arr-diff':
+    specifier: ^4.0.3
+    version: 4.0.3
   '@types/figlet':
     specifier: ^1.5.8
     version: 1.5.8
@@ -2921,6 +2924,10 @@ packages:
   /@tsconfig/node18@18.2.0:
     resolution: {integrity: sha512-yhxwIlFVSVcMym3O31HoMnRXpoenmpIxcj4Yoes2DUpe+xCJnA7ECQP1Vw889V0jTt/2nzvpLQ/UuMYCd3JPIg==}
     dev: true
+
+  /@types/arr-diff@4.0.3:
+    resolution: {integrity: sha512-oIBe7qtc48Q1JPNuqSIUYCNMQxYzTkQAEw07b0NEZpwKbUeOswzex3qfvXCLrZDIQ9t3ucIxH6JqFmjRTPbDEg==}
+    dev: false
 
   /@types/bcryptjs@2.4.2:
     resolution: {integrity: sha512-LiMQ6EOPob/4yUL66SZzu6Yh77cbzJFYll+ZfaPiPPFswtIlA/Fs1MzdKYA7JApHU49zQTbJGX3PDmCpIdDBRQ==}
