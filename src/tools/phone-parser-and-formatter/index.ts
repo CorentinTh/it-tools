@@ -1,11 +1,11 @@
 import { Phone } from '@vicons/tabler';
 import { defineTool } from '../tool';
-import { translate } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: translate('tools.phone-parser-and-formatter.title'),
+  name: 'Phone parser and formatter',
   path: '/phone-parser-and-formatter',
-  description: translate('tools.phone-parser-and-formatter.description'),
+  description:
+    'Parse, validate and format phone numbers. Get information about the phone number, like the country code, type, etc. Forge link to send message in WhatsApp and SMS',
   keywords: [
     'phone',
     'parser',
@@ -18,6 +18,9 @@ export const tool = defineTool({
     'cell',
     'international',
     'national',
+    'whatsapp',
+    'sms',
+    'message',
   ],
   component: () => import('./phone-parser-and-formatter.vue'),
   icon: Phone,
