@@ -24,5 +24,6 @@ export function createToken({
     + (withSymbols ? '.,;:!?./-"\'#{([-|\\@)]=}*+' : '')
   )).split('').filter(c => !(deniedChars?.includes(c))).join('');
 
-  return shuffleString(allAlphabet.repeat(length)).substring(0, length);
+  const len = length < 1 ? 1 : length;
+  return shuffleString(allAlphabet.repeat(len)).substring(0, len);
 }
