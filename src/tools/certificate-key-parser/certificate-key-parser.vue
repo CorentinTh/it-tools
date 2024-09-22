@@ -8,6 +8,7 @@ import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 const inputKeyOrCertificate = ref('');
 const passphrase = ref('');
 const fileInput = ref() as Ref<Buffer>;
+const inputType = ref<'file' | 'content'>('file');
 
 async function onUpload(file: File) {
   if (file) {
@@ -37,11 +38,15 @@ function downloadX509DERFile() {
 }
 
 const parsedSections = computedAsync<LabelValue[]>(async () => {
-  const inputKeyOrCertificateValue
-      = inputKeyOrCertificate.value !== ''
-        ? inputKeyOrCertificate.value
-        : fileInput.value;
-
+  const inputContent = inputKeyOrCertificate.value;
+  const file = fileInput.value;
+  let inputKeyOrCertificateValue: string | Buffer = '';
+  if (inputType.value === 'file' && file) {
+    inputKeyOrCertificateValue = file;
+  }
+  else if (inputType.value === 'content' && inputContent) {
+    inputKeyOrCertificateValue = inputContent;
+  }
   const { values, certificateX509DER: certPEM } = await getKeyOrCertificateInfosAsync(inputKeyOrCertificateValue, passphrase.value);
   certificateX509DER.value = certPEM || '';
   return values;
@@ -51,16 +56,27 @@ const parsedSections = computedAsync<LabelValue[]>(async () => {
 <template>
   <div>
     <c-card>
-      <c-file-upload title="Drag and drop a Certificate file here, or click to select a Certificate file" @file-upload="onUpload" />
-      <!-- separator -->
-      <div my-4 w-full flex items-center justify-center op-70>
-        <div class="h-1px max-w-100px flex-1 bg-gray-300 op-50" />
-        <div class="mx-2 text-gray-400">
-          or
-        </div>
-        <div class="h-1px max-w-100px flex-1 bg-gray-300 op-50" />
-      </div>
+      <n-radio-group v-model:value="inputType" name="radiogroup" mb-2 flex justify-center>
+        <n-space>
+          <n-radio
+            value="file"
+            label="File"
+          />
+          <n-radio
+            value="content"
+            label="Content"
+          />
+        </n-space>
+      </n-radio-group>
+
+      <c-file-upload
+        v-if="inputType === 'file'"
+        title="Drag and drop a Certificate file here, or click to select a Certificate file"
+        @file-upload="onUpload"
+      />
+
       <c-input-text
+        v-if="inputType === 'content'"
         v-model:value="inputKeyOrCertificate"
         label="Paste your Public Key / Private Key / Signature / Fingerprint / Certificate:"
         placeholder="Your Public Key / Private Key / Signature / Fingerprint / Certificate..."
