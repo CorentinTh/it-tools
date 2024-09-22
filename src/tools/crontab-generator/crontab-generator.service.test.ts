@@ -4,12 +4,31 @@ import { getCronType, getLastExecutionTimes, isCronValid } from './crontab-gener
 describe('crontab-generator', () => {
   describe('isCronValid', () => {
     it('should return true for all valid formats', () => {
+      // standard format
       expect(isCronValid('0 0 * * 1-5')).toBe(true);
       expect(isCronValid('23 0-20/2 * * *')).toBe(true);
 
       // AWS formats
       expect(isCronValid('0 11-22 ? * MON-FRI *')).toBe(true);
       expect(isCronValid('0 0 ? * 1 *')).toBe(true);
+    });
+    it('should check standard format', () => {
+      // standard format
+      expect(isCronValid('0 0 * * 1-5', 'standard')).toBe(true);
+      expect(isCronValid('23 0-20/2 * * *', 'standard')).toBe(true);
+
+      // AWS format
+      expect(isCronValid('0 11-22 ? * MON-FRI *', 'standard')).toBe(false);
+      expect(isCronValid('0 0 ? * 1 *', 'standard')).toBe(false);
+    });
+    it('should check aws format', () => {
+      // standard format
+      expect(isCronValid('0 0 * * 1-5', 'aws')).toBe(false);
+      expect(isCronValid('23 0-20/2 * * *', 'aws')).toBe(false);
+
+      // AWS format
+      expect(isCronValid('0 11-22 ? * MON-FRI *', 'aws')).toBe(true);
+      expect(isCronValid('0 0 ? * 1 *', 'aws')).toBe(true);
     });
     it('should return false for all invalid formats', () => {
       expect(isCronValid('aert')).toBe(false);

@@ -1,6 +1,8 @@
 import { parseExpression } from 'cron-parser';
 import EventCronParser from 'event-cron-parser';
 
+export type CronType = 'standard' | 'aws';
+
 export function getLastExecutionTimes(cronExpression: string, tz: string | undefined = undefined, count: number = 5) {
   if (getCronType(cronExpression) === 'standard') {
     const interval = parseExpression(cronExpression, { tz });
@@ -22,18 +24,19 @@ export function getLastExecutionTimes(cronExpression: string, tz: string | undef
   return [];
 }
 
-export function isCronValid(v: string) {
-  return !!getCronType(v);
+export function isCronValid(cronExpression: string, cronType: CronType | 'any' = 'any') {
+  const expressionCronType = getCronType(cronExpression);
+  return cronType === 'any' ? !!expressionCronType : expressionCronType === cronType;
 }
 
-export function getCronType(v: string) {
+export function getCronType(cronExpression: string) {
   try {
-    parseExpression(v);
+    parseExpression(cronExpression);
     return 'standard';
   }
   catch (_) {
     try {
-      const parsed = new EventCronParser(v);
+      const parsed = new EventCronParser(cronExpression);
       parsed.validate();
       return 'aws';
     }

@@ -2,7 +2,7 @@
 import cronstrue from 'cronstrue';
 import ctz from 'countries-and-timezones';
 import getTimezoneOffset from 'get-timezone-offset';
-import { getCronType, getLastExecutionTimes, isCronValid } from './crontab-generator.service';
+import { type CronType, getLastExecutionTimes, isCronValid } from './crontab-generator.service';
 import { useStyleStore } from '@/stores/style.store';
 import { useQueryParamOrStorage } from '@/composable/queryParams';
 
@@ -20,10 +20,13 @@ const cronstrueConfig = reactive({
 
 // getTimezoneOffset(tz.name, now) / 60
 const browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-const allTimezones = Object.values(ctz.getAllTimezones()).map(tz => ({
-  value: tz.name,
-  label: `${tz.name === browserTimezone ? 'Browser TZ - ' : ''}${tz.name} (${tz.utcOffset === tz.dstOffset ? tz.utcOffsetStr : `${tz.utcOffsetStr}/${tz.dstOffsetStr}`})`,
-}));
+const allTimezones = Object.values(ctz.getAllTimezones()).map((tz) => {
+  const timezoneUTCDSTOffset = tz.utcOffset === tz.dstOffset ? tz.utcOffsetStr : `${tz.utcOffsetStr}/${tz.dstOffsetStr}`;
+  return {
+    value: tz.name,
+    label: `${tz.name === browserTimezone ? 'Browser TZ - ' : ''}${tz.name} (${timezoneUTCDSTOffset})`,
+  };
+});
 const currentTimezone = useQueryParamOrStorage({ name: 'tz', storageName: 'crongen:tz', defaultValue: browserTimezone });
 watchEffect(() => {
   cronstrueConfig.tzOffset = -getTimezoneOffset(currentTimezone.value, new Date()) / 60;
@@ -136,19 +139,24 @@ const awsHelpers = [
   },
 ];
 
-const cronType = computed({
-  get() {
-    return getCronType(cron.value);
-  },
-  set(newCronType) {
+const defaultAWSCronExpression = '0 0 ? * 1 *';
+const defaultStandardCronExpression = '40 * * * *';
+const cronType = ref<CronType>('standard');
+watch(cronType,
+  (newCronType) => {
     if (newCronType === 'aws') {
-      cron.value = '0 0 ? * 1 *';
+      if (!cron.value || cron.value === defaultStandardCronExpression) {
+        cron.value = defaultAWSCronExpression;
+      }
     }
-    else {
-      cron.value = '40 * * * *';
+    else if (newCronType === 'standard') {
+      if (!cron.value || cron.value === defaultAWSCronExpression) {
+        cron.value = defaultStandardCronExpression;
+      }
     }
   },
-});
+);
+
 const getHelpers = computed(() => {
   if (cronType.value === 'aws') {
     return awsHelpers;
@@ -165,7 +173,7 @@ const cronString = computed(() => {
 
 const cronValidationRules = [
   {
-    validator: (value: string) => isCronValid(value),
+    validator: (value: string) => isCronValid(value, cronType.value),
     message: 'This cron is invalid',
   },
 ];
@@ -245,7 +253,7 @@ const executionTimesString = computed(() => {
   </c-card>
   <c-card>
     <pre v-if="cronType === 'standard'">
--- Standard CRON Syntax --
+      -- Standard CRON Syntax --
 ┌──────────── [optional] seconds (0 - 59)
 | ┌────────── minute (0 - 59)
 | | ┌──────── hour (0 - 23)
@@ -256,7 +264,7 @@ const executionTimesString = computed(() => {
 * * * * * * command</pre>
 
     <pre v-if="cronType === 'aws'">
--- AWS CRON Syntax --
+      -- AWS CRON Syntax --
 ┌──────────── minute (0 - 59)
 | ┌────────── hour (0 - 23)
 | | ┌──────── day of month (1 - 31) OR ? OR L OR W
