@@ -51,7 +51,7 @@ describe('list-comparer', () => {
       });
 
       expect(compareLists({
-        list1: '1, 2,3,4,5,4,7,A,A',
+        list1: '1, 2,3,4,5\n4,7,A,A',
         list2: '1\n2\n3\n4\n6\n4\n7\na',
         trimItems: false,
         ignoreCase: false,
@@ -88,8 +88,8 @@ describe('list-comparer', () => {
           '40',
         ],
         same: [
-          '20',
           '30',
+          '20',
         ],
       });
     });
