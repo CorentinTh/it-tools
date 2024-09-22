@@ -8,7 +8,7 @@ const fileName = ref('');
 const fileExtension = ref('');
 const hexInput = ref('');
 const base64Input = computed(() => {
-  const hexString = hexInput.value?.replace(/[^\da-f]/gi, '');
+  const hexString = hexInput.value?.replace(/^(?:0x|&H|\\x)/gi, '').replace(/[^\da-f]/gi, '');
   try {
     return `data:application/octet-stream;base64,${Buffer.from(hexString, 'hex').toString('base64')}`;
   }
@@ -51,11 +51,13 @@ async function ReadFileAsHex(file: File, separator: string = ' '): Promise<strin
 
 const separator = useStorage('hex-converter:sep', ' ');
 const fileInput = ref() as Ref<File>;
+const prefix = useStorage('hex-converter:prefix', '');
 const fileHex = computedAsync(async () => {
   const file = fileInput.value;
   const sep = separator.value;
+  const pref = prefix.value;
 
-  return await ReadFileAsHex(file, sep);
+  return pref + await ReadFileAsHex(file, sep);
 });
 const { copy: copyFileHex } = useCopy({ source: fileHex, text: 'Hex string copied to the clipboard' });
 
@@ -116,6 +118,14 @@ function onUpload(file: File) {
       label="Separator"
       label-position="left"
       placeholder="Separator"
+      mb-2
+    />
+
+    <c-input-text
+      v-model:value="prefix"
+      label="Prefix"
+      label-position="left"
+      placeholder="Enter a prefix (ie, 0x, &H or empty)"
       mb-2
     />
 
