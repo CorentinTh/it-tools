@@ -6,6 +6,10 @@
 
 Useful tools for developer and people working in IT. [Have a look !](https://it-tools.tech).
 
+## Sponsors
+
+[![Fern banner](./.github/fern-banner.svg)](https://form.typeform.com/to/mGTcNagc)
+
 ## Functionalities and roadmap
 
 Please check the [issues](https://github.com/CorentinTh/it-tools/issues) to see if some feature listed to be implemented.
