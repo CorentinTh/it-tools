@@ -8,7 +8,7 @@ Useful tools for developer and people working in IT. [Have a look !](https://it-
 
 ## Sponsors
 
-[![Fern banner](./.github/fern-banner.svg)](https://form.typeform.com/to/mGTcNagc)
+[![Fern banner](./.github/fern-banner.svg)](https://bit.ly/3zBl7DG)
 
 ## Functionalities and roadmap
 
