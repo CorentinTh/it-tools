@@ -70,6 +70,7 @@
     "jwt-decode": "^3.1.2",
     "libphonenumber-js": "^1.10.28",
     "lodash": "^4.17.21",
+    "luhn-js": "^1.1.2",
     "marked": "^10.0.0",
     "mathjs": "^11.9.1",
     "mime-types": "^2.1.35",
