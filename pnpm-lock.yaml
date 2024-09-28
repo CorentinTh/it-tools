@@ -65,6 +65,12 @@ dependencies:
   crypto-js:
     specifier: ^4.1.1
     version: 4.1.1
+  currency-codes-ts:
+    specifier: ^3.0.0
+    version: 3.0.0
+  currency-exchanger-js:
+    specifier: ^1.0.4
+    version: 1.0.4
   date-fns:
     specifier: ^2.29.3
     version: 2.29.3
@@ -3360,7 +3366,7 @@ packages:
     dependencies:
       '@unhead/dom': 0.5.1
       '@unhead/schema': 0.5.1
-      '@vueuse/shared': 10.11.1(vue@3.3.4)
+      '@vueuse/shared': 11.1.0(vue@3.3.4)
       unhead: 0.5.1
       vue: 3.3.4
     transitivePeerDependencies:
@@ -3993,19 +3999,19 @@ packages:
       - vue
     dev: false
 
-  /@vueuse/shared@10.11.1(vue@3.3.4):
-    resolution: {integrity: sha512-LHpC8711VFZlDaYUXEBbFBCQ7GS3dVU9mjOhhMhXP6txTV4EhYQg/KGnQuvt/sPAtoUKq7VVUnL6mVtFoL42sA==}
+  /@vueuse/shared@10.3.0(vue@3.3.4):
+    resolution: {integrity: sha512-kGqCTEuFPMK4+fNWy6dUOiYmxGcUbtznMwBZLC1PubidF4VZY05B+Oht7Jh7/6x4VOWGpvu3R37WHi81cKpiqg==}
     dependencies:
-      vue-demi: 0.14.10(vue@3.3.4)
+      vue-demi: 0.14.5(vue@3.3.4)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
     dev: false
 
-  /@vueuse/shared@10.3.0(vue@3.3.4):
-    resolution: {integrity: sha512-kGqCTEuFPMK4+fNWy6dUOiYmxGcUbtznMwBZLC1PubidF4VZY05B+Oht7Jh7/6x4VOWGpvu3R37WHi81cKpiqg==}
+  /@vueuse/shared@11.1.0(vue@3.3.4):
+    resolution: {integrity: sha512-YUtIpY122q7osj+zsNMFAfMTubGz0sn5QzE5gPzAIiCmtt2ha3uQUY1+JPyL4gRCTsLPX82Y9brNbo/aqlA91w==}
     dependencies:
-      vue-demi: 0.14.5(vue@3.3.4)
+      vue-demi: 0.14.10(vue@3.3.4)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -4638,6 +4644,14 @@ packages:
     resolution: {integrity: sha512-M1VdV3hpBAsd1Zzvqcvf63wgDpcwCuS4WiNEVFpJ0s33MGO2sVDTfswYq0EPypCmESrCzmgL8h68DTzJuSDbVA==}
     dev: false
 
+  /cross-fetch@3.1.8:
+    resolution: {integrity: sha512-cvA+JwZoU0Xq+h6WkMvAUqPEYy92Obet6UdKLfW60qn99ftItKjB5T+BkyWOFWe2pUyfQ+IJHmpOTznqk1M6Kg==}
+    dependencies:
+      node-fetch: 2.7.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
   /cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
     engines: {node: '>= 8'}
@@ -4720,6 +4734,21 @@ packages:
 
   /csstype@3.1.2:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
+
+  /currency-codes-ts@3.0.0:
+    resolution: {integrity: sha512-ZJeCpq5uY2t8dDl4xdF15shkp5o8jrHcD4lHftK/O8j8xTHlXg0E5YhpZbRJvnLRaKe+JQh1/q1AI9Wc2Dl3Nw==}
+    engines: {node: '>=14'}
+    dependencies:
+      lodash-es: 4.17.21
+    dev: false
+
+  /currency-exchanger-js@1.0.4:
+    resolution: {integrity: sha512-znd30Ueuf3IFTwNEuSy45uBEZZXJIUG9Z4Cpym5VxSxafx/CazPCRx5NMrqOFE2ZYPXezo7FfJLa8SuES3PnYw==}
+    dependencies:
+      cross-fetch: 3.1.8
+    transitivePeerDependencies:
+      - encoding
+    dev: false
 
   /dash-get@1.0.2:
     resolution: {integrity: sha512-4FbVrHDwfOASx7uQVxeiCTo7ggSdYZbqs8lH+WU6ViypPlDbe9y6IP5VVUDQBv9DcnyaiPT5XT0UWHgJ64zLeQ==}
@@ -7071,6 +7100,18 @@ packages:
     resolution: {integrity: sha512-NsXBU0UgBxo2rQLOeWNZqS3fvflWePMECr8CoSWoSTqCqGbVVsvl9vZu1HfQicYN0g5piV9Gh8RTEvo/uP752w==}
     dev: true
 
+  /node-fetch@2.7.0:
+    resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
+    engines: {node: 4.x || >=6.0.0}
+    peerDependencies:
+      encoding: ^0.1.0
+    peerDependenciesMeta:
+      encoding:
+        optional: true
+    dependencies:
+      whatwg-url: 5.0.0
+    dev: false
+
   /node-fetch@3.2.10:
     resolution: {integrity: sha512-MhuzNwdURnZ1Cp4XTazr69K0BTizsBroX7Zx3UgDSVcZYKF/6p0CBe4EUb/hLqmzVhl0UpYfgRljQ4yxE+iCxA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
@@ -8485,6 +8526,10 @@ packages:
       url-parse: 1.5.10
     dev: true
 
+  /tr46@0.0.3:
+    resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
+    dev: false
+
   /tr46@1.0.1:
     resolution: {integrity: sha512-dTpowEjclQ7Kgx5SdBkqRzVhERQXov8/l9Ft9dVM9fmg0W0KQSVaXX9T4i6twCPNtYiZM53lpSSUAwJbFPOHxA==}
     dependencies:
@@ -9292,6 +9337,10 @@ packages:
     engines: {node: '>= 8'}
     dev: true
 
+  /webidl-conversions@3.0.1:
+    resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
+    dev: false
+
   /webidl-conversions@4.0.2:
     resolution: {integrity: sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg==}
     dev: true
@@ -9331,6 +9380,13 @@ packages:
       tr46: 4.1.1
       webidl-conversions: 7.0.0
     dev: true
+
+  /whatwg-url@5.0.0:
+    resolution: {integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==}
+    dependencies:
+      tr46: 0.0.3
+      webidl-conversions: 3.0.1
+    dev: false
 
   /whatwg-url@7.1.0:
     resolution: {integrity: sha512-WUu7Rg1DroM7oQvGWfOiAK21n74Gg+T4elXEQYkOhtyLeWiJFoOGLXPKI/9gzIie9CtwVLm8wtw6YJdKyxSjeg==}
