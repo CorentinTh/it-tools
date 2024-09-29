@@ -32,15 +32,15 @@ export function computeDuration(s: string): {
   errors: string[]
 } {
   const lines: DurationLine[] = s.split('\n').filter(l => l && !/^\s*#/.test(l)).map((l) => {
-    const isNeg = /^\s*\-/.test(l);
-    const cleanedDuration = l.replace(/^\s*[\+-]\s*/, '');
+    const isNeg = /^\s*-/.test(l);
+    const cleanedDuration = l.replace(/^\s*[+-]\s*/, '');
     const durationMS = convertDurationMS(cleanedDuration);
     return {
       rawLine: l,
       cleanedDuration,
       sign: isNeg ? -1 : 1,
       durationMS,
-      isValid: !(typeof durationMS === 'undefined'),
+      isValid: typeof durationMS !== 'undefined',
     };
   });
 
@@ -123,5 +123,7 @@ function hhmmss(milliseconds: number, days: boolean) {
     d = Math.floor(h / 24);
     h = h % 24;
   }
-  return `${d > 0 ? `${d}d ` : ''}${padNumber(h)}:${padNumber(m)}:${padNumber(s)}${ms > 0 ? `.${ms}` : ''}`;
+  const formatted_d = d > 0 ? `${d}d ` : '';
+  const formatted_ms = ms > 0 ? `.${ms}` : '';
+  return `${formatted_d}${padNumber(h)}:${padNumber(m)}:${padNumber(s)}${formatted_ms}`;
 }
