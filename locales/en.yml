@@ -511,7 +511,7 @@ tools:
     description: Javascript Regex/Regular Expression cheatsheet
   regex-tester:
     title: Regex Tester
-    description: Test a regular expression, get a list of matches and a diagram.
+    description: Test your regular expressions with sample text.
     regex-input: 'Regex to test:'
     regex-input-placeholder: Put the regex to test
     link: See Regular Expression Cheatsheet

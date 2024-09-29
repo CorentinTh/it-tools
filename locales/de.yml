@@ -546,9 +546,7 @@ tools:
     description: Spickzettel für Javascript Regex/Regulärer Ausdruck
   regex-tester:
     title: Regex-Tester
-    description: >-
-      Teste einen regulären Ausdruck, erhalte eine Liste mit Treffern und ein
-      Diagramm.
+    description: Teste deine regulären Ausdrücke mit Beispieltext.
     regex: Regex
     regex-input: 'Regex zum Testen:'
     regex-input-placeholder: Eingabe des zu testenden regulären Ausdrucks
