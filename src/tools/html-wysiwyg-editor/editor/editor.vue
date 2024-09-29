@@ -3,6 +3,13 @@ import { tryOnBeforeUnmount, useVModel } from '@vueuse/core';
 import { Editor, EditorContent } from '@tiptap/vue-3';
 import StarterKit from '@tiptap/starter-kit';
 import { useThemeVars } from 'naive-ui';
+import { Color } from '@tiptap/extension-color';
+import TextStyle from '@tiptap/extension-text-style';
+import Highlight from '@tiptap/extension-highlight';
+import Table from '@tiptap/extension-table';
+import TableCell from '@tiptap/extension-table-cell';
+import TableHeader from '@tiptap/extension-table-header';
+import TableRow from '@tiptap/extension-table-row';
 import MenuBar from './menu-bar.vue';
 
 const props = defineProps<{ html: string }>();
@@ -12,7 +19,18 @@ const html = useVModel(props, 'html', emit);
 
 const editor = new Editor({
   content: html.value,
-  extensions: [StarterKit],
+  extensions: [
+    StarterKit,
+    TextStyle,
+    Color,
+    Highlight.configure({ multicolor: true }),
+    Table.configure({
+      resizable: true,
+    }),
+    TableRow,
+    TableHeader,
+    TableCell,
+  ],
 });
 
 editor.on('update', ({ editor }) => emit('update:html', editor.getHTML()));
@@ -63,6 +81,63 @@ tryOnBeforeUnmount(() => {
     line-height: 1.1;
   }
 
+  /* Table-specific styling */
+  table {
+    border-collapse: collapse;
+    margin: 0;
+    overflow: hidden;
+    table-layout: fixed;
+    width: 100%;
+
+    td,
+    th {
+      border: 1px solid v-bind('themeVars.borderColor');
+      box-sizing: border-box;
+      min-width: 1em;
+      padding: 6px 8px;
+      position: relative;
+      vertical-align: top;
+
+      > * {
+        margin-bottom: 0;
+      }
+    }
+
+    th {
+      background-color: v-bind('themeVars.tableHeaderColor');
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .selectedCell:after {
+      content: "";
+      left: 0; right: 0; top: 0; bottom: 0;
+      pointer-events: none;
+      position: absolute;
+      z-index: 2;
+    }
+
+    .column-resize-handle {
+      background-color: v-bind('themeVars.actionColor');
+      bottom: -2px;
+      pointer-events: none;
+      position: absolute;
+      right: -2px;
+      top: 0;
+      width: 4px;
+    }
+  }
+
+  .tableWrapper {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+  }
+
+  &.resize-cursor {
+    cursor: ew-resize;
+    cursor: col-resize;
+  }
+
   code {
     background-color: v-bind('themeVars.codeColor');
     padding: 2px 4px;
@@ -82,10 +157,6 @@ tryOnBeforeUnmount(() => {
       background: none;
       font-size: 0.8rem;
     }
-  }
-
-  mark {
-    background-color: #faf594;
   }
 
   img {
