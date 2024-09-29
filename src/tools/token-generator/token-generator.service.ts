@@ -20,7 +20,7 @@ export function createToken({
     withLowercase ? 'abcdefghijklmopqrstuvwxyz' : '',
     withNumbers ? '0123456789' : '',
     withSymbols ? '.,;:!?./-"\'#{([-|\\@)]=}*+' : '',
-  ].join(''); ;
+  ].join('');
 
   return shuffleString(allAlphabet.repeat(length)).substring(0, length);
 }
