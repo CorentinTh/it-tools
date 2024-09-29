@@ -1,7 +1,14 @@
 {
   "name": "it-tools",
   "version": "2024.5.13-a0bc346",
+  "packageManager": "pnpm@8.15.3",
   "description": "Collection of handy online tools for developers, with great UX. ",
+  "author": "Corentin Th <corentin.thomasset74+it-tools@gmail.com> (https://corentin.tech)",
+  "license": "GNU GPLv3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CorentinTh/it-tools"
+  },
   "keywords": [
     "productivity",
     "converter",
@@ -13,12 +20,6 @@
     "developer-tools",
     "developer-productivity"
   ],
-  "author": "Corentin Th <corentin.thomasset74+it-tools@gmail.com> (https://github.com/CorentinTh)",
-  "license": "GNU GPLv3",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/CorentinTh/it-tools"
-  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && NODE_OPTIONS=--max_old_space_size=4096 vite build",
@@ -145,6 +146,5 @@
     "vitest": "^0.34.0",
     "workbox-window": "^7.0.0",
     "zx": "^7.2.1"
-  },
-  "packageManager": "pnpm@8.15.3"
+  }
 }
