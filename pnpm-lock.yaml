@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@guyplusplus/turndown-plugin-gfm':
+    specifier: ^1.0.7
+    version: 1.0.7
   '@it-tools/bip39':
     specifier: ^0.0.4
     version: 0.0.4
@@ -26,12 +29,12 @@ dependencies:
   '@types/figlet':
     specifier: ^1.5.8
     version: 1.5.8
-  '@types/turndown':
-    specifier: ^5.0.4
-    version: 5.0.5
   '@types/markdown-it':
     specifier: ^13.0.7
     version: 13.0.9
+  '@types/turndown':
+    specifier: ^5.0.4
+    version: 5.0.5
   '@vicons/material':
     specifier: ^0.12.0
     version: 0.12.0
@@ -2171,6 +2174,12 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
+  /@guyplusplus/turndown-plugin-gfm@1.0.7:
+    resolution: {integrity: sha512-k2KATk491JIeq1KNsjOwaD88cdknQeTpKVXh9OuZfHdjFuSEtEVVDCfCbxzmRvJxeKDPbZQl8DGP5o7SaIvWBw==}
+    dependencies:
+      turndown: 7.2.0
+    dev: false
+
   /@humanwhocodes/config-array@0.11.10:
     resolution: {integrity: sha512-KVVjQmNUepDVGXNuoRRdmmEjruj0KfiGSbS8LVc12LMsWDQzRXJ0qdhN8L8uUigKpfEHRhlaQFY0ib1tnUbNeQ==}
     engines: {node: '>=10.10.0'}
@@ -3385,7 +3394,7 @@ packages:
     dependencies:
       '@unhead/dom': 0.5.1
       '@unhead/schema': 0.5.1
-      '@vueuse/shared': 11.0.3(vue@3.3.4)
+      '@vueuse/shared': 11.1.0(vue@3.3.4)
       unhead: 0.5.1
       vue: 3.3.4
     transitivePeerDependencies:
@@ -4027,8 +4036,8 @@ packages:
       - vue
     dev: false
 
-  /@vueuse/shared@11.0.3(vue@3.3.4):
-    resolution: {integrity: sha512-0rY2m6HS5t27n/Vp5cTDsKTlNnimCqsbh/fmT2LgE+aaU42EMfXo8+bNX91W9I7DDmxfuACXMmrd7d79JxkqWA==}
+  /@vueuse/shared@11.1.0(vue@3.3.4):
+    resolution: {integrity: sha512-YUtIpY122q7osj+zsNMFAfMTubGz0sn5QzE5gPzAIiCmtt2ha3uQUY1+JPyL4gRCTsLPX82Y9brNbo/aqlA91w==}
     dependencies:
       vue-demi: 0.14.10(vue@3.3.4)
     transitivePeerDependencies:

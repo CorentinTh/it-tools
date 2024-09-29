@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import TurndownService from 'turndown';
+import { gfm as addGFM } from '@guyplusplus/turndown-plugin-gfm';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 
 const turndownService = new TurndownService();
+addGFM(turndownService);
 
 const inputHtml = ref('');
 const outputMarkdown = computed(() => {
-  return turndownService.turndown(inputHtml.value ?? '');
+  try {
+    return turndownService.turndown(inputHtml.value ?? '');
+  }
+  catch (e: any) {
+    return e.toString();
+  }
 });
 </script>
 
