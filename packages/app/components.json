@@ -1,0 +1,17 @@
+{
+  "$schema": "https://shadcn-solid.com/schema.json",
+  "uno": {
+    "config": "uno.config.ts",
+    "css": {
+      "path": "src/client/app.css",
+      "variable": true
+    },
+    "color": "neutral",
+    "prefix": ""
+  },
+  "alias": {
+    "component": "@/modules/ui/components",
+    "ui": "@/modules/ui/components",
+    "cn": "@/modules/ui/utils/cn"
+  }
+}

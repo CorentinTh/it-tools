@@ -1,35 +1,32 @@
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+dist-app
+dist-node
+dist-cloudflare
+
+# Node dependencies
+node_modules
+
 # Logs
 logs
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
+# Misc
 .DS_Store
-dist
-dist-ssr
-coverage
-*.local
-
-/cypress/videos/
-/cypress/screenshots/
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
+.fleet
 .idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
 
+# Local env files
 .env
-/test-results/
-/playwright-report/
-/playwright/.cache/
-# Webkit with playwright creates a salt file
-salt
+.env.*
+!.env.example
+
+.wrangler
+coverage
+cache
+.zed

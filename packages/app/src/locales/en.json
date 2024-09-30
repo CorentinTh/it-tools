@@ -1,0 +1,31 @@
+{
+  "app": {
+    "title": "IT-Tools",
+    "description": "The open-source collection of handy online tools to help developers in their daily life."
+  },
+  "navbar": {
+    "theme": {
+      "theme": "Theme",
+      "light-mode": "Light mode",
+      "dark-mode": "Dark mode",
+      "system-mode": "System"
+    },
+    "language": "Language",
+    "contribute-to-i18n": "Contribute to i18n",
+    "github": "GitHub",
+    "support": "Support IT-Tools",
+    "report-bug": "Report a bug"
+  },
+  "home": {
+    "all-tools": "All the tools",
+    "open-source": "Open Source",
+    "free": "Free",
+    "self-hostable": "Self-hostable"
+  },
+  "tools": {
+    "token-generator": {
+      "name": "Token Generator",
+      "description": "Generate random string with the characters you want, uppercase, lowercase letters, numbers and/or symbols."
+    }
+  }
+}

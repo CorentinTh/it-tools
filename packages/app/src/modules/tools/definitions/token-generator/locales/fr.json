@@ -1,0 +1,8 @@
+{
+  "uppercase": "Lettres majuscules (A-Z)",
+  "lowercase": "Lettres minuscules (a-z)",
+  "numbers": "Chiffres (0-9)",
+  "symbols": "Caractères spéciaux (!@#...)",
+  "length": "Longueur",
+  "result-placeholder": "Le token apparaîtra ici"
+}
