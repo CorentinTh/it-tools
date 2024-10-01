@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { SignatureInfo } from '../pdf-signature-checker.types';
+import TextareaCopyable from '@/components/TextareaCopyable.vue';
 
 const props = defineProps<{ signature: SignatureInfo }>();
 const { signature } = toRefs(props);
@@ -88,9 +89,7 @@ const certs = computed(() => signature.value.meta.certs.map((certificate, index)
       <template #pemCertificate="{ value }">
         <c-modal-value :value="value" label="View PEM cert">
           <template #value>
-            <div break-all text-xs>
-              {{ value }}
-            </div>
+            <TextareaCopyable text-xs :value="value" copy-placement="none" />
           </template>
         </c-modal-value>
       </template>
