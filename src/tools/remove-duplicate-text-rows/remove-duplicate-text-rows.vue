@@ -61,6 +61,17 @@ watchEffect(() => {
 
 <template>
   <c-card style="max-width: 600px">
+    <c-input-text
+      v-model:value="input"
+      label="Your text:"
+      placeholder="Seperate rows by a break"
+      raw-text
+      multiline
+      rows="10"
+    />
+
+    <n-divider />
+
     <n-form flex style="flex-direction: column; gap: 6px" label-placement="left">
       <n-form-item flex label="Case Sensitive">
         <n-switch v-model:value="is_case_sense" />
@@ -74,17 +85,6 @@ watchEffect(() => {
         <c-buttons-select v-model:value="sorting" :options="sortingOptions" />
       </n-form-item>
     </n-form>
-
-    <n-divider />
-
-    <c-input-text
-      v-model:value="input"
-      label="Your text:"
-      placeholder="Seperate rows by a break"
-      raw-text
-      multiline
-      rows="10"
-    />
 
     <n-divider />
 
