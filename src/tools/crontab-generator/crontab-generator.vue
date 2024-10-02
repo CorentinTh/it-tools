@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import cronstrue from 'cronstrue';
 import { isValidCron } from 'cron-validator';
+import { parseExpression } from 'cron-parser';
 import { useStyleStore } from '@/stores/style.store';
 
 function isCronValid(v: string) {
@@ -92,9 +93,27 @@ const helpers = [
   },
 ];
 
+function getLastExecutionTimes(cronExpression: string) {
+  const interval = parseExpression(cronExpression);
+  const times = [];
+  for (let i = 0; i < 5; i++) {
+    times.push(interval.next().toJSON());
+  }
+  return times;
+}
+
 const cronString = computed(() => {
   if (isCronValid(cron.value)) {
     return cronstrue.toString(cron.value, cronstrueConfig);
+  }
+  return ' ';
+});
+
+const executionTimesString = computed(() => {
+  if (isCronValid(cron.value)) {
+    const lastExecutionTimes = getLastExecutionTimes(cron.value);
+    const executionTimesString = lastExecutionTimes.join('\n');
+    return `Next 5 execution times:\n${executionTimesString}`;
   }
   return ' ';
 });
@@ -121,6 +140,10 @@ const cronValidationRules = [
 
     <div class="cron-string">
       {{ cronString }}
+    </div>
+
+    <div class="cron-execution-string">
+      {{ executionTimesString }}
     </div>
 
     <n-divider />
@@ -185,6 +208,14 @@ const cronValidationRules = [
   font-size: 22px;
   opacity: 0.8;
   margin: 5px 0 15px;
+}
+
+.cron-execution-string{
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.8;
+  margin: 5px 0 15px;
+  white-space: pre-wrap;
 }
 
 pre {
