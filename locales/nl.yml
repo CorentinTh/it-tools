@@ -1,0 +1,385 @@
+home:
+  categories:
+    newestTools: Nieuwste tools
+    favoriteTools: 'Mijn favoriete tools'
+    allTools: 'Alle tools'
+  subtitle: 'Handige tools voor ontwikkelaars'
+  toggleMenu: 'Menu openen / sluiten'
+  home: Startpagina
+  uiLib: 'UI Lib'
+  support: 'Ondersteun de ontwikkeling van IT-Tools'
+  buyMeACoffee: 'Trakteer me op een koffie.'
+  follow:
+    title: 'IT-Tools leuk gevonden?'
+    p1: 'Geef ons een ster'
+    githubRepository: 'IT-Tools GitHub-repository'
+    p2: 'of volg ons op'
+    twitterAccount: 'IT-Tools Twitter-account'
+    thankYou: 'Dank je!'
+  nav:
+    github: 'GitHub-repository'
+    githubRepository: 'IT-Tools GitHub-repository'
+    twitter: 'Twitter-account'
+    twitterAccount: 'IT Tools Twitter-account'
+    about: 'Over IT-Tools'
+    aboutLabel: 'Over'
+    darkMode: 'Donkere modus'
+    lightMode: 'Lichte modus'
+    mode: 'donkere/lichte modus wisselen'
+about:
+  content: >
+    # Over IT-Tools
+    Deze geweldige website, gemaakt met ❤ door [Corentin Thomasset] (https://github.com/CorentinTh), verzamelt nuttige tools voor ontwikkelaars en mensen in de IT-sector. Als je het nuttig vindt, aarzel dan niet om het te delen met mensen die het ook nuttig kunnen vinden, en vergeet niet om het op te slaan in je snelkoppelingen!
+    IT Tools is open-source (onder de MIT-licentie) en gratis en zal dat altijd blijven, maar het hosten en vernieuwen van de domeinnaam kost me geld. Als je mijn werk wilt ondersteunen en me wilt aanmoedigen om meer tools toe te voegen, overweeg dan alsjeblieft om [mij te sponsoren](https://www.buymeacoffee.com/cthmsst).
+    ## Technologieën
+    IT Tools is gemaakt met Vue.js (Vue 3) en de Naive UI-componentenbibliotheek, gehost en voortdurend geleverd door Vercel. Voor sommige tools worden externe open-source bibliotheken gebruikt; je kunt de volledige lijst vinden in het [package.json](https://github.com/CorentinTh/it-tools/blob/main/package.json) bestand van de repository.
+    ## Een fout gevonden? Ontbreekt er een tool?
+    Als je een tool nodig hebt die hier niet aanwezig is maar nuttig zou kunnen zijn, kun je een functieverzoek indienen in de [problemen-sectie](https://github.com/CorentinTh/it-tools/issues/new/choose) van de GitHub-repository.
+    En als je een fout hebt gevonden of als iets niet werkt zoals verwacht, dien dan alsjeblieft een bugrapport in in de [problemen-sectie] (https://github.com/CorentinTh/it-tools/issues/new/choose) van de GitHub-repository.
+404:
+  notFound: '404 Niet gevonden'
+  sorry: 'Sorry, deze pagina lijkt niet te bestaan'
+  maybe: 'Misschien doet de cache rare dingen, probeer een geforceerde herlaadbeurt?'
+  backHome: 'Terug naar startpagina'
+favoriteButton:
+  remove: 'Verwijderen uit favorieten'
+  add: 'Toevoegen aan favorieten'
+toolCard:
+  new: Nieuw
+search:
+  label: Zoeken
+tools:
+  categories:
+    favorite-tools: 'Mijn favoriete tools'
+    crypto: Crypto
+    converter: Converter
+    web: Web
+    images and videos: 'Afbeeldingen en Video’s'
+    development: Ontwikkeling
+    network: Netwerk
+    math: Wiskunde
+    measurement: Meting
+    text: Tekst
+    data: Gegevens
+
+  password-strength-analyser:
+    title: Wachtwoordsterkte-analyse
+    description: Ontdek de sterkte van je wachtwoord met deze wachtwoordsterkte-analyse en breek-tijd schatter, die alleen aan de klantzijde werkt.
+
+  chronometer:
+    title: Chronometer
+    description: Houd de tijd van iets bij. In wezen een chronometer met eenvoudige functies.
+
+  token-generator:
+    title: Token generator
+    description: Genereer een willekeurige reeks tekens, inclusief hoofdletters, kleine letters, cijfers en/of symbolen.
+
+    uppercase: Hoofdletters (ABC...)
+    lowercase: Kleine letters (abc...)
+    numbers: Nummers (123...)
+    symbols: Symbolen (!-;...)
+    length: Lengte
+    tokenPlaceholder: 'Token...'
+    copied: Token gekopieerd naar klembord
+    button:
+      copy: Kopiëren
+      refresh: Ververs
+  percentage-calculator:
+    title: Percentage calculator
+    description: Bereken percentages eenvoudig van een waarde naar een andere waarde of van een percentage naar een waarde.
+
+  svg-placeholder-generator:
+    title: SVG-placeholder generator
+    description: Genereer SVG-afbeeldingen om als placeholders in je applicaties te gebruiken.
+
+  json-to-csv:
+    title: JSON naar CSV
+    description: Converteer JSON naar CSV met automatische kolomkopdetectie.
+
+  camera-recorder:
+    title: Camera recorder
+    description: Maak een foto of neem een video op met je webcam of camera.
+
+  keycode-info:
+    title: Keycode-info
+    description: Vind de javascript keycode, code, locatie en modifiers van elke ingedrukte toets.
+
+  emoji-picker:
+    title: Emoji-picker
+    description: Kopieer en plak emoji’s eenvoudig en krijg de unicode en codepuntwaarde van elke emoji.
+
+  color-converter:
+    title: Kleurconverter
+    description: Converteer kleuren tussen verschillende formaten (hex, rgb, hsl en css naam).
+
+  bcrypt:
+    title: Bcrypt
+    description: Hash en vergelijk tekststringen met behulp van Bcrypt. Bcrypt is een wachtwoord-hashfunctie gebaseerd op het Blowfish-cijfer.
+
+  crontab-generator:
+    title: Crontab generator
+    description: Valideer en genereer crontab's en ontvang een door mensen leesbare beschrijving van het cron-schema.
+
+  http-status-codes:
+    title: HTTP-statuscodes
+    description: Lijst van alle HTTP-statuscodes, hun namen en betekenissen.
+
+  sql-prettify:
+    title: SQL mooier maken en formatteren
+    description: Formatteer en maak je SQL-query's online mooier (ondersteunt verschillende SQL-dialecten).
+
+  benchmark-builder:
+    title: Benchmark builder
+    description: Vergelijk eenvoudig de uitvoeringstijd van taken met deze zeer eenvoudige online benchmark builder.
+
+  git-memo:
+    title: Git-tips
+    description: Git is een gedecentraliseerde versiebeheersoftware. Met deze cheatsheet krijg je snel toegang tot de meest voorkomende git-commando's.
+
+  slugify-string:
+    title: Slugify string
+    description: Maak een string veilig voor url's, bestandsnamen en id's.
+
+  encryption:
+    title: Tekst versleutelen/ontsleutelen
+    description: Versleutel platte tekst en ontsleutel gecodeerde tekst met behulp van cryptografische algoritmen zoals AES, TripleDES, Rabbit of RC4.
+
+  random-port-generator:
+    title: Willekeurige poort generator
+    description: Genereer willekeurige poortnummers buiten het bereik van "bekende" poorten (0-1023).
+
+  yaml-prettify:
+    title: YAML-verfraaiing en opmaak
+    description: Zet je YAML-array om in een mensvriendelijk, leesbaar formaat.
+
+  eta-calculator:
+    title: ETA-calculator
+    description: Bereken een geschatte aankomsttijd (ETA) voor het voltooien van een taak, bijvoorbeeld de voltooiingstijd en duur van een bestandsoverdracht.
+
+  roman-numeral-converter:
+    title: Romeins cijferomzetter
+    description: Converteer Romeinse cijfers naar getallen en getallen naar Romeinse cijfers.
+
+  hmac-generator:
+    title: HMAC-generator
+    description: Bereken een op hash gebaseerde berichtauthenticatiecode (HMAC) met een geheime sleutel en je favoriete hashfunctie.
+
+  bip39-generator:
+    title: BIP39-wachtwoordgenerator
+    description: Genereer een BIP39-wachtwoord uit een bestaande of willekeurige mnemonic of haal de mnemonic op uit een wachtwoord.
+
+  base64-file-converter:
+    title: Base64-bestandsomzetter
+    description: Zet een string, bestand of afbeelding om naar een base64-weergave.
+
+  list-converter:
+    title: Lijstomzetter
+    description: Deze tool kan kolomgebaseerde gegevens verwerken en verschillende wijzigingen toepassen op elke rij (zoals transponeren, prefixen en suffixen toevoegen, de lijst omkeren, de lijst sorteren, waarden in kleine letters zetten, waarden inkorten).
+
+  base64-string-converter:
+    title: Base64-string-encoder/decoder
+    description: Encodeer eenvoudig strings naar base64-weergaven en decodeer deze.
+
+  toml-to-yaml:
+    title: Van TOML naar YAML
+    description: Parseer TOML en converteer het naar YAML.
+
+  math-evaluator:
+    title: Wiskunde-evaluator
+    description: Een rekenmachine om wiskundige uitdrukkingen te evalueren. U kunt functies gebruiken zoals sqrt, cos, sin, abs, enz.
+
+  json-to-yaml-converter:
+    title: JSON naar YAML-omzetter
+    description: Converteer JSON naar YAML met deze online converter.
+
+  url-parser:
+    title: URL-parser
+    description: Parseer een URL in zijn afzonderlijke componenten (protocol, bron, parameters, poort, gebruikersnaam-wachtwoord, ...).
+
+  iban-validator-and-parser:
+    title: IBAN-validator en parser
+    description: Valideer en parseer IBAN-nummers. Controleer of een IBAN geldig is en haal het land, BBAN, en QR-IBAN en IBAN-vriendelijke formaat op.
+
+  user-agent-parser:
+    title: User-agent-parser
+    description: Detecteer en parseer de browser, engine, besturingssysteem, CPU en apparaattype/model uit een user-agent string.
+
+  numeronym-generator:
+    title: Numeroniem-generator
+    description: Een numeroniem is een woord waarin een nummer wordt gebruikt om een afkorting te maken. Bijvoorbeeld, "i18n" is het numeroniem voor "internationalisatie", waarbij de 18 het aantal letters tussen de "i" en "n" in het woord vertegenwoordigt.
+
+  case-converter:
+    title: Hoofdletteromzetter
+    description: Zet de hoofdletters van een string om en kies tussen verschillende stijlen.
+
+  html-entities:
+    title: HTML-entiteiten verbergen of tonen
+    description: Verberg of toon HTML-entiteiten door tekens zoals <, >, &, “ en \’ te vervangen door hun HTML-versies.
+
+  json-prettify:
+    title: JSON-verfraaiing en opmaak
+    description: Zet je JSON-array om in een mensvriendelijk, leesbaar formaat.
+
+  docker-run-to-docker-compose-converter:
+    title: Van Docker run naar Docker compose-converter
+    description: Converteer "docker run"-commando's naar docker-compose-bestanden!
+
+  mac-address-lookup:
+    title: MAC-adreszoeker
+    description: Vind de verkoper en fabrikant van een apparaat op basis van het MAC-adres.
+
+  mime-types:
+    title: MIME-typen
+    description: Converteer MIME-typen naar bestandsextensies of andersom.
+
+  toml-to-json:
+    title: Van TOML naar JSON
+    description: Parseer TOML en converteer het naar JSON.
+
+  lorem-ipsum-generator:
+    title: Lorem Ipsum-generator
+    description: Lorem ipsum is een veelgebruikte plaatsaanduidingstekst om de visuele vorm van een document of lettertype te tonen zonder betekenisvolle inhoud.
+
+  qrcode-generator:
+    title: QR-codegenerator
+    description: Maak en download een QR-code voor een URL (of gewoon platte tekst), en pas de achtergrond- en voorgrondkleuren aan.
+
+  wifi-qrcode-generator:
+    title: WiFi QR-codegenerator
+    description: Maak en download QR-codes voor snelle verbindingen met WiFi-netwerken.
+
+  xml-formatter:
+    title: XML-opmaker
+    description: Zet je XML-array om in een mensvriendelijk, leesbaar formaat.
+
+  temperature-converter:
+    title: Temperatuurconverter
+    description: Converteer graden temperaturen voor Kelvin, Celsius, Fahrenheit, Rankine, Delisle, Newton, Réaumur en Rømer.
+
+  chmod-calculator:
+    title: Chmod-calculator
+    description: Bereken je chmod-rechten en -commando's met deze online chmod-calculator.
+
+  rsa-key-pair-generator:
+    title: RSA-sleutelpaar-generator
+    description: Genereer een willekeurig RSA privé- en publiek pem-certificaatsleutelpaar.
+
+  html-wysiwyg-editor:
+    title: HTML WYSIWYG-editor
+    description: Een online, rijk uitgeruste WYSIWYG HTML-editor die direct de broncode voor de inhoud genereert.
+
+  yaml-to-toml:
+    title: Van YAML naar TOML
+    description: Parseer YAML en converteer het naar TOML.
+
+  mac-address-generator:
+    title: MAC-adresgenerator
+    description: Voer de hoeveelheid en prefix in. MAC-adressen worden gegenereerd met hoofdletters of kleine letters, afhankelijk van je keuze.
+
+  json-diff:
+    title: JSON-verschil
+    description: Vergelijk twee JSON-objecten en verkrijg de verschillen.
+
+  jwt-parser:
+    title: JWT-parser
+    description: Parseer en decodeer je JSON Web Token (JWT) en bekijk de inhoud.
+
+  date-converter:
+    title: Datum-tijdconverter
+    description: Converteer datum en tijd naar verschillende formaten.
+
+  phone-parser-and-formatter:
+    title: Telefoonparser en -formatter
+    description: Parseer, valideer en formatteer telefoonnummers. Verkrijg informatie over het telefoonnummer, zoals landcode, type, enz.
+
+  ipv4-subnet-calculator:
+    title: IPv4-subnetcalculator
+    description: Parseer je IPv4 CIDR-blokken en verkrijg alle benodigde informatie over je subnet.
+
+  og-meta-generator:
+    title: Open Graph meta-generator
+    description: Genereer Open Graph en social HTML meta-tags voor je website.
+
+ipv6-ula-generator:
+  title: IPv6 ULA-generator
+  description: Genereer je eigen lokale, niet-routerbare IP-adressen voor je netwerk volgens RFC4193.
+
+hash-text:
+  title: Hash-tekst
+  description: Hash een tekststring met de gewenste functie MD5, SHA1, SHA256, SHA224, SHA512, SHA384, SHA3 of RIPEMD160.
+
+json-to-toml:
+  title: Van JSON naar TOML
+  description: Parseer JSON en converteer het naar TOML.
+
+device-information:
+  title: Apparaatinformatie
+  description: Verkrijg informatie over je huidige apparaat (schermgrootte, pixelverhouding, user-agent, ...).
+
+pdf-signature-checker:
+  title: PDF-handtekeningcontrole
+  description: Valideer de handtekeningen van een PDF-bestand. Een ondertekend PDF-bestand bevat een of meer handtekeningen die kunnen worden gebruikt om te bepalen of de inhoud van het bestand is gewijzigd sinds het werd ondertekend.
+
+json-minify:
+  title: JSON comprimeren
+  description: Verklein en comprimeer je JSON door onnodige spaties te verwijderen.
+
+ulid-generator:
+  title: ULID-generator
+  description: Genereer een willekeurige Universeel Unieke Lexicografisch Sorteerbare Identificatie (ULID).
+
+string-obfuscator:
+  title: String-obfuscator
+  description: Verberg een string (zoals een geheim, een IBAN of een token) om deze deelbaar en herkenbaar te maken zonder de inhoud prijs te geven.
+
+base-converter:
+  title: Base-converter voor gehele getallen
+  description: Converteer een getal tussen verschillende bases (decimaal, hexadecimaal, binair, octaal, base64, ...).
+
+yaml-to-json-converter:
+  title: YAML naar JSON-omzetter
+  description: Converteer YAML naar JSON met deze online live converter.
+
+uuid-generator:
+  title: UUID-generator
+  description: Een Universeel Unieke Identificatie (UUID) is een 128-bits getal dat wordt gebruikt om informatie in computersystemen te identificeren. Het aantal mogelijke UUID's is 16^32, oftewel 2^128, wat ongeveer 3,4x10^38 is (wat heel veel is!).
+
+ipv4-address-converter:
+  title: IPv4-adresconverter
+  description: Converteer een IP-adres naar decimale, binaire, hexadecimale en zelfs IPv6-weergave.
+
+text-statistics:
+  title: Tekststatistieken
+  description: Verkrijg informatie over een tekst, zoals het aantal tekens, aantal woorden, grootte in bytes, ...
+
+text-to-nato-alphabet:
+  title: Tekst naar NAVO-alfabet
+  description: Converteer tekst naar het NAVO-fonetisch alfabet voor mondelinge communicatie.
+
+basic-auth-generator:
+  title: Basic-auth-generator
+  description: Genereer een base64-gecodeerde basisauthenticatiekop van een gebruikersnaam en wachtwoord.
+
+text-to-unicode:
+  title: Tekst naar Unicode
+  description: Parseer en converteer tekst naar Unicode of omgekeerd.
+
+ipv4-range-expander:
+  title: IPv4-bereikuitbreider
+  description: Wanneer een start- en eind-IPv4-adres wordt opgegeven, berekent deze tool een geldig IPv4-subnet met CIDR-notatie.
+
+text-diff:
+  title: Tekstverschil
+  description: Vergelijk twee teksten en bekijk de verschillen ertussen.
+
+otp-generator:
+  title: OTP-codegenerator
+  description: Genereer en valideer een tijdgebaseerde OTP (eenmalig wachtwoord) voor multifactor-authenticatie.
+
+url-encoder:
+  title: URL-codering/decodering
+  description: Encodeer of decodeer tekst naar een URL-gecodeerd formaat (ook wel 'percentage-gecodeerd' genoemd).
+
+text-to-binary:
+  title: Tekst naar ASCII-binair
+  description: Converteer tekst naar een ASCII-binaire weergave of omgekeerd.
