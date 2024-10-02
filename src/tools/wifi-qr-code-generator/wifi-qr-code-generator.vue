@@ -53,7 +53,7 @@ const { download } = useDownloadFileFromBase64({ source: qrcode, filename: 'qr-c
               value: 'nopass',
             },
             {
-              label: 'WPA/WPA2',
+              label: 'WPA/WPA2/WPA3',
               value: 'WPA',
             },
             {
