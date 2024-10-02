@@ -5,6 +5,11 @@ import type { ConvertOptions } from './list-converter.types';
 
 const sortOrderOptions = [
   {
+    label: 'No sort',
+    value: null,
+    disabled: false,
+  },
+  {
     label: 'Sort ascending',
     value: 'asc',
     disabled: false,
