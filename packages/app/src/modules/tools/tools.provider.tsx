@@ -1,6 +1,5 @@
 import type { Accessor, ParentComponent } from 'solid-js';
-import type { ToolI18nFactory } from './tools.types';
-import { flatten, type Flatten, translator, type Translator } from '@solid-primitives/i18n';
+import { flatten, translator } from '@solid-primitives/i18n';
 import { merge } from 'lodash-es';
 import { createContext, useContext } from 'solid-js';
 

@@ -5,5 +5,5 @@ export const tokenGeneratorTool = defineTool({
   entryFile: () => import('./token-generator.page'),
   icon: 'i-tabler-key',
   createdAt: new Date('2024-02-13'),
-  currentDirUrl: import.meta.url,
+  dirName: 'token-generator',
 });

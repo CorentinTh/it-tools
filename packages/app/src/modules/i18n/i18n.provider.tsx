@@ -1,7 +1,9 @@
 import type { ParentComponent } from 'solid-js';
 import type { LocaleKey } from './i18n.types';
+import { joinUrlPaths } from '@corentinth/chisels';
 import * as i18n from '@solid-primitives/i18n';
 import { makePersisted } from '@solid-primitives/storage';
+import { useNavigate } from '@solidjs/router';
 import { merge } from 'lodash-es';
 import { createContext, createResource, createSignal, Show, useContext } from 'solid-js';
 import defaultDict from '../../locales/en.json';
@@ -23,6 +25,7 @@ const RootI18nContext = createContext<{
 
 function useI18n() {
   const context = useContext(RootI18nContext);
+  const navigate = useNavigate();
 
   if (!context) {
     throw new Error('I18n context not found');
@@ -35,6 +38,18 @@ function useI18n() {
     getLocale,
     setLocale,
     locales,
+    createLocalizedUrl: ({ path }: { path: string }) => {
+      const newPath = joinUrlPaths(getLocale(), path);
+
+      return `/${newPath}`;
+    },
+    changeLocale: (locale: LocaleKey) => {
+      setLocale(locale);
+
+      const pathWithoutLocale = location.pathname.split('/').slice(2).join('/');
+      const newPath = joinUrlPaths(locale, pathWithoutLocale);
+      navigate(`/${newPath}`);
+    },
   };
 }
 

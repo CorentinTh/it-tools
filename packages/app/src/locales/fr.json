@@ -2,5 +2,58 @@
   "app": {
     "title": "IT-Tools",
     "description": "La collection open-source d'outils en ligne pour aider les devs dans leur vie quotidienne."
+  },
+  "navbar": {
+    "theme": {
+      "theme": "Thème",
+      "light-mode": "Mode clair",
+      "dark-mode": "Mode sombre",
+      "system-mode": "Système"
+    },
+    "language": "Langue",
+    "contribute-to-i18n": "Contribuer à l'i18n",
+    "github": "GitHub",
+    "support": "Soutenir IT-Tools",
+    "report-bug": "Signaler un bug"
+  },
+  "footer": {
+    "resources": {
+      "title": "Ressources",
+      "all-tools": "Tous les outils",
+      "github": "Dépôt GitHub",
+      "support": "Soutenir IT-Tools",
+      "license": "Licence"
+    },
+    "support": {
+      "title": "Support",
+      "report-bug": "Signaler un bug",
+      "request-feature": "Demander une fonctionnalité",
+      "contribute": "Contribuer au projet",
+      "contact": "Me contacter"
+    },
+    "friends": {
+      "title": "Ami·e·s"
+    }
+  },
+  "commandPalette": {
+    "input-placeholder": "Tapez pour rechercher un outil...",
+    "go-home": "Aller à l'accueil",
+    "sections": {
+      "tools": "Outils",
+      "navigation": "Navigation",
+      "theme": "Thème"
+    }
+  },
+  "home": {
+    "all-tools": "Tous les outils",
+    "open-source": "Open Source",
+    "free": "Gratuit",
+    "self-hostable": "Self-hostable"
+  },
+  "tools": {
+    "token-generator": {
+      "name": "Générateur de token",
+      "description": "Générer des string aléatoires, contrôlez les caractères que vous voulez, lettres majuscules, minuscules, chiffres et/ou symboles."
+    }
   }
 }

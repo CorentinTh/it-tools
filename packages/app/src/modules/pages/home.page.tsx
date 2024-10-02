@@ -1,15 +1,17 @@
 import type { Component } from 'solid-js';
 import { A } from '@solidjs/router';
+import { useCommandPalette } from '../command-palette/command-palette.provider';
 import { useI18n } from '../i18n/i18n.provider';
 import { useToolsStore } from '../tools/tools.store';
 import { Badge } from '../ui/components/badge';
 import { Button } from '../ui/components/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/components/card';
+import { Card, CardDescription, CardHeader, CardTitle } from '../ui/components/card';
 import { cn } from '../ui/utils/cn';
 
 export const HomePage: Component = () => {
   const { t } = useI18n();
-  const { tools } = useToolsStore();
+  const { getTools } = useToolsStore();
+  const { openCommandPalette } = useCommandPalette();
 
   return (
     <div>
@@ -39,10 +41,15 @@ export const HomePage: Component = () => {
               {t('app.description')}
             </p>
 
-            <div>
+            <div class="flex items-center gap-4">
               <Button variant="default" as={A} href="tools">
                 {t('home.all-tools')}
                 <div class="i-tabler-arrow-right ml-2 text-base"></div>
+              </Button>
+
+              <Button variant="outline" onClick={openCommandPalette}>
+                <div class="i-tabler-search mr-2 text-base" />
+                {t('home.search-tools')}
               </Button>
             </div>
           </div>
@@ -57,9 +64,9 @@ export const HomePage: Component = () => {
       </div>
 
       <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 max-w-1200px mx-auto p-6">
-        {tools.map(tool => (
-          <A href={tool.slug}>
-            <Card class="hover:(shadow-md transform scale-101) transition-transform">
+        {getTools().map(tool => (
+          <A href={tool.slug} class="h-full">
+            <Card class="hover:(shadow-md transform scale-101) transition-transform h-full">
               <CardHeader>
                 <div class={cn(tool.icon, 'size-12 text-muted-foreground/60')} />
 

@@ -1,0 +1,6 @@
+{
+  "name": "Random Port Generator",
+  "description": "Generate a random port number outside of the reserved ports range (0-1023).",
+  "refresh": "Refresh port",
+  "copy-toast": "Port copied to clipboard"
+}

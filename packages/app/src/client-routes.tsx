@@ -1,8 +1,7 @@
 import type { LocaleKey } from './modules/i18n/i18n.types';
 import { A, Navigate, type RouteDefinition, useParams } from '@solidjs/router';
-import { map } from 'lodash-es';
-import { localeKeys, locales } from './modules/i18n/i18n.constants';
-import { getBrowserLocale, useI18n } from './modules/i18n/i18n.provider';
+import { localeKeys } from './modules/i18n/i18n.constants';
+import { useI18n } from './modules/i18n/i18n.provider';
 import { HomePage } from './modules/pages/home.page';
 import { ToolPage } from './modules/tools/pages/tool.page';
 import { toolSlugs } from './modules/tools/tools.registry';

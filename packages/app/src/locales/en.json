@@ -16,8 +16,46 @@
     "support": "Support IT-Tools",
     "report-bug": "Report a bug"
   },
+  "footer": {
+    "resources": {
+      "title": "Resources",
+      "all-tools": "All the tools",
+      "github": "GitHub repository",
+      "support": "Support IT-Tools",
+      "license": "License"
+    },
+    "support": {
+      "title": "Support",
+      "report-bug": "Report a bug",
+      "request-feature": "Request a feature",
+      "contribute": "Contribute to the project",
+      "contact": "Contact me"
+    },
+    "friends": {
+      "title": "Friends"
+    }
+  },
+  "commandPalette": {
+    "input-placeholder": "Type to search for a tool or a command...",
+    "go-home": "Go to home",
+    "sections": {
+      "tools": "Tools",
+      "navigation": "Navigation",
+      "language": "Language",
+      "theme": "Theme"
+    },
+    "theme": {
+      "switch-to-light": "Switch to light theme",
+      "switch-to-dark": "Switch to dark theme",
+      "switch-to-system": "Use to system theme"
+    },
+    "trigger": {
+      "search": "Search for a tool"
+    }
+  },
   "home": {
     "all-tools": "All the tools",
+    "search-tools": "Search for a tool",
     "open-source": "Open Source",
     "free": "Free",
     "self-hostable": "Self-hostable"
@@ -26,6 +64,10 @@
     "token-generator": {
       "name": "Token Generator",
       "description": "Generate random string with the characters you want, uppercase, lowercase letters, numbers and/or symbols."
+    },
+    "random-port-generator": {
+      "name": "Random Port Generator",
+      "description": "Generate a random port number outside of the reserved ports range (0-1023)."
     }
   }
 }

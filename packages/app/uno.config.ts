@@ -8,6 +8,7 @@ import {
 } from 'unocss';
 import presetAnimations from 'unocss-preset-animations';
 import { toolDefinitions } from './src/modules/tools/tools.registry';
+import { socialLinks } from './src/modules/ui/layouts/app.layouts.constants';
 
 export default defineConfig({
   presets: [
@@ -111,5 +112,9 @@ export default defineConfig({
   },
   safelist: [
     ...toolDefinitions.map(tool => tool.icon),
+    ...socialLinks.map(({ icon }) => icon),
   ],
+  shortcuts: {
+    'i-logo': 'i-tabler-terminal',
+  },
 });

@@ -1,4 +1,6 @@
 {
+  "name": "Générateur de token",
+  "description": "Génère une chaîne de caractères aléatoire, contrôlez les caractères que vous voulez, lettres majuscules, minuscules, chiffres et/ou symboles.",
   "uppercase": "Lettres majuscules (A-Z)",
   "lowercase": "Lettres minuscules (a-z)",
   "numbers": "Chiffres (0-9)",

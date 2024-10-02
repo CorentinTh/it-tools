@@ -1,0 +1,43 @@
+name: CD - Production
+
+on:
+  push:
+    branches:
+      - next
+
+jobs:
+  publish-app-prod:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    name: Publish app to production
+    steps:
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+      - run: corepack enable
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          corepack: true
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm i
+
+      - name: Build the app
+        run: pnpm -F @it-tools/app build
+
+      - name: Publish to Cloudflare Pages
+        uses: AdrianGonz97/refined-cf-pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          projectName: it-tools
+          workingDirectory: packages/app
+          directory: dist
+          deploymentName: Production App
+          branch: next
+          wranglerVersion: '3'
+
+  

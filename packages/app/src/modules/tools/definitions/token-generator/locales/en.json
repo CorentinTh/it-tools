@@ -1,4 +1,6 @@
 {
+  "name": "Token Generator",
+  "description": "Generate random string with the characters you want, uppercase, lowercase letters, numbers and/or symbols.",
   "uppercase": "Uppercase letters (A-Z)",
   "lowercase": "Lowercase letters (a-z)",
   "numbers": "Numbers (0-9)",
