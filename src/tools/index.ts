@@ -1,6 +1,14 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+import { tool as volumeConverter } from './volume-converter';
+import { tool as pressureConverter } from './pressure-converter';
+import { tool as massConverter } from './mass-converter';
+import { tool as lengthConverter } from './length-converter';
+import { tool as forceConverter } from './force-converter';
+import { tool as energyConverter } from './energy-converter';
+import { tool as areaConverter } from './area-converter';
+import { tool as angleConverter } from './angle-converter';
 import { tool as pdfSignatureChecker } from './pdf-signature-checker';
 import { tool as numeronymGenerator } from './numeronym-generator';
 import { tool as macAddressGenerator } from './mac-address-generator';
@@ -75,6 +83,8 @@ import { tool as urlParser } from './url-parser';
 import { tool as uuidGenerator } from './uuid-generator';
 import { tool as macAddressLookup } from './mac-address-lookup';
 import { tool as xmlFormatter } from './xml-formatter';
+import { tool as manyUnitsConverter } from './many-units-converter';
+import { tool as powerConverter } from './power-converter';
 
 export const toolsByCategory: ToolCategory[] = [
   {
@@ -147,11 +157,29 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Math',
-    components: [mathEvaluator, etaCalculator, percentageCalculator],
+    components: [
+      mathEvaluator,
+      etaCalculator,
+      percentageCalculator,
+      angleConverter,
+    ],
   },
   {
     name: 'Measurement',
-    components: [chronometer, temperatureConverter, benchmarkBuilder],
+    components: [
+      chronometer,
+      manyUnitsConverter,
+      temperatureConverter,
+      pressureConverter,
+      massConverter,
+      lengthConverter,
+      areaConverter,
+      volumeConverter,
+      forceConverter,
+      energyConverter,
+      powerConverter,
+      benchmarkBuilder,
+    ],
   },
   {
     name: 'Text',
