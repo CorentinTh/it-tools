@@ -1,0 +1,1684 @@
+[
+   {
+      "Letter": "A",
+      "(International)": "Alfa",
+      "(France)": "Anatole",
+      "(Belgium)": "Arthur",
+      "(Switzerland)": "Anna",
+      "(Québec)": "Alice",
+      "(Germany, 2022)": "Aachen",
+      "(Austria)": "Anton",
+      "(Germany, informal, 2022)": "Albert",
+      "(Netherlands)": "Anna/Anton",
+      "Italian": "Ancona",
+      "Spanish": "Antonio",
+      "(Brazil)": "Amor",
+      "(Portugal)": "Aveiro",
+      "Swedish": "Adam",
+      "Danish": "Anna",
+      "Norwegian": "Anna",
+      "Finnish": "Aarne",
+      "Turkish": "Adana",
+      "Romanian": "Ana",
+      "Czech": "Adam",
+      "Yugoslav": "Avala",
+      "Serbian": "Avala",
+      "Slovene": "Ankaran"
+   },
+   {
+      "Letter": "Å",
+      "(Germany, 2022)": "Ringakzent-Aachen",
+      "Swedish": "Åke",
+      "Danish": "Åse",
+      "Norwegian": "Åse",
+      "Finnish": "Åke"
+   },
+   {
+      "Letter": "Ä",
+      "(Germany, 2022)": "Umlaut-Aachen",
+      "(Austria)": "Ärger",
+      "(Germany, informal, 2022)": "Änderung",
+      "Swedish": "Ärlig",
+      "Finnish": "Äiti"
+   },
+   {
+      "Letter": "Æ",
+      "(Germany, 2022)": "Verbund-Aachen-Essen",
+      "Danish": "Ægir",
+      "Norwegian": "Ærlig"
+   },
+   {
+      "Letter": "B",
+      "(International)": "Bravo",
+      "(France)": "Berthe",
+      "(Belgium)": "Brussel",
+      "(Switzerland)": "Berthe",
+      "(Québec)": "Berthe",
+      "(Germany, 2022)": "Berlin",
+      "(Austria)": "Berta",
+      "(Germany, informal, 2022)": "Bernhard",
+      "(Netherlands)": "Bern(h)ard",
+      "Italian": "Bologna",
+      "Spanish": "Burgos",
+      "(Brazil)": "Bandeira",
+      "(Portugal)": "Braga",
+      "Swedish": "Bertil",
+      "Danish": "Bernhard",
+      "Norwegian": "Bernhard",
+      "Finnish": "Bertta",
+      "Turkish": "Bolu",
+      "Romanian": "Barbu",
+      "Czech": "Božena",
+      "Yugoslav": "Beograd",
+      "Serbian": "Beograd",
+      "Slovene": "Bled"
+   },
+   {
+      "Letter": "C",
+      "(International)": "Charlie",
+      "(France)": "Célestin",
+      "(Belgium)": "Carolina",
+      "(Switzerland)": "Cécile",
+      "(Québec)": "Charles",
+      "(Germany, 2022)": "Chemnitz",
+      "(Austria)": "Cäsar",
+      "(Germany, informal, 2022)": "Cäsar",
+      "(Netherlands)": "Cornelis",
+      "Italian": "Como",
+      "Spanish": "Carmen",
+      "(Brazil)": "Cobra",
+      "(Portugal)": "Coimbra",
+      "Swedish": "Caesar",
+      "Danish": "Cecilie",
+      "Norwegian": "Caesar",
+      "Finnish": "Celsius",
+      "Turkish": "Ceyhan",
+      "Romanian": "Constantin",
+      "Czech": "Cyril",
+      "Yugoslav": "Cetinje",
+      "Serbian": "Cetinje",
+      "Slovene": "Celje"
+   },
+   {
+      "Letter": "Ç",
+      "(Germany, 2022)": "Hakenstrich-Chemnitz",
+      "Turkish": "Çanakkale"
+   },
+   {
+      "Letter": "CH",
+      "(Austria)": "Charlotte",
+      "(Germany, informal, 2022)": "Charlotte",
+      "Spanish": "Chocolate",
+      "Czech": "Chrudim"
+   },
+   {
+      "Letter": "Č",
+      "(Germany, 2022)": "Winkelakzent-Chemnitz",
+      "Czech": "Čeněk",
+      "Yugoslav": "Čačak",
+      "Serbian": "Čačak",
+      "Slovene": "Čatež"
+   },
+   {
+      "Letter": "Ć",
+      "(Germany, 2022)": "Aufwärtsakzent-Chemnitz",
+      "Yugoslav": "Ćuprija",
+      "Serbian": "Ćuprija"
+   },
+   {
+      "Letter": "D",
+      "(International)": "Delta",
+      "(France)": "Désiré",
+      "(Belgium)": "Desiré",
+      "(Switzerland)": "Daniel",
+      "(Québec)": "David",
+      "(Germany, 2022)": "Düsseldorf",
+      "(Austria)": "Dora",
+      "(Germany, informal, 2022)": "David",
+      "(Netherlands)": "Dirk",
+      "Italian": "Domodossola",
+      "Spanish": "David",
+      "(Brazil)": "Dado",
+      "(Portugal)": "Dafundo",
+      "Swedish": "David",
+      "Danish": "David",
+      "Norwegian": "David",
+      "Finnish": "Daavid",
+      "Turkish": "Denizli",
+      "Romanian": "Dumitru",
+      "Czech": "David",
+      "Yugoslav": "Dubrovnik",
+      "Serbian": "Drina",
+      "Slovene": "Drava"
+   },
+   {
+      "Letter": "DŽ",
+      "Yugoslav": "džamija",
+      "Serbian": "Džep"
+   },
+   {
+      "Letter": "Đ",
+      "(Germany, 2022)": "Querstrich Düsseldorf",
+      "Yugoslav": "Đakovo",
+      "Serbian": "Đeravica"
+   },
+   {
+      "Letter": "Ď",
+      "Czech": "Ďáblice"
+   },
+   {
+      "Letter": "E",
+      "(International)": "Echo",
+      "(France)": "Eugène",
+      "(Belgium)": "Emiel",
+      "(Switzerland)": "Émile",
+      "(Québec)": "Édouard",
+      "(Germany, 2022)": "Essen",
+      "(Austria)": "Emil",
+      "(Germany, informal, 2022)": "Emil",
+      "(Netherlands)": "Eduard",
+      "Italian": "Empoli",
+      "Spanish": "España",
+      "(Brazil)": "Estrela",
+      "(Portugal)": "Évora",
+      "Swedish": "Erik",
+      "Danish": "Erik",
+      "Norwegian": "Edith",
+      "Finnish": "Eemeli",
+      "Turkish": "Edirne",
+      "Romanian": "Elena",
+      "Czech": "Emil",
+      "Yugoslav": "Evropa",
+      "Serbian": "Evropa",
+      "Slovene": "Evropa"
+   },
+   {
+      "Letter": "F",
+      "(International)": "Foxtrot",
+      "(France)": "François",
+      "(Belgium)": "Frederik",
+      "(Switzerland)": "François",
+      "(Québec)": "François",
+      "(Germany, 2022)": "Frankfurt",
+      "(Austria)": "Friedrich",
+      "(Germany, informal, 2022)": "Friedrich",
+      "(Netherlands)": "Ferdinand",
+      "Italian": "Firenze",
+      "Spanish": "Francia",
+      "(Brazil)": "Feira",
+      "(Portugal)": "Faro",
+      "Swedish": "Filip",
+      "Danish": "Frederik",
+      "Norwegian": "Fredrik",
+      "Finnish": "Faarao",
+      "Turkish": "Fatsa",
+      "Romanian": "Florea",
+      "Czech": "František",
+      "Yugoslav": "Foča",
+      "Serbian": "Futog",
+      "Slovene": "Fala"
+   },
+   {
+      "Letter": "G",
+      "(International)": "Golf",
+      "(France)": "Gaston",
+      "(Belgium)": "Gustaaf",
+      "(Switzerland)": "Gustave",
+      "(Québec)": "George",
+      "(Germany, 2022)": "Goslar",
+      "(Austria)": "Gustav",
+      "(Germany, informal, 2022)": "Gustav",
+      "(Netherlands)": "Gerard",
+      "Italian": "Genova",
+      "Spanish": "Granada",
+      "(Brazil)": "Goiaba",
+      "(Portugal)": "Guarda",
+      "Swedish": "Gustav",
+      "Danish": "Georg",
+      "Norwegian": "Gustav",
+      "Finnish": "Gideon",
+      "Turkish": "Giresun",
+      "Romanian": "Gheorghe",
+      "Czech": "Gustav",
+      "Yugoslav": "Gorica",
+      "Serbian": "Golija",
+      "Slovene": "Gorica"
+   },
+   {
+      "Letter": "Ğ",
+      "(Germany, 2022)": "Bogenakzent-Goslar",
+      "Turkish": "Yumuşak-G"
+   },
+   {
+      "Letter": "H",
+      "(International)": "Hotel",
+      "(France)": "Henri",
+      "(Belgium)": "Hendrik",
+      "(Germany, 2022)": "Hamburg",
+      "(Austria)": "Heinrich",
+      "(Germany, informal, 2022)": "Heinrich",
+      "(Netherlands)": "Hendrik",
+      "Italian": "Hotel",
+      "Spanish": "Historia",
+      "(Brazil)": "Hotel",
+      "(Portugal)": "Horta",
+      "Swedish": "Helge",
+      "Danish": "Hans",
+      "Norwegian": "Harald",
+      "Finnish": "Heikki",
+      "Turkish": "Hatay",
+      "Romanian": "Haralambie",
+      "Czech": "Helena",
+      "Yugoslav": "Hercegovina",
+      "Serbian": "Heroj",
+      "Slovene": "Hrastnik"
+   },
+   {
+      "Letter": "I",
+      "(International)": "India",
+      "(France)": "Irma",
+      "(Belgium)": "Isidoor",
+      "(Switzerland)": "Ida",
+      "(Québec)": "Isabelle",
+      "(Germany, 2022)": "Ingelheim",
+      "(Austria)": "Ida",
+      "(Germany, informal, 2022)": "Ida",
+      "(Netherlands)": "Izaak",
+      "Italian": "Imola",
+      "Spanish": "Inés",
+      "(Brazil)": "Índio",
+      "(Portugal)": "Itália",
+      "Swedish": "Ivar",
+      "Danish": "Ida",
+      "Norwegian": "Ivar",
+      "Finnish": "Iivari",
+      "Turkish": "Isparta",
+      "Romanian": "Ion",
+      "Czech": "Ivan",
+      "Yugoslav": "Istra",
+      "Serbian": "Igalo",
+      "Slovene": "Izola"
+   },
+   {
+      "Letter": "İ",
+      "(Germany, 2022)": "Überpunkt-Ingelheim",
+      "Turkish": "İzmir"
+   },
+   {
+      "Letter": "J",
+      "(International)": "Juliett",
+      "(France)": "Joseph",
+      "(Belgium)": "Jozef",
+      "(Switzerland)": "Jeanne",
+      "(Québec)": "Jacques",
+      "(Germany, 2022)": "Jena",
+      "(Austria)": "Julius",
+      "(Germany, informal, 2022)": "Jakob",
+      "(Netherlands)": "Johan/Jacob/Julius",
+      "Italian": "Jolly/Juventus",
+      "Spanish": "José",
+      "(Brazil)": "José",
+      "(Portugal)": "José",
+      "Swedish": "Johan",
+      "Danish": "Johan",
+      "Norwegian": "Johan",
+      "Finnish": "Jussi",
+      "Turkish": "Jandarma",
+      "Romanian": "Jean",
+      "Czech": "Josef",
+      "Yugoslav": "Jadran",
+      "Serbian": "Jadran",
+      "Slovene": "Jadran"
+   },
+   {
+      "Letter": "K",
+      "(International)": "Kilo",
+      "(France)": "Kléber",
+      "(Belgium)": "Kilogram",
+      "(Switzerland)": "Kilo",
+      "(Québec)": "Kilo",
+      "(Germany, 2022)": "Köln",
+      "(Austria)": "Kaufmann / Konrad",
+      "(Germany, informal, 2022)": "Katharina",
+      "(Netherlands)": "Karel",
+      "Italian": "Kappa,Kiwi",
+      "Spanish": "Kilo",
+      "(Brazil)": "Kiwi",
+      "(Portugal)": "Kodak",
+      "Swedish": "Kalle",
+      "Danish": "Karen",
+      "Norwegian": "Karin",
+      "Finnish": "Kalle",
+      "Turkish": "Kars",
+      "Romanian": "Kilogram",
+      "Czech": "Karel",
+      "Yugoslav": "Kosovo",
+      "Serbian": "Kosovo",
+      "Slovene": "Kamnik"
+   },
+   {
+      "Letter": "L",
+      "(International)": "Lima",
+      "(France)": "Louis",
+      "(Belgium)": "Leopold",
+      "(Switzerland)": "Louise",
+      "(Québec)": "Louis",
+      "(Germany, 2022)": "Leipzig",
+      "(Austria)": "Ludwig",
+      "(Germany, informal, 2022)": "Ludwig",
+      "(Netherlands)": "Lodewijk/Leo",
+      "Italian": "Livorno",
+      "Spanish": "Lorenzo",
+      "(Brazil)": "Lua",
+      "(Portugal)": "Lisboa",
+      "Swedish": "Ludvig",
+      "Danish": "Ludvig",
+      "Norwegian": "Ludvig",
+      "Finnish": "Lauri",
+      "Turkish": "Lüleburgaz",
+      "Romanian": "Lazăr",
+      "Czech": "Ludvik",
+      "Yugoslav": "Lika",
+      "Serbian": "Lovćen",
+      "Slovene": "Ljubljana"
+   },
+   {
+      "Letter": "LL",
+      "Spanish": "Llave"
+   },
+   {
+      "Letter": "LJ",
+      "Yugoslav": "Ljubljana",
+      "Serbian": "Ljubovija"
+   },
+   {
+      "Letter": "M",
+      "(International)": "Mike",
+      "(France)": "Marcel",
+      "(Belgium)": "Maria",
+      "(Switzerland)": "Marie",
+      "(Québec)": "Marie",
+      "(Germany, 2022)": "München",
+      "(Austria)": "Martha",
+      "(Germany, informal, 2022)": "Marie",
+      "(Netherlands)": "Maria",
+      "Italian": "Milano",
+      "Spanish": "Madrid",
+      "(Brazil)": "Maria",
+      "(Portugal)": "Maria",
+      "Swedish": "Martin",
+      "Danish": "Mari",
+      "Norwegian": "Martin",
+      "Finnish": "Matti",
+      "Turkish": "Muş",
+      "Romanian": "Maria",
+      "Czech": "Marie",
+      "Yugoslav": "Mostar",
+      "Serbian": "Morava",
+      "Slovene": "Maribor"
+   },
+   {
+      "Letter": "N",
+      "(International)": "November",
+      "(France)": "Nicolas",
+      "(Belgium)": "Napoleon",
+      "(Switzerland)": "Nicolas",
+      "(Québec)": "Nicolas",
+      "(Germany, 2022)": "Nürnberg",
+      "(Austria)": "Nordpol",
+      "(Germany, informal, 2022)": "Nathan",
+      "(Netherlands)": "Nico",
+      "Italian": "Napoli",
+      "Spanish": "Navidad",
+      "(Brazil)": "Navio",
+      "(Portugal)": "Nazaré",
+      "Swedish": "Niklas",
+      "Danish": "Nikolaj",
+      "Norwegian": "Nils",
+      "Finnish": "Niilo",
+      "Turkish": "Niğde",
+      "Romanian": "Nicolae",
+      "Czech": "Norbert",
+      "Yugoslav": "Niš",
+      "Serbian": "Niš",
+      "Slovene": "Nanos"
+   },
+   {
+      "Letter": "Ñ",
+      "(Germany, 2022)": "Tilde-Nürnberg",
+      "Spanish": "Ñoño"
+   },
+   {
+      "Letter": "NJ",
+      "Yugoslav": "Njegoš",
+      "Serbian": "Njegoš"
+   },
+   {
+      "Letter": "Ň",
+      "Czech": "Nina"
+   },
+   {
+      "Letter": "O",
+      "(International)": "Oscar",
+      "(France)": "Oscar",
+      "(Belgium)": "Oscar",
+      "(Switzerland)": "Olga",
+      "(Québec)": "Olivier",
+      "(Germany, 2022)": "Offenbach",
+      "(Austria)": "Otto",
+      "(Germany, informal, 2022)": "Otto",
+      "(Netherlands)": "Otto",
+      "Italian": "Otranto",
+      "Spanish": "Oviedo",
+      "(Brazil)": "Ouro",
+      "(Portugal)": "Ovar",
+      "Swedish": "Olof",
+      "Danish": "Odin",
+      "Norwegian": "Olivia",
+      "Finnish": "Otto",
+      "Turkish": "Ordu",
+      "Romanian": "Olga",
+      "Czech": "Oto-(Otakar)",
+      "Yugoslav": "Osijek",
+      "Serbian": "Obilić",
+      "Slovene": "Ormož"
+   },
+   {
+      "Letter": "Ö",
+      "(Germany, 2022)": "Umlaut-Offenbach",
+      "(Austria)": "Ökonom/Österreich/Öse",
+      "(Germany, informal, 2022)": "Ökonom",
+      "Swedish": "Östen",
+      "Finnish": "Öljy",
+      "Turkish": "Ödemiş"
+   },
+   {
+      "Letter": "Ø",
+      "(Germany, 2022)": "Schräggestrichen-Offenbach",
+      "Danish": "Øresund",
+      "Norwegian": "Østen"
+   },
+   {
+      "Letter": "P",
+      "(International)": "Papa",
+      "(France)": "Pierre",
+      "(Belgium)": "Piano",
+      "(Switzerland)": "Paul",
+      "(Québec)": "Pierre",
+      "(Germany, 2022)": "Potsdam",
+      "(Austria)": "Paula",
+      "(Germany, informal, 2022)": "Paula",
+      "(Netherlands)": "Pieter",
+      "Italian": "Padova",
+      "Spanish": "París",
+      "(Brazil)": "Pipa",
+      "(Portugal)": "Porto",
+      "Swedish": "Petter",
+      "Danish": "Peter",
+      "Norwegian": "Petter",
+      "Finnish": "Paavo",
+      "Turkish": "Polatlı",
+      "Romanian": "Petre",
+      "Czech": "Petr",
+      "Yugoslav": "Pirot",
+      "Serbian": "Pirot",
+      "Slovene": "Piran"
+   },
+   {
+      "Letter": "Q",
+      "(International)": "Quebec",
+      "(France)": "Quintal",
+      "(Belgium)": "Quotiënt",
+      "(Switzerland)": "Quittance",
+      "(Québec)": "Québec",
+      "(Germany, 2022)": "Quickborn",
+      "(Austria)": "Quelle",
+      "(Germany, informal, 2022)": "Quelle",
+      "(Netherlands)": "Quirinus/Quinten/Quotiënt",
+      "Italian": "Quadro",
+      "Spanish": "Queso",
+      "(Brazil)": "Quilombo",
+      "(Portugal)": "Queluz",
+      "Swedish": "Quintus",
+      "Danish": "Quintus",
+      "Norwegian": "Quintus",
+      "Finnish": "Kuu",
+      "Romanian": "Qu-(Chiu)",
+      "Czech": "Quido",
+      "Yugoslav": "kvadrat",
+      "Serbian": "Ku",
+      "Slovene": "Queen"
+   },
+   {
+      "Letter": "R",
+      "(International)": "Romeo",
+      "(France)": "Raoul",
+      "(Belgium)": "Robert",
+      "(Switzerland)": "Robert",
+      "(Québec)": "Robert",
+      "(Germany, 2022)": "Rostock",
+      "(Austria)": "Richard",
+      "(Germany, informal, 2022)": "Richard",
+      "(Netherlands)": "Richard/Rudolf",
+      "Italian": "Roma",
+      "Spanish": "Ramón",
+      "(Brazil)": "Raiz",
+      "(Portugal)": "Rossio",
+      "Swedish": "Rudolf",
+      "Danish": "Rasmus",
+      "Norwegian": "Rikard",
+      "Finnish": "Risto",
+      "Turkish": "Rize",
+      "Romanian": "Radu",
+      "Czech": "Rudolf",
+      "Yugoslav": "Rijeka",
+      "Serbian": "Ruma",
+      "Slovene": "Ravne"
+   },
+   {
+      "Letter": "Ř",
+      "Czech": "Řehoř"
+   },
+   {
+      "Letter": "S",
+      "(International)": "Sierra",
+      "(France)": "Suzanne",
+      "(Belgium)": "Sofie",
+      "(Switzerland)": "Suzanne",
+      "(Québec)": "Samuel",
+      "(Germany, 2022)": "Salzwedel",
+      "(Austria)": "Samuel/Siegfried",
+      "(Germany, informal, 2022)": "Samuel",
+      "(Netherlands)": "Simon",
+      "Italian": "Savona",
+      "Spanish": "Sábado",
+      "(Brazil)": "Saci",
+      "(Portugal)": "Setúbal",
+      "Swedish": "Sigurd",
+      "Danish": "Søren",
+      "Norwegian": "Sigrid",
+      "Finnish": "Sakari",
+      "Turkish": "Sinop",
+      "Romanian": "Sandu",
+      "Czech": "Svatopluk",
+      "Yugoslav": "Skopje",
+      "Serbian": "Sava",
+      "Slovene": "Soča"
+   },
+   {
+      "Letter": "Ş",
+      "(Germany, 2022)": "Hakenstrich-Salzwedel",
+      "Turkish": "Şırnak"
+   },
+   {
+      "Letter": "SCH",
+      "(Austria)": "Schule",
+      "(Germany, informal, 2022)": "Schule"
+   },
+   {
+      "Letter": "ß",
+      "(Germany, 2022)": "Eszett",
+      "(Austria)": "Eszett/scharfes-S",
+      "(Germany, informal, 2022)": "Eszett"
+   },
+   {
+      "Letter": "Š",
+      "(Germany, 2022)": "Winkelakzent-Salzwedel",
+      "Czech": "Šimon",
+      "Yugoslav": "Šibenik",
+      "Serbian": "Šabac",
+      "Slovene": "Šmarje"
+   },
+   {
+      "Letter": "T",
+      "(International)": "Tango",
+      "(France)": "Thérèse",
+      "(Belgium)": "Telefoon",
+      "(Switzerland)": "Thérèse",
+      "(Québec)": "Thomas",
+      "(Germany, 2022)": "Tübingen",
+      "(Austria)": "Theodor",
+      "(Germany, informal, 2022)": "Theodor",
+      "(Netherlands)": "Theodor",
+      "Italian": "Torino",
+      "Spanish": "Toledo",
+      "(Brazil)": "Tatu",
+      "(Portugal)": "Tavira",
+      "Swedish": "Tore",
+      "Danish": "Theodor",
+      "Norwegian": "Teodor",
+      "Finnish": "Tyyne",
+      "Turkish": "Tokat",
+      "Romanian": "Tudor",
+      "Czech": "Tomáš",
+      "Yugoslav": "Tuzla",
+      "Serbian": "Timok",
+      "Slovene": "Triglav"
+   },
+   {
+      "Letter": "Ť",
+      "Czech": "Těšnov"
+   },
+   {
+      "Letter": "U",
+      "(International)": "Uniform",
+      "(France)": "Ursule",
+      "(Belgium)": "Ursula",
+      "(Switzerland)": "Ulysse",
+      "(Québec)": "Ursule",
+      "(Germany, 2022)": "Unna",
+      "(Austria)": "Ulrich",
+      "(Germany, informal, 2022)": "Ulrich",
+      "(Netherlands)": "Utrecht",
+      "Italian": "Udine",
+      "Spanish": "Ulises",
+      "(Brazil)": "Uva",
+      "(Portugal)": "Unidade",
+      "Swedish": "Urban",
+      "Danish": "Ulla",
+      "Norwegian": "Ulrik",
+      "Finnish": "Urho",
+      "Turkish": "Uşak",
+      "Romanian": "Udrea",
+      "Czech": "Urban",
+      "Yugoslav": "Užice",
+      "Serbian": "Užice",
+      "Slovene": "Unec"
+   },
+   {
+      "Letter": "Ü",
+      "(Germany, 2022)": "Umlaut-Unna",
+      "(Austria)": "Übermut/Übel",
+      "(Germany, informal, 2022)": "Überfluss",
+      "Turkish": "Ünye"
+   },
+   {
+      "Letter": "V",
+      "(International)": "Victor",
+      "(France)": "Victor",
+      "(Belgium)": "Victor",
+      "(Germany, 2022)": "Völklingen",
+      "(Austria)": "Viktor",
+      "(Germany, informal, 2022)": "Viktor",
+      "(Netherlands)": "Victor",
+      "Italian": "Verona/Venezia",
+      "Spanish": "Valencia",
+      "(Brazil)": "Vitória",
+      "(Portugal)": "Vidago",
+      "Swedish": "Viktor",
+      "Danish": "Viggo",
+      "Norwegian": "Enkelt-V",
+      "Finnish": "Vihtori",
+      "Turkish": "Van",
+      "Romanian": "Vasile",
+      "Czech": "Václav",
+      "Yugoslav": "Valjevo",
+      "Serbian": "Valjevo",
+      "Slovene": "Velenje"
+   },
+   {
+      "Letter": "W",
+      "(International)": "Whiskey",
+      "(France)": "William",
+      "(Belgium)": "Waterloo",
+      "(Switzerland)": "William",
+      "(Québec)": "William",
+      "(Germany, 2022)": "Wuppertal",
+      "(Austria)": "Wilhelm",
+      "(Germany, informal, 2022)": "Wilhelm",
+      "(Netherlands)": "Willem",
+      "Italian": "Whiskey/Washington",
+      "Spanish": "Washington",
+      "(Brazil)": "Wilson",
+      "(Portugal)": "Waldemar",
+      "Swedish": "Wilhelm",
+      "Danish": "William",
+      "Norwegian": "Dobbelt-W",
+      "Finnish": "Wiski",
+      "Romanian": "dublu-v",
+      "Czech": "dvojité-V",
+      "Yugoslav": "duplo-ve",
+      "Serbian": "Duplo-ve",
+      "Slovene": "Dvojni-v"
+   },
+   {
+      "Letter": "X",
+      "(International)": "X-ray",
+      "(France)": "Xavier",
+      "(Belgium)": "Xavier",
+      "(Switzerland)": "Xavier",
+      "(Québec)": "Xavier",
+      "(Germany, 2022)": "Xanten",
+      "(Austria)": "Xanthippe / Xaver",
+      "(Germany, informal, 2022)": "Xanthippe",
+      "(Netherlands)": "Xant(h)ippe",
+      "Italian": "Ics, Xilofono",
+      "Spanish": "Xilófono",
+      "(Brazil)": "Xadrez",
+      "(Portugal)": "Xavier",
+      "Swedish": "Xerxes",
+      "Danish": "Xerxes",
+      "Norwegian": "Xerxes",
+      "Finnish": "Äksä",
+      "Romanian": "Xenia",
+      "Czech": "Xaver",
+      "Yugoslav": "iks",
+      "Serbian": "Iks",
+      "Slovene": "Iks"
+   },
+   {
+      "Letter": "Y",
+      "(International)": "Yankee",
+      "(France)": "Yvonne",
+      "(Belgium)": "Yvonne",
+      "(Germany, 2022)": "Ypsilon",
+      "(Austria)": "Ypsilon",
+      "(Germany, informal, 2022)": "Ypsilon",
+      "(Netherlands)": "Ypsilon",
+      "Italian": "York, yogurt",
+      "Spanish": "Yolanda",
+      "(Brazil)": "Yolanda",
+      "(Portugal)": "York",
+      "Swedish": "Yngve",
+      "Danish": "Yrsa",
+      "Norwegian": "Yngling",
+      "Finnish": "Yrjö",
+      "Turkish": "Yozgat",
+      "Romanian": "I-grec",
+      "Czech": "Ypsilon",
+      "Yugoslav": "ipsilon",
+      "Serbian": "Ipsilon",
+      "Slovene": "Ipsilon"
+   },
+   {
+      "Letter": "IJ",
+      "(Germany, 2022)": "Verbund Ingelheim Jena",
+      "(Netherlands)": "IJmuiden/IJsbrand"
+   },
+   {
+      "Letter": "Z",
+      "(International)": "Zulu",
+      "(France)": "Zoé",
+      "(Belgium)": "Zola",
+      "(Switzerland)": "Zurich",
+      "(Québec)": "Zoé",
+      "(Germany, 2022)": "Zwickau",
+      "(Austria)": "Zacharias/Zürich",
+      "(Germany, informal, 2022)": "Zacharias",
+      "(Netherlands)": "Zaandam/Zacharias",
+      "Italian": "Zara, Zorro",
+      "Spanish": "Zaragoza",
+      "(Brazil)": "Zebra",
+      "(Portugal)": "Zulmira",
+      "Swedish": "Zäta",
+      "Danish": "Zackarias",
+      "Norwegian": "Zakarias",
+      "Finnish": "Tseta",
+      "Turkish": "Zonguldak",
+      "Romanian": "Zahăr",
+      "Czech": "Zuzana",
+      "Yugoslav": "Zagreb",
+      "Serbian": "Zemun",
+      "Slovene": "Zalog"
+   },
+   {
+      "Letter": "Ž",
+      "(Germany, 2022)": "Winkelakzent-Zwickau",
+      "Czech": "Žofie",
+      "Yugoslav": "Žirovnica",
+      "Serbian": "Žabljak",
+      "Slovene": "Žalec"
+   },
+   {
+      "Letter": " ",
+      "(International)": "(SPACE)",
+      "(France)": "(ESPACE)",
+      "(Belgium)": "(ESPACE)",
+      "(Switzerland)": "(ESPACE)",
+      "(Québec)": "(ESPACE)",
+      "(Germany, 2022)": "(Leerzeichen)",
+      "(Austria)": "(Leerzeichen)",
+      "(Germany, informal, 2022)": "(Leerzeichen)",
+      "(Netherlands)": "(Spatie)",
+      "Italian": "(Spazio)",
+      "Spanish": "(Espacio)",
+      "(Brazil)": "(espaço)",
+      "(Portugal)": "(espaço)",
+      "Swedish": "(utrymme)",
+      "Danish": "(mellemrumstegn)",
+      "Norwegian": "(mellomromstegn)",
+      "Finnish": "(välilyönti)",
+      "Turkish": "(boşluk)",
+      "Romanian": "(spațiu)",
+      "Czech": "(prostorový)",
+      "Yugoslav": "(priestorový)",
+      "Serbian": "(prostorni)",
+      "Slovene": "(presledka)"
+   },
+   {
+      "Letter": "А",
+      "Russian": "Анна"
+   },
+   {
+      "Letter": "Б",
+      "Russian": "Борис"
+   },
+   {
+      "Letter": "В",
+      "Russian": "Василий"
+   },
+   {
+      "Letter": "Г",
+      "Russian": "Григорий"
+   },
+   {
+      "Letter": "Д",
+      "Russian": "Дмитрий"
+   },
+   {
+      "Letter": "Е",
+      "Russian": "Елена"
+   },
+   {
+      "Letter": "Ё",
+      "Russian": "Елена"
+   },
+   {
+      "Letter": "Ж",
+      "Russian": "Женя"
+   },
+   {
+      "Letter": "З",
+      "Russian": "Зинаида"
+   },
+   {
+      "Letter": "И",
+      "Russian": "Иван"
+   },
+   {
+      "Letter": "Й",
+      "Russian": "Иван краткий"
+   },
+   {
+      "Letter": "К",
+      "Russian": "Константин"
+   },
+   {
+      "Letter": "Л",
+      "Russian": "Леонид"
+   },
+   {
+      "Letter": "М",
+      "Russian": "Михаил"
+   },
+   {
+      "Letter": "Н",
+      "Russian": "Николай"
+   },
+   {
+      "Letter": "О",
+      "Russian": "Ольга"
+   },
+   {
+      "Letter": "П",
+      "Russian": "Павел"
+   },
+   {
+      "Letter": "Р",
+      "Russian": "Роман"
+   },
+   {
+      "Letter": "С",
+      "Russian": "Семён"
+   },
+   {
+      "Letter": "Т",
+      "Russian": "Татьяна"
+   },
+   {
+      "Letter": "У",
+      "Russian": "Ульяна"
+   },
+   {
+      "Letter": "Ф",
+      "Russian": "Фёдор"
+   },
+   {
+      "Letter": "Х",
+      "Russian": "Харитон"
+   },
+   {
+      "Letter": "Ц",
+      "Russian": "цапля"
+   },
+   {
+      "Letter": "Ч",
+      "Russian": "человек"
+   },
+   {
+      "Letter": "Ш",
+      "Russian": "Шура"
+   },
+   {
+      "Letter": "Щ",
+      "Russian": "щука"
+   },
+   {
+      "Letter": "Ъ",
+      "Russian": "твёрдый знак"
+   },
+   {
+      "Letter": "Ы",
+      "Russian": "еры"
+   },
+   {
+      "Letter": "Ь",
+      "Russian": "мягкий знак"
+   },
+   {
+      "Letter": "Э",
+      "Russian": "эхо"
+   },
+   {
+      "Letter": "Ю",
+      "Russian": "Юрий"
+   },
+   {
+      "Letter": "Я",
+      "Russian": "Яков"
+   },
+   {
+      "Letter": "12",
+      "Russian": "дюжина"
+   },
+   {
+      "Letter": "50",
+      "Russian": "полсотни"
+   },
+   {
+      "Letter": "Α",
+      "Greek": "αστήρ"
+   },
+   {
+      "Letter": "Β",
+      "Greek": "Βύρων"
+   },
+   {
+      "Letter": "Γ",
+      "Greek": "γαλή"
+   },
+   {
+      "Letter": "Δ",
+      "Greek": "δόξα"
+   },
+   {
+      "Letter": "Ε",
+      "Greek": "Ερμής"
+   },
+   {
+      "Letter": "Ζ",
+      "Greek": "Ζευς"
+   },
+   {
+      "Letter": "Η",
+      "Greek": "Ηρώ"
+   },
+   {
+      "Letter": "Θ",
+      "Greek": "θεά"
+   },
+   {
+      "Letter": "Ι",
+      "Greek": "ίσκιος"
+   },
+   {
+      "Letter": "Κ",
+      "Greek": "κενόν"
+   },
+   {
+      "Letter": "Λ",
+      "Greek": "λάμα"
+   },
+   {
+      "Letter": "Μ",
+      "Greek": "μέλι"
+   },
+   {
+      "Letter": "Ν",
+      "Greek": "ναός"
+   },
+   {
+      "Letter": "Ξ",
+      "Greek": "Ξέρξης"
+   },
+   {
+      "Letter": "Ο",
+      "Greek": "οσμή"
+   },
+   {
+      "Letter": "Π",
+      "Greek": "Πέτρος"
+   },
+   {
+      "Letter": "Ρ",
+      "Greek": "ρήγας"
+   },
+   {
+      "Letter": "-ς",
+      "Greek": "σοφός"
+   },
+   {
+      "Letter": "Σ",
+      "Greek": "σοφός"
+   },
+   {
+      "Letter": "Τ",
+      "Greek": "τίγρης"
+   },
+   {
+      "Letter": "Υ",
+      "Greek": "ύμνος"
+   },
+   {
+      "Letter": "Φ",
+      "Greek": "Φωφώ"
+   },
+   {
+      "Letter": "Χ",
+      "Greek": "χαρά"
+   },
+   {
+      "Letter": "Ψ",
+      "Greek": "ψυχή"
+   },
+   {
+      "Letter": "Ω",
+      "Greek": "ωμέγα"
+   },
+   {
+      "Letter": "ー",
+      "Japanese": "長音"
+   },
+   {
+      "Letter": "、",
+      "Japanese": "区切り点"
+   },
+   {
+      "Letter": "∟",
+      "Japanese": "段落"
+   },
+   {
+      "Letter": "（",
+      "Japanese": "下向括弧"
+   },
+   {
+      "Letter": "）",
+      "Japanese": "上向括弧"
+   },
+   {
+      "Letter": "あ",
+      "Japanese": "朝日のア"
+   },
+   {
+      "Letter": "ア",
+      "Japanese": "朝日のア"
+   },
+   {
+      "Letter": "い",
+      "Japanese": "いろはのイ"
+   },
+   {
+      "Letter": "イ",
+      "Japanese": "いろはのイ"
+   },
+   {
+      "Letter": "う",
+      "Japanese": "上野のウ"
+   },
+   {
+      "Letter": "ウ",
+      "Japanese": "上野のウ"
+   },
+   {
+      "Letter": "え",
+      "Japanese": "英語のエ"
+   },
+   {
+      "Letter": "エ",
+      "Japanese": "英語のエ"
+   },
+   {
+      "Letter": "お",
+      "Japanese": "大阪のオ"
+   },
+   {
+      "Letter": "オ",
+      "Japanese": "大阪のオ"
+   },
+   {
+      "Letter": "か",
+      "Japanese": "為替のカ"
+   },
+   {
+      "Letter": "カ",
+      "Japanese": "為替のカ"
+   },
+   {
+      "Letter": "き",
+      "Japanese": "切手のキ"
+   },
+   {
+      "Letter": "キ",
+      "Japanese": "切手のキ"
+   },
+   {
+      "Letter": "く",
+      "Japanese": "クラブのク"
+   },
+   {
+      "Letter": "ク",
+      "Japanese": "クラブのク"
+   },
+   {
+      "Letter": "け",
+      "Japanese": "景色のケ"
+   },
+   {
+      "Letter": "ケ",
+      "Japanese": "景色のケ"
+   },
+   {
+      "Letter": "こ",
+      "Japanese": "子供のコ"
+   },
+   {
+      "Letter": "コ",
+      "Japanese": "子供のコ"
+   },
+   {
+      "Letter": "さ",
+      "Japanese": "桜のサ"
+   },
+   {
+      "Letter": "サ",
+      "Japanese": "桜のサ"
+   },
+   {
+      "Letter": "し",
+      "Japanese": "新聞のシ"
+   },
+   {
+      "Letter": "シ",
+      "Japanese": "新聞のシ"
+   },
+   {
+      "Letter": "す",
+      "Japanese": "すずめのス"
+   },
+   {
+      "Letter": "ス",
+      "Japanese": "すずめのス"
+   },
+   {
+      "Letter": "せ",
+      "Japanese": "世界のセ"
+   },
+   {
+      "Letter": "セ",
+      "Japanese": "世界のセ"
+   },
+   {
+      "Letter": "そ",
+      "Japanese": "そろばんのソ"
+   },
+   {
+      "Letter": "ソ",
+      "Japanese": "そろばんのソ"
+   },
+   {
+      "Letter": "た",
+      "Japanese": "煙草のタ"
+   },
+   {
+      "Letter": "タ",
+      "Japanese": "煙草のタ"
+   },
+   {
+      "Letter": "ち",
+      "Japanese": "千鳥のチ"
+   },
+   {
+      "Letter": "チ",
+      "Japanese": "千鳥のチ"
+   },
+   {
+      "Letter": "つ",
+      "Japanese": "つるかめのツ"
+   },
+   {
+      "Letter": "ツ",
+      "Japanese": "つるかめのツ"
+   },
+   {
+      "Letter": "て",
+      "Japanese": "テレビのテ"
+   },
+   {
+      "Letter": "テ",
+      "Japanese": "テレビのテ"
+   },
+   {
+      "Letter": "と",
+      "Japanese": "東京のト"
+   },
+   {
+      "Letter": "ト",
+      "Japanese": "東京のト"
+   },
+   {
+      "Letter": "な",
+      "Japanese": "名古屋のナ"
+   },
+   {
+      "Letter": "ナ",
+      "Japanese": "名古屋のナ"
+   },
+   {
+      "Letter": "に",
+      "Japanese": "日本のニ"
+   },
+   {
+      "Letter": "ニ",
+      "Japanese": "日本のニ"
+   },
+   {
+      "Letter": "ぬ",
+      "Japanese": "沼津のヌ"
+   },
+   {
+      "Letter": "ヌ",
+      "Japanese": "沼津のヌ"
+   },
+   {
+      "Letter": "ね",
+      "Japanese": "ねずみのネ"
+   },
+   {
+      "Letter": "ネ",
+      "Japanese": "ねずみのネ"
+   },
+   {
+      "Letter": "の",
+      "Japanese": "野原のノ"
+   },
+   {
+      "Letter": "ノ",
+      "Japanese": "野原のノ"
+   },
+   {
+      "Letter": "は",
+      "Japanese": "はがきのハ"
+   },
+   {
+      "Letter": "ハ",
+      "Japanese": "はがきのハ"
+   },
+   {
+      "Letter": "ひ",
+      "Japanese": "飛行機のヒ"
+   },
+   {
+      "Letter": "ヒ",
+      "Japanese": "飛行機のヒ"
+   },
+   {
+      "Letter": "ふ",
+      "Japanese": "富士山のフ"
+   },
+   {
+      "Letter": "フ",
+      "Japanese": "富士山のフ"
+   },
+   {
+      "Letter": "へ",
+      "Japanese": "平和のヘ"
+   },
+   {
+      "Letter": "ヘ",
+      "Japanese": "平和のヘ"
+   },
+   {
+      "Letter": "ほ",
+      "Japanese": "保険のホ"
+   },
+   {
+      "Letter": "ホ",
+      "Japanese": "保険のホ"
+   },
+   {
+      "Letter": "ま",
+      "Japanese": "マッチのマ"
+   },
+   {
+      "Letter": "マ",
+      "Japanese": "マッチのマ"
+   },
+   {
+      "Letter": "み",
+      "Japanese": "三笠のミ"
+   },
+   {
+      "Letter": "ミ",
+      "Japanese": "三笠のミ"
+   },
+   {
+      "Letter": "む",
+      "Japanese": "無線のム"
+   },
+   {
+      "Letter": "ム",
+      "Japanese": "無線のム"
+   },
+   {
+      "Letter": "め",
+      "Japanese": "明治のメ"
+   },
+   {
+      "Letter": "メ",
+      "Japanese": "明治のメ"
+   },
+   {
+      "Letter": "も",
+      "Japanese": "もみじのモ"
+   },
+   {
+      "Letter": "モ",
+      "Japanese": "もみじのモ"
+   },
+   {
+      "Letter": "や",
+      "Japanese": "大和のヤ"
+   },
+   {
+      "Letter": "ヤ",
+      "Japanese": "大和のヤ"
+   },
+   {
+      "Letter": "ゆ",
+      "Japanese": "弓矢のユ"
+   },
+   {
+      "Letter": "ユ",
+      "Japanese": "弓矢のユ"
+   },
+   {
+      "Letter": "よ",
+      "Japanese": "吉野のヨ"
+   },
+   {
+      "Letter": "ヨ",
+      "Japanese": "吉野のヨ"
+   },
+   {
+      "Letter": "ら",
+      "Japanese": "ラジオのラ"
+   },
+   {
+      "Letter": "ラ",
+      "Japanese": "ラジオのラ"
+   },
+   {
+      "Letter": "り",
+      "Japanese": "りんごのリ"
+   },
+   {
+      "Letter": "リ",
+      "Japanese": "りんごのリ"
+   },
+   {
+      "Letter": "る",
+      "Japanese": "留守居のル"
+   },
+   {
+      "Letter": "ル",
+      "Japanese": "留守居のル"
+   },
+   {
+      "Letter": "れ",
+      "Japanese": "れんげのレ"
+   },
+   {
+      "Letter": "レ",
+      "Japanese": "れんげのレ"
+   },
+   {
+      "Letter": "ろ",
+      "Japanese": "ローマのロ"
+   },
+   {
+      "Letter": "ロ",
+      "Japanese": "ローマのロ"
+   },
+   {
+      "Letter": "わ",
+      "Japanese": "わらびのワ"
+   },
+   {
+      "Letter": "ワ",
+      "Japanese": "わらびのワ"
+   },
+   {
+      "Letter": "ゐ",
+      "Japanese": "ゐどのヰ"
+   },
+   {
+      "Letter": "ヰ",
+      "Japanese": "ゐどのヰ"
+   },
+   {
+      "Letter": "ゑ",
+      "Japanese": "かぎのあるヱ"
+   },
+   {
+      "Letter": "ヱ",
+      "Japanese": "かぎのあるヱ"
+   },
+   {
+      "Letter": "を",
+      "Japanese": "尾張のヲ"
+   },
+   {
+      "Letter": "ヲ",
+      "Japanese": "尾張のヲ"
+   },
+   {
+      "Letter": "ん",
+      "Japanese": "おしまいのン"
+   },
+   {
+      "Letter": "ン",
+      "Japanese": "おしまいのン"
+   },
+   {
+      "Letter": "゛",
+      "Japanese": "濁点"
+   },
+   {
+      "Letter": "゜",
+      "Japanese": "半濁点"
+   },
+   {
+      "Letter": "0",
+      "(International)": "Zero",
+      "(France)": "Zéro",
+      "Korean": "공",
+      "Japanese": "数字のまる"
+   },
+   {
+      "Letter": "1",
+      "(International)": "One",
+      "(France)": "Un",
+      "Korean": "하나",
+      "Japanese": "数字のひと"
+   },
+   {
+      "Letter": "2",
+      "(International)": "Two",
+      "(France)": "Deux",
+      "Korean": "둘",
+      "Japanese": "数字のに"
+   },
+   {
+      "Letter": "3",
+      "(International)": "Three",
+      "(France)": "Trois",
+      "Korean": "삼",
+      "Japanese": "数字のさん"
+   },
+   {
+      "Letter": "4",
+      "(International)": "Four",
+      "(France)": "Quatre",
+      "Korean": "넷",
+      "Japanese": "数字のよん"
+   },
+   {
+      "Letter": "5",
+      "(International)": "Five",
+      "(France)": "Cinq",
+      "Korean": "오",
+      "Japanese": "数字のご"
+   },
+   {
+      "Letter": "6",
+      "(International)": "Six",
+      "(France)": "Six",
+      "Korean": "여섯",
+      "Japanese": "数字のろく"
+   },
+   {
+      "Letter": "7",
+      "(International)": "Seven",
+      "(France)": "Sept",
+      "Korean": "칠",
+      "Japanese": "数字のなな"
+   },
+   {
+      "Letter": "8",
+      "(International)": "Eight",
+      "(France)": "Huit",
+      "Korean": "팔",
+      "Japanese": "数字のはち"
+   },
+   {
+      "Letter": "9",
+      "(International)": "Nine",
+      "(France)": "Neuf",
+      "Korean": "아홉",
+      "Japanese": "数字のきゅう"
+   },
+   {
+      "Letter": "ㄱ",
+      "Korean": "기러기"
+   },
+   {
+      "Letter": "ㄴ",
+      "Korean": "나폴리"
+   },
+   {
+      "Letter": "ㄷ",
+      "Korean": "도라지"
+   },
+   {
+      "Letter": "ㄹ",
+      "Korean": "로마"
+   },
+   {
+      "Letter": "ㅁ",
+      "Korean": "미나리"
+   },
+   {
+      "Letter": "ㅂ",
+      "Korean": "바가지"
+   },
+   {
+      "Letter": "ㅅ",
+      "Korean": "서울"
+   },
+   {
+      "Letter": "ㅇ",
+      "Korean": "잉어"
+   },
+   {
+      "Letter": "ㅈ",
+      "Korean": "지게"
+   },
+   {
+      "Letter": "ㅊ",
+      "Korean": "치마"
+   },
+   {
+      "Letter": "ㅋ",
+      "Korean": "키다리"
+   },
+   {
+      "Letter": "ㅌ",
+      "Korean": "통신"
+   },
+   {
+      "Letter": "ㅍ",
+      "Korean": "파고다"
+   },
+   {
+      "Letter": "ㅎ",
+      "Korean": "한강"
+   },
+   {
+      "Letter": "ㅏ",
+      "Korean": "아버지"
+   },
+   {
+      "Letter": "ㅑ",
+      "Korean": "야자수"
+   },
+   {
+      "Letter": "ㅓ",
+      "Korean": "어머니"
+   },
+   {
+      "Letter": "ㅕ",
+      "Korean": "연못"
+   },
+   {
+      "Letter": "ㅗ",
+      "Korean": "오징어"
+   },
+   {
+      "Letter": "ㅛ",
+      "Korean": "요지경"
+   },
+   {
+      "Letter": "ㅜ",
+      "Korean": "우편"
+   },
+   {
+      "Letter": "ㅠ",
+      "Korean": "유달산"
+   },
+   {
+      "Letter": "ㅡ",
+      "Korean": "은방울"
+   },
+   {
+      "Letter": "ㅣ",
+      "Korean": "이순신"
+   },
+   {
+      "Letter": "ㅐ",
+      "Korean": "앵무새"
+   },
+   {
+      "Letter": "ㅔ",
+      "Korean": "엑스레이"
+   }
+]
