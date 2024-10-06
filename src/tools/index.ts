@@ -9,6 +9,17 @@ import { tool as forceConverter } from './force-converter';
 import { tool as energyConverter } from './energy-converter';
 import { tool as areaConverter } from './area-converter';
 import { tool as angleConverter } from './angle-converter';
+import { tool as emailNormalizer } from './email-normalizer';
+
+import { tool as asciiTextDrawer } from './ascii-text-drawer';
+
+import { tool as textToUnicode } from './text-to-unicode';
+import { tool as safelinkDecoder } from './safelink-decoder';
+import { tool as xmlToJson } from './xml-to-json';
+import { tool as jsonToXml } from './json-to-xml';
+import { tool as regexTester } from './regex-tester';
+import { tool as regexMemo } from './regex-memo';
+import { tool as markdownToHtml } from './markdown-to-html';
 import { tool as pdfSignatureChecker } from './pdf-signature-checker';
 import { tool as numeronymGenerator } from './numeronym-generator';
 import { tool as macAddressGenerator } from './mac-address-generator';
@@ -85,6 +96,7 @@ import { tool as macAddressLookup } from './mac-address-lookup';
 import { tool as xmlFormatter } from './xml-formatter';
 import { tool as manyUnitsConverter } from './many-units-converter';
 import { tool as powerConverter } from './power-converter';
+import { tool as yamlViewer } from './yaml-viewer';
 
 export const toolsByCategory: ToolCategory[] = [
   {
@@ -103,6 +115,7 @@ export const toolsByCategory: ToolCategory[] = [
       caseConverter,
       textToNatoAlphabet,
       textToBinary,
+      textToUnicode,
       yamlToJson,
       yamlToToml,
       jsonToYaml,
@@ -110,6 +123,9 @@ export const toolsByCategory: ToolCategory[] = [
       listConverter,
       tomlToJson,
       tomlToYaml,
+      xmlToJson,
+      jsonToXml,
+      markdownToHtml,
     ],
   },
   {
@@ -130,6 +146,7 @@ export const toolsByCategory: ToolCategory[] = [
       userAgentParser,
       httpStatusCodes,
       jsonDiff,
+      safelinkDecoder,
     ],
   },
   {
@@ -149,6 +166,10 @@ export const toolsByCategory: ToolCategory[] = [
       chmodCalculator,
       dockerRunToDockerComposeConverter,
       xmlFormatter,
+      yamlViewer,
+      emailNormalizer,
+      regexTester,
+      regexMemo,
     ],
   },
   {
@@ -183,7 +204,15 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Text',
-    components: [loremIpsumGenerator, textStatistics, emojiPicker, stringObfuscator, textDiff, numeronymGenerator],
+    components: [
+      loremIpsumGenerator,
+      textStatistics,
+      emojiPicker,
+      stringObfuscator,
+      textDiff,
+      numeronymGenerator,
+      asciiTextDrawer,
+    ],
   },
   {
     name: 'Data',

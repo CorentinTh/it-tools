@@ -1,10 +1,11 @@
 import { Percentage } from '@vicons/tabler';
 import { defineTool } from '../tool';
+import { translate } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: 'Percentage calculator',
+  name: translate('tools.percentage-calculator.title'),
   path: '/percentage-calculator',
-  description: 'Easily calculate percentages from a value to another value, or from a percentage to a value.',
+  description: translate('tools.percentage-calculator.description'),
   keywords: ['percentage', 'calculator', 'calculate', 'value', 'number', '%'],
   component: () => import('./percentage-calculator.vue'),
   icon: Percentage,

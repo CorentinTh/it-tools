@@ -4,6 +4,7 @@ import emojiKeywords from 'emojilib';
 import _ from 'lodash';
 import type { EmojiInfo } from './emoji.types';
 import { useFuzzySearch } from '@/composable/fuzzySearch';
+import useDebouncedRef from '@/composable/debouncedref';
 
 const escapeUnicode = ({ emoji }: { emoji: string }) => emoji.split('').map(unit => `\\u${unit.charCodeAt(0).toString(16).padStart(4, '0')}`).join('');
 const getEmojiCodePoints = ({ emoji }: { emoji: string }) => emoji.codePointAt(0) ? `0x${emoji.codePointAt(0)?.toString(16)}` : undefined;
@@ -23,7 +24,7 @@ const emojisGroups: { emojiInfos: EmojiInfo[]; group: string }[] = _
   .map((emojiInfos, group) => ({ group, emojiInfos }))
   .value();
 
-const searchQuery = ref('');
+const searchQuery = useDebouncedRef('', 500);
 
 const { searchResult } = useFuzzySearch({
   search: searchQuery,
