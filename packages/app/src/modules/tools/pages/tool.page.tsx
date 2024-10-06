@@ -7,7 +7,7 @@ import { getToolDefinitionBySlug } from '../tools.registry';
 
 export const ToolPage: Component = () => {
   const params = useParams();
-  const { getLocale } = useI18n();
+  const { getLocale, t } = useI18n();
 
   const toolDefinition = getToolDefinitionBySlug({ slug: params.toolSlug });
   const ToolComponent = lazy(toolDefinition.entryFile);
@@ -25,7 +25,16 @@ export const ToolPage: Component = () => {
   return (
     <Show when={toolDict()}>
       {toolLocaleDict => (
-        <CurrentToolProvider toolLocaleDict={toolLocaleDict}>
+        <CurrentToolProvider
+          toolLocaleDict={toolLocaleDict}
+          tool={() => ({
+            icon: toolDefinition.icon,
+            dirName: toolDefinition.dirName,
+            createdAt: toolDefinition.createdAt,
+            name: t(`tools.${toolDefinition.slug}.name` as any),
+            description: t(`tools.${toolDefinition.slug}.description` as any),
+          })}
+        >
           <ToolComponent />
         </CurrentToolProvider>
       )}
