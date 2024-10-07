@@ -6,6 +6,7 @@ import { install as VueMonacoEditorPlugin, loader } from '@guolao/vue-monaco-edi
 import * as monaco from 'monaco-editor';
 
 import { registerSW } from 'virtual:pwa-register';
+import shadow from 'vue-shadow-dom';
 import { plausible } from './plugins/plausible.plugin';
 
 import 'virtual:uno.css';
@@ -30,5 +31,6 @@ app.use(i18nPlugin);
 app.use(router);
 app.use(naive);
 app.use(plausible);
+app.use(shadow);
 
 app.mount('#app');
