@@ -1,4 +1,4 @@
 declare module 'composerize' {
-  const composerize: (arg: string) => string;
+  const composerize: (commands: string, existingDockerComposeFile?: string, conversion?: string, indent?: number) => string;
   export default composerize;
 }
