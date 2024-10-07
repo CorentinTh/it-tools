@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MessageType, composerize } from 'composerize-ts';
+import { MessageType, composerize } from 'pcz.composerize-ts';
 import { withDefaultOnError } from '@/utils/defaults';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 import { textToBase64 } from '@/utils/base64';
