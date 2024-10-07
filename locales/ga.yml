@@ -1,0 +1,393 @@
+home:
+  categories:
+    newestTools: Uirlisí is déanaí
+    favoriteTools: 'Na huirlisí is fearr leat'
+    allTools: 'Gach na huirlisí'
+  subtitle: 'Uirlisí láimhe d''fhorbróirí'
+  toggleMenu: 'Scoránaigh roghchlár'
+  home: Baile
+  uiLib: 'Chomhéadain Lib'
+  support: 'Tacú le forbairt IT-Tools'
+  buyMeACoffee: 'Ceannaigh caife dom'
+  follow:
+    title: 'Is maith leat é-uirlisí?'
+    p1: 'Tabhair dúinn réalta ar'
+    githubRepository: 'Taisclann IT-Tools GitHub'
+    p2: 'nó lean sinn ar aghaidh'
+    twitterAccount: 'Cuntas Twitter IT-Tools'
+    thankYou: 'Go raibh maith agat!'
+  nav:
+    github: 'Stór GitHub'
+    githubRepository: 'Taisclann IT-Tools GitHub'
+    twitter: 'Cuntas Twitter'
+    twitterAccount: 'Cuntas Twitter IT Tools'
+    about: 'Maidir le IT-Tools'
+    aboutLabel: 'Faoi'
+    darkMode: 'Mod dorcha'
+    lightMode: 'Modh solais'
+    mode: 'Scoránaigh mód dorcha/éadrom'
+about:
+  content: >
+    # Maidir le IT-Tools
+
+    Comhbhailíonn an suíomh Gréasáin iontach seo, déanta le ❤ le [Corentin Thomasset](https://github.com/CorentinTh), uirlisí úsáideacha don fhorbróir agus do dhaoine atá ag obair in IT. Má tá sé úsáideach duit, bíodh leisce ort é a roinnt le daoine a cheapann tú a d’fhéadfadh a bheith úsáideach freisin agus ná déan dearmad é a chur in áirithe i do bharra aicearraí!
+
+    Tá IT Tools foinse oscailte (faoi cheadúnas MIT) agus saor in aisce, agus beidh sé i gcónaí, ach cosnaíonn sé airgead dom an t-ainm fearainn a óstáil agus a athnuachan. Más mian leat tacú le mo chuid oibre, agus spreagadh a thabhairt dom níos mó uirlisí a chur leis, smaoinigh ar thacaíocht a thabhairt trí [urraim a thabhairt dom](https://www.buymeacoffee.com/cthmsst).
+
+    ## Teicneolaíochtaí
+
+    Déantar IT Tools in Vue.js (Vue 3) le leabharlann comhpháirteanna Chomhéadain Naive agus déanann Vercel é a óstáil agus a imscaradh go leanúnach. Úsáidtear leabharlanna foinse oscailte tríú páirtí i roinnt uirlisí, b’fhéidir go bhfaighidh tú an liosta iomlán sa chomhad [package.json](https://github.com/CorentinTh/it-tools/blob/main/package.json) den stór.
+
+    ## Ar aimsigh tú fabht? Tá uirlis ar iarraidh?
+
+    Má theastaíonn uirlis uait nach bhfuil i láthair anseo faoi láthair, agus má cheapann tú gur féidir a bheith úsáideach, tá fáilte romhat iarratas gné a chur isteach sa [rannán saincheisteanna](https://github.com/CorentinTh/it-tools/issues/nua/roghnaigh) i stór GitHub.
+
+    Agus má aimsigh tú fabht, nó mura n-oibríonn rud éigin mar a bhíothas ag súil leis, comhdaigh tuairisc fabht sa [rannán saincheisteanna](https://github.com/CorentinTh/it-tools/issues/new/choose) sa Stór GitHub.
+
+404:
+  notFound: '404 Gan Aimsiú'
+  sorry: 'Ár leithscéal, ní cosúil go bhfuil an leathanach seo ann'
+  maybe: 'B''fhéidir go bhfuil an taisce ag déanamh rudaí deacra, bain triail as fórsa-athnuachan?'
+  backHome: 'Ar ais sa bhaile'
+favoriteButton:
+  remove: 'Bain ó cheanáin'
+  add: 'Cuir le ceanáin'
+toolCard:
+  new: Nua
+search:
+  label: Cuardach
+tools:
+  categories:
+    favorite-tools: 'Na huirlisí is fearr leat'
+    crypto: Criptithe
+    converter: Tiontaire
+    web: Gréasán
+    images and videos: 'Íomhánna & Físeáin'
+    development: Forbairt
+    network: Líonra
+    math: Math
+    measurement: Tomhas
+    text: Téacs
+    data: Sonraí
+
+  password-strength-analyser:
+    title: Anailíseoir neart pasfhocal
+    description: Faigh amach cé chomh láidir is atá do phasfhocal leis an anailíseoir neart pasfhocal cliant-taobh-amháin seo agus leis an uirlis meastacháin am crack.
+
+  chronometer:
+    title: Chronometer
+    description: Monatóireacht a dhéanamh ar fhad an ruda. Go bunúsach chronometer le gnéithe chronometer simplí.
+
+  token-generator:
+    title: Gineadóir comhartha
+    description: Gin teaghrán randamach leis na carachtair atá uait, litreacha móra nó litreacha beaga, uimhreacha agus/nó siombailí.
+
+    uppercase: Cás Uachtair (ABC...)
+    lowercase: Cás Íochtar (abc...)
+    numbers: Uimhreacha (123...)
+    symbols: Siombailí (!-;...)
+    length: Fad
+    tokenPlaceholder: 'An comhartha...'
+    copied: Cóipeáladh an comhartha chuig an ngearrthaisce
+    button:
+      copy: Cóip
+      refresh: Athnuaigh
+  percentage-calculator:
+    title: Áireamhán céatadánach
+    description: Ríomh céatadáin go héasca ó luach go luach eile, nó ó chéatadán go luach.
+
+  svg-placeholder-generator:
+    title: Gineadóir áitsealbhóirí SVG
+    description: Gin íomhánna svg le húsáid mar áitshealbhóir i d’fheidhmchláir.
+
+  json-to-csv:
+    title: JSON chuig CSV
+    description: Tiontaigh JSON go CSV le brath ceanntásc go huathoibríoch.
+
+  camera-recorder:
+    title: Taifeadta ceamara
+    description: Glac pictiúr nó taifead físeán ó do ceamara gréasáin nó ceamara.
+
+  keycode-info:
+    title: Faisnéis eochairchóid
+    description: Faigh eochairchód javascript, cód, suíomh agus mionathraithe aon eochair brúite.
+
+  emoji-picker:
+    title: Roghnóir Emoji
+    description: Cóipeáil agus greamaigh emojis go héasca agus faigh an cód cód agus luach pointí gach emoji.
+
+  color-converter:
+    title: Tiontaire datha
+    description: Tiontaigh dath idir na formáidí éagsúla (hex, rgb, hsl agus ainm css)
+
+  bcrypt:
+    title: Bcrypt
+    description: Hash agus cuir teaghrán téacs i gcomparáid le bcrypt. Is feidhm hashing pasfhocail é Bcrypt bunaithe ar an tsimplí Blowfish.
+
+  crontab-generator:
+    title: Gineadóir Crontab
+    description: Bailíochtaigh agus gin crontab agus faigh an cur síos inléite ag an duine ar an sceideal cron.
+
+  http-status-codes:
+    title: Cóid stádais HTTP
+    description: An liosta de na cóid stádais HTTP go léir, a n-ainm, agus a gciall.
+
+  sql-prettify:
+    title: SQL prettify agus formáid
+    description: Déan do cheisteanna SQL a fhormáid agus a mhaisiú ar líne (tacaíonn sé le canúintí SQL éagsúla).
+
+  benchmark-builder:
+    title: Tógálaí tagarmhairc
+    description: Déan comparáid éasca le ham feidhmithe na dtascanna leis an tógálaí tagarmharcála ar líne an-simplí seo.
+
+  git-memo:
+    title: Bileog caimiléir Git
+    description: Is bogearraí bainistíochta leagan díláraithe é Git. Leis an bhileog cheat seo, beidh rochtain thapa agat ar na horduithe git is coitianta.
+
+  slugify-string:
+    title: Teaghrán slugify
+    description: Déan url teaghrán, ainm comhaid agus aitheantas sábháilte.
+
+  encryption:
+    title: Criptigh / díchriptiú téacs
+    description: Criptigh téacs soiléir agus díchriptigh ciphertext ag baint úsáide as halgartaim crypto mar AES, TripleDES, Coinín nó RC4.
+
+  random-port-generator:
+    title: Gineadóir calafort randamach
+    description: Gin uimhreacha randamacha poirt lasmuigh de raon na gcalafort "aitheanta" (0-1023).
+
+  yaml-prettify:
+    title: YAML prettify agus formáid
+    description: Cuir do theaghrán YAML i bhformáid chairdiúil inléite ag an duine.
+
+  eta-calculator:
+    title: AMT áireamhán
+    description: Áireamhán ETA (Am Measta Teacht) chun neas-am críochnaithe taisc a chinneadh, mar shampla, am críochnaithe agus fad íoslódála comhaid.
+
+  roman-numeral-converter:
+    title: Tiontaire uimhreacha Rómhánacha
+    description: Tiontaigh uimhreacha Rómhánacha go huimhreacha agus tiontaigh uimhreacha go huimhreacha Rómhánacha.
+
+  hmac-generator:
+    title: Hmac gineadóir
+    description: Ríomhtar cód fíordheimhnithe teachtaireachta hash-bhunaithe (HMAC) ag baint úsáide as eochair rúnda agus an fheidhm hashing is fearr leat.
+
+  bip39-generator:
+    title: Gineadóir pasfhrása BIP39
+    description: Gin pasfhrása BIP39 ó chomóradh atá ann cheana nó randamach, nó faigh an cuimhneachán ón bpasfhrása.
+
+  base64-file-converter:
+    title: Tiontaire comhad base64 íoslódáil
+    description: Tiontaigh teaghrán, comhad, nó íomhá ina léiriú base64.
+
+  list-converter:
+    title: Liosta tiontaire
+    description: Is féidir leis an uirlis seo sonraí colún-bhunaithe a phróiseáil agus athruithe éagsúla a chur i bhfeidhm (trasuí, cuir réimír agus iarmhír, liosta droim ar ais, liosta sórtála, luachanna cás íochtair, luachanna teasctha) le gach ró.
+
+  base64-string-converter:
+    title: Ionchódóir/díchódóir teaghrán Base64
+    description: Níl ort ach teaghráin a ionchódú agus a dhíchódú ina n-ionadaíocht base64.
+
+  toml-to-yaml:
+    title: TOML go YAML
+    description: Parsáil agus tiontaigh TOML go YAML.
+
+  math-evaluator:
+    title: Meastóir matamaitice
+    description: Áireamhán chun nathanna matamaitice a mheas. Is féidir leat feidhmeanna a úsáid mar sqrt, cos, sin, ABS, etc.
+
+  json-to-yaml-converter:
+    title: JSON go YAML tiontaire
+    description: Níl ort ach JSON a thiontú go YAML leis an tiontaire beo ar líne seo.
+
+  url-parser:
+    title: Parsálaí URL
+    description: Parsáil URL ina chomhchodanna ar leith (prótacal, bunadh, paraimeanna, port, ainm úsáideora-pasfhocal, ...)
+
+  iban-validator-and-parser:
+    title: Bailíochtóir agus parsálaí IBAN
+    description: Bailíochtaigh agus parsáil uimhreacha IBAN. Seiceáil an bhfuil IBAN bailí agus faigh an tír, BBAN, más QR-IBAN é agus an fhormáid chairdiúil IBAN.
+
+  user-agent-parser:
+    title: Parsálaí úsáideora-ghníomhaire
+    description: Brabhsáil agus parsáil Brabhsálaí, Inneall, OS, LAP, agus cineál / samhail  Gléas ó theaghrán úsáideora-ghníomhaire.
+
+  numeronym-generator:
+    title: Gineadóir uimhreacha
+    description: Is focal é uimhir a n-úsáidtear uimhir chun giorrúchán a dhéanamh. Mar  shampla, is ionann "i18n" agus uimhríocht ar "idirnáisiúnú" áit a seasann 18 do líon na litreacha idir an chéad i agus an ceann deireanach n san fhocal.
+
+  case-converter:
+    title: Tiontaire cás
+    description: Trasfhoirmigh cás sreangán agus roghnaigh idir formáidí éagsúla
+
+  html-entities:
+    title: Éalú aonáin HTML
+    description: Éalú nó dí-éalaigh aonáin HTML (cuir a leagan HTML in ionad carachtair mar <,>, &, " agus \')
+
+  json-prettify:
+    title: JSON ceartaigh agus formáid
+    description: Cuir do theaghrán JSON i bhformáid atá cairdiúil agus inléite ag an duine.
+
+  docker-run-to-docker-compose-converter:
+    title: Rith docker chuig tiontaire cumadóireachta Docker
+    description: Athraíonn orduithe “rith dugaí” go comhaid cumadóireachta docker!
+
+  mac-address-lookup:
+    title: Cuardach seoladh MAC
+    description: Faigh díoltóir agus monaróir feiste ag a sheoladh MAC.
+
+  mime-types:
+    title: Cineálacha MIME
+    description: Tiontaigh cineálacha MIME go síntí comhad agus vice-versa.
+
+  toml-to-json:
+    title: TOML chuig JSON
+    description: Parsáil agus tiontaigh TOML go JSON.
+
+  lorem-ipsum-generator:
+    title: Gineadóir an-mhaith
+    description: Is téacs áitsealbhóra é Lorem ipsum a úsáidtear go coitianta chun foirm amhairc doiciméid nó cló-aghaidh a léiriú gan a bheith ag brath ar ábhar brí
+
+  qrcode-generator:
+    title: Gineadóir cóid QR
+    description: Gin agus íoslódáil cód QR le haghaidh URL (nó gnáth-théacs), agus saincheap na dathanna cúlra agus tulra.
+
+  wifi-qrcode-generator:
+    title: Gineadóir cóid qr wifi
+    description: Gin agus íoslódáil cóid QR le haghaidh naisc thapa le líonraí WiFi.
+
+  xml-formatter:
+    title: Formáidiú XML
+    description: Cuir do theaghrán XML i bhformáid chairdiúil inléite ag an duine.
+
+  temperature-converter:
+    title: Tiontaire teochta
+    description: Tiontuithe teochta céimeanna do Kelvin, Celsius, Fahrenheit, Rankine, Delisle, Newton, Réaumur, agus Rømer.
+
+  chmod-calculator:
+    title: Chmod áireamhán
+    description: Ríomh do cheadanna agus orduithe chmod leis an áireamhán chmod ar líne seo.
+
+  rsa-key-pair-generator:
+    title: RSA gineadóir eochair péire
+    description: Gin eochairphéire deimhnithe nua randamach RSA príobháideach agus poiblí pem.
+
+  html-wysiwyg-editor:
+    title: Eagarthóir HTML WYSIWYG
+    description: Eagarthóir HTML WYSIWYG ar líne, gné-saibhir a ghineann cód foinse an ábhair láithreach.
+
+  yaml-to-toml:
+    title: YAML go TOML
+    description: Parsáil agus tiontaigh YAML go TOML.
+
+  mac-address-generator:
+    title: Gineadóir seoladh MAC
+    description: Cuir isteach an chainníocht agus an réimír. Ginfear seoltaí MAC i do chás roghnaithe (cás mór nó cás íochtair)
+
+  json-diff:
+    title: JSON difr
+    description: Déan comparáid idir dhá réad JSON agus faigh na difríochtaí eatarthu.
+
+  jwt-parser:
+    title: Parsálaí JWT
+    description: Parsáil agus díchódaigh do JSON Web Token (jwt) agus taispeáin a bhfuil ann.
+
+  date-converter:
+    title: Tiontaire dáta-am
+    description: Tiontaigh dáta agus am isteach sna formáidí éagsúla
+
+  phone-parser-and-formatter:
+    title: Parsálaí agus formáidí fón
+    description: Parsáil, bailíochtaigh agus formáid uimhreacha gutháin. Faigh eolas faoin uimhir theileafóin, amhail an cód tíre, cineál, etc.
+
+  ipv4-subnet-calculator:
+    title: Áireamhán subnet IPv4
+    description: Parsáil do bhloic IPv4 CIDR agus faigh an fhaisnéis go léir a theastaíonn  uait faoi do fholíon.
+
+  og-meta-generator:
+    title: Oscail gineadóir meta graf
+    description: Gin meitea-chlibeanna HTML grafa oscailte agus sóisialta do do shuíomh Gréasáin.
+
+  ipv6-ula-generator:
+    title: IPv6 Gineadóir ULA
+    description: Gin do sheoltaí IP áitiúla neamh-ródaithe féin do do líonra de réir RFC4193.
+
+  hash-text:
+    title: Téacs hash
+    description: "Hash teaghrán téacs ag baint úsáide as an bhfeidhm atá uait: MD5, SHA1, SHA256, SHA224, SHA512, SHA384, SHA3 nó RIPEMD160"
+
+  json-to-toml:
+    title: JSON chuig TOML
+    description: Parsáil agus tiontaigh JSON go TOML.
+
+  device-information:
+    title: Eolas gléas
+    description: Faigh faisnéis faoi do ghléas reatha (méid scáileáin, cóimheas picteilín, gníomhaire úsáideora, ...)
+
+  pdf-signature-checker:
+    title: Seiceáil sínithe pdf
+    description: Fíoraigh sínithe comhaid PDF. Tá síniú amháin nó níos mó i gcomhad PDF sínithe a fhéadfar a úsáid chun a chinneadh ar athraíodh a bhfuil sa chomhad ó síníodh an comhad.
+
+  json-minify:
+    title: JSON mionaoiseach
+    description: Mionnaigh agus comhbhrú do JSON trí spás bán gan ghá a bhaint.
+
+  ulid-generator:
+    title: Gineadóir ULID
+    description: Gin Aitheantóir Sortáilte Foclóra Uathúil Uathúil (ULID) randamach.
+
+  string-obfuscator:
+    title: Obfuscator teaghrán
+    description: Seachain teaghrán (cosúil le rún, IBAN, nó comhartha) chun é a dhéanamh inroinnte agus inaitheanta gan a bhfuil ann a nochtadh.
+
+  base-converter:
+    title: Tiontaire bonn slánuimhir
+    description: Tiontaigh uimhir idir boinn éagsúla (deachúil, heicsidheachúlach, dénártha, ochtar, bonn64, ...)
+
+  yaml-to-json-converter:
+    title: Tiontaire YAML go JSON
+    description: Níl ort ach YAML a thiontú go JSON leis an tiontaire beo ar líne seo.
+
+  uuid-generator:
+    title: Gineadóir UUIDs
+    description: Is uimhir 128-giotán é Aitheantóir Uathúil Uilíoch (UUID) a úsáidtear chun faisnéis a aithint i gcórais ríomhaireachta. Is é an líon UUIDanna féideartha ná 16^32, is é sin 2^128 nó thart ar 3.4x10^38 (is é sin go leor!).
+
+  ipv4-address-converter:
+    title: Tiontaire seoladh IPv4
+    description: Tiontaigh seoladh IP go deachúil, dénártha, heicsidheachúlach, nó fiú ionadaíocht IPv6 de.
+
+  text-statistics:
+    title: Staitisticí téacs
+    description: Faigh eolas faoi théacs, líon na gcarachtar, líon na bhfocal, a mhéid i mbearta, ...
+
+  text-to-nato-alphabet:
+    title: Íoslódáil an téacs go dtí an aibítir NATO
+    description: Trasfhoirmigh téacs go aibítir foghraíochta NATO chun é a tharchur ó bhéal.
+
+  basic-auth-generator:
+    title: Gineadóir bunúsach an údair
+    description: Gin ceanntásc aitheantais base64 ó ainm úsáideora agus pasfhocal.
+
+  text-to-unicode:
+    title: Téacs go Unicode
+    description: Parsáil agus tiontaigh téacs go Unicode agus vice-versa
+
+  ipv4-range-expander:
+    title: Forbróir raon IPv4
+    description: Nuair a thugtar seoladh tosaigh agus deireadh IPv4, ríomhann an uirlis seo folíon IPv4 bailí mar aon lena nodaireacht CIDR.
+
+  text-diff:
+    title: Téacs difr
+    description: Déan comparáid idir dhá théacs agus féach ar na difríochtaí eatarthu.
+
+  otp-generator:
+    title: Gineadóir cóid OTP saor in aisce,
+    description: Gin agus bailíochtaigh OTP bunaithe ar am (focal faire aonuaire) le haghaidh fíordheimhnithe ilfhachtóiriúil.
+
+  url-encoder:
+    title: Ionchódaigh/díchódaigh teaghráin formáidithe URL
+    description: Ionchódaigh an téacs go formáid URL-ionchódaithe (ar a dtugtar "faoin gcéad ionchódaithe freisin"), nó díchódaigh uaidh.
+
+  text-to-binary:
+    title: Téacs chuig dénártha ASCII
+    description: Téacs a thiontú go dtí a ionadaíocht dhénártha ASCII agus vice-versa.
