@@ -33,6 +33,7 @@ declare module '@vue/runtime-core' {
     CCollapse: typeof import('./src/ui/c-collapse/c-collapse.vue')['default']
     'CCollapse.demo': typeof import('./src/ui/c-collapse/c-collapse.demo.vue')['default']
     CDiffEditor: typeof import('./src/ui/c-diff-editor/c-diff-editor.vue')['default']
+    CertificateKeyParser: typeof import('./src/tools/certificate-key-parser/certificate-key-parser.vue')['default']
     CFileUpload: typeof import('./src/ui/c-file-upload/c-file-upload.vue')['default']
     'CFileUpload.demo': typeof import('./src/ui/c-file-upload/c-file-upload.demo.vue')['default']
     ChmodCalculator: typeof import('./src/tools/chmod-calculator/chmod-calculator.vue')['default']
