@@ -5,14 +5,40 @@ import type { ConvertOptions } from './list-converter.types';
 
 const sortOrderOptions = [
   {
+    label: 'No Sort',
+    value: null,
+  },
+  {
     label: 'Sort ascending',
     value: 'asc',
-    disabled: false,
   },
   {
     label: 'Sort descending',
     value: 'desc',
-    disabled: false,
+  },
+  {
+    label: 'Sort asc (Numeric)',
+    value: 'asc-num',
+  },
+  {
+    label: 'Sort desc (Numeric)',
+    value: 'desc-num',
+  },
+  {
+    label: 'Sort asc (Upper)',
+    value: 'asc-upper',
+  },
+  {
+    label: 'Sort desc (Upper)',
+    value: 'desc-upper',
+  },
+  {
+    label: 'Sort asc (Binary)',
+    value: 'asc-bin',
+  },
+  {
+    label: 'Sort desc (Binary)',
+    value: 'desc-bin',
   },
 ];
 
@@ -23,11 +49,14 @@ const conversionConfig = useStorage<ConvertOptions>('list-converter:conversionCo
   keepLineBreaks: false,
   itemPrefix: '',
   itemSuffix: '',
+  removeItemPrefix: '',
+  removeItemSuffix: '',
   listPrefix: '',
   listSuffix: '',
   reverseList: false,
   sortList: null,
-  separator: ', ',
+  itemsSeparator: ', ',
+  splitBySeparator: '',
 });
 
 function transformer(value: string) {
@@ -39,7 +68,7 @@ function transformer(value: string) {
   <div style="flex: 0 0 100%">
     <div style="margin: 0 auto; max-width: 600px">
       <c-card>
-        <div flex>
+        <n-space>
           <div>
             <n-form-item label="Trim list items" label-placement="left" label-width="150" :show-feedback="false" mb-2>
               <n-switch v-model:value="conversionConfig.trimItems" />
@@ -60,7 +89,7 @@ function transformer(value: string) {
               <n-switch v-model:value="conversionConfig.keepLineBreaks" />
             </n-form-item>
           </div>
-          <div flex-1>
+          <div>
             <c-select
               v-model:value="conversionConfig.sortList"
               label="Sort list"
@@ -76,14 +105,37 @@ function transformer(value: string) {
             />
 
             <c-input-text
-              v-model:value="conversionConfig.separator"
-              label="Separator"
+              v-model:value="conversionConfig.itemsSeparator"
+              label="Items Separator"
               label-position="left"
               label-width="120px"
               label-align="right"
               mb-2
-              placeholder=","
+              placeholder="Items separator"
             />
+
+            <c-input-text
+              v-model:value="conversionConfig.splitBySeparator"
+              label="Split Separator"
+              label-position="left"
+              label-width="120px"
+              label-align="right"
+              mb-2
+              placeholder="Separator for splitting"
+            />
+
+            <n-form-item label="Unwrap item" label-placement="left" label-width="120" :show-feedback="false" mb-2>
+              <c-input-text
+                v-model:value="conversionConfig.removeItemPrefix"
+                placeholder="Remove item prefix regex"
+                test-id="removeItemPrefix"
+              />
+              <c-input-text
+                v-model:value="conversionConfig.removeItemSuffix"
+                placeholder="Remove item suffix regex"
+                test-id="removeItemSuffix"
+              />
+            </n-form-item>
 
             <n-form-item label="Wrap item" label-placement="left" label-width="120" :show-feedback="false" mb-2>
               <c-input-text
@@ -110,7 +162,7 @@ function transformer(value: string) {
               />
             </n-form-item>
           </div>
-        </div>
+        </n-space>
       </c-card>
     </div>
   </div>
