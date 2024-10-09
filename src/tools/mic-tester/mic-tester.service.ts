@@ -1,7 +1,10 @@
 import { onBeforeUnmount, ref } from 'vue';
 
-// messageSender has to support error(text) method for notifying the user of errors
-export function useMicrophoneService(messageSender) {
+interface IMessageSender {
+  error: (...messages: any[]) => void
+}
+
+export function useMicrophoneService(messageSender: IMessageSender) {
   let audioContext: AudioContext | null = null;
   let delayNode: DelayNode | null = null;
   let sourceNode: MediaStreamAudioSourceNode | null = null;
@@ -35,7 +38,7 @@ export function useMicrophoneService(messageSender) {
 
   const startMicReplay = async () => {
     if (!audioContext) {
-      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
     }
 
     try {
