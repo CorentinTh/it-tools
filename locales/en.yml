@@ -240,6 +240,12 @@ tools:
     title: MIME types
     description: Convert MIME types to file extensions and vice-versa.
 
+  mic-tester:
+    title: Microphone Tester
+    description: Replay and Visualize sound from Your microphone, with added one second of delay
+    start-button-text: Start replaying microphone
+    stop-button-text: Stop replaying microphone
+
   toml-to-json:
     title: TOML to JSON
     description: Parse and convert TOML to JSON.
