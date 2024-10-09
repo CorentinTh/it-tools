@@ -281,11 +281,11 @@ tools:
   mime-types:
     title: MIME-Typen
     description: Konvertiere MIME-Typen in Erweiterungen und umgekehrt.
-    start-button-text: Mikrofon-Wiedergabe Starten
-    stop-button-text: Mikrofon-Wiedergabe Stoppen
   mic-tester:
     title: Mikrofonprufung
     description: Wiedergabe und Visualisierung des Tons von Ihrem Mikrofon, mit einer Sekunde Verzögerung hinzugefügt
+    start-button-text: Mikrofon-Wiedergabe Starten
+    stop-button-text: Mikrofon-Wiedergabe Stoppen
   toml-to-json:
     title: TOML zu JSON
     description: Parse und konvertiere TOML zu JSON.
