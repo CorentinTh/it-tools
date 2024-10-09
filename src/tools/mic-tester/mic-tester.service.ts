@@ -1,6 +1,7 @@
-import { ref, onBeforeUnmount } from 'vue';
+import { onBeforeUnmount, ref } from 'vue';
 
-export function useMicrophoneService() {
+// messageSender has to support error(text) method for notifying the user of errors
+export function useMicrophoneService(messageSender) {
   let audioContext: AudioContext | null = null;
   let delayNode: DelayNode | null = null;
   let sourceNode: MediaStreamAudioSourceNode | null = null;
@@ -10,48 +11,8 @@ export function useMicrophoneService() {
   const isPlaying = ref(false);
   const loudnessLevel = ref(0); // Observable for loudness
 
-  const startMicReplay = async () => {
-    if (!audioContext) {
-      audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    }
-
-        try {
-          stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        } catch (err) {
-          console.error('Microphone access denied:', err);
-          alert('Microphone access denied (the error is also in the console):', err);
-          return;
-        }
-
-        sourceNode = audioContext.createMediaStreamSource(stream);
-        delayNode = audioContext.createDelay(1.0);
-        delayNode.delayTime.value = 1.0;
-
-        analyserNode = audioContext.createAnalyser();
-        analyserNode.fftSize = 256;
-
-        // Connect nodes: mic -> delay -> speakers
-        sourceNode.connect(delayNode);
-        delayNode.connect(audioContext.destination);
-        sourceNode.connect(analyserNode);
-
-        isPlaying.value = true;
-        measureLoudness();
-  };
-
-  const stopMicReplay = () => {
-    if (audioContext && stream) {
-      const tracks = stream.getTracks();
-      tracks.forEach(track => track.stop());
-      audioContext.close();
-      audioContext = null;
-      isPlaying.value = false;
-      loudnessLevel.value = 0;
-    }
-  };
-
   // Measure loudness and update loudness bar
-  const measureLoudness = () => {
+  function measureLoudness() {
     const dataArray = new Uint8Array(analyserNode!.frequencyBinCount);
 
     const updateLoudness = () => {
@@ -69,8 +30,48 @@ export function useMicrophoneService() {
         requestAnimationFrame(updateLoudness);
       }
     };
-
     updateLoudness();
+  };
+
+  const startMicReplay = async () => {
+    if (!audioContext) {
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    }
+
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    }
+    catch (err) {
+      console.error('Microphone access denied:', err);
+      messageSender.error('Microphone access denied (the error is also in the console):', err);
+      return;
+    }
+
+    sourceNode = audioContext.createMediaStreamSource(stream);
+    delayNode = audioContext.createDelay(1.0);
+    delayNode.delayTime.value = 1.0;
+
+    analyserNode = audioContext.createAnalyser();
+    analyserNode.fftSize = 256;
+
+    // Connect nodes: mic -> delay -> speakers
+    sourceNode.connect(delayNode);
+    delayNode.connect(audioContext.destination);
+    sourceNode.connect(analyserNode);
+
+    isPlaying.value = true;
+    measureLoudness();
+  };
+
+  function stopMicReplay() {
+    if (audioContext && stream) {
+      const tracks = stream.getTracks();
+      tracks.forEach(track => track.stop());
+      audioContext.close();
+      audioContext = null;
+      isPlaying.value = false;
+      loudnessLevel.value = 0;
+    }
   };
 
   // Cleanup on service destruction
@@ -82,6 +83,6 @@ export function useMicrophoneService() {
     startMicReplay,
     stopMicReplay,
     loudnessLevel,
-    isPlaying
+    isPlaying,
   };
 }

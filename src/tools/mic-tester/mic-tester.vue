@@ -1,23 +1,29 @@
 <script setup lang="ts">
-import { useMicrophoneService } from './mic-tester.service';
 import { useI18n } from 'vue-i18n';
+import { useMessage } from 'naive-ui';
+import { useMicrophoneService } from './mic-tester.service';
+
+const message = useMessage();
 
 const { t } = useI18n();
-const { startMicReplay, stopMicReplay, loudnessLevel, isPlaying } = useMicrophoneService();
+const { startMicReplay, stopMicReplay, loudnessLevel, isPlaying } = useMicrophoneService(message);
 </script>
 
 <template>
   <div>
     <c-card>
       <div class="control-buttons">
-        <c-button @click="startMicReplay" :disabled="isPlaying">{{ t('tools.mic-tester.start-button-text') }}</c-button>
-        <c-button @click="stopMicReplay" :disabled="!isPlaying">{{ t('tools.mic-tester.stop-button-text') }}</c-button>
+        <c-button :disabled="isPlaying" @click="startMicReplay">
+          {{ t('tools.mic-tester.start-button-text') }}
+        </c-button>
+        <c-button :disabled="!isPlaying" @click="stopMicReplay">
+          {{ t('tools.mic-tester.stop-button-text') }}
+        </c-button>
       </div>
 
       <!-- Loudness Meter -->
-        <div id="loudnessMeter">
-          <div id="loudnessBar" :style="{ width: loudnessLevel + '%' }">
-        </div>
+      <div id="loudnessMeter">
+        <div id="loudnessBar" :style="{ width: `${loudnessLevel}%` }" />
       </div>
     </c-card>
   </div>
