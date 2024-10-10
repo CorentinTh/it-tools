@@ -104,6 +104,9 @@ dependencies:
   ibantools:
     specifier: ^4.3.3
     version: 4.3.3
+  javastack.js:
+    specifier: ^1.0.2
+    version: 1.0.2
   js-base64:
     specifier: ^3.7.6
     version: 3.7.7
@@ -161,6 +164,9 @@ dependencies:
   plausible-tracker:
     specifier: ^0.3.8
     version: 0.3.8
+  pythonstack.js:
+    specifier: ^1.0.2
+    version: 1.0.2
   qrcode:
     specifier: ^1.5.1
     version: 1.5.1
@@ -4252,8 +4258,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /b4a@1.6.6:
-    resolution: {integrity: sha512-5Tk1HLk6b6ctmjIkAcU/Ujv/1WqiDl0F0JdRCR80VsOcUlHcu7pWeWRlOqQLHfDEsVx9YH/aif5AG4ehoCtTmg==}
+  /b4a@1.6.7:
+    resolution: {integrity: sha512-OnAYlL5b7LEkALw87fUVafQw5rVR9RjwGd4KUwNQ6DrrNmaVaUCgLipfVlzrPQ4tWOR9P0IXGNOx50jYCCdSJg==}
     dev: false
 
   /babel-merge@3.0.0(@babel/core@7.23.2):
@@ -4314,8 +4320,8 @@ packages:
   /balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
 
-  /bare-events@2.4.2:
-    resolution: {integrity: sha512-qMKFd2qG/36aA4GwvKq8MxnPgCQAmBWmSyLWsJcbn8v03wvIPQ/hG1Ms8bPzndZxMDoHpxez5VOS+gC9Yi24/Q==}
+  /bare-events@2.5.0:
+    resolution: {integrity: sha512-/E8dDe9dsbLyh2qrZ64PEPadOQ0F4gbl1sUJOrmph7xOiIxfY8vwab/4bFLh4Y88/Hk/ujKcrQKc+ps0mv873A==}
     requiresBuild: true
     dev: false
     optional: true
@@ -6843,6 +6849,10 @@ packages:
     resolution: {integrity: sha512-nO6jcEfZWQXDhOiBtG2KvKyEptz7RVbpGP4vTD2hLBdmNQSsCiicO2Ioinv6UI4y9ukqnBpy+XZ9H6uLNgJTlw==}
     dev: false
 
+  /javastack.js@1.0.2:
+    resolution: {integrity: sha512-mL+Bi0grhJdV6gY1XcAgS9q45XJRYzo7f9jAO4rb7QnaH1LCb8KzKV4BIM71ifq/xb8kvWwdGU/GhBVSQBwE9g==}
+    dev: false
+
   /jest-worker@26.6.2:
     resolution: {integrity: sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ==}
     engines: {node: '>= 10.13.0'}
@@ -8174,6 +8184,10 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
+  /pythonstack.js@1.0.2:
+    resolution: {integrity: sha512-qAkODfsYHdg0PJwhoO+8UX7jW4ViqfxXoJNE43s9GbjO7j0IvwlKKHX49R6PQ46d2JGL9l1NBttaxEDl4P/4Nw==}
+    dev: false
+
   /qrcode@1.5.1:
     resolution: {integrity: sha512-nS8NJ1Z3md8uTjKtP+SGGhfqmTCs5flU/xR623oI0JX+Wepz9R8UrRVCTBTJm3qGw3rH6jJ6MUHjkDx15cxSSg==}
     engines: {node: '>=10.13.0'}
@@ -8789,7 +8803,7 @@ packages:
       queue-tick: 1.0.1
       text-decoder: 1.2.0
     optionalDependencies:
-      bare-events: 2.4.2
+      bare-events: 2.5.0
     dev: false
 
   /string-width@4.2.3:
@@ -8984,7 +8998,7 @@ packages:
   /text-decoder@1.2.0:
     resolution: {integrity: sha512-n1yg1mOj9DNpk3NeZOx7T6jchTbyJS3i3cucbNN6FcdPriMZx7NsgrGpWWdWZZGxD7ES1XB+3uoqHMgOKaN+fg==}
     dependencies:
-      b4a: 1.6.6
+      b4a: 1.6.7
     dev: false
 
   /text-table@0.2.0:

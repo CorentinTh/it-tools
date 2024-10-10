@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import JSStack from 'jsstack.js';
+import JavaStack from 'javastack.js';
+import PythonStack from 'pythonstack.js';
 import NetStack from 'netstack.js';
 import domtoimage from 'dom-to-image-more';
 import { useQueryParamOrStorage } from '@/composable/queryParams';
@@ -8,7 +10,7 @@ import { useCopy } from '@/composable/copy';
 
 const styleStore = useStyleStore();
 
-const stackType = useQueryParamOrStorage<'net' | 'js'>({ name: 'type', storageName: 'stackfmt:type', defaultValue: 'net' });
+const stackType = useQueryParamOrStorage<'net' | 'js' | 'java' | 'python'>({ name: 'type', storageName: 'stackfmt:type', defaultValue: 'net' });
 const stackTrace = ref('');
 const formatedStackTrace = ref<HTMLElement>();
 
@@ -17,13 +19,28 @@ watchEffect(() => {
   if (!formatedStackTrace.value) {
     return;
   }
+  let cleanedStackTrace;
+  try {
+    cleanedStackTrace = JSON.parse(stackTrace.value);
+  }
+  catch (_) {
+    cleanedStackTrace = stackTrace.value.replace(/(\\r)?\\n/g, '\n').replace(/(?:^['"])|(?:['"]$)/, '');
+  };
   try {
     if (stackType.value === 'js') {
-      formatedStackTrace.value.textContent = stackTrace.value;
+      formatedStackTrace.value.textContent = cleanedStackTrace;
       JSStack('.stacktrace');
     }
+    else if (stackType.value === 'java') {
+      formatedStackTrace.value.textContent = cleanedStackTrace;
+      JavaStack('.stacktrace', { prettyprint: true });
+    }
+    else if (stackType.value === 'python') {
+      formatedStackTrace.value.textContent = cleanedStackTrace;
+      PythonStack('.stacktrace', { prettyprint: true });
+    }
     else if (stackType.value === 'net') {
-      formatedStackTrace.value.innerText = stackTrace.value;
+      formatedStackTrace.value.innerText = cleanedStackTrace;
       const _ = new NetStack(formatedStackTrace.value, { prettyprint: true });
     }
     stackTraceText.value = formatedStackTrace.value.innerText;
@@ -32,7 +49,19 @@ watchEffect(() => {
 });
 
 const stackTraceMarkdown = computed(() => {
-  const lang = stackType.value === 'net' ? 'csharp' : 'javascript';
+  let lang;
+  if (stackType.value === 'net') {
+    lang = 'csharp';
+  }
+  else if (stackType.value === 'js') {
+    lang = 'javascript';
+  }
+  else if (stackType.value === 'java') {
+    lang = 'java';
+  }
+  else if (stackType.value === 'python') {
+    lang = 'python';
+  }
   return `\`\`\`${lang}\n${formatedStackTrace.value?.innerText}\n\`\`\``;
 });
 
@@ -46,10 +75,12 @@ async function downloadAsPNG() {
   link.href = dataUrl;
   link.click();
 }
+
+const wrap = ref(true);
 </script>
 
 <template>
-  <div>
+  <div max-w-600px>
     <n-radio-group v-model:value="stackType" name="radiogroup" mb-2 flex justify-center>
       <n-space>
         <n-radio
@@ -60,9 +91,22 @@ async function downloadAsPNG() {
           value="js"
           label="Javascript"
         />
+        <n-radio
+          value="python"
+          label="Python"
+        />
+        <n-radio
+          value="java"
+          label="Java"
+        />
       </n-space>
     </n-radio-group>
 
+    <div mb-2 flex justify-center>
+      <n-checkbox v-model:checked="wrap">
+        Wrap lines?
+      </n-checkbox>
+    </div>
     <c-input-text
       v-model:value="stackTrace"
       label="Stacktrace"
@@ -73,7 +117,7 @@ async function downloadAsPNG() {
 
     <n-divider />
 
-    <pre ref="formatedStackTrace" class="stacktrace" style="padding: 20px;" />
+    <pre ref="formatedStackTrace" class="stacktrace" :style="{ padding: '20px', whiteSpace: wrap ? 'pre-wrap' : 'pre', overflowX: 'auto', wordBreak: 'break-all' }" />
 
     <div v-if="stackTraceText" flex justify-center gap-1>
       <c-button @click="copyText()">
@@ -103,5 +147,7 @@ pre, code {background-color:#333 !important; color: #fff !important;}
 .st-column {color: #f8b068;}
 .st-lineNumber {color: #ff4f68;}
 .st-fileName {color: #85dbff;}
+.st-intro {color: #0044dd;}
+.st-exception {color: #e40000;}
 }
 </style>
