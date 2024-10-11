@@ -1,7 +1,14 @@
 {
   "name": "it-tools",
   "version": "2024.5.13-a0bc346",
+  "packageManager": "pnpm@8.15.3",
   "description": "Collection of handy online tools for developers, with great UX. ",
+  "author": "Corentin Th <corentin.thomasset74+it-tools@gmail.com> (https://corentin.tech)",
+  "license": "GNU GPLv3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CorentinTh/it-tools"
+  },
   "keywords": [
     "productivity",
     "converter",
@@ -13,12 +20,6 @@
     "developer-tools",
     "developer-productivity"
   ],
-  "author": "Corentin Th <corentin.thomasset74+it-tools@gmail.com> (https://github.com/CorentinTh)",
-  "license": "GNU GPLv3",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/CorentinTh/it-tools"
-  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && NODE_OPTIONS=--max_old_space_size=4096 vite build",
@@ -37,12 +38,13 @@
   "dependencies": {
     "@it-tools/bip39": "^0.0.4",
     "@it-tools/oggen": "^1.3.0",
+    "@regexper/render": "^1.0.0",
     "@sindresorhus/slugify": "^2.2.1",
     "@tiptap/pm": "2.1.6",
     "@tiptap/starter-kit": "2.1.6",
     "@tiptap/vue-3": "2.0.3",
-    "@types/markdown-it": "^13.0.7",
     "@types/figlet": "^1.5.8",
+    "@types/markdown-it": "^13.0.7",
     "@vicons/material": "^0.12.0",
     "@vicons/tabler": "^0.12.0",
     "@vueuse/core": "^10.3.0",
@@ -84,6 +86,7 @@
     "pinia": "^2.0.34",
     "plausible-tracker": "^0.3.8",
     "qrcode": "^1.5.1",
+    "randexp": "^0.5.3",
     "sql-formatter": "^13.0.0",
     "ua-parser-js": "^1.0.35",
     "ulid": "^2.3.0",
@@ -93,6 +96,7 @@
     "vue": "^3.3.4",
     "vue-i18n": "^9.9.1",
     "vue-router": "^4.1.6",
+    "vue-shadow-dom": "^4.2.0",
     "vue-tsc": "^1.8.1",
     "xml-formatter": "^3.3.2",
     "xml-js": "^1.6.11",
@@ -142,6 +146,5 @@
     "vitest": "^0.34.0",
     "workbox-window": "^7.0.0",
     "zx": "^7.2.1"
-  },
-  "packageManager": "pnpm@8.15.3"
+  }
 }

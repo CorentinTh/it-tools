@@ -1,6 +1,14 @@
-![logo](.github/logo.png)
+<picture>
+    <source srcset="./.github/logo-dark.png" media="(prefers-color-scheme: light)">
+    <source srcset="./.github/logo-white.png" media="(prefers-color-scheme: dark)">
+    <img src="./.github/logo-dark.png" alt="logo">
+</picture>
 
 Useful tools for developer and people working in IT. [Have a look !](https://it-tools.tech).
+
+## Sponsors
+
+[![Fern banner](./.github/fern-banner.svg)](https://bit.ly/3zBl7DG)
 
 ## Functionalities and roadmap
 
@@ -113,7 +121,7 @@ Big thanks to all the people who have already contributed!
 
 ## Credits
 
-Coded with ❤️ by [Corentin Thomasset](//corentin-thomasset.fr).
+Coded with ❤️ by [Corentin Thomasset](https://corentin.tech?utm_source=it-tools&utm_medium=readme).
 
 This project is continuously deployed using [vercel.com](https://vercel.com).
 
