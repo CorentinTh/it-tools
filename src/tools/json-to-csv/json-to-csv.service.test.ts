@@ -3,6 +3,10 @@ import { convertArrayToCsv, getHeaders } from './json-to-csv.service';
 
 describe('json-to-csv service', () => {
   describe('getHeaders', () => {
+    it('extracts all the keys from the array of nested objects', () => {
+      expect(getHeaders({ array: [{ a: { c: 1, d: 1 }, b: 2 }, { a: 3, c: 4 }] })).toEqual(['a.c', 'a.d', 'b', 'a', 'c']);
+    });
+
     it('extracts all the keys from the array of objects', () => {
       expect(getHeaders({ array: [{ a: 1, b: 2 }, { a: 3, c: 4 }] })).toEqual(['a', 'b', 'c']);
     });
@@ -20,7 +24,7 @@ describe('json-to-csv service', () => {
 
       ];
 
-      expect(convertArrayToCsv({ array })).toMatchInlineSnapshot(`
+      expect(convertArrayToCsv({ arrayOrObject: array })).toMatchInlineSnapshot(`
         "a,b
         1,2
         3,4"
@@ -33,7 +37,7 @@ describe('json-to-csv service', () => {
         { a: 3, c: 4 },
       ];
 
-      expect(convertArrayToCsv({ array })).toMatchInlineSnapshot(`
+      expect(convertArrayToCsv({ arrayOrObject: array })).toMatchInlineSnapshot(`
         "a,b,c
         1,2,
         3,,4"
@@ -45,7 +49,7 @@ describe('json-to-csv service', () => {
         { a: null, b: 2 },
       ];
 
-      expect(convertArrayToCsv({ array })).toMatchInlineSnapshot(`
+      expect(convertArrayToCsv({ arrayOrObject: array })).toMatchInlineSnapshot(`
         "a,b
         null,2"
       `);
@@ -57,7 +61,7 @@ describe('json-to-csv service', () => {
         { b: 3 },
       ];
 
-      expect(convertArrayToCsv({ array })).toMatchInlineSnapshot(`
+      expect(convertArrayToCsv({ arrayOrObject: array })).toMatchInlineSnapshot(`
         "a,b
         ,2
         ,3"
@@ -69,7 +73,7 @@ describe('json-to-csv service', () => {
         { a: 'hello, world', b: 2 },
       ];
 
-      expect(convertArrayToCsv({ array })).toMatchInlineSnapshot(`
+      expect(convertArrayToCsv({ arrayOrObject: array })).toMatchInlineSnapshot(`
         "a,b
         \\"hello, world\\",2"
       `);
@@ -80,9 +84,31 @@ describe('json-to-csv service', () => {
         { a: 'hello "world"', b: 2 },
       ];
 
-      expect(convertArrayToCsv({ array })).toMatchInlineSnapshot(`
+      expect(convertArrayToCsv({ arrayOrObject: array })).toMatchInlineSnapshot(`
         "a,b
         hello \\\\\\"world\\\\\\",2"
+      `);
+    });
+
+    it('converts an array of nested objects to a CSV string', () => {
+      const array = [
+        { a: { c: 1, d: 1 }, b: 2 },
+        { a: 3, c: 4 },
+      ];
+
+      expect(convertArrayToCsv({ arrayOrObject: array })).toMatchInlineSnapshot(`
+        "a.c,a.d,b,a,c
+        1,1,2,,
+        ,,,3,4"
+      `);
+    });
+
+    it('converts an object to a CSV string', () => {
+      const obj = { a: { c: 1, d: 1 }, b: 2 };
+
+      expect(convertArrayToCsv({ arrayOrObject: obj })).toMatchInlineSnapshot(`
+        "a.c,a.d,b
+        1,1,2"
       `);
     });
   });

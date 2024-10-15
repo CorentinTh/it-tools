@@ -9,7 +9,7 @@ function transformer(value: string) {
     if (value === '') {
       return '';
     }
-    return convertArrayToCsv({ array: JSON5.parse(value) });
+    return convertArrayToCsv({ arrayOrObject: JSON5.parse(value) });
   }, '');
 }
 
