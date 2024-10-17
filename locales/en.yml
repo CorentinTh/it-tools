@@ -332,6 +332,10 @@ tools:
     title: JSON minify
     description: Minify and compress your JSON by removing unnecessary whitespace.
 
+  json-stringify:
+    title: JSON Stringify
+    description: Convert your plain text or JavaScript objects into a JSON string format by escaping special characters and ensuring valid JSON structure. Ideal for transmitting data or storing in JSON-compatible formats.
+
   ulid-generator:
     title: ULID generator
     description: Generate random Universally Unique Lexicographically Sortable Identifier (ULID).
