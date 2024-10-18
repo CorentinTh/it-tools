@@ -391,3 +391,7 @@ tools:
   text-to-binary:
     title: Text to ASCII binary
     description: Convert text to its ASCII binary representation and vice-versa.
+
+  multi-link-downloader:
+    title: Multi link downloader
+    description: Asynchronously downloads from multiple links into a zip file while a single link downloads directly.
