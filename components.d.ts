@@ -129,6 +129,7 @@ declare module '@vue/runtime-core' {
     MenuLayout: typeof import('./src/components/MenuLayout.vue')['default']
     MetaTagGenerator: typeof import('./src/tools/meta-tag-generator/meta-tag-generator.vue')['default']
     MimeTypes: typeof import('./src/tools/mime-types/mime-types.vue')['default']
+    MultiLinkDownloader: typeof import('./src/tools/multi-link-downloader/multi-link-downloader.vue')['default']
     NavbarButtons: typeof import('./src/components/NavbarButtons.vue')['default']
     NCheckbox: typeof import('naive-ui')['NCheckbox']
     NCollapseTransition: typeof import('naive-ui')['NCollapseTransition']
