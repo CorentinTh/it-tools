@@ -1,0 +1,10 @@
+tools:
+  markdown-to-html:
+    title: Markdown 转 HTML
+    description: '将 Markdown 转换为 Html 并允许打印（作为 PDF）。'
+
+    inputLabel: '要转换的 Markdown：'
+    inputPlaceholder: '您的 Markdown 内容...'
+    outputLabel: '输出 HTML：'
+
+    printAsPDF: '作为 PDF 打印'

@@ -1,0 +1,10 @@
+tools:
+  markdown-to-html:
+    title: Markdown vers HTML
+    description: Convertir Markdown en Html et permettre l'impression (en PDF).
+
+    inputLabel: 'Votre Markdown à convertir:'
+    inputPlaceholder: 'Votre contenu Markdown...'
+    outputLabel: 'HTML de sortie:'
+
+    printAsPDF: 'Imprimer en PDF'

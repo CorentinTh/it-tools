@@ -2,6 +2,7 @@
 import { useThemeVars } from 'naive-ui';
 import Memo from './git-memo.content.md';
 import MemoZH from './git-memo.content.zh.md';
+import MemoFR from './git-memo.content.fr.md';
 
 const themeVars = useThemeVars();
 const { locale } = useI18n();
@@ -10,6 +11,7 @@ const { locale } = useI18n();
 <template>
   <div>
     <MemoZH v-if="locale === 'zh'" />
+    <MemoFR v-else-if="locale === 'fr'" />
     <Memo v-else />
   </div>
 </template>

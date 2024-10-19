@@ -1,0 +1,16 @@
+tools:
+  email-normalizer:
+    title: Email normalizer
+    description: Normalize email addresses to a standard format for easier comparison. Useful for deduplication and data cleaning.
+
+    inputTitle: 'Raw emails to normalize:'
+    inputPlaceholder: 'Put your emails here (one per line)...'
+    outputTitle: 'Normalized emails:'
+    outputPlaceholder: 'Normalized emails will appear here...'
+
+    buttons:
+      clear: 'Clear emails'
+      copy: 'Copy normalized emails'
+
+    invalidMessage: 'Unable to parse email: '
+    copied: 'Normalized emails copied to the clipboard'

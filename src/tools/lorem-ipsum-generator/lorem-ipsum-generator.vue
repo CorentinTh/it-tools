@@ -2,6 +2,7 @@
 import { generateLoremIpsum } from './lorem-ipsum-generator.service';
 import { useCopy } from '@/composable/copy';
 import { randIntFromInterval } from '@/utils/random';
+import { computedRefreshable } from '@/composable/computedRefreshable';
 
 const { t } = useI18n();
 const paragraphs = ref(1);
@@ -10,7 +11,7 @@ const words = ref([8, 15]);
 const startWithLoremIpsum = ref(true);
 const asHTML = ref(false);
 
-const loremIpsumText = computed(() =>
+const [loremIpsumText, refreshLoremIpsum] = computedRefreshable(() =>
   generateLoremIpsum({
     paragraphCount: paragraphs.value,
     asHTML: asHTML.value,
@@ -42,9 +43,12 @@ const { copy } = useCopy({ source: loremIpsumText, text: t('tools.lorem-ipsum-ge
 
     <c-input-text :value="loremIpsumText" multiline :placeholder="t('tools.lorem-ipsum-generator.loremIpsumText')" readonly mt-5 rows="5" />
 
-    <div mt-5 flex justify-center>
+    <div mt-5 flex justify-center gap-3>
       <c-button autofocus @click="copy()">
         {{ t('tools.lorem-ipsum-generator.copyBtn') }}
+      </c-button>
+      <c-button @click="refreshLoremIpsum">
+        {{ t('tools.lorem-ipsum-generator.refresh') }}
       </c-button>
     </div>
   </c-card>

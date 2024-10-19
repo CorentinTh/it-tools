@@ -1,0 +1,4 @@
+tools:
+  regex-memo:
+    title: 正则表达式速查表
+    description: Javascript 正则表达式速查表。

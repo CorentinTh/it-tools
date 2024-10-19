@@ -1,0 +1,10 @@
+tools:
+  json-to-xml:
+    title: JSON 转 XML
+    description: 将 JSON 转换为 XML。
+
+    inputLabel: 您的 JSON 内容
+    inputPlaceholder: 在此粘贴您的 JSON 内容...
+    outputLabel: 转换后的 XML
+
+    invalidMessage: 提供的 JSON 不是有效的。

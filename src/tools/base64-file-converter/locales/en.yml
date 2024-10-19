@@ -6,11 +6,15 @@ tools:
     base64ToFile:
       title: Base64 to file
       placeholder: Put your base64 file string here...
+      fileName: File Name
+      downloadFilename: Download filename
+      extension: Extension
     fileToBase64:
       title: File to base64
       placeholder: File in base64 will be here
       uploadTip: Drag and drop a file here, or click to select a file
     buttons:
+      previewImage: Preview image
       downloadFile: Download file
       copy: Copy
 

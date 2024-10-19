@@ -28,14 +28,8 @@ const compareMatch = computed(() => compareSync(compareString.value, compareHash
       label-width="120px"
       mb-2
     />
-    <n-form-item :label="t('tools.bcrypt.hash.saltCount')" label-placement="left" label-width="120">
-      <n-input-number
-        v-model:value="saltCount"
-        :placeholder="t('tools.bcrypt.hash.saltCountPlaceholder')"
-        :max="10"
-        :min="0"
-        w-full
-      />
+    <n-form-item label="t('tools.bcrypt.hash.saltCount')" label-placement="left" label-width="120">
+      <n-input-number v-model:value="saltCount" placeholder="t('tools.bcrypt.hash.saltCountPlaceholder')" :max="100" :min="0" w-full />
     </n-form-item>
 
     <c-input-text :value="hashed" readonly text-center />

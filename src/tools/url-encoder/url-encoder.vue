@@ -25,7 +25,7 @@ const decodeInput = ref('Hello%20world%20%3A)');
 const decodeOutput = computed(() => withDefaultOnError(() => decodeURIComponent(decodeInput.value), ''));
 
 const decodeValidation = useValidation({
-  source: encodeInput,
+  source: decodeInput,
   rules: [
     {
       validator: value => isNotThrowing(() => decodeURIComponent(value)),

@@ -1,0 +1,36 @@
+tools:
+  regex-tester:
+    title: 正则表达式测试工具
+    description: 使用示例文本测试您的正则表达式。
+
+    inputTitle: '正则表达式'
+    inputLabel: '要测试的正则表达式：'
+    inputPlaceholder: '输入要测试的正则表达式'
+    outputLabel: '匹配的文本：'
+    outputPlaceholder: '输入要匹配的文本'
+
+    helpTip: '查看正则表达式速查表'
+    globalTitle: '全局搜索'
+    globalLabel: '全局搜索。'
+    ignoreCaseTitle: '不区分大小写搜索'
+    ignoreCaseLabel: '不区分大小写搜索。'
+    multilineTitle: '允许^和$匹配换行符旁边的字符。'
+    multilineLabel: '多行'
+    dotAllTitle: '允许.匹配换行符。'
+    dotAllLabel: '单行'
+    unicodeTitle: 'Unicode; 将模式视为 Unicode 代码点序列。'
+    unicodeLabel: 'Unicode'
+    unicodeSetsTitle: '具有更多 Unicode 功能的 u 模式升级版。'
+    unicodeSetsLabel: 'Unicode 集'
+
+    matches: '匹配项'
+    index: '文本中的索引'
+    value: '值'
+    captures: '捕获'
+    groups: '分组'
+    noMatch: '无匹配项'
+
+    sampleMatchingText: '示例匹配文本'
+    regexDiagram: '正则表达式图解'
+
+    invalidRegex: '无效的正则表达式：{0}'

@@ -6,11 +6,15 @@ tools:
     base64ToFile:
       title: 'Base64 vers fichier'
       placeholder: 'Mettez votre chaîne de fichier base64 ici...'
+      fileName: 'Nom de fichier'
+      downloadFilename: 'Télécharger le nom du fichier'
+      extension: 'Extension'
     fileToBase64:
       title: 'Fichier vers base64'
       placeholder: 'Le fichier en base64 sera ici'
       uploadTip: 'Glissez-déposez un fichier ici, ou cliquez pour sélectionner un fichier'
     buttons:
+      previewImage: "Image d'aperçu"
       downloadFile: 'Télécharger le fichier'
       copy: 'Copier'
 

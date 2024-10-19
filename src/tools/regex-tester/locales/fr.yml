@@ -1,0 +1,36 @@
+tools:
+  regex-tester:
+    title: Testeur Regex
+    description: Testez vos expressions régulières avec un texte d'exemple.
+
+    inputTitle: 'Regex'
+    inputLabel: 'Regex à tester:'
+    inputPlaceholder: 'Mettez le regex à tester'
+    outputLabel: 'Texte à faire correspondre:'
+    outputPlaceholder: 'Mettez le texte à faire correspondre'
+
+    helpTip: 'Voir la feuille de triche des expressions régulières'
+    globalTitle: 'Recherche globale'
+    globalLabel: 'Recherche globale.'
+    ignoreCaseTitle: 'Recherche insensible à la casse'
+    ignoreCaseLabel: 'Recherche insensible à la casse.'
+    multilineTitle: 'Permet à ^ et $ de correspondre aux caractères de nouvelle ligne.'
+    multilineLabel: 'Multiligne'
+    dotAllTitle: 'Permet à . de correspondre aux caractères de nouvelle ligne.'
+    dotAllLabel: 'Monoligne'
+    unicodeTitle: 'Unicode ; traiter un modèle comme une séquence de points de code Unicode.'
+    unicodeLabel: 'Unicode'
+    unicodeSetsTitle: 'Une mise à niveau du mode u avec plus de fonctionnalités Unicode.'
+    unicodeSetsLabel: 'Ensembles Unicode'
+
+    matches: 'Correspondances'
+    index: 'Index dans le texte'
+    value: 'Valeur'
+    captures: 'Captures'
+    groups: 'Groupes'
+    noMatch: 'Aucune correspondance'
+
+    sampleMatchingText: "Texte de correspondance d'exemple"
+    regexDiagram: 'Schéma Regex'
+
+    invalidRegex: 'Regex invalide: {0}'

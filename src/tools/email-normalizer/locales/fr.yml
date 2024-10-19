@@ -1,0 +1,16 @@
+tools:
+  email-normalizer:
+    title: Normalisateur d'e-mails
+    description: Normalisez les adresses e-mail dans un format standard pour faciliter la comparaison. Utile pour la déduplication et le nettoyage des données.
+
+    inputTitle: 'E-mails bruts à normaliser :'
+    inputPlaceholder: 'Placez vos e-mails ici (un par ligne)...'
+    outputTitle: 'E-mails normalisés :'
+    outputPlaceholder: 'Les e-mails normalisés apparaîtront ici...'
+
+    buttons:
+      clear: 'Effacer les e-mails'
+      copy: 'Copier les e-mails normalisés'
+
+    invalidMessage: "Impossible d'analyser l'e-mail : "
+    copied: 'E-mails normalisés copiés dans le presse-papiers'

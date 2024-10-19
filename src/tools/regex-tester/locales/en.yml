@@ -1,0 +1,36 @@
+tools:
+  regex-tester:
+    title: Regex Tester
+    description: Test your regular expressions with sample text.
+
+    inputTitle: 'Regex'
+    inputLabel: 'Regex to test:'
+    inputPlaceholder: 'Put the regex to test'
+    outputLabel: 'Text to match:'
+    outputPlaceholder: 'Put the text to match'
+
+    helpTip: 'See Regular Expression Cheatsheet'
+    globalTitle: 'Global search'
+    globalLabel: 'Global search.'
+    ignoreCaseTitle: 'Case-insensitive search'
+    ignoreCaseLabel: 'Case-insensitive search.'
+    multilineTitle: 'Allows ^ and $ to match next to newline characters.'
+    multilineLabel: 'Multiline'
+    dotAllTitle: 'Allows . to match newline characters.'
+    dotAllLabel: 'Singleline'
+    unicodeTitle: 'Unicode; treat a pattern as a sequence of Unicode code points.'
+    unicodeLabel: 'Unicode'
+    unicodeSetsTitle: 'An upgrade to the u mode with more Unicode features.'
+    unicodeSetsLabel: 'Unicode Sets'
+
+    matches: 'Matches'
+    index: 'Index in text'
+    value: 'Value'
+    captures: 'Captures'
+    groups: 'Groups'
+    noMatch: 'No match'
+
+    sampleMatchingText: 'Sample matching text'
+    regexDiagram: 'Regex Diagram'
+
+    invalidRegex: 'Invalid regex: {0}'

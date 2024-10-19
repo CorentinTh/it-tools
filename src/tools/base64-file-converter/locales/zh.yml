@@ -6,11 +6,15 @@ tools:
     base64ToFile:
       title: Base64 转文件
       placeholder: 在此处放置您的 base64 文件字符串...
+      fileName: 文件名
+      downloadFilename: 下载文件名
+      extension: 拓展名
     fileToBase64:
       title: 文件转 base64
       placeholder: base64 文件将在此处
       uploadTip: 拖放文件到此处，或点击选择文件
     buttons:
+      previewImage: 预览图片
       downloadFile: 下载文件
       copy: 复制
 

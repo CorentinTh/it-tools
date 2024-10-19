@@ -1,0 +1,16 @@
+tools:
+  email-normalizer:
+    title: 邮件地址规范化器
+    description: 将电子邮件地址规范化为标准格式，以便更容易进行比较。 用于去重和数据清洗。
+
+    inputTitle: '要规范化的原始电子邮件：'
+    inputPlaceholder: '在此处输入您的电子邮件（每行一个）...'
+    outputTitle: '规范化的电子邮件：'
+    outputPlaceholder: '规范化的电子邮件将显示在这里...'
+
+    buttons:
+      clear: '清除电子邮件'
+      copy: '复制规范化的电子邮件'
+
+    invalidMessage: '无法解析电子邮件：'
+    copied: '规范化的电子邮件已复制到剪贴板'

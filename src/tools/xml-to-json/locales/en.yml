@@ -1,0 +1,10 @@
+tools:
+  xml-to-json:
+    title: XML to JSON
+    description: Convert XML to JSON.
+
+    inputLabel: Your XML content
+    inputPlaceholder: Paste your XML content here...
+    outputLabel: Converted JSON
+
+    invalidMessage: Provided XML is not valid.

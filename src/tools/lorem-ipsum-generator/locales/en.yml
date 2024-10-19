@@ -12,3 +12,4 @@ tools:
 
     copyBtn: Copy
     copied: Lorem ipsum copied to the clipboard
+    refresh: Refresh
