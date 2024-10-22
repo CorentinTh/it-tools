@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { Heart } from '@vicons/tabler';
+import { DragDrop, Heart } from '@vicons/tabler';
 import { useHead } from '@vueuse/head';
+import { computed } from 'vue';
+import Draggable from 'vuedraggable';
 import ColoredCard from '../components/ColoredCard.vue';
 import ToolCard from '../components/ToolCard.vue';
 import { useToolStore } from '@/tools/tools.store';
@@ -10,6 +12,13 @@ const toolStore = useToolStore();
 
 useHead({ title: 'IT Tools - Handy online tools for developers' });
 const { t } = useI18n();
+
+const favoriteTools = computed(() => toolStore.favoriteTools);
+
+// Update favorite tools order when drag is finished
+function onUpdateFavoriteTools() {
+  toolStore.updateFavoriteTools(favoriteTools.value); // Update the store with the new order
+}
 </script>
 
 <template>
@@ -66,10 +75,20 @@ const { t } = useI18n();
         <div v-if="toolStore.favoriteTools.length > 0">
           <h3 class="mb-5px mt-25px font-500 text-neutral-400">
             {{ $t('home.categories.favoriteTools') }}
+            <c-tooltip tooltip="Drag and drop to reorder favorites">
+              <n-icon :component="DragDrop" size="18" />
+            </c-tooltip>
           </h3>
-          <div class="grid grid-cols-1 gap-12px lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4">
-            <ToolCard v-for="tool in toolStore.favoriteTools" :key="tool.name" :tool="tool" />
-          </div>
+          <Draggable
+            :list="favoriteTools"
+            class="grid grid-cols-1 gap-12px lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4"
+            item-key="name"
+            @end="onUpdateFavoriteTools"
+          >
+            <template #item="{ element: tool }">
+              <ToolCard :tool="tool" />
+            </template>
+          </Draggable>
         </div>
       </transition>
 
