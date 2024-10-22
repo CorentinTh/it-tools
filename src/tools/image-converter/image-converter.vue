@@ -1,0 +1,139 @@
+<script setup lang="ts">
+import { Base64 } from 'js-base64';
+import type { MemoryImage } from 'image-in-browser';
+import { decodeImage, encodeBmp, encodeGif, encodeIco, encodeJpg, encodePng, encodePvr, encodeTga, encodeTiff } from 'image-in-browser';
+import { arrayBufferToWebP } from 'webp-converter-browser';
+import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
+import { useQueryParamOrStorage } from '@/composable/queryParams';
+
+const status = ref<'idle' | 'done' | 'error' | 'processing'>('idle');
+const file = ref<File | null>(null);
+
+const base64OutputFile = ref('');
+const fileName = ref('');
+const fileExtension = ref('');
+const { download } = useDownloadFileFromBase64(
+  {
+    source: base64OutputFile,
+    filename: fileName,
+    extension: fileExtension,
+  });
+
+const outputQuality = useQueryParamOrStorage({ name: 'qual', storageName: 'imgconv:q', defaultValue: 0.95 });
+const outputFormats = {
+  png: {
+    mime: 'image/png',
+    save: (image: MemoryImage) => encodePng({ image }),
+  },
+  jpg: {
+    mime: 'image/jpeg',
+    save: (image: MemoryImage) => encodeJpg({ image, quality: outputQuality.value }),
+  },
+  bmp: {
+    mime: 'image/bmp',
+    save: (image: MemoryImage) => encodeBmp({ image }),
+  },
+  gif: {
+    mime: 'image/gif',
+    save: (image: MemoryImage) => encodeGif({ image }),
+  },
+  ico: {
+    mime: 'image/x-icon',
+    save: (image: MemoryImage) => encodeIco({ image }),
+  },
+  tga: {
+    mime: 'image/tga',
+    save: (image: MemoryImage) => encodeTga({ image }),
+  },
+  pvr: {
+    mime: 'image/pvr',
+    save: (image: MemoryImage) => encodePvr({ image }),
+  },
+  tif: {
+    mime: 'image/tif',
+    save: (image: MemoryImage) => encodeTiff({ image }),
+  },
+  webp: {
+    mime: 'image/webp',
+    save: () => null,
+  },
+};
+
+const outputFormat = useQueryParamOrStorage({ name: 'fmt', storageName: 'imgconv:fmt', defaultValue: 'png' });
+const outputFormatHasQuality = computed(() => {
+  return outputFormat.value === 'jpg';
+});
+
+async function onFileUploaded(uploadedFile: File) {
+  const outputFormatValue = outputFormat.value;
+  file.value = uploadedFile;
+  const fileBuffer = new Uint8Array(await uploadedFile.arrayBuffer());
+
+  fileName.value = `${uploadedFile.name}`;
+  status.value = 'processing';
+  try {
+    if (outputFormatValue === 'webp') {
+      const encodedImage = await arrayBufferToWebP(fileBuffer);
+      fileExtension.value = 'webp';
+      base64OutputFile.value = `data:image/webp;base64,${Base64.fromUint8Array(new Uint8Array(await encodedImage.arrayBuffer()))}`;
+    }
+    else {
+      const decodedImage = decodeImage({
+        data: fileBuffer,
+      });
+
+      if (decodedImage == null) {
+        throw new Error('Invalid Image file!');
+      };
+
+      const outConfig = outputFormats[outputFormatValue as (keyof typeof outputFormats)];
+      const encodedImage = outConfig.save(decodedImage);
+      fileExtension.value = outputFormatValue;
+      base64OutputFile.value = `data:${outConfig.mime};base64,${Base64.fromUint8Array(encodedImage!)}`;
+    }
+    status.value = 'done';
+
+    download();
+  }
+  catch (e) {
+    status.value = 'error';
+  }
+}
+</script>
+
+<template>
+  <div>
+    <div style="flex: 0 0 100%" mb-2>
+      <div mx-auto max-w-600px>
+        <c-file-upload
+          title="Drag and drop an image file here, or click to select a file"
+          accept="image/*"
+          paste-image
+          @file-upload="onFileUploaded"
+        />
+      </div>
+    </div>
+
+    <c-select
+      v-model:value="outputFormat"
+      label="Output format:"
+      label-position="left"
+      :options="Object.keys(outputFormats)"
+      placeholder="Select output format"
+      mb-2
+    />
+    <n-form-item v-if="outputFormatHasQuality" label="Output quality:" label-placement="left" mb-2>
+      <n-input-number v-model:value="outputQuality" :max="100" :min="0" w-full />
+    </n-form-item>
+
+    <div mt-3 flex justify-center>
+      <c-alert v-if="status === 'error'" type="error">
+        An error occured processing {{ fileName }}
+      </c-alert>
+      <n-spin
+        v-if="status === 'processing'"
+        size="small"
+      />
+    </div>
+  </div>
+</template>

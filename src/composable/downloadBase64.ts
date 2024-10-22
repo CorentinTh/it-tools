@@ -1,6 +1,7 @@
 import { extension as getExtensionFromMimeType, extension as getMimeTypeFromExtension } from 'mime-types';
-import type { Ref } from 'vue';
+import type { MaybeRef, Ref } from 'vue';
 import _ from 'lodash';
+import { get } from '@vueuse/core';
 
 export {
   getMimeTypeFromBase64,
@@ -75,21 +76,11 @@ function downloadFromBase64({ sourceValue, filename, extension, fileMimeType }:
 }
 
 function useDownloadFileFromBase64(
-  { source, filename, extension, fileMimeType }:
-  { source: Ref<string>; filename?: string; extension?: string; fileMimeType?: string }) {
-  return {
-    download() {
-      downloadFromBase64({ sourceValue: source.value, filename, extension, fileMimeType });
-    },
-  };
-}
-
-function useDownloadFileFromBase64Refs(
   { source, filename, extension }:
-  { source: Ref<string>; filename?: Ref<string>; extension?: Ref<string> }) {
+  { source: MaybeRef<string>; filename?: MaybeRef<string>; extension?: MaybeRef<string> }) {
   return {
     download() {
-      downloadFromBase64({ sourceValue: source.value, filename: filename?.value, extension: extension?.value });
+      downloadFromBase64({ sourceValue: get(source), filename: get(filename), extension: get(extension) });
     },
   };
 }
@@ -115,4 +106,14 @@ function previewImageFromBase64(base64String: string): HTMLImageElement {
   }
 
   return img;
+}
+
+function useDownloadFileFromBase64Refs(
+  { source, filename, extension }:
+  { source: Ref<string>; filename?: Ref<string>; extension?: Ref<string> }) {
+  return {
+    download() {
+      downloadFromBase64({ sourceValue: source.value, filename: filename?.value, extension: extension?.value });
+    },
+  };
 }
