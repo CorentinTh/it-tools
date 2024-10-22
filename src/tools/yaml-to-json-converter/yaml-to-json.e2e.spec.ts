@@ -29,7 +29,7 @@ test.describe('Tool - Yaml to json', () => {
     );
   });
 
-  test('Yaml is parsed and output clean json', async ({ page }) => {
+  test('Yaml is parsed with merge key and output correct json', async ({ page }) => {
     await page.getByTestId('input').fill(`
       default: &default
         name: ''
