@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { useVModel } from '@vueuse/core';
 import { useCopy } from '@/composable/copy';
+import { translate as t } from '@/plugins/i18n.plugin';
 
 const props = defineProps<{ value: string }>();
 const emit = defineEmits(['update:value']);
 
 const value = useVModel(props, 'value', emit);
 const { copy, isJustCopied } = useCopy({ source: value, createToast: false });
-const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : 'Copy to clipboard');
+const tooltipText = computed(() => isJustCopied.value ? t('inputCopyable.copied') : t('inputCopyable.copy'));
 </script>
 
 <template>
