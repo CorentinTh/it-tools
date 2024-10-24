@@ -2,6 +2,8 @@
   "name": "@it-tools/app",
   "type": "module",
   "private": true,
+  "packageManager": "pnpm@9.12.2",
+
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
@@ -17,13 +19,28 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@nuxt/fonts": "^0.10.2",
+    "@nuxt/icon": "^1.5.6",
+    "@nuxtjs/color-mode": "^3.5.2",
+    "@nuxtjs/i18n": "^8.5.5",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-vue-next": "^0.453.0",
     "nuxt": "^3.13.2",
+    "radix-vue": "^1.9.7",
+    "shadcn-nuxt": "^0.10.4",
+    "tailwind-merge": "^2.5.4",
+    "tailwindcss-animate": "^1.0.7",
     "vue": "latest",
     "vue-router": "latest"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.8.0",
+    "@nuxtjs/tailwindcss": "^6.12.2",
+    "@vueuse/core": "^11.1.0",
+    "@vueuse/nuxt": "^11.1.0",
     "eslint": "^9.13.0",
+    "typescript": "^5.6.3",
     "vitest": "^2.1.3"
   }
 }
