@@ -391,3 +391,7 @@ tools:
   text-to-binary:
     title: Text to ASCII binary
     description: Convert text to its ASCII binary representation and vice-versa.
+
+  ai-prompt-splitter:
+    title: AI prompt splitter
+    description: Split up large prompts into smaller, manageable segments based on a set character limit for AI chat prompts.
