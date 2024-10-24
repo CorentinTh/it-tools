@@ -5,9 +5,6 @@
 .nitro
 .cache
 dist
-dist-app
-dist-node
-dist-cloudflare
 
 # Node dependencies
 node_modules
@@ -25,8 +22,3 @@ logs
 .env
 .env.*
 !.env.example
-
-.wrangler
-coverage
-cache
-.zed

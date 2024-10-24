@@ -1,8 +1,0 @@
-{
-  "extends": "@tsconfig/node18/tsconfig.json",
-  "include": ["vite.config.*"],
-  "compilerOptions": {
-    "composite": true,
-    "types": ["node", "vitest"]
-  }
-}

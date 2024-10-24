@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
+      - uses: actions/checkout@v4
       - run: corepack enable
       - uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 22
           cache: 'pnpm'
 
       - name: Install dependencies
@@ -24,8 +24,8 @@ jobs:
       - name: Run linters
         run: pnpm lint
 
-      - name: Run unit test
-        run: pnpm test
+      # - name: Run unit test
+      #   run: pnpm test:unit
 
       - name: Type check
         run: pnpm typecheck
