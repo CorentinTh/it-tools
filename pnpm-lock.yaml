@@ -17,6 +17,9 @@ dependencies:
   '@sindresorhus/slugify':
     specifier: ^2.2.1
     version: 2.2.1
+  '@tabler/icons-vue':
+    specifier: ^3.20.0
+    version: 3.20.0(vue@3.3.4)
   '@tiptap/pm':
     specifier: 2.1.6
     version: 2.1.6
@@ -2652,6 +2655,17 @@ packages:
   /@svgdotjs/svg.js@3.2.4:
     resolution: {integrity: sha512-BjJ/7vWNowlX3Z8O4ywT58DqbNRyYlkk6Yz/D13aB7hGmfQTvGX4Tkgtm/ApYlu9M7lCQi15xUEidqMUmdMYwg==}
     dev: false
+
+  /@tabler/icons-vue@3.20.0(vue@3.3.4):
+    resolution: {integrity: sha512-kymV0q+bFNqU6bmdlnfK9ru88xFydYIs+jfe0160bLTmcq94ZxcLfXO5JLMq5kjntUSNb4fBvGk0mXB7aDCYnA==}
+    peerDependencies:
+      vue: '>=3.0.1'
+    dependencies:
+      '@tabler/icons': 3.20.0
+      vue: 3.3.4
+
+  /@tabler/icons@3.20.0:
+    resolution: {integrity: sha512-nXSeUzsCOxX/Of+kdUVQfxL9bG+ck8XCWNf9dGSpE+nhVexRwk/4HiDQDxFDysfT7vfgSut6GXnrZsU5M5dSlA==}
 
   /@tiptap/core@2.1.12(@tiptap/pm@2.1.6):
     resolution: {integrity: sha512-ZGc3xrBJA9KY8kln5AYTj8y+GDrKxi7u95xIl2eccrqTY5CQeRu6HRNM1yT4mAjuSaG9jmazyjGRlQuhyxCKxQ==}
