@@ -28,6 +28,15 @@ const { t } = useI18n();
 const i18nKey = computed<string>(() => route.path.trim().replace('/', ''));
 const toolTitle = computed<string>(() => t(`tools.${i18nKey.value}.title`, String(route.meta.name)));
 const toolDescription = computed<string>(() => t(`tools.${i18nKey.value}.description`, String(route.meta.description)));
+
+const tool = computed<Tool>(() => ({
+  name: route.meta.name,
+  path: route.path,
+  description: route.meta.description,
+  icon: route.meta.icon,
+  isNew: route.meta.isNew,
+  category: route.meta.category,
+}));
 </script>
 
 <template>
@@ -40,7 +49,7 @@ const toolDescription = computed<string>(() => t(`tools.${i18nKey.value}.descrip
           </n-h1>
 
           <div>
-            <FavoriteButton :tool="{ name: route.meta.name } as Tool" />
+            <FavoriteButton :tool="tool" />
           </div>
         </div>
 
