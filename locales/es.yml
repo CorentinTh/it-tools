@@ -3,6 +3,7 @@ home:
     newestTools: Nuevas herramientas
     favoriteTools: 'Tus herramientas favoritas'
     allTools: 'Todas las herramientas'
+    favoritesDndToolTip: 'Arrastra y suelta para reordenar favoritos'
   subtitle: 'Herramientas practicas para desarrolladores'
   toggleMenu: 'Toggle menu'
   home: Home

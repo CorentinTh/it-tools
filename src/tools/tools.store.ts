@@ -59,5 +59,9 @@ export const useToolStore = defineStore('tools', () => {
       return favoriteToolsName.value.includes(get(tool).name)
         || favoriteToolsName.value.includes(get(tool).path);
     },
+
+    updateFavoriteTools(newOrder: ToolWithCategory[]) {
+      favoriteToolsName.value = newOrder.map(tool => tool.path);
+    },
   };
 });

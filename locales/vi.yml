@@ -3,6 +3,7 @@ home:
     newestTools: Công cụ mới nhất
     favoriteTools: 'Công cụ yêu thích của bạn'
     allTools: 'Tất cả công cụ'
+    favoritesDndToolTip: 'Kéo thả để sắp xếp lại yêu thích'
   subtitle: 'Công cụ cho nhà phát triển.'
   toggleMenu: 'Chuyển đổi menu'
   home: Trang chủ

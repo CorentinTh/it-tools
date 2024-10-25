@@ -3,6 +3,7 @@ home:
     newestTools: Nyeste verktøy
     favoriteTools: 'Dine favoritt verktøy'
     allTools: 'Alle verktøyene'
+    favoritesDndToolTip: 'Dra og slipp for å omordne favoritter'
   subtitle: 'Nyttige verktøy for utviklere'
   toggleMenu: 'Vekslemenmy'
   home: Hjem
