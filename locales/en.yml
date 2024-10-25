@@ -6,31 +6,32 @@
 home:
   categories:
     newestTools: Newest tools
-    favoriteTools: Your favorite tools
-    allTools: All the tools
-  subtitle: Handy tools for developers
-  toggleMenu: Toggle menu
+    favoriteTools: 'Your favorite tools'
+    allTools: 'All the tools'
+    favoritesDndToolTip: 'Drag and drop to reorder favorites'
+  subtitle: 'Handy tools for developers'
+  toggleMenu: 'Toggle menu'
   home: Home
   uiLib: UI Lib
   support: Support IT-Tools development
   buyMeACoffee: Buy me a coffee
   follow:
-    title: You like it-tools?
-    p1: Give us a star on
-    githubRepository: IT-Tools GitHub repository
-    p2: or follow us on
-    twitterAccount: IT-Tools Twitter account
-    thankYou: Thank you!
+    title: 'You like it-tools?'
+    p1: 'Give us a star on'
+    githubRepository: 'IT-Tools GitHub repository'
+    p2: 'or follow us on'
+    twitterXAccount: 'IT-Tools X account'
+    thankYou: 'Thank you!'
   nav:
-    github: GitHub repository
-    githubRepository: IT-Tools GitHub repository
-    twitter: Twitter account
-    twitterAccount: IT Tools Twitter account
-    about: About  IT-Tools
-    aboutLabel: About
-    darkMode: Dark mode
-    lightMode: Light mode
-    mode: Toggle dark/light mode
+    github: 'GitHub repository'
+    githubRepository: 'IT-Tools GitHub repository'
+    twitterX: 'X account'
+    twitterXAccount: 'IT Tools X account'
+    about: 'About  IT-Tools'
+    aboutLabel: 'About'
+    darkMode: 'Dark mode'
+    lightMode: 'Light mode'
+    mode: 'Toggle dark/light mode'
 about:
   content: >
     # About IT-Tools

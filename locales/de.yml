@@ -10,6 +10,7 @@ home:
     newestTools: Neueste Tools
     favoriteTools: Deine Lieblingstools
     allTools: Alle Tools
+    favoritesDndToolTip: 'Ziehen und Ablegen, um Favoriten neu zu ordnen'
   subtitle: Praktische Tools für Entwickler
   toggleMenu: Menü umschalten
   home: Startseite
@@ -21,13 +22,13 @@ home:
     p1: Gib uns einen Stern auf
     githubRepository: IT-Tools GitHub-Repository
     p2: oder folge uns auf
-    twitterAccount: IT-Tools Twitter-Konto
+    twitterXAccount: IT-Tools X-Konto
     thankYou: Vielen Dank!
   nav:
     github: GitHub-Repository
     githubRepository: IT-Tools GitHub-Repository
-    twitter: Twitter-Konto
-    twitterAccount: IT-Tools Twitter-Konto
+    twitterX: X-Konto
+    twitterXAccount: IT-Tools X-Konto
     about: Über IT-Tools
     aboutLabel: Über
     darkMode: Dunkelmodus

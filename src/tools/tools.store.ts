@@ -45,7 +45,10 @@ export const useToolStore = defineStore('tools', () => {
     newTools: computed(() => tools.value.filter(({ isNew }) => isNew)),
 
     addToolToFavorites({ tool }: { tool: MaybeRef<Tool> }) {
-      favoriteToolsName.value.push(get(tool).path);
+      const toolPath = get(tool).path;
+      if (toolPath) {
+        favoriteToolsName.value.push(toolPath);
+      }
     },
 
     removeToolFromFavorites({ tool }: { tool: MaybeRef<Tool> }) {
@@ -55,6 +58,10 @@ export const useToolStore = defineStore('tools', () => {
     isToolFavorite({ tool }: { tool: MaybeRef<Tool> }) {
       return favoriteToolsName.value.includes(get(tool).name)
         || favoriteToolsName.value.includes(get(tool).path);
+    },
+
+    updateFavoriteTools(newOrder: ToolWithCategory[]) {
+      favoriteToolsName.value = newOrder.map(tool => tool.path);
     },
   };
 });
