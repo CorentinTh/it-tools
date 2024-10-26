@@ -3,12 +3,24 @@ import { Base64 } from 'js-base64';
 import type { MemoryImage } from 'image-in-browser';
 import { decodeImage, encodeBmp, encodeGif, encodeIco, encodeJpg, encodePng, encodePvr, encodeTga, encodeTiff } from 'image-in-browser';
 import { arrayBufferToWebP } from 'webp-converter-browser';
+import { createSvg2png, initialize } from 'svg2png-wasm';
+import { normal as robotoBase64 } from 'roboto-base64';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 import { useQueryParamOrStorage } from '@/composable/queryParams';
+
+function readAsText(file: File) {
+  return new Promise<string>((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsText(file);
+    reader.onload = () => resolve(reader.result?.toString() ?? '');
+    reader.onerror = error => reject(error);
+  });
+}
 
 const status = ref<'idle' | 'done' | 'error' | 'processing'>('idle');
 const file = ref<File | null>(null);
 
+const svgScale = ref(2);
 const base64OutputFile = ref('');
 const fileName = ref('');
 const fileExtension = ref('');
@@ -64,10 +76,12 @@ const outputFormatHasQuality = computed(() => {
   return outputFormat.value === 'jpg';
 });
 
+const svgWasmLoaded = ref(false);
+
 async function onFileUploaded(uploadedFile: File) {
   const outputFormatValue = outputFormat.value;
   file.value = uploadedFile;
-  const fileBuffer = new Uint8Array(await uploadedFile.arrayBuffer());
+  let fileBuffer = new Uint8Array(await uploadedFile.arrayBuffer());
 
   fileName.value = `${uploadedFile.name}`;
   status.value = 'processing';
@@ -78,6 +92,17 @@ async function onFileUploaded(uploadedFile: File) {
       base64OutputFile.value = `data:image/webp;base64,${Base64.fromUint8Array(new Uint8Array(await encodedImage.arrayBuffer()))}`;
     }
     else {
+      if (uploadedFile.type === 'image/svg+xml') {
+        if (!svgWasmLoaded.value) {
+          await initialize(fetch('/svg2png_wasm_bg.wasm'));
+          svgWasmLoaded.value = true;
+        }
+        const svg2png = createSvg2png({
+          fonts: [Base64.toUint8Array(robotoBase64)],
+        });
+        fileBuffer = await svg2png(await readAsText(uploadedFile), { scale: svgScale.value });
+        svg2png.dispose();
+      }
       const decodedImage = decodeImage({
         data: fileBuffer,
       });
@@ -122,9 +147,15 @@ async function onFileUploaded(uploadedFile: File) {
       placeholder="Select output format"
       mb-2
     />
-    <n-form-item v-if="outputFormatHasQuality" label="Output quality:" label-placement="left" mb-2>
-      <n-input-number v-model:value="outputQuality" :max="100" :min="0" w-full />
-    </n-form-item>
+
+    <div mb-2 flex justify-center>
+      <n-form-item v-if="outputFormatHasQuality" label="Output quality:" label-placement="left">
+        <n-input-number v-model:value="outputQuality" :max="100" :min="0" w-full />
+      </n-form-item>
+      <n-form-item label="SVG scaling:" label-placement="left">
+        <n-input-number v-model:value="svgScale" :min="0" />
+      </n-form-item>
+    </div>
 
     <div mt-3 flex justify-center>
       <c-alert v-if="status === 'error'" type="error">
