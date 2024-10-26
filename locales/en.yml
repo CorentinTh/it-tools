@@ -3,6 +3,7 @@ home:
     newestTools: Newest tools
     favoriteTools: 'Your favorite tools'
     allTools: 'All the tools'
+    favoritesDndToolTip: 'Drag and drop to reorder favorites'
   subtitle: 'Handy tools for developers'
   toggleMenu: 'Toggle menu'
   home: Home
@@ -14,13 +15,13 @@ home:
     p1: 'Give us a star on'
     githubRepository: 'IT-Tools GitHub repository'
     p2: 'or follow us on'
-    twitterAccount: 'IT-Tools Twitter account'
+    twitterXAccount: 'IT-Tools X account'
     thankYou: 'Thank you!'
   nav:
     github: 'GitHub repository'
     githubRepository: 'IT-Tools GitHub repository'
-    twitter: 'Twitter account'
-    twitterAccount: 'IT Tools Twitter account'
+    twitterX: 'X account'
+    twitterXAccount: 'IT Tools X account'
     about: 'About  IT-Tools'
     aboutLabel: 'About'
     darkMode: 'Dark mode'

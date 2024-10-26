@@ -3,6 +3,7 @@ home:
     newestTools: Найновіші інструменти
     favoriteTools: 'Ваші улюблені інструменти'
     allTools: 'Усі інструменти'
+    favoritesDndToolTip: 'Перетягніть і відпустіть, щоб змінити порядок улюблених'
   subtitle: 'Зручні інструменти для розробників'
   toggleMenu: 'Перемикання меню'
   home: Головна
@@ -14,13 +15,13 @@ home:
     p1: 'Додайте нам зірку на'
     githubRepository: 'GitHub-репозиторій IT-Tools'
     p2: 'або слідкуйте за нами на'
-    twitterAccount: 'Твіттер-акаунт IT-Tools'
+    twitterXAccount: 'X-акаунт IT-Tools'
     thankYou: 'Дякуємо!'
   nav:
     github: 'GitHub-репозиторій'
     githubRepository: 'GitHub-репозиторій IT-Tools'
-    twitter: 'Твіттер'
-    twitterAccount: 'Твіттер-акаунт IT-Tools'
+    twitterX: 'X'
+    twitterXAccount: 'X-акаунт IT-Tools'
     about: 'Про IT-Tools'
     aboutLabel: 'Про нас'
     darkMode: 'Темний режим'

@@ -3,6 +3,7 @@ home:
     newestTools: Công cụ mới nhất
     favoriteTools: 'Công cụ yêu thích của bạn'
     allTools: 'Tất cả công cụ'
+    favoritesDndToolTip: 'Kéo thả để sắp xếp lại yêu thích'
   subtitle: 'Công cụ cho nhà phát triển.'
   toggleMenu: 'Chuyển đổi menu'
   home: Trang chủ
@@ -14,13 +15,13 @@ home:
     p1: 'Hãy cho chúng tôi một ngôi sao trên'
     githubRepository: 'Kho GitHub IT-Tools'
     p2: 'hoặc theo dõi chúng tôi trên'
-    twitterAccount: 'Tài khoản Twitter IT-Tools'
+    twitterXAccount: 'Tài khoản X IT-Tools'
     thankYou: 'Cảm ơn bạn!'
   nav:
     github: 'Kho GitHub'
     githubRepository: 'Kho GitHub IT-Tools'
-    twitter: 'Tài khoản Twitter'
-    twitterAccount: 'Tài khoản Twitter IT Tools'
+    twitterX: 'Tài khoản X'
+    twitterXAccount: 'Tài khoản X IT Tools'
     about: 'Về IT-Tools'
     aboutLabel: 'Giới thiệu'
     darkMode: 'Chế độ tối'
