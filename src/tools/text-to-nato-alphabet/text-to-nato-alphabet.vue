@@ -5,6 +5,8 @@ import { useCopy } from '@/composable/copy';
 
 const lang = useStorage('text-to-nato:lang', '(International)');
 const input = ref('');
+const useDigitsNames = useStorage('text-to-nato:digits', false);
+const usePunctuationsNames = useStorage('text-to-nato:puncts', false);
 const natoText = computed(() => textToNatoAlphabet({ text: input.value, langOrCountry: lang.value }));
 const { copy } = useCopy({ source: natoText, text: 'NATO alphabet string copied.' });
 </script>
@@ -16,6 +18,15 @@ const { copy } = useCopy({ source: natoText, text: 'NATO alphabet string copied.
       :options="allLanguagesAndCountries"
       searchable
     />
+
+    <div flex justify-center>
+      <n-form-item label="Use digits pronunciation">
+        <n-checkbox v-model:checked="usePunctuationsNames" />
+      </n-form-item>
+      <n-form-item label="Use punctuations pronunciation">
+        <n-checkbox v-model:checked="useDigitsNames" />
+      </n-form-item>
+    </div>
 
     <c-input-text
       v-model:value="input"
