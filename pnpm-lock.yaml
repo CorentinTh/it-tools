@@ -158,6 +158,9 @@ dependencies:
   randexp:
     specifier: ^0.5.3
     version: 0.5.3
+  regex:
+    specifier: ^4.3.3
+    version: 4.3.3
   shiki:
     specifier: ^1.22.0
     version: 1.22.0
@@ -7399,7 +7402,7 @@ packages:
   /oniguruma-to-js@0.4.3:
     resolution: {integrity: sha512-X0jWUcAlxORhOqqBREgPMgnshB7ZGYszBNspP+tS9hPD3l13CdaXcHbgImoHUHlrvGx/7AvFEkTRhAGYh+jzjQ==}
     dependencies:
-      regex: 4.3.2
+      regex: 4.3.3
     dev: false
 
   /open@8.4.2:
@@ -8022,8 +8025,8 @@ packages:
       '@babel/runtime': 7.23.2
     dev: true
 
-  /regex@4.3.2:
-    resolution: {integrity: sha512-kK/AA3A9K6q2js89+VMymcboLOlF5lZRCYJv3gzszXFHBr6kO6qLGzbm+UIugBEV8SMMKCTR59txoY6ctRHYVw==}
+  /regex@4.3.3:
+    resolution: {integrity: sha512-r/AadFO7owAq1QJVeZ/nq9jNS1vyZt+6t1p/E59B56Rn2GCya+gr1KSyOzNL/er+r+B7phv5jG2xU2Nz1YkmJg==}
     dev: false
 
   /regexp-tree@0.1.27:

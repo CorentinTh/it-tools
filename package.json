@@ -87,6 +87,7 @@
     "plausible-tracker": "^0.3.8",
     "qrcode": "^1.5.1",
     "randexp": "^0.5.3",
+    "regex": "^4.3.3",
     "shiki": "^1.22.0",
     "sql-formatter": "^13.0.0",
     "ua-parser-js": "^1.0.35",
