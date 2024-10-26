@@ -53,4 +53,8 @@ export default defineNuxtConfig({
       { code: 'fr', file: 'fr.yaml', name: 'Français' },
     ],
   },
+
+  experimental: {
+    scanPageMeta: false, // Causes some issues with layouts and hook-registered pages
+  },
 });

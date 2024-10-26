@@ -29,3 +29,13 @@ tools:
     description: >-
       Generate random string with the characters you want, uppercase, lowercase
       letters, numbers and/or symbols.
+    placeholder: Generated token will appear here, please select at least one option.
+    use-uppercase: Include uppercase letters
+    use-lowercase: Include lowercase letters
+    use-numbers: Include numbers
+    use-symbols: Include symbols
+    length: Length
+    refresh: Refresh
+    quantity: Quantity
+    format: Format
+

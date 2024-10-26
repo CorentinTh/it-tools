@@ -1,12 +1,14 @@
 <script setup>
 import { Badge } from '@/src/modules/ui/components/badge';
 import { Button, buttonVariants } from '@/src/modules/ui/components/button';
+import { useCommandPaletteStore } from '../../command-palette/command-palette.store';
 import { cn } from '../../shared/style/cn';
 import { useToolsStore } from '../../tools/tools.store';
 import { CardContent } from '../../ui/components/card';
 import Card from '../../ui/components/card/Card.vue';
 
 const { tools } = useToolsStore();
+const { openCommandPalette } = useCommandPaletteStore();
 </script>
 
 <template>
@@ -14,13 +16,13 @@ const { tools } = useToolsStore();
     <div class="flex gap-24 mx-auto justify-center pb-8 mt-8 items-center px-6">
       <div class="max-w-xl">
         <div class="flex gap-2">
-          <Badge class="text-primary bg-primary/10 hover:bg-primary/10">
+          <Badge class="text-primary bg-primary/10 hover:bg-primary/10 shadow-none">
             {{ $t('home.open-source') }}
           </Badge>
-          <Badge class="text-primary bg-primary/10 hover:bg-primary/10">
+          <Badge class="text-primary bg-primary/10 hover:bg-primary/10 shadow-none">
             {{ $t('home.free') }}
           </Badge>
-          <Badge class="text-primary bg-primary/10 hover:bg-primary/10">
+          <Badge class="text-primary bg-primary/10 hover:bg-primary/10 shadow-none">
             {{ $t('home.self-hostable') }}
           </Badge>
         </div>
@@ -40,7 +42,7 @@ const { tools } = useToolsStore();
             <Icon name="i-tabler-arrow-right" class="ml-2 size-4" />
           </Button>
 
-          <Button variant="outline">
+          <Button variant="outline" @click="openCommandPalette">
             <Icon name="i-tabler-search" class="mr-2 size-4" />
             {{ $t('home.search-tools') }}
           </Button>
