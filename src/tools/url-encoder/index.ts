@@ -1,10 +1,11 @@
 import { Link } from '@vicons/tabler';
 import { defineTool } from '../tool';
+import { translate } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: 'Encode/decode url formatted strings',
+  name: translate('tools.url-encoder.title'),
   path: '/url-encoder',
-  description: 'Encode to url-encoded format (also known as "percent-encoded") or decode from it.',
+  description: translate('tools.url-encoder.description'),
   keywords: ['url', 'encode', 'decode', 'percent', '%20', 'format'],
   component: () => import('./url-encoder.vue'),
   icon: Link,
