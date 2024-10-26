@@ -6,7 +6,7 @@ const colorMode = useColorMode();
 </script>
 
 <template>
-  <div class="w-full border-b">
+  <div class="w-full border-b bg-card">
     <div class="max-w-screen-xl mx-auto flex items-center justify-between py-2 px-6">
       <NuxtLink variant="link" class="text-xl font-semibold border-b border-transparent hover:no-underline h-auto px-1 rounded-none !transition-border-color-250" :as="Button" :to="localePath('/')" aria-label="Home">
         <span class="font-bold text-foreground">IT</span>

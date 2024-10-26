@@ -1,7 +1,12 @@
 <script setup>
 import { Badge } from '@/src/modules/ui/components/badge';
-import { Button } from '@/src/modules/ui/components/button';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/src/modules/ui/components/dropdown-menu';
+import { Button, buttonVariants } from '@/src/modules/ui/components/button';
+import { cn } from '../../shared/style/cn';
+import { useToolsStore } from '../../tools/tools.store';
+import { CardContent } from '../../ui/components/card';
+import Card from '../../ui/components/card/Card.vue';
+
+const { tools } = useToolsStore();
 </script>
 
 <template>
@@ -10,16 +15,13 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
       <div class="max-w-xl">
         <div class="flex gap-2">
           <Badge class="text-primary bg-primary/10 hover:bg-primary/10">
-            <!-- {{ $t('landing.hero.badges.open-source') }} -->
-            Open Source
+            {{ $t('home.open-source') }}
           </Badge>
           <Badge class="text-primary bg-primary/10 hover:bg-primary/10">
-            <!-- {{ $t('landing.hero.badges.free') }} -->
-            Free
+            {{ $t('home.free') }}
           </Badge>
           <Badge class="text-primary bg-primary/10 hover:bg-primary/10">
-            <!-- {{ $t('landing.hero.badges.self-hostable') }} -->
-            Self-hostable
+            {{ $t('home.self-hostable') }}
           </Badge>
         </div>
 
@@ -29,21 +31,18 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
         </h1>
 
         <p class="text-xl text-gray-400 mb-4">
-          <!-- {{ $t('app.description') }} -->
-          The open-source collection of handy online tools to help developers in their daily life.
+          {{ $t('app.description') }}
         </p>
 
         <div class="flex gap-4">
           <Button>
-            <!-- {{ $t('landing.hero.all-the-tools') }} -->
-            All the tools
+            {{ $t('home.all-the-tools') }}
             <Icon name="i-tabler-arrow-right" class="ml-2 size-4" />
           </Button>
 
           <Button variant="outline">
-            <!-- {{ $t('landing.hero.search-tools') }} -->
             <Icon name="i-tabler-search" class="mr-2 size-4" />
-            Search tools
+            {{ $t('home.search-tools') }}
           </Button>
         </div>
       </div>
@@ -54,4 +53,22 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
       </div>
     </div>
   </grid-background>
+
+  <div class="max-w-screen-xl mx-auto px-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+      <NuxtLink v-for="tool in tools" :key="tool.key" :to="tool.path">
+        <Card class="p-6 h-full cursor-pointer hover:shadow-lg transition hover:translate-y-[-2px]">
+          <Icon :name="tool.icon" class="size-12 text-muted-foreground/60" />
+
+          <div class="font-semibold text-base">
+            {{ tool.title }}
+          </div>
+
+          <p class="text-muted-foreground mt-2">
+            {{ tool.description }}
+          </p>
+        </Card>
+      </NuxtLink>
+    </div>
+  </div>
 </template>

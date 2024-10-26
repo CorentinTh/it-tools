@@ -5,7 +5,7 @@ const localePath = useLocalePath();
 </script>
 
 <template>
-  <div class="flex justify-center text-center">
+  <div class="flex justify-center text-center mt-24">
     <div>
       <h1 class="text-3xl font-light text-muted-foreground">
         404

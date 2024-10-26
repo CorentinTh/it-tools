@@ -1,0 +1,29 @@
+app:
+  title: IT-Tools
+  description: La collection open-source d'outils en ligne pour aider les devs dans leur vie quotidienne.
+home:
+  all-the-tools: Tous les outils
+  search-tools: Rechercher un outil
+  open-source: Open Source
+  free: Gratuit
+  self-hostable: Self-hostable
+  open-tool: Ouvrir l'outil
+footer:
+  resources:
+    title: Ressources
+    all-tools: Tous les outils
+    github: Dépôt GitHub
+    support: Soutenir IT-Tools
+    license: Licence
+  support:
+    title: Support
+    report-bug: Signaler un bug
+    request-feature: Demander une fonctionnalité
+    contribute: Contribuer au projet
+    contact: Me contacter
+  friends:
+    title: Ami·e·s
+tools:
+  token-generator:
+    title: Générateur de token
+    description: Générer des chaines de caractères aléatoires, contrôlez les caractères que vous voulez, lettres majuscules, minuscules, chiffres et/ou symboles.

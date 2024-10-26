@@ -1,0 +1,31 @@
+app:
+  title: IT-Tools
+  description: The open-source collection of handy online tools to help developers in their daily life.
+home:
+  all-the-tools: All the tools
+  search-tools: Search for a tool
+  open-source: Open Source
+  free: Free
+  self-hostable: Self-hostable
+  open-tool: Open tool
+footer:
+  resources:
+    title: Resources
+    all-tools: All the tools
+    github: GitHub repository
+    support: Support IT-Tools
+    license: License
+  support:
+    title: Support
+    report-bug: Report a bug
+    request-feature: Request a feature
+    contribute: Contribute to the project
+    contact: Contact me
+  friends:
+    title: Friends
+tools:
+  token-generator:
+    title: Token Generator
+    description: >-
+      Generate random string with the characters you want, uppercase, lowercase
+      letters, numbers and/or symbols.

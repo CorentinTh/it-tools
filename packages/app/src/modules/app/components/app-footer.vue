@@ -1,29 +1,32 @@
 <script setup>
 const localePath = useLocalePath();
+const { t } = useI18n();
 
 const sections = computed(() => [
   {
-    title: 'Lorem',
+    title: t('footer.resources.title'),
     items: [
-      { label: 'Foo', to: '/foo' },
-      { label: 'Bar', to: '/bar' },
-      { label: 'Baz', to: '/baz' },
+      { label: t('footer.resources.all-tools'), to: localePath('/tools') },
+      { label: t('footer.resources.github'), href: 'https://github.com/CorentinTh/it-tools' },
+      { label: t('footer.resources.support'), href: 'https://buymeacoffee.com/cthmsst' },
+      { label: 'Humans.txt', href: '/humans.txt' },
+      { label: t('footer.resources.license'), href: 'https://github.com/CorentinTh/it-tools/blob/main/LICENSE' },
     ],
   },
   {
-    title: 'Ipsum',
+    title: t('footer.support.title'),
     items: [
-      { label: 'Foo', to: '/foo' },
-      { label: 'Bar', to: '/bar' },
-      { label: 'Baz', to: '/baz' },
+      { label: t('footer.support.report-bug'), href: 'https://github.com/CorentinTh/it-tools/issues/new/choose' },
+      { label: t('footer.support.request-feature'), href: 'https://github.com/CorentinTh/it-tools/issues/new/choose' },
+      { label: t('footer.support.contribute'), href: 'https://github.com/CorentinTh/it-tools/blob/main/CONTRIBUTING.md' },
+      { label: t('footer.support.contact'), href: 'https://github.com/CorentinTh/it-tools/issues/new/choose' },
     ],
   },
   {
-    title: 'Dolor',
+    title: t('footer.friends.title'),
     items: [
-      { label: 'Foo', to: '/foo' },
-      { label: 'Bar', to: '/bar' },
-      { label: 'Baz', to: '/baz' },
+      { label: 'Jugly.io', href: 'https://jugly.io' },
+      { label: 'Enclosed.cc', href: 'https://enclosed.cc' },
     ],
   },
 
@@ -49,7 +52,7 @@ const socialLinks = [
 </script>
 
 <template>
-  <footer class="bg-card border-t border-border">
+  <footer class="light:bg-muted/50 dark:bg-black/20 mt-12">
     <div class="py-12 px-6 max-w-screen-xl mx-auto ">
       <div class="flex items-start justify-between flex-col md:flex-row gap-12">
         <div>
