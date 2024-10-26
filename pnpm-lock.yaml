@@ -17,6 +17,9 @@ dependencies:
   '@sindresorhus/slugify':
     specifier: ^2.2.1
     version: 2.2.1
+  '@tabler/icons-vue':
+    specifier: ^3.20.0
+    version: 3.20.0(vue@3.3.4)
   '@tiptap/pm':
     specifier: 2.1.6
     version: 2.1.6
@@ -191,6 +194,9 @@ dependencies:
   vue-tsc:
     specifier: ^1.8.1
     version: 1.8.1(typescript@5.2.2)
+  vuedraggable:
+    specifier: ^4.1.0
+    version: 4.1.0(vue@3.3.4)
   xml-formatter:
     specifier: ^3.3.2
     version: 3.3.2
@@ -2652,6 +2658,17 @@ packages:
   /@svgdotjs/svg.js@3.2.4:
     resolution: {integrity: sha512-BjJ/7vWNowlX3Z8O4ywT58DqbNRyYlkk6Yz/D13aB7hGmfQTvGX4Tkgtm/ApYlu9M7lCQi15xUEidqMUmdMYwg==}
     dev: false
+
+  /@tabler/icons-vue@3.20.0(vue@3.3.4):
+    resolution: {integrity: sha512-kymV0q+bFNqU6bmdlnfK9ru88xFydYIs+jfe0160bLTmcq94ZxcLfXO5JLMq5kjntUSNb4fBvGk0mXB7aDCYnA==}
+    peerDependencies:
+      vue: '>=3.0.1'
+    dependencies:
+      '@tabler/icons': 3.20.0
+      vue: 3.3.4
+
+  /@tabler/icons@3.20.0:
+    resolution: {integrity: sha512-nXSeUzsCOxX/Of+kdUVQfxL9bG+ck8XCWNf9dGSpE+nhVexRwk/4HiDQDxFDysfT7vfgSut6GXnrZsU5M5dSlA==}
 
   /@tiptap/core@2.1.12(@tiptap/pm@2.1.6):
     resolution: {integrity: sha512-ZGc3xrBJA9KY8kln5AYTj8y+GDrKxi7u95xIl2eccrqTY5CQeRu6HRNM1yT4mAjuSaG9jmazyjGRlQuhyxCKxQ==}
@@ -8217,6 +8234,9 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /sortablejs@1.14.0:
+    resolution: {integrity: sha512-pBXvQCs5/33fdN1/39pPL0NZF20LeRbLQ5jtnheIPN9JQAaufGjKdWduZn4U7wCtVuzKhmRkI0DFYHYRbB2H1w==}
+
   /source-map-js@1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
@@ -9341,6 +9361,14 @@ packages:
       '@vue/runtime-dom': 3.3.4
       '@vue/server-renderer': 3.3.4(vue@3.3.4)
       '@vue/shared': 3.3.4
+
+  /vuedraggable@4.1.0(vue@3.3.4):
+    resolution: {integrity: sha512-FU5HCWBmsf20GpP3eudURW3WdWTKIbEIQxh9/8GE806hydR9qZqRRxRE3RjqX7PkuLuMQG/A7n3cfj9rCEchww==}
+    peerDependencies:
+      vue: ^3.0.1
+    dependencies:
+      sortablejs: 1.14.0
+      vue: 3.3.4
 
   /vueuc@0.4.51(vue@3.3.4):
     resolution: {integrity: sha512-pLiMChM4f+W8czlIClGvGBYo656lc2Y0/mXFSCydcSmnCR1izlKPGMgiYBGjbY9FDkFG8a2HEVz7t0DNzBWbDw==}

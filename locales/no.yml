@@ -3,6 +3,7 @@ home:
     newestTools: Nyeste verktøy
     favoriteTools: 'Dine favoritt verktøy'
     allTools: 'Alle verktøyene'
+    favoritesDndToolTip: 'Dra og slipp for å omordne favoritter'
   subtitle: 'Nyttige verktøy for utviklere'
   toggleMenu: 'Vekslemenmy'
   home: Hjem
@@ -14,13 +15,13 @@ home:
     p1: 'Gi oss en stjerne på'
     githubRepository: 'IT-Tools GitHub-depotet'
     p2: 'eller følg oss på'
-    twitterAccount: 'IT-Tools sin twitter konto'
+    twitterXAccount: 'IT-Tools sin X konto'
     thankYou: 'Tusen takk!'
   nav:
     github: 'GitHub-depot'
     githubRepository: 'IT-Tools GitHub-depot'
-    twitter: 'Twitter konto'
-    twitterAccount: 'IT Tools Twitter konto'
+    twitterX: 'X konto'
+    twitterXAccount: 'IT Tools X konto'
     about: 'Om  IT-Tools'
     aboutLabel: 'Om'
     darkMode: 'Mørk modus'
