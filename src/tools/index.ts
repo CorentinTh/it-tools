@@ -3,6 +3,8 @@ import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
 import { tool as emailNormalizer } from './email-normalizer';
 import { tool as jqTester } from './jq-tester';
+import { tool as jsonpathMemo } from './jsonpath-memo';
+import { tool as jqMemo } from './jq-memo';
 
 import { tool as asciiTextDrawer } from './ascii-text-drawer';
 
@@ -156,6 +158,8 @@ export const toolsByCategory: ToolCategory[] = [
       yamlViewer,
       emailNormalizer,
       jqTester,
+      jqMemo,
+      jsonpathMemo,
     ],
   },
   {

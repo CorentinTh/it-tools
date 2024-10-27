@@ -54,16 +54,27 @@ const jsonValidation = useValidation({
         mb-2
       />
 
-      <n-radio-group v-model:value="jqtype" name="jqtype">
-        <n-space>
-          <n-radio
-            v-for="type in jqtypes"
-            :key="type.value"
-            :value="type.value"
-            :label="type.label"
-          />
-        </n-space>
-      </n-radio-group>
+      <div mb-2 flex justify-center>
+        <n-radio-group v-model:value="jqtype" name="jqtype">
+          <n-space>
+            <n-radio
+              v-for="type in jqtypes"
+              :key="type.value"
+              :value="type.value"
+              :label="type.label"
+            />
+          </n-space>
+        </n-radio-group>
+      </div>
+
+      <div mb-2 flex justify-center>
+        <router-link v-if="jqtype === 'jq'" target="_blank" to="/jq-memo" mb-1 mt-1>
+          See <code>jq</code> Cheatsheet
+        </router-link>
+        <router-link v-if="jqtype === 'jsonpath'" target="_blank" to="/jsonpath-memo" mb-1 mt-1>
+          See JSONPath Cheatsheet
+        </router-link>
+      </div>
 
       <c-input-text
         v-model:value="json"
