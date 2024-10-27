@@ -2,9 +2,9 @@ import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
 import { tool as emailNormalizer } from './email-normalizer';
-
 import { tool as asciiTextDrawer } from './ascii-text-drawer';
-
+import { tool as daysCalculator } from './days-calculator';
+import { tool as dateDurationCalculator } from './date-duration-calculator';
 import { tool as textToUnicode } from './text-to-unicode';
 import { tool as safelinkDecoder } from './safelink-decoder';
 import { tool as xmlToJson } from './xml-to-json';
@@ -176,7 +176,9 @@ export const toolsByCategory: ToolCategory[] = [
     components: [
       chronometer,
       temperatureConverter,
+      daysCalculator,
       durationCalculator,
+      dateDurationCalculator,
       benchmarkBuilder,
     ],
   },
