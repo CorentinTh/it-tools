@@ -39,6 +39,10 @@ const cssOutput = computed(
         mb-5
       />
 
+      <router-link target="_blank" to="/css-selectors-memo" mb-1 mt-1>
+        See CSS Selectors Cheatsheet
+      </router-link>
+
       <n-divider />
 
       <TextareaCopyable
@@ -57,6 +61,10 @@ const cssOutput = computed(
         raw-text
         mb-5
       />
+
+      <router-link target="_blank" to="/xpath-memo" mb-1 mt-1>
+        See XPath Cheatsheet
+      </router-link>
 
       <n-divider />
 
