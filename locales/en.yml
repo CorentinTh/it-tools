@@ -51,8 +51,8 @@ about:
   maybe: 'Maybe the cache is doing tricky things, try force-refreshing?'
   backHome: 'Back home'
 favoriteButton:
-  remove: Remove from favorites
-  add: Add to favorites
+  remove: 'Remove from favorites'
+  add: 'Add to favorites'
 toolCard:
   new: New
 search:
