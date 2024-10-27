@@ -73,11 +73,11 @@ formatTransformer:
   output: Output
 tools:
   categories:
-    favorite-tools: Your favorite tools
+    favorite-tools: 'Your favorite tools'
     crypto: Crypto
     converter: Converter
     web: Web
-    images and videos: Images & Videos
+    images and videos: 'Images & Videos'
     development: Development
     network: Network
     math: Math
