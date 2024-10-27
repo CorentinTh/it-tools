@@ -1,29 +1,29 @@
 <script setup lang="ts">
-import { cn } from '@/src/modules/shared/style/cn'
+import { cn } from '@/src/modules/shared/style/cn';
 import {
   DropdownMenuContent,
   type DropdownMenuContentEmits,
   type DropdownMenuContentProps,
   DropdownMenuPortal,
   useForwardPropsEmits,
-} from 'radix-vue'
-import { computed, type HTMLAttributes } from 'vue'
+} from 'radix-vue';
+import { computed, type HTMLAttributes } from 'vue';
 
 const props = withDefaults(
   defineProps<DropdownMenuContentProps & { class?: HTMLAttributes['class'] }>(),
   {
     sideOffset: 4,
   },
-)
-const emits = defineEmits<DropdownMenuContentEmits>()
+);
+const emits = defineEmits<DropdownMenuContentEmits>();
 
 const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
+  const { class: _, ...delegated } = props;
 
-  return delegated
-})
+  return delegated;
+});
 
-const forwarded = useForwardPropsEmits(delegatedProps, emits)
+const forwarded = useForwardPropsEmits(delegatedProps, emits);
 </script>
 
 <template>

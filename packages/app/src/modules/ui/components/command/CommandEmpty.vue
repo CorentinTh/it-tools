@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import type { ComboboxEmptyProps } from 'radix-vue'
-import { cn } from '@/src/modules/shared/style/cn'
-import { ComboboxEmpty } from 'radix-vue'
-import { computed, type HTMLAttributes } from 'vue'
+import type { ComboboxEmptyProps } from 'radix-vue';
+import { cn } from '@/src/modules/shared/style/cn';
+import { ComboboxEmpty } from 'radix-vue';
+import { computed, type HTMLAttributes } from 'vue';
 
-const props = defineProps<ComboboxEmptyProps & { class?: HTMLAttributes['class'] }>()
+const props = defineProps<ComboboxEmptyProps & { class?: HTMLAttributes['class'] }>();
 
 const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
+  const { class: _, ...delegated } = props;
 
-  return delegated
-})
+  return delegated;
+});
 </script>
 
 <template>

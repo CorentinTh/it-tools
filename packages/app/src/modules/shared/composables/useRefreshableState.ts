@@ -9,4 +9,4 @@ export function useRefreshableState<T>(key: string, getState: () => T | Ref<T>) 
   };
 
   return [state, refresh] as const;
-}  
+}

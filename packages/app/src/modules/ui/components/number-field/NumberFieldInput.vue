@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
-import { cn } from '@/src/modules/shared/style/cn'
-import { NumberFieldInput } from 'radix-vue'
+import type { HTMLAttributes } from 'vue';
+import { cn } from '@/src/modules/shared/style/cn';
+import { NumberFieldInput } from 'radix-vue';
 
 const props = defineProps<{
-  class?: HTMLAttributes['class']
-}>()
+  class?: HTMLAttributes['class'];
+}>();
 </script>
 
 <template>

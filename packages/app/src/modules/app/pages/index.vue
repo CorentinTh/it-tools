@@ -1,10 +1,8 @@
 <script setup>
 import { Badge } from '@/src/modules/ui/components/badge';
-import { Button, buttonVariants } from '@/src/modules/ui/components/button';
+import { Button } from '@/src/modules/ui/components/button';
 import { useCommandPaletteStore } from '../../command-palette/command-palette.store';
-import { cn } from '../../shared/style/cn';
 import { useToolsStore } from '../../tools/tools.store';
-import { CardContent } from '../../ui/components/card';
 import Card from '../../ui/components/card/Card.vue';
 
 const { tools } = useToolsStore();

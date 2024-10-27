@@ -5,12 +5,13 @@ export default defineNuxtModule({
   meta: {
     name: 'tools',
   },
-  setup() {
-    extendPages((pages) => {
+  setup(options, nuxt) {
+    nuxt.hook('pages:extend', (pages) => {
       pages.push(...toolDefinitions.map((tool) => {
         return {
           path: `/${tool.slug}`,
           file: tool.entryFile,
+          name: tool.slug,
           meta: {
             toolKey: tool.key,
           },

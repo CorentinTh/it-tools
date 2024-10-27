@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import type { SliderRootEmits, SliderRootProps } from 'radix-vue'
-import { cn } from '@/src/modules/shared/style/cn'
-import { SliderRange, SliderRoot, SliderThumb, SliderTrack, useForwardPropsEmits } from 'radix-vue'
-import { computed, type HTMLAttributes } from 'vue'
+import type { SliderRootEmits, SliderRootProps } from 'radix-vue';
+import { cn } from '@/src/modules/shared/style/cn';
+import { SliderRange, SliderRoot, SliderThumb, SliderTrack, useForwardPropsEmits } from 'radix-vue';
+import { computed, type HTMLAttributes } from 'vue';
 
-const props = defineProps<SliderRootProps & { class?: HTMLAttributes['class'] }>()
-const emits = defineEmits<SliderRootEmits>()
+const props = defineProps<SliderRootProps & { class?: HTMLAttributes['class'] }>();
+const emits = defineEmits<SliderRootEmits>();
 
 const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
+  const { class: _, ...delegated } = props;
 
-  return delegated
-})
+  return delegated;
+});
 
-const forwarded = useForwardPropsEmits(delegatedProps, emits)
+const forwarded = useForwardPropsEmits(delegatedProps, emits);
 </script>
 
 <template>

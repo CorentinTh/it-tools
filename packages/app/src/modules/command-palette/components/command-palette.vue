@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { useMagicKeys } from '@vueuse/core';
 import { useToolsStore } from '../../tools/tools.store';
-import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from '../../ui/components/command';
+import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '../../ui/components/command';
 import { useCommandPaletteStore } from '../command-palette.store';
 
 const commandPaletteStore = useCommandPaletteStore();

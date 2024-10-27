@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import type { NumberFieldDecrementProps } from 'radix-vue'
-import { cn } from '@/src/modules/shared/style/cn'
-import { Minus } from 'lucide-vue-next'
-import { NumberFieldDecrement, useForwardProps } from 'radix-vue'
-import { computed, type HTMLAttributes } from 'vue'
+import type { NumberFieldDecrementProps } from 'radix-vue';
+import { cn } from '@/src/modules/shared/style/cn';
+import { Minus } from 'lucide-vue-next';
+import { NumberFieldDecrement, useForwardProps } from 'radix-vue';
+import { computed, type HTMLAttributes } from 'vue';
 
-const props = defineProps<NumberFieldDecrementProps & { class?: HTMLAttributes['class'] }>()
+const props = defineProps<NumberFieldDecrementProps & { class?: HTMLAttributes['class'] }>();
 
 const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
+  const { class: _, ...delegated } = props;
 
-  return delegated
-})
+  return delegated;
+});
 
-const forwarded = useForwardProps(delegatedProps)
+const forwarded = useForwardProps(delegatedProps);
 </script>
 
 <template>

@@ -34,8 +34,8 @@ tools:
     use-lowercase: Include lowercase letters
     use-numbers: Include numbers
     use-symbols: Include symbols
+    exclude-similar: Exclude similar characters
     length: Length
-    refresh: Refresh
+    refresh: Refresh token
     quantity: Quantity
     format: Format
-

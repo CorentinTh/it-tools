@@ -7,6 +7,7 @@ export function createToken({
   withSymbols = false,
   length = 64,
   alphabet,
+  exclude,
   sample = sampleImpl,
 }: {
   withUppercase?: boolean;
@@ -15,6 +16,7 @@ export function createToken({
   withSymbols?: boolean;
   length?: number;
   alphabet?: string;
+  exclude?: string | string[];
   sample?: (str: string) => string;
 }) {
   const allAlphabet = alphabet ?? [
@@ -24,5 +26,8 @@ export function createToken({
     withSymbols ? '.,;:!?./-"\'#{([-|\\@)]=}*+' : '',
   ].join('');
 
-  return times(length, () => sample(allAlphabet)).join('');
+  const charsToExclude = exclude ? (Array.isArray(exclude) ? exclude.join('') : exclude) : '';
+  const filteredAlphabet = allAlphabet.split('').filter(char => !charsToExclude.includes(char)).join('');
+
+  return times(length, () => sample(filteredAlphabet)).join('');
 }

@@ -2,7 +2,7 @@
 import { Button } from '@/src/modules/ui/components/button';
 import { useToolsStore } from '../../tools/tools.store';
 
-const { tools } = useToolsStore();
+const toolStore = useToolsStore();
 const localePath = useLocalePath();
 </script>
 
@@ -20,7 +20,7 @@ const localePath = useLocalePath();
       Home
     </NuxtLink>
 
-    <NuxtLink v-for="tool in tools" :key="tool.key" class="py-1.5 px-3 flex items-center text-muted-foreground hover:text-foreground transition hover:bg-muted rounded-lg" :to="tool.path" exact-active-class="bg-secondary !text-foreground">
+    <NuxtLink v-for="tool in toolStore.tools" :key="tool.key" class="py-1.5 px-3 flex items-center text-muted-foreground hover:text-foreground transition hover:bg-muted rounded-lg" :to="tool.path" exact-active-class="bg-secondary !text-foreground">
       <Icon :name="tool.icon" class="mr-2 size-4" />
       {{ tool.title }}
     </NuxtLink>
