@@ -1,4 +1,4 @@
-import { Tags } from '@vicons/tabler';
+import { IconTags } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
@@ -22,5 +22,5 @@ export const tool = defineTool({
     'og',
   ],
   component: () => import('./meta-tag-generator.vue'),
-  icon: Tags,
+  icon: IconTags,
 });

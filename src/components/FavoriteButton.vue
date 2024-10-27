@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { IconHeartFilled } from '@tabler/icons-vue';
 import { useToolStore } from '@/tools/tools.store';
 import type { Tool } from '@/tools/tools.types';
 
@@ -32,7 +33,7 @@ function toggleFavorite(event: MouseEvent) {
       :style="{ opacity: isFavorite ? 1 : 0.2 }"
       @click="toggleFavorite"
     >
-      <icon-mdi-heart />
+      <IconHeartFilled size="18" />
     </c-button>
   </c-tooltip>
 </template>

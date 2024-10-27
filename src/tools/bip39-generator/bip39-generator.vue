@@ -14,7 +14,7 @@ import {
   portugueseWordList,
   spanishWordList,
 } from '@it-tools/bip39';
-import { Copy, Refresh } from '@vicons/tabler';
+import { IconCopy, IconRefresh } from '@tabler/icons-vue';
 
 import { useCopy } from '@/composable/copy';
 import { useValidation } from '@/composable/validation';
@@ -101,14 +101,10 @@ const { copy: copyPassphrase } = useCopy({ source: passphrase, text: 'Passphrase
             <c-input-text v-model:value="entropy" placeholder="Your string..." />
 
             <c-button @click="refreshEntropy()">
-              <n-icon size="22">
-                <Refresh />
-              </n-icon>
+              <IconRefresh size="22" />
             </c-button>
             <c-button @click="copyEntropy()">
-              <n-icon size="22">
-                <Copy />
-              </n-icon>
+              <IconCopy size="22" />
             </c-button>
           </n-input-group>
         </n-form-item>
@@ -123,7 +119,7 @@ const { copy: copyPassphrase } = useCopy({ source: passphrase, text: 'Passphrase
         <c-input-text v-model:value="passphrase" placeholder="Your mnemonic..." raw-text />
 
         <c-button @click="copyPassphrase()">
-          <n-icon size="22" :component="Copy" />
+          <IconCopy size="22" />
         </c-button>
       </n-input-group>
     </n-form-item>

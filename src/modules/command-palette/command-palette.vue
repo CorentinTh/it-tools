@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import _ from 'lodash';
+import { IconSearch } from '@tabler/icons-vue';
 import { useCommandPaletteStore } from './command-palette.store';
 import type { PaletteOption } from './command-palette.types';
 
@@ -114,8 +115,7 @@ function activateOption(option: PaletteOption) {
   <div flex-1>
     <c-button w-full important:justify-start @click="isModalOpen = true">
       <span flex items-center gap-3 op-40>
-
-        <icon-mdi-search />
+        <IconSearch size="15px" />
         {{ $t('search.label') }}
 
         <span hidden flex-1 border border-current border-op-40 rounded border-solid px-5px py-3px sm:inline>

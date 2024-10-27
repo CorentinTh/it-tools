@@ -1,4 +1,4 @@
-import { Server } from '@vicons/tabler';
+import { IconServer } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
@@ -8,5 +8,5 @@ export const tool = defineTool({
   description: translate('tools.random-port-generator.description'),
   keywords: ['system', 'port', 'lan', 'generator', 'random', 'development', 'computer'],
   component: () => import('./random-port-generator.vue'),
-  icon: Server,
+  icon: IconServer,
 });

@@ -1,4 +1,4 @@
-import { Devices } from '@vicons/tabler';
+import { IconDevices } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
@@ -8,6 +8,6 @@ export const tool = defineTool({
   description: translate('tools.mac-address-generator.description'),
   keywords: ['mac', 'address', 'generator', 'random', 'prefix'],
   component: () => import('./mac-address-generator.vue'),
-  icon: Devices,
+  icon: IconDevices,
   createdAt: new Date('2023-11-31'),
 });

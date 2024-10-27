@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { IconEye, IconEyeClosed, IconX } from '@tabler/icons-vue';
 import { useAppTheme } from '../theme/themes';
 import { useTheme } from './c-input-text.theme';
 import { generateRandomId } from '@/utils/random';
@@ -195,12 +196,12 @@ defineExpose({
         >
 
         <c-button v-if="clearable && value" variant="text" circle size="small" @click="value = ''">
-          <icon-mdi-close />
+          <IconX size="15" />
         </c-button>
 
         <c-button v-if="type === 'password'" variant="text" circle size="small" @click="showPassword = !showPassword">
-          <icon-mdi-eye v-if="!showPassword" />
-          <icon-mdi-eye-off v-if="showPassword" />
+          <IconEye v-if="!showPassword" size="20" />
+          <IconEyeClosed v-if="showPassword" size="20" />
         </c-button>
         <slot name="suffix" />
       </div>

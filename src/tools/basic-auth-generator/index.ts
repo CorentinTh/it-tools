@@ -1,4 +1,4 @@
-import { PasswordRound } from '@vicons/material';
+import { IconPassword } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
@@ -18,5 +18,5 @@ export const tool = defineTool({
     'authorization',
   ],
   component: () => import('./basic-auth-generator.vue'),
-  icon: PasswordRound,
+  icon: IconPassword,
 });

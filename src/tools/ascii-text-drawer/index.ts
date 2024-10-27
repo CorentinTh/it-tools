@@ -1,4 +1,4 @@
-import { Artboard } from '@vicons/tabler';
+import { IconArtboard } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 
 export const tool = defineTool({
@@ -7,6 +7,6 @@ export const tool = defineTool({
   description: 'Create ASCII art text with many fonts and styles.',
   keywords: ['ascii', 'asciiart', 'text', 'drawer'],
   component: () => import('./ascii-text-drawer.vue'),
-  icon: Artboard,
+  icon: IconArtboard,
   createdAt: new Date('2024-03-03'),
 });

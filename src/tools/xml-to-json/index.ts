@@ -1,4 +1,4 @@
-import { Braces } from '@vicons/tabler';
+import { IconBraces } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 
 export const tool = defineTool({
@@ -7,6 +7,6 @@ export const tool = defineTool({
   description: 'Convert XML to JSON',
   keywords: ['xml', 'json'],
   component: () => import('./xml-to-json.vue'),
-  icon: Braces,
+  icon: IconBraces,
   createdAt: new Date('2024-08-09'),
 });

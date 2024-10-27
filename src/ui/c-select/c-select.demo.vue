@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { IconLanguage } from '@tabler/icons-vue';
+
 const optionsA = [
   { label: 'Option A', value: 'a' },
   { label: 'Option B', value: 'b' },
@@ -44,7 +46,7 @@ const value = ref('');
   <c-select v-model:value="value" :options="optionsA">
     <template #displayed-value>
       <span lh-normal>
-        <icon-mdi-translate />
+        <IconLanguage size="20" />
       </span>
     </template>
   </c-select>

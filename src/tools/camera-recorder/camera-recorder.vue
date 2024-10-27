@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import _ from 'lodash';
-
+import { IconCamera, IconDownload, IconPlayerPauseFilled, IconPlayerPlayFilled, IconPlayerRecordFilled, IconTrash, IconVideo } from '@tabler/icons-vue';
 import { useMediaRecorder } from './useMediaRecorder';
 
 interface Media { type: 'image' | 'video'; value: string; createdAt: Date }
@@ -158,28 +158,28 @@ function downloadMedia({ type, value, createdAt }: Media) {
 
         <div flex items-center justify-between gap-2>
           <c-button :disabled="!isMediaStreamAvailable" @click="takeScreenshot">
-            <span mr-2> <icon-mdi-camera /></span>
+            <span mr-2><IconCamera size="18" /></span>
             Take screenshot
           </c-button>
 
           <div v-if="isRecordingSupported" flex justify-center gap-2>
             <c-button v-if="recordingState === 'stopped'" @click="startRecording">
-              <span mr-2> <icon-mdi-video /></span>
+              <span mr-2><IconVideo size="18" /></span>
               Start recording
             </c-button>
 
             <c-button v-if="recordingState === 'recording'" @click="pauseRecording">
-              <span mr-2> <icon-mdi-pause /></span>
+              <span mr-2><IconPlayerPauseFilled size="17" /></span>
               Pause
             </c-button>
 
             <c-button v-if="recordingState === 'paused'" @click="resumeRecording">
-              <span mr-2> <icon-mdi-play /></span>
+              <span mr-2><IconPlayerPlayFilled size="15" /></span>
               Resume
             </c-button>
 
             <c-button v-if="recordingState !== 'stopped'" type="error" @click="stopRecording">
-              <span mr-2> <icon-mdi-record /></span>
+              <span mr-2><IconPlayerRecordFilled size="15" /></span>
               Stop
             </c-button>
           </div>
@@ -203,11 +203,11 @@ function downloadMedia({ type, value, createdAt }: Media) {
 
           <div flex gap-2>
             <c-button @click="downloadMedia({ type, value, createdAt })">
-              <icon-mdi-download />
+              <IconDownload size="15" />
             </c-button>
 
             <c-button @click="medias = medias.filter((_ignored, i) => i !== index)">
-              <icon-mdi-delete-outline />
+              <IconTrash size="15" />
             </c-button>
           </div>
         </div>

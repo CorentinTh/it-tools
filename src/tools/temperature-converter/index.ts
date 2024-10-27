@@ -1,4 +1,4 @@
-import { Temperature } from '@vicons/tabler';
+import { IconTemperature } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
@@ -20,5 +20,5 @@ export const tool = defineTool({
     'Rømer',
   ],
   component: () => import('./temperature-converter.vue'),
-  icon: Temperature,
+  icon: IconTemperature,
 });

@@ -1,4 +1,4 @@
-import { Binary } from '@vicons/tabler';
+import { IconBinary } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
@@ -8,6 +8,6 @@ export const tool = defineTool({
   description: translate('tools.ipv4-address-converter.description'),
   keywords: ['ipv4', 'address', 'converter', 'decimal', 'hexadecimal', 'binary', 'ipv6'],
   component: () => import('./ipv4-address-converter.vue'),
-  icon: Binary,
+  icon: IconBinary,
   createdAt: new Date('2023-04-08'),
 });

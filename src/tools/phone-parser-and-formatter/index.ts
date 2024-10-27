@@ -1,4 +1,4 @@
-import { Phone } from '@vicons/tabler';
+import { IconPhone } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
@@ -20,6 +20,6 @@ export const tool = defineTool({
     'national',
   ],
   component: () => import('./phone-parser-and-formatter.vue'),
-  icon: Phone,
+  icon: IconPhone,
   createdAt: new Date('2023-05-01'),
 });

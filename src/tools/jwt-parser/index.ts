@@ -1,4 +1,4 @@
-import { Key } from '@vicons/tabler';
+import { IconKey } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
@@ -24,5 +24,5 @@ export const tool = defineTool({
     'token',
   ],
   component: () => import('./jwt-parser.vue'),
-  icon: Key,
+  icon: IconKey,
 });

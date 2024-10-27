@@ -1,4 +1,4 @@
-import { TextWrap } from '@vicons/tabler';
+import { IconTextWrap } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
@@ -8,6 +8,6 @@ export const tool = defineTool({
   description: translate('tools.text-to-unicode.description'),
   keywords: ['text', 'to', 'unicode'],
   component: () => import('./text-to-unicode.vue'),
-  icon: TextWrap,
+  icon: IconTextWrap,
   createdAt: new Date('2024-01-31'),
 });

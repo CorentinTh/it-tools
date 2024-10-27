@@ -1,4 +1,4 @@
-import { Markdown } from '@vicons/tabler';
+import { IconMarkdown } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 
 export const tool = defineTool({
@@ -7,6 +7,6 @@ export const tool = defineTool({
   description: 'Convert Markdown to Html and allow to print (as PDF)',
   keywords: ['markdown', 'html', 'converter', 'pdf'],
   component: () => import('./markdown-to-html.vue'),
-  icon: Markdown,
+  icon: IconMarkdown,
   createdAt: new Date('2024-08-25'),
 });

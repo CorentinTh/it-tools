@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { UAParser } from 'ua-parser-js';
-import { Adjustments, Browser, Cpu, Devices, Engine } from '@vicons/tabler';
+import { IconAdjustments, IconBrowser, IconCpu, IconDevices, IconEngine } from '@tabler/icons-vue';
 import UserAgentResultCards from './user-agent-result-cards.vue';
 import type { UserAgentResultSection } from './user-agent-parser.types';
 import { withDefaultOnError } from '@/utils/defaults';
@@ -20,7 +20,7 @@ const userAgentInfo = computed(() => withDefaultOnError(() => getUserAgentInfo(u
 const sections: UserAgentResultSection[] = [
   {
     heading: 'Browser',
-    icon: Browser,
+    icon: IconBrowser,
     content: [
       {
         label: 'Name',
@@ -36,7 +36,7 @@ const sections: UserAgentResultSection[] = [
   },
   {
     heading: 'Engine',
-    icon: Engine,
+    icon: IconEngine,
     content: [
       {
         label: 'Name',
@@ -52,7 +52,7 @@ const sections: UserAgentResultSection[] = [
   },
   {
     heading: 'OS',
-    icon: Adjustments,
+    icon: IconAdjustments,
     content: [
       {
         label: 'Name',
@@ -68,7 +68,7 @@ const sections: UserAgentResultSection[] = [
   },
   {
     heading: 'Device',
-    icon: Devices,
+    icon: IconDevices,
     content: [
       {
         label: 'Model',
@@ -89,7 +89,7 @@ const sections: UserAgentResultSection[] = [
   },
   {
     heading: 'CPU',
-    icon: Cpu,
+    icon: IconCpu,
     content: [
       {
         label: 'Architecture',
