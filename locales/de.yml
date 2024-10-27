@@ -1,16 +1,9 @@
-'404':
-  notFound: 404 Nicht gefunden
-  sorry: Entschuldigung, diese Seite scheint nicht zu existieren
-  maybe: >-
-    Vielleicht macht der Cache etwas Seltsames. Mit einem erzwungenen Neuladen
-    versuchen?
-  backHome: Zurück zur Startseite
 home:
   categories:
     newestTools: Neueste Tools
     favoriteTools: Deine Lieblingstools
     allTools: Alle Tools
-    favoritesDndToolTip: 'Ziehen und Ablegen, um Favoriten neu zu ordnen'
+    favoritesDndToolTip: Drag and Drop, um Favoriten neu zu ordnen
   subtitle: Praktische Tools für Entwickler
   toggleMenu: Menü umschalten
   home: Startseite
@@ -72,6 +65,13 @@ about:
     funktioniert, melde bitte einen Fehler im
     [Issues-Bereich](https://github.com/CorentinTh/it-tools/issues/new/choose)
     im GitHub-Repository.
+404:
+  notFound: 404 Nicht gefunden
+  sorry: Entschuldigung, diese Seite scheint nicht zu existieren
+  maybe: >-
+    Vielleicht macht der Cache etwas Seltsames. Mit einem erzwungenen Neuladen
+    versuchen?
+  backHome: Zurück zur Startseite
 favoriteButton:
   remove: Aus Favoriten entfernen
   add: Zu Favoriten hinzufügen
