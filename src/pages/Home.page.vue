@@ -76,7 +76,7 @@ function onUpdateFavoriteTools() {
           <h3 class="mb-5px mt-25px font-500 text-neutral-400">
             {{ $t('home.categories.favoriteTools') }}
             <c-tooltip :tooltip="$t('home.categories.favoritesDndToolTip')">
-              <n-icon :component="IconDragDrop" size="18" />
+              <n-icon :component="IconDragDrop" size="18" class="icon-wobble" />
             </c-tooltip>
           </h3>
           <Draggable
@@ -133,18 +133,36 @@ function onUpdateFavoriteTools() {
   background-color: #ccc;
   border: 2px dashed #666;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  transform: scale(1.1);
-  animation: ghost-favorites-draggable-animation 0.2s ease-out;
+  animation: ghost-favorites-draggable-animation 0.1s ease-out;
 }
-
 @keyframes ghost-favorites-draggable-animation {
   0% {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.9) rotate(-2deg);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.0) rotate(4deg);
   }
   100% {
     opacity: 0.4;
-    transform: scale(1.0);
+    transform: scale(1.0) rotate(-2deg);
+  }
+}
+
+.icon-wobble:hover {
+  transform: scale(1.3);
+  animation: icon-wobble-animation 0.2s ease-in-out;
+}
+@keyframes icon-wobble-animation {
+  0% {
+    transform: scale(1.3) rotate(-10deg);
+  }
+  50% {
+    transform: scale(1.3) rotate(20deg);
+  }
+  100% {
+    transform: scale(1.3) rotate(-10deg);
   }
 }
 </style>
