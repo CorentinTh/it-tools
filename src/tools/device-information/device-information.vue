@@ -54,6 +54,19 @@ const sections = [
       },
     ],
   },
+  {
+    name: 'Time zone',
+    information: [
+      {
+        label: 'Time zone name',
+        value: computed(() => Intl.DateTimeFormat().resolvedOptions().timeZone),
+      },
+      {
+        label: 'UTC offset',
+        value: computed(() => `${new Date().getTimezoneOffset()} minutes`),
+      },
+    ],
+  },
 ];
 </script>
 
