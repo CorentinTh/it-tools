@@ -10,12 +10,18 @@ const typeOptions = [
   { label: 'CSS Data Url', value: 'Url' },
 ];
 
+const inputType = ref<'file' | 'content'>('file');
 const type = ref('Background');
 const svgContent = ref('');
 const fileInput = ref() as Ref<File | null>;
 const cssCode = computedAsync(async () => {
   try {
-    return (await imageToCSS(fileInput.value || svgContent.value, type.value as CSSType));
+    if (inputType.value === 'file' && fileInput.value) {
+      return (await imageToCSS(fileInput.value, type.value as CSSType));
+    }
+    else {
+      return (await imageToCSS(svgContent.value, type.value as CSSType));
+    }
   }
   catch (e: any) {
     return e.toString();
@@ -37,15 +43,31 @@ watch(svgContent, (_, newValue) => {
 
 <template>
   <div>
+    <n-radio-group v-model:value="inputType" name="radiogroup" mb-2 flex justify-center>
+      <n-space>
+        <n-radio
+          value="file"
+          label="File"
+        />
+        <n-radio
+          value="content"
+          label="Content"
+        />
+      </n-space>
+    </n-radio-group>
+
     <c-file-upload
+      v-if="inputType === 'file'"
       title="Drag and drop an image here, or click to select a file"
       paste-image
       @file-upload="onUpload"
     />
-    <n-p>OR</n-p>
 
     <c-input-text
+      v-if="inputType === 'content'"
       v-model:value="svgContent"
+      multiline
+      rows="5"
       label="SVG Content"
       placeholder="Paste your SVG content here"
       mb-2

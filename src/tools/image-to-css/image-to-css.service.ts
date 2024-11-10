@@ -1,4 +1,30 @@
-import { stringToUrl } from 'svg-to-url';
+import { type Config, type PluginConfig, optimize } from 'svgo';
+
+function svgo(config: Config) {
+  return (data: string) => {
+    const { plugins = [], ...rest } = config || {};
+    return optimize(data, {
+      ...rest,
+      plugins: [
+        ...(plugins.length > 0 ? plugins : ['preset-default']),
+        'removeXMLNS',
+      ] as PluginConfig[],
+    }).data.replace(/^<svg/g, '<svg xmlns="http://www.w3.org/2000/svg"');
+  };
+}
+
+export function encodeStr(svgStr: string) {
+  const encoded = encodeURIComponent(svgStr)
+    .replace(/%20/g, ' ')
+    .replace(/%3D/g, '=')
+    .replace(/%3B/g, ';')
+    .replace(/%3A/g, ':')
+    .replace(/%2F/g, '/')
+    .replace(/%2C/g, ',')
+    .replace(/%22/g, '\'');
+
+  return `data:image/svg+xml,${encoded}`;
+}
 
 export type CSSType = 'Background' | 'Border' | 'ListItemBullet' | 'Url';
 
@@ -21,9 +47,8 @@ async function fileToDataUrl(file: File) {
   });
 }
 
-function svgToDataUrl(image: string) {
-  const getUrlFromSvgString = stringToUrl({});
-  return getUrlFromSvgString(image);
+function svgToDataUrl(svg: string) {
+  return encodeStr(svgo({})(svg));
 }
 
 export async function imageToCSS(
