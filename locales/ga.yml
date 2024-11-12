@@ -3,7 +3,8 @@ home:
     newestTools: Uirlisí is déanaí
     favoriteTools: 'Na huirlisí is fearr leat'
     allTools: 'Gach na huirlisí'
-  subtitle: 'Uirlisí láimhe d''fhorbróirí'
+    favoritesDndToolTip: 'Tarraing agus scaoil chun na ceanáin a athordú'
+  subtitle: 'Uirlisí láimhe d&#39;fhorbróirí'
   toggleMenu: 'Scoránaigh roghchlár'
   home: Baile
   uiLib: 'Chomhéadain Lib'
@@ -14,13 +15,13 @@ home:
     p1: 'Tabhair dúinn réalta ar'
     githubRepository: 'Taisclann IT-Tools GitHub'
     p2: 'nó lean sinn ar aghaidh'
-    twitterAccount: 'Cuntas Twitter IT-Tools'
+    twitterXAccount: 'Cuntas X IT-Tools'
     thankYou: 'Go raibh maith agat!'
   nav:
-    github: 'Stór GitHub'
+    github: 'Stóras GitHub'
     githubRepository: 'Taisclann IT-Tools GitHub'
-    twitter: 'Cuntas Twitter'
-    twitterAccount: 'Cuntas Twitter IT Tools'
+    twitterX: 'Cuntas X'
+    twitterXAccount: 'Cuntas X IT Tools'
     about: 'Maidir le IT-Tools'
     aboutLabel: 'Faoi'
     darkMode: 'Mod dorcha'
@@ -30,25 +31,25 @@ about:
   content: >
     # Maidir le IT-Tools
 
-    Comhbhailíonn an suíomh Gréasáin iontach seo, déanta le ❤ le [Corentin Thomasset](https://github.com/CorentinTh), uirlisí úsáideacha don fhorbróir agus do dhaoine atá ag obair in IT. Má tá sé úsáideach duit, bíodh leisce ort é a roinnt le daoine a cheapann tú a d’fhéadfadh a bheith úsáideach freisin agus ná déan dearmad é a chur in áirithe i do bharra aicearraí!
+    Comhbhailíonn an suíomh Gréasáin iontach seo, déanta le ❤ le [Corentin Thomasset](https://corentin.tech?utm_source=it-tools&utm_medium=about), uirlisí úsáideacha don fhorbróir agus do dhaoine atá ag obair in IT. Má tá sé úsáideach duit, bíodh leisce ort é a roinnt le daoine a cheapann tú a d’fhéadfadh a bheith úsáideach freisin agus ná déan dearmad é a chur in áirithe i do bharra aicearraí!
 
     Tá IT Tools foinse oscailte (faoi cheadúnas MIT) agus saor in aisce, agus beidh sé i gcónaí, ach cosnaíonn sé airgead dom an t-ainm fearainn a óstáil agus a athnuachan. Más mian leat tacú le mo chuid oibre, agus spreagadh a thabhairt dom níos mó uirlisí a chur leis, smaoinigh ar thacaíocht a thabhairt trí [urraim a thabhairt dom](https://www.buymeacoffee.com/cthmsst).
 
     ## Teicneolaíochtaí
 
-    Déantar IT Tools in Vue.js (Vue 3) le leabharlann comhpháirteanna Chomhéadain Naive agus déanann Vercel é a óstáil agus a imscaradh go leanúnach. Úsáidtear leabharlanna foinse oscailte tríú páirtí i roinnt uirlisí, b’fhéidir go bhfaighidh tú an liosta iomlán sa chomhad [package.json](https://github.com/CorentinTh/it-tools/blob/main/package.json) den stór.
+    Déantar IT Tools in Vue.js (Vue 3) le leabharlann comhpháirteanna Chomhéadain Naive agus déanann Vercel é a óstáil agus a imscaradh go leanúnach. Úsáidtear leabharlanna foinse oscailte tríú páirtí i roinnt uirlisí, b’fhéidir go bhfaighidh tú an liosta iomlán sa chomhad [package.json](https://github.com/CorentinTh/it-tools/blob/main/package.json) den stóras.
 
     ## Ar aimsigh tú fabht? Tá uirlis ar iarraidh?
 
-    Má theastaíonn uirlis uait nach bhfuil i láthair anseo faoi láthair, agus má cheapann tú gur féidir a bheith úsáideach, tá fáilte romhat iarratas gné a chur isteach sa [rannán saincheisteanna](https://github.com/CorentinTh/it-tools/issues/nua/roghnaigh) i stór GitHub.
+    Má theastaíonn uirlis uait nach bhfuil i láthair anseo faoi láthair, agus má cheapann tú gur féidir a bheith úsáideach, tá fáilte romhat iarratas gné a chur isteach sa [rannán saincheisteanna](https://github.com/CorentinTh/it-tools/issues/new/choose) i stóras GitHub.
 
-    Agus má aimsigh tú fabht, nó mura n-oibríonn rud éigin mar a bhíothas ag súil leis, comhdaigh tuairisc fabht sa [rannán saincheisteanna](https://github.com/CorentinTh/it-tools/issues/new/choose) sa Stór GitHub.
+    Agus má aimsigh tú fabht, nó mura n-oibríonn rud éigin mar a bhíothas ag súil leis, comhdaigh tuairisc fabht sa [rannán saincheisteanna](https://github.com/CorentinTh/it-tools/issues/new/choose) sa Stóras GitHub.
 
 404:
   notFound: '404 Gan Aimsiú'
   sorry: 'Ár leithscéal, ní cosúil go bhfuil an leathanach seo ann'
   maybe: 'B''fhéidir go bhfuil an taisce ag déanamh rudaí deacra, bain triail as fórsa-athnuachan?'
-  backHome: 'Ar ais sa bhaile'
+  backHome: 'Ar ais abhaile'
 favoriteButton:
   remove: 'Bain ó cheanáin'
   add: 'Cuir le ceanáin'
@@ -59,13 +60,13 @@ search:
 tools:
   categories:
     favorite-tools: 'Na huirlisí is fearr leat'
-    crypto: Criptithe
+    crypto: Crypto
     converter: Tiontaire
     web: Gréasán
     images and videos: 'Íomhánna & Físeáin'
     development: Forbairt
     network: Líonra
-    math: Math
+    math: Mata
     measurement: Tomhas
     text: Téacs
     data: Sonraí
@@ -101,7 +102,7 @@ tools:
     description: Gin íomhánna svg le húsáid mar áitshealbhóir i d’fheidhmchláir.
 
   json-to-csv:
-    title: JSON chuig CSV
+    title: JSON go CSV
     description: Tiontaigh JSON go CSV le brath ceanntásc go huathoibríoch.
 
   camera-recorder:
@@ -122,7 +123,7 @@ tools:
 
   bcrypt:
     title: Bcrypt
-    description: Hash agus cuir teaghrán téacs i gcomparáid le bcrypt. Is feidhm hashing pasfhocail é Bcrypt bunaithe ar an tsimplí Blowfish.
+    description: Hasháil agus comparáid a dhéanamh ar shlabhra téacs ag úsáid bcrypt. Is feidhm hashála pasfhocail é bcrypt atá bunaithe ar an gcipher Blowfish.
 
   crontab-generator:
     title: Gineadóir Crontab
@@ -145,15 +146,15 @@ tools:
     description: Is bogearraí bainistíochta leagan díláraithe é Git. Leis an bhileog cheat seo, beidh rochtain thapa agat ar na horduithe git is coitianta.
 
   slugify-string:
-    title: Teaghrán slugify
-    description: Déan url teaghrán, ainm comhaid agus aitheantas sábháilte.
-
+    title: Slabhra sluga a chruthú
+    description: Déan slabhra URL, ainm comhad agus ID sábháilte.
+    
   encryption:
     title: Criptigh / díchriptiú téacs
     description: Criptigh téacs soiléir agus díchriptigh ciphertext ag baint úsáide as halgartaim crypto mar AES, TripleDES, Coinín nó RC4.
 
   random-port-generator:
-    title: Gineadóir calafort randamach
+    title: Gineadóir port randamach
     description: Gin uimhreacha randamacha poirt lasmuigh de raon na gcalafort "aitheanta" (0-1023).
 
   yaml-prettify:
@@ -161,8 +162,8 @@ tools:
     description: Cuir do theaghrán YAML i bhformáid chairdiúil inléite ag an duine.
 
   eta-calculator:
-    title: AMT áireamhán
-    description: Áireamhán ETA (Am Measta Teacht) chun neas-am críochnaithe taisc a chinneadh, mar shampla, am críochnaithe agus fad íoslódála comhaid.
+    title: Áireamhán ETA
+    description: Áireamhán ETA (Am Measta na hAthalainne) chun an t-am críochnaithe garbh de thasc a chinneadh, mar shampla, am críochnaithe agus fad íoslódála comhad.
 
   roman-numeral-converter:
     title: Tiontaire uimhreacha Rómhánacha
@@ -193,7 +194,7 @@ tools:
     description: Parsáil agus tiontaigh TOML go YAML.
 
   math-evaluator:
-    title: Meastóir matamaitice
+    title: Measúnaí mata
     description: Áireamhán chun nathanna matamaitice a mheas. Is féidir leat feidhmeanna a úsáid mar sqrt, cos, sin, ABS, etc.
 
   json-to-yaml-converter:
@@ -241,7 +242,7 @@ tools:
     description: Tiontaigh cineálacha MIME go síntí comhad agus vice-versa.
 
   toml-to-json:
-    title: TOML chuig JSON
+    title: TOML go JSON
     description: Parsáil agus tiontaigh TOML go JSON.
 
   lorem-ipsum-generator:
@@ -253,7 +254,7 @@ tools:
     description: Gin agus íoslódáil cód QR le haghaidh URL (nó gnáth-théacs), agus saincheap na dathanna cúlra agus tulra.
 
   wifi-qrcode-generator:
-    title: Gineadóir cóid qr wifi
+    title: Gineadóir cóid QR WiFi
     description: Gin agus íoslódáil cóid QR le haghaidh naisc thapa le líonraí WiFi.
 
   xml-formatter:
@@ -285,7 +286,7 @@ tools:
     description: Cuir isteach an chainníocht agus an réimír. Ginfear seoltaí MAC i do chás roghnaithe (cás mór nó cás íochtair)
 
   json-diff:
-    title: JSON difr
+    title: JSON diff
     description: Déan comparáid idir dhá réad JSON agus faigh na difríochtaí eatarthu.
 
   jwt-parser:
@@ -309,15 +310,15 @@ tools:
     description: Gin meitea-chlibeanna HTML grafa oscailte agus sóisialta do do shuíomh Gréasáin.
 
   ipv6-ula-generator:
-    title: IPv6 Gineadóir ULA
+    title: IPv6 gineadóir ULA
     description: Gin do sheoltaí IP áitiúla neamh-ródaithe féin do do líonra de réir RFC4193.
 
   hash-text:
-    title: Téacs hash
-    description: "Hash teaghrán téacs ag baint úsáide as an bhfeidhm atá uait: MD5, SHA1, SHA256, SHA224, SHA512, SHA384, SHA3 nó RIPEMD160"
+    title: Hais téacs
+    description: "Hais teaghrán téacs ag baint úsáide as an bhfeidhm atá uait: MD5, SHA1, SHA256, SHA224, SHA512, SHA384, SHA3 nó RIPEMD160"
 
   json-to-toml:
-    title: JSON chuig TOML
+    title: JSON go TOML
     description: Parsáil agus tiontaigh JSON go TOML.
 
   device-information:
@@ -325,24 +326,24 @@ tools:
     description: Faigh faisnéis faoi do ghléas reatha (méid scáileáin, cóimheas picteilín, gníomhaire úsáideora, ...)
 
   pdf-signature-checker:
-    title: Seiceáil sínithe pdf
+    title: Seiceáil sínithe PDF
     description: Fíoraigh sínithe comhaid PDF. Tá síniú amháin nó níos mó i gcomhad PDF sínithe a fhéadfar a úsáid chun a chinneadh ar athraíodh a bhfuil sa chomhad ó síníodh an comhad.
 
   json-minify:
-    title: JSON mionaoiseach
-    description: Mionnaigh agus comhbhrú do JSON trí spás bán gan ghá a bhaint.
+    title: Laghdaigh JSON
+    description: Laghdaigh agus comhbhrúigh do JSON trí spásanna neamhgháasta a bhaint.
 
   ulid-generator:
     title: Gineadóir ULID
     description: Gin Aitheantóir Sortáilte Foclóra Uathúil Uathúil (ULID) randamach.
 
   string-obfuscator:
-    title: Obfuscator teaghrán
-    description: Seachain teaghrán (cosúil le rún, IBAN, nó comhartha) chun é a dhéanamh inroinnte agus inaitheanta gan a bhfuil ann a nochtadh.
+    title: Scrambalóir slabhra
+    description: Scrambail slabhra (cosúil le rúndiamhair, IBAN, nó tocón) chun é a dhéanamh in-athsheachadte agus aitheanta gan a ábhar a nochtadh.
 
   base-converter:
-    title: Tiontaire bonn slánuimhir
-    description: Tiontaigh uimhir idir boinn éagsúla (deachúil, heicsidheachúlach, dénártha, ochtar, bonn64, ...)
+    title: Converteoir bunásach iomlán
+    description: Converteáil uimhir idir bunaitheanna éagsúla (deichniúil, heicseacuiméadrach, dénártha, ochtagónach, base64, ...)
 
   yaml-to-json-converter:
     title: Tiontaire YAML go JSON
@@ -361,11 +362,11 @@ tools:
     description: Faigh eolas faoi théacs, líon na gcarachtar, líon na bhfocal, a mhéid i mbearta, ...
 
   text-to-nato-alphabet:
-    title: Íoslódáil an téacs go dtí an aibítir NATO
+    title: Téacs go aibítir NATO
     description: Trasfhoirmigh téacs go aibítir foghraíochta NATO chun é a tharchur ó bhéal.
 
   basic-auth-generator:
-    title: Gineadóir bunúsach an údair
+    title: Gineadóir údaraithe bunúsach
     description: Gin ceanntásc aitheantais base64 ó ainm úsáideora agus pasfhocal.
 
   text-to-unicode:
@@ -377,7 +378,7 @@ tools:
     description: Nuair a thugtar seoladh tosaigh agus deireadh IPv4, ríomhann an uirlis seo folíon IPv4 bailí mar aon lena nodaireacht CIDR.
 
   text-diff:
-    title: Téacs difr
+    title: Téacs diff
     description: Déan comparáid idir dhá théacs agus féach ar na difríochtaí eatarthu.
 
   otp-generator:
@@ -389,5 +390,5 @@ tools:
     description: Ionchódaigh an téacs go formáid URL-ionchódaithe (ar a dtugtar "faoin gcéad ionchódaithe freisin"), nó díchódaigh uaidh.
 
   text-to-binary:
-    title: Téacs chuig dénártha ASCII
+    title: Téacs go binéar ASCII
     description: Téacs a thiontú go dtí a ionadaíocht dhénártha ASCII agus vice-versa.
