@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.tauri.app/config/2.0.0-rc",
+  "$schema": "https://schema.tauri.app/config/2.0.0",
   "productName": "IT Tools",
   "version": "0.1.0",
   "identifier": "tech.it-tools",
@@ -13,8 +13,8 @@
     "windows": [
       {
         "title": "IT Tools",
-        "width": 1024,
-        "height": 768,
+        "width": 1280,
+        "height": 800,
         "resizable": true,
         "fullscreen": false
       }
@@ -26,12 +26,6 @@
   "bundle": {
     "active": true,
     "targets": "all",
-    "icon": [
-      "icons/32x32.png",
-      "icons/128x128.png",
-      "icons/128x128@2x.png",
-      "icons/icon.icns",
-      "icons/icon.ico"
-    ]
+    "icon": ["../public/favicon-32x32.png", "../public/android-chrome-512x512.png", "../public/favicon.ico"]
   }
 }
