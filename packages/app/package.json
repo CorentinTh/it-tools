@@ -29,7 +29,7 @@
     "clsx": "^2.1.1",
     "lodash-es": "^4.17.21",
     "lucide-vue-next": "^0.453.0",
-    "nuxt": "^3.13.2",
+    "nuxt": "^3.14.159",
     "radix-vue": "^1.9.7",
     "shadcn-nuxt": "^0.10.4",
     "tailwind-merge": "^2.5.4",
@@ -40,6 +40,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^3.8.0",
     "@nuxtjs/tailwindcss": "^6.12.2",
+    "@tailwindcss/typography": "^0.5.15",
     "@types/lodash-es": "^4.17.12",
     "@vueuse/core": "^11.1.0",
     "@vueuse/nuxt": "^11.1.0",

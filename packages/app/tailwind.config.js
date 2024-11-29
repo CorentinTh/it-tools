@@ -1,3 +1,4 @@
+import typography from '@tailwindcss/typography';
 import defaultTheme from 'tailwindcss/defaultTheme';
 import animate from 'tailwindcss-animate';
 
@@ -87,5 +88,5 @@ module.exports = {
       },
     },
   },
-  plugins: [animate],
+  plugins: [animate, typography],
 };

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { times } from 'lodash-es';
 import { useRefreshableState } from '~/src/modules/shared/composables/useRefreshableState';
+import { cn } from '~/src/modules/shared/style/cn';
 import { Button } from '~/src/modules/ui/components/button';
 import { Checkbox } from '~/src/modules/ui/components/checkbox';
 import NumberField from '~/src/modules/ui/components/number-field/NumberField.vue';
@@ -39,6 +40,7 @@ const length = ref(64);
 
 const format = ref<keyof typeof formats>('raw');
 const quantity = ref(1);
+const tab = ref<'generator' | 'about'>('generator');
 
 function reset() {
   withUppercase.value = true;
@@ -90,16 +92,137 @@ watch([
 
 <template>
   <div class="flex flex-col h-full">
-    <div class="p-6 bg-white dark:bg-background border-b">
+    <div class="p-6 pb-0 bg-white dark:bg-background border-b">
       <h1 class="text-2xl">
         {{ $t('tools.token-generator.title') }}
       </h1>
       <p class="text-muted-foreground">
         {{ $t('tools.token-generator.description') }}
       </p>
+
+      <div class="mt-2 flex gap-4">
+        <Button variant="link" :class="cn('text-muted-foreground font-sm pb-0 px-0 rounded-none hover:no-underline', { 'border-b border-b-foreground text-foreground': tab === 'generator' })" @click="tab = 'generator'">
+          Generator
+        </Button>
+        <Button variant="link" :class="cn('border-b border-b-transparent text-muted-foreground font-sm pb-0 px-0 rounded-none hover:no-underline transition', { 'border-b-foreground text-foreground': tab === 'about' })" @click="tab = 'about'">
+          About
+        </Button>
+      </div>
     </div>
 
-    <div class="h-full flex-1 flex flex-col md:flex-row">
+    <div v-if="tab === 'about'" class="p-6 bg-white dark:bg-background">
+      <div class="prose dark:prose-invert mx-auto mb-20">
+        <h2 id="about-the-random-token-generator">
+          About The Random Token Generator
+        </h2>
+        <p>
+          The Random Token Generator on Crucials.tools is designed to meet the
+          modern developer’s need for quick, secure, and customizable tokens.
+          Whether you&#39;re working on web applications, software development, system
+          administration, or creating secure passwords, our tool provides a
+          straightforward solution to create tokens that fit your specifications
+          perfectly.
+        </p>
+        <h2 id="why-are-tokens-important-">
+          Why Are Tokens Important?
+        </h2>
+        <p>
+          In the realm of software development and IT, tokens play a crucial role in
+          maintaining security and user authentication. They are essential for:
+        </p>
+        <ul>
+          <li>
+            <p>
+              <strong>Session Management:</strong> Tokens are used to manage user sessions,
+              allowing systems to recognize and verify users over multiple requests.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>API Security:</strong> Securely accessing APIs often requires tokens to
+              ensure that the requestor has the necessary permissions.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Randomized Data Generation:</strong> Tokens can be used in testing
+              environments to generate randomized data inputs, helping developers
+              identify potential issues.
+            </p>
+          </li>
+        </ul>
+        <h2 id="ideal-for-generating-secure-passwords">
+          Ideal for Generating Secure Passwords
+        </h2>
+        <p>
+          In addition to creating tokens, our Random Token Generator is an excellent
+          tool for generating strong, secure passwords. With options to include a
+          mix of uppercase letters, lowercase letters, numbers, and special symbols,
+          you can create robust passwords that enhance security for any application
+          or service.
+        </p>
+        <h2 id="how-to-use-the-token-generator">
+          How to Use the Token Generator
+        </h2>
+        <p>Using our Token Generator is simple:</p>
+        <ol>
+          <li>
+            <p>
+              <strong>Select the characters you want:</strong> Choose from uppercase letters,
+              lowercase letters, numbers, and special symbols based on your token or
+              password requirements.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Choose the length:</strong> Determine how long you want your token or
+              password to be, depending on the level of complexity and security needed.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Generate with a click:</strong> Once your options are set, click &#39;Generate&#39;
+              to receive your token or password instantly.
+            </p>
+          </li>
+        </ol>
+        <h2 id="benefits-of-using-crucials-tools-token-generator">
+          Benefits of Using Crucials.tools Token Generator
+        </h2>
+        <ul>
+          <li>
+            <p>
+              <strong>Customization:</strong> Our tool allows for extensive customization, ensuring
+              you get exactly what you need for your project or personal security.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Speed:</strong> Generate tokens or passwords in seconds, speeding up your
+              development process and enhancing your security posture.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>No Installation Required:</strong> As a web-based tool, there is no need to
+              install any software, making it accessible from anywhere at any time.
+            </p>
+          </li>
+        </ul>
+        <h2 id="perfect-tool-for-developers-and-people-in-it">
+          Perfect Tool For Developers and people in IT
+        </h2>
+        <p>
+          Whether you are developing a new application, testing existing
+          functionality, needing to ensure secure access, or generating a strong
+          password, our Random Token Generator is the perfect tool. It is built to
+          be reliable and secure, providing peace of mind in various development and
+          personal security scenarios.
+        </p>
+      </div>
+    </div>
+
+    <div v-if="tab === 'generator'" class="h-full flex-1 flex flex-col md:flex-row">
       <div class="md:max-w-[360px] bg-white dark:bg-background h-full border-b md:border-b-none md:border-r">
         <div class="px-6 pt-4 pb-6 ">
           <div class="text-muted-foreground mb-3">
