@@ -36,6 +36,7 @@
     "release": "node ./scripts/release.mjs"
   },
   "dependencies": {
+    "@guolao/vue-monaco-editor": "^1.4.1",
     "@it-tools/bip39": "^0.0.4",
     "@it-tools/oggen": "^1.3.0",
     "@regexper/render": "^1.0.0",
@@ -54,7 +55,7 @@
     "bcryptjs": "^2.4.3",
     "change-case": "^4.1.2",
     "colord": "^2.9.3",
-    "composerize-ts": "^0.6.2",
+    "composerize": "^1.6.12",
     "country-code-lookup": "^0.1.0",
     "cron-validator": "^1.3.1",
     "cronstrue": "^2.26.0",
