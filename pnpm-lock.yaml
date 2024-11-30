@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@date-fns/utc':
+    specifier: ^1.2.0
+    version: 1.2.0
   '@it-tools/bip39':
     specifier: ^0.0.4
     version: 0.0.4
@@ -1939,6 +1942,10 @@ packages:
       vue: ^3.0.11
     dependencies:
       vue: 3.3.4
+    dev: false
+
+  /@date-fns/utc@1.2.0:
+    resolution: {integrity: sha512-YLq+crMPJiBmIdkRmv9nZuZy1mVtMlDcUKlg4mvI0UsC/dZeIaGoGB5p/C4FrpeOhZ7zBTK03T58S0DFkRNMnw==}
     dev: false
 
   /@emotion/hash@0.8.0:

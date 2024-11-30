@@ -10,21 +10,25 @@ import {
   isDate,
   isValid,
   parseISO,
-  parseJSON,
 } from 'date-fns';
+import { UTCDate } from '@date-fns/utc';
 import type { DateFormat, ToDateMapper } from './date-time-converter.types';
 import {
   dateToExcelFormat,
   excelFormatToDate,
+  fromJSDate,
+  fromTimestamp,
   isExcelFormat,
   isISO8601DateTimeString,
   isISO9075DateString,
+  isJSDate,
   isMongoObjectId,
   isRFC3339DateString,
   isRFC7231DateString,
   isTimestamp,
   isUTCDateString,
   isUnixTimestamp,
+  toJSDate,
 } from './date-time-converter.models';
 import { withDefaultOnError } from '@/utils/defaults';
 import { useValidation } from '@/composable/validation';
@@ -43,6 +47,12 @@ const formats: DateFormat[] = [
   {
     name: 'ISO 8601',
     fromDate: formatISO,
+    toDate: parseISO,
+    formatMatcher: date => isISO8601DateTimeString(date),
+  },
+  {
+    name: 'ISO 8601 UTC',
+    fromDate: date => (new UTCDate(date)).toISOString(),
     toDate: parseISO,
     formatMatcher: date => isISO8601DateTimeString(date),
   },
@@ -73,7 +83,7 @@ const formats: DateFormat[] = [
   {
     name: 'Timestamp',
     fromDate: date => String(getTime(date)),
-    toDate: ms => parseJSON(+ms),
+    toDate: ms => fromTimestamp(ms),
     formatMatcher: date => isTimestamp(date),
   },
   {
@@ -93,6 +103,12 @@ const formats: DateFormat[] = [
     fromDate: date => dateToExcelFormat(date),
     toDate: excelFormatToDate,
     formatMatcher: isExcelFormat,
+  },
+  {
+    name: 'JS Date',
+    fromDate: date => toJSDate(date),
+    toDate: date => fromJSDate(date),
+    formatMatcher: isJSDate,
   },
 ];
 

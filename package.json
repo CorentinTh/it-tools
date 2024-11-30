@@ -36,6 +36,7 @@
     "release": "node ./scripts/release.mjs"
   },
   "dependencies": {
+    "@date-fns/utc": "^1.2.0",
     "@it-tools/bip39": "^0.0.4",
     "@it-tools/oggen": "^1.3.0",
     "@regexper/render": "^1.0.0",
