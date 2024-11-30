@@ -1,75 +1,88 @@
 <script setup lang="ts">
 import { createToken } from './token-generator.service';
 import { useCopy } from '@/composable/copy';
-import { useQueryParam } from '@/composable/queryParams';
+import { useQueryParamOrStorage } from '@/composable/queryParams';
 import { computedRefreshable } from '@/composable/computedRefreshable';
 
-const length = useQueryParam({ name: 'length', defaultValue: 64 });
-const withUppercase = useQueryParam({ name: 'uppercase', defaultValue: true });
-const withLowercase = useQueryParam({ name: 'lowercase', defaultValue: true });
-const withNumbers = useQueryParam({ name: 'numbers', defaultValue: true });
-const withSymbols = useQueryParam({ name: 'symbols', defaultValue: false });
+const count = useQueryParamOrStorage({ name: 'count', storageName: 'token-generator:count', defaultValue: 1 });
+const length = useQueryParamOrStorage({ name: 'length', storageName: 'token-generator:length', defaultValue: 64 });
+const withUppercase = useQueryParamOrStorage({ name: 'uppercase', storageName: 'token-generator:uppercase', defaultValue: true });
+const withLowercase = useQueryParamOrStorage({ name: 'lowercase', storageName: 'token-generator:lowercase', defaultValue: true });
+const withNumbers = useQueryParamOrStorage({ name: 'numbers', storageName: 'token-generator:numbers', defaultValue: true });
+const withSymbols = useQueryParamOrStorage({ name: 'symbols', storageName: 'token-generator:symbols', defaultValue: false });
+const deniedChars = useQueryParamOrStorage({ name: 'deny', storageName: 'token-generator:deny', defaultValue: '' });
 const { t } = useI18n();
 
-const [token, refreshToken] = computedRefreshable(() =>
-  createToken({
-    length: length.value,
-    withUppercase: withUppercase.value,
-    withLowercase: withLowercase.value,
-    withNumbers: withNumbers.value,
-    withSymbols: withSymbols.value,
-  }),
+const [tokens, refreshTokens] = computedRefreshable(() =>
+  Array.from({ length: count.value < 1 ? 1 : count.value },
+    () => createToken({
+      length: length.value,
+      withUppercase: withUppercase.value,
+      withLowercase: withLowercase.value,
+      withNumbers: withNumbers.value,
+      withSymbols: withSymbols.value,
+      deniedChars: deniedChars.value,
+    })).join('\n'),
 );
 
-const { copy } = useCopy({ source: token, text: t('tools.token-generator.copied') });
+const { copy } = useCopy({ source: tokens, text: t('tools.token-generator.copied') });
 </script>
 
 <template>
   <div>
     <c-card>
       <n-form label-placement="left" label-width="140">
-        <div flex justify-center>
-          <div>
-            <n-form-item :label="t('tools.token-generator.uppercase')">
-              <n-switch v-model:value="withUppercase" />
-            </n-form-item>
+        <n-space justify="center">
+          <n-form-item :label="t('tools.token-generator.uppercase')">
+            <n-switch v-model:value="withUppercase" />
+          </n-form-item>
 
-            <n-form-item :label="t('tools.token-generator.lowercase')">
-              <n-switch v-model:value="withLowercase" />
-            </n-form-item>
-          </div>
+          <n-form-item :label="t('tools.token-generator.lowercase')">
+            <n-switch v-model:value="withLowercase" />
+          </n-form-item>
+          <n-form-item :label="t('tools.token-generator.numbers')">
+            <n-switch v-model:value="withNumbers" />
+          </n-form-item>
 
-          <div>
-            <n-form-item :label="t('tools.token-generator.numbers')">
-              <n-switch v-model:value="withNumbers" />
-            </n-form-item>
-
-            <n-form-item :label="t('tools.token-generator.symbols')">
-              <n-switch v-model:value="withSymbols" />
-            </n-form-item>
-          </div>
-        </div>
+          <n-form-item :label="t('tools.token-generator.symbols')">
+            <n-switch v-model:value="withSymbols" />
+          </n-form-item>
+        </n-space>
       </n-form>
 
+      <n-form-item label="Denied Characters (ie, visually similar { oO01lI } or punctuations)" label-placement="top">
+        <c-input-text
+          v-model:value="deniedChars"
+          placeholder="Put characters to deny from token"
+        />
+      </n-form-item>
+
       <n-form-item :label="`${t('tools.token-generator.length')} (${length})`" label-placement="left">
-        <n-slider v-model:value="length" :step="1" :min="1" :max="512" />
+        <n-slider v-model:value="length" :step="1" :min="1" :max="512" mr-2 />
+        <n-input-number v-model:value="length" :min="1" :max="512" size="small" />
+      </n-form-item>
+
+      <n-form-item label="Number of token to generate" label-placement="left">
+        <n-slider v-model:value="count" :step="1" :min="1" mr-2 />
+        <n-input-number v-model:value="count" :min="1" size="small" />
       </n-form-item>
 
       <c-input-text
-        v-model:value="token"
+        v-model:value="tokens"
         multiline
         :placeholder="t('tools.token-generator.tokenPlaceholder')"
         readonly
         rows="3"
         autosize
         class="token-display"
+        word-wrap
       />
 
       <div mt-5 flex justify-center gap-3>
         <c-button @click="copy()">
           {{ t('tools.token-generator.button.copy') }}
         </c-button>
-        <c-button @click="refreshToken">
+        <c-button @click="refreshTokens">
           {{ t('tools.token-generator.button.refresh') }}
         </c-button>
       </div>
