@@ -29,6 +29,9 @@ dependencies:
   '@tiptap/vue-3':
     specifier: 2.0.3
     version: 2.0.3(@tiptap/core@2.1.12)(@tiptap/pm@2.1.6)(vue@3.3.4)
+  '@types/arr-diff':
+    specifier: ^4.0.3
+    version: 4.0.3
   '@types/figlet':
     specifier: ^1.5.8
     version: 1.5.8
@@ -50,6 +53,9 @@ dependencies:
   '@vueuse/router':
     specifier: ^10.0.0
     version: 10.0.0(vue-router@4.1.6)(vue@3.3.4)
+  arr-diff:
+    specifier: ^4.0.0
+    version: 4.0.0
   bcryptjs:
     specifier: ^2.4.3
     version: 2.4.3
@@ -86,6 +92,9 @@ dependencies:
   emojilib:
     specifier: ^3.0.10
     version: 3.0.10
+  fast_array_intersect:
+    specifier: ^1.1.0
+    version: 1.1.0
   figlet:
     specifier: ^1.7.0
     version: 1.7.0
@@ -2933,6 +2942,10 @@ packages:
     resolution: {integrity: sha512-yhxwIlFVSVcMym3O31HoMnRXpoenmpIxcj4Yoes2DUpe+xCJnA7ECQP1Vw889V0jTt/2nzvpLQ/UuMYCd3JPIg==}
     dev: true
 
+  /@types/arr-diff@4.0.3:
+    resolution: {integrity: sha512-oIBe7qtc48Q1JPNuqSIUYCNMQxYzTkQAEw07b0NEZpwKbUeOswzex3qfvXCLrZDIQ9t3ucIxH6JqFmjRTPbDEg==}
+    dev: false
+
   /@types/bcryptjs@2.4.2:
     resolution: {integrity: sha512-LiMQ6EOPob/4yUL66SZzu6Yh77cbzJFYll+ZfaPiPPFswtIlA/Fs1MzdKYA7JApHU49zQTbJGX3PDmCpIdDBRQ==}
     dev: true
@@ -3412,7 +3425,7 @@ packages:
     dependencies:
       '@unhead/dom': 0.5.1
       '@unhead/schema': 0.5.1
-      '@vueuse/shared': 11.0.3(vue@3.3.4)
+      '@vueuse/shared': 11.1.0(vue@3.3.4)
       unhead: 0.5.1
       vue: 3.3.4
     transitivePeerDependencies:
@@ -4054,8 +4067,8 @@ packages:
       - vue
     dev: false
 
-  /@vueuse/shared@11.0.3(vue@3.3.4):
-    resolution: {integrity: sha512-0rY2m6HS5t27n/Vp5cTDsKTlNnimCqsbh/fmT2LgE+aaU42EMfXo8+bNX91W9I7DDmxfuACXMmrd7d79JxkqWA==}
+  /@vueuse/shared@11.1.0(vue@3.3.4):
+    resolution: {integrity: sha512-YUtIpY122q7osj+zsNMFAfMTubGz0sn5QzE5gPzAIiCmtt2ha3uQUY1+JPyL4gRCTsLPX82Y9brNbo/aqlA91w==}
     dependencies:
       vue-demi: 0.14.10(vue@3.3.4)
     transitivePeerDependencies:
@@ -4170,6 +4183,11 @@ packages:
 
   /argparse@2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
+
+  /arr-diff@4.0.0:
+    resolution: {integrity: sha512-YVIQ82gZPGBebQV/a8dar4AitzCQs0jjXwMPZllpXMaGjXPYVUawSxQrRsjhjupyVxEvbHgUmIhKVlND+j02kA==}
+    engines: {node: '>=0.10.0'}
+    dev: false
 
   /array-buffer-byte-length@1.0.0:
     resolution: {integrity: sha512-LPuwb2P+NrQw3XhxGc36+XSvuBPopovXYTR9Ew++Du9Yb/bx5AzBfrIsBoj0EZUifjQU+sHL21sseZ3jerWO/A==}
@@ -5652,6 +5670,10 @@ packages:
   /fast-levenshtein@2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
     dev: true
+
+  /fast_array_intersect@1.1.0:
+    resolution: {integrity: sha512-/DCilZlUdz2XyNDF+ASs0PwY+RKG9Y4Silp/gbS72Cvbg4oibc778xcecg+pnNyiNHYgh/TApsiDTjpdniyShw==}
+    dev: false
 
   /fastq@1.15.0:
     resolution: {integrity: sha512-wBrocU2LCXXa+lWBt8RoIRD89Fi8OdABODa/kEnyeyjS5aZO5/GNvI5sEINADqP/h8M29UHTHUb53sUu5Ihqdw==}
