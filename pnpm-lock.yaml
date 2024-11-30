@@ -62,6 +62,9 @@ dependencies:
   composerize-ts:
     specifier: ^0.6.2
     version: 0.6.2
+  countries-and-timezones:
+    specifier: ^3.6.0
+    version: 3.6.0
   country-code-lookup:
     specifier: ^0.1.0
     version: 0.1.0
@@ -95,6 +98,9 @@ dependencies:
   fuse.js:
     specifier: ^6.6.2
     version: 6.6.2
+  get-timezone-offset:
+    specifier: ^1.0.5
+    version: 1.0.5
   highlight.js:
     specifier: ^11.7.0
     version: 11.7.0
@@ -4674,6 +4680,11 @@ packages:
       browserslist: 4.22.1
     dev: true
 
+  /countries-and-timezones@3.6.0:
+    resolution: {integrity: sha512-8/nHBCs1eKeQ1jnsZVGdqrLYxS8nPcfJn8PnmxdJXWRLZdXsGFR8gnVhRjatGDBjqmPm7H+FtYpBYTPWd0Eiqg==}
+    engines: {node: '>=8.x', npm: '>=5.x'}
+    dev: false
+
   /country-code-lookup@0.1.0:
     resolution: {integrity: sha512-IOI66HEG+8bXfWPy+sTzuN7161vmDZOHg1wgIPFf3WfD73FeLajnn6C+fnxOIa9RL1WRBDMXQQWW/FOaOYaQ3w==}
     dev: false
@@ -5876,6 +5887,11 @@ packages:
       call-bind: 1.0.5
       get-intrinsic: 1.2.2
     dev: true
+
+  /get-timezone-offset@1.0.5:
+    resolution: {integrity: sha512-+B+/vEJ9qJgZheDVNmuY+4il8sJhTFXRvSiiqyRfwiCEhTaZqn/yCoNToDzQL+Mv9DLKlyO1bSIP5nUCJQN9Aw==}
+    engines: {node: '>=4.0.0'}
+    dev: false
 
   /get-tsconfig@4.7.2:
     resolution: {integrity: sha512-wuMsz4leaj5hbGgg4IvDU0bqJagpftG5l5cXIAvo8uZrqn0NJqwtfupTN00VnkQJPcIRrxYrm1Ue24btpCha2A==}
