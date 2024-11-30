@@ -1,4 +1,4 @@
-import { AlignJustified } from '@vicons/tabler';
+import { IconAlignJustified } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
@@ -8,5 +8,5 @@ export const tool = defineTool({
   description: translate('tools.lorem-ipsum-generator.description'),
   keywords: ['lorem', 'ipsum', 'dolor', 'sit', 'amet', 'placeholder', 'text', 'filler', 'random', 'generator'],
   component: () => import('./lorem-ipsum-generator.vue'),
-  icon: AlignJustified,
+  icon: IconAlignJustified,
 });

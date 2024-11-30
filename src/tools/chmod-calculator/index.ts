@@ -1,4 +1,4 @@
-import { FileInvoice } from '@vicons/tabler';
+import { IconFileInvoice } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
@@ -19,5 +19,5 @@ export const tool = defineTool({
     'octal',
   ],
   component: () => import('./chmod-calculator.vue'),
-  icon: FileInvoice,
+  icon: IconFileInvoice,
 });

@@ -2,6 +2,7 @@
 import { useStorage } from '@vueuse/core';
 import { useThemeVars } from 'naive-ui';
 import { RouterLink, useRoute } from 'vue-router';
+import { IconChevronRight } from '@tabler/icons-vue';
 import MenuIconItem from './MenuIconItem.vue';
 import type { Tool, ToolCategory } from '@/tools/tools.types';
 
@@ -48,7 +49,7 @@ const themeVars = useThemeVars();
   <div v-for="{ name, tools, isCollapsed } of menuOptions" :key="name">
     <div ml-6px mt-12px flex cursor-pointer items-center op-60 @click="toggleCategoryCollapse({ name })">
       <span :class="{ 'rotate-0': isCollapsed, 'rotate-90': !isCollapsed }" text-16px lh-1 op-50 transition-transform>
-        <icon-mdi-chevron-right />
+        <IconChevronRight size="17" />
       </span>
 
       <span ml-8px text-13px>

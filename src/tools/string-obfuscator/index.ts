@@ -1,4 +1,4 @@
-import { EyeOff } from '@vicons/tabler';
+import { IconEyeOff } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
@@ -8,6 +8,6 @@ export const tool = defineTool({
   description: translate('tools.string-obfuscator.description'),
   keywords: ['string', 'obfuscator', 'secret', 'token', 'hide', 'obscure', 'mask', 'masking'],
   component: () => import('./string-obfuscator.vue'),
-  icon: EyeOff,
+  icon: IconEyeOff,
   createdAt: new Date('2023-08-16'),
 });

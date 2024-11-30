@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { IconCornerDownRight } from '@tabler/icons-vue';
 import InputCopyable from '../../components/InputCopyable.vue';
 import { isNotThrowing } from '@/utils/boolean';
 import { withDefaultOnError } from '@/utils/defaults';
@@ -56,10 +57,10 @@ const properties: { title: string; key: keyof URL }[] = [
       flex
     >
       <div style="flex: 1 0 110px">
-        <icon-mdi-arrow-right-bottom />
+        <IconCornerDownRight size="18" />
       </div>
 
-      <InputCopyable :value="k" readonly />
+      <InputCopyable :value="k" readonly mr-1 />
       <InputCopyable :value="v" readonly />
     </div>
   </c-card>

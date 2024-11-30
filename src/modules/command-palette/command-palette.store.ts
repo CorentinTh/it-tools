@@ -1,15 +1,10 @@
 import { defineStore } from 'pinia';
 import _ from 'lodash';
+import { IconBrandGithub, IconBug, IconDice5Filled, IconInfoCircle, IconSun } from '@tabler/icons-vue';
 import type { PaletteOption } from './command-palette.types';
 import { useToolStore } from '@/tools/tools.store';
 import { useFuzzySearch } from '@/composable/fuzzySearch';
 import { useStyleStore } from '@/stores/style.store';
-
-import SunIcon from '~icons/mdi/white-balance-sunny';
-import GithubIcon from '~icons/mdi/github';
-import BugIcon from '~icons/mdi/bug-outline';
-import DiceIcon from '~icons/mdi/dice-5';
-import InfoIcon from '~icons/mdi/information-outline';
 
 export const useCommandPaletteStore = defineStore('command-palette', () => {
   const toolStore = useToolStore();
@@ -33,7 +28,7 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
         const { path } = _.sample(toolStore.tools)!;
         router.push(path);
       },
-      icon: DiceIcon,
+      icon: IconDice5Filled,
       category: 'Tools',
       keywords: ['random', 'tool', 'pick', 'choose', 'select'],
       closeOnSelect: true,
@@ -42,7 +37,7 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
       name: 'Toggle dark mode',
       description: 'Toggle dark mode on or off.',
       action: () => styleStore.toggleDark(),
-      icon: SunIcon,
+      icon: IconSun,
       category: 'Actions',
       keywords: ['dark', 'theme', 'toggle', 'mode', 'light', 'system'],
     },
@@ -52,7 +47,7 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
       category: 'External',
       description: 'View the source code of it-tools on Github.',
       keywords: ['github', 'repo', 'repository', 'source', 'code'],
-      icon: GithubIcon,
+      icon: IconBrandGithub,
     },
     {
       name: 'Report a bug or an issue',
@@ -60,7 +55,7 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
       href: 'https://github.com/CorentinTh/it-tools/issues/new/choose',
       category: 'Actions',
       keywords: ['report', 'issue', 'bug', 'problem', 'error'],
-      icon: BugIcon,
+      icon: IconBug,
     },
     {
       name: 'About',
@@ -68,7 +63,7 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
       to: '/about',
       category: 'Pages',
       keywords: ['about', 'learn', 'more', 'info', 'information'],
-      icon: InfoIcon,
+      icon: IconInfoCircle,
     },
   ];
 

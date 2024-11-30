@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { useHead } from '@vueuse/head';
+import { IconFileUnknown } from '@tabler/icons-vue';
 
 useHead({ title: 'Page not found - IT Tools' });
 </script>
 
 <template>
   <div mt-20 flex flex-col items-center>
-    <span text-90px lh-1 op-50>
-      <icon-mdi:kettle-steam-outline />
-    </span>
+    <n-icon :component="IconFileUnknown" size="95" lh-1 op50 transition />
 
     <h1 m-0 mt-3>
       {{ $t('404.notFound') }}

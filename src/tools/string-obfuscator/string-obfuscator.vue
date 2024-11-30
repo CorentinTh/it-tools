@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { IconCopy } from '@tabler/icons-vue';
 import { useObfuscateString } from './string-obfuscator.model';
 import { useCopy } from '@/composable/copy';
 
@@ -40,7 +41,7 @@ const { copy } = useCopy({ source: obfuscatedString });
       </div>
 
       <c-button @click="copy()">
-        <icon-mdi:content-copy />
+        <IconCopy size="18" />
       </c-button>
     </c-card>
   </div>

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { NIcon, useThemeVars } from 'naive-ui';
+import { useThemeVars } from 'naive-ui';
 
 import { RouterLink } from 'vue-router';
-import { Heart, Home2, Menu2 } from '@vicons/tabler';
+import { IconBrush, IconHeart, IconHome2, IconMenu2 } from '@tabler/icons-vue';
 
 import { storeToRefs } from 'pinia';
 import HeroGradient from '../assets/hero-gradient.svg?component';
@@ -97,18 +97,18 @@ const tools = computed<ToolCategory[]>(() => [
           :aria-label="$t('home.toggleMenu')"
           @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed"
         >
-          <NIcon size="25" :component="Menu2" />
+          <IconMenu2 size="25" />
         </c-button>
 
         <c-tooltip :tooltip="$t('home.home')" position="bottom">
           <c-button to="/" circle variant="text" :aria-label="$t('home.home')">
-            <NIcon size="25" :component="Home2" />
+            <IconHome2 size="25" />
           </c-button>
         </c-tooltip>
 
         <c-tooltip :tooltip="$t('home.uiLib')" position="bottom">
           <c-button v-if="config.app.env === 'development'" to="/c-lib" circle variant="text" :aria-label="$t('home.uiLib')">
-            <icon-mdi:brush-variant text-20px />
+            <IconBrush />
           </c-button>
         </c-tooltip>
 
@@ -131,7 +131,7 @@ const tools = computed<ToolCategory[]>(() => [
             @click="() => tracker.trackEvent({ eventName: 'Support button clicked' })"
           >
             {{ $t('home.buyMeACoffee') }}
-            <NIcon v-if="!styleStore.isSmallScreen" :component="Heart" ml-2 />
+            <n-icon v-if="!styleStore.isSmallScreen" :component="IconHeart" ml-2 size="14" />
           </c-button>
         </c-tooltip>
       </div>

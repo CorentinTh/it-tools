@@ -1,6 +1,6 @@
+import { IconFileCertificate } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
-import FileCertIcon from '~icons/mdi/file-certificate-outline';
 
 export const tool = defineTool({
   name: translate('tools.pdf-signature-checker.title'),
@@ -8,6 +8,6 @@ export const tool = defineTool({
   description: translate('tools.pdf-signature-checker.description'),
   keywords: ['pdf', 'signature', 'checker', 'verify', 'validate', 'sign'],
   component: () => import('./pdf-signature-checker.vue'),
-  icon: FileCertIcon,
+  icon: IconFileCertificate,
   createdAt: new Date('2023-12-09'),
 });

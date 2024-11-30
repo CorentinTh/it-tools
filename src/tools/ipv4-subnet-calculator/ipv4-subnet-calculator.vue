@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Netmask } from 'netmask';
 import { useStorage } from '@vueuse/core';
-import { ArrowLeft, ArrowRight } from '@vicons/tabler';
+import { IconArrowLeft, IconArrowRight } from '@tabler/icons-vue';
 import { getIPClass } from './ipv4-subnet-calculator.models';
 import { withDefaultOnError } from '@/utils/defaults';
 import { isNotThrowing } from '@/utils/boolean';
@@ -111,12 +111,12 @@ function switchToBlock({ count = 1 }: { count?: number }) {
 
       <div mt-3 flex items-center justify-between>
         <c-button @click="switchToBlock({ count: -1 })">
-          <n-icon :component="ArrowLeft" />
+          <IconArrowLeft size="15" />
           Previous block
         </c-button>
         <c-button @click="switchToBlock({ count: 1 })">
           Next block
-          <n-icon :component="ArrowRight" />
+          <IconArrowRight size="15" />
         </c-button>
       </div>
     </div>

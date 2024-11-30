@@ -1,4 +1,4 @@
-import { Mailbox } from '@vicons/tabler';
+import { IconMailbox } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 
 export const tool = defineTool({
@@ -7,6 +7,6 @@ export const tool = defineTool({
   description: 'Decode Outlook SafeLink links',
   keywords: ['outlook', 'safelink', 'decoder'],
   component: () => import('./safelink-decoder.vue'),
-  icon: Mailbox,
+  icon: IconMailbox,
   createdAt: new Date('2024-03-11'),
 });

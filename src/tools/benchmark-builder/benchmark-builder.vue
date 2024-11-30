@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Plus, Trash } from '@vicons/tabler';
+import { IconPlus, IconTrash } from '@tabler/icons-vue';
 import { useStorage } from '@vueuse/core';
 import _ from 'lodash';
 
@@ -99,14 +99,14 @@ function copyAsBulletList() {
 
         <div flex justify-center>
           <c-button v-if="suites.length > 1" variant="text" @click="suites.splice(index, 1)">
-            <n-icon :component="Trash" depth="3" mr-2 size="18" />
+            <n-icon :component="IconTrash" depth="3" mr-2 size="18" />
             Delete suite
           </c-button>
           <c-button
             variant="text"
             @click="suites.splice(index + 1, 0, { data: [0], title: `Suite ${suites.length + 1}` })"
           >
-            <n-icon :component="Plus" depth="3" mr-2 size="18" />
+            <n-icon :component="IconPlus" depth="3" mr-2 size="18" />
             Add suite
           </c-button>
         </div>

@@ -1,4 +1,5 @@
 <script setup lang="ts" generic="T extends unknown">
+import { IconChevronDown } from '@tabler/icons-vue';
 import { useAppTheme } from '../theme/themes';
 import type { CLabelProps } from '../c-label/c-label.types';
 import type { CSelectOption } from './c-select.types';
@@ -161,7 +162,7 @@ function onSearchInput() {
           </slot>
         </div>
 
-        <icon-mdi-chevron-down class="chevron" />
+        <IconChevronDown class="chevron" size="15" />
       </div>
 
       <transition name="dropdown">

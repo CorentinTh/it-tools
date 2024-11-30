@@ -2,6 +2,7 @@
 import emojiUnicodeData from 'unicode-emoji-json';
 import emojiKeywords from 'emojilib';
 import _ from 'lodash';
+import { IconSearch } from '@tabler/icons-vue';
 import type { EmojiInfo } from './emoji.types';
 import { useFuzzySearch } from '@/composable/fuzzySearch';
 import useDebouncedRef from '@/composable/debouncedref';
@@ -47,7 +48,7 @@ const { searchResult } = useFuzzySearch({
         mx-auto max-w-600px
       >
         <template #prefix>
-          <icon-mdi-search mr-6px color-black op-70 dark:color-white />
+          <n-icon :component="IconSearch" mr-6px color-black op-70 dark:color-white />
         </template>
       </c-input-text>
     </div>

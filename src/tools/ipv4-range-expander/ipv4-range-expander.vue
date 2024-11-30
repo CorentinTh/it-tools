@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Exchange } from '@vicons/tabler';
+import { IconExchange } from '@tabler/icons-vue';
 import { isValidIpv4 } from '../ipv4-address-converter/ipv4-address-converter.service';
 import type { Ipv4RangeExpanderResult } from './ipv4-range-expander.types';
 import { calculateCidr } from './ipv4-range-expander.service';
@@ -111,7 +111,7 @@ function onSwitchStartEndClicked() {
       </div>
 
       <c-button @click="onSwitchStartEndClicked">
-        <n-icon mr-2 :component="Exchange" depth="3" size="22" />
+        <n-icon mr-2 :component="IconExchange" depth="3" size="22" />
         Switch start and end IPv4 address
       </c-button>
     </n-alert>

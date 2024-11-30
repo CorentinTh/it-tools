@@ -1,4 +1,4 @@
-import { AlignJustified } from '@vicons/tabler';
+import { IconAlignJustified } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
@@ -8,6 +8,6 @@ export const tool = defineTool({
   description: translate('tools.yaml-to-toml.description'),
   keywords: ['yaml', 'to', 'toml', 'convert', 'transform'],
   component: () => import('./yaml-to-toml.vue'),
-  icon: AlignJustified,
+  icon: IconAlignJustified,
   createdAt: new Date('2023-06-23'),
 });

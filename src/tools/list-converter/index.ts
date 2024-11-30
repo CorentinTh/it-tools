@@ -1,4 +1,4 @@
-import { List } from '@vicons/tabler';
+import { IconList } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
@@ -8,6 +8,6 @@ export const tool = defineTool({
   description: translate('tools.list-converter.description'),
   keywords: ['list', 'converter', 'sort', 'reverse', 'prefix', 'suffix', 'lowercase', 'truncate'],
   component: () => import('./list-converter.vue'),
-  icon: List,
+  icon: IconList,
   createdAt: new Date('2023-05-07'),
 });

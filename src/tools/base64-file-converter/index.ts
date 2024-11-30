@@ -1,4 +1,4 @@
-import { FileDigit } from '@vicons/tabler';
+import { IconFileDigit } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
@@ -8,5 +8,5 @@ export const tool = defineTool({
   description: translate('tools.base64-file-converter.description'),
   keywords: ['base64', 'converter', 'upload', 'image', 'file', 'conversion', 'web', 'data', 'format'],
   component: () => import('./base64-file-converter.vue'),
-  icon: FileDigit,
+  icon: IconFileDigit,
 });

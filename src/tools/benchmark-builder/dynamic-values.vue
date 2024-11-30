@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Plus, Trash } from '@vicons/tabler';
+import { IconPlus, IconTrash } from '@tabler/icons-vue';
 import { useTemplateRefsList, useVModel } from '@vueuse/core';
 import { NInputNumber } from 'naive-ui';
 import { nextTick } from 'vue';
@@ -41,13 +41,13 @@ function onInputEnter(index: number) {
       />
       <c-tooltip tooltip="Delete this value">
         <c-button circle variant="text" @click="values.splice(index, 1)">
-          <n-icon :component="Trash" depth="3" size="18" />
+          <n-icon :component="IconTrash" depth="3" size="18" />
         </c-button>
       </c-tooltip>
     </div>
 
     <c-button @click="addValue">
-      <n-icon :component="Plus" depth="3" mr-2 size="18" />
+      <n-icon :component="IconPlus" depth="3" mr-2 size="18" />
       Add a measure
     </c-button>
   </div>

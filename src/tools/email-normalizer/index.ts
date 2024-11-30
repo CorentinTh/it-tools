@@ -1,4 +1,4 @@
-import { Mail } from '@vicons/tabler';
+import { IconMail } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 
 export const tool = defineTool({
@@ -7,6 +7,6 @@ export const tool = defineTool({
   description: 'Normalize email addresses to a standard format for easier comparison. Useful for deduplication and data cleaning.',
   keywords: ['email', 'normalizer'],
   component: () => import('./email-normalizer.vue'),
-  icon: Mail,
+  icon: IconMail,
   createdAt: new Date('2024-08-15'),
 });

@@ -46,7 +46,7 @@ createToolFile(
 createToolFile(
   `index.ts`,
   `
-import { ArrowsShuffle } from '@vicons/tabler';
+import { IconArrowsShuffle } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 
 export const tool = defineTool({
@@ -55,7 +55,7 @@ export const tool = defineTool({
   description: '',
   keywords: ['${toolName.split('-').join("', '")}'],
   component: () => import('./${toolName}.vue'),
-  icon: ArrowsShuffle,
+  icon: IconArrowsShuffle,
   createdAt: new Date('${new Date().toISOString().split('T')[0]}'),
 });
 `,

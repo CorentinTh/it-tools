@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useVModel } from '@vueuse/core';
+import { IconCopy } from '@tabler/icons-vue';
 import { useCopy } from '@/composable/copy';
 
 const props = defineProps<{ value: string }>();
@@ -15,7 +16,7 @@ const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : 'Copy to cli
     <template #suffix>
       <c-tooltip :tooltip="tooltipText">
         <c-button circle variant="text" size="small" @click="copy()">
-          <icon-mdi-content-copy />
+          <IconCopy size="15" />
         </c-button>
       </c-tooltip>
     </template>

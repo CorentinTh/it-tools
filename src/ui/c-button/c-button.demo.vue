@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import _ from 'lodash';
+import { IconCopy } from '@tabler/icons-vue';
 
 const buttonVariants = ['basic', 'text'] as const;
 const buttonTypes = ['default', 'primary', 'warning', 'error'] as const;
@@ -43,7 +44,7 @@ const buttonSizes = ['small', 'medium', 'large'] as const;
         circle
         mx-1
       >
-        <icon-mdi-content-copy />
+        <IconCopy size="20" />
       </c-button>
     </div>
   </div>

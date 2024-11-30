@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Copy } from '@vicons/tabler';
+import { IconCopy } from '@tabler/icons-vue';
 import { useElementSize } from '@vueuse/core';
 import hljs from 'highlight.js/lib/core';
 import jsonHljs from 'highlight.js/lib/languages/json';
@@ -55,7 +55,7 @@ const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : copyMessage.
       <div absolute right-10px top-10px>
         <c-tooltip v-if="value" :tooltip="tooltipText" position="left">
           <c-button circle important:h-10 important:w-10 @click="copy()">
-            <n-icon size="22" :component="Copy" />
+            <IconCopy size="20" />
           </c-button>
         </c-tooltip>
       </div>

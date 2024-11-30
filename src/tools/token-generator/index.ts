@@ -1,4 +1,4 @@
-import { ArrowsShuffle } from '@vicons/tabler';
+import { IconArrowsShuffle } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
@@ -8,5 +8,5 @@ export const tool = defineTool({
   description: translate('tools.token-generator.description'),
   keywords: ['token', 'random', 'string', 'alphanumeric', 'symbols', 'number', 'letters', 'lowercase', 'uppercase', 'password'],
   component: () => import('./token-generator.tool.vue'),
-  icon: ArrowsShuffle,
+  icon: IconArrowsShuffle,
 });

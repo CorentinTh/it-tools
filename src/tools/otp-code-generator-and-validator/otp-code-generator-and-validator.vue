@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useTimestamp } from '@vueuse/core';
 import { useThemeVars } from 'naive-ui';
+import { IconReload } from '@tabler/icons-vue';
 import { useQRCode } from '../qr-code-generator/useQRCode';
 import { base32toHex, buildKeyUri, generateSecret, generateTOTP, getCounterFromTime } from './otp.service';
 import TokenDisplay from './token-display.vue';
@@ -63,7 +64,7 @@ const secretValidationRules = [
       <template #suffix>
         <c-tooltip tooltip="Generate a new random secret">
           <c-button circle variant="text" size="small" @click="refreshSecret">
-            <icon-mdi-refresh />
+            <IconReload size="15" />
           </c-button>
         </c-tooltip>
       </template>

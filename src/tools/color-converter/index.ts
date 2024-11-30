@@ -1,4 +1,4 @@
-import { Palette } from '@vicons/tabler';
+import { IconPalette } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
@@ -8,6 +8,6 @@ export const tool = defineTool({
   description: translate('tools.color-converter.description'),
   keywords: ['color', 'converter'],
   component: () => import('./color-converter.vue'),
-  icon: Palette,
+  icon: IconPalette,
   redirectFrom: ['/color-picker-converter'],
 });

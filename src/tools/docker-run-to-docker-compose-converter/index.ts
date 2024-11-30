@@ -1,4 +1,4 @@
-import { BrandDocker } from '@vicons/tabler';
+import { IconBrandDocker } from '@tabler/icons-vue';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
@@ -8,5 +8,5 @@ export const tool = defineTool({
   description: translate('tools.docker-run-to-docker-compose-converter.description'),
   keywords: ['docker', 'run', 'compose', 'yaml', 'yml', 'convert', 'deamon'],
   component: () => import('./docker-run-to-docker-compose-converter.vue'),
-  icon: BrandDocker,
+  icon: IconBrandDocker,
 });
