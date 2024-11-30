@@ -65,6 +65,7 @@
     "emojilib": "^3.0.10",
     "figlet": "^1.7.0",
     "figue": "^1.2.0",
+    "flatten-anything": "^4.0.1",
     "fuse.js": "^6.6.2",
     "highlight.js": "^11.7.0",
     "iarna-toml-esm": "^3.0.5",
