@@ -60,6 +60,7 @@
     "cronstrue": "^2.26.0",
     "crypto-js": "^4.1.1",
     "date-fns": "^2.29.3",
+    "dns-query": "^0.11.2",
     "dompurify": "^3.0.6",
     "email-normalizer": "^1.0.0",
     "emojilib": "^3.0.10",
