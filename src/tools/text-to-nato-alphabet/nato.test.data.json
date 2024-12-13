@@ -1,0 +1,137 @@
+[
+{
+    "lang": "(International)",
+    "input": "TesYW 123 ? = !@",
+    "output": "TANGO echo sierra YANKEE WHISKEY (SPACE) ONE TWO THREE (SPACE) (?) (SPACE) (=) (SPACE) (!) (@)"
+ },
+ {
+    "lang": "(France)",
+    "input": "TesYW 123 ? = !@",
+    "output": "THÉRÈSE eugène suzanne YVONNE WILLIAM (ESPACE) UN DEUX TROIS (ESPACE) (?) (ESPACE) (=) (ESPACE) (!) (@)"
+ },
+ {
+    "lang": "(Belgium)",
+    "input": "TesYW 123 ? = !@",
+    "output": "TELEFOON emiel sofie YVONNE WATERLOO (ESPACE) (1) (2) (3) (ESPACE) (?) (ESPACE) (=) (ESPACE) (!) (@)"
+ },
+ {
+    "lang": "(Switzerland)",
+    "input": "TesYW 123 ? = !@",
+    "output": "THÉRÈSE émile suzanne (Y) WILLIAM (ESPACE) (1) (2) (3) (ESPACE) (?) (ESPACE) (=) (ESPACE) (!) (@)"
+ },
+ {
+    "lang": "(Québec)",
+    "input": "TesYW 123 ? = !@",
+    "output": "THOMAS édouard samuel (Y) WILLIAM (ESPACE) (1) (2) (3) (ESPACE) (?) (ESPACE) (=) (ESPACE) (!) (@)"
+ },
+ {
+    "lang": "(Germany, 2022)",
+    "input": "TesYü 123 ? = !@",
+    "output": "TÜBINGEN essen salzwedel YPSILON umlaut-unna (LEERZEICHEN) (1) (2) (3) (LEERZEICHEN) (?) (LEERZEICHEN) (=) (LEERZEICHEN) (!) (@)"
+ },
+ {
+    "lang": "(Austria)",
+    "input": "TesYW 123 ? = !@",
+    "output": "THEODOR emil samuel/siegfried YPSILON WILHELM (LEERZEICHEN) (1) (2) (3) (LEERZEICHEN) (?) (LEERZEICHEN) (=) (LEERZEICHEN) (!) (@)"
+ },
+ {
+    "lang": "(Germany, informal, 2022)",
+    "input": "TesYü 123 ? = !@",
+    "output": "THEODOR emil samuel YPSILON überfluss (LEERZEICHEN) (1) (2) (3) (LEERZEICHEN) (?) (LEERZEICHEN) (=) (LEERZEICHEN) (!) (@)"
+ },
+ {
+    "lang": "(Netherlands)",
+    "input": "TesY huis rij 123 ? = !@",
+    "output": "THEODOR eduard simon YPSILON (SPATIE) hendrik utrecht izaak simon (SPATIE) richard/rudolf ijmuiden/ijsbrand (SPATIE) (1) (2) (3) (SPATIE) (?) (SPATIE) (=) (SPATIE) (!) (@)"
+ },
+ {
+    "lang": "Italian",
+    "input": "TesYj 123 ? = !@",
+    "output": "TORINO empoli savona YORK, YOGURT jolly/juventus (SPAZIO) (1) (2) (3) (SPAZIO) (?) (SPAZIO) (=) (SPAZIO) (!) (@)"
+ },
+ {
+    "lang": "Spanish",
+    "input": "TesYñj 123 ? = !@",
+    "output": "TOLEDO españa sábado YOLANDA ñoño josé (ESPACIO) (1) (2) (3) (ESPACIO) (?) (ESPACIO) (=) (ESPACIO) (!) (@)"
+ },
+ {
+    "lang": "(Brazil)",
+    "input": "TesYÇj 123 ? = !@",
+    "output": "TATU estrela saci YOLANDA (Ç) josé (ESPAÇO) (1) (2) (3) (ESPAÇO) (?) (ESPAÇO) (=) (ESPAÇO) (!) (@)"
+ },
+ {
+    "lang": "(Portugal)",
+    "input": "TesYúj 123 ? = !@",
+    "output": "TAVIRA évora setúbal YORK (ú) josé (ESPAÇO) (1) (2) (3) (ESPAÇO) (?) (ESPAÇO) (=) (ESPAÇO) (!) (@)"
+ },
+ {
+    "lang": "Swedish",
+    "input": "TesYj 123 ? = !@",
+    "output": "TORE erik sigurd YNGVE johan (UTRYMME) (1) (2) (3) (UTRYMME) (?) (UTRYMME) (=) (UTRYMME) (!) (@)"
+ },
+ {
+    "lang": "Danish",
+    "input": "TesÆYj 123 ? = !@",
+    "output": "THEODOR erik søren ÆGIR YRSA johan (MELLEMRUMSTEGN) (1) (2) (3) (MELLEMRUMSTEGN) (?) (MELLEMRUMSTEGN) (=) (MELLEMRUMSTEGN) (!) (@)"
+ },
+ {
+    "lang": "Norwegian",
+    "input": "TesYÅj 123 ? = !@",
+    "output": "TEODOR edith sigrid YNGLING ÅSE johan (MELLOMROMSTEGN) (1) (2) (3) (MELLOMROMSTEGN) (?) (MELLOMROMSTEGN) (=) (MELLOMROMSTEGN) (!) (@)"
+ },
+ {
+    "lang": "Finnish",
+    "input": "TesYj 123 ? = !@",
+    "output": "TYYNE eemeli sakari YRJÖ jussi (VÄLILYÖNTI) (1) (2) (3) (VÄLILYÖNTI) (?) (VÄLILYÖNTI) (=) (VÄLILYÖNTI) (!) (@)"
+ },
+ {
+    "lang": "Turkish",
+    "input": "TesYj 123 ? = !@",
+    "output": "TOKAT edirne sinop YOZGAT jandarma (BOŞLUK) (1) (2) (3) (BOŞLUK) (?) (BOŞLUK) (=) (BOŞLUK) (!) (@)"
+ },
+ {
+    "lang": "Romanian",
+    "input": "TesYj 123 ? = !@",
+    "output": "TUDOR elena sandu I-GREC jean (SPAȚIU) (1) (2) (3) (SPAȚIU) (?) (SPAȚIU) (=) (SPAȚIU) (!) (@)"
+ },
+ {
+    "lang": "Czech",
+    "input": "TesYj 123 ? = !@",
+    "output": "TOMÁŠ emil svatopluk YPSILON josef (PROSTOROVÝ) (1) (2) (3) (PROSTOROVÝ) (?) (PROSTOROVÝ) (=) (PROSTOROVÝ) (!) (@)"
+ },
+ {
+    "lang": "Yugoslav",
+    "input": "TesYČj 123 ? = !@",
+    "output": "TUZLA evropa skopje IPSILON ČAČAK jadran (PRIESTOROVÝ) (1) (2) (3) (PRIESTOROVÝ) (?) (PRIESTOROVÝ) (=) (PRIESTOROVÝ) (!) (@)"
+ },
+ {
+    "lang": "Serbian",
+    "input": "TesYČj 123 ? = !@",
+    "output": "TIMOK evropa sava IPSILON ČAČAK jadran (PROSTORNI) (1) (2) (3) (PROSTORNI) (?) (PROSTORNI) (=) (PROSTORNI) (!) (@)"
+ },
+ {
+    "lang": "Slovene",
+    "input": "TesYČj 123 ? = !@",
+    "output": "TRIGLAV evropa soča IPSILON ČATEŽ jadran (PRESLEDKA) (1) (2) (3) (PRESLEDKA) (?) (PRESLEDKA) (=) (PRESLEDKA) (!) (@)"
+ },
+ {
+    "lang": "Russian",
+    "input": "Зинаида !.?",
+    "output": "ЗИНАИДА иван николай анна иван дмитрий анна ( ) (!) (.) (?)"
+ },
+ {
+    "lang": "Korean",
+    "input": "안녕하세요 여러분",
+    "output": "잉어 아버지 나폴리 나폴리 연못 잉어 한강 아버지 서울 엑스레이 잉어 요지경 ( ) 잉어 연못 로마 어머니 바가지 우편 나폴리"
+ },
+ {
+    "lang": "Greek",
+    "input": "τίγρης !?",
+    "output": "τίγρης (ί) γαλή ρήγας ηρώ σοφός ( ) (!) (?)"
+ },
+ {
+    "lang": "Japanese",
+    "input": "数字のひと おしまいのン ?:",
+    "output": "(数) (字) 野原のノ 飛行機のヒ 東京のト ( ) 大阪のオ 新聞のシ マッチのマ いろはのイ 野原のノ おしまいのン ( ) (?) (:)"
+ }
+]
