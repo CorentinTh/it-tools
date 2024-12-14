@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IconDragDrop, IconHeart } from '@tabler/icons-vue';
+import { IconDragDrop, IconFileDescription, IconHeart } from '@tabler/icons-vue';
 import { useHead } from '@vueuse/head';
 import { computed } from 'vue';
 import Draggable from 'vuedraggable';
@@ -43,11 +43,29 @@ function onUpdateFavoriteTools() {
           {{ $t('home.follow.thankYou') }}
           <n-icon :component="IconHeart" />
         </ColoredCard>
+
+        <a href="https://renderize.tech?utm_source=it-tools&utm_medium=banner" target="_blank" rel="noopener" class="text-current decoration-none">
+          <c-card v-if="config.showSponsorBanner" class="cursor-pointer !border-2px !hover:border-primary">
+            <div class="flex items-center justify-between">
+              <n-icon :component="IconFileDescription" class="text-neutral-400 dark:text-neutral-600" size="40" />
+              <div class="rounded-full bg-#eeeeee px-10px py-2px text-xs text-black dark:bg-#333333 dark:text-white">
+                Sponsor
+              </div>
+            </div>
+
+            <div class="my-5px flex items-baseline gap-4 text-balance text-lg text-black dark:text-white">
+              Generate PDFs from HTML with Renderize API
+            </div>
+            <div class="text-neutral-500 dark:text-neutral-400">
+              Automate your document generation with our fast, developer-friendly API. Start with a free forever plan.
+            </div>
+          </c-card>
+        </a>
       </div>
 
       <transition name="height">
         <div v-if="toolStore.favoriteTools.length > 0">
-          <h3 class="mb-5px mt-25px font-500 text-neutral-400">
+          <h3 class="mb-5px mt-25px text-neutral-400 font-500">
             {{ $t('home.categories.favoriteTools') }}
             <c-tooltip :tooltip="$t('home.categories.favoritesDndToolTip')">
               <n-icon :component="IconDragDrop" size="18" />
@@ -68,7 +86,7 @@ function onUpdateFavoriteTools() {
       </transition>
 
       <div v-if="toolStore.newTools.length > 0">
-        <h3 class="mb-5px mt-25px font-500 text-neutral-400">
+        <h3 class="mb-5px mt-25px text-neutral-400 font-500">
           {{ t('home.categories.newestTools') }}
         </h3>
         <div class="grid grid-cols-1 gap-12px lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4">
@@ -76,7 +94,7 @@ function onUpdateFavoriteTools() {
         </div>
       </div>
 
-      <h3 class="mb-5px mt-25px font-500 text-neutral-400">
+      <h3 class="mb-5px mt-25px text-neutral-400 font-500">
         {{ $t('home.categories.allTools') }}
       </h3>
       <div class="grid grid-cols-1 gap-12px lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4">
