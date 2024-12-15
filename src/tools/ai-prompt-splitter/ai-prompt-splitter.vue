@@ -46,7 +46,7 @@ const promptValidation = useValidation({
       </n-form-item>
     </c-card>
 
-    <c-card title="Splitted prompts">
+    <c-card title="Divided prompts">
       <div v-for="(splittedPrompt, index) in splittedPrompts" :key="index">
         <TextareaCopyable :value="splittedPrompt" />
       </div>
