@@ -1,3 +1,5 @@
+import sanitizeHtml from 'sanitize-html';
+
 function stripNonLatinCharacters(text: string) {
   return text.replace(/[^A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF\u02BB\u02EE\uA78C\d\s_-]/g, '');
 };
@@ -13,8 +15,11 @@ function spacesToDash(text: string) {
 };
 
 function stripHtmlTags(text: string) {
-  return text.replace(/<.*?>/g, '');
-};
+  return sanitizeHtml(text, {
+    allowedTags: [],
+    allowedAttributes: {},
+  });
+}
 
 function stripMarkdownLinks(text: string, replacement: string = '$1') {
   return text.replace(/\[([^\]]*)\]\([^\)]*\)/g, replacement);
@@ -124,7 +129,7 @@ export function getTocMarkdown({
   const titles = getTitles(markdown, titleContent => getFinalId(genericAnchorGenerator(titleContent, concatSpaces)));
 
   const createLink = (linkText: string, url: string) => {
-    return `[${linkText.replace('[', '\\[').replace(']', '\\]')}](${url.replace('(', '%28').replace(')', '%29')})`;
+    return `[${linkText.replace(/\[/g, '\\[').replace(/\]/g, '\\]')}](${url.replace(/\(/g, '%28').replace(/\(/g, '%29')})`;
   };
 
   let markdownTOC = '';
@@ -133,11 +138,11 @@ export function getTocMarkdown({
   const commentClose = commentStyle === 'html' ? '-->' : '-%}';
 
   resultMarkdown = resultMarkdown.replace(
-    new RegExp(`\n${commentOpen} TOC START.*?TOC END ${commentClose}\n`, 'smg'),
+    new RegExp(`\n${escapeRegExp(commentOpen)} TOC START.*?TOC END ${escapeRegExp(commentClose)}\n`, 'smg'),
     '\n[TOC]\n',
   );
   resultMarkdown = resultMarkdown.replace(
-    new RegExp(`^${commentOpen} TOC ANCHOR.*?\n`, 'mg'),
+    new RegExp(`^${escapeRegExp(commentOpen)} TOC ANCHOR.*?\n`, 'mg'),
     '',
   );
 
