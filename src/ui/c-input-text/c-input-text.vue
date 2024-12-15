@@ -96,9 +96,9 @@ function onPasteInputHtml(evt: ClipboardEvent) {
   if (!target) {
     return false;
   }
-  evt.preventDefault();
   const textHtmlData = evt.clipboardData?.getData('text/html');
   if (textHtmlData && textHtmlData !== '') {
+    evt.preventDefault();
     value.value = textHtmlData;
     return true;
   }
