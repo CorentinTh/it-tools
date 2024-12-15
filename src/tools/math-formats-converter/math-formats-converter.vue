@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import Plurimath from '@plurimath/plurimath';
+import { useScriptTag } from '@vueuse/core';
 import { useQueryParamOrStorage } from '@/composable/queryParams';
+
+const { load: loadPlurimath } = useScriptTag('/plurimath/index.js', undefined, { type: 'module', manual: true });
 
 const formats = [
   { value: 'asciimath', label: 'AsciiMath' },
@@ -17,12 +19,13 @@ const target = computedAsync(async () => {
   const sourceValue = source.value;
   const sourceFormatValue = sourceFormat.value;
   const targetFormatValue = targetFormat.value;
-  if (sourceValue === '') {
+  if (!sourceValue) {
     return '';
   }
   if (sourceFormatValue === targetFormatValue) {
     return sourceValue;
   }
+  await loadPlurimath();
   return new Promise<string>((resolve, _reject) => {
     try {
       const formula = new Plurimath(sourceValue, sourceFormatValue);
@@ -80,6 +83,6 @@ const target = computedAsync(async () => {
       :options="formats"
       placeholder="Source format"
     />
-    <textarea-copyable v-if="target !== ''" :value="target" :language="targetFormat" />
+    <textarea-copyable v-if="target" :value="target" :language="targetFormat" word-wrap />
   </div>
 </template>
