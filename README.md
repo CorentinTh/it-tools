@@ -8,7 +8,7 @@ Useful tools for developer and people working in IT. [Have a look !](https://it-
 
 ## Sponsors
 
-[![Fern banner](./.github/fern-banner.svg)](https://bit.ly/3zBl7DG)
+[![Renderize banner](./.github/sponsor-banner.svg)](https://renderize.tech?utm_source=it-tools&utm_medium=readme)
 
 ## Functionalities and roadmap
 
