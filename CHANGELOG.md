@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## Version 2024.10.22-7ca5933
+
+### Features
+- **new tool**: Regex Tester (and Cheatsheet) (#1030) (f5c4ab1)
+- **new tool**: Markdown to HTML (#916) (87984e2)
+- **new-tool**: add email normalizer (#1243) (318fb6e)
+- **new tools**: JSON to XML and XML to JSON (#1231) (f1a5489)
+- **lorem-ipsum**: add button to refresh text lorem-ipsum (#1213) (e1b4f9a)
+- **base64**: Base64 enhancements (#905) (30144aa)
+
+### Bug fixes
+- **favorites**: store favorites regardless of languages (#1202) (7ca5933)
+- **emoji-picker**: debounced search input (#1181) (76a19d2)
+- **format-transformer**: set overflow for output area width (#787) (b430bae)
+- **jwt-parser**: prevent UI overflow on small screen (#1095) (dd4b7e6)
+
+### Refactoring
+- **regex-tester**: better description (7251700)
+
+### Chores
+- **sponsors**: fern sponsor banners (#1314) (f962c41)
+- **readme**: updated logos (#1294) (6709498)
+
+### Documentation
+- **author**: updated author links (#1316) (1c35ac3)
+
 ## Version 2024.05.13-a0bc346
 
 ### Features
