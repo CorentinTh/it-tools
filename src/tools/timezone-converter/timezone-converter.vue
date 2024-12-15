@@ -56,14 +56,17 @@ const countryToTimezonesOutput = computed(() => ctz.getTimezonesForCountry(count
         :options="allTimezones"
         mb-2
       />
-      <n-date-picker
-        :key="format"
-        v-model:value="currentDatetimeRange"
-        type="datetimerange"
-        :format="format"
-        :time-picker-props="timePickerProps"
-        mb-2
-      />
+      <n-form-item label="Date/time interval to convert:" label-placement="top">
+        <n-date-picker
+          :key="format"
+          v-model:value="currentDatetimeRange"
+          type="datetimerange"
+          :format="format"
+          :time-picker-props="timePickerProps"
+          mb-2
+          w-full
+        />
+      </n-form-item>
 
       <n-space justify="space-evenly">
         <n-form-item label="Current Timezone Offset:" label-placement="left">
