@@ -3,12 +3,19 @@ import InputCopyable from '../../components/InputCopyable.vue';
 import type { Units } from './hdd-calculator.service';
 import { getRealSize } from './hdd-calculator.service';
 
-const units = [
-  { value: 'kb', label: 'KB' },
+const dec_units = [
+  { value: 'kb', label: 'kB' },
   { value: 'mb', label: 'MB' },
   { value: 'gb', label: 'GB' },
   { value: 'tb', label: 'TB' },
   { value: 'pb', label: 'PB' },
+];
+const bin_units = [
+  { value: 'kb', label: 'KiB' },
+  { value: 'mb', label: 'MiB' },
+  { value: 'gb', label: 'GiB' },
+  { value: 'tb', label: 'TiB' },
+  { value: 'pb', label: 'PiB' },
 ];
 
 const claimedCapacity = ref(1);
@@ -23,15 +30,15 @@ const claimedUnit = ref('tb');
     <c-select
       v-model:value="claimedUnit"
       label="Unit:"
-      :options="units"
+      :options="dec_units"
     />
 
     <n-divider />
 
     <InputCopyable
-      v-for="({ value, label }) in units"
+      v-for="({ value, label }) in bin_units"
       :key="value"
-      :label="`Capacity in ${label}`"
+      :label="`Capacity in ${label}:`"
       :value="getRealSize(claimedCapacity, claimedUnit as Units, value as Units).toFixed(5)"
     />
   </div>
