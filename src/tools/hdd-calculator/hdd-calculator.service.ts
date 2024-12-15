@@ -8,7 +8,7 @@ const unitsConversion = {
 
 export type Units = 'kb' | 'mb' | 'gb' | 'tb' | 'pb';
 export function getRealSize(claimedCapacity: number, claimedUnit: Units, toUnit: Units) {
-  const fromUnit = unitsConversion[claimedUnit as Units];
-  const toUnitBin = unitsConversion[toUnit as Units].bin;
+  const fromUnit = unitsConversion[claimedUnit];
+  const toUnitBin = unitsConversion[toUnit].bin;
   return claimedCapacity * fromUnit.dec / toUnitBin;
 };
