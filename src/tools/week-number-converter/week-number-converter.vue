@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { getWeek, getWeekOfMonth } from 'date-fns';
+import { getISOWeek, getWeek, getWeekOfMonth } from 'date-fns';
 import { getFirstMondayFromISOWeek, getFirstMondayFromMonthWeek } from './week-number-converter.service';
 
 const now = new Date();
 
 const inputDate = ref(now.getTime());
 const outputWeekInMonth = computed(() => getWeekOfMonth(inputDate.value));
-const outputWeekInYear = computed(() => getWeek(inputDate.value));
+const outputLocalWeekInYear = computed(() => getWeek(inputDate.value));
+const outputISOWeekInYear = computed(() => getISOWeek(inputDate.value));
 
 const inputWeekInMonth = ref({
   week: getWeekOfMonth(now),
@@ -31,12 +32,13 @@ const outputWeekInYearMonday = computed(() => getFirstMondayFromISOWeek(inputWee
 
       <n-divider />
 
-      <input-copyable readonly label="Week in Year:" label-position="left" label-width="120px" :value="outputWeekInYear" mb-1 />
-      <input-copyable readonly label="Week in Month:" label-position="left" label-width="120px" :value="outputWeekInMonth" mb-1 />
+      <input-copyable readonly label="Local Week in Year:" label-position="left" label-width="130px" :value="outputLocalWeekInYear" mb-1 />
+      <input-copyable readonly label="ISO Week (in Year):" label-position="left" label-width="130px" :value="outputISOWeekInYear" mb-1 />
+      <input-copyable readonly label="Week in Month:" label-position="left" label-width="130px" :value="outputWeekInMonth" mb-1 />
     </c-card>
-    <c-card title="Year Week Number to Date" mb-2>
+    <c-card title="ISO Week number to date" mb-2>
       <div flex items-baseline gap-2>
-        <n-form-item label="Week in Year:" label-placement="left" flex-1>
+        <n-form-item label="ISO Week number:" label-placement="left" flex-1>
           <n-input-number v-model:value="inputWeekInYear.week" :min="1" :max="53" />
         </n-form-item>
         <n-form-item label="Year:" label-placement="left" flex-1>
@@ -48,9 +50,9 @@ const outputWeekInYearMonday = computed(() => getFirstMondayFromISOWeek(inputWee
 
       <input-copyable readonly label="First Monday" label-position="left" :value="outputWeekInYearMonday" />
     </c-card>
-    <c-card title="Month Week Number to Date" mb-2>
+    <c-card title="Week number in month to date" mb-2>
       <div flex items-baseline gap-2>
-        <n-form-item label="Week in Month:" label-placement="left" flex-1>
+        <n-form-item label="Week in month:" label-placement="left" flex-1>
           <n-input-number v-model:value="inputWeekInMonth.week" :min="1" :max="5" />
         </n-form-item>
         <n-form-item label="Month:" label-placement="left" flex-1>
