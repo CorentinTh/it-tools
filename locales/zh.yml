@@ -3,6 +3,7 @@ home:
     newestTools: '最新工具'
     favoriteTools: '我的收藏'
     allTools: '全部工具'
+    favoritesDndToolTip: '拖放重新排列收藏夹'
   subtitle: '助力开发人员和 IT 工作者'
   toggleMenu: '切换菜单'
   home: '主页'
@@ -14,13 +15,13 @@ home:
     p1: '给我们 Star'
     githubRepository: 'GitHub 仓库'
     p2: '关注我们的'
-    twitterAccount: 'Twitter'
+    twitterXAccount: 'IT-Tools X 账号'
     thankYou: '感谢您的支持！'
   nav:
     github: 'GitHub 仓库'
     githubRepository: 'GitHub 仓库'
-    twitter: 'Twitter 账号'
-    twitterAccount: 'Twitter 账号'
+    twitterX: 'Twitter 账号'
+    twitterXAccount: 'IT-Tools X 账号'
     about: '关于 IT-Tools'
     aboutLabel: '关于'
     darkMode: '深色模式'
@@ -30,9 +31,9 @@ about:
   content: >
     # 关于 IT-Tools
 
-    IT-Tools 由 [Corentin Thomasset](https://github.com/CorentinTh) 用 ❤ 开发，汇集了对开发人员和 IT 从业者有用的工具。如果对您有帮助，请将其分享给您的朋友，并且添加到收藏夹中！
+    IT-Tools 由 [Corentin Thomasset](https://corentin.tech?utm_source=it-tools&utm_medium=about) 用 ❤ 开发，汇集了对开发人员和 IT 从业者有用的工具。如果对您有帮助，请将其分享给您的朋友，并且添加到收藏夹中！
 
-    IT-Tools 永久免费且开源（MIT 许可证），但需要资金用于托管和续订域名。如果您想支持我的工作，并鼓励我添加更多工具，请考虑通过 [赞助我](https://www.buymeacoffee.com/cthmsst) 进行支持。
+    IT-Tools 永久免费且开源（GPL-3.0 许可证），但需要资金用于托管和续订域名。如果您想支持我的工作，并鼓励我添加更多工具，请考虑通过 [赞助我](https://www.buymeacoffee.com/cthmsst) 进行支持。
 
     ## 技术
 

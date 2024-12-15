@@ -3,6 +3,7 @@ home:
     newestTools: 'Novas ferramentas'
     favoriteTools: 'Suas ferramentas favoritas'
     allTools: 'Todas as ferramentas'
+    favoritesDndToolTip: 'Arraste e solte para reordenar favoritos'
   subtitle: 'Ferraentas úteis para desenvolvedores'
   toggleMenu: 'Menu'
   home: 'Início'
@@ -14,13 +15,13 @@ home:
     p1: 'Dê uma estrela no'
     githubRepository: 'repositório do IT-Tools no GitHub'
     p2: 'ou siga nossa'
-    twitterAccount: 'conta IT-Tools no Twitter'
+    twitterXAccount: 'conta IT-Tools no X'
     thankYou: 'Obrigado !'
   nav:
     github: 'Repositório no GitHub'
     githubRepository: 'repositório do IT-Tools no GitHub'
-    twitter: 'Conta no Twitter'
-    twitterAccount: 'conta do IT Tools no Twitter'
+    twitterX: 'Conta no X'
+    twitterXAccount: 'conta do IT Tools no X'
     about: 'Sobre o IT-Tools'
     aboutLabel: 'Sobre'
     darkMode: 'Modo Escuro'
@@ -30,9 +31,9 @@ about:
   content: >
     # Sobre o IT-Tools
 
-    Este site maravilhoso, feito com ❤ por [Corentin Thomasset](https://github.com/CorentinTh), junta ferramentas úteis para desenvolvedores e outras pessoas que trabalham com TI. Se você achar o site útil, fique à vontade para compartilhar com quem também possa gostar e não esqueça de salvar o bookmark na sua barra de atalhos!
+    Este site maravilhoso, feito com ❤ por [Corentin Thomasset](https://corentin.tech?utm_source=it-tools&utm_medium=about), junta ferramentas úteis para desenvolvedores e outras pessoas que trabalham com TI. Se você achar o site útil, fique à vontade para compartilhar com quem também possa gostar e não esqueça de salvar o bookmark na sua barra de atalhos!
 
-    O IT Tools é código aberto (sob a licença MIT), é gratuito, e sempre será, mas custa dinheiro para hospedar e renovar o domínio. Se quiser apoiar meu trabalho e me encorajar a adicionar mais ferramentas, por favor considere [ser patrocinador](https://www.buymeacoffee.com/cthmsst).
+    O IT Tools é código aberto (sob a licença GPL-3.0), é gratuito, e sempre será, mas custa dinheiro para hospedar e renovar o domínio. Se quiser apoiar meu trabalho e me encorajar a adicionar mais ferramentas, por favor considere [ser patrocinador](https://www.buymeacoffee.com/cthmsst).
 
     ## Tecnologias
 
