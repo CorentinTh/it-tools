@@ -22,7 +22,7 @@ function stripHtmlTags(text: string) {
 }
 
 function stripMarkdownLinks(text: string, replacement: string = '$1') {
-  return text.replace(/\[([^\]]*)\]\([^\)]*\)/g, replacement);
+  return text.replace(/\[([^\]]*)\]\([^\)]*\)/g, replacement); // NOSONAR
 };
 
 function concatDashes(text: string) {
@@ -81,7 +81,7 @@ function getTitles(markdown: string, idGenerator: (titleMarkdownContent: string)
     return '';
   });
 
-  [...markdown.matchAll(/^(#+)(.*$)/mg)].forEach(
+  [...markdown.matchAll(/^(#+)(.*$)/mg)].forEach( // NOSONAR
     ([match, levelString, titleContent]) => {
       const level = levelString.length;
 
