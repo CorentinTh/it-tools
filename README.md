@@ -4,6 +4,8 @@
     <img src="./.github/logo-dark.png" alt="logo">
 </picture>
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/CorentinTh/it-tools)
+
 Useful tools for developer and people working in IT. [Have a look !](https://it-tools.tech).
 
 ## Sponsors
