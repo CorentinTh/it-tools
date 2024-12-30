@@ -35,7 +35,6 @@ const { qrcode, text, encryption } = useWifiQRCode({
 
 const { download } = useDownloadFileFromBase64({ source: qrcode, filename: 'qr-code.png' });
 const { copy } = useCopy({ source: text, text: 'Copied to the clipboard' });
-
 </script>
 
 <template>
@@ -43,14 +42,8 @@ const { copy } = useCopy({ source: text, text: 'Copied to the clipboard' });
     <div grid grid-cols-1 gap-12>
       <div>
         <c-select
-          v-model:value="encryption"
-          mb-4
-          label="Encryption method"
-          default-value="WPA"
-          label-position="left"
-          label-width="130px"
-          label-align="right"
-          :options="[
+          v-model:value="encryption" mb-4 label="Encryption method" default-value="WPA" label-position="left"
+          label-width="130px" label-align="right" :options="[
             {
               label: 'No password',
               value: 'nopass',
@@ -71,68 +64,36 @@ const { copy } = useCopy({ source: text, text: 'Copied to the clipboard' });
         />
         <div class="mb-6 flex flex-row items-center gap-2">
           <c-input-text
-            v-model:value="ssid"
-            label-position="left"
-            label-width="130px"
-            label-align="right"
-            label="SSID:"
-            rows="1"
-            autosize
-            placeholder="Your WiFi SSID..."
-            mb-6
+            v-model:value="ssid" label-position="left" label-width="130px" label-align="right" label="SSID:"
+            rows="1" autosize placeholder="Your WiFi SSID..." mb-6
           />
           <n-checkbox v-model:checked="isHiddenSSID">
             Hidden SSID
           </n-checkbox>
         </div>
         <c-input-text
-          v-if="encryption !== 'nopass'"
-          v-model:value="password"
-          label-position="left"
-          label-width="130px"
-          label-align="right"
-          label="Password:"
-          rows="1"
-          autosize
-          type="password"
-          placeholder="Your WiFi Password..."
+          v-if="encryption !== 'nopass'" v-model:value="password" label-position="left" label-width="130px"
+          label-align="right" label="Password:" rows="1" autosize type="password" placeholder="Your WiFi Password..."
           mb-6
         />
         <c-select
-          v-if="encryption === 'WPA2-EAP'"
-          v-model:value="eapMethod"
-          label="EAP method"
-          label-position="left"
-          label-width="130px"
-          label-align="right"
-          :options="EAPMethods.map((method) => ({ label: method, value: method }))"
-          searchable mb-4
+          v-if="encryption === 'WPA2-EAP'" v-model:value="eapMethod" label="EAP method" label-position="left"
+          label-width="130px" label-align="right"
+          :options="EAPMethods.map((method) => ({ label: method, value: method }))" searchable mb-4
         />
         <div v-if="encryption === 'WPA2-EAP'" class="mb-6 flex flex-row items-center gap-2">
           <c-input-text
-            v-model:value="eapIdentity"
-            label-position="left"
-            label-width="130px"
-            label-align="right"
-            label="Identity:"
-            rows="1"
-            autosize
-            placeholder="Your EAP Identity..."
-            mb-6
+            v-model:value="eapIdentity" label-position="left" label-width="130px" label-align="right"
+            label="Identity:" rows="1" autosize placeholder="Your EAP Identity..." mb-6
           />
           <n-checkbox v-model:checked="eapAnonymous">
             Anonymous?
           </n-checkbox>
         </div>
         <c-select
-          v-if="encryption === 'WPA2-EAP'"
-          v-model:value="eapPhase2Method"
-          label="EAP Phase 2 method"
-          label-position="left"
-          label-width="130px"
-          label-align="right"
-          :options="EAPPhase2Methods.map((method) => ({ label: method, value: method }))"
-          searchable mb-4
+          v-if="encryption === 'WPA2-EAP'" v-model:value="eapPhase2Method" label="EAP Phase 2 method"
+          label-position="left" label-width="130px" label-align="right"
+          :options="EAPPhase2Methods.map((method) => ({ label: method, value: method }))" searchable mb-4
         />
         <n-form label-width="130" label-placement="left">
           <n-form-item label="Foreground color:">
