@@ -17,4 +17,5 @@ declare module 'composeverter' {
     export function migrateFromV2xToV3x(content: string, configuration?: Configuration = null): string;
     export function getDockerComposeSchemaWithoutFormats(): object;
     export function yamlParse(content: string): object;
+    export function yamlCheck(content: string): object;
   }
