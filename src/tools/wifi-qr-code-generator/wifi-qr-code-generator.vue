@@ -5,6 +5,7 @@ import {
   useWifiQRCode,
 } from './useQRCode';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
+import { useCopy } from '@/composable/copy';
 
 const foreground = ref('#000000ff');
 const background = ref('#ffffffff');
@@ -17,7 +18,7 @@ const eapAnonymous = ref(false);
 const eapIdentity = ref();
 const eapPhase2Method = ref();
 
-const { qrcode, encryption } = useWifiQRCode({
+const { qrcode, text, encryption } = useWifiQRCode({
   ssid,
   password,
   eapMethod,
@@ -33,6 +34,8 @@ const { qrcode, encryption } = useWifiQRCode({
 });
 
 const { download } = useDownloadFileFromBase64({ source: qrcode, filename: 'qr-code.png' });
+const { copy } = useCopy({ source: text, text: 'Copied to the clipboard' });
+
 </script>
 
 <template>
@@ -145,6 +148,13 @@ const { download } = useDownloadFileFromBase64({ source: qrcode, filename: 'qr-c
           <img alt="wifi-qrcode" :src="qrcode" width="200">
           <c-button @click="download">
             Download qr-code
+          </c-button>
+        </div>
+      </div>
+      <div v-if="qrcode">
+        <div flex flex-col items-center gap-3>
+          <c-button @click="copy()">
+            Copy connection string
           </c-button>
         </div>
       </div>
