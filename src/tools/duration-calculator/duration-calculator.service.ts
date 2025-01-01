@@ -23,7 +23,7 @@ interface DurationLine {
   rawLine: string
   cleanedDuration: string
   sign: number
-  durationMS: number | undefined
+  durationMS: number | null
   isValid: boolean
 }
 
@@ -33,14 +33,14 @@ export function computeDuration(s: string): {
 } {
   const lines: DurationLine[] = s.split('\n').filter(l => l && !/^\s*#/.test(l)).map((l) => {
     const isNeg = /^\s*-/.test(l);
-    const cleanedDuration = l.replace(/^\s*[+-]\s*/, '');
+    const cleanedDuration = l.replace(/^\s*[+-]\s*/, '').replace(/\s*#.*$/, ''); // NOSONAR
     const durationMS = convertDurationMS(cleanedDuration);
     return {
       rawLine: l,
       cleanedDuration,
       sign: isNeg ? -1 : 1,
       durationMS,
-      isValid: typeof durationMS !== 'undefined',
+      isValid: durationMS !== null,
     };
   });
 
@@ -60,8 +60,8 @@ export function computeDuration(s: string): {
   };
 }
 
-function convertDurationMS(s: string): number | undefined {
-  const hoursHandled = s.replace(/\b(?:(\d+)\.)?(\d+):(\d+)(?::(\d+)(?:\.(\d+))?)?\b/g,
+function convertDurationMS(s: string): number | null {
+  const hoursHandled = s.trim().replace(/^(?:(\d+)\.)?(\d+):(\d+)(?::(\d+)(?:\.(\d+))?)?$/g,
     (_, d, h, m, s, ms) => {
       const timeArr: string[] = [];
       const addPart = (part: string, unit: string) => {
@@ -76,26 +76,27 @@ function convertDurationMS(s: string): number | undefined {
       addPart(h, 'h');
       addPart(m, 'm');
       addPart(s, 's');
-      addPart(ms, 'ms');
+      addPart(ms?.padEnd(3, '0'), 'ms');
       return timeArr.join(' ');
     });
   if (!hoursHandled) {
     return 0;
   }
 
-  let parsedDuration = parse(hoursHandled);
-  if (parsedDuration !== 0 && !parsedDuration) {
-    try {
-      parsedDuration = iso8601Duration.toMilliseconds(iso8601Duration.parse(hoursHandled));
-    }
-    catch (_) {
-      return undefined;
-    }
+  try {
+    return iso8601Duration.toMilliseconds(iso8601Duration.parse(hoursHandled));
   }
-  return parsedDuration;
+  catch (_) {
+    const result = parse(hoursHandled);
+    if (typeof result === 'undefined') {
+      return null;
+    }
+    return result;
+  }
 }
-function prepareDurationResult(durationMS: any): ConvertedDuration {
+function prepareDurationResult(durationMS: number): ConvertedDuration {
   const dateFnsDuration = intervalToDuration({ start: 0, end: durationMS });
+  dateFnsDuration.seconds = (dateFnsDuration.seconds || 0) + (durationMS % 1000) / 1000;
   return {
     prettified: prettyMilliseconds(durationMS, { formatSubMilliseconds: true }),
     prettifiedVerbose: prettyMilliseconds(durationMS, { verbose: true, formatSubMilliseconds: true }),

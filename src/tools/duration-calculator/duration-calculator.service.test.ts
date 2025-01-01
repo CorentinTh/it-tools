@@ -24,6 +24,8 @@ describe('duration-calculator', () => {
   describe('computeDuration', () => {
     it('should compute correct sum/values', () => {
       expect(computeDuration('')).to.deep.eq(zeroResult);
+      expect(computeDuration('00:00:00')).to.deep.eq(zeroResult);
+      expect(computeDuration('0h')).to.deep.eq(zeroResult);
       expect(computeDuration('0s')).to.deep.eq(zeroResult);
       expect(computeDuration('3600s')).to.deep.eq({
         errors: [],
@@ -120,7 +122,7 @@ describe('duration-calculator', () => {
         total: {
           days: 0.11128616898148148,
           hours: 2.6708680555555557,
-          iso8601Duration: 'P0Y0M0DT2H40M15S',
+          iso8601Duration: 'P0Y0M0DT2H40M15.125S',
           milliseconds: 9615125,
           minutes: 160.25208333333333,
           prettified: '2h 40m 15s 125ms',
@@ -173,19 +175,19 @@ describe('duration-calculator', () => {
       expect(computeDuration('P4DT12H20M20.3S')).to.deep.eq({
         errors: [],
         total: {
-          days: 0.5138891238425926,
-          hours: 12.333338972222222,
-          iso8601Duration: 'P0Y0M0DT12H20M0S',
-          milliseconds: 44400020.3,
-          minutes: 740.0003383333333,
-          prettified: '12h 20m 20ms 300µs',
-          prettifiedColonNotation: '12:20:00',
-          prettifiedDaysColon: '12:20:00.20.299999997019768',
-          prettifiedHoursColon: '12:20:00.20.299999997019768',
-          prettifiedVerbose: '12 hours 20 minutes 20 milliseconds 300 microseconds',
-          seconds: 44400.0203,
-          weeks: 0.07341273197751322,
-          years: 0.0014079154077879248,
+          days: 4.514123842592593,
+          hours: 108.33897222222222,
+          iso8601Duration: 'P0Y0M4DT12H20M20.3S',
+          milliseconds: 390020300,
+          minutes: 6500.338333333333,
+          prettified: '4d 12h 20m 20s 300ms',
+          prettifiedColonNotation: '4:12:20:20.3',
+          prettifiedDaysColon: '4d 12:20:20.300',
+          prettifiedHoursColon: '108:20:20.300',
+          prettifiedVerbose: '4 days 12 hours 20 minutes 20 seconds 300 milliseconds',
+          seconds: 390020.3,
+          weeks: 0.6448748346560846,
+          years: 0.012367462582445459,
         },
       });
       expect(computeDuration('25s\n+PT20H\n-10s')).to.deep.eq({
@@ -315,7 +317,7 @@ describe('duration-calculator', () => {
         total: {
           days: 2.000001446759259,
           hours: 48.000034722222225,
-          iso8601Duration: 'P0Y0M2DT0H0M0S',
+          iso8601Duration: 'P0Y0M2DT0H0M0.125S',
           milliseconds: 172800125,
           minutes: 2880.0020833333333,
           prettified: '2d 125ms',
@@ -326,6 +328,42 @@ describe('duration-calculator', () => {
           seconds: 172800.125,
           weeks: 0.2857144923941799,
           years: 0.005479456018518519,
+        },
+      });
+      expect(computeDuration('12:12:12.1')).to.deep.eq({
+        errors: [],
+        total: {
+          days: 0.5084733796296297,
+          hours: 12.20336111111111,
+          iso8601Duration: 'P0Y0M0DT12H12M12.1S',
+          milliseconds: 43932100,
+          minutes: 732.2016666666667,
+          prettified: '12h 12m 12s 100ms',
+          prettifiedColonNotation: '12:12:12.1',
+          prettifiedDaysColon: '12:12:12.100',
+          prettifiedHoursColon: '12:12:12.100',
+          prettifiedVerbose: '12 hours 12 minutes 12 seconds 100 milliseconds',
+          seconds: 43932.1,
+          weeks: 0.07263905423280423,
+          years: 0.0013930777524099442,
+        },
+      });
+      expect(computeDuration('12:12:12.12')).to.deep.eq({
+        errors: [],
+        total: {
+          days: 0.5084736111111111,
+          hours: 12.203366666666666,
+          iso8601Duration: 'P0Y0M0DT12H12M12.12S',
+          milliseconds: 43932120,
+          minutes: 732.202,
+          prettified: '12h 12m 12s 120ms',
+          prettifiedColonNotation: '12:12:12.1',
+          prettifiedDaysColon: '12:12:12.120',
+          prettifiedHoursColon: '12:12:12.120',
+          prettifiedVerbose: '12 hours 12 minutes 12 seconds 120 milliseconds',
+          seconds: 43932.12,
+          weeks: 0.0726390873015873,
+          years: 0.001393078386605784,
         },
       });
     });
