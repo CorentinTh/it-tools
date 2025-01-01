@@ -61,22 +61,24 @@ export function computeDuration(s: string): {
 }
 
 function convertDurationMS(s: string): number | undefined {
-  const hoursHandled = s.replace(/\b(\d+):(\d+)(?::(\d+)(?:\.(\d+))?)?/g, (_, h, m, s, ms) => {
-    const timeArr: string[] = [];
-    const addPart = (part: string, unit: string) => {
-      const num = Number.parseInt(part, 10);
-      if (Number.isNaN(num)) {
-        return;
-      }
+  const hoursHandled = s.replace(/\b(?:(\d+)\.)?(\d+):(\d+)(?::(\d+)(?:\.(\d+))?)?\b/g,
+    (_, d, h, m, s, ms) => {
+      const timeArr: string[] = [];
+      const addPart = (part: string, unit: string) => {
+        const num = Number.parseInt(part, 10);
+        if (Number.isNaN(num)) {
+          return;
+        }
 
-      timeArr.push(`${num}${unit}`);
-    };
-    addPart(h, 'h');
-    addPart(m, 'm');
-    addPart(s, 's');
-    addPart(ms, 'ms');
-    return timeArr.join(' ');
-  });
+        timeArr.push(`${num}${unit}`);
+      };
+      addPart(d, 'd');
+      addPart(h, 'h');
+      addPart(m, 'm');
+      addPart(s, 's');
+      addPart(ms, 'ms');
+      return timeArr.join(' ');
+    });
   if (!hoursHandled) {
     return 0;
   }
@@ -95,9 +97,9 @@ function convertDurationMS(s: string): number | undefined {
 function prepareDurationResult(durationMS: any): ConvertedDuration {
   const dateFnsDuration = intervalToDuration({ start: 0, end: durationMS });
   return {
-    prettified: prettyMilliseconds(durationMS),
-    prettifiedVerbose: prettyMilliseconds(durationMS, { verbose: true }),
-    prettifiedColonNotation: prettyMilliseconds(durationMS, { colonNotation: true }),
+    prettified: prettyMilliseconds(durationMS, { formatSubMilliseconds: true }),
+    prettifiedVerbose: prettyMilliseconds(durationMS, { verbose: true, formatSubMilliseconds: true }),
+    prettifiedColonNotation: prettyMilliseconds(durationMS, { colonNotation: true, formatSubMilliseconds: true }),
     prettifiedDaysColon: hhmmss(durationMS, true),
     prettifiedHoursColon: hhmmss(durationMS, false),
     iso8601Duration: formatISODuration(dateFnsDuration),
