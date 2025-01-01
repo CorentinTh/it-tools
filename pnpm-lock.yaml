@@ -3771,7 +3771,7 @@ packages:
       debug: 4.4.0
       globby: 11.1.0
       is-glob: 4.0.3
-      semver: 7.5.4
+      semver: 7.6.3
       tsutils: 3.21.0(typescript@5.2.2)
       typescript: 5.2.2
     transitivePeerDependencies:
@@ -3834,7 +3834,7 @@ packages:
       '@typescript-eslint/typescript-estree': 5.60.0(typescript@5.2.2)
       eslint: 8.47.0
       eslint-scope: 5.1.1
-      semver: 7.5.4
+      semver: 7.6.3
     transitivePeerDependencies:
       - supports-color
       - typescript
