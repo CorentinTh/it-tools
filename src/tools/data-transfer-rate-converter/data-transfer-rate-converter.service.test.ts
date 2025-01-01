@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { amountTransferable, neededRate, transferTimeSeconds } from './data-transfer-rate-converter.service';
+import { amountTransferable, transferSpeedRate, transferTimeSeconds } from './data-transfer-rate-converter.service';
 
 describe('data-transfer-converter', () => {
   describe('transferTimeSeconds', () => {
@@ -12,9 +12,9 @@ describe('data-transfer-converter', () => {
       })).toBe(80);
     });
   });
-  describe('neededRate', () => {
-    it('compute neededRate', () => {
-      expect(neededRate({
+  describe('transferSpeedRate', () => {
+    it('compute transferSpeedRate', () => {
+      expect(transferSpeedRate({
         dataSize: 100,
         dataSizeUnit: 'MB',
         hours: 0,
@@ -22,6 +22,14 @@ describe('data-transfer-converter', () => {
         seconds: 20,
         bitRateUnit: 'Mb',
       })).toBe(10);
+      expect(transferSpeedRate({
+        dataSize: 100,
+        dataSizeUnit: 'MB',
+        hours: 0,
+        minutes: 1,
+        seconds: 20,
+        bitRateUnit: 'MB',
+      })).toBe(1.25);
     });
   });
   describe('amountTransferable', () => {

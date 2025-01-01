@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { formatDuration, intervalToDuration } from 'date-fns';
-import { type AllSupportedUnits, type BitsUnits, displayStorageAndRateUnits } from '../data-storage-unit-converter/data-storage-unit-converter.service';
-import { amountTransferable, neededRate, transferTimeSeconds } from './data-transfer-rate-converter.service';
+import { type AllSupportedUnits, displayStorageAndRateUnits } from '../data-storage-unit-converter/data-storage-unit-converter.service';
+import { amountTransferable, transferSpeedRate, transferTimeSeconds } from './data-transfer-rate-converter.service';
 
 const allStorateUnits = [
   { value: 'B', label: 'Bytes (B)' },
@@ -35,6 +35,8 @@ const allBitsUnits = [
   { value: 'Yb', label: 'Yottabits (Ybit)' },
 ];
 
+const allRateUnits = [...allBitsUnits, ...allStorateUnits];
+
 function convertToTimeDisplay(seconds: number) {
   if (seconds === 0) {
     return '0';
@@ -59,7 +61,7 @@ const transferTimeOutput = computed(() => {
       dataSize: Number(transferTimeInput.value.dataSize),
       dataSizeUnit: transferTimeInput.value.dataSizeUnit as AllSupportedUnits,
       bitRate: Number(transferTimeInput.value.bitRate),
-      bitRateUnit: transferTimeInput.value.bitRateUnit as BitsUnits,
+      bitRateUnit: transferTimeInput.value.bitRateUnit as AllSupportedUnits,
     }));
   }
   catch (e: any) {
@@ -67,7 +69,7 @@ const transferTimeOutput = computed(() => {
   }
 });
 
-const neededRateInput = ref<{
+const transferSpeedRateInput = ref<{
   dataSize: string
   dataSizeUnit: string
   hours: number
@@ -82,18 +84,18 @@ const neededRateInput = ref<{
   seconds: 0,
   bitRateUnit: 'Mb',
 });
-const neededRateOutput = computed(() => {
+const transferSpeedRateOutput = computed(() => {
   try {
     return displayStorageAndRateUnits({
-      unit: neededRateInput.value.bitRateUnit as BitsUnits,
+      unit: transferSpeedRateInput.value.bitRateUnit as AllSupportedUnits,
       appendUnit: true,
-      value: neededRate({
-        dataSize: Number(neededRateInput.value.dataSize),
-        dataSizeUnit: neededRateInput.value.dataSizeUnit as AllSupportedUnits,
-        hours: neededRateInput.value.hours,
-        minutes: neededRateInput.value.minutes,
-        seconds: neededRateInput.value.seconds,
-        bitRateUnit: neededRateInput.value.bitRateUnit as BitsUnits,
+      value: transferSpeedRate({
+        dataSize: Number(transferSpeedRateInput.value.dataSize),
+        dataSizeUnit: transferSpeedRateInput.value.dataSizeUnit as AllSupportedUnits,
+        hours: transferSpeedRateInput.value.hours,
+        minutes: transferSpeedRateInput.value.minutes,
+        seconds: transferSpeedRateInput.value.seconds,
+        bitRateUnit: transferSpeedRateInput.value.bitRateUnit as AllSupportedUnits,
       }),
     });
   }
@@ -124,7 +126,7 @@ const amountTransferableOutput = computed(() => {
       appendUnit: true,
       value: amountTransferable({
         bitRate: Number(amountTransferableInput.value.bitRate),
-        bitRateUnit: amountTransferableInput.value.bitRateUnit as BitsUnits,
+        bitRateUnit: amountTransferableInput.value.bitRateUnit as AllSupportedUnits,
         hours: amountTransferableInput.value.hours,
         minutes: amountTransferableInput.value.minutes,
         seconds: amountTransferableInput.value.seconds,
@@ -157,7 +159,7 @@ const amountTransferableOutput = computed(() => {
         <c-select
           v-model:value="transferTimeInput.bitRateUnit"
           searchable
-          :options="allBitsUnits"
+          :options="allRateUnits"
           placeholder="Select a bit rate unit"
           ml-1
         />
@@ -171,11 +173,11 @@ const amountTransferableOutput = computed(() => {
         placeholder="Transfer time will be here..."
       />
     </c-card>
-    <c-card title="Needed Bit Rate" mb-2>
+    <c-card title="Transfer Bit Rate/Speed" mb-2>
       <n-form-item label="Data Size:" label-placement="left">
-        <n-input v-model:value="neededRateInput.dataSize" placeholder="Data Size..." :min="0" w-full />
+        <n-input v-model:value="transferSpeedRateInput.dataSize" placeholder="Data Size..." :min="0" w-full />
         <c-select
-          v-model:value="neededRateInput.dataSizeUnit"
+          v-model:value="transferSpeedRateInput.dataSizeUnit"
           :options="allStorateUnits"
           placeholder="Select a storage unit"
           ml-1
@@ -183,23 +185,23 @@ const amountTransferableOutput = computed(() => {
       </n-form-item>
 
       <n-form-item label="Duration (h/m/s):" label-placement="left">
-        <n-input-number v-model:value="neededRateInput.hours" mr-1 placeholder="Hours" :min="0" w-full />
-        <n-input-number v-model:value="neededRateInput.minutes" mr-1 placeholder="Minutes" :min="0" w-full />
-        <n-input-number v-model:value="neededRateInput.seconds" mr-1 placeholder="Seconds" :min="0" w-full />
+        <n-input-number v-model:value="transferSpeedRateInput.hours" mr-1 placeholder="Hours" :min="0" w-full />
+        <n-input-number v-model:value="transferSpeedRateInput.minutes" mr-1 placeholder="Minutes" :min="0" w-full />
+        <n-input-number v-model:value="transferSpeedRateInput.seconds" mr-1 placeholder="Seconds" :min="0" w-full />
       </n-form-item>
 
       <n-divider />
 
       <div flex items-baseline gap-2>
         <InputCopyable
-          label="Needed Bit Rate:"
+          label="Transfer Bit Rate/Speed:"
           label-position="left"
-          :value="neededRateOutput"
-          placeholder="Needed Bit Rate will be here..."
+          :value="transferSpeedRateOutput"
+          placeholder="Bit Rate will be here..."
         />
         <c-select
-          v-model:value="transferTimeInput.bitRateUnit"
-          :options="allBitsUnits"
+          v-model:value="transferSpeedRateInput.bitRateUnit"
+          :options="allRateUnits"
           placeholder="Select a bit rate unit"
           ml-1
         />
@@ -210,7 +212,7 @@ const amountTransferableOutput = computed(() => {
         <n-input v-model:value="amountTransferableInput.bitRate" placeholder="Bit Rate..." :min="0" w-full />
         <c-select
           v-model:value="amountTransferableInput.bitRateUnit"
-          :options="allBitsUnits"
+          :options="allRateUnits"
           placeholder="Select a bit rate unit"
           ml-1
         />

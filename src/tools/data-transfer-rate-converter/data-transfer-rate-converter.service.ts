@@ -1,4 +1,4 @@
-import { type AllSupportedUnits, type BitsUnits, convertStorageAndRateUnits } from '../data-storage-unit-converter/data-storage-unit-converter.service';
+import { type AllSupportedUnits, convertStorageAndRateUnits } from '../data-storage-unit-converter/data-storage-unit-converter.service';
 
 export function transferTimeSeconds({
   dataSize,
@@ -9,14 +9,14 @@ export function transferTimeSeconds({
   dataSize: number
   dataSizeUnit: AllSupportedUnits
   bitRate: number
-  bitRateUnit: BitsUnits
+  bitRateUnit: AllSupportedUnits
 }): number {
   const dataSizeInBytes = convertStorageAndRateUnits({ value: dataSize, fromUnit: dataSizeUnit, toUnit: 'B' });
   const bitRateInBytes = convertStorageAndRateUnits({ value: bitRate, fromUnit: bitRateUnit, toUnit: 'B' });
   return bitRateInBytes > 0 ? dataSizeInBytes / bitRateInBytes : 0;
 }
 
-export function neededRate({
+export function transferSpeedRate({
   dataSize,
   dataSizeUnit,
   hours,
@@ -29,7 +29,7 @@ export function neededRate({
   hours: number
   minutes: number
   seconds: number
-  bitRateUnit: BitsUnits
+  bitRateUnit: AllSupportedUnits
 }): number {
   const dataSizeInBits = convertStorageAndRateUnits({ value: dataSize, fromUnit: dataSizeUnit, toUnit: 'b' });
   const timeInSeconds = hours * 3600 + minutes * 60 + seconds;
@@ -45,7 +45,7 @@ export function amountTransferable({
   dataSizeUnit,
 }: {
   bitRate: number
-  bitRateUnit: BitsUnits
+  bitRateUnit: AllSupportedUnits
   hours: number
   minutes: number
   seconds: number
