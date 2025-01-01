@@ -93,7 +93,7 @@ const regexesData = [
     ],
   },
   {
-    regex: '\\s([^\\s\\[]+)(?:\\[(\\d+)\\])?:\\s',
+    regex: String.raw`\s([^\s\[]+)(?:\[(\d+)\])?:\s`,
     text: 'Nov 11 21:03:26 abc2 def.sh[1]: \nNov 11 21:03:26 abc2 def.sh: ',
     flags: 'gm',
     result: [
