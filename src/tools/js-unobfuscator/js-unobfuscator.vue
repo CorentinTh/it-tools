@@ -1,10 +1,28 @@
 <script setup lang="ts">
+import Sandybox from 'sandybox';
 import { webcrack } from 'webcrack';
 
 const input = ref('');
 const result = computedAsync(async () => {
   try {
-    return await webcrack(input.value);
+    const inputValue = input.value;
+    const sandbox = await Sandybox.create();
+    const iframe = document.querySelector('.sandybox') as HTMLIFrameElement;
+    iframe?.contentDocument?.head.insertAdjacentHTML(
+      'afterbegin',
+      '<meta http-equiv="Content-Security-Policy" content="default-src \'none\';">',
+    );
+    const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+    async function evalCode(code: string) {
+      const fn = await sandbox.addFunction(`() => ${code}`);
+      return Promise.race([
+        fn(),
+        sleep(10_000).then(() => Promise.reject(new Error('Sandbox timeout'))),
+      ]).finally(() => sandbox.removeFunction(fn));
+    }
+
+    return await webcrack(inputValue, { sandbox: evalCode });
   }
   catch (e: any) {
     return {
@@ -16,6 +34,7 @@ const result = computedAsync(async () => {
 </script>
 
 <template>
+  <iframe class="sandybox" style="display:none" title="sandbox" />
   <CInputText
     v-model:value="input"
     placeholder="Your obfuscate Javascript code"
