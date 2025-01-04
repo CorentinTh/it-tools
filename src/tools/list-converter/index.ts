@@ -10,4 +10,5 @@ export const tool = defineTool({
   component: () => import('./list-converter.vue'),
   icon: List,
   createdAt: new Date('2023-05-07'),
+  category: 'Converter',
 });

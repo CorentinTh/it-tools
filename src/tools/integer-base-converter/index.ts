@@ -9,4 +9,5 @@ export const tool = defineTool({
   keywords: ['integer', 'number', 'base', 'conversion', 'decimal', 'hexadecimal', 'binary', 'octal', 'base64'],
   component: () => import('./integer-base-converter.vue'),
   icon: ArrowsLeftRight,
+  category: 'Converter',
 });

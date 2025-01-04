@@ -9,4 +9,5 @@ export const tool = defineTool({
   keywords: ['url', 'parser', 'protocol', 'origin', 'params', 'port', 'username', 'password', 'href'],
   component: () => import('./url-parser.vue'),
   icon: Unlink,
+  category: 'Web',
 });

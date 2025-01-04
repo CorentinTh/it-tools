@@ -10,4 +10,5 @@ export const tool = defineTool({
   component: () => import('./mac-address-generator.vue'),
   icon: Devices,
   createdAt: new Date('2023-11-31'),
+  category: 'Network',
 });

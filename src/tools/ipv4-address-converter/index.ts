@@ -10,4 +10,5 @@ export const tool = defineTool({
   component: () => import('./ipv4-address-converter.vue'),
   icon: Binary,
   createdAt: new Date('2023-04-08'),
+  category: 'Network',
 });

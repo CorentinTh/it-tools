@@ -24,4 +24,5 @@ export const tool = defineTool({
   ],
   component: () => import('./keycode-info.vue'),
   icon: Keyboard,
+  category: 'Web',
 });

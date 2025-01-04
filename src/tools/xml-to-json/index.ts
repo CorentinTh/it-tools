@@ -9,4 +9,5 @@ export const tool = defineTool({
   component: () => import('./xml-to-json.vue'),
   icon: Braces,
   createdAt: new Date('2024-08-09'),
+  category: 'Converter',
 });

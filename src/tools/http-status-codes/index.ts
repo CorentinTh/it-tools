@@ -17,4 +17,5 @@ export const tool = defineTool({
   component: () => import('./http-status-codes.vue'),
   icon: HttpRound,
   createdAt: new Date('2023-04-13'),
+  category: 'Web',
 });

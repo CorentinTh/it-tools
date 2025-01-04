@@ -10,4 +10,5 @@ export const tool = defineTool({
   component: () => import('./benchmark-builder.vue'),
   icon: SpeedFilled,
   createdAt: new Date('2023-04-05'),
+  category: 'Measurement',
 });

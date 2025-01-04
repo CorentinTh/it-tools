@@ -24,4 +24,5 @@ export const tool = defineTool({
   component: () => import('./hash-text.vue'),
   icon: EyeOff,
   redirectFrom: ['/hash'],
+  category: 'Crypto',
 });

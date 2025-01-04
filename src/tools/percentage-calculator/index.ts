@@ -10,4 +10,5 @@ export const tool = defineTool({
   component: () => import('./percentage-calculator.vue'),
   icon: Percentage,
   createdAt: new Date('2023-06-18'),
+  category: 'Math',
 });
