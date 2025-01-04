@@ -129,6 +129,8 @@ declare module '@vue/runtime-core' {
     MenuLayout: typeof import('./src/components/MenuLayout.vue')['default']
     MetaTagGenerator: typeof import('./src/tools/meta-tag-generator/meta-tag-generator.vue')['default']
     MimeTypes: typeof import('./src/tools/mime-types/mime-types.vue')['default']
+    MyNewTool: typeof import('./src/tools/my-new-tool/my-new-tool.vue')['default']
+    NardyEncTool: typeof import('./src/tools/nardy-enc-tool/nardy-enc-tool.vue')['default']
     NavbarButtons: typeof import('./src/components/NavbarButtons.vue')['default']
     NCheckbox: typeof import('naive-ui')['NCheckbox']
     NCode: typeof import('naive-ui')['NCode']
