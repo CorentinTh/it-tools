@@ -29,6 +29,7 @@ export default defineConfig({
       strictMessage: false,
       include: [
         resolve(__dirname, 'locales/**'),
+        resolve(__dirname, 'src/tools/*/locales/**'),
       ],
     }),
     AutoImport({
