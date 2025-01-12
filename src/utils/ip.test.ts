@@ -6,18 +6,18 @@ describe('ipv4/6 util', () => {
     it('returns cidr', () => {
       expect(parseAsCIDR('1.1.1.1/6')).to.eql('1.1.1.1/6'); // NOSONAR
       expect(parseAsCIDR('172.16.2.2/16')).to.eql('172.16.2.2/16'); // NOSONAR
-      expect(parseAsCIDR('1a:b:c::d:e:f/ffff:ffff:f4ff:ffff:ffff:ff5f:ffff:ff00')).to.eql(''); // NOSONAR
+      expect(parseAsCIDR('1a:b:c::d:e:f/ffff:ffff:f4ff:ffff:ffff:ff5f:ffff:ff00')).to.eql(undefined); // NOSONAR
       expect(parseAsCIDR('10.1.2.3/255.255.255.252')).to.eql('10.1.2.0/30'); // NOSONAR
-      expect(parseAsCIDR('10.*.0.*')).to.eql(''); // NOSONAR
+      expect(parseAsCIDR('10.*.0.*')).to.eql(undefined); // NOSONAR
       expect(parseAsCIDR('10.1.0.*')).to.eql('10.1.0.0/24'); // NOSONAR
       expect(parseAsCIDR('10.2.*.*')).to.eql('10.2.0.0/16'); // NOSONAR
       expect(parseAsCIDR('a:b:0:8000::/ffff:ffff:ffff:8000::')).to.eql('a:b:0:8000::/49'); // NOSONAR
       expect(parseAsCIDR('::/::')).to.eql('::/0'); // NOSONAR
       expect(parseAsCIDR('10.20.30.64-10.20.30.127')).to.eql('10.20.30.64/26'); // NOSONAR
-      expect(parseAsCIDR('10.0.128.0/255.0.128.0')).to.eql(''); // NOSONAR
+      expect(parseAsCIDR('10.0.128.0/255.0.128.0')).to.eql(undefined); // NOSONAR
       expect(parseAsCIDR('a::bc:1234/128')).to.eql('a::bc:1234/128'); // NOSONAR
       expect(parseAsCIDR('a::bc:ff00-a::bc:ff0f')).to.eql('a::bc:ff00/124'); // NOSONAR
-      expect(parseAsCIDR('10.0.1.1/255.255.1.0')).to.eql(''); // NOSONAR
+      expect(parseAsCIDR('10.0.1.1/255.255.1.0')).to.eql(undefined); // NOSONAR
       expect(parseAsCIDR('10.0.0.0/255.255.0.0')).to.eql('10.0.0.0/16'); // NOSONAR
     });
   }); // NOSONAR
