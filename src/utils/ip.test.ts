@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { getIPNetworkType, getNetworksCount, getSubnets, parseAsCIDR, to6to4Prefix, toARPA, toIPv4MappedAddress, toIPv4MappedAddressDecimal } from './ip';
 
-describe('ipv4/6 util', // NOSONAR () => {
-  describe('parseAsCIDR', // NOSONAR () => {
-    it('returns cidr', // NOSONAR () => {
+describe('ipv4/6 util', () => {
+  describe('parseAsCIDR', () => {
+    it('returns cidr', () => {
       expect(parseAsCIDR('1.1.1.1/6')).to.eql('1.1.1.1/6'); // NOSONAR
       expect(parseAsCIDR('172.16.2.2/16')).to.eql('172.16.2.2/16'); // NOSONAR
       expect(parseAsCIDR('1a:b:c::d:e:f/ffff:ffff:f4ff:ffff:ffff:ff5f:ffff:ff00')).to.eql(''); // NOSONAR
@@ -21,8 +21,8 @@ describe('ipv4/6 util', // NOSONAR () => {
       expect(parseAsCIDR('10.0.0.0/255.255.0.0')).to.eql('10.0.0.0/16'); // NOSONAR
     });
   }); // NOSONAR
-  describe('getSubnets', // NOSONAR () => {
-    it('returns subnets', // NOSONAR () => {
+  describe('getSubnets', () => {
+    it('returns subnets', () => {
       expect(getSubnets('1.1.1.1/1')).to.eql([
         '0.0.0.0/1', // NOSONAR
         '128.0.0.0/1', // NOSONAR
@@ -119,8 +119,8 @@ describe('ipv4/6 util', // NOSONAR () => {
       expect(getSubnets('2001:db8:0:85a3:0:0:ac1f:8001/112')).to.eql([]); // NOSONAR
     }); // NOSONAR
   }); // NOSONAR
-  describe('getNetworksCount', // NOSONAR () => {
-    it('returns networks count', // NOSONAR () => {
+  describe('getNetworksCount', () => {
+    it('returns networks count', () => {
       expect(getNetworksCount('1.1.1.1/1')).to.eql(2); // NOSONAR
       expect(getNetworksCount('1.1.1.1/2')).to.eql(4); // NOSONAR
       expect(getNetworksCount('1.1.1.1/3')).to.eql(8); // NOSONAR
@@ -160,8 +160,8 @@ describe('ipv4/6 util', // NOSONAR () => {
       expect(getNetworksCount('2001:db8:0:85a3:0:0:ac1f:8001/122')).to.eql(-1); // NOSONAR
     }); // NOSONAR
   }); // NOSONAR
-  describe('getIPNetworkType', // NOSONAR () => {
-    it('returns network type', // NOSONAR () => {
+  describe('getIPNetworkType', () => {
+    it('returns network type', () => {
       expect(getIPNetworkType('1.1.1.1')).to.eql('Public'); // NOSONAR
       expect(getIPNetworkType('10.10.1.1')).to.eql('Private Use'); // NOSONAR
       expect(getIPNetworkType('172.16.0.1')).to.eql('Private Use'); // NOSONAR
@@ -187,8 +187,8 @@ describe('ipv4/6 util', // NOSONAR () => {
     }); // NOSONAR
   }); // NOSONAR
 
-  describe('toARPA', // NOSONAR () => {
-    it('returns ARPA address', // NOSONAR () => {
+  describe('toARPA', () => {
+    it('returns ARPA address', () => {
       expect(toARPA('1.1.1.1')).to.eql('1.1.1.1.in-addr.arpa'); // NOSONAR
       expect(toARPA('10.10.1.1')).to.eql('1.1.10.10.in-addr.arpa'); // NOSONAR
       expect(toARPA('192.168.1.1')).to.eql('1.1.168.192.in-addr.arpa'); // NOSONAR
@@ -200,8 +200,8 @@ describe('ipv4/6 util', // NOSONAR () => {
       expect(toARPA('::1')).to.eql('1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa.'); // NOSONAR
     }); // NOSONAR
   }); // NOSONAR
-  describe('toIPv4MappedAddress', // NOSONAR () => {
-    it('returns IPv4MappedAddress', // NOSONAR () => {
+  describe('toIPv4MappedAddress', () => {
+    it('returns IPv4MappedAddress', () => {
       expect(toIPv4MappedAddress('1.1.1.1')).to.eql('::ffff:0101:0101'); // NOSONAR
       expect(toIPv4MappedAddress('10.10.1.1')).to.eql('::ffff:0a0a:0101'); // NOSONAR
       expect(toIPv4MappedAddress('172.18.10.9')).to.eql('::ffff:ac12:0a09'); // NOSONAR
@@ -209,8 +209,8 @@ describe('ipv4/6 util', // NOSONAR () => {
       expect(toIPv4MappedAddress('255.255.255.0')).to.eql('::ffff:ffff:ff00'); // NOSONAR
     }); // NOSONAR
   }); // NOSONAR
-  describe('toIPv4MappedAddressDecimal', // NOSONAR () => {
-    it('returns networks count', // NOSONAR () => {
+  describe('toIPv4MappedAddressDecimal', () => {
+    it('returns networks count', () => {
       expect(toIPv4MappedAddressDecimal('1.1.1.1')).to.eql('::ffff:1.1.1.1'); // NOSONAR
       expect(toIPv4MappedAddressDecimal('10.10.1.1')).to.eql('::ffff:10.10.1.1'); // NOSONAR
       expect(toIPv4MappedAddressDecimal('192.168.1.1')).to.eql('::ffff:192.168.1.1'); // NOSONAR
@@ -219,8 +219,8 @@ describe('ipv4/6 util', // NOSONAR () => {
       expect(toIPv4MappedAddressDecimal('2001:db8:0:85a3::ac1f:8001')).to.eql(''); // NOSONAR
     }); // NOSONAR
   }); // NOSONAR
-  describe('to6to4Prefix', // NOSONAR () => {
-    it('returns networks count', // NOSONAR () => {
+  describe('to6to4Prefix', () => {
+    it('returns networks count', () => {
       expect(to6to4Prefix('1.1.1.1')).to.eql('2002:01:0:1:01:01::/48'); // NOSONAR
       expect(to6to4Prefix('10.10.1.1')).to.eql('2002:0a:0:a:01:01::/48'); // NOSONAR
       expect(to6to4Prefix('172.18.10.9')).to.eql('2002:ac:1:2:0a:09::/48'); // NOSONAR
