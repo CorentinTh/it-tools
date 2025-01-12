@@ -23,11 +23,11 @@ describe('ipv4/6 util', () => {
   }); // NOSONAR
   describe('getSubnets', () => {
     it('returns subnets', () => {
-      expect(getSubnets('1.1.1.1/1')).to.eql([
+      expect(getSubnets('1.1.1.1/1')).to.eql([ // NOSONAR
         '0.0.0.0/1', // NOSONAR
         '128.0.0.0/1', // NOSONAR
       ]); // NOSONAR
-      expect(getSubnets('1.1.1.1/6')).to.eql([
+      expect(getSubnets('1.1.1.1/6')).to.eql([ // NOSONAR
         '0.0.0.0/6', // NOSONAR
         '4.0.0.0/6', // NOSONAR
         '8.0.0.0/6', // NOSONAR
@@ -94,7 +94,7 @@ describe('ipv4/6 util', () => {
         '252.0.0.0/6', // NOSONAR
       ]); // NOSONAR
       expect(getSubnets('1.1.1.1/8')).to.eql([]); // NOSONAR
-      expect(getSubnets('1.1.1.1/11')).to.eql([
+      expect(getSubnets('1.1.1.1/11')).to.eql([ // NOSONAR
         '1.0.0.0/11', // NOSONAR
         '1.32.0.0/11', // NOSONAR
         '1.64.0.0/11', // NOSONAR
@@ -105,7 +105,7 @@ describe('ipv4/6 util', () => {
         '1.224.0.0/11', // NOSONAR
       ]); // NOSONAR
       expect(getSubnets('172.16.2.2/16')).to.eql([]); // NOSONAR
-      expect(getSubnets('172.16.2.2/26')).to.eql([
+      expect(getSubnets('172.16.2.2/26')).to.eql([ // NOSONAR
         '172.16.2.0/26', // NOSONAR
         '172.16.2.64/26', // NOSONAR
         '172.16.2.128/26', // NOSONAR
