@@ -2,7 +2,11 @@ import jwtDecode, { type JwtHeader, type JwtPayload } from 'jwt-decode';
 import _ from 'lodash';
 import { ALGORITHM_DESCRIPTIONS, CLAIM_DESCRIPTIONS } from './jwt-parser.constants';
 
-export { decodeJwt };
+export { decodeJwt, getJwtAlgorithm };
+
+function getJwtAlgorithm({ jwt }: { jwt: string }) {
+  return jwtDecode<JwtHeader>(jwt, { header: true }).alg;
+}
 
 function decodeJwt({ jwt }: { jwt: string }) {
   const rawHeader = jwtDecode<JwtHeader>(jwt, { header: true });
@@ -19,7 +23,7 @@ function decodeJwt({ jwt }: { jwt: string }) {
 
 function parseClaims({ claim, value }: { claim: string; value: unknown }) {
   const claimDescription = CLAIM_DESCRIPTIONS[claim];
-  const formattedValue = _.isPlainObject(value) || _.isArray(value) ? JSON.stringify(value, null, 3) : _.toString(value);
+  const formattedValue = _.isPlainObject(value) ? JSON.stringify(value, null, 3) : _.toString(value);
   const friendlyValue = getFriendlyValue({ claim, value });
 
   return {
