@@ -78,12 +78,17 @@ const outputFormatHasQuality = computed(() => {
 
 const svgWasmLoaded = ref(false);
 
+async function onFilesUploaded(uploadedFiles: File[]) {
+  for (const file of uploadedFiles) {
+    await onFileUploaded(file);
+  }
+}
 async function onFileUploaded(uploadedFile: File) {
   const outputFormatValue = outputFormat.value;
   file.value = uploadedFile;
   let fileBuffer = new Uint8Array(await uploadedFile.arrayBuffer());
 
-  fileName.value = `${uploadedFile.name}`;
+  fileName.value = uploadedFile.name.replace(/\.\w+$/, '');
   status.value = 'processing';
   try {
     if (outputFormatValue === 'webp') {
@@ -128,16 +133,7 @@ async function onFileUploaded(uploadedFile: File) {
 
 <template>
   <div>
-    <div style="flex: 0 0 100%" mb-2>
-      <div mx-auto max-w-600px>
-        <c-file-upload
-          title="Drag and drop an image file here, or click to select a file"
-          accept="image/*"
-          paste-image
-          @file-upload="onFileUploaded"
-        />
-      </div>
-    </div>
+    <h4>First, select output options:</h4>
 
     <c-select
       v-model:value="outputFormat"
@@ -155,6 +151,21 @@ async function onFileUploaded(uploadedFile: File) {
       <n-form-item label="SVG scaling:" label-placement="left">
         <n-input-number v-model:value="svgScale" :min="0" />
       </n-form-item>
+    </div>
+
+    <h4>Then, drag and drop your images below and they will be converted and downloaded immediately:</h4>
+
+    <div style="flex: 0 0 100%" mb-2>
+      <div mx-auto max-w-600px>
+        <c-file-upload
+          title="Drag and drop images files here, or click to select some files"
+          accept="image/*"
+          paste-image
+          multiple
+          @file-upload="onFileUploaded"
+          @files-upload="onFilesUploaded"
+        />
+      </div>
     </div>
 
     <div mt-3 flex justify-center>
