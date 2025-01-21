@@ -28,6 +28,7 @@ import {
 } from './date-time-converter.models';
 import { withDefaultOnError } from '@/utils/defaults';
 import { useValidation } from '@/composable/validation';
+import { isValidObjectId, objectIdFromDate, objectIdToDate } from '@/utils/objectId';
 
 const inputDate = ref('');
 
@@ -84,9 +85,9 @@ const formats: DateFormat[] = [
   },
   {
     name: 'Mongo ObjectID',
-    fromDate: date => `${Math.floor(date.getTime() / 1000).toString(16)}0000000000000000`,
-    toDate: objectId => new Date(Number.parseInt(objectId.substring(0, 8), 16) * 1000),
-    formatMatcher: date => isMongoObjectId(date),
+    fromDate: date => objectIdFromDate(date.getTime(), true),
+    toDate: objectIdToDate,
+    formatMatcher: date => isValidObjectId(date),
   },
   {
     name: 'Excel date/time',
