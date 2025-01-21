@@ -14,7 +14,7 @@ export function objectIdFromDate(milliseconds: number, onlyDate: boolean = false
       return '0';
     }
 
-    return (Math.random() * 16 | 0).toString(16);
+    return (_.random() * 16 | 0).toString(16);
   };
 
   const timestamp = (milliseconds / 1000 | 0).toString(16);
