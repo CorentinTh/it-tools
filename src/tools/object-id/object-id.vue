@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import InputCopyable from '@/components/InputCopyable.vue';
-import CCard from '@/ui/c-card/c-card.vue';
 import { isValidObjectId, objectIdFromDate, objectIdToDate } from '@/utils/objectId';
 
 const objectIdDate = ref(new Date().getTime());
