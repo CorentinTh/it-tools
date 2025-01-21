@@ -19,7 +19,6 @@ import {
   isExcelFormat,
   isISO8601DateTimeString,
   isISO9075DateString,
-  isMongoObjectId,
   isRFC3339DateString,
   isRFC7231DateString,
   isTimestamp,
