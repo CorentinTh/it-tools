@@ -182,6 +182,7 @@ declare module '@vue/runtime-core' {
     UlidGenerator: typeof import('./src/tools/ulid-generator/ulid-generator.vue')['default']
     UrlEncoder: typeof import('./src/tools/url-encoder/url-encoder.vue')['default']
     UrlParser: typeof import('./src/tools/url-parser/url-parser.vue')['default']
+    UrlDefang: typeof import('./src/tools/url-defang/url-defang.vue')['default']
     UserAgentParser: typeof import('./src/tools/user-agent-parser/user-agent-parser.vue')['default']
     UserAgentResultCards: typeof import('./src/tools/user-agent-parser/user-agent-result-cards.vue')['default']
     UuidGenerator: typeof import('./src/tools/uuid-generator/uuid-generator.vue')['default']

@@ -205,6 +205,10 @@ tools:
     title: URL parser
     description: Parse a URL into its separate constituent parts (protocol, origin, params, port, username-password, ...)
 
+  url-defang:
+    title: URL Defang
+    description: Defangs a given url to make a potentially malicous domain safe to share for security research or operations purposes.
+
   iban-validator-and-parser:
     title: IBAN validator and parser
     description: Validate and parse IBAN numbers. Check if an IBAN is valid and get the country, BBAN, if it is a QR-IBAN and the IBAN friendly format.
