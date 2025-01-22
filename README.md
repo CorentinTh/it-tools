@@ -8,7 +8,7 @@ Useful tools for developer and people working in IT. [Have a look !](https://it-
 
 ## Sponsors
 
-[![Fern banner](./.github/fern-banner.svg)](https://bit.ly/3zBl7DG)
+[![Renderize banner](./.github/sponsor-banner.svg)](https://renderize.tech?utm_source=it-tools&utm_medium=readme)
 
 ## Functionalities and roadmap
 
@@ -117,7 +117,7 @@ It will create a directory in `src/tools` with the correct files, and a the impo
 
 Big thanks to all the people who have already contributed!
 
-[![contributors](https://contrib.rocks/image?repo=corentinth/it-tools)](https://github.com/corentinth/it-tools/graphs/contributors)
+[![contributors](https://contrib.rocks/image?repo=corentinth/it-tools&refresh=1)](https://github.com/corentinth/it-tools/graphs/contributors)
 
 ## Credits
 

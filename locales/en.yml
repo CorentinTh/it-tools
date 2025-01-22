@@ -3,6 +3,7 @@ home:
     newestTools: Newest tools
     favoriteTools: 'Your favorite tools'
     allTools: 'All the tools'
+    favoritesDndToolTip: 'Drag and drop to reorder favorites'
   subtitle: 'Handy tools for developers'
   toggleMenu: 'Toggle menu'
   home: Home
@@ -14,13 +15,13 @@ home:
     p1: 'Give us a star on'
     githubRepository: 'IT-Tools GitHub repository'
     p2: 'or follow us on'
-    twitterAccount: 'IT-Tools Twitter account'
+    twitterXAccount: 'IT-Tools X account'
     thankYou: 'Thank you!'
   nav:
     github: 'GitHub repository'
     githubRepository: 'IT-Tools GitHub repository'
-    twitter: 'Twitter account'
-    twitterAccount: 'IT Tools Twitter account'
+    twitterX: 'X account'
+    twitterXAccount: 'IT Tools X account'
     about: 'About  IT-Tools'
     aboutLabel: 'About'
     darkMode: 'Dark mode'
@@ -32,7 +33,7 @@ about:
 
     This wonderful website, made with ❤ by [Corentin Thomasset](https://corentin.tech?utm_source=it-tools&utm_medium=about) , aggregates useful tools for developer and people working in IT. If you find it useful, please feel free to share it to people you think may find it useful too and don't forget to bookmark it in your shortcut bar!
 
-    IT Tools is open-source (under the MIT license) and free, and will always be, but it costs me money to host and renew the domain name. If you want to support my work, and encourage me to add more tools, please consider supporting by [sponsoring me](https://www.buymeacoffee.com/cthmsst).
+    IT Tools is open-source (under the GPL-3.0 license) and free, and will always be, but it costs me money to host and renew the domain name. If you want to support my work, and encourage me to add more tools, please consider supporting by [sponsoring me](https://www.buymeacoffee.com/cthmsst).
 
     ## Technologies
 
