@@ -1,51 +1,61 @@
 <script setup lang="ts">
-import VueBarcode from '@chenfengyuan/vue-barcode';
-import JsBarcode from 'jsbarcode';
+import bwipjs, { type RenderOptions } from 'bwip-js/browser';
+import { Base64 } from 'js-base64';
+import formats from './barcode.formats.json';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 import { useQueryParamOrStorage } from '@/composable/queryParams';
 
-const foreground = useQueryParamOrStorage({ name: 'fg', storageName: 'barcode-gen:fg', defaultValue: '#000000ff' });
-const background = useQueryParamOrStorage({ name: 'bg', storageName: 'barcode-gen:bg', defaultValue: '#ffffffff' });
-const width = useQueryParamOrStorage({ name: 'width', storageName: 'barcode-gen:width', defaultValue: 2 });
-const height = useQueryParamOrStorage({ name: 'height', storageName: 'barcode-gen:height', defaultValue: 100 });
+const foreground = useQueryParamOrStorage({ name: 'fg', storageName: 'barcode-gen:fg', defaultValue: '#000000' });
+const background = useQueryParamOrStorage({ name: 'bg', storageName: 'barcode-gen:bg', defaultValue: '#FFFFFF' });
+const scale = useQueryParamOrStorage({ name: 'scale', storageName: 'barcode-gen:scale', defaultValue: 2 });
+const height = useQueryParamOrStorage({ name: 'height', storageName: 'barcode-gen:height', defaultValue: 25 });
 const margin = useQueryParamOrStorage({ name: 'margin', storageName: 'barcode-gen:margin', defaultValue: 10 });
-const format = useQueryParamOrStorage({ name: 'format', storageName: 'barcode-gen:format', defaultValue: 'auto' });
+const format = useQueryParamOrStorage({ name: 'format', storageName: 'barcode-gen:format', defaultValue: 'code128' });
 const displayValue = useQueryParamOrStorage({ name: 'display', storageName: 'barcode-gen:display', defaultValue: true });
-const ean128 = useQueryParamOrStorage({ name: 'ean128', storageName: 'barcode-gen:ean128', defaultValue: false });
 const value = ref('123456789');
+const barcodeCanvas = ref<HTMLCanvasElement>();
 
-const options = computed(() => ({
-  lineColor: foreground.value,
-  background: background.value,
-  width: width.value,
+const options = computed<RenderOptions>(() => ({
+  barcolor: foreground.value,
+  textcolor: foreground.value,
+  backgroundcolor: background.value,
+  scale: scale.value,
   height: height.value,
-  margin: margin.value,
-  format: format.value === 'auto' ? 'CODE128' : format.value,
-  displayValue: displayValue.value,
-  ean128: ean128.value,
+  padding: margin.value,
+  bcid: format.value === 'auto' ? 'code128' : format.value,
+  includetext: displayValue.value,
   text: value.value,
+  textxalign: 'center',
 }));
 
-const formats = [
-  'auto',
-  'CODE39',
-  'CODE128', 'CODE128A', 'CODE128B', 'CODE128C',
-  'EAN13', 'EAN8', 'EAN5', 'EAN2', 'UPC', 'UPCE',
-  'ITF14',
-  'ITF',
-  'MSI', 'MSI10', 'MSI11', 'MSI1010', 'MSI1110',
-  'pharmacode',
-  'codabar',
-  'GenericBarcode',
-];
+const error = ref('');
+watchEffect(() => {
+  if (!barcodeCanvas.value) {
+    return;
+  }
 
-const barcodePNG = computed(() => {
-  const canvas = document.createElement('canvas');
-  JsBarcode(canvas, value.value, options.value);
-  return canvas.toDataURL('image/png');
+  try {
+    bwipjs.toCanvas(barcodeCanvas.value, options.value);
+  }
+  catch (e: any) {
+    error.value = e.toString();
+  }
 });
 
-const { download } = useDownloadFileFromBase64({ source: barcodePNG, filename: 'barcode.png' });
+const barcodePNG = computed(() => {
+  return barcodeCanvas.value?.toDataURL('image/png') || '';
+});
+const barcodeSVG = computed(() => {
+  try {
+    return Base64.encode(bwipjs.toSVG(options.value));
+  }
+  catch (e: any) {
+    return '';
+  }
+});
+
+const { download: downloadPNG } = useDownloadFileFromBase64({ source: barcodePNG, filename: 'barcode.png' });
+const { download: downloadSVG } = useDownloadFileFromBase64({ source: barcodeSVG, filename: 'barcode.svg' });
 </script>
 
 <template>
@@ -61,20 +71,31 @@ const { download } = useDownloadFileFromBase64({ source: barcodePNG, filename: '
           multiline
           rows="1"
           autosize
-          placeholder="Your text..."
+          placeholder="Your barcode..."
           mb-6
         />
         <n-form label-width="130" label-placement="left">
+          <c-select
+            v-model:value="format"
+            label="Format:"
+            label-position="left"
+            label-width="130px"
+            label-align="right"
+            :options="formats"
+            searchable
+            mb-4
+          />
+
           <n-form-item label="Foreground color:">
-            <n-color-picker v-model:value="foreground" :modes="['hex']" />
+            <n-color-picker v-model:value="foreground" :modes="['hex']" :show-alpha="false" />
           </n-form-item>
           <n-form-item label="Background color:">
-            <n-color-picker v-model:value="background" :modes="['hex']" />
+            <n-color-picker v-model:value="background" :modes="['hex']" :show-alpha="false" />
           </n-form-item>
-          <n-form-item label="Width:">
-            <n-input-number v-model:value="width" :min="0" />
+          <n-form-item label="Scale:">
+            <n-input-number v-model:value="scale" :min="0" />
           </n-form-item>
-          <n-form-item label="Height:">
+          <n-form-item label="Height (mm):">
             <n-input-number v-model:value="height" :min="0" />
           </n-form-item>
           <n-form-item label="Margin:">
@@ -83,25 +104,22 @@ const { download } = useDownloadFileFromBase64({ source: barcodePNG, filename: '
           <n-form-item label="Display text:">
             <n-checkbox v-model:checked="displayValue" />
           </n-form-item>
-          <c-select
-            v-model:value="format"
-            label="Format:"
-            label-position="left"
-            label-width="130px"
-            label-align="right"
-            :options="formats.map((value) => ({ label: value, value }))"
-          />
         </n-form>
       </n-gi>
       <n-gi>
         <div flex flex-col items-center gap-3>
-          <VueBarcode
-            :options="options"
-            :value="value"
-          />
-          <c-button @click="download">
-            Download barcode
-          </c-button>
+          <c-alert v-if="error">
+            {{ error }}
+          </c-alert>
+          <canvas ref="barcodeCanvas" />
+          <div flex justify-center>
+            <c-button mr-2 @click="downloadPNG">
+              Download PNG barcode
+            </c-button>
+            <c-button @click="downloadSVG">
+              Download SVG barcode
+            </c-button>
+          </div>
         </div>
       </n-gi>
     </n-grid>

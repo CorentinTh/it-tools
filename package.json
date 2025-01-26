@@ -50,6 +50,7 @@
     "@vueuse/router": "^10.0.0",
     "@zxing/library": "^0.21.0",
     "bcryptjs": "^2.4.3",
+    "bwip-js": "^4.5.1",
     "change-case": "^4.1.2",
     "colord": "^2.9.3",
     "composerize-ts": "^0.6.2",
