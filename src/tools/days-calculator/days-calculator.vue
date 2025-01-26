@@ -146,14 +146,23 @@ const inputProps = {
         <input-copyable v-bind="inputProps" label="End Date" :value="resultDaysDiff.endDate" />
         <input-copyable v-bind="inputProps" label="End Date (ISO)" :value="resultDaysDiff.endDate.toISOString()" />
         <n-divider />
-        <input-copyable v-bind="inputProps" label="Total Difference Seconds" :value="resultDaysDiff.totalDifferenceSeconds" />
+        <input-copyable v-bind="inputProps" label="Total Difference Seconds" :value="resultDaysDiff.totalDifference.seconds" />
+        <input-copyable v-bind="inputProps" label="Total Difference Minutes" :value="resultDaysDiff.totalDifference.minutes" />
+        <input-copyable v-bind="inputProps" label="Total Difference Hours" :value="resultDaysDiff.totalDifference.hours" />
+        <input-copyable v-bind="inputProps" label="Total Difference Days" :value="resultDaysDiff.totalDifference.days" />
+        <input-copyable v-bind="inputProps" label="Total Difference Weeks" :value="resultDaysDiff.totalDifference.weeks" />
+        <input-copyable v-bind="inputProps" label="Total Difference Months" :value="resultDaysDiff.totalDifference.months" />
+        <input-copyable v-bind="inputProps" label="Total Difference Years" :value="resultDaysDiff.totalDifference.years" />
         <input-copyable v-bind="inputProps" label="Total Difference" :value="resultDaysDiff.totalDifferenceFormatted" />
+        <n-divider />
         <input-copyable v-bind="inputProps" label="Difference Seconds" :value="resultDaysDiff.differenceSeconds" />
         <input-copyable v-bind="inputProps" label="Difference " :value="resultDaysDiff.differenceFormatted" />
+        <n-divider />
         <input-copyable v-bind="inputProps" label="Business Seconds" :value="resultDaysDiff.businessSeconds" />
         <input-copyable v-bind="inputProps" label="Business Time" :value="resultDaysDiff.businessSecondsFormatted" />
         <input-copyable v-bind="inputProps" label="Business Hours" :value="resultDaysDiff.businessHours" />
         <input-copyable v-bind="inputProps" label="Business Days" :value="resultDaysDiff.businessDays" />
+        <n-divider />
         <input-copyable v-bind="inputProps" placeholder="None" label="Mondays" :value="resultDaysDiff.mondays" />
         <input-copyable v-bind="inputProps" placeholder="None" label="Tuesdays" :value="resultDaysDiff.tuesdays" />
         <input-copyable v-bind="inputProps" placeholder="None" label="Wednesdays" :value="resultDaysDiff.wednesdays" />
@@ -161,6 +170,7 @@ const inputProps = {
         <input-copyable v-bind="inputProps" placeholder="None" label="Fridays" :value="resultDaysDiff.fridays" />
         <input-copyable v-bind="inputProps" placeholder="None" label="Saturdays" :value="resultDaysDiff.saturdays" />
         <input-copyable v-bind="inputProps" placeholder="None" label="Sundays" :value="resultDaysDiff.sundays" />
+        <n-divider />
         <input-copyable v-bind="inputProps" label="Weekend Days" :value="resultDaysDiff.weekendDays" />
         <input-copyable v-bind="inputProps" label="Full Weekends" :value="resultDaysDiff.weekends" />
         <c-card v-if="resultDaysDiff.holidays?.length" title="Holidays in period">

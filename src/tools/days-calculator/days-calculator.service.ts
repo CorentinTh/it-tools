@@ -7,7 +7,15 @@ import { BusinessTime, type Holiday } from './business-time-calculator';
 interface DateTimeRange {
   startDate: Date
   endDate: Date
-  totalDifferenceSeconds: number
+  totalDifference: {
+    years: number
+    months: number
+    weeks: number
+    days: number
+    hours: number
+    minutes: number
+    seconds: number
+  }
   totalDifferenceFormatted: string
   differenceSeconds: number
   differenceFormatted: string
@@ -96,6 +104,12 @@ export function diffDateTimes({
   const startEnd = { start: startDateTime, end: endDateTime };
 
   const totalDifferenceSeconds = endDateTime.diff(startDateTime, 'seconds').toObject().seconds || 0;
+  const totalDifferenceMinutes = endDateTime.diff(startDateTime, 'minutes').toObject().minutes || 0;
+  const totalDifferenceHours = endDateTime.diff(startDateTime, 'hours').toObject().hours || 0;
+  const totalDifferenceDays = endDateTime.diff(startDateTime, 'days').toObject().days || 0;
+  const totalDifferenceWeeks = endDateTime.diff(startDateTime, 'weeks').toObject().weeks || 0;
+  const totalDifferenceMonths = endDateTime.diff(startDateTime, 'months').toObject().months || 0;
+  const totalDifferenceYears = endDateTime.diff(startDateTime, 'years').toObject().years || 0;
   const differenceSeconds = differenceTimeComputer.computeBusinessSecondsInInterval(startEnd);
   const businessSeconds = businessTimeComputer.computeBusinessSecondsInInterval(startEnd);
   const weekDaysDates = datesByDays(startDateTime, endDateTime);
@@ -103,7 +117,15 @@ export function diffDateTimes({
   return {
     startDate: startDateTime.toJSDate(),
     endDate: endDateTime.toJSDate(),
-    totalDifferenceSeconds,
+    totalDifference: {
+      years: totalDifferenceYears,
+      months: totalDifferenceMonths,
+      weeks: totalDifferenceWeeks,
+      days: totalDifferenceDays,
+      hours: totalDifferenceHours,
+      minutes: totalDifferenceMinutes,
+      seconds: totalDifferenceSeconds,
+    },
     totalDifferenceFormatted: prettyMilliseconds(totalDifferenceSeconds * 1000),
     differenceSeconds,
     differenceFormatted: prettyMilliseconds(differenceSeconds * 1000),

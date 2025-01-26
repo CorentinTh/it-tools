@@ -65,6 +65,17 @@ describe('days-calculator', () => {
           type: 'public',
         },
       ];
+      const totalDiff1 = {
+        totalDifference: {
+          days: 30.416666666666668,
+          hours: 730,
+          minutes: 43800,
+          months: 0.9811827956989247,
+          seconds: 2628000,
+          weeks: 4.345238095238095,
+          years: 0.08333333333333333,
+        },
+      };
 
       const date1 = new Date('2024-08-01T07:21:46Z');
       const date2 = new Date('2024-08-31T17:21:46Z');
@@ -88,8 +99,8 @@ describe('days-calculator', () => {
         businessSecondsFormatted: '11d 5h 38m 14s',
         differenceFormatted: '29d 10h',
         differenceSeconds: 2541600,
+        ...totalDiff1,
         totalDifferenceFormatted: '30d 10h',
-        totalDifferenceSeconds: 2628000,
         holidays,
         ...daysInfos,
       });
@@ -112,8 +123,16 @@ describe('days-calculator', () => {
         businessSecondsFormatted: '10d 20h 38m 14.9s',
         differenceFormatted: '28d 16h 38m 13.9s',
         differenceSeconds: 2479093.999,
+        totalDifference: {
+          days: 29.69321758101852,
+          hours: 712.6372219444445,
+          minutes: 42758.233316666665,
+          months: 0.9578457284199522,
+          seconds: 2565493.999,
+          weeks: 4.241888225859788,
+          years: 0.08135128104388635,
+        },
         totalDifferenceFormatted: '29d 16h 38m 13.9s',
-        totalDifferenceSeconds: 2565493.999,
         holidays,
         ...daysInfos,
         saturdays: [
@@ -142,8 +161,8 @@ describe('days-calculator', () => {
         businessSecondsFormatted: '8d 5h 38m 14s',
         differenceFormatted: '21d 14h 38m 14s',
         differenceSeconds: 1867094,
+        ...totalDiff1,
         totalDifferenceFormatted: '30d 10h',
-        totalDifferenceSeconds: 2628000,
         holidays,
         ...daysInfos,
       });
@@ -167,7 +186,7 @@ describe('days-calculator', () => {
         differenceFormatted: '4d',
         differenceSeconds: 345600,
         totalDifferenceFormatted: '30d 10h',
-        totalDifferenceSeconds: 2628000,
+        ...totalDiff1,
         holidays,
         ...daysInfos,
       });
