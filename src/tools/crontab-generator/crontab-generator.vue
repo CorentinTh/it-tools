@@ -21,25 +21,25 @@ const helpers = [
   {
     symbol: '*',
     meaning: 'Any value',
-    example: '* * * *',
+    example: '* * * * *',
     equivalent: 'Every minute',
   },
   {
     symbol: '-',
     meaning: 'Range of values',
-    example: '1-10 * * *',
+    example: '1-10 * * * *',
     equivalent: 'Minutes 1 through 10',
   },
   {
     symbol: ',',
     meaning: 'List of values',
-    example: '1,10 * * *',
+    example: '1,10 * * * *',
     equivalent: 'At minutes 1 and 10',
   },
   {
     symbol: '/',
     meaning: 'Step values',
-    example: '*/10 * * *',
+    example: '*/10 * * * *',
     equivalent: 'Every 10 minutes',
   },
   {
