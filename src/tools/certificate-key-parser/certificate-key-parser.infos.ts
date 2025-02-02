@@ -6,6 +6,7 @@ import type {
 } from 'sshpk';
 import type * as openpgp from 'openpgp';
 import * as forge from 'node-forge';
+import oids from './oids.json';
 
 export interface LabelValue {
   label: string
@@ -112,6 +113,14 @@ export function getCertificateLabelValues(cert: Certificate) {
       multiline: true,
     },
     {
+      label: 'Valid From:',
+      value: cert.validFrom.toISOString(),
+    },
+    {
+      label: 'Valid Until:',
+      value: cert.validUntil.toISOString(),
+    },
+    {
       label: 'Issuer:',
       value: cert.issuer.toString(),
       multiline: true,
@@ -153,7 +162,12 @@ export function getCertificateLabelValues(cert: Certificate) {
     },
     {
       label: 'Extensions:',
-      value: JSON.stringify(cert.getExtensions(), null, 2),
+      value: JSON.stringify(cert.getExtensions().map(ext => ({
+        oid: (<any>ext).oid,
+        name: (<any>ext).name || (<any>oids)[(<any>ext).oid],
+        critical: (<any>ext).critical,
+        data: ext.data?.toString('hex') || (<any>ext).bits?.toString('hex'),
+      })), null, 2),
       multiline: true,
     },
     {
