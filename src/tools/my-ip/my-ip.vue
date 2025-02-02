@@ -4,7 +4,9 @@ import { useCopy } from '@/composable/copy';
 
 const [clientIP, refreshClientIP] = computedRefreshableAsync(async () => {
   try {
-    return (await (await fetch('https://jsonip.com', { mode: 'cors' })).json()).ip?.toString();
+    return (await (await fetch('https://api64.ipify.org?format=json', {
+      mode: 'cors',
+    })).json()).ip?.toString();
   }
   catch (e: any) {
     return e.toString();
