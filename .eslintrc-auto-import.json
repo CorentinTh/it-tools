@@ -286,6 +286,20 @@
     "watchTriggerable": true,
     "watchWithFilter": true,
     "whenever": true,
-    "toValue": true
+    "toValue": true,
+    "DirectiveBinding": true,
+    "ExtractDefaultPropTypes": true,
+    "ExtractPropTypes": true,
+    "ExtractPublicPropTypes": true,
+    "MaybeRef": true,
+    "MaybeRefOrGetter": true,
+    "WritableComputedRef": true,
+    "injectLocal": true,
+    "onWatcherCleanup": true,
+    "provideLocal": true,
+    "useClipboardItems": true,
+    "useId": true,
+    "useModel": true,
+    "useTemplateRef": true
   }
 }
