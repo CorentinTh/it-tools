@@ -4,7 +4,6 @@ import HomePage from './pages/Home.page.vue';
 import NotFound from './pages/404.page.vue';
 import { tools } from './tools';
 import { config } from './config';
-import { routes as demoRoutes } from './ui/demo/demo.routes';
 
 const toolsRoutes = tools.map(({ path, name, component, ...config }) => ({
   path,
@@ -33,7 +32,6 @@ const router = createRouter({
     },
     ...toolsRoutes,
     ...toolsRedirectRoutes,
-    ...(config.app.env === 'development' ? demoRoutes : []),
     { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
   ],
 });

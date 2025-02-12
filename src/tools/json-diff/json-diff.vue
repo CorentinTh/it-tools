@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import JSON5 from 'json5';
-
+import { useStorage } from '@vueuse/core';
 import DiffsViewer from './diff-viewer/diff-viewer.vue';
 import { withDefaultOnError } from '@/utils/defaults';
 import { isNotThrowing } from '@/utils/boolean';
 
-const rawLeftJson = ref('');
-const rawRightJson = ref('');
+const rawLeftJson = useStorage('json-diff:raw-left-json', '');
+const rawRightJson = useStorage('json-diff:raw-right-json', '');
 
 const leftJson = computed(() => withDefaultOnError(() => JSON5.parse(rawLeftJson.value), undefined));
 const rightJson = computed(() => withDefaultOnError(() => JSON5.parse(rawRightJson.value), undefined));

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import * as monaco from 'monaco-editor';
+import { useStorage } from '@vueuse/core';
 import { useStyleStore } from '@/stores/style.store';
 
 const props = withDefaults(defineProps<{ options?: monaco.editor.IDiffEditorOptions }>(), { options: () => ({}) });
@@ -44,6 +45,9 @@ useResizeObserver(editorContainer, () => {
   editor?.layout();
 });
 
+const originalText = useStorage('text-diff:original', 'original text');
+const modifiedText = useStorage('text-diff:modified', 'modified text');
+
 onMounted(() => {
   if (!editorContainer.value) {
     return;
@@ -56,9 +60,19 @@ onMounted(() => {
     },
   });
 
+  const original = monaco.editor.createModel(originalText.value);
+  original.onDidChangeContent(() => {
+    originalText.value = editor.getOriginalEditor().getValue();
+  });
+
+  const modified = monaco.editor.createModel(modifiedText.value);
+  modified.onDidChangeContent(() => {
+    modifiedText.value = editor.getModifiedEditor().getValue();
+  });
+
   editor.setModel({
-    original: monaco.editor.createModel('original text', 'txt'),
-    modified: monaco.editor.createModel('modified text', 'txt'),
+    original,
+    modified,
   });
 });
 </script>
