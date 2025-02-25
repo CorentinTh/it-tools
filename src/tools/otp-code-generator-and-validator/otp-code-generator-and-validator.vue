@@ -2,7 +2,7 @@
 import { useTimestamp } from '@vueuse/core';
 import { useThemeVars } from 'naive-ui';
 import { useQRCode } from '../qr-code-generator/useQRCode';
-import { base32toHex, buildKeyUri, generateSecret, generateTOTP, getCounterFromTime } from './otp.service';
+import { base32toHex, buildKeyUri, generateHOTP, generateSecret, generateTOTP, getCounterFromTime } from './otp.service';
 import TokenDisplay from './token-display.vue';
 import { useStyleStore } from '@/stores/style.store';
 import InputCopyable from '@/components/InputCopyable.vue';
@@ -18,6 +18,16 @@ const secret = ref(generateSecret());
 function refreshSecret() {
   secret.value = generateSecret();
 }
+
+const counter = ref(0);
+
+const [hotpValues] = computedRefreshable(
+  () =>
+    Object.fromEntries(
+      Array.from({ length: 10 }, (_, i) => [+counter.value + i, generateHOTP({ key: secret.value, counter: +counter.value + i })]),
+    ),
+  { throttle: 500 },
+);
 
 const [tokens] = computedRefreshable(
   () => ({
@@ -82,6 +92,20 @@ const secretValidationRules = [
       <c-button :href="keyUri" target="_blank">
         Open Key URI in new tab
       </c-button>
+    </div>
+    <div>
+      <c-input-text
+        v-model:value="counter"
+        label="Counter"
+        placeholder="Start counter at..."
+        type="number"
+        mt-5
+      />
+    </div>
+    <div>
+      <p v-for="(value, currentCounter) in hotpValues" :key="currentCounter">
+        {{ currentCounter }}: {{ value }}
+      </p>
     </div>
   </div>
   <div style="max-width: 350px">

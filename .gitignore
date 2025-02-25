@@ -13,6 +13,7 @@ dist
 dist-ssr
 coverage
 *.local
+.pnpm-store
 
 /cypress/videos/
 /cypress/screenshots/
