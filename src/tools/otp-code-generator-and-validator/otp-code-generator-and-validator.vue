@@ -78,37 +78,6 @@ const secretValidationRules = [
         </c-tooltip>
       </template>
     </c-input-text>
-
-    <div>
-      <TokenDisplay :tokens="tokens" />
-
-      <n-progress :percentage="(100 * interval) / 30" :color="theme.primaryColor" :show-indicator="false" />
-      <div style="text-align: center">
-        Next in {{ String(Math.floor(30 - interval)).padStart(2, '0') }}s
-      </div>
-    </div>
-    <div mt-4 flex flex-col items-center justify-center gap-3>
-      <n-image :src="qrcode" />
-      <c-button :href="keyUri" target="_blank">
-        Open Key URI in new tab
-      </c-button>
-    </div>
-    <div>
-      <c-input-text
-        v-model:value="counter"
-        label="Counter"
-        placeholder="Start counter at..."
-        type="number"
-        mt-5
-      />
-    </div>
-    <div>
-      <p v-for="(value, currentCounter) in hotpValues" :key="currentCounter">
-        {{ currentCounter }}: {{ value }}
-      </p>
-    </div>
-  </div>
-  <div style="max-width: 350px">
     <InputCopyable
       label="Secret in hexadecimal"
       :value="base32toHex(secret)"
@@ -117,11 +86,41 @@ const secretValidationRules = [
       mb-5
     />
 
+    <div mt-4 flex flex-col items-center justify-center gap-3>
+      <n-image :src="qrcode" />
+      <c-button :href="keyUri" target="_blank">
+        Open Key URI in new tab
+      </c-button>
+    </div>
+  </div>
+  <div style="max-width: 350px">
+    <div>
+      <c-input-text
+        v-model:value="counter"
+        label="Start-value for HOTP counter"
+        placeholder="Start counter for HOTP at..."
+        type="number"
+        mb-5
+        mt-5
+      />
+      <InputCopyable
+        v-for="(value, currentCounter) in hotpValues" :key="currentCounter"
+        :value="value"
+        readonly
+        :label="`HOTP ${currentCounter}:`"
+        label-position="left"
+        label-width="90px"
+        label-align="right"
+        placeholder="HOTP will be displayed here"
+        mb-1
+      />
+    </div>
+  </div>
+  <div style="max-width: 350px">
     <InputCopyable
       label="Epoch"
       :value="Math.floor(now / 1000).toString()"
       readonly
-      mb-5
       placeholder="Epoch in sec will be displayed here"
     />
 
@@ -146,6 +145,15 @@ const secretValidationRules = [
       label-align="right"
       label="Padded hex:"
     />
+
+    <div>
+      <TokenDisplay :tokens="tokens" mt-5 />
+
+      <n-progress :percentage="(100 * interval) / 30" :color="theme.primaryColor" :show-indicator="false" />
+      <div style="text-align: center">
+        Next in {{ String(Math.floor(30 - interval)).padStart(2, '0') }}s
+      </div>
+    </div>
   </div>
 </template>
 
