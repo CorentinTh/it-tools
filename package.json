@@ -1,7 +1,8 @@
 {
   "name": "it-tools",
+  "type": "module",
   "version": "2024.10.22-7ca5933",
-  "packageManager": "pnpm@8.15.3",
+  "packageManager": "pnpm@9.11.0",
   "description": "Collection of handy online tools for developers, with great UX. ",
   "author": "Corentin Th <corentin.thomasset74+it-tools@gmail.com> (https://corentin.tech)",
   "license": "GNU GPLv3",
@@ -137,7 +138,7 @@
     "less": "^4.1.3",
     "prettier": "^3.0.0",
     "typescript": "~5.2.0",
-    "unocss": "^0.57.0",
+    "unocss": "^0.65.1",
     "unocss-preset-scrollbar": "^0.2.1",
     "unplugin-icons": "^0.17.0",
     "unplugin-vue-components": "^0.25.0",
