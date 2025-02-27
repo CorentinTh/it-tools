@@ -36,6 +36,7 @@ docker run -d --name it-tools --restart unless-stopped -p 8080:80 ghcr.io/corent
 
 - [Cloudron](https://www.cloudron.io/store/tech.ittools.cloudron.html)
 - [Tipi](https://www.runtipi.io/docs/apps-available)
+- [TrueNAS](https://www.truenas.com/docs/truenasapps/communityapps/it-tools/)
 - [Unraid](https://unraid.net/community/apps?q=it-tools)
 
 ## Contribute
