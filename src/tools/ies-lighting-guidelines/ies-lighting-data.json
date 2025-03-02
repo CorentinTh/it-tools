@@ -1,0 +1,740 @@
+[
+  {
+    "industryType": "Airplane Manufacturing",
+    "industryApplication": "Drilling, riveting, screw fastening",
+    "footCandlesRange": "75",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Airplane Manufacturing",
+    "industryApplication": "Final assembly, hangar",
+    "footCandlesRange": "100",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Airplane Manufacturing",
+    "industryApplication": "Inspection",
+    "footCandlesRange": "50-200",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Airplane Manufacturing",
+    "industryApplication": "Welding",
+    "footCandlesRange": "50",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Assembly",
+    "industryApplication": "Rough easy seeing",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Assembly",
+    "industryApplication": "Rough difficult seeing",
+    "footCandlesRange": "50-100",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Assembly",
+    "industryApplication": "Medium",
+    "footCandlesRange": "100-200",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Auditoriums",
+    "industryApplication": "Social Activities",
+    "footCandlesRange": "05-oct",
+    "recommendedLighting": "Flat Panel/Troffer"
+  },
+  {
+    "industryType": "Auditoriums",
+    "industryApplication": "Assembly Only",
+    "footCandlesRange": "oct-20",
+    "recommendedLighting": "Flat Panel/Troffer"
+  },
+  {
+    "industryType": "Auditoriums",
+    "industryApplication": "Exhibitions",
+    "footCandlesRange": "15-25",
+    "recommendedLighting": "Flat Panel/Troffer"
+  },
+  {
+    "industryType": "Automotive Manufacturing",
+    "industryApplication": "Frame Assembly",
+    "footCandlesRange": "50",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Automotive Manufacturing",
+    "industryApplication": "Body & chassis assembly",
+    "footCandlesRange": "100",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Automotive Manufacturing",
+    "industryApplication": "Body parts assembly",
+    "footCandlesRange": "100",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Automotive Manufacturing",
+    "industryApplication": "Final Assembly, finishing, inspecting",
+    "footCandlesRange": "200",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Banks",
+    "industryApplication": "Lobby General",
+    "footCandlesRange": "oct-50",
+    "recommendedLighting": "Flat Panel/Troffer"
+  },
+  {
+    "industryType": "Banks",
+    "industryApplication": "Writing Areas",
+    "footCandlesRange": "20-70",
+    "recommendedLighting": "Flat Panel/Troffer"
+  },
+  {
+    "industryType": "Banks",
+    "industryApplication": "Teller Stations, Posting & Keypunch",
+    "footCandlesRange": "50-150",
+    "recommendedLighting": "Flat Panel/Troffer"
+  },
+  {
+    "industryType": "Barber Shop",
+    "industryApplication": "Beauty Parlors",
+    "footCandlesRange": "50-100",
+    "recommendedLighting": "Flat Panel"
+  },
+  {
+    "industryType": "Chemical Works",
+    "industryApplication": "Chemical Works",
+    "footCandlesRange": "30",
+    "recommendedLighting": "Vapor Tight/Hazardous"
+  },
+  {
+    "industryType": "Clothing Manufacturer",
+    "industryApplication": "Receiving, storing, shipping, winding, measuring",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "Flat Panel/Troffer"
+  },
+  {
+    "industryType": "Clothing Manufacturer",
+    "industryApplication": "Pattern making, trimming",
+    "footCandlesRange": "50-100",
+    "recommendedLighting": "Flat Panel/Troffer"
+  },
+  {
+    "industryType": "Clothing Manufacturer",
+    "industryApplication": "Shops, Marking",
+    "footCandlesRange": "50-200",
+    "recommendedLighting": "Flat Panel/Troffer/High Bay"
+  },
+  {
+    "industryType": "Clothing Manufacturer",
+    "industryApplication": "Cutting, Pressing",
+    "footCandlesRange": "100-500",
+    "recommendedLighting": "Flat Panel/Troffer/High Bay"
+  },
+  {
+    "industryType": "Clothing Manufacturer",
+    "industryApplication": "Sewing, Inspection",
+    "footCandlesRange": "200-500",
+    "recommendedLighting": "Flat Panel/Troffer/High Bay"
+  },
+  {
+    "industryType": "Electrical Equipment Manufacturing",
+    "industryApplication": "Impregnating",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Electrical Equipment Manufacturing",
+    "industryApplication": "Insulating coil winding, testing",
+    "footCandlesRange": "50-100",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Food Service Facility",
+    "industryApplication": "Dining areas, cashier",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "Troffer/Recessed"
+  },
+  {
+    "industryType": "Food Service Facility",
+    "industryApplication": "Cleaning",
+    "footCandlesRange": "oct-20",
+    "recommendedLighting": "Recessed"
+  },
+  {
+    "industryType": "Food Service Facility",
+    "industryApplication": "Dining",
+    "footCandlesRange": "mai-20",
+    "recommendedLighting": "Troffer/Recessed"
+  },
+  {
+    "industryType": "Food Service Facility",
+    "industryApplication": "Food Displays",
+    "footCandlesRange": "30-100",
+    "recommendedLighting": "Recessed"
+  },
+  {
+    "industryType": "Food Service Facility",
+    "industryApplication": "Kitchen",
+    "footCandlesRange": "50-100",
+    "recommendedLighting": "IP65 High Bay"
+  },
+  {
+    "industryType": "Foundries",
+    "industryApplication": "Annealing Furnaces",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Foundries",
+    "industryApplication": "Cleaning",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Foundries",
+    "industryApplication": "Core Making",
+    "footCandlesRange": "50-200",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Foundries",
+    "industryApplication": "Inspection Fine",
+    "footCandlesRange": "100-200",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Foundries",
+    "industryApplication": "Inspection Medium",
+    "footCandlesRange": "50-100",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Foundries",
+    "industryApplication": "Molding",
+    "footCandlesRange": "50-200",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Foundries",
+    "industryApplication": "Pouring, Sorting",
+    "footCandlesRange": "50-100",
+    "recommendedLighting": "High Bay/Hazardous"
+  },
+  {
+    "industryType": "Garages-Motor Vehicles",
+    "industryApplication": "Storage",
+    "footCandlesRange": "5",
+    "recommendedLighting": "Garage"
+  },
+  {
+    "industryType": "Garages-Motor Vehicles",
+    "industryApplication": "Parking Garage",
+    "footCandlesRange": "10",
+    "recommendedLighting": "Garage /.Strip"
+  },
+  {
+    "industryType": "Garages-Motor Vehicles",
+    "industryApplication": "Service Garage",
+    "footCandlesRange": "oct-20",
+    "recommendedLighting": "Garage"
+  },
+  {
+    "industryType": "Garages-Motor Vehicles",
+    "industryApplication": "Entrances",
+    "footCandlesRange": "50",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Garages-Motor Vehicles",
+    "industryApplication": "Repair Area",
+    "footCandlesRange": "50-100",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Gymnasiums",
+    "industryApplication": "Assemblies",
+    "footCandlesRange": "10",
+    "recommendedLighting": "Flat Panel/High Bay"
+  },
+  {
+    "industryType": "Gymnasiums",
+    "industryApplication": "General Exercise & Recreation",
+    "footCandlesRange": "30",
+    "recommendedLighting": "Flat Panel/High Bay"
+  },
+  {
+    "industryType": "Gymnasiums",
+    "industryApplication": "Exhibitions, Matches",
+    "footCandlesRange": "50",
+    "recommendedLighting": "Flat Panel/High Bay"
+  },
+  {
+    "industryType": "Hospitals",
+    "industryApplication": "Rooms",
+    "footCandlesRange": "oct-30",
+    "recommendedLighting": "Troffer/Flat Panel"
+  },
+  {
+    "industryType": "Hospitals",
+    "industryApplication": "Corridors",
+    "footCandlesRange": "mai-30",
+    "recommendedLighting": "Troffer/Flat Panel"
+  },
+  {
+    "industryType": "Hospitals",
+    "industryApplication": "Emergency Rooms",
+    "footCandlesRange": "50-100",
+    "recommendedLighting": "NA"
+  },
+  {
+    "industryType": "Hospitals",
+    "industryApplication": "Operating Rooms",
+    "footCandlesRange": "100-200",
+    "recommendedLighting": "NA"
+  },
+  {
+    "industryType": "Hotels",
+    "industryApplication": "Bathrooms",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "Recessed"
+  },
+  {
+    "industryType": "Hotels",
+    "industryApplication": "Bedrooms for Reading",
+    "footCandlesRange": "oct-20",
+    "recommendedLighting": "NA"
+  },
+  {
+    "industryType": "Hotels",
+    "industryApplication": "Corridors, elevators and stairs",
+    "footCandlesRange": "oct-20",
+    "recommendedLighting": "Recessed"
+  },
+  {
+    "industryType": "Hotels",
+    "industryApplication": "Front Desk",
+    "footCandlesRange": "50-100",
+    "recommendedLighting": "Recessed"
+  },
+  {
+    "industryType": "Hotels",
+    "industryApplication": "Linen Room: Sewing",
+    "footCandlesRange": "100-200",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Hotels",
+    "industryApplication": "Linen Room: General",
+    "footCandlesRange": "oct-20",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Hotels",
+    "industryApplication": "Lobby: General Lighting",
+    "footCandlesRange": "oct-20",
+    "recommendedLighting": "Recessed"
+  },
+  {
+    "industryType": "Hotels",
+    "industryApplication": "Lobby: Reading and working areas",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "Recessed/Flat Panel"
+  },
+  {
+    "industryType": "Iron & Steel Manufacturing",
+    "industryApplication": "Stock, hot top, checker, cellar, calcining",
+    "footCandlesRange": "oct-30",
+    "recommendedLighting": "UFO/Hazardous/Flood"
+  },
+  {
+    "industryType": "Iron & Steel Manufacturing",
+    "industryApplication": "Building, slag pits, Stripping yard",
+    "footCandlesRange": "20",
+    "recommendedLighting": "UFO/Hazardous/Flood"
+  },
+  {
+    "industryType": "Iron & Steel Manufacturing",
+    "industryApplication": "Control platform, repairs, mixer building",
+    "footCandlesRange": "30",
+    "recommendedLighting": "UFO/Hazardous/Flood"
+  },
+  {
+    "industryType": "Iron & Steel Manufacturing",
+    "industryApplication": "Rolling mills",
+    "footCandlesRange": "30-50",
+    "recommendedLighting": "UFO/Hazardous/Flood"
+  },
+  {
+    "industryType": "Iron & Steel Manufacturing",
+    "industryApplication": "Shearing",
+    "footCandlesRange": "50",
+    "recommendedLighting": "UFO/Hazardous/Flood"
+  },
+  {
+    "industryType": "Iron & Steel Manufacturing",
+    "industryApplication": "Tin Plate",
+    "footCandlesRange": "50",
+    "recommendedLighting": "UFO/Hazardous/Flood"
+  },
+  {
+    "industryType": "Iron & Steel Manufacturing",
+    "industryApplication": "Motor Room, Machine Room",
+    "footCandlesRange": "30",
+    "recommendedLighting": "UFO/Hazardous/Flood"
+  },
+  {
+    "industryType": "Iron & Steel Manufacturing",
+    "industryApplication": "Inspection",
+    "footCandlesRange": "100",
+    "recommendedLighting": "UFO/Hazardous/Flood"
+  },
+  {
+    "industryType": "Library",
+    "industryApplication": "Ordinary Reading, Stacks",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "Troffer/Flat Panel"
+  },
+  {
+    "industryType": "Library",
+    "industryApplication": "Book Repair and Binding",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "Troffer/Flat Panel"
+  },
+  {
+    "industryType": "Library",
+    "industryApplication": "Study & Notes, Cataloging",
+    "footCandlesRange": "20-100",
+    "recommendedLighting": "Troffer/Flat Panel"
+  },
+  {
+    "industryType": "Library",
+    "industryApplication": "Card Files, Check Desk",
+    "footCandlesRange": "20-100",
+    "recommendedLighting": "Troffer/Flat Panel"
+  },
+  {
+    "industryType": "Laundries",
+    "industryApplication": "Washing",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Laundries",
+    "industryApplication": "Ironing",
+    "footCandlesRange": "20-100",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Machine Shops",
+    "industryApplication": "Rough Bench",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Machine Shops",
+    "industryApplication": "Medium Bench, Rough Grinding, Buffing",
+    "footCandlesRange": "50-100",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Machine Shops",
+    "industryApplication": "Fine Bench and Work",
+    "footCandlesRange": "200-500",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Materials Handling",
+    "industryApplication": "Loading Trucking",
+    "footCandlesRange": "oct-20",
+    "recommendedLighting": "High Bay/Temporary"
+  },
+  {
+    "industryType": "Materials Handling",
+    "industryApplication": "Picking Stock Classifying",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Materials Handling",
+    "industryApplication": "Wrapping, Packing, Labeling",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Offices",
+    "industryApplication": "Accounting",
+    "footCandlesRange": "50-100",
+    "recommendedLighting": "Flat Panel/Troffer"
+  },
+  {
+    "industryType": "Offices",
+    "industryApplication": "Audio-Visual Areas",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "Flat Panel/Troffer"
+  },
+  {
+    "industryType": "Offices",
+    "industryApplication": "Conference Areas",
+    "footCandlesRange": "20-70",
+    "recommendedLighting": "Flat Panel/Troffer"
+  },
+  {
+    "industryType": "Offices",
+    "industryApplication": "Corridors, Stairways",
+    "footCandlesRange": "20",
+    "recommendedLighting": "Flat Panel/Troffer"
+  },
+  {
+    "industryType": "Offices",
+    "industryApplication": "Drafting",
+    "footCandlesRange": "50-200",
+    "recommendedLighting": "Flat Panel/Troffer"
+  },
+  {
+    "industryType": "Offices",
+    "industryApplication": "General and Private Offices",
+    "footCandlesRange": "50-100",
+    "recommendedLighting": "Flat Panel/Troffer"
+  },
+  {
+    "industryType": "Offices",
+    "industryApplication": "Lobbies, Lounges, & Reception Areas",
+    "footCandlesRange": "mai-20",
+    "recommendedLighting": "Flat Panel/Troffer"
+  },
+  {
+    "industryType": "Offices",
+    "industryApplication": "Mail Sorting",
+    "footCandlesRange": "50-100",
+    "recommendedLighting": "Flat Panel/Troffer"
+  },
+  {
+    "industryType": "Offices",
+    "industryApplication": "Off-set printing & duplicating areas",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "Flat Panel/Troffer/High Bay"
+  },
+  {
+    "industryType": "Offices",
+    "industryApplication": "Spaces with VDT's",
+    "footCandlesRange": "75",
+    "recommendedLighting": "Flat Panel/Troffer"
+  },
+  {
+    "industryType": "Paint Shop",
+    "industryApplication": "Spraying, Rubbing",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Paint Shop",
+    "industryApplication": "Hand Art, Stencil",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Paint Shop",
+    "industryApplication": "Fine Hand Painting & Finishing",
+    "footCandlesRange": "50-100",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Paper Manufacturing",
+    "industryApplication": "Beaters, Grinding",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "UFO"
+  },
+  {
+    "industryType": "Paper Manufacturing",
+    "industryApplication": "Finishing, Cutting",
+    "footCandlesRange": "50-100",
+    "recommendedLighting": "UFO"
+  },
+  {
+    "industryType": "Paper Manufacturing",
+    "industryApplication": "Hand Counting",
+    "footCandlesRange": "50-100",
+    "recommendedLighting": "UFO"
+  },
+  {
+    "industryType": "Paper Manufacturing",
+    "industryApplication": "Paper machine reel, Inspection",
+    "footCandlesRange": "100-200",
+    "recommendedLighting": "UFO"
+  },
+  {
+    "industryType": "Paper Manufacturing",
+    "industryApplication": "Rewinder",
+    "footCandlesRange": "100-200",
+    "recommendedLighting": "UFO"
+  },
+  {
+    "industryType": "Printing",
+    "industryApplication": "Welding",
+    "footCandlesRange": "50",
+    "recommendedLighting": "High Bay/Flood"
+  },
+  {
+    "industryType": "Printing",
+    "industryApplication": "Color Inspecting",
+    "footCandlesRange": "100-200",
+    "recommendedLighting": "High Bay/Flood"
+  },
+  {
+    "industryType": "Printing",
+    "industryApplication": "Presses",
+    "footCandlesRange": "50-100",
+    "recommendedLighting": "High Bay/Flood"
+  },
+  {
+    "industryType": "Printing",
+    "industryApplication": "Proofreading",
+    "footCandlesRange": "100-200",
+    "recommendedLighting": "High Bay/Flood"
+  },
+  {
+    "industryType": "Printing",
+    "industryApplication": "Composing Room",
+    "footCandlesRange": "50-100",
+    "recommendedLighting": "High Bay/Flood"
+  },
+  {
+    "industryType": "Schools",
+    "industryApplication": "Reading",
+    "footCandlesRange": "20-100",
+    "recommendedLighting": "Flat Panel/Troffer"
+  },
+  {
+    "industryType": "Schools",
+    "industryApplication": "Typing",
+    "footCandlesRange": "20-100",
+    "recommendedLighting": "Flat Panel/Troffer"
+  },
+  {
+    "industryType": "Schools",
+    "industryApplication": "Demonstrations",
+    "footCandlesRange": "100-200",
+    "recommendedLighting": "Flat Panel/Troffer"
+  },
+  {
+    "industryType": "Schools",
+    "industryApplication": "Sewing",
+    "footCandlesRange": "20-100",
+    "recommendedLighting": "Flat Panel/Troffer"
+  },
+  {
+    "industryType": "Sheet Metal Works",
+    "industryApplication": "General",
+    "footCandlesRange": "100",
+    "recommendedLighting": "High Bay/Flood"
+  },
+  {
+    "industryType": "Sheet Metal Works",
+    "industryApplication": "Tin Plate Inspection",
+    "footCandlesRange": "100-200",
+    "recommendedLighting": "High Bay/Flood"
+  },
+  {
+    "industryType": "Sheet Metal Works",
+    "industryApplication": "Galvanizing, Scribing",
+    "footCandlesRange": "100-200",
+    "recommendedLighting": "High Bay/Flood"
+  },
+  {
+    "industryType": "Stores",
+    "industryApplication": "Circulation Area Stockroom",
+    "footCandlesRange": "oct-30",
+    "recommendedLighting": "Recessed"
+  },
+  {
+    "industryType": "Stores",
+    "industryApplication": "Merchandising, Servicing",
+    "footCandlesRange": "30-100",
+    "recommendedLighting": "Recessed/Troffer"
+  },
+  {
+    "industryType": "Stores",
+    "industryApplication": "Merchandising, Self-Servicing",
+    "footCandlesRange": "200",
+    "recommendedLighting": "Recessed/Troffer"
+  },
+  {
+    "industryType": "Textile Mills",
+    "industryApplication": "Cotton Picking, Carding, Roving, Spinning",
+    "footCandlesRange": "50",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Textile Mills",
+    "industryApplication": "Beaming & Slashing",
+    "footCandlesRange": "150",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Textile Mills",
+    "industryApplication": "Drawing",
+    "footCandlesRange": "200",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Textile Mills",
+    "industryApplication": "Others",
+    "footCandlesRange": "100",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Warehouse & Storage",
+    "industryApplication": "Inactive",
+    "footCandlesRange": "05-oct",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Warehouse & Storage",
+    "industryApplication": "Active Rough Bulky",
+    "footCandlesRange": "oct-20",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Warehouse & Storage",
+    "industryApplication": "Active Medium",
+    "footCandlesRange": "20",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Warehouse & Storage",
+    "industryApplication": "Active Fine",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "High Bay"
+  },
+  {
+    "industryType": "Welding",
+    "industryApplication": "General",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "High Bay/Flood"
+  },
+  {
+    "industryType": "Woodworking",
+    "industryApplication": "Sizing, planning, rough sanding, medium quality machine and bench work, gluing, veneering, cooperage",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "High Bay/Strip"
+  },
+  {
+    "industryType": "Woodworking",
+    "industryApplication": "Fine bench and machine work, fine sanding and finishing",
+    "footCandlesRange": "50-100",
+    "recommendedLighting": "High Bay/Strip"
+  },
+  {
+    "industryType": "Woodworking",
+    "industryApplication": "Rough sawing and bench work",
+    "footCandlesRange": "20-50",
+    "recommendedLighting": "High Bay/Strip"
+  }
+]
