@@ -142,7 +142,7 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Images and videos',
-    components: [qrCodeGenerator, wifiQrCodeGenerator, svgPlaceholderGenerator, cameraRecorder],
+    components: [qrCodeGenerator, wifiQrCodeGenerator, qrContactInfoGenerator, svgPlaceholderGenerator, cameraRecorder],
   },
   {
     name: 'Development',

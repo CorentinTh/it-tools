@@ -257,6 +257,10 @@ tools:
     title: WiFi QR Code generator
     description: Generate and download QR codes for quick connections to WiFi networks.
 
+  qr-contact-info-generator:
+    title: QR Contact Info generator
+    description: Generate and download QR codes for Contact information (vCard), and customize the background and foreground colors.
+
   xml-formatter:
     title: XML formatter
     description: Prettify your XML string into a friendly, human-readable format.
