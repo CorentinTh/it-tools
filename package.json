@@ -115,6 +115,7 @@
     "@types/bcryptjs": "^2.4.2",
     "@types/crypto-js": "^4.1.1",
     "@types/dompurify": "^3.0.5",
+    "@types/har-format": "^1.2.16",
     "@types/jsdom": "^21.0.0",
     "@types/lodash": "^4.14.192",
     "@types/mime-types": "^2.1.1",
