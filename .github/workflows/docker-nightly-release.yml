@@ -32,7 +32,7 @@ jobs:
       - run: corepack enable
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20
           cache: 'pnpm'
 
       - name: Install dependencies
@@ -80,7 +80,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: |
             corentinth/it-tools:nightly
