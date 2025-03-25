@@ -11,7 +11,8 @@ const inputElement = ref<HTMLElement>();
 const rawJson = useStorage('json-prettify:raw-json', '{"hello": "world", "foo": "bar"}');
 const indentSize = useStorage('json-prettify:indent-size', 3);
 const sortKeys = useStorage('json-prettify:sort-keys', true);
-const cleanJson = computed(() => withDefaultOnError(() => formatJson({ rawJson, indentSize, sortKeys }), ''));
+const unescapeUnicode = useStorage('json-prettify:unescape-unicode', false);
+const cleanJson = computed(() => withDefaultOnError(() => formatJson({ rawJson, indentSize, sortKeys, unescapeUnicode }), ''));
 
 const rawJsonValidation = useValidation({
   source: rawJson,
@@ -29,6 +30,9 @@ const rawJsonValidation = useValidation({
     <div style="margin: 0 auto; max-width: 600px" flex justify-center gap-3>
       <n-form-item label="Sort keys :" label-placement="left" label-width="100">
         <n-switch v-model:value="sortKeys" />
+      </n-form-item>
+      <n-form-item label="Unescape Unicode :" label-placement="left" label-width="150">
+        <n-switch v-model:value="unescapeUnicode" />
       </n-form-item>
       <n-form-item label="Indent size :" label-placement="left" label-width="100" :show-feedback="false">
         <n-input-number v-model:value="indentSize" min="0" max="10" style="width: 100px" />

@@ -20,16 +20,25 @@ function sortObjectKeys<T>(obj: T): T {
     }, {} as Record<string, unknown>) as T;
 }
 
+function unescapeUnicodeJSON(str: string) {
+  return str.replace(/\\u([\dA-Fa-f]{4})/g, (match, grp) =>
+    String.fromCharCode(Number.parseInt(grp, 16)),
+  );
+}
+
 function formatJson({
   rawJson,
   sortKeys = true,
   indentSize = 3,
+  unescapeUnicode = false,
 }: {
   rawJson: MaybeRef<string>
   sortKeys?: MaybeRef<boolean>
   indentSize?: MaybeRef<number>
+  unescapeUnicode?: MaybeRef<boolean>
 }) {
-  const parsedObject = JSON5.parse(get(rawJson));
+  const raw = get(rawJson);
+  const parsedObject = JSON5.parse(get(unescapeUnicode) ? unescapeUnicodeJSON(raw) : raw);
 
   return JSON.stringify(get(sortKeys) ? sortObjectKeys(parsedObject) : parsedObject, null, get(indentSize));
 }
