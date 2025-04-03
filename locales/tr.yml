@@ -168,32 +168,32 @@ tools:
     description: ETA (Estimated Time of Arrival){Tahmini varış zamanı} hesaplayıcı kullanarak bir işin ne kadar sürede biteceğini hesapla örneğin, bir dosya indirmesinin ne kadar süreceği.
 
   roman-numeral-converter:
-    title: Roman numeral converter
-    description: Convert Roman numerals to numbers and convert numbers to Roman numerals.
+    title: Roma rakamı dönüştürücü
+    description: Roma rakamlarını numaraya yada numarayı roma rakamlarına dönüştür.
 
   hmac-generator:
-    title: Hmac generator
-    description: Computes a hash-based message authentication code (HMAC) using a secret key and your favorite hashing function.
+    title: Hmac oluşturucu
+    description: Favori hash algoritman ve gizli anahtarını kullanarak bir HMAC (hash bazlı kimlik doğrulama kodu) oluşturur.
 
   bip39-generator:
-    title: BIP39 passphrase generator
-    description: Generate a BIP39 passphrase from an existing or random mnemonic, or get the mnemonic from the passphrase.
+    title: BIP39 şifre oluşturucu
+    description: Varolan yada rastgele bir anımsatıcı kullanarak BIP39 şifresi oluştur yada şifreden anımsatıcıyı öğren.
 
   base64-file-converter:
-    title: Base64 file converter
-    description: Convert a string, file, or image into its base64 representation.
+    title: Base64 dosya dönüştürücü
+    description: Metin, dosya yada görüntüyü base64'e çevir
 
   list-converter:
-    title: List converter
-    description: This tool can process column-based data and apply various changes (transpose, add prefix and suffix, reverse list, sort list, lowercase values, truncate values) to each row.
+    title: Liste dönüştürücü
+    description: Bu araç sütün bazlı verileri işleyebilir ve çeşitli değişiklikler yapabilir (transpoze et, önek ve sonek ekle, listeyi ters çevir, listeyi sırala, değerleri küçük harfle yaz, değerleri kes).
 
   base64-string-converter:
-    title: Base64 string encoder/decoder
-    description: Simply encode and decode strings into their base64 representation.
+    title: Base64 metin şifreleyici/çözücü
+    description: Kolayca metinleri base64 şeklinde şifrele ve çöz.
 
   toml-to-yaml:
     title: TOML to YAML
-    description: Parse and convert TOML to YAML.
+    description: TOML dosyasını ayrıştır ve YAML dosyasına dönüştür.
 
   math-evaluator:
     title: Math evaluator
