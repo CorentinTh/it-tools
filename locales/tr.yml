@@ -118,52 +118,54 @@ tools:
     description: Kolayca emojileri kopyala yapıştır, emojilerin unicode ve kod puanı değerlerini bul.
 
   color-converter:
-    title: Color converter
-    description: Convert color between the different formats (hex, rgb, hsl and css name)
+    title: Renk dönüştürücü
+    description: Renkleri farklı formatlara dönüştür (hex, rgb, hsl and css name)
 
   bcrypt:
     title: Bcrypt
-    description: Hash and compare text string using bcrypt. Bcrypt is a password-hashing function based on the Blowfish cipher.
+    description: Bir yazıyı bcrypt kullanarak hashle ve karşılaştır. Bcrypt Blowfish cipher bazlı olan bir hasleme fonksiyonudur.
 
   crontab-generator:
-    title: Crontab generator
-    description: Validate and generate crontab and get the human-readable description of the cron schedule.
+    title: Crontab oluşturucu
+    description: Crontab oluşturun, doğrulayın ve cron schedule'larının göze hitap eden bir açıklamasını alın.
 
   http-status-codes:
-    title: HTTP status codes
-    description: The list of all HTTP status codes, their name, and their meaning.
+    title: HTTP durum kodları
+    description: HTTP durum kodları, isimleri ve anlamlarını içeren bir liste.
 
   sql-prettify:
-    title: SQL prettify and format
-    description: Format and prettify your SQL queries online (it supports various SQL dialects).
+    title: SQL güzelleştirici
+    description: SQL sorgularını göze hitap eden bir şekilde formatlayın (çeşitli SQL lehçelerini destekler).
 
   benchmark-builder:
-    title: Benchmark builder
-    description: Easily compare execution time of tasks with this very simple online benchmark builder.
+    title: Benchmark oluşturucu
+    description: İşlemlerin çalıştırma süresini çevrimiçi benchmark oluşturucu kullanarak kolayca karşılaştırın.
 
   git-memo:
-    title: Git cheatsheet
-    description: Git is a decentralized version management software. With this cheatsheet, you will have quick access to the most common git commands.
+    title: Git hatırlatma notu
+    description: Git, merkezi olmayan bir sürüm yönetim yazılımıdır. Bu hatırlatma notu ile en yaygın git komutlarına hızlıca erişebileceksiniz.
+
+  # Idk i will come back
 
   slugify-string:
     title: Slugify string
     description: Make a string url, filename and id safe.
 
   encryption:
-    title: Encrypt / decrypt text
-    description: Encrypt clear text and decrypt ciphertext using crypto algorithms like AES, TripleDES, Rabbit or RC4.
+    title: Metni Şifrele/Çöz
+    description: Metni AES, TripleDES, Rabbit yada RC4 algoritmalarını kullanarak şifrele yada çöz.
 
   random-port-generator:
-    title: Random port generator
-    description: Generate random port numbers outside of the range of "known" ports (0-1023).
+    title: Rastgele port oluşturucu
+    description: Bilinen portlar (0-1023) dışında olan rastgele bir port numarası oluştur.
 
   yaml-prettify:
-    title: YAML prettify and format
-    description: Prettify your YAML string into a friendly, human-readable format.
+    title: YAML güzelleştirici
+    description: YAML dosyanı göze hitap eden şekilde formatla.
 
   eta-calculator:
-    title: ETA calculator
-    description: An ETA (Estimated Time of Arrival) calculator to determine the approximate end time of a task, for example, the end time and duration of a file download.
+    title: ETA hesaplayıcı
+    description: ETA (Estimated Time of Arrival){Tahmini varış zamanı} hesaplayıcı kullanarak bir işin ne kadar sürede biteceğini hesapla örneğin, bir dosya indirmesinin ne kadar süreceği.
 
   roman-numeral-converter:
     title: Roman numeral converter
