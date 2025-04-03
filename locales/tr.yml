@@ -196,12 +196,12 @@ tools:
     description: TOML dosyasını ayrıştır ve YAML dosyasına dönüştür.
 
   math-evaluator:
-    title: Math evaluator
-    description: A calculator for evaluating mathematical expressions. You can use functions like sqrt, cos, sin, abs, etc.
+    title: Matematiksel ifade hesaplayıcı
+    description: Matematiksel ifadeleri (sqrt, cos, sin, abs vb.) hesaplamaya yarar.
 
   json-to-yaml-converter:
-    title: JSON to YAML converter
-    description: Simply convert JSON to YAML with this online live converter.
+    title: JSON to YAML
+    description: Kolayca JSON dosyasını çevrimiçi dönüştürücü kullanarak YAML dosyasına dönüştür.
 
   url-parser:
     title: URL parser
