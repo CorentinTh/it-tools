@@ -91,7 +91,7 @@ function update(key: TemperatureScale) {
   _.chain(units)
     .omit(key)
     .forEach(({ fromKelvin }, index) => {
-      units[index].ref = Math.floor((fromKelvin(kelvins) ?? 0) * 100) / 100;
+      units[index].ref = fromKelvin(kelvins) ?? 0;
     })
     .value();
 }
