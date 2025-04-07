@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { decodeJwt } from './jwt-parser.service';
+import * as jose from 'jose';
+import JSON5 from 'json5';
+import { decodeJwt, getJwtAlgorithm } from './jwt-parser.service';
 import { useValidation } from '@/composable/validation';
 import { isNotThrowing } from '@/utils/boolean';
 import { withDefaultOnError } from '@/utils/defaults';
@@ -26,6 +28,41 @@ const validation = useValidation({
     },
   ],
 });
+
+const secretOrPublicKey = ref('');
+const signatureVerification = computedAsync(async () => {
+  const secretOrPublicKeyValue = secretOrPublicKey.value?.trim();
+  if (!secretOrPublicKeyValue) {
+    return { error: 'No secret or key provided' };
+  }
+  const jwt = rawJwt.value?.trim();
+  if (!jwt) {
+    return { error: 'No JWT token provided' };
+  }
+  try {
+    const alg = getJwtAlgorithm({ jwt }) || 'unk';
+
+    if (secretOrPublicKeyValue.startsWith('{')) {
+      const jwk = JSON5.parse(secretOrPublicKeyValue);
+      const publicKey = await jose.importJWK(jwk, alg);
+
+      await jose.jwtVerify(jwt, publicKey);
+    }
+    else if (secretOrPublicKeyValue.includes('-----BEGIN PUBLIC KEY-----')) {
+      const publicKey = await jose.importSPKI(secretOrPublicKeyValue, alg);
+      await jose.jwtVerify(jwt, publicKey);
+    }
+    else {
+      const secret = new TextEncoder().encode(secretOrPublicKeyValue);
+      await jose.jwtVerify(jwt, secret);
+    }
+
+    return { error: '' };
+  }
+  catch (e: any) {
+    return { error: `Key or secret or verification error: ${e.toString()}` };
+  }
+});
 </script>
 
 <template>
@@ -39,7 +76,7 @@ const validation = useValidation({
             {{ section.title }}
           </th>
           <tr v-for="{ claim, claimDescription, friendlyValue, value } in decodedJWT[section.key]" :key="claim + value">
-            <td class="claims" style="vertical-align: top;">
+            <td class="claims">
               <span font-bold>
                 {{ claim }}
               </span>
@@ -47,7 +84,7 @@ const validation = useValidation({
                 ({{ claimDescription }})
               </span>
             </td>
-            <td style="word-wrap: break-word;word-break: break-all;">
+            <td>
               <span>{{ value }}</span>
               <span v-if="friendlyValue" ml-2 op-70>
                 ({{ friendlyValue }})
@@ -57,6 +94,21 @@ const validation = useValidation({
         </template>
       </tbody>
     </n-table>
+
+    <c-card title="Signature Validation">
+      <c-input-text
+        v-model:value="secretOrPublicKey" label="Secret or Public Key (SPKI or JWK)"
+        placeholder="Put your secret or Public key here..." rows="5" multiline raw-text autofocus mb-3
+      />
+
+      <c-alert v-if="signatureVerification?.error">
+        {{ signatureVerification.error }}
+      </c-alert>
+
+      <n-alert v-if="!signatureVerification?.error" type="success">
+        Signature verified
+      </n-alert>
+    </c-card>
   </c-card>
 </template>
 
