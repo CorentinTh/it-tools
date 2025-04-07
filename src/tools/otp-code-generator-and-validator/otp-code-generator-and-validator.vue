@@ -2,7 +2,7 @@
 import { useTimestamp } from '@vueuse/core';
 import { useThemeVars } from 'naive-ui';
 import { useQRCode } from '../qr-code-generator/useQRCode';
-import { base32toHex, buildKeyUri, generateSecret, generateTOTP, getCounterFromTime } from './otp.service';
+import { base32toHex, buildKeyUri, generateHOTP, generateSecret, generateTOTP, getCounterFromTime } from './otp.service';
 import TokenDisplay from './token-display.vue';
 import { useStyleStore } from '@/stores/style.store';
 import InputCopyable from '@/components/InputCopyable.vue';
@@ -18,6 +18,16 @@ const secret = ref(generateSecret());
 function refreshSecret() {
   secret.value = generateSecret();
 }
+
+const counter = ref(0);
+
+const [hotpValues] = computedRefreshable(
+  () =>
+    Object.fromEntries(
+      Array.from({ length: 10 }, (_, i) => [+counter.value + i, generateHOTP({ key: secret.value, counter: +counter.value + i })]),
+    ),
+  { throttle: 500 },
+);
 
 const [tokens] = computedRefreshable(
   () => ({
@@ -68,23 +78,6 @@ const secretValidationRules = [
         </c-tooltip>
       </template>
     </c-input-text>
-
-    <div>
-      <TokenDisplay :tokens="tokens" />
-
-      <n-progress :percentage="(100 * interval) / 30" :color="theme.primaryColor" :show-indicator="false" />
-      <div style="text-align: center">
-        Next in {{ String(Math.floor(30 - interval)).padStart(2, '0') }}s
-      </div>
-    </div>
-    <div mt-4 flex flex-col items-center justify-center gap-3>
-      <n-image :src="qrcode" />
-      <c-button :href="keyUri" target="_blank">
-        Open Key URI in new tab
-      </c-button>
-    </div>
-  </div>
-  <div style="max-width: 350px">
     <InputCopyable
       label="Secret in hexadecimal"
       :value="base32toHex(secret)"
@@ -93,11 +86,41 @@ const secretValidationRules = [
       mb-5
     />
 
+    <div mt-4 flex flex-col items-center justify-center gap-3>
+      <n-image :src="qrcode" />
+      <c-button :href="keyUri" target="_blank">
+        Open Key URI in new tab
+      </c-button>
+    </div>
+  </div>
+  <div style="max-width: 350px">
+    <div>
+      <c-input-text
+        v-model:value="counter"
+        label="Start-value for HOTP counter"
+        placeholder="Start counter for HOTP at..."
+        type="number"
+        mb-5
+        mt-5
+      />
+      <InputCopyable
+        v-for="(value, currentCounter) in hotpValues" :key="currentCounter"
+        :value="value"
+        readonly
+        :label="`HOTP ${currentCounter}:`"
+        label-position="left"
+        label-width="90px"
+        label-align="right"
+        placeholder="HOTP will be displayed here"
+        mb-1
+      />
+    </div>
+  </div>
+  <div style="max-width: 350px">
     <InputCopyable
       label="Epoch"
       :value="Math.floor(now / 1000).toString()"
       readonly
-      mb-5
       placeholder="Epoch in sec will be displayed here"
     />
 
@@ -122,6 +145,15 @@ const secretValidationRules = [
       label-align="right"
       label="Padded hex:"
     />
+
+    <div>
+      <TokenDisplay :tokens="tokens" mt-5 />
+
+      <n-progress :percentage="(100 * interval) / 30" :color="theme.primaryColor" :show-indicator="false" />
+      <div style="text-align: center">
+        Next in {{ String(Math.floor(30 - interval)).padStart(2, '0') }}s
+      </div>
+    </div>
   </div>
 </template>
 

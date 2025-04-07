@@ -444,7 +444,7 @@ tools:
   otp-generator:
     title: OTP-Code-Generator
     description: >-
-      Generiere und validiere zeitbasierte OTPs (Einmalpasswörter) für
+      Generiere und validiere zeitbasierte und ereignisgesteuertes OTPs (Einmalpasswörter) für
       Multi-Faktor-Authentifizierung.
   url-encoder:
     title: Kodieren/Decodieren von URL-formatierten Zeichenfolgen
