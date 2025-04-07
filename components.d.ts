@@ -15,6 +15,7 @@ declare module '@vue/runtime-core' {
     AsciiTextDrawer: typeof import('./src/tools/ascii-text-drawer/ascii-text-drawer.vue')['default']
     'Base.layout': typeof import('./src/layouts/base.layout.vue')['default']
     Base64FileConverter: typeof import('./src/tools/base64-file-converter/base64-file-converter.vue')['default']
+    Base64HexConverter: typeof import('./src/tools/base64-hex-converter/base64-hex-converter.vue')['default']
     Base64StringConverter: typeof import('./src/tools/base64-string-converter/base64-string-converter.vue')['default']
     BasicAuthGenerator: typeof import('./src/tools/basic-auth-generator/basic-auth-generator.vue')['default']
     Bcrypt: typeof import('./src/tools/bcrypt/bcrypt.vue')['default']
