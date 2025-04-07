@@ -259,6 +259,7 @@ defineExpose({
     border-radius: 4px;
     padding: 0 4px 0 12px;
     transition: border-color 0.2s ease-in-out;
+    min-height:30px;
 
     .multiline& {
       resize: vertical;
