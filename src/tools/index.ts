@@ -2,9 +2,9 @@ import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
 import { tool as emailNormalizer } from './email-normalizer';
-
 import { tool as asciiTextDrawer } from './ascii-text-drawer';
-
+import { tool as daysCalculator } from './days-calculator';
+import { tool as dateDurationCalculator } from './date-duration-calculator';
 import { tool as textToUnicode } from './text-to-unicode';
 import { tool as safelinkDecoder } from './safelink-decoder';
 import { tool as xmlToJson } from './xml-to-json';
@@ -12,6 +12,7 @@ import { tool as jsonToXml } from './json-to-xml';
 import { tool as regexTester } from './regex-tester';
 import { tool as regexMemo } from './regex-memo';
 import { tool as markdownToHtml } from './markdown-to-html';
+import { tool as durationCalculator } from './duration-calculator';
 import { tool as pdfSignatureChecker } from './pdf-signature-checker';
 import { tool as numeronymGenerator } from './numeronym-generator';
 import { tool as macAddressGenerator } from './mac-address-generator';
@@ -172,7 +173,14 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Measurement',
-    components: [chronometer, temperatureConverter, benchmarkBuilder],
+    components: [
+      chronometer,
+      temperatureConverter,
+      daysCalculator,
+      durationCalculator,
+      dateDurationCalculator,
+      benchmarkBuilder,
+    ],
   },
   {
     name: 'Text',
