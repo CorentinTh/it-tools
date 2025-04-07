@@ -286,7 +286,7 @@ defineExpose({
       flex: 1 1 0;
       min-width: 0;
 
-      padding: 8px 0;
+      padding: 16px 0;
       outline: none;
       background-color: transparent;
       background-image: none;
