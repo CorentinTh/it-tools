@@ -15,6 +15,7 @@ const dotAll = ref(true);
 const unicode = ref(true);
 const unicodeSets = ref(false);
 const visualizerSVG = ref<ShadowRootExpose>();
+const { t } = useI18n();
 
 const regexValidation = useValidation({
   source: regex,
@@ -92,36 +93,36 @@ watchEffect(
 
 <template>
   <div max-w-600px>
-    <c-card title="Regex" mb-1>
+    <c-card :title="t('tools.regex-tester.regex')" mb-1>
       <c-input-text
         v-model:value="regex"
-        label="Regex to test:"
-        placeholder="Put the regex to test"
+        :label="t('tools.regex-tester.regex-input')"
+        :placeholder="t('tools.regex-tester.regex-input-placeholder')"
         multiline
         rows="3"
         :validation="regexValidation"
       />
       <router-link target="_blank" to="/regex-memo" mb-1 mt-1>
-        See Regular Expression Cheatsheet
+        {{ t('tools.regex-tester.link') }}
       </router-link>
       <n-space>
         <n-checkbox v-model:checked="global">
-          <span title="Global search">Global search. (<code>g</code>)</span>
+          <span :title="t('tools.regex-tester.global')">Global search (<code>g</code>)</span>
         </n-checkbox>
         <n-checkbox v-model:checked="ignoreCase">
-          <span title="Case-insensitive search">Case-insensitive search. (<code>i</code>)</span>
+          <span :title="t('tools.regex-tester.ignoreCase')">Case-insensitive search (<code>i</code>)</span>
         </n-checkbox>
         <n-checkbox v-model:checked="multiline">
-          <span title="Allows ^ and $ to match next to newline characters.">Multiline(<code>m</code>)</span>
+          <span :title="t('tools.regex-tester.multiline')">Multiline (<code>m</code>)</span>
         </n-checkbox>
         <n-checkbox v-model:checked="dotAll">
-          <span title="Allows . to match newline characters.">Singleline(<code>s</code>)</span>
+          <span :title="t('tools.regex-tester.dotAll')">Singleline (<code>s</code>)</span>
         </n-checkbox>
         <n-checkbox v-model:checked="unicode">
-          <span title="Unicode; treat a pattern as a sequence of Unicode code points.">Unicode(<code>u</code>)</span>
+          <span :title="t('tools.regex-tester.unicode')">Unicode (<code>u</code>)</span>
         </n-checkbox>
         <n-checkbox v-model:checked="unicodeSets">
-          <span title="An upgrade to the u mode with more Unicode features.">Unicode Sets (<code>v</code>)</span>
+          <span :title="t('tools.regex-tester.unicodeSets')">Unicode Sets (<code>v</code>)</span>
         </n-checkbox>
       </n-space>
 
@@ -129,28 +130,28 @@ watchEffect(
 
       <c-input-text
         v-model:value="text"
-        label="Text to match:"
-        placeholder="Put the text to match"
+        :label="t('tools.regex-tester.text-input')"
+        :placeholder="t('tools.regex-tester.text-input-placeholder')"
         multiline
         rows="5"
       />
     </c-card>
 
-    <c-card title="Matches" mb-1 mt-3>
+    <c-card :title="t('tools.regex-tester.matches')" mb-1 mt-3>
       <n-table v-if="results?.length > 0">
         <thead>
           <tr>
             <th scope="col">
-              Index in text
+              {{ t('tools.regex-tester.text-index') }}
             </th>
             <th scope="col">
-              Value
+              {{ t('tools.regex-tester.value') }}
             </th>
             <th scope="col">
-              Captures
+              {{ t('tools.regex-tester.captures') }}
             </th>
             <th scope="col">
-              Groups
+              {{ t('tools.regex-tester.groups') }}
             </th>
           </tr>
         </thead>
@@ -176,15 +177,15 @@ watchEffect(
         </tbody>
       </n-table>
       <c-alert v-else>
-        No match
+        {{ t('tools.regex-tester.no-match') }}
       </c-alert>
     </c-card>
 
-    <c-card title="Sample matching text" mt-3>
+    <c-card :title="t('tools.regex-tester.sample')" mt-3>
       <pre style="white-space: pre-wrap; word-break: break-all;">{{ sample }}</pre>
     </c-card>
 
-    <c-card title="Regex Diagram" style="overflow-x: scroll;" mt-3>
+    <c-card :title="t('tools.regex-tester.diagram')" style="overflow-x: scroll;" mt-3>
       <shadow-root ref="visualizerSVG">
 &#xa0;
       </shadow-root>

@@ -1,16 +1,9 @@
-'404':
-  notFound: 404 Nicht gefunden
-  sorry: Entschuldigung, diese Seite scheint nicht zu existieren
-  maybe: >-
-    Vielleicht macht der Cache etwas Seltsames. Mit einem erzwungenen Neuladen
-    versuchen?
-  backHome: Zurück zur Startseite
 home:
   categories:
     newestTools: Neueste Tools
     favoriteTools: Deine Lieblingstools
     allTools: Alle Tools
-    favoritesDndToolTip: 'Ziehen und Ablegen, um Favoriten neu zu ordnen'
+    favoritesDndToolTip: Drag and Drop, um Favoriten neu zu ordnen
   subtitle: Praktische Tools für Entwickler
   toggleMenu: Menü umschalten
   home: Startseite
@@ -72,6 +65,13 @@ about:
     funktioniert, melde bitte einen Fehler im
     [Issues-Bereich](https://github.com/CorentinTh/it-tools/issues/new/choose)
     im GitHub-Repository.
+404:
+  notFound: 404 Nicht gefunden
+  sorry: Entschuldigung, diese Seite scheint nicht zu existieren
+  maybe: >-
+    Vielleicht macht der Cache etwas Seltsames. Mit einem erzwungenen Neuladen
+    versuchen?
+  backHome: Zurück zur Startseite
 favoriteButton:
   remove: Aus Favoriten entfernen
   add: Zu Favoriten hinzufügen
@@ -79,6 +79,20 @@ toolCard:
   new: Neu
 search:
   label: Suche
+  placeholder: Tippe, um ein Tool oder einen Befehl zu suchen...
+textareaCopyable:
+  copy: In die Zwischenablage kopieren
+  copied: Kopiert!
+spanCopyable:
+  copy: In die Zwischenablage kopieren
+  copied: Kopiert!
+inputCopyable:
+  copy: In die Zwischenablage kopieren
+  copied: Kopiert!
+formatTransformer:
+  input: Eingabe
+  input-placeholder: Eingabe...
+  output: Ausgabe
 tools:
   categories:
     favorite-tools: Deine Lieblingstools
@@ -102,6 +116,10 @@ tools:
     description: >-
       Überwache die Dauer einer Sache. Im Grunde ein Chronometer mit einfachen
       Chronometerfunktionen.
+    button:
+      start: Start
+      stop: Stopp
+      reset: Zurücksetzen
   token-generator:
     title: Token-Generator
     description: >-
@@ -296,6 +314,13 @@ tools:
     description: >-
       Generiere und downloade QR-Codes für eine URL oder einfach einen Text und
       passe die Hintergrund- und Vordergrundfarben an.
+    text: 'Text:'
+    placeholder: Dein Link oder Text...
+    foreground-color: 'Vordergrundfarbe:'
+    background-color: 'Hintergrundfarbe:'
+    error-resistance: 'Fehlerresistenz:'
+    button:
+      download: QR-Code herunterladen
   wifi-qrcode-generator:
     title: WLAN-QR-Code-Generator
     description: >-
@@ -420,6 +445,11 @@ tools:
     description: >-
       Informationen zu einem Text erhalten, wie die Anzahl der Zeichen, die
       Anzahl der Wörter, die Größe usw.
+    characters: Anzahl Zeichen
+    words: Anzahl Wörter
+    lines: Anzahl Zeilen
+    bytes: Bytegröße
+    placeholder: Dein Text...
   text-to-nato-alphabet:
     title: Text zu NATO-Alphabet
     description: >-
@@ -430,6 +460,13 @@ tools:
     description: >-
       Generiere einen Base64-Basic-Auth-Header aus einem Benutzernamen und einem
       Passwort.
+    button:
+      copy: Header kopieren
+    copied: Header in die Zwischenablage kopiert
+    password: Passwort
+    username: Benutzername
+    yourpassword: Dein Passwort...
+    yourusername: Dein Benutzername...
   text-to-unicode:
     title: Text zu Unicode
     description: Parse und konvertiere Text in Unicode und umgekehrt.
@@ -454,3 +491,80 @@ tools:
   text-to-binary:
     title: Text zu ASCII-Binär
     description: Konvertiere Text in seine ASCII-Binärrepräsentation und umgekehrt.
+  safelink-decoder:
+    title: Outlook Safelink-Decoder
+    description: Outlook Safelinks decodieren
+    input: 'Eingabe einer Outlook Safelink-URL:'
+    input-placeholder: Deine eingegebene Outlook Safelink-URL...
+    output: 'Ausgabe der decodierten URL:'
+  ascii-text-drawer:
+    title: ASCII-Art-Text-Generator
+    description: ASCII-Art-Text mit vielen Schriftarten und Stilen erstellen.
+    text: 'Dein Text:'
+    placeholder: Dein zu zeichnender Text
+    font: 'Schriftart:'
+    width: 'Breite:'
+    loading: Schriftart wird geladen...
+    error: Die aktuellen Einstellungen führten zu einem Fehler.
+    output: 'ASCII-Art-Text:'
+  json-to-xml:
+    title: JSON zu XML
+    description: JSON in XML konvertieren
+    input: Dein JSON-Inhalt
+    input-placeholder: Füge hier deinen JSON-Inhalt ein...
+    output: Konvertiertes XML
+    error: Bereitgestelltes JSON ist ungültig.
+  xml-to-json:
+    title: XML zu JSON
+    description: XML in JSON konvertieren
+    input: Dein XML-Inhalt
+    input-placeholder: Füge hier deinen XML-Inhalt ein...
+    output: Konvertiertes JSON
+    error: Bereitgestelltes XML ist ungültig.
+  email-normalizer:
+    title: E-Mail-Normalisierung
+    description: >-
+      Vereinheitlichen von E-Mail-Adressen auf ein Standardformat für einen
+      einfacheren Vergleich. Nützlich für Deduplizierung und Datenbereinigung.
+    input: 'Unbearbeitete E-Mails zur Normalisierung:'
+    input-placeholder: Gib hier deine E-Mails ein (eine pro Zeile)...
+    output: 'Normalisierte E-Mails:'
+    output-placeholder: Hier werden normalisierte E-Mails angezeigt...
+    button:
+      clear: E-Mails leeren
+      copy: Kopiere normalisierte E-Mails
+    copied: Normalisierte E-Mails in die Zwischenablage kopiert
+  markdown-to-html:
+    title: Markdown zu HTML
+    description: Markdown in HTML konvertieren und (als PDF) ausdrucken
+    markdown: 'Dein zu konvertierender Markdown-Inhalt:'
+    markdownInput: Dein Markdown-Inhalt...
+    html: 'HTML-Ausgabe:'
+    button:
+      print: Als PDF drucken
+  regex-memo:
+    title: Regex-Spickzettel
+    description: Spickzettel für Javascript Regex/Regulärer Ausdruck
+  regex-tester:
+    title: Regex-Tester
+    description: Teste deine regulären Ausdrücke mit Beispieltext.
+    regex: Regex
+    regex-input: 'Regex zum Testen:'
+    regex-input-placeholder: Eingabe des zu testenden regulären Ausdrucks
+    link: Siehe Spickzettel für reguläre Ausdrücke
+    text-input: 'Zu prüfender Text:'
+    text-input-placeholder: Eingabe des zu prüfenden Texts
+    matches: Treffer
+    text-index: Index im Text
+    value: Wert
+    captures: Erfassungen
+    groups: Gruppen
+    sample: Beispiel für passenden Text
+    diagram: Regex-Diagramm
+    global: Globale Suche.
+    ignoreCase: Suche ohne Berücksichtigung der Groß-/Kleinschreibung.
+    multiline: Ermöglicht die Übereinstimmung von ^ und $ neben Zeilenumbruchzeichen.
+    dotAll: Lässt . als Treffer für Zeilenumbruchzeichen zu.
+    unicode: Unicode; behandelt ein Muster als eine Folge von Unicode-Codepunkten.
+    unicodeSets: Ein Upgrade zum u-Modus mit mehr Unicode-Funktionen.
+    no-match: Kein Treffer

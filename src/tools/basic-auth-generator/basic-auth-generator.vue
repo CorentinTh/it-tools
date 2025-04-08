@@ -5,17 +5,25 @@ import { textToBase64 } from '@/utils/base64';
 const username = ref('');
 const password = ref('');
 const header = computed(() => `Authorization: Basic ${textToBase64(`${username.value}:${password.value}`)}`);
+const { t } = useI18n();
 
-const { copy } = useCopy({ source: header, text: 'Header copied to the clipboard' });
+const { copy } = useCopy({ source: header, text: t('tools.basic-auth-generator.copied') });
 </script>
 
 <template>
   <div>
-    <c-input-text v-model:value="username" label="Username" placeholder="Your username..." clearable raw-text mb-5 />
+    <c-input-text
+      v-model:value="username"
+      :label="t('tools.basic-auth-generator.username')"
+      :placeholder="t('tools.basic-auth-generator.yourusername')"
+      clearable
+      raw-text
+      mb-5
+    />
     <c-input-text
       v-model:value="password"
-      label="Password"
-      placeholder="Your password..."
+      :label="t('tools.basic-auth-generator.password')"
+      :placeholder="t('tools.basic-auth-generator.yourpassword')"
       clearable
       raw-text
       mb-2
@@ -31,7 +39,7 @@ const { copy } = useCopy({ source: header, text: 'Header copied to the clipboard
     </c-card>
     <div mt-5 flex justify-center>
       <c-button @click="copy()">
-        Copy header
+        {{ t('tools.basic-auth-generator.button.copy') }}
       </c-button>
     </div>
   </div>
