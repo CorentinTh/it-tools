@@ -9,7 +9,7 @@ const output = ref('');
 const errored = ref(false);
 const processing = ref(false);
 
-figlet.defaults({ fontPath: '//unpkg.com/figlet@1.6.0/fonts/' });
+figlet.defaults({ fontPath: '//unpkg.com/figlet@1.6.0/fonts' });
 
 watchEffect(async () => {
   processing.value = true;
