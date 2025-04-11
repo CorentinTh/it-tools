@@ -1,0 +1,394 @@
+home:
+  categories:
+    newestTools: أحدث الأدوات
+    favoriteTools: 'أدواتك المفضلة'
+    allTools: 'جميع الأدوات'
+    favoritesDndToolTip: 'اسحب وأفلت لإعادة ترتيب المفضلة'
+  subtitle: 'أدوات مفيدة للمطورين'
+  toggleMenu: 'تبديل القائمة'
+  home: الصفحة الرئيسية
+  uiLib: 'UI Lib'
+  support: 'ادعم تطوير IT-Tools'
+  buyMeACoffee: 'ادعمنا بشراء قهوة'
+  follow:
+    title: 'هل يعجبك it-tools؟'
+    p1: 'أعطنا نجمة على'
+    githubRepository: 'مستودع IT-Tools على GitHub'
+    p2: 'أو تابعنا على'
+    twitterXAccount: 'حساب IT-Tools على X'
+    thankYou: 'شكرًا لك!'
+  nav:
+    github: 'مستودع GitHub'
+    githubRepository: 'مستودع IT-Tools على GitHub'
+    twitterX: 'حساب X'
+    twitterXAccount: 'حساب IT-Tools على X'
+    about: 'حول IT-Tools'
+    aboutLabel: 'نبذة عن التطبيق'
+    darkMode: 'الوضع الليلي'
+    lightMode: 'الوضع النهاري'
+    mode: 'تبديل الوضع الليلي/النهاري'
+about:
+  content: >
+    # حول IT-Tools
+
+    هذا الموقع المميز، الذي تم إنشاؤه مع ❤ بواسطة [كورنتين توماسيت](https://corentin.tech?utm_source=it-tools&utm_medium=about)، يجمع أدوات مفيدة للمطورين والأشخاص الذين يعملون في مجال تكنولوجيا المعلومات. إذا وجدته مفيدًا، فلا تتردد في مشاركته مع الأشخاص الذين تعتقد أنهم قد يجدونه مفيدًا أيضًا، ولا تنسى وضع إشارة مرجعية عليه في شريط الاختصارات الخاص بك!
+
+    IT-Tools هو مشروع مجاني ومفتوح المصدر (تحت رخصة GPL-3.0)، وسيظل كذلك، ولكن استضافة الموقع وتجديد اسم النطاق يكلفني المال. إذا كنت ترغب في دعم عملي، وتشجيعي على إضافة المزيد من الأدوات، يرجى التفكير في الدعم من خلال [رعايتي](https://www.buymeacoffee.com/cthmsst).
+
+    ## التقنيات المستخدمة
+    
+    تم بناء IT Tools باستخدام الاصدار الثالث من Vue.js مع مكتبةNaive UI component ويتم استضافتها ونشرها باستمرار بواسطة Vercel. يتم استخدام مكتبات خارجية مفتوحة المصدر في بعض الأدوات، يمكنك العثور على القائمة الكاملة في ملف [package.json](https://github.com/CorentinTh/it-tools/blob/main/package.json) في المستودع.
+
+    ## هل عثرت على خطأ؟ هل هناك أداة غير متوفرة؟
+    
+    إذا كنت بحاجة إلى أداة غير متوفرة حاليًا هنا، وتعتقد أنها يمكن أن تكون مفيدة، فيمكنك إرسال طلب ميزة في [قسم المشكلات](https://github.com/CorentinTh/it-tools/issues/new/choose) في مستودع GitHub الخاص بنا.
+
+    وإذا اكتشفت وجود خطأ، أو أن شيئًا ما لا يعمل كما هو متوقع، يرجى تقديم تقرير عن الخطأ في [قسم المشكلات](https://github.com/CorentinTh/it-tools/issues/new/choose) في مستودع GitHub الخاص بنا.
+
+404:
+  notFound: '404 غير موجود'
+  sorry: 'عذرًا، هذه الصفحة غير موجودة'
+  maybe: 'قد يكون الكاش يعمل بشكل غير متوقع، جرب تحديث الصفحة يدويًا؟'
+  backHome: 'العودة للصفحة الرئيسية'
+favoriteButton:
+  remove: 'إزالة من المفضلة'
+  add: 'إضافة إلى المفضلة'
+toolCard:
+  new: جديد
+search:
+  label: بحث
+tools:
+  categories:
+    favorite-tools: 'أدواتك المفضلة'
+    crypto: التشفير
+    converter: التحويل
+    web: الويب
+    images and videos: 'الصور والفيديو'
+    development: التطوير
+    network: الشبكة
+    math: الرياضيات
+    measurement: القياس
+    text: النصوص
+    data: البيانات
+
+  password-strength-analyser:
+    title: محلل قوة كلمة المرور
+    description: اكتشف قوة كلمة المرور الخاصة بك باستخدام أداة التحليل هذه التي تعمل على جانب العميل فقط مع تقدير الوقت اللازم لكسرها.
+
+  chronometer:
+    title: مقياس الزمن
+    description: مراقبة مدة حدوث شيء ما. عبارة عن مقياس زمني بميزات أساسية. 
+
+  token-generator:
+    title: مولد الرموز
+    description: توليد سلسلة عشوائية بالأحرف التي تريدها بأحرف كبيرة أو صغيرة أو أرقام أو رموز.
+
+    uppercase: أحرف كبيرة (ABC...)
+    lowercase: أحرف صغيرة (abc...)
+    numbers: أرقام (123...)
+    symbols: رموز (!-;...)
+    length: الطول
+    tokenPlaceholder: 'الرمز...'
+    copied: تم نسخ الرمز إلى الحافظة
+    button:
+      copy: نسخ
+      refresh: تحديث
+  percentage-calculator:
+    title: حاسبة النسب المئوية
+    description: احسب النسب المئوية بسهولة بين قيمتين أو من نسبة إلى قيمة.
+
+  svg-placeholder-generator:
+    title: مولد صور SVG مؤقتة
+    description: إنشاء صور SVG لاستخدامها كعناصر نائبة في تطبيقاتك.
+
+  json-to-csv:
+    title: JSON إلى CSV
+    description: تحويل من تنسيق JSON إلى CSV مع الكشف التلقائي للرؤوس.
+
+  camera-recorder:
+    title: مسجل الكاميرا
+    description: التقاط صورة أو تسجيل فيديو من كاميرا الويب أو كاميرا الجهاز.
+
+  keycode-info:
+    title: معلومات رموز المفاتيح
+    description: استكشاف الرمز المميز في جافا سكريبت والكود والموقع والمعدِّلات لأي مفتاح يتم الضغط عليه.
+
+  emoji-picker:
+    title: منتقي الرموز التعبيرية
+    description: نسخ ولصق الرموز التعبيرية بسهولة والحصول على   الترميز الموحد (Unicode) وقيمة نقطة الرمز (code point) لكل رمز تعبيري.
+
+  color-converter:
+    title: محول الألوان
+    description: تحويل الألوان بين التنسيقات المختلفة (hex, rgb, hsl, وأسماء CSS).
+
+  bcrypt:
+    title: Bcrypt
+    description: تجزئة ومقارنة سلسلة نصية باستخدام Bcrypt .bcrypt هي دالة تجزئة لكلمات المرور تعتمد على تشفير Blowfish.
+
+  crontab-generator:
+    title: مولد Crontab
+    description: توليد تعبيرات crontab والتحقق منها والحصول على وصف سهل القراءة للجدول الزمني للـ cron.
+
+  http-status-codes:
+    title: رموز حالة HTTP
+    description: قائمة تضم كافة رموز حالة HTTP واسمائها ومعانيها.
+
+  sql-prettify:
+    title: تجميل وتنسيق SQL
+    description: تجميل وتنسيق استعلامات SQL الخاصة بك عبر الإنترنت (يدعم العديد من لهجات SQL).
+
+  benchmark-builder:
+    title: صانع مقاييس الأداء
+    description: مقارنة وقت تنفيذ المهام بسهولة باستخدام أداة صنع مقاييس الأداء البسيطة جدًا المتاحة عبر الإنترنت.
+
+  git-memo:
+    title: ملخص أوامر Git
+    description: Git هو برمجية لا مركزية لإدارة الإصدارات. باستخدام هذا الملخص، سوف يكون لديك وصول سريع إلى أوامر git الأكثر شيوعًا.
+
+  slugify-string:
+    title: تهيئة سلسلة نصية كـ Slug
+    description: جعل سلسلة نصية لرابط أو اسم ملف أو معرف آمنة.
+
+  encryption:
+    title: تشفير / فك تشفير النص
+    description: تشفير نص واضح وفك تشفير نص مشفر باستخدام خوارزميات تشفير مثل AES أو TripleDES أو Rabbit أو RC4.
+
+  random-port-generator:
+    title: مولد منفذ عشوائي
+    description: توليد أرقام منافذ عشوائية خارج نطاق المنافذ "المعروفة" (0-1023).
+
+  yaml-prettify:
+    title: تجميل وتنسيق YAML
+    description: تجميل سلسلة نصية بتسنيق YAML إلى صيغة سلسة وسهلة القراءة.
+
+  eta-calculator:
+    title: حاسبة وقت الوصول المتوقع (ETA)
+    description: حاسبة وقت الوصول المتوقع (ETA) لحساب الوقت التقريبي لانتهاء مهمة ما، على سبيل المثال، وقت انتهاء تنزيل ملف ومدته.
+
+  roman-numeral-converter:
+    title: محول الأرقام الرومانية
+    description: تحويل الأرقام الرومانية إلى أرقام والعكس.
+
+  hmac-generator:
+    title: مولد HMAC
+    description: حساب رمز مصادقة الرسائل القائم على التجزئة (HMAC) باستخدام مفتاح سري ودالة التجزئة المفضلة لديك.
+
+  bip39-generator:
+    title: مولد عبارات مرور BIP39
+    description: توليد عبارة مرور BIP39 من عبارة ذاكرة (mnemonic) موجودة أو عشوائية، أو الحصول على عبارة الذاكرة من عبارة المرور.
+
+  base64-file-converter:
+    title: تحويل الملفات إلى Base64
+    description: تحويل سلسلة نصية أو ملف أو صورة إلى تمثيل Base64 الخاص بها.
+
+  list-converter:
+    title: محول القوائم
+    description: يمكن لهذه الأداة معالجة البيانات ذات الأعمدة وتطبيق تغييرات متنوعة (التبديل وإضافة بادئة ولاحقة وعكس القائمة وترتيب القائمة وتحويل القيم إلى أحرف صغيرة وكذلك اقتطاع القيم) لكل الصفوف في القائمة.
+
+  base64-string-converter:
+    title: مرمز Base64 للنصوص
+    description: ترميز النصوص وفك ترميزها بصيغة Base64 بكل بساطة.
+
+  toml-to-yaml:
+    title: تحويل TOML إلى YAML
+    description: تحليل TOML وتحويله إلى YAML.
+
+  math-evaluator:
+    title: محلل رياضي
+    description: آلة حاسبة لتقييم التعابير الرياضية. يمكنك استخدام دوال مثل الجذر التربيعي (sqrt) وجيب التمام (cos) والجيب (sin) والقيمة المطلقة (abs) وغيرها.
+
+  json-to-yaml-converter:
+    title: محول JSON إلى YAML
+    description: تحويل JSON إلى YAML ببساطة عبر الإنترنت باستخدام أداة التحويل هذه.
+
+  url-parser:
+    title: محلل عنوان URL
+    description: تفكيك عنوان URL إلى أجزائه الأساسية (البروتوكول والمصدر والمعاملات والمنفذ واسم المستخدم-كلمة المرور ...)
+
+  iban-validator-and-parser:
+    title: محلل ومدقق رقم الحساب المصرفي الدولي (IBAN)
+    description: تحليل أرقام IBAN والتحقق من صحتها. تحقق مما إذا كان رقم الحساب المصرفي الدولي (IBAN) صالحًا واحصل على البلد ورقم الحساب المصرفي الأساسي (BBAN) في حال إذا كان هذا الرقم يمثل QR-IBAN ويستخدم تنسيق IBAN الملائم.
+
+  user-agent-parser:
+    title: محلل وكيل المستخدم
+    description: تحليل سلسلة نصية لوكيل المستخدم (user-agent) للتعرف على المتصفح والمحرك ونظام التشغيل ووحدة المعالجة المركزية ونوع/طراز الجهاز.
+
+  numeronym-generator:
+    title: مولد الاختصارات الرقمية (Numeronym)
+    description: الاختصار الرقمي (Numeronym) هو مصطلح يشير إلى الكلمة التي يُستخدم فيها رقم لتكوين اختصار. على سبيل المثال، "i18n" هو اختصار رقمي لكلمة "internationalization"، حيث يرمز الرقم 18 إلى عدد الحروف بين أول حرف i وآخر حرف n في الكلمة.
+
+  case-converter:
+    title: محول حالة الأحرف
+    description: تحويل حالة الأحرف في سلسلة نصية مع إمكانية الاختيار من بين صيغ متعددة
+
+  html-entities:
+    title: تهريب كيانات HTML (HTML Entities)
+    description: تهريب أو الغاء تهريب كيانات HTML ( استبدال أحرف مثل < و > و & و " و \' بصيغة HTML الخاصة بها)
+
+  json-prettify:
+    title: تجميل وتنسيق JSON
+    description: تجميل سلسلة نصية بتنسيق JSON إلى صيغة سلسة وسهلة القراءة.
+
+  docker-run-to-docker-compose-converter:
+    title: محول أوامر Docker run إلى Docker compose
+    description: تحويل أوامر "docker run" إلى ملفات docker-compose!
+
+  mac-address-lookup:
+    title: التحقق من عنوان MAC
+    description: description: العثور على البائع والشركة المصنعة لجهاز ما من خلال عنوان MAC الخاص به.
+
+  mime-types:
+    title: أنواع الوسائط (MIME types)
+    description: تحويل أنواع الوسائط (MIME types) إلى امتدادات ملفات وبالعكس.
+
+  toml-to-json:
+    title: TOML إلى JSON
+    description: تحليل TOML وتحويله إلى JSON.
+
+  lorem-ipsum-generator:
+    title: مولد نصوص Lorem ipsum
+    description: Lorem ipsum هو عبارة عن نص نائب يستخدم عادةً لتوضيح الشكل المرئي لمستند أو محرف دون الاعتماد على محتوى ذو معنى.
+
+  qrcode-generator:
+    title: مولد رمز الاستجابة السريعة (QR Code)
+    description: إنشاء وتنزيل رمز الاستجابة السريعة (QR Code) لعنوان URL (أو لمجرد نص عادي)، وتخصيص ألوان الخلفية والنمط.
+
+  wifi-qrcode-generator:
+    title: مولد رمز الاستجابة السريعة (QR Code) للشبكة اللاسلكية
+    description: إنشاء وتنزيل رموز الاستجابة السريعة (QR Code) للاتصال السريع بالشبكات اللاسلكية.
+
+  xml-formatter:
+    title: منسق XML
+    description: تجميل سلسلة نصية بتنسيق XML إلى هيئة سهلة القراءة من قبل البشر.
+
+  temperature-converter:
+    title: محول درجات الحرارة
+    description: تحويلات لدرجات الحرارة بين وحدات كلفن ومئوية وفهرنهايت ورانكين وديليسل ونيوتن وريومور ورومر.
+
+  chmod-calculator:
+    title: حاسبة أمر Chmod
+    description: حساب أذونات وأوامر chmod الخاصة بك باستخدام هذه الآلة الحاسبة المتوفرة على الويب.
+
+  rsa-key-pair-generator:
+    title: مولد زوج مفاتيح RSA
+    description: توليد زوج مفاتيح RSA عشوائي جديد بصيغة PEM (خاص/عام)
+
+  html-wysiwyg-editor:
+    title: محرر HTML مرئي
+    description: محرر ويب لصفحات HTML (ما تراه هو ما تحصل عليه WYSIWYG). يتيح لك هذ المحرر الحصول على الكود المصدري للمحتوى على الفور.
+
+  yaml-to-toml:
+    title: YAML إلى TOML
+    description: تحليل YAML وتحويله إلى TOML.
+
+  mac-address-generator:
+    title: مولد عناوين MAC
+    description: قم بإدخال الكمية والبادئة. سيتم إنشاء عناوين MAC بالحالة التي اخترتها (أحرف كبيرة أو صغيرة)
+
+  json-diff:
+    title: مقارنة JSON
+    description: مقارنة كائنين بتنسيق JSON وعرض الاختلافات بينهما.
+
+  jwt-parser:
+    title: محلل JWT
+    description: تحليل وفك تشفير رمز JSON Web Token (الذي يُعرف اختصارًا بـ JWT) ثم عرض محتواه.
+
+  date-converter:
+    title: محول الوقت والتاريخ
+    description: تحويل التاريخ والوقت إلى صيغ متعددة
+
+  phone-parser-and-formatter:
+    title: محلل ومنسق رقم الهاتف
+    description: تحليل أرقام الهواتف وتنسيقها والتحقق من صحتها. الحصول على معلومات حول رقم الهاتف، مثل رمز البلد والنوع وما إلى ذلك.
+
+  ipv4-subnet-calculator:
+    title: حاسبة الشبكات الفرعية لـ IPv4
+    description: تحليل كتل ترميز CIDR لبروتوكول IPv4 للحصول على كافة المعلومات التي تحتاجها حول شبكتك الفرعية.
+
+  og-meta-generator:
+    title: مولد علامات Open Graph
+    description: توليد علامات HTML الوصفية (meta tags) الخاصة بـ open-graph ومواقع التواصل الاجتماعي لموقعك على الويب.
+
+  ipv6-ula-generator:
+    title: مولد عناوين IPv6 ULA
+    description: توليد عناوين IP محلية خاصة بك وغير قابلة للتوجيه للشبكة الخاصة بك وفقًا لـ RFC4193.
+
+  hash-text:
+    title: تجزئة النص
+    description: 'تجزئة سلسلة نصية باستخدام الدالة التي تريدها : MD5 أو SHA1 أو SHA256 أو SHA256 أو SHA224 أو SHA512 أو SHA384 أو SHA3 أو RIPEMD160'
+
+  json-to-toml:
+    title: JSON إلى TOML
+    description: تحليل JSON وتحويله إلى TOML.
+
+  device-information:
+    title: معلومات الجهاز
+    description: الحصول على معلومات حول جهازك الحالي (حجم الشاشة ونسبة البكسل ووكيل المستخدم ...)
+
+  pdf-signature-checker:
+    title: مدقق تواقيع PDF
+    description: التحقق من تواقيع ملف PDF. يحتوي ملف PDF الموقع على توقيع واحد أو أكثر، والتي يمكن استخدامها لتحديد ما إذا كان قد تم إجراء تغييرات على محتويات الملف منذ توقعيه.
+
+  json-minify:
+    title: مصغر JSON
+    description: تصغير وضغط بيانات JSON من خلال إزالة المسافات البيضاء غير الضرورية.
+
+  ulid-generator:
+    title: مولد ULID
+    description: توليد معرف فريد عالميًا قابل للفرز المعجمي (ULID) بشكل عشوائي.
+
+  string-obfuscator:
+    title: تعتيم سلسلة نصية
+    description: تعتيم سلسلة نصية (مثل سر ما أو رقم الحساب المصرفي الدولي (IBAN) أو رمز معين) لجعلها قابلة للمشاركة والتعرف عليها دون الكشف عن محتواها.
+
+  base-converter:
+    title: محول الأنظمة العددية
+    description: تحويل رقم بين أنظمة عد مختلفة (عشري وسادس عشري وثنائي وثماني وbase64 ...)
+
+  yaml-to-json-converter:
+    title: محول YAML إلى JSON
+    description: تحويل YAML إلى JSON ببساطة عبر الإنترنت باستخدام أداة التحويل هذه.
+
+  uuid-generator:
+    title: مولد معرفات UUIDs
+    description: المعرف الفريد عالميًا (UUID) هو رقم يتكون من 128 بت يستخدم لتحديد المعلومات في أنظمة الحاسوب. عدد معرفات UUID الممكنة هي 16^32، أي 2^128 وهو ما يساوي 3.4x10^38 (وهو عدد كبير!).
+
+  ipv4-address-converter:
+    title: محول عناوين IPv4
+    description: تحويل عنوان IP إلى رقم عشري أو ثنائي أو سداسي عشري أو حتى صيغة IPv6 له.
+
+  text-statistics:
+    title: إحصائيات النص
+    description: الحصول على معلومات حول نص معين من حيث عدد الأحرف وعدد الكلمات وحجمه بالبايت ...
+
+  text-to-nato-alphabet:
+    title: نص إلى أبجدية الناتو
+    description: تحويل نص إلى أبجدية الناتو الصوتية للإرسال الشفهي.
+
+  basic-auth-generator:
+    title: مولد مصادقة أساسية
+    description: توليد ترويسة مصادقة أساسية مرمزة باستخدام base64 من اسم مستخدم وكلمة مرور.
+
+  text-to-unicode:
+    title: نص إلى الترميز الموحد (Unicode)
+    description: تحليل نص وتحويله إلى رمز موحد (Unicode) وبالعكس
+
+  ipv4-range-expander:
+    title: موسع نطاقات IPv4
+    description: احسب CIDR والمساحة المتاحة من نطاق عناوين IPv4.
+
+  text-diff:
+    title: مقارنة النصوص
+    description: مقارنة بين نصين اثنين والاطلاع على الاختلافات بينهما.
+
+  otp-generator:
+    title: مولد رمز كلمة مرور لمرة واحدة (OTP)
+    description: توليد والتحقق من صحة رمز كلمة مرور لمرة واحدة (OTP) المعتمد على الوقت لإجراء مصادقة متعددة العوامل.
+
+  url-encoder:
+    title: ترميز/فك ترميز السلاسل النصية بصيغة ترميز عنوان URL
+    description: ترميز نص إلى صيغة ترميز عنوان URL (يُعرف أيضًا باسم "ترميز النسبة المئوية")، أو فك ترميز النص المرمز.
+
+  text-to-binary:
+    title: تحويل نص إلى تمثيله الثنائي في ASCII
+    description: تحويل النص إلى تمثيله الثنائي في ASCII وبالعكس.
