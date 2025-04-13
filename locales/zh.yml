@@ -298,8 +298,8 @@ tools:
     description: 解析、验证和格式化电话号码。获取有关电话号码的信息，如国家/地区代码、类型等。
 
   ipv4-subnet-calculator:
-    title: IPv4子网计算器
-    description: 解析IPv4 CIDR块，并获取有关子网络的所有所需信息。
+    title: IPv4 子网计算器
+    description: 解析 IPv4 CIDR 块，并获取有关子网络的所有所需信息。
 
   og-meta-generator:
     title: 开放式图形元生成器
@@ -350,8 +350,8 @@ tools:
     description: 通用唯一标识符（UUID）是一个128位数字，用于标识计算机系统中的信息。可能的UUID数量为16^32，即2^128或约3.4x10^38（这是一个很大的数字！）。
 
   ipv4-address-converter:
-    title: Ipv4地址转换器
-    description: 在ipv6中，将ip地址转换为十进制、二进制、十六进制或事件
+    title: IPv4 地址转换器
+    description: 将 IP 地址转换为十进制、二进制、十六进制，甚至是 IPv6 表示形式。
 
   text-statistics:
     title: 文本统计
@@ -370,8 +370,8 @@ tools:
     description: 解析文本并将其转换为 unicode，反之亦然
 
   ipv4-range-expander:
-    title: IPv4范围扩展器
-    description: 给定起始和结束IPv4地址，此工具使用其CIDR表示法计算有效的IPv4网络。
+    title: IPv4 范围扩展器
+    description: 给定起始和结束 IPv4 地址，此工具使用其 CIDR 表示法计算有效的 IPv4 网络。
 
   text-diff:
     title: 文本比较
