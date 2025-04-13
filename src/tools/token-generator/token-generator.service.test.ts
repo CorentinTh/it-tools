@@ -94,5 +94,19 @@ describe('token-generator', () => {
       expect(token).toHaveLength(256);
       expect(token).toMatch(/^[a-zA-Z]+$/);
     });
+
+    it('should generate a random string with just numbers except 1 and 2 if only withNumbers is set and deniedChars contains 1 and 2', () => {
+      const token = createToken({
+        withLowercase: false,
+        withUppercase: false,
+        withNumbers: true,
+        withSymbols: false,
+        length: 256,
+        deniedChars: '12',
+      });
+
+      expect(token).toHaveLength(256);
+      expect(token).toMatch(/^[03456789]+$/);
+    });
   });
 });
