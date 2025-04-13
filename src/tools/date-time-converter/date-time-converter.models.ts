@@ -8,7 +8,6 @@ export {
   isUnixTimestamp,
   isTimestamp,
   isUTCDateString,
-  isMongoObjectId,
   dateToExcelFormat,
   excelFormatToDate,
   isExcelFormat,
@@ -36,7 +35,6 @@ const isRFC3339DateString = createRegexMatcher(RFC3339_REGEX);
 const isRFC7231DateString = createRegexMatcher(RFC7231_REGEX);
 const isUnixTimestamp = createRegexMatcher(/^[0-9]{1,10}$/);
 const isTimestamp = createRegexMatcher(/^[0-9]{1,13}$/);
-const isMongoObjectId = createRegexMatcher(/^[0-9a-fA-F]{24}$/);
 
 const isExcelFormat = createRegexMatcher(EXCEL_FORMAT_REGEX);
 

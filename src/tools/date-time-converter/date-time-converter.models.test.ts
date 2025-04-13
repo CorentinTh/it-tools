@@ -5,7 +5,6 @@ import {
   isExcelFormat,
   isISO8601DateTimeString,
   isISO9075DateString,
-  isMongoObjectId,
   isRFC3339DateString,
   isRFC7231DateString,
   isTimestamp,
@@ -126,20 +125,6 @@ describe('date-time-converter models', () => {
       expect(isUTCDateString('16497920261')).toBe(false);
       expect(isUTCDateString('foo')).toBe(false);
       expect(isUTCDateString('')).toBe(false);
-    });
-  });
-
-  describe('isMongoObjectId', () => {
-    test('should return true for valid Mongo ObjectIds', () => {
-      expect(isMongoObjectId('507f1f77bcf86cd799439011')).toBe(true);
-      expect(isMongoObjectId('507f1f77bcf86cd799439012')).toBe(true);
-    });
-
-    test('should return false for invalid Mongo ObjectIds', () => {
-      expect(isMongoObjectId('507f1f77bcf86cd79943901')).toBe(false);
-      expect(isMongoObjectId('507f1f77bcf86cd79943901z')).toBe(false);
-      expect(isMongoObjectId('foo')).toBe(false);
-      expect(isMongoObjectId('')).toBe(false);
     });
   });
 
