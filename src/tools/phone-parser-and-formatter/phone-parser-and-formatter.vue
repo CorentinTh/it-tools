@@ -9,9 +9,10 @@ import {
 import { withDefaultOnError } from '@/utils/defaults';
 import { booleanToHumanReadable } from '@/utils/boolean';
 import { useValidation } from '@/composable/validation';
+import { useQueryParamOrStorage } from '@/composable/queryParams';
 
 const rawPhone = ref('');
-const defaultCountryCode = ref(getDefaultCountryCode());
+const defaultCountryCode = useQueryParamOrStorage({ name: 'country', storageName: 'phone-parser:country', defaultValue: getDefaultCountryCode() });
 const validation = useValidation({
   source: rawPhone,
   rules: [
@@ -22,13 +23,16 @@ const validation = useValidation({
   ],
 });
 
-const parsedDetails = computed(() => {
+const parsedRaw = computed(() => {
   if (!validation.isValid) {
     return undefined;
   }
 
-  const parsed = withDefaultOnError(() => parsePhoneNumber(rawPhone.value, defaultCountryCode.value), undefined);
+  return withDefaultOnError(() => parsePhoneNumber(rawPhone.value, defaultCountryCode.value), undefined);
+});
 
+const parsedDetails = computed(() => {
+  const parsed = parsedRaw.value;
   if (!parsed) {
     return undefined;
   }
@@ -81,6 +85,27 @@ const countriesOptions = getCountries().map(code => ({
   label: `${lookup.byIso(code)?.country || code} (+${getCountryCallingCode(code)})`,
   value: code,
 }));
+
+const messageToSend = ref('');
+const whatsAppLink = computed(() => {
+  const parsed = parsedRaw.value;
+  if (!parsed) {
+    return undefined;
+  }
+
+  const internationalNoPunts = parsed.formatInternational().replace(/^\+0*/g, '').replace(/\D/g, '');
+
+  return `https://wa.me/${internationalNoPunts}?text=${encodeURIComponent(messageToSend.value)}`;
+});
+const smsLink = computed(() => {
+  const parsed = parsedRaw.value;
+  if (!parsed) {
+    return undefined;
+  }
+
+  const internationalNoSpaces = parsed.formatInternational().replace(/\s/g, '');
+  return `sms:${internationalNoSpaces}&body=${encodeURIComponent(messageToSend.value)}`;
+});
 </script>
 
 <template>
@@ -110,5 +135,34 @@ const countriesOptions = getCountries().map(code => ({
         </tr>
       </tbody>
     </n-table>
+
+    <n-divider />
+
+    <c-input-text
+      v-model:value="messageToSend"
+      multiline
+      rows="4"
+      placeholder="Enter a message to send"
+      label="Message to send:"
+      mb-2
+    />
+
+    <c-card v-if="whatsAppLink" title="WhatsApp Send link" mb-2>
+      <input-copyable :value="whatsAppLink" mb-2 />
+      <div flex justify-center>
+        <!-- //NOSONAR --><c-button :href="whatsAppLink" target="_blank">
+          Send via WhatsApp
+        </c-button>
+      </div>
+    </c-card>
+
+    <c-card v-if="smsLink" title="SMS Send link">
+      <input-copyable :value="smsLink" mb-2 />
+      <div flex justify-center>
+        <!-- //NOSONAR --><c-button :href="smsLink" target="_blank">
+          Send via SMS
+        </c-button>
+      </div>
+    </c-card>
   </div>
 </template>
