@@ -110,6 +110,7 @@ export function useWifiQRCode({
   color: { background, foreground },
   options,
 }: IWifiQRCodeOptions) {
+  const text = ref('');
   const qrcode = ref('');
   const encryption = ref<WifiEncryption>('WPA');
 
@@ -118,7 +119,7 @@ export function useWifiQRCode({
     async () => {
       // @see https://github.com/zxing/zxing/wiki/Barcode-Contents#wi-fi-network-config-android-ios-11
       // This is the full spec, there's quite a bit of logic to generate the string embeddedin the QR code.
-      const text = getQrCodeText({
+      const qrText = getQrCodeText({
         ssid: get(ssid),
         password: get(password),
         encryption: get(encryption),
@@ -128,8 +129,8 @@ export function useWifiQRCode({
         eapIdentity: get(eapIdentity),
         eapPhase2Method: get(eapPhase2Method),
       });
-      if (text) {
-        qrcode.value = await QRCode.toDataURL(get(text).trim(), {
+      if (qrText) {
+        qrcode.value = await QRCode.toDataURL(get(qrText).trim(), {
           color: {
             dark: get(foreground),
             light: get(background),
@@ -138,9 +139,10 @@ export function useWifiQRCode({
           errorCorrectionLevel: 'M',
           ...options,
         });
+        text.value = qrText;
       }
     },
     { immediate: true },
   );
-  return { qrcode, encryption };
+  return { qrcode, text, encryption };
 }
