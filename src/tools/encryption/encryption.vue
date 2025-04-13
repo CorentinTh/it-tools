@@ -3,16 +3,22 @@ import { AES, RC4, Rabbit, TripleDES, enc } from 'crypto-js';
 import { computedCatch } from '@/composable/computed/catchedComputed';
 
 const algos = { AES, TripleDES, Rabbit, RC4 };
+type KeyEncoding = 'Text' | 'Hex';
 
 const cypherInput = ref('Lorem ipsum dolor sit amet');
 const cypherAlgo = ref<keyof typeof algos>('AES');
 const cypherSecret = ref('my secret key');
-const cypherOutput = computed(() => algos[cypherAlgo.value].encrypt(cypherInput.value, cypherSecret.value).toString());
+const cypherSecretEncoding = ref<KeyEncoding>('Text');
+const [cypherOutput, cypherError] = computedCatch(() => algos[cypherAlgo.value].encrypt(cypherInput.value, cypherSecretEncoding.value === 'Text' ? cypherSecret.value : enc.Hex.parse(cypherSecret.value), { iv: enc.Hex.parse('') }).toString(), {
+  defaultValue: '',
+  defaultErrorMessage: 'Unable to cypher your text',
+});
 
 const decryptInput = ref('U2FsdGVkX1/EC3+6P5dbbkZ3e1kQ5o2yzuU0NHTjmrKnLBEwreV489Kr0DIB+uBs');
 const decryptAlgo = ref<keyof typeof algos>('AES');
 const decryptSecret = ref('my secret key');
-const [decryptOutput, decryptError] = computedCatch(() => algos[decryptAlgo.value].decrypt(decryptInput.value, decryptSecret.value).toString(enc.Utf8), {
+const decryptSecretEncoding = ref<KeyEncoding>('Text');
+const [decryptOutput, decryptError] = computedCatch(() => algos[decryptAlgo.value].decrypt(decryptInput.value, decryptSecretEncoding.value === 'Text' ? decryptSecret.value : enc.Hex.parse(decryptSecret.value), { iv: enc.Hex.parse('') }).toString(enc.Utf8), {
   defaultValue: '',
   defaultErrorMessage: 'Unable to decrypt your text',
 });
@@ -32,12 +38,31 @@ const [decryptOutput, decryptError] = computedCatch(() => algos[decryptAlgo.valu
         <c-input-text v-model:value="cypherSecret" label="Your secret key:" clearable raw-text />
 
         <c-select
+          v-model:value="cypherSecretEncoding" label="Key encoding"
+          flex-1
+          placeholder="Select the key encoding..."
+          :options="[
+            {
+              label: 'Plain Text',
+              value: 'Text',
+            },
+            {
+              label: 'Hexadecimal Text',
+              value: 'Hex',
+            },
+          ]"
+        />
+
+        <c-select
           v-model:value="cypherAlgo"
           label="Encryption algorithm:"
           :options="Object.keys(algos).map((label) => ({ label, value: label }))"
         />
       </div>
     </div>
+    <c-alert v-if="cypherError" type="error" mt-12 title="Error while cyphering">
+      {{ cypherError }}
+    </c-alert>
     <c-input-text
       label="Your text encrypted:"
       :value="cypherOutput"
@@ -57,6 +82,22 @@ const [decryptOutput, decryptError] = computedCatch(() => algos[decryptAlgo.valu
       />
       <div flex flex-1 flex-col gap-2>
         <c-input-text v-model:value="decryptSecret" label="Your secret key:" clearable raw-text />
+
+        <c-select
+          v-model:value="decryptSecretEncoding" label="Key encoding"
+          flex-1
+          placeholder="Select the key encoding..."
+          :options="[
+            {
+              label: 'Plain Text',
+              value: 'Text',
+            },
+            {
+              label: 'Hexadecimal Text',
+              value: 'Hex',
+            },
+          ]"
+        />
 
         <c-select
           v-model:value="decryptAlgo"
