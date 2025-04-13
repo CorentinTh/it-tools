@@ -15,7 +15,7 @@ You have an idea of a tool? Submit a [feature request](https://github.com/Corent
 ## Self host
 
 Self host solutions for your homelab
-
+#### Using Docker
 **From docker hub:**
 
 ```sh
@@ -28,6 +28,17 @@ docker run -d --name it-tools --restart unless-stopped -p 8080:80 corentinth/it-
 docker run -d --name it-tools --restart unless-stopped -p 8080:80 ghcr.io/corentinth/it-tools:latest
 ```
 
+#### Using Docker Compose
+
+```yml
+services:
+  it-tools:
+    container_name: it-tools
+    image: corentinth/it-tools:latest
+    restart: unless-stopped
+    ports:
+      - 8080:80
+```
 **Other solutions:**
 
 - [Cloudron](https://www.cloudron.io/store/tech.ittools.cloudron.html)
