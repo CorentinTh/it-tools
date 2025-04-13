@@ -11,6 +11,7 @@ const localesLong: Record<string, string> = {
   ru: 'Русский',
   uk: 'Українська',
   zh: '中文',
+  zh_hant: '繁體中文',
   vi: 'Tiếng Việt',
 };
 
@@ -27,6 +28,6 @@ const localeOptions = computed(() =>
     v-model:value="locale"
     :options="localeOptions"
     placeholder="Select a language"
-    w-100px
+    w-120px
   />
 </template>

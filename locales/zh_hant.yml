@@ -1,0 +1,393 @@
+home:
+  categories:
+    newestTools: 最新工具
+    favoriteTools: '你最愛的工具'
+    allTools: '所有工具'
+  subtitle: '給開發者的便利工具'
+  toggleMenu: '切換選單'
+  home: 首頁
+  uiLib: 'UI 函式庫'
+  support: '支援 IT-Tools 開發'
+  buyMeACoffee: '請我喝杯咖啡'
+  follow:
+    title: '你喜歡 it-tools 嗎?'
+    p1: '給我們一顆星星'
+    githubRepository: 'IT-Tools GitHub 儲存庫'
+    p2: '或者追蹤我們'
+    twitterAccount: 'IT-Tools Twitter 帳號'
+    thankYou: '謝謝你!'
+  nav:
+    github: 'GitHub 儲存庫'
+    githubRepository: 'IT-Tools GitHub 儲存庫'
+    twitter: 'Twitter 帳號'
+    twitterAccount: 'IT Tools Twitter 帳號'
+    about: '關於 IT-Tools'
+    aboutLabel: '關於'
+    darkMode: '深色模式'
+    lightMode: '淺色模式'
+    mode: '切換 深色/淺色 模式'
+about:
+  content: >
+    # 關於 IT-Tools
+
+    這個精彩的網站，由 [Corentin Thomasset](https://github.com/CorentinTh) 用 ❤ 製作，匯集了對開發者和IT工作人員有用的工具。如果你覺得它有用，請隨時分享給你認為可能會覺得它有用的人，並別忘了把它加入你的快捷列！
+
+    IT Tools 是開源的（在 MIT 授權下）且免費的，並且永遠都會是，但是我需要花錢來托管和更新域名。如果你想支持我的作品，並鼓勵我新增更多的工具，請考慮通過贊助我來支持。
+
+    ## 技術
+
+    IT Tools 是用 Vue.js (Vue 3) 及使用 Naive UI 組件庫製作的，並由 Vercel 托管和持續部署。一些工具中使用了第三方開源函式庫，你可以在儲存庫的 [package.json](https://github.com/CorentinTh/it-tools/blob/main/package.json) 文件中找到完整的列表。
+
+    ## 發現了錯誤？缺少工具？
+
+    如果你需要一個目前這裡沒有的工具，並且你認為它可能有用，歡迎你在 GitHub 儲存庫的 [問題區](https://github.com/CorentinTh/it-tools/issues/new/choose) 提交功能請求。
+
+    如果你發現了一個錯誤，或者某些東西沒有按預期工作，請在 GitHub 儲存庫的 [問題區](https://github.com/CorentinTh/it-tools/issues/new/choose) 提交錯誤報告。
+
+404:
+  notFound: '404 找不到網頁'
+  sorry: '抱歉，這樣頁面好像不存在'
+  maybe: '快取好像在做一些很複雜的事情，試試看強置重新整理？'
+  backHome: '返回首頁'
+favoriteButton:
+  remove: '從最愛中移除'
+  add: '加到最愛'
+toolCard:
+  new: 新工具
+search:
+  label: 搜尋
+tools:
+  categories:
+    favorite-tools: '你最愛的工具'
+    crypto: 加密
+    converter: 轉換器
+    web: 網頁
+    images and videos: '圖片及影片'
+    development: 開發
+    network: 網路
+    math: 數學
+    measurement: 測量
+    text: 文字
+    data: 資料
+
+  password-strength-analyser:
+    title: 密碼強度分析器
+    description: Discover the strength of your password with this client-side-only password strength analyser and crack time estimation tool.
+
+  chronometer:
+    title: 計時器
+    description: 監控某件事情的持續時間。基本上是一個具有簡單計時功能的計時器。
+
+  token-generator:
+    title: Token 產生器
+    description: Generate random string with the chars you want, uppercase or lowercase letters, numbers and/or symbols.
+
+    uppercase: 大寫 (ABC...)
+    lowercase: 小寫 (abc...)
+    numbers: 數字 (123...)
+    symbols: 符號 (!-;...)
+    length: 長度
+    tokenPlaceholder: 'The token...'
+    copied: Token 已經複製到剪貼簿
+    button:
+      copy: 複製
+      refresh: 刷新
+  percentage-calculator:
+    title: 百分比計算機
+    description: Easily calculate percentages from a value to another value, or from a percentage to a value.
+
+  svg-placeholder-generator:
+    title: SVG 佔位符產生器
+    description: Generate svg images to use as a placeholder in your applications.
+
+  json-to-csv:
+    title: JSON 至 CSV
+    description: Convert JSON to CSV with automatic header detection.
+
+  camera-recorder:
+    title: 攝影機
+    description: Take a picture or record a video from your webcam or camera.
+
+  keycode-info:
+    title: Keycode 資訊
+    description: Find the javascript keycode, code, location and modifiers of any pressed key.
+
+  emoji-picker:
+    title: Emoji 挑選器
+    description: Copy and paste emojis easily and get the unicode and code points value of each emoji.
+
+  color-converter:
+    title: 顏色轉換器
+    description: Convert color between the different formats (hex, rgb, hsl and css name)
+
+  bcrypt:
+    title: Bcrypt
+    description: Hash and compare text string using bcrypt. Bcrypt is a password-hashing function based on the Blowfish cipher.
+
+  crontab-generator:
+    title: Crontab 產生器
+    description: Validate and generate crontab and get the human-readable description of the cron schedule.
+
+  http-status-codes:
+    title: HTTP 狀態碼
+    description: The list of all HTTP status codes, their name, and their meaning.
+
+  sql-prettify:
+    title: SQL 美化及排版
+    description: Format and prettify your SQL queries online (it supports various SQL dialects).
+
+  benchmark-builder:
+    title: Benchmark 建立器
+    description: Easily compare execution time of tasks with this very simple online benchmark builder.
+
+  git-memo:
+    title: Git 小抄
+    description: Git is a decentralized version management software. With this cheatsheet, you will have quick access to the most common git commands.
+
+  slugify-string:
+    title: Slugify string
+    description: Make a string url, filename and id safe.
+
+  encryption:
+    title: 加密/解密文字
+    description: Encrypt clear text and decrypt ciphertext using crypto algorithms like AES, TripleDES, Rabbit or RC4.
+
+  random-port-generator:
+    title: 隨機通訊阜產生器
+    description: Generate random port numbers outside of the range of "known" ports (0-1023).
+
+  yaml-prettify:
+    title: YAML 美化及排版
+    description: Prettify your YAML string into a friendly, human-readable format.
+
+  eta-calculator:
+    title: ETA 計算機
+    description: An ETA (Estimated Time of Arrival) calculator to determine the approximate end time of a task, for example, the end time and duration of a file download.
+
+  roman-numeral-converter:
+    title: 羅馬數值轉換器
+    description: Convert Roman numerals to numbers and convert numbers to Roman numerals.
+
+  hmac-generator:
+    title: Hmac 產生器
+    description: Computes a hash-based message authentication code (HMAC) using a secret key and your favorite hashing function.
+
+  bip39-generator:
+    title: BIP39 密碼片語產生器
+    description: Generate a BIP39 passphrase from an existing or random mnemonic, or get the mnemonic from the passphrase.
+
+  base64-file-converter:
+    title: Base64 檔案轉換器
+    description: Convert a string, file, or image into its base64 representation.
+
+  list-converter:
+    title: 列表轉換器
+    description: This tool can process column-based data and apply various changes (transpose, add prefix and suffix, reverse list, sort list, lowercase values, truncate values) to each row.
+
+  base64-string-converter:
+    title: Base64 字串編碼/解碼
+    description: Simply encode and decode strings into their base64 representation.
+
+  toml-to-yaml:
+    title: TOML 轉成 YAML
+    description: Parse and convert TOML to YAML.
+
+  math-evaluator:
+    title: 數學計算機
+    description: A calculator for evaluating mathematical expressions. You can use functions like sqrt, cos, sin, abs, etc.
+
+  json-to-yaml-converter:
+    title: JSON 轉成 YAML 轉換器
+    description: Simply convert JSON to YAML with this online live converter.
+
+  url-parser:
+    title: URL 剖析器
+    description: Parse a URL into its separate constituent parts (protocol, origin, params, port, username-password, ...)
+
+  iban-validator-and-parser:
+    title: IBAN 驗證器及剖析器
+    description: Validate and parse IBAN numbers. Check if an IBAN is valid and get the country, BBAN, if it is a QR-IBAN and the IBAN friendly format.
+
+  user-agent-parser:
+    title: User-agent 剖析器
+    description: Detect and parse Browser, Engine, OS, CPU, and Device type/model from an user-agent string.
+
+  numeronym-generator:
+    title: Numeronym 產生器
+    description: A numeronym is a word where a number is used to form an abbreviation. For example, "i18n" is a numeronym of "internationalization" where 18 stands for the number of letters between the first i and the last n in the word.
+
+  case-converter:
+    title: 字母大小寫轉換器
+    description: Transform the case of a string and choose between different formats
+
+  html-entities:
+    title: Escape HTML entities
+    description: Escape or unescape HTML entities (replace characters like <,>, &, " and \' with their HTML version)
+
+  json-prettify:
+    title: JSON 美化及排版
+    description: Prettify your JSON string into a friendly, human-readable format.
+
+  docker-run-to-docker-compose-converter:
+    title: Docker run 至 Docker compose 轉換器
+    description: Transforms "docker run" commands into docker-compose files!
+
+  mac-address-lookup:
+    title: 尋找 MAC 地址
+    description: Find the vendor and manufacturer of a device by its MAC address.
+
+  mime-types:
+    title: MIME 類型
+    description: Convert MIME types to file extensions and vice-versa.
+
+  toml-to-json:
+    title: TOML 至 JSON
+    description: Parse and convert TOML to JSON.
+
+  lorem-ipsum-generator:
+    title: Lorem ipsum 產生器
+    description: Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content
+
+  qrcode-generator:
+    title: QR Code 產生器
+    description: Generate and download a QR code for a URL (or just plain text), and customize the background and foreground colors.
+
+  wifi-qrcode-generator:
+    title: WiFi QR Code 產生器
+    description: Generate and download QR codes for quick connections to WiFi networks.
+
+  xml-formatter:
+    title: XML 格式化
+    description: Prettify your XML string into a friendly, human-readable format.
+
+  temperature-converter:
+    title: 溫度轉換器
+    description: Degrees temperature conversions for Kelvin, Celsius, Fahrenheit, Rankine, Delisle, Newton, Réaumur, and Rømer.
+
+  chmod-calculator:
+    title: Chmod 計算器
+    description: Compute your chmod permissions and commands with this online chmod calculator.
+
+  rsa-key-pair-generator:
+    title: RSA key pair 產生器
+    description: Generate a new random RSA private and public pem certificate key pair.
+
+  html-wysiwyg-editor:
+    title: HTML 所見即所得編輯器
+    description: Online, feature-rich WYSIWYG HTML editor which generates the source code of the content immediately.
+
+  yaml-to-toml:
+    title: YAML 至 TOML
+    description: Parse and convert YAML to TOML.
+
+  mac-address-generator:
+    title: MAC address 產生器
+    description: Enter the quantity and prefix. MAC addresses will be generated in your chosen case (uppercase or lowercase)
+
+  json-diff:
+    title: JSON 差異比較
+    description: 比較兩個 JSON 物件並獲取它們之間的差異。
+
+  jwt-parser:
+    title: JWT 剖析器
+    description: Parse and decode your JSON Web Token (jwt) and display its content.
+
+  date-converter:
+    title: Date-time 轉換器
+    description: Convert date and time into the various different formats
+
+  phone-parser-and-formatter:
+    title: 電話剖析及格式化
+    description: 剖析、驗證及格式化電話號碼。取得有關電話號碼的資訊，例如國碼、類型等。
+
+  ipv4-subnet-calculator:
+    title: IPv4 字網路計算器
+    description: Parse your IPv4 CIDR blocks and get all the info you need about your subnet.
+
+  og-meta-generator:
+    title: Open graph meta 產生器
+    description: Generate open-graph and socials HTML meta tags for your website.
+
+  ipv6-ula-generator:
+    title: IPv6 ULA 產生器
+    description: Generate your own local, non-routable IP addresses for your network according to RFC4193.
+
+  hash-text:
+    title: 雜湊文字
+    description: 'Hash a text string using the function you need : MD5, SHA1, SHA256, SHA224, SHA512, SHA384, SHA3 or RIPEMD160'
+
+  json-to-toml:
+    title: JSON 至 TOML
+    description: Parse and convert JSON to TOML.
+
+  device-information:
+    title: 裝置資訊
+    description: Get information about your current device (screen size, pixel-ratio, user agent, ...)
+
+  pdf-signature-checker:
+    title: PDF 簽章檢查器
+    description: Verify the signatures of a PDF file. A signed PDF file contains one or more signatures that may be used to determine whether the contents of the file have been altered since the file was signed.
+
+  json-minify:
+    title: JSON 極簡化
+    description: Minify and compress your JSON by removing unnecessary whitespace.
+
+  ulid-generator:
+    title: ULID 產生器
+    description: Generate random Universally Unique Lexicographically Sortable Identifier (ULID).
+
+  string-obfuscator:
+    title: 字串混淆器
+    description: Obfuscate a string (like a secret, an IBAN, or a token) to make it shareable and identifiable without revealing its content.
+
+  base-converter:
+    title: 整數轉換器
+    description: Convert a number between different bases (decimal, hexadecimal, binary, octal, base64, ...)
+
+  yaml-to-json-converter:
+    title: YAML 至 JSON 轉換器
+    description: Simply convert YAML to JSON with this online live converter.
+
+  uuid-generator:
+    title: UUIDs 產生器
+    description: A Universally Unique Identifier (UUID) is a 128-bit number used to identify information in computer systems. The number of possible UUIDs is 16^32, which is 2^128 or about 3.4x10^38 (which is a lot!).
+
+  ipv4-address-converter:
+    title: IPv4 地址轉換器
+    description: Convert an IP address into decimal, binary, hexadecimal, or even an IPv6 representation of it.
+
+  text-statistics:
+    title: 文字統計資料
+    description: Get information about a text, the number of characters, the number of words, its size in bytes, ...
+
+  text-to-nato-alphabet:
+    title: 文字轉換北約音標字母
+    description: Transform text into the NATO phonetic alphabet for oral transmission.
+
+  basic-auth-generator:
+    title: Basic auth 產生器
+    description: Generate a base64 basic auth header from a username and password.
+
+  text-to-unicode:
+    title: 文字轉換 Unicode
+    description: 將文字剖析並轉換為 unicode，反之亦然。
+
+  ipv4-range-expander:
+    title: IPv4 範圍擴展器
+    description: Given a start and an end IPv4 address, this tool calculates a valid IPv4 subnet along with its CIDR notation.
+
+  text-diff:
+    title: 文字差異比較
+    description: Compare two texts and see the differences between them.
+
+  otp-generator:
+    title: OTP code 產生器
+    description: Generate and validate time-based OTP (one time password) for multi-factor authentication.
+
+  url-encoder:
+    title: 編碼/解碼 URL 格式字串
+    description: Encode text to URL-encoded format (also known as "percent-encoded"), or decode from it.
+
+  text-to-binary:
+    title: 文字轉換 ASCII 二進位表示
+    description: 將文字轉換為 ASCII 二進位表示法，反之亦然。
