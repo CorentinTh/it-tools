@@ -345,6 +345,10 @@ tools:
     title: Integer base converter
     description: Convert a number between different bases (decimal, hexadecimal, binary, octal, base64, ...)
 
+  floating-point-converter:
+    title: Floating point number converter
+    description: Convert a decimal number to a IEEE 754 binary floating point number or vice versa.
+
   yaml-to-json-converter:
     title: YAML to JSON converter
     description: Simply convert YAML to JSON with this online live converter.
