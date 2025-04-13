@@ -13,7 +13,7 @@ function formatYaml({
   sortKeys?: MaybeRef<boolean>
   indentSize?: MaybeRef<number>
 }) {
-  const parsedYaml = yaml.parse(get(rawYaml));
+  const parsedYaml = yaml.parse(get(rawYaml), { intAsBigInt: true });
 
   const formattedYAML = yaml.stringify(parsedYaml, {
     sortMapEntries: get(sortKeys),
