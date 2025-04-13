@@ -54,6 +54,7 @@
     "@vueuse/router": "^10.0.0",
     "bcryptjs": "^2.4.3",
     "change-case": "^4.1.2",
+    "chatgpt-prompt-splitter": "^1.0.5",
     "colord": "^2.9.3",
     "composerize-ts": "^0.6.2",
     "country-code-lookup": "^0.1.0",
