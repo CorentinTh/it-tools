@@ -1,0 +1,63 @@
+home:
+  categories:
+    newestTools: Новые инструменты
+    favoriteTools: Ваши избранные инструменты
+    allTools: Все инструменты
+    favoritesDndToolTip: Перетащите, чтобы изменить порядок избранного
+  subtitle: Полезные инструменты для разработчиков
+  toggleMenu: Показать/скрыть меню
+  home: Главная
+  uiLib: UI-библиотека
+  support: Поддержать разработку IT-Tools
+  buyMeACoffee: Купи мне кофе
+  follow:
+    title: Нравится IT-Tools?
+    p1: Поставьте звезду на
+    githubRepository: репозитории IT-Tools на GitHub
+    p2: или подпишитесь на нас в
+    twitterXAccount: аккаунте IT-Tools в X (Twitter)
+    thankYou: Спасибо!
+  nav:
+    github: Репозиторий GitHub
+    githubRepository: Репозиторий IT-Tools на GitHub
+    twitterX: Аккаунт в X
+    twitterXAccount: Аккаунт IT Tools в X
+    about: О проекте IT-Tools
+    aboutLabel: О проекте
+    darkMode: Тёмная тема
+    lightMode: Светлая тема
+    mode: Переключить тему (тёмная/светлая)
+
+about:
+  content: >
+    # О проекте IT-Tools
+
+    Этот замечательный сайт, созданный с ❤ [Корентеном Томассетом](https://corentin.tech?utm_source=it-tools&utm_medium=about), собирает полезные инструменты для разработчиков и специалистов в сфере IT. Если вы находите его полезным — поделитесь им с другими и не забудьте добавить в закладки!
+
+    IT Tools — это проект с открытым исходным кодом (лицензия GPL-3.0) и бесплатный, и всегда будет таким. Однако, мне приходится платить за хостинг и домен. Если вы хотите поддержать мою работу и мотивировать на добавление новых инструментов, рассмотрите возможность [поддержки](https://www.buymeacoffee.com/cthmsst).
+
+    ## Технологии
+
+    IT Tools создан с использованием Vue.js (версия 3) и библиотеки компонентов Naive UI. Развёртывание и хостинг осуществляется через Vercel. В некоторых инструментах используются сторонние open-source библиотеки, полный список которых можно найти в файле [package.json](https://github.com/CorentinTh/it-tools/blob/main/package.json) репозитория.
+
+    ## Нашли баг или не хватает инструмента?
+
+    Если вы хотите видеть здесь какой-либо инструмент — предложите идею через [issues](https://github.com/CorentinTh/it-tools/issues/new/choose) в репозитории на GitHub.
+
+    А если вы нашли ошибку или что-то работает не так, как ожидалось — создайте баг-репорт в [issues](https://github.com/CorentinTh/it-tools/issues/new/choose) на GitHub.
+
+404:
+  notFound: 404 — Страница не найдена
+  sorry: Извините, похоже, эта страница не существует
+  maybe: Возможно, проблема с кэшем. Попробуйте принудительное обновление страницы.
+  backHome: Вернуться на главную
+
+favoriteButton:
+  remove: Удалить из избранного
+  add: Добавить в избранное
+
+toolCard:
+  new: Новинка
+
+search:
+  label: Поиск
