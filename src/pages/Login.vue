@@ -42,7 +42,7 @@ async function handleLogin() {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f5f5f5; /* 浅灰色背景，与截图一致 */
+  background-color: #f5f5f5;
   padding: 20px;
 }
 
@@ -91,12 +91,12 @@ async function handleLogin() {
 
 .form-input:focus {
   outline: none;
-  border-color: #4CAF50; /* 深绿色，与导航栏渐变一致 */
+  border-color: #4CAF50;
   box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
 }
 
 .login-button {
-  background: linear-gradient(135deg, #4CAF50, #81C784); /* 与导航栏相似的渐变 */
+  background: linear-gradient(135deg, #4CAF50, #81C784);
   color: white;
   border: none;
   border-radius: 6px;
