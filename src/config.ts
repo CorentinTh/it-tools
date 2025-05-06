@@ -27,6 +27,12 @@ export const config = figue({
       default: 'development',
       env: 'VITE_VERCEL_ENV',
     },
+    token: {
+      doc: 'Application token',
+      format: 'string',
+      default: '',
+      env: 'VITE_TOKEN',
+    },
   },
   plausible: {
     isTrackerEnabled: {

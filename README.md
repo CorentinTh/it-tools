@@ -34,6 +34,15 @@ docker run -d --name it-tools --restart unless-stopped -p 8080:80 ghcr.io/corent
 - [Tipi](https://www.runtipi.io/docs/apps-available)
 - [Unraid](https://unraid.net/community/apps?q=it-tools)
 
+## Public
+If you want to add permission verification when users access the website, you can build and run the image using the following method. This approach will require users to enter a token before they can continue using the site.
+```sh
+cd it-tools
+# vim DockerfileWithToken, change your_token to the token you want to use
+docker build -f DockerfileWithToken -t it-tools:token .
+docker run -d --name it-tools --restart unless-stopped -p 8080:80 it-tools:token
+```
+
 ## Contribute
 
 ### Recommended IDE Setup
