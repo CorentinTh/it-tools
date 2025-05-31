@@ -206,7 +206,13 @@ watch([decryptInput, decryptSecret, decryptAlgo, decryptAesMode], async () => {
     if (mode === 'GCM') {
       decryptOutput.value = 'Decrypting...';
       try {
-        decryptOutput.value = await algo.decrypt(mode, decryptInput.value, decryptSecret.value)._async();
+        const decryptionResult = algo.decrypt(mode, decryptInput.value, decryptSecret.value);
+        if (decryptionResult && typeof decryptionResult._async === 'function') {
+          decryptOutput.value = await decryptionResult._async();
+        }
+        else {
+          throw new Error('Invalid decryption result or unsupported mode.');
+        }
       }
       catch (e: any) {
         decryptOutput.value = '';
