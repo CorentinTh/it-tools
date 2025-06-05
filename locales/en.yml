@@ -392,3 +392,18 @@ tools:
   text-to-binary:
     title: Text to ASCII binary
     description: Convert text to its ASCII binary representation and vice-versa.
+
+  markdown-to-word:
+    title: Markdown to Word
+    description: Convert Markdown documents to Word document format with live preview and custom styling support.
+    input:
+      placeholder: Enter your Markdown text here...
+      label: Markdown Input
+    preview:
+      label: Preview
+    export:
+      button: Export to Word
+      disabled: Please enter Markdown content first
+    notification:
+      success: Export successful!
+      error: Export failed, please try again.

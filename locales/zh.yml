@@ -153,7 +153,7 @@ tools:
 
   random-port-generator:
     title: 随机端口生成
-    description: 生成“已知”端口范围（0-1023）之外的随机端口号。
+    description: 生成"已知"端口范围（0-1023）之外的随机端口号。
 
   yaml-prettify:
     title: YAML美化和格式化
@@ -212,7 +212,7 @@ tools:
 
   numeronym-generator:
     title: 数字名称生成器
-    description: 数字名是一个用数字构成缩写的词。例如，“i18n”是“国际化”的名词，其中18表示单词中第一个i和最后一个n之间的字母数。
+    description: 数字名是一个用数字构成缩写的词。例如，"i18n"是"国际化"的名词，其中18表示单词中第一个i和最后一个n之间的字母数。
 
   case-converter:
     title: 大小写转换
@@ -220,7 +220,7 @@ tools:
 
   html-entities:
     title: 转义html实体
-    description: 转义或unescape html实体（将<、>、&、“和\'替换为其html版本）
+    description: 转义或unescape html实体（将<、>、&、"和'替换为其html版本）
 
   json-prettify:
     title: JSON美化和格式化
@@ -383,8 +383,23 @@ tools:
 
   url-encoder:
     title: 编码/解码url格式的字符串
-    description: 编码为url编码格式（也称为“百分比编码”）或从中解码。
+    description: 编码为url编码格式（也称为"百分比编码"）或从中解码。
 
   text-to-binary:
     title: 文本到 ASCII 二进制
     description: 将文本转换为其 ASCII 二进制表示形式，反之亦然。
+
+  markdown-to-word:
+    title: Markdown 转 Word
+    description: 将 Markdown 文档转换为 Word 文档格式，支持实时预览和自定义样式。
+    input:
+      placeholder: 在此输入 Markdown 文本...
+      label: Markdown 输入
+    preview:
+      label: 预览
+    export:
+      button: 导出为 Word
+      disabled: 请先输入 Markdown 内容
+    notification:
+      success: 导出成功！
+      error: 导出失败，请重试。
