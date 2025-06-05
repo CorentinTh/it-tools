@@ -403,3 +403,25 @@ tools:
     notification:
       success: 导出成功！
       error: 导出失败，请重试。
+
+  ip-info:
+    title: 'IP 信息查询'
+    description: '查询 IP 地址信息，包括位置、ISP 等详细信息'
+    placeholder: '请输入 IP 地址（例如：117.25.96.225）'
+    query: '查询'
+    loading: '加载中...'
+    copied: '已复制到剪贴板！'
+    errors:
+      emptyIp: '请输入 IP 地址'
+      fetchFailed: '获取 IP 信息失败'
+      generic: '发生错误'
+    fields:
+      ip: 'IP 地址'
+      hostname: '主机名'
+      city: '城市'
+      region: '地区'
+      country: '国家'
+      loc: '位置'
+      org: '组织'
+      postal: '邮政编码'
+      timezone: '时区'

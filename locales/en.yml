@@ -407,3 +407,25 @@ tools:
     notification:
       success: Export successful!
       error: Export failed, please try again.
+
+  ip-info:
+    title: 'IP Info'
+    description: 'Query IP address information including location, ISP, and more'
+    placeholder: 'Enter IP address (e.g. 117.25.96.225)'
+    query: 'Query'
+    loading: 'Loading...'
+    copied: 'Copied to clipboard!'
+    errors:
+      emptyIp: 'Please enter an IP address'
+      fetchFailed: 'Failed to fetch IP information'
+      generic: 'An error occurred'
+    fields:
+      ip: 'IP Address'
+      hostname: 'Hostname'
+      city: 'City'
+      region: 'Region'
+      country: 'Country'
+      loc: 'Location'
+      org: 'Organization'
+      postal: 'Postal Code'
+      timezone: 'Timezone'
