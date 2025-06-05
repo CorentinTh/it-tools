@@ -59,8 +59,12 @@ async function convertMarkdownToDocx() {
   <div class="markdown-to-word-container">
     <!-- 顶部标题和按钮区 -->
     <div class="header">
-      <h1 class="title">{{ t('tools.markdown-to-word.title') }}</h1>
-      <p class="subtitle">{{ t('tools.markdown-to-word.description') }}</p>
+      <h1 class="title">
+        {{ t('tools.markdown-to-word.title') }}
+      </h1>
+      <p class="subtitle">
+        {{ t('tools.markdown-to-word.description') }}
+      </p>
       <button
         class="export-button"
         :disabled="isExportDisabled"
@@ -87,9 +91,11 @@ async function convertMarkdownToDocx() {
         <div class="markdown-preview">
           <div v-if="isLoading" class="loading">
             <div class="loading-spinner" />
-            <div class="loading-text">{{ t('tools.markdown-to-word.export.disabled') }}</div>
+            <div class="loading-text">
+              {{ t('tools.markdown-to-word.export.disabled') }}
+            </div>
           </div>
-          <div v-else-if="inputMarkdown" v-html="previewHtml" class="preview-content" />
+          <div v-else-if="inputMarkdown" class="preview-content" v-html="previewHtml" />
           <div v-else class="empty-state">
             {{ t('tools.markdown-to-word.input.placeholder') }}<br>
             {{ t('tools.markdown-to-word.export.disabled') }}
@@ -97,7 +103,9 @@ async function convertMarkdownToDocx() {
         </div>
         <!-- 导出成功提示 -->
         <div v-if="lastExportTime" class="export-success">
-          <div class="success-icon">✓</div>
+          <div class="success-icon">
+            ✓
+          </div>
           {{ t('tools.markdown-to-word.notification.success') }}
         </div>
       </section>
