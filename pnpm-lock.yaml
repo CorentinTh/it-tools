@@ -38,9 +38,6 @@ importers:
       '@types/markdown-it':
         specifier: ^13.0.7
         version: 13.0.9
-      '@types/marked':
-        specifier: ^6.0.0
-        version: 6.0.0
       '@vicons/material':
         specifier: ^0.12.0
         version: 0.12.0
@@ -138,8 +135,8 @@ importers:
         specifier: ^14.0.0
         version: 14.1.0
       marked:
-        specifier: ^10.0.0
-        version: 10.0.0
+        specifier: ^4.3.0
+        version: 4.3.0
       mathjs:
         specifier: ^11.9.1
         version: 11.9.1
@@ -255,6 +252,9 @@ importers:
       '@types/lodash':
         specifier: ^4.14.192
         version: 4.14.192
+      '@types/marked':
+        specifier: ^4.3.0
+        version: 4.3.0
       '@types/mime-types':
         specifier: ^2.1.1
         version: 2.1.1
@@ -2053,9 +2053,8 @@ packages:
   '@types/markdown-it@13.0.9':
     resolution: {integrity: sha512-1XPwR0+MgXLWfTn9gCsZ55AHOKW1WN+P9vr0PaQh5aerR9LLQXUbjfEAFhjmEmyoYFWAyuN2Mqkn40MZ4ukjBw==}
 
-  '@types/marked@6.0.0':
-    resolution: {integrity: sha512-jmjpa4BwUsmhxcfsgUit/7A9KbrC48Q0q8KvnY107ogcjGgTFDlIL3RpihNpx2Mu1hM4mdFQjoVc4O6JoGKHsA==}
-    deprecated: This is a stub types definition. marked provides its own type definitions, so you do not need this installed.
+  '@types/marked@4.3.0':
+    resolution: {integrity: sha512-zK4gSFMjgslsv5Lyvr3O1yCjgmnE4pr8jbG8qVn4QglMwtpvPCf4YT2Wma7Nk95OxUUJI8Z+kzdXohbM7mVpGw==}
 
   '@types/mdast@3.0.11':
     resolution: {integrity: sha512-Y/uImid8aAwrEA24/1tcRZwpxX3pIFTSilcNDKSPn+Y2iDywSEachzRuvgAYYLR3wpGXAsMbv5lvKLDZLeYPAw==}
@@ -4436,14 +4435,14 @@ packages:
     resolution: {integrity: sha512-a54IwgWPaeBCAAsv13YgmALOF1elABB08FxO9i+r4VFk5Vl4pKokRPeX8u5TCgSsPi6ec1otfLjdOpVcgbpshg==}
     hasBin: true
 
-  marked@10.0.0:
-    resolution: {integrity: sha512-YiGcYcWj50YrwBgNzFoYhQ1hT6GmQbFG8SksnYJX1z4BXTHSOrz1GB5/Jm2yQvMg4nN1FHP4M6r03R10KrVUiA==}
-    engines: {node: '>= 18'}
-    hasBin: true
-
   marked@15.0.12:
     resolution: {integrity: sha512-8dD6FusOQSrpv9Z1rdNMdlSgQOIP880DHqnohobOmYLElGEqAL/JvxvuxZO16r4HtjTlfPRDC1hbvxC9dPN2nA==}
     engines: {node: '>= 18'}
+    hasBin: true
+
+  marked@4.3.0:
+    resolution: {integrity: sha512-PRsaiG84bK+AMvxziE/lCFss8juXjNaWzVbN5tXAm4XjeaS9NAHhop+PjQxz2A9h8Q4M/xGmzP8vqNwy6JeK0A==}
+    engines: {node: '>= 12'}
     hasBin: true
 
   math-intrinsics@1.0.0:
@@ -8152,9 +8151,7 @@ snapshots:
       '@types/linkify-it': 3.0.2
       '@types/mdurl': 1.0.2
 
-  '@types/marked@6.0.0':
-    dependencies:
-      marked: 10.0.0
+  '@types/marked@4.3.0': {}
 
   '@types/mdast@3.0.11':
     dependencies:
@@ -10944,9 +10941,9 @@ snapshots:
       punycode.js: 2.3.1
       uc.micro: 2.1.0
 
-  marked@10.0.0: {}
-
   marked@15.0.12: {}
+
+  marked@4.3.0: {}
 
   math-intrinsics@1.0.0: {}
 
