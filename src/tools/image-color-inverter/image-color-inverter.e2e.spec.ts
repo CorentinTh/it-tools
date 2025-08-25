@@ -1,6 +1,7 @@
-import { test, expect } from '@playwright/test';
-import { promises as fs } from 'fs';
-import path from 'path';
+import { promises as fs } from 'node:fs';
+import path from 'node:path';
+import process from 'node:process';
+import { expect, test } from '@playwright/test';
 
 test.describe('Tool - Image color inverter', () => {
   test.beforeEach(async ({ page }) => {
@@ -31,7 +32,8 @@ test.describe('Tool - Image color inverter', () => {
       const errorAlert = page.locator('.n-alert--error');
       await expect(errorAlert).toBeVisible();
       await expect(errorAlert).toContainText('File must be an image');
-    } finally {
+    }
+    finally {
       // Clean up
       await fs.unlink(testFilePath).catch(() => {});
     }
@@ -39,12 +41,13 @@ test.describe('Tool - Image color inverter', () => {
 
   test('Processes image upload successfully', async ({ page }) => {
     // Create a simple test image (1x1 pixel PNG in base64)
-    const testImageDataUrl = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
-    
+    const testImageDataUrl
+      = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
+
     // Create a blob from the data URL
     const response = await fetch(testImageDataUrl);
     const blob = await response.blob();
-    
+
     // Create a temporary file
     const buffer = await blob.arrayBuffer();
     const testFilePath = path.join(process.cwd(), 'test-image.png');
@@ -62,7 +65,7 @@ test.describe('Tool - Image color inverter', () => {
       // Check that both images are displayed
       const originalImage = page.locator('text=Original Image');
       const invertedImage = page.locator('text=Inverted Image');
-      
+
       await expect(originalImage).toBeVisible();
       await expect(invertedImage).toBeVisible();
 
@@ -73,7 +76,8 @@ test.describe('Tool - Image color inverter', () => {
       // Check that copy button is available
       const copyButton = page.locator('text=Copy Base64');
       await expect(copyButton).toBeVisible();
-    } finally {
+    }
+    finally {
       // Clean up
       await fs.unlink(testFilePath).catch(() => {});
     }
@@ -81,8 +85,9 @@ test.describe('Tool - Image color inverter', () => {
 
   test('Clear button resets the tool', async ({ page }) => {
     // Create a simple test image
-    const testImageDataUrl = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
-    
+    const testImageDataUrl
+      = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
+
     const response = await fetch(testImageDataUrl);
     const blob = await response.blob();
     const buffer = await blob.arrayBuffer();
@@ -93,7 +98,7 @@ test.describe('Tool - Image color inverter', () => {
       // Upload and process image
       const fileInput = page.locator('input[type="file"]');
       await fileInput.setInputFiles(testFilePath);
-      
+
       await page.waitForSelector('text=Inverted Image', { timeout: 5000 });
 
       // Click clear button
@@ -103,14 +108,15 @@ test.describe('Tool - Image color inverter', () => {
       // Check that images are cleared
       const originalImage = page.locator('text=Original Image');
       const invertedImage = page.locator('text=Inverted Image');
-      
+
       await expect(originalImage).not.toBeVisible();
       await expect(invertedImage).not.toBeVisible();
 
       // Check that upload area is visible again
       const uploadArea = page.locator('text=Drag and drop an image here, or click to select');
       await expect(uploadArea).toBeVisible();
-    } finally {
+    }
+    finally {
       await fs.unlink(testFilePath).catch(() => {});
     }
   });

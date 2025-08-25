@@ -1,17 +1,17 @@
 <script setup lang="ts">
+import { invertImageFile } from './image-color-inverter.service';
 import { useCopy } from '@/composable/copy';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 import { withDefaultOnError } from '@/utils/defaults';
-import { invertImageFile } from './image-color-inverter.service';
 
 const originalImageSrc = ref<string>('');
 const invertedImageSrc = ref<string>('');
 const isProcessing = ref(false);
 const error = ref<string | null>(null);
 
-const { copy: copyInvertedImage } = useCopy({ 
-  source: invertedImageSrc, 
-  text: 'Inverted image base64 copied to clipboard' 
+const { copy: copyInvertedImage } = useCopy({
+  source: invertedImageSrc,
+  text: 'Inverted image base64 copied to clipboard',
 });
 
 const { download: downloadInvertedImage } = useDownloadFileFromBase64({
@@ -20,41 +20,44 @@ const { download: downloadInvertedImage } = useDownloadFileFromBase64({
   extension: 'png',
 });
 
-const handleFileUpload = async (file: File) => {
+function handleFileUpload(file: File) {
   if (!file) {
     return;
   }
 
-  try {
-    error.value = null;
-    isProcessing.value = true;
-    
-    // Show original image
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      originalImageSrc.value = e.target?.result as string;
-    };
-    reader.readAsDataURL(file);
+  error.value = null;
+  isProcessing.value = true;
 
-    // Process the image
-    invertedImageSrc.value = await invertImageFile(file);
-  } catch (err) {
-    error.value = withDefaultOnError(err, 'Failed to process image');
-  } finally {
-    isProcessing.value = false;
-  }
-};
+  // Show original image
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    originalImageSrc.value = e.target?.result as string;
+  };
+  reader.readAsDataURL(file);
 
-const clearImages = () => {
+  // Process the image
+  invertImageFile(file)
+    .then((result) => {
+      invertedImageSrc.value = result;
+    })
+    .catch((err) => {
+      error.value = withDefaultOnError(err, 'Failed to process image');
+    })
+    .finally(() => {
+      isProcessing.value = false;
+    });
+}
+
+function clearImages() {
   originalImageSrc.value = '';
   invertedImageSrc.value = '';
   error.value = null;
-};
+}
 </script>
 
 <template>
   <c-card>
-    <c-file-upload 
+    <c-file-upload
       title="Drag and drop an image here, or click to select"
       accept="image/*"
       @file-upload="handleFileUpload"
@@ -72,16 +75,16 @@ const clearImages = () => {
           <div>
             <n-h3>Original Image</n-h3>
             <div class="image-container">
-              <img :src="originalImageSrc" alt="Original" />
+              <img :src="originalImageSrc" alt="Original">
             </div>
           </div>
         </n-gi>
-        
+
         <n-gi v-if="invertedImageSrc">
           <div>
             <n-h3>Inverted Image</n-h3>
             <div class="image-container">
-              <img :src="invertedImageSrc" alt="Inverted" />
+              <img :src="invertedImageSrc" alt="Inverted">
             </div>
             <n-space style="margin-top: 12px" justify="start">
               <c-button @click="downloadInvertedImage()">
