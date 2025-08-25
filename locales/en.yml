@@ -392,3 +392,7 @@ tools:
   text-to-binary:
     title: Text to ASCII binary
     description: Convert text to its ASCII binary representation and vice-versa.
+
+  image-color-inverter:
+    title: Image color inverter
+    description: Upload an image and invert its colors instantly in your browser. Download the result as PNG.

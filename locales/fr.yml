@@ -80,3 +80,7 @@ tools:
     copied: Le token a été copié
     length: Longueur
     tokenPlaceholder: Le token...
+
+  image-color-inverter:
+    title: Inverseur de couleurs d'image
+    description: Téléchargez une image et inversez ses couleurs instantanément dans votre navigateur. Téléchargez le résultat en PNG.
