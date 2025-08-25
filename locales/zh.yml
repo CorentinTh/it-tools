@@ -388,3 +388,7 @@ tools:
   text-to-binary:
     title: 文本到 ASCII 二进制
     description: 将文本转换为其 ASCII 二进制表示形式，反之亦然。
+
+  image-color-inverter:
+    title: 图像颜色反转器
+    description: 上传图像并在浏览器中立即反转其颜色。下载PNG格式的结果。
