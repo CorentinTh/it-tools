@@ -6,10 +6,6 @@
 
 Useful tools for developer and people working in IT. [Have a look !](https://it-tools.tech).
 
-## Sponsors
-
-[![Renderize banner](./.github/sponsor-banner.svg)](https://renderize.tech?utm_source=it-tools&utm_medium=readme)
-
 ## Functionalities and roadmap
 
 Please check the [issues](https://github.com/CorentinTh/it-tools/issues) to see if some feature listed to be implemented.
