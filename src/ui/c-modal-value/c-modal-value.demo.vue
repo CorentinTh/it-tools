@@ -1,7 +1,7 @@
 <template>
   <div flex gap-2>
     <c-modal-value value="lorem ipsum" label="test" />
-    <c-modal-value>
+    <c-modal-value value="demo value">
       <template #label="{ toggleModal }">
         <c-button class="text-left" size="small" @click="toggleModal">
           Bonjour

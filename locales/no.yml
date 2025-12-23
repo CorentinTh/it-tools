@@ -392,3 +392,15 @@ tools:
   text-to-binary:
     title: Tekst til ASCII binært
     description: Konverter tekst til sin ASCII binære representasjon og visa-versa.
+
+  weight-converter:
+    title: Vektkonverter
+    description: Konverter vekt- og masseenheter (kilogram, pund, etc.).
+
+  length-converter:
+    title: Lengdekonverter
+    description: Konverter lengde- og avstandsenheter (meter, fot, mil, etc.).
+
+  volume-converter:
+    title: Volumkonverter
+    description: Konverter volum- og kapasitetsenheter (liter, gallons, kopper, etc.).

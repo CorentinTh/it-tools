@@ -381,3 +381,15 @@ tools:
   text-to-binary:
     title: Chuyển đổi văn bản thành nhị phân ASCII
     description: Chuyển đổi văn bản thành biểu diễn nhị phân ASCII của nó và ngược lại.
+
+  weight-converter:
+    title: Bộ chuyển đổi trọng lượng
+    description: Chuyển đổi đơn vị trọng lượng và khối lượng (kilôgam, pound, v.v.).
+
+  length-converter:
+    title: Bộ chuyển đổi độ dài
+    description: Chuyển đổi đơn vị độ dài và khoảng cách (mét, feet, dặm, v.v.).
+
+  volume-converter:
+    title: Bộ chuyển đổi thể tích
+    description: Chuyển đổi đơn vị thể tích và dung tích (lít, gallon, cốc, v.v.).

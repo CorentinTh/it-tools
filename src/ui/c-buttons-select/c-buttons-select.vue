@@ -47,7 +47,7 @@ function selectOption(option: CButtonSelectOption<T>) {
   <c-label v-bind="props">
     <div class="flex gap-2">
       <c-tooltip
-        v-for="option in options" :key="option.value"
+        v-for="option in options" :key="String(option.value)"
         :tooltip="option.tooltip"
       >
         <c-button

@@ -1,4 +1,8 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+/**
+ * @vitest-environment jsdom
+ */
+
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { mount, shallowMount } from '@vue/test-utils';
 import { createPinia, setActivePinia } from 'pinia';
 import _ from 'lodash';
@@ -7,6 +11,15 @@ import { useValidation } from '@/composable/validation';
 
 describe('CInputText', () => {
   beforeEach(() => {
+    // Mock localStorage for VueUse's useStorage
+    const localStorageMock = {
+      getItem: vi.fn(),
+      setItem: vi.fn(),
+      removeItem: vi.fn(),
+      clear: vi.fn(),
+    };
+    globalThis.localStorage = localStorageMock as any;
+
     setActivePinia(createPinia());
   });
 
@@ -17,7 +30,7 @@ describe('CInputText', () => {
       },
     });
 
-    expect(wrapper.get('.label').text()).to.equal('Label');
+    expect(wrapper.get('.label').text()).toBe('Label');
   });
 
   it('Renders a placeholder', () => {
@@ -27,7 +40,7 @@ describe('CInputText', () => {
       },
     });
 
-    expect(wrapper.get('.input').attributes('placeholder')).to.equal('Placeholder');
+    expect(wrapper.get('.input').attributes('placeholder')).toBe('Placeholder');
   });
 
   it('Renders a value', () => {
@@ -37,7 +50,7 @@ describe('CInputText', () => {
       },
     });
 
-    expect(wrapper.vm.value).to.equal('Value');
+    expect(wrapper.vm.value).toBe('Value');
   });
 
   it('Renders a provided id', () => {
@@ -47,7 +60,7 @@ describe('CInputText', () => {
       },
     });
 
-    expect(wrapper.get('.input').attributes('id')).to.equal('id');
+    expect(wrapper.get('.input').attributes('id')).toBe('id');
   });
 
   it('updates value on input', async () => {
@@ -55,7 +68,7 @@ describe('CInputText', () => {
 
     await wrapper.get('input').setValue('Hello');
 
-    expect(_.get(wrapper.emitted(), 'update:value.0.0')).to.equal('Hello');
+    expect(_.get(wrapper.emitted(), 'update:value.0.0')).toBe('Hello');
   });
 
   it('cannot be edited when disabled', async () => {
@@ -76,8 +89,8 @@ describe('CInputText', () => {
     });
 
     const feedback = wrapper.find('.feedback');
-    expect(feedback.exists()).to.equal(true);
-    expect(feedback.text()).to.equal('Message');
+    expect(feedback.exists()).toBe(true);
+    expect(feedback.text()).toBe('Message');
   });
 
   it('if the value become valid according to rules, the feedback disappear', async () => {
@@ -88,12 +101,12 @@ describe('CInputText', () => {
     });
 
     const feedback = wrapper.find('.feedback');
-    expect(feedback.exists()).to.equal(true);
-    expect(feedback.text()).to.equal('Value should be Hello');
+    expect(feedback.exists()).toBe(true);
+    expect(feedback.text()).toBe('Value should be Hello');
 
     await wrapper.setProps({ value: 'Hello' });
 
-    expect(wrapper.find('.feedback').exists()).to.equal(false);
+    expect(wrapper.find('.feedback').exists()).toBe(false);
   });
 
   it('feedback does not render for valid rules', async () => {
@@ -101,7 +114,7 @@ describe('CInputText', () => {
       props: { rules: [{ validator: () => true, message: 'Message' }] },
     });
 
-    expect(wrapper.find('.feedback').exists()).to.equal(false);
+    expect(wrapper.find('.feedback').exists()).toBe(false);
   });
 
   it('renders a feedback message for invalid custom validation wrapper', async () => {
@@ -112,8 +125,8 @@ describe('CInputText', () => {
     });
 
     const feedback = wrapper.find('.feedback');
-    expect(feedback.exists()).to.equal(true);
-    expect(feedback.text()).to.equal('Message');
+    expect(feedback.exists()).toBe(true);
+    expect(feedback.text()).toBe('Message');
   });
 
   it('feedback does not render for valid custom validation wrapper', async () => {
@@ -122,7 +135,7 @@ describe('CInputText', () => {
         validation: useValidation({ source: ref(), rules: [{ validator: () => true, message: 'Message' }] }),
       },
     });
-    expect(wrapper.find('.feedback').exists()).to.equal(false);
+    expect(wrapper.find('.feedback').exists()).toBe(false);
   });
 
   it('if the value become valid according to the custom validation wrapper, the feedback disappear', async () => {
@@ -138,14 +151,14 @@ describe('CInputText', () => {
     });
 
     const feedback = wrapper.find('.feedback');
-    expect(feedback.exists()).to.equal(true);
-    expect(feedback.text()).to.equal('Value should be Hello');
+    expect(feedback.exists()).toBe(true);
+    expect(feedback.text()).toBe('Value should be Hello');
 
     source.value = 'Hello';
 
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.find('.feedback').exists()).to.equal(false);
+    expect(wrapper.find('.feedback').exists()).toBe(false);
   });
 
   it('[prop:testId] renders a test id on the input', async () => {
@@ -155,6 +168,6 @@ describe('CInputText', () => {
       },
     });
 
-    expect(wrapper.get('input').attributes('data-test-id')).to.equal('TEST');
+    expect(wrapper.get('input').attributes('data-test-id')).toBe('TEST');
   });
 });

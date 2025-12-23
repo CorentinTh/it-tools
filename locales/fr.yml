@@ -80,3 +80,15 @@ tools:
     copied: Le token a été copié
     length: Longueur
     tokenPlaceholder: Le token...
+
+  weight-converter:
+    title: Convertisseur de poids
+    description: Convertir les unités de poids et de masse (kilogramme, livre, etc.).
+
+  length-converter:
+    title: Convertisseur de longueur
+    description: Convertir les unités de longueur et de distance (mètre, pieds, miles, etc.).
+
+  volume-converter:
+    title: Convertisseur de volume
+    description: Convertir les unités de volume et de capacité (litres, gallons, tasses, etc.).
