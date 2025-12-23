@@ -35,11 +35,13 @@ const inputLabelAlignmentConfig = {
 
 <template>
   <c-card>
-    <c-input-number
-      v-model:value="inputValue"
-      label="Value:"
-      v-bind="inputLabelAlignmentConfig"
-    />
+    <n-input-group>
+      <n-input-group-label style="width: 120px; text-align: right">
+        Value:
+      </n-input-group-label>
+      <n-input-number v-model:value="inputValue" style="flex: 1" />
+    </n-input-group>
+
     <c-select
       v-model:value="fromUnit"
       :options="fromOptions"
