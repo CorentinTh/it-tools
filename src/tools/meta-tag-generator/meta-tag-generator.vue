@@ -77,7 +77,7 @@ const metaTags = computed(() => {
           v-model:value="metadata[key]"
           w-full
           :placeholder="placeholder"
-          :options="(element as OGSchemaTypeElementSelect).options"
+          :options="(element as OGSchemaTypeElementSelect).options as any"
         />
       </n-input-group>
     </div>

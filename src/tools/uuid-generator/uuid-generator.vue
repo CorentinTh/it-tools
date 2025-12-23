@@ -4,7 +4,7 @@ import { useCopy } from '@/composable/copy';
 import { computedRefreshable } from '@/composable/computedRefreshable';
 import { withDefaultOnError } from '@/utils/defaults';
 
-const versions = ['NIL', 'v1', 'v3', 'v4', 'v5'] as const;
+const versions = ['NIL', 'v1', 'v3', 'v4', 'v5'];
 
 const version = useStorage<typeof versions[number]>('uuid-generator:version', 'v4');
 const count = useStorage('uuid-generator:quantity', 1);
@@ -38,7 +38,7 @@ const generators = {
 
 const [uuids, refreshUUIDs] = computedRefreshable(() => withDefaultOnError(() =>
   Array.from({ length: count.value }, (_ignored, index) => {
-    const generator = generators[version.value] ?? generators.NIL;
+    const generator = generators[version.value as keyof typeof generators] ?? generators.NIL;
     return generator(index);
   }).join('\n'), ''));
 

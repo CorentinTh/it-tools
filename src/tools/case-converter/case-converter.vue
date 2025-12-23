@@ -83,9 +83,9 @@ const formats = computed(() => [
 ]);
 
 const inputLabelAlignmentConfig = {
-  labelPosition: 'left',
+  labelPosition: 'left' as const,
   labelWidth: '120px',
-  labelAlign: 'right',
+  labelAlign: 'right' as const,
 };
 </script>
 

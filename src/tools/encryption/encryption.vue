@@ -65,7 +65,7 @@ const [decryptOutput, decryptError] = computedCatch(() => algos[decryptAlgo.valu
         />
       </div>
     </div>
-    <c-alert v-if="decryptError" type="error" mt-12 title="Error while decrypting">
+    <c-alert v-if="decryptError" type="warning" mt-12 title="Error while decrypting">
       {{ decryptError }}
     </c-alert>
     <c-input-text
