@@ -47,6 +47,10 @@
   </head>
   <body>
     <div id="app"></div>
+    <script>
+      // Polyfill for libraries that expect Node.js 'global' object (e.g., convert-units)
+      window.global = window;
+    </script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

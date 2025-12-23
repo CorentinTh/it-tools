@@ -454,3 +454,15 @@ tools:
   text-to-binary:
     title: Text zu ASCII-Binär
     description: Konvertiere Text in seine ASCII-Binärrepräsentation und umgekehrt.
+
+  weight-converter:
+    title: Gewichtskonverter
+    description: Konvertiere Gewichts- und Masseneinheiten (Kilogramm, Pfund, usw.).
+
+  length-converter:
+    title: Längenkonverter
+    description: Konvertiere Längen- und Entfernungseinheiten (Meter, Fuß, Meilen, usw.).
+
+  volume-converter:
+    title: Volumenkonverter
+    description: Konvertiere Volumen- und Kapazitätseinheiten (Liter, Gallonen, Tassen, usw.).

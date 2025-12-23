@@ -70,3 +70,15 @@ tools:
     measurement: Measurement
     text: Text
     data: Data
+
+  weight-converter:
+    title: Conversor de peso
+    description: Convierte unidades de peso y masa (kilogramo, libra, etc.).
+
+  length-converter:
+    title: Conversor de longitud
+    description: Convierte unidades de longitud y distancia (metro, pies, millas, etc.).
+
+  volume-converter:
+    title: Conversor de volumen
+    description: Convierte unidades de volumen y capacidad (litros, galones, tazas, etc.).

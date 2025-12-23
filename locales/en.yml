@@ -392,3 +392,15 @@ tools:
   text-to-binary:
     title: Text to ASCII binary
     description: Convert text to its ASCII binary representation and vice-versa.
+
+  weight-converter:
+    title: Weight converter
+    description: Convert weight and mass units (kilogram, pound, stone, etc.).
+
+  length-converter:
+    title: Length converter
+    description: Convert length and distance units (meter, feet, miles, etc.).
+
+  volume-converter:
+    title: Volume converter
+    description: Convert volume and capacity units (liters, gallons, cups, etc.).

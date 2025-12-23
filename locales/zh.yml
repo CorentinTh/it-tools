@@ -388,3 +388,15 @@ tools:
   text-to-binary:
     title: 文本到 ASCII 二进制
     description: 将文本转换为其 ASCII 二进制表示形式，反之亦然。
+
+  weight-converter:
+    title: 重量转换器
+    description: 转换重量和质量单位（千克、磅等）。
+
+  length-converter:
+    title: 长度转换器
+    description: 转换长度和距离单位（米、英尺、英里等）。
+
+  volume-converter:
+    title: 体积转换器
+    description: 转换体积和容量单位（升、加仑、杯等）。
