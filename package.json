@@ -36,6 +36,11 @@
     "script:create:ui": "hygen generator ui-component",
     "release": "node ./scripts/release.mjs"
   },
+  "pnpm": {
+    "overrides": {
+      "@vueuse/shared": "10.3.0"
+    }
+  },
   "dependencies": {
     "@it-tools/bip39": "^0.0.4",
     "@it-tools/oggen": "^1.3.0",
