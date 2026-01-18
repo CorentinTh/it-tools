@@ -6,6 +6,7 @@ describe('list-converter', () => {
   describe('convert', () => {
     it('should convert a given list', () => {
       const options: ConvertOptions = {
+        direction: 'column-to-list',
         separator: ', ',
         trimItems: true,
         removeDuplicates: true,
@@ -31,6 +32,7 @@ describe('list-converter', () => {
 
     it('should return an empty value for an empty input', () => {
       const options: ConvertOptions = {
+        direction: 'column-to-list',
         separator: ', ',
         trimItems: true,
         removeDuplicates: true,
@@ -48,6 +50,7 @@ describe('list-converter', () => {
 
     it('should keep line breaks', () => {
       const options: ConvertOptions = {
+        direction: 'column-to-list',
         separator: '',
         trimItems: true,
         itemPrefix: '<li>',
@@ -71,6 +74,47 @@ describe('list-converter', () => {
 <li>3</li>
 </ul>`;
       expect(convert(input, options)).toEqual(expected);
+    });
+
+    it('should convert a list to a column', () => {
+      const options: ConvertOptions = {
+        direction: 'list-to-column',
+        separator: ', ',
+        trimItems: true,
+        removeDuplicates: false,
+        itemPrefix: '',
+        itemSuffix: '',
+        listPrefix: '',
+        listSuffix: '',
+        reverseList: false,
+        sortList: null,
+        lowerCase: false,
+        keepLineBreaks: false,
+      };
+      const input = '1, 2, 3';
+      expect(convert(input, options)).toEqual('1\n2\n3');
+    });
+
+    it('should strip list and item wrappers when converting to a column', () => {
+      const options: ConvertOptions = {
+        direction: 'list-to-column',
+        separator: '',
+        trimItems: true,
+        removeDuplicates: false,
+        itemPrefix: '<li>',
+        itemSuffix: '</li>',
+        listPrefix: '<ul>',
+        listSuffix: '</ul>',
+        reverseList: false,
+        sortList: null,
+        lowerCase: false,
+        keepLineBreaks: false,
+      };
+      const input = `<ul>
+<li>1</li>
+<li>2</li>
+</ul>`;
+      expect(convert(input, options)).toEqual('1\n2');
     });
   });
 });

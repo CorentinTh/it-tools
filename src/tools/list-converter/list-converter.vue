@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { useStorage } from '@vueuse/core';
+import { ArrowLeft, ArrowRight, Copy } from '@vicons/tabler';
 import { convert } from './list-converter.models';
 import type { ConvertOptions } from './list-converter.types';
+import { useCopy } from '@/composable/copy';
+import { useTheme as useInputTheme } from '@/ui/c-input-text/c-input-text.theme';
+import { useAppTheme } from '@/ui/theme/themes';
 
 const sortOrderOptions = [
   {
@@ -17,6 +21,7 @@ const sortOrderOptions = [
 ];
 
 const conversionConfig = useStorage<ConvertOptions>('list-converter:conversionConfig', {
+  direction: 'column-to-list',
   lowerCase: false,
   trimItems: true,
   removeDuplicates: true,
@@ -30,8 +35,63 @@ const conversionConfig = useStorage<ConvertOptions>('list-converter:conversionCo
   separator: ', ',
 });
 
-function transformer(value: string) {
-  return convert(value, conversionConfig.value);
+if (!conversionConfig.value.direction) {
+  conversionConfig.value.direction = 'column-to-list';
+}
+
+const columnsInput = ref('');
+const listInput = ref('');
+const columnsTextarea = ref<HTMLTextAreaElement | null>(null);
+const listTextarea = ref<HTMLTextAreaElement | null>(null);
+
+const columnScrollTop = ref(0);
+const listScrollTop = ref(0);
+
+const columnLineNumbers = computed(() => getLineNumbers(columnsInput.value));
+const listLineNumbers = computed(() => getLineNumbers(listInput.value));
+
+const inputTheme = useInputTheme();
+const appTheme = useAppTheme();
+const { copy: copyColumns } = useCopy({ source: columnsInput, text: 'Columns copied to clipboard' });
+const { copy: copyList } = useCopy({ source: listInput, text: 'List copied to clipboard' });
+
+function getLineNumbers(value: string) {
+  const lineCount = Math.max(1, value.split(/\r?\n/).length);
+  return Array.from({ length: lineCount }, (_, index) => index + 1);
+}
+
+function onColumnScroll(event: Event) {
+  columnScrollTop.value = (event.target as HTMLTextAreaElement).scrollTop;
+}
+
+function onListScroll(event: Event) {
+  listScrollTop.value = (event.target as HTMLTextAreaElement).scrollTop;
+}
+
+function convertColumnsToList() {
+  listInput.value = convert(columnsInput.value, {
+    ...conversionConfig.value,
+    direction: 'column-to-list',
+  });
+  nextTick(() => {
+    if (listTextarea.value) {
+      listTextarea.value.scrollTop = 0;
+      listScrollTop.value = listTextarea.value.scrollTop;
+    }
+  });
+}
+
+function convertListToColumns() {
+  columnsInput.value = convert(listInput.value, {
+    ...conversionConfig.value,
+    direction: 'list-to-column',
+  });
+  nextTick(() => {
+    if (columnsTextarea.value) {
+      columnsTextarea.value.scrollTop = 0;
+      columnScrollTop.value = columnsTextarea.value.scrollTop;
+    }
+  });
 }
 </script>
 
@@ -77,7 +137,7 @@ function transformer(value: string) {
 
             <c-input-text
               v-model:value="conversionConfig.separator"
-              label="Separator"
+              label="List separator"
               label-position="left"
               label-width="120px"
               label-align="right"
@@ -114,10 +174,164 @@ function transformer(value: string) {
       </c-card>
     </div>
   </div>
-  <format-transformer
-    input-label="Your input data"
-    input-placeholder="Paste your input data here..."
-    output-label="Your transformed data"
-    :transformer="transformer"
-  />
+  <div class="converter-panels" style="flex: 1 1 100%" mt-6 flex flex-col gap-4 md:flex-row>
+    <div flex-1>
+      <div mb-2 font-medium>
+        Columns
+      </div>
+      <div class="line-numbered text-sm font-mono">
+        <c-button
+          class="copy-button"
+          circle
+          size="small"
+          variant="text"
+          aria-label="Copy columns to clipboard"
+          @click="copyColumns()"
+        >
+          <n-icon :component="Copy" />
+        </c-button>
+        <div class="line-numbers">
+          <div class="line-numbers__inner" :style="{ transform: `translateY(-${columnScrollTop}px)` }">
+            <span v-for="line in columnLineNumbers" :key="line">{{ line }}</span>
+          </div>
+        </div>
+        <textarea
+          v-model="columnsInput"
+          ref="columnsTextarea"
+          class="line-input"
+          placeholder="One item per line..."
+          rows="25"
+          data-test-id="columns-input"
+          spellcheck="false"
+          wrap="off"
+          autocapitalize="off"
+          autocomplete="off"
+          autocorrect="off"
+          @scroll="onColumnScroll"
+        />
+      </div>
+    </div>
+
+    <div flex flex-row items-center justify-center gap-2 md:flex-col>
+      <c-button circle size="small" aria-label="Convert columns to list" data-test-id="convert-to-list" @click="convertColumnsToList">
+        <n-icon :component="ArrowRight" />
+      </c-button>
+      <c-button circle size="small" aria-label="Convert list to columns" data-test-id="convert-to-columns" @click="convertListToColumns">
+        <n-icon :component="ArrowLeft" />
+      </c-button>
+    </div>
+
+    <div flex-1>
+      <div mb-2 font-medium>
+        List
+      </div>
+      <div class="line-numbered text-sm font-mono">
+        <c-button
+          class="copy-button"
+          circle
+          size="small"
+          variant="text"
+          aria-label="Copy list to clipboard"
+          @click="copyList()"
+        >
+          <n-icon :component="Copy" />
+        </c-button>
+        <div class="line-numbers">
+          <div class="line-numbers__inner" :style="{ transform: `translateY(-${listScrollTop}px)` }">
+            <span v-for="line in listLineNumbers" :key="line">{{ line }}</span>
+          </div>
+        </div>
+        <textarea
+          v-model="listInput"
+          ref="listTextarea"
+          class="line-input"
+          placeholder="Comma-separated list..."
+          rows="25"
+          data-test-id="list-input"
+          spellcheck="false"
+          wrap="off"
+          autocapitalize="off"
+          autocomplete="off"
+          autocorrect="off"
+          @scroll="onListScroll"
+        />
+      </div>
+    </div>
+  </div>
 </template>
+
+<style lang="less" scoped>
+.line-numbered {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  border: 1px solid v-bind('inputTheme.borderColor');
+  border-radius: 4px;
+  background-color: v-bind('inputTheme.backgroundColor');
+  overflow: hidden;
+  position: relative;
+  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+
+  &:hover {
+    border-color: v-bind('appTheme.primary.color');
+  }
+
+  &:focus-within {
+    border-color: v-bind('appTheme.primary.color');
+    background-color: v-bind('inputTheme.focus.backgroundColor');
+  }
+}
+
+.copy-button {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  z-index: 1;
+}
+
+.line-numbers {
+  min-width: 36px;
+  padding: 8px 8px 8px 12px;
+  border-right: 1px solid v-bind('inputTheme.borderColor');
+  color: v-bind('appTheme.text.mutedColor');
+  text-align: right;
+  user-select: none;
+  overflow: hidden;
+  position: relative;
+}
+
+.line-numbers__inner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.line-numbers__inner span {
+  display: block;
+  line-height: 1.5;
+}
+
+.line-input {
+  width: 100%;
+  min-height: 320px;
+  max-height: calc(45em + 16px);
+  padding: 8px 40px 8px 12px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: v-bind('appTheme.text.baseColor');
+  resize: vertical;
+  line-height: 1.5;
+
+  &::placeholder {
+    color: v-bind('appTheme.text.mutedColor');
+  }
+}
+
+.converter-panels {
+  flex: 1 1 100%;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+</style>
