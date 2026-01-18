@@ -139,13 +139,13 @@ function onSearchInput() {
 
 <template>
   <c-label v-bind="props">
-    <div ref="elementRef" relative class="c-select" w-full>
+    <div ref="elementRef" class="c-select" relative w-full>
       <div
-        flex flex-nowrap cursor-pointer items-center
-        :class="{ 'is-open': isOpen, 'important:border-primary': isOpen }"
         class="c-select-input"
-        tabindex="0"
+        flex flex-nowrap cursor-pointer items-center
         hover:important:border-primary
+        tabindex="0"
+        :class="{ 'is-open': isOpen, 'important:border-primary': isOpen }"
         @click="toggleOpen"
         @keydown="handleKeydown"
       >

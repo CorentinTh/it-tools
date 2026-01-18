@@ -196,8 +196,8 @@ function convertListToColumns() {
           </div>
         </div>
         <textarea
-          v-model="columnsInput"
           ref="columnsTextarea"
+          v-model="columnsInput"
           class="line-input"
           placeholder="One item per line..."
           rows="25"
@@ -242,8 +242,8 @@ function convertListToColumns() {
           </div>
         </div>
         <textarea
-          v-model="listInput"
           ref="listTextarea"
+          v-model="listInput"
           class="line-input"
           placeholder="Comma-separated list..."
           rows="25"
