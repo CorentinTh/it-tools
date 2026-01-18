@@ -78,7 +78,7 @@ function convert(list: string, options: ConvertOptions): string {
   const lineBreak = options.keepLineBreaks ? '\n' : '';
   const joiner = direction === 'list-to-column' ? '\n' : options.separator + lineBreak;
 
-  const transformed = _.chain(list)
+  const items = _.chain(list)
     .thru(whenever(options.lowerCase, text => text.toLowerCase()))
     .thru(text => (direction === 'list-to-column' ? stripListAffixes(text, options) : text))
     .thru(text => splitInput(text, options))
@@ -86,24 +86,26 @@ function convert(list: string, options: ConvertOptions): string {
     .thru(whenever(options.reverseList, _.reverse))
     .thru(whenever(!_.isNull(options.sortList), parts => parts.sort(byOrder({ order: options.sortList }))))
     .map(whenever(options.trimItems, _.trim))
-    .map((item) => {
-      if (direction === 'list-to-column') {
+    .value();
+
+  if (direction === 'list-to-column') {
+    const strippedItems = items
+      .map((item) => {
         let stripped = stripItemAffixes(item, options);
         if (options.trimItems) {
           stripped = _.trim(stripped);
         }
         return stripped;
-      }
+      })
+      .filter(item => item !== '');
 
-      return options.itemPrefix + item + options.itemSuffix;
-    })
-    .thru(items => (direction === 'list-to-column' ? items.filter(item => item !== '') : _.without(items, '')))
-    .join(joiner)
-    .value();
-
-  if (direction === 'list-to-column') {
-    return transformed;
+    return strippedItems.join(joiner);
   }
 
-  return [options.listPrefix, transformed, options.listSuffix].join(lineBreak);
+  const wrappedItems = items
+    .filter(item => item !== '')
+    .map(item => options.itemPrefix + item + options.itemSuffix);
+  const joined = wrappedItems.join(joiner);
+
+  return [options.listPrefix, joined, options.listSuffix].join(lineBreak);
 }
