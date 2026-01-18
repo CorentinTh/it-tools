@@ -223,8 +223,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0(rollup@2.79.2)(vue-i18n@9.9.1(vue@3.3.4))
       '@playwright/test':
-        specifier: ^1.32.3
-        version: 1.32.3
+        specifier: ^1.44.0
+        version: 1.57.0
       '@rushstack/eslint-patch':
         specifier: ^1.2.0
         version: 1.2.0
@@ -335,7 +335,7 @@ importers:
         version: 4.0.0
       vitest:
         specifier: ^0.34.0
-        version: 0.34.0(jsdom@22.0.0)(less@4.1.3)(terser@5.37.0)
+        version: 0.34.0(jsdom@22.0.0)(less@4.1.3)(playwright@1.57.0)(terser@5.37.0)
       workbox-window:
         specifier: ^7.0.0
         version: 7.0.0
@@ -1525,9 +1525,9 @@ packages:
     resolution: {integrity: sha512-wfzX8kc1PMyUILA+1Z/EqoE4UCXGy0iRGMhPwdfae1+f0OXlLqCk+By+aMzgJBzR9AzS4CDizioG6Ss1gvAFJw==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
 
-  '@playwright/test@1.32.3':
-    resolution: {integrity: sha512-BvWNvK0RfBriindxhLVabi8BRe3X0J9EVjKlcmhxjg4giWBD/xleLcg2dz7Tx0agu28rczjNIPQWznwzDwVsZQ==}
-    engines: {node: '>=14'}
+  '@playwright/test@1.57.0':
+    resolution: {integrity: sha512-6TyEnHgd6SArQO8UO2OMTxshln3QMWBtPGrOCgs3wVEmQmwyuNtB10IZMfmYDE0riwNR1cu4q+pPcxMVtaG3TA==}
+    engines: {node: '>=18'}
     hasBin: true
 
   '@polka/url@1.0.0-next.28':
@@ -4423,9 +4423,14 @@ packages:
     resolution: {integrity: sha512-lmOWYQ7s9KOUJ1R+YTOR3HrjdbxIS2Z4de0P/Jx2dQPteznJl2eX3tXxKClpvbfyGP59B5bbhW8ftN59HbbFSg==}
     engines: {node: '>=10'}
 
-  playwright-core@1.32.3:
-    resolution: {integrity: sha512-SB+cdrnu74ZIn5Ogh/8278ngEh9NEEV0vR4sJFmK04h2iZpybfbqBY0bX6+BLYWVdV12JLLI+JEFtSnYgR+mWg==}
-    engines: {node: '>=14'}
+  playwright-core@1.57.0:
+    resolution: {integrity: sha512-agTcKlMw/mjBWOnD6kFZttAAGHgi/Nw0CZ2o6JqWSbMlI219lAFLZZCyqByTsvVAJq5XA5H8cA6PrvBRpBWEuQ==}
+    engines: {node: '>=18'}
+    hasBin: true
+
+  playwright@1.57.0:
+    resolution: {integrity: sha512-ilYQj1s8sr2ppEJ2YVadYBN0Mb3mdo9J0wQ+UuDhzYqURwSoW4n1Xs5vs7ORwgDGmyEh33tRMeS8KhdkMoLXQw==}
+    engines: {node: '>=18'}
     hasBin: true
 
   pluralize@8.0.0:
@@ -7093,12 +7098,9 @@ snapshots:
       tiny-glob: 0.2.9
       tslib: 2.5.0
 
-  '@playwright/test@1.32.3':
+  '@playwright/test@1.57.0':
     dependencies:
-      '@types/node': 18.15.11
-      playwright-core: 1.32.3
-    optionalDependencies:
-      fsevents: 2.3.2
+      playwright: 1.57.0
 
   '@polka/url@1.0.0-next.28': {}
 
@@ -10470,7 +10472,13 @@ snapshots:
 
   plausible-tracker@0.3.8: {}
 
-  playwright-core@1.32.3: {}
+  playwright-core@1.57.0: {}
+
+  playwright@1.57.0:
+    dependencies:
+      playwright-core: 1.57.0
+    optionalDependencies:
+      fsevents: 2.3.2
 
   pluralize@8.0.0: {}
 
@@ -11563,7 +11571,7 @@ snapshots:
       less: 4.1.3
       terser: 5.37.0
 
-  vitest@0.34.0(jsdom@22.0.0)(less@4.1.3)(terser@5.37.0):
+  vitest@0.34.0(jsdom@22.0.0)(less@4.1.3)(playwright@1.57.0)(terser@5.37.0):
     dependencies:
       '@types/chai': 4.3.5
       '@types/chai-subset': 1.3.3
@@ -11591,6 +11599,7 @@ snapshots:
       why-is-node-running: 2.2.2
     optionalDependencies:
       jsdom: 22.0.0
+      playwright: 1.57.0
     transitivePeerDependencies:
       - less
       - lightningcss
