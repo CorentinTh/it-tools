@@ -22,6 +22,12 @@ const [token, refreshToken] = computedRefreshable(() =>
 );
 
 const { copy } = useCopy({ source: token, text: t('tools.token-generator.copied') });
+
+const refreshAndCopy = async () => {
+  refreshToken();
+  await nextTick();
+  copy();
+};
 </script>
 
 <template>
@@ -71,6 +77,11 @@ const { copy } = useCopy({ source: token, text: t('tools.token-generator.copied'
         </c-button>
         <c-button @click="refreshToken">
           {{ t('tools.token-generator.button.refresh') }}
+        </c-button>
+      </div>
+      <div mt-3 flex justify-center>
+        <c-button @click="refreshAndCopy">
+          {{ t('tools.token-generator.button.refreshAndCopy') }}
         </c-button>
       </div>
     </c-card>

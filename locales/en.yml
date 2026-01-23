@@ -93,6 +93,7 @@ tools:
     button:
       copy: Copy
       refresh: Refresh
+      refreshAndCopy: Refresh & Copy
   percentage-calculator:
     title: Percentage calculator
     description: Easily calculate percentages from a value to another value, or from a percentage to a value.
