@@ -392,3 +392,9 @@ tools:
   text-to-binary:
     title: Tekst til ASCII binært
     description: Konverter tekst til sin ASCII binære representasjon og visa-versa.
+
+  cli-command-editor:
+    title: CLI kommando editor
+    description: Konverter CLI-kommandoer med alternativer til et enkelt redigerbart format og generer den resulterende kommandoen med inndataverdier.
+    command: Kommando
+    placeholder: Lim inn kommando her

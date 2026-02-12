@@ -454,3 +454,10 @@ tools:
   text-to-binary:
     title: Text zu ASCII-Binär
     description: Konvertiere Text in seine ASCII-Binärrepräsentation und umgekehrt.
+  
+  cli-command-editor:
+    title: CLI-Befehlseditor
+    description: Wandeln Sie CLI-Befehle mit Optionen in eine leicht bearbeitbare Form um und generieren Sie den Befehl mit Eingabewerten.
+    command: Befehl
+    placeholder: Befehl hier einfügen
+

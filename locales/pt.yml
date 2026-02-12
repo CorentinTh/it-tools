@@ -70,3 +70,8 @@ tools:
     measurement: 'Medidas'
     text: 'Texto'
     data: 'Dados'
+  cli-command-editor:
+    title: Editor de comando CLI
+    description: Converta comandos CLI com opções em um formato facilmente editável e gere o comando resultante com valores de entrada.
+    command: Comando
+    placeholder: Cole o comando aqui

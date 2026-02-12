@@ -42,6 +42,7 @@ declare module '@vue/runtime-core' {
     CKeyValueList: typeof import('./src/ui/c-key-value-list/c-key-value-list.vue')['default']
     CKeyValueListItem: typeof import('./src/ui/c-key-value-list/c-key-value-list-item.vue')['default']
     CLabel: typeof import('./src/ui/c-label/c-label.vue')['default']
+    CliCommandEditor: typeof import('./src/tools/cli-command-editor/cli-command-editor.vue')['default']
     CLink: typeof import('./src/ui/c-link/c-link.vue')['default']
     'CLink.demo': typeof import('./src/ui/c-link/c-link.demo.vue')['default']
     CMarkdown: typeof import('./src/ui/c-markdown/c-markdown.vue')['default']

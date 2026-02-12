@@ -388,3 +388,9 @@ tools:
   text-to-binary:
     title: 文本到 ASCII 二进制
     description: 将文本转换为其 ASCII 二进制表示形式，反之亦然。
+
+  cli-command-editor:
+    title: CLI 命令编辑器
+    description: 将带有选项的 CLI 命令转换为易于编辑的形式，并生成带有输入值的结果命令。
+    command: 命令
+    placeholder: 将命令粘贴到此处
