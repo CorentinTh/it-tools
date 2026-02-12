@@ -1,0 +1,394 @@
+home:
+  categories:
+    newestTools: Νεότερα εργαλεία
+    favoriteTools: 'Τα αγαπημένα σας εργαλεία'
+    allTools: 'Όλα τα εργαλεία'
+    favoritesDndToolTip: 'Σύρετε και αποθέστε για αναδιάταξη των αγαπημένων'
+  subtitle: 'Χρήσιμα εργαλεία για προγραμματιστές'
+  toggleMenu: 'Εναλλαγή μενού'
+  home: Αρχική
+  uiLib: 'Βιβλιοθήκη UI'
+  support: 'Υποστήριξη της ανάπτυξης του IT-Tools'
+  buyMeACoffee: 'Κέρασέ με έναν καφέ'
+  follow:
+    title: 'Σας αρέσει το IT-Tools;'
+    p1: 'Δώστε μας ένα αστέρι στο'
+    githubRepository: 'Αποθετήριο IT-Tools στο GitHub'
+    p2: 'ή ακολουθήστε μας στο'
+    twitterXAccount: 'Λογαριασμός IT-Tools στο X'
+    thankYou: 'Ευχαριστούμε!'
+  nav:
+    github: 'Αποθετήριο GitHub'
+    githubRepository: 'Αποθετήριο IT-Tools στο GitHub'
+    twitterX: 'Λογαριασμός X'
+    twitterXAccount: 'Λογαριασμός IT-Tools στο X'
+    about: 'Σχετικά με το IT-Tools'
+    aboutLabel: 'Σχετικά'
+    darkMode: 'Σκοτεινή λειτουργία'
+    lightMode: 'Φωτεινή λειτουργία'
+    mode: 'Εναλλαγή σκοτεινής/φωτεινής λειτουργίας'
+about:
+  content: >
+    # Σχετικά με το IT-Tools
+
+    Αυτός ο υπέροχος ιστότοπος, φτιαγμένος με ❤ από τον [Corentin Thomasset](https://corentin.tech?utm_source=it-tools&utm_medium=about), συγκεντρώνει χρήσιμα εργαλεία για προγραμματιστές και άτομα που εργάζονται στον τομέα της Πληροφορικής. Αν τον βρείτε χρήσιμο, μη διστάσετε να τον μοιραστείτε με άτομα που πιστεύετε ότι θα τους φανεί χρήσιμος και μην ξεχάσετε να τον προσθέσετε στους σελιδοδείκτες σας!
+
+    Το IT Tools είναι ανοικτού κώδικα (υπό την άδεια GPL-3.0) και δωρεάν, και θα παραμείνει πάντα έτσι, αλλά η φιλοξενία και η ανανέωση του ονόματος χώρου έχουν κόστος. Αν θέλετε να υποστηρίξετε τη δουλειά μου και να με ενθαρρύνετε να προσθέσω περισσότερα εργαλεία, παρακαλώ σκεφτείτε να με υποστηρίξετε με [χορηγία](https://www.buymeacoffee.com/cthmsst).
+
+    ## Τεχνολογίες
+
+    Το IT Tools είναι φτιαγμένο με Vue.js (Vue 3) χρησιμοποιώντας τη βιβλιοθήκη στοιχείων Naive UI και φιλοξενείται και αναπτύσσεται συνεχώς μέσω του Vercel. Σε ορισμένα εργαλεία χρησιμοποιούνται βιβλιοθήκες ανοικτού κώδικα τρίτων· μπορείτε να βρείτε την πλήρη λίστα στο αρχείο [package.json](https://github.com/CorentinTh/it-tools/blob/main/package.json) του αποθετηρίου.
+
+    ## Βρήκατε σφάλμα; Λείπει κάποιο εργαλείο;
+
+    Αν χρειάζεστε ένα εργαλείο που δεν υπάρχει αυτή τη στιγμή εδώ και πιστεύετε ότι θα ήταν χρήσιμο, μπορείτε να υποβάλετε αίτημα λειτουργίας στην ενότητα [issues](https://github.com/CorentinTh/it-tools/issues/new/choose) του αποθετηρίου στο GitHub.
+
+    Και αν βρήκατε κάποιο σφάλμα ή κάτι δεν λειτουργεί όπως αναμένεται, παρακαλώ καταχωρήστε αναφορά σφάλματος στην ενότητα [issues](https://github.com/CorentinTh/it-tools/issues/new/choose) του αποθετηρίου στο GitHub.
+404:
+  notFound: '404 Δεν βρέθηκε'
+  sorry: 'Λυπούμαστε, αυτή η σελίδα δεν φαίνεται να υπάρχει'
+  maybe: 'Ίσως η μνήμη cache να δημιουργεί προβλήματα, δοκιμάστε αναγκαστική ανανέωση;'
+  backHome: 'Επιστροφή στην αρχική'
+favoriteButton:
+  remove: 'Αφαίρεση από τα αγαπημένα'
+  add: 'Προσθήκη στα αγαπημένα'
+toolCard:
+  new: Νέο
+search:
+  label: Αναζήτηση
+tools:
+  categories:
+    favorite-tools: 'Τα αγαπημένα σας εργαλεία'
+    crypto: Κρυπτογραφία
+    converter: Μετατροπέας
+    web: Ιστός
+    images and videos: 'Εικόνες & Βίντεο'
+    development: Ανάπτυξη
+    network: Δίκτυο
+    math: Μαθηματικά
+    measurement: Μετρήσεις
+    text: Κείμενο
+    data: Δεδομένα
+
+  password-strength-analyser:
+    title: Αναλυτής ισχύος κωδικού πρόσβασης
+    description: Ανακαλύψτε την ισχύ του κωδικού σας με αυτόν τον αναλυτή ισχύος κωδικών που λειτουργεί μόνο στην πλευρά του πελάτη και εκτιμά τον χρόνο διάρρηξης.
+
+  chronometer:
+    title: Χρονόμετρο
+    description: Παρακολουθήστε τη διάρκεια ενός γεγονότος. Ουσιαστικά ένα χρονόμετρο με απλές λειτουργίες.
+
+  token-generator:
+    title: Γεννήτρια διακριτικών
+    description: Δημιουργήστε τυχαία συμβολοσειρά με τους χαρακτήρες που θέλετε, κεφαλαία ή πεζά γράμματα, αριθμούς και/ή σύμβολα.
+
+    uppercase: Κεφαλαία (ABC...)
+    lowercase: Πεζά (abc...)
+    numbers: Αριθμοί (123...)
+    symbols: Σύμβολα (!-;...)
+    length: Μήκος
+    tokenPlaceholder: 'Το διακριτικό...'
+    copied: Το διακριτικό αντιγράφηκε στο πρόχειρο
+    button:
+      copy: Αντιγραφή
+      refresh: Ανανέωση
+
+  percentage-calculator:
+    title: Υπολογιστής ποσοστών
+    description: Υπολογίστε εύκολα ποσοστά από μία τιμή σε άλλη ή από ποσοστό σε τιμή.
+
+  svg-placeholder-generator:
+    title: Γεννήτρια SVG placeholder
+    description: Δημιουργήστε εικόνες SVG για χρήση ως placeholder στις εφαρμογές σας.
+
+  json-to-csv:
+    title: JSON σε CSV
+    description: Μετατροπή JSON σε CSV με αυτόματη ανίχνευση κεφαλίδων.
+
+  camera-recorder:
+    title: Καταγραφέας κάμερας
+    description: Τραβήξτε φωτογραφία ή εγγράψτε βίντεο από την κάμερα ή την webcam σας.
+
+  keycode-info:
+    title: Πληροφορίες keycode
+    description: Βρείτε το javascript keycode, τον κώδικα, την τοποθεσία και τους modifiers οποιουδήποτε πατημένου πλήκτρου.
+
+  emoji-picker:
+    title: Επιλογέας emoji
+    description: Αντιγράψτε και επικολλήστε emoji εύκολα και δείτε τις τιμές unicode και code points για κάθε emoji.
+
+  color-converter:
+    title: Μετατροπέας χρωμάτων
+    description: Μετατρέψτε χρώματα μεταξύ διαφορετικών μορφών (hex, rgb, hsl και όνομα CSS).
+
+  bcrypt:
+    title: Bcrypt
+    description: Κατακερματισμός και σύγκριση κειμένου με χρήση bcrypt. Το bcrypt είναι συνάρτηση κατακερματισμού κωδικών βασισμένη στον αλγόριθμο Blowfish.
+
+  crontab-generator:
+    title: Γεννήτρια crontab
+    description: Επικυρώστε και δημιουργήστε crontab και λάβετε περιγραφή του χρονοπρογραμματισμού σε κατανοητή μορφή.
+
+  http-status-codes:
+    title: Κωδικοί κατάστασης HTTP
+    description: Η λίστα όλων των κωδικών κατάστασης HTTP, το όνομά τους και η σημασία τους.
+
+  sql-prettify:
+    title: Μορφοποίηση SQL
+    description: Μορφοποιήστε και ομορφοποιήστε τα ερωτήματα SQL online (υποστηρίζονται διάφορες διάλεκτοι SQL).
+
+  benchmark-builder:
+    title: Δημιουργός benchmark
+    description: Συγκρίνετε εύκολα τον χρόνο εκτέλεσης εργασιών με αυτόν τον απλό online δημιουργό benchmark.
+
+  git-memo:
+    title: Σκονάκι Git
+    description: Το Git είναι αποκεντρωμένο λογισμικό διαχείρισης εκδόσεων. Με αυτό το σκονάκι έχετε γρήγορη πρόσβαση στις πιο συνηθισμένες εντολές git.
+
+  slugify-string:
+    title: Slugify συμβολοσειράς
+    description: Κάντε μια συμβολοσειρά ασφαλή για URL, όνομα αρχείου και αναγνωριστικό.
+
+  encryption:
+    title: Κρυπτογράφηση / αποκρυπτογράφηση κειμένου
+    description: Κρυπτογραφήστε απλό κείμενο και αποκρυπτογραφήστε κρυπτοκείμενο χρησιμοποιώντας αλγορίθμους όπως AES, TripleDES, Rabbit ή RC4.
+
+  random-port-generator:
+    title: Γεννήτρια τυχαίων θυρών
+    description: Δημιουργήστε τυχαίους αριθμούς θυρών εκτός του εύρους των «γνωστών» θυρών (0-1023).
+
+  yaml-prettify:
+    title: Μορφοποίηση YAML
+    description: Μορφοποιήστε το YAML σας σε φιλική, ευανάγνωστη μορφή.
+
+  eta-calculator:
+    title: Υπολογιστής ETA
+    description: Υπολογιστής ETA (Εκτιμώμενος Χρόνος Άφιξης) για τον προσδιορισμό του κατά προσέγγιση χρόνου ολοκλήρωσης μιας εργασίας.
+
+  roman-numeral-converter:
+    title: Μετατροπέας ρωμαϊκών αριθμών
+    description: Μετατρέψτε ρωμαϊκούς αριθμούς σε αριθμούς και αριθμούς σε ρωμαϊκούς.
+
+  hmac-generator:
+    title: Γεννήτρια HMAC
+    description: Υπολογίζει κώδικα αυθεντικοποίησης μηνύματος βασισμένο σε κατακερματισμό (HMAC) με μυστικό κλειδί.
+
+  bip39-generator:
+    title: Γεννήτρια φράσης BIP39
+    description: Δημιουργήστε φράση BIP39 από υπάρχον ή τυχαίο mnemonic ή λάβετε το mnemonic από τη φράση.
+
+  base64-file-converter:
+    title: Μετατροπέας αρχείων Base64
+    description: Μετατρέψτε μια συμβολοσειρά, αρχείο ή εικόνα στην αναπαράστασή της base64.
+
+  list-converter:
+    title: Μετατροπέας λίστας
+    description: Επεξεργασία δεδομένων σε στήλες με μετασχηματισμούς όπως αναστροφή, προσθήκη προθέματος/επιθέματος, ταξινόμηση και άλλα.
+
+  base64-string-converter:
+    title: Κωδικοποιητής/αποκωδικοποιητής Base64 συμβολοσειρών
+    description: Κωδικοποιήστε και αποκωδικοποιήστε συμβολοσειρές σε base64.
+
+  toml-to-yaml:
+    title: TOML σε YAML
+    description: Ανάλυση και μετατροπή TOML σε YAML.
+
+  math-evaluator:
+    title: Αξιολογητής μαθηματικών
+    description: Υπολογιστής για την αξιολόγηση μαθηματικών εκφράσεων με συναρτήσεις όπως sqrt, cos, sin, abs κ.ά.
+
+  json-to-yaml-converter:
+    title: Μετατροπέας JSON σε YAML
+    description: Απλή μετατροπή JSON σε YAML με online μετατροπέα.
+
+  url-parser:
+    title: Αναλυτής URL
+    description: Ανάλυση ενός URL στα επιμέρους μέρη του (πρωτόκολλο, προέλευση, παράμετροι, θύρα κ.λπ.).
+
+  iban-validator-and-parser:
+    title: Επικυρωτής και αναλυτής IBAN
+    description: Επικύρωση και ανάλυση αριθμών IBAN.
+
+  user-agent-parser:
+    title: Αναλυτής user-agent
+    description: Εντοπισμός και ανάλυση προγράμματος περιήγησης, λειτουργικού συστήματος και συσκευής από user-agent.
+
+  numeronym-generator:
+    title: Γεννήτρια numeronym
+    description: Δημιουργία numeronym, δηλαδή συντομογραφιών με αριθμούς όπως το i18n.
+
+  case-converter:
+    title: Μετατροπέας πεζών/κεφαλαίων
+    description: Μετασχηματισμός της μορφής γραμμάτων μιας συμβολοσειράς.
+
+  html-entities:
+    title: Διαφυγή HTML entities
+    description: Διαφυγή ή επαναφορά HTML entities όπως <, >, & κ.ά.
+
+  json-prettify:
+    title: Μορφοποίηση JSON
+    description: Μορφοποιήστε το JSON σας σε ευανάγνωστη μορφή.
+
+  docker-run-to-docker-compose-converter:
+    title: Μετατροπέας Docker run σε Docker compose
+    description: Μετατρέπει εντολές "docker run" σε αρχεία docker-compose.
+
+  mac-address-lookup:
+    title: Αναζήτηση διεύθυνσης MAC
+    description: Βρείτε τον κατασκευαστή μιας συσκευής μέσω της διεύθυνσης MAC.
+
+  mime-types:
+    title: Τύποι MIME
+    description: Μετατροπή τύπων MIME σε επεκτάσεις αρχείων και αντίστροφα.
+
+  toml-to-json:
+    title: TOML σε JSON
+    description: Ανάλυση και μετατροπή TOML σε JSON.
+
+  lorem-ipsum-generator:
+    title: Γεννήτρια Lorem ipsum
+    description: Το Lorem ipsum είναι κείμενο συμπλήρωσης που χρησιμοποιείται για επίδειξη διάταξης.
+
+  qrcode-generator:
+    title: Γεννήτρια QR Code
+    description: Δημιουργήστε και κατεβάστε QR code για URL ή απλό κείμενο.
+
+  wifi-qrcode-generator:
+    title: Γεννήτρια WiFi QR Code
+    description: Δημιουργήστε QR codes για γρήγορη σύνδεση σε δίκτυα WiFi.
+
+  xml-formatter:
+    title: Μορφοποιητής XML
+    description: Μορφοποιήστε το XML σας σε ευανάγνωστη μορφή.
+
+  temperature-converter:
+    title: Μετατροπέας θερμοκρασίας
+    description: Μετατροπές θερμοκρασίας μεταξύ Kelvin, Celsius, Fahrenheit και άλλων κλιμάκων.
+
+  chmod-calculator:
+    title: Υπολογιστής chmod
+    description: Υπολογίστε δικαιώματα και εντολές chmod online.
+
+  rsa-key-pair-generator:
+    title: Γεννήτρια ζεύγους κλειδιών RSA
+    description: Δημιουργήστε τυχαίο ζεύγος ιδιωτικού και δημόσιου κλειδιού RSA.
+
+  html-wysiwyg-editor:
+    title: Επεξεργαστής HTML WYSIWYG
+    description: Online επεξεργαστής HTML που δημιουργεί άμεσα τον πηγαίο κώδικα.
+
+  yaml-to-toml:
+    title: YAML σε TOML
+    description: Ανάλυση και μετατροπή YAML σε TOML.
+
+  mac-address-generator:
+    title: Γεννήτρια διευθύνσεων MAC
+    description: Δημιουργία διευθύνσεων MAC με επιλεγμένη ποσότητα και πρόθεμα.
+
+  json-diff:
+    title: Διαφορές JSON
+    description: Σύγκριση δύο αντικειμένων JSON και εμφάνιση διαφορών.
+
+  jwt-parser:
+    title: Αναλυτής JWT
+    description: Ανάλυση και αποκωδικοποίηση JSON Web Token (JWT).
+
+  date-converter:
+    title: Μετατροπέας ημερομηνίας και ώρας
+    description: Μετατροπή ημερομηνίας και ώρας σε διάφορες μορφές.
+
+  phone-parser-and-formatter:
+    title: Αναλυτής και μορφοποιητής τηλεφώνου
+    description: Ανάλυση, επικύρωση και μορφοποίηση αριθμών τηλεφώνου.
+
+  ipv4-subnet-calculator:
+    title: Υπολογιστής υποδικτύων IPv4
+    description: Ανάλυση IPv4 CIDR blocks και πληροφορίες υποδικτύου.
+
+  og-meta-generator:
+    title: Γεννήτρια Open Graph meta
+    description: Δημιουργία HTML meta tags open-graph και κοινωνικών δικτύων.
+
+  ipv6-ula-generator:
+    title: Γεννήτρια IPv6 ULA
+    description: Δημιουργήστε τοπικές, μη δρομολογήσιμες IPv6 διευθύνσεις σύμφωνα με το RFC4193.
+
+  hash-text:
+    title: Κατακερματισμός κειμένου
+    description: 'Κατακερματισμός κειμένου με MD5, SHA1, SHA256, SHA224, SHA512, SHA384, SHA3 ή RIPEMD160'
+
+  json-to-toml:
+    title: JSON σε TOML
+    description: Ανάλυση και μετατροπή JSON σε TOML.
+
+  device-information:
+    title: Πληροφορίες συσκευής
+    description: Πληροφορίες για την τρέχουσα συσκευή σας.
+
+  pdf-signature-checker:
+    title: Έλεγχος υπογραφών PDF
+    description: Επαλήθευση υπογραφών αρχείου PDF.
+
+  json-minify:
+    title: Ελαχιστοποίηση JSON
+    description: Συμπίεση JSON με αφαίρεση περιττών κενών.
+
+  ulid-generator:
+    title: Γεννήτρια ULID
+    description: Δημιουργία τυχαίων ULID.
+
+  string-obfuscator:
+    title: Απόκρυψη συμβολοσειράς
+    description: Απόκρυψη συμβολοσειράς ώστε να είναι κοινοποιήσιμη χωρίς αποκάλυψη περιεχομένου.
+
+  base-converter:
+    title: Μετατροπέας βάσεων ακεραίων
+    description: Μετατροπή αριθμών μεταξύ διαφορετικών βάσεων.
+
+  yaml-to-json-converter:
+    title: YAML σε JSON
+    description: Απλή μετατροπή YAML σε JSON.
+
+  uuid-generator:
+    title: Γεννήτρια UUID
+    description: Δημιουργία Καθολικά Μοναδικών Αναγνωριστικών (UUID).
+
+  ipv4-address-converter:
+    title: Μετατροπέας διευθύνσεων IPv4
+    description: Μετατροπή διεύθυνσης IP σε δεκαδική, δυαδική ή δεκαεξαδική μορφή.
+
+  text-statistics:
+    title: Στατιστικά κειμένου
+    description: Πληροφορίες για ένα κείμενο όπως αριθμός χαρακτήρων και λέξεων.
+
+  text-to-nato-alphabet:
+    title: Κείμενο σε αλφάβητο NATO
+    description: Μετατροπή κειμένου στο φωνητικό αλφάβητο NATO.
+
+  basic-auth-generator:
+    title: Γεννήτρια Basic auth
+    description: Δημιουργία κεφαλίδας basic auth base64 από όνομα χρήστη και κωδικό.
+
+  text-to-unicode:
+    title: Κείμενο σε Unicode
+    description: Ανάλυση και μετατροπή κειμένου σε unicode και αντίστροφα.
+
+  ipv4-range-expander:
+    title: Επέκταση εύρους IPv4
+    description: Υπολογισμός έγκυρου IPv4 subnet από αρχική και τελική διεύθυνση.
+
+  text-diff:
+    title: Διαφορές κειμένου
+    description: Σύγκριση δύο κειμένων και εμφάνιση διαφορών.
+
+  otp-generator:
+    title: Γεννήτρια κωδικών OTP
+    description: Δημιουργία και επικύρωση χρονικά βασισμένων OTP για έλεγχο ταυτότητας.
+
+  url-encoder:
+    title: Κωδικοποίηση/αποκωδικοποίηση URL
+    description: Κωδικοποίηση και αποκωδικοποίηση κειμένου σε μορφή URL.
+
+  text-to-binary:
+    title: Κείμενο σε δυαδικό ASCII
+    description: Μετατροπή κειμένου στη δυαδική αναπαράσταση ASCII και αντίστροφα.
