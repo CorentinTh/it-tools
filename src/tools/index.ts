@@ -2,6 +2,8 @@ import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
 import { tool as emailNormalizer } from './email-normalizer';
+import { tool as dataTransferRateConverter } from './data-transfer-rate-converter';
+import { tool as dataStorageUnitConverter } from './data-storage-unit-converter';
 
 import { tool as asciiTextDrawer } from './ascii-text-drawer';
 
@@ -168,7 +170,13 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Math',
-    components: [mathEvaluator, etaCalculator, percentageCalculator],
+    components: [
+      mathEvaluator,
+      etaCalculator,
+      percentageCalculator,
+      dataTransferRateConverter,
+      dataStorageUnitConverter,
+    ],
   },
   {
     name: 'Measurement',
