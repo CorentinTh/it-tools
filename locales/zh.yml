@@ -388,3 +388,23 @@ tools:
   text-to-binary:
     title: 文本到 ASCII 二进制
     description: 将文本转换为其 ASCII 二进制表示形式，反之亦然。
+
+  safelink-decoder:
+    title: Outlook Safelink 解码器
+    description: 还原被 Outlook Safelink 包装的 URL
+
+  email-normalizer:
+    title: 邮箱地址规范化
+    description: 将邮箱地址规范化为标准格式，以便于比较，哈希处理或数据清理
+
+  regex-tester:
+    title: 正则表达式匹配工具
+    description: 测试文本是否匹配正则表达式
+
+  regex-memo:
+    title: 正则语法速查表
+    description: Javascript正则表达式用法速查
+
+  ascii-text-drawer:
+    title: ASCII艺术文本生成器
+    description: 以多种字体和样式创建ASCII艺术文本
