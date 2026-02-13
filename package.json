@@ -109,7 +109,7 @@
     "@antfu/eslint-config": "^0.41.0",
     "@iconify-json/mdi": "^1.1.50",
     "@intlify/unplugin-vue-i18n": "^2.0.0",
-    "@playwright/test": "^1.32.3",
+    "@playwright/test": "1.55.0",
     "@rushstack/eslint-patch": "^1.2.0",
     "@tsconfig/node18": "^18.2.0",
     "@types/bcryptjs": "^2.4.2",
