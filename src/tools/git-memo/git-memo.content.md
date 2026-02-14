@@ -15,6 +15,12 @@ Create a git repository
 git init
 ```
 
+Pull a git repository
+
+```shell
+git pull [url]
+```
+
 Clone an existing git repository
 
 ```shell
