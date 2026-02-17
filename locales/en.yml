@@ -392,3 +392,7 @@ tools:
   text-to-binary:
     title: Text to ASCII binary
     description: Convert text to its ASCII binary representation and vice-versa.
+
+  commit-memo:
+    title: Conventional Commit Cheatsheet
+    description: Conventional commits cheatsheet with examples and common tools
