@@ -64,6 +64,7 @@
     "dompurify": "^3.0.6",
     "email-normalizer": "^1.0.0",
     "emojilib": "^3.0.10",
+    "fflate": "^0.8.2",
     "figlet": "^1.7.0",
     "figue": "^1.2.0",
     "fuse.js": "^6.6.2",
