@@ -3,6 +3,8 @@ const { availableLocales, locale } = useI18n();
 
 const localesLong: Record<string, string> = {
   en: 'English',
+  az: 'Azərbaycanca',
+  tr: 'Türkçe',
   de: 'Deutsch',
   es: 'Español',
   fr: 'Français',
@@ -27,6 +29,6 @@ const localeOptions = computed(() =>
     v-model:value="locale"
     :options="localeOptions"
     placeholder="Select a language"
-    w-100px
+    w-150px
   />
 </template>
