@@ -1,0 +1,397 @@
+home:
+  categories:
+    newestTools: 최신
+    favoriteTools: 즐겨찾기
+    allTools: 전체보기
+    favoritesDndToolTip: 드래그 앤 드롭으로 즐겨찾기 순서 변경
+  subtitle: 개발자를 위한 유용한 도구
+  toggleMenu: 메뉴 열기/닫기
+  home: 홈
+  uiLib: UI Lib
+  support: IT-Tools 개발 후원
+  buyMeACoffee: 커피 한 잔 사주기
+  follow:
+    title: IT-tools가 마음에 드시나요?
+    p1: 다음에서 별을 눌러주세요
+    githubRepository: IT-Tools GitHub 저장소
+    p2: 또는 팔로우 해주세요
+    twitterXAccount: IT-Tools X 계정
+    thankYou: 감사합니다!
+  nav:
+    github: GitHub
+    githubRepository: GitHub 저장소
+    twitterX: X 계정
+    twitterXAccount: X 계정
+    about: IT-Tools 소개
+    aboutLabel: 소개
+    darkMode: 다크 모드
+    lightMode: 라이트 모드
+    mode: 다크/라이트 모드 전환
+about:
+  content: >
+    # IT-Tools 소개
+
+    이 멋진 웹사이트는 [Corentin Thomasset](https://corentin.tech?utm_source=it-tools&utm_medium=about) 님이 ❤ 로 만들었습니다.  
+    개발자와 IT 종사자를 위한 유용한 도구들을 모아 두었으니 도움이 되신다면 주변에도 공유해 주시고 즐겨찾기에도 추가해 주세요!
+
+    IT-Tools 는 GPL-3.0 라이선스의 오픈 소스이며 무료로 제공됩니다.  
+    다만 호스팅과 도메인 비용이 들기 때문에, 제 작업을 응원하고 더 많은 도구 추가를 원하신다면
+    [후원](https://www.buymeacoffee.com/cthmsst)을 고려해 주세요.
+
+    ## 기술 스택
+
+    IT-Tools 는 Vue.js(V3)와 Naive UI 컴포넌트 라이브러리로 제작되었으며 Vercel 에서 호스팅 및 CI/CD 배포됩니다.  
+    일부 도구는 서드파티 오픈 소스 라이브러리를 사용하며, 전체 목록은 저장소의 [package.json](https://github.com/CorentinTh/it-tools/blob/main/package.json) 파일에서 확인하실 수 있습니다.
+
+    ## 버그 신고 · 기능 요청
+
+    필요한 도구가 없다면 GitHub 저장소의 [이슈 등록](https://github.com/CorentinTh/it-tools/issues/new/choose) 섹션에 기능 요청을 남겨 주세요.  
+
+    버그를 발견했거나 예상대로 동작하지 않는다면 같은 곳에 버그 리포트를 남겨 주시면 감사하겠습니다.
+404:
+  notFound: 404 Not Found
+  sorry: 죄송합니다, 해당 페이지가 존재하지 않는 것 같습니다.
+  maybe: 캐시 문제일 수 있습니다. 캐시를 비우고 새로고침을 시도해 보세요.
+  backHome: 홈으로 돌아가기
+favoriteButton:
+  remove: 즐겨찾기 제거
+  add: 즐겨찾기 추가
+toolCard:
+  new: 신규
+search:
+  label: 검색
+tools:
+  categories:
+    favorite-tools: 즐겨찾기
+    crypto: 암호화
+    converter: 변환기
+    web: 웹
+    images and videos: 이미지 & 비디오
+    development: 개발
+    network: 네트워크
+    math: 수학
+    measurement: 측정
+    text: 텍스트
+    data: 데이터
+
+  password-strength-analyser:
+    title: 비밀번호 강도 분석기
+    description: 클라이언트 사이드에서만 동작하는 비밀번호 강도 분석 및 해킹 예상 시간 추정 도구입니다.
+
+  chronometer:
+    title: 크로노미터
+    description: 작업 소요 시간을 측정하는 기본형 스톱워치입니다.
+
+  token-generator:
+    title: 토큰 생성기
+    description: 원하는 문자(대/소문자·숫자·기호)로 구성된 랜덤 문자열을 생성합니다.
+    uppercase: 대문자 (ABC…)
+    lowercase: 소문자 (abc…)
+    numbers: 숫자 (123…)
+    symbols: 기호 (!-;…)
+    length: 길이
+    tokenPlaceholder: 토큰…
+    copied: 토큰이 클립보드에 복사되었습니다
+    button:
+      copy: 복사
+      refresh: 새로고침
+
+  percentage-calculator:
+    title: 백분율 계산기
+    description: 값-값, 백분율-값 계산을 손쉽게 수행합니다.
+
+  svg-placeholder-generator:
+    title: SVG 플레이스홀더 생성기
+    description: 앱에서 사용할 SVG 플레이스홀더 이미지를 생성합니다.
+
+  json-to-csv:
+    title: JSON → CSV 변환
+    description: 헤더를 자동 감지하여 JSON을 CSV로 변환합니다.
+
+  camera-recorder:
+    title: 카메라 레코더
+    description: 웹캠/카메라로 사진 촬영 또는 동영상 녹화를 합니다.
+
+  keycode-info:
+    title: 키코드 정보
+    description: 눌린 키의 keycode·code·location·modifier 값을 확인합니다.
+
+  emoji-picker:
+    title: 이모지 선택기
+    description: 이모지를 쉽게 복사하고 유니코드·코드포인트 값을 확인합니다.
+
+  color-converter:
+    title: 색상 변환기
+    description: 색상을 hex·rgb·hsl·CSS 이름 형식으로 변환합니다.
+
+  bcrypt:
+    title: Bcrypt
+    description: 문자열을 bcrypt로 해시·비교합니다. Bcrypt는 Blowfish 기반 해싱 함수입니다.
+
+  crontab-generator:
+    title: Crontab 생성기
+    description: 크론탭을 검증·생성하고 스케줄을 사람이 읽기 쉬운 설명으로 제공합니다.
+
+  http-status-codes:
+    title: HTTP 상태 코드
+    description: 모든 HTTP 상태 코드와 의미를 확인합니다.
+
+  sql-prettify:
+    title: SQL 포매터
+    description: 다양한 SQL 방언을 지원하는 온라인 SQL 포매터입니다.
+
+  benchmark-builder:
+    title: 벤치마크 빌더
+    description: 간단한 벤치마크로 작업 실행 시간을 비교합니다.
+
+  git-memo:
+    title: Git 치트시트
+    description: 자주 쓰는 Git 명령을 빠르게 확인합니다.
+
+  slugify-string:
+    title: 문자열 슬러그화
+    description: 문자열을 URL·파일명·ID에 안전하도록 변환합니다.
+
+  encryption:
+    title: 텍스트 암·복호화
+    description: AES·TripleDES·Rabbit·RC4 등으로 평문을 암호화·복호화합니다.
+
+  random-port-generator:
+    title: 랜덤 포트 생성기
+    description: 0–1023의 ‘알려진 포트’를 제외한 범위에서 랜덤 포트를 생성합니다.
+
+  yaml-prettify:
+    title: YAML 포매터
+    description: YAML 문자열을 사람이 읽기 쉬운 형식으로 변환합니다.
+
+  eta-calculator:
+    title: ETA 계산기
+    description: 작업 예상 종료 시각과 소요 시간을 계산합니다.
+
+  roman-numeral-converter:
+    title: 로마 숫자 변환기
+    description: 로마 숫자와 아라비아 숫자를 상호 변환합니다.
+
+  hmac-generator:
+    title: HMAC 생성기
+    description: 비밀 키와 선택한 해시 함수로 HMAC을 계산합니다.
+
+  bip39-generator:
+    title: BIP39 패스프레이즈 생성기
+    description: 니모닉 ↔ 패스프레이즈 변환 및 랜덤 패스프레이즈 생성을 지원합니다.
+
+  base64-file-converter:
+    title: Base64 파일 변환기
+    description: 문자열·파일·이미지를 Base64 표현으로 변환합니다.
+
+  list-converter:
+    title: 리스트 변환기
+    description: 전치·접두/접미·역순·정렬·소문자화·길이 제한 등 행 단위 변환을 적용합니다.
+
+  base64-string-converter:
+    title: Base64 문자열 인코더/디코더
+    description: 문자열을 Base64로 인코딩·디코딩합니다.
+
+  toml-to-yaml:
+    title: TOML → YAML
+    description: TOML을 파싱해 YAML로 변환합니다.
+
+  math-evaluator:
+    title: 수식 계산기
+    description: sqrt·cos·sin·abs 등 함수를 지원하는 수학 표현식 계산기입니다.
+
+  json-to-yaml-converter:
+    title: JSON → YAML 변환기
+    description: JSON을 YAML로 실시간 변환합니다.
+
+  url-parser:
+    title: URL 파서
+    description: URL을 프로토콜·오리진·쿼리·포트·계정 등으로 분해합니다.
+
+  iban-validator-and-parser:
+    title: IBAN 검증·파서
+    description: IBAN을 검증하고 국가·BBAN·QR-IBAN 여부 등을 확인합니다.
+
+  user-agent-parser:
+    title: User-agent 파서
+    description: user-agent 문자열에서 브라우저·OS·디바이스 정보를 추출합니다.
+
+  numeronym-generator:
+    title: 누메로님 생성기
+    description: “i18n” 같은 숫자 약어(누메로님)를 만듭니다.
+
+  case-converter:
+    title: 대소문자 변환기
+    description: 문자열을 원하는 케이스 형식으로 변환합니다.
+
+  html-entities:
+    title: HTML 엔티티 이스케이프
+    description: <, >, &, ", \' 등을 HTML 엔티티로 변환/복원합니다.
+
+  json-prettify:
+    title: JSON 포매터
+    description: JSON 문자열을 사람이 읽기 쉬운 형식으로 변환합니다.
+
+  docker-run-to-docker-compose-converter:
+    title: docker run → docker-compose 변환기
+    description: “docker run” 명령을 docker-compose 파일로 변환합니다!
+
+  mac-address-lookup:
+    title: MAC 주소 조회
+    description: MAC 주소로 제조사·벤더를 확인합니다.
+
+  mime-types:
+    title: MIME 유형 변환기
+    description: MIME 유형과 파일 확장자를 상호 변환합니다.
+
+  toml-to-json:
+    title: TOML → JSON
+    description: TOML을 파싱해 JSON으로 변환합니다.
+
+  lorem-ipsum-generator:
+    title: Lorem ipsum 생성기
+    description: 문서·폰트 레이아웃 테스트용 무의미한 더미 텍스트를 생성합니다.
+
+  qrcode-generator:
+    title: QR 코드 생성기
+    description: URL/텍스트용 QR 코드를 생성·다운로드하고 색상을 지정합니다.
+
+  wifi-qrcode-generator:
+    title: WiFi QR 코드 생성기
+    description: WiFi 연결용 QR 코드를 생성·다운로드합니다.
+
+  xml-formatter:
+    title: XML 포매터
+    description: XML 문자열을 사람이 읽기 쉬운 형식으로 변환합니다.
+
+  temperature-converter:
+    title: 온도 변환기
+    description: 켈빈·섭씨·화씨 등 여러 온도 단위를 상호 변환합니다.
+
+  chmod-calculator:
+    title: chmod 계산기
+    description: chmod 권한과 명령을 계산합니다.
+
+  rsa-key-pair-generator:
+    title: RSA 키 페어 생성기
+    description: 랜덤 RSA 개인·공개 PEM 키 페어를 생성합니다.
+
+  html-wysiwyg-editor:
+    title: HTML WYSIWYG 편집기
+    description: 풍부한 기능의 온라인 WYSIWYG HTML 편집기입니다.
+
+  yaml-to-toml:
+    title: YAML → TOML
+    description: YAML을 파싱해 TOML로 변환합니다.
+
+  mac-address-generator:
+    title: MAC 주소 생성기
+    description: 개수·접두사를 지정해 MAC 주소를 생성합니다.
+
+  json-diff:
+    title: JSON 비교
+    description: 두 JSON 객체의 차이를 확인합니다.
+
+  jwt-parser:
+    title: JWT 파서
+    description: JSON Web Token(jwt)을 파싱·디코딩하여 내용을 표시합니다.
+
+  date-converter:
+    title: 날짜·시간 변환기
+    description: 날짜와 시간을 다양한 형식으로 변환합니다.
+
+  phone-parser-and-formatter:
+    title: 전화번호 파서/포매터
+    description: 전화번호를 파싱·검증·포맷하고 국가 코드·유형 정보를 확인합니다.
+
+  ipv4-subnet-calculator:
+    title: IPv4 서브넷 계산기
+    description: IPv4 CIDR 블록을 분석해 서브넷 정보를 제공합니다.
+
+  og-meta-generator:
+    title: 오픈그래프 메타 태그 생성기
+    description: 웹사이트용 오픈그래프·소셜 메타 태그를 생성합니다.
+
+  ipv6-ula-generator:
+    title: IPv6 ULA 생성기
+    description: RFC4193에 따라 로컬 전용 IPv6 주소를 생성합니다.
+
+  hash-text:
+    title: 텍스트 해시
+    description: MD5·SHA1·SHA256 등으로 문자열을 해싱합니다.
+
+  json-to-toml:
+    title: JSON → TOML
+    description: JSON을 파싱해 TOML로 변환합니다.
+
+  device-information:
+    title: 디바이스 정보
+    description: 화면 크기·픽셀 비율·user-agent 등을 확인합니다.
+
+  pdf-signature-checker:
+    title: PDF 서명 검증기
+    description: PDF 파일의 디지털 서명을 검증합니다.
+
+  json-minify:
+    title: JSON 최소화
+    description: 공백을 제거해 JSON을 최소화·압축합니다.
+
+  ulid-generator:
+    title: ULID 생성기
+    description: 랜덤 ULID(정렬 가능한 고유 식별자)를 생성합니다.
+
+  string-obfuscator:
+    title: 문자열 난독화
+    description: 비밀키·IBAN·토큰 등을 내용 노출 없이 공유 가능하게 만듭니다.
+
+  base-converter:
+    title: 진수 변환기
+    description: 10진수·16진수·2진수·8진수·base64 등을 상호 변환합니다.
+
+  yaml-to-json-converter:
+    title: YAML → JSON 변환기
+    description: YAML을 JSON으로 실시간 변환합니다.
+
+  uuid-generator:
+    title: UUID 생성기
+    description: 128비트 범용 고유 식별자(UUID)를 생성합니다.
+
+  ipv4-address-converter:
+    title: IPv4 주소 변환기
+    description: IP 주소를 10진수·2진수·16진수·IPv6 표현으로 변환합니다.
+
+  text-statistics:
+    title: 텍스트 통계
+    description: 문자 수·단어 수·바이트 크기 등을 확인합니다.
+
+  text-to-nato-alphabet:
+    title: NATO 음성 알파벳 변환
+    description: 텍스트를 NATO 음성 알파벳으로 변환합니다.
+
+  basic-auth-generator:
+    title: 기본 인증 헤더 생성기
+    description: 사용자명·비밀번호로 Base64 기본 인증 헤더를 생성합니다.
+
+  text-to-unicode:
+    title: 텍스트 ↔ 유니코드
+    description: 텍스트를 유니코드로, 또는 반대로 변환합니다.
+
+  ipv4-range-expander:
+    title: IPv4 범위 계산기
+    description: 시작·끝 주소로부터 유효한 IPv4 서브넷과 CIDR을 계산합니다.
+
+  text-diff:
+    title: 텍스트 비교
+    description: 두 텍스트를 비교하여 차이를 확인합니다.
+
+  otp-generator:
+    title: OTP 코드 생성기
+    description: 시간 기반 OTP를 생성·검증하여 MFA에 사용합니다.
+
+  url-encoder:
+    title: URL 인코더/디코더
+    description: 텍스트를 URL 인코딩하거나 디코딩합니다.
+
+  text-to-binary:
+    title: 텍스트 ↔ ASCII 바이너리
+    description: 텍스트를 ASCII 바이너리로, 또는 반대로 변환합니다.
