@@ -78,8 +78,9 @@ tools:
   chronometer:
     title: 计时器
     description: 监控事物的持续时间。基本上是一种具有简单计时器功能的计时器。
+    
   token-generator:
-    title: Token 生成器
+    title: 密码生成器
     description: 使用您想要的字符、大写或小写字母、数字和/或符号生成随机字符串。
 
     uppercase: '大写 (ABC...)'
@@ -243,7 +244,7 @@ tools:
     description: 解析TOML并将其转换为JSON。
 
   lorem-ipsum-generator:
-    title: Lorem ipsum生成器
+    title: Lorem ipsum占位符生成器
     description: Lorem ipsum是一种占位符文本，通常用于演示文档或字体的视觉形式，而不依赖于有意义的内容
 
   qrcode-generator:
@@ -388,3 +389,35 @@ tools:
   text-to-binary:
     title: 文本到 ASCII 二进制
     description: 将文本转换为其 ASCII 二进制表示形式，反之亦然。
+
+  xml-to-json:
+    title: XML 转 JSON
+    description: 将XML转换为JSON
+  
+  json-to-xml:
+    title: JSON 转 XML
+    description: 将JSON转换为XML
+  
+  markdown-to-html:
+    title: Markdown 转 HTML
+    description: 将 Markdown 转换为 Html 并允许打印（如 PDF）
+  
+  safelink-decoder:
+    title: Outlook Safelink 解码器
+    description: 解码 Outlook SafeLink 链接
+  
+  email-normalizer:
+    title: 电子邮件美化
+    description: 将电子邮件地址规范化为标准格式，以便于比较。可用于重复数据删除和数据清理。
+
+  regex-tester:
+    title: 正则表达式测试
+    description: 使用示例文本测试正则表达式。
+
+  regex-memo:
+    title: 正则表达式列表
+    description: Javascript 正则表达式/正则表达式备忘单
+
+  ascii-text-drawer:
+    title: ASCII 艺术文本生成器
+    description: 创建具有多种字体和样式的 ASCII 艺术文本。
