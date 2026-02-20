@@ -37,6 +37,7 @@
     "release": "node ./scripts/release.mjs"
   },
   "dependencies": {
+    "@guyplusplus/turndown-plugin-gfm": "^1.0.7",
     "@it-tools/bip39": "^0.0.4",
     "@it-tools/oggen": "^1.3.0",
     "@regexper/render": "^1.0.0",
@@ -47,6 +48,7 @@
     "@tiptap/vue-3": "2.0.3",
     "@types/figlet": "^1.5.8",
     "@types/markdown-it": "^13.0.7",
+    "@types/turndown": "^5.0.4",
     "@vicons/material": "^0.12.0",
     "@vicons/tabler": "^0.12.0",
     "@vueuse/core": "^10.3.0",
@@ -90,6 +92,7 @@
     "qrcode": "^1.5.1",
     "randexp": "^0.5.3",
     "sql-formatter": "^13.0.0",
+    "turndown": "^7.1.2",
     "ua-parser-js": "^1.0.35",
     "ulid": "^2.3.0",
     "unicode-emoji-json": "^0.4.0",
