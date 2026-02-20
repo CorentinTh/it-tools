@@ -7,13 +7,18 @@ import TokenDisplay from './token-display.vue';
 import { useStyleStore } from '@/stores/style.store';
 import InputCopyable from '@/components/InputCopyable.vue';
 import { computedRefreshable } from '@/composable/computedRefreshable';
+import { useQueryParamOrStorage } from '@/composable/queryParams';
 
 const now = useTimestamp();
 const interval = computed(() => (now.value / 1000) % 30);
 const theme = useThemeVars();
 const styleStore = useStyleStore();
 
-const secret = ref(generateSecret());
+const secret = useQueryParamOrStorage({
+  name: 'secret',
+  storageName: 'otp-gen:secret',
+  defaultValue: generateSecret(),
+});
 
 function refreshSecret() {
   secret.value = generateSecret();
