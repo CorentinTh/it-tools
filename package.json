@@ -78,6 +78,7 @@
     "markdown-it": "^14.0.0",
     "marked": "^10.0.0",
     "mathjs": "^11.9.1",
+    "mermaid": "^11.6.0",
     "mime-types": "^2.1.35",
     "monaco-editor": "^0.43.0",
     "naive-ui": "^2.35.0",
