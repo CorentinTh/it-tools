@@ -1,0 +1,394 @@
+home:
+  categories:
+    newestTools: "Yangi vositalar"
+    favoriteTools: "Sizning sevimli vositalaringiz"
+    allTools: "Barcha vositalar"
+    favoritesDndToolTip: "Sevimlilarni tartiblash uchun sudrab tashlang"
+  subtitle: "Dasturchilar uchun qulay vositalar"
+  toggleMenu: "Menyuni yoqish/o'chirish"
+  home: "Bosh sahifa"
+  uiLib: "UI kutubxonasi"
+  support: "IT-Tools loyihasini qo'llab-quvvatlash"
+  buyMeACoffee: "Menga qavha olib bering"
+  follow:
+    title: "Sizga IT-Tools yoqadimi?"
+    p1: "Bizga yulduzcha qo'ying"
+    githubRepository: "IT-Tools GitHub sahifasi"
+    p2: "yoki kuzatib boring"
+    twitterXAccount: "IT-Tools X profili"
+    thankYou: "Rahmat!"
+  nav:
+    github: "GitHub sahifa"
+    githubRepository: "IT-Tools GitHub sahifasi"
+    twitterX: "X profili"
+    twitterXAccount: "IT Tools X profili"
+    about: "IT-Tools haqida"
+    aboutLabel: "Loyiha haqida"
+    darkMode: "Qorong'u rejim"
+    lightMode: "Yorqin rejim"
+    mode: "Qorong'u/yorqin rejimni o'zgartirish"
+about:
+  content: |
+    # IT-Tools haqida
+
+    Bu ajoyib veb-sayt [Corentin Thomasset](https://corentin.tech?utm_source=it-tools&utm_medium=about) tomonidan ❤ bilan yaratilgan bo'lib, dasturchilar va IT sohasida ishlaydigan odamlar uchun foydali vositalarni jamlaydi. Agar sizga foydali deb topsangiz, iltimos, uni o'zingizga yaqin odamlar bilan ulashing va brauzerga xatcho'p sifatida qo'shib qo'ying!
+
+    IT-Tools ochiq manbali (GPL-3.0 litsenziyasi ostida) va bepul bo'lib, har doim shunday bo'lib qoladi. Lekin uni hosting qilish va domen nomini yangilash uchun pul sarflanadi. Agar siz mening ishimni qo'llab-quvvatlamoqchi bo'lsangiz va yangi vositalar qo'shishimga yordam bermoqchi bo'lsangiz, iltimos, [menga homiylik qiling](https://www.buymeacoffee.com/cthmsst).
+
+    ## Texnologiyalar
+
+    IT-Tools Vue.js (Vue 3) va Naive UI komponent kutubxonasi yordamida yaratilgan bo'lib, Vercel tomonidan hosting qilinadi. Ba'zi vositalarda uchinchi tomon ochiq manbali kutubxonalar ishlatilgan, ularning to'liq ro'yxatini [package.json](https://github.com/CorentinTh/it-tools/blob/main/package.json) faylida topishingiz mumkin.
+
+    ## Xato topdingizmi? Vositadan foydalanmayapsizmi?
+
+    Agar sizga kerakli vosita hozircha mavjud bo'lmasa va u foydali bo'lishi mumkin deb hisoblasangiz, iltimos, GitHub omboridagi [issues bo'limida](https://github.com/CorentinTh/it-tools/issues/new/choose) so'rov qoldiring.
+
+    Agar xato topgan bo'lsangiz yoki biror narsa ishlamasa, iltimos, [issues bo'limida](https://github.com/CorentinTh/it-tools/issues/new/choose) xabar bering.
+
+404:
+  notFound: "404 Topilmadi"
+  sorry: "Kechirasiz, bu sahifa mavjud emas"
+  maybe: "Ehtimol, keshlash tufayli xatolik yuz bergan, brauzerni yangilab ko'ring?"
+  backHome: "Bosh sahifaga qaytish"
+favoriteButton:
+  remove: "Sevimlilardan o'chirish"
+  add: "Sevimlilarga qo'shish"
+toolCard:
+  new: "Yangi"
+search:
+  label: "Qidirish"
+tools:
+  categories:
+    favorite-tools: "Sevimli vositalaringiz"
+    crypto: "Kriptografiya"
+    converter: "Konvertor"
+    web: "Veb"
+    images and videos: "Rasmlar & Videolar"
+    development: "Dasturlash"
+    network: "Tarmoq"
+    math: "Matematika"
+    measurement: "O'lchov"
+    text: "Matn"
+    data: "Ma'lumotlar"
+
+  password-strength-analyser:
+    title: "Parol mustahkamligini tahlil qilish"
+    description: "Parolingizning mustahkamligini va buzilish vaqtini hisoblovchi vosita."
+
+  chronometer:
+    title: "Xronometr"
+    description: "Vaqtni hisoblovchi oddiy xronometr."
+
+  token-generator:
+    title: "Token generatori"
+    description: "Tasodifiy belgilar (katta/kichik harflar, raqamlar, simvollar) yordamida token yarating."
+    uppercase: "Katta harflar (ABC...)"
+    lowercase: "Kichik harflar (abc...)"
+    numbers: "Raqamlar (123...)"
+    symbols: "Simvollar (!-;...)"
+    length: "Uzunlik"
+    tokenPlaceholder: "Token..."
+    copied: "Token buferga nusxalandi"
+    button:
+      copy: "Nusxalash"
+      refresh: "Yangilash"
+
+  percentage-calculator:
+    title: "Foiz kalkulyatori"
+    description: "Bir qiymatdan ikkinchi qiymatga foizlarni osongina hisoblang."
+
+  svg-placeholder-generator:
+    title: "SVG placeholder generatori"
+    description: "Dasturingizda foydalanish uchun SVG rasmlar yarating."
+
+  json-to-csv:
+    title: "JSON dan CSV ga"
+    description: "JSON ni CSV ga avtomatik sarlavhalar bilan aylantirish."
+
+  camera-recorder:
+    title: "Kamera yozuvi"
+    description: "Veb-kamerangiz yordamida rasm yoki video yozib oling."
+
+  keycode-info:
+    title: "Klavish kodi ma'lumoti"
+    description: "Bosilgan klavishning JavaScript kodi, joylashuvi va modifikatorlarini toping."
+
+  emoji-picker:
+    title: "Emoji tanlovi"
+    description: "Emojilarni nusxalash va ularning Unicode qiymatini olish."
+
+  color-converter:
+    title: "Rang konvertori"
+    description: "Rangni turli formatlar (hex, rgb, hsl, CSS nomi) o'rtasida aylantirish."
+
+  bcrypt:
+    title: "Bcrypt"
+    description: "Bcrypt yordamida matnli qatorlarni hash qilish va solishtirish."
+
+  crontab-generator:
+    title: "Crontab generatori"
+    description: "Crontab ni tekshirish va yaratish, shuningdek, cron jadvalining tushuntirishini olish."
+
+  http-status-codes:
+    title: "HTTP status kodlari"
+    description: "Barcha HTTP status kodlari, ularning nomlari va ma'nolari."
+
+  sql-prettify:
+    title: "SQL ni chiroyli qilish"
+    description: "SQL so'rovlarini turli dialektlarda formatlash."
+
+  benchmark-builder:
+    title: "Benchmark quruvchi"
+    description: "Vazifalarning bajarilish vaqtini solishtirish uchun oddiy vosita."
+
+  git-memo:
+    title: "Git yordamchi varaqasi"
+    description: "Eng ko'p ishlatiladigan Git buyruqlari."
+
+  slugify-string:
+    title: "Slugify matni"
+    description: "Matnni URL, fayl nomi yoki ID uchun xavfsiz qilish."
+
+  encryption:
+    title: "Matnni shifrlash/deshifrlash"
+    description: "AES, TripleDES, Rabbit yoki RC4 kabi algoritmlar yordamida shifrlash."
+
+  random-port-generator:
+    title: "Tasodifiy port generatori"
+    description: "0-1023 oralig'idan tashqarida tasodifiy port raqamlari yarating."
+
+  yaml-prettify:
+    title: "YAML ni chiroyli qilish"
+    description: "YAML matnini o'qiladigan formatga keltirish."
+
+  eta-calculator:
+    title: "ETA kalkulyatori"
+    description: "Vazifaning yakunlanish vaqtini hisoblash (masalan, fayl yuklash vaqti)."
+
+  roman-numeral-converter:
+    title: "Rim raqamlarini aylantirish"
+    description: "Rim raqamlarini oddiy raqamlarga va aksincha aylantirish."
+
+  hmac-generator:
+    title: "HMAC generatori"
+    description: "Maxfiy kalit yordamida HMAC hash yarating."
+
+  bip39-generator:
+    title: "BIP39 parol iborasi generatori"
+    description: "Mnemonik iboradan BIP39 parol yarating yoki aksincha."
+
+  base64-file-converter:
+    title: "Faylni Base64 ga aylantirish"
+    description: "Fayl yoki rasmni Base64 formatiga o'tkazish."
+
+  list-converter:
+    title: "Ro'yxat konvertori"
+    description: "Ro'yxatni transponirlash, prefiks/suffiks qo'shish, tartiblash kabi amallarni bajarish."
+
+  base64-string-converter:
+    title: "Base64 matn konvertori"
+    description: "Matnni Base64 ga va aksincha aylantirish."
+
+  toml-to-yaml:
+    title: "TOML dan YAML ga"
+    description: "TOML ni YAML ga aylantirish."
+
+  math-evaluator:
+    title: "Matematik ifodalar kalkulyatori"
+    description: "sqrt, cos, sin, abs kabi funksiyalardan foydalangan holda hisoblash."
+
+  json-to-yaml-converter:
+    title: "JSON dan YAML ga konvertor"
+    description: "JSON ni YAML ga aylantirish."
+
+  url-parser:
+    title: "URL tahlil qiluvchi"
+    description: "URL ni protocol, domain, parametrlar kabi qismlarga ajratish."
+
+  iban-validator-and-parser:
+    title: "IBAN tekshiruvchi va tahlil qiluvchi"
+    description: "IBAN raqamini tekshirish va uning mamlakat, BBAN kabi ma'lumotlarini olish."
+
+  user-agent-parser:
+    title: "User-agent tahlil qiluvchi"
+    description: "User-agent matnidan brauzer, OS, qurilma ma'lumotlarini ajratish."
+
+  numeronym-generator:
+    title: "Numeronym generatori"
+    description: "Matnni numeronym shakliga keltirish (masalan, 'internationalization' → 'i18n')."
+
+  case-converter:
+    title: "Registr konvertori"
+    description: "Matnni turli registr formatlariga (katta/kichik harflar, snake_case, kebab-case) o'tkazish."
+
+  html-entities:
+    title: "HTML entitilarini escape qilish"
+    description: "<, >, & kabi belgilarni HTML versiyasiga o'tkazish."
+
+  json-prettify:
+    title: "JSON ni chiroyli qilish"
+    description: "JSON matnini chiroyli formatga keltirish."
+
+  docker-run-to-docker-compose-converter:
+    title: "Docker run ni Docker Compose ga aylantirish"
+    description: "'docker run' buyrug'ini docker-compose.yml fayliga aylantirish."
+
+  mac-address-lookup:
+    title: "MAC manzilini qidirish"
+    description: "MAC manzili orqali qurilma ishlab chiqaruvchisini topish."
+
+  mime-types:
+    title: "MIME turlari"
+    description: "MIME turlarini fayl kengaytmalariga va aksincha aylantirish."
+
+  toml-to-json:
+    title: "TOML dan JSON ga"
+    description: "TOML ni JSON ga aylantirish."
+
+  lorem-ipsum-generator:
+    title: "Lorem ipsum generatori"
+    description: "Lorem ipsum – dizayn namunalari uchun ishlatiladigan matn."
+
+  qrcode-generator:
+    title: "QR kod generatori"
+    description: "URL yoki matn uchun QR kod yaratish va ranglarni sozlash."
+
+  wifi-qrcode-generator:
+    title: "WiFi QR kod generatori"
+    description: "WiFi tarmog'iga ulanish uchun QR kod yaratish."
+
+  xml-formatter:
+    title: "XML formatter"
+    description: "XML matnini chiroyli formatga keltirish."
+
+  temperature-converter:
+    title: "Harorat konvertori"
+    description: "Kelvin, Celsius, Fahrenheit, Rankine kabi birliklar o'rtasida aylantirish."
+
+  chmod-calculator:
+    title: "Chmod kalkulyatori"
+    description: "Fayl ruxsatlarini hisoblash uchun chmod kalkulyatori."
+
+  rsa-key-pair-generator:
+    title: "RSA kalit juftligi generatori"
+    description: "Yangi RSA maxfiy va ochiq kalitlarini yaratish."
+
+  html-wysiwyg-editor:
+    title: "HTML WYSIWYG editor"
+    description: "Ko'rinib turganidek HTML kontent yaratish va tahrirlash."
+
+  yaml-to-toml:
+    title: "YAML dan TOML ga"
+    description: "YAML ni TOML ga aylantirish."
+
+  mac-address-generator:
+    title: "MAC manzili generatori"
+    description: "Katta/kichik harflarda MAC manzillarini yaratish."
+
+  json-diff:
+    title: "JSON farqlari"
+    description: "Ikki JSON obyektini solishtirish va farqlarni ko'rsatish."
+
+  jwt-parser:
+    title: "JWT tahlil qiluvchi"
+    description: "JSON Web Token ni dekod qilish va tahlil qilish."
+
+  date-converter:
+    title: "Sana-vaqt konvertori"
+    description: "Sana va vaqtni turli formatlarga aylantirish."
+
+  phone-parser-and-formatter:
+    title: "Telefon raqamini tahlil qilish va formatlash"
+    description: "Telefon raqamini tekshirish, mamlakat kodini aniqlash va formatlash."
+
+  ipv4-subnet-calculator:
+    title: "IPv4 subnet kalkulyatori"
+    description: "IPv4 CIDR blokini tahlil qilish va subnet haqida ma'lumot olish."
+
+  og-meta-generator:
+    title: "Open Graph meta generatori"
+    description: "Veb-sayt uchun Open Graph va ijtimoiy tarmoq meta teglarini yaratish."
+
+  ipv6-ula-generator:
+    title: "IPv6 ULA generatori"
+    description: "RFC4193 standarti bo'yicha IPv6 ULA manzillarini yaratish."
+
+  hash-text:
+    title: "Matnni hash qilish"
+    description: "MD5, SHA1, SHA256, SHA3 kabi algoritmlar yordamida hash yaratish."
+
+  json-to-toml:
+    title: "JSON dan TOML ga"
+    description: "JSON ni TOML ga aylantirish."
+
+  device-information:
+    title: "Qurilma ma'lumoti"
+    description: "Joriy qurilma haqida ma'lumot (ekran o'lchami, foydalanuvchi agenti va h.k.)."
+
+  pdf-signature-checker:
+    title: "PDF imzolarini tekshirish"
+    description: "PDF faylidagi raqamli imzolarni tekshirish."
+
+  json-minify:
+    title: "JSON ni siqish"
+    description: "JSON matnidagi ortiqcha bo'shliqlarni olib tashlash."
+
+  ulid-generator:
+    title: "ULID generatori"
+    description: "Universally Unique Lexicographically Sortable Identifier (ULID) yaratish."
+
+  string-obfuscator:
+    title: "Matnni shifrlash"
+    description: "Maxfiy matnni (token, IBAN) identifikatsiya qilish uchun shifrlash."
+
+  base-converter:
+    title: "Butun sonli sanoq sistemasi konvertori"
+    description: "Sonni ikkilik, sakkizlik, o'n oltilik va boshqa sistemalarga aylantirish."
+
+  yaml-to-json-converter:
+    title: "YAML dan JSON ga konvertor"
+    description: "YAML ni JSON ga aylantirish."
+
+  uuid-generator:
+    title: "UUID generatori"
+    description: "Universally Unique Identifier (UUID) yaratish."
+
+  ipv4-address-converter:
+    title: "IPv4 manzilini aylantirish"
+    description: "IPv4 manzilini binary, hexadecimal yoki IPv6 ko'rinishiga o'tkazish."
+
+  text-statistics:
+    title: "Matn statistikasi"
+    description: "Matndagi belgilar, so'zlar, bayt o'lchami haqida ma'lumot."
+
+  text-to-nato-alphabet:
+    title: "Matnni NATO alifbosiga aylantirish"
+    description: "Matnni NATO fonetik alifbosiga o'tkazish."
+
+  basic-auth-generator:
+    title: "Basic auth generatori"
+    description: "Foydalanuvchi nomi va parolidan base64 Basic Auth header yaratish."
+
+  text-to-unicode:
+    title: "Matnni Unicode ga aylantirish"
+    description: "Matn va Unicode o'rtasida konvertatsiya qilish."
+
+  ipv4-range-expander:
+    title: "IPv4 diapazonini kengaytirish"
+    description: "Boshlang'ich va tugash IPv4 manzillaridan subnet va CIDR ni hisoblash."
+
+  text-diff:
+    title: "Matn farqlari"
+    description: "Ikki matnni solishtirish va farqlarni ko'rsatish."
+
+  otp-generator:
+    title: "OTP kod generatori"
+    description: "Time-based OTP (bir martalik parol) yaratish va tekshirish."
+
+  url-encoder:
+    title: "URL formatidagi matnlarni kodlash/dekodlash"
+    description: "Matnni URL-encoded (foizli kodlash) formatiga o'tkazish yoki aksincha."
+
+  text-to-binary:
+    title: "Matnni ASCII binary ga aylantirish"
+    description: "Matnni ASCII ikkilik kodiga va aksincha aylantirish."
