@@ -2,7 +2,7 @@ import { type MaybeRef, get } from '@vueuse/core';
 import QRCode, { type QRCodeToDataURLOptions } from 'qrcode';
 import { isRef, ref, watch } from 'vue';
 
-export const wifiEncryptions = ['WEP', 'WPA', 'nopass', 'WPA2-EAP'] as const;
+export const wifiEncryptions = ['WEP', 'WPA', 'WPA3', 'WPA2/WPA3', 'nopass', 'WPA2-EAP'] as const;
 export type WifiEncryption = typeof wifiEncryptions[number];
 
 // @see https://en.wikipedia.org/wiki/Extensible_Authentication_Protocol
@@ -70,7 +70,13 @@ function getQrCodeText(options: GetQrCodeTextOptions): string | null {
   if (encryption === 'nopass') {
     return `WIFI:S:${escapeString(ssid)};;`; // type can be omitted in that case, and password is not needed, makes the QR Code smaller
   }
-  if (encryption !== 'WPA2-EAP' && password) {
+if (encryption === 'WPA3' && password) {
+    return `WIFI:S:${escapeString(ssid)};T:WPA3;P:${escapeString(password)};${isHiddenSSID ? 'H:true;' : ''}R:1;;`;
+}
+if (encryption === 'WPA2/WPA3' && password) {
+    return `WIFI:S:${escapeString(ssid)};T:WPA3;P:${escapeString(password)};${isHiddenSSID ? 'H:true;' : ''};`;
+}
+if (encryption !== 'WPA2-EAP' && password) {
     // EAP has a lot of options, so we'll handle it separately
     // WPA and WEP are pretty simple though.
     return `WIFI:S:${escapeString(ssid)};T:${encryption};P:${escapeString(password)};${isHiddenSSID ? 'H:true' : ''};`;
