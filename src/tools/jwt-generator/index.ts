@@ -2,13 +2,14 @@ import { Key } from '@vicons/tabler';
 import { defineTool } from '../tool';
 
 export const tool = defineTool({
-  name: 'JWT parser',
-  path: '/jwt-parser',
-  description: 'Parse and decode your JSON Web Token (jwt) and display its content.',
+  name: 'JWT Generator',
+  path: '/jwt-generator',
+  description: 'JWT Token generator and editor',
   keywords: [
     'jwt',
-    'parser',
-    'decode',
+    'generator',
+    'editor',
+    'encode',
     'typ',
     'alg',
     'iss',
@@ -22,6 +23,7 @@ export const tool = defineTool({
     'web',
     'token',
   ],
-  component: () => import('./jwt-parser.vue'),
+  component: () => import('./jwt-generator.vue'),
   icon: Key,
+  createdAt: new Date('2024-08-15'),
 });

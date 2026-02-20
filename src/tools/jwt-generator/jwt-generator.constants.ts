@@ -1,0 +1,15 @@
+export const jwsAlgorithms = [
+  { alg: 'HS256', keyDesc: '256 bit (32 byte) secret', key: 'secret', verify: 'HMAC-SHA256' },
+  { alg: 'HS384', keyDesc: '384 bit (48 byte) secret', key: 'secret', verify: 'HMAC-SHA384' },
+  { alg: 'HS512', keyDesc: '512 bit (64 byte) secret', key: 'secret', verify: 'HMAC-SHA512' },
+  { alg: 'ES256', keyDesc: 'NIST P-256 elliptic curve key', key: 'keyspair', verify: 'ECDSA-SHA256' },
+  { alg: 'ES256K', keyDesc: 'secp256k1 elliptic curve key', key: 'keyspair', verify: 'ECDSA-SHA256(secp256k1)' },
+  { alg: 'ES384', keyDesc: 'NIST P-384 elliptic curve key', key: 'keyspair', verify: 'ECDSA-SHA384' },
+  { alg: 'ES512', keyDesc: 'NIST P-521 elliptic curve key', key: 'keyspair', verify: 'ECDSA-SHA512' },
+  { alg: 'PS256', keyDesc: 'RSA key of at least 2048 bit modulus length', key: 'keyspair', verify: 'RSA-PSS-SHA256' },
+  { alg: 'PS384', keyDesc: 'RSA key of at least 2048 bit modulus length', key: 'keyspair', verify: 'RSA-PSS-SHA384' },
+  { alg: 'PS512', keyDesc: 'RSA key of at least 2048 bit modulus length', key: 'keyspair', verify: 'RSA-PSS-SHA512' },
+  { alg: 'RS256', keyDesc: 'RSA key of at least 2048 bit modulus length', key: 'keyspair', verify: 'RSA-SHA256' },
+  { alg: 'RS384', keyDesc: 'RSA key of at least 2048 bit modulus length', key: 'keyspair', verify: 'RSA-SHA384' },
+  { alg: 'RS512', keyDesc: 'RSA key of at least 2048 bit modulus length', key: 'keyspair', verify: 'RSA-SHA512' },
+];
