@@ -28,6 +28,7 @@ const props = withDefaults(
     type?: 'text' | 'password'
     multiline?: boolean
     rows?: number | string
+    size: string
     autosize?: boolean
     autofocus?: boolean
     monospace?: boolean
@@ -55,6 +56,7 @@ const props = withDefaults(
     type: 'text',
     multiline: false,
     rows: 3,
+    size: "1",
     autosize: false,
     autofocus: false,
     monospace: false,
@@ -183,7 +185,7 @@ defineExpose({
           :class="{
             'leading-5 !font-mono': monospace,
           }"
-          size="1"
+          :size="size"
           :placeholder="placeholder"
           :readonly="readonly"
           :disabled="disabled"
