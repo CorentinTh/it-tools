@@ -11,6 +11,8 @@ import BugIcon from '~icons/mdi/bug-outline';
 import DiceIcon from '~icons/mdi/dice-5';
 import InfoIcon from '~icons/mdi/information-outline';
 
+const maxSearchResultsPerCategory = import.meta.env.VITE_MAX_SEARCH_RESULT || 25;
+
 export const useCommandPaletteStore = defineStore('command-palette', () => {
   const toolStore = useToolStore();
   const styleStore = useStyleStore();
@@ -82,7 +84,7 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
   });
 
   const filteredSearchResult = computed(() =>
-    _.chain(searchResult.value).groupBy('category').mapValues(categoryOptions => _.take(categoryOptions, 5)).value());
+    _.chain(searchResult.value).groupBy('category').mapValues(categoryOptions => _.take(categoryOptions, maxSearchResultsPerCategory)).value());
 
   return {
     filteredSearchResult,
