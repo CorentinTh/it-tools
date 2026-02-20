@@ -1,12 +1,12 @@
 import { expect, test } from '@playwright/test';
 
-test.describe('Tool - Text to ASCII binary', () => {
+test.describe('Tool - Text to UTF-8 binary', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/text-to-binary');
   });
 
   test('Has correct title', async ({ page }) => {
-    await expect(page).toHaveTitle('Text to ASCII binary - IT Tools');
+    await expect(page).toHaveTitle('Text to UTF-8 binary - IT Tools');
   });
 
   test('Text to binary conversion', async ({ page }) => {
@@ -17,7 +17,9 @@ test.describe('Tool - Text to ASCII binary', () => {
   });
 
   test('Binary to text conversion', async ({ page }) => {
-    await page.getByTestId('binary-to-text-input').fill('01101001 01110100 00101101 01110100 01101111 01101111 01101100 01110011');
+    await page
+      .getByTestId('binary-to-text-input')
+      .fill('01101001 01110100 00101101 01110100 01101111 01101111 01101100 01110011');
     const text = await page.getByTestId('binary-to-text-output').inputValue();
 
     expect(text).toEqual('it-tools');
