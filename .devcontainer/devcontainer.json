@@ -1,0 +1,34 @@
+{
+    "name": "IT-Tools Dev Container",
+    "image": "mcr.microsoft.com/devcontainers/javascript-node",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "Vue.volar",
+                "dbaeumer.vscode-eslint",
+                "Lokalise.i18n-ally",
+                "eamodio.gitlens"
+            ],
+            "settings": {
+                "editor.formatOnSave": false,
+                "editor.codeActionsOnSave": {
+                    "source.fixAll.eslint": true
+                },
+                "i18n-ally.localesPaths": [
+                    "locales",
+                    "src/tools/*/locales"
+                ],
+                "i18n-ally.keystyle": "nested"
+            }
+        }
+    },
+    "postCreateCommand": "sudo cp .devcontainer/welcome.txt /usr/local/etc/vscode-dev-containers/first-run-notice.txt",
+    "postStartCommand": "npm install -g pnpm && pnpm install",
+    "forwardPorts": [5173],
+    "portsAttributes": {
+        "5173": {
+            "label": "Vite App - IT-Tools",
+            "onAutoForward": "notify"
+        }
+    }
+}

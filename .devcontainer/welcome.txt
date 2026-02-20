@@ -1,0 +1,7 @@
+Welcome to the IT-Tools Dev Container! 💻
+
+To get started, enter `pnpm dev` on the terminal to run the app locally.
+
+Head over to the ./README.md file to know more.
+
+Happy coding! :)

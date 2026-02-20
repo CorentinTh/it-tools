@@ -4,6 +4,10 @@
     <img src="./.github/logo-dark.png" alt="logo">
 </picture>
 
+<a href="https://codespaces.new/CorentinTh/it-tools">
+  <img alt="Open in GitHub Codespaces" width="25%" src="https://github.com/codespaces/badge.svg">
+</a>
+
 <p align="center">
 Useful tools for developer and people working in IT. <a href="https://it-tools.tech">Try it!</a>
 </p>
