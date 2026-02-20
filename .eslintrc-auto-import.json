@@ -286,6 +286,9 @@
     "watchTriggerable": true,
     "watchWithFilter": true,
     "whenever": true,
-    "toValue": true
+    "toValue": true,
+    "injectLocal": true,
+    "provideLocal": true,
+    "useClipboardItems": true
   }
 }
