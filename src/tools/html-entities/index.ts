@@ -9,4 +9,5 @@ export const tool = defineTool({
   keywords: ['html', 'entities', 'escape', 'unescape', 'special', 'characters', 'tags'],
   component: () => import('./html-entities.vue'),
   icon: Code,
+  category: 'Web',
 });

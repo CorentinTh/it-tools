@@ -9,4 +9,5 @@ export const tool = defineTool({
   keywords: ['roman', 'arabic', 'converter', 'X', 'I', 'V', 'L', 'C', 'D', 'M'],
   component: () => import('./roman-numeral-converter.vue'),
   icon: LetterX,
+  category: 'Converter',
 });

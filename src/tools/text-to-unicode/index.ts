@@ -10,4 +10,5 @@ export const tool = defineTool({
   component: () => import('./text-to-unicode.vue'),
   icon: TextWrap,
   createdAt: new Date('2024-01-31'),
+  category: 'Converter',
 });

@@ -20,4 +20,5 @@ export const tool = defineTool({
   ],
   component: () => import('./chmod-calculator.vue'),
   icon: FileInvoice,
+  category: 'Development',
 });

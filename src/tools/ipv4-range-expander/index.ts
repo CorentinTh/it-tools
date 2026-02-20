@@ -10,4 +10,5 @@ export const tool = defineTool({
   component: () => import('./ipv4-range-expander.vue'),
   icon: UnfoldMoreOutlined,
   createdAt: new Date('2023-04-19'),
+  category: 'Network',
 });

@@ -21,4 +21,5 @@ export const tool = defineTool({
   ],
   component: () => import('./temperature-converter.vue'),
   icon: Temperature,
+  category: 'Measurement',
 });

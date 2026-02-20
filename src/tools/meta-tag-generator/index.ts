@@ -23,4 +23,5 @@ export const tool = defineTool({
   ],
   component: () => import('./meta-tag-generator.vue'),
   icon: Tags,
+  category: 'Web',
 });

@@ -10,4 +10,5 @@ export const tool = defineTool({
   component: () => import('./numeronym-generator.vue'),
   icon: n7mIcon,
   createdAt: new Date('2023-11-05'),
+  category: 'Text',
 });

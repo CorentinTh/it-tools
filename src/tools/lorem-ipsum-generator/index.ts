@@ -9,4 +9,5 @@ export const tool = defineTool({
   keywords: ['lorem', 'ipsum', 'dolor', 'sit', 'amet', 'placeholder', 'text', 'filler', 'random', 'generator'],
   component: () => import('./lorem-ipsum-generator.vue'),
   icon: AlignJustified,
+  category: 'Text',
 });

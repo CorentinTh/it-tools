@@ -10,4 +10,5 @@ export const tool = defineTool({
   component: () => import('./text-to-binary.vue'),
   icon: Binary,
   createdAt: new Date('2023-10-15'),
+  category: 'Converter',
 });

@@ -9,4 +9,5 @@ export const tool = defineTool({
   keywords: ['url', 'encode', 'decode', 'percent', '%20', 'format'],
   component: () => import('./url-encoder.vue'),
   icon: Link,
+  category: 'Web',
 });

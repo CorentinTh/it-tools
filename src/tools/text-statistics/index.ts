@@ -10,4 +10,5 @@ export const tool = defineTool({
   component: () => import('./text-statistics.vue'),
   icon: FileText,
   redirectFrom: ['/text-stats'],
+  category: 'Text',
 });

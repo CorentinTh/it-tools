@@ -19,4 +19,5 @@ export const tool = defineTool({
   ],
   component: () => import('./basic-auth-generator.vue'),
   icon: PasswordRound,
+  category: 'Web',
 });

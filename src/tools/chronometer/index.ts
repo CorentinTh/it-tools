@@ -9,4 +9,5 @@ export const tool = defineTool({
   keywords: ['chronometer', 'time', 'lap', 'duration', 'measure', 'pause', 'resume', 'stopwatch'],
   component: () => import('./chronometer.vue'),
   icon: TimerOutlined,
+  category: 'Measurement',
 });

@@ -9,4 +9,5 @@ export const tool = defineTool({
   component: () => import('./markdown-to-html.vue'),
   icon: Markdown,
   createdAt: new Date('2024-08-25'),
+  category: 'Converter',
 });

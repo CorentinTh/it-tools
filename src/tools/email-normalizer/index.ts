@@ -9,4 +9,5 @@ export const tool = defineTool({
   component: () => import('./email-normalizer.vue'),
   icon: Mail,
   createdAt: new Date('2024-08-15'),
+  category: 'Development',
 });

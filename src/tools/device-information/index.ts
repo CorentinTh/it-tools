@@ -21,4 +21,5 @@ export const tool = defineTool({
   ],
   component: () => import('./device-information.vue'),
   icon: DeviceDesktop,
+  category: 'Web',
 });
