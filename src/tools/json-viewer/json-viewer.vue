@@ -1,26 +1,35 @@
 <script setup lang="ts">
 import JSON5 from 'json5';
-import { useStorage } from '@vueuse/core';
+import { jsonrepair } from 'jsonrepair';
+import {
+  get,
+  useStorage,
+} from '@vueuse/core';
 import { formatJson } from './json.models';
 import { withDefaultOnError } from '@/utils/defaults';
 import { useValidation } from '@/composable/validation';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 
 const inputElement = ref<HTMLElement>();
+const repairJsonLabel = 'Repair JSON';
 
 const rawJson = useStorage('json-prettify:raw-json', '{"hello": "world", "foo": "bar"}');
 const indentSize = useStorage('json-prettify:indent-size', 3);
 const sortKeys = useStorage('json-prettify:sort-keys', true);
-const cleanJson = computed(() => withDefaultOnError(() => formatJson({ rawJson, indentSize, sortKeys }), ''));
+const repairJson = useStorage('json-prettify:repair-json', false);
+const cleanJson = computed(() => withDefaultOnError(() => formatJson({ rawJson, indentSize, sortKeys, repairJson }), ''));
 
 const rawJsonValidation = useValidation({
   source: rawJson,
   rules: [
     {
-      validator: v => v === '' || JSON5.parse(v),
-      message: 'Provided JSON is not valid.',
+      validator: v => v === '' || (get(repairJson) ? jsonrepair(v) : JSON5.parse(v)),
+      get message() {
+        return `Provided JSON is not valid.${!get(repairJson) ? ` Try again with "${repairJsonLabel}"` : ''}`;
+      },
     },
   ],
+  watch: [repairJson],
 });
 </script>
 
@@ -32,6 +41,9 @@ const rawJsonValidation = useValidation({
       </n-form-item>
       <n-form-item label="Indent size :" label-placement="left" label-width="100" :show-feedback="false">
         <n-input-number v-model:value="indentSize" min="0" max="10" style="width: 100px" />
+      </n-form-item>
+      <n-form-item :label="`${repairJsonLabel} :`" label-placement="left" label-width="110">
+        <n-switch v-model:value="repairJson" />
       </n-form-item>
     </div>
   </div>
