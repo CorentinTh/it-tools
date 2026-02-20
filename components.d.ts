@@ -103,6 +103,7 @@ declare module '@vue/runtime-core' {
     IconMdiTriangleDown: typeof import('~icons/mdi/triangle-down')['default']
     InputCopyable: typeof import('./src/components/InputCopyable.vue')['default']
     IntegerBaseConverter: typeof import('./src/tools/integer-base-converter/integer-base-converter.vue')['default']
+    IpIncludeExclude: typeof import('./src/tools/ip-include-exclude/ip-include-exclude.vue')['default']
     Ipv4AddressConverter: typeof import('./src/tools/ipv4-address-converter/ipv4-address-converter.vue')['default']
     Ipv4RangeExpander: typeof import('./src/tools/ipv4-range-expander/ipv4-range-expander.vue')['default']
     Ipv4SubnetCalculator: typeof import('./src/tools/ipv4-subnet-calculator/ipv4-subnet-calculator.vue')['default']
