@@ -37,6 +37,7 @@
     "release": "node ./scripts/release.mjs"
   },
   "dependencies": {
+    "@dice-roller/rpg-dice-roller": "^5.5.1",
     "@it-tools/bip39": "^0.0.4",
     "@it-tools/oggen": "^1.3.0",
     "@regexper/render": "^1.0.0",
@@ -52,6 +53,7 @@
     "@vueuse/core": "^10.3.0",
     "@vueuse/head": "^1.0.0",
     "@vueuse/router": "^10.0.0",
+    "@younestouati/playing-cards-standard-deck": "^6.0.1",
     "bcryptjs": "^2.4.3",
     "change-case": "^4.1.2",
     "colord": "^2.9.3",
@@ -100,6 +102,7 @@
     "vue-router": "^4.1.6",
     "vue-shadow-dom": "^4.2.0",
     "vue-tsc": "^1.8.1",
+    "vue3-fortune-wheel": "^2.0.5",
     "vuedraggable": "^4.1.0",
     "xml-formatter": "^3.3.2",
     "xml-js": "^1.6.11",
