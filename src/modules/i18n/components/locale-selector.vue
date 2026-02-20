@@ -9,6 +9,7 @@ const localesLong: Record<string, string> = {
   no: 'Norwegian',
   pt: 'Português',
   ru: 'Русский',
+  tr: 'Türkçe',
   uk: 'Українська',
   zh: '中文',
   vi: 'Tiếng Việt',
