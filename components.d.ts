@@ -107,6 +107,7 @@ declare module '@vue/runtime-core' {
     Ipv4RangeExpander: typeof import('./src/tools/ipv4-range-expander/ipv4-range-expander.vue')['default']
     Ipv4SubnetCalculator: typeof import('./src/tools/ipv4-subnet-calculator/ipv4-subnet-calculator.vue')['default']
     Ipv6UlaGenerator: typeof import('./src/tools/ipv6-ula-generator/ipv6-ula-generator.vue')['default']
+    JavascriptObfuscator: typeof import('./src/tools/javascript-obfuscator/javascript-obfuscator.vue')['default']
     JsonDiff: typeof import('./src/tools/json-diff/json-diff.vue')['default']
     JsonMinify: typeof import('./src/tools/json-minify/json-minify.vue')['default']
     JsonToCsv: typeof import('./src/tools/json-to-csv/json-to-csv.vue')['default']
