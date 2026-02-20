@@ -2,6 +2,7 @@ import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
 import { tool as emailNormalizer } from './email-normalizer';
+import { tool as energyComputer } from './energy-computer';
 
 import { tool as asciiTextDrawer } from './ascii-text-drawer';
 
@@ -172,7 +173,12 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Measurement',
-    components: [chronometer, temperatureConverter, benchmarkBuilder],
+    components: [
+      chronometer,
+      temperatureConverter,
+      benchmarkBuilder,
+      energyComputer,
+    ],
   },
   {
     name: 'Text',
