@@ -92,6 +92,51 @@ const regexesData = [
       },
     ],
   },
+  {
+    regex: String.raw`\s([^\s\[]+)(?:\[(\d+)\])?:\s`,
+    text: 'Nov 11 21:03:26 abc2 def.sh[1]: \nNov 11 21:03:26 abc2 def.sh: ',
+    flags: 'gm',
+    result: [
+      {
+        captures: [
+          {
+            end: 27,
+            name: '1',
+            start: 21,
+            value: 'def.sh',
+          },
+          {
+            end: 29,
+            name: '2',
+            start: 28,
+            value: '1',
+          },
+        ],
+        groups: [],
+        index: 20,
+        value: ' def.sh[1]: ',
+      },
+      {
+        captures: [
+          {
+            end: 60,
+            name: '1',
+            start: 54,
+            value: 'def.sh',
+          },
+          {
+            end: -1,
+            name: '2',
+            start: -1,
+            value: undefined,
+          },
+        ],
+        groups: [],
+        index: 53,
+        value: ' def.sh: ',
+      },
+    ],
+  },
 ];
 
 describe('regex-tester', () => {
