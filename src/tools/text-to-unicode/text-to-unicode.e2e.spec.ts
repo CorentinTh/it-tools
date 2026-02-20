@@ -10,16 +10,18 @@ test.describe('Tool - Text to Unicode', () => {
   });
 
   test('Text to unicode conversion', async ({ page }) => {
-    await page.getByTestId('text-to-unicode-input').fill('it-tools');
+    await page.getByTestId('text-to-unicode-input').fill('"it-tools" 文字');
     const unicode = await page.getByTestId('text-to-unicode-output').inputValue();
 
-    expect(unicode).toEqual('&#105;&#116;&#45;&#116;&#111;&#111;&#108;&#115;');
+    // eslint-disable-next-line unicorn/escape-case
+    expect(unicode).toEqual(String.raw`\u0022it-tools\u0022 \u6587\u5b57`);
   });
 
   test('Unicode to text conversion', async ({ page }) => {
-    await page.getByTestId('unicode-to-text-input').fill('&#105;&#116;&#45;&#116;&#111;&#111;&#108;&#115;');
+    // eslint-disable-next-line unicorn/escape-case
+    await page.getByTestId('unicode-to-text-input').fill(String.raw`\u0022it-tools\u0022 \u6587\u5b57`);
     const text = await page.getByTestId('unicode-to-text-output').inputValue();
 
-    expect(text).toEqual('it-tools');
+    expect(text).toEqual('"it-tools" 文字');
   });
 });
