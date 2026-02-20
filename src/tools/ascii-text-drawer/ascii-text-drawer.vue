@@ -8,6 +8,7 @@ const width = useStorage('ascii-text-drawer:width', 80);
 const output = ref('');
 const errored = ref(false);
 const processing = ref(false);
+const { t } = useI18n();
 
 figlet.defaults({ fontPath: '//unpkg.com/figlet@1.6.0/fonts/' });
 
@@ -44,8 +45,8 @@ const fonts = ['1Row', '3-D', '3D Diagonal', '3D-ASCII', '3x5', '4Max', '5 Line 
   <c-card style="max-width: 600px;">
     <c-input-text
       v-model:value="input"
-      label="Your text:"
-      placeholder="Your text to draw"
+      :label="t('tools.ascii-text-drawer.text')"
+      :placeholder="t('tools.ascii-text-drawer.placeholder')"
       raw-text
       multiline
       rows="4"
@@ -58,14 +59,14 @@ const fonts = ['1Row', '3-D', '3D Diagonal', '3D-ASCII', '3x5', '4Max', '5 Line 
         <c-select
           v-model:value="font"
           label-position="top"
-          label="Font:"
+          :label="t('tools.ascii-text-drawer.font')"
           :options="fonts"
           searchable="true"
           placeholder="Select font to use"
         />
       </n-gi>
       <n-gi span="2">
-        <n-form-item label="Width:" label-placement="top" label-width="100" :show-feedback="false">
+        <n-form-item :label="t('tools.ascii-text-drawer.width')" label-placement="top" label-width="100" :show-feedback="false">
           <n-input-number v-model:value="width" min="0" max="10000" w-full placeholder="Width of the text" />
         </n-form-item>
       </n-gi>
@@ -75,14 +76,14 @@ const fonts = ['1Row', '3-D', '3D Diagonal', '3D-ASCII', '3x5', '4Max', '5 Line 
 
     <div v-if="processing" flex items-center justify-center>
       <n-spin size="medium" />
-      <span class="ml-2">Loading font...</span>
+      <span class="ml-2">{{ t('tools.ascii-text-drawer.loading') }}</span>
     </div>
 
     <c-alert v-if="errored" mt-1 text-center type="error">
-      Current settings resulted in error.
+      {{ t('tools.ascii-text-drawer.error') }}
     </c-alert>
 
-    <n-form-item v-if="!processing && !errored" label="Ascii Art text:">
+    <n-form-item v-if="!processing && !errored" :label="t('tools.ascii-text-drawer.output')">
       <TextareaCopyable
         :value="output"
         mb-1 mt-1

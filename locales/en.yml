@@ -57,6 +57,20 @@ toolCard:
   new: New
 search:
   label: Search
+  placeholder: Type to search a tool or a command...
+textareaCopyable:
+  copy: Copy to clipboard
+  copied: Copied!
+spanCopyable:
+  copy: Copy to clipboard
+  copied: Copied!
+inputCopyable:
+  copy: Copy to clipboard
+  copied: Copied!
+formatTransformer:
+  input: Input
+  input-placeholder: Input...
+  output: Output
 tools:
   categories:
     favorite-tools: 'Your favorite tools'
@@ -78,7 +92,11 @@ tools:
   chronometer:
     title: Chronometer
     description: Monitor the duration of a thing. Basically a chronometer with simple chronometer features.
-
+    button:
+      start: Start
+      stop: Stop
+      reset: Reset
+      
   token-generator:
     title: Token generator
     description: Generate random string with the chars you want, uppercase or lowercase letters, numbers and/or symbols.
@@ -252,6 +270,13 @@ tools:
   qrcode-generator:
     title: QR Code generator
     description: Generate and download a QR code for a URL (or just plain text), and customize the background and foreground colors.
+    error-resistance: 'Error resistance:'
+    background-color: 'Background color:'
+    foreground-color: 'Foreground color:'
+    text: 'Text:'
+    placeholder: Your link or text...
+    button:
+      download: Download QR code
 
   wifi-qrcode-generator:
     title: WiFi QR Code generator
@@ -360,6 +385,11 @@ tools:
   text-statistics:
     title: Text statistics
     description: Get information about a text, the number of characters, the number of words, its size in bytes, ...
+    characters: Character count
+    words: Word count
+    lines: Line count
+    bytes: Byte size
+    placeholder: Your text...
 
   text-to-nato-alphabet:
     title: Text to NATO alphabet
@@ -368,6 +398,13 @@ tools:
   basic-auth-generator:
     title: Basic auth generator
     description: Generate a base64 basic auth header from a username and password.
+    button:
+      copy: Copy header
+    username: Username
+    yourusername: Your username...
+    password: Password
+    yourpassword: Your password...
+    copied: Header copied to the clipboard
 
   text-to-unicode:
     title: Text to Unicode
@@ -392,3 +429,88 @@ tools:
   text-to-binary:
     title: Text to ASCII binary
     description: Convert text to its ASCII binary representation and vice-versa.
+
+  safelink-decoder:
+    title: Outlook Safelink decoder
+    description: Decode Outlook SafeLink links
+    input: 'Your input Outlook SafeLink Url:'
+    input-placeholder: Your input Outlook SafeLink Url...
+    output: 'Output decoded URL:'
+
+  ascii-text-drawer:
+    title: ASCII Art Text Generator
+    description: Create ASCII art text with many fonts and styles.
+    text: 'Your text:'
+    placeholder: Your text to draw
+    output: 'Ascii Art text:'
+    font: 'Font:'
+    width: 'Width:'
+    loading: Loading font...
+    error: Current settings resulted in error.
+
+  json-to-xml:
+    title: JSON to XML
+    description: Convert JSON to XML
+    input: Your JSON content
+    input-placeholder: Paste your JSON content here...
+    output: Converted XML
+    error: Provided JSON is not valid.
+
+  xml-to-json:
+    title: XML to JSON
+    description: Convert XML to JSON
+    input: Your XML content
+    input-placeholder: Paste your XML content here...
+    output: Converted JSON
+    error: Provided XML is not valid.
+
+  email-normalizer:
+    title: Email normalizer
+    description: >-
+      Normalize email addresses to a standard format for easier comparison.
+      Useful for deduplication and data cleaning.
+    input: 'Raw emails to normalize:'
+    output: 'Normalized emails:'
+    input-placeholder: Put your emails here (one per line)...
+    output-placeholder: Normalized emails will appear here...
+    button:
+      clear: Clear emails
+      copy: Copy normalized emails
+    copied: Normalized emails copied to the clipboard
+
+  markdown-to-html:
+    title: Markdown to HTML
+    description: Convert Markdown to HTML and allow to print (as PDF)
+    markdown: 'Your Markdown to convert:'
+    markdownInput: Your Markdown content...
+    html: 'Output HTML:'
+    button:
+      print: Print as PDF
+
+  regex-memo:
+    title: Regex cheatsheet
+    description: Javascript Regex/Regular Expression cheatsheet
+
+  regex-tester:
+    title: Regex Tester
+    description: Test your regular expressions with sample text.
+    regex-input: 'Regex to test:'
+    regex-input-placeholder: Put the regex to test
+    link: See Regular Expression Cheatsheet
+    text-input: 'Text to match:'
+    text-input-placeholder: Put the text to match
+    matches: Matches
+    text-index: Index in text
+    value: Value
+    captures: Captures
+    groups: Groups
+    sample: Sample matching text
+    diagram: Regex Diagram
+    global: Global search
+    ignoreCase: Case-insensitive search
+    multiline: Allows ^ and $ to match next to newline characters.
+    dotAll: Allows . to match newline characters.
+    unicode: Unicode; treat a pattern as a sequence of Unicode code points.
+    unicodeSets: An upgrade to the u mode with more Unicode features.
+    regex: Regex
+    no-match: No match
