@@ -68,6 +68,8 @@
     "figue": "^1.2.0",
     "fuse.js": "^6.6.2",
     "highlight.js": "^11.7.0",
+    "hyparquet": "^1.9.0",
+    "hyparquet-compressors": "^1.0.0",
     "iarna-toml-esm": "^3.0.5",
     "ibantools": "^4.3.3",
     "js-base64": "^3.7.6",
