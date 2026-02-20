@@ -1,0 +1,394 @@
+home:
+  categories:
+    newestTools: '最新工具'
+    favoriteTools: '您最愛的工具'
+    allTools: '所有工具'
+    favoritesDndToolTip: '拖曳以重新排序您最愛的功能'
+  subtitle: '給開發人員的便利工具'
+  toggleMenu: '切換選單'
+  home: '首頁'
+  uiLib: 'UI 函式庫'
+  support: '幫助 IT-Tools 開發'
+  buyMeACoffee: '請我喝杯咖啡'
+  follow:
+    title: '您喜歡 IT-Tools 嗎？'
+    p1: '歡迎到'
+    githubRepository: 'IT-Tools GitHub 專案'
+    p2: '給我們一顆星星，或在'
+    twitterXAccount: 'IT-Tools X 帳號'
+    thankYou: '追蹤我們，感謝您的支持！'
+  nav:
+    github: 'GitHub 專案'
+    githubRepository: 'IT-Tools GitHub 專案'
+    twitterX: 'X 帳號'
+    twitterXAccount: 'IT-Tools X 帳號'
+    about: '關於 IT-Tools'
+    aboutLabel: '關於'
+    darkMode: '深色模式'
+    lightMode: '淺色模式'
+    mode: '切換深色/淺色模式'
+about:
+  content: >
+    # 關於 IT-Tools
+
+    這個棒棒的網站是由 [Corentin Thomasset](https://corentin.tech?utm_source=it-tools&utm_medium=about) 熱情打造，集合了對開發人員與從事 IT 工作者實用的工具。如果您覺得它有幫助，請分享給可能也會覺得有用的人，並把它加入您的書籤中！
+
+    IT Tools 開放原始碼（採用 GPL-3.0 授權）且免費，而且會一直免費，但我需要負擔主機與網域續約的費用。如果您想要支持我的工作，並鼓勵我新增更多工具，可以考慮 [贊助我](https://www.buymeacoffee.com/cthmsst)。
+
+    ## 使用的技術
+
+    IT Tools 是以 Vue.js (Vue 3) 與 Naive UI 元件函式庫製作，並使用 Vercel 進行主機代管與持續部署。部分工具有使用第三方開放原始碼函式庫，詳細清單可參考此專案中的 [package.json](https://github.com/CorentinTh/it-tools/blob/main/package.json) 檔案。
+
+    ## 找到錯誤？缺少功能？
+
+    如果您需要某個目前尚未收錄的工具，並認為這個工具可能對其他人也有幫助，歡迎在 GitHub 專案的 [issues 區](https://github.com/CorentinTh/it-tools/issues/new/choose) 提出功能請求。
+
+    如果您發現了錯誤，或有任何地方運作不如預期，也請在 GitHub 專案的 [issues 區](https://github.com/CorentinTh/it-tools/issues/new/choose) 進行回報。
+
+404:
+  notFound: '404 找不到頁面'
+  sorry: '抱歉，似乎沒有這個頁面'
+  maybe: '也許是快取惹的禍，可以嘗試強制重新整理？'
+  backHome: '回到首頁'
+favoriteButton:
+  remove: '從最愛中移除'
+  add: '加入最愛'
+toolCard:
+  new: '全新'
+search:
+  label: '搜尋'
+tools:
+  categories:
+    favorite-tools: '您最愛的工具'
+    crypto: '加解密'
+    converter: '轉換'
+    web: '網頁'
+    images and videos: '圖片與影片'
+    development: '開發'
+    network: '網路'
+    math: '數學'
+    measurement: '測量'
+    text: '文字'
+    data: '資料'
+
+  password-strength-analyser:
+    title: '密碼強度分析'
+    description: '透過這個只在使用者端執行的密碼強度分析及破解時間估算工具，了解您的密碼安全度。'
+
+  chronometer:
+    title: '計時器'
+    description: '監控特定活動的經過時間。基本的計時功能。'
+
+  token-generator:
+    title: '隨機字串產生器'
+    description: '可產生包含大寫或小寫字母、數字及/或符號的隨機字串。'
+
+    uppercase: '大寫 (ABC...)'
+    lowercase: '小寫 (abc...)'
+    numbers: '數字 (123...)'
+    symbols: '符號 (!-;...)'
+    length: '長度'
+    tokenPlaceholder: '產生的字串...'
+    copied: '已將隨機字串複製到剪貼簿'
+    button:
+      copy: '複製'
+      refresh: '重新產生'
+  percentage-calculator:
+    title: '百分比計算機'
+    description: '輕鬆計算由一個值轉換到另一個值的百分比，或由百分比轉換成實際數值。'
+
+  svg-placeholder-generator:
+    title: 'SVG 佔位圖產生器'
+    description: '產生 SVG 圖片，可作為應用程式中的佔位圖。'
+
+  json-to-csv:
+    title: 'JSON 轉 CSV'
+    description: '將 JSON 轉成 CSV，並自動偵測欄位名稱。'
+
+  camera-recorder:
+    title: '相機錄製工具'
+    description: '使用您的網路攝影機或相機拍照或錄製影片。'
+
+  keycode-info:
+    title: '按鍵碼資訊'
+    description: '查詢任何已按下的按鍵之 JavaScript keycode、code、位置及輔助按鍵。'
+
+  emoji-picker:
+    title: 'Emoji 選擇器'
+    description: '輕鬆複製並貼上 emoji，並取得每個 emoji 的 Unicode 及編碼點資訊。'
+
+  color-converter:
+    title: '色彩轉換器'
+    description: '在不同色彩格式間互相轉換 (hex, rgb, hsl 和 CSS 名稱)。'
+
+  bcrypt:
+    title: 'Bcrypt'
+    description: '使用 Bcrypt 雜湊和比對文字字串。Bcrypt 是基於 Blowfish 加密的一種密碼雜湊函式。'
+
+  crontab-generator:
+    title: 'Crontab 產生器'
+    description: '驗證與產生 crontab，並取得 cron 時程表的可讀文字描述。'
+
+  http-status-codes:
+    title: 'HTTP 狀態碼'
+    description: '列出所有 HTTP 狀態碼、名稱與含義。'
+
+  sql-prettify:
+    title: 'SQL 格式化與美化'
+    description: '線上格式化與美化您的 SQL 查詢 (支援多種 SQL 方言)。'
+
+  benchmark-builder:
+    title: '效能測試產生器'
+    description: '透過這個簡易的線上工具，輕鬆比較多個任務的執行時間。'
+
+  git-memo:
+    title: 'Git 速查表'
+    description: 'Git 是一款分散式版本管理軟體。有了這份速查表，您可以快速取得最常用的 git 指令。'
+
+  slugify-string:
+    title: '字串 slug 化'
+    description: '將字串轉換成適用於網址、檔名或 ID 的安全格式。'
+
+  encryption:
+    title: '文字加密 / 解密'
+    description: '使用 AES、TripleDES、Rabbit 或 RC4 等演算法，進行明文加密與密文解密。'
+
+  random-port-generator:
+    title: '隨機連接埠產生器'
+    description: '產生超出已知連接埠範圍 (0-1023) 的隨機連接埠號。'
+
+  yaml-prettify:
+    title: 'YAML 美化與格式化'
+    description: '美化您的 YAML 字串，讓其變得更易閱讀。'
+
+  eta-calculator:
+    title: 'ETA 剩餘時間預估工具'
+    description: '預估任務大概結束的時間，例如檔案下載完成的時間及時長。'
+
+  roman-numeral-converter:
+    title: '羅馬數字轉換器'
+    description: '在羅馬數字與一般數字間進行相互轉換。'
+
+  hmac-generator:
+    title: 'Hmac 產生器'
+    description: '使用密鑰與常見雜湊函式，計算基於雜湊的訊息驗證碼 (HMAC)。'
+
+  bip39-generator:
+    title: 'BIP39 密碼種子產生器'
+    description: '透過既有或隨機產生的助記詞，建立 BIP39 密碼短句，或將密碼短句還原為助記詞。'
+
+  base64-file-converter:
+    title: 'Base64 檔案轉換器'
+    description: '將字串、檔案或圖片轉換成 Base64 格式。'
+
+  list-converter:
+    title: '清單轉換器'
+    description: '這個工具可處理列表資料，並對每一列進行各種變更（轉置、加上字首或字尾、反轉、排序、小寫化、截斷等）。'
+
+  base64-string-converter:
+    title: 'Base64 字串編碼/解碼'
+    description: '將字串編碼或解碼成 Base64 格式。'
+
+  toml-to-yaml:
+    title: 'TOML 轉 YAML'
+    description: '解析並將 TOML 轉換為 YAML。'
+
+  math-evaluator:
+    title: '數學運算計算機'
+    description: '用於評估數學運算式的計算機。可使用 sqrt、cos、sin、abs 等函式。'
+
+  json-to-yaml-converter:
+    title: 'JSON 轉 YAML'
+    description: '線上即時將 JSON 轉換為 YAML。'
+
+  url-parser:
+    title: 'URL 解析器'
+    description: '將 URL 拆解成各部分 (協定、來源、參數、連接埠、使用者名稱與密碼…等)。'
+
+  iban-validator-and-parser:
+    title: 'IBAN （國際銀行帳號）驗證與解析'
+    description: '驗證並解析 IBAN 帳號。檢查 IBAN 是否有效，並取得國家、BBAN、是否為 QR-IBAN，以及 IBAN 的易讀格式。'
+
+  user-agent-parser:
+    title: 'User-agent 解析器'
+    description: '偵測並解析瀏覽器、引擎、作業系統、CPU，以及裝置型號/類型，來自 user-agent 字串。'
+
+  numeronym-generator:
+    title: 'Numeronym 產生器'
+    description: 'Numeronym 是利用數字形成縮寫的單字。例如 "i18n" 表示 "internationalization"，其中 18 代表第一個字母 i 與最後一個字母 n 之間的字母數量。'
+
+  case-converter:
+    title: '字母大小寫轉換器'
+    description: '轉換文字的大小寫，並可選擇多種格式。'
+
+  html-entities:
+    title: 'HTML 實體轉譯'
+    description: 將字元 (如 <, >, &, "，或 ') 轉成或還原為 HTML 實體。
+
+  json-prettify:
+    title: 'JSON 美化與格式化'
+    description: '將 JSON 字串美化成更易閱讀的人性化格式。'
+
+  docker-run-to-docker-compose-converter:
+    title: 'Docker run 轉 Docker compose'
+    description: '將 "docker run" 命令轉換成 docker-compose 檔案！'
+
+  mac-address-lookup:
+    title: 'MAC 位址查詢'
+    description: '透過 MAC 位址查詢裝置的廠商或製造商資訊。'
+
+  mime-types:
+    title: 'MIME 類型'
+    description: '在 MIME 類型與檔案副檔名之間相互轉換。'
+
+  toml-to-json:
+    title: 'TOML 轉 JSON'
+    description: '解析並將 TOML 轉換為 JSON。'
+
+  lorem-ipsum-generator:
+    title: 'Lorem ipsum 產生器'
+    description: 'Lorem ipsum 是常用的佔位文字，用於展示文件或字型的視覺外觀，而不需要依靠內容本身。'
+
+  qrcode-generator:
+    title: 'QR Code 產生器'
+    description: '為 URL（或一般文字）產生並下載 QR Code，並可自訂背景及前景色。'
+
+  wifi-qrcode-generator:
+    title: 'WiFi QR Code 產生器'
+    description: '產生並下載可讓其他人快速連上 WiFi 網路的 QR Code。'
+
+  xml-formatter:
+    title: 'XML 格式化工具'
+    description: '將 XML 字串美化成更易閱讀的人性化格式。'
+
+  temperature-converter:
+    title: '溫度轉換器'
+    description: '支援克氏 (Kelvin)、攝氏 (Celsius)、華氏 (Fahrenheit)、蘭金溫度 (Rankine)、德利爾溫度 (Delisle)、牛頓溫度 (Newton)、列氏溫度 (Réaumur) 和羅氏溫度 (Rømer) 的相互轉換。'
+
+  chmod-calculator:
+    title: 'Chmod 計算器'
+    description: '透過這個線上計算器，輕鬆計算與產生 chmod 權限及對應指令。'
+
+  rsa-key-pair-generator:
+    title: 'RSA 金鑰對產生器'
+    description: '產生新的隨機 RSA 私鑰與公鑰（PEM 格式）。'
+
+  html-wysiwyg-editor:
+    title: 'HTML 所見即所得編輯器'
+    description: '線上且功能完整的所見即所得 (WYSIWYG) HTML 編輯器，可即時產生內容的原始碼。'
+
+  yaml-to-toml:
+    title: 'YAML 轉 TOML'
+    description: '解析並將 YAML 轉換為 TOML。'
+
+  mac-address-generator:
+    title: 'MAC 位址產生器'
+    description: '輸入要產生的數量與字首，可選擇大小寫，並產生 MAC 位址清單。'
+
+  json-diff:
+    title: 'JSON 差異比較'
+    description: '比較兩個 JSON 物件，並找出它們之間的差異。'
+
+  jwt-parser:
+    title: 'JWT 解析器'
+    description: '解析與解碼您的 JSON Web Token (JWT)，並顯示其內容。'
+
+  date-converter:
+    title: '日期時間轉換器'
+    description: '在各種不同的日期與時間格式間進行轉換。'
+
+  phone-parser-and-formatter:
+    title: '電話號碼解析與格式化'
+    description: '解析、驗證並格式化電話號碼。可取得國碼、類型等資訊。'
+
+  ipv4-subnet-calculator:
+    title: 'IPv4 子網路計算器'
+    description: '解析您的 IPv4 CIDR 區段，並取得該子網路的各種資訊。'
+
+  og-meta-generator:
+    title: 'Open graph 中繼資料產生器'
+    description: '為網站產生各大社群平臺使用的 open-graph 與社群 HTML meta 標籤。'
+
+  ipv6-ula-generator:
+    title: 'IPv6 ULA 產生器'
+    description: '依照 RFC4193，為您的本機網路產生無法路由的 IPv6 位址。'
+
+  hash-text:
+    title: '雜湊文字'
+    description: '使用 MD5、SHA1、SHA256、SHA224、SHA512、SHA384、SHA3 或 RIPEMD160 等函式進行文字雜湊。'
+
+  json-to-toml:
+    title: 'JSON 轉 TOML'
+    description: '解析並將 JSON 轉換為 TOML。'
+
+  device-information:
+    title: '裝置資訊'
+    description: '顯示您的目前裝置詳細資訊 (螢幕大小、畫素比、user agent... 等)。'
+
+  pdf-signature-checker:
+    title: 'PDF 簽章檢查'
+    description: '驗證 PDF 檔案中的簽章，並確認檔案內容自簽署後是否被修改過。'
+
+  json-minify:
+    title: 'JSON 壓縮精簡'
+    description: '透過移除多餘的空白與換行，來壓縮、精簡您的 JSON。'
+
+  ulid-generator:
+    title: 'ULID 產生器'
+    description: '產生具有全域唯一性且可依字典序排序的隨機識別碼 (ULID)。'
+
+  string-obfuscator:
+    title: '字串混淆工具'
+    description: '混淆字串（如密碼、銀行帳號或權杖），讓它在公開分享時依舊保有可辨識的特徵，但不會洩漏實際內容。'
+
+  base-converter:
+    title: '整數進位轉換器'
+    description: '在不同進位間轉換數字 (十進位、十六進位、二進位、八進位、base64…等)。'
+
+  yaml-to-json-converter:
+    title: 'YAML 轉 JSON'
+    description: '透過線上即時轉換，將 YAML 轉為 JSON。'
+
+  uuid-generator:
+    title: 'UUID 產生器'
+    description: 'UUID (Universally Unique Identifier) 是一種 128 位元的編號，可用於在電腦系統中辨識資訊。可能的 UUID 數量約為 3.4×10^38，非常龐大！'
+
+  ipv4-address-converter:
+    title: 'IPv4 位址轉換器'
+    description: '將 IP 位址轉成十進位、二進位、十六進位，或其對應的 IPv6 表示方式。'
+
+  text-statistics:
+    title: '文字統計'
+    description: '取得文字的各種資訊，如字元數、單字數、位元組大小…等。'
+
+  text-to-nato-alphabet:
+    title: '文字轉 NATO 字母表'
+    description: '將文字轉換成 NATO 音標字母，以便於口語傳遞。'
+
+  basic-auth-generator:
+    title: 'Basic Auth 產生器'
+    description: '根據使用者名稱及密碼產生 Base64 Basic Auth 標頭。'
+
+  text-to-unicode:
+    title: '文字轉 Unicode'
+    description: '解析並將文字轉換成 Unicode，或將 Unicode 轉為文字。'
+
+  ipv4-range-expander:
+    title: 'IPv4 範圍擴充工具'
+    description: '給定起始及結束的 IPv4 位址後，計算並產生對應的有效 IPv4 子網路及其 CIDR 格式。'
+
+  text-diff:
+    title: '文字差異比較'
+    description: '比較兩段文字，檢視它們的差異。'
+
+  otp-generator:
+    title: 'OTP 驗證碼產生器'
+    description: '產生並驗證用於多因素驗證的一次性動態密碼（TOTP）。'
+
+  url-encoder:
+    title: '編碼/解碼 URL 格式字串'
+    description: '將文字編碼成 URL 編碼格式（百分比編碼），或反向解碼。'
+
+  text-to-binary:
+    title: '文字轉 ASCII 二進位'
+    description: '將文字轉成其 ASCII 二進位表示，或從二進位轉回文字。'
