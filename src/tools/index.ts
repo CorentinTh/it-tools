@@ -9,6 +9,7 @@ import { tool as textToUnicode } from './text-to-unicode';
 import { tool as safelinkDecoder } from './safelink-decoder';
 import { tool as xmlToJson } from './xml-to-json';
 import { tool as jsonToXml } from './json-to-xml';
+import { tool as aiPromptSplitter } from './ai-prompt-splitter';
 import { tool as regexTester } from './regex-tester';
 import { tool as regexMemo } from './regex-memo';
 import { tool as markdownToHtml } from './markdown-to-html';
@@ -183,6 +184,7 @@ export const toolsByCategory: ToolCategory[] = [
       stringObfuscator,
       textDiff,
       numeronymGenerator,
+      aiPromptSplitter,
       asciiTextDrawer,
     ],
   },
