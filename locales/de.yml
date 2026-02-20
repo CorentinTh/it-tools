@@ -400,6 +400,10 @@ tools:
     description: >-
       Konvertiere Zahlen zwischen verschiedenen Basen (Dezimal, Hexadezimal,
       Binär, Oktal, Base64, ...).
+  floating-point-converter:
+    title: Konverter für Fließkommazahlen
+    description: >-
+      Konvertiere eine Dezimalzahl in eine IEEE-754 binäre Fließkommazahl oder umgekehrt.
   yaml-to-json-converter:
     title: YAML zu JSON
     description: Konvertiere YAML einfach in JSON mit diesem Live-Online-Konverter.
