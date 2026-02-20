@@ -299,7 +299,7 @@ tools:
 
   phone-parser-and-formatter:
     title: Phone parser and formatter
-    description: Parse, validate and format phone numbers. Get information about the phone number, like the country code, type, etc.
+    description: Parse, validate and format phone numbers. Get information about the phone number, like the country code, type, etc. Forge link to send message in WhatsApp and SMS.
 
   ipv4-subnet-calculator:
     title: IPv4 subnet calculator
