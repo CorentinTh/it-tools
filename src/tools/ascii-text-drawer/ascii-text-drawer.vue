@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import figlet from 'figlet';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
+import { languages, translateToLanguage } from '@/utils/ascii-lang-utils';
 
 const input = ref('Ascii ART');
+const language = useStorage('ascii-text-drawer:language', 'raw');
 const font = useStorage('ascii-text-drawer:font', 'Standard');
 const width = useStorage('ascii-text-drawer:width', 80);
 const output = ref('');
@@ -11,16 +13,24 @@ const processing = ref(false);
 
 figlet.defaults({ fontPath: '//unpkg.com/figlet@1.6.0/fonts/' });
 
+const languagesOptions = languages.map(lang => ({ value: lang.id, label: lang.name }));
+
+figlet.defaults({ fontPath: '//unpkg.com/figlet@1.6.0/fonts/' });
+
 watchEffect(async () => {
+  const inputValue = input.value;
+  const languageValue = language.value;
+  const fontValue = font.value;
+  const widthValue = width.value;
   processing.value = true;
   try {
     const options: figlet.Options = {
-      font: font.value as figlet.Fonts,
-      width: width.value,
+      font: fontValue as figlet.Fonts,
+      width: widthValue,
       whitespaceBreak: true,
     };
-    output.value = await (new Promise<string>((resolve, reject) =>
-      figlet.text(input.value, options,
+    const rawOutput = await (new Promise<string>((resolve, reject) =>
+      figlet.text(inputValue, options,
         (err, text) => {
           if (err) {
             reject(err);
@@ -29,6 +39,8 @@ watchEffect(async () => {
 
           resolve(text ?? '');
         })));
+
+    output.value = translateToLanguage(rawOutput, languageValue);
     errored.value = false;
   }
   catch (e: any) {
@@ -50,6 +62,7 @@ const fonts = ['1Row', '3-D', '3D Diagonal', '3D-ASCII', '3x5', '4Max', '5 Line 
       multiline
       rows="4"
     />
+    <c-select v-model:value="language" :options="languagesOptions" searchable mt-3 />
 
     <n-divider />
 
