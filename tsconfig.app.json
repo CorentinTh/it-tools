@@ -3,7 +3,7 @@
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "**/*.d.ts", "node_modules/vite-plugin-pwa/client.d.ts"],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
-    "lib": ["ES2022"],
+    "lib": ["ES2022", "DOM.Iterable"],
     "target": "es2022",
     "module": "es2022",
     "moduleResolution": "Node",
