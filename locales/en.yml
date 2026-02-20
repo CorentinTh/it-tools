@@ -383,7 +383,7 @@ tools:
 
   otp-generator:
     title: OTP code generator
-    description: Generate and validate time-based OTP (one time password) for multi-factor authentication.
+    description: Generate and validate time-based and event-based OTP (one time password) for multi-factor authentication.
 
   url-encoder:
     title: Encode/decode URL-formatted strings
