@@ -76,7 +76,7 @@ export function getPresetSizes(presetKeys: IconPresetKey[]) {
 }
 
 export function sanitizeBaseName(baseName: string) {
-  const normalized = baseName.trim().replace(/[<>:"/\\|?*]+/g, '-').replace(/\s+/g, '-');
+  const normalized = baseName.trim().replaceAll(/[<>:"/\\|?*]+/g, '-').replaceAll(/\s+/g, '-');
   return normalized || 'icon';
 }
 
