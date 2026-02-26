@@ -7,7 +7,7 @@ on:
 jobs:
   test:
     timeout-minutes: 10
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         shard: [1/3, 2/3, 3/3]
@@ -23,7 +23,7 @@ jobs:
 
       - name: Get Playwright version
         id: playwright-version
-        run: echo "PLAYWRIGHT_VERSION=$(jq -r .dependencies.playwright package.json)" >> "$GITHUB_OUTPUT"
+        run: echo "PLAYWRIGHT_VERSION=$(jq -r '.devDependencies[\"@playwright/test\"] // .dependencies.playwright // \"unknown\"' package.json)" >> "$GITHUB_OUTPUT"
 
       - name: Install dependencies
         run: pnpm install
