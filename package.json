@@ -150,5 +150,10 @@
     "vitest": "^0.34.0",
     "workbox-window": "^7.0.0",
     "zx": "^7.2.1"
+  },
+  "pnpm": {
+    "overrides": {
+      "@vueuse/shared": "10.3.0"
+    }
   }
 }
