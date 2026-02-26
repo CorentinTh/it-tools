@@ -93,6 +93,32 @@ tools:
     button:
       copy: Copy
       refresh: Refresh
+
+  icon-generator:
+    title: Icon generator
+    description: Generate resized app icons from one source image for PWA, Android, and iOS presets.
+    presets: Presets
+    presetLabels:
+      pwa: PWA
+      android: Android
+      ios: iOS
+    fitMode: Fit mode
+    cover: Cover (crop)
+    contain: Contain
+    clearPresetSizes: Clear preset sizes
+    addSize: Add size
+    baseName: Base name
+    baseNameHint: File names use "<baseName>-<size>x<size>.png". Invalid characters are replaced with "-".
+    includeManifest: Include manifest.json in ZIP
+    selectedSizes: Selected output sizes
+    uploadTitle: Drag and drop an image here, or click to select an image
+    noImage: Upload an image to start.
+    generate: Generate icons
+    output: Generated icons
+    download: Download
+    downloadAll: Download all
+    downloadZip: Download zip
+
   percentage-calculator:
     title: Percentage calculator
     description: Easily calculate percentages from a value to another value, or from a percentage to a value.
