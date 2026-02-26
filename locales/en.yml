@@ -372,6 +372,22 @@ tools:
   text-to-unicode:
     title: Text to Unicode
     description: Parse and convert text to unicode and vice-versa
+    textToUnicode:
+      cardTitle: "Text to Unicode"
+      inputLabel: "Enter text to convert to unicode"
+      inputPlaceholder: "e.g. 'Hello Avengers'"
+      outputLabelHtml: "HTML decimal (&#xxx;)"
+      outputLabelU: "Unicode escape (\\uxxxx)"
+      outputPlaceholder: "The unicode representation of your text will be here"
+      copyUnicode: "Copy unicode to clipboard"
+      copyUnicodeHex: "Copy unicode (\\u) to clipboard"
+    unicodeToText:
+      cardTitle: "Unicode to Text"
+      inputLabel: "Enter unicode to convert to text"
+      inputPlaceholder: "Input Unicode (&#xxx; or \\uxxxx)"
+      outputLabel: "Text from your Unicode"
+      outputPlaceholder: "The text representation of your unicode will be here"
+      copyText: "Copy text to clipboard"
 
   ipv4-range-expander:
     title: IPv4 range expander

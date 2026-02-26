@@ -262,7 +262,7 @@ defineExpose({
 
     .multiline& {
       resize: vertical;
-      overflow: hidden;
+      overflow: visible;
 
       & > textarea {
         height: 100%;

@@ -372,6 +372,22 @@ tools:
   text-to-unicode:
     title: Tekst til Unicode
     description: Parser og konverter tekst til unicode og visa-versa
+    textToUnicode:
+      cardTitle: "Tekst til Unicode"
+      inputLabel: "Skriv inn tekst som skal konverteres til unicode"
+      inputPlaceholder: "f.eks. 'Hello Avengers'"
+      outputLabelHtml: "HTML desimal (&#xxx;)"
+      outputLabelU: "Unicode escape (\\uxxxx)"
+      outputPlaceholder: "Unicode-representasjonen av teksten din vises her"
+      copyUnicode: "Kopier unicode til utklippstavle"
+      copyUnicodeHex: "Kopier unicode (\\u) til utklippstavle"
+    unicodeToText:
+      cardTitle: "Unicode til tekst"
+      inputLabel: "Skriv inn unicode som skal konverteres til tekst"
+      inputPlaceholder: "Skriv inn Unicode (&#xxx; eller \\uxxxx)"
+      outputLabel: "Tekst fra unicode"
+      outputPlaceholder: "Tekstrepresentasjonen av unicode vises her"
+      copyText: "Kopier tekst til utklippstavle"
 
   ipv4-range-expander:
     title: IPv4 range utvider

@@ -361,6 +361,22 @@ tools:
   text-to-unicode:
     title: Chuyển đổi văn bản thành Unicode
     description: Phân tích và chuyển đổi văn bản thành Unicode và ngược lại
+    textToUnicode:
+      cardTitle: "Văn bản sang Unicode"
+      inputLabel: "Nhập văn bản cần chuyển sang unicode"
+      inputPlaceholder: "ví dụ: 'Hello Avengers'"
+      outputLabelHtml: "HTML thập phân (&#xxx;)"
+      outputLabelU: "Unicode escape (\\uxxxx)"
+      outputPlaceholder: "Biểu diễn unicode của văn bản sẽ hiển thị ở đây"
+      copyUnicode: "Sao chép unicode vào clipboard"
+      copyUnicodeHex: "Sao chép unicode (\\u) vào clipboard"
+    unicodeToText:
+      cardTitle: "Unicode sang văn bản"
+      inputLabel: "Nhập unicode cần chuyển sang văn bản"
+      inputPlaceholder: "Nhập Unicode (&#xxx; hoặc \\uxxxx)"
+      outputLabel: "Văn bản từ unicode"
+      outputPlaceholder: "Biểu diễn văn bản của unicode sẽ hiển thị ở đây"
+      copyText: "Sao chép văn bản vào clipboard"
 
   ipv4-range-expander:
     title: Mở rộng dải IPv4

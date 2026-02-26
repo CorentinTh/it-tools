@@ -368,6 +368,22 @@ tools:
   text-to-unicode:
     title: 文本转 Unicode
     description: 解析文本并将其转换为 unicode，反之亦然
+    textToUnicode:
+      cardTitle: "文本转 Unicode"
+      inputLabel: "输入要转换为 unicode 的文本"
+      inputPlaceholder: "例如：'Hello Avengers'"
+      outputLabelHtml: "HTML 十进制 (&#xxx;)"
+      outputLabelU: "Unicode 转义 (\\uxxxx)"
+      outputPlaceholder: "文本的 unicode 表示将显示在此处"
+      copyUnicode: "复制 unicode 到剪贴板"
+      copyUnicodeHex: "复制 unicode (\\u) 到剪贴板"
+    unicodeToText:
+      cardTitle: "Unicode 转文本"
+      inputLabel: "输入要转换为文本的 unicode"
+      inputPlaceholder: "输入 Unicode（&#xxx; 或 \\uxxxx）"
+      outputLabel: "Unicode 对应的文本"
+      outputPlaceholder: "unicode 的文本表示将显示在此处"
+      copyText: "复制文本到剪贴板"
 
   ipv4-range-expander:
     title: IPv4范围扩展器

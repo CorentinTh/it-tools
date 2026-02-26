@@ -433,6 +433,22 @@ tools:
   text-to-unicode:
     title: Text zu Unicode
     description: Parse und konvertiere Text in Unicode und umgekehrt.
+    textToUnicode:
+      cardTitle: "Text zu Unicode"
+      inputLabel: "Text eingeben, der in Unicode umgewandelt werden soll"
+      inputPlaceholder: "z. B. 'Hello Avengers'"
+      outputLabelHtml: "HTML-Dezimal (&#xxx;)"
+      outputLabelU: "Unicode-Escape (\\uxxxx)"
+      outputPlaceholder: "Die Unicode-Darstellung Ihres Textes erscheint hier"
+      copyUnicode: "Unicode in Zwischenablage kopieren"
+      copyUnicodeHex: "Unicode (\\u) in Zwischenablage kopieren"
+    unicodeToText:
+      cardTitle: "Unicode zu Text"
+      inputLabel: "Unicode eingeben, der in Text umgewandelt werden soll"
+      inputPlaceholder: "Unicode eingeben (&#xxx; oder \\uxxxx)"
+      outputLabel: "Text aus Ihrem Unicode"
+      outputPlaceholder: "Die Textdarstellung Ihres Unicode erscheint hier"
+      copyText: "Text in Zwischenablage kopieren"
   ipv4-range-expander:
     title: IPv4-Bereichserweiterer
     description: >-
