@@ -19,7 +19,11 @@ test.describe('Tool - Icon generator', () => {
     await expect(page.getByText('Generate icons')).toBeVisible();
     await expect(page.getByText('Download zip')).toBeVisible();
     await expect(page.getByText('Selected output sizes: -')).toBeVisible();
-    await expect(page.getByRole('checkbox', { name: 'Include manifest.json in ZIP' })).toBeDisabled();
+    const manifestCheckbox = page.getByRole('checkbox', { name: 'Include manifest.json in ZIP' });
+    await expect(manifestCheckbox).not.toBeChecked();
+
+    await manifestCheckbox.click();
+    await expect(manifestCheckbox).not.toBeChecked();
   });
 
   test('applies preset sizes and toggles manifest option with reset', async ({ page }) => {
@@ -27,13 +31,14 @@ test.describe('Tool - Icon generator', () => {
     await expect(page.getByText('Selected output sizes: 72, 96, 128, 144, 152, 192, 384, 512')).toBeVisible();
 
     const manifestCheckbox = page.getByRole('checkbox', { name: 'Include manifest.json in ZIP' });
-    await expect(manifestCheckbox).toBeEnabled();
     await manifestCheckbox.check();
     await expect(manifestCheckbox).toBeChecked();
 
     await page.getByRole('button', { name: 'Clear preset sizes' }).click();
     await expect(page.getByText('Selected output sizes: -')).toBeVisible();
-    await expect(manifestCheckbox).toBeDisabled();
+    await expect(manifestCheckbox).not.toBeChecked();
+
+    await manifestCheckbox.click();
     await expect(manifestCheckbox).not.toBeChecked();
   });
 
