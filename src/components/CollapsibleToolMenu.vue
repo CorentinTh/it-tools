@@ -46,8 +46,17 @@ const themeVars = useThemeVars();
 
 <template>
   <div v-for="{ name, tools, isCollapsed } of menuOptions" :key="name">
-    <div ml-6px mt-12px flex cursor-pointer items-center op-60 @click="toggleCategoryCollapse({ name })">
-      <span :class="{ 'rotate-0': isCollapsed, 'rotate-90': !isCollapsed }" text-16px lh-1 op-50 transition-transform>
+    <div 
+      ml-6px mt-12px flex cursor-pointer items-center op-60 
+      role="button" 
+      :aria-expanded="!isCollapsed"
+      :aria-controls="`category-${name}`"
+      tabindex="0"
+      @click="toggleCategoryCollapse({ name })"
+      @keydown.enter="toggleCategoryCollapse({ name })"
+      @keydown.space.prevent="toggleCategoryCollapse({ name })"
+    >
+      <span :class="{ 'rotate-0': isCollapsed, 'rotate-90': !isCollapsed }" text-16px lh-1 op-50 transition-transform aria-hidden="true">
         <icon-mdi-chevron-right />
       </span>
 
@@ -57,8 +66,8 @@ const themeVars = useThemeVars();
     </div>
 
     <n-collapse-transition :show="!isCollapsed">
-      <div class="menu-wrapper">
-        <div class="toggle-bar" @click="toggleCategoryCollapse({ name })" />
+      <div class="menu-wrapper" :id="`category-${name}`">
+        <div class="toggle-bar" role="presentation" @click="toggleCategoryCollapse({ name })" />
 
         <n-menu
           class="menu"
