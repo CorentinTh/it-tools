@@ -115,15 +115,11 @@ It will create a directory in `src/tools` with the correct files, and a the impo
 
 Big thanks to all the people who have already contributed!
 
-[![contributors](https://contrib.rocks/image?repo=HuangTechHub/tech-tools&refresh=1)](https://github.com/HuangTechHub/tech-tools/graphs/contributors)
-
 ## Credits
 
 Coded with ❤️ by [Corentin Thomasset](https://corentin.tech?utm_source=tech-tools&utm_medium=readme).
 
 This project is continuously deployed using [vercel.com](https://vercel.com).
-
-Contributor graph is generated using [contrib.rocks](https://contrib.rocks/preview?repo=HuangTechHub/tech-tools).
 
 <a href="https://www.producthunt.com/posts/tech-tools?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-tech&#0045;tools" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=345793&theme=light" alt="Tech&#0032;Tools - Collection&#0032;of&#0032;handy&#0032;online&#0032;tools&#0032;for&#0032;devs&#0044;&#0032;with&#0032;great&#0032;UX | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 <a href="https://www.producthunt.com/posts/tech-tools?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-tech&#0045;tools" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=345793&theme=light&period=daily" alt="Tech&#0032;Tools - Collection&#0032;of&#0032;handy&#0032;online&#0032;tools&#0032;for&#0032;devs&#0044;&#0032;with&#0032;great&#0032;UX | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
