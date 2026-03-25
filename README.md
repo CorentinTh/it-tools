@@ -8,9 +8,9 @@
 Useful tools for developer and people working in IT. <a href="http://tech-tools.huangtechhub.dev">Try it!</a>
 </p>
 
-<p align="center">
-  <b>This project is a fork of <a href="https://github.com/CorentinTh/it-tools">CorentinTh/it-tools</a>, maintained by <a href="https://github.com/HuangTechHub/tech-tools">HuangTechHub/tech-tools</a>.</b>
-</p>
+---
+
+> **Note:** This is a fork of the original [it-tools](https://github.com/CorentinTh/it-tools) project, refactored and maintained by [HuangTechHub](https://github.com/HuangTechHub/tech-tools). This project is licensed under GNU GPLv3.
 
 ## Functionalities and roadmap
 
