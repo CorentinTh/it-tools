@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 250" width="1000" height="250">
+    <text x="500" y="165" font-family="system-ui, -apple-system, sans-serif" font-size="150" font-weight="800" text-anchor="middle" fill="#ffffff" letter-spacing="-2">tech<tspan fill="#18a058">-</tspan>tools</text>
+    <rect x="150" y="185" width="700" height="20" fill="#18a058" rx="10" />
+</svg>
