@@ -1,0 +1,18 @@
+﻿
+> tech-tools@2024.10.22-7ca5933 lint C:\Users\kthuang\Development\Repos\HuangTechHub\tech-tools
+> eslint src --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore
+
+
+C:\Users\kthuang\Development\Repos\HuangTechHub\tech-tools\src\tools\dns-records-lookup\dns-records-lookup.e2e.spec.ts
+  12:21  warning  'page' is defined but never used. Allowed unused args must match /^_/u  unused-imports/no-unused-vars
+
+C:\Users\kthuang\Development\Repos\HuangTechHub\tech-tools\src\tools\dns-records-lookup\dns-records-lookup.vue
+  29:30  error  This line has 2 statements. Maximum allowed is 1  max-statements-per-line
+  37:20  error  This line has 2 statements. Maximum allowed is 1  max-statements-per-line
+
+C:\Users\kthuang\Development\Repos\HuangTechHub\tech-tools\src\tools\x509-certificate-decoder\x509-certificate-decoder.e2e.spec.ts
+  12:21  warning  'page' is defined but never used. Allowed unused args must match /^_/u  unused-imports/no-unused-vars
+
+Γ£û 4 problems (2 errors, 2 warnings)
+
+ΓÇëELIFECYCLEΓÇë Command failed with exit code 1.
