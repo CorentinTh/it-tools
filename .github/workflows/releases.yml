@@ -42,10 +42,10 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            corentinth/it-tools:latest
-            corentinth/it-tools:${{ env.RELEASE_VERSION }}
-            ghcr.io/corentinth/it-tools:latest
-            ghcr.io/corentinth/it-tools:${{ env.RELEASE_VERSION}}
+            corentinth/tech-tools:latest
+            corentinth/tech-tools:${{ env.RELEASE_VERSION }}
+            ghcr.io/corentinth/tech-tools:latest
+            ghcr.io/corentinth/tech-tools:${{ env.RELEASE_VERSION}}
 
   github-release:
     runs-on: ubuntu-latest
@@ -71,7 +71,7 @@ jobs:
         run: pnpm build
 
       - name: Zip the app
-        run: zip -r it-tools-${{ env.RELEASE_VERSION }}.zip dist/*
+        run: zip -r tech-tools-${{ env.RELEASE_VERSION }}.zip dist/*
 
       - name: Get changelog
         id: changelog
@@ -85,7 +85,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          files: it-tools-${{ env.RELEASE_VERSION }}.zip
+          files: tech-tools-${{ env.RELEASE_VERSION }}.zip
           tag_name: v${{ env.RELEASE_VERSION }}
           draft: true
           prerelease: false
@@ -93,11 +93,11 @@ jobs:
             ## Docker images
 
             - Docker Hub
-              - `corentinth/it-tools:latest`
-              - `corentinth/it-tools:${{ env.RELEASE_VERSION }}`
+              - `corentinth/tech-tools:latest`
+              - `corentinth/tech-tools:${{ env.RELEASE_VERSION }}`
             - GitHub Container Registry
-              - `ghcr.io/corentinth/it-tools:latest`
-              - `ghcr.io/corentinth/it-tools:${{ env.RELEASE_VERSION}}`
+              - `ghcr.io/corentinth/tech-tools:latest`
+              - `ghcr.io/corentinth/tech-tools:${{ env.RELEASE_VERSION}}`
 
             ## Changelog
 

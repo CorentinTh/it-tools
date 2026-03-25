@@ -6,11 +6,11 @@ test.describe('Tool - Text to ASCII binary', () => {
   });
 
   test('Has correct title', async ({ page }) => {
-    await expect(page).toHaveTitle('Text to ASCII binary - IT Tools');
+    await expect(page).toHaveTitle('Text to ASCII binary - Tech Tools');
   });
 
   test('Text to binary conversion', async ({ page }) => {
-    await page.getByTestId('text-to-binary-input').fill('it-tools');
+    await page.getByTestId('text-to-binary-input').fill('tech-tools');
     const binary = await page.getByTestId('text-to-binary-output').inputValue();
 
     expect(binary).toEqual('01101001 01110100 00101101 01110100 01101111 01101111 01101100 01110011');
@@ -20,6 +20,6 @@ test.describe('Tool - Text to ASCII binary', () => {
     await page.getByTestId('binary-to-text-input').fill('01101001 01110100 00101101 01110100 01101111 01101111 01101100 01110011');
     const text = await page.getByTestId('binary-to-text-output').inputValue();
 
-    expect(text).toEqual('it-tools');
+    expect(text).toEqual('tech-tools');
   });
 });

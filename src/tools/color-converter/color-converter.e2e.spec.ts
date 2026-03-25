@@ -6,7 +6,7 @@ test.describe('Tool - Color converter', () => {
   });
 
   test('Has title', async ({ page }) => {
-    await expect(page).toHaveTitle('Color converter - IT Tools');
+    await expect(page).toHaveTitle('Color converter - Tech Tools');
   });
 
   test('Color is converted from its name to other formats', async ({ page }) => {

@@ -6,11 +6,11 @@ test.describe('Tool - Text to Unicode', () => {
   });
 
   test('Has correct title', async ({ page }) => {
-    await expect(page).toHaveTitle('Text to Unicode - IT Tools');
+    await expect(page).toHaveTitle('Text to Unicode - Tech Tools');
   });
 
   test('Text to unicode conversion', async ({ page }) => {
-    await page.getByTestId('text-to-unicode-input').fill('it-tools');
+    await page.getByTestId('text-to-unicode-input').fill('tech-tools');
     const unicode = await page.getByTestId('text-to-unicode-output').inputValue();
 
     expect(unicode).toEqual('&#105;&#116;&#45;&#116;&#111;&#111;&#108;&#115;');
@@ -20,6 +20,6 @@ test.describe('Tool - Text to Unicode', () => {
     await page.getByTestId('unicode-to-text-input').fill('&#105;&#116;&#45;&#116;&#111;&#111;&#108;&#115;');
     const text = await page.getByTestId('unicode-to-text-output').inputValue();
 
-    expect(text).toEqual('it-tools');
+    expect(text).toEqual('tech-tools');
   });
 });
