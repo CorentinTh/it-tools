@@ -8,6 +8,10 @@
 Useful tools for developer and people working in IT. <a href="http://tech-tools.huangtechhub.dev">Try it!</a>
 </p>
 
+<p align="center">
+  <b>This project is a fork of <a href="https://github.com/CorentinTh/it-tools">CorentinTh/it-tools</a>, maintained by <a href="https://github.com/HuangTechHub/tech-tools">HuangTechHub/tech-tools</a>.</b>
+</p>
+
 ## Functionalities and roadmap
 
 Please check the [issues](https://github.com/HuangTechHub/tech-tools/issues) to see if some feature listed to be implemented.
