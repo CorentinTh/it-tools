@@ -5,7 +5,7 @@
 </picture>
 
 <p align="center">
-Useful tools for developer and people working in IT. <a href="https://it-tools.huangtechhub.dev">Try it!</a>
+Useful tools for developer and people working in IT. <a href="http://tech-tools.huangtechhub.dev">Try it!</a>
 </p>
 
 ## Functionalities and roadmap
