@@ -58,6 +58,7 @@ import { tool as dateTimeConverter } from './date-time-converter';
 import { tool as deviceInformation } from './device-information';
 import { tool as cypher } from './encryption';
 import { tool as etaCalculator } from './eta-calculator';
+import { tool as tipCalculator } from './tip-calculator';
 import { tool as percentageCalculator } from './percentage-calculator';
 import { tool as gitMemo } from './git-memo';
 import { tool as hashText } from './hash-text';
@@ -168,7 +169,7 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Math',
-    components: [mathEvaluator, etaCalculator, percentageCalculator],
+    components: [mathEvaluator, etaCalculator, percentageCalculator, tipCalculator],
   },
   {
     name: 'Measurement',
