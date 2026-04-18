@@ -1,0 +1,87 @@
+home:
+  categories:
+    newestTools: 'Najnowsze narzędzia'
+    favoriteTools: 'Twoje ulubione narzędzia'
+    allTools: 'Wszystkie narzędzia'
+  subtitle: 'Narzędzia dla programistów'
+  toggleMenu: 'Menu'
+  home: Strona główna
+  uiLib: 'UI Lib'
+  buyMeACoffee: 'Wesprzyj IT-Tools'
+  follow:
+    title: 'Podoba Ci się it-tools?'
+    p1: 'Wesprzyj nas gwiazdką na'
+    githubRepository: "repozytorium GitHub IT-Tools"
+    p2: 'lub śledź nas na'
+    twitterAccount: "koncie Twitter IT-Tools"
+    thankYou: 'Dziękujemy!'
+  nav:
+    github: 'Repozytorium GitHub'
+    githubRepository: "Repozytorium GitHub IT-Tools"
+    twitter: 'Konto Twitter'
+    twitterAccount: "Konto Twitter IT-Tools"
+    about: "O IT-Tools"
+    aboutLabel: 'O nas'
+    darkMode: 'Tryb ciemny'
+    lightMode: 'Tryb jasny'
+    mode: 'Przełącz tryb ciemny/jasny'
+about:
+  content: >
+    # O IT-Tools
+
+    Ta wspaniała strona, stworzona z ❤ przez [Corentina Thomasseta](https://corentin.tech?utm_source=it-tools&utm_medium=about), zbiera przydatne narzędzia dla programistów i osób pracujących w IT. Jeśli uznasz ją za pomocną, nie zapomnij się nią podzielić i dodać do ulubionych!
+
+    IT Tools jest open-source (na licencji MIT) i darmowe, i takie pozostanie, ale koszty związane z jego hostingiem i odnawianiem domeny spoczywają na mnie. Jeśli chcesz wesprzeć moją pracę i zmotywować mnie do dodania kolejnych narzędzi, zachęcam do [wsparcia](https://www.buymeacoffee.com/cthmsst).
+
+    ## Technologie
+
+    IT Tools zostało stworzone w Vue.js (Vue 3) z wykorzystaniem biblioteki komponentów Naive UI i jest hostowane oraz ciągle wdrażane przez Vercel. Niektóre narzędzia korzystają z zewnętrznych bibliotek open-source, pełną listę znajdziesz w pliku [package.json](https://github.com/CorentinTh/it-tools/blob/main/package.json) repozytorium.
+
+    ## Znalazłeś błąd? Brakuje jakiegoś narzędzia?
+
+    Jeśli potrzebujesz narzędzia, które nie jest jeszcze dostępne, a uważasz, że mogłoby być przydatne, zapraszam do zgłoszenia propozycji funkcji w [sekcji issue](https://github.com/CorentinTh/it-tools/issues/new/choose) repozytorium GitHub.
+
+404:
+  notFound: '404 Nie znaleziono'
+  sorry: "Przepraszamy, ta strona nie istnieje"
+  maybe: 'Może to problem z cachem, spróbuj wymusić odświeżenie?'
+  backHome: "Powrót na stronę główną"
+toolCard:
+  new: Nowe
+search:
+  label: Szukaj
+tools:
+  categories:
+    favorite-tools: 'Twoje ulubione narzędzia'
+    crypto: Kryptografia
+    converter: Konwerter
+    web: Web
+    images and videos: 'Obrazy i wideo'
+    development: Programowanie
+    network: Sieć
+    math: Matematyka
+    measurement: Pomiary
+    text: Tekst
+    data: Dane
+
+  token-generator:
+    title: Generator tokenów
+    description: >-
+      Generuje losowy ciąg znaków z wybranych przez Ciebie znaków: wielkie
+      lub małe litery, cyfry i/lub symbole.
+    uppercase: Wielkie litery (ABC...)
+    lowercase: Małe litery (abc...)
+    numbers: Cyfry (123...)
+    symbols: Symbole (!-;...)
+    button:
+      copy: Kopiuj
+      refresh: Odśwież
+    copied: Token został skopiowany
+    length: Długość
+    tokenPlaceholder: Token...
+
+  mic-tester:
+    title: Tester mikrofonu
+    description: Odtwórz i wizualizuj dźwięk z Twojego mikrofonu, z dodaną jedną sekundą opóźnienia
+    start-button-text: Odtwarzaj mikrofonu
+    stop-button-text: Zatrzymaj odtwarzanie mikrofonu
