@@ -6,7 +6,7 @@ import { withDefaultOnError } from '@/utils/defaults';
 
 function transformer(value: string) {
   return withDefaultOnError(() => {
-    const obj = parseYaml(value);
+    const obj = parseYaml(value, { merge: true });
     return obj ? JSON.stringify(obj, null, 3) : '';
   }, '');
 }

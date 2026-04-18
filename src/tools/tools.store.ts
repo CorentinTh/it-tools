@@ -14,6 +14,7 @@ export const useToolStore = defineStore('tools', () => {
 
     return ({
       ...tool,
+      path: tool.path,
       name: t(`tools.${toolI18nKey}.title`, tool.name),
       description: t(`tools.${toolI18nKey}.description`, tool.description),
       category: t(`tools.categories.${tool.category.toLowerCase()}`, tool.category),
@@ -23,8 +24,9 @@ export const useToolStore = defineStore('tools', () => {
   const toolsByCategory = computed<ToolCategory[]>(() => {
     return _.chain(tools.value)
       .groupBy('category')
-      .map((components, name) => ({
+      .map((components, name, path) => ({
         name,
+        path,
         components,
       }))
       .value();
@@ -32,7 +34,7 @@ export const useToolStore = defineStore('tools', () => {
 
   const favoriteTools = computed(() => {
     return favoriteToolsName.value
-      .map(favoriteName => tools.value.find(({ name }) => name === favoriteName))
+      .map(favoriteName => tools.value.find(({ name, path }) => name === favoriteName || path === favoriteName))
       .filter(Boolean) as ToolWithCategory[]; // cast because .filter(Boolean) does not remove undefined from type
   });
 
@@ -43,15 +45,23 @@ export const useToolStore = defineStore('tools', () => {
     newTools: computed(() => tools.value.filter(({ isNew }) => isNew)),
 
     addToolToFavorites({ tool }: { tool: MaybeRef<Tool> }) {
-      favoriteToolsName.value.push(get(tool).name);
+      const toolPath = get(tool).path;
+      if (toolPath) {
+        favoriteToolsName.value.push(toolPath);
+      }
     },
 
     removeToolFromFavorites({ tool }: { tool: MaybeRef<Tool> }) {
-      favoriteToolsName.value = favoriteToolsName.value.filter(name => get(tool).name !== name);
+      favoriteToolsName.value = favoriteToolsName.value.filter(name => get(tool).name !== name && get(tool).path !== name);
     },
 
     isToolFavorite({ tool }: { tool: MaybeRef<Tool> }) {
-      return favoriteToolsName.value.includes(get(tool).name);
+      return favoriteToolsName.value.includes(get(tool).name)
+        || favoriteToolsName.value.includes(get(tool).path);
+    },
+
+    updateFavoriteTools(newOrder: ToolWithCategory[]) {
+      favoriteToolsName.value = newOrder.map(tool => tool.path);
     },
   };
 });

@@ -84,8 +84,8 @@ const items: MenuItem[] = [
     type: 'button',
     icon: H3,
     title: 'Heading 3',
-    action: () => editor.value.chain().focus().toggleHeading({ level: 4 }).run(),
-    isActive: () => editor.value.isActive('heading', { level: 4 }),
+    action: () => editor.value.chain().focus().toggleHeading({ level: 3 }).run(),
+    isActive: () => editor.value.isActive('heading', { level: 3 }),
   },
   {
     type: 'button',
