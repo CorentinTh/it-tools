@@ -24,13 +24,13 @@ const amountPerPerson = computed(() => {
   return totalAmount.value / numberOfPeople.value;
 });
 
-const formatCurrency = (value: number) => {
-  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
+const formatNumber = (value: number) => {
+  return new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
 };
 
-const tipAmountFormatted = computed(() => formatCurrency(tipAmount.value));
-const totalAmountFormatted = computed(() => formatCurrency(totalAmount.value));
-const amountPerPersonFormatted = computed(() => formatCurrency(amountPerPerson.value));
+const tipAmountFormatted = computed(() => formatNumber(tipAmount.value));
+const totalAmountFormatted = computed(() => formatNumber(totalAmount.value));
+const amountPerPersonFormatted = computed(() => formatNumber(amountPerPerson.value));
 </script>
 
 <template>
@@ -43,21 +43,37 @@ const amountPerPersonFormatted = computed(() => formatCurrency(amountPerPerson.v
         <div flex flex-col gap-4>
           <div flex items-center gap-2>
             <div style="min-width: 120px;">Bill Amount</div>
-            <n-input-number v-model:value="billAmount" :min="0" placeholder="Total Bill" style="flex: 1">
-              <template #prefix>$</template>
-            </n-input-number>
+            <n-input-number
+              v-model:value="billAmount"
+              data-test-id="billAmount"
+              :min="0"
+              placeholder="Total Bill"
+              style="flex: 1"
+            />
           </div>
           
           <div flex items-center gap-2>
             <div style="min-width: 120px;">Tip Percentage</div>
-            <n-input-number v-model:value="tipPercentage" :min="0" placeholder="Tip %" style="flex: 1">
+            <n-input-number
+              v-model:value="tipPercentage"
+              data-test-id="tipPercentage"
+              :min="0"
+              placeholder="Tip %"
+              style="flex: 1"
+            >
               <template #suffix>%</template>
             </n-input-number>
           </div>
 
           <div flex items-center gap-2>
             <div style="min-width: 120px;">Number of People</div>
-            <n-input-number v-model:value="numberOfPeople" :min="1" placeholder="People" style="flex: 1" />
+            <n-input-number
+              v-model:value="numberOfPeople"
+              data-test-id="numberOfPeople"
+              :min="1"
+              placeholder="People"
+              style="flex: 1"
+            />
           </div>
         </div>
       </c-card>
@@ -67,15 +83,30 @@ const amountPerPersonFormatted = computed(() => formatCurrency(amountPerPerson.v
         <div flex flex-col gap-3>
           <div flex justify-between items-center>
             <span>Tip Amount:</span>
-            <input-copyable :value="tipAmountFormatted" readonly style="max-width: 200px;" />
+            <input-copyable
+              :value="tipAmountFormatted"
+              data-test-id="tipAmountResult"
+              readonly
+              style="max-width: 200px;"
+            />
           </div>
           <div flex justify-between items-center>
             <span>Total Bill:</span>
-            <input-copyable :value="totalAmountFormatted" readonly style="max-width: 200px;" />
+            <input-copyable
+              :value="totalAmountFormatted"
+              data-test-id="totalBillResult"
+              readonly
+              style="max-width: 200px;"
+            />
           </div>
           <div border-t pt-3 flex justify-between items-center font-bold>
             <span>Amount Per Person:</span>
-            <input-copyable :value="amountPerPersonFormatted" readonly style="max-width: 200px;" />
+            <input-copyable
+              :value="amountPerPersonFormatted"
+              data-test-id="amountPerPersonResult"
+              readonly
+              style="max-width: 200px;"
+            />
           </div>
         </div>
       </c-card>
@@ -91,3 +122,4 @@ const amountPerPersonFormatted = computed(() => formatCurrency(amountPerPerson.v
     </div>
   </div>
 </template>
+
