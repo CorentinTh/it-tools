@@ -3,77 +3,44 @@ const billAmount = ref<number>();
 const tipPercentage = ref<number>(15);
 const numberOfPeople = ref<number>(1);
 
-const tipAmount = computed(() => {
-  if (billAmount.value === undefined || tipPercentage.value === undefined) {
-    return 0;
-  }
-  return (billAmount.value * tipPercentage.value) / 100;
-});
+const tipAmount = computed(() => (billAmount.value && tipPercentage.value) ? (billAmount.value * tipPercentage.value) / 100 : 0);
+const totalAmount = computed(() => billAmount.value ? billAmount.value + tipAmount.value : 0);
+const amountPerPerson = computed(() => (totalAmount.value && numberOfPeople.value && numberOfPeople.value > 0) ? totalAmount.value / numberOfPeople.value : 0);
 
-const totalAmount = computed(() => {
-  if (billAmount.value === undefined) {
-    return 0;
-  }
-  return billAmount.value + tipAmount.value;
-});
+const formatNum = (v: number) => new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v);
 
-const amountPerPerson = computed(() => {
-  if (totalAmount.value === 0 || numberOfPeople.value === undefined || numberOfPeople.value <= 0) {
-    return 0;
-  }
-  return totalAmount.value / numberOfPeople.value;
-});
-
-const formatNumber = (value: number) => {
-  return new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
-};
-
-const tipAmountFormatted = computed(() => formatNumber(tipAmount.value));
-const totalAmountFormatted = computed(() => formatNumber(totalAmount.value));
-const amountPerPersonFormatted = computed(() => formatNumber(amountPerPerson.value));
+const results = computed(() => [
+  { label: 'Tip Amount', val: formatNum(tipAmount.value), id: 'tipAmountResult' },
+  { label: 'Total Bill', val: formatNum(totalAmount.value), id: 'totalBillResult' },
+  { label: 'Amount Per Person', val: formatNum(amountPerPerson.value), id: 'amountPerPersonResult', isBold: true }
+]);
 </script>
 
 <template>
   <div style="flex: 0 0 100%">
     <div style="margin: 0 auto; max-width: 600px">
       <c-card mb-3>
-        <div mb-3>
-          Bill details
-        </div>
+        <div mb-3>Bill details</div>
         <div flex flex-col gap-4>
           <div flex items-center gap-2>
             <div style="min-width: 120px;">Bill Amount</div>
-            <n-input-number
-              v-model:value="billAmount"
-              data-test-id="billAmount"
-              :min="0"
-              placeholder="Total Bill"
-              style="flex: 1"
-            />
+            <div style="flex: 1" data-test-id="billAmount">
+              <n-input-number v-model:value="billAmount" :min="0" placeholder="Total Bill" />
+            </div>
           </div>
-          
           <div flex items-center gap-2>
             <div style="min-width: 120px;">Tip Percentage</div>
-            <n-input-number
-              v-model:value="tipPercentage"
-              data-test-id="tipPercentage"
-              :min="0"
-              placeholder="Tip %"
-              style="flex: 1"
-            >
-              <template #suffix>%</template>
-            </n-input-number>
+            <div style="flex: 1" data-test-id="tipPercentage">
+              <n-input-number v-model:value="tipPercentage" :min="0" placeholder="Tip %">
+                <template #suffix>%</template>
+              </n-input-number>
+            </div>
           </div>
-
           <div flex items-center gap-2>
             <div style="min-width: 120px;">Number of People</div>
-            <n-input-number
-              v-model:value="numberOfPeople"
-              data-test-id="numberOfPeople"
-              :min="1"
-              placeholder="People"
-              style="flex: 1"
-            />
+            <div style="flex: 1" data-test-id="numberOfPeople">
+              <n-input-number v-model:value="numberOfPeople" :min="1" placeholder="People" />
+            </div>
           </div>
         </div>
       </c-card>
@@ -81,32 +48,11 @@ const amountPerPersonFormatted = computed(() => formatNumber(amountPerPerson.val
       <c-card mb-3>
         <div mb-3>Results</div>
         <div flex flex-col gap-3>
-          <div flex justify-between items-center>
-            <span>Tip Amount:</span>
-            <input-copyable
-              :value="tipAmountFormatted"
-              data-test-id="tipAmountResult"
-              readonly
-              style="max-width: 200px;"
-            />
-          </div>
-          <div flex justify-between items-center>
-            <span>Total Bill:</span>
-            <input-copyable
-              :value="totalAmountFormatted"
-              data-test-id="totalBillResult"
-              readonly
-              style="max-width: 200px;"
-            />
-          </div>
-          <div border-t pt-3 flex justify-between items-center font-bold>
-            <span>Amount Per Person:</span>
-            <input-copyable
-              :value="amountPerPersonFormatted"
-              data-test-id="amountPerPersonResult"
-              readonly
-              style="max-width: 200px;"
-            />
+          <div v-for="res in results" :key="res.id" flex justify-between items-center :class="{'border-t pt-3 font-bold': res.isBold}">
+            <span>{{ res.label }}:</span>
+            <div :data-test-id="res.id" style="max-width: 200px; width: 100%;">
+              <input-copyable :value="res.val" readonly />
+            </div>
           </div>
         </div>
       </c-card>
@@ -114,9 +60,7 @@ const amountPerPersonFormatted = computed(() => formatNumber(amountPerPerson.val
       <c-card>
         <div mb-2>Quick Tip %</div>
         <div flex gap-2>
-          <n-button v-for="tip in [10, 15, 18, 20, 25]" :key="tip" @click="tipPercentage = tip" size="small">
-            {{ tip }}%
-          </n-button>
+          <n-button v-for="tip in [10, 15, 18, 20, 25]" :key="tip" @click="tipPercentage = tip" size="small">{{ tip }}%</n-button>
         </div>
       </c-card>
     </div>
