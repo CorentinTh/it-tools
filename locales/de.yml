@@ -333,6 +333,9 @@ tools:
   json-diff:
     title: JSON-Unterschied
     description: Vergleiche zwei JSON-Objekte und erhalte die Unterschiede zwischen ihnen.
+  markdown-diff:
+    title: Markdown-Unterschied
+    description: Vergleiche zwei Markdown-Dokumente und sieh die Unterschiede zwischen ihnen.
   jwt-parser:
     title: JWT-Parser
     description: >-

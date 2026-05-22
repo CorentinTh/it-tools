@@ -51,7 +51,7 @@ function selectOption(option: CButtonSelectOption<T>) {
         :tooltip="option.tooltip"
       >
         <c-button
-          :test-id="option.value"
+          :data-test-id="option.value"
           :size="size"
           :type="option.value === value ? 'primary' : 'default'"
           @click="selectOption(option)"

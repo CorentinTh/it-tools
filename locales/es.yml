@@ -70,3 +70,7 @@ tools:
     measurement: Measurement
     text: Text
     data: Data
+
+  markdown-diff:
+    title: Markdown diff
+    description: Compare two Markdown documents and see the differences between them.

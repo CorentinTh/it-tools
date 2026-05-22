@@ -285,6 +285,9 @@ tools:
   json-diff:
     title: JSON 差异比较
     description: 比较两个JSON对象并获得它们之间的差异。
+  markdown-diff:
+    title: Markdown diff
+    description: Compare two Markdown documents and see the differences between them.
   jwt-parser:
     title: JWT 解析器
     description: 解析和解码JSON Web Token（jwt）并显示其内容。

@@ -65,6 +65,10 @@ tools:
     text: Texte
     data: Données
 
+  markdown-diff:
+    title: Markdown diff
+    description: Compare two Markdown documents and see the differences between them.
+
   token-generator:
     title: Générateur de token
     description: >-
