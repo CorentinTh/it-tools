@@ -12,6 +12,7 @@ import { tool as jsonToXml } from './json-to-xml';
 import { tool as regexTester } from './regex-tester';
 import { tool as regexMemo } from './regex-memo';
 import { tool as markdownToHtml } from './markdown-to-html';
+import { tool as markdownTableGenerator } from './markdown-table-generator';
 import { tool as pdfSignatureChecker } from './pdf-signature-checker';
 import { tool as numeronymGenerator } from './numeronym-generator';
 import { tool as macAddressGenerator } from './mac-address-generator';
@@ -152,6 +153,7 @@ export const toolsByCategory: ToolCategory[] = [
       jsonViewer,
       jsonMinify,
       jsonToCsv,
+      markdownTableGenerator,
       sqlPrettify,
       chmodCalculator,
       dockerRunToDockerComposeConverter,
