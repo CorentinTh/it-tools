@@ -55,6 +55,17 @@ const toolDescription = computed<string>(() => t(`tools.${i18nKey.value}.descrip
     <div class="tool-content">
       <slot />
     </div>
+
+    <div class="tool-footer">
+      <div class="footer-divider" />
+      <img src="/infmax-wechat.png" alt="infmax wechat" class="footer-img" />
+      <p class="footer-desc">
+        欢迎关注 <strong>InfMax无限求索</strong> 公众号，获取更多 AI资讯、AI教程、软件、效率工具等方面的内容
+      </p>
+      <div class="footer-links">
+        <a href="https://infmax.top" target="_blank" rel="noopener noreferrer">🔗 无限求索 infmax.top</a>
+      </div>
+    </div>
   </BaseLayout>
 </template>
 
@@ -69,6 +80,53 @@ const toolDescription = computed<string>(() => t(`tools.${i18nKey.value}.descrip
 
   ::v-deep(& > *) {
     flex: 0 1 600px;
+  }
+}
+
+.tool-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0 40px;
+  gap: 16px;
+
+  .footer-divider {
+    width: 100%;
+    max-width: 600px;
+    height: 1px;
+    background: rgb(161, 161, 161);
+    opacity: 0.2;
+    margin-bottom: 8px;
+  }
+
+  .footer-img {
+    max-width: 400px;
+    width: 100%;
+    opacity: 0.85;
+  }
+
+  .footer-desc {
+    margin: 0;
+    text-align: center;
+    opacity: 0.7;
+    font-size: 14px;
+    max-width: 480px;
+    line-height: 1.6;
+  }
+
+  .footer-links {
+    font-size: 14px;
+    opacity: 0.6;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        opacity: 1;
+        text-decoration: underline;
+      }
+    }
   }
 }
 
