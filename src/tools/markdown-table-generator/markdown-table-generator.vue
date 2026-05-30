@@ -61,7 +61,7 @@ function removeRow(index: number) {
         <n-table :bordered="false" :single-line="false" min-w-700px>
           <thead>
             <tr>
-              <th v-for="(_, columnIndex) of table.headers" :key="columnIndex" min-w-170px>
+              <th v-for="(_, columnIndex) of table.headers" :key="columnIndex" scope="col" min-w-170px>
                 <div flex flex-col gap-2>
                   <c-input-text
                     v-model:value="table.headers[columnIndex]"
@@ -88,7 +88,7 @@ function removeRow(index: number) {
                   </div>
                 </div>
               </th>
-              <th w-45px />
+              <th scope="col" w-45px />
             </tr>
           </thead>
           <tbody>
