@@ -12,7 +12,7 @@ const formatNum = (v: number) => new Intl.NumberFormat('en-US', { minimumFractio
 const results = computed(() => [
   { label: 'Tip Amount', val: formatNum(tipAmount.value), id: 'tipAmountResult' },
   { label: 'Total Bill', val: formatNum(totalAmount.value), id: 'totalBillResult' },
-  { label: 'Amount Per Person', val: formatNum(amountPerPerson.value), id: 'amountPerPersonResult', isBold: true }
+  { label: 'Amount Per Person', val: formatNum(amountPerPerson.value), id: 'amountPerPersonResult', isBold: true },
 ]);
 </script>
 
@@ -20,24 +20,34 @@ const results = computed(() => [
   <div style="flex: 0 0 100%">
     <div style="margin: 0 auto; max-width: 600px">
       <c-card mb-3>
-        <div mb-3>Bill details</div>
+        <div mb-3>
+          Bill details
+        </div>
         <div flex flex-col gap-4>
           <div flex items-center gap-2>
-            <div style="min-width: 120px;">Bill Amount</div>
+            <div style="min-width: 120px;">
+              Bill Amount
+            </div>
             <div style="flex: 1" data-test-id="billAmount">
               <n-input-number v-model:value="billAmount" :min="0" placeholder="Total Bill" />
             </div>
           </div>
           <div flex items-center gap-2>
-            <div style="min-width: 120px;">Tip Percentage</div>
+            <div style="min-width: 120px;">
+              Tip Percentage
+            </div>
             <div style="flex: 1" data-test-id="tipPercentage">
               <n-input-number v-model:value="tipPercentage" :min="0" placeholder="Tip %">
-                <template #suffix>%</template>
+                <template #suffix>
+                  %
+                </template>
               </n-input-number>
             </div>
           </div>
           <div flex items-center gap-2>
-            <div style="min-width: 120px;">Number of People</div>
+            <div style="min-width: 120px;">
+              Number of People
+            </div>
             <div style="flex: 1" data-test-id="numberOfPeople">
               <n-input-number v-model:value="numberOfPeople" :min="1" placeholder="People" />
             </div>
@@ -46,9 +56,11 @@ const results = computed(() => [
       </c-card>
 
       <c-card mb-3>
-        <div mb-3>Results</div>
+        <div mb-3>
+          Results
+        </div>
         <div flex flex-col gap-3>
-          <div v-for="res in results" :key="res.id" flex justify-between items-center :class="{'border-t pt-3 font-bold': res.isBold}">
+          <div v-for="res in results" :key="res.id" flex items-center justify-between :class="{ 'border-t pt-3 font-bold': res.isBold }">
             <span>{{ res.label }}:</span>
             <div :data-test-id="res.id" style="max-width: 200px; width: 100%;">
               <input-copyable :value="res.val" readonly />
@@ -58,12 +70,15 @@ const results = computed(() => [
       </c-card>
 
       <c-card>
-        <div mb-2>Quick Tip %</div>
+        <div mb-2>
+          Quick Tip %
+        </div>
         <div flex gap-2>
-          <n-button v-for="tip in [10, 15, 18, 20, 25]" :key="tip" @click="tipPercentage = tip" size="small">{{ tip }}%</n-button>
+          <n-button v-for="tip in [10, 15, 18, 20, 25]" :key="tip" size="small" @click="tipPercentage = tip">
+            {{ tip }}%
+          </n-button>
         </div>
       </c-card>
     </div>
   </div>
 </template>
-
