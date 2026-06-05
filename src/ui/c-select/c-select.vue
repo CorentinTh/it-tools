@@ -13,6 +13,7 @@ const props = withDefaults(
     placeholder?: string
     size?: 'small' | 'medium' | 'large'
     searchable?: boolean
+    clearable?: boolean
   } & CLabelProps >(),
   {
     options: () => [],
@@ -20,6 +21,7 @@ const props = withDefaults(
     placeholder: undefined,
     size: 'medium',
     searchable: false,
+    clearable: false,
   },
 );
 
@@ -135,6 +137,13 @@ function handleKeydown(event: KeyboardEvent) {
 function onSearchInput() {
   focusIndex.value = 0;
 }
+
+function clearValue(event: MouseEvent) {
+  event.stopPropagation();
+  selectedOption.value = undefined;
+  // @ts-expect-error vue template generic is a bit flacky thanks to withDefaults
+  value.value = undefined;
+}
 </script>
 
 <template>
@@ -161,6 +170,9 @@ function onSearchInput() {
           </slot>
         </div>
 
+        <c-button v-if="clearable && selectedOption" variant="text" circle size="small" @click="clearValue">
+          <icon-mdi-close />
+        </c-button>
         <icon-mdi-chevron-down class="chevron" />
       </div>
 
