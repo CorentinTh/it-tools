@@ -5,7 +5,10 @@ import type { Gender, GenerateOptions } from './national-id-generator.types';
 import { useCopy } from '@/composable/copy';
 
 function countryCodeToFlag(code: string): string {
-  return [...code.toUpperCase()].map(c => String.fromCodePoint(0x1F1E6 + c.charCodeAt(0) - 65)).join('');
+  return [...code.toUpperCase()].map((c) => {
+    const codePoint = c.codePointAt(0);
+    return codePoint === undefined ? '' : String.fromCodePoint(0x1F1E6 + codePoint - 65);
+  }).join('');
 }
 
 const countries = Object.values(strategies).map(s => ({ value: s.countryCode, label: `${countryCodeToFlag(s.countryCode)} ${s.label}` }));
