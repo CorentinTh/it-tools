@@ -1,4 +1,5 @@
 import type { Gender, GenerateOptions, GeneratedId, IdNumberStrategy } from '../national-id-generator.types';
+import { randIntFromInterval } from '@/utils/random';
 
 // ─── types re-exported for backwards compatibility ────────────────────────────
 
@@ -21,10 +22,6 @@ export interface BelgianSSIN extends GeneratedId {
 
 // ─── internal helpers ─────────────────────────────────────────────────────────
 
-function randomInt(min: number, max: number): number {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 function daysInMonth(year: number, month: number): number {
   // month is 1-indexed (1–12); new Date(year, month, 0) gives the last day of that month
   return new Date(year, month, 0).getDate();
@@ -41,7 +38,7 @@ function randomLeapYear(min: number, max: number): number {
       leapYears.push(y);
     }
   }
-  return leapYears[Math.floor(Math.random() * leapYears.length)]!;
+  return leapYears[randIntFromInterval(0, 0.999) * leapYears.length]!;
 }
 
 function computeChecksum(yymmdd: string, serial: string, bornAfter2000: boolean): string {
@@ -54,14 +51,14 @@ function computeChecksum(yymmdd: string, serial: string, bornAfter2000: boolean)
 // ─── public API ───────────────────────────────────────────────────────────────
 
 export function generateBelgianSSIN(opts: GenerateBelgianSSINOptions = {}): BelgianSSIN {
-  const gender: Gender = opts.gender ?? (Math.random() < 0.5 ? 'male' : 'female');
+  const gender: Gender = opts.gender ?? (randIntFromInterval(0, 0.9) < 0.5 ? 'male' : 'female');
   const fictitious = opts.fictitious ?? false;
 
   const currentYear = new Date().getFullYear();
   const needsLeapYear = opts.birthDay === 29 && opts.birthMonth === 2 && opts.birthYear === undefined;
-  const fullYear = opts.birthYear ?? (needsLeapYear ? randomLeapYear(1900, currentYear) : randomInt(1900, currentYear));
-  const month = opts.birthMonth ?? randomInt(1, 12);
-  const day = opts.birthDay ?? randomInt(1, daysInMonth(fullYear, month));
+  const fullYear = opts.birthYear ?? (needsLeapYear ? randomLeapYear(1900, currentYear) : randIntFromInterval(1900, currentYear));
+  const month = opts.birthMonth ?? randIntFromInterval(1, 12);
+  const day = opts.birthDay ?? randIntFromInterval(1, daysInMonth(fullYear, month));
   const birthDate = new Date(fullYear, month - 1, day);
 
   const yy = fullYear.toString().slice(-2).padStart(2, '0');
@@ -74,14 +71,14 @@ export function generateBelgianSSIN(opts: GenerateBelgianSSINOptions = {}): Belg
   if (gender === 'male') {
     const minOdd = fictitious ? 901 : 1;
     const maxOdd = fictitious ? 999 : 899;
-    const oddNum = randomInt(minOdd, maxOdd);
+    const oddNum = randIntFromInterval(minOdd, maxOdd);
     const oddValue = oddNum % 2 === 0 ? oddNum + 1 : oddNum;
     serial = oddValue.toString().padStart(3, '0');
   }
   else {
     const minEven = fictitious ? 900 : 2;
     const maxEven = fictitious ? 998 : 898;
-    const evenNum = randomInt(minEven / 2, maxEven / 2);
+    const evenNum = randIntFromInterval(minEven / 2, maxEven / 2);
     serial = (evenNum * 2).toString().padStart(3, '0');
   }
 
