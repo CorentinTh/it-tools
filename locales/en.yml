@@ -97,6 +97,10 @@ tools:
     title: Percentage calculator
     description: Easily calculate percentages from a value to another value, or from a percentage to a value.
 
+  tip-calculator:
+    title: Tip calculator
+    description: Calculate the tip for a bill and split it among multiple people.
+
   svg-placeholder-generator:
     title: SVG placeholder generator
     description: Generate svg images to use as a placeholder in your applications.
