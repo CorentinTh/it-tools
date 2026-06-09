@@ -320,7 +320,7 @@ const emailValidation = useValidation({
   source: email,
   rules: [
     {
-      validator: value => !value || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+      validator: value => !value || /^[^@\s]{1,64}@[^@\s]{1,255}\.[^@\s]{2,6}$/.test(value),
       message: t('tools.x509-certificate-generator.invalidEmailFormat'),
     },
   ],
