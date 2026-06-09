@@ -75,6 +75,36 @@ tools:
     title: Password strength analyser
     description: Discover the strength of your password with this client-side-only password strength analyser and crack time estimation tool.
 
+  x509-certificate-generator:
+    title: X509 Certificate Generator
+    description: Generate self-signed X509 certificates with customizable parameters. Create root CA certificates for development and testing.
+
+    commonName: Common Name (CN)
+    country: Country (C)
+    stateOrProvince: State/Province (ST)
+    locality: Locality (L)
+    organization: Organization (O)
+    organizationalUnit: Organizational Unit (OU)
+    email: Email
+    validFrom: Valid From
+    validTo: Valid To
+    regenerateKeys: Regenerate Keys
+    certificate: Certificate
+    privateKey: Private Key
+    download: Download
+    commonNamePlaceholder: example.com
+    countryPlaceholder: US
+    stateOrProvincePlaceholder: California
+    localityPlaceholder: San Francisco
+    organizationPlaceholder: My Company
+    organizationalUnitPlaceholder: IT Department
+    emailPlaceholder: 'admin [at] example.com'
+    requiredField: '{field} is required'
+    countryMustBe2Letters: Country must be a 2-letter ISO code
+    invalidEmailFormat: Invalid email format
+    endDateMustBeAfterStart: End date must be after start date
+    fillRequiredFields: Please fill in the required fields correctly to generate the certificate.
+
   chronometer:
     title: Chronometer
     description: Monitor the duration of a thing. Basically a chronometer with simple chronometer features.

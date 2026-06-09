@@ -75,6 +75,36 @@ tools:
     title: Analyseverktøy for passordstyrke
     description: Oppdag styrken av passordet ditt med dette kun-klient-maskin passordstyrke analyse verktøyet og se den estimerte knekketiden.
 
+  x509-certificate-generator:
+    title: X509-sertifikatgenerator
+    description: Generer selvsignerte X509-sertifikater med tilpassbare parametere. Opprett rot-CA-sertifikater for utvikling og testing.
+
+    commonName: Vanlig navn (CN)
+    country: Land (C)
+    stateOrProvince: Stat/Provins (ST)
+    locality: Sted (L)
+    organization: Organisasjon (O)
+    organizationalUnit: Organisasjonsenhet (OU)
+    email: E-post
+    validFrom: Gyldig fra
+    validTo: Gyldig til
+    regenerateKeys: Regenerer nøkler
+    certificate: Sertifikat
+    privateKey: Privat nøkkel
+    download: Last ned
+    commonNamePlaceholder: example.com
+    countryPlaceholder: NO
+    stateOrProvincePlaceholder: California
+    localityPlaceholder: San Francisco
+    organizationPlaceholder: Mitt Selskap
+    organizationalUnitPlaceholder: IT-avdeling
+    emailPlaceholder: 'admin [at] example.com'
+    requiredField: '{field} er påkrevd'
+    countryMustBe2Letters: Land må være en 2-bokstavers ISO-kode
+    invalidEmailFormat: Ugyldig e-postformat
+    endDateMustBeAfterStart: Sluttdato må være etter startdato
+    fillRequiredFields: Vennligst fyll ut de obligatoriske feltene korrekt for å generere sertifikatet.
+
   chronometer:
     title: Kronometer
     description: Overvåk varigheten av noe. I bunn og grunn et kronometer med enkle funksjoner.

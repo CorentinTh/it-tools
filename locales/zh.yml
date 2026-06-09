@@ -73,7 +73,37 @@ tools:
 
   password-strength-analyser:
     title: 密码强度分析仪
-    description: 使用此密码强度分析器和破解时间估计工具来发现密码的强度。
+    description: 使用此密码强度分析���和破解时间估计工具来发现密码的强度。
+
+  x509-certificate-generator:
+    title: X509证书生成器
+    description: 生成具有可自定义参数的自签名X509证书。为开发和测试创建根CA证书。
+
+    commonName: 通用名称 (CN)
+    country: 国家 (C)
+    stateOrProvince: 省/州 (ST)
+    locality: 地区 (L)
+    organization: 组织 (O)
+    organizationalUnit: 组织单位 (OU)
+    email: 邮箱
+    validFrom: 有效期从
+    validTo: 有效期到
+    regenerateKeys: 重新生成密钥
+    certificate: 证书
+    privateKey: 私钥
+    download: 下载
+    commonNamePlaceholder: example.com
+    countryPlaceholder: US
+    stateOrProvincePlaceholder: 加利福尼亚
+    localityPlaceholder: 旧金山
+    organizationPlaceholder: 我的公司
+    organizationalUnitPlaceholder: IT部门
+    emailPlaceholder: 'admin [at] example.com'
+    requiredField: '{field}是必填项'
+    countryMustBe2Letters: 国家必须是2字母ISO代码
+    invalidEmailFormat: 无效的邮箱格式
+    endDateMustBeAfterStart: 结束日期必须晚于开始日期
+    fillRequiredFields: 请正确填写必填字段以生成证书。
 
   chronometer:
     title: 计时器
