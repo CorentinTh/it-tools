@@ -75,6 +75,36 @@ tools:
     title: Bộ phân tích độ mạnh mật khẩu
     description: Khám phá độ mạnh của mật khẩu của bạn với công cụ phân tích độ mạnh mật khẩu chỉ chạy trên phía máy khách và ước tính thời gian phá mật khẩu.
 
+  x509-certificate-generator:
+    title: Trình tạo chứng chỉ X509
+    description: Tạo chứng chỉ X509 tự ký với các thông số có thể tùy chỉnh. Tạo chứng chỉ root CA cho phát triển và kiểm thử.
+
+    commonName: Tên chung (CN)
+    country: Quốc gia (C)
+    stateOrProvince: Tỉnh/Bang (ST)
+    locality: Địa phương (L)
+    organization: Tổ chức (O)
+    organizationalUnit: Đơn vị tổ chức (OU)
+    email: Email
+    validFrom: Có hiệu lực từ
+    validTo: Có hiệu lực đến
+    regenerateKeys: Tạo lại khóa
+    certificate: Chứng chỉ
+    privateKey: Khóa riêng
+    download: Tải xuống
+    commonNamePlaceholder: example.com
+    countryPlaceholder: VN
+    stateOrProvincePlaceholder: California
+    localityPlaceholder: San Francisco
+    organizationPlaceholder: Công ty của tôi
+    organizationalUnitPlaceholder: Bộ phận IT
+    emailPlaceholder: 'admin [at] example.com'
+    requiredField: '{field} là bắt buộc'
+    countryMustBe2Letters: Quốc gia phải là mã ISO 2 chữ cái
+    invalidEmailFormat: Định dạng email không hợp lệ
+    endDateMustBeAfterStart: Ngày kết thúc phải sau ngày bắt đầu
+    fillRequiredFields: Vui lòng điền đúng các trường bắt buộc để tạo chứng chỉ.
+
   chronometer:
     title: Đồng hồ bấm giờ
     description: Giám sát thời gian của một sự việc. Cơ bản là một đồng hồ bấm giờ với các tính năng đơn giản.

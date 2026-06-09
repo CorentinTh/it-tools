@@ -97,6 +97,35 @@ tools:
     description: >-
       Ermittle die Stärke deines Passworts mit diesem Client-seitigen
       Passwortstärken-Analysator und Tool zur Schätzung der Knackzeit.
+  x509-certificate-generator:
+    title: X509-Zertifikat-Generator
+    description: Erstellen Sie selbstsignierte X509-Zertifikate mit anpassbaren Parametern. Erstellen Sie Root-CA-Zertifikate für Entwicklung und Tests.
+
+    commonName: Allgemeiner Name (CN)
+    country: Land (C)
+    stateOrProvince: Bundesland/Provinz (ST)
+    locality: Ort (L)
+    organization: Organisation (O)
+    organizationalUnit: Organisationseinheit (OU)
+    email: E-Mail
+    validFrom: Gültig ab
+    validTo: Gültig bis
+    regenerateKeys: Schlüssel neu generieren
+    certificate: Zertifikat
+    privateKey: Privater Schlüssel
+    download: Herunterladen
+    commonNamePlaceholder: example.com
+    countryPlaceholder: DE
+    stateOrProvincePlaceholder: Bayern
+    localityPlaceholder: München
+    organizationPlaceholder: Meine Firma
+    organizationalUnitPlaceholder: IT-Abteilung
+    emailPlaceholder: 'admin [at] example.com'
+    requiredField: '{field} ist erforderlich'
+    countryMustBe2Letters: Land muss ein 2-Buchstaben-ISO-Code sein
+    invalidEmailFormat: Ungültiges E-Mail-Format
+    endDateMustBeAfterStart: Enddatum muss nach dem Startdatum liegen
+    fillRequiredFields: Bitte füllen Sie die Pflichtfelder korrekt aus, um das Zertifikat zu generieren.
   chronometer:
     title: Chronometer
     description: >-

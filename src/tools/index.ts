@@ -81,6 +81,7 @@ import { tool as temperatureConverter } from './temperature-converter';
 import { tool as textStatistics } from './text-statistics';
 import { tool as tokenGenerator } from './token-generator';
 import type { ToolCategory } from './tools.types';
+import { tool as x509CertificateGenerator } from './x509-certificate-generator';
 import { tool as urlEncoder } from './url-encoder';
 import { tool as urlParser } from './url-parser';
 import { tool as uuidGenerator } from './uuid-generator';
@@ -91,7 +92,7 @@ import { tool as yamlViewer } from './yaml-viewer';
 export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Crypto',
-    components: [tokenGenerator, hashText, bcrypt, uuidGenerator, ulidGenerator, cypher, bip39, hmacGenerator, rsaKeyPairGenerator, passwordStrengthAnalyser, pdfSignatureChecker],
+    components: [tokenGenerator, hashText, bcrypt, uuidGenerator, ulidGenerator, cypher, bip39, hmacGenerator, rsaKeyPairGenerator, x509CertificateGenerator, passwordStrengthAnalyser, pdfSignatureChecker],
   },
   {
     name: 'Converter',
