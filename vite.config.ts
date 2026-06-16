@@ -56,6 +56,10 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       strategies: 'generateSW',
+      workbox: {
+        skipWaiting: true,
+        clientsClaim: true,
+      },
       manifest: {
         name: 'IT Tools',
         description: 'Aggregated set of useful tools for developers.',
@@ -102,6 +106,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@vueuse/shared': fileURLToPath(new URL('./node_modules/@vueuse/shared/index.mjs', import.meta.url)),
     },
   },
   define: {
@@ -109,6 +114,11 @@ export default defineConfig({
   },
   test: {
     exclude: [...configDefaults.exclude, '**/*.e2e.spec.ts'],
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      target: 'esnext',
+    },
   },
   build: {
     target: 'esnext',

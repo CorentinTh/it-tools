@@ -102,6 +102,7 @@ const toolDescription = computed<string>(() => t(`tools.${i18nKey.value}.descrip
       margin: 0;
 
       opacity: 0.7;
+      white-space: pre-line;
     }
   }
 }

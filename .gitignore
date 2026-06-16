@@ -28,8 +28,19 @@ coverage
 *.sw?
 
 .env
+.env.*
 /test-results/
 /playwright-report/
 /playwright/.cache/
 # Webkit with playwright creates a salt file
 salt
+
+# Cloudflare / Wrangler
+.wrangler/
+wrangler.toml
+
+# Claude Code
+.claude/
+
+# Lock files (choose one to keep; delete this line if you want to commit yours)
+package-lock.json

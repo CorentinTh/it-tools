@@ -100,6 +100,10 @@ tools:
     title: SVG 占位符生成器
     description: 生成 svg 图像以用作应用程序中的占位符。
 
+  dns-query:
+    title: DNS 查询
+    description: 在线查询任意域名的 DNS 记录（A、AAAA、CNAME、MX、TXT、NS、SOA 等），使用 Cloudflare DNS 解析。
+
   json-to-csv:
     title: JSON 转 CSV
     description: 使用自动标头检测将JSON转换为CSV。
@@ -144,8 +148,8 @@ tools:
     description: Git是一种去中心化的版本管理软件。使用此备忘单，您可以快速访问最常见的git命令.
 
   slugify-string:
-    title: 打乱字符串
-    description: 确保字符串 url、文件名和 id 安全。
+    title: 字符串 Slug 化
+    description: "将任意字符串转换为 URL、文件名和 HTML id 安全的格式（slug）。\n转换规则：空格/换行转为连字符、大写转小写、去除重音符号、删除特殊字符。"
 
   encryption:
     title: 加密/解密文本
@@ -289,6 +293,25 @@ tools:
     title: JWT 解析器
     description: 解析和解码JSON Web Token（jwt）并显示其内容。
 
+  date-calculator:
+    title: 日期计算器
+    description: 推算几天前/后的日期，或计算两个日期之间相差的天数。
+    offset:
+      sectionTitle: 推算几天前 / 后的日期
+      baseDate: 起始日期
+      days: 偏移天数
+      daysHint: 输入负数则往前推算
+      resultLabel: 结果日期
+    diff:
+      sectionTitle: 计算两个日期相差
+      startDate: 开始日期
+      targetDate: 目标日期
+      resultLabel: 相差
+      dayUnit: 天
+      directionAfter: 目标日期比起始日期晚
+      directionBefore: 目标日期比起始日期早
+      directionSame: 两个日期为同一天
+
   date-converter:
     title: 日期时间转换器
     description: 将日期和时间转换为各种不同的格式
@@ -388,3 +411,61 @@ tools:
   text-to-binary:
     title: 文本到 ASCII 二进制
     description: 将文本转换为其 ASCII 二进制表示形式，反之亦然。
+
+  html-to-markdown:
+    title: HTML 转 Markdown
+    description: 使用此在线转换器将 HTML 转换为 Markdown。
+
+  byte-unit-converter:
+    title: 字节单位转换器
+    description: 在十进制（SI）和二进制（IEC）系统中转换数据大小单位（字节、KB、MB、GB、TB）。
+
+  json-to-types:
+    title: JSON 转 TypeScript/Go
+    description: 从 JSON 样本生成 TypeScript 接口或 Go 结构体。
+
+  css-js-prettify-minify:
+    title: CSS/JS 格式化与压缩
+    description: 在线格式化或压缩您的 CSS 和 JavaScript 代码。
+
+  curl-to-code:
+    title: cURL 转代码
+    description: 将 cURL 命令转换为多种编程语言的代码。
+
+  ssl-certificate-parser:
+    title: SSL 证书解析器
+    description: 解析 PEM 证书，查看过期时间、域名、颁发者等详细信息。
+    inputLabel: PEM 证书
+    inputPlaceholder: '在此粘贴 PEM 证书（-----BEGIN CERTIFICATE-----...）'
+    invalidPem: 无效的 PEM 证书
+    validity: 有效期
+    status: 状态
+    valid: 有效
+    expired: 已过期
+    expiredAgo: '（已过期 {days} 天）'
+    daysRemaining: '（剩余 {days} 天）'
+    validFrom: 生效时间
+    validTo: 过期时间
+    subject: 主体信息
+    san: 主体备用名称 (SAN)
+    issuer: 颁发者
+    details: 详细信息
+    version: 版本
+    serialNumber: 序列号
+    signatureAlgorithm: 签名算法
+    publicKey: 公钥
+    fingerprint: 公钥指纹 (SHA-256)
+    keyUsage: 密钥用途
+    basicConstraints: 基本约束
+    help:
+      title: 如何获取 PEM 证书？
+      section1Title: 1. 从网站导出
+      section1Desc: '这会输出从 -----BEGIN CERTIFICATE----- 到 -----END CERTIFICATE----- 的内容，这就是 PEM 证书。'
+      section2Title: 2. 从浏览器导出
+      section2Step1: Chrome/Edge：点击地址栏锁图标 → 连接是安全的 → 证书有效 → 详细信息 → 导出
+      section2Step2: 导出时选择 Base-64 编码（.pem/.crt）格式
+      section3Title: 3. 从服务器文件获取
+      section3Nginx: Nginx：查看 ssl_certificate 配置项指向的文件（通常是 .pem 或 .crt）
+      section3Apache: Apache：查看 SSLCertificateFile 配置项
+      section3Paths: 常见路径：/etc/ssl/certs/、/etc/letsencrypt/live/<域名>/fullchain.pem
+      section4Title: 4. PEM 格式示例

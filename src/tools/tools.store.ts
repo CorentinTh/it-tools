@@ -42,7 +42,9 @@ export const useToolStore = defineStore('tools', () => {
     tools,
     favoriteTools,
     toolsByCategory,
-    newTools: computed(() => tools.value.filter(({ isNew }) => isNew)),
+    newTools: computed(() => tools.value
+      .filter(({ isNew }) => isNew)
+      .sort((a, b) => (b.createdAt?.getTime() ?? 0) - (a.createdAt?.getTime() ?? 0))),
 
     addToolToFavorites({ tool }: { tool: MaybeRef<Tool> }) {
       const toolPath = get(tool).path;

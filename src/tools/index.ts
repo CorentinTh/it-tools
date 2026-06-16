@@ -1,7 +1,13 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+import { tool as byteUnitConverter } from './byte-unit-converter';
+import { tool as cssJsPrettifyMinify } from './css-js-prettify-minify';
+import { tool as curlToCode } from './curl-to-code';
+import { tool as dnsQuery } from './dns-query';
 import { tool as emailNormalizer } from './email-normalizer';
+import { tool as htmlToMarkdown } from './html-to-markdown';
+import { tool as jsonToTypes } from './json-to-types';
 
 import { tool as asciiTextDrawer } from './ascii-text-drawer';
 
@@ -43,6 +49,7 @@ import { tool as ipv4SubnetCalculator } from './ipv4-subnet-calculator';
 import { tool as dockerRunToDockerComposeConverter } from './docker-run-to-docker-compose-converter';
 import { tool as htmlWysiwygEditor } from './html-wysiwyg-editor';
 import { tool as rsaKeyPairGenerator } from './rsa-key-pair-generator';
+import { tool as sslCertificateParser } from './ssl-certificate-parser';
 import { tool as textToNatoAlphabet } from './text-to-nato-alphabet';
 import { tool as slugifyString } from './slugify-string';
 import { tool as keycodeInfo } from './keycode-info';
@@ -54,6 +61,7 @@ import { tool as chmodCalculator } from './chmod-calculator';
 import { tool as chronometer } from './chronometer';
 import { tool as colorConverter } from './color-converter';
 import { tool as crontabGenerator } from './crontab-generator';
+import { tool as dateCalculator } from './date-calculator';
 import { tool as dateTimeConverter } from './date-time-converter';
 import { tool as deviceInformation } from './device-information';
 import { tool as cypher } from './encryption';
@@ -94,8 +102,33 @@ export const toolsByCategory: ToolCategory[] = [
     components: [tokenGenerator, hashText, bcrypt, uuidGenerator, ulidGenerator, cypher, bip39, hmacGenerator, rsaKeyPairGenerator, passwordStrengthAnalyser, pdfSignatureChecker],
   },
   {
+    name: 'Web',
+    components: [
+      dnsQuery,
+      sslCertificateParser,
+      urlEncoder,
+      htmlEntities,
+      urlParser,
+      deviceInformation,
+      basicAuthGenerator,
+      metaTagGenerator,
+      otpCodeGeneratorAndValidator,
+      mimeTypes,
+      jwtParser,
+      keycodeInfo,
+      slugifyString,
+      htmlWysiwygEditor,
+      userAgentParser,
+      httpStatusCodes,
+      jsonDiff,
+      safelinkDecoder,
+    ],
+  },
+  {
     name: 'Converter',
     components: [
+      byteUnitConverter,
+      dateCalculator,
       dateTimeConverter,
       baseConverter,
       romanNumeralConverter,
@@ -119,33 +152,12 @@ export const toolsByCategory: ToolCategory[] = [
     ],
   },
   {
-    name: 'Web',
-    components: [
-      urlEncoder,
-      htmlEntities,
-      urlParser,
-      deviceInformation,
-      basicAuthGenerator,
-      metaTagGenerator,
-      otpCodeGeneratorAndValidator,
-      mimeTypes,
-      jwtParser,
-      keycodeInfo,
-      slugifyString,
-      htmlWysiwygEditor,
-      userAgentParser,
-      httpStatusCodes,
-      jsonDiff,
-      safelinkDecoder,
-    ],
-  },
-  {
-    name: 'Images and videos',
-    components: [qrCodeGenerator, wifiQrCodeGenerator, svgPlaceholderGenerator, cameraRecorder],
-  },
-  {
     name: 'Development',
     components: [
+      cssJsPrettifyMinify,
+      htmlToMarkdown,
+      jsonToTypes,
+      curlToCode,
       gitMemo,
       randomPortGenerator,
       crontabGenerator,
@@ -161,6 +173,10 @@ export const toolsByCategory: ToolCategory[] = [
       regexTester,
       regexMemo,
     ],
+  },
+  {
+    name: 'Images and videos',
+    components: [qrCodeGenerator, wifiQrCodeGenerator, svgPlaceholderGenerator, cameraRecorder],
   },
   {
     name: 'Network',

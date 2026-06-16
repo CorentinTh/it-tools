@@ -101,6 +101,10 @@ tools:
     title: SVG placeholder generator
     description: Generate svg images to use as a placeholder in your applications.
 
+  dns-query:
+    title: DNS Query
+    description: Query DNS records (A, AAAA, CNAME, MX, TXT, NS, SOA, ...) for any domain name online using Cloudflare DNS.
+
   json-to-csv:
     title: JSON to CSV
     description: Convert JSON to CSV with automatic header detection.
@@ -293,6 +297,25 @@ tools:
     title: JWT parser
     description: Parse and decode your JSON Web Token (jwt) and display its content.
 
+  date-calculator:
+    title: Date calculator
+    description: Add or subtract days from a date, or calculate the number of days between two dates.
+    offset:
+      sectionTitle: Date after / before N days
+      baseDate: Start date
+      days: Days offset
+      daysHint: Use a negative number to go backwards
+      resultLabel: Result date
+    diff:
+      sectionTitle: Days between two dates
+      startDate: Start date
+      targetDate: Target date
+      resultLabel: Difference
+      dayUnit: days
+      directionAfter: Target date is after the start date
+      directionBefore: Target date is before the start date
+      directionSame: Same date
+
   date-converter:
     title: Date-time converter
     description: Convert date and time into the various different formats
@@ -392,3 +415,61 @@ tools:
   text-to-binary:
     title: Text to ASCII binary
     description: Convert text to its ASCII binary representation and vice-versa.
+
+  html-to-markdown:
+    title: HTML to Markdown
+    description: Convert HTML to Markdown with this online converter.
+
+  byte-unit-converter:
+    title: Byte unit converter
+    description: Convert between data size units (bytes, KB, MB, GB, TB) in both decimal (SI) and binary (IEC) systems.
+
+  json-to-types:
+    title: JSON to TypeScript/Go
+    description: Generate TypeScript interfaces or Go structs from a JSON sample.
+
+  css-js-prettify-minify:
+    title: CSS/JS Prettify & Minify
+    description: Prettify or minify your CSS and JavaScript code online.
+
+  curl-to-code:
+    title: cURL to Code
+    description: Convert cURL commands to code in various programming languages.
+
+  ssl-certificate-parser:
+    title: SSL Certificate Parser
+    description: Parse and decode PEM certificates to view expiry date, domain, issuer and other details.
+    inputLabel: PEM certificate
+    inputPlaceholder: 'Paste your PEM certificate here (-----BEGIN CERTIFICATE-----...)'
+    invalidPem: Invalid PEM certificate
+    validity: Validity
+    status: Status
+    valid: Valid
+    expired: Expired
+    expiredAgo: '(expired {days} days ago)'
+    daysRemaining: '({days} days remaining)'
+    validFrom: Valid From
+    validTo: Valid To
+    subject: Subject
+    san: Subject Alternative Names (SAN)
+    issuer: Issuer
+    details: Details
+    version: Version
+    serialNumber: Serial Number
+    signatureAlgorithm: Signature Algorithm
+    publicKey: Public Key
+    fingerprint: Public Key Fingerprint (SHA-256)
+    keyUsage: Key Usage
+    basicConstraints: Basic Constraints
+    help:
+      title: How to get a PEM certificate?
+      section1Title: 1. Export from a website
+      section1Desc: 'This outputs content from -----BEGIN CERTIFICATE----- to -----END CERTIFICATE-----, which is the PEM certificate.'
+      section2Title: 2. Export from browser
+      section2Step1: 'Chrome/Edge: Click the lock icon in the address bar → Connection is secure → Certificate is valid → Details → Export'
+      section2Step2: Choose Base-64 encoded (.pem/.crt) format when exporting
+      section3Title: 3. From server files
+      section3Nginx: 'Nginx: Check the file pointed to by ssl_certificate (usually .pem or .crt)'
+      section3Apache: 'Apache: Check SSLCertificateFile'
+      section3Paths: 'Common paths: /etc/ssl/certs/, /etc/letsencrypt/live/<domain>/fullchain.pem'
+      section4Title: 4. PEM format example

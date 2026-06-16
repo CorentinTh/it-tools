@@ -1,0 +1,616 @@
+- generic [ref=e5]:
+  - complementary [ref=e6]:
+    - link "IT - TOOLS Handy tools for developers" [ref=e7] [cursor=pointer]:
+      - /url: /
+      - img [ref=e8]
+      - generic [ref=e13]:
+        - generic [ref=e14]: IT - TOOLS
+        - generic [ref=e16]: Handy tools for developers
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - generic [ref=e19] [cursor=pointer]:
+          - img [ref=e21]
+          - generic [ref=e23]: Crypto
+        - menu [ref=e27]:
+          - menuitem "Token generator" [ref=e28]:
+            - img [ref=e30] [cursor=pointer]:
+              - img [ref=e31]
+            - link "Token generator" [ref=e37] [cursor=pointer]:
+              - /url: /token-generator
+          - menuitem "Hash text" [ref=e38]:
+            - img [ref=e40] [cursor=pointer]:
+              - img [ref=e41]
+            - link "Hash text" [ref=e46] [cursor=pointer]:
+              - /url: /hash-text
+          - menuitem "Bcrypt" [ref=e47]:
+            - img [ref=e49] [cursor=pointer]:
+              - img [ref=e50]
+            - link "Bcrypt" [ref=e55] [cursor=pointer]:
+              - /url: /bcrypt
+          - menuitem "UUIDs generator" [ref=e56]:
+            - img [ref=e58] [cursor=pointer]:
+              - img [ref=e59]
+            - link "UUIDs generator" [ref=e66] [cursor=pointer]:
+              - /url: /uuid-generator
+          - menuitem "ULID generator" [ref=e67]:
+            - img [ref=e69] [cursor=pointer]:
+              - img [ref=e70]
+            - link "ULID generator" [ref=e76] [cursor=pointer]:
+              - /url: /ulid-generator
+          - menuitem "Encrypt / decrypt text" [ref=e77]:
+            - img [ref=e79] [cursor=pointer]:
+              - img [ref=e80]
+            - link "Encrypt / decrypt text" [ref=e85] [cursor=pointer]:
+              - /url: /encryption
+          - menuitem "BIP39 passphrase generator" [ref=e86]:
+            - img [ref=e88] [cursor=pointer]:
+              - img [ref=e89]
+            - link "BIP39 passphrase generator" [ref=e91] [cursor=pointer]:
+              - /url: /bip39-generator
+          - menuitem "Hmac generator" [ref=e92]:
+            - img [ref=e94] [cursor=pointer]:
+              - img [ref=e95]
+            - link "Hmac generator" [ref=e97] [cursor=pointer]:
+              - /url: /hmac-generator
+          - menuitem "RSA key pair generator" [ref=e98]:
+            - img [ref=e100] [cursor=pointer]:
+              - img [ref=e101]
+            - link "RSA key pair generator" [ref=e106] [cursor=pointer]:
+              - /url: /rsa-key-pair-generator
+          - menuitem "Password strength analyser" [ref=e107]:
+            - img [ref=e109] [cursor=pointer]:
+              - img [ref=e110]
+            - link "Password strength analyser" [ref=e112] [cursor=pointer]:
+              - /url: /password-strength-analyser
+          - menuitem "PDF signature checker" [ref=e113]:
+            - img [ref=e115] [cursor=pointer]:
+              - img [ref=e116]
+            - link "PDF signature checker" [ref=e118] [cursor=pointer]:
+              - /url: /pdf-signature-checker
+          - menuitem "SSL Certificate Parser" [ref=e119]:
+            - img [ref=e121] [cursor=pointer]:
+              - img [ref=e122]
+            - link "SSL Certificate Parser" [ref=e129] [cursor=pointer]:
+              - /url: /ssl-certificate-parser
+      - generic [ref=e130]:
+        - generic [ref=e131] [cursor=pointer]:
+          - img [ref=e133]
+          - generic [ref=e135]: Converter
+        - menu [ref=e139]:
+          - menuitem "Date-time converter" [ref=e140]:
+            - img [ref=e142] [cursor=pointer]:
+              - img [ref=e143]
+            - link "Date-time converter" [ref=e146] [cursor=pointer]:
+              - /url: /date-converter
+          - menuitem "Integer base converter" [ref=e147]:
+            - img [ref=e149] [cursor=pointer]:
+              - img [ref=e150]
+            - link "Integer base converter" [ref=e154] [cursor=pointer]:
+              - /url: /base-converter
+          - menuitem "Roman numeral converter" [ref=e155]:
+            - img [ref=e157] [cursor=pointer]:
+              - img [ref=e158]
+            - link "Roman numeral converter" [ref=e162] [cursor=pointer]:
+              - /url: /roman-numeral-converter
+          - menuitem "Base64 string encoder/decoder" [ref=e163]:
+            - img [ref=e165] [cursor=pointer]:
+              - img [ref=e166]
+            - link "Base64 string encoder/decoder" [ref=e171] [cursor=pointer]:
+              - /url: /base64-string-converter
+          - menuitem "Base64 file converter" [ref=e172]:
+            - img [ref=e174] [cursor=pointer]:
+              - img [ref=e175]
+            - link "Base64 file converter" [ref=e180] [cursor=pointer]:
+              - /url: /base64-file-converter
+          - menuitem "Color converter" [ref=e181]:
+            - img [ref=e183] [cursor=pointer]:
+              - img [ref=e184]
+            - link "Color converter" [ref=e190] [cursor=pointer]:
+              - /url: /color-converter
+          - menuitem "Case converter" [ref=e191]:
+            - img [ref=e193] [cursor=pointer]:
+              - img [ref=e194]
+            - link "Case converter" [ref=e198] [cursor=pointer]:
+              - /url: /case-converter
+          - menuitem "Text to NATO alphabet" [ref=e199]:
+            - img [ref=e201] [cursor=pointer]:
+              - img [ref=e202]
+            - link "Text to NATO alphabet" [ref=e207] [cursor=pointer]:
+              - /url: /text-to-nato-alphabet
+          - menuitem "Text to ASCII binary" [ref=e208]:
+            - img [ref=e210] [cursor=pointer]:
+              - img [ref=e211]
+            - link "Text to ASCII binary" [ref=e217] [cursor=pointer]:
+              - /url: /text-to-binary
+          - menuitem "Text to Unicode" [ref=e218]:
+            - img [ref=e220] [cursor=pointer]:
+              - img [ref=e221]
+            - link "Text to Unicode" [ref=e224] [cursor=pointer]:
+              - /url: /text-to-unicode
+          - menuitem "YAML to JSON converter" [ref=e225]:
+            - img [ref=e227] [cursor=pointer]:
+              - img [ref=e228]
+            - link "YAML to JSON converter" [ref=e230] [cursor=pointer]:
+              - /url: /yaml-to-json-converter
+          - menuitem "YAML to TOML" [ref=e231]:
+            - img [ref=e233] [cursor=pointer]:
+              - img [ref=e234]
+            - link "YAML to TOML" [ref=e236] [cursor=pointer]:
+              - /url: /yaml-to-toml
+          - menuitem "JSON to YAML converter" [ref=e237]:
+            - img [ref=e239] [cursor=pointer]:
+              - img [ref=e240]
+            - link "JSON to YAML converter" [ref=e244] [cursor=pointer]:
+              - /url: /json-to-yaml-converter
+          - menuitem "JSON to TOML" [ref=e245]:
+            - img [ref=e247] [cursor=pointer]:
+              - img [ref=e248]
+            - link "JSON to TOML" [ref=e252] [cursor=pointer]:
+              - /url: /json-to-toml
+          - menuitem "List converter" [ref=e253]:
+            - img [ref=e255] [cursor=pointer]:
+              - img [ref=e256]
+            - link "List converter" [ref=e258] [cursor=pointer]:
+              - /url: /list-converter
+          - menuitem "TOML to JSON" [ref=e259]:
+            - img [ref=e261] [cursor=pointer]:
+              - img [ref=e262]
+            - link "TOML to JSON" [ref=e264] [cursor=pointer]:
+              - /url: /toml-to-json
+          - menuitem "TOML to YAML" [ref=e265]:
+            - img [ref=e267] [cursor=pointer]:
+              - img [ref=e268]
+            - link "TOML to YAML" [ref=e270] [cursor=pointer]:
+              - /url: /toml-to-yaml
+          - menuitem "XML to JSON" [ref=e271]:
+            - img [ref=e273] [cursor=pointer]:
+              - img [ref=e274]
+            - link "XML to JSON" [ref=e278] [cursor=pointer]:
+              - /url: /xml-to-json
+          - menuitem "JSON to XML" [ref=e279]:
+            - img [ref=e281] [cursor=pointer]:
+              - img [ref=e282]
+            - link "JSON to XML" [ref=e286] [cursor=pointer]:
+              - /url: /json-to-xml
+          - menuitem "Markdown to HTML" [ref=e287]:
+            - img [ref=e289] [cursor=pointer]:
+              - img [ref=e290]
+            - link "Markdown to HTML" [ref=e295] [cursor=pointer]:
+              - /url: /markdown-to-html
+          - menuitem "HTML to Markdown" [ref=e296]:
+            - img [ref=e298] [cursor=pointer]:
+              - img [ref=e299]
+            - link "HTML to Markdown" [ref=e305] [cursor=pointer]:
+              - /url: /html-to-markdown
+      - generic [ref=e306]:
+        - generic [ref=e307] [cursor=pointer]:
+          - img [ref=e309]
+          - generic [ref=e311]: Web
+        - menu [ref=e315]:
+          - menuitem "Encode/decode URL-formatted strings" [ref=e316]:
+            - img [ref=e318] [cursor=pointer]:
+              - img [ref=e319]
+            - link "Encode/decode URL-formatted strings" [ref=e323] [cursor=pointer]:
+              - /url: /url-encoder
+          - menuitem "Escape HTML entities" [ref=e324]:
+            - img [ref=e326] [cursor=pointer]:
+              - img [ref=e327]
+            - link "Escape HTML entities" [ref=e332] [cursor=pointer]:
+              - /url: /html-entities
+          - menuitem "URL parser" [ref=e333]:
+            - img [ref=e335] [cursor=pointer]:
+              - img [ref=e336]
+            - link "URL parser" [ref=e340] [cursor=pointer]:
+              - /url: /url-parser
+          - menuitem "Device information" [ref=e341]:
+            - img [ref=e343] [cursor=pointer]:
+              - img [ref=e344]
+            - link "Device information" [ref=e347] [cursor=pointer]:
+              - /url: /device-information
+          - menuitem "Basic auth generator" [ref=e348]:
+            - img [ref=e350] [cursor=pointer]:
+              - img [ref=e351]
+            - link "Basic auth generator" [ref=e353] [cursor=pointer]:
+              - /url: /basic-auth-generator
+          - menuitem "Open graph meta generator" [ref=e354]:
+            - img [ref=e356] [cursor=pointer]:
+              - img [ref=e357]
+            - link "Open graph meta generator" [ref=e361] [cursor=pointer]:
+              - /url: /og-meta-generator
+          - menuitem "OTP code generator" [ref=e362]:
+            - img [ref=e364] [cursor=pointer]:
+              - img [ref=e365]
+            - link "OTP code generator" [ref=e368] [cursor=pointer]:
+              - /url: /otp-generator
+          - menuitem "MIME types" [ref=e369]:
+            - img [ref=e371] [cursor=pointer]:
+              - img [ref=e372]
+            - link "MIME types" [ref=e377] [cursor=pointer]:
+              - /url: /mime-types
+          - menuitem "JWT parser" [ref=e378]:
+            - img [ref=e380] [cursor=pointer]:
+              - img [ref=e381]
+            - link "JWT parser" [ref=e387] [cursor=pointer]:
+              - /url: /jwt-parser
+          - menuitem "Keycode info" [ref=e388]:
+            - img [ref=e390] [cursor=pointer]:
+              - img [ref=e391]
+            - link "Keycode info" [ref=e394] [cursor=pointer]:
+              - /url: /keycode-info
+          - menuitem "Slugify string" [ref=e395]:
+            - img [ref=e397] [cursor=pointer]:
+              - img [ref=e398]
+            - link "Slugify string" [ref=e400] [cursor=pointer]:
+              - /url: /slugify-string
+          - menuitem "HTML WYSIWYG editor" [ref=e401]:
+            - img [ref=e403] [cursor=pointer]:
+              - img [ref=e404]
+            - link "HTML WYSIWYG editor" [ref=e409] [cursor=pointer]:
+              - /url: /html-wysiwyg-editor
+          - menuitem "User-agent parser" [ref=e410]:
+            - img [ref=e412] [cursor=pointer]:
+              - img [ref=e413]
+            - link "User-agent parser" [ref=e416] [cursor=pointer]:
+              - /url: /user-agent-parser
+          - menuitem "HTTP status codes" [ref=e417]:
+            - img [ref=e419] [cursor=pointer]:
+              - img [ref=e420]
+            - link "HTTP status codes" [ref=e422] [cursor=pointer]:
+              - /url: /http-status-codes
+          - menuitem "JSON diff" [ref=e423]:
+            - img [ref=e425] [cursor=pointer]:
+              - img [ref=e426]
+            - link "JSON diff" [ref=e428] [cursor=pointer]:
+              - /url: /json-diff
+          - menuitem "Outlook Safelink decoder" [ref=e429]:
+            - img [ref=e431] [cursor=pointer]:
+              - img [ref=e432]
+            - link "Outlook Safelink decoder" [ref=e436] [cursor=pointer]:
+              - /url: /safelink-decoder
+      - generic [ref=e437]:
+        - generic [ref=e438] [cursor=pointer]:
+          - img [ref=e440]
+          - generic [ref=e442]: Images & Videos
+        - menu [ref=e446]:
+          - menuitem "QR Code generator" [ref=e447]:
+            - img [ref=e449] [cursor=pointer]:
+              - img [ref=e450]
+            - link "QR Code generator" [ref=e455] [cursor=pointer]:
+              - /url: /qrcode-generator
+          - menuitem "WiFi QR Code generator" [ref=e456]:
+            - img [ref=e458] [cursor=pointer]:
+              - img [ref=e459]
+            - link "WiFi QR Code generator" [ref=e464] [cursor=pointer]:
+              - /url: /wifi-qrcode-generator
+          - menuitem "SVG placeholder generator" [ref=e465]:
+            - img [ref=e467] [cursor=pointer]:
+              - img [ref=e468]
+            - link "SVG placeholder generator" [ref=e470] [cursor=pointer]:
+              - /url: /svg-placeholder-generator
+          - menuitem "Camera recorder" [ref=e471]:
+            - img [ref=e473] [cursor=pointer]:
+              - img [ref=e474]
+            - link "Camera recorder" [ref=e478] [cursor=pointer]:
+              - /url: /camera-recorder
+      - generic [ref=e479]:
+        - generic [ref=e480] [cursor=pointer]:
+          - img [ref=e482]
+          - generic [ref=e484]: Development
+        - menu [ref=e488]:
+          - menuitem "Git cheatsheet" [ref=e489]:
+            - img [ref=e491] [cursor=pointer]:
+              - img [ref=e492]
+            - link "Git cheatsheet" [ref=e500] [cursor=pointer]:
+              - /url: /git-memo
+          - menuitem "Random port generator" [ref=e501]:
+            - img [ref=e503] [cursor=pointer]:
+              - img [ref=e504]
+            - link "Random port generator" [ref=e508] [cursor=pointer]:
+              - /url: /random-port-generator
+          - menuitem "Crontab generator" [ref=e509]:
+            - img [ref=e511] [cursor=pointer]:
+              - img [ref=e512]
+            - link "Crontab generator" [ref=e518] [cursor=pointer]:
+              - /url: /crontab-generator
+          - menuitem "JSON prettify and format" [ref=e519]:
+            - img [ref=e521] [cursor=pointer]:
+              - img [ref=e522]
+            - link "JSON prettify and format" [ref=e526] [cursor=pointer]:
+              - /url: /json-prettify
+          - menuitem "JSON minify" [ref=e527]:
+            - img [ref=e529] [cursor=pointer]:
+              - img [ref=e530]
+            - link "JSON minify" [ref=e534] [cursor=pointer]:
+              - /url: /json-minify
+          - menuitem "JSON to CSV" [ref=e535]:
+            - img [ref=e537] [cursor=pointer]:
+              - img [ref=e538]
+            - link "JSON to CSV" [ref=e540] [cursor=pointer]:
+              - /url: /json-to-csv
+          - menuitem "SQL prettify and format" [ref=e541]:
+            - img [ref=e543] [cursor=pointer]:
+              - img [ref=e544]
+            - link "SQL prettify and format" [ref=e549] [cursor=pointer]:
+              - /url: /sql-prettify
+          - menuitem "Chmod calculator" [ref=e550]:
+            - img [ref=e552] [cursor=pointer]:
+              - img [ref=e553]
+            - link "Chmod calculator" [ref=e557] [cursor=pointer]:
+              - /url: /chmod-calculator
+          - menuitem "Docker run to Docker compose converter" [ref=e558]:
+            - img [ref=e560] [cursor=pointer]:
+              - img [ref=e561]
+            - link "Docker run to Docker compose converter" [ref=e571] [cursor=pointer]:
+              - /url: /docker-run-to-docker-compose-converter
+          - menuitem "XML formatter" [ref=e572]:
+            - img [ref=e574] [cursor=pointer]:
+              - img [ref=e575]
+            - link "XML formatter" [ref=e580] [cursor=pointer]:
+              - /url: /xml-formatter
+          - menuitem "YAML prettify and format" [ref=e581]:
+            - img [ref=e583] [cursor=pointer]:
+              - img [ref=e584]
+            - link "YAML prettify and format" [ref=e586] [cursor=pointer]:
+              - /url: /yaml-prettify
+          - menuitem "Email normalizer" [ref=e587]:
+            - img [ref=e589] [cursor=pointer]:
+              - img [ref=e590]
+            - link "Email normalizer" [ref=e594] [cursor=pointer]:
+              - /url: /email-normalizer
+          - menuitem "Regex Tester" [ref=e595]:
+            - img [ref=e597] [cursor=pointer]:
+              - img [ref=e598]
+            - link "Regex Tester" [ref=e603] [cursor=pointer]:
+              - /url: /regex-tester
+          - menuitem "Regex cheatsheet" [ref=e604]:
+            - img [ref=e606] [cursor=pointer]:
+              - img [ref=e607]
+            - link "Regex cheatsheet" [ref=e612] [cursor=pointer]:
+              - /url: /regex-memo
+          - menuitem "cURL to Code" [ref=e613]:
+            - img [ref=e615] [cursor=pointer]:
+              - img [ref=e616]
+            - link "cURL to Code" [ref=e620] [cursor=pointer]:
+              - /url: /curl-to-code
+          - menuitem "JSON to TypeScript/Go" [ref=e621]:
+            - img [ref=e623] [cursor=pointer]:
+              - img [ref=e624]
+            - link "JSON to TypeScript/Go" [ref=e629] [cursor=pointer]:
+              - /url: /json-to-types
+          - menuitem "CSS/JS Prettify & Minify" [ref=e630]:
+            - img [ref=e632] [cursor=pointer]:
+              - img [ref=e633]
+            - link "CSS/JS Prettify & Minify" [ref=e639] [cursor=pointer]:
+              - /url: /css-js-prettify-minify
+      - generic [ref=e640]:
+        - generic [ref=e641] [cursor=pointer]:
+          - img [ref=e643]
+          - generic [ref=e645]: Network
+        - menu [ref=e649]:
+          - menuitem "IPv4 subnet calculator" [ref=e650]:
+            - img [ref=e652] [cursor=pointer]:
+              - img [ref=e653]
+            - link "IPv4 subnet calculator" [ref=e655] [cursor=pointer]:
+              - /url: /ipv4-subnet-calculator
+          - menuitem "IPv4 address converter" [ref=e656]:
+            - img [ref=e658] [cursor=pointer]:
+              - img [ref=e659]
+            - link "IPv4 address converter" [ref=e665] [cursor=pointer]:
+              - /url: /ipv4-address-converter
+          - menuitem "IPv4 range expander" [ref=e666]:
+            - img [ref=e668] [cursor=pointer]:
+              - img [ref=e669]
+            - link "IPv4 range expander" [ref=e671] [cursor=pointer]:
+              - /url: /ipv4-range-expander
+          - menuitem "MAC address lookup" [ref=e672]:
+            - img [ref=e674] [cursor=pointer]:
+              - img [ref=e675]
+            - link "MAC address lookup" [ref=e679] [cursor=pointer]:
+              - /url: /mac-address-lookup
+          - menuitem "MAC address generator" [ref=e680]:
+            - img [ref=e682] [cursor=pointer]:
+              - img [ref=e683]
+            - link "MAC address generator" [ref=e687] [cursor=pointer]:
+              - /url: /mac-address-generator
+          - menuitem "IPv6 ULA generator" [ref=e688]:
+            - img [ref=e690] [cursor=pointer]:
+              - img [ref=e691]
+            - link "IPv6 ULA generator" [ref=e696] [cursor=pointer]:
+              - /url: /ipv6-ula-generator
+          - menuitem "DNS Query" [ref=e697]:
+            - img [ref=e699] [cursor=pointer]:
+              - img [ref=e700]
+            - link "DNS Query" [ref=e706] [cursor=pointer]:
+              - /url: /dns-query
+      - generic [ref=e707]:
+        - generic [ref=e708] [cursor=pointer]:
+          - img [ref=e710]
+          - generic [ref=e712]: Math
+        - menu [ref=e716]:
+          - menuitem "Math evaluator" [ref=e717]:
+            - img [ref=e719] [cursor=pointer]:
+              - img [ref=e720]
+            - link "Math evaluator" [ref=e724] [cursor=pointer]:
+              - /url: /math-evaluator
+          - menuitem "ETA calculator" [ref=e725]:
+            - img [ref=e727] [cursor=pointer]:
+              - img [ref=e728]
+            - link "ETA calculator" [ref=e732] [cursor=pointer]:
+              - /url: /eta-calculator
+          - menuitem "Percentage calculator" [ref=e733]:
+            - img [ref=e735] [cursor=pointer]:
+              - img [ref=e736]
+            - link "Percentage calculator" [ref=e741] [cursor=pointer]:
+              - /url: /percentage-calculator
+      - generic [ref=e742]:
+        - generic [ref=e743] [cursor=pointer]:
+          - img [ref=e745]
+          - generic [ref=e747]: Measurement
+        - menu [ref=e751]:
+          - menuitem "Chronometer" [ref=e752]:
+            - img [ref=e754] [cursor=pointer]:
+              - img [ref=e755]
+            - link "Chronometer" [ref=e757] [cursor=pointer]:
+              - /url: /chronometer
+          - menuitem "Temperature converter" [ref=e758]:
+            - img [ref=e760] [cursor=pointer]:
+              - img [ref=e761]
+            - link "Temperature converter" [ref=e764] [cursor=pointer]:
+              - /url: /temperature-converter
+          - menuitem "Benchmark builder" [ref=e765]:
+            - img [ref=e767] [cursor=pointer]:
+              - img [ref=e768]
+            - link "Benchmark builder" [ref=e770] [cursor=pointer]:
+              - /url: /benchmark-builder
+          - menuitem "Byte unit converter" [ref=e771]:
+            - img [ref=e773] [cursor=pointer]:
+              - img [ref=e774]
+            - link "Byte unit converter" [ref=e781] [cursor=pointer]:
+              - /url: /byte-unit-converter
+      - generic [ref=e782]:
+        - generic [ref=e783] [cursor=pointer]:
+          - img [ref=e785]
+          - generic [ref=e787]: Text
+        - menu [ref=e791]:
+          - menuitem "Lorem ipsum generator" [ref=e792]:
+            - img [ref=e794] [cursor=pointer]:
+              - img [ref=e795]
+            - link "Lorem ipsum generator" [ref=e797] [cursor=pointer]:
+              - /url: /lorem-ipsum-generator
+          - menuitem "Text statistics" [ref=e798]:
+            - img [ref=e800] [cursor=pointer]:
+              - img [ref=e801]
+            - link "Text statistics" [ref=e805] [cursor=pointer]:
+              - /url: /text-statistics
+          - menuitem "Emoji picker" [ref=e806]:
+            - img [ref=e808] [cursor=pointer]:
+              - img [ref=e809]
+            - link "Emoji picker" [ref=e813] [cursor=pointer]:
+              - /url: /emoji-picker
+          - menuitem "String obfuscator" [ref=e814]:
+            - img [ref=e816] [cursor=pointer]:
+              - img [ref=e817]
+            - link "String obfuscator" [ref=e822] [cursor=pointer]:
+              - /url: /string-obfuscator
+          - menuitem "Text diff" [ref=e823]:
+            - img [ref=e825] [cursor=pointer]:
+              - img [ref=e826]
+            - link "Text diff" [ref=e830] [cursor=pointer]:
+              - /url: /text-diff
+          - menuitem "Numeronym generator" [ref=e831]:
+            - img [ref=e833] [cursor=pointer]:
+              - img [ref=e834]:
+                - generic "n7m" [ref=e835]
+            - link "Numeronym generator" [ref=e836] [cursor=pointer]:
+              - /url: /numeronym-generator
+          - menuitem "ASCII Art Text Generator" [ref=e837]:
+            - img [ref=e839] [cursor=pointer]:
+              - img [ref=e840]
+            - link "ASCII Art Text Generator" [ref=e843] [cursor=pointer]:
+              - /url: /ascii-text-drawer
+      - generic [ref=e844]:
+        - generic [ref=e845] [cursor=pointer]:
+          - img [ref=e847]
+          - generic [ref=e849]: Data
+        - menu [ref=e853]:
+          - menuitem "Phone parser and formatter" [ref=e854]:
+            - img [ref=e856] [cursor=pointer]:
+              - img [ref=e857]
+            - link "Phone parser and formatter" [ref=e859] [cursor=pointer]:
+              - /url: /phone-parser-and-formatter
+          - menuitem "IBAN validator and parser" [ref=e860]:
+            - img [ref=e862] [cursor=pointer]:
+              - img [ref=e863]
+            - link "IBAN validator and parser" [ref=e865] [cursor=pointer]:
+              - /url: /iban-validator-and-parser
+      - generic [ref=e866]:
+        - generic [ref=e867]:
+          - text: IT-Tools
+          - link "v2024.10.22-7ca5933" [ref=e868] [cursor=pointer]:
+            - /url: https://github.com/CorentinTh/it-tools/tree/v2024.10.22-7ca5933
+        - generic [ref=e869]:
+          - text: © 2026
+          - link "Corentin Thomasset" [ref=e870] [cursor=pointer]:
+            - /url: https://corentin.tech?utm_source=it-tools&utm_medium=footer
+  - generic [ref=e873]:
+    - generic [ref=e874]:
+      - button "Toggle menu" [ref=e875] [cursor=pointer]:
+        - img [ref=e876]:
+          - img [ref=e877]
+      - link "Home" [ref=e881] [cursor=pointer]:
+        - /url: /
+        - img [ref=e882]:
+          - img [ref=e883]
+      - link "UI Lib" [ref=e890] [cursor=pointer]:
+        - /url: /c-lib
+        - img [ref=e891]
+      - button "Search Cmd + K" [ref=e894] [cursor=pointer]:
+        - generic [ref=e895]:
+          - img [ref=e896]
+          - text: Search
+          - generic [ref=e898]: Cmd + K
+      - generic [ref=e901] [cursor=pointer]:
+        - generic [ref=e902]: English
+        - img [ref=e903]
+      - generic [ref=e905]:
+        - link "IT-Tools GitHub repository" [ref=e908] [cursor=pointer]:
+          - /url: https://github.com/CorentinTh/it-tools
+          - img [ref=e909]:
+            - img [ref=e910]
+        - link "IT Tools X account" [ref=e914] [cursor=pointer]:
+          - /url: https://x.com/ittoolsdottech
+          - img [ref=e915]:
+            - img [ref=e916]
+        - link "About" [ref=e921] [cursor=pointer]:
+          - /url: /about
+          - img [ref=e922]:
+            - img [ref=e923]
+        - button "Toggle dark/light mode" [ref=e928] [cursor=pointer]:
+          - img [ref=e929]:
+            - img [ref=e930]
+      - link "Buy me a coffee" [ref=e934] [cursor=pointer]:
+        - /url: https://www.buymeacoffee.com/cthmsst
+        - text: Buy me a coffee
+        - img [ref=e935]:
+          - img [ref=e936]
+    - generic [ref=e939]:
+      - generic [ref=e940]:
+        - heading "DNS Query" [level=1] [ref=e941]
+        - button [ref=e945] [cursor=pointer]:
+          - img [ref=e946]
+      - generic [ref=e949]: Query DNS records (A, AAAA, CNAME, MX, TXT, NS, SOA, ...) for any domain name online using Cloudflare DNS.
+    - generic [ref=e951]:
+      - generic [ref=e952]:
+        - generic [ref=e953]: Domain name
+        - generic [ref=e955]:
+          - textbox "Domain name" [ref=e956]:
+            - /placeholder: e.g. example.com
+            - text: example.com
+          - button [ref=e957] [cursor=pointer]:
+            - img [ref=e958]
+      - generic [ref=e960]:
+        - generic [ref=e961]: Record type
+        - generic [ref=e963] [cursor=pointer]:
+          - generic [ref=e964]: A
+          - img [ref=e965]
+      - button "Query DNS" [ref=e968] [cursor=pointer]
+      - generic [ref=e969]:
+        - generic [ref=e970]:
+          - generic [ref=e971]: "Status:"
+          - generic [ref=e972]: NOERROR
+        - table [ref=e973]:
+          - rowgroup [ref=e974]:
+            - row "Name TTL Data" [ref=e975]:
+              - columnheader "Name" [ref=e976]
+              - columnheader "TTL" [ref=e977]
+              - columnheader "Data" [ref=e978]
+          - rowgroup [ref=e979]:
+            - row "example.com 123s 104.20.23.154" [ref=e980]:
+              - cell "example.com" [ref=e981]
+              - cell "123s" [ref=e982]
+              - cell "104.20.23.154" [ref=e983]
+            - row "example.com 123s 172.66.147.243" [ref=e984]:
+              - cell "example.com" [ref=e985]
+              - cell "123s" [ref=e986]
+              - cell "172.66.147.243" [ref=e987]
+        - button "Copy results" [ref=e989] [cursor=pointer]

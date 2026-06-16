@@ -1,0 +1,14 @@
+name = "it-tools"
+main = "worker.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+html_handling = "auto-trailing-slash"
+not_found_handling = "single-page-application"
+
+[[routes]]
+pattern = "it-tools.88586688.xyz"
+custom_domain = true
