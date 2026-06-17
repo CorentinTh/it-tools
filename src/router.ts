@@ -27,6 +27,11 @@ const router = createRouter({
       component: HomePage,
     },
     {
+      path: '/login',
+      name: 'login',
+      component: () => import('./pages/Login.vue'),
+    },
+    {
       path: '/about',
       name: 'about',
       component: () => import('./pages/About.vue'),
@@ -37,5 +42,16 @@ const router = createRouter({
     { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
   ],
 });
+
+if (config.app.token){
+  router.beforeEach((to, from, next) => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    if (to.path !== '/login' && !isLoggedIn) {
+      next('/login');
+    } else {
+      next();
+    }
+  });
+}
 
 export default router;
