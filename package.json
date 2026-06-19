@@ -34,9 +34,12 @@
     "lint": "eslint src --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore",
     "script:create:tool": "node scripts/create-tool.mjs",
     "script:create:ui": "hygen generator ui-component",
-    "release": "node ./scripts/release.mjs"
+    "release": "node ./scripts/release.mjs",
+    "api:dev": "tsx --tsconfig tsconfig.server.json server/index.ts",
+    "api:start": "tsx --tsconfig tsconfig.server.json server/index.ts"
   },
   "dependencies": {
+    "@hono/node-server": "^2.0.5",
     "@it-tools/bip39": "^0.0.4",
     "@it-tools/oggen": "^1.3.0",
     "@regexper/render": "^1.0.0",
@@ -68,6 +71,7 @@
     "figue": "^1.2.0",
     "fuse.js": "^6.6.2",
     "highlight.js": "^11.7.0",
+    "hono": "^4.12.26",
     "iarna-toml-esm": "^3.0.5",
     "ibantools": "^4.3.3",
     "js-base64": "^3.7.6",
@@ -89,6 +93,7 @@
     "plausible-tracker": "^0.3.8",
     "qrcode": "^1.5.1",
     "randexp": "^0.5.3",
+    "smol-toml": "^1.6.1",
     "sql-formatter": "^13.0.0",
     "ua-parser-js": "^1.0.35",
     "ulid": "^2.3.0",
@@ -137,6 +142,7 @@
     "jsdom": "^22.0.0",
     "less": "^4.1.3",
     "prettier": "^3.0.0",
+    "tsx": "^4.22.4",
     "typescript": "~5.2.0",
     "unocss": "^0.65.1",
     "unocss-preset-scrollbar": "^0.2.1",
@@ -149,5 +155,10 @@
     "vitest": "^0.34.0",
     "workbox-window": "^7.0.0",
     "zx": "^7.2.1"
+  },
+  "pnpm": {
+    "overrides": {
+      "@vueuse/shared": "10.3.0"
+    }
   }
 }

@@ -1,0 +1,10 @@
+services:
+  it-tools:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    environment:
+      - API_PORT=3001
