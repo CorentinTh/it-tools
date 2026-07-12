@@ -12,13 +12,14 @@ import {
   sentenceCase,
   snakeCase,
 } from 'change-case';
+import { useStorage } from '@vueuse/core';
 import InputCopyable from '../../components/InputCopyable.vue';
 
 const baseConfig = {
   stripRegexp: /[^A-Za-zÀ-ÖØ-öø-ÿ]+/gi,
 };
 
-const input = ref('lorem ipsum dolor sit amet');
+const input = useStorage('case-converter:input', 'lorem ipsum dolor sit amet');
 
 const formats = computed(() => [
   {
