@@ -1,4 +1,5 @@
 import { resolve } from 'node:path';
+import process from 'node:process';
 import { URL, fileURLToPath } from 'node:url';
 
 import VueI18n from '@intlify/unplugin-vue-i18n/vite';
@@ -60,11 +61,11 @@ export default defineConfig({
         name: 'IT Tools',
         description: 'Aggregated set of useful tools for developers.',
         display: 'standalone',
-        lang: 'fr-FR',
+        lang: 'en',
         start_url: `${baseUrl}?utm_source=pwa&utm_medium=pwa`,
         orientation: 'any',
-        theme_color: '#18a058',
-        background_color: '#f1f5f9',
+        theme_color: '#7868f4',
+        background_color: '#f7f7fb',
         icons: [
           {
             src: '/favicon-16x16.png',

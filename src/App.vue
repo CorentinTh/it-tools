@@ -21,19 +21,30 @@ syncRef(
 </script>
 
 <template>
-  <n-config-provider :theme="theme" :theme-overrides="themeOverrides">
-    <NGlobalStyle />
-    <NMessageProvider placement="bottom">
-      <NNotificationProvider placement="bottom-right">
-        <component :is="layout">
-          <RouterView />
-        </component>
-      </NNotificationProvider>
-    </NMessageProvider>
-  </n-config-provider>
+  <div class="app-root" :class="{ 'app-root--dark': styleStore.isDarkTheme }">
+    <n-config-provider :theme="theme" :theme-overrides="themeOverrides">
+      <NGlobalStyle />
+      <NMessageProvider placement="bottom">
+        <NNotificationProvider placement="bottom-right">
+          <component :is="layout">
+            <RouterView />
+          </component>
+        </NNotificationProvider>
+      </NMessageProvider>
+    </n-config-provider>
+  </div>
 </template>
 
 <style>
+.app-root {
+  min-height: 100vh;
+  color-scheme: light;
+}
+
+.app-root--dark {
+  color-scheme: dark;
+}
+
 body {
   min-height: 100%;
   margin: 0;
