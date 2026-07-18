@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  OuiLookupError,
   parseOuiLookupTask,
   parseOuiWorkerMessage,
   parseOuiWorkerRequest,
@@ -34,5 +35,20 @@ describe('OUI worker protocol', () => {
     { jobId: 1, type: 'error', code: 'operation', message: 'x'.repeat(1_001) },
   ])('rejects malformed worker messages %#', (message) => {
     expect(() => parseOuiWorkerMessage(message)).toThrow();
+  });
+
+  it.each([
+    { type: 'result', operation: 'lookup', value: 'Cisco' },
+    { jobId: 0, type: 'result', operation: 'lookup', value: 'Cisco' },
+    { jobId: '1', type: 'result', operation: 'lookup', value: 'Cisco' },
+  ])('classifies an invalid response job identifier as a worker protocol failure %#', (message) => {
+    try {
+      parseOuiWorkerMessage(message);
+      throw new Error('Expected the response to be rejected.');
+    }
+    catch (error) {
+      expect(error).toBeInstanceOf(OuiLookupError);
+      expect((error as OuiLookupError).code).toBe('worker');
+    }
   });
 });

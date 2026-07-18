@@ -1,4 +1,4 @@
-import { exceedsUtf8ByteLimit } from '@/utils/utf8';
+import { exceedsUtf8ByteLimit, hasPlausibleUtf8ByteLength } from '@/utils/utf8';
 
 export const JSON_LIVE_FORMAT_MAX_BYTES = 100_000;
 export const JSON_MAX_INPUT_BYTES = 2 * 1024 * 1024;
@@ -71,13 +71,6 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 
 function isJsonFormatMode(value: unknown): value is JsonFormatMode {
   return value === 'strict' || value === 'json5';
-}
-
-function hasPlausibleUtf8ByteLength(value: string, byteLength: unknown, maxBytes: number): byteLength is number {
-  return typeof byteLength === 'number'
-    && Number.isSafeInteger(byteLength)
-    && byteLength >= value.length
-    && byteLength <= Math.min(maxBytes, value.length * 3);
 }
 
 export function parseJsonTask(value: unknown): JsonFormatTask {

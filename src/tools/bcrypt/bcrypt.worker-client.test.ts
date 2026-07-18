@@ -132,6 +132,38 @@ describe('BcryptWorkerClient', () => {
     expect(failedHarness.workers[0].terminateCount).toBe(1);
   });
 
+  it('does not expose oversized or unsafe worker error text', async () => {
+    const oversizedHarness = createHarness();
+    const oversizedResult = rejectedError(
+      oversizedHarness.client.run({ operation: 'hash', value: 'secret', rounds: 4 }),
+    );
+    oversizedHarness.workers[0].emit({
+      jobId: 1,
+      type: 'error',
+      code: 'operation',
+      message: 'x'.repeat(1_001),
+    });
+
+    const oversizedError = await oversizedResult;
+    expect(oversizedError.code).toBe('worker');
+    expect(oversizedError.message.length).toBeLessThanOrEqual(1_000);
+
+    const unsafeHarness = createHarness();
+    const unsafeResult = rejectedError(
+      unsafeHarness.client.run({ operation: 'hash', value: 'secret', rounds: 4 }),
+    );
+    unsafeHarness.workers[0].emit({
+      jobId: 1,
+      type: 'error',
+      code: 'operation',
+      message: '\u0000Local failure\u0007',
+    });
+
+    const unsafeError = await unsafeResult;
+    expect(unsafeError.code).toBe('operation');
+    expect(unsafeError.message).toBe('Local failure');
+  });
+
   it('rejects malformed tasks without creating or replacing a worker', async () => {
     const { client, workers } = createHarness();
     const activeResult = client.run({ operation: 'hash', value: 'secret', rounds: 4 });

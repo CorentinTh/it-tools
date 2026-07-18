@@ -85,7 +85,7 @@ describe('JsonWorkerClient', () => {
     await expectTaskError(stalePromise, 'cancelled');
     expect(workers[0].terminated).toBe(true);
     workers[0].emit(result(1, 'stale'));
-    workers[1].emit(result(999, 'wrong'));
+    workers[1].emit(result(999, 'wrong', 'json5'));
     workers[1].emit(result(2, '{"second":true}'));
 
     await expect(currentPromise).resolves.toMatchObject({ value: '{"second":true}' });
@@ -149,6 +149,17 @@ describe('JsonWorkerClient', () => {
     const activePromise = client.run(task());
     client.dispose();
     await expectTaskError(activePromise, 'cancelled');
+    expect(workers[0].terminated).toBe(true);
+  });
+
+  it('cancels active work before rejecting an invalid replacement', async () => {
+    const { client, workers } = createHarness();
+    const activePromise = client.run(task());
+    const activeRejection = expectTaskError(activePromise, 'cancelled');
+
+    await expectTaskError(client.run(task('x'.repeat(JSON_MAX_INPUT_BYTES + 1))), 'limit');
+    await activeRejection;
+    expect(workers).toHaveLength(1);
     expect(workers[0].terminated).toBe(true);
   });
 

@@ -65,6 +65,7 @@ import { tool as hmacGenerator } from './hmac-generator';
 import { tool as htmlEntities } from './html-entities';
 import { tool as baseConverter } from './integer-base-converter';
 import { tool as jsonViewer } from './json-viewer';
+import { tool as jsonSchemaValidator } from './json-schema-validator';
 import { tool as jwtParser } from './jwt-parser';
 import { tool as loremIpsumGenerator } from './lorem-ipsum-generator';
 import { tool as mathEvaluator } from './math-evaluator';
@@ -151,6 +152,7 @@ export const toolsByCategory: ToolCategory[] = [
       randomPortGenerator,
       crontabGenerator,
       jsonViewer,
+      jsonSchemaValidator,
       jsonMinify,
       jsonToCsv,
       sqlPrettify,

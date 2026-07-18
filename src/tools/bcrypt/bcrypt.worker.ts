@@ -3,7 +3,9 @@ import {
   type BcryptTask,
   BcryptTaskError,
   type BcryptWorkerMessage,
+  parseBcryptWorkerJobId,
   parseBcryptWorkerRequest,
+  sanitizeBcryptWorkerErrorMessage,
   toBcryptTaskError,
 } from './bcrypt.worker.protocol';
 
@@ -60,14 +62,19 @@ workerScope.addEventListener('message', (event) => {
 
   void (async () => {
     try {
+      jobId = parseBcryptWorkerJobId(event.data);
       const request = parseBcryptWorkerRequest(event.data);
-      jobId = request.jobId;
       await executeTask(jobId, request.task);
     }
     catch (error) {
       const taskError = toBcryptTaskError(error);
       const code = taskError instanceof BcryptTaskError && taskError.code === 'validation' ? 'validation' : 'operation';
-      workerScope.postMessage({ jobId, type: 'error', code, message: taskError.message });
+      workerScope.postMessage({
+        jobId,
+        type: 'error',
+        code,
+        message: sanitizeBcryptWorkerErrorMessage(taskError.message),
+      });
     }
   })();
 });

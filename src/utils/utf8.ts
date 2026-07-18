@@ -42,6 +42,26 @@ export function exceedsUtf8ByteLimit(value: string, maxBytes: number): boolean {
 }
 
 /**
+ * Validate byte metadata produced by a worker without re-encoding the complete
+ * result on the main thread. UTF-8 needs between one and three bytes per
+ * UTF-16 code unit (a surrogate pair uses four bytes for two code units).
+ */
+export function hasPlausibleUtf8ByteLength(
+  value: string,
+  byteLength: unknown,
+  maxBytes: number,
+): byteLength is number {
+  if (!Number.isSafeInteger(maxBytes) || maxBytes < 0) {
+    throw new RangeError('maxBytes must be a non-negative safe integer.');
+  }
+
+  return typeof byteLength === 'number'
+    && Number.isSafeInteger(byteLength)
+    && byteLength >= value.length
+    && byteLength <= Math.min(maxBytes, value.length * 3);
+}
+
+/**
  * Return the longest prefix whose UTF-8 representation fits within maxBytes.
  * Surrogate pairs are kept intact, and unmatched surrogates use the same
  * replacement-character byte accounting as TextEncoder.

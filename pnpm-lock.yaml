@@ -47,6 +47,9 @@ importers:
       '@vueuse/router':
         specifier: ^10.0.0
         version: 10.0.0(vue-router@4.1.6(vue@3.3.4))(vue@3.3.4)
+      ajv:
+        specifier: 8.17.1
+        version: 8.17.1
       bcryptjs:
         specifier: ^2.4.3
         version: 2.4.3

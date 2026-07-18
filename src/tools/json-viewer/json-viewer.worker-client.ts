@@ -2,19 +2,19 @@ import {
   JSON_TASK_TIMEOUT_MS,
   type JsonFormatTask,
   JsonTaskError,
+  type JsonWorkerMessage,
   type JsonWorkerRequest,
   parseJsonTask,
   parseJsonWorkerMessage,
   toJsonTaskError,
 } from './json-viewer.worker.protocol';
+import {
+  TerminateAndReplaceWorkerTask,
+  type WorkerTaskEvent,
+  type WorkerTaskHandle,
+} from '@/utils/worker-task';
 
-export interface JsonWorkerHandle {
-  onmessage: ((event: MessageEvent<unknown>) => void) | null
-  onerror: ((event: ErrorEvent) => void) | null
-  postMessage: (message: JsonWorkerRequest) => void
-  terminate: () => void
-}
-
+export type JsonWorkerHandle = WorkerTaskHandle<JsonWorkerRequest>;
 export type JsonWorkerFactory = () => JsonWorkerHandle;
 
 export interface JsonTaskResult {
@@ -22,9 +22,10 @@ export interface JsonTaskResult {
   elapsedMs: number
 }
 
-interface ActiveTask {
-  cancel: (code: 'cancelled' | 'timeout', message: string) => void
-}
+type JsonWorkerErrorCode = Extract<JsonWorkerMessage, { type: 'error' }>['code'];
+type JsonWorkerResult = Extract<JsonWorkerMessage, { type: 'result' }>;
+
+const REPLACEMENT_MESSAGE = 'A newer JSON formatting operation replaced this one.';
 
 function createWorker(): JsonWorkerHandle {
   return new Worker(new URL('./json-viewer.worker.ts', import.meta.url), {
@@ -33,17 +34,63 @@ function createWorker(): JsonWorkerHandle {
   });
 }
 
+function decodeWorkerMessage(
+  value: unknown,
+): WorkerTaskEvent<JsonWorkerResult, JsonWorkerErrorCode> {
+  const message = parseJsonWorkerMessage(value);
+
+  if (message.type === 'error') {
+    return message;
+  }
+
+  return { jobId: message.jobId, type: 'result', result: message };
+}
+
+function resolveWorkerResult(result: JsonWorkerResult, expectedTask: JsonFormatTask): string {
+  if (result.operation !== expectedTask.operation || result.mode !== expectedTask.mode) {
+    throw new JsonTaskError('worker', 'The JSON worker returned a result for the wrong operation.');
+  }
+
+  return result.value;
+}
+
 export class JsonWorkerClient {
-  private activeTask: ActiveTask | undefined;
-  private nextJobId = 0;
+  private readonly taskRunner: TerminateAndReplaceWorkerTask<
+    JsonFormatTask,
+    JsonWorkerResult,
+    string,
+    JsonWorkerErrorCode,
+    JsonTaskError
+  >;
 
   constructor(
-    private readonly workerFactory: JsonWorkerFactory = createWorker,
-    private readonly timeoutMs = JSON_TASK_TIMEOUT_MS,
-  ) {}
+    workerFactory: JsonWorkerFactory = createWorker,
+    timeoutMs = JSON_TASK_TIMEOUT_MS,
+  ) {
+    this.taskRunner = new TerminateAndReplaceWorkerTask({
+      workerFactory,
+      timeoutMs,
+      messages: {
+        replacement: REPLACEMENT_MESSAGE,
+        unavailable: 'JSON formatting workers are not available in this browser.',
+        timeout: (_task, deadlineMs) => `JSON formatting exceeded the ${deadlineMs / 1000}-second time limit.`,
+        crash: 'The JSON worker stopped unexpectedly.',
+        postMessageFailure: 'JSON formatting could not be started.',
+      },
+      decodeMessage: decodeWorkerMessage,
+      resolveResult: resolveWorkerResult,
+      createError: (code, message, elapsedMs) => new JsonTaskError(code, message, elapsedMs),
+      protocolError: (error, elapsedMs) => {
+        const taskError = toJsonTaskError(error, 'worker');
+        return new JsonTaskError('worker', taskError.message, elapsedMs);
+      },
+    });
+  }
 
   run(task: JsonFormatTask): Promise<JsonTaskResult> {
-    this.cancel('A newer JSON formatting operation replaced this one.');
+    // JSON formatting is latest-input-wins even when the replacement is
+    // invalid, so cancel before validating the new task.
+    this.cancel(REPLACEMENT_MESSAGE);
 
     let validatedTask: JsonFormatTask;
     try {
@@ -53,111 +100,11 @@ export class JsonWorkerClient {
       return Promise.reject(toJsonTaskError(error, 'validation'));
     }
 
-    let worker: JsonWorkerHandle;
-    try {
-      worker = this.workerFactory();
-    }
-    catch {
-      return Promise.reject(new JsonTaskError('unavailable', 'JSON formatting workers are not available in this browser.'));
-    }
-
-    this.nextJobId = this.nextJobId === Number.MAX_SAFE_INTEGER ? 1 : this.nextJobId + 1;
-    const jobId = this.nextJobId;
-    const startedAt = performance.now();
-
-    return new Promise((resolve, reject) => {
-      let activeTask: ActiveTask;
-      let settled = false;
-      const elapsed = () => Math.max(0, performance.now() - startedAt);
-      const timeout = globalThis.setTimeout(() => {
-        activeTask.cancel(
-          'timeout',
-          `JSON formatting exceeded the ${this.timeoutMs / 1000}-second time limit.`,
-        );
-      }, this.timeoutMs);
-
-      const cleanup = () => {
-        globalThis.clearTimeout(timeout);
-        worker.onmessage = null;
-        worker.onerror = null;
-        try {
-          worker.terminate();
-        }
-        catch {
-          // A second termination failure must not prevent task settlement.
-        }
-
-        if (this.activeTask === activeTask) {
-          this.activeTask = undefined;
-        }
-      };
-      const fail = (error: JsonTaskError) => {
-        if (settled) {
-          return;
-        }
-
-        settled = true;
-        cleanup();
-        reject(error);
-      };
-      const succeed = (value: string) => {
-        if (settled) {
-          return;
-        }
-
-        settled = true;
-        const elapsedMs = elapsed();
-        cleanup();
-        resolve({ value, elapsedMs });
-      };
-
-      activeTask = {
-        cancel: (code, message) => fail(new JsonTaskError(code, message, elapsed())),
-      };
-      this.activeTask = activeTask;
-
-      worker.onmessage = (event) => {
-        let message;
-        try {
-          message = parseJsonWorkerMessage(event.data);
-        }
-        catch (error) {
-          fail(toJsonTaskError(error, 'worker'));
-          return;
-        }
-
-        if (message.jobId !== jobId) {
-          return;
-        }
-
-        if (message.type === 'error') {
-          fail(new JsonTaskError(message.code, message.message, elapsed()));
-          return;
-        }
-
-        if (message.operation !== validatedTask.operation || message.mode !== validatedTask.mode) {
-          fail(new JsonTaskError('worker', 'The JSON worker returned a result for the wrong operation.', elapsed()));
-          return;
-        }
-
-        succeed(message.value);
-      };
-      worker.onerror = (event) => {
-        event.preventDefault();
-        fail(new JsonTaskError('worker', 'The JSON worker stopped unexpectedly.', elapsed()));
-      };
-
-      try {
-        worker.postMessage({ jobId, task: validatedTask });
-      }
-      catch {
-        fail(new JsonTaskError('worker', 'JSON formatting could not be started.', elapsed()));
-      }
-    });
+    return this.taskRunner.run(validatedTask);
   }
 
   cancel(message = 'JSON formatting cancelled.'): void {
-    this.activeTask?.cancel('cancelled', message);
+    this.taskRunner.cancel(message);
   }
 
   dispose(): void {

@@ -98,6 +98,16 @@ describe('OuiWorkerClient', () => {
     expect(malformed.workers[0].terminated).toBe(true);
   });
 
+  it('treats a missing response job identifier as a worker protocol failure', async () => {
+    const { client, workers } = createHarness();
+    const pending = lookup(client);
+
+    workers[0].emit({ type: 'result', operation: 'lookup', value: 'Cisco' });
+
+    await expectLookupError(pending, 'worker');
+    expect(workers[0].terminated).toBe(true);
+  });
+
   it('terminates a timed-out worker and permits a fixed-URL retry', async () => {
     vi.useFakeTimers();
     const { client, workers } = createHarness(25);

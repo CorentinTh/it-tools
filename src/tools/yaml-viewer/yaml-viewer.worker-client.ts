@@ -2,19 +2,19 @@ import {
   YAML_TASK_TIMEOUT_MS,
   type YamlFormatTask,
   YamlTaskError,
+  type YamlWorkerMessage,
   type YamlWorkerRequest,
   parseYamlTask,
   parseYamlWorkerMessage,
   toYamlTaskError,
 } from './yaml-viewer.worker.protocol';
+import {
+  TerminateAndReplaceWorkerTask,
+  type WorkerTaskEvent,
+  type WorkerTaskHandle,
+} from '@/utils/worker-task';
 
-export interface YamlWorkerHandle {
-  onmessage: ((event: MessageEvent<unknown>) => void) | null
-  onerror: ((event: ErrorEvent) => void) | null
-  postMessage: (message: YamlWorkerRequest) => void
-  terminate: () => void
-}
-
+export type YamlWorkerHandle = WorkerTaskHandle<YamlWorkerRequest>;
 export type YamlWorkerFactory = () => YamlWorkerHandle;
 
 export interface YamlTaskResult {
@@ -22,9 +22,10 @@ export interface YamlTaskResult {
   elapsedMs: number
 }
 
-interface ActiveTask {
-  cancel: (code: 'cancelled' | 'timeout', message: string) => void
-}
+type YamlWorkerErrorCode = Extract<YamlWorkerMessage, { type: 'error' }>['code'];
+type YamlWorkerResult = Extract<YamlWorkerMessage, { type: 'result' }>;
+
+const REPLACEMENT_MESSAGE = 'A newer YAML formatting operation replaced this one.';
 
 function createWorker(): YamlWorkerHandle {
   return new Worker(new URL('./yaml-viewer.worker.ts', import.meta.url), {
@@ -33,17 +34,63 @@ function createWorker(): YamlWorkerHandle {
   });
 }
 
+function decodeWorkerMessage(
+  value: unknown,
+): WorkerTaskEvent<YamlWorkerResult, YamlWorkerErrorCode> {
+  const message = parseYamlWorkerMessage(value);
+
+  if (message.type === 'error') {
+    return message;
+  }
+
+  return { jobId: message.jobId, type: 'result', result: message };
+}
+
+function resolveWorkerResult(result: YamlWorkerResult, expectedTask: YamlFormatTask): string {
+  if (result.operation !== expectedTask.operation) {
+    throw new YamlTaskError('worker', 'The YAML worker returned a result for the wrong operation.');
+  }
+
+  return result.value;
+}
+
 export class YamlWorkerClient {
-  private activeTask: ActiveTask | undefined;
-  private nextJobId = 0;
+  private readonly taskRunner: TerminateAndReplaceWorkerTask<
+    YamlFormatTask,
+    YamlWorkerResult,
+    string,
+    YamlWorkerErrorCode,
+    YamlTaskError
+  >;
 
   constructor(
-    private readonly workerFactory: YamlWorkerFactory = createWorker,
-    private readonly timeoutMs = YAML_TASK_TIMEOUT_MS,
-  ) {}
+    workerFactory: YamlWorkerFactory = createWorker,
+    timeoutMs = YAML_TASK_TIMEOUT_MS,
+  ) {
+    this.taskRunner = new TerminateAndReplaceWorkerTask({
+      workerFactory,
+      timeoutMs,
+      messages: {
+        replacement: REPLACEMENT_MESSAGE,
+        unavailable: 'YAML formatting workers are not available in this browser.',
+        timeout: (_task, deadlineMs) => `YAML formatting exceeded the ${deadlineMs / 1000}-second time limit.`,
+        crash: 'The YAML worker stopped unexpectedly.',
+        postMessageFailure: 'YAML formatting could not be started.',
+      },
+      decodeMessage: decodeWorkerMessage,
+      resolveResult: resolveWorkerResult,
+      createError: (code, message, elapsedMs) => new YamlTaskError(code, message, elapsedMs),
+      protocolError: (error, elapsedMs) => {
+        const taskError = toYamlTaskError(error, 'worker');
+        return new YamlTaskError('worker', taskError.message, elapsedMs);
+      },
+    });
+  }
 
   run(task: YamlFormatTask): Promise<YamlTaskResult> {
-    this.cancel('A newer YAML formatting operation replaced this one.');
+    // YAML formatting is latest-input-wins even when the replacement is
+    // invalid, so cancel before validating the new task.
+    this.cancel(REPLACEMENT_MESSAGE);
 
     let validatedTask: YamlFormatTask;
     try {
@@ -53,111 +100,11 @@ export class YamlWorkerClient {
       return Promise.reject(toYamlTaskError(error, 'validation'));
     }
 
-    let worker: YamlWorkerHandle;
-    try {
-      worker = this.workerFactory();
-    }
-    catch {
-      return Promise.reject(new YamlTaskError('unavailable', 'YAML formatting workers are not available in this browser.'));
-    }
-
-    this.nextJobId = this.nextJobId === Number.MAX_SAFE_INTEGER ? 1 : this.nextJobId + 1;
-    const jobId = this.nextJobId;
-    const startedAt = performance.now();
-
-    return new Promise((resolve, reject) => {
-      let activeTask: ActiveTask;
-      let settled = false;
-      const elapsed = () => Math.max(0, performance.now() - startedAt);
-      const timeout = globalThis.setTimeout(() => {
-        activeTask.cancel(
-          'timeout',
-          `YAML formatting exceeded the ${this.timeoutMs / 1000}-second time limit.`,
-        );
-      }, this.timeoutMs);
-
-      const cleanup = () => {
-        globalThis.clearTimeout(timeout);
-        worker.onmessage = null;
-        worker.onerror = null;
-        try {
-          worker.terminate();
-        }
-        catch {
-          // A second termination failure must not prevent task settlement.
-        }
-
-        if (this.activeTask === activeTask) {
-          this.activeTask = undefined;
-        }
-      };
-      const fail = (error: YamlTaskError) => {
-        if (settled) {
-          return;
-        }
-
-        settled = true;
-        cleanup();
-        reject(error);
-      };
-      const succeed = (value: string) => {
-        if (settled) {
-          return;
-        }
-
-        settled = true;
-        const elapsedMs = elapsed();
-        cleanup();
-        resolve({ value, elapsedMs });
-      };
-
-      activeTask = {
-        cancel: (code, message) => fail(new YamlTaskError(code, message, elapsed())),
-      };
-      this.activeTask = activeTask;
-
-      worker.onmessage = (event) => {
-        let message;
-        try {
-          message = parseYamlWorkerMessage(event.data);
-        }
-        catch (error) {
-          fail(toYamlTaskError(error, 'worker'));
-          return;
-        }
-
-        if (message.jobId !== jobId) {
-          return;
-        }
-
-        if (message.type === 'error') {
-          fail(new YamlTaskError(message.code, message.message, elapsed()));
-          return;
-        }
-
-        if (message.operation !== validatedTask.operation) {
-          fail(new YamlTaskError('worker', 'The YAML worker returned a result for the wrong operation.', elapsed()));
-          return;
-        }
-
-        succeed(message.value);
-      };
-      worker.onerror = (event) => {
-        event.preventDefault();
-        fail(new YamlTaskError('worker', 'The YAML worker stopped unexpectedly.', elapsed()));
-      };
-
-      try {
-        worker.postMessage({ jobId, task: validatedTask });
-      }
-      catch {
-        fail(new YamlTaskError('worker', 'YAML formatting could not be started.', elapsed()));
-      }
-    });
+    return this.taskRunner.run(validatedTask);
   }
 
   cancel(message = 'YAML formatting cancelled.'): void {
-    this.activeTask?.cancel('cancelled', message);
+    this.taskRunner.cancel(message);
   }
 
   dispose(): void {

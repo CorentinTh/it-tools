@@ -134,6 +134,17 @@ describe('YamlWorkerClient', () => {
     expect(workers[0].terminated).toBe(true);
   });
 
+  it('cancels active work before rejecting an invalid replacement', async () => {
+    const { client, workers } = createHarness();
+    const activePromise = client.run(task());
+    const activeRejection = expectTaskError(activePromise, 'cancelled');
+
+    await expectTaskError(client.run(task('x'.repeat(YAML_MAX_INPUT_BYTES + 1))), 'limit');
+    await activeRejection;
+    expect(workers).toHaveLength(1);
+    expect(workers[0].terminated).toBe(true);
+  });
+
   it('defers the exact UTF-8 input limit to the worker', async () => {
     const { client, workers } = createHarness();
     const source = '😀'.repeat(YAML_MAX_INPUT_BYTES / 4 + 1);

@@ -275,6 +275,10 @@ tools:
     title: JSON prettify and format
     description: Prettify your JSON string into a friendly, human-readable format.
 
+  json-schema-validator:
+    title: JSON Schema validator
+    description: Validate a JSON instance against JSON Schema Draft 7, 2019-09, or 2020-12 locally in your browser.
+
   docker-run-to-docker-compose-converter:
     title: Docker run to Docker compose converter
     description: Transforms "docker run" commands into docker-compose files!

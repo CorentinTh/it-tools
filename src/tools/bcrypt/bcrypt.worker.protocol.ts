@@ -3,8 +3,10 @@ export const BCRYPT_MAX_ROUNDS = 14;
 export const BCRYPT_DEFAULT_ROUNDS = 10;
 export const BCRYPT_MAX_PASSWORD_BYTES = 72;
 export const BCRYPT_TASK_TIMEOUT_MS = 10_000;
+export const BCRYPT_MAX_WORKER_ERROR_MESSAGE_LENGTH = 1_000;
 
 const BCRYPT_HASH_PATTERN = /^\$2[aby]\$(\d{2})\$[./A-Za-z0-9]{53}$/;
+const DEFAULT_WORKER_ERROR_MESSAGE = 'The bcrypt operation failed. Please try again.';
 
 export type BcryptTaskErrorCode = 'validation' | 'operation' | 'worker' | 'timeout' | 'cancelled' | 'unavailable';
 
@@ -142,6 +144,38 @@ function isSupportedBcryptHash(value: string): boolean {
   return rounds >= BCRYPT_MIN_ROUNDS && rounds <= BCRYPT_MAX_ROUNDS;
 }
 
+function parseJobId(value: unknown, errorCode: 'validation' | 'worker'): number {
+  if (typeof value !== 'number' || !Number.isSafeInteger(value) || value < 1) {
+    throw new BcryptTaskError(errorCode, 'Invalid bcrypt worker job identifier.');
+  }
+
+  return value;
+}
+
+export function sanitizeBcryptWorkerErrorMessage(
+  value: unknown,
+  fallback = DEFAULT_WORKER_ERROR_MESSAGE,
+): string {
+  const sanitize = (message: string) => {
+    let sanitized = '';
+    for (const character of message) {
+      if (sanitized.length + character.length > BCRYPT_MAX_WORKER_ERROR_MESSAGE_LENGTH) {
+        break;
+      }
+      const code = character.codePointAt(0) ?? 0;
+      const isUnsafeControl = code <= 0x1F
+        || (code >= 0x7F && code <= 0x9F)
+        || (code >= 0x202A && code <= 0x202E)
+        || (code >= 0x2066 && code <= 0x2069);
+      sanitized += isUnsafeControl ? ' ' : character;
+    }
+    return sanitized.trim();
+  };
+  const sanitized = typeof value === 'string' ? sanitize(value) : '';
+
+  return sanitized || sanitize(fallback) || DEFAULT_WORKER_ERROR_MESSAGE;
+}
+
 export function parseBcryptTask(value: unknown): BcryptTask {
   if (!isRecord(value)) {
     throw new BcryptTaskError('validation', 'Invalid bcrypt task.');
@@ -167,22 +201,30 @@ export function parseBcryptTask(value: unknown): BcryptTask {
 }
 
 export function parseBcryptWorkerRequest(value: unknown): BcryptWorkerRequest {
-  if (!isRecord(value) || typeof value.jobId !== 'number' || !Number.isSafeInteger(value.jobId) || value.jobId < 1) {
+  if (!isRecord(value)) {
     throw new BcryptTaskError('validation', 'Invalid bcrypt worker job identifier.');
   }
 
   return {
-    jobId: value.jobId,
+    jobId: parseBcryptWorkerJobId(value),
     task: parseBcryptTask(value.task),
   };
 }
 
+export function parseBcryptWorkerJobId(value: unknown): number {
+  if (!isRecord(value)) {
+    throw new BcryptTaskError('validation', 'Invalid bcrypt worker job identifier.');
+  }
+
+  return parseJobId(value.jobId, 'validation');
+}
+
 export function parseBcryptWorkerMessage(value: unknown): BcryptWorkerMessage {
-  if (!isRecord(value) || typeof value.jobId !== 'number' || !Number.isSafeInteger(value.jobId) || value.jobId < 1) {
+  if (!isRecord(value)) {
     throw new BcryptTaskError('worker', 'The bcrypt worker returned an invalid job identifier.');
   }
 
-  const jobId = value.jobId;
+  const jobId = parseJobId(value.jobId, 'worker');
   if (value.type === 'progress') {
     if (typeof value.progress !== 'number' || !Number.isFinite(value.progress) || value.progress < 0 || value.progress > 1) {
       throw new BcryptTaskError('worker', 'The bcrypt worker returned invalid progress.');
@@ -208,8 +250,13 @@ export function parseBcryptWorkerMessage(value: unknown): BcryptWorkerMessage {
     value.type === 'error'
     && (value.code === 'validation' || value.code === 'operation')
     && typeof value.message === 'string'
+    && value.message.length > 0
+    && value.message.length <= BCRYPT_MAX_WORKER_ERROR_MESSAGE_LENGTH
   ) {
-    return { jobId, type: 'error', code: value.code, message: value.message };
+    const message = sanitizeBcryptWorkerErrorMessage(value.message, '');
+    if (message.length > 0) {
+      return { jobId, type: 'error', code: value.code, message };
+    }
   }
 
   throw new BcryptTaskError('worker', 'The bcrypt worker returned an invalid message.');

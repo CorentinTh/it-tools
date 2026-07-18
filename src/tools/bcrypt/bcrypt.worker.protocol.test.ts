@@ -1,10 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import {
   BCRYPT_MAX_PASSWORD_BYTES,
+  BCRYPT_MAX_WORKER_ERROR_MESSAGE_LENGTH,
   BcryptTaskError,
   parseBcryptTask,
   parseBcryptWorkerMessage,
   parseBcryptWorkerRequest,
+  sanitizeBcryptWorkerErrorMessage,
 } from './bcrypt.worker.protocol';
 
 const VALID_HASH = '$2a$04$ZO/2lWFV.hnClD.GPEoHTO8tMHsQCK7tpnz3QP/lZSDpbF5N7ZI8C';
@@ -104,5 +106,24 @@ describe('bcrypt worker protocol', () => {
     expectErrorCode(() => parseBcryptWorkerMessage({ jobId: 1, type: 'result', operation: 'hash', value: 'not-a-hash' }), 'worker');
     expectErrorCode(() => parseBcryptWorkerMessage({ jobId: 1, type: 'result', operation: 'compare', value: 'yes' }), 'worker');
     expectErrorCode(() => parseBcryptWorkerMessage({ jobId: 1, type: 'unexpected' }), 'worker');
+  });
+
+  it.each(['', 'x'.repeat(1_001)])(
+    'rejects an empty or oversized worker error message',
+    (message) => {
+      expectErrorCode(
+        () => parseBcryptWorkerMessage({ jobId: 1, type: 'error', code: 'operation', message }),
+        'worker',
+      );
+    },
+  );
+
+  it('sanitizes and caps worker-side error text before it crosses the protocol boundary', () => {
+    const message = sanitizeBcryptWorkerErrorMessage(`  failure\u0000${'x'.repeat(2_000)}  `);
+
+    expect(message.length).toBeLessThanOrEqual(BCRYPT_MAX_WORKER_ERROR_MESSAGE_LENGTH);
+    expect(message.length).toBeGreaterThan(0);
+    expect(message).not.toContain('\u0000');
+    expect(message.startsWith('failure ')).toBe(true);
   });
 });

@@ -35,9 +35,9 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
-function parseJobId(value: unknown): number {
+function parseJobId(value: unknown, errorCode: 'validation' | 'worker'): number {
   if (typeof value !== 'number' || !Number.isSafeInteger(value) || value < 1) {
-    throw new OuiLookupError('validation', 'The OUI worker job identifier is invalid.');
+    throw new OuiLookupError(errorCode, 'The OUI worker job identifier is invalid.');
   }
   return value;
 }
@@ -57,7 +57,7 @@ export function parseOuiWorkerRequest(value: unknown): OuiWorkerRequest {
     throw new OuiLookupError('validation', 'The OUI worker request is invalid.');
   }
   return {
-    jobId: parseJobId(value.jobId),
+    jobId: parseJobId(value.jobId, 'validation'),
     task: parseOuiLookupTask(value.task),
   };
 }
@@ -67,7 +67,7 @@ export function parseOuiWorkerMessage(value: unknown): OuiWorkerMessage {
     throw new OuiLookupError('worker', 'The OUI worker returned an invalid message.');
   }
 
-  const jobId = parseJobId(value.jobId);
+  const jobId = parseJobId(value.jobId, 'worker');
   if (value.type === 'result') {
     if (
       value.operation !== 'lookup'

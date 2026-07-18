@@ -1,4 +1,4 @@
-import { exceedsUtf8ByteLimit } from '@/utils/utf8';
+import { exceedsUtf8ByteLimit, hasPlausibleUtf8ByteLength } from '@/utils/utf8';
 
 export const YAML_LIVE_FORMAT_MAX_BYTES = 100_000;
 export const YAML_MAX_INPUT_BYTES = 2 * 1024 * 1024;
@@ -64,13 +64,6 @@ export type YamlWorkerMessage = YamlWorkerResultMessage | YamlWorkerErrorMessage
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null;
-}
-
-function hasPlausibleUtf8ByteLength(value: string, byteLength: unknown, maxBytes: number): byteLength is number {
-  return typeof byteLength === 'number'
-    && Number.isSafeInteger(byteLength)
-    && byteLength >= value.length
-    && byteLength <= Math.min(maxBytes, value.length * 3);
 }
 
 export function parseYamlTask(value: unknown): YamlFormatTask {

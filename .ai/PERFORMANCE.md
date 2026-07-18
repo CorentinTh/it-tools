@@ -2,10 +2,10 @@
 
 ## Implementation status — 2026-07-18
 
-- **DONE — executable build guardrail:** deterministic report schema v4 plus budget schema v1 include literal route-owned workers and enforce shell, required Workbox membership, default dynamic-route, and five rationale-backed heavy-route no-regression ceilings in CI/release. Fifteen infrastructure tests and 196 current-artifact checks pass; standard-runner build-time/modules/RSS telemetry remains separate.
+- **DONE — executable build guardrail:** deterministic report schema v4 plus budget schema v1 include literal route-owned workers and enforce shell, required Workbox membership, default dynamic-route, and five rationale-backed heavy-route no-regression ceilings in CI/release. Fifteen infrastructure tests and 198 current-artifact checks pass; standard-runner build-time/modules/RSS telemetry remains separate.
 - **DONE — Text Diff lifecycle/heap:** editor-only Monaco import, a real worker, complete disposal, and cross-route layout repair reduced ten-cycle retained growth to +2.46 MiB with zero workers, below the `<5 MiB` budget.
 - **IN PROGRESS — Text Diff payload:** main JS is 2,206,864 B raw / 570,786 B gzip (down 30.2% / 28.8%); schema-v4 includes its 206,100 B raw / 63,981 B gzip worker, making the true route closure 2,474,507 B raw / 646,976 B gzip. The measured comparison retains repaired Monaco until a worker-backed CodeMirror spike passes parity, adversarial-input, lifecycle, and `<350 kB` gates.
-- **DONE — mandatory PWA payload and cache-miss UX:** shell-only precache contains nine HTML/JS/CSS/Workbox-runtime/manifest/icon entries at 952,869 B raw / 326,657 B gzip, down from 270 entries / 6,121,476 B raw / 1,911,520 B gzip. Opened chunks reload offline; an uncached lazy route now shows recovery instead of stale content/blank UI and retries through an origin-verified, privacy-safe fresh document. Update/rollback and stale-cache cleanup remain separate work.
+- **DONE — mandatory PWA payload and cache-miss UX:** shell-only precache contains nine HTML/JS/CSS/Workbox-runtime/manifest/icon entries at 954,481 B raw / 327,007 B gzip, down from 270 entries / 6,121,476 B raw / 1,911,520 B gzip. Opened chunks reload offline; an uncached lazy route now shows recovery instead of stale content/blank UI and retries through an origin-verified, privacy-safe fresh document. Update/rollback and stale-cache cleanup remain separate work.
 - **DONE — current container delivery contract:** gzip, immutable hashed assets, HTML/SW/manifest revalidation, strict missing assets, local Figlet delivery, and headers pass rootless/read-only default-and-arbitrary-UID smoke. Reverse-proxy/subpath acceptance remains a separate deployment task.
 - **DONE — shared layout lifecycle:** persistent `BaseLayout` reduced ten Home/tool cycles from +188.40 MiB retained heap to +0.86 MiB, with DOM 5,036 -> 5,037 and listeners 807 -> 809.
 - **DONE — Text Statistics:** character, word, CR/LF line, and UTF-8 byte counts now share one O(n) pass with O(1) auxiliary space instead of repeated splits plus a `TextEncoder` allocation.
@@ -15,9 +15,10 @@
 - **DONE — shared large-output rendering slice:** highlighted output switches above 100,000 UTF-8 bytes to one readonly `<textarea>` with a UTF-8-safe 100,000-byte preview and zero descendants; Copy retains the complete bounded output in memory.
 - **DONE — YAML parse/worker slice:** YAML Prettify parses once in a terminate-and-replace worker with input/output/depth/node/alias/time bounds, `BigInt` integers, exact worker-side UTF-8 accounting, explicit large-input formatting, and stale/cancel/dispose guards. A conservative graph projection rejects alias, indentation, escaping, and physical-line output amplification before `Document.toString()` while preserving valid 90,000-node/1 MiB inputs. Its final isolated production Chromium fixture is 203 ms format-ready with 0.0 ms observed longest Long Task and passes 10/10 repeats.
 - **DONE — JSON lossless parse/worker slice:** strict JSON Prettify preserves original numeric lexemes in one bounded worker AST while JSON5 remains an explicit non-lossless compatibility mode with an incremental 4 MiB writer. Full-payload/output-limit UTF-8 accounting stays in the worker; the main thread scans only the bounded 100,000-byte preview. The final production Chromium fixture is 404 ms cold-route / 197 ms format-ready with 0.0 ms observed longest Long Task.
+- **DONE — JSON Schema worker slice:** the three-draft local validator owns a 161,471 B raw / 47,125 B gzip worker and a 176,585 B / 53,355 B additional route closure, both below their 200/60 and 300/100 kB gates. Its final production Chromium fixture measures 246 ms cold route / 205 ms 1 MiB result-ready / 0.0 ms longest observed Long Task; branch-heavy `allErrors` is fail-fast above 20,000 projected schema/instance node pairs, and the mandatory PWA install remains nine entries / 954,481 B raw / 327,007 B gzip. Shell-plus-document gzip rises 350 B from the prior checkpoint for the new registry/route metadata and icon; Ajv remains lazy in the owned worker and creates no new chunk above 500 kB.
 - **DONE — Emoji bounded rendering slice:** initial presentation is 60 cards / 1,731 DOM elements; additional route payload fell to 272,834 B raw / 32,488 B gzip, keyword metadata is lazy, and search uses one paged grid without losing Fuse relevance order. Synchronous Fuse cancellation and the 4x CPU gate remain open.
 - **DONE — isolated CI optimization:** Playwright cache identity no longer reads the wrong dependency section; BuildKit uses a pnpm store cache plus `pnpm fetch`.
-- **IN PROGRESS — OUI payload:** a generated compact fixed-URL worker reduces the full closure from 3,350,554 B raw / 1,064,267 B gzip to 1,937,380 B / 770,453 B while keeping MAC prefixes out of network URLs. The smaller 112-bucket prototype was rejected for access-log privacy; the `<250 kB` product target now requires an explicit coverage/product trade-off.
+- **IN PROGRESS — OUI payload:** a generated compact fixed-URL worker reduces the full closure from 3,350,554 B raw / 1,064,267 B gzip to 1,937,384 B / 770,467 B while keeping MAC prefixes out of network URLs. The smaller 112-bucket prototype was rejected for access-log privacy; the `<250 kB` product target now requires an explicit coverage/product trade-off.
 - **NOT STARTED:** shell/icon/Lodash reduction outside the completed slices above.
 
 The raw checkpoint and before/after table are maintained in `.ai/PROGRESS.md`.
@@ -33,7 +34,7 @@ The application already lazy-loads every tool component, but several costs remai
 4. Execute the recorded worker-backed CodeMirror gate and decide the OUI exact-coverage trade-off; the editor comparison and privacy-safe OUI redesign are complete.
 5. Reduce shell JavaScript further while preserving the completed nine-entry demand-driven PWA install policy.
 6. Preserve the now-verified production gzip and immutable/revalidation cache policies while adding reverse-proxy/subpath coverage.
-7. Consolidate icon imports and build the application once per pipeline. The original audit transformed 24,599 modules in 51.16 seconds; the current local build transforms 24,177 in 19.44 seconds, but standard-runner build/RSS telemetry and redundant pipeline builds remain open.
+7. Consolidate icon imports and build the application once per pipeline. The original audit transformed 24,599 modules in 51.16 seconds; the current local build transforms 24,185 in 19.86 seconds, but standard-runner build/RSS telemetry and redundant pipeline builds remain open.
 
 That first measurable delivery slice is now largely complete: Monaco lifecycle,
 bounded large-output preview, Bcrypt/Regex/JSON/YAML workers, asset budgets, and
@@ -45,7 +46,7 @@ converters/parsers, and shell reduction are the next frontier.
 
 This audit covers the complete current branch, not only upstream changes. It combines:
 
-- static inspection of the original 416 TypeScript/Vue source files and the current 87 registered tools;
+- static inspection of the original 416 TypeScript/Vue source files and the current 88 registered tools;
 - production build and manifest analysis;
 - Workbox service-worker inventory;
 - cold-route profiles in headless Chromium with service workers disabled;
@@ -135,7 +136,7 @@ Isolated Node benchmarks demonstrate where the time goes:
 | JSON validation plus format, including two parses | 26.6 ms | 181.1 ms | 542.1 ms |
 | YAML validation plus format, including two parses | 158.0 ms | 1,002.7 ms | 2,965.4 ms |
 
-This is the audit baseline: parsing twice is material, but it is not the whole browser cost. `TextareaCopyable` fed the complete result into Naive UI/highlight.js, producing a span-heavy DOM. Large-output rendering is now bounded and YAML Prettify now parses once in a worker; JSON and the remaining structured-transform paths come next.
+This is the audit baseline: parsing twice is material, but it is not the whole browser cost. `TextareaCopyable` fed the complete result into Naive UI/highlight.js, producing a span-heavy DOM. Large-output rendering is now bounded, and JSON/YAML Prettify both parse once in workers; the remaining structured-transform paths come next.
 
 ### Bcrypt responsiveness
 
@@ -299,7 +300,7 @@ At the audit baseline, the default `generateSW` inventory precached nearly every
 Reducing the mandatory precache from 6.12 MB raw to a sub-1 MB shell is a measured-payload opportunity of roughly 6x. Runtime caching preserves offline use after a tool is opened.
 
 **Current result (2026-07-18):** mandatory precache is nine entries /
-952,869 B raw / 326,657 B gzip. A Chromium production-preview fixture opens a
+954,481 B raw / 327,007 B gzip. A Chromium production-preview fixture opens a
 lazy route, observes its four hashed assets in the bounded runtime cache,
 clears the HTTP cache, goes offline, and reloads successfully with document,
 shell, Workbox client runtime, and lazy assets served by the service worker
@@ -328,8 +329,8 @@ bucket forms were generated and measured. Buckets reached about 66.9 kB gzip
 for the worst individual request but were rejected because prefix-derived URLs
 would disclose MAC input in access logs. The accepted fixed-URL worker keeps
 all input inside `postMessage`, reuses one worker across offline lookups, and
-reduces the full closure from 3,350,554 B raw / 1,064,267 B gzip to 1,937,380 B
-/ 770,453 B. The `<250 kB` target remains open and cannot be claimed without a
+reduces the full closure from 3,350,554 B raw / 1,064,267 B gzip to 1,937,384 B
+/ 770,467 B. The `<250 kB` target remains open and cannot be claimed without a
 new coverage/product decision.
 
 ### P1 — render and shell performance
@@ -472,9 +473,9 @@ Incremental container build gains of 2–5x are plausible with a warm pnpm/Build
 | Explicit bcrypt action + worker | Ten typed characters caused ten hashes and 1.01 s work | **Achieved for the interaction model:** typing performs zero hashes; one explicit action creates one bounded worker job |
 | Plain/virtualized large output | 1 MB JSON: 4.0 s and 248k nodes | **JSON/YAML slice achieved:** one readonly zero-descendant `<textarea>` previews at most 100,000 UTF-8 bytes while Copy keeps full bounded output; final isolated 1 MiB fixtures measure JSON 197 ms and YAML 203 ms format-ready with no observed Long Task entry `>=50 ms`; YAML passes 10/10 repeats |
 | nginx compression | Artifact ratios of 3.2–3.9x | **Achieved for delivery:** container smoke verifies gzip plus immutable/revalidation cache rules; exact client transfer savings depend on the requested route |
-| Shell-only PWA precache | 6,121,476 B raw / 1,911,520 B gzip | **Achieved:** 952,869 B raw / 326,657 B gzip across nine mandatory entries (84.4% / 82.9% reduction), plus clean-HTTP-cache offline reload and uncached-route recovery |
+| Shell-only PWA precache | 6,121,476 B raw / 1,911,520 B gzip | **Achieved:** 954,481 B raw / 327,007 B gzip across nine mandatory entries (84.4% / 82.9% reduction), plus clean-HTTP-cache offline reload and uncached-route recovery |
 | Emoji bounded rendering | 14,396 nodes and 1.06 s route task | **Achieved for DOM:** 60 cards / 1,731 elements initially (88.0% fewer); additional-route gzip is 32,488 B versus 63,420 B (-48.8%) and one paged grid preserves Fuse relevance. True virtualization and 4x CPU remain open |
-| Redesign OUI database | 3,350,554 B raw / 1,064,267 B gzip route closure for one lookup | **Privacy-safe slice achieved:** fixed-worker closure is 1,937,380 B / 770,453 B (-42.2% / -27.6%); input-selected buckets were rejected because URLs leaked prefixes. The `<250 kB` target remains open |
+| Redesign OUI database | 3,350,554 B raw / 1,064,267 B gzip route closure for one lookup | **Privacy-safe slice achieved:** fixed-worker closure is 1,937,384 B / 770,467 B (-42.2% / -27.6%); input-selected buckets were rejected because URLs leaked prefixes. The `<250 kB` target remains open |
 | Parse once | Duplicate parse paths confirmed | **Achieved for JSON/YAML Prettify:** exactly one bounded worker parse per job; remaining structured converters stay open and may not claim the lossless contract yet |
 | Icon/direct-import cleanup | 24,599 transformed modules | Estimated 2–5x warm build improvement only after measured experiments |
 | Build once for E2E | Three shard builds plus CI build | Two redundant E2E builds removed deterministically |
@@ -496,19 +497,19 @@ These are initial guardrails and should be calibrated after the first optimizati
 | 1 MB formatted output DOM | < 5,000 nodes |
 | Text Diff heap growth after 10 cycles | < 5 MB after forced GC |
 | Warm production build | < 20 s on the audit runner |
-| Route smoke coverage | 87/87 tools, no console/page errors |
+| Route smoke coverage | 88/88 tools, no console/page errors |
 
 Any intentional exception should record the reason, owner, measured user value, and a route-specific ceiling.
 
 ## Measurement and regression infrastructure
 
 1. [x] Add a deterministic `build:stats` command that emits manifest totals, per-route closures including literal owned workers, dynamic-import/worker counts, stable membership digests, and Workbox inventory as JSON.
-2. [x] Store a reviewed compact baseline and fail CI/release only on explicit byte/count ceilings, not content hashes or normalized filenames; current artifact passes 196 checks.
+2. [x] Store a reviewed compact baseline and fail CI/release only on explicit byte/count ceilings, not content hashes or normalized filenames; current artifact passes 198 checks.
 3. Add Chromium performance smoke cases for Home, Text Diff, Emoji, MAC Lookup, JSON/YAML, Bcrypt, Regex, Math, WYSIWYG, and PDF.
 4. Include 100 kB, 1 MB, deep nesting, malformed input, catastrophic regex, and repeated-navigation fixtures.
 5. Capture long tasks, DOM count, console errors, route bytes, and forced-GC heap trends.
 6. Run a smaller mandatory suite on every pull request and a full cross-browser/profile suite on a schedule.
-7. [x] Add [PR #1170](https://github.com/CorentinTh/it-tools/pull/1170)'s all-route smoke-test idea, adapted to cover all 87 routes and fail on page errors, chunk failures, unexpected console warnings, and Monaco fallback.
+7. [x] Add [PR #1170](https://github.com/CorentinTh/it-tools/pull/1170)'s all-route smoke-test idea, adapted to cover all 88 routes and fail on page errors, chunk failures, unexpected console warnings, and Monaco fallback.
 8. Measure on both a fast desktop and a 4x CPU/slow-network profile; do not optimize only local unthrottled load time.
 
 ## Recommended execution order

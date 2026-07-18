@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { exceedsUtf8ByteLimit, truncateUtf8ToByteLimit } from './utf8';
+import { exceedsUtf8ByteLimit, hasPlausibleUtf8ByteLength, truncateUtf8ToByteLimit } from './utf8';
 
 describe('exceedsUtf8ByteLimit', () => {
   it('keeps an exact ASCII boundary and rejects the next byte', () => {
@@ -18,6 +18,27 @@ describe('exceedsUtf8ByteLimit', () => {
 
   it.each([-1, 1.5, Number.MAX_VALUE, Number.NaN])('rejects an invalid byte limit: %s', (limit) => {
     expect(() => exceedsUtf8ByteLimit('value', limit)).toThrow(RangeError);
+  });
+});
+
+describe('hasPlausibleUtf8ByteLength', () => {
+  it.each(['', 'plain ASCII', 'Привет', 'A🙂中é', '\uD800'])('accepts exact TextEncoder metadata for %j', (value) => {
+    const byteLength = new TextEncoder().encode(value).byteLength;
+
+    expect(hasPlausibleUtf8ByteLength(value, byteLength, byteLength)).toBe(true);
+  });
+
+  it('rejects unsafe, impossible, and over-budget metadata without encoding the value', () => {
+    expect(hasPlausibleUtf8ByteLength('abc', 2, 100)).toBe(false);
+    expect(hasPlausibleUtf8ByteLength('abc', 10, 100)).toBe(false);
+    expect(hasPlausibleUtf8ByteLength('abc', 4, 3)).toBe(false);
+    expect(hasPlausibleUtf8ByteLength('abc', 3.5, 100)).toBe(false);
+    expect(hasPlausibleUtf8ByteLength('abc', Number.NaN, 100)).toBe(false);
+    expect(hasPlausibleUtf8ByteLength('abc', '3', 100)).toBe(false);
+  });
+
+  it.each([-1, 1.5, Number.MAX_VALUE, Number.NaN])('rejects an invalid metadata byte limit: %s', (limit) => {
+    expect(() => hasPlausibleUtf8ByteLength('value', 5, limit)).toThrow(RangeError);
   });
 });
 
