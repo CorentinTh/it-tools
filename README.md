@@ -94,6 +94,23 @@ pnpm run script:create:tool my-tool-name
 
 Then register the tool in the appropriate category and implement its transformation and tests.
 
+## Generated OUI vendor data
+
+MAC Address Lookup uses the lockfile-pinned `oui-data` package only at build
+time. Its 34,503 records are committed in one deterministic compact artifact
+and loaded inside a route-local Web Worker. Every lookup therefore uses the
+same hashed worker URL: the entered MAC prefix is never encoded in a network
+request. Regenerate and verify the artifact after an intentional source-version
+change:
+
+```sh
+pnpm generate:oui-data
+pnpm test:oui-data
+```
+
+`pnpm build` also fails when the committed compact artifact or source metadata
+is stale.
+
 ## Issues and contributions
 
 Bug reports and feature requests for this fork belong in the [64mb/it-tools issue tracker](https://github.com/64mb/it-tools/issues).

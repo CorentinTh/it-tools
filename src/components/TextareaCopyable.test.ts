@@ -98,7 +98,7 @@ describe('TextareaCopyable', () => {
     expect(wrapper.get('scrollbar-stub').attributes('style')).toContain('min-height: 90px');
   });
 
-  it('uses one plain text node instead of highlighted markup for large output', () => {
+  it('uses one readonly native text control instead of highlighted markup for large output', () => {
     const value = 'x'.repeat(MAX_HIGHLIGHTED_OUTPUT_BYTES + 1);
     const wrapper = shallowMount(TextareaCopyable, {
       props: { value, language: 'json' },
@@ -106,8 +106,22 @@ describe('TextareaCopyable', () => {
     });
 
     expect(wrapper.find('code-stub').exists()).toBe(false);
-    expect(wrapper.get('[data-test-id="large-output-notice"]').text()).toContain('100,000 UTF-8 bytes');
-    expect(wrapper.get('pre[data-test-id="area-content"]').text()).toBe(value);
+    expect(wrapper.get('[data-test-id="large-output-notice"]').text()).toContain('preview is limited');
+    const output = wrapper.get('textarea[data-test-id="area-content"]');
+    expect((output.element as HTMLTextAreaElement).value).toBe(value.slice(0, MAX_HIGHLIGHTED_OUTPUT_BYTES));
+    expect(output.attributes('readonly')).toBeDefined();
+  });
+
+  it('does not split a Unicode scalar at the bounded preview edge', () => {
+    const value = `${'x'.repeat(MAX_HIGHLIGHTED_OUTPUT_BYTES - 1)}🙂tail`;
+    const wrapper = shallowMount(TextareaCopyable, {
+      props: { value, language: 'json' },
+      global: { renderStubDefaultSlot: true },
+    });
+
+    expect((wrapper.get('textarea[data-test-id="area-content"]').element as HTMLTextAreaElement).value)
+      .toBe('x'.repeat(MAX_HIGHLIGHTED_OUTPUT_BYTES - 1));
+    expect(wrapper.find('[data-test-id="copy-overlay"]').exists()).toBe(true);
   });
 
   it('keeps syntax highlighting at the exact byte boundary', () => {

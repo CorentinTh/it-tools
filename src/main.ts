@@ -12,10 +12,12 @@ import { naive } from './plugins/naive.plugin';
 
 import App from './App.vue';
 import router from './router';
+import { installOfflineRouteRecovery } from './modules/pwa/offline-route-recovery';
 import { i18nPlugin } from './plugins/i18n.plugin';
 import { clearLegacySensitiveContentStorage } from './utils/sensitive-content-storage';
 
 clearLegacySensitiveContentStorage();
+installOfflineRouteRecovery(router);
 
 registerSW();
 

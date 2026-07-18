@@ -4,11 +4,13 @@
 
 Develop this fork forward as an independent product while selectively adapting useful upstream behavior, tests, and ideas. The current local branch is the source of truth. A clean upstream commit is not, by itself, a reason to merge or cherry-pick it.
 
-The active milestone is **P0 Correctness and Performance Safety**: keep the quality
-baseline green, resolve locally reproduced product defects, finish the Text Diff
-payload work, and move unbounded bcrypt/regex work off the main thread before
-adding new tools. Dependency/base-image vulnerability remediation is retained as
-a separate deferred security track and is not part of the current slice.
+The active milestone combines **P0 Correctness and Performance Safety** with
+bounded Milestone 5 product slices: keep the quality baseline green, resolve
+locally reproduced defects, move remaining large structured work off the main
+thread, and deliver small features against explicit privacy/output/bundle
+budgets. The first feature/structured-data slice (NanoID plus strict JSON
+numeric-lexeme and YAML integer-preserving Prettify) is complete. Dependency/base-image vulnerability remediation
+remains a separate deferred security track.
 
 Implementation is active. See `.ai/PROGRESS.md` for the live journal, verified
 commands, measurements, risks, and next gates. In checklist text, `IN PROGRESS`
@@ -17,7 +19,7 @@ means implementation exists but the full Definition of Done is not yet met.
 ## Audit work completed
 
 - [x] Inventory the complete repository structure, runtime flow, tool registry, state, build system, PWA, CI, release, and Docker paths.
-- [x] Inventory 86 tools across 10 categories, 416 TypeScript/Vue files, 67 runtime dependencies, and 43 development dependencies.
+- [x] Inventory the original 86 tools across 10 categories, 416 TypeScript/Vue files, 67 runtime dependencies, and 43 development dependencies; the local NanoID delivery brings the current registry to 87 tools.
 - [x] Compare the local branch, local `main`, and upstream `main` without modifying local history.
 - [x] Export all upstream issues to `.ai/issues/issues.json`.
 - [x] Export all upstream pull requests to `.ai/prs/pull-requests.json`.
@@ -54,9 +56,9 @@ means implementation exists but the full Definition of Done is not yet met.
 - [x] Resolve the current UnoCSS ordering warnings (3 at implementation start; the native `size` collision remains a separate item).
 - [x] Fix both nullable editor accesses reported by `pnpm typecheck`.
 - [x] Align `pnpm build` and `pnpm typecheck` on canonical application/test plus Vite-config checks so one cannot hide errors from the other.
-- [x] Make `pnpm lint`, `pnpm typecheck`, unit tests, Chromium E2E, and production build green; the final integrated checkpoint is 367/367 unit across 70 files and 86/86 Chromium tests.
+- [x] Make `pnpm lint`, `pnpm typecheck`, unit tests, Chromium E2E, and production build green; the current integrated checkpoint is 546/546 unit across 89 files and 94/94 Chromium tests.
 - [x] Add a frozen-lockfile install to every CI/release job.
-- [x] Add a Chromium route smoke test for all 86 tools that fails on page errors, chunk-load errors, unexpected console errors, and Monaco worker fallback warnings.
+- [x] Add a Chromium route smoke test for all 87 tools that fails on page errors, chunk-load errors, unexpected console errors, and Monaco worker fallback warnings.
 - [ ] Add Firefox and WebKit smoke coverage after the Chromium baseline is stable.
 
 ### 0.2 Reproducible toolchain
@@ -65,7 +67,7 @@ means implementation exists but the full Definition of Done is not yet met.
 - [x] Use Corepack with the package-manager-pinned `pnpm@9.11.0`; never install an unpinned latest pnpm in Docker.
 - [x] Move build-only and type-only packages out of runtime dependencies.
 - [ ] Document Bun or remove the unpinned `bun:Glob` locale-script dependency.
-- [x] Add deterministic schema-v3 `build:stats` generation and regression tests.
+- [x] Add deterministic schema-v4 `build:stats` generation and regression tests; literal route-owned workers are included in closures and fail closed when missing, malformed, or unrelated.
 - [ ] Add a reproducible upstream-export script before refreshing the research snapshot.
 
 ### 0.3 Measurement guardrails
@@ -123,7 +125,7 @@ implementation time on unrelated base-image/transitive CVEs.
 
 - [x] Replace `Math.random` in Token Generator and TOTP secret generation with `crypto.getRandomValues` plus rejection sampling to avoid modulo bias.
 - [x] Restore the missing `N` and `n` characters in the default token alphabets.
-- [ ] Audit every use of shared random helpers and classify it as security-sensitive or presentation-only; security-sensitive callers must use the Web Crypto path.
+- [x] Audit every shared/direct randomness caller in `.ai/RANDOMNESS.md`; Token/TOTP, UUID v1/v4, and ULID use reviewed Web Crypto paths, while the remaining `Math.random` callers are explicitly presentation-only. UUID v1's former pseudo-random node/clock data is regression-tested out.
 - [x] Add deterministic alphabet, Unicode, length, empty-input, rejection, and permanently-missing-character coverage without flaky statistical assertions.
 - [x] Keep generated tokens and OTP secrets ephemeral and verify non-persistence in Chromium.
 
@@ -131,7 +133,7 @@ implementation time on unrelated base-image/transitive CVEs.
 
 ### 2.1 Text Diff
 
-- [ ] Compare a lightweight diff editor with a minimal Monaco editor-only build and record the payload/UX decision.
+- [x] Compare a lightweight diff editor with the minimal Monaco build and record the payload/UX decision in `.ai/experiments/TEXT_DIFF_EDITOR_COMPARISON.md`: import pruning cannot meet budget; a worker-backed CodeMirror spike is the only measured candidate and must pass parity/adversarial gates before migration.
 - [x] Configure a real worker and eliminate the main-thread fallback warning.
 - [x] Remove unused language/mode chunks from the manifest and PWA cache.
 - [x] Dispose content listeners, original/modified models, editor, and worker on unmount, including multi-owner worker-environment restoration.
@@ -139,7 +141,7 @@ implementation time on unrelated base-image/transitive CVEs.
 - [x] Add a repeated SPA open/close forced-GC memory test; ten cycles retain +2.46 MiB with zero workers.
 - [x] Add a large-text interaction fixture: two 1 MiB models complete in the real Monaco worker with default-off storage and responsive UI actions.
 - [x] Meet the Text Diff heap budget in `.ai/PERFORMANCE.md`.
-- [ ] Meet the Text Diff route payload budget in `.ai/PERFORMANCE.md` (current additional closure: 582,998 B gzip; target: `<350 kB`).
+- [ ] Meet the Text Diff route payload budget in `.ai/PERFORMANCE.md` (schema-v4 route plus owned worker: 646,976 B gzip; target: `<350 kB`). The measured Monaco/CodeMirror decision is complete; a worker-backed CodeMirror spike remains the migration gate.
 
 ### 2.2 Shared worker/task abstraction
 
@@ -172,12 +174,19 @@ implementation time on unrelated base-image/transitive CVEs.
 
 ### 2.5 Large structured/text input
 
-- [x] Add a shared plain-text output mode above 100,000 UTF-8 bytes while preserving copy access; the 1 MiB JSON fixture renders one `<pre>` with zero result descendants.
-- [ ] Parse JSON/YAML once per change and reuse the result for validation and formatting.
-- [ ] Move large JSON/YAML/TOML/XML/SQL/Markdown processing into workers where supported.
-- [ ] Add 100 kB, 1 MB, deep, malformed, and oversized fixtures.
-- [x] Keep the shared 1 MiB result markup below 5,000 nodes; the JSON fixture uses one `<pre>` with zero descendants.
-- [ ] Prove the remaining 1 MiB parse/format path creates no >50 ms main-thread task.
+- [x] Add a shared bounded plain-text output mode above 100,000 UTF-8 bytes while preserving full copy access; the 1 MiB fixtures render a UTF-8-safe 100,000-byte preview in one readonly `<textarea>` with zero descendants while keeping the complete output in memory for Copy.
+- [x] Parse YAML Prettify once per bounded worker job and reuse the single document for validation and formatting.
+- [x] Parse strict JSON Prettify once per bounded worker job and preserve original integer, decimal, exponent, and negative-zero lexemes through formatting and decoded-key sorting.
+- [ ] Parse the remaining YAML/JSON conversion paths once per change and reuse the result for validation and transformation.
+- [x] Move YAML Prettify into a terminate-and-replace worker with job IDs, stale-result protection, cancellation, a five-second deadline, and byte/depth/node/alias limits.
+- [x] Move JSON Prettify into the same bounded terminate-and-replace lifecycle, with worker-only exact UTF-8 accounting so a 1 MiB transfer does not rescan the whole string on the main thread.
+- [ ] Move large TOML/XML/SQL/Markdown and remaining JSON/YAML converter processing into workers where supported.
+- [x] Add YAML Prettify malformed, oversized, depth/node/alias/output-limit unit fixtures and a 1 MiB responsive Chromium fixture; 31 focused checks include pre-serialization scalar-alias, deep-sequence indentation, escaped-line, and boundary-space amplification while retaining valid 90,000-node and 1 MiB inputs.
+- [x] Add equivalent strict JSON malformed, duplicate-key, Unicode, depth/node/input/output, cancellation/stale/timeout/crash/disposal, and 1 MiB browser fixtures.
+- [ ] Add the equivalent 100 kB, 1 MB, deep, malformed, and oversized fixtures to the remaining structured-input tools.
+- [x] Keep shared 1 MiB result markup below 5,000 nodes; JSON/YAML use one readonly preview `<textarea>` with zero descendants.
+- [x] Prove the measured JSON/YAML 1 MiB Prettify paths create no `>=50 ms` main-thread Long Task in the sequential production Chromium fixtures; final isolated measurements are JSON 197 ms format-ready and YAML 203 ms, both with 0.0 ms observed longest task. YAML also passes 10/10 repeated runs after prior discarded-browser-context garbage is collected before the interaction window, without excluding current formatting work.
+- [ ] Prove the same `<50 ms` Long Task gate for the remaining structured-input tools and under the slower-device profile.
 - [ ] Apply the same bounded output policy to regex matches, generated lists, diff trees, and table tools.
 
 ### 2.6 Small confirmed fixes
@@ -186,7 +195,7 @@ implementation time on unrelated base-image/transitive CVEs.
 - [x] Round Temperature Converter correctly around floating-point boundaries and reject values below absolute zero for every scale.
 - [x] Preserve repeated URL query values and display fragments.
 - [x] Add named RFC3986/RFC5987/form URL encoding modes instead of presenting `encodeURIComponent` as the only standard.
-- [ ] Choose and document a lossless large-integer strategy for JSON/YAML.
+- [x] Choose and document the bounded lossless strategy for Prettify: strict JSON preserves numeric lexemes, YAML preserves integer values with `BigInt`, and legacy JSON5 remains an explicit non-lossless compatibility mode. YAML floats and converters remain outside this contract.
 - [x] Reset/clamp command-palette selection and guard Enter on an empty result.
 - [x] Escape CSV quotes as `""` and quote comma/newline/quote fields correctly.
 - [x] Return zero words for whitespace-only Text Statistics input and compute character/word/line/UTF-8 byte statistics in one O(n), O(1)-space pass.
@@ -208,8 +217,8 @@ implementation time on unrelated base-image/transitive CVEs.
 - [x] Runtime-cache content-hashed lazy chunks after first use with a bounded/versioned CacheFirst policy.
 - [x] Verify a previously opened lazy tool reloads offline after clearing the HTTP cache; document, shell, Workbox client runtime, and lazy chunks are served by the service worker.
 - [ ] Add an optional explicit full-offline download flow if required.
-- [ ] Provide an offline-unavailable state rather than a blank tool.
-- [x] Keep the mandatory precache below 1 MB raw; current artifact is 945,188 B raw / 324,178 B gzip across nine entries and both limits are executable CI/release gates.
+- [x] Provide an offline-unavailable state rather than a blank tool: hide the prior route, keep query/hash only in memory, verify origin reachability, and retry through a fresh query-free document so sticky failed imports recover without leaking tool content into access logs.
+- [x] Keep the mandatory precache below 1 MB raw; current artifact is 952,869 B raw / 326,657 B gzip across nine entries and both limits are executable CI/release gates.
 - [x] Cover compression, immutable hashed-asset caching, and HTML/SW/manifest revalidation in the container smoke test.
 - [ ] Add browser acceptance for service-worker update/rollback and stale-cache cleanup.
 
@@ -230,11 +239,11 @@ implementation time on unrelated base-image/transitive CVEs.
 
 ### 3.3 MAC Address Lookup
 
-- [ ] Generate and benchmark compact sorted, binary, and partitioned forms of the 34,503-entry OUI database.
-- [ ] Load only the prefix bucket needed for a typical lookup.
-- [ ] Decode/search off the main thread if the chosen format requires material work.
-- [ ] Make database generation reproducible and record source/version metadata.
-- [ ] Target a typical route payload below 250 kB gzip.
+- [x] Generate and benchmark compact dictionary, varint, binary, and 112-bucket forms of the 34,503-entry OUI database; record the decision in `.ai/experiments/OUI_DATA_FORMAT_COMPARISON.md`.
+- [x] Reject input-selected prefix buckets after integration review because their URLs disclose the entered prefix to access logs; use one prefix-independent fixed hashed worker URL instead.
+- [x] Decode and binary-search the compact database off the main thread in one route-local worker reused across lookups and disposed on SPA route leave.
+- [x] Make database generation reproducible and record schema, source/version/license, counts, limits, and source/artifact SHA-256 metadata; CI/build fail when generated data is stale.
+- [ ] Target a typical route payload below 250 kB gzip (privacy-safe fixed-worker closure is 1,937,380 B raw / 770,453 B gzip; reducing exact vendor coverage is an explicit future product trade-off).
 
 ### 3.4 Shell and Home
 
@@ -265,7 +274,7 @@ Current status: tool `keywords` are already indexed by Fuse, but the canonical p
 ### 3.6 Reactive computation cleanup
 
 - [x] Replace `computedRefreshable`/`computedRefreshableAsync` with a single-execution abstraction using explicit dependencies, throttling, stale-job guards, AbortSignal cancellation, and scope disposal.
-- [ ] Prove one generation per dependency change/refresh for UUID, ULID, token, MAC, lorem, OTP, port, and RSA.
+- [x] Prove one generation per dependency change/refresh for UUID, ULID, token, MAC, lorem, OTP, port, and RSA; focused invocation/cancellation coverage exercises all eight callers.
 - [ ] Debounce and order QR/Wi-Fi QR generation.
 - [ ] Format WYSIWYG HTML on idle/debounce or explicit action for large content.
 - [ ] Reduce Math Evaluator to a configured math build and bound expression complexity.
@@ -282,7 +291,7 @@ Current status: tool `keywords` are already indexed by Fuse, but the canonical p
 - [ ] Reuse the tested artifact for release packaging and container content where provenance remains verifiable.
 - [x] Use BuildKit cache mounts and `pnpm fetch` for Docker dependency layers.
 - [ ] Share architecture-independent build output across multi-architecture images.
-- [ ] Target a warm production build below 20 seconds on the audit runner.
+- [ ] Target a warm production build below 20 seconds on the audit runner; the current local build is 19.44 seconds, but standard-runner telemetry is still required before closing this gate.
 
 ## Milestone 5 — selected feature development
 
@@ -290,7 +299,7 @@ Do not start broad feature work until Milestones 0–2 are green. Then select on
 
 Recommended first feature candidates:
 
-- [ ] NanoID Generator with secure browser randomness, length/quantity controls, optional custom alphabet, collision/entropy guidance, copy/download actions, and strict output limits. Use open [PR #1138](https://github.com/CorentinTh/it-tools/pull/1138) only as a requirements reference; implement locally and lazy-load any dependency.
+- [x] **DONE:** NanoID Generator with Web Crypto rejection sampling, length/quantity controls, validated NFC Unicode custom alphabets, exact/approximated collision and entropy guidance, copy/download/clear actions, strict 100,000-symbol / 512-KiB output limits, session-only privacy, lazy routing, and a 23,225 B raw / 8,916 B gzip additional closure. Open [PR #1138](https://github.com/CorentinTh/it-tools/pull/1138) supplied approved requirements research only; no upstream component code or generator dependency was copied.
 - [ ] CLI Command Editor with lossless POSIX/PowerShell quoting and option round trips.
 - [ ] Modern identifier workspace: UUID v6/v7 and format normalization plus Mongo ObjectID/Snowflake inspection.
 - [ ] DevOps config workspace: Dockerfile lint, Compose validation/`.env` extraction, nginx formatting, and properties/YAML conversion.
@@ -330,7 +339,7 @@ Every row is an explicit candidate to adapt manually. It is **not** approval to 
 | Closed [PR #873](https://github.com/CorentinTh/it-tools/pull/873) | Repeated URL query parameters | Preserve all values and add fragment, encoding, and repeated-key fixtures |
 | Open [PR #1491](https://github.com/CorentinTh/it-tools/pull/1491) | Temperature rounding | Adapt the numeric rule with positive/negative boundary tests |
 | Open [PR #1153](https://github.com/CorentinTh/it-tools/pull/1153) | Temperature physical limits | Reimplement per-scale absolute-zero bounds and test exact/below-boundary values |
-| Open [PR #1138](https://github.com/CorentinTh/it-tools/pull/1138) | NanoID Generator requirements | Implement a local lazy tool with Web Crypto-backed randomness, stable route/keywords, bounded quantity/length/alphabet controls, and statistical/property fixtures; do not copy the PR component |
+| Open [PR #1138](https://github.com/CorentinTh/it-tools/pull/1138) | **Completed local adaptation of NanoID requirements** | Local lazy implementation uses Web Crypto-backed rejection sampling, stable route/keywords, bounded quantity/length/alphabet controls, collision/property fixtures, and no copied PR component or runtime generator dependency |
 | Open [PR #913](https://github.com/CorentinTh/it-tools/pull/913) | Token Generator usability | Reuse multi-token, numeric length, denied-character, and settings requirements only; replace its randomness with the local Web Crypto design |
 | Open [PR #1441](https://github.com/CorentinTh/it-tools/pull/1441), [PR #1149](https://github.com/CorentinTh/it-tools/pull/1149), and [PR #742](https://github.com/CorentinTh/it-tools/pull/742) | UUID v6/v7 and normalization | Update the UUID library intentionally, add RFC/version fixtures, and integrate formats into one identifier workspace |
 | Open [PR #1602](https://github.com/CorentinTh/it-tools/pull/1602) | CLI Command Editor requirements | Design a tested shell AST first; preserve quoting, repeated flags, `--`, pipes, redirection, and platform modes rather than copying its parser |
@@ -348,9 +357,9 @@ Every row is an explicit candidate to adapt manually. It is **not** approval to 
 | Open [PR #1740](https://github.com/CorentinTh/it-tools/pull/1740) and [PR #1813](https://github.com/CorentinTh/it-tools/pull/1813) | Favicon/app icon generation | Consolidate both proposals, use bounded Canvas/Blob processing, revoke URLs, and validate ZIP/manifest contents |
 | Open [PR #1166](https://github.com/CorentinTh/it-tools/pull/1166) and [PR #1323](https://github.com/CorentinTh/it-tools/pull/1323) | JSON schema/codegen/size requirements | Add plugins on the lossless parse-once worker model instead of creating more independent parsers |
 | Open [PR #1085](https://github.com/CorentinTh/it-tools/pull/1085) and [PR #1087](https://github.com/CorentinTh/it-tools/pull/1087) | Unicode/code-point correctness | Reimplement with `TextEncoder`/code points and non-BMP fixtures across related text tools |
-| Open [PR #1434](https://github.com/CorentinTh/it-tools/pull/1434) | Large-integer preservation | Use its fixtures while selecting one coherent JSON/YAML policy for this fork |
+| Open [PR #1434](https://github.com/CorentinTh/it-tools/pull/1434) | **Completed local Prettify-scope adaptation of large-integer requirements** | Strict JSON preserves source numeric lexemes and YAML Prettify uses `BigInt` for integers; YAML floats and converters remain explicitly outside the lossless contract |
 | Open [PR #1651](https://github.com/CorentinTh/it-tools/pull/1651) | Resilient ASCII font loading | Bundle a default font first, then adapt HTTPS cache/fallback behavior with cancellation |
-| Open [PR #1170](https://github.com/CorentinTh/it-tools/pull/1170) | All-tool smoke coverage | Expand it to all 86 routes, console/page errors, chunk failures, and local persistence isolation |
+| Open [PR #1170](https://github.com/CorentinTh/it-tools/pull/1170) | All-tool smoke coverage | Expand it to all 87 routes, console/page errors, chunk failures, and local persistence isolation |
 | Closed [PR #1374](https://github.com/CorentinTh/it-tools/pull/1374) | Emoji bounded rendering | Benchmark pagination versus virtualization and preserve accessibility; do not copy presentation wholesale |
 | Closed [PR #1373](https://github.com/CorentinTh/it-tools/pull/1373) | Icon inventory/consolidation | Reuse mapping research only; prefer direct virtual modules/sprite over another large barrel |
 | Open [PR #1443](https://github.com/CorentinTh/it-tools/pull/1443) | Generated registry/scaffolding ideas | Adapt generation to the local descriptor/category/i18n model and include deterministic validation |
@@ -389,11 +398,17 @@ Implementation is approved and active on the local branch. Current ordering is:
 1. [x] restore green lint/typecheck and add route/bundle baselines;
 2. [x] replace insecure Token/TOTP randomness and restore the complete alphabets;
 3. [x] fix the Text Diff leak, worker warning, persistence boundary, and import shape;
-4. [ ] finish the measured Text Diff payload experiment;
+4. [x] finish the measured Text Diff payload experiment and retain repaired Monaco until a worker-backed CodeMirror spike passes parity/adversarial gates;
 5. [x] pass the two-by-1-MiB Text Diff worker interaction fixture;
 6. [x] resolve locally confirmed Base64 File, Temperature, URL, command-palette, CSV, and Text Statistics defects with regression tests;
 7. [x] replace reactive bcrypt and Regex matching/RandExp work with cancellable worker flows; keep the explicit bounded DOM-dependent SVG residual documented;
 8. [x] add the shared large-output fallback for JSON/YAML and related text tools and pass the 1 MiB JSON browser fixture.
+9. [x] move YAML Prettify to one bounded parse-once worker job and pass its 1 MiB responsiveness fixture;
+10. [x] add production-service-worker offline-unavailable recovery with a privacy-safe fresh-document retry;
+11. [x] replace the OUI monolith with a reproducible compact fixed-URL worker and reject the measured prefix-bucket privacy regression;
+12. [x] make build-stat route closures worker-aware and complete the direct/shared randomness audit including UUID v1;
+13. [x] deliver the local bounded NanoID feature plus strict JSON numeric-lexeme and YAML integer-preserving Prettify with exact worker-side full-payload UTF-8 bounds, a bounded 100,000-byte readonly preview, `<50 ms` measured Long Task gates, and final bundle/privacy regressions.
+14. [x] harden YAML output sizing before serializer allocation for alias, indentation, escaping, and physical-line expansion; retain the 100,000-node capacity and stabilize the isolated Long Task fixture at 10/10 without weakening its threshold.
 
 Dependency/base-image vulnerability remediation and scan policy remain in the
 separately tracked deferred security slice.

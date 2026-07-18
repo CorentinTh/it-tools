@@ -47,6 +47,9 @@ jobs:
       - name: Test build statistics
         run: pnpm test:build-stats
 
+      - name: Verify generated OUI data
+        run: pnpm test:oui-data
+
       - name: Type check
         run: pnpm typecheck
 

@@ -15,6 +15,10 @@ import {
   serializeBuildStats,
 } from './build-stats.mjs';
 
+const LAZY_WORKER_PATH = 'assets/lazy.worker-44556677.js';
+const NESTED_WORKER_PATH = 'assets/nested.worker-77889900.js';
+const UNRELATED_WORKER_PATH = 'assets/unrelated.worker-99aabbcc.js';
+
 async function createFixture(t, { basePath = '/' } = {}) {
   const fixtureRoot = await mkdtemp(join(tmpdir(), 'it-tools-build-stats-'));
   const distDirectory = join(fixtureRoot, 'dist');
@@ -70,9 +74,18 @@ async function createFixture(t, { basePath = '/' } = {}) {
     ),
     writeFile(join(assetsDirectory, 'index-deadbeef.js'), 'console.log("fixture");\n'),
     writeFile(join(assetsDirectory, 'index-cafebabe.css'), 'body { color: rebeccapurple; }\n'),
-    writeFile(join(assetsDirectory, 'lazy-00112233.js'), 'export const lazy = true;\n'),
-    writeFile(join(assetsDirectory, 'index-aabbccdd.js'), 'export const nested = true;\n'),
+    writeFile(
+      join(assetsDirectory, 'lazy-00112233.js'),
+      `export const lazy = () => new Worker(new URL("${normalizedBasePath}${LAZY_WORKER_PATH}", self.location), { type: "module" });\n`,
+    ),
+    writeFile(
+      join(assetsDirectory, 'index-aabbccdd.js'),
+      `export const nested = () => new SharedWorker("${normalizedBasePath}${NESTED_WORKER_PATH}");\n`,
+    ),
     writeFile(join(assetsDirectory, 'shared-feedface.js'), 'export const shared = true;\n'),
+    writeFile(join(distDirectory, LAZY_WORKER_PATH), 'self.postMessage("lazy worker");\n'),
+    writeFile(join(distDirectory, NESTED_WORKER_PATH), 'self.postMessage("nested worker");\n'),
+    writeFile(join(distDirectory, UNRELATED_WORKER_PATH), 'self.postMessage("unrelated");\n'),
     writeFile(join(assetsDirectory, 'icon.png'), Buffer.from([0x89, 0x50, 0x4E, 0x47])),
     writeFile(join(distDirectory, 'manifest.json'), `${JSON.stringify(viteManifest, null, 2)}\n`),
     writeFile(
@@ -100,8 +113,8 @@ test('collectBuildStats emits deterministic, hash-normalized artifact metrics', 
     viteManifest: 'manifest.json',
     workboxServiceWorker: 'sw.js',
   });
-  assert.equal(first.files.totals.fileCount, 9);
-  assert.equal(first.assets.totals.fileCount, 6);
+  assert.equal(first.files.totals.fileCount, 12);
+  assert.equal(first.assets.totals.fileCount, 9);
   assert.equal(first.shell.assetTotals.fileCount, 2);
   assert.equal(first.shell.withDocumentTotals.fileCount, 3);
   assert.deepEqual(
@@ -122,15 +135,22 @@ test('collectBuildStats emits deterministic, hash-normalized artifact metrics', 
     importEdgeCount: 4,
     staticImportEdgeCount: 2,
     dynamicImportEdgeCount: 2,
+    workerArtifactCount: 2,
+    workerOwnershipEdgeCount: 2,
   });
   assert.deepEqual(first.viteManifest.closureDefinitions, {
     initialClosure: {
       importFields: ['imports'],
-      artifactFields: ['file', 'css', 'assets'],
+      artifactFields: ['file', 'css', 'assets', 'referencedWorkers'],
     },
     reachableClosure: {
       importFields: ['imports', 'dynamicImports'],
-      artifactFields: ['file', 'css', 'assets'],
+      artifactFields: ['file', 'css', 'assets', 'referencedWorkers'],
+    },
+    referencedWorkers: {
+      discovery: 'literal-local-url-in-Worker-or-SharedWorker-constructor',
+      ownership: 'manifest-record-file',
+      validation: 'target-must-be-an-existing-javascript-artifact',
     },
     additionalToMainEntryInitial: {
       source: 'initialClosure',
@@ -146,7 +166,35 @@ test('collectBuildStats emits deterministic, hash-normalized artifact metrics', 
     artifactIdentity: 'normalized-dist-path-plus-content-sha256',
     closureMembershipDigest: 'sha256-of-json-encoded-sorted-identity-list',
   });
-  assert.equal(first.viteManifest.artifacts.totals.fileCount, 6);
+  assert.equal(first.viteManifest.artifacts.totals.fileCount, 8);
+  assert.deepEqual(
+    first.viteManifest.workerArtifacts.entries.map(entry => ({
+      path: entry.path,
+      owners: entry.owners,
+    })),
+    [
+      {
+        path: 'assets/lazy.worker-<hash>.js',
+        owners: [{
+          file: 'assets/lazy-<hash>.js',
+          manifestId: 'source:src/lazy.ts',
+        }],
+      },
+      {
+        path: 'assets/nested.worker-<hash>.js',
+        owners: [{
+          file: 'assets/index-<hash>.js',
+          manifestId: 'source:src/nested.ts',
+        }],
+      },
+    ],
+  );
+  assert.equal(
+    first.viteManifest.workerArtifacts.entries.some(entry => (
+      entry.path === 'assets/unrelated.worker-<hash>.js'
+    )),
+    false,
+  );
   assert.deepEqual(
     first.viteManifest.entryPoints.map(entry => ({
       id: entry.id,
@@ -155,37 +203,45 @@ test('collectBuildStats emits deterministic, hash-normalized artifact metrics', 
       initialRecordCount: entry.initialClosure.manifestRecordCount,
       reachableFileCount: entry.reachableClosure.fileCount,
       reachableRecordCount: entry.reachableClosure.manifestRecordCount,
+      initialWorkerCount: entry.initialClosure.workerArtifactCount,
+      reachableWorkerCount: entry.reachableClosure.workerArtifactCount,
     })),
     [
       {
         id: 'src/lazy.ts',
         file: 'assets/lazy-<hash>.js',
-        initialFileCount: 3,
+        initialFileCount: 4,
         initialRecordCount: 2,
-        reachableFileCount: 4,
+        reachableFileCount: 6,
         reachableRecordCount: 3,
+        initialWorkerCount: 1,
+        reachableWorkerCount: 2,
       },
       {
         id: 'src/main.ts',
         file: 'assets/index-<hash>.js',
         initialFileCount: 4,
         initialRecordCount: 2,
-        reachableFileCount: 6,
+        reachableFileCount: 8,
         reachableRecordCount: 4,
+        initialWorkerCount: 0,
+        reachableWorkerCount: 2,
       },
       {
         id: 'src/nested.ts',
         file: 'assets/index-<hash>.js',
-        initialFileCount: 1,
+        initialFileCount: 2,
         initialRecordCount: 1,
-        reachableFileCount: 1,
+        reachableFileCount: 2,
         reachableRecordCount: 1,
+        initialWorkerCount: 1,
+        reachableWorkerCount: 1,
       },
     ],
   );
   const mainEntry = first.viteManifest.entryPoints.find(entry => entry.id === 'src/main.ts');
-  assert.equal(mainEntry.reachableClosure.rawBytes, first.assets.totals.rawBytes);
-  assert.equal(mainEntry.reachableClosure.gzipBytes, first.assets.totals.gzipBytes);
+  assert.equal(mainEntry.reachableClosure.rawBytes, first.viteManifest.artifacts.totals.rawBytes);
+  assert.equal(mainEntry.reachableClosure.gzipBytes, first.viteManifest.artifacts.totals.gzipBytes);
   assert.ok(mainEntry.initialClosure.rawBytes < mainEntry.reachableClosure.rawBytes);
   assert.ok(mainEntry.initialClosure.gzipBytes < mainEntry.reachableClosure.gzipBytes);
   assert.deepEqual(first.viteManifest.mainEntryInitialClosure, mainEntry.initialClosure);
@@ -197,7 +253,7 @@ test('collectBuildStats emits deterministic, hash-normalized artifact metrics', 
       manifestRecordCount: lazyEntry.additionalToMainEntryInitial.manifestRecordCount,
       fileCount: lazyEntry.additionalToMainEntryInitial.fileCount,
     },
-    { manifestRecordCount: 1, fileCount: 1 },
+    { manifestRecordCount: 1, fileCount: 2 },
   );
   assert.match(
     lazyEntry.additionalToMainEntryInitial.membershipDigests.manifestIdsSha256,
@@ -209,11 +265,12 @@ test('collectBuildStats emits deterministic, hash-normalized artifact metrics', 
   );
   assert.equal(
     lazyEntry.additionalToMainEntryInitial.rawBytes,
-    Buffer.byteLength('export const lazy = true;\n'),
+    Buffer.byteLength(`export const lazy = () => new Worker(new URL("/${LAZY_WORKER_PATH}", self.location), { type: "module" });\n`)
+      + Buffer.byteLength('self.postMessage("lazy worker");\n'),
   );
 
   const nestedEntry = first.viteManifest.entryPoints.find(entry => entry.id === 'src/nested.ts');
-  assert.equal(nestedEntry.additionalToMainEntryInitial.fileCount, 1);
+  assert.equal(nestedEntry.additionalToMainEntryInitial.fileCount, 2);
   assert.notEqual(
     nestedEntry.additionalToMainEntryInitial.membershipDigests.artifactIdentitiesSha256,
     lazyEntry.additionalToMainEntryInitial.membershipDigests.artifactIdentitiesSha256,
@@ -226,7 +283,10 @@ test('collectBuildStats emits deterministic, hash-normalized artifact metrics', 
   );
 
   const serialized = serializeBuildStats(first);
-  assert.doesNotMatch(serialized, /deadbeef|cafebabe|00112233|abcdef0123456789|0123456789abcdef/);
+  assert.doesNotMatch(
+    serialized,
+    /deadbeef|cafebabe|00112233|44556677|77889900|99aabbcc|abcdef0123456789|0123456789abcdef/,
+  );
   assert.match(serialized, /assets\/index-<hash>\.js/);
   assert.ok(serialized.length < 30_000);
   assert.equal(serialized.endsWith('\n'), true);
@@ -267,6 +327,99 @@ test('collectBuildStats resolves shell references below a non-root Vite base', a
     ['assets/index-<hash>.css', 'assets/index-<hash>.js'],
   );
   assert.equal(stats.shell.assetTotals.fileCount, 2);
+  const lazyEntry = stats.viteManifest.entryPoints.find(entry => entry.id === 'src/lazy.ts');
+  assert.equal(lazyEntry.initialClosure.workerArtifactCount, 1);
+  assert.equal(lazyEntry.additionalToMainEntryInitial.fileCount, 2);
+});
+
+test('collectBuildStats resolves a worker URL relative to its owning JavaScript artifact', async (t) => {
+  const distDirectory = await createFixture(t);
+  await writeFile(
+    join(distDirectory, 'assets/lazy-00112233.js'),
+    'export const lazy = () => new Worker(new URL("./lazy.worker-44556677.js", import.meta.url));\n',
+  );
+
+  const stats = await collectBuildStats({ distDirectory });
+  const lazyEntry = stats.viteManifest.entryPoints.find(entry => entry.id === 'src/lazy.ts');
+
+  assert.equal(lazyEntry.initialClosure.workerArtifactCount, 1);
+  assert.equal(lazyEntry.additionalToMainEntryInitial.fileCount, 2);
+  assert.deepEqual(
+    stats.viteManifest.workerArtifacts.entries[0].owners,
+    [{ file: 'assets/lazy-<hash>.js', manifestId: 'source:src/lazy.ts' }],
+  );
+});
+
+test('collectBuildStats gives owned workers normalized content-sensitive closure identities', async (t) => {
+  const distDirectory = await createFixture(t);
+  const before = await collectBuildStats({ distDirectory });
+  const beforeLazy = before.viteManifest.entryPoints.find(entry => entry.id === 'src/lazy.ts');
+
+  await writeFile(
+    join(distDirectory, LAZY_WORKER_PATH),
+    'self.postMessage("updated lazy worker payload");\n',
+  );
+
+  const after = await collectBuildStats({ distDirectory });
+  const afterLazy = after.viteManifest.entryPoints.find(entry => entry.id === 'src/lazy.ts');
+
+  assert.equal(
+    beforeLazy.initialClosure.membershipDigests.manifestIdsSha256,
+    afterLazy.initialClosure.membershipDigests.manifestIdsSha256,
+  );
+  assert.notEqual(
+    beforeLazy.initialClosure.membershipDigests.artifactIdentitiesSha256,
+    afterLazy.initialClosure.membershipDigests.artifactIdentitiesSha256,
+  );
+  assert.equal(after.viteManifest.workerArtifacts.entries[0].path, 'assets/lazy.worker-<hash>.js');
+  assert.ok(afterLazy.initialClosure.rawBytes > beforeLazy.initialClosure.rawBytes);
+});
+
+test('collectBuildStats does not attach an unrelated worker artifact to any route', async (t) => {
+  const distDirectory = await createFixture(t);
+  const before = await collectBuildStats({ distDirectory });
+
+  await writeFile(
+    join(distDirectory, UNRELATED_WORKER_PATH),
+    'self.postMessage("a much larger unrelated worker payload that no route owns");\n',
+  );
+
+  const after = await collectBuildStats({ distDirectory });
+
+  assert.deepEqual(after.viteManifest, before.viteManifest);
+  assert.notEqual(after.assets.totals.rawBytes, before.assets.totals.rawBytes);
+});
+
+test('collectBuildStats fails closed for invalid local worker artifact references', async (t) => {
+  const distDirectory = await createFixture(t);
+  const lazyArtifactPath = join(distDirectory, 'assets/lazy-00112233.js');
+
+  await writeFile(
+    lazyArtifactPath,
+    'new Worker(new URL("/assets/missing.worker-11223344.js", self.location));\n',
+  );
+  await assert.rejects(
+    collectBuildStats({ distDirectory }),
+    /references a missing worker artifact: assets\/missing\.worker-11223344\.js/,
+  );
+
+  await writeFile(lazyArtifactPath, 'new Worker("/assets/icon.png");\n');
+  await assert.rejects(
+    collectBuildStats({ distDirectory }),
+    /references a non-JavaScript worker artifact: assets\/icon\.png/,
+  );
+
+  await writeFile(lazyArtifactPath, 'new Worker("/assets/invalid%ZZ.worker.js");\n');
+  await assert.rejects(
+    collectBuildStats({ distDirectory }),
+    /contains an invalid percent-encoded worker URL/,
+  );
+
+  await writeFile(lazyArtifactPath, 'new Worker(new URL(`../../outside.worker.js`, import.meta.url));\n');
+  await assert.rejects(
+    collectBuildStats({ distDirectory }),
+    /has a worker URL outside dist/,
+  );
 });
 
 test('collectBuildStats requires a Vite 4 manifest and validates its graph', async (t) => {

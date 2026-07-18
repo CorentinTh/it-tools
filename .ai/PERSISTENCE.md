@@ -59,10 +59,15 @@ implicit durable-content behavior conflicts with the default policy.
 Text Diff separately recognizes and explicitly clears its pre-v1
 `text-diff:original` and `text-diff:modified` keys.
 
+NanoID settings and generated identifiers are also session-only. The tool uses
+in-memory refs, never places its alphabet or output in URL/history, and exposes
+copy/download only as explicit user actions; it adds no managed storage key or
+network request.
+
 ## Verification
 
-- Final integrated unit checkpoint: 367/367 tests across 70 files passed; the focused
-  storage/cleanup suite passed 15/15.
+- Final integrated unit checkpoint: 546/546 tests across 89 files passed; the
+  focused storage/cleanup suite passed 15/15.
 - Chromium persistence flows: 2/2 passed across legacy cleanup and edits to all
   migrated tools.
 - Application/test and Vite-config type checking passed.
@@ -70,6 +75,9 @@ Text Diff separately recognizes and explicitly clears its pre-v1
   unrelated same-origin keys are preserved and denied removals are reported.
 - Regex incoming-query/session-only behavior passes 2/2 component checks, and
   analytics URL/referrer sanitization passes 3/3 focused plugin checks.
+- NanoID's production Chromium flow verifies exact clipboard and downloaded
+  output, no generated ID/custom alphabet in URL or request URL/body, no matching
+  `localStorage` value, and explicit clearing.
 
 ## Remaining work
 

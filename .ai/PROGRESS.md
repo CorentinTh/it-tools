@@ -11,33 +11,37 @@ milestone Definition of Done has not yet passed.
 
 | Area | Status | Current result / remaining gate |
 |---|---|---|
-| M0 quality baseline | DONE | Lint, dual-project typecheck, 367/367 unit tests, 86/86 Chromium E2E tests, all 86 routes, production build, and diff checks are green on the final integrated worktree. |
-| M0 build measurements | IN PROGRESS | Schema-v3 baseline plus schema-v1 budgets enforce shell, required Workbox entries, default routes, and rationale-backed heavy-route ceilings in CI/release; 194 current-artifact checks pass. Standard-runner build-time/modules/RSS telemetry remains. |
-| PWA mandatory install | DONE | Shell-only Workbox inventory is 9 files / 945,188 B raw / 324,178 B gzip. Required membership and <=1 MB raw / <=350 kB gzip / <=10 files fail CI/release; clean-HTTP-cache offline lazy-route reload passes. |
+| M0 quality baseline | DONE | Lint, dual-project typecheck, 546/546 unit tests, 94/94 sequential Chromium E2E tests, all 87 routes, production build, OUI generation, build budgets, and diff checks are green on the final integrated worktree. |
+| M0 build measurements | IN PROGRESS | Schema-v4 baseline includes literal route-owned workers in every closure; schema-v1 budgets enforce shell, required Workbox entries, default routes, and rationale-backed heavy-route ceilings in CI/release. Fifteen infrastructure tests and 196 current-artifact checks pass; standard-runner build-time/modules/RSS telemetry remains. |
+| PWA mandatory install | DONE | Shell-only Workbox inventory is 9 files / 952,869 B raw / 326,657 B gzip. Required membership and <=1 MB raw / <=350 kB gzip / <=10 files fail CI/release; clean-HTTP-cache offline lazy-route reload passes. |
+| PWA uncached-route recovery | DONE | Strict lazy-tool/network-error classification, effective-offline probing, query-safe in-memory state, prior-route hiding, and accessible actions pass 14/14 unit/component checks and a production-Workbox E2E. Retry first probes the app origin, then starts a fresh query-free document because failed native imports are sticky and query/hash must not reach access logs. |
 | M1 container delivery | IN PROGRESS | Rootless/read-only/default-and-arbitrary-UID contracts pass with alternate internal port, strict static 404, gzip/cache/headers, and privacy-safe access logs. The CVE/remediation track is explicitly deferred; reverse-proxy/subpath acceptance remains. |
-| Token/TOTP secure randomness | DONE | Web Crypto rejection sampling, alphabet fixes, length bounds, Unicode/boundary tests, and non-persistence browser checks are implemented. The wider shared-random caller inventory remains a separate checklist item. |
+| Secure randomness | DONE | Web Crypto rejection sampling, alphabet fixes, length bounds, Unicode/boundary tests, and non-persistence browser checks are implemented. `.ai/RANDOMNESS.md` classifies every caller; UUID v1 now seeds its multicast node and 14-bit clock sequence with Web Crypto, while remaining pseudo-random callers are presentation-only. |
 | Text Diff lifecycle/privacy | DONE | Minimal Monaco editor import, real worker, multi-owner environment restoration, complete disposal, default-off bounded/versioned persistence, quota handling, and explicit clear are covered. Ten warmed route cycles retain +2.46 MiB and zero workers (`<5 MiB` budget). |
-| Text Diff payload | IN PROGRESS | Main chunk is 2,206,864 B raw / 570,786 B gzip; additional-to-shell closure is 2,268,407 B raw / 582,998 B gzip, still above the `<350 kB gzip` target. The 1 MiB interaction fixture passes; the remaining gap is transfer size. |
+| Text Diff payload | IN PROGRESS | The schema-v4 route-plus-owned-worker closure is 2,474,507 B raw / 646,976 B gzip, above the `<350 kB gzip` target. The measured experiment rejects further Monaco pruning and records a worker-backed CodeMirror spike as the only viable migration gate; repaired Monaco remains in production. |
+| MAC/OUI route payload | IN PROGRESS | The accepted privacy-safe design generates one compact fixed-URL worker from 34,503 pinned records. Its worker is 1,929,822 B raw / 767,122 B gzip and its full closure is 1,937,380 B / 770,453 B, 27.6% less gzip than the original route. Input-selected buckets were measured then rejected because their filenames leaked MAC prefixes; the `<250 kB` product target remains open. |
+| YAML Prettify responsiveness | DONE | One terminate-and-replace worker parses each document exactly once with 2 MiB input, 4 MiB output, depth/node/alias, five-second, job-ID, cancellation, stale-result, disposal, and exact worker-side UTF-8 bounds. A conservative graph projection rejects scalar-alias, deep-sequence, escaped-line, and boundary-space amplification before serialization while preserving the 100,000-node capacity. Large integers use `BigInt`; 31 focused checks and the final isolated production 1 MiB fixture pass at 203 ms format-ready with 0.0 ms longest Long Task. |
+| JSON lossless/worker slice | DONE | Strict JSON Prettify uses one bounded worker AST, preserves integer/decimal/exponent/negative-zero lexemes, rejects duplicate decoded keys, and sorts decoded keys without touching value tokens. JSON5 is explicitly non-lossless and uses an incremental bounded writer. Thirty-three focused checks and the final production 1 MiB fixture pass at 404 ms cold-route / 197 ms format-ready with 0.0 ms longest Long Task. |
 | Shared refreshable tasks | DONE | Eight callers use explicit dependency sources and single-execution refresh. Async jobs have AbortSignal/stale-result/scope guards; node-forge cannot physically terminate its internal RSA worker after launch. |
 | Shell/Home lifecycle | DONE | Persistent `BaseLayout` removes the detached-layout leak: ten Home/tool cycles improved from +188.40 MiB to +0.86 MiB; DOM and listener counts are stable. |
 | ASCII font delivery | DONE | Removed the `unpkg.com` runtime dependency. All 289 Figlet fonts are emitted as versioned same-origin assets, excluded from install-time precache, cached on demand, and covered by browser/container smoke. |
 | Confirmed product fixes — slice 1 | DONE | Base64 File, Temperature, URL Parser, Command Palette, CSV, Text Statistics, and Docker Compose output pass 65 focused tests across nine files plus scoped lint. |
 | Responsiveness/lifecycle — slice 2 | DONE | Bcrypt and Regex use bounded cancellable workers; Regex preflights sample expansion and preserves zero-width matches; mobile navigation separates transient/persisted state and is inert/focus-safe; Camera has byte/time/raw-allocation/aggregate bounds plus single-flight capture; shared buttons have real disabled semantics. DOM-dependent Regex SVG remains an explicit bounded main-thread residual. |
-| Shared large-output rendering | DONE | Above 100,000 UTF-8 bytes, highlighted output degrades to one copyable plain `<pre>`; the 1 MiB JSON browser fixture has zero result descendants. Parser workers and the `<50 ms` task gate remain a separate phase. |
+| Shared large-output rendering | DONE | Above 100,000 UTF-8 bytes, highlighted output becomes one zero-descendant readonly `<textarea>` with a UTF-8-safe 100,000-byte preview; Copy retains the complete bounded output in memory. JSON/YAML 1 MiB fixtures pass the `<50 ms` Long Task gate. |
 | Emoji bounded rendering | DONE | Initial presentation is 60 cards / 1,731 DOM elements, load-more reaches 120, full ZWJ/flag values copy correctly, `emojilib` is lazy, and one paged search grid preserves Fuse relevance order. Fuse cancellation and 4x CPU acceptance remain separate work. |
 | Cross-tool persistence/privacy | IN PROGRESS | The current storage inventory is classified in `.ai/PERSISTENCE.md`: thirteen legacy content/network-input keys are session-only, secrets are ephemeral, Text Diff is the sole bounded opt-in, Regex edits stay out of URL/history, analytics strips query/hash/referrer credentials, and About provides disclosure plus a managed-key-only global reset. A common preference-storage denial boundary remains. |
-| M5 product features | NOT STARTED | New catalog features remain behind the P0/P1 correctness and responsiveness work. |
+| M5 first catalog feature | DONE | NanoID Generator is the first delivered bounded catalog feature: Web Crypto rejection sampling, no content persistence/network transport, explicit generation, NFC Unicode custom-alphabet validation, entropy/collision guidance, 100,000-symbol / 512-KiB limits, copy/download/clear, lazy route, and bundle/browser gates. Its additional closure is 23,225 B raw / 8,916 B gzip; the second feature remains in planning. |
 
 ## Verified checkpoints
 
-- `pnpm install --frozen-lockfile --force`: passed; lock-resolved dependency graph restored.
+- `pnpm install --frozen-lockfile`: passed against the pinned pnpm 9.11.0 lock-resolved graph.
 - `pnpm lint`: final integrated run passed with zero errors/warnings.
 - `pnpm typecheck`: final integrated application/test and Vite-config projects passed.
-- `pnpm exec vitest run --environment jsdom`: final integrated run passed 367/367 across 70 files.
-- `pnpm test:build-stats`: schema-v3 11/11 passed, including manifest graph, stable identity, subpath handling, strict budget parsing, and required Workbox membership.
-- `pnpm build`: final integrated production build passed; 24,163 modules transformed and the local Vite phase took 19.37 s. The earlier exact-Node-24.18.0 Docker build passed in 21.42 s.
-- `pnpm test:e2e --project=chromium --reporter=line`: final integrated run passed 86/86 in 22.7 s, including the registry-generated 86-tool route smoke.
-- Chromium all-tool route smoke: all 86 registry-backed routes pass without runtime/chunk errors or Monaco worker fallback warnings.
+- `pnpm exec vitest run --environment jsdom`: final integrated run passed 546/546 across 89 files.
+- `pnpm test:build-stats`: schema-v4 15/15 passed, including worker discovery/ownership, unrelated-worker exclusion, malformed-reference failure, manifest graph, stable identity, subpath handling, strict budgets, and required Workbox membership.
+- `pnpm build`: final integrated production build passed; OUI freshness and dual typecheck run first, 24,177 modules were transformed, and the local Vite phase took 19.44 s. The earlier exact-Node-24.18.0 Docker build passed in 21.42 s.
+- `pnpm exec playwright test --project=chromium --reporter=line --workers=1`: final integrated run passed 94/94 in 1.2 minutes, including the registry-generated 87-tool route smoke.
+- Chromium all-tool route smoke: all 87 registry-backed routes pass without runtime/chunk errors or Monaco worker fallback warnings.
 - ASCII same-origin E2E: passed; no external font request is made.
 - Text Diff forced-GC gate: 20,423,472 B -> 23,001,392 B after ten warmed cycles, +2,577,920 B (+2.46 MiB), zero remaining workers.
 - Home forced-GC gate: before fix +188.40 MiB with DOM 9,064 -> 74,694 and listeners 1,939 -> 14,988; after fix 18,336,088 B -> 19,242,160 B, +906,072 B (+0.86 MiB), DOM 5,036 -> 5,037, listeners 807 -> 809.
@@ -46,21 +50,27 @@ milestone Definition of Done has not yet passed.
 - Workflow syntax: all GitHub workflow YAML parses; entrypoint/container scripts pass `sh -n`; `git diff --check` passes.
 - Correctness slice 1: 65/65 focused tests pass across Base64 File, Temperature, URL Parser, Command Palette, CSV, Text Statistics, and Docker Compose; scoped ESLint and `git diff --check` pass.
 - Regex responsiveness: 36/36 focused unit/component checks across five files and 4/4 Chromium flows pass for optional/zero-width captures, pre-allocation sample bounds, limits/protocol validation, explicit incoming-query/session-only behavior, catastrophic timeout with heartbeat, stale cancellation, route leave, and tool-to-tool unmount.
-- Shared `TextareaCopyable`: 8/8 placement/late-target/plain-fallback tests plus 6/6 exact UTF-8 threshold checks pass; the 1 MiB JSON Chromium fixture renders one `<pre>` with zero descendants and keeps copy available.
-- Build budgets: 11/11 infrastructure tests and 194/194 current production-artifact checks pass; CI/release enforce byte/count ceilings plus mandatory Workbox shell/static membership.
-- Bcrypt responsiveness: 19/19 worker/protocol unit checks and 4/4 Chromium flows pass; the lazy route is 10,966 B raw / 3,984 B gzip and its worker is 24,937 B raw / 11,308 B gzip.
+- Shared `TextareaCopyable`: 9/9 component checks plus 16/16 UTF-8 helper checks pass; the 1 MiB JSON/YAML Chromium fixtures render one UTF-8-safe 100,000-byte readonly preview with zero descendants, and JSON verifies Copy receives the complete output.
+- Build budgets: 15/15 infrastructure tests and 196/196 current production-artifact checks pass; CI/release enforce byte/count ceilings, owned-worker closures, and mandatory Workbox shell/static membership.
+- Bcrypt responsiveness: 19/19 worker/protocol unit checks and 4/4 Chromium flows pass; the lazy route is 10,966 B raw / 3,971 B gzip and its worker is 24,937 B raw / 11,229 B gzip.
 - Camera Recorder lifecycle: 18/18 model/composable/component checks pass with deterministic Blob URL ownership, 1-second chunks, 5-minute/64-MiB recording, single-flight screenshots, a pre-canvas 16,777,216-pixel/64-MiB raw bound, a 16-MiB encoded bound, and a 128-MiB aggregate bound.
 - Shared buttons: 4/4 component/router checks pass for non-submitting native defaults, explicit submit/reset, physical href removal plus link semantics while disabled, and enabled object-route navigation.
 - URL Encoder standards: 19/19 model regressions pass across component, RFC3986, RFC5987 value-body, and form-urlencoded modes.
 - UnoCSS native `size`: 15/15 input/config regressions pass with the original Attributify ignore defaults preserved.
-- Sensitive-content migration checkpoint: the final 367/367 full unit run, 15/15 focused storage checks, and 2/2 Chromium privacy flows pass after making thirteen content/network-input keys ephemeral and cleaning legacy values.
+- Sensitive-content migration checkpoint: the current 546/546 full unit run, 15/15 focused storage checks, and 2/2 Chromium privacy flows pass after making thirteen content/network-input keys ephemeral and cleaning legacy values.
 - Text Diff 1 MiB interaction: two exact 1,048,576-byte models reach ready diff state in 725 ms; a clear UI action takes 45 ms, the real worker remains active, storage remains default-off, and the focused production-preview suite passes.
 - Refreshable task abstraction: 9/9 new invocation/cancellation tests and 38/38 related unit checks pass across all eight migrated callers.
 - Privacy/reset UX: 4/4 focused tests pass; clearing managed settings/content preserves unrelated same-origin keys and reports denied mutations.
 - Mobile menu: 4/4 layout regressions, 2/2 style-store checks, and 1/1 Chromium focus flow pass for immediate small-screen collapse, route-close, Escape, focus restoration, inert desktop/mobile hidden states, and a preserved persisted desktop preference.
-- Emoji bounded rendering: 10/10 focused unit/component checks and 3/3 Chromium flows pass; 60 cards create 1,731 elements, load-more reaches 120, one result grid preserves Fuse ranking, production `face` search takes 166 ms with no Long Task API entry >=50 ms, and additional-route gzip is 32,491 B (-48.8%).
+- Emoji bounded rendering: 10/10 focused unit/component checks and 3/3 Chromium flows pass; 60 cards create 1,731 elements, load-more reaches 120, one result grid preserves Fuse ranking, production `face` search takes 166 ms with no Long Task API entry >=50 ms, and additional-route gzip is 32,488 B (-48.8%).
 - Analytics/URL privacy: 3/3 plugin checks cover path-only event/pageview URLs and sanitized referrers; 2/2 Regex component checks cover explicit incoming query import without editor write-back.
-- PWA demand caching: 10/10 policy checks and 1/1 Chromium offline flow pass. The final precache is nine entries; Random Port adds four runtime-cached chunks; after HTTP-cache clear, offline reload completes in 290 ms with every required response served by the service worker.
+- PWA demand caching: 10/10 policy checks and 1/1 Chromium offline flow pass. The final precache is nine entries / 952,869 B raw / 326,657 B gzip; Random Port adds four runtime-cached chunks; after HTTP-cache clear, offline reload completes in 290 ms with every required response served by the service worker.
+- PWA uncached-route recovery: 14/14 classifier/component checks and 1/1 production-Workbox flow pass; an uncached target replaces sensitive prior DOM with recovery UI, an origin probe prevents navigation into the browser's own offline page, a fresh query-free document clears the sticky import failure after reconnect, and the target enters the lazy cache.
+- YAML Prettify: 31/31 handler/protocol/client/model/component checks, 10/10 repeated isolated Long Task runs, and the final 1/1 production flow pass; one bounded worker parse preserves large integers, exact UTF-8 accounting stays off-main-thread, pre-serialization projection blocks four output-amplification classes, format-ready is 203 ms, and no current-interaction Long Task is observed. Chromium garbage from prior discarded contexts is collected before the measurement window, without excluding any formatting allocation.
+- JSON Prettify: 33/33 handler/protocol/client/model/component checks and 1/1 1 MiB Chromium flow pass; strict formatting is lossless for numeric lexemes, full Copy is exact, cold route is 404 ms, format-ready is 197 ms, and no Long Task is observed.
+- NanoID Generator: 53/53 service/component/download-helper checks and 4/4 Chromium flows pass; maximum 100 x 1,000 generation is 144 ms with no Long Task, clipboard/download are exact, and output/alphabet remain absent from URL, requests, and storage.
+- MAC/OUI privacy and lifecycle: generator 4/4, data/protocol/client/service 28/28, and Chromium 2/2 pass; one prefix-independent worker request is reused offline, retry uses the exact same URL, no tested prefix enters a URL/body, and SPA leave disposes the worker.
+- UUID v1 randomness: 8/8 service regressions pass with Web Crypto seeding, multicast-node semantics, a 14-bit clock sequence, and no `Math.random` path.
 
 ## Current production measurements
 
@@ -69,20 +79,25 @@ artifact deliberately adds 289 versioned local font files (2,888,669 B raw /
 478,400 B theoretical gzip), but excludes them from the mandatory Workbox
 precache and caches at most 32 requested fonts at runtime.
 
-| Metric | Audit baseline | Current schema-v3 build | Change |
+| Metric | Audit baseline | Current schema-v4 build | Change |
 |---|---:|---:|---:|
-| Total dist files | 286 | 499 | +213 (+74.5%; includes 289 local fonts) |
-| Total dist raw | 12,816,672 B | 14,365,310 B | +1,548,638 B (+12.1%) |
-| Total dist gzip | 3,893,533 B | 3,986,991 B | +93,458 B (+2.4%) |
-| Shell gzip incl. document | 273,513 B | 273,816 B | +303 B (+0.1%) |
+| Total dist files | 286 | 504 | +218 (+76.2%; includes 289 local fonts) |
+| Total dist raw | 12,816,672 B | 13,122,265 B | +305,593 B (+2.4%) |
+| Total dist gzip | 3,893,533 B | 3,747,220 B | -146,313 B (-3.8%) |
+| Shell gzip incl. document | 273,513 B | 276,295 B | +2,782 B (+1.0%) |
 | Workbox entries | 270 | 9 | -261 (-96.7%) |
-| Workbox raw | 6,121,476 B | 945,188 B | -5,176,288 B (-84.6%) |
-| Workbox gzip | 1,911,520 B | 324,178 B | -1,587,342 B (-83.0%) |
+| Workbox raw | 6,121,476 B | 952,869 B | -5,168,607 B (-84.4%) |
+| Workbox gzip | 1,911,520 B | 326,657 B | -1,584,863 B (-82.9%) |
 | Text Diff JS raw | 3,161,296 B | 2,206,864 B | -954,432 B (-30.2%) |
 | Text Diff JS gzip | 801,738 B | 570,786 B | -230,952 B (-28.8%) |
-| Text Diff additional route gzip | not previously separated | 582,998 B | target remains `<350 kB` |
+| Text Diff additional route + worker gzip | not previously separated | 646,976 B | target remains `<350 kB` |
+| MAC Lookup additional route + worker raw | 3,350,554 B | 1,937,380 B | -1,413,174 B (-42.2%) |
+| MAC Lookup additional route + worker gzip | 1,064,267 B | 770,453 B | -293,814 B (-27.6%) |
+| NanoID additional route raw / gzip | not present | 23,225 B / 8,916 B | first local catalog feature |
+| JSON Prettify additional route + worker raw / gzip | not previously worker-aware | 207,049 B / 70,049 B | worker is 46,309 B / 13,989 B |
+| YAML Prettify additional route + worker raw / gzip | not previously worker-aware | 259,621 B / 86,784 B | worker is 99,735 B / 31,033 B |
 | Emoji additional route raw | 386,059 B | 272,834 B | -113,225 B (-29.3%) |
-| Emoji additional route gzip | 63,420 B | 32,491 B | -30,929 B (-48.8%) |
+| Emoji additional route gzip | 63,420 B | 32,488 B | -30,932 B (-48.8%) |
 
 ## Completed implementation units
 
@@ -91,12 +106,12 @@ precache and caches at most 32 requested fonts at runtime.
 - Aligned Node 24.18.0/pnpm 9.11.0 across engines, `.nvmrc`, CI, Docker, and documentation; pinned first-party/third-party actions by SHA and disabled persisted checkout credentials.
 - Added frozen installs, corrected Playwright cache identity, BuildKit fetch/cache, strict SemVer release validation, immutable version tags, draft-before-push ordering, SBOM, and provenance declarations.
 - Moved build/type-only packages out of runtime dependencies without importing an upstream lockfile.
-- Added deterministic schema-v3 build/PWA statistics with compact closure membership digests; the checked baseline is 149 kB rather than a duplicated 6.6 MB report.
+- Added deterministic schema-v4 build/PWA statistics with compact closure membership digests and fail-closed ownership of literal local workers in route closures.
 - Added secure unbiased browser randomness, restored `N`/`n`, removed duplicate symbols, bounded untrusted token length, and added non-persistence coverage.
 - Reworked Text Diff worker ownership, lifecycle disposal, persistence privacy, quota recovery, and forced-GC regression gates.
 - Fixed the application-shell detached layout leak and added a cross-route heap/DOM/listener gate.
 - Removed ASCII Art's third-party CDN dependency using versioned same-origin on-demand font delivery.
-- Added all-86-route smoke coverage and narrow worker/chunk/runtime warning gates.
+- Added all-87-route smoke coverage and narrow worker/chunk/runtime warning gates.
 - Added pinned rootless container delivery, configurable port, read-only operation, healthcheck, gzip/cache/security headers, strict static routing, and automated default/arbitrary-UID smoke.
 - Corrected release image namespaces from upstream `corentinth` to the local fork `64mb`.
 - Fixed Base64 MIME/raw-data URIs, all-scale Temperature bounds/rounding, ordered URL query duplicates/fragments, guarded Command Palette keyboard activation, standard CSV quoting, single-pass Text Statistics, and obsolete Compose output with focused regressions.
@@ -109,31 +124,41 @@ precache and caches at most 32 requested fonts at runtime.
 - Sanitized Plausible custom events and automatic pageviews to path-only URLs and stripped referrer credentials/query/hash before transport.
 - Added an About privacy boundary and global reset that removes only the audited managed-key registry, leaving other same-origin application data untouched.
 - Moved Regex matching and RandExp into independent terminate-and-replace workers with 1.2-second deadlines, limits, cancellation/stale guards, route disposal, and catastrophic-heartbeat coverage; added pre-allocation AST/backreference bounds and single-flight DOM-dependent SVG.
-- Added one-`pre` shared rendering above 100,000 UTF-8 bytes and a 1 MiB JSON browser regression that preserves copy access.
+- Added one zero-descendant readonly `<textarea>` preview above 100,000 UTF-8 bytes and 1 MiB JSON/YAML browser regressions that preserve full copy access without rendering the complete result into the DOM.
 - Paged Emoji Picker 60 cards at a time, lazy-loaded keyword metadata, preserved complete ZWJ/flag sequences and Fuse result order in one grid, and replaced clickable text with keyboard-native copy buttons.
 - Closed the small-screen menu after route changes and Escape without changing the persisted desktop collapse preference; hidden navigation is inert at both breakpoints and focus returns to the labelled toggle.
+- Replaced YAML Prettify's double parse/reactive main-thread path with one bounded parse-once worker, `BigInt` integers, explicit formatting above 100 kB, worker-side exact UTF-8 bounds, cancellation/stale guards, and a 1 MiB `<50 ms` Long Task browser gate.
+- Added strict lossless JSON Prettify on one bounded worker AST, decoded-key duplicate/sort rules, an incremental bounded JSON5 writer, worker-side exact UTF-8 accounting, complete-output Copy, and a 1 MiB `<50 ms` Long Task browser gate.
+- Delivered the dependency-free NanoID catalog feature with Web Crypto rejection sampling, Unicode-aware custom alphabets, exact/approximated collision guidance, hard batch/output limits, copy/download/clear privacy coverage, and a measured 8,916 B gzip additional route.
+- Added a privacy-safe offline lazy-route state that hides the old tool, distinguishes origin unavailability from ordinary code errors, and recovers sticky failed imports through a query-free fresh document.
+- Replaced the OUI monolith with reproducibly generated compact data in a fixed-URL route worker; rejected the smaller prefix-bucket prototype because input-derived filenames would enter access logs.
+- Completed the Text Diff editor payload comparison and secure-randomness inventory; retained repaired Monaco pending a worker-backed CodeMirror spike and removed UUID v1's pseudo-random seed path.
 
 ## Active risks and deliberately deferred work
 
 - Local host Node is 24.15.0 while the selected baseline is 24.18.0. Exact-baseline build verification is provided by Docker; local commands emit the expected engine warning.
 - `@types/node` remains 18.x. Updating it alone makes the old peer graph resolve an incompatible `@vueuse/shared` 14.x, so this stays in the controlled dependency-remediation group.
-- Text Diff meets the heap/worker budget but not the route payload budget; a measured lightweight-editor comparison is still required.
+- Text Diff meets the heap/worker budget but not the route payload budget; the measured comparison is complete and a worker-backed CodeMirror parity/adversarial spike is required before migration.
 - Local Figlet assets increase static artifact file count/size but remain excluded from the nine-entry mandatory precache; on-demand runtime caching and a separate same-origin browser/container fixture pass.
 - Regex SVG remains an explicit bounded main-thread task because `@regexper/render` requires the DOM; selecting a DOM-free or isolated renderer is separate work.
 - Emoji meets the initial DOM budget, but full-catalog Fuse search is still synchronous and the 4x CPU `<200 ms` acceptance profile remains open.
-- PWA demand caching passes clean-cache offline reload, but update/rollback, stale-cache cleanup acceptance, and offline-unavailable UX remain open.
+- PWA demand caching and uncached-route recovery pass; update/rollback and stale-cache cleanup acceptance remain open.
+- The privacy-safe OUI worker is 27.6% smaller gzip than the original route but still exceeds the `<250 kB` product target. Prefix-selected loading is rejected unless input-derived URLs/logging can be eliminated; reducing exact vendor coverage requires a product decision.
+- JSON/YAML Prettify now pass the unthrottled sequential Chromium 1 MiB `<50 ms` Long Task fixtures, but remaining converters/parsers and a slower-device profile are not covered by that claim. The complete bounded output still resides in memory/main-thread state; only the DOM preview is truncated.
+- NanoID's 100,000-symbol gate passes unthrottled Chromium at 144 ms with no observed Long Task; this is not yet a slow-device guarantee.
 - Dependency and base-image vulnerability remediation/scanner gating is intentionally deferred to a later security track per current scope direction. No advisory suppression was added.
 - Reverse-proxy and real base/subpath deployment acceptance remain open.
 - No upstream code has been merged, rebased, or cherry-picked. Upstream items remain requirements/fixture sources only.
 
 ## Next acceptance gates
 
-1. Run the measured lightweight-editor experiment and bring Text Diff additional payload below `<350 kB` gzip or record an explicit reviewed exception.
-2. Consolidate the Bcrypt/Regex patterns into a common worker/parser/depth/output/download policy and migrate the remaining heavy parsers.
-3. Add Emoji 4x CPU coverage and cancellable/worker-backed search if the slower profile exceeds budget.
-4. Add PWA update/rollback, stale-cache cleanup, and offline-unavailable acceptance UX.
-5. Partition the OUI dataset and continue shell/icon/Lodash reduction with route budgets.
-6. Keep dependency/base-image CVE remediation and scanner policy in the separately tracked later security slice.
+1. Consolidate the proven Bcrypt/Regex/JSON/YAML bounds into a common worker/parser/depth/output/download policy and migrate the remaining structured converters without overstating lossless behavior.
+2. Scope the second bounded catalog feature; JSON Schema validation is the leading candidate because it can reuse the strict parse-once JSON model, but it needs route-local dependency/worker/error-path and `$ref` budgets before implementation.
+3. Build a worker-backed CodeMirror parity/adversarial spike and migrate Text Diff only if the full owned-worker closure is `<350 kB` gzip and lifecycle/accuracy gates pass.
+4. Add Emoji 4x CPU coverage and cancellable/worker-backed search if the slower profile exceeds budget.
+5. Add PWA update/rollback and stale-cache cleanup acceptance using an explicit two-build rollback contract.
+6. Decide whether exact OUI coverage justifies the reviewed 770,453 B gzip privacy-safe exception, then continue shell/icon/Lodash reduction with route budgets.
+7. Keep dependency/base-image CVE remediation and scanner policy in the separately tracked later security slice.
 
 ## Journal
 
@@ -163,3 +188,15 @@ precache and caches at most 32 requested fonts at runtime.
 - 2026-07-18: bounded Camera recordings to 5 minutes/64 MiB with 1-second chunks, screenshots before canvas allocation and after encoding with single-flight/late-callback guards, and retained captures to 128 MiB plus count caps; Camera 18/18 and shared-button 4/4 focused regressions plus the full Chromium suite pass.
 - 2026-07-18: final independent audit closed Regex URL write-back and analytics disclosure, late/simultaneous Camera screenshots, transient mobile-state persistence, desktop inertness, and Emoji relevance-order regressions; all focused checks pass.
 - 2026-07-18: final gates pass on the integrated tree: zero-warning lint, dual typecheck, 367/367 unit, production build, 11/11 build-stat tests, 194/194 artifact checks, 86/86 Chromium E2E in 22.7 seconds, and `git diff --check`; external CVE work remains intentionally deferred.
+- 2026-07-18: started the next autonomous P0/P1 slice with OUI partitioning, YAML worker isolation, offline uncached-route recovery, and a measured Text Diff editor decision; the external CVE/dependency track remains deferred.
+- 2026-07-18: generated and measured 112 deterministic OUI buckets at about 66.9 kB gzip for the worst request, then rejected that prototype because its prefix-derived filenames would disclose MAC input in nginx `$uri`; no bucket implementation remains in the accepted tree.
+- 2026-07-18: completed YAML Prettify's parse-once bounded worker, explicit large-input flow, 19/19 focused checks, and 1 MiB Chromium heartbeat fixture; the owned worker is 96,806 B raw / 30,216 B gzip.
+- 2026-07-18: completed the Text Diff Monaco/CodeMirror experiment and schema-v4 owned-worker accounting. Repaired Monaco remains because CodeMirror needs a worker-backed correctness spike; the true current closure is 2,474,507 B raw / 646,984 B gzip.
+- 2026-07-18: completed OUI fixed-worker privacy/lifecycle acceptance from one reproducible 1,986,393-byte compact artifact. Generator 4/4, focused 28/28, Chromium 2/2, and the reviewed 1,937,380 B raw / 770,460 B gzip closure gate pass; the `<250 kB` product target remains open.
+- 2026-07-18: completed production-Workbox uncached-route recovery. The integration test exposed sticky failed native imports, so retry now verifies the app origin and starts a query-free fresh document, preserving recovery while keeping any in-memory query/hash out of access logs.
+- 2026-07-18: completed the shared/direct randomness audit in `.ai/RANDOMNESS.md` and replaced UUID v1 pseudo-random node/clock seeding with Web Crypto plus 8/8 regression checks.
+- 2026-07-18: final slice gates pass: zero-warning lint, dual typecheck, 436/436 unit across 81 files, OUI generator 4/4, schema-v4 build-stat tests 15/15, 194/194 artifact budgets, production build, 90/90 Chromium E2E in 28.0 seconds, and `git diff --check`; unrelated CVE work remains intentionally deferred.
+- 2026-07-18: started the next autonomous cross-category slice: the local NanoID catalog feature plus strict lossless, bounded worker-backed JSON Prettify. Added the already lock-resolved `jsonc-parser@3.2.0` as a direct route dependency; external CVE work remains deferred.
+- 2026-07-18: independent review closed NanoID pigeonhole/exact-small-namespace guidance, huge alphabet/count preflights, native input bounds, URL-safe/default copy, and JSON5 pre-allocation amplification. The new strict Long Task gate then exposed a remaining full-string scan on the main-thread worker transfer boundary; JSON/YAML transfer metadata refactoring is active rather than weakening the `<50 ms` assertion.
+- 2026-07-18: completed the NanoID + strict JSON numeric-lexeme/YAML integer-preservation slice. Full-payload UTF-8 scans moved into pure-tested worker handlers while the main thread retains only bounded preview truncation; final production fixtures measure JSON 404 ms cold / 197 ms ready / 0.0 ms longest task, YAML 203 ms / 0.0 ms, and maximum NanoID generation 144 ms / 0.0 ms. Independent audit then closed YAML scalar-alias/deep-sequence/escaped-line/boundary-space allocation before serialization and stabilized the Chromium measurement window against garbage from prior discarded contexts without weakening the `<50 ms` current-interaction gate. Final gates pass: lint, dual typecheck, 546/546 unit, 15/15 build-stat, 4/4 OUI, 196/196 artifact budgets, 24,177-module production build in 19.44 s, 94/94 sequential Chromium E2E including all 87 routes, YAML repeat-each 10/10, and refreshed schema-v4 stats. External CVE work remains intentionally deferred.
+- 2026-07-18: synchronized `TODO`, `FEATURES`, `FIXES`, `PERFORMANCE`, `PERSISTENCE`, experiment notes, and this journal to the final schema-v4 metrics. A separate read-only consistency audit returned clean after narrowing the claims to strict JSON numeric lexemes, YAML integer preservation, worker-side full-payload accounting, and bounded main-thread preview scanning. Repeat lint, typecheck, 546/546 unit, 15/15 build-stat, 4/4 OUI, 196/196 artifact-budget, and diff checks pass.

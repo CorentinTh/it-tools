@@ -1,0 +1,30 @@
+{
+  "schema": {
+    "id": "it-tools.oui-compact",
+    "version": 2
+  },
+  "source": {
+    "package": "oui-data",
+    "version": "1.0.10",
+    "license": "BSD-2-Clause",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/silverwind/oui-data.git"
+    },
+    "sha256": "7b801ac07266648423f39481568371e22c3736fcc61875358ecda5502d3bf13b"
+  },
+  "records": 34503,
+  "uniqueVendors": 20255,
+  "encoding": {
+    "prefixes": "sorted-uint24-delta-decimal-array",
+    "vendorIds": "base36-fixed-width-string",
+    "vendorIdWidth": 3,
+    "vendors": "unicode-code-unit-sorted-unique-string-array",
+    "maxVendorLength": 1000
+  },
+  "artifact": {
+    "file": "oui-data.compact.json",
+    "rawBytes": 1986393,
+    "sha256": "23374db93c3dded5b4a8563216b1804c72256d5a886f11dd7ffbe8c65116f911"
+  }
+}

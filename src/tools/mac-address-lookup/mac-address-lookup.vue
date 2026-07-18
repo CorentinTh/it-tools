@@ -1,12 +1,64 @@
 <script setup lang="ts">
-import db from 'oui-data';
+import { createOuiDatabase, getOuiPrefix } from './mac-address-lookup.service';
 import { macAddressValidationRules } from '@/utils/macAddress';
 import { useCopy } from '@/composable/copy';
 
-const getVendorValue = (address: string) => address.trim().replace(/[.:-]/g, '').toUpperCase().substring(0, 6);
-
 const macAddress = ref('20:37:06:12:34:56');
-const details = computed<string | undefined>(() => (db as Record<string, string>)[getVendorValue(macAddress.value)]);
+const vendorPrefix = computed(() => getOuiPrefix(macAddress.value));
+const details = ref<string>();
+const lookupError = ref('');
+const isLoading = ref(false);
+const lookupRevision = ref(0);
+const isMounted = ref(false);
+const database = createOuiDatabase();
+let lookupId = 0;
+
+watch([vendorPrefix, lookupRevision, isMounted], async ([prefix, , mounted]) => {
+  const currentLookupId = ++lookupId;
+  details.value = undefined;
+  lookupError.value = '';
+  isLoading.value = false;
+
+  if (!mounted || !prefix) {
+    database.cancel();
+    return;
+  }
+
+  isLoading.value = true;
+  try {
+    const vendor = await database.lookup(prefix);
+    if (currentLookupId === lookupId) {
+      details.value = vendor;
+    }
+  }
+  catch {
+    if (currentLookupId === lookupId) {
+      lookupError.value = navigator.onLine
+        ? 'The local vendor database could not be loaded. Please try again.'
+        : 'The local vendor database is not available offline yet. Reconnect and try again.';
+    }
+  }
+  finally {
+    if (currentLookupId === lookupId) {
+      isLoading.value = false;
+    }
+  }
+}, { immediate: true });
+
+onMounted(() => {
+  database.start();
+  isMounted.value = true;
+});
+
+function retryLookup() {
+  database.retry();
+  lookupRevision.value += 1;
+}
+
+onScopeDispose(() => {
+  lookupId += 1;
+  database.dispose();
+});
 
 const { copy } = useCopy({ source: () => details.value ?? '', text: 'Vendor info copied to the clipboard' });
 </script>
@@ -31,7 +83,18 @@ const { copy } = useCopy({ source: () => details.value ?? '', text: 'Vendor info
       Vendor info:
     </div>
     <c-card mb-5>
-      <div v-if="details">
+      <div v-if="isLoading" aria-live="polite">
+        Loading local vendor information...
+      </div>
+
+      <div v-else-if="lookupError" role="alert">
+        <div>{{ lookupError }}</div>
+        <c-button mt-3 data-test-id="retry-vendor-lookup" @click="retryLookup">
+          Retry vendor lookup
+        </c-button>
+      </div>
+
+      <div v-else-if="details">
         <div v-for="(detail, index) of details.split('\n')" :key="index">
           {{ detail }}
         </div>
@@ -43,7 +106,7 @@ const { copy } = useCopy({ source: () => details.value ?? '', text: 'Vendor info
     </c-card>
 
     <div flex justify-center>
-      <c-button :disabled="!details" @click="copy()">
+      <c-button :disabled="isLoading || !details" @click="copy()">
         Copy vendor info
       </c-button>
     </div>

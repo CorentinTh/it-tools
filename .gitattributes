@@ -2,3 +2,4 @@
 Dockerfile text eol=lf
 *.conf text eol=lf
 *.template text eol=lf
+src/tools/mac-address-lookup/data/*.json linguist-generated=true

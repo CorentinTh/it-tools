@@ -30,9 +30,9 @@
         "rationale": "Existing Tiptap/HTML formatting route; replacement and large-output policy remain tracked."
       },
       "src/tools/mac-address-lookup/mac-address-lookup.vue": {
-        "rawBytes": 3400000,
-        "gzipBytes": 1080000,
-        "rationale": "Existing monolithic OUI dataset; partitioning is a dedicated measured performance task."
+        "rawBytes": 1950000,
+        "gzipBytes": 780000,
+        "rationale": "Privacy-safe fixed-URL worker keeps the entered MAC prefix out of network logs and is 27% smaller than the former monolith; the separate 250 kB product target remains open."
       },
       "src/tools/math-evaluator/math-evaluator.vue": {
         "rawBytes": 635000,
@@ -45,9 +45,9 @@
         "rationale": "Existing PDF/signature parser path; approved only as a no-regression ceiling."
       },
       "src/tools/text-diff/text-diff.vue": {
-        "rawBytes": 2300000,
-        "gzipBytes": 590000,
-        "rationale": "Existing Monaco editor route; lightweight-editor comparison and the 350 kB target remain open."
+        "rawBytes": 2500000,
+        "gzipBytes": 660000,
+        "rationale": "Schema-v4 closure includes the existing route-owned Monaco editor worker; the measured CodeMirror decision and the 350 kB product target remain open."
       }
     }
   }

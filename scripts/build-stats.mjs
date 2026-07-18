@@ -9,7 +9,7 @@ import { gzipSync, constants as zlibConstants } from 'node:zlib';
 
 export const BUILD_STATS_SCHEMA = Object.freeze({
   id: 'it-tools.build-stats',
-  version: 3,
+  version: 4,
 });
 
 export const BUILD_BUDGETS_SCHEMA = Object.freeze({
@@ -20,6 +20,17 @@ export const BUILD_BUDGETS_SCHEMA = Object.freeze({
 const DEFAULT_DIST_DIRECTORY = 'dist';
 const DEFAULT_LARGEST_ASSET_COUNT = 20;
 const VITE_MANIFEST_CANDIDATES = ['.vite/manifest.json', 'manifest.json'];
+const JAVASCRIPT_ARTIFACT_EXTENSIONS = new Set(['.js', '.mjs', '.cjs']);
+const WORKER_REFERENCE_PATTERNS = Object.freeze([
+  {
+    relativeToOwner: true,
+    pattern: /\bnew\s+(?:Worker|SharedWorker)\s*\(\s*new\s+URL\s*\(\s*(?:"((?:\\.|[^"\\\r\n])*)"|'((?:\\.|[^'\\\r\n])*)'|`((?:\\.|[^`\\\r\n])*)`)/g,
+  },
+  {
+    relativeToOwner: false,
+    pattern: /\bnew\s+(?:Worker|SharedWorker)\s*\(\s*(?:"((?:\\.|[^"\\\r\n])*)"|'((?:\\.|[^'\\\r\n])*)'|`((?:\\.|[^`\\\r\n])*)`)/g,
+  },
+]);
 
 function compareText(left, right) {
   if (left < right) {
@@ -384,9 +395,139 @@ async function collectFileRecords(distDirectory) {
         sha256: createHash('sha256').update(contents).digest('hex'),
         rawBytes: contents.byteLength,
         gzipBytes: gzipSize(contents),
+        contents,
       };
     }),
   );
+}
+
+function isJavaScriptArtifactPath(filePath) {
+  return JAVASCRIPT_ARTIFACT_EXTENSIONS.has(extname(filePath).toLowerCase());
+}
+
+function extractWorkerReferences(source, ownerPath) {
+  const references = [];
+
+  for (const { pattern, relativeToOwner } of WORKER_REFERENCE_PATTERNS) {
+    pattern.lastIndex = 0;
+    let match;
+
+    while ((match = pattern.exec(source)) !== null) {
+      const url = match[1] ?? match[2] ?? match[3];
+
+      if (url.includes('\\') || url.includes('${')) {
+        throw new Error(
+          `Vite manifest artifact "${ownerPath}" contains an unsupported escaped or interpolated worker URL`,
+        );
+      }
+
+      references.push({
+        index: match.index,
+        relativeToOwner,
+        url,
+      });
+    }
+  }
+
+  return references
+    .sort((left, right) => left.index - right.index || compareText(left.url, right.url))
+    .filter((reference, index, sortedReferences) => (
+      index === 0
+      || reference.index !== sortedReferences[index - 1].index
+      || reference.url !== sortedReferences[index - 1].url
+    ));
+}
+
+function normalizeWorkerReferencePath(url, ownerPath, relativeToOwner) {
+  const value = url.trim();
+
+  if (!value || value.startsWith('#') || value.startsWith('data:') || value.startsWith('blob:')) {
+    return null;
+  }
+
+  if (/^[a-z][a-z\d+.-]*:/i.test(value) || value.startsWith('//')) {
+    return null;
+  }
+
+  let pathname;
+
+  try {
+    pathname = decodeURIComponent(value.split(/[?#]/, 1)[0]);
+  }
+  catch {
+    throw new Error(
+      `Vite manifest artifact "${ownerPath}" contains an invalid percent-encoded worker URL: ${url}`,
+    );
+  }
+
+  const isAbsolute = pathname.startsWith('/');
+  const normalizedPath = relativeToOwner && !isAbsolute
+    ? posix.normalize(posix.join(posix.dirname(ownerPath), pathname))
+    : posix.normalize(pathname.replace(/^\/+/, ''));
+
+  if (
+    normalizedPath === '.'
+    || normalizedPath === '..'
+    || normalizedPath.startsWith('../')
+    || posix.isAbsolute(normalizedPath)
+  ) {
+    throw new Error(
+      `Vite manifest artifact "${ownerPath}" has a worker URL outside dist: ${url}`,
+    );
+  }
+
+  return {
+    allowBasePathSuffix: isAbsolute,
+    path: normalizedPath,
+  };
+}
+
+function resolveWorkerArtifactPath(reference, ownerPath, recordsByActualPath) {
+  const normalizedReference = normalizeWorkerReferencePath(
+    reference.url,
+    ownerPath,
+    reference.relativeToOwner,
+  );
+
+  if (!normalizedReference) {
+    return null;
+  }
+
+  const directRecord = recordsByActualPath.get(normalizedReference.path);
+  let actualPath = directRecord?.actualPath;
+
+  if (!actualPath && normalizedReference.allowBasePathSuffix) {
+    const suffixMatches = [...recordsByActualPath.keys()]
+      .filter(candidate => normalizedReference.path.endsWith(`/${candidate}`))
+      .sort((left, right) => right.length - left.length || compareText(left, right));
+
+    if (suffixMatches.length > 0) {
+      const longestLength = suffixMatches[0].length;
+      const longestMatches = suffixMatches.filter(candidate => candidate.length === longestLength);
+
+      if (longestMatches.length > 1) {
+        throw new Error(
+          `Vite manifest artifact "${ownerPath}" has an ambiguous worker URL: ${reference.url}`,
+        );
+      }
+
+      [actualPath] = longestMatches;
+    }
+  }
+
+  if (!actualPath) {
+    throw new Error(
+      `Vite manifest artifact "${ownerPath}" references a missing worker artifact: ${normalizedReference.path}`,
+    );
+  }
+
+  if (!isJavaScriptArtifactPath(actualPath)) {
+    throw new Error(
+      `Vite manifest artifact "${ownerPath}" references a non-JavaScript worker artifact: ${actualPath}`,
+    );
+  }
+
+  return actualPath;
 }
 
 function parseManifestStringArray(value, field, manifestKey) {
@@ -463,11 +604,60 @@ function parseViteManifest(source, manifestPath) {
   return { records, recordsByKey };
 }
 
-function manifestArtifactRecords(records, recordsByActualPath) {
+function discoverWorkerArtifactOwnership(records, recordsByActualPath) {
+  const workerArtifactPathsByRecordKey = new Map();
+
+  for (const record of records) {
+    const ownerPath = artifactPathFromUrl(record.file);
+    const ownerArtifact = recordsByActualPath.get(ownerPath);
+
+    if (!ownerArtifact) {
+      throw new Error(
+        `Vite manifest entry "${record.key}" references a missing artifact: ${ownerPath}`,
+      );
+    }
+
+    if (!isJavaScriptArtifactPath(ownerPath)) {
+      continue;
+    }
+
+    const workerArtifactPaths = new Set();
+    const source = ownerArtifact.contents.toString('utf8');
+
+    for (const reference of extractWorkerReferences(source, ownerPath)) {
+      const workerArtifactPath = resolveWorkerArtifactPath(
+        reference,
+        ownerPath,
+        recordsByActualPath,
+      );
+
+      if (workerArtifactPath) {
+        workerArtifactPaths.add(workerArtifactPath);
+      }
+    }
+
+    if (workerArtifactPaths.size > 0) {
+      workerArtifactPathsByRecordKey.set(
+        record.key,
+        [...workerArtifactPaths].sort(compareText),
+      );
+    }
+  }
+
+  return workerArtifactPathsByRecordKey;
+}
+
+function manifestArtifactRecords(
+  records,
+  recordsByActualPath,
+  workerArtifactPathsByRecordKey,
+) {
   const artifactPaths = new Set();
 
   for (const record of records) {
-    for (const url of [record.file, ...record.css, ...record.assets]) {
+    const declaredArtifactUrls = [record.file, ...record.css, ...record.assets];
+
+    for (const url of declaredArtifactUrls) {
       const actualPath = artifactPathFromUrl(url);
 
       if (!actualPath) {
@@ -482,11 +672,64 @@ function manifestArtifactRecords(records, recordsByActualPath) {
 
       artifactPaths.add(actualPath);
     }
+
+    for (const actualPath of workerArtifactPathsByRecordKey.get(record.key) ?? []) {
+      if (!recordsByActualPath.has(actualPath)) {
+        throw new Error(
+          `Vite manifest entry "${record.key}" owns a missing worker artifact: ${actualPath}`,
+        );
+      }
+
+      artifactPaths.add(actualPath);
+    }
   }
 
   return [...artifactPaths]
     .map(actualPath => recordsByActualPath.get(actualPath))
     .sort(compareReportRecords);
+}
+
+function summarizeWorkerArtifacts(
+  records,
+  workerArtifactPathsByRecordKey,
+  recordsByActualPath,
+) {
+  const ownersByWorkerPath = new Map();
+
+  for (const record of records) {
+    for (const workerPath of workerArtifactPathsByRecordKey.get(record.key) ?? []) {
+      const owners = ownersByWorkerPath.get(workerPath) ?? [];
+      owners.push({
+        file: normalizeHashedPath(artifactPathFromUrl(record.file)),
+        manifestId: manifestRecordIdentity(record, recordsByActualPath),
+      });
+      ownersByWorkerPath.set(workerPath, owners);
+    }
+  }
+
+  const entries = [...ownersByWorkerPath]
+    .map(([workerPath, owners]) => {
+      const workerArtifact = recordsByActualPath.get(workerPath);
+
+      if (!workerArtifact) {
+        throw new Error(`Worker ownership references a missing artifact: ${workerPath}`);
+      }
+
+      return {
+        ...toReportRecord(workerArtifact),
+        owners: owners.sort((left, right) => (
+          compareText(left.manifestId, right.manifestId)
+          || compareText(left.file, right.file)
+        )),
+      };
+    })
+    .sort((left, right) => compareText(left.path, right.path));
+
+  return {
+    totals: summarize(entries),
+    ownershipEdgeCount: entries.reduce((total, entry) => total + entry.owners.length, 0),
+    entries,
+  };
 }
 
 function artifactIdentity(record) {
@@ -509,7 +752,12 @@ function identitySetDigest(identities) {
     .digest('hex');
 }
 
-function summarizeManifestClosure(records, artifacts, recordsByActualPath) {
+function summarizeManifestClosure(
+  records,
+  artifacts,
+  recordsByActualPath,
+  workerArtifactPaths,
+) {
   const manifestIds = records
     .map(record => manifestRecordIdentity(record, recordsByActualPath))
     .sort(compareText);
@@ -519,6 +767,9 @@ function summarizeManifestClosure(records, artifacts, recordsByActualPath) {
 
   return {
     manifestRecordCount: records.length,
+    workerArtifactCount: artifacts.filter(artifact => (
+      workerArtifactPaths.has(artifact.actualPath)
+    )).length,
     ...summarize(artifacts),
     membershipDigests: {
       manifestIdsSha256: identitySetDigest(manifestIds),
@@ -566,12 +817,28 @@ function collectManifestRecordClosures(rootKeys, recordsByKey, importFields) {
 
 function analyzeViteManifest(source, manifestPath, recordsByActualPath) {
   const { records, recordsByKey } = parseViteManifest(source, manifestPath);
+  const workerArtifactPathsByRecordKey = discoverWorkerArtifactOwnership(
+    records,
+    recordsByActualPath,
+  );
+  const workerArtifacts = summarizeWorkerArtifacts(
+    records,
+    workerArtifactPathsByRecordKey,
+    recordsByActualPath,
+  );
+  const actualWorkerArtifactPaths = new Set(
+    [...workerArtifactPathsByRecordKey.values()].flat(),
+  );
   const staticImportEdgeCount = records.reduce((total, record) => total + record.imports.length, 0);
   const dynamicImportEdgeCount = records.reduce(
     (total, record) => total + record.dynamicImports.length,
     0,
   );
-  const artifactRecords = manifestArtifactRecords(records, recordsByActualPath);
+  const artifactRecords = manifestArtifactRecords(
+    records,
+    recordsByActualPath,
+    workerArtifactPathsByRecordKey,
+  );
   const entryRecords = records.filter(record => record.isEntry || record.isDynamicEntry);
   const mainEntryInitialRecords = collectManifestRecordClosures(
     records.filter(record => record.isEntry).map(record => record.key),
@@ -581,6 +848,7 @@ function analyzeViteManifest(source, manifestPath, recordsByActualPath) {
   const mainEntryInitialArtifacts = manifestArtifactRecords(
     mainEntryInitialRecords,
     recordsByActualPath,
+    workerArtifactPathsByRecordKey,
   );
   const mainEntryInitialRecordKeys = new Set(mainEntryInitialRecords.map(record => record.key));
   const mainEntryInitialArtifactPaths = new Set(
@@ -591,11 +859,16 @@ function analyzeViteManifest(source, manifestPath, recordsByActualPath) {
     closureDefinitions: {
       initialClosure: {
         importFields: ['imports'],
-        artifactFields: ['file', 'css', 'assets'],
+        artifactFields: ['file', 'css', 'assets', 'referencedWorkers'],
       },
       reachableClosure: {
         importFields: ['imports', 'dynamicImports'],
-        artifactFields: ['file', 'css', 'assets'],
+        artifactFields: ['file', 'css', 'assets', 'referencedWorkers'],
+      },
+      referencedWorkers: {
+        discovery: 'literal-local-url-in-Worker-or-SharedWorker-constructor',
+        ownership: 'manifest-record-file',
+        validation: 'target-must-be-an-existing-javascript-artifact',
       },
       additionalToMainEntryInitial: {
         source: 'initialClosure',
@@ -619,6 +892,8 @@ function analyzeViteManifest(source, manifestPath, recordsByActualPath) {
       importEdgeCount: staticImportEdgeCount + dynamicImportEdgeCount,
       staticImportEdgeCount,
       dynamicImportEdgeCount,
+      workerArtifactCount: workerArtifacts.entries.length,
+      workerOwnershipEdgeCount: workerArtifacts.ownershipEdgeCount,
     },
     artifacts: {
       totals: summarize(artifactRecords),
@@ -628,7 +903,9 @@ function analyzeViteManifest(source, manifestPath, recordsByActualPath) {
       mainEntryInitialRecords,
       mainEntryInitialArtifacts,
       recordsByActualPath,
+      actualWorkerArtifactPaths,
     ),
+    workerArtifacts,
     entryPoints: entryRecords
       .map((record) => {
         const initialClosureRecords = collectManifestRecordClosure(
@@ -644,10 +921,12 @@ function analyzeViteManifest(source, manifestPath, recordsByActualPath) {
         const initialClosureArtifacts = manifestArtifactRecords(
           initialClosureRecords,
           recordsByActualPath,
+          workerArtifactPathsByRecordKey,
         );
         const reachableClosureArtifacts = manifestArtifactRecords(
           reachableClosureRecords,
           recordsByActualPath,
+          workerArtifactPathsByRecordKey,
         );
         const additionalRecords = initialClosureRecords.filter(
           closureRecord => !mainEntryInitialRecordKeys.has(closureRecord.key),
@@ -666,11 +945,13 @@ function analyzeViteManifest(source, manifestPath, recordsByActualPath) {
             initialClosureRecords,
             initialClosureArtifacts,
             recordsByActualPath,
+            actualWorkerArtifactPaths,
           ),
           reachableClosure: summarizeManifestClosure(
             reachableClosureRecords,
             reachableClosureArtifacts,
             recordsByActualPath,
+            actualWorkerArtifactPaths,
           ),
           ...(record.isDynamicEntry
             ? {
@@ -678,6 +959,7 @@ function analyzeViteManifest(source, manifestPath, recordsByActualPath) {
                   additionalRecords,
                   additionalArtifacts,
                   recordsByActualPath,
+                  actualWorkerArtifactPaths,
                 ),
               }
             : {}),

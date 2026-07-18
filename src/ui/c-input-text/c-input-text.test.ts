@@ -46,6 +46,20 @@ describe('CInputText', () => {
     expect(wrapper.get('input').attributes('size')).to.equal('1');
   });
 
+  it.each([false, true])('forwards native text-entry bounds when multiline is %s', (multiline) => {
+    const wrapper = shallowMount(CInputText, {
+      props: {
+        inputmode: 'numeric',
+        maxlength: 5,
+        multiline,
+      },
+    });
+    const input = wrapper.get(multiline ? 'textarea' : 'input');
+
+    expect(input.attributes('inputmode')).toBe('numeric');
+    expect(input.attributes('maxlength')).toBe('5');
+  });
+
   it('Renders a provided id', () => {
     const wrapper = shallowMount(CInputText, {
       props: {

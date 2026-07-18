@@ -108,6 +108,37 @@ tools:
     button:
       copy: Copy
       refresh: Refresh
+
+  nanoid-generator:
+    title: NanoID generator
+    description: Generate compact identifiers locally, URL-safe by default, with secure browser randomness and collision guidance.
+    length: Length
+    quantity: Quantity
+    customAlphabet: Use a custom alphabet
+    alphabet: Alphabet
+    limitHelp: Length multiplied by quantity may not exceed {total} symbols. Setting changes apply only after selecting Generate.
+    invalidConfiguration: Invalid configuration
+    alphabetSize: Alphabet size
+    entropy: Entropy per identifier
+    namespace: Possible identifiers
+    batchCollision: Current batch collision probability
+    onePercentThreshold: Identifiers at approximately 1% collision risk
+    fewerThanTwo: Fewer than 2 identifiers (the space is already too small)
+    collisionDisclaimer: Estimates assume independent, uniformly random identifiers in one shared namespace. They are guidance, not a uniqueness guarantee.
+    highCollisionRisk: High collision risk
+    highCollisionRiskHelp: Increase the alphabet or identifier length before using this configuration.
+    previousSettings: Output uses previous settings
+    previousSettingsHelp: Select Generate to apply the current settings. Existing identifiers remain available until then.
+    outputPlaceholder: Generated NanoIDs will appear here
+    generate: Generate
+    copy: Copy
+    download: Download
+    clear: Clear
+    copied: NanoIDs copied to the clipboard
+    validation:
+      numberRequired: Length and quantity are required.
+      invalid: The NanoID configuration is invalid.
+      generationFailed: NanoID generation failed.
   percentage-calculator:
     title: Percentage calculator
     description: Easily calculate percentages from a value to another value, or from a percentage to a value.

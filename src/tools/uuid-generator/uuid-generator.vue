@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { v1 as generateUuidV1, v3 as generateUuidV3, v4 as generateUuidV4, v5 as generateUuidV5, NIL as nilUuid } from 'uuid';
+import { v3 as generateUuidV3, v4 as generateUuidV4, v5 as generateUuidV5, NIL as nilUuid } from 'uuid';
+import { generateUuidV1Batch } from './uuid-generator.service';
 import { useCopy } from '@/composable/copy';
 import { computedRefreshable } from '@/composable/computedRefreshable';
 import { withDefaultOnError } from '@/utils/defaults';
@@ -23,24 +24,21 @@ const validUuidRules = [
   },
 ];
 
-const generators = {
+const generators: Record<string, () => string> = {
   NIL: () => nilUuid,
-  v1: (index: number) => generateUuidV1({
-    clockseq: index,
-    msecs: Date.now(),
-    nsecs: Math.floor(Math.random() * 10000),
-    node: Array.from({ length: 6 }, () => Math.floor(Math.random() * 256)),
-  }),
   v3: () => generateUuidV3(v35Args.value.name, v35Args.value.namespace),
   v4: () => generateUuidV4(),
   v5: () => generateUuidV5(v35Args.value.name, v35Args.value.namespace),
 };
 
-const [uuids, refreshUUIDs] = computedRefreshable(() => withDefaultOnError(() =>
-  Array.from({ length: count.value }, (_ignored, index) => {
-    const generator = generators[version.value] ?? generators.NIL;
-    return generator(index);
-  }).join('\n'), ''), {
+const [uuids, refreshUUIDs] = computedRefreshable(() => withDefaultOnError(() => {
+  if (version.value === 'v1') {
+    return generateUuidV1Batch({ count: count.value }).join('\n');
+  }
+
+  const generator = generators[version.value] ?? generators.NIL;
+  return Array.from({ length: count.value }, () => generator()).join('\n');
+}, ''), {
   dependencies: [version, count, () => v35Args.value.namespace, () => v35Args.value.name],
 });
 
@@ -96,12 +94,12 @@ const { copy } = useCopy({ source: uuids, text: 'UUIDs copied to the clipboard' 
     <c-input-text
       style="text-align: center; font-family: monospace"
       :value="uuids"
-      multiline
       placeholder="Your uuids"
-      autosize
       rows="1"
+      autosize
       readonly
       raw-text
+      multiline
       monospace
       my-3
       class="uuid-display"

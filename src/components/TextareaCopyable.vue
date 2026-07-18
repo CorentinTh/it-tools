@@ -10,7 +10,7 @@ import iniHljs from 'highlight.js/lib/languages/ini';
 import markdownHljs from 'highlight.js/lib/languages/markdown';
 import { MAX_HIGHLIGHTED_OUTPUT_BYTES } from './TextareaCopyable.model';
 import { useCopy } from '@/composable/copy';
-import { exceedsUtf8ByteLimit } from '@/utils/utf8';
+import { exceedsUtf8ByteLimit, truncateUtf8ToByteLimit } from '@/utils/utf8';
 
 const props = withDefaults(
   defineProps<{
@@ -39,6 +39,11 @@ const { value, language, followHeightOf, copyPlacement, copyMessage } = toRefs(p
 const { height } = useElementSize(followHeightOf);
 const followedMinHeight = computed(() => height.value > 0 ? Math.max(height.value - 30, 0) : undefined);
 const usePlainLargeOutput = computed(() => exceedsUtf8ByteLimit(value.value, MAX_HIGHLIGHTED_OUTPUT_BYTES));
+const plainLargeOutputPreview = computed(() => (
+  usePlainLargeOutput.value
+    ? truncateUtf8ToByteLimit(value.value, MAX_HIGHLIGHTED_OUTPUT_BYTES)
+    : value.value
+));
 
 const { copy, isJustCopied } = useCopy({ source: value, createToast: false });
 const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : copyMessage.value);
@@ -60,13 +65,16 @@ const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : copyMessage.
           text-xs
           op-70
         >
-          Syntax highlighting is disabled above {{ MAX_HIGHLIGHTED_OUTPUT_BYTES.toLocaleString('en') }} UTF-8 bytes to keep large output responsive.
+          Syntax highlighting is disabled above {{ MAX_HIGHLIGHTED_OUTPUT_BYTES.toLocaleString('en') }} UTF-8 bytes. The preview is limited to that size; Copy keeps the complete output.
         </div>
-        <pre
+        <textarea
           v-if="usePlainLargeOutput"
+          :value="plainLargeOutputPreview"
           data-test-id="area-content"
           class="plain-large-output"
-        >{{ value }}</pre>
+          aria-label="Plain text output"
+          readonly
+        />
         <n-config-provider v-else :hljs="hljs">
           <n-code :code="value" :language="language" :trim="false" data-test-id="area-content" />
         </n-config-provider>
@@ -100,8 +108,16 @@ const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : copyMessage.
 }
 
 .plain-large-output {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 12rem;
   margin: 0;
-  min-width: max-content;
+  padding: 0;
+  border: 0;
+  resize: vertical;
+  background: transparent;
+  color: inherit;
   font-family: monospace;
   font-size: 13px;
   line-height: 1.5;

@@ -40,3 +40,52 @@ export function exceedsUtf8ByteLimit(value: string, maxBytes: number): boolean {
 
   return false;
 }
+
+/**
+ * Return the longest prefix whose UTF-8 representation fits within maxBytes.
+ * Surrogate pairs are kept intact, and unmatched surrogates use the same
+ * replacement-character byte accounting as TextEncoder.
+ */
+export function truncateUtf8ToByteLimit(value: string, maxBytes: number): string {
+  if (!Number.isSafeInteger(maxBytes) || maxBytes < 0) {
+    throw new RangeError('maxBytes must be a non-negative safe integer.');
+  }
+
+  let byteLength = 0;
+  let end = 0;
+
+  for (let index = 0; index < value.length; index += 1) {
+    const codeUnit = value.charCodeAt(index);
+    let characterBytes: number;
+    let codeUnits = 1;
+
+    if (codeUnit <= 0x007F) {
+      characterBytes = 1;
+    }
+    else if (codeUnit <= 0x07FF) {
+      characterBytes = 2;
+    }
+    else if (
+      codeUnit >= 0xD800
+      && codeUnit <= 0xDBFF
+      && value.charCodeAt(index + 1) >= 0xDC00
+      && value.charCodeAt(index + 1) <= 0xDFFF
+    ) {
+      characterBytes = 4;
+      codeUnits = 2;
+    }
+    else {
+      characterBytes = 3;
+    }
+
+    if (byteLength + characterBytes > maxBytes) {
+      break;
+    }
+
+    byteLength += characterBytes;
+    end = index + codeUnits;
+    index += codeUnits - 1;
+  }
+
+  return value.slice(0, end);
+}

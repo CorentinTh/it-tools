@@ -31,6 +31,8 @@ const props = withDefaults(
     autosize?: boolean
     autofocus?: boolean
     monospace?: boolean
+    maxlength?: number
+    inputmode?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url'
   }>(),
   {
     value: '',
@@ -58,6 +60,8 @@ const props = withDefaults(
     autosize: false,
     autofocus: false,
     monospace: false,
+    maxlength: undefined,
+    inputmode: undefined,
   },
 );
 const emit = defineEmits(['update:value']);
@@ -170,6 +174,8 @@ defineExpose({
           :autocomplete="autocomplete ?? (rawText ? 'off' : undefined)"
           :autocorrect="autocorrect ?? (rawText ? 'off' : undefined)"
           :spellcheck="spellcheck ?? (rawText ? false : undefined)"
+          :maxlength="props.maxlength"
+          :inputmode="props.inputmode"
           :rows="rows"
         />
 
@@ -192,6 +198,8 @@ defineExpose({
           :autocomplete="autocomplete ?? (rawText ? 'off' : undefined)"
           :autocorrect="autocorrect ?? (rawText ? 'off' : undefined)"
           :spellcheck="spellcheck ?? (rawText ? false : undefined)"
+          :maxlength="props.maxlength"
+          :inputmode="props.inputmode"
         >
 
         <c-button v-if="clearable && value" variant="text" circle size="small" @click="value = ''">

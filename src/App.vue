@@ -4,6 +4,8 @@ import { NGlobalStyle, NMessageProvider, NNotificationProvider, darkTheme } from
 import { darkThemeOverrides, lightThemeOverrides } from './themes';
 import BaseLayout from './layouts/base.layout.vue';
 import ToolLayout from './layouts/tool.layout.vue';
+import OfflineRouteUnavailable from './modules/pwa/OfflineRouteUnavailable.vue';
+import { offlineRouteFailure } from './modules/pwa/offline-route-recovery';
 import { useStyleStore } from './stores/style.store';
 
 const styleStore = useStyleStore();
@@ -26,7 +28,8 @@ syncRef(
       <NMessageProvider placement="bottom">
         <NNotificationProvider placement="bottom-right">
           <BaseLayout>
-            <RouterView v-slot="{ Component, route: renderedRoute }">
+            <OfflineRouteUnavailable v-if="offlineRouteFailure" />
+            <RouterView v-else v-slot="{ Component, route: renderedRoute }">
               <ToolLayout v-if="renderedRoute.meta.isTool === true" :key="renderedRoute.path">
                 <component :is="Component" :key="renderedRoute.path" />
               </ToolLayout>
