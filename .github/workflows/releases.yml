@@ -5,100 +5,229 @@ on:
     tags:
       - 'v*.*.*'
 
-jobs:
-  docker-release:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get release version
-        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
+permissions:
+  contents: read
 
-      - name: Checkout
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  DOCKERHUB_IMAGE: 64mb/it-tools
+  GHCR_IMAGE: ghcr.io/64mb/it-tools
+
+jobs:
+  metadata:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      prerelease: ${{ steps.version.outputs.prerelease }}
+    steps:
+      - name: Validate the release tag
+        id: version
+        shell: bash
+        run: |
+          tag="$GITHUB_REF_NAME"
+          semver='^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(-([0-9A-Za-z-]+)(\.[0-9A-Za-z-]+)*)?$'
+          if [[ ! "$tag" =~ $semver ]]; then
+            echo "Release tag must be strict SemVer without build metadata: $tag" >&2
+            exit 1
+          fi
+
+          version="${tag#v}"
+          prerelease=false
+          if [[ "$version" == *-* ]]; then
+            prerelease=true
+            identifiers="${version#*-}"
+            IFS='.' read -r -a parts <<< "$identifiers"
+            for part in "${parts[@]}"; do
+              if [[ "$part" =~ ^[0-9]+$ && "$part" != 0 && "$part" == 0* ]]; then
+                echo "Numeric prerelease identifiers must not contain leading zeroes: $part" >&2
+                exit 1
+              fi
+            done
+          fi
+
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "prerelease=$prerelease" >> "$GITHUB_OUTPUT"
+
+  verify:
+    needs: metadata
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version-file: '.nvmrc'
+
+      - run: corepack enable
+
+      - name: Resolve pnpm store path
+        id: pnpm-store
+        run: echo "path=$(pnpm store path)" >> "$GITHUB_OUTPUT"
+
+      - name: Restore pnpm store
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ steps.pnpm-store.outputs.path }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run linters
+        run: pnpm lint
+
+      - name: Run unit tests
+        run: pnpm test:unit
+
+      - name: Test build statistics
+        run: pnpm test:build-stats
+
+      - name: Build the production artifact
+        run: pnpm build
+
+      - name: Validate production build statistics
+        run: pnpm build:stats:check --output "$RUNNER_TEMP/build-stats.json"
+
+      - name: Restore Playwright browsers from cache
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('pnpm-lock.yaml', '**/playwright.config.ts') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - name: Install Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Run Chromium acceptance tests
+        run: pnpm test:e2e --project=chromium --reporter=line
+
+      - name: Package the verified artifact
+        run: zip -r "it-tools-${{ needs.metadata.outputs.version }}.zip" dist
+
+      - name: Upload the verified artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: release-dist-${{ needs.metadata.outputs.version }}
+          path: it-tools-${{ needs.metadata.outputs.version }}.zip
+          if-no-files-found: error
+          retention-days: 1
+
+  container-verify:
+    needs: metadata
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
+        with:
+          persist-credentials: false
+
+      - name: Build the pinned release candidate
+        run: docker build --tag it-tools:release-candidate .
+
+      - name: Verify rootless static-delivery contracts
+        run: sh scripts/container-smoke.sh it-tools:release-candidate
+
+  github-release:
+    needs: [metadata, verify, container-verify]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout changelog only
         uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            CHANGELOG.md
+            scripts/getLatestChangelog.mjs
+          sparse-checkout-cone-mode: false
+
+      - name: Download the verified artifact
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: release-dist-${{ needs.metadata.outputs.version }}
+
+      - name: Get changelog
+        id: changelog
+        run: |
+          EOF=$(openssl rand -hex 8)
+          echo "changelog<<$EOF" >> "$GITHUB_OUTPUT"
+          node ./scripts/getLatestChangelog.mjs >> "$GITHUB_OUTPUT"
+          echo "$EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Create the draft release
+        uses: softprops/action-gh-release@26994186c0ac3ef5cae75ac16aa32e8153525f77 # v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: it-tools-${{ needs.metadata.outputs.version }}.zip
+          tag_name: ${{ github.ref_name }}
+          draft: true
+          prerelease: ${{ needs.metadata.outputs.prerelease == 'true' }}
+          body: |
+            ## Docker images
+
+            The immutable version tag is published after this draft is created:
+
+            - `${{ env.DOCKERHUB_IMAGE }}:${{ needs.metadata.outputs.version }}`
+            - `${{ env.GHCR_IMAGE }}:${{ needs.metadata.outputs.version }}`
+
+            ## Changelog
+
+            ${{ steps.changelog.outputs.changelog }}
+
+  docker-release:
+    needs: [metadata, github-release]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout without persisted credentials
+        uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
+        with:
+          persist-credentials: false
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Login to Docker Hub
-        uses: docker/login-action@v3
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@c7c53464625b32c7a7e944ae62b3e17d2b600130 # v3
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
 
-      - name: Build and push
-        uses: docker/build-push-action@v5
+      - name: Build and push the immutable version
+        uses: docker/build-push-action@ca052bb54ab0790a636c9b5f226502c73d547a25 # v5
         with:
           context: .
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
+          sbom: true
+          provenance: mode=max
+          labels: |
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.version=${{ needs.metadata.outputs.version }}
           tags: |
-            corentinth/it-tools:latest
-            corentinth/it-tools:${{ env.RELEASE_VERSION }}
-            ghcr.io/corentinth/it-tools:latest
-            ghcr.io/corentinth/it-tools:${{ env.RELEASE_VERSION}}
-
-  github-release:
-    runs-on: ubuntu-latest
-    needs: docker-release
-    steps:
-      - name: Get release version
-        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
-
-      - name: Checkout
-        uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
-
-      - run: corepack enable
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 20
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm i
-
-      - name: Build the app
-        run: pnpm build
-
-      - name: Zip the app
-        run: zip -r it-tools-${{ env.RELEASE_VERSION }}.zip dist/*
-
-      - name: Get changelog
-        id: changelog
-        run: |
-          EOF=$(openssl rand -hex 8)
-          echo "changelog<<$EOF" >> $GITHUB_OUTPUT
-          node ./scripts/getLatestChangelog.mjs >> $GITHUB_OUTPUT
-          echo "$EOF" >> $GITHUB_OUTPUT
-
-      - name: Create Release
-        uses: softprops/action-gh-release@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          files: it-tools-${{ env.RELEASE_VERSION }}.zip
-          tag_name: v${{ env.RELEASE_VERSION }}
-          draft: true
-          prerelease: false
-          body: |
-            ## Docker images
-
-            - Docker Hub
-              - `corentinth/it-tools:latest`
-              - `corentinth/it-tools:${{ env.RELEASE_VERSION }}`
-            - GitHub Container Registry
-              - `ghcr.io/corentinth/it-tools:latest`
-              - `ghcr.io/corentinth/it-tools:${{ env.RELEASE_VERSION}}`
-
-            ## Changelog
-
-            ${{ steps.changelog.outputs.changelog }}
+            ${{ env.DOCKERHUB_IMAGE }}:${{ needs.metadata.outputs.version }}
+            ${{ env.GHCR_IMAGE }}:${{ needs.metadata.outputs.version }}

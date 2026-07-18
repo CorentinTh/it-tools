@@ -3,7 +3,7 @@ import { type FormatOptionsWithLanguage, format as formatSQL } from 'sql-formatt
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 import { useStyleStore } from '@/stores/style.store';
 
-const inputElement = ref<HTMLElement>();
+const inputComponent = ref<{ inputWrapperRef?: HTMLElement }>();
 const styleStore = useStyleStore();
 const config = reactive<FormatOptionsWithLanguage>({
   keywordCase: 'upper',
@@ -63,7 +63,7 @@ const prettySQL = computed(() => formatSQL(rawSQL.value, config));
 
   <n-form-item label="Your SQL query">
     <c-input-text
-      ref="inputElement"
+      ref="inputComponent"
       v-model:value="rawSQL"
       placeholder="Put your SQL query here..."
       rows="20"
@@ -76,7 +76,7 @@ const prettySQL = computed(() => formatSQL(rawSQL.value, config));
     />
   </n-form-item>
   <n-form-item label="Prettify version of your query">
-    <TextareaCopyable :value="prettySQL" language="sql" :follow-height-of="inputElement" />
+    <TextareaCopyable :value="prettySQL" language="sql" :follow-height-of="inputComponent?.inputWrapperRef" />
   </n-form-item>
 </template>
 

@@ -25,7 +25,7 @@ const [tokens] = computedRefreshable(
     current: generateTOTP({ key: secret.value, now: now.value }),
     next: generateTOTP({ key: secret.value, now: now.value + 30000 }),
   }),
-  { throttle: 500 },
+  { dependencies: [secret, now], throttle: 500 },
 );
 
 const keyUri = computed(() => buildKeyUri({ secret: secret.value }));

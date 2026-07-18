@@ -7,7 +7,7 @@ import { arrayToMarkdownTable, computeAverage, computeVariance } from './benchma
 import DynamicValues from './dynamic-values.vue';
 import { useCopy } from '@/composable/copy';
 
-const suites = useStorage('benchmark-builder:suites', [
+const suites = ref([
   { title: 'Suite 1', data: [5, 10] },
   { title: 'Suite 2', data: [8, 12] },
 ]);

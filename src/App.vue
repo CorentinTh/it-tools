@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { RouterView, useRoute } from 'vue-router';
+import { RouterView } from 'vue-router';
 import { NGlobalStyle, NMessageProvider, NNotificationProvider, darkTheme } from 'naive-ui';
 import { darkThemeOverrides, lightThemeOverrides } from './themes';
-import { layouts } from './layouts';
+import BaseLayout from './layouts/base.layout.vue';
+import ToolLayout from './layouts/tool.layout.vue';
 import { useStyleStore } from './stores/style.store';
 
-const route = useRoute();
-const layout = computed(() => route?.meta?.layout ?? layouts.base);
 const styleStore = useStyleStore();
 
 const theme = computed(() => (styleStore.isDarkTheme ? darkTheme : null));
@@ -26,9 +25,14 @@ syncRef(
       <NGlobalStyle />
       <NMessageProvider placement="bottom">
         <NNotificationProvider placement="bottom-right">
-          <component :is="layout">
-            <RouterView />
-          </component>
+          <BaseLayout>
+            <RouterView v-slot="{ Component, route: renderedRoute }">
+              <ToolLayout v-if="renderedRoute.meta.isTool === true" :key="renderedRoute.path">
+                <component :is="Component" :key="renderedRoute.path" />
+              </ToolLayout>
+              <component :is="Component" v-else :key="renderedRoute.path" />
+            </RouterView>
+          </BaseLayout>
         </NNotificationProvider>
       </NMessageProvider>
     </n-config-provider>

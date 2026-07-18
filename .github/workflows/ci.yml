@@ -6,29 +6,69 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   ci:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
-      - run: corepack enable
-      - uses: actions/setup-node@v3
         with:
-          node-version: 20
-          cache: 'pnpm'
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version-file: '.nvmrc'
+
+      - run: corepack enable
+
+      - name: Resolve pnpm store path
+        id: pnpm-store
+        run: echo "path=$(pnpm store path)" >> "$GITHUB_OUTPUT"
+
+      - name: Restore pnpm store
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ steps.pnpm-store.outputs.path }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
-        run: pnpm i
+        run: pnpm install --frozen-lockfile
 
       - name: Run linters
         run: pnpm lint
 
       - name: Run unit test
-        run: pnpm test
+        run: pnpm test:unit
+
+      - name: Test build statistics
+        run: pnpm test:build-stats
 
       - name: Type check
         run: pnpm typecheck
 
       - name: Build the app
         run: pnpm build
+
+      - name: Validate build statistics against the production artifact
+        run: pnpm build:stats:check --output "$RUNNER_TEMP/build-stats.json"
+
+  container:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
+        with:
+          persist-credentials: false
+
+      - name: Build the pinned production image
+        run: docker build --tag it-tools:smoke .
+
+      - name: Verify rootless static-delivery contracts
+        run: sh scripts/container-smoke.sh it-tools:smoke

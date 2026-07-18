@@ -18,6 +18,17 @@ const [loremIpsumText, refreshLoremIpsum] = computedRefreshable(() =>
     wordCount: randIntFromInterval(words.value[0], words.value[1]),
     startWithLoremIpsum: startWithLoremIpsum.value,
   }),
+{
+  dependencies: [
+    paragraphs,
+    () => sentences.value[0],
+    () => sentences.value[1],
+    () => words.value[0],
+    () => words.value[1],
+    startWithLoremIpsum,
+    asHTML,
+  ],
+},
 );
 
 const { copy } = useCopy({ source: loremIpsumText, text: 'Lorem ipsum copied to the clipboard' });
@@ -41,7 +52,7 @@ const { copy } = useCopy({ source: loremIpsumText, text: 'Lorem ipsum copied to 
       <n-switch v-model:value="asHTML" />
     </n-form-item>
 
-    <c-input-text :value="loremIpsumText" multiline placeholder="Your lorem ipsum..." readonly mt-5 rows="5" />
+    <c-input-text :value="loremIpsumText" placeholder="Your lorem ipsum..." readonly multiline mt-5 rows="5" />
 
     <div mt-5 flex justify-center gap-3>
       <c-button autofocus @click="copy()">

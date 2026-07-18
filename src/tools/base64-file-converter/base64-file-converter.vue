@@ -2,7 +2,7 @@
 import { useBase64 } from '@vueuse/core';
 import type { Ref } from 'vue';
 import { useCopy } from '@/composable/copy';
-import { getExtensionFromMimeType, getMimeTypeFromBase64, previewImageFromBase64, useDownloadFileFromBase64Refs } from '@/composable/downloadBase64';
+import { getExtensionFromMimeType, getMimeTypeFromBase64, getMimeTypeFromExtension, previewImageFromBase64, useDownloadFileFromBase64Refs } from '@/composable/downloadBase64';
 import { useValidation } from '@/composable/validation';
 import { isValidBase64 } from '@/utils/base64';
 
@@ -40,7 +40,10 @@ function previewImage() {
     return;
   }
   try {
-    const image = previewImageFromBase64(base64Input.value);
+    const image = previewImageFromBase64(
+      base64Input.value,
+      getMimeTypeFromExtension(fileExtension.value),
+    );
     image.style.maxWidth = '100%';
     image.style.maxHeight = '400px';
     const previewContainer = document.getElementById('previewContainer');

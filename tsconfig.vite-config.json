@@ -1,8 +1,14 @@
 {
-  "extends": "@tsconfig/node18/tsconfig.json",
-  "include": ["vite.config.*"],
+  "include": ["vite.config.*", "vite-pwa-policy.test.ts"],
   "compilerOptions": {
     "composite": true,
+    "esModuleInterop": true,
+    "lib": ["ES2022"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ES2022",
     "types": ["node", "vitest"]
   }
 }

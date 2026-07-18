@@ -25,11 +25,13 @@ Third-party dependencies are listed in [`package.json`](package.json).
 
 ## Development
 
-The project uses the pnpm version pinned in `package.json`.
+The supported development baseline is Node.js 24.18.0 and pnpm 9.11.0, pinned
+in `.nvmrc` and `package.json`.
 
 ### Install dependencies
 
 ```sh
+nvm use
 corepack enable
 pnpm install --frozen-lockfile
 ```
@@ -73,10 +75,14 @@ Build the image from the current source:
 
 ```sh
 docker build -t it-tools:2.1.0 .
-docker run -d --name it-tools --restart unless-stopped -p 8080:80 it-tools:2.1.0
+docker run -d --name it-tools --restart unless-stopped --read-only --tmpfs /tmp:rw,noexec,nosuid,size=16m --cap-drop=ALL -p 8080:8080 it-tools:2.1.0
 ```
 
 Open `http://localhost:8080` in a browser.
+
+The container runs unprivileged and listens on port `8080` by default. Set
+`NGINX_PORT` to another unprivileged port and publish the same container port
+when a different internal port is required.
 
 ## Creating a tool
 

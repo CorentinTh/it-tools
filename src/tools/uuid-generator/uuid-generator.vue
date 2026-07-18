@@ -40,7 +40,9 @@ const [uuids, refreshUUIDs] = computedRefreshable(() => withDefaultOnError(() =>
   Array.from({ length: count.value }, (_ignored, index) => {
     const generator = generators[version.value] ?? generators.NIL;
     return generator(index);
-  }).join('\n'), ''));
+  }).join('\n'), ''), {
+  dependencies: [version, count, () => v35Args.value.namespace, () => v35Args.value.name],
+});
 
 const { copy } = useCopy({ source: uuids, text: 'UUIDs copied to the clipboard' });
 </script>

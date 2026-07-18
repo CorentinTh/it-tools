@@ -1,3 +1,5 @@
+// Non-cryptographic helpers for presentation-only values. Security-sensitive
+// identifiers, tokens, keys, and secrets must use secure-random.ts instead.
 const random = () => Math.random();
 
 const randFromArray = (array: unknown[]) => array[Math.floor(random() * array.length)];

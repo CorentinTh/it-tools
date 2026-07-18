@@ -1,0 +1,1 @@
+export const MAX_HIGHLIGHTED_OUTPUT_BYTES = 100_000;

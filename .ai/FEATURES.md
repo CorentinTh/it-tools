@@ -1,5 +1,16 @@
 # Useful Features from Upstream Issues and Pull Requests
 
+## Implementation status — 2026-07-18
+
+- **NOT STARTED:** all Priority A/B product features remain gated until Milestones 0–2 are green.
+- **IN PROGRESS — platform foundation:** all-tool Chromium route smoke, deterministic schema-v3 route/bundle measurements, executable CI/release budgets, cross-route lifecycle probes, bounded Bcrypt/Regex task flows, and shared highlighted-output fallback are implemented. A common worker protocol, parser/depth/download policy, and remaining heavy-tool migrations stay open.
+- **DONE — reusable foundation only:** secure unbiased browser randomness is ready for future NanoID/identifier work; this is not being counted as a delivered product feature.
+- **DONE — reusable prerequisite only:** Text Diff/editor worker ownership, privacy, and lifecycle are safe to reuse; its payload still must be reduced before editor-heavy features are accepted.
+- **ACTIVE FOCUS:** locally confirmed defects and performance foundations, not new catalog features. Dependency/base-image vulnerability work is deferred to its own later track.
+
+Current implementation evidence and the next feature-unblocking gates are in
+`.ai/PROGRESS.md`. No upstream feature code has been merged or cherry-picked.
+
 ## Snapshot and selection method
 
 All 710 issues and 997 pull requests in the snapshot dated 2026-07-12 were analyzed. The backlog contains many duplicates, translations, dependency-bot PRs, and ideas that would turn the product into a backend/SaaS. The list below retains features that fit the local product model: developer-first, client-side, self-hostable, offline where practical, and no transmission of user data by default.
@@ -80,7 +91,7 @@ An open PR is a source of requirements and test cases, not permission to cherry-
 | Category tabs/filters on Home | [PR #1824](https://github.com/CorentinTh/it-tools/pull/1824) | Add only with URL state and an accessibility design; avoid duplicating the side menu |
 | Accessible category navigation | [PR #1743](https://github.com/CorentinTh/it-tools/pull/1743) | Reproduce keyboard/ARIA behavior and add axe/Playwright checks |
 | Tool generator with category and local metadata | [PR #1443](https://github.com/CorentinTh/it-tools/pull/1443) | Move toward a generated registry to reduce merge conflicts and initial-bundle cost |
-| Lazy emoji groups | [PR #1374](https://github.com/CorentinTh/it-tools/pull/1374) | Use windowing/incremental rendering; upstream reports about 40% improvement, which must be remeasured locally |
+| Lazy emoji groups | [PR #1374](https://github.com/CorentinTh/it-tools/pull/1374) | **Local bounded-pagination slice implemented without copying upstream presentation:** 60→120 cards, keyboard-native controls, lazy keywords, one paged search grid that preserves Fuse relevance, 1,731 initial DOM elements, and 48.8% less additional-route gzip. True windowing and cancellable Fuse search remain open |
 
 ## Defer or reject without a separate product decision
 

@@ -1,6 +1,7 @@
 import { HmacSHA1, enc } from 'crypto-js';
 import _ from 'lodash';
 import { createToken } from '../token-generator/token-generator.service';
+import type { RandomValuesProvider } from '@/utils/secure-random';
 
 export {
   generateHOTP,
@@ -135,6 +136,6 @@ function buildKeyUri({
   return `otpauth://totp/${encodeURIComponent(app)}:${encodeURIComponent(account)}?${paramsString}`;
 }
 
-function generateSecret() {
-  return createToken({ length: 16, alphabet: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567' });
+function generateSecret({ getRandomValues }: { getRandomValues?: RandomValuesProvider } = {}) {
+  return createToken({ length: 16, alphabet: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567', getRandomValues });
 }

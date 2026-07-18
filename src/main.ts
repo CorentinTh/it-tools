@@ -13,6 +13,9 @@ import { naive } from './plugins/naive.plugin';
 import App from './App.vue';
 import router from './router';
 import { i18nPlugin } from './plugins/i18n.plugin';
+import { clearLegacySensitiveContentStorage } from './utils/sensitive-content-storage';
+
+clearLegacySensitiveContentStorage();
 
 registerSW();
 

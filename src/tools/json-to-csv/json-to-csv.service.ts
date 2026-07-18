@@ -17,10 +17,10 @@ function serializeValue(value: unknown): string {
     return '';
   }
 
-  const valueAsString = String(value).replace(/\n/g, '\\n').replace(/\r/g, '\\r').replace(/"/g, '\\"');
+  const valueAsString = String(value);
 
-  if (valueAsString.includes(',')) {
-    return `"${valueAsString}"`;
+  if (/[",\r\n]/.test(valueAsString)) {
+    return `"${valueAsString.replace(/"/g, '""')}"`;
   }
 
   return valueAsString;
@@ -31,5 +31,5 @@ function convertArrayToCsv({ array }: { array: Record<string, unknown>[] }): str
 
   const rows = array.map(item => headers.map(header => serializeValue(item[header])));
 
-  return [headers.join(','), ...rows].join('\n');
+  return [headers.map(serializeValue).join(','), ...rows].join('\n');
 }

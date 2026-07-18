@@ -2,6 +2,7 @@
 import { NIcon } from 'naive-ui';
 import { Home2, Menu2 } from '@vicons/tabler';
 import { storeToRefs } from 'pinia';
+import type { ComponentPublicInstance } from 'vue';
 import MenuLayout from '../components/MenuLayout.vue';
 import NavbarButtons from '../components/NavbarButtons.vue';
 import { useStyleStore } from '@/stores/style.store';
@@ -14,6 +15,15 @@ const styleStore = useStyleStore();
 const version = config.app.version;
 
 const { t } = useI18n();
+const menuToggle = ref<ComponentPublicInstance>();
+
+function focusMenuToggle(): void {
+  const element = menuToggle.value?.$el;
+
+  if (element instanceof HTMLElement) {
+    element.focus();
+  }
+}
 
 const toolStore = useToolStore();
 const { favoriteTools, toolsByCategory } = storeToRefs(toolStore);
@@ -25,7 +35,11 @@ const tools = computed<ToolCategory[]>(() => [
 </script>
 
 <template>
-  <MenuLayout class="menu-layout" :class="{ isSmallScreen: styleStore.isSmallScreen }">
+  <MenuLayout
+    class="menu-layout"
+    :class="{ isSmallScreen: styleStore.isSmallScreen }"
+    @request-focus-restore="focusMenuToggle"
+  >
     <template #sider>
       <div class="sider-content">
         <div v-if="styleStore.isSmallScreen" flex flex-col items-center>
@@ -49,9 +63,13 @@ const tools = computed<ToolCategory[]>(() => [
     <template #content>
       <div flex items-center justify-center gap-2>
         <c-button
+          id="tool-navigation-toggle"
+          ref="menuToggle"
           circle
           variant="text"
           :aria-label="$t('home.toggleMenu')"
+          aria-controls="tool-navigation"
+          :aria-expanded="!styleStore.isMenuCollapsed"
           @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed"
         >
           <NIcon size="25" :component="Menu2" />

@@ -1,9 +1,61 @@
 <script setup lang="ts">
 import { useHead } from '@vueuse/head';
+import { clearManagedStorage } from '@/utils/app-storage';
 
 useHead({ title: 'About - IT Tools' });
+
+const { t } = useI18n();
+const storageClearStatus = ref('');
+
+function clearSavedBrowserData() {
+  let removedKeys: string[];
+  let failedKeys: string[];
+
+  try {
+    ({ removedKeys, failedKeys } = clearManagedStorage(localStorage));
+  }
+  catch {
+    storageClearStatus.value = t('about.privacy.clearUnavailable');
+    return;
+  }
+
+  storageClearStatus.value = failedKeys.length > 0
+    ? t('about.privacy.clearPartial', { removed: removedKeys.length, failed: failedKeys.length })
+    : t('about.privacy.clearSuccess', { count: removedKeys.length });
+}
 </script>
 
 <template>
-  <c-markdown :markdown="$t('about.content')" mx-auto mt-50px max-w-600px />
+  <div mx-auto mt-50px max-w-600px>
+    <c-markdown :markdown="$t('about.content')" />
+
+    <c-card :title="$t('about.privacy.title')" mt-6>
+      <p mt-0>
+        {{ $t('about.privacy.description') }}
+      </p>
+      <p>{{ $t('about.privacy.textDiff') }}</p>
+      <n-popconfirm
+        :positive-text="$t('about.privacy.confirmButton')"
+        :negative-text="$t('about.privacy.cancelButton')"
+        @positive-click="clearSavedBrowserData"
+      >
+        <template #trigger>
+          <c-button data-test-id="clear-saved-browser-data" type="warning">
+            {{ $t('about.privacy.clearButton') }}
+          </c-button>
+        </template>
+        {{ $t('about.privacy.clearConfirm') }}
+      </n-popconfirm>
+      <p
+        v-if="storageClearStatus"
+        data-test-id="storage-clear-status"
+        role="status"
+        mb-0
+        mt-3
+        text-sm
+      >
+        {{ storageClearStatus }}
+      </p>
+    </c-card>
+  </div>
 </template>

@@ -4,7 +4,15 @@
 
 Develop this fork forward as an independent product while selectively adapting useful upstream behavior, tests, and ideas. The current local branch is the source of truth. A clean upstream commit is not, by itself, a reason to merge or cherry-pick it.
 
-The recommended next milestone is **P0 Stabilization and Performance Safety**: restore a green quality baseline, remove critical security exposure, fix the confirmed Text Diff leak, and move unbounded bcrypt/regex work off the main thread before adding new tools.
+The active milestone is **P0 Correctness and Performance Safety**: keep the quality
+baseline green, resolve locally reproduced product defects, finish the Text Diff
+payload work, and move unbounded bcrypt/regex work off the main thread before
+adding new tools. Dependency/base-image vulnerability remediation is retained as
+a separate deferred security track and is not part of the current slice.
+
+Implementation is active. See `.ai/PROGRESS.md` for the live journal, verified
+commands, measurements, risks, and next gates. In checklist text, `IN PROGRESS`
+means implementation exists but the full Definition of Done is not yet met.
 
 ## Audit work completed
 
@@ -42,33 +50,39 @@ The recommended next milestone is **P0 Stabilization and Performance Safety**: r
 
 ### 0.1 Quality baseline
 
-- [ ] Remove the nine ESLint errors caused by stale local imports in Navbar Buttons, Base Layout, and Home.
-- [ ] Resolve the six UnoCSS ordering warnings or explicitly document any accepted exception.
-- [ ] Fix both nullable editor accesses reported by `pnpm typecheck`.
-- [ ] Align `pnpm build` and `pnpm typecheck` on one canonical TypeScript project so one cannot hide errors from the other.
-- [ ] Make `pnpm lint`, `pnpm typecheck`, unit tests, Chromium E2E, and production build green before functional refactoring.
-- [ ] Add a frozen-lockfile install to every CI/release job.
-- [ ] Add a route smoke test for all 86 tools that fails on page errors, chunk-load errors, and unexpected console errors.
+- [x] Remove the current ESLint errors caused by stale local imports (the implementation-day baseline was 6 errors; the older audit recorded 9).
+- [x] Resolve the current UnoCSS ordering warnings (3 at implementation start; the native `size` collision remains a separate item).
+- [x] Fix both nullable editor accesses reported by `pnpm typecheck`.
+- [x] Align `pnpm build` and `pnpm typecheck` on canonical application/test plus Vite-config checks so one cannot hide errors from the other.
+- [x] Make `pnpm lint`, `pnpm typecheck`, unit tests, Chromium E2E, and production build green; the final integrated checkpoint is 367/367 unit across 70 files and 86/86 Chromium tests.
+- [x] Add a frozen-lockfile install to every CI/release job.
+- [x] Add a Chromium route smoke test for all 86 tools that fails on page errors, chunk-load errors, unexpected console errors, and Monaco worker fallback warnings.
 - [ ] Add Firefox and WebKit smoke coverage after the Chromium baseline is stable.
 
 ### 0.2 Reproducible toolchain
 
-- [ ] Select one currently supported Node LTS and align `.nvmrc`, `package.json#engines`, tsconfig, CI, Docker, and contributor documentation.
-- [ ] Use Corepack with `pnpm@9.11.0` or an intentionally upgraded single version; never install an unpinned latest pnpm in Docker.
-- [ ] Move build-only and type-only packages out of runtime dependencies.
+- [x] Select Node 24.18.0 and align `.nvmrc`, `package.json#engines`, tsconfig, CI, Docker, and contributor documentation; keep the remaining `@types/node` upgrade in its controlled dependency group.
+- [x] Use Corepack with the package-manager-pinned `pnpm@9.11.0`; never install an unpinned latest pnpm in Docker.
+- [x] Move build-only and type-only packages out of runtime dependencies.
 - [ ] Document Bun or remove the unpinned `bun:Glob` locale-script dependency.
-- [ ] Add deterministic `build:stats` and upstream-export scripts so future snapshots are reproducible.
+- [x] Add deterministic schema-v3 `build:stats` generation and regression tests.
+- [ ] Add a reproducible upstream-export script before refreshing the research snapshot.
 
 ### 0.3 Measurement guardrails
 
-- [ ] Commit a machine-readable bundle baseline: shell size, route closures, Workbox inventory, and dynamic-import counts.
-- [ ] Add long-task, DOM-count, and repeated-navigation Chromium probes for the critical routes.
-- [ ] Adopt the initial budgets in `.ai/PERFORMANCE.md`, then ratchet them after each improvement.
+- [x] Generate and maintain a machine-readable bundle baseline with shell size, route closures, Workbox inventory, dynamic-import counts, and stable membership digests.
+- [x] Add repeated-navigation heap/DOM/listener Chromium probes for Text Diff and the shared Home/tool layout.
+- [ ] Extend long-task and DOM-count Chromium probes to the remaining critical routes.
+- [x] Enforce initial no-regression shell, Workbox, default dynamic-route, and reviewed heavy-route ceilings in CI/release; keep aspirational product targets separate and ratchet ceilings after improvements.
 - [ ] Capture build time, transformed modules, and peak RSS on the standard CI runner.
 
-## Milestone 1 — P0 security and platform stabilization
+## Milestone 1 — platform, persistence, and deferred security work
 
-### 1.1 Dependency remediation
+### 1.1 Dependency remediation — DEFERRED SECURITY TRACK
+
+These items remain recorded, but are intentionally outside the current
+project-correctness slice. Do not add advisory suppressions or spend current
+implementation time on unrelated base-image/transitive CVEs.
 
 - [ ] Triage the 125 unique advisories by reachability and browser/runtime path.
 - [ ] Upgrade the direct critical `crypto-js` path first and add encryption/decryption compatibility fixtures.
@@ -80,116 +94,136 @@ The recommended next milestone is **P0 Stabilization and Performance Safety**: r
 
 ### 1.2 Container and static delivery
 
-- [ ] Select a currently fully patched nginx image using official advisories; pin tag and digest.
-- [ ] Pin the Node build image by supported version and digest.
-- [ ] Run nginx as non-root and verify OpenShift/Kubernetes arbitrary-UID behavior.
-- [ ] Support a read-only root filesystem with explicit writable temp/cache locations.
-- [ ] Add a health check, container smoke test, Trivy/Grype scan, SBOM, and provenance.
-- [ ] Enable verified gzip/Brotli or precompressed assets.
-- [ ] Add one-year immutable caching for hashed assets and revalidation/no-cache for HTML, service worker, and manifest.
-- [ ] Add baseline security headers compatible with local-only tools and required workers.
-- [ ] Support a configurable non-root internal listen port and test both direct Docker publishing and reverse-proxy deployment.
-- [ ] Verify base/subpath deployments and never return `index.html` for a missing hashed asset.
+- [ ] Select and verify a currently patched nginx image as part of the deferred security track; the delivery image is already pinned by tag and digest for reproducibility.
+- [x] Pin the Node build image by supported version and digest.
+- [x] Run nginx as non-root and verify both the image UID and an arbitrary runtime UID under a read-only root filesystem.
+- [x] Support a read-only root filesystem with explicit writable temp/cache locations.
+- [x] Add a health check and automated container smoke test.
+- [x] Declare release SBOM and provenance generation.
+- [ ] Add a vulnerability scan gate only when the deferred security track is resumed.
+- [x] Enable and verify gzip; Brotli/precompressed assets remain an optional later optimization.
+- [x] Add and smoke-test one-year immutable caching for hashed assets plus revalidation/no-cache for HTML, service worker, and manifest.
+- [x] Add baseline security headers compatible with local-only tools and required workers.
+- [x] Support a configurable non-root internal listen port and test direct Docker publishing on default and alternate ports.
+- [ ] Add reverse-proxy deployment acceptance coverage.
+- [x] Never return `index.html` for a missing static/hashed asset.
+- [ ] Verify a real base/subpath deployment end to end.
 
 ### 1.3 Persistence and privacy
 
-- [ ] Classify stored values as settings, ordinary content, sensitive content, or secrets.
+- [x] Classify stored values as settings, ordinary content, sensitive content, or secrets; maintain the inventory in `.ai/PERSISTENCE.md`.
 - [ ] Persist settings immediately, debounce bounded ordinary content, and make large content opt-in through IndexedDB.
-- [ ] Never persist private keys, OTP secrets, passwords, uploaded files, or cryptographic plaintext by default.
-- [ ] Add per-tool and global clear/reset controls.
+- [x] Never persist private keys, OTP secrets, passwords, uploaded files, or cryptographic plaintext by default; the complete current storage-call inventory has no such key.
+- [x] Add per-tool and global clear/reset controls: Text Diff owns its content reset, and About clears only managed IT Tools keys while preserving unrelated same-origin data.
 - [ ] Handle storage denial, corruption, schema migration, and quota exhaustion without losing the UI.
-- [ ] Document the local-processing and persistence boundary in the product UI.
+- [x] Document the local-processing and persistence boundary in the About UI, including Text Diff opt-in behavior and secret/content defaults.
+- [x] Keep tool content out of URL/history and analytics by default: Regex accepts an explicit incoming `?regex=` value but never writes editor changes back, while custom events/pageviews use path-only URLs and sanitize referrer credentials/query/hash.
 
 ### 1.4 Secure randomness
 
-- [ ] Replace `Math.random` in Token Generator and TOTP secret generation with `crypto.getRandomValues` plus rejection sampling to avoid modulo bias.
-- [ ] Restore the missing `N` and `n` characters in the default token alphabets.
+- [x] Replace `Math.random` in Token Generator and TOTP secret generation with `crypto.getRandomValues` plus rejection sampling to avoid modulo bias.
+- [x] Restore the missing `N` and `n` characters in the default token alphabets.
 - [ ] Audit every use of shared random helpers and classify it as security-sensitive or presentation-only; security-sensitive callers must use the Web Crypto path.
-- [ ] Add deterministic alphabet/length/empty-input tests and statistical sanity tests that can detect permanently missing characters without becoming flaky.
-- [ ] Keep generated tokens and OTP secrets ephemeral and never persist or log them.
+- [x] Add deterministic alphabet, Unicode, length, empty-input, rejection, and permanently-missing-character coverage without flaky statistical assertions.
+- [x] Keep generated tokens and OTP secrets ephemeral and verify non-persistence in Chromium.
 
 ## Milestone 2 — P0/P1 confirmed correctness and responsiveness
 
 ### 2.1 Text Diff
 
 - [ ] Compare a lightweight diff editor with a minimal Monaco editor-only build and record the payload/UX decision.
-- [ ] Configure a real worker if Monaco remains; eliminate the main-thread fallback warning.
-- [ ] Remove unused language/mode chunks from the manifest and PWA cache.
-- [ ] Dispose content listeners, original/modified models, editor, and worker on unmount.
-- [ ] Throttle/limit persisted diff content and handle quota errors.
-- [ ] Add repeated SPA open/close memory tests and large-text interaction fixtures.
-- [ ] Meet the route payload and heap budgets in `.ai/PERFORMANCE.md`.
+- [x] Configure a real worker and eliminate the main-thread fallback warning.
+- [x] Remove unused language/mode chunks from the manifest and PWA cache.
+- [x] Dispose content listeners, original/modified models, editor, and worker on unmount, including multi-owner worker-environment restoration.
+- [x] Make persisted diff content opt-in, debounced, versioned, size-bounded, clearable, and resilient to corruption/quota errors.
+- [x] Add a repeated SPA open/close forced-GC memory test; ten cycles retain +2.46 MiB with zero workers.
+- [x] Add a large-text interaction fixture: two 1 MiB models complete in the real Monaco worker with default-off storage and responsive UI actions.
+- [x] Meet the Text Diff heap budget in `.ai/PERFORMANCE.md`.
+- [ ] Meet the Text Diff route payload budget in `.ai/PERFORMANCE.md` (current additional closure: 582,998 B gzip; target: `<350 kB`).
 
 ### 2.2 Shared worker/task abstraction
 
-- [ ] Implement a typed worker task protocol with job IDs, progress, cancellation, timeout, and structured errors.
-- [ ] Terminate and replace workers for operations that cannot be interrupted safely.
+- [ ] Consolidate the local Bcrypt/Regex typed protocols into one shared worker task abstraction with job IDs, progress, cancellation, timeout, and structured errors.
+- [x] Terminate and replace Bcrypt/Regex workers for operations that cannot be interrupted safely.
 - [ ] Add shared byte, nesting-depth, output-count, and elapsed-time limits.
 - [ ] Ensure stale async results can never overwrite a newer input.
-- [ ] Keep copy/download actions usable during and after degraded large-output rendering.
+- [x] Keep copy actions usable during and after degraded large-output rendering.
+- [ ] Add a shared bounded download policy for degraded large-output rendering.
 
 ### 2.3 Bcrypt
 
-- [ ] Replace reactive `hashSync`/`compareSync` with explicit cancellable worker actions.
-- [ ] Select a practical rounds range from measured time budgets; remove the maximum of 100.
-- [ ] Validate null/empty rounds and hashes without making the card disappear.
-- [ ] Show running, elapsed, timeout, cancelled, success, and error states.
-- [ ] Add fixtures for rounds boundaries, rapid input changes, malformed hashes, and cancellation.
+- [x] Replace reactive `hashSync`/`compareSync` with explicit cancellable worker actions.
+- [x] Select a practical rounds range from measured time budgets; remove the maximum of 100.
+- [x] Validate null/empty rounds and hashes without making the card disappear.
+- [x] Show running, elapsed, timeout, cancelled, success, and error states.
+- [x] Add fixtures for rounds boundaries, rapid input changes, malformed hashes, and cancellation.
 
 ### 2.4 Regex Tester
 
-- [ ] Fix unmatched positional and named optional captures.
-- [ ] Move matching, RandExp generation, and SVG rendering into bounded workers/tasks.
-- [ ] Limit pattern/input/match/output/diagram sizes and add a catastrophic-backtracking fixture.
-- [ ] Debounce query/storage synchronization and async diagram rendering.
-- [ ] Cancel work on route leave and verify the previous tool cannot remain visible.
+- [x] Fix unmatched positional and named optional captures while preserving aligned undefined capture/group metadata.
+- [x] Preserve zero-width matches and advance global matches by Unicode code point without an infinite loop.
+- [x] Move matching and RandExp generation into separate terminate-and-replace workers with job IDs, a 1.2-second deadline, cancellation, and stale-result guards.
+- [x] Preflight RandExp's AST before generation with cumulative length/depth/node/capture bounds and lexical capture numbering so nested repetition/backreference amplification cannot allocate before the output check.
+- [x] Replace reactive SVG rendering with a single-flight explicit on-demand task and bound its pattern, detached-DOM node count, output bytes, and stale result.
+- [ ] Move SVG rendering off the main thread only after selecting a DOM-free or isolated renderer; the current `@regexper/render` dependency requires `document`.
+- [x] Limit pattern/input/match/capture/result/sample/diagram sizes and cover catastrophic backtracking with a live main-thread heartbeat.
+- [x] Accept an explicit incoming `?regex=` value without writing edited content back to URL/history, remove regex content storage, and make diagram rendering explicit rather than input-reactive.
+- [x] Cancel work on route leave/unmount and verify Home and tool-to-tool navigation remove the previous tool DOM.
 
 ### 2.5 Large structured/text input
 
-- [ ] Add a shared plain-text or virtualized output mode above a measured threshold.
+- [x] Add a shared plain-text output mode above 100,000 UTF-8 bytes while preserving copy access; the 1 MiB JSON fixture renders one `<pre>` with zero result descendants.
 - [ ] Parse JSON/YAML once per change and reuse the result for validation and formatting.
 - [ ] Move large JSON/YAML/TOML/XML/SQL/Markdown processing into workers where supported.
 - [ ] Add 100 kB, 1 MB, deep, malformed, and oversized fixtures.
-- [ ] Ensure a 1 MB result stays below 5,000 DOM nodes and creates no >50 ms main-thread task.
+- [x] Keep the shared 1 MiB result markup below 5,000 nodes; the JSON fixture uses one `<pre>` with zero descendants.
+- [ ] Prove the remaining 1 MiB parse/format path creates no >50 ms main-thread task.
 - [ ] Apply the same bounded output policy to regex matches, generated lists, diff trees, and table tools.
 
 ### 2.6 Small confirmed fixes
 
-- [ ] Correct Base64 File MIME lookup and raw Base64 preview/download data-URI handling.
-- [ ] Round Temperature Converter correctly around floating-point boundaries and reject values below absolute zero for every scale.
-- [ ] Preserve repeated URL query values and display fragments.
-- [ ] Add named RFC3986/RFC5987/form URL encoding modes instead of presenting `encodeURIComponent` as the only standard.
+- [x] Correct Base64 File MIME lookup and raw Base64 preview/download data-URI handling.
+- [x] Round Temperature Converter correctly around floating-point boundaries and reject values below absolute zero for every scale.
+- [x] Preserve repeated URL query values and display fragments.
+- [x] Add named RFC3986/RFC5987/form URL encoding modes instead of presenting `encodeURIComponent` as the only standard.
 - [ ] Choose and document a lossless large-integer strategy for JSON/YAML.
-- [ ] Reset/clamp command-palette selection and guard Enter on an empty result.
-- [ ] Escape CSV quotes as `""` and quote comma/newline/quote fields correctly.
-- [ ] Return zero words for whitespace-only Text Statistics input and compute all statistics in one bounded pass.
-- [ ] Revoke Camera Recorder object URLs on delete/unmount and bound retained media.
-- [ ] Fix `TextareaCopyable` element tracking and autosize/follow-height behavior.
-- [ ] Enforce every `TextareaCopyable.copyPlacement` value, especially `none`, without duplicate buttons.
-- [ ] Stop emitting the obsolete top-level Compose `version` field.
-- [ ] Correct the PWA manifest language to English.
-- [ ] Apply the UnoCSS native `size` exclusion and remove the local size workaround.
+- [x] Reset/clamp command-palette selection and guard Enter on an empty result.
+- [x] Escape CSV quotes as `""` and quote comma/newline/quote fields correctly.
+- [x] Return zero words for whitespace-only Text Statistics input and compute character/word/line/UTF-8 byte statistics in one O(n), O(1)-space pass.
+- [x] Revoke Camera Recorder object URLs on delete/unmount; cap recordings at 5 minutes/64 MiB, screenshots at 16 MiB, raw canvas allocation at 16,777,216 pixels/64 MiB, and aggregate retained media at 128 MiB; keep capture single-flight and ignore late callbacks after unmount in addition to the 12/4 item limits.
+- [x] Fix `TextareaCopyable` late element tracking and pass the exposed input wrapper from JSON/YAML/SQL viewers.
+- [x] Enforce every `TextareaCopyable.copyPlacement` value (`top-right`, `bottom-right`, `outside`, `none`) without duplicate buttons.
+- [x] Stop emitting the obsolete top-level Compose `version` field.
+- [x] Correct the PWA manifest language to English (already resolved in the local fork before this implementation slice; audit item was stale).
+- [x] Replace ASCII Art's runtime `unpkg.com` font dependency with versioned same-origin, on-demand assets and cancellation-safe rendering.
+- [x] Apply the UnoCSS native `size` exclusion and remove the local size workaround.
+- [x] Close the mobile menu immediately on small screens, after route changes, and on Escape; keep hidden navigation inert at both breakpoints, restore focus to an `aria-expanded` toggle, and separate transient mobile state from the persisted desktop collapse preference.
+- [x] Give shared `c-button` safe native form-button defaults and disabled semantics; physically remove disabled href/router targets while exposing link role/`aria-disabled` and removing them from tab order.
 
 ## Milestone 3 — P1 high-impact performance
 
 ### 3.1 PWA and network
 
-- [ ] Precache only the shell and critical static assets.
-- [ ] Runtime-cache content-hashed lazy chunks after first use.
+- [x] Precache only the shell, Workbox client runtime, and critical static assets; the generated inventory is nine required entries.
+- [x] Runtime-cache content-hashed lazy chunks after first use with a bounded/versioned CacheFirst policy.
+- [x] Verify a previously opened lazy tool reloads offline after clearing the HTTP cache; document, shell, Workbox client runtime, and lazy chunks are served by the service worker.
 - [ ] Add an optional explicit full-offline download flow if required.
 - [ ] Provide an offline-unavailable state rather than a blank tool.
-- [ ] Keep the mandatory precache below 1 MB raw.
-- [ ] Add container tests for compression, immutable caching, SW update, and stale-cache cleanup.
+- [x] Keep the mandatory precache below 1 MB raw; current artifact is 945,188 B raw / 324,178 B gzip across nine entries and both limits are executable CI/release gates.
+- [x] Cover compression, immutable hashed-asset caching, and HTML/SW/manifest revalidation in the container smoke test.
+- [ ] Add browser acceptance for service-worker update/rollback and stale-cache cleanup.
 
 ### 3.2 Emoji Picker
 
-- [ ] Virtualize or page the 1,870 emoji cards and category groups.
-- [ ] Keep initial DOM below 2,000 nodes.
-- [ ] Keep search cancellable, keyboard accessible, and virtualized.
-- [ ] Load secondary metadata only when needed.
+- [x] Page the 1,870 emoji cards and category groups in bounded increments of 60.
+- [x] Keep initial DOM below 2,000 nodes; the production Chromium fixture measures 60 cards / 1,731 elements.
+- [x] Use keyboard-native copy controls, preserve full-catalog search and Fuse relevance order in one paged result grid, and keep result rendering bounded.
+- [ ] Make the synchronous Fuse search cancellable/worker-backed or prove the current bounded catalog remains safe under the slower-device profile.
+- [x] Load secondary `emojilib` keyword metadata only after search begins.
 - [ ] Refresh `unicode-emoji-json` and `emojilib` against the current Unicode Emoji release after reviewing compatibility, licenses, and bundle impact.
 - [ ] Record the Unicode Emoji/data-source version and generation date so the catalog can be updated reproducibly.
-- [ ] Normalize full code-point sequences instead of assuming one code point; cover ZWJ families/professions, flags, keycaps, variation selectors, and skin-tone modifiers.
+- [x] Preserve complete UTF-16/code-point sequences and cover ZWJ family plus regional-indicator flag copying without truncation.
+- [ ] Extend sequence fixtures to professions, keycaps, variation selectors, and skin-tone modifiers.
 - [ ] Add fixtures for newly introduced emoji and aliases/keywords that were missing from the previous dataset.
 - [ ] Verify that the updated catalog does not regress initial payload, DOM count, search latency, or offline-cache budgets.
 - [ ] Verify the 4x CPU route task is below 200 ms.
@@ -224,13 +258,13 @@ Current status: tool `keywords` are already indexed by Fuse, but the canonical p
 - [ ] Show more than five results per category and add an accessible **Show all results** flow instead of silently discarding matches.
 - [ ] Use a configurable global/category limit and virtualize the expanded list if necessary so more results do not recreate the Emoji Picker rendering problem.
 - [ ] Rebuild search options reactively when tool metadata changes instead of retaining a one-time snapshot.
-- [ ] Reset/clamp keyboard selection whenever the query/result list changes and guard Enter on an empty result.
+- [x] Reset/clamp keyboard selection whenever the query/result list changes and guard Enter on an empty result.
 - [ ] Add keyboard, screen-reader, exact-ranking, keyword, ID/path, no-result, and large-result Playwright tests.
 - [ ] Measure first-open index construction and search latency; initialize during idle time or first use without increasing the application shell.
 
 ### 3.6 Reactive computation cleanup
 
-- [ ] Replace `computedRefreshable`/`computedRefreshableAsync` with a single-execution, cancellable abstraction.
+- [x] Replace `computedRefreshable`/`computedRefreshableAsync` with a single-execution abstraction using explicit dependencies, throttling, stale-job guards, AbortSignal cancellation, and scope disposal.
 - [ ] Prove one generation per dependency change/refresh for UUID, ULID, token, MAC, lorem, OTP, port, and RSA.
 - [ ] Debounce and order QR/Wi-Fi QR generation.
 - [ ] Format WYSIWYG HTML on idle/debounce or explicit action for large content.
@@ -244,9 +278,9 @@ Current status: tool `keywords` are already indexed by Fuse, but the canonical p
 - [ ] Narrow auto-component scanning to reusable component directories.
 - [ ] Remove unused packages, stale imports, demos, and duplicate parser/render libraries where behavior permits.
 - [ ] Build the production artifact once and reuse it in all E2E shards.
-- [ ] Fix the Playwright cache key to use `devDependencies['@playwright/test']`.
+- [x] Fix the Playwright browser cache identity to use the resolved lockfile plus Playwright config rather than the stale runtime-dependency lookup.
 - [ ] Reuse the tested artifact for release packaging and container content where provenance remains verifiable.
-- [ ] Use BuildKit cache mounts and `pnpm fetch` for Docker dependency layers.
+- [x] Use BuildKit cache mounts and `pnpm fetch` for Docker dependency layers.
 - [ ] Share architecture-independent build output across multi-architecture images.
 - [ ] Target a warm production build below 20 seconds on the audit runner.
 
@@ -348,15 +382,18 @@ Every row is an explicit candidate to adapt manually. It is **not** approval to 
 - [ ] Measured before/after results are added to the change description.
 - [ ] `.ai/TODO.md`, `.ai/FIXES.md`, or `.ai/PERFORMANCE.md` is updated when the finding is resolved or disproved.
 
-## Decision required before implementation
+## Current implementation sequence
 
-The recommended first approved slice is:
+Implementation is approved and active on the local branch. Current ordering is:
 
-1. restore green lint/typecheck and add route/bundle baselines;
-2. replace insecure Token/TOTP randomness and restore the complete alphabets;
-3. fix the Text Diff leak, worker warning, and import shape;
-4. replace reactive bcrypt/regex work with cancellable worker flows;
-5. add large-output fallback for JSON/YAML;
-6. update the first critical dependency group.
+1. [x] restore green lint/typecheck and add route/bundle baselines;
+2. [x] replace insecure Token/TOTP randomness and restore the complete alphabets;
+3. [x] fix the Text Diff leak, worker warning, persistence boundary, and import shape;
+4. [ ] finish the measured Text Diff payload experiment;
+5. [x] pass the two-by-1-MiB Text Diff worker interaction fixture;
+6. [x] resolve locally confirmed Base64 File, Temperature, URL, command-palette, CSV, and Text Statistics defects with regression tests;
+7. [x] replace reactive bcrypt and Regex matching/RandExp work with cancellable worker flows; keep the explicit bounded DOM-dependent SVG residual documented;
+8. [x] add the shared large-output fallback for JSON/YAML and related text tools and pass the 1 MiB JSON browser fixture.
 
-This slice addresses confirmed risk and creates the measurement foundation needed for every later optimization.
+Dependency/base-image vulnerability remediation and scan policy remain in the
+separately tracked deferred security slice.

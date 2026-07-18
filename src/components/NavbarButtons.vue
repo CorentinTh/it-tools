@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IconBrandGithub, IconBrandX, IconInfoCircle, IconMoon, IconSun } from '@tabler/icons-vue';
+import { IconInfoCircle, IconMoon, IconSun } from '@tabler/icons-vue';
 import { useRoute } from 'vue-router';
 import { useStyleStore } from '@/stores/style.store';
 

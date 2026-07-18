@@ -9,8 +9,23 @@ import {
 
 import { presetScrollbar } from 'unocss-preset-scrollbar';
 
+const nativeAttributeNames = [
+  // Keep UnoCSS's default Attributify exclusions when adding native HTML
+  // attributes that happen to share a utility name.
+  'placeholder',
+  'fill',
+  'opacity',
+  'stroke-opacity',
+  'size',
+];
+
 export default defineConfig({
-  presets: [presetUno(), presetAttributify(), presetTypography(), presetScrollbar()],
+  presets: [
+    presetUno(),
+    presetAttributify({ ignoreAttributes: nativeAttributeNames }),
+    presetTypography(),
+    presetScrollbar(),
+  ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
   theme: {
     colors: {

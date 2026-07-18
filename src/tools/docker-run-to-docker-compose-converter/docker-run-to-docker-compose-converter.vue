@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { MessageType, composerize } from 'composerize-ts';
+import { removeObsoleteComposeVersion } from './docker-compose-output';
 import { withDefaultOnError } from '@/utils/defaults';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 import { textToBase64 } from '@/utils/base64';
@@ -12,7 +13,7 @@ const dockerRun = ref(
 const conversionResult = computed(() =>
   withDefaultOnError(() => composerize(dockerRun.value.trim()), { yaml: '', messages: [] }),
 );
-const dockerCompose = computed(() => conversionResult.value.yaml);
+const dockerCompose = computed(() => removeObsoleteComposeVersion(conversionResult.value.yaml));
 const notImplemented = computed(() =>
   conversionResult.value.messages.filter(msg => msg.type === MessageType.notImplemented).map(msg => msg.value),
 );

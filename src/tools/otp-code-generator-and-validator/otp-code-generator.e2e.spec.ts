@@ -33,15 +33,18 @@ test.describe('Tool - OTP code generator', () => {
   });
 
   test('You can generate a new random secret', async ({ page }) => {
-    const initialSecret = await page.getByPlaceholder('Paste your TOTP secret...').inputValue();
+    const secretInput = page.getByPlaceholder('Paste your TOTP secret...');
+    const initialSecret = await secretInput.inputValue();
     await page
       .locator('div')
       .filter({ hasText: /^Secret$/ })
       .getByRole('button')
       .click();
 
-    const newSecret = await page.getByPlaceholder('Paste your TOTP secret...').inputValue();
+    await expect(secretInput).not.toHaveValue(initialSecret);
+    const newSecret = await secretInput.inputValue();
 
-    expect(newSecret).not.toEqual(initialSecret);
+    const persistedValues = await page.evaluate(() => Object.values(localStorage));
+    expect(persistedValues.every(value => !value.includes(newSecret))).toBe(true);
   });
 });

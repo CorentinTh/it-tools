@@ -82,8 +82,24 @@ describe('json-to-csv service', () => {
 
       expect(convertArrayToCsv({ array })).toMatchInlineSnapshot(`
         "a,b
-        hello \\\\\\"world\\\\\\",2"
+        \\"hello \\"\\"world\\"\\"\\",2"
       `);
+    });
+
+    it('quotes values containing line breaks without changing their content', () => {
+      const array = [
+        { a: 'first line\nsecond line', b: 'carriage\rreturn' },
+      ];
+
+      expect(convertArrayToCsv({ array })).toBe('a,b\n"first line\nsecond line","carriage\rreturn"');
+    });
+
+    it('quotes and escapes header fields using the same CSV rules', () => {
+      const array = [
+        { 'comma,key': 1, 'quoted"key': 2 },
+      ];
+
+      expect(convertArrayToCsv({ array })).toBe('"comma,key","quoted""key"\n1,2');
     });
   });
 });

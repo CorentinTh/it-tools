@@ -16,7 +16,7 @@ const [ulids, refreshUlids] = computedRefreshable(() => {
   }
 
   return ids.join('\n');
-});
+}, { dependencies: [amount, format] });
 
 const { copy } = useCopy({ source: ulids, text: 'ULIDs copied to the clipboard' });
 </script>

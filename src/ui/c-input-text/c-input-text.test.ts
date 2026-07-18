@@ -40,6 +40,12 @@ describe('CInputText', () => {
     expect(wrapper.vm.value).to.equal('Value');
   });
 
+  it('uses the intended native input size without treating it as a visual utility', () => {
+    const wrapper = shallowMount(CInputText);
+
+    expect(wrapper.get('input').attributes('size')).to.equal('1');
+  });
+
   it('Renders a provided id', () => {
     const wrapper = shallowMount(CInputText, {
       props: {

@@ -1,0 +1,54 @@
+{
+  "schema": {
+    "id": "it-tools.build-budgets",
+    "version": 1
+  },
+  "globalLimits": {
+    "shell.withDocument.rawBytes": 910000,
+    "shell.withDocument.gzipBytes": 280000,
+    "workbox.fileCount": 10,
+    "workbox.rawBytes": 1000000,
+    "workbox.gzipBytes": 350000
+  },
+  "requiredWorkboxEntries": [
+    "index.html",
+    "manifest.webmanifest",
+    "android-chrome-192x192.png",
+    "android-chrome-512x512.png",
+    "favicon-16x16.png",
+    "favicon-32x32.png"
+  ],
+  "dynamicEntryLimits": {
+    "defaults": {
+      "rawBytes": 500000,
+      "gzipBytes": 150000
+    },
+    "overrides": {
+      "src/tools/html-wysiwyg-editor/html-wysiwyg-editor.vue": {
+        "rawBytes": 550000,
+        "gzipBytes": 175000,
+        "rationale": "Existing Tiptap/HTML formatting route; replacement and large-output policy remain tracked."
+      },
+      "src/tools/mac-address-lookup/mac-address-lookup.vue": {
+        "rawBytes": 3400000,
+        "gzipBytes": 1080000,
+        "rationale": "Existing monolithic OUI dataset; partitioning is a dedicated measured performance task."
+      },
+      "src/tools/math-evaluator/math-evaluator.vue": {
+        "rawBytes": 635000,
+        "gzipBytes": 185000,
+        "rationale": "Existing full mathjs build; a configured route-local build remains tracked."
+      },
+      "src/tools/pdf-signature-checker/pdf-signature-checker.vue": {
+        "rawBytes": 550000,
+        "gzipBytes": 220000,
+        "rationale": "Existing PDF/signature parser path; approved only as a no-regression ceiling."
+      },
+      "src/tools/text-diff/text-diff.vue": {
+        "rawBytes": 2300000,
+        "gzipBytes": 590000,
+        "rationale": "Existing Monaco editor route; lightweight-editor comparison and the 350 kB target remain open."
+      }
+    }
+  }
+}

@@ -48,6 +48,17 @@ about:
     ## License
 
     IT Tools is open-source software distributed under the [GNU GPLv3 license](https://github.com/64mb/it-tools/blob/main/LICENSE). The original project and its contributors retain attribution for their work.
+  privacy:
+    title: Privacy and saved browser data
+    description: Tool inputs are processed in this browser and are session-only by default. IT Tools saves only small preferences such as theme, formatting options, favorites, and generator settings.
+    textDiff: Text Diff content is saved only after you explicitly enable its bounded local persistence option. Secrets, generated tokens, OTP seeds, private keys, passwords, and uploaded files are not saved by default.
+    clearButton: Clear saved preferences and content
+    confirmButton: Clear saved data
+    cancelButton: Cancel
+    clearConfirm: Clear all browser data saved by IT Tools on this origin? Other same-origin application keys will be preserved.
+    clearSuccess: 'Cleared {count} saved IT Tools entries. Active controls may keep their current values until you reload the page.'
+    clearPartial: 'Cleared {removed} entries, but the browser denied access to {failed}. Reload the page and review browser storage permissions.'
+    clearUnavailable: The browser denied access to local storage. Review this site's storage permissions and try again.
 
 404:
   notFound: '404 Not Found'
@@ -384,6 +395,11 @@ tools:
   text-diff:
     title: Text diff
     description: Compare two texts and see the differences between them.
+    persistenceLabel: Remember text on this device
+    persistenceHint: Disabled by default. When enabled, each side is saved locally after a short delay and limited to 256 KiB. Tool content is never sent to a server.
+    clearSavedContent: Clear saved text
+    persistenceCleared: Saved Text Diff content was cleared.
+    persistenceError: Browser storage is unavailable.
 
   otp-generator:
     title: OTP code generator

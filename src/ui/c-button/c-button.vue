@@ -13,6 +13,7 @@ const props = withDefaults(
     href?: string
     to?: RouteLocationRaw
     size?: 'small' | 'medium' | 'large'
+    nativeType?: 'button' | 'submit' | 'reset'
   }>(),
   {
     type: 'default',
@@ -23,16 +24,27 @@ const props = withDefaults(
     href: undefined,
     to: undefined,
     size: 'medium',
+    nativeType: 'button',
   },
 );
 const emits = defineEmits(['click']);
 
-const { variant, disabled, round, circle, href, type, to, size: sizeName } = toRefs(props);
+const { variant, disabled, round, circle, href, type, to, size: sizeName, nativeType } = toRefs(props);
+
+function preventDisabledActivation(event: MouseEvent) {
+  if (disabled.value) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+  }
+}
 
 function handleClick(event: MouseEvent) {
-  if (!disabled.value) {
-    emits('click', event);
+  if (disabled.value) {
+    preventDisabledActivation(event);
+    return;
   }
+
+  emits('click', event);
 }
 
 const theme = useTheme();
@@ -42,9 +54,21 @@ const tag = computed(() => {
     return 'a';
   }
   if (to.value) {
-    return 'router-link';
+    return disabled.value ? 'a' : 'router-link';
   }
   return 'button';
+});
+const isNativeButton = computed(() => tag.value === 'button');
+const isLink = computed(() => !isNativeButton.value);
+const navigationProps = computed(() => {
+  if (href.value && !disabled.value) {
+    return { href: href.value };
+  }
+  if (to.value && !disabled.value) {
+    return { to: to.value };
+  }
+
+  return {};
 });
 const appTheme = useAppTheme();
 
@@ -54,10 +78,14 @@ const size = computed(() => theme.value.size[sizeName.value]);
 <template>
   <component
     :is="tag"
-    :href="href ?? to"
+    v-bind="navigationProps"
     class="c-button"
     :class="{ disabled, round, circle }"
-    :to="to"
+    :disabled="isNativeButton ? disabled : undefined"
+    :type="isNativeButton ? nativeType : undefined"
+    :role="isLink && disabled ? 'link' : undefined"
+    :aria-disabled="isLink && disabled ? 'true' : undefined"
+    :tabindex="isLink && disabled ? -1 : undefined"
     @click="handleClick"
   >
     <slot />

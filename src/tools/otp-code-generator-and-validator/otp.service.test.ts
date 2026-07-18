@@ -1,13 +1,32 @@
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import {
   base32toHex,
   buildKeyUri,
   generateHOTP,
+  generateSecret,
   generateTOTP,
   hexToBytes,
   verifyHOTP,
   verifyTOTP,
 } from './otp.service';
+import type { RandomValuesProvider } from '@/utils/secure-random';
+
+function sequenceRandomValues(sequence: number[]): RandomValuesProvider {
+  let offset = 0;
+
+  return (values) => {
+    for (let index = 0; index < values.length; index++) {
+      values[index] = sequence[offset % sequence.length];
+      offset++;
+    }
+
+    return values;
+  };
+}
+
+afterEach(() => {
+  vi.restoreAllMocks();
+});
 
 describe('otp functions', () => {
   describe('hexToBytes', () => {
@@ -123,6 +142,26 @@ describe('otp functions', () => {
       ).to.eql(
         'otpauth://totp/app-name:account?issuer=app-name&secret=JBSWY3DPEHPK3PXP&algorithm=algo&digits=7&period=10',
       );
+    });
+  });
+
+  describe('generateSecret', () => {
+    it('generates deterministic base32 secrets with the complete alphabet', () => {
+      const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+      const getRandomValues = sequenceRandomValues(Array.from({ length: alphabet.length }, (_, index) => index));
+
+      const secrets = generateSecret({ getRandomValues }) + generateSecret({ getRandomValues });
+
+      expect(secrets).toBe(alphabet);
+    });
+
+    it('does not use Math.random', () => {
+      const mathRandom = vi.spyOn(Math, 'random').mockImplementation(() => {
+        throw new Error('Math.random must not be used for OTP secrets');
+      });
+
+      expect(generateSecret()).toMatch(/^[A-Z2-7]{16}$/);
+      expect(mathRandom).not.toHaveBeenCalled();
     });
   });
 });

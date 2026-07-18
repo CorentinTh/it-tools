@@ -6,9 +6,9 @@ import { withDefaultOnError } from '@/utils/defaults';
 import { useValidation } from '@/composable/validation';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 
-const inputElement = ref<HTMLElement>();
+const inputComponent = ref<{ inputWrapperRef?: HTMLElement }>();
 
-const rawJson = useStorage('json-prettify:raw-json', '{"hello": "world", "foo": "bar"}');
+const rawJson = ref('{"hello": "world", "foo": "bar"}');
 const indentSize = useStorage('json-prettify:indent-size', 3);
 const sortKeys = useStorage('json-prettify:sort-keys', true);
 const cleanJson = computed(() => withDefaultOnError(() => formatJson({ rawJson, indentSize, sortKeys }), ''));
@@ -42,7 +42,7 @@ const rawJsonValidation = useValidation({
     :validation-status="rawJsonValidation.status"
   >
     <c-input-text
-      ref="inputElement"
+      ref="inputComponent"
       v-model:value="rawJson"
       placeholder="Paste your raw JSON here..."
       rows="20"
@@ -55,7 +55,7 @@ const rawJsonValidation = useValidation({
     />
   </n-form-item>
   <n-form-item label="Prettified version of your JSON">
-    <TextareaCopyable :value="cleanJson" language="json" :follow-height-of="inputElement" />
+    <TextareaCopyable :value="cleanJson" language="json" :follow-height-of="inputComponent?.inputWrapperRef" />
   </n-form-item>
 </template>
 

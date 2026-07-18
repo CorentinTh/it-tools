@@ -6,9 +6,9 @@ import { withDefaultOnError } from '@/utils/defaults';
 import { useValidation } from '@/composable/validation';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 
-const inputElement = ref<HTMLElement>();
+const inputComponent = ref<{ inputWrapperRef?: HTMLElement }>();
 
-const rawYaml = useStorage('yaml-prettify:raw-yaml', '');
+const rawYaml = ref('');
 const indentSize = useStorage('yaml-prettify:indent-size', 2);
 const sortKeys = useStorage('yaml-prettify:sort-keys', false);
 
@@ -43,7 +43,7 @@ const rawYamlValidation = useValidation({
     :validation-status="rawYamlValidation.status"
   >
     <c-input-text
-      ref="inputElement"
+      ref="inputComponent"
       v-model:value="rawYaml"
       placeholder="Paste your raw YAML here..."
       rows="20"
@@ -56,7 +56,7 @@ const rawYamlValidation = useValidation({
     />
   </n-form-item>
   <n-form-item label="Prettified version of your YAML">
-    <TextareaCopyable :value="cleanYaml" language="yaml" :follow-height-of="inputElement" />
+    <TextareaCopyable :value="cleanYaml" language="yaml" :follow-height-of="inputComponent?.inputWrapperRef" />
   </n-form-item>
 </template>
 

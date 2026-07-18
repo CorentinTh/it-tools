@@ -3,7 +3,6 @@ import { useRoute } from 'vue-router';
 import { useHead } from '@vueuse/head';
 import type { HeadObject } from '@vueuse/head';
 
-import BaseLayout from './base.layout.vue';
 import FavoriteButton from '@/components/FavoriteButton.vue';
 import type { Tool } from '@/tools/tools.types';
 
@@ -31,31 +30,29 @@ const toolDescription = computed<string>(() => t(`tools.${i18nKey.value}.descrip
 </script>
 
 <template>
-  <BaseLayout>
-    <div class="tool-layout">
-      <div class="tool-header">
-        <div flex flex-nowrap items-center justify-between>
-          <n-h1>
-            {{ toolTitle }}
-          </n-h1>
+  <div class="tool-layout">
+    <div class="tool-header">
+      <div flex flex-nowrap items-center justify-between>
+        <n-h1>
+          {{ toolTitle }}
+        </n-h1>
 
-          <div>
-            <FavoriteButton :tool="{ name: route.meta.name, path: route.path } as Tool" />
-          </div>
-        </div>
-
-        <div class="separator" />
-
-        <div class="description">
-          {{ toolDescription }}
+        <div>
+          <FavoriteButton :tool="{ name: route.meta.name, path: route.path } as Tool" />
         </div>
       </div>
-    </div>
 
-    <div class="tool-content">
-      <slot />
+      <div class="separator" />
+
+      <div class="description">
+        {{ toolDescription }}
+      </div>
     </div>
-  </BaseLayout>
+  </div>
+
+  <div class="tool-content">
+    <slot />
+  </div>
 </template>
 
 <style lang="less" scoped>

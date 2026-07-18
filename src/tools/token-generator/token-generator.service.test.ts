@@ -1,18 +1,82 @@
-import { describe, expect, it } from 'vitest';
-import { createToken } from './token-generator.service';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { TOKEN_ALPHABETS, createToken } from './token-generator.service';
+import type { RandomValuesProvider } from '@/utils/secure-random';
+
+function sequenceRandomValues(sequence: number[]): RandomValuesProvider {
+  let offset = 0;
+
+  return (values) => {
+    for (let index = 0; index < values.length; index++) {
+      values[index] = sequence[offset % sequence.length];
+      offset++;
+    }
+
+    return values;
+  };
+}
+
+afterEach(() => {
+  vi.restoreAllMocks();
+});
 
 describe('token-generator', () => {
   describe('createToken', () => {
     it('should generate an empty string when all params are false', () => {
+      const getRandomValues = vi.fn(sequenceRandomValues([0]));
       const token = createToken({
         withLowercase: false,
         withUppercase: false,
         withNumbers: false,
         withSymbols: false,
         length: 10,
+        getRandomValues,
       });
 
       expect(token).toHaveLength(0);
+      expect(getRandomValues).not.toHaveBeenCalled();
+    });
+
+    it('should restore every uppercase and lowercase character', () => {
+      const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+      const token = createToken({
+        withLowercase: true,
+        withUppercase: true,
+        withNumbers: false,
+        withSymbols: false,
+        length: alphabet.length,
+        getRandomValues: sequenceRandomValues(Array.from({ length: alphabet.length }, (_, index) => index)),
+      });
+
+      expect(token).toBe(alphabet);
+      expect(token).toContain('N');
+      expect(token).toContain('n');
+    });
+
+    it('should not weight default symbols through duplicate alphabet entries', () => {
+      expect(new Set(TOKEN_ALPHABETS.symbols).size).toBe(TOKEN_ALPHABETS.symbols.length);
+    });
+
+    it('should select custom alphabet characters deterministically', () => {
+      expect(createToken({
+        alphabet: 'xyz',
+        length: 6,
+        getRandomValues: sequenceRandomValues([2, 1, 0]),
+      })).toBe('zyxzyx');
+    });
+
+    it('should reject invalid lengths', () => {
+      expect(() => createToken({ length: -1 })).toThrow(RangeError);
+      expect(() => createToken({ length: 1.5 })).toThrow(RangeError);
+      expect(() => createToken({ length: 513 })).toThrow(RangeError);
+    });
+
+    it('should not use Math.random', () => {
+      const mathRandom = vi.spyOn(Math, 'random').mockImplementation(() => {
+        throw new Error('Math.random must not be used for tokens');
+      });
+
+      expect(createToken({ alphabet: 'A', length: 16 })).toBe('A'.repeat(16));
+      expect(mathRandom).not.toHaveBeenCalled();
     });
 
     it('should generate a random string with the specified length', () => {
@@ -79,7 +143,7 @@ describe('token-generator', () => {
       });
 
       expect(token).toHaveLength(256);
-      expect(token).toMatch(/^[.,;:!?./\-"'#{([-|\\@)\]=}*+]+$/);
+      expect([...token].every(character => TOKEN_ALPHABETS.symbols.includes(character))).toBe(true);
     });
 
     it('should generate a random string with just letters (case incensitive) with withLowercase and withUppercase', () => {

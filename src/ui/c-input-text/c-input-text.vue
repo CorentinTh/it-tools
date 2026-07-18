@@ -183,7 +183,7 @@ defineExpose({
           :class="{
             'leading-5 !font-mono': monospace,
           }"
-          size="10"
+          size="1"
           :placeholder="placeholder"
           :readonly="readonly"
           :disabled="disabled"

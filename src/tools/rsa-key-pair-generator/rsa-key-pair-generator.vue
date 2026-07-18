@@ -19,8 +19,8 @@ const { attrs: bitsValidationAttrs } = useValidation({
 });
 
 const [certs, refreshCerts] = computedRefreshableAsync(
-  () => withDefaultOnErrorAsync(() => generateKeyPair({ bits: bits.value }), emptyCerts),
-  emptyCerts,
+  ({ signal }) => withDefaultOnErrorAsync(() => generateKeyPair({ bits: bits.value, signal }), emptyCerts),
+  { defaultValue: emptyCerts, dependencies: [bits] },
 );
 </script>
 

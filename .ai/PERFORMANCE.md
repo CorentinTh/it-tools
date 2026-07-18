@@ -1,18 +1,41 @@
 # Performance Optimization Audit
 
+## Implementation status — 2026-07-18
+
+- **DONE — executable build guardrail:** deterministic report schema v3 plus budget schema v1 enforce shell, required Workbox membership, default dynamic-route, and five rationale-backed heavy-route no-regression ceilings in CI/release. Eleven infrastructure tests and 194 current-artifact checks pass; build-time/modules/RSS telemetry remains separate.
+- **DONE — Text Diff lifecycle/heap:** editor-only Monaco import, a real worker, complete disposal, and cross-route layout repair reduced ten-cycle retained growth to +2.46 MiB with zero workers, below the `<5 MiB` budget.
+- **IN PROGRESS — Text Diff payload:** main JS is 2,206,864 B raw / 570,786 B gzip (down 30.2% / 28.8%); the 582,998 B gzip additional closure still misses the `<350 kB` route target. The separate 1 MiB-per-side worker/UI fixture passes.
+- **DONE — mandatory PWA payload:** shell-only precache contains nine HTML/JS/CSS/Workbox-runtime/manifest/icon entries at 945,188 B raw / 324,178 B gzip, down from 270 entries / 6,121,476 B raw / 1,911,520 B gzip. Hashed lazy chunks and Figlet fonts are cached on demand; a clean-HTTP-cache offline reload passes. The `<1 MB raw` and `<350 kB gzip` targets plus required-entry presence are enforced in CI/release; update/rollback and unavailable-state UX remain separate work.
+- **DONE — current container delivery contract:** gzip, immutable hashed assets, HTML/SW/manifest revalidation, strict missing assets, local Figlet delivery, and headers pass rootless/read-only default-and-arbitrary-UID smoke. Reverse-proxy/subpath acceptance remains a separate deployment task.
+- **DONE — shared layout lifecycle:** persistent `BaseLayout` reduced ten Home/tool cycles from +188.40 MiB retained heap to +0.86 MiB, with DOM 5,036 -> 5,037 and listeners 807 -> 809.
+- **DONE — Text Statistics:** character, word, CR/LF line, and UTF-8 byte counts now share one O(n) pass with O(1) auxiliary space instead of repeated splits plus a `TextEncoder` allocation.
+- **DONE — Bcrypt responsiveness:** reactive synchronous hashing/comparison is replaced by explicit dedicated-worker tasks with cancellation, stale-result protection, a ten-second deadline, 72-byte input bound, and a measured 4–14 rounds range.
+- **DONE — Camera media lifecycle:** image/video Blob URLs have one owner; recordings use 1-second chunks and stop at 5 minutes or 64 MiB; screenshots are single-flight, reject more than 16,777,216 pixels/64 MiB before canvas allocation, cap encoded output at 16 MiB, and ignore callbacks after unmount; retained media is bounded to 12/4 items and 128 MiB total with deterministic revoke-on-delete/evict/unmount behavior.
+- **DONE — Regex responsiveness:** matching and RandExp use separate terminate-and-replace workers with a 1.2-second deadline, explicit limits, stale/cancel guards, and a live-heartbeat catastrophic fixture. Sample generation projects the AST before allocation, including nested repetitions and lexically numbered backreferences. DOM-dependent SVG is single-flight, explicit and bounded but remains on the main thread.
+- **DONE — shared large-output rendering slice:** highlighted output switches to one copyable plain `<pre>` above 100,000 UTF-8 bytes; the 1 MiB JSON fixture has zero result descendants. Parse/format workers and the `<50 ms` task gate remain open.
+- **DONE — Emoji bounded rendering slice:** initial presentation is 60 cards / 1,731 DOM elements; additional route payload fell to 272,834 B raw / 32,491 B gzip, keyword metadata is lazy, and search uses one paged grid without losing Fuse relevance order. Synchronous Fuse cancellation and the 4x CPU gate remain open.
+- **DONE — isolated CI optimization:** Playwright cache identity no longer reads the wrong dependency section; BuildKit uses a pnpm store cache plus `pnpm fetch`.
+- **NOT STARTED:** OUI partitioning and shell/icon/Lodash reduction programs outside the completed slices above.
+
+The raw checkpoint and before/after table are maintained in `.ai/PROGRESS.md`.
+No budget is marked achieved merely because a metric improved.
+
 ## Executive summary
 
 The application already lazy-loads every tool component, but several costs remain eager or unbounded. The largest verified opportunities are:
 
-1. Fix the Text Diff lifecycle. Each SPA visit leaks roughly 20 MB after the first load because the Monaco editor, models, and subscriptions are never disposed.
-2. Stop rendering large transformed documents as fully highlighted DOM. A 1 MB JSON input currently takes about 4.0 seconds and creates approximately 248,000 DOM nodes; YAML takes about 2.7 seconds and creates approximately 103,000 nodes.
-3. Move potentially unbounded CPU work away from reactive keystroke handlers. Bcrypt, regular expressions, formatting, diffing, QR generation, and several parsers currently run on the main thread without a shared cancellation or size policy.
-4. Redesign Monaco, the OUI database, and Emoji Picker loading. These routes have the largest transfer, parse, render, or memory costs.
-5. Reduce the application shell and PWA install payload. The shell is 272.6 kB gzip and the service worker precaches 6.12 MB raw, including most tools that a user may never open.
-6. Configure production compression and immutable caching. The current nginx configuration contains neither; the measured artifact compresses by 3.2–3.9 times for the largest JavaScript files.
-7. Consolidate icon imports and build the application once per pipeline. The current build transforms 24,599 modules in 51.16 seconds, while CI rebuilds the same application independently in multiple jobs.
+1. Keep the now-repaired Text Diff and shared-layout lifecycle behind forced-GC regression gates; the original branch leaked roughly 20 MB per visit.
+2. Keep the completed plain large-output fallback, then move the remaining parse/format path into bounded tasks; the original 1 MB JSON baseline took about 4.0 seconds and created approximately 248,000 DOM nodes.
+3. Reuse the completed Bcrypt/Regex task patterns for formatting, diffing, QR generation, and parsers that still lack a shared cancellation/size policy.
+4. Finish the Monaco payload decision and redesign the OUI database; Emoji presentation is now paged and its secondary metadata is lazy.
+5. Reduce shell JavaScript further while preserving the completed nine-entry demand-driven PWA install policy.
+6. Preserve the now-verified production gzip and immutable/revalidation cache policies while adding reverse-proxy/subpath coverage.
+7. Consolidate icon imports and build the application once per pipeline. The original audit transformed 24,599 modules in 51.16 seconds; the final local slice transforms 24,163 in 19.37 seconds, but standard-runner build/RSS telemetry and redundant pipeline builds remain open.
 
-The best first delivery slice is not a framework rewrite. It is a small set of measurable changes: dispose Monaco correctly, configure its worker or replace it, introduce a large-output fallback, move bcrypt/regex work into cancellable workers, add asset budgets, and correct nginx/PWA caching.
+That first measurable delivery slice is now largely complete: Monaco lifecycle,
+plain large output, Bcrypt/Regex workers, asset budgets, and nginx/PWA caching
+all have executable gates. Text Diff transfer size, common heavy-task policy,
+OUI partitioning, and shell reduction are the next performance frontier.
 
 ## Scope and methodology
 
@@ -32,9 +55,9 @@ Measurements were taken on the audit workstation with Node 22.21.1, the reposito
 
 ## Measured baseline
 
-### Build and asset inventory
+### Original audit build and asset inventory
 
-| Metric | Current value |
+| Metric | Original audit value |
 |---|---:|
 | Production build time | 51.16 s |
 | Transformed modules | 24,599 |
@@ -112,7 +135,7 @@ Parsing twice is material, but it is not the whole browser cost. `TextareaCopyab
 
 ### Bcrypt responsiveness
 
-`bcryptjs` currently runs `hashSync` from a computed value on every input event and permits 0–100 rounds.
+The audited implementation ran `bcryptjs.hashSync` from a computed value on every input event and permitted 0–100 rounds. The current slice replaces that path with explicit dedicated-worker tasks and bounds rounds to 4–14.
 
 | Rounds | One synchronous hash |
 |---:|---:|
@@ -137,13 +160,29 @@ The test opened Text Diff and returned to Home through SPA navigation, then forc
 | After fifth cycle | 124.3 MB |
 | After sixth cycle | 143.9 MB |
 
-After the first module load, each visit retains approximately 19–20 MB. The source creates a diff editor, two models, and two content listeners but has no unmount disposal. This is a confirmed critical leak, not a speculative optimization.
+After the first module load, the audited implementation retained approximately
+19–20 MB per visit. This table is the original problem baseline.
+
+**Current result (2026-07-18):** after adding real worker ownership and complete
+editor/model/listener disposal, ten warmed Text Diff route cycles retain
+2,577,920 B (+2.46 MiB) with zero workers, passing the `<5 MiB` gate. The same
+probe exposed a separate dynamic-layout leak; persistent `BaseLayout` reduced ten
+Home/tool cycles from +188.40 MiB to +906,072 B (+0.86 MiB), with stable DOM and
+listener counts.
 
 ### Dataset and synchronous storage probes
 
 - `oui-data` contains 34,503 keys and serializes to 3,409,293 bytes. Loading it in an isolated Node process added about 20.2 MB of heap. The UI only needs one vendor lookup by a six-hex-digit prefix.
 - The emoji datasets contain 1,870 records. Building the Fuse index was inexpensive in isolation (about 10 ms), while a `smile` search took about 29 ms. Rendering all records is the dominant cost: 14,396 DOM nodes and a 1.06 second task.
 - Synchronous `localStorage.setItem` averaged about 0.2 ms for 100 kB, 1.62 ms for 1 MB, and 3.66 ms for 3 MB in the local Chromium run. This is not the primary large-document bottleneck, but doing it on every edit adds jank, duplicates sensitive content, risks quota errors, and varies considerably by device.
+
+**Current Emoji result (2026-07-18):** production rendering starts with 60
+cards / 1,731 DOM elements and expands 60 -> 120 on demand. Full-catalog
+`face` search reached its first complete page in 166 ms with no Long Task API
+entry at or above 50 ms on the unthrottled runner. `emojilib` moved to a
+116,181 B raw / 32,015 B gzip lazy chunk; one paged result grid preserves Fuse
+relevance order, while synchronous cancellation and
+the 4x CPU acceptance profile remain open.
 
 ## Ranked optimization work
 
@@ -202,7 +241,7 @@ Acceptance criteria:
 
 Regex execution is particularly important because JavaScript cannot interrupt a catastrophic regular expression on the same thread. RandExp and regex SVG rendering add two more unbounded computations.
 
-- Put matching/generation/rendering in separate terminate-and-replace workers.
+- Put matching/generation in separate terminate-and-replace workers; move rendering only after a DOM-free or isolated renderer is selected.
 - Debounce edits and attach monotonically increasing job IDs so stale results cannot win.
 - Limit pattern length, input length, match count, generated sample length, and diagram complexity.
 - Fix optional capture handling before exposing worker results.
@@ -210,11 +249,19 @@ Regex execution is particularly important because JavaScript cannot interrupt a 
 
 Bcrypt should use an explicit action in a dedicated worker. Async `bcryptjs` alone yields more often but does not provide a reliable CPU cancellation boundary. Cap rounds to a practical range, validate empty/null input, terminate stale jobs, show elapsed time, and enforce a hard deadline. The behavior in [PR #1152](https://github.com/CorentinTh/it-tools/pull/1152) is a useful specification, but its implementation must be adapted to this branch and current limits.
 
+**Current result (2026-07-18):** Bcrypt is explicit and worker-backed.
+Regex matching and RandExp run in separate terminate-and-replace module workers
+with job IDs, 1.2-second deadlines, stale guards, and bounded input/output.
+The SVG library requires `document`, so diagram generation is no longer
+reactive: it is an explicit detached-DOM main-thread task bounded to a 1 KiB
+pattern, 1,500 nodes, and 256 KiB output. A DOM-free or isolated renderer is
+required before that residual can leave the main thread.
+
 ### P1 — delivery and offline performance
 
 #### 4. Enable compression and cache immutable artifacts
 
-The current `nginx.conf` only defines SPA fallback. For the container path:
+At the audit baseline, `nginx.conf` only defined SPA fallback. The implemented container path now follows these rules:
 
 - precompress `.js`, `.css`, `.json`, `.svg`, and manifest assets during the build, or enable verified gzip/Brotli in nginx;
 - serve hashed assets with `Cache-Control: public, max-age=31536000, immutable`;
@@ -227,7 +274,7 @@ Measured artifact ratios indicate a 3.2x reduction for the shell JS, 3.15x for M
 
 #### 5. Make the PWA cache demand-driven
 
-The default `generateSW` inventory precaches nearly every lazy route. Replace it with an explicit policy:
+At the audit baseline, the default `generateSW` inventory precached nearly every lazy route. The replacement policy is:
 
 - precache only the HTML shell, critical shell JS/CSS, manifest, and icons;
 - use `CacheFirst` runtime caching for content-hashed route chunks;
@@ -237,6 +284,15 @@ The default `generateSW` inventory precaches nearly every lazy route. Replace it
 - never solve the current problem by raising Workbox's per-file limit globally.
 
 Reducing the mandatory precache from 6.12 MB raw to a sub-1 MB shell is a measured-payload opportunity of roughly 6x. Runtime caching preserves offline use after a tool is opened.
+
+**Current result (2026-07-18):** mandatory precache is nine entries /
+945,188 B raw / 324,178 B gzip. A Chromium production-preview fixture opens a
+lazy route, observes its four hashed assets in the bounded runtime cache,
+clears the HTTP cache, goes offline, and reloads successfully with document,
+shell, Workbox client runtime, and lazy assets served by the service worker
+(318 ms controller, 94 ms online route, 290 ms offline reload in the recorded
+run). Update/rollback, stale-cache cleanup acceptance, and unavailable-route UX
+remain open.
 
 #### 6. Compact and partition MAC vendor data
 
@@ -265,6 +321,13 @@ The current 1,870-record dataset is not unusually large, but rendering every car
 - preserve keyboard navigation and accessibility while virtualizing.
 
 [PR #1374](https://github.com/CorentinTh/it-tools/pull/1374) reports an upstream 40% improvement through bounded initial groups. Use that idea as a benchmark candidate, not as a commit to copy. The local target should be fewer than 2,000 DOM nodes and no task above 200 ms on the 4x CPU profile.
+
+**Current result (2026-07-18):** bounded pagination renders 60 cards initially
+and 120 after one explicit load, with 1,731 initial DOM elements. Copy controls
+are keyboard-native, complete ZWJ/flag sequences are retained, and secondary
+keyword metadata loads only on search. This meets the DOM budget without
+claiming true virtualization; cancellable Fuse execution and the 4x CPU target
+remain separate gates.
 
 The same bounded-rendering rule applies to regex matches, generated IDs, expanded lists, diff trees, HTTP/MIME tables, and future file viewers.
 
@@ -304,18 +367,18 @@ This is likely a tens-of-kilobytes shell improvement. It is not expected to solv
 | SQL/XML/Markdown | Full format/render on every edit; shared highlighted output can explode DOM | Debounce or explicit run, worker where possible, bounded plain output |
 | HTML WYSIWYG | Prettier runs asynchronously for every document change and output is highlighted | Idle/debounced formatting, cancel stale jobs, format on demand for large documents |
 | QR and Wi-Fi QR | Async `toDataURL` starts on every watched change with no ordering guard | Debounce, job token, ignore stale results, prefer SVG/canvas when it avoids large data URLs |
-| Text Statistics | Multiple complete string scans and a `TextEncoder` allocation on every render | One streaming pass after debounce; worker for multi-megabyte text |
+| Text Statistics | **Current:** one O(n), O(1)-space streaming pass; multi-megabyte input still runs synchronously | Add explicit/debounced worker mode only with the shared large-input policy |
 | Math Evaluator | Full `mathjs` route and evaluation on every keystroke | Smaller configured math build, explicit/debounced evaluation, expression complexity limits |
 | JSON Diff | Recursive tree creation plus deep equality at every nested node; arrays align only by index | Compute status in one traversal, lazy/virtual tree, depth/output limits, optional LCS/key alignment |
-| Camera Recorder | Video object URLs are never revoked; screenshots are retained as base64 strings | Revoke on delete/unmount, cap retained media, use Blob URLs for images, show memory limits |
-| ASCII Art | Every change can race an asynchronous CDN font load | Bundle a default font, cache loaded fonts, cancel stale jobs, use HTTPS fallback only |
+| Camera Recorder | **Current:** owned Blob URLs, 1-second recording chunks, 5-minute/64-MiB video, single-flight screenshots with a 16,777,216-pixel/64-MiB raw preallocation check, 16-MiB encoded cap, and late-callback guard, 128-MiB aggregate and 12/4 item bounds; revoke on delete/evict/unmount | Preserve the lifecycle/limit tests; add browser memory profiling only if capture behavior is expanded |
+| ASCII Art | **Current:** all 289 versioned fonts are same-origin, loaded/cached on demand, and stale renders are cancelled | Preserve the same-origin browser/container smoke and bounded runtime cache |
 | PDF/crypto/file tools | Large files and crypto can monopolize the main thread | Transfer `ArrayBuffer`s to workers, stream/chunk where supported, size/time limits |
 
 #### 10. Fix duplicate work in `computedRefreshable`
 
-`computedRefreshable` and `computedRefreshableAsync` pass the expensive getter itself to `watch`. Vue executes that getter to collect dependencies and again when the visible computed value refreshes. The async version can start an unobserved job and then a second visible job. This affects UUID, ULID, token, MAC, lorem, OTP, random port, and RSA generation; RSA can therefore start redundant key-generation work.
+The audited `computedRefreshable` and `computedRefreshableAsync` passed the expensive getter itself to `watch`. Vue executed that getter to collect dependencies and again when the visible computed value refreshed. The async version could start an unobserved job and then a second visible job.
 
-Replace this design with explicit dependency sources plus a refresh counter, or a single computed/task abstraction that owns one execution, cancellation, and state. Add tests proving exactly one invocation per dependency change and per manual refresh.
+**Current:** all eight callers (UUID, ULID, Token, MAC, Lorem, OTP, Random Port, and RSA) declare dependency sources explicitly. Sync work runs once per initial/dependency/manual refresh; async work has AbortSignal, job-id stale protection, pending/error state, and scope disposal. Nine focused invocation/cancellation tests pass. Node-forge does not expose its internal worker handle, so RSA abort prevents stale UI commits but cannot physically terminate underlying in-flight prime generation; this remains a documented library limitation.
 
 #### 11. Make persistence bounded and asynchronous where appropriate
 
@@ -352,7 +415,7 @@ On a normal push, CI builds in the main job and independently in all three E2E s
 - create one frozen-lockfile production artifact;
 - upload it for all browser shards and release packaging;
 - use a single tested artifact as the Docker content where the release design permits;
-- fix the Playwright cache key, which currently reads nonexistent `.dependencies.playwright` instead of `devDependencies['@playwright/test']`;
+- keep the corrected Playwright cache key tied to `devDependencies['@playwright/test']` and the lockfile;
 - cache the pnpm store and Playwright browsers with exact lock/tool versions;
 - shard browser tests after artifact creation, not the build itself;
 - preserve provenance, checksums, and an SBOM when reusing release artifacts.
@@ -368,18 +431,25 @@ This removes at least two redundant production builds from the E2E matrix. It al
 - share architecture-independent build output across multi-architecture image stages where BuildKit permits;
 - add a non-root runtime, health check, read-only-rootfs test, compression test, and container size budget.
 
+**Current result (2026-07-18):** Node/nginx images are digest-pinned, Corepack
+uses the package-manager pin, `pnpm fetch` and the BuildKit store cache are
+active, and rootless/read-only/default-plus-arbitrary-UID delivery passes its
+health/compression/cache smoke. Sharing one architecture-independent artifact
+and enforcing a container-size budget remain open; vulnerability scanning is
+in the separately deferred security track.
+
 Incremental container build gains of 2–5x are plausible with a warm pnpm/BuildKit cache, but this remains an estimate until the target CI runner is benchmarked.
 
 ## Expected impact: measured versus estimated
 
 | Change | Evidence | Expected result |
 |---|---|---|
-| Dispose Text Diff resources | Forced-GC profile | Eliminate approximately 20 MB retained per repeat visit; measured opportunity |
-| Explicit bcrypt action + worker | Ten typed characters caused ten hashes and 1.01 s work | Roughly 10x less repeated hashing for that interaction; measured work reduction |
-| Plain/virtualized large output | 1 MB JSON: 4.0 s and 248k nodes | Multi-second main-thread pause removed; exact worker end-to-end time must be measured |
-| nginx compression | Artifact ratios of 3.2–3.9x | 3.2–3.9x fewer transferred JS bytes when the current container otherwise sends raw assets |
-| Shell-only PWA precache | 6.12 MB current raw inventory | Approximately 6x smaller mandatory install if kept below 1 MB raw |
-| Emoji virtualization | 14,396 nodes and 1.06 s route task | More than 70% fewer nodes is a target; upstream reports 40% time improvement |
+| Dispose Text Diff resources and repair layout ownership | Forced-GC profile | **Achieved:** Text Diff ten-cycle growth is +2.46 MiB; Home/tool layout growth is +0.86 MiB |
+| Explicit bcrypt action + worker | Ten typed characters caused ten hashes and 1.01 s work | **Achieved for the interaction model:** typing performs zero hashes; one explicit action creates one bounded worker job |
+| Plain/virtualized large output | 1 MB JSON: 4.0 s and 248k nodes | **Rendering slice achieved:** one plain `<pre>` above 100,000 UTF-8 bytes; 1 MiB E2E verifies zero result descendants and reachable copy. Parse/format timing and the `<50 ms` long-task target remain open |
+| nginx compression | Artifact ratios of 3.2–3.9x | **Achieved for delivery:** container smoke verifies gzip plus immutable/revalidation cache rules; exact client transfer savings depend on the requested route |
+| Shell-only PWA precache | 6,121,476 B raw / 1,911,520 B gzip | **Achieved:** 945,188 B raw / 324,178 B gzip across nine mandatory entries (84.6% / 83.0% reduction), plus clean-HTTP-cache offline reload |
+| Emoji bounded rendering | 14,396 nodes and 1.06 s route task | **Achieved for DOM:** 60 cards / 1,731 elements initially (88.0% fewer); additional-route gzip is 32,491 B versus 63,420 B (-48.8%) and one paged grid preserves Fuse relevance. True virtualization and 4x CPU remain open |
 | Partition OUI database | 3.41 MB data for one lookup | Estimated 3–10x typical route transfer reduction |
 | Parse once | Duplicate parse paths confirmed | Up to about 2x parser-phase improvement; much less if rendering remains unchanged |
 | Icon/direct-import cleanup | 24,599 transformed modules | Estimated 2–5x warm build improvement only after measured experiments |
@@ -408,25 +478,26 @@ Any intentional exception should record the reason, owner, measured user value, 
 
 ## Measurement and regression infrastructure
 
-1. Add a deterministic `build:stats` command that emits manifest totals, per-route closures, dynamic-import counts, and Workbox inventory as JSON.
-2. Store a reviewed baseline and fail CI only on meaningful regression thresholds, not hash/name changes.
+1. [x] Add a deterministic `build:stats` command that emits manifest totals, per-route closures, dynamic-import counts, stable membership digests, and Workbox inventory as JSON.
+2. [x] Store a reviewed compact baseline and fail CI/release only on explicit byte/count ceilings, not content hashes or normalized filenames; current artifact passes 194 checks.
 3. Add Chromium performance smoke cases for Home, Text Diff, Emoji, MAC Lookup, JSON/YAML, Bcrypt, Regex, Math, WYSIWYG, and PDF.
 4. Include 100 kB, 1 MB, deep nesting, malformed input, catastrophic regex, and repeated-navigation fixtures.
 5. Capture long tasks, DOM count, console errors, route bytes, and forced-GC heap trends.
 6. Run a smaller mandatory suite on every pull request and a full cross-browser/profile suite on a schedule.
-7. Add [PR #1170](https://github.com/CorentinTh/it-tools/pull/1170)'s all-route smoke-test idea, adapted to fail on page errors, chunk failures, and unexpected console warnings.
+7. [x] Add [PR #1170](https://github.com/CorentinTh/it-tools/pull/1170)'s all-route smoke-test idea, adapted to cover all 86 routes and fail on page errors, chunk failures, unexpected console warnings, and Monaco fallback.
 8. Measure on both a fast desktop and a 4x CPU/slow-network profile; do not optimize only local unthrottled load time.
 
 ## Recommended execution order
 
-1. Restore green lint/typecheck and add build/route measurement scripts.
-2. Fix Monaco disposal, worker loading, and bundle imports.
-3. Add the large-document output fallback and worker/task abstraction.
-4. Move bcrypt and regex to cancellable workers with explicit limits.
-5. Correct nginx compression/cache headers and redesign PWA caching.
-6. Virtualize Emoji and partition OUI data.
-7. Reduce shell registry/icons/Lodash and progressively render Home.
-8. Rework CI/Docker caching and artifact reuse.
-9. Ratchet budgets after each verified improvement.
+1. [x] Restore green lint/typecheck and add build/route measurement scripts.
+2. [x] Fix Monaco disposal, worker loading, and bundle imports; payload comparison remains as its own open budget item.
+3. [x] Add the large-document plain-output fallback; the shared worker/parser/depth/download abstraction remains open.
+4. [x] Move Bcrypt and Regex matching/sample work to cancellable workers with explicit limits; keep the DOM-dependent SVG residual explicit and bounded.
+5. [x] Correct nginx compression/cache headers and make PWA caching demand-driven; update/rollback and offline-unavailable UX remain open.
+6. [x] Page Emoji rendering and lazy-load secondary metadata; true virtualization/cancellable search remain open.
+7. Partition OUI data.
+8. Reduce shell registry/icons/Lodash and progressively render Home.
+9. Reuse one built artifact across CI/Docker and measure container size; dependency caching and rootless delivery are already complete.
+10. Ratchet budgets after each verified improvement.
 
 This order deliberately develops the local fork forward. Upstream pull requests are specifications and sources of test cases; they are not a synchronization plan.

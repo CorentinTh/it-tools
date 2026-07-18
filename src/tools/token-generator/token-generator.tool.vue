@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { createToken } from './token-generator.service';
+import { MAX_TOKEN_LENGTH, createToken } from './token-generator.service';
 import { useCopy } from '@/composable/copy';
 import { useQueryParam } from '@/composable/queryParams';
 import { computedRefreshable } from '@/composable/computedRefreshable';
@@ -11,14 +11,32 @@ const withNumbers = useQueryParam({ name: 'numbers', defaultValue: true });
 const withSymbols = useQueryParam({ name: 'symbols', defaultValue: false });
 const { t } = useI18n();
 
+const safeLength = computed({
+  get() {
+    const value = Number(length.value);
+
+    if (!Number.isSafeInteger(value)) {
+      return 64;
+    }
+
+    return Math.min(MAX_TOKEN_LENGTH, Math.max(1, value));
+  },
+  set(value: number) {
+    length.value = value;
+  },
+});
+
 const [token, refreshToken] = computedRefreshable(() =>
   createToken({
-    length: length.value,
+    length: safeLength.value,
     withUppercase: withUppercase.value,
     withLowercase: withLowercase.value,
     withNumbers: withNumbers.value,
     withSymbols: withSymbols.value,
   }),
+{
+  dependencies: [safeLength, withUppercase, withLowercase, withNumbers, withSymbols],
+},
 );
 
 const { copy } = useCopy({ source: token, text: t('tools.token-generator.copied') });
@@ -51,17 +69,17 @@ const { copy } = useCopy({ source: token, text: t('tools.token-generator.copied'
         </div>
       </n-form>
 
-      <n-form-item :label="`${t('tools.token-generator.length')} (${length})`" label-placement="left">
-        <n-slider v-model:value="length" :step="1" :min="1" :max="512" />
+      <n-form-item :label="`${t('tools.token-generator.length')} (${safeLength})`" label-placement="left">
+        <n-slider v-model:value="safeLength" :step="1" :min="1" :max="MAX_TOKEN_LENGTH" />
       </n-form-item>
 
       <c-input-text
         v-model:value="token"
-        multiline
+
         :placeholder="t('tools.token-generator.tokenPlaceholder')"
-        readonly
+
         rows="3"
-        autosize
+        readonly multiline autosize
         class="token-display"
       />
 

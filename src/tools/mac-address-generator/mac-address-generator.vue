@@ -6,7 +6,7 @@ import { useCopy } from '@/composable/copy';
 import { usePartialMacAddressValidation } from '@/utils/macAddress';
 
 const amount = useStorage('mac-address-generator-amount', 1);
-const macAddressPrefix = useStorage('mac-address-generator-prefix', '64:16:7F');
+const macAddressPrefix = ref('64:16:7F');
 
 const prefixValidation = usePartialMacAddressValidation(macAddressPrefix);
 
@@ -46,6 +46,8 @@ const [macAddresses, refreshMacAddresses] = computedRefreshable(() => {
     separator: separator.value,
   })));
   return ids.join('\n');
+}, {
+  dependencies: [amount, macAddressPrefix, () => prefixValidation.isValid, caseTransformer, separator],
 });
 
 const { copy } = useCopy({ source: macAddresses, text: 'MAC addresses copied to the clipboard' });
@@ -62,11 +64,11 @@ const { copy } = useCopy({ source: macAddresses, text: 'MAC addresses copied to 
       v-model:value="macAddressPrefix"
       label="MAC address prefix:"
       placeholder="Set a prefix, e.g. 64:16:7F"
-      clearable
+
       label-position="left"
       spellcheck="false"
       :validation="prefixValidation"
-      raw-text
+      raw-text clearable
       label-width="150px"
       label-align="right"
     />

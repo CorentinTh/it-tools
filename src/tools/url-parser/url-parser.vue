@@ -1,26 +1,17 @@
 <script setup lang="ts">
 import InputCopyable from '../../components/InputCopyable.vue';
-import { isNotThrowing } from '@/utils/boolean';
-import { withDefaultOnError } from '@/utils/defaults';
+import { getUrlProperties, getUrlQueryParameters, parseUrl } from './url-parser.model';
 
 const urlToParse = ref('https://me:pwd@it-tools.tech:3000/url-parser?key1=value&key2=value2#the-hash');
 
-const urlParsed = computed(() => withDefaultOnError(() => new URL(urlToParse.value), undefined));
+const urlParsed = computed(() => parseUrl(urlToParse.value));
+const urlProperties = computed(() => getUrlProperties(urlParsed.value));
+const queryParameters = computed(() => getUrlQueryParameters(urlParsed.value));
 const urlValidationRules = [
   {
-    validator: (value: string) => isNotThrowing(() => new URL(value)),
+    validator: (value: string) => parseUrl(value) !== undefined,
     message: 'Invalid url',
   },
-];
-
-const properties: { title: string; key: keyof URL }[] = [
-  { title: 'Protocol', key: 'protocol' },
-  { title: 'Username', key: 'username' },
-  { title: 'Password', key: 'password' },
-  { title: 'Hostname', key: 'hostname' },
-  { title: 'Port', key: 'port' },
-  { title: 'Path', key: 'pathname' },
-  { title: 'Params', key: 'search' },
 ];
 </script>
 
@@ -37,10 +28,10 @@ const properties: { title: string; key: keyof URL }[] = [
     <n-divider />
 
     <InputCopyable
-      v-for="{ title, key } in properties"
+      v-for="{ title, key, value } in urlProperties"
       :key="key"
       :label="title"
-      :value="(urlParsed?.[key] as string) ?? ''"
+      :value="value"
       readonly
       label-position="left"
       label-width="110px"
@@ -49,8 +40,8 @@ const properties: { title: string; key: keyof URL }[] = [
     />
 
     <div
-      v-for="[k, v] in Object.entries(Object.fromEntries(urlParsed?.searchParams.entries() ?? []))"
-      :key="k"
+      v-for="{ id, name, value } in queryParameters"
+      :key="id"
       mb-2
       w-full
       flex
@@ -59,8 +50,8 @@ const properties: { title: string; key: keyof URL }[] = [
         <icon-mdi-arrow-right-bottom />
       </div>
 
-      <InputCopyable :value="k" readonly />
-      <InputCopyable :value="v" readonly />
+      <InputCopyable :value="name" readonly />
+      <InputCopyable :value="value" readonly />
     </div>
   </c-card>
 </template>

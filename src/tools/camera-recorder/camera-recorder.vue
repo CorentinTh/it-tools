@@ -1,9 +1,19 @@
 <script setup lang="ts">
-import _ from 'lodash';
-
+import {
+  type CameraMedia,
+  MAX_RETAINED_SCREENSHOTS,
+  MAX_RETAINED_VIDEOS,
+  createCameraMediaCollection,
+} from './camera-recorder.model';
+import {
+  MAX_CAMERA_RECORDING_BYTES,
+  MAX_CAMERA_RECORDING_DURATION_MS,
+  MAX_CAMERA_SCREENSHOT_BYTES,
+  MAX_CAMERA_SCREENSHOT_PIXELS,
+  MAX_CAMERA_SCREENSHOT_RAW_BYTES,
+  MAX_RETAINED_CAMERA_MEDIA_BYTES,
+} from './camera-recorder.limits';
 import { useMediaRecorder } from './useMediaRecorder';
-
-interface Media { type: 'image' | 'video'; value: string; createdAt: Date }
 
 const {
   videoInputs: cameras,
@@ -20,10 +30,14 @@ const {
 });
 
 const video = ref<HTMLVideoElement>();
-const medias = ref<Media[]>([]);
 const currentCamera = ref(cameras.value[0]?.deviceId);
 const currentMicrophone = ref(microphones.value[0]?.deviceId);
 const permissionCannotBePrompted = ref(false);
+const captureStatus = ref('');
+const screenshotInFlight = ref(false);
+let screenshotAttempt = 0;
+const mediaCollection = createCameraMediaCollection();
+const { medias, retainedBytes, addImage, addVideo, remove: removeMedia } = mediaCollection;
 
 const {
   stream,
@@ -45,46 +59,146 @@ const {
   stopRecording,
   pauseRecording,
   recordingState,
+  recordingStatus,
   resumeRecording,
+  dispose: disposeMediaRecorder,
 } = useMediaRecorder({
   stream,
 });
 
-onRecordAvailable((value) => {
-  medias.value.unshift({ type: 'video', value, createdAt: new Date() });
+const recordingStatusMessage = computed(() => {
+  switch (recordingStatus.value) {
+    case 'completed':
+      return 'Recording completed.';
+    case 'duration-limit':
+      return `The ${formatDuration(MAX_CAMERA_RECORDING_DURATION_MS)} recording limit was reached. Recording stopped automatically.`;
+    case 'size-limit':
+      return `The recording exceeded ${formatBytes(MAX_CAMERA_RECORDING_BYTES)} and was discarded.`;
+    case 'error':
+      return 'The recording could not be completed.';
+    default:
+      return '';
+  }
+});
+const cameraStatusMessage = computed(() => (
+  [recordingStatusMessage.value, captureStatus.value].filter(Boolean).join(' ')
+));
+
+onRecordAvailable((blob) => {
+  captureStatus.value = addVideo(blob)
+    ? ''
+    : 'The video exceeded a retention limit and was not kept.';
 });
 
+function formatBytes(bytes: number) {
+  const mebibytes = bytes / (1024 * 1024);
+  return `${Number.isInteger(mebibytes) ? mebibytes : mebibytes.toFixed(1)} MiB`;
+}
+
+function formatDuration(milliseconds: number) {
+  const minutes = milliseconds / 60_000;
+  return `${minutes} ${minutes === 1 ? 'minute' : 'minutes'}`;
+}
+
+function formatMegapixels(pixels: number) {
+  return `${(pixels / 1_000_000).toFixed(1)} megapixels`;
+}
+
 function refreshCurrentDevices() {
-  if (_.isNil(currentCamera) || !cameras.value.find(i => i.deviceId === currentCamera.value)) {
+  if (!currentCamera.value || !cameras.value.find(i => i.deviceId === currentCamera.value)) {
     currentCamera.value = cameras.value[0]?.deviceId;
   }
 
-  if (_.isNil(microphones) || !microphones.value.find(i => i.deviceId === currentMicrophone.value)) {
+  if (!currentMicrophone.value || !microphones.value.find(i => i.deviceId === currentMicrophone.value)) {
     currentMicrophone.value = microphones.value[0]?.deviceId;
   }
 }
 
 function takeScreenshot() {
-  if (!video.value) {
+  if (!video.value || screenshotInFlight.value) {
     return;
   }
 
-  const canvas = document.createElement('canvas');
-  canvas.width = video.value.videoWidth;
-  canvas.height = video.value.videoHeight;
-  canvas.getContext('2d')?.drawImage(video.value, 0, 0);
-  const image = canvas.toDataURL('image/png');
+  const width = video.value.videoWidth;
+  const height = video.value.videoHeight;
+  if (!Number.isInteger(width) || !Number.isInteger(height) || width <= 0 || height <= 0) {
+    captureStatus.value = 'The camera frame is not ready for a screenshot.';
+    return;
+  }
+  if (width > Math.floor(MAX_CAMERA_SCREENSHOT_PIXELS / height)) {
+    captureStatus.value = `The screenshot frame exceeded ${formatMegapixels(MAX_CAMERA_SCREENSHOT_PIXELS)} (${formatBytes(MAX_CAMERA_SCREENSHOT_RAW_BYTES)} raw) and was not captured.`;
+    return;
+  }
 
-  medias.value.unshift({ type: 'image', value: image, createdAt: new Date() });
+  screenshotInFlight.value = true;
+  const attempt = ++screenshotAttempt;
+  try {
+    const canvas = document.createElement('canvas');
+    // Reset both default dimensions before applying the frame dimensions so a
+    // very wide or tall (but still bounded) frame cannot cause a larger
+    // transient backing-store allocation while the other default is 150/300.
+    canvas.width = 1;
+    canvas.height = 1;
+    canvas.width = width;
+    canvas.height = height;
+    const context = canvas.getContext('2d');
+    if (!context) {
+      captureStatus.value = 'The browser could not create a screenshot canvas.';
+      screenshotInFlight.value = false;
+      return;
+    }
+
+    context.drawImage(video.value, 0, 0);
+    canvas.toBlob((image) => {
+      if (attempt !== screenshotAttempt || !screenshotInFlight.value) {
+        return;
+      }
+
+      screenshotInFlight.value = false;
+      if (!image) {
+        captureStatus.value = 'The browser could not encode the screenshot.';
+        return;
+      }
+
+      captureStatus.value = addImage(image)
+        ? ''
+        : `The screenshot exceeded ${formatBytes(MAX_CAMERA_SCREENSHOT_BYTES)} and was not kept.`;
+    }, 'image/png');
+  }
+  catch {
+    if (attempt === screenshotAttempt) {
+      screenshotInFlight.value = false;
+      captureStatus.value = 'The browser could not capture the screenshot.';
+    }
+  }
 }
 
-watchEffect(() => {
-  if (video.value && stream.value) {
-    video.value.srcObject = stream.value;
+watchEffect((onCleanup) => {
+  const videoElement = video.value;
+  const activeStream = stream.value;
+
+  if (videoElement && activeStream) {
+    videoElement.srcObject = activeStream;
+    onCleanup(() => {
+      if (videoElement.srcObject === activeStream) {
+        videoElement.srcObject = null;
+      }
+    });
   }
 });
 
-onBeforeUnmount(() => stop());
+onBeforeUnmount(() => {
+  ++screenshotAttempt;
+  screenshotInFlight.value = false;
+  disposeMediaRecorder();
+  mediaCollection.dispose();
+
+  if (video.value) {
+    video.value.srcObject = null;
+  }
+
+  stop();
+});
 
 async function requestPermissions() {
   try {
@@ -95,7 +209,7 @@ async function requestPermissions() {
   }
 }
 
-function downloadMedia({ type, value, createdAt }: Media) {
+function downloadMedia({ type, value, createdAt }: Pick<CameraMedia, 'type' | 'value' | 'createdAt'>) {
   const link = document.createElement('a');
   link.href = value;
   link.download = `${type}-${createdAt.getTime()}.${type === 'image' ? 'png' : 'webm'}`;
@@ -157,9 +271,13 @@ function downloadMedia({ type, value, createdAt }: Media) {
         </div>
 
         <div flex items-center justify-between gap-2>
-          <c-button :disabled="!isMediaStreamAvailable" @click="takeScreenshot">
+          <c-button
+            data-test-id="camera-screenshot"
+            :disabled="!isMediaStreamAvailable || screenshotInFlight"
+            @click="takeScreenshot"
+          >
             <span mr-2> <icon-mdi-camera /></span>
-            Take screenshot
+            {{ screenshotInFlight ? 'Capturing screenshot…' : 'Take screenshot' }}
           </c-button>
 
           <div v-if="isRecordingSupported" flex justify-center gap-2>
@@ -178,9 +296,13 @@ function downloadMedia({ type, value, createdAt }: Media) {
               Resume
             </c-button>
 
-            <c-button v-if="recordingState !== 'stopped'" type="error" @click="stopRecording">
+            <c-button v-if="recordingState === 'recording' || recordingState === 'paused'" type="error" @click="stopRecording">
               <span mr-2> <icon-mdi-record /></span>
               Stop
+            </c-button>
+
+            <c-button v-if="recordingState === 'stopping'" disabled>
+              Finishing recording…
             </c-button>
           </div>
           <div v-else italic op-60>
@@ -188,10 +310,32 @@ function downloadMedia({ type, value, createdAt }: Media) {
           </div>
         </div>
       </div>
+
+      <div
+        v-if="cameraStatusMessage"
+        mt-3
+        text-sm
+        role="status"
+        aria-live="polite"
+        data-test-id="camera-status"
+      >
+        {{ cameraStatusMessage }}
+      </div>
     </c-card>
 
-    <div grid grid-cols-2 mt-5 gap-2>
-      <c-card v-for="({ type, value, createdAt }, index) in medias" :key="index">
+    <div mt-5 text-sm op-60>
+      This tab keeps up to {{ MAX_RETAINED_SCREENSHOTS }} screenshots and {{ MAX_RETAINED_VIDEOS }} videos.
+      Screenshot frames are limited to {{ formatMegapixels(MAX_CAMERA_SCREENSHOT_PIXELS) }}
+      ({{ formatBytes(MAX_CAMERA_SCREENSHOT_RAW_BYTES) }} raw) before encoding. Each retained screenshot is limited to
+      {{ formatBytes(MAX_CAMERA_SCREENSHOT_BYTES) }}, each video to
+      {{ formatBytes(MAX_CAMERA_RECORDING_BYTES) }}, and all captures together to
+      {{ formatBytes(MAX_RETAINED_CAMERA_MEDIA_BYTES) }} (currently {{ formatBytes(retainedBytes) }}).
+      Recordings stop after {{ formatDuration(MAX_CAMERA_RECORDING_DURATION_MS) }}; recordings over the byte limit are
+      discarded. Older captures are removed automatically.
+    </div>
+
+    <div grid grid-cols-2 mt-2 gap-2>
+      <c-card v-for="({ id, type, value, createdAt }) in medias" :key="id" :data-media-id="id">
         <img v-if="type === 'image'" :src="value" max-h-full w-full alt="screenshot">
 
         <video v-else :src="value" controls max-h-full w-full />
@@ -202,11 +346,15 @@ function downloadMedia({ type, value, createdAt }: Media) {
           </div>
 
           <div flex gap-2>
-            <c-button @click="downloadMedia({ type, value, createdAt })">
+            <c-button
+              :aria-label="`Download ${type}`"
+              :title="`Download ${type}`"
+              @click="downloadMedia({ type, value, createdAt })"
+            >
               <icon-mdi-download />
             </c-button>
 
-            <c-button @click="medias = medias.filter((_ignored, i) => i !== index)">
+            <c-button :aria-label="`Delete ${type}`" :title="`Delete ${type}`" @click="removeMedia(id)">
               <icon-mdi-delete-outline />
             </c-button>
           </div>

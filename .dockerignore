@@ -1,3 +1,6 @@
+.ai
+.git
+.github
 node_modules
 playwright-report
 coverage

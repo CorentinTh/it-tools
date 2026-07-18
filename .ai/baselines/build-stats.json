@@ -1,0 +1,3777 @@
+{
+  "schema": {
+    "id": "it-tools.build-stats",
+    "version": 3
+  },
+  "compression": {
+    "format": "gzip",
+    "level": 9,
+    "scope": "each-file"
+  },
+  "artifactInputs": {
+    "viteManifest": "manifest.json",
+    "workboxServiceWorker": "sw.js"
+  },
+  "files": {
+    "totals": {
+      "fileCount": 499,
+      "rawBytes": 14365310,
+      "gzipBytes": 3986991
+    },
+    "byExtension": [
+      {
+        "extension": ".css",
+        "fileCount": 31,
+        "rawBytes": 91230,
+        "gzipBytes": 19748
+      },
+      {
+        "extension": ".flf",
+        "fileCount": 289,
+        "rawBytes": 2888669,
+        "gzipBytes": 478400
+      },
+      {
+        "extension": ".html",
+        "fileCount": 1,
+        "rawBytes": 2489,
+        "gzipBytes": 698
+      },
+      {
+        "extension": ".ico",
+        "fileCount": 1,
+        "rawBytes": 5193,
+        "gzipBytes": 5014
+      },
+      {
+        "extension": ".js",
+        "fileCount": 162,
+        "rawBytes": 11197942,
+        "gzipBytes": 3366845
+      },
+      {
+        "extension": ".json",
+        "fileCount": 1,
+        "rawBytes": 66957,
+        "gzipBytes": 6870
+      },
+      {
+        "extension": ".png",
+        "fileCount": 10,
+        "rawBytes": 106488,
+        "gzipBytes": 106475
+      },
+      {
+        "extension": ".svg",
+        "fileCount": 1,
+        "rawBytes": 5487,
+        "gzipBytes": 2402
+      },
+      {
+        "extension": ".txt",
+        "fileCount": 1,
+        "rawBytes": 23,
+        "gzipBytes": 43
+      },
+      {
+        "extension": ".webmanifest",
+        "fileCount": 1,
+        "rawBytes": 586,
+        "gzipBytes": 329
+      },
+      {
+        "extension": ".xml",
+        "fileCount": 1,
+        "rawBytes": 246,
+        "gzipBytes": 167
+      }
+    ]
+  },
+  "assets": {
+    "totals": {
+      "fileCount": 480,
+      "rawBytes": 14154146,
+      "gzipBytes": 3856540
+    },
+    "byExtension": [
+      {
+        "extension": ".css",
+        "fileCount": 31,
+        "rawBytes": 91230,
+        "gzipBytes": 19748
+      },
+      {
+        "extension": ".flf",
+        "fileCount": 289,
+        "rawBytes": 2888669,
+        "gzipBytes": 478400
+      },
+      {
+        "extension": ".js",
+        "fileCount": 160,
+        "rawBytes": 11174247,
+        "gzipBytes": 3358392
+      }
+    ]
+  },
+  "shell": {
+    "document": {
+      "path": "index.html",
+      "rawBytes": 2489,
+      "gzipBytes": 698
+    },
+    "assets": [
+      {
+        "path": "assets/index-<hash>.css",
+        "references": [
+          "stylesheet"
+        ],
+        "rawBytes": 31749,
+        "gzipBytes": 6784
+      },
+      {
+        "path": "assets/index-<hash>.js",
+        "references": [
+          "script"
+        ],
+        "rawBytes": 857102,
+        "gzipBytes": 266334
+      }
+    ],
+    "assetTotals": {
+      "fileCount": 2,
+      "rawBytes": 888851,
+      "gzipBytes": 273118
+    },
+    "withDocumentTotals": {
+      "fileCount": 3,
+      "rawBytes": 891340,
+      "gzipBytes": 273816
+    }
+  },
+  "workboxPrecache": {
+    "totals": {
+      "fileCount": 9,
+      "rawBytes": 945188,
+      "gzipBytes": 324178
+    },
+    "byExtension": [
+      {
+        "extension": ".css",
+        "fileCount": 1,
+        "rawBytes": 31749,
+        "gzipBytes": 6784
+      },
+      {
+        "extension": ".html",
+        "fileCount": 1,
+        "rawBytes": 2489,
+        "gzipBytes": 698
+      },
+      {
+        "extension": ".js",
+        "fileCount": 2,
+        "rawBytes": 862391,
+        "gzipBytes": 268528
+      },
+      {
+        "extension": ".png",
+        "fileCount": 4,
+        "rawBytes": 47973,
+        "gzipBytes": 47839
+      },
+      {
+        "extension": ".webmanifest",
+        "fileCount": 1,
+        "rawBytes": 586,
+        "gzipBytes": 329
+      }
+    ],
+    "entries": [
+      {
+        "path": "android-chrome-192x192.png",
+        "rawBytes": 11207,
+        "gzipBytes": 11230
+      },
+      {
+        "path": "android-chrome-512x512.png",
+        "rawBytes": 34246,
+        "gzipBytes": 34043
+      },
+      {
+        "path": "assets/index-<hash>.css",
+        "rawBytes": 31749,
+        "gzipBytes": 6784
+      },
+      {
+        "path": "assets/index-<hash>.js",
+        "rawBytes": 857102,
+        "gzipBytes": 266334
+      },
+      {
+        "path": "assets/workbox-window.prod.es5-<hash>.js",
+        "rawBytes": 5289,
+        "gzipBytes": 2194
+      },
+      {
+        "path": "favicon-16x16.png",
+        "rawBytes": 839,
+        "gzipBytes": 862
+      },
+      {
+        "path": "favicon-32x32.png",
+        "rawBytes": 1681,
+        "gzipBytes": 1704
+      },
+      {
+        "path": "index.html",
+        "rawBytes": 2489,
+        "gzipBytes": 698
+      },
+      {
+        "path": "manifest.webmanifest",
+        "rawBytes": 586,
+        "gzipBytes": 329
+      }
+    ]
+  },
+  "viteManifest": {
+    "closureDefinitions": {
+      "initialClosure": {
+        "importFields": [
+          "imports"
+        ],
+        "artifactFields": [
+          "file",
+          "css",
+          "assets"
+        ]
+      },
+      "reachableClosure": {
+        "importFields": [
+          "imports",
+          "dynamicImports"
+        ],
+        "artifactFields": [
+          "file",
+          "css",
+          "assets"
+        ]
+      },
+      "additionalToMainEntryInitial": {
+        "source": "initialClosure",
+        "subtract": "mainEntryInitialClosure",
+        "differenceBy": {
+          "manifestRecords": "manifest-key",
+          "artifacts": "dist-path"
+        }
+      }
+    },
+    "identityDefinition": {
+      "manifestId": "source-path-or-normalized-generated-name-plus-output-sha256",
+      "artifactIdentity": "normalized-dist-path-plus-content-sha256",
+      "closureMembershipDigest": "sha256-of-json-encoded-sorted-identity-list"
+    },
+    "totals": {
+      "recordCount": 188,
+      "entryPointCount": 91,
+      "entryCount": 1,
+      "dynamicEntryCount": 90,
+      "importEdgeCount": 917,
+      "staticImportEdgeCount": 827,
+      "dynamicImportEdgeCount": 90
+    },
+    "artifacts": {
+      "totals": {
+        "fileCount": 188,
+        "rawBytes": 11018505,
+        "gzipBytes": 3297119
+      },
+      "byExtension": [
+        {
+          "extension": ".css",
+          "fileCount": 31,
+          "rawBytes": 91230,
+          "gzipBytes": 19748
+        },
+        {
+          "extension": ".js",
+          "fileCount": 157,
+          "rawBytes": 10927275,
+          "gzipBytes": 3277371
+        }
+      ]
+    },
+    "mainEntryInitialClosure": {
+      "manifestRecordCount": 1,
+      "fileCount": 2,
+      "rawBytes": 888851,
+      "gzipBytes": 273118,
+      "membershipDigests": {
+        "manifestIdsSha256": "1d89ca857abc40f72b9d07dff483b54da7fa8f7b39ede4e45efab659edd7a459",
+        "artifactIdentitiesSha256": "4ffc5c2a8fecbe0ac816ec986588c45b76f922e94f0b9f9cc97fe100cc9f395c"
+      }
+    },
+    "entryPoints": [
+      {
+        "id": "index.html",
+        "manifestId": "source:index.html",
+        "file": "assets/index-<hash>.js",
+        "isEntry": true,
+        "isDynamicEntry": false,
+        "initialClosure": {
+          "manifestRecordCount": 1,
+          "fileCount": 2,
+          "rawBytes": 888851,
+          "gzipBytes": 273118,
+          "membershipDigests": {
+            "manifestIdsSha256": "1d89ca857abc40f72b9d07dff483b54da7fa8f7b39ede4e45efab659edd7a459",
+            "artifactIdentitiesSha256": "4ffc5c2a8fecbe0ac816ec986588c45b76f922e94f0b9f9cc97fe100cc9f395c"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        }
+      },
+      {
+        "id": "node_modules/.pnpm/@regexper+render@1.0.0/node_modules/@regexper/render/es/index.js",
+        "manifestId": "source:node_modules/.pnpm/@regexper+render@1.0.0/node_modules/@regexper/render/es/index.js",
+        "file": "assets/index-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 3,
+          "fileCount": 4,
+          "rawBytes": 1035610,
+          "gzipBytes": 308385,
+          "membershipDigests": {
+            "manifestIdsSha256": "1b68b165669bb1e5cd176460c2b4f020ea75e81fafbc47db16c54c5f034bc5ea",
+            "artifactIdentitiesSha256": "bd627d704b6482eb432b2e6feec9ce7d6c41b23c27033a3a39890e203635337b"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 2,
+          "fileCount": 2,
+          "rawBytes": 146759,
+          "gzipBytes": 35267,
+          "membershipDigests": {
+            "manifestIdsSha256": "a24368342755b52aa96fefe10316eb4d5ca4ac943ab2f17d19d53bfb6e45612d",
+            "artifactIdentitiesSha256": "eaacbddb8ee5b2d0cb73b7c39ef195d97e0d90944c5abbed0799595ea78eecec"
+          }
+        }
+      },
+      {
+        "id": "node_modules/.pnpm/emojilib@3.0.10/node_modules/emojilib/dist/emoji-en-US.json",
+        "manifestId": "source:node_modules/.pnpm/emojilib@3.0.10/node_modules/emojilib/dist/emoji-en-US.json",
+        "file": "assets/emoji-en-US-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 1,
+          "fileCount": 1,
+          "rawBytes": 116181,
+          "gzipBytes": 32015,
+          "membershipDigests": {
+            "manifestIdsSha256": "31910b6b63b7083da2c7b5ca6b5e617a9d1c0e049a05a5ecb785621f11386b9a",
+            "artifactIdentitiesSha256": "0863bd60ee61f3c56c2614334e2d764a2f0d978351f5cf0647d38d5a7cf5e923"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 1,
+          "fileCount": 1,
+          "rawBytes": 116181,
+          "gzipBytes": 32015,
+          "membershipDigests": {
+            "manifestIdsSha256": "31910b6b63b7083da2c7b5ca6b5e617a9d1c0e049a05a5ecb785621f11386b9a",
+            "artifactIdentitiesSha256": "0863bd60ee61f3c56c2614334e2d764a2f0d978351f5cf0647d38d5a7cf5e923"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 1,
+          "fileCount": 1,
+          "rawBytes": 116181,
+          "gzipBytes": 32015,
+          "membershipDigests": {
+            "manifestIdsSha256": "31910b6b63b7083da2c7b5ca6b5e617a9d1c0e049a05a5ecb785621f11386b9a",
+            "artifactIdentitiesSha256": "0863bd60ee61f3c56c2614334e2d764a2f0d978351f5cf0647d38d5a7cf5e923"
+          }
+        }
+      },
+      {
+        "id": "node_modules/.pnpm/workbox-window@7.0.0/node_modules/workbox-window/build/workbox-window.prod.es5.mjs",
+        "manifestId": "source:node_modules/.pnpm/workbox-window@7.0.0/node_modules/workbox-window/build/workbox-window.prod.es5.mjs",
+        "file": "assets/workbox-window.prod.es5-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 1,
+          "fileCount": 1,
+          "rawBytes": 5289,
+          "gzipBytes": 2194,
+          "membershipDigests": {
+            "manifestIdsSha256": "8edda3f3813f5075f6f5b55c528efa1e70fe8a3f80cfc3a64543c82a019fe5bd",
+            "artifactIdentitiesSha256": "cf4a3c4e85540b330e154eeeb813c3a44a4bfb1364bf835bab596f630fdf6c9c"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 1,
+          "fileCount": 1,
+          "rawBytes": 5289,
+          "gzipBytes": 2194,
+          "membershipDigests": {
+            "manifestIdsSha256": "8edda3f3813f5075f6f5b55c528efa1e70fe8a3f80cfc3a64543c82a019fe5bd",
+            "artifactIdentitiesSha256": "cf4a3c4e85540b330e154eeeb813c3a44a4bfb1364bf835bab596f630fdf6c9c"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 1,
+          "fileCount": 1,
+          "rawBytes": 5289,
+          "gzipBytes": 2194,
+          "membershipDigests": {
+            "manifestIdsSha256": "8edda3f3813f5075f6f5b55c528efa1e70fe8a3f80cfc3a64543c82a019fe5bd",
+            "artifactIdentitiesSha256": "cf4a3c4e85540b330e154eeeb813c3a44a4bfb1364bf835bab596f630fdf6c9c"
+          }
+        }
+      },
+      {
+        "id": "src/pages/About.vue",
+        "manifestId": "source:src/pages/About.vue",
+        "file": "assets/About-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 8,
+          "fileCount": 9,
+          "rawBytes": 977734,
+          "gzipBytes": 303617,
+          "membershipDigests": {
+            "manifestIdsSha256": "6918410ff5151d92fa91720126b1e623cd40cb4e6d2032aae54687f761ca65f5",
+            "artifactIdentitiesSha256": "994d24edf126b86d8d389304747b90d05b89b5faacb1a8115b11d5c434b94cd3"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 7,
+          "fileCount": 7,
+          "rawBytes": 88883,
+          "gzipBytes": 30499,
+          "membershipDigests": {
+            "manifestIdsSha256": "3daa42c5bee10899ce5c928ec0b97ecbb2bc8453fadef8a32b00385ed3e0e7f0",
+            "artifactIdentitiesSha256": "5faad61c2ad949f2871a33942d201190c24a15d02634d3dcd148ed979ff05580"
+          }
+        }
+      },
+      {
+        "id": "src/tools/ascii-text-drawer/ascii-text-drawer.vue",
+        "manifestId": "source:src/tools/ascii-text-drawer/ascii-text-drawer.vue",
+        "file": "assets/ascii-text-drawer-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 19,
+          "fileCount": 22,
+          "rawBytes": 1063799,
+          "gzipBytes": 335410,
+          "membershipDigests": {
+            "manifestIdsSha256": "aa2f2abf282ba6cb66553ee2af175e5634a6c13251f1f5e28c729b51fc17dba9",
+            "artifactIdentitiesSha256": "54bcf440a2b1364a0c2af5581cf8024a0d45d34887c27fdbd9414ea5d4e51f32"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 18,
+          "fileCount": 20,
+          "rawBytes": 174948,
+          "gzipBytes": 62292,
+          "membershipDigests": {
+            "manifestIdsSha256": "7d584ea82a17c2ff2ffca0932b3323059e0cddc74e5075d009be33b9dfcd16be",
+            "artifactIdentitiesSha256": "e641af77967286b6fb393e3b28ecbc8061707bbf2a380edeb7fb08f40146c186"
+          }
+        }
+      },
+      {
+        "id": "src/tools/base64-file-converter/base64-file-converter.vue",
+        "manifestId": "source:src/tools/base64-file-converter/base64-file-converter.vue",
+        "file": "assets/base64-file-converter-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 11,
+          "fileCount": 13,
+          "rawBytes": 1045299,
+          "gzipBytes": 302335,
+          "membershipDigests": {
+            "manifestIdsSha256": "dabe44421b9799cbcef201f7180a5b471691ed4b1e12bc942b8490449fe3296a",
+            "artifactIdentitiesSha256": "1691fefb6da5797b6f2d88154fbd5655108fe194dda9ea8180db3bdc0d6d33c4"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 10,
+          "fileCount": 11,
+          "rawBytes": 156448,
+          "gzipBytes": 29217,
+          "membershipDigests": {
+            "manifestIdsSha256": "f7fa65ca763fd7b8fb024b9ce4ef7926449a428d5145afd26eda562b003510ab",
+            "artifactIdentitiesSha256": "8a9ad0085738d81c501f10e158e613e60785aa408c295e5aa22eb9993ae8e2be"
+          }
+        }
+      },
+      {
+        "id": "src/tools/base64-string-converter/base64-string-converter.vue",
+        "manifestId": "source:src/tools/base64-string-converter/base64-string-converter.vue",
+        "file": "assets/base64-string-converter-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 8,
+          "fileCount": 9,
+          "rawBytes": 936635,
+          "gzipBytes": 289911,
+          "membershipDigests": {
+            "manifestIdsSha256": "bef868bc49e4a62358a789dfa86b9271556398448aa6605e617ea87df6e09780",
+            "artifactIdentitiesSha256": "967187c66da4cefe5c9d8ab094654dc8df069b39ad0a241da170b5af2b71fef7"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 7,
+          "fileCount": 7,
+          "rawBytes": 47784,
+          "gzipBytes": 16793,
+          "membershipDigests": {
+            "manifestIdsSha256": "4479486125ae88529584a088dd0924a52e3fdeb0171148fa57aaa68506e020ac",
+            "artifactIdentitiesSha256": "b80bea5a2399dbf17c661c4a89482ae5a234358cf924c61b331a59bb7405e567"
+          }
+        }
+      },
+      {
+        "id": "src/tools/basic-auth-generator/basic-auth-generator.vue",
+        "manifestId": "source:src/tools/basic-auth-generator/basic-auth-generator.vue",
+        "file": "assets/basic-auth-generator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 6,
+          "fileCount": 8,
+          "rawBytes": 898566,
+          "gzipBytes": 277627,
+          "membershipDigests": {
+            "manifestIdsSha256": "da15cabecf33fd6633dfdf5b7192b9a471aaed2605f8d946c6d7df4d05f709d0",
+            "artifactIdentitiesSha256": "9e3436ad34be4fbaa3f564fc3db75d1c59b3266fbf6b0e7301dd0f5771cdbeb0"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 5,
+          "fileCount": 6,
+          "rawBytes": 9715,
+          "gzipBytes": 4509,
+          "membershipDigests": {
+            "manifestIdsSha256": "8365026566ea32ba7c1e69c6e1144909f83afa4e71023417f657eaf0f5a1d75a",
+            "artifactIdentitiesSha256": "b8cc7c48274481044ecdf504c7bbf2ce44397c8fdc3a7e5965173bc90a5f3d5a"
+          }
+        }
+      },
+      {
+        "id": "src/tools/bcrypt/bcrypt.vue",
+        "manifestId": "source:src/tools/bcrypt/bcrypt.vue",
+        "file": "assets/bcrypt-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 14,
+          "fileCount": 16,
+          "rawBytes": 1014616,
+          "gzipBytes": 314089,
+          "membershipDigests": {
+            "manifestIdsSha256": "1418ad663efe9ea555adfd806a07c6da723ff1df763ae3210d742f5b46efc38b",
+            "artifactIdentitiesSha256": "7fe76ecd1442857d5700f6f2d8a5210c62d106be8acf248a0793cc9e567a4834"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 13,
+          "fileCount": 14,
+          "rawBytes": 125765,
+          "gzipBytes": 40971,
+          "membershipDigests": {
+            "manifestIdsSha256": "a5589e8ca3b8e949cdd9ba0f92f704e55a29e76242ce3100a961f0402f78b915",
+            "artifactIdentitiesSha256": "4ab8f2d6a341834b33dd8b17b2768b35877012a1a5237e30afc8bb520a7cbfc4"
+          }
+        }
+      },
+      {
+        "id": "src/tools/benchmark-builder/benchmark-builder.vue",
+        "manifestId": "source:src/tools/benchmark-builder/benchmark-builder.vue",
+        "file": "assets/benchmark-builder-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 15,
+          "fileCount": 16,
+          "rawBytes": 998730,
+          "gzipBytes": 310240,
+          "membershipDigests": {
+            "manifestIdsSha256": "a0c5e621ecf009b5944e602341629a36a70c353eb91d8a640c2acccf97bec3f8",
+            "artifactIdentitiesSha256": "d88102162df771247c572b3d689be07b44570b50b560588acf30b186537460cd"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 14,
+          "fileCount": 14,
+          "rawBytes": 109879,
+          "gzipBytes": 37122,
+          "membershipDigests": {
+            "manifestIdsSha256": "42d806d3d0b2b254189e3264855b4e021cd1159d519ce50feff849d5fd1e13de",
+            "artifactIdentitiesSha256": "0ff02d112d2ab1e1a17a0a51e0bc220a8415e686c0ae704023d20e7d9286b077"
+          }
+        }
+      },
+      {
+        "id": "src/tools/bip39-generator/bip39-generator.vue",
+        "manifestId": "source:src/tools/bip39-generator/bip39-generator.vue",
+        "file": "assets/bip39-generator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 12,
+          "fileCount": 13,
+          "rawBytes": 1159062,
+          "gzipBytes": 366628,
+          "membershipDigests": {
+            "manifestIdsSha256": "974cd7a345a3b9f2f43556b5b197fe21149c15244a7dd107ef4d2a3a2bfb501a",
+            "artifactIdentitiesSha256": "19e06b3df546b8bd8aa65fa64238a671460e61f73af72b7e0d8b03df20626c2a"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 11,
+          "fileCount": 11,
+          "rawBytes": 270211,
+          "gzipBytes": 93510,
+          "membershipDigests": {
+            "manifestIdsSha256": "d5b4e294d04093a0a691e91ebf0ff2b05c408dc17c6e7e3bffb720fdedfb8a31",
+            "artifactIdentitiesSha256": "3374eccccb327e5414732736f09a3e6307596bdb6dc9277dafdc02f9081e976a"
+          }
+        }
+      },
+      {
+        "id": "src/tools/camera-recorder/camera-recorder.vue",
+        "manifestId": "source:src/tools/camera-recorder/camera-recorder.vue",
+        "file": "assets/camera-recorder-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 3,
+          "fileCount": 5,
+          "rawBytes": 904463,
+          "gzipBytes": 279333,
+          "membershipDigests": {
+            "manifestIdsSha256": "c7077750a01124373deef6e964899223df10cb4bf87c6e04f8381e560660f708",
+            "artifactIdentitiesSha256": "3561fe7d474308b567ea69bd5e1a0e7eebdbc69b8d3c99b70fb172d1ab7e43a1"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 2,
+          "fileCount": 3,
+          "rawBytes": 15612,
+          "gzipBytes": 6215,
+          "membershipDigests": {
+            "manifestIdsSha256": "fb380dec8ffdc14f0229605f5ba2ba8845a916d925b1c203da95c28f59304560",
+            "artifactIdentitiesSha256": "4654f0dd05047db30bf457ed9729e72c06c9d13b2a28c75f93c7e8b54b36a233"
+          }
+        }
+      },
+      {
+        "id": "src/tools/case-converter/case-converter.vue",
+        "manifestId": "source:src/tools/case-converter/case-converter.vue",
+        "file": "assets/case-converter-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 5,
+          "fileCount": 6,
+          "rawBytes": 894075,
+          "gzipBytes": 275743,
+          "membershipDigests": {
+            "manifestIdsSha256": "7bf36c68aca85fb8f03630bfcaa2bff7a6e171ec81ac557f57a55fab4f02a5ab",
+            "artifactIdentitiesSha256": "1369954f1d7639df07a5d6e07626e2496f8ce16eb1f652ed95e4980b30a8e870"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 4,
+          "fileCount": 4,
+          "rawBytes": 5224,
+          "gzipBytes": 2625,
+          "membershipDigests": {
+            "manifestIdsSha256": "0886ae0c4ddfb7e9bd48b4ced42be83586428c610b9c7ca63919ab68fd870bdf",
+            "artifactIdentitiesSha256": "be6bb7bb55b7f1793d726cd676c5c1ad30351a20dcaab9de50a1a486f68e84c2"
+          }
+        }
+      },
+      {
+        "id": "src/tools/chmod-calculator/chmod-calculator.vue",
+        "manifestId": "source:src/tools/chmod-calculator/chmod-calculator.vue",
+        "file": "assets/chmod-calculator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 8,
+          "fileCount": 10,
+          "rawBytes": 907702,
+          "gzipBytes": 280512,
+          "membershipDigests": {
+            "manifestIdsSha256": "b785da68bc3c1e26bfc79926b468b365623659495f3eed26608b811b95f44cd4",
+            "artifactIdentitiesSha256": "79082f8200b5d605a1e3d92c67d602d10d359eb54877ce61882d5ff505d2223f"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 7,
+          "fileCount": 8,
+          "rawBytes": 18851,
+          "gzipBytes": 7394,
+          "membershipDigests": {
+            "manifestIdsSha256": "984ca3cc54386bcb40b473a5895a3c4be4111ba6f34fbc96beba48d9835f01bf",
+            "artifactIdentitiesSha256": "b4991d600f517f903b3e23ba1b87144a7a8050d2ed9deb913e23ee29ca0bca92"
+          }
+        }
+      },
+      {
+        "id": "src/tools/chronometer/chronometer.vue",
+        "manifestId": "source:src/tools/chronometer/chronometer.vue",
+        "file": "assets/chronometer-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 2,
+          "fileCount": 4,
+          "rawBytes": 890084,
+          "gzipBytes": 273854,
+          "membershipDigests": {
+            "manifestIdsSha256": "e47e737c138ef74978ef3ab26bb8f6ebb42031e434e0905fbb14383f3b3b1c2b",
+            "artifactIdentitiesSha256": "dbf725a51e0055d766bccef07b079b4257f494bb7e2d8b007232e227046c7486"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 1,
+          "fileCount": 2,
+          "rawBytes": 1233,
+          "gzipBytes": 736,
+          "membershipDigests": {
+            "manifestIdsSha256": "7cd9d09736d72652085460bc62adfb64c17d058f8b9d05879b7f7de7e4d536c3",
+            "artifactIdentitiesSha256": "1b174d4bd3776ad8c0cf316e746d65cfd29d5ec7d9197e18c3f0b1912b75eb15"
+          }
+        }
+      },
+      {
+        "id": "src/tools/color-converter/color-converter.vue",
+        "manifestId": "source:src/tools/color-converter/color-converter.vue",
+        "file": "assets/color-converter-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 15,
+          "fileCount": 16,
+          "rawBytes": 1024599,
+          "gzipBytes": 317142,
+          "membershipDigests": {
+            "manifestIdsSha256": "52e38b9a7c86026434bcfc9303bd8d4bf01b054e2cdd5bba427e6d83b7c634a2",
+            "artifactIdentitiesSha256": "5258ec7af1b09dfc46cfa4ebbe6012a7e12b450094a461b812050cde277cdd4c"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 14,
+          "fileCount": 14,
+          "rawBytes": 135748,
+          "gzipBytes": 44024,
+          "membershipDigests": {
+            "manifestIdsSha256": "94577bbb7eef5653cd490b4e7444444a965ab07ab5eccd131ef69c06addccfd6",
+            "artifactIdentitiesSha256": "572a9d7e63925b8d2cb4f268fecd1808c59109eb0abac466f5acf16682ee4278"
+          }
+        }
+      },
+      {
+        "id": "src/tools/crontab-generator/crontab-generator.vue",
+        "manifestId": "source:src/tools/crontab-generator/crontab-generator.vue",
+        "file": "assets/crontab-generator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 8,
+          "fileCount": 10,
+          "rawBytes": 960919,
+          "gzipBytes": 297395,
+          "membershipDigests": {
+            "manifestIdsSha256": "a94d88e6c13492f70f4c8dbf347fc6136a4351c1b83fd44a8ef67e92cce568f9",
+            "artifactIdentitiesSha256": "b883bc8f53d903a2de714fabe6a94048e841bee1528f902a363d0e555743780c"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 7,
+          "fileCount": 8,
+          "rawBytes": 72068,
+          "gzipBytes": 24277,
+          "membershipDigests": {
+            "manifestIdsSha256": "fc96fadc895bfca8efcbf446b50583edb221db0bbeb87d04627209909e3335c9",
+            "artifactIdentitiesSha256": "e540ebda71915c264094892356b11cdcc2049603110a635bdbccf31d5cddb0fa"
+          }
+        }
+      },
+      {
+        "id": "src/tools/date-time-converter/date-time-converter.vue",
+        "manifestId": "source:src/tools/date-time-converter/date-time-converter.vue",
+        "file": "assets/date-time-converter-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 8,
+          "fileCount": 9,
+          "rawBytes": 904273,
+          "gzipBytes": 279826,
+          "membershipDigests": {
+            "manifestIdsSha256": "ba7d9fafdddc52c129c33846d95b935b14127527ab384b4408e46ac91fb04254",
+            "artifactIdentitiesSha256": "93ea0563a0b5cf3cad370981cd93ab0591368685b7af71ac20ddc8a6c6f7c9fd"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 7,
+          "fileCount": 7,
+          "rawBytes": 15422,
+          "gzipBytes": 6708,
+          "membershipDigests": {
+            "manifestIdsSha256": "7328cd7e0ce772049cf7c3111f0db5b8d9f280ecc3c2b15df5a5a33fa559611b",
+            "artifactIdentitiesSha256": "1262891f3b5915c5bee58add029ac315bbedcb186e9c527fe9b386fa06936566"
+          }
+        }
+      },
+      {
+        "id": "src/tools/device-information/device-information.vue",
+        "manifestId": "source:src/tools/device-information/device-information.vue",
+        "file": "assets/device-information-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 5,
+          "fileCount": 7,
+          "rawBytes": 899908,
+          "gzipBytes": 278048,
+          "membershipDigests": {
+            "manifestIdsSha256": "acc753f9ba60b866fb34b0cd2d781cb77f8c3bd67c68c7a5a9e0769a2102a82c",
+            "artifactIdentitiesSha256": "a8ead4fba9464ce457d137cafdd3695850de210be422e5147459cb657cd9fbd9"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 4,
+          "fileCount": 5,
+          "rawBytes": 11057,
+          "gzipBytes": 4930,
+          "membershipDigests": {
+            "manifestIdsSha256": "d8da57e7863535348e022f95f04b2ef77c67b387d0b00e82c64550aae4dc560f",
+            "artifactIdentitiesSha256": "93ad113120a1e993efc144a5f101424d511b1e832bbba451a42df8f13beee94d"
+          }
+        }
+      },
+      {
+        "id": "src/tools/docker-run-to-docker-compose-converter/docker-run-to-docker-compose-converter.vue",
+        "manifestId": "source:src/tools/docker-run-to-docker-compose-converter/docker-run-to-docker-compose-converter.vue",
+        "file": "assets/docker-run-to-docker-compose-converter-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 14,
+          "fileCount": 16,
+          "rawBytes": 1195764,
+          "gzipBytes": 351064,
+          "membershipDigests": {
+            "manifestIdsSha256": "262387fe6ccde02acc0c77f07fb4972fd475bd85ba876ce680a072f39802a50d",
+            "artifactIdentitiesSha256": "59d8c4bf01d3a6604bfc265624ea86367af8b038e5b5c4ad2f1d0d1854984049"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 13,
+          "fileCount": 14,
+          "rawBytes": 306913,
+          "gzipBytes": 77946,
+          "membershipDigests": {
+            "manifestIdsSha256": "5d5f2cd96b917442741f3c48390b5218f90fde1711a162a18a94aa2b074fbb35",
+            "artifactIdentitiesSha256": "5f17a40178b14046c58a0fd331ec5665880528e6c74e00c126cf3a5cb79c947a"
+          }
+        }
+      },
+      {
+        "id": "src/tools/email-normalizer/email-normalizer.vue",
+        "manifestId": "source:src/tools/email-normalizer/email-normalizer.vue",
+        "file": "assets/email-normalizer-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 4,
+          "fileCount": 5,
+          "rawBytes": 891815,
+          "gzipBytes": 274705,
+          "membershipDigests": {
+            "manifestIdsSha256": "00a4445cdefb0c670c5c5300a29d40aeb519533d330985ee701c44ee49ed2a84",
+            "artifactIdentitiesSha256": "e8377c18a26950993b65b25d4564f4accadfb7b042f82690632e64de8f50385e"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 3,
+          "fileCount": 3,
+          "rawBytes": 2964,
+          "gzipBytes": 1587,
+          "membershipDigests": {
+            "manifestIdsSha256": "ff774f4ef8212d417fa685a2d5208572880372dd61a8d439a87ee576703d9329",
+            "artifactIdentitiesSha256": "4ad716a0d239a8329d9b7b83b5b3692c09c708bc50b94a507c7194d2a8223edf"
+          }
+        }
+      },
+      {
+        "id": "src/tools/emoji-picker/emoji-picker.vue",
+        "manifestId": "source:src/tools/emoji-picker/emoji-picker.vue",
+        "file": "assets/emoji-picker-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 3,
+          "fileCount": 5,
+          "rawBytes": 1161685,
+          "gzipBytes": 305609,
+          "membershipDigests": {
+            "manifestIdsSha256": "9704751c385df233fa40596a21be2a94d519374fe395b8603b1cf2b3eedf5a09",
+            "artifactIdentitiesSha256": "d92b03d52f000aa6150dc7bf111d4ecc818f6888942eb51d20d4153e79d870ff"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 2,
+          "fileCount": 3,
+          "rawBytes": 272834,
+          "gzipBytes": 32491,
+          "membershipDigests": {
+            "manifestIdsSha256": "9718ff18334bdf4b1aab3e1efd54e3a589c2395f2d86ea3166edf8a0adc65a14",
+            "artifactIdentitiesSha256": "689ce40e57ed404bfc29396b059dcbbad73aa6603b481dac40de600c825757e0"
+          }
+        }
+      },
+      {
+        "id": "src/tools/encryption/encryption.vue",
+        "manifestId": "source:src/tools/encryption/encryption.vue",
+        "file": "assets/encryption-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 6,
+          "fileCount": 8,
+          "rawBytes": 951288,
+          "gzipBytes": 295366,
+          "membershipDigests": {
+            "manifestIdsSha256": "2e84ce6605a2deac635297a73088a03dd837e78d9daa27099a79d6e2dd815146",
+            "artifactIdentitiesSha256": "64b80e09bae759c9bf42929368931658b8c7946f34d5ca6258bdadfc9709b9ee"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 5,
+          "fileCount": 6,
+          "rawBytes": 62437,
+          "gzipBytes": 22248,
+          "membershipDigests": {
+            "manifestIdsSha256": "26fa06b914c3dc7376ddcb62c9b59e73c6a3829f482e3f007fa33a16b44c0127",
+            "artifactIdentitiesSha256": "d37c4b1f36af5be6744a29dfd2101d3c27b568b24baf63194c62cc509582176a"
+          }
+        }
+      },
+      {
+        "id": "src/tools/eta-calculator/eta-calculator.vue",
+        "manifestId": "source:src/tools/eta-calculator/eta-calculator.vue",
+        "file": "assets/eta-calculator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 14,
+          "fileCount": 16,
+          "rawBytes": 1221309,
+          "gzipBytes": 361942,
+          "membershipDigests": {
+            "manifestIdsSha256": "64ee83034c10e0eb93324de42aed299ed9643f02e2f72511d93cff293e20894b",
+            "artifactIdentitiesSha256": "4feea365535514cbd5c646b4855522588ea1c9c0ae66acaac653c1fe18cb0a11"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 13,
+          "fileCount": 14,
+          "rawBytes": 332458,
+          "gzipBytes": 88824,
+          "membershipDigests": {
+            "manifestIdsSha256": "a30fe5cc9c6dc13e251770afb8733dc908b52007348d4be5fd5e2f56e7228c77",
+            "artifactIdentitiesSha256": "c122cee37c7cb955807bcc4bc334c8bb86f1d13f3045e7ff42e3acde04c2c5cb"
+          }
+        }
+      },
+      {
+        "id": "src/tools/git-memo/git-memo.vue",
+        "manifestId": "source:src/tools/git-memo/git-memo.vue",
+        "file": "assets/git-memo-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 2,
+          "fileCount": 4,
+          "rawBytes": 890853,
+          "gzipBytes": 274000,
+          "membershipDigests": {
+            "manifestIdsSha256": "c64e3f9fe60f6b106091affa60259e2b90451c10e37aaad8a96747d5ae6d3066",
+            "artifactIdentitiesSha256": "5042336696fa702fce46aa0b5b857d672603d3b41d0faeb22da43426694b4d6e"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 1,
+          "fileCount": 2,
+          "rawBytes": 2002,
+          "gzipBytes": 882,
+          "membershipDigests": {
+            "manifestIdsSha256": "39d1db048080c525465bf313194be147f86ff4957330603fda85afbcb4f61fe4",
+            "artifactIdentitiesSha256": "7d32fa74268a09998be0125e0d5648ebe158cbba2933676cdc71026ea4388e32"
+          }
+        }
+      },
+      {
+        "id": "src/tools/hash-text/hash-text.vue",
+        "manifestId": "source:src/tools/hash-text/hash-text.vue",
+        "file": "assets/hash-text-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 13,
+          "fileCount": 14,
+          "rawBytes": 957985,
+          "gzipBytes": 298598,
+          "membershipDigests": {
+            "manifestIdsSha256": "f60b1f33b112521b43cf34f03ac2a0d87b159a178c2ffd312f6dbdb4ddfe3bc0",
+            "artifactIdentitiesSha256": "c5dd0986c9838d76efdfeea4a328b924928905650e7f4c02d109f337e33bb729"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 12,
+          "fileCount": 12,
+          "rawBytes": 69134,
+          "gzipBytes": 25480,
+          "membershipDigests": {
+            "manifestIdsSha256": "d95b102a7464806242a0ed81077a115efa0137c2a5423a0ea192214134683f14",
+            "artifactIdentitiesSha256": "355e6960e1ad09dd999bd908d16580fe8001a3dcfea0c9b3b81871615d9972bb"
+          }
+        }
+      },
+      {
+        "id": "src/tools/hmac-generator/hmac-generator.vue",
+        "manifestId": "source:src/tools/hmac-generator/hmac-generator.vue",
+        "file": "assets/hmac-generator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 9,
+          "fileCount": 10,
+          "rawBytes": 950326,
+          "gzipBytes": 295512,
+          "membershipDigests": {
+            "manifestIdsSha256": "487a9b3a31b5c65c5d45fa9b1355bfa1f51ba271272b746354eb63ee492308a9",
+            "artifactIdentitiesSha256": "589fa27d5163d237096cae399877913ed6d95c077a52c0b611d25dd5f8af5d28"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 8,
+          "fileCount": 8,
+          "rawBytes": 61475,
+          "gzipBytes": 22394,
+          "membershipDigests": {
+            "manifestIdsSha256": "490251ee2e57c0c6ac24d5dc17c3201d100e5b0848e9599b49699965608b4ab4",
+            "artifactIdentitiesSha256": "ac32ab2762e7f8f340683b1d016e97c94b93aeb747815bf8ddcdee4277adceb9"
+          }
+        }
+      },
+      {
+        "id": "src/tools/html-entities/html-entities.vue",
+        "manifestId": "source:src/tools/html-entities/html-entities.vue",
+        "file": "assets/html-entities-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 5,
+          "fileCount": 6,
+          "rawBytes": 922410,
+          "gzipBytes": 284655,
+          "membershipDigests": {
+            "manifestIdsSha256": "a2dc866d7eab179e6f8b7526a1007916f4eea459db66af3b6ed50868f8b3044b",
+            "artifactIdentitiesSha256": "213d0177fdddc3be271c003351b889c31c1104f61d7cdb71ba0ba7b258d55a44"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 4,
+          "fileCount": 4,
+          "rawBytes": 33559,
+          "gzipBytes": 11537,
+          "membershipDigests": {
+            "manifestIdsSha256": "fd8efa7446dc191805a44ae60dd14ba7e9bac19a8c73a26b4b27a7cfa9b5b091",
+            "artifactIdentitiesSha256": "cc09eb5af2c1f56ac05a727dfc9b4bf8e3ba50b82f1e4a2e42b8f45d3aa1f9bd"
+          }
+        }
+      },
+      {
+        "id": "src/tools/html-wysiwyg-editor/html-wysiwyg-editor.vue",
+        "manifestId": "source:src/tools/html-wysiwyg-editor/html-wysiwyg-editor.vue",
+        "file": "assets/html-wysiwyg-editor-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 7,
+          "fileCount": 10,
+          "rawBytes": 1429553,
+          "gzipBytes": 445458,
+          "membershipDigests": {
+            "manifestIdsSha256": "e93042435c857151bbc06937ae1cfa74aa0e19d6fceae624da11ae4cd3ba6d18",
+            "artifactIdentitiesSha256": "7177bc5935055ba6a922dd3cf7b758b7e4243bac1e3e617aee14d3208d23e972"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 6,
+          "fileCount": 8,
+          "rawBytes": 540702,
+          "gzipBytes": 172340,
+          "membershipDigests": {
+            "manifestIdsSha256": "766fc4abaeb74893f03d5c1c8ff7678a3c4c23f7038a27e81e8d30f94f2b339e",
+            "artifactIdentitiesSha256": "fbb9e73700ee6da2a768bc1efe3d3bcfbe996d9bd3232e73e169bb410e476e60"
+          }
+        }
+      },
+      {
+        "id": "src/tools/http-status-codes/http-status-codes.vue",
+        "manifestId": "source:src/tools/http-status-codes/http-status-codes.vue",
+        "file": "assets/http-status-codes-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 2,
+          "fileCount": 3,
+          "rawBytes": 889953,
+          "gzipBytes": 273773,
+          "membershipDigests": {
+            "manifestIdsSha256": "6d9f038b7d4312de3cd60b4d8d70e363a25067619374d7bb986385f6dde6e40c",
+            "artifactIdentitiesSha256": "3a8cadad71116a179446b4b6471c623bf90a09062fc217451ac781c44d481398"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 1,
+          "fileCount": 1,
+          "rawBytes": 1102,
+          "gzipBytes": 655,
+          "membershipDigests": {
+            "manifestIdsSha256": "9291031d05cf66b1efe9ec9d2bc70a27bbc54f0c7baee14020523396ef214acf",
+            "artifactIdentitiesSha256": "ccef4b4a6d9fcd8f38eebf9ab248bdff13c923d886f3198c80068a13ace526ef"
+          }
+        }
+      },
+      {
+        "id": "src/tools/iban-validator-and-parser/iban-validator-and-parser.vue",
+        "manifestId": "source:src/tools/iban-validator-and-parser/iban-validator-and-parser.vue",
+        "file": "assets/iban-validator-and-parser-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 5,
+          "fileCount": 6,
+          "rawBytes": 909025,
+          "gzipBytes": 279341,
+          "membershipDigests": {
+            "manifestIdsSha256": "ae45532ea5e02a319bfaad93ccaf1086aaf610e01dd00af1112f6d2a7cd2aac2",
+            "artifactIdentitiesSha256": "8d3b93d6ba904f9f65f196beb6d5e0b35a956aa4420b9f1e22b334b2a4c73f05"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 4,
+          "fileCount": 4,
+          "rawBytes": 20174,
+          "gzipBytes": 6223,
+          "membershipDigests": {
+            "manifestIdsSha256": "65262b1a0ac7b437ad5ebcda1207d30403acc1faefd19403d47880a92a6c5dc8",
+            "artifactIdentitiesSha256": "97ee88e38514802345fee59d38202697db27d895d4b318f219b6da91be729b72"
+          }
+        }
+      },
+      {
+        "id": "src/tools/integer-base-converter/integer-base-converter.vue",
+        "manifestId": "source:src/tools/integer-base-converter/integer-base-converter.vue",
+        "file": "assets/integer-base-converter-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 19,
+          "fileCount": 21,
+          "rawBytes": 1006981,
+          "gzipBytes": 312914,
+          "membershipDigests": {
+            "manifestIdsSha256": "271aa2084ae3fbbf088bf50af98a18e72232dc33c049bd778c8e74f32d76388a",
+            "artifactIdentitiesSha256": "9dea5eaa37afcc5db95261a07b8b308ff68f93c334c2e9f65a5cce333af74113"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 18,
+          "fileCount": 19,
+          "rawBytes": 118130,
+          "gzipBytes": 39796,
+          "membershipDigests": {
+            "manifestIdsSha256": "cdc1f2c374063d46d5f016dda3556dbe87d1a93ce0cfec8c1ac009d4fdb12d63",
+            "artifactIdentitiesSha256": "c9688483e7fc8ab86b5917da4fd3009791dec962774d5cff6ea918a0d117a7a3"
+          }
+        }
+      },
+      {
+        "id": "src/tools/ipv4-address-converter/ipv4-address-converter.vue",
+        "manifestId": "source:src/tools/ipv4-address-converter/ipv4-address-converter.vue",
+        "file": "assets/ipv4-address-converter-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 8,
+          "fileCount": 9,
+          "rawBytes": 895490,
+          "gzipBytes": 276838,
+          "membershipDigests": {
+            "manifestIdsSha256": "094e19029a43fff5396e8860570e79b273480ed4aeaf8b5a901c095db50040a3",
+            "artifactIdentitiesSha256": "bed14fc64b4ff1a47f47a24b203996225764b241f790b592d851622fce16eaf9"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 7,
+          "fileCount": 7,
+          "rawBytes": 6639,
+          "gzipBytes": 3720,
+          "membershipDigests": {
+            "manifestIdsSha256": "cb716a796112f001b24018b8dc3eb96c10b9b92926158fa8c03efa05d9356e4e",
+            "artifactIdentitiesSha256": "2289d1f02dcfc5e5314d9209adcd5701fdb69a5b019d7e11dde58d657ec18d5b"
+          }
+        }
+      },
+      {
+        "id": "src/tools/ipv4-range-expander/ipv4-range-expander.vue",
+        "manifestId": "source:src/tools/ipv4-range-expander/ipv4-range-expander.vue",
+        "file": "assets/ipv4-range-expander-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 8,
+          "fileCount": 9,
+          "rawBytes": 907282,
+          "gzipBytes": 280427,
+          "membershipDigests": {
+            "manifestIdsSha256": "cc29662db2092f5b0fcfcd82a662bd23a5440fe54a3b1da14ab9763819e18029",
+            "artifactIdentitiesSha256": "a7b54fa398475bcaf13970a47b7a2948cd12254c6dba383892a085ac4f923091"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 7,
+          "fileCount": 7,
+          "rawBytes": 18431,
+          "gzipBytes": 7309,
+          "membershipDigests": {
+            "manifestIdsSha256": "c4f008d86585899d8d84bc2139e9f6e0eeb28f503e8f8d89a3ad892f36f963eb",
+            "artifactIdentitiesSha256": "df25310a2d558bf8438533dc5c6a7f851bad1cd3088c26997bd4bab55bbfbf56"
+          }
+        }
+      },
+      {
+        "id": "src/tools/ipv4-subnet-calculator/ipv4-subnet-calculator.vue",
+        "manifestId": "source:src/tools/ipv4-subnet-calculator/ipv4-subnet-calculator.vue",
+        "file": "assets/ipv4-subnet-calculator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 7,
+          "fileCount": 8,
+          "rawBytes": 901357,
+          "gzipBytes": 278137,
+          "membershipDigests": {
+            "manifestIdsSha256": "eaa78d1c174486640c3bd4478827a3d44d0006b93c18bed5bb98155be461582d",
+            "artifactIdentitiesSha256": "22e0883e196b47a19fc6c736997cf8a0bb99a372e5ba0ee6f5c2dc7ce07faaf1"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 6,
+          "fileCount": 6,
+          "rawBytes": 12506,
+          "gzipBytes": 5019,
+          "membershipDigests": {
+            "manifestIdsSha256": "5ce039dacf944b2372198ed0aef65947e263aa844fc2802e776619e0c474fb7e",
+            "artifactIdentitiesSha256": "0486649ced3c39225cec06827418bb38064482fc63b13bfc665293848b1d2b0a"
+          }
+        }
+      },
+      {
+        "id": "src/tools/ipv6-ula-generator/ipv6-ula-generator.vue",
+        "manifestId": "source:src/tools/ipv6-ula-generator/ipv6-ula-generator.vue",
+        "file": "assets/ipv6-ula-generator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 10,
+          "fileCount": 11,
+          "rawBytes": 956958,
+          "gzipBytes": 297863,
+          "membershipDigests": {
+            "manifestIdsSha256": "876c716c83fd4aac60698894d12f55c5edc7cb2e8731aa0a0085e8773b6c7372",
+            "artifactIdentitiesSha256": "6c20443fc323e8c382950e7369544d87075069b22dfb0756c3ad532ff7be036e"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 9,
+          "fileCount": 9,
+          "rawBytes": 68107,
+          "gzipBytes": 24745,
+          "membershipDigests": {
+            "manifestIdsSha256": "52ae68f90508fe08688529a6d3187d2ae1bf01b04fc817343412a933c01bc199",
+            "artifactIdentitiesSha256": "6be87fa99fd8155bd19f91ea0f820b2df2f9bd845814fe6fdd5441649d0ea26b"
+          }
+        }
+      },
+      {
+        "id": "src/tools/json-diff/json-diff.vue",
+        "manifestId": "source:src/tools/json-diff/json-diff.vue",
+        "file": "assets/json-diff-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 9,
+          "fileCount": 11,
+          "rawBytes": 964023,
+          "gzipBytes": 297338,
+          "membershipDigests": {
+            "manifestIdsSha256": "21811b42d9a58da6e06c5de3168d887d70a3b0809014481862c14a797d91053a",
+            "artifactIdentitiesSha256": "6be0fa8a0e0870cadd5fe5f289c1811586bc9ce03117dfc14506594b288b8c2c"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 8,
+          "fileCount": 9,
+          "rawBytes": 75172,
+          "gzipBytes": 24220,
+          "membershipDigests": {
+            "manifestIdsSha256": "29af307b7ced7fa63fa0c5bc8db42b8602d5f5e2a4cae1de6c74cf7e53bc37d2",
+            "artifactIdentitiesSha256": "8927b031f3763516d9c38e967181f47002b90f4e93d8724765d4743f72604ec0"
+          }
+        }
+      },
+      {
+        "id": "src/tools/json-minify/json-minify.vue",
+        "manifestId": "source:src/tools/json-minify/json-minify.vue",
+        "file": "assets/json-minify-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 9,
+          "fileCount": 11,
+          "rawBytes": 961641,
+          "gzipBytes": 299329,
+          "membershipDigests": {
+            "manifestIdsSha256": "df7cdbc0d91a642833e76b35073ae46f019b414f856d913eeedeace5ff48f8e6",
+            "artifactIdentitiesSha256": "94c4e5e14b70b5c986eeefb459c41f7f659dceacd9fbaa71c46943c30a41c429"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 8,
+          "fileCount": 9,
+          "rawBytes": 72790,
+          "gzipBytes": 26211,
+          "membershipDigests": {
+            "manifestIdsSha256": "ddc92406e012cbbaae834a11179b3fc7e309acf787125b5b58855f435d5c2ff2",
+            "artifactIdentitiesSha256": "85120dba023d2cd82183992a25a0ad8e93ddd22e932e8401379c40aaaab70a2a"
+          }
+        }
+      },
+      {
+        "id": "src/tools/json-to-csv/json-to-csv.vue",
+        "manifestId": "source:src/tools/json-to-csv/json-to-csv.vue",
+        "file": "assets/json-to-csv-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 9,
+          "fileCount": 11,
+          "rawBytes": 961933,
+          "gzipBytes": 299473,
+          "membershipDigests": {
+            "manifestIdsSha256": "01308ffe27e4a57e284bc05ca0b3d6f55ecb92683a207d63ed16e05d9d4a5f6a",
+            "artifactIdentitiesSha256": "c801d4348cfa09f29ee8088694983a2c2de0553ca3afd827f967f9f9d374c9f8"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 8,
+          "fileCount": 9,
+          "rawBytes": 73082,
+          "gzipBytes": 26355,
+          "membershipDigests": {
+            "manifestIdsSha256": "b617eac0c98d4484aa11a370d6ce0b434433d52efc1582d56a0e36d218c5e1d2",
+            "artifactIdentitiesSha256": "ea0056bc775849da9b549d62ecfef8fd0b4880d9d19f7969e098953fe4833fd7"
+          }
+        }
+      },
+      {
+        "id": "src/tools/json-to-toml/json-to-toml.vue",
+        "manifestId": "source:src/tools/json-to-toml/json-to-toml.vue",
+        "file": "assets/json-to-toml-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 10,
+          "fileCount": 12,
+          "rawBytes": 1000745,
+          "gzipBytes": 307105,
+          "membershipDigests": {
+            "manifestIdsSha256": "aac654de1e0c0fd52e82beb96af47f0793ecbfed34d995b21696bb0349b2ea40",
+            "artifactIdentitiesSha256": "7ce5eabaa63707fcc610056faf837e83f9d397027321513bc883fe2761c07b93"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 9,
+          "fileCount": 10,
+          "rawBytes": 111894,
+          "gzipBytes": 33987,
+          "membershipDigests": {
+            "manifestIdsSha256": "9c4079c8a69bc5208063b0b9b786f87744591bd547dba09006ed5835b6b8c6fe",
+            "artifactIdentitiesSha256": "26e2c155c95a1b3022e5e0052a37a8695cec79cf71e7c52468e02d464ef8ef2d"
+          }
+        }
+      },
+      {
+        "id": "src/tools/json-to-xml/json-to-xml.vue",
+        "manifestId": "source:src/tools/json-to-xml/json-to-xml.vue",
+        "file": "assets/json-to-xml-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 11,
+          "fileCount": 13,
+          "rawBytes": 1024000,
+          "gzipBytes": 318989,
+          "membershipDigests": {
+            "manifestIdsSha256": "3c7bde6081c9fe3351fca85b55b2ded3bb1b35782169d93dd634fba354543423",
+            "artifactIdentitiesSha256": "f5430d77f80a1d9769f779f4991756d7bad500f537df6e2eabc518b9d520f446"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 10,
+          "fileCount": 11,
+          "rawBytes": 135149,
+          "gzipBytes": 45871,
+          "membershipDigests": {
+            "manifestIdsSha256": "f05d5e609b4a57fb3d4e0fb72ff1076bd86c301a0b9201c6d48eaf9e1d444c13",
+            "artifactIdentitiesSha256": "b56fff60a664302df3c2497583233ea254b55ebc9425f1a8dd6a64a91077b1ad"
+          }
+        }
+      },
+      {
+        "id": "src/tools/json-to-yaml-converter/json-to-yaml.vue",
+        "manifestId": "source:src/tools/json-to-yaml-converter/json-to-yaml.vue",
+        "file": "assets/json-to-yaml-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 11,
+          "fileCount": 13,
+          "rawBytes": 1062315,
+          "gzipBytes": 330277,
+          "membershipDigests": {
+            "manifestIdsSha256": "df5cbe8aa532f8adc241fe90bdee8877400c9f273f3b4dff0f16804e1782022d",
+            "artifactIdentitiesSha256": "a3c6c6420683479a90fc68ca2b398c103d71e88f088ecd1e469875ff1b2a536e"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 10,
+          "fileCount": 11,
+          "rawBytes": 173464,
+          "gzipBytes": 57159,
+          "membershipDigests": {
+            "manifestIdsSha256": "ff9575e8afd20806563d7ae0ca3eadb19106d792edb4af8b4bdb492a96e3b028",
+            "artifactIdentitiesSha256": "bb22365d205d3751bb51dbca905c4c5cdf722a997de0c73828bb153a7a03cbf1"
+          }
+        }
+      },
+      {
+        "id": "src/tools/json-viewer/json-viewer.vue",
+        "manifestId": "source:src/tools/json-viewer/json-viewer.vue",
+        "file": "assets/json-viewer-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 18,
+          "fileCount": 21,
+          "rawBytes": 1069896,
+          "gzipBytes": 334479,
+          "membershipDigests": {
+            "manifestIdsSha256": "7856cebf2a61308bd9649689641178e18ef6c2f3f4170f06f4f9700678062e87",
+            "artifactIdentitiesSha256": "d78a991c0fa9d0e7bc73b3ec85e7a332733f6f124a6ec151943abdbde732dccc"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 17,
+          "fileCount": 19,
+          "rawBytes": 181045,
+          "gzipBytes": 61361,
+          "membershipDigests": {
+            "manifestIdsSha256": "65e3e585a92ec0d056da3a54310b53c8d76c52d3823770d058841bd0dca6baff",
+            "artifactIdentitiesSha256": "58e0a9ce46806eb26164209eeeb493c68d8a0ce9a5a3143ad25676336bd11bc3"
+          }
+        }
+      },
+      {
+        "id": "src/tools/jwt-parser/jwt-parser.vue",
+        "manifestId": "source:src/tools/jwt-parser/jwt-parser.vue",
+        "file": "assets/jwt-parser-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 5,
+          "fileCount": 7,
+          "rawBytes": 900699,
+          "gzipBytes": 278102,
+          "membershipDigests": {
+            "manifestIdsSha256": "41b3ae1234ad6b20f5f1ef4501fc42abc7bdd8a19f133ee3ac7fc6e332602ade",
+            "artifactIdentitiesSha256": "ba35b10cf31bd93beef5638ac09bbb25ca2ab49f3c52028a5df73081f4e50f89"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 4,
+          "fileCount": 5,
+          "rawBytes": 11848,
+          "gzipBytes": 4984,
+          "membershipDigests": {
+            "manifestIdsSha256": "b60eac627aa6e0f1080e6fad36274adcd124c5f4075fd35e8f057192564ecfd5",
+            "artifactIdentitiesSha256": "e04cac12f82e943363c6cc6adde1af94f1f8e3e2f70dd37f603be5feae6d92c4"
+          }
+        }
+      },
+      {
+        "id": "src/tools/keycode-info/keycode-info.vue",
+        "manifestId": "source:src/tools/keycode-info/keycode-info.vue",
+        "file": "assets/keycode-info-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 7,
+          "fileCount": 8,
+          "rawBytes": 896619,
+          "gzipBytes": 276617,
+          "membershipDigests": {
+            "manifestIdsSha256": "e9c02ac6955d5dcc66dd0d6325e7555757b4e7c765e0d7531289d6bd8233696c",
+            "artifactIdentitiesSha256": "0a2fe01b4565b5be90945e04b3fbc4966c1d4bb5aebc829e188699302d8e83d2"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 6,
+          "fileCount": 6,
+          "rawBytes": 7768,
+          "gzipBytes": 3499,
+          "membershipDigests": {
+            "manifestIdsSha256": "fcf589d1a7952a05bf246612b8c30a7463807e9f3419fdb2169414656246f84a",
+            "artifactIdentitiesSha256": "db81e583814b1be117a6170145737e8b0126ce3b8788df4d47f79096a6abde75"
+          }
+        }
+      },
+      {
+        "id": "src/tools/list-converter/list-converter.vue",
+        "manifestId": "source:src/tools/list-converter/list-converter.vue",
+        "file": "assets/list-converter-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 10,
+          "fileCount": 12,
+          "rawBytes": 977768,
+          "gzipBytes": 305750,
+          "membershipDigests": {
+            "manifestIdsSha256": "db75b893e94ac8af42bbb3bab55e51ac62ff5427455b50f78b82e709b6cd08ce",
+            "artifactIdentitiesSha256": "7233fb079a5dc3d9f3d7ae3c2221905b07ef50248d97bc4d37e237ab4024d969"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 9,
+          "fileCount": 10,
+          "rawBytes": 88917,
+          "gzipBytes": 32632,
+          "membershipDigests": {
+            "manifestIdsSha256": "547b9cdbad71e81f19a14b7b1709b56c1f9c2f84749070b90104bb7cdb0b9a5f",
+            "artifactIdentitiesSha256": "f3e8c90e8cac0655dcff650f6ac47670eb0995320b9521e0c6a9874e33e77fef"
+          }
+        }
+      },
+      {
+        "id": "src/tools/lorem-ipsum-generator/lorem-ipsum-generator.vue",
+        "manifestId": "source:src/tools/lorem-ipsum-generator/lorem-ipsum-generator.vue",
+        "file": "assets/lorem-ipsum-generator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 8,
+          "fileCount": 9,
+          "rawBytes": 951178,
+          "gzipBytes": 294418,
+          "membershipDigests": {
+            "manifestIdsSha256": "40079aeac6a48170999c92333f06e91fd81a650a580ecad3ced76e1bcfc1ad2c",
+            "artifactIdentitiesSha256": "033d89f9e625cde46fbc56830c25322e9e6dc3bb90496e55aa24e9ec22d321cf"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 7,
+          "fileCount": 7,
+          "rawBytes": 62327,
+          "gzipBytes": 21300,
+          "membershipDigests": {
+            "manifestIdsSha256": "634c183eb6fd0a4a0632f45e77429435045291d952fa3017077ea3365ce36b28",
+            "artifactIdentitiesSha256": "b1dcdc4c51a0a3114650a5b9a56f868a22f1c682d93a3979e4ee36aeaa7b8a6d"
+          }
+        }
+      },
+      {
+        "id": "src/tools/mac-address-generator/mac-address-generator.vue",
+        "manifestId": "source:src/tools/mac-address-generator/mac-address-generator.vue",
+        "file": "assets/mac-address-generator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 14,
+          "fileCount": 15,
+          "rawBytes": 963054,
+          "gzipBytes": 298199,
+          "membershipDigests": {
+            "manifestIdsSha256": "e41a0b5768224b335da2bc244fa266ad9255feca400c1d70cacb442feddb2736",
+            "artifactIdentitiesSha256": "57b413219d152f8e67e9b372067c3cb5aeab536c2fcccda5fb3522c472fe7c0d"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 13,
+          "fileCount": 13,
+          "rawBytes": 74203,
+          "gzipBytes": 25081,
+          "membershipDigests": {
+            "manifestIdsSha256": "6140b33ad12d1a88da80f968e14f730e989c0a6f89103d827d4d3e26d7d533e1",
+            "artifactIdentitiesSha256": "19c1f70e2f691534322017f1fd3b428867038628284836d3fde55635adc9a52a"
+          }
+        }
+      },
+      {
+        "id": "src/tools/mac-address-lookup/mac-address-lookup.vue",
+        "manifestId": "source:src/tools/mac-address-lookup/mac-address-lookup.vue",
+        "file": "assets/mac-address-lookup-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 4,
+          "fileCount": 5,
+          "rawBytes": 4239415,
+          "gzipBytes": 1337393,
+          "membershipDigests": {
+            "manifestIdsSha256": "f87de368eb93d1e7ef734851419f03d437aaeacdc7eac57e533a4092741af5af",
+            "artifactIdentitiesSha256": "5f4a1aed5a7616c41f8721256a29525fc6abe16544eeb9c7dd4ab320a1d7c5d9"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 3,
+          "fileCount": 3,
+          "rawBytes": 3350564,
+          "gzipBytes": 1064275,
+          "membershipDigests": {
+            "manifestIdsSha256": "fc3cbcd82cbf3f45fc57c2cc8684aea6c3c002e54dbb08c54eed4e4f5f78bf8b",
+            "artifactIdentitiesSha256": "974f978f72b2b2868dff8cc0a95f6e19aca47a2919162c883c447470855b7788"
+          }
+        }
+      },
+      {
+        "id": "src/tools/markdown-to-html/markdown-to-html.vue",
+        "manifestId": "source:src/tools/markdown-to-html/markdown-to-html.vue",
+        "file": "assets/markdown-to-html-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 12,
+          "fileCount": 14,
+          "rawBytes": 1085295,
+          "gzipBytes": 353060,
+          "membershipDigests": {
+            "manifestIdsSha256": "f1b4cea8ce681d36f3789ca92bedaf6944618723da12ac2e5acb7001e858f299",
+            "artifactIdentitiesSha256": "24b53d03a879f5fa31e938cda3e989186f1a1e37018d4de0fe01bd562d79c82e"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 11,
+          "fileCount": 12,
+          "rawBytes": 196444,
+          "gzipBytes": 79942,
+          "membershipDigests": {
+            "manifestIdsSha256": "bec7a71a4e2158cb91b771fcbc3fd28e01b73bf210b639cebf4cbd1f5b13890a",
+            "artifactIdentitiesSha256": "9a3d735eaed541cd03f1c1192ed5f62155852a6e269db7e5d9e32b0e66b5aa69"
+          }
+        }
+      },
+      {
+        "id": "src/tools/math-evaluator/math-evaluator.vue",
+        "manifestId": "source:src/tools/math-evaluator/math-evaluator.vue",
+        "file": "assets/math-evaluator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 4,
+          "fileCount": 5,
+          "rawBytes": 1512407,
+          "gzipBytes": 453153,
+          "membershipDigests": {
+            "manifestIdsSha256": "b6dd437661cfe413293c0082c297dca4f0dac12bb854d5281e5cd22b3b0983c0",
+            "artifactIdentitiesSha256": "b93d98132adbfb9200bd99f93c98ea02455ffcc868501aaa6ed3d027b9c54113"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 3,
+          "fileCount": 3,
+          "rawBytes": 623556,
+          "gzipBytes": 180035,
+          "membershipDigests": {
+            "manifestIdsSha256": "1cb81bd73474092439de24127806c2fe2e9f7e7d1290614e2d4dc0acc41a7597",
+            "artifactIdentitiesSha256": "0cf33d055a7639dc63bff67a4d4849b28119ffa29935df4a0d8f39ce49497aa6"
+          }
+        }
+      },
+      {
+        "id": "src/tools/meta-tag-generator/meta-tag-generator.vue",
+        "manifestId": "source:src/tools/meta-tag-generator/meta-tag-generator.vue",
+        "file": "assets/meta-tag-generator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 16,
+          "fileCount": 19,
+          "rawBytes": 1047273,
+          "gzipBytes": 327358,
+          "membershipDigests": {
+            "manifestIdsSha256": "c423e42936945996743f4e2c64b474a88b34d2ea7a6564766923ef8926dc6ab1",
+            "artifactIdentitiesSha256": "b4d8ffd1fbdd29495bcbdf28a7076285e7f1c388f9f154b0b09c1e78f39b2449"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 15,
+          "fileCount": 17,
+          "rawBytes": 158422,
+          "gzipBytes": 54240,
+          "membershipDigests": {
+            "manifestIdsSha256": "21d001afc765979172322304b18d7f9ba7dbecec2b1a19eb2dcba2899ecbbe84",
+            "artifactIdentitiesSha256": "e262b3199db0508c27c32b02aea28570beaee40232b05a8d240ef38062510de6"
+          }
+        }
+      },
+      {
+        "id": "src/tools/mime-types/mime-types.vue",
+        "manifestId": "source:src/tools/mime-types/mime-types.vue",
+        "file": "assets/mime-types-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 7,
+          "fileCount": 8,
+          "rawBytes": 1044405,
+          "gzipBytes": 299530,
+          "membershipDigests": {
+            "manifestIdsSha256": "b2548fda8f84b6a2efdbb207496b380af8c7328ec3db0f681bb4539287ea542f",
+            "artifactIdentitiesSha256": "46106c234f0e729bac9a48af6aab2b6ebadff393e5da702a7bc25bbadec09ba7"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 6,
+          "fileCount": 6,
+          "rawBytes": 155554,
+          "gzipBytes": 26412,
+          "membershipDigests": {
+            "manifestIdsSha256": "ca6f20a4279e01672fc192e06ebeaa7a06445f5da8ed012971c919fb1706b29e",
+            "artifactIdentitiesSha256": "f919c9a1455ea84b534fcdba05f765d7e7f36975dd0cb9ec28c14ee6035ada34"
+          }
+        }
+      },
+      {
+        "id": "src/tools/numeronym-generator/numeronym-generator.vue",
+        "manifestId": "source:src/tools/numeronym-generator/numeronym-generator.vue",
+        "file": "assets/numeronym-generator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 5,
+          "fileCount": 6,
+          "rawBytes": 891794,
+          "gzipBytes": 275053,
+          "membershipDigests": {
+            "manifestIdsSha256": "578429ad882bef90d1d5a35b93c9ccf1c48b4132e7b26e30967285656e13a351",
+            "artifactIdentitiesSha256": "2ef06505de0a7577bfd10bbc024f92d7094b25e5659fa45e20e8fed061433b05"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 4,
+          "fileCount": 4,
+          "rawBytes": 2943,
+          "gzipBytes": 1935,
+          "membershipDigests": {
+            "manifestIdsSha256": "87a163959d12a6c04bf647d17dfee8ecb859a2f9330847e8656dcad876382ab4",
+            "artifactIdentitiesSha256": "5c26b80dd4cf305e0f38c2882172a76a24065a8d584cfa51fcd15d07cacf6482"
+          }
+        }
+      },
+      {
+        "id": "src/tools/otp-code-generator-and-validator/otp-code-generator-and-validator.vue",
+        "manifestId": "source:src/tools/otp-code-generator-and-validator/otp-code-generator-and-validator.vue",
+        "file": "assets/otp-code-generator-and-validator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 15,
+          "fileCount": 17,
+          "rawBytes": 1027965,
+          "gzipBytes": 324276,
+          "membershipDigests": {
+            "manifestIdsSha256": "6baa3cdd461409925103bc2d963b4b56ecb05b8a490d4c320b644ebc5e00742f",
+            "artifactIdentitiesSha256": "a9673f25ca1017ab0aab41f46d421aaab53c410892c17938365957585a189348"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 14,
+          "fileCount": 15,
+          "rawBytes": 139114,
+          "gzipBytes": 51158,
+          "membershipDigests": {
+            "manifestIdsSha256": "2b795b04fb02d02bb0cb2b4b089c3b83f9da3a418a804a9a19444b5cecc622a6",
+            "artifactIdentitiesSha256": "863b98fcbadd4f2bc94306fd239abba25d61d346e52bff451f90e2fdc2e48418"
+          }
+        }
+      },
+      {
+        "id": "src/tools/password-strength-analyser/password-strength-analyser.vue",
+        "manifestId": "source:src/tools/password-strength-analyser/password-strength-analyser.vue",
+        "file": "assets/password-strength-analyser-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 2,
+          "fileCount": 3,
+          "rawBytes": 891758,
+          "gzipBytes": 274550,
+          "membershipDigests": {
+            "manifestIdsSha256": "014d7e25c26d5ce1a0581ac4d5463276a9734927802026326493b210ccf0733c",
+            "artifactIdentitiesSha256": "f206756100414c0cffc095ad3a56cebdef96464c09e2cf513b74d3b1683042eb"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 1,
+          "fileCount": 1,
+          "rawBytes": 2907,
+          "gzipBytes": 1432,
+          "membershipDigests": {
+            "manifestIdsSha256": "970a02b5a85fa70000e179643e99b0ba51295fce65516a705318625510c2641e",
+            "artifactIdentitiesSha256": "7c2db8367c5e0475d560b36f89a7e856410a6bf884e62d5aa253be2a80f68eb5"
+          }
+        }
+      },
+      {
+        "id": "src/tools/pdf-signature-checker/pdf-signature-checker.vue",
+        "manifestId": "source:src/tools/pdf-signature-checker/pdf-signature-checker.vue",
+        "file": "assets/pdf-signature-checker-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 12,
+          "fileCount": 14,
+          "rawBytes": 1428464,
+          "gzipBytes": 488591,
+          "membershipDigests": {
+            "manifestIdsSha256": "8e70b27beaca1236d2264ec4016aa0ad93fa37f696f4d6651ea36e881bdf23b7",
+            "artifactIdentitiesSha256": "b5a4259df2c2108e6decc834e69db21db0276d059c07daa3fab5b928870f7599"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 11,
+          "fileCount": 12,
+          "rawBytes": 539613,
+          "gzipBytes": 215473,
+          "membershipDigests": {
+            "manifestIdsSha256": "2db7d7aee3024c106aca971972407e6124a4e4e90a8b563f574f8c1b25a4858b",
+            "artifactIdentitiesSha256": "d2108c6505971c26d0558372b95811aa90ccec2f2bc25f342a776e4c06a19a43"
+          }
+        }
+      },
+      {
+        "id": "src/tools/percentage-calculator/percentage-calculator.vue",
+        "manifestId": "source:src/tools/percentage-calculator/percentage-calculator.vue",
+        "file": "assets/percentage-calculator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 13,
+          "fileCount": 14,
+          "rawBytes": 962127,
+          "gzipBytes": 297313,
+          "membershipDigests": {
+            "manifestIdsSha256": "217fc5e59561ac894ecdcf1f765900a81406a0aadafeae22f8c1600536aa7a5f",
+            "artifactIdentitiesSha256": "a6c3a76200a9097c414ae5bde72b913a9e321ed722a2a494acfc6215d6953d21"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 12,
+          "fileCount": 12,
+          "rawBytes": 73276,
+          "gzipBytes": 24195,
+          "membershipDigests": {
+            "manifestIdsSha256": "7e5e7af91eb04557b83f2bd7af46cb1e3f913c8eef1a3651be1501f90fdc9568",
+            "artifactIdentitiesSha256": "c807b586c84b0dda04b8b4b78ef56470b73ed8229766a6beb88689a006410496"
+          }
+        }
+      },
+      {
+        "id": "src/tools/phone-parser-and-formatter/phone-parser-and-formatter.vue",
+        "manifestId": "source:src/tools/phone-parser-and-formatter/phone-parser-and-formatter.vue",
+        "file": "assets/phone-parser-and-formatter-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 7,
+          "fileCount": 8,
+          "rawBytes": 1121738,
+          "gzipBytes": 333466,
+          "membershipDigests": {
+            "manifestIdsSha256": "cfea7b55db3797b8dd79dbaccd3c0762319997e48e7bd0d538d111ae736c4f17",
+            "artifactIdentitiesSha256": "17669f504338aa8ded2611a53913a52f8a975210e2ef17bca7d120c59af0764e"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 6,
+          "fileCount": 6,
+          "rawBytes": 232887,
+          "gzipBytes": 60348,
+          "membershipDigests": {
+            "manifestIdsSha256": "58055f16faebe6a824d113373b4e2086c6f6febf2292f4c92f31123aaa993b94",
+            "artifactIdentitiesSha256": "866102f56eddb6778941702c6a41e5d2f2fe38e7005bdad4922145eb975b78a1"
+          }
+        }
+      },
+      {
+        "id": "src/tools/qr-code-generator/qr-code-generator.vue",
+        "manifestId": "source:src/tools/qr-code-generator/qr-code-generator.vue",
+        "file": "assets/qr-code-generator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 19,
+          "fileCount": 20,
+          "rawBytes": 1203636,
+          "gzipBytes": 354753,
+          "membershipDigests": {
+            "manifestIdsSha256": "6a2ada70fbd48497b50688e90be9666e6359aea2c2e5975ed8c44755b6df6ff1",
+            "artifactIdentitiesSha256": "9a629fba0d1f0e317580726ec301a9957c9667790b3a8bc27370fe8d1578906c"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 18,
+          "fileCount": 18,
+          "rawBytes": 314785,
+          "gzipBytes": 81635,
+          "membershipDigests": {
+            "manifestIdsSha256": "6c04d25b048de798eac88947a3dfedb3e250fa9d1878bfc62527780fda7e8322",
+            "artifactIdentitiesSha256": "64f30b687381b1e28ebbda3a89b7b11ef51644b82d756fddfb6f0f66de1b3b78"
+          }
+        }
+      },
+      {
+        "id": "src/tools/random-port-generator/random-port-generator.vue",
+        "manifestId": "source:src/tools/random-port-generator/random-port-generator.vue",
+        "file": "assets/random-port-generator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 4,
+          "fileCount": 6,
+          "rawBytes": 891281,
+          "gzipBytes": 274659,
+          "membershipDigests": {
+            "manifestIdsSha256": "985612a274dfd3ba968ab9bc2867b113d061f0789c3227f2d66e06406e158338",
+            "artifactIdentitiesSha256": "b5f445a26bd58f388d4dc9111e89d6102b8d7a61a7b74ddba0a0d9230f94730e"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 3,
+          "fileCount": 4,
+          "rawBytes": 2430,
+          "gzipBytes": 1541,
+          "membershipDigests": {
+            "manifestIdsSha256": "50cc7fb0b2a9965a84fc29f6cfff38975363bfcb7710b64882664d2effa826b2",
+            "artifactIdentitiesSha256": "d8686bf38ef72a121c05721e5c7f128b5fac94a2a01912b2ad0b25dd1cf2a7a0"
+          }
+        }
+      },
+      {
+        "id": "src/tools/regex-memo/regex-memo.vue",
+        "manifestId": "source:src/tools/regex-memo/regex-memo.vue",
+        "file": "assets/regex-memo-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 2,
+          "fileCount": 4,
+          "rawBytes": 898977,
+          "gzipBytes": 275151,
+          "membershipDigests": {
+            "manifestIdsSha256": "2aa4d9c5bd433260461454153998d4129572c01b06a3d1c6e5d6ddb8ebf535b3",
+            "artifactIdentitiesSha256": "bac70be7700180d8cba5ca6ec62f4e9c37478e398b3e15fe7f7014c5d7c76572"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 1,
+          "fileCount": 2,
+          "rawBytes": 10126,
+          "gzipBytes": 2033,
+          "membershipDigests": {
+            "manifestIdsSha256": "aaff1f10d0291207dd7885913d879c8e66089b092b4c9862eb81e85f13429e8b",
+            "artifactIdentitiesSha256": "08cba4adb893351d30dd87809dd2fd1816027e5ff39db9e00082a91c953ed308"
+          }
+        }
+      },
+      {
+        "id": "src/tools/regex-tester/regex-tester.vue",
+        "manifestId": "source:src/tools/regex-tester/regex-tester.vue",
+        "file": "assets/regex-tester-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 11,
+          "fileCount": 14,
+          "rawBytes": 934931,
+          "gzipBytes": 290186,
+          "membershipDigests": {
+            "manifestIdsSha256": "ff2ae26dba127b12642354bb045b75aef815b6a2d3a5eb11ee75797de4b84e3f",
+            "artifactIdentitiesSha256": "9c39ae90d5d988658ad2cca3d2a13564460bcf1adc2201d948c2659b0f176022"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 10,
+          "fileCount": 12,
+          "rawBytes": 46080,
+          "gzipBytes": 17068,
+          "membershipDigests": {
+            "manifestIdsSha256": "fcf62d863fd9ed59a53f004604d0bc058e483f1a0285ab5fc8adfa6536f64aff",
+            "artifactIdentitiesSha256": "251904b961bb2befe2c845f9470f10398655bba19c7c47ddcb8a0fa2aebc1bc4"
+          }
+        }
+      },
+      {
+        "id": "src/tools/roman-numeral-converter/roman-numeral-converter.vue",
+        "manifestId": "source:src/tools/roman-numeral-converter/roman-numeral-converter.vue",
+        "file": "assets/roman-numeral-converter-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 12,
+          "fileCount": 14,
+          "rawBytes": 990747,
+          "gzipBytes": 306810,
+          "membershipDigests": {
+            "manifestIdsSha256": "596cc9e2924dcfd86d8ea5686571dd08fb0336b9d848565b14d88c3dd6e2d87f",
+            "artifactIdentitiesSha256": "541a2a4650aa712915841b955dc3ac13664685ab9df841c36044b23fb892802d"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 11,
+          "fileCount": 12,
+          "rawBytes": 101896,
+          "gzipBytes": 33692,
+          "membershipDigests": {
+            "manifestIdsSha256": "cf6809cda9db99b568d584d88739aafcc6a9add89256d26ca96ca7ab4f6163dc",
+            "artifactIdentitiesSha256": "30ec7b0fdbd85a4c533d2cdae530500892af1253b5021fd21736b95d278ec86c"
+          }
+        }
+      },
+      {
+        "id": "src/tools/rsa-key-pair-generator/rsa-key-pair-generator.vue",
+        "manifestId": "source:src/tools/rsa-key-pair-generator/rsa-key-pair-generator.vue",
+        "file": "assets/rsa-key-pair-generator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 19,
+          "fileCount": 22,
+          "rawBytes": 1338157,
+          "gzipBytes": 405637,
+          "membershipDigests": {
+            "manifestIdsSha256": "932f07c128d20cd4123784f52ad4125c477d6eace905724e0462eaa6e0ac3c75",
+            "artifactIdentitiesSha256": "1893dc5b5453e3b6cad955687a9721a6c2cb14e3598685d5ffab64d2c7862314"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 18,
+          "fileCount": 20,
+          "rawBytes": 449306,
+          "gzipBytes": 132519,
+          "membershipDigests": {
+            "manifestIdsSha256": "292c22129a16b4a5883442180d247315ad84180df157bc9857b5e1f8275697f5",
+            "artifactIdentitiesSha256": "621a7b2c673292be00d7f5e8539d96f0c77643bd5818fd494fedea88d94b3de8"
+          }
+        }
+      },
+      {
+        "id": "src/tools/safelink-decoder/safelink-decoder.vue",
+        "manifestId": "source:src/tools/safelink-decoder/safelink-decoder.vue",
+        "file": "assets/safelink-decoder-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 9,
+          "fileCount": 11,
+          "rawBytes": 967101,
+          "gzipBytes": 302381,
+          "membershipDigests": {
+            "manifestIdsSha256": "c81ab008acd3ae9b1ca6ddf2f3486367690f673ef824930aea8f040c6091d2b2",
+            "artifactIdentitiesSha256": "08bfe90278dc06da92e457c7ff8f9c7d3a927cc3e3cb39808fac49a7817535d3"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 8,
+          "fileCount": 9,
+          "rawBytes": 78250,
+          "gzipBytes": 29263,
+          "membershipDigests": {
+            "manifestIdsSha256": "08725ce07fabfcb695f73669d863ec3cb1267871b93e8819d24551d0e7527145",
+            "artifactIdentitiesSha256": "3da4a1876d7b38fc7da910258525909fcfba722332ed440a331b266563eb1afd"
+          }
+        }
+      },
+      {
+        "id": "src/tools/slugify-string/slugify-string.vue",
+        "manifestId": "source:src/tools/slugify-string/slugify-string.vue",
+        "file": "assets/slugify-string-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 4,
+          "fileCount": 5,
+          "rawBytes": 916568,
+          "gzipBytes": 282645,
+          "membershipDigests": {
+            "manifestIdsSha256": "6aaa0a3c558191c5390187fbe2884ceb5555ce3c9244f7e0241dc6f59903b2eb",
+            "artifactIdentitiesSha256": "97e5b7dc83948574fc3ccf76ccb6dd1b4f05410d4c27ff88e39c048706eeb562"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 3,
+          "fileCount": 3,
+          "rawBytes": 27717,
+          "gzipBytes": 9527,
+          "membershipDigests": {
+            "manifestIdsSha256": "c3cfd026a270182344a0d6329d2ada315baa789e30630eb10c9a5768f2e94037",
+            "artifactIdentitiesSha256": "7ab2c4c5442179da878e980706bb4000f9f8a5403650795aa72067fc3e1648fa"
+          }
+        }
+      },
+      {
+        "id": "src/tools/sql-prettify/sql-prettify.vue",
+        "manifestId": "source:src/tools/sql-prettify/sql-prettify.vue",
+        "file": "assets/sql-prettify-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 8,
+          "fileCount": 11,
+          "rawBytes": 1176554,
+          "gzipBytes": 357642,
+          "membershipDigests": {
+            "manifestIdsSha256": "be9983e8eb903430c19c9e7145a11beff51576aa0385cd9daaa56243f31b7f60",
+            "artifactIdentitiesSha256": "34f1ca730fff616f3224071749e49435a6a6a1353e237100e4e6229351038a39"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 7,
+          "fileCount": 9,
+          "rawBytes": 287703,
+          "gzipBytes": 84524,
+          "membershipDigests": {
+            "manifestIdsSha256": "7bf9ca8fe5409dac6aba576425b43a88b6c6a295b16474e918fdfbedfada5dbf",
+            "artifactIdentitiesSha256": "eb806afd7993e290573f9bb248d7de316edea75ccd8849d4a1e7fb7c66f19dda"
+          }
+        }
+      },
+      {
+        "id": "src/tools/string-obfuscator/string-obfuscator.vue",
+        "manifestId": "source:src/tools/string-obfuscator/string-obfuscator.vue",
+        "file": "assets/string-obfuscator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 13,
+          "fileCount": 14,
+          "rawBytes": 969161,
+          "gzipBytes": 299765,
+          "membershipDigests": {
+            "manifestIdsSha256": "de73d47465a9ab2feb691cfaa7a39ce98dce5cfd6b83a6b54f257f5a4d5c8d5a",
+            "artifactIdentitiesSha256": "c0212d86737e986ba78bea841ee8a3855b0ceac3dca6fcd41c954f0eccd6df6f"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 12,
+          "fileCount": 12,
+          "rawBytes": 80310,
+          "gzipBytes": 26647,
+          "membershipDigests": {
+            "manifestIdsSha256": "c7d6f18882220d097270d44b7c5e815f733d3bb5dd7976e3e474e7a2c329493d",
+            "artifactIdentitiesSha256": "e6fa67af714dc8e612bb0bc09268fe11aa9a8fa7a6142f537185e85f3af530b8"
+          }
+        }
+      },
+      {
+        "id": "src/tools/svg-placeholder-generator/svg-placeholder-generator.vue",
+        "manifestId": "source:src/tools/svg-placeholder-generator/svg-placeholder-generator.vue",
+        "file": "assets/svg-placeholder-generator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 23,
+          "fileCount": 26,
+          "rawBytes": 1217629,
+          "gzipBytes": 359296,
+          "membershipDigests": {
+            "manifestIdsSha256": "49e9ad53ccdcf3c32f6583ff8debfbc42c8e74c1771f597f236ebe3db57594ac",
+            "artifactIdentitiesSha256": "1bbd0e8770952c2061b1c58ce54faf760ac571e4c0b37b7153ee738905cfc0d2"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 22,
+          "fileCount": 24,
+          "rawBytes": 328778,
+          "gzipBytes": 86178,
+          "membershipDigests": {
+            "manifestIdsSha256": "8cd6a092db2c74792e26ecf46b8ee0383715f5697fcb1d7b98708181e1d7f1e5",
+            "artifactIdentitiesSha256": "e32260e9a4a3bc3a774e3afee8f7cd99fd8475099a322fdf8dd6395bad6ec93a"
+          }
+        }
+      },
+      {
+        "id": "src/tools/temperature-converter/temperature-converter.vue",
+        "manifestId": "source:src/tools/temperature-converter/temperature-converter.vue",
+        "file": "assets/temperature-converter-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 12,
+          "fileCount": 13,
+          "rawBytes": 964569,
+          "gzipBytes": 297859,
+          "membershipDigests": {
+            "manifestIdsSha256": "d411c5c0c9ba63f086f16afc327f2503e0544a3f633981e4d6ce11d745a770ec",
+            "artifactIdentitiesSha256": "872604db3812e429d3cf9c65f72f26c6cd3a28ac3b9ab56279b6afe11403f72f"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 11,
+          "fileCount": 11,
+          "rawBytes": 75718,
+          "gzipBytes": 24741,
+          "membershipDigests": {
+            "manifestIdsSha256": "965107dbb74f20cfb427b3b5eefa4f2578ddd4d851f2a5ff1a8dae4d574f1c62",
+            "artifactIdentitiesSha256": "ba8a186f56feb31f45dd724125140b128382ffad7c3daf6b807a3ec620b531ad"
+          }
+        }
+      },
+      {
+        "id": "src/tools/text-diff/text-diff.vue",
+        "manifestId": "source:src/tools/text-diff/text-diff.vue",
+        "file": "assets/text-diff-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 5,
+          "fileCount": 7,
+          "rawBytes": 3157258,
+          "gzipBytes": 856116,
+          "membershipDigests": {
+            "manifestIdsSha256": "2e881c30d3f374fbffe74bb645ecc5222f059a61fdbb8320d0fcc5718a59208e",
+            "artifactIdentitiesSha256": "24cfe57a31d56a0e36295a9a3a1b7f3ebeea4372c9b0088d0ea4d1dad18d8984"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 4,
+          "fileCount": 5,
+          "rawBytes": 2268407,
+          "gzipBytes": 582998,
+          "membershipDigests": {
+            "manifestIdsSha256": "e5e49b97475a1503940be3c2da136b78ad6e0a45be950265059f9116d4539832",
+            "artifactIdentitiesSha256": "9ff0a4be501a8252f118e85af6b76ea13811501d6491214a1226eaeb7389b8e2"
+          }
+        }
+      },
+      {
+        "id": "src/tools/text-statistics/text-statistics.vue",
+        "manifestId": "source:src/tools/text-statistics/text-statistics.vue",
+        "file": "assets/text-statistics-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 4,
+          "fileCount": 5,
+          "rawBytes": 892988,
+          "gzipBytes": 275017,
+          "membershipDigests": {
+            "manifestIdsSha256": "224622e48ea1ae6e69213b8266882b469bca24784db41f01025b08047e9c05c3",
+            "artifactIdentitiesSha256": "f6e9e73cb3b1d56c558d9be1a4e5746606933388b695907bfe42870ab2a14841"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 3,
+          "fileCount": 3,
+          "rawBytes": 4137,
+          "gzipBytes": 1899,
+          "membershipDigests": {
+            "manifestIdsSha256": "d76dc4e5abc204a49736646ca7a33cafceca7b734276fa3615c291c656b07100",
+            "artifactIdentitiesSha256": "41b69c2dea461750a0ab6978a69b6b95cde05bac14236efaf31635ecf16a5e3d"
+          }
+        }
+      },
+      {
+        "id": "src/tools/text-to-binary/text-to-binary.vue",
+        "manifestId": "source:src/tools/text-to-binary/text-to-binary.vue",
+        "file": "assets/text-to-binary-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 5,
+          "fileCount": 6,
+          "rawBytes": 892215,
+          "gzipBytes": 274838,
+          "membershipDigests": {
+            "manifestIdsSha256": "b8148c91ed4670a72d779a24dad1e9ada2d07b6ebe491664d8a2c9ad03242dcd",
+            "artifactIdentitiesSha256": "560fbf8a565bca5871f4c9a6f127231653c3bbfda290129cb761ea84a2039b55"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 4,
+          "fileCount": 4,
+          "rawBytes": 3364,
+          "gzipBytes": 1720,
+          "membershipDigests": {
+            "manifestIdsSha256": "6ca3298151597f9664e2f7227ae749d8d0c127bfa9c250f3cb4cbb58edda3fbf",
+            "artifactIdentitiesSha256": "1072191ee519f3c9f564684d772528a738923ed1a210cd576773ac646e20bcb1"
+          }
+        }
+      },
+      {
+        "id": "src/tools/text-to-nato-alphabet/text-to-nato-alphabet.vue",
+        "manifestId": "source:src/tools/text-to-nato-alphabet/text-to-nato-alphabet.vue",
+        "file": "assets/text-to-nato-alphabet-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 3,
+          "fileCount": 4,
+          "rawBytes": 890842,
+          "gzipBytes": 274363,
+          "membershipDigests": {
+            "manifestIdsSha256": "10a44fdc0f56a3a4c278e4621abbbbdf9ef1bf1bf1c24cc4afda60c91c1f50b1",
+            "artifactIdentitiesSha256": "33e8c97d563dd5ed4ee0630d6b2c52578dfdf744f12a160c27677cd67fde1241"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 2,
+          "fileCount": 2,
+          "rawBytes": 1991,
+          "gzipBytes": 1245,
+          "membershipDigests": {
+            "manifestIdsSha256": "d65b2ef06fc37fe2a16e09a5793442082a0efa5cd0dedee4df0c636289bdab18",
+            "artifactIdentitiesSha256": "6e0672a021f88083b0d3f913ff4b0ffdbd791eefc768070fc09e9f2f40287273"
+          }
+        }
+      },
+      {
+        "id": "src/tools/text-to-unicode/text-to-unicode.vue",
+        "manifestId": "source:src/tools/text-to-unicode/text-to-unicode.vue",
+        "file": "assets/text-to-unicode-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 3,
+          "fileCount": 4,
+          "rawBytes": 891600,
+          "gzipBytes": 274430,
+          "membershipDigests": {
+            "manifestIdsSha256": "c0dd7e0b9e219eed1d220a693865798ff87795bfdc23f3f4947110172ed5dc2d",
+            "artifactIdentitiesSha256": "2377730d6f4d670257339414e7a6b7ce1884b51a0d974026730f6cfa9562a095"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 2,
+          "fileCount": 2,
+          "rawBytes": 2749,
+          "gzipBytes": 1312,
+          "membershipDigests": {
+            "manifestIdsSha256": "e7651246a3b19b7bb373b90d591253d5c87dd7ed6eee8d637314768832d86821",
+            "artifactIdentitiesSha256": "0f1827cc33818ac9290c2d0cac450ef25b5ef064295db302693afcd74a818d9c"
+          }
+        }
+      },
+      {
+        "id": "src/tools/token-generator/token-generator.tool.vue",
+        "manifestId": "source:src/tools/token-generator/token-generator.tool.vue",
+        "file": "assets/token-generator.tool-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 11,
+          "fileCount": 13,
+          "rawBytes": 954012,
+          "gzipBytes": 296114,
+          "membershipDigests": {
+            "manifestIdsSha256": "2389bc74d3b0b9e35f147ccdc7aa237fd953dcd0b6eb190ec14b8ab1494889ed",
+            "artifactIdentitiesSha256": "22c96b526d6e14260bf1d2ba7f4d3e13d48ea40d03e9b29f40f846e4ea6b832d"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 10,
+          "fileCount": 11,
+          "rawBytes": 65161,
+          "gzipBytes": 22996,
+          "membershipDigests": {
+            "manifestIdsSha256": "0bb0fb49152caff9f124ba0d781f5316b7b814d62db3cd402751f817f14adcf3",
+            "artifactIdentitiesSha256": "2b8b222902123c6d36ed3ee7498a802cc52ccb9202b5a6f4fdfba81f2baf105b"
+          }
+        }
+      },
+      {
+        "id": "src/tools/toml-to-json/toml-to-json.vue",
+        "manifestId": "source:src/tools/toml-to-json/toml-to-json.vue",
+        "file": "assets/toml-to-json-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 11,
+          "fileCount": 13,
+          "rawBytes": 973922,
+          "gzipBytes": 299553,
+          "membershipDigests": {
+            "manifestIdsSha256": "941adfd88f9312e025858673ff95dc9d6070f7540d6d21069cb93a0b3976a898",
+            "artifactIdentitiesSha256": "33fa27db399d04562066936128401ad32aab91fbdf08da50b85d3601cd8949b6"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 10,
+          "fileCount": 11,
+          "rawBytes": 85071,
+          "gzipBytes": 26435,
+          "membershipDigests": {
+            "manifestIdsSha256": "bf86ed871a8061c0535d6e0b562e473ff045b0e9c06ed3b2a59514582011de4a",
+            "artifactIdentitiesSha256": "263d84964b73af728c647aa04172caabe5fc3eb89a066fafa0baf364b138bdb7"
+          }
+        }
+      },
+      {
+        "id": "src/tools/toml-to-yaml/toml-to-yaml.vue",
+        "manifestId": "source:src/tools/toml-to-yaml/toml-to-yaml.vue",
+        "file": "assets/toml-to-yaml-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 12,
+          "fileCount": 14,
+          "rawBytes": 1074514,
+          "gzipBytes": 330421,
+          "membershipDigests": {
+            "manifestIdsSha256": "52f4ee5aebcd57bb4ab5c589963fee66daa1cd6c6c67bda1fd9ec0f647d1b41e",
+            "artifactIdentitiesSha256": "95b983a91de8bb691981b5fb33150bd719813b6899200049a94fd38ca2a32cf5"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 11,
+          "fileCount": 12,
+          "rawBytes": 185663,
+          "gzipBytes": 57303,
+          "membershipDigests": {
+            "manifestIdsSha256": "a856362712aa3b257b57c3fc759031b0d6694aa1587a52efea086206693ee4c7",
+            "artifactIdentitiesSha256": "2342fde56ac181c56fd37626a680c3eeecbc69b9559e4f12ecfb707bd7e3ad09"
+          }
+        }
+      },
+      {
+        "id": "src/tools/ulid-generator/ulid-generator.vue",
+        "manifestId": "source:src/tools/ulid-generator/ulid-generator.vue",
+        "file": "assets/ulid-generator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 13,
+          "fileCount": 14,
+          "rawBytes": 962768,
+          "gzipBytes": 298135,
+          "membershipDigests": {
+            "manifestIdsSha256": "b62a9a06873a1f78c4ad8d422eeaf43a3ddd0fc96536f4b164c1006f4697ae1c",
+            "artifactIdentitiesSha256": "d6a82f1190a4d716834af128beb3bb89d39076f22de359213424ced2e516e621"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 12,
+          "fileCount": 12,
+          "rawBytes": 73917,
+          "gzipBytes": 25017,
+          "membershipDigests": {
+            "manifestIdsSha256": "895e497c11a62ae1d61be64d59aaa9ce687a3cccb066427ee1e434b9df8dfbb6",
+            "artifactIdentitiesSha256": "d7636bfb22abc6b09ef3ae7d02a9ab6355e3172b2c6aba112460ff9acc883a25"
+          }
+        }
+      },
+      {
+        "id": "src/tools/url-encoder/url-encoder.vue",
+        "manifestId": "source:src/tools/url-encoder/url-encoder.vue",
+        "file": "assets/url-encoder-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 5,
+          "fileCount": 6,
+          "rawBytes": 893289,
+          "gzipBytes": 275250,
+          "membershipDigests": {
+            "manifestIdsSha256": "082fd0193c40b5d976a929d572fca647979e6e79111b08521285cb8636cb60df",
+            "artifactIdentitiesSha256": "24ca713a847808b57605b37768f60cd1f28a2ae06917db0d5968561fccb70f2b"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 4,
+          "fileCount": 4,
+          "rawBytes": 4438,
+          "gzipBytes": 2132,
+          "membershipDigests": {
+            "manifestIdsSha256": "87dbe1f24130e7f7d1b0c9c5c80d0aa72731be0e321843b3881d1e7c460cdc9a",
+            "artifactIdentitiesSha256": "0f2b44c968adfe4f806b63f6e20ea9cd4473da24baeaa9f838c76c802d69b5bf"
+          }
+        }
+      },
+      {
+        "id": "src/tools/url-parser/url-parser.vue",
+        "manifestId": "source:src/tools/url-parser/url-parser.vue",
+        "file": "assets/url-parser-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 6,
+          "fileCount": 8,
+          "rawBytes": 895404,
+          "gzipBytes": 276672,
+          "membershipDigests": {
+            "manifestIdsSha256": "f74f5b8352a2eb34ee7448f540e52a449671cdd488bb1ffb60f3398f1e0bedea",
+            "artifactIdentitiesSha256": "13e42b891b12b57d47ff5b14b43f408e9c396dc6671ad39eb84ba1ae8e098da8"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 5,
+          "fileCount": 6,
+          "rawBytes": 6553,
+          "gzipBytes": 3554,
+          "membershipDigests": {
+            "manifestIdsSha256": "9a3635e630744ac14870f17336c5bed7c848c5226a8ea51fe4314f549cbccbd5",
+            "artifactIdentitiesSha256": "3d30000be07d74233a72c628dc827918156d88e008457efee667deb05216f1bc"
+          }
+        }
+      },
+      {
+        "id": "src/tools/user-agent-parser/user-agent-parser.vue",
+        "manifestId": "source:src/tools/user-agent-parser/user-agent-parser.vue",
+        "file": "assets/user-agent-parser-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 8,
+          "fileCount": 9,
+          "rawBytes": 926655,
+          "gzipBytes": 288274,
+          "membershipDigests": {
+            "manifestIdsSha256": "a218ce90fc2505c6d3dcb4f4755c392083627cd6f93d11eb0e5f5e160f75a810",
+            "artifactIdentitiesSha256": "414a924d563ce8fa84244b44950e61a4efdb9614a4e10d8f33e8ea565b28cea7"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 7,
+          "fileCount": 7,
+          "rawBytes": 37804,
+          "gzipBytes": 15156,
+          "membershipDigests": {
+            "manifestIdsSha256": "fc61f89c98e2099fb3c6691c5e44f447d3b5d1b36942111401c496d3bb844c3b",
+            "artifactIdentitiesSha256": "9b1c10efb2a968b337dfab73bdce661e8a1d0352e400ab14b7ec9b36483988f0"
+          }
+        }
+      },
+      {
+        "id": "src/tools/uuid-generator/uuid-generator.vue",
+        "manifestId": "source:src/tools/uuid-generator/uuid-generator.vue",
+        "file": "assets/uuid-generator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 14,
+          "fileCount": 16,
+          "rawBytes": 971094,
+          "gzipBytes": 301411,
+          "membershipDigests": {
+            "manifestIdsSha256": "3382ab9849efbac7f3ad86ab8ae4b6b4663e0fc7f9c3a569930b68700d0ea5a3",
+            "artifactIdentitiesSha256": "a115c6745d34581417416241c6eda89e0ac17b926f7af8bfb63867fc815e2f6c"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 13,
+          "fileCount": 14,
+          "rawBytes": 82243,
+          "gzipBytes": 28293,
+          "membershipDigests": {
+            "manifestIdsSha256": "5a224c6f83180162810480bac900183c5bf69ecf4d5688c273ecc8f2f816aae1",
+            "artifactIdentitiesSha256": "dac1ab2da53b6a99442c990dc9c52028664649365705b1a444f576415ad50115"
+          }
+        }
+      },
+      {
+        "id": "src/tools/wifi-qr-code-generator/wifi-qr-code-generator.vue",
+        "manifestId": "source:src/tools/wifi-qr-code-generator/wifi-qr-code-generator.vue",
+        "file": "assets/wifi-qr-code-generator-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 17,
+          "fileCount": 18,
+          "rawBytes": 1185370,
+          "gzipBytes": 346831,
+          "membershipDigests": {
+            "manifestIdsSha256": "ef1bf7174f3e32a660483bda081ada820a584f4e1b198c78865f85abfc6e85e3",
+            "artifactIdentitiesSha256": "e28836ad8a6357de1fe6f391b847c7ec5405624b2e6cc1d97e396059137ee5fe"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 16,
+          "fileCount": 16,
+          "rawBytes": 296519,
+          "gzipBytes": 73713,
+          "membershipDigests": {
+            "manifestIdsSha256": "77be3919e2b0cda63bba177def308c9cd8d6935a78cebf4cc66461de7b2bb06e",
+            "artifactIdentitiesSha256": "3976d065ffc255cd543f7f9bbf2c67f0a23f18eb13a702370850c5b3e791f57a"
+          }
+        }
+      },
+      {
+        "id": "src/tools/xml-formatter/xml-formatter.vue",
+        "manifestId": "source:src/tools/xml-formatter/xml-formatter.vue",
+        "file": "assets/xml-formatter-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 19,
+          "fileCount": 21,
+          "rawBytes": 1048384,
+          "gzipBytes": 328977,
+          "membershipDigests": {
+            "manifestIdsSha256": "f03b18649b0e2d656cddbfbf8a51c1ab1baaef4a42ce24cf1fc07fb529258fc0",
+            "artifactIdentitiesSha256": "e9cff3b718a2f4277037d8f2e86aebaa69e2a9d719aef750dc866ae4ed1f0145"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 18,
+          "fileCount": 19,
+          "rawBytes": 159533,
+          "gzipBytes": 55859,
+          "membershipDigests": {
+            "manifestIdsSha256": "5eb6a8c4ff399c3c9733c291a030c3340f104d938e08673338f3f893f901e451",
+            "artifactIdentitiesSha256": "96cbd6a3a33416d1b78c0fd19c71d18d2d5d23fa1454a081d63f8bb10f203218"
+          }
+        }
+      },
+      {
+        "id": "src/tools/xml-to-json/xml-to-json.vue",
+        "manifestId": "source:src/tools/xml-to-json/xml-to-json.vue",
+        "file": "assets/xml-to-json-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 11,
+          "fileCount": 13,
+          "rawBytes": 1002064,
+          "gzipBytes": 313278,
+          "membershipDigests": {
+            "manifestIdsSha256": "e179653d17020bdc754aae0d5112aa581cc0dda11d8bb7838937a8452193bd1a",
+            "artifactIdentitiesSha256": "165a801e2b9a8348eb7f2a09ddf6295d8ae6c51637933c4ef2f926c66a07cf0d"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 10,
+          "fileCount": 11,
+          "rawBytes": 113213,
+          "gzipBytes": 40160,
+          "membershipDigests": {
+            "manifestIdsSha256": "0451a16f8a5c24f874edcd754c2c88795d0ead8ea7b0d40aa5a347d2ab262f23",
+            "artifactIdentitiesSha256": "282433eeba9f74aaa4a90c59c42d15fd712b733a4336a5324d478b1f2bf96d26"
+          }
+        }
+      },
+      {
+        "id": "src/tools/yaml-to-json-converter/yaml-to-json.vue",
+        "manifestId": "source:src/tools/yaml-to-json-converter/yaml-to-json.vue",
+        "file": "assets/yaml-to-json-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 10,
+          "fileCount": 12,
+          "rawBytes": 1035267,
+          "gzipBytes": 322521,
+          "membershipDigests": {
+            "manifestIdsSha256": "288460e43aabd3009bb83e46c4074787bb4b235aaa85dbb2f1fe9f43d96dcc7f",
+            "artifactIdentitiesSha256": "95162f2308e8bf9ab26a007b058507295f1a838883abae41795198724d2014c7"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 9,
+          "fileCount": 10,
+          "rawBytes": 146416,
+          "gzipBytes": 49403,
+          "membershipDigests": {
+            "manifestIdsSha256": "1f5a6090454f74332601950a268425d43f2f6cf92e05d071b27bb408f5388616",
+            "artifactIdentitiesSha256": "d5f4575a8c251c5331ce287911c5bf6b2c581ac018eff0be7fc11fbbcccd1c83"
+          }
+        }
+      },
+      {
+        "id": "src/tools/yaml-to-toml/yaml-to-toml.vue",
+        "manifestId": "source:src/tools/yaml-to-toml/yaml-to-toml.vue",
+        "file": "assets/yaml-to-toml-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 10,
+          "fileCount": 12,
+          "rawBytes": 1074242,
+          "gzipBytes": 330191,
+          "membershipDigests": {
+            "manifestIdsSha256": "a3d3189d341b9a00656b1cf40e5b15fbcdf1308f1e95fe456df54829215ba06e",
+            "artifactIdentitiesSha256": "24079b1affce650364e8e0adfd78dd2a40bec942e318fd41deff663c82d4c32f"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 9,
+          "fileCount": 10,
+          "rawBytes": 185391,
+          "gzipBytes": 57073,
+          "membershipDigests": {
+            "manifestIdsSha256": "8151c757c6f2de603877293832e15bc75f7a74d574094c6166af5eff8ae1eda8",
+            "artifactIdentitiesSha256": "ca06b52bf88f35c2652baf23eabe73d9dad1e95e1eaeeafc26c09691b55f98eb"
+          }
+        }
+      },
+      {
+        "id": "src/tools/yaml-viewer/yaml-viewer.vue",
+        "manifestId": "source:src/tools/yaml-viewer/yaml-viewer.vue",
+        "file": "assets/yaml-viewer-<hash>.js",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "initialClosure": {
+          "manifestRecordCount": 18,
+          "fileCount": 21,
+          "rawBytes": 1143869,
+          "gzipBytes": 357803,
+          "membershipDigests": {
+            "manifestIdsSha256": "46be0c64b911437e9ada6b24a0c6da6157bd5bbc7728397a7de407b2c5447f57",
+            "artifactIdentitiesSha256": "3a19740ddc95814ae62643b2fdac1ca71b0364342198f3b7e61d3c7af91904f6"
+          }
+        },
+        "reachableClosure": {
+          "manifestRecordCount": 156,
+          "fileCount": 188,
+          "rawBytes": 11018505,
+          "gzipBytes": 3297119,
+          "membershipDigests": {
+            "manifestIdsSha256": "bda899fcf44226fbda3879abd80243bf1c2aef49c9b944bb7727af0637c2462d",
+            "artifactIdentitiesSha256": "566f30538f53b0032106b88d839d445b895f7fa4a4df7417dfd6ef1f5c6c5493"
+          }
+        },
+        "additionalToMainEntryInitial": {
+          "manifestRecordCount": 17,
+          "fileCount": 19,
+          "rawBytes": 255018,
+          "gzipBytes": 84685,
+          "membershipDigests": {
+            "manifestIdsSha256": "a428d172276e0f45730b42c2c3c9a6c88600112ad2488332f43f4f61e4b605d2",
+            "artifactIdentitiesSha256": "62b74e91cda7fb3806ff721836a8deff353ac67bf6b7275cdb48f4e5fbc47903"
+          }
+        }
+      }
+    ]
+  },
+  "largestAssets": [
+    {
+      "path": "assets/mac-address-lookup-<hash>.js",
+      "rawBytes": 3349509,
+      "gzipBytes": 1063594
+    },
+    {
+      "path": "assets/text-diff-<hash>.js",
+      "rawBytes": 2206864,
+      "gzipBytes": 570786
+    },
+    {
+      "path": "assets/index-<hash>.js",
+      "rawBytes": 857102,
+      "gzipBytes": 266334
+    },
+    {
+      "path": "assets/math-evaluator-<hash>.js",
+      "rawBytes": 623249,
+      "gzipBytes": 179765
+    },
+    {
+      "path": "assets/html-wysiwyg-editor-<hash>.js",
+      "rawBytes": 493145,
+      "gzipBytes": 153633
+    },
+    {
+      "path": "assets/index-<hash>.js",
+      "rawBytes": 282321,
+      "gzipBytes": 74343
+    },
+    {
+      "path": "assets/emoji-picker-<hash>.js",
+      "rawBytes": 271705,
+      "gzipBytes": 31770
+    },
+    {
+      "path": "assets/pdf-signature-checker-<hash>.js",
+      "rawBytes": 245690,
+      "gzipBytes": 134928
+    },
+    {
+      "path": "assets/bip39-generator-<hash>.js",
+      "rawBytes": 228842,
+      "gzipBytes": 78770
+    },
+    {
+      "path": "assets/eta-calculator-<hash>.js",
+      "rawBytes": 228082,
+      "gzipBytes": 54458
+    },
+    {
+      "path": "assets/phone-parser-and-formatter-<hash>.js",
+      "rawBytes": 226622,
+      "gzipBytes": 57915
+    },
+    {
+      "path": "assets/sql-prettify-<hash>.js",
+      "rawBytes": 212842,
+      "gzipBytes": 56845
+    },
+    {
+      "path": "assets/editor.worker-<hash>.js",
+      "rawBytes": 206100,
+      "gzipBytes": 63981
+    },
+    {
+      "path": "assets/index-<hash>.js",
+      "rawBytes": 146520,
+      "gzipBytes": 35075
+    },
+    {
+      "path": "assets/index-<hash>.js",
+      "rawBytes": 138200,
+      "gzipBytes": 20700
+    },
+    {
+      "path": "assets/emoji-en-US-<hash>.js",
+      "rawBytes": 116181,
+      "gzipBytes": 32015
+    },
+    {
+      "path": "assets/docker-run-to-docker-compose-converter-<hash>.js",
+      "rawBytes": 108756,
+      "gzipBytes": 33464
+    },
+    {
+      "path": "assets/markdown-to-html-<hash>.js",
+      "rawBytes": 104332,
+      "gzipBytes": 46709
+    },
+    {
+      "path": "assets/public-api-<hash>.js",
+      "rawBytes": 100560,
+      "gzipBytes": 30858
+    },
+    {
+      "path": "assets/figlet-fonts-1.7.0/Def Leppard.flf",
+      "rawBytes": 89798,
+      "gzipBytes": 10959
+    }
+  ]
+}
