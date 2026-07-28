@@ -42,7 +42,7 @@
     "@regexper/render": "^1.0.0",
     "@sindresorhus/slugify": "^3.0.0",
     "@tabler/icons-vue": "^3.44.0",
-    "@tiptap/pm": "3.27.3",
+    "@tiptap/pm": "3.28.0",
     "@tiptap/starter-kit": "3.27.3",
     "@tiptap/vue-3": "3.27.3",
     "@types/markdown-it": "^14.1.2",
