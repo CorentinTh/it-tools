@@ -87,8 +87,8 @@ importers:
         specifier: ^4.0.3
         version: 4.0.3
       figlet:
-        specifier: ^1.11.0
-        version: 1.11.0
+        specifier: ^1.11.2
+        version: 1.11.2
       fuse.js:
         specifier: ^7.3.0
         version: 7.4.2
@@ -3509,8 +3509,8 @@ packages:
       picomatch:
         optional: true
 
-  figlet@1.11.0:
-    resolution: {integrity: sha512-EEx3OS/l2bFqcUNN2NM9FPJp8vAMrgbCxsbl2hbcJNNxOEwVe3mEzrhan7TbJQViZa8mMqhihlbCaqD+LyYKTQ==}
+  figlet@1.11.2:
+    resolution: {integrity: sha512-VXzWZSFTauu1f4CJbj/EnlpDVaTjO33cp/xgH0CLtPS/aP59i3ElwyR2bquCEsAv2Apv9E29PX5Zy39ipeUqSw==}
     engines: {node: '>= 17.0.0'}
     hasBin: true
 
@@ -9449,7 +9449,7 @@ snapshots:
     optionalDependencies:
       picomatch: 4.0.5
 
-  figlet@1.11.0:
+  figlet@1.11.2:
     dependencies:
       commander: 14.0.3
 

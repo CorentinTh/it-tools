@@ -63,7 +63,7 @@
     "dompurify": "^3.4.12",
     "email-normalizer": "^1.0.0",
     "emojilib": "^4.0.3",
-    "figlet": "^1.11.0",
+    "figlet": "^1.11.2",
     "fuse.js": "^7.3.0",
     "highlight.js": "^11.11.1",
     "iarna-toml-esm": "^3.0.5",
