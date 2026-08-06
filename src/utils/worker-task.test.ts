@@ -34,6 +34,7 @@ class TestTaskError extends Error {
 
 class FakeWorker implements WorkerTaskHandle<WorkerTaskRequest<TestTask>> {
   onmessage: ((event: MessageEvent<unknown>) => void) | null = null;
+  onmessageerror: ((event: MessageEvent<unknown>) => void) | null = null;
   onerror: ((event: ErrorEvent) => void) | null = null;
   posted: Array<WorkerTaskRequest<TestTask>> = [];
   terminateCount = 0;
@@ -60,6 +61,11 @@ class FakeWorker implements WorkerTaskHandle<WorkerTaskRequest<TestTask>> {
 
   crash(preventDefault = vi.fn()): ReturnType<typeof vi.fn> {
     this.onerror?.({ preventDefault } as unknown as ErrorEvent);
+    return preventDefault;
+  }
+
+  failToDeserialize(preventDefault = vi.fn()): ReturnType<typeof vi.fn> {
+    this.onmessageerror?.({ preventDefault } as unknown as MessageEvent<unknown>);
     return preventDefault;
   }
 }
@@ -188,6 +194,7 @@ describe('TerminateAndReplaceWorkerTask', () => {
     expect(result.elapsedMs).toBeGreaterThanOrEqual(0);
     expect(workers[0].terminateCount).toBe(1);
     expect(workers[0].onmessage).toBeNull();
+    expect(workers[0].onmessageerror).toBeNull();
     expect(workers[0].onerror).toBeNull();
   });
 
@@ -320,6 +327,20 @@ describe('TerminateAndReplaceWorkerTask', () => {
     expect(error.message).toBe('The test worker stopped unexpectedly.');
     expect(preventDefault).toHaveBeenCalledOnce();
     expect(workers[0].terminateCount).toBe(1);
+  });
+
+  it('settles and terminates when a worker response cannot be deserialized', async () => {
+    const { client, workers } = createHarness();
+    const resultPromise = client.run(task());
+    const preventDefault = workers[0].failToDeserialize();
+
+    const error = await expectTaskError(resultPromise, 'worker');
+    expect(error.message).toBe('The test worker stopped unexpectedly.');
+    expect(preventDefault).toHaveBeenCalledOnce();
+    expect(workers[0].terminateCount).toBe(1);
+    expect(workers[0].onmessage).toBeNull();
+    expect(workers[0].onmessageerror).toBeNull();
+    expect(workers[0].onerror).toBeNull();
   });
 
   it('settles and cleans up when a progress callback throws', async () => {

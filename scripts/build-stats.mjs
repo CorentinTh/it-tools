@@ -1223,7 +1223,23 @@ export function parseBuildBudgets(source, label = 'build budgets') {
     }
   }
 
-  return { ...budgets, requiredWorkboxEntries };
+  const workerAssetLimits = budgets.workerAssetLimits ?? {};
+  if (!isPlainObject(workerAssetLimits)) {
+    throw new TypeError(`${label}.workerAssetLimits must be an object`);
+  }
+  for (const [workerPath, limits] of Object.entries(workerAssetLimits)) {
+    if (!workerPath) {
+      throw new TypeError(`${label}.workerAssetLimits contains an empty worker path`);
+    }
+    validateRouteLimits(limits, `${label}.workerAssetLimits.${workerPath}`);
+    if (typeof limits.rationale !== 'string' || !limits.rationale.trim()) {
+      throw new TypeError(
+        `${label}.workerAssetLimits.${workerPath}.rationale must explain the reviewed worker ceiling`,
+      );
+    }
+  }
+
+  return { ...budgets, requiredWorkboxEntries, workerAssetLimits };
 }
 
 function addBudgetCheck(checks, name, actual, maximum) {
@@ -1298,6 +1314,24 @@ export function evaluateBuildBudgets(stats, budgets) {
         checks,
         `dynamicEntry:${entry.id}.additionalToMainEntryInitial.${metric}`,
         entry.additionalToMainEntryInitial[metric],
+        limits[metric],
+      );
+    }
+  }
+
+  const workerAssetsByPath = new Map(
+    stats.viteManifest.workerArtifacts.entries.map(worker => [worker.path, worker]),
+  );
+  for (const [workerPath, limits] of Object.entries(budgets.workerAssetLimits ?? {})) {
+    const worker = workerAssetsByPath.get(workerPath);
+    if (!worker) {
+      throw new Error(`Build budget references a missing worker asset: ${workerPath}`);
+    }
+    for (const metric of ROUTE_BUDGET_METRICS) {
+      addBudgetCheck(
+        checks,
+        `workerAsset:${workerPath}.${metric}`,
+        worker[metric],
         limits[metric],
       );
     }

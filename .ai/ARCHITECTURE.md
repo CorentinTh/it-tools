@@ -2,9 +2,9 @@
 
 ## 1. Purpose and system boundaries
 
-The project is a static single-page application and PWA containing browser-based utilities for developers. The current branch registers 86 tools across 10 categories. There is no application backend: transformations, parsing, generation, cryptography, and file handling run in the user's browser.
+The project is a static single-page application and PWA containing browser-based utilities for developers. The current branch registers 89 tools across 10 categories. There is no application backend: transformations, parsing, generation, cryptography, and file handling run in the user's browser.
 
-The production artifact is the `dist/` directory. It can be served by Vercel, Netlify, any static host, or nginx in the Docker image. Plausible is the only built-in external telemetry integration and is disabled by default. The application is not completely network-independent today: the ASCII Art tool fetches fonts from a CDN, while the PWA/service worker and browser APIs have their own network and system boundaries.
+The production artifact is the `dist/` directory. It can be served by Vercel, Netlify, any static host, or nginx in the Docker image. Plausible is the only built-in external telemetry integration and is disabled by default; its URLs are path-only. ASCII Art fonts are versioned same-origin assets, opened tool chunks/workers are demand-cached, and tools that intentionally require browser network/system APIs retain their own disclosed boundaries.
 
 ## 2. Technology stack
 
@@ -12,7 +12,7 @@ The production artifact is the `dist/` directory. It can be served by Vercel, Ne
 |---|---|---|
 | Language and UI | TypeScript 5.2, Vue 3.3, SFC | Components and reactive business logic |
 | Build | Vite 4.4, vue-tsc, pnpm 9.11 | Type checking, code splitting, production bundle |
-| Routing | Vue Router 4, HTML5 history | Home, About, 86 tool routes, redirects, and 404 |
+| Routing | Vue Router 4, HTML5 history | Home, About, 89 tool routes, redirects, and 404 |
 | State | Pinia, VueUse `useStorage` | Theme, menu, favorites, and local tool preferences |
 | UI system | Naive UI, UnoCSS, custom `c-*` components | Layout, forms, cards, tables, and themes |
 | Icons | `@vicons/tabler`, `@vicons/material`, `@tabler/icons-vue`, unplugin-icons/MDI | Shell and tool icons |
@@ -22,7 +22,7 @@ The production artifact is the `dist/` directory. It can be served by Vercel, Ne
 | E2E tests | Playwright | Chromium, Firefox, and WebKit scenarios |
 | Delivery | GitHub Actions, Docker, nginx, Vercel, Netlify | CI, release artifacts, and static hosting |
 
-Specialized libraries are grouped around individual tools: JSON5/YAML/TOML/XML/Markdown/SQL, `crypto-js`/`bcryptjs`/`node-forge`/BIP39, `mathjs`, `monaco-editor`, TipTap, `libphonenumber-js`, `oui-data`, QR/PDF/UA parsers, and others. `package.json` currently contains 67 runtime and 43 development dependencies; several build-only and type-only packages are incorrectly placed in `dependencies`.
+Specialized libraries are grouped around individual tools: JSON5/YAML/TOML/XML/Markdown/SQL, `crypto-js`/`bcryptjs`/`node-forge`/BIP39, `@noble/hashes`, `mathjs`, `monaco-editor`, TipTap, `libphonenumber-js`, generated OUI data, QR/PDF/UA parsers, and others. `package.json` currently contains 65 runtime and 47 development dependencies.
 
 ## 3. Repository structure
 
@@ -33,7 +33,7 @@ Specialized libraries are grouped around individual tools: JSON5/YAML/TOML/XML/M
 │   ├── App.vue                 # theme/providers + layout selection + RouterView
 │   ├── router.ts               # routes generated from the tool registry
 │   ├── config.ts               # typed environment configuration
-│   ├── tools/                  # 86 isolated tools
+│   ├── tools/                  # 89 isolated tools
 │   │   ├── index.ts            # central registry and categories
 │   │   ├── tool.ts             # defineTool and isNew calculation
 │   │   ├── tools.store.ts      # localization, categories, favorites
@@ -198,7 +198,7 @@ The current `pnpm audit` reported 125 unique advisories: 4 critical, 45 high, 66
 
 ## 10. Fork and upstream state
 
-The current branch is `feat-store-state` at `9805ce2`. It contains three local commits on top of local `main` (`08d977b`) and intentional changes: persistence for selected tools, removal of sponsor/UI elements, demo routes, issue templates, and most locales.
+The current working branch is `feat-ai-research`; the local fork and its reviewed `.ai` roadmap remain the source of truth. Upstream issues and pull requests are requirements research only unless an adaptation is explicitly approved and recorded.
 
 Upstream `main` was `d505845` at audit time. Local `main` is four upstream commits behind (`#1552`, `#1553`, `#1664`, `#1733`), while the feature branch diverges by three local versus four upstream commits. Sponsor changes are already superseded by the local line. The only substantive code candidate among those four is the logic from `#1552`, which prevents UnoCSS attributify from treating native HTML `size` as a utility; it should be adapted manually instead of cherry-picked.
 

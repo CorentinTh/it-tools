@@ -90,6 +90,10 @@ tools:
     title: Password strength analyser
     description: Discover the strength of your password with this client-side-only password strength analyser and crack time estimation tool.
 
+  file-hash:
+    title: File hash
+    description: Calculate SHA-256, SHA-384, and SHA-512 checksums for a local file without uploading it.
+
   chronometer:
     title: Chronometer
     description: Monitor the duration of a thing. Basically a chronometer with simple chronometer features.

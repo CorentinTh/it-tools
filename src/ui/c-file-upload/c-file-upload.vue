@@ -27,16 +27,25 @@ function triggerFileInput() {
 }
 
 function handleFileInput(event: Event) {
-  const files = (event.target as HTMLInputElement).files;
+  const input = event.target as HTMLInputElement;
 
-  handleUpload(files);
+  try {
+    handleUpload(input.files);
+  }
+  finally {
+    input.value = '';
+  }
 }
 
 function handleDrop(event: DragEvent) {
   event.preventDefault();
-  const files = event.dataTransfer?.files;
 
-  handleUpload(files);
+  try {
+    handleUpload(event.dataTransfer?.files);
+  }
+  finally {
+    isOverDropZone.value = false;
+  }
 }
 
 function handleUpload(files: FileList | null | undefined) {

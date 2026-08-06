@@ -3,6 +3,7 @@ import { type OuiDataIndex, decodeCompactOuiData, lookupOuiVendor } from './mac-
 import {
   type OuiWorkerMessage,
   parseOuiWorkerRequest,
+  sanitizeOuiWorkerErrorMessage,
   toOuiLookupError,
 } from './mac-address-lookup.worker.protocol';
 
@@ -41,7 +42,7 @@ workerScope.addEventListener('message', (event) => {
       jobId,
       type: 'error',
       code,
-      message: lookupError.message.slice(0, 1_000),
+      message: sanitizeOuiWorkerErrorMessage(lookupError.message),
     });
   }
 });

@@ -60,6 +60,7 @@ import { tool as cypher } from './encryption';
 import { tool as etaCalculator } from './eta-calculator';
 import { tool as percentageCalculator } from './percentage-calculator';
 import { tool as gitMemo } from './git-memo';
+import { tool as fileHash } from './file-hash';
 import { tool as hashText } from './hash-text';
 import { tool as hmacGenerator } from './hmac-generator';
 import { tool as htmlEntities } from './html-entities';
@@ -93,7 +94,7 @@ import { tool as yamlViewer } from './yaml-viewer';
 export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Crypto',
-    components: [tokenGenerator, nanoidGenerator, uuidGenerator, ulidGenerator, hashText, bcrypt, cypher, bip39, hmacGenerator, rsaKeyPairGenerator, passwordStrengthAnalyser, pdfSignatureChecker],
+    components: [tokenGenerator, nanoidGenerator, uuidGenerator, ulidGenerator, hashText, fileHash, bcrypt, cypher, bip39, hmacGenerator, rsaKeyPairGenerator, passwordStrengthAnalyser, pdfSignatureChecker],
   },
   {
     name: 'Converter',

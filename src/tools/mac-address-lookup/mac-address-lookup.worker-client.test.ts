@@ -108,6 +108,35 @@ describe('OuiWorkerClient', () => {
     expect(workers[0].terminated).toBe(true);
   });
 
+  it('returns only sanitized bounded worker error text to the caller', async () => {
+    const { client, workers } = createHarness();
+    const pending = lookup(client);
+
+    workers[0].emit({
+      jobId: 1,
+      type: 'error',
+      code: 'operation',
+      message: '  database\u0000\u202E\uD800 failure  ',
+    });
+
+    await expect(pending).rejects.toMatchObject({
+      name: 'OuiLookupError',
+      code: 'operation',
+      message: 'database    failure',
+    });
+    expect(workers[0].terminated).toBe(false);
+
+    const oversized = lookup(client, 'F8E43B');
+    workers[0].emit({
+      jobId: 2,
+      type: 'error',
+      code: 'operation',
+      message: 'x'.repeat(1_001),
+    });
+    await expectLookupError(oversized, 'worker');
+    expect(workers[0].terminated).toBe(true);
+  });
+
   it('terminates a timed-out worker and permits a fixed-URL retry', async () => {
     vi.useFakeTimers();
     const { client, workers } = createHarness(25);

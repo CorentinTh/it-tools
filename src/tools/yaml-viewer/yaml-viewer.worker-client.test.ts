@@ -4,6 +4,7 @@ import { YAML_MAX_INPUT_BYTES, type YamlTaskError } from './yaml-viewer.worker.p
 
 class FakeWorker implements YamlWorkerHandle {
   onmessage: ((event: MessageEvent<unknown>) => void) | null = null;
+  onmessageerror: ((event: MessageEvent<unknown>) => void) | null = null;
   onerror: ((event: ErrorEvent) => void) | null = null;
   posted: unknown[] = [];
   terminated = false;

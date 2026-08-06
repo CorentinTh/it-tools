@@ -14,6 +14,9 @@ importers:
       '@it-tools/oggen':
         specifier: ^1.3.0
         version: 1.3.0
+      '@noble/hashes':
+        specifier: 2.2.0
+        version: 2.2.0
       '@regexper/render':
         specifier: ^1.0.0
         version: 1.0.0
@@ -1612,6 +1615,10 @@ packages:
 
   '@mdit-vue/types@0.12.0':
     resolution: {integrity: sha512-mrC4y8n88BYvgcgzq9bvTlDgFyi2zuvzmPilRvRc3Uz1iIvq8mDhxJ0rHKFUNzPEScpDvJdIujqiDrulMqiudA==}
+
+  '@noble/hashes@2.2.0':
+    resolution: {integrity: sha512-IYqDGiTXab6FniAgnSdZwgWbomxpy9FtYvLKs7wCUs2a8RkITG+DFGO1DM9cr+E3/RgADRpFjrKVaJ1z6sjtEg==}
+    engines: {node: '>= 20.19.0'}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -7440,6 +7447,8 @@ snapshots:
       markdown-it: 13.0.2
 
   '@mdit-vue/types@0.12.0': {}
+
+  '@noble/hashes@2.2.0': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:

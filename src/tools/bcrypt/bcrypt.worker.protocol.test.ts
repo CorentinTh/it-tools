@@ -75,10 +75,17 @@ describe('bcrypt worker protocol', () => {
   });
 
   it('rejects unknown tasks and malformed worker job identifiers', () => {
+    const validTask = { operation: 'hash' as const, value: 'secret', rounds: 4 };
+
     expectErrorCode(() => parseBcryptTask(null), 'validation');
     expectErrorCode(() => parseBcryptTask({ operation: 'remove' }), 'validation');
     expectErrorCode(() => parseBcryptWorkerRequest({ jobId: 0, task: {} }), 'validation');
     expectErrorCode(() => parseBcryptWorkerRequest({ jobId: '1', task: {} }), 'validation');
+    expectErrorCode(() => parseBcryptTask(Object.assign([], validTask)), 'validation');
+    expectErrorCode(
+      () => parseBcryptWorkerRequest(Object.assign([], { jobId: 1, task: validTask })),
+      'validation',
+    );
 
     expect(parseBcryptWorkerRequest({
       jobId: 7,
@@ -106,6 +113,15 @@ describe('bcrypt worker protocol', () => {
     expectErrorCode(() => parseBcryptWorkerMessage({ jobId: 1, type: 'result', operation: 'hash', value: 'not-a-hash' }), 'worker');
     expectErrorCode(() => parseBcryptWorkerMessage({ jobId: 1, type: 'result', operation: 'compare', value: 'yes' }), 'worker');
     expectErrorCode(() => parseBcryptWorkerMessage({ jobId: 1, type: 'unexpected' }), 'worker');
+    expectErrorCode(
+      () => parseBcryptWorkerMessage(Object.assign([], {
+        jobId: 1,
+        type: 'result',
+        operation: 'compare',
+        value: false,
+      })),
+      'worker',
+    );
   });
 
   it.each(['', 'x'.repeat(1_001)])(

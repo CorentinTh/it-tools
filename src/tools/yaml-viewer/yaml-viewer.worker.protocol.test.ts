@@ -65,6 +65,8 @@ describe('YAML worker protocol', () => {
   });
 
   it('rejects malformed operations and formatting options', () => {
+    const valid = { operation: 'format', source: '', indentSize: 2, sortKeys: false };
+
     expectErrorCode(() => parseYamlTask(null), 'validation');
     expectErrorCode(() => parseYamlTask({ operation: 'other', source: '', indentSize: 2, sortKeys: false }), 'validation');
     expectErrorCode(() => parseYamlTask({ operation: 'format', source: 42, indentSize: 2, sortKeys: false }), 'validation');
@@ -72,6 +74,11 @@ describe('YAML worker protocol', () => {
     expectErrorCode(() => parseYamlTask({ operation: 'format', source: '', indentSize: 11, sortKeys: false }), 'validation');
     expectErrorCode(() => parseYamlTask({ operation: 'format', source: '', indentSize: 2.5, sortKeys: false }), 'validation');
     expectErrorCode(() => parseYamlTask({ operation: 'format', source: '', indentSize: 2, sortKeys: 'yes' }), 'validation');
+    expectErrorCode(() => parseYamlTask(Object.assign([], valid)), 'validation');
+    expectErrorCode(
+      () => parseYamlWorkerRequest(Object.assign([], { jobId: 1, task: valid })),
+      'validation',
+    );
   });
 
   it('accepts only bounded result and structured error messages', () => {
@@ -130,6 +137,15 @@ describe('YAML worker protocol', () => {
     );
     expectErrorCode(
       () => parseYamlWorkerMessage({ jobId: 1, type: 'error', code: 'limit', message: 'x'.repeat(1_001) }),
+      'worker',
+    );
+    expectErrorCode(
+      () => parseYamlWorkerMessage(Object.assign([], {
+        jobId: 1,
+        type: 'error',
+        code: 'syntax',
+        message: 'Invalid YAML.',
+      })),
       'worker',
     );
   });

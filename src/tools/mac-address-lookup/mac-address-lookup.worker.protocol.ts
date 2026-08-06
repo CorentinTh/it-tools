@@ -1,7 +1,8 @@
 import { OUI_MAX_VENDOR_LENGTH } from './mac-address-lookup.data';
 
 export const OUI_LOOKUP_TIMEOUT_MS = 10_000;
-const MAX_WORKER_MESSAGE_LENGTH = 1_000;
+export const OUI_MAX_WORKER_ERROR_MESSAGE_LENGTH = 1_000;
+const DEFAULT_WORKER_ERROR_MESSAGE = 'The local OUI lookup failed. Please try again.';
 
 export interface OuiLookupTask {
   operation: 'lookup'
@@ -40,6 +41,35 @@ function parseJobId(value: unknown, errorCode: 'validation' | 'worker'): number 
     throw new OuiLookupError(errorCode, 'The OUI worker job identifier is invalid.');
   }
   return value;
+}
+
+export function sanitizeOuiWorkerErrorMessage(
+  value: unknown,
+  fallback = DEFAULT_WORKER_ERROR_MESSAGE,
+): string {
+  const sanitize = (message: string) => {
+    let sanitized = '';
+    for (const character of message) {
+      const codePoint = character.codePointAt(0) ?? 0;
+      const isUnsafe = codePoint <= 0x1F
+        || (codePoint >= 0x7F && codePoint <= 0x9F)
+        || codePoint === 0x061C
+        || codePoint === 0x200E
+        || codePoint === 0x200F
+        || (codePoint >= 0x202A && codePoint <= 0x202E)
+        || (codePoint >= 0x2066 && codePoint <= 0x2069)
+        || (codePoint >= 0xD800 && codePoint <= 0xDFFF);
+      const safeCharacter = isUnsafe ? ' ' : character;
+      if (sanitized.length + safeCharacter.length > OUI_MAX_WORKER_ERROR_MESSAGE_LENGTH) {
+        break;
+      }
+      sanitized += safeCharacter;
+    }
+    return sanitized.trim();
+  };
+
+  const sanitized = typeof value === 'string' ? sanitize(value) : '';
+  return sanitized || sanitize(fallback);
 }
 
 export function parseOuiLookupTask(value: unknown): OuiLookupTask {
@@ -87,11 +117,15 @@ export function parseOuiWorkerMessage(value: unknown): OuiWorkerMessage {
       (value.code !== 'validation' && value.code !== 'operation')
       || typeof value.message !== 'string'
       || value.message.length === 0
-      || value.message.length > MAX_WORKER_MESSAGE_LENGTH
+      || value.message.length > OUI_MAX_WORKER_ERROR_MESSAGE_LENGTH
     ) {
       throw new OuiLookupError('worker', 'The OUI worker returned an invalid error.');
     }
-    return { jobId, type: 'error', code: value.code, message: value.message };
+    const message = sanitizeOuiWorkerErrorMessage(value.message, '');
+    if (message.length === 0) {
+      throw new OuiLookupError('worker', 'The OUI worker returned an invalid error.');
+    }
+    return { jobId, type: 'error', code: value.code, message };
   }
 
   throw new OuiLookupError('worker', 'The OUI worker returned an unknown message type.');
@@ -101,5 +135,5 @@ export function toOuiLookupError(error: unknown, fallbackCode: OuiLookupErrorCod
   if (error instanceof OuiLookupError) {
     return error;
   }
-  return new OuiLookupError(fallbackCode, 'The local OUI lookup failed. Please try again.');
+  return new OuiLookupError(fallbackCode, DEFAULT_WORKER_ERROR_MESSAGE);
 }

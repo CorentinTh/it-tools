@@ -18,12 +18,24 @@
     "favicon-16x16.png",
     "favicon-32x32.png"
   ],
+  "workerAssetLimits": {
+    "assets/file-hash.worker-<hash>.js": {
+      "rawBytes": 20000,
+      "gzipBytes": 10000,
+      "rationale": "The incremental SHA-2 implementation is a dedicated demand-loaded worker; this ceiling prevents accidental parser or whole-library growth independently of its route closure."
+    }
+  },
   "dynamicEntryLimits": {
     "defaults": {
       "rawBytes": 500000,
       "gzipBytes": 150000
     },
     "overrides": {
+      "src/tools/file-hash/file-hash.vue": {
+        "rawBytes": 150000,
+        "gzipBytes": 50000,
+        "rationale": "Bounded third catalog feature; this route-owned closure includes the incremental SHA-2 worker and must remain a small demand-loaded tool."
+      },
       "src/tools/html-wysiwyg-editor/html-wysiwyg-editor.vue": {
         "rawBytes": 550000,
         "gzipBytes": 175000,

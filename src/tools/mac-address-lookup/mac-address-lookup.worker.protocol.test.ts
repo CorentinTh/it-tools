@@ -1,9 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import {
+  OUI_MAX_WORKER_ERROR_MESSAGE_LENGTH,
   OuiLookupError,
   parseOuiLookupTask,
   parseOuiWorkerMessage,
   parseOuiWorkerRequest,
+  sanitizeOuiWorkerErrorMessage,
 } from './mac-address-lookup.worker.protocol';
 
 describe('OUI worker protocol', () => {
@@ -50,5 +52,31 @@ describe('OUI worker protocol', () => {
       expect(error).toBeInstanceOf(OuiLookupError);
       expect((error as OuiLookupError).code).toBe('worker');
     }
+  });
+
+  it('sanitizes control, bidi, and unpaired-surrogate error text without splitting Unicode', () => {
+    const unsafe = '  failure\u0000\u061C\u200E\u202E\u2066\uD800🙂safe  ';
+    const sanitized = sanitizeOuiWorkerErrorMessage(unsafe);
+
+    expect(sanitized).toBe('failure      🙂safe');
+    expect(new TextDecoder(undefined, { fatal: true }).decode(new TextEncoder().encode(sanitized))).toBe(sanitized);
+    expect(sanitizeOuiWorkerErrorMessage(`${'x'.repeat(999)}🙂tail`)).toBe('x'.repeat(999));
+    expect(sanitized.length).toBeLessThanOrEqual(OUI_MAX_WORKER_ERROR_MESSAGE_LENGTH);
+
+    expect(parseOuiWorkerMessage({
+      jobId: 3,
+      type: 'error',
+      code: 'operation',
+      message: unsafe,
+    })).toEqual({ jobId: 3, type: 'error', code: 'operation', message: sanitized });
+  });
+
+  it('rejects worker error text that sanitizes to an empty message', () => {
+    expect(() => parseOuiWorkerMessage({
+      jobId: 3,
+      type: 'error',
+      code: 'operation',
+      message: '\u0000\u202E\uD800',
+    })).toThrow(OuiLookupError);
   });
 });

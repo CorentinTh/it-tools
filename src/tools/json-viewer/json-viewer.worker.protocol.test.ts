@@ -80,6 +80,11 @@ describe('JSON worker protocol', () => {
     expectErrorCode(() => parseJsonTask({ ...valid, indentSize: 2.5 }), 'validation');
     expectErrorCode(() => parseJsonTask({ ...valid, sortKeys: 'yes' }), 'validation');
     expectErrorCode(() => parseJsonTask({ ...valid, mode: 'legacy' }), 'validation');
+    expectErrorCode(() => parseJsonTask(Object.assign([], valid)), 'validation');
+    expectErrorCode(
+      () => parseJsonWorkerRequest(Object.assign([], { jobId: 1, task: valid })),
+      'validation',
+    );
   });
 
   it('accepts only bounded matching results and structured errors', () => {
@@ -155,6 +160,15 @@ describe('JSON worker protocol', () => {
     );
     expectErrorCode(
       () => parseJsonWorkerMessage({ jobId: 1, type: 'error', code: 'limit', message: 'x'.repeat(1_001) }),
+      'worker',
+    );
+    expectErrorCode(
+      () => parseJsonWorkerMessage(Object.assign([], {
+        jobId: 1,
+        type: 'error',
+        code: 'syntax',
+        message: 'Invalid JSON.',
+      })),
       'worker',
     );
   });

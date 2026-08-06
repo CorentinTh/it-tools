@@ -12,7 +12,13 @@ budgets. The first feature/structured-data slice (NanoID plus strict JSON
 numeric-lexeme and YAML integer-preserving Prettify) is complete. Dependency/base-image vulnerability remediation
 remains a separate deferred security track.
 
-Implementation is active. See `.ai/PROGRESS.md` for the live journal, verified
+The latest autonomous slice is complete: the third catalog feature delivers
+local file hashing, the shared upload control supports same-file reselection,
+and the backward-compatible worker-transport hardening increment is accepted.
+Its design, privacy boundary, memory evidence, and executable acceptance gates
+are recorded in `.ai/experiments/FILE_HASH_DESIGN.md`.
+
+See `.ai/PROGRESS.md` for the live journal, verified
 commands, measurements, risks, and next gates. In checklist text, `IN PROGRESS`
 means implementation exists but the full Definition of Done is not yet met.
 
@@ -56,9 +62,9 @@ means implementation exists but the full Definition of Done is not yet met.
 - [x] Resolve the current UnoCSS ordering warnings (3 at implementation start; the native `size` collision remains a separate item).
 - [x] Fix both nullable editor accesses reported by `pnpm typecheck`.
 - [x] Align `pnpm build` and `pnpm typecheck` on canonical application/test plus Vite-config checks so one cannot hide errors from the other.
-- [x] Make `pnpm lint`, `pnpm typecheck`, unit tests, Chromium E2E, and production build green; the current integrated checkpoint is 729/729 unit across 97 files and 97/97 Chromium tests, including all 88 routes.
+- [x] Make `pnpm lint`, `pnpm typecheck`, unit tests, Chromium E2E, and production build green; the current integrated checkpoint is 816/816 unit across 104 files and 102/102 Chromium tests, including all 89 routes.
 - [x] Add a frozen-lockfile install to every CI/release job.
-- [x] Add a Chromium route smoke test for all 88 tools that fails on page errors, chunk-load errors, unexpected console errors, and Monaco worker fallback warnings.
+- [x] Add a Chromium route smoke test for all 89 tools that fails on page errors, chunk-load errors, unexpected console errors, and Monaco worker fallback warnings.
 - [ ] Add Firefox and WebKit smoke coverage after the Chromium baseline is stable.
 
 ### 0.2 Reproducible toolchain
@@ -152,7 +158,7 @@ implementation time on unrelated base-image/transitive CVEs.
 - [ ] Ensure stale async results can never overwrite a newer input.
 - [x] Keep copy actions usable during and after degraded large-output rendering.
 - [ ] Add a shared bounded download policy for degraded large-output rendering.
-- [ ] Harden the next transport increment with `messageerror` settlement, envelope/job-ID parsing before full payload decode, strict non-array record guards in legacy JSON/YAML/Bcrypt protocols, and sanitized OUI error text.
+- [x] **DONE:** harden the compatible transport increment with deterministic `messageerror` settlement, strict non-array record guards in legacy JSON/YAML/Bcrypt protocols, and static bounded/sanitized OUI error text; File Hash adds exact-key envelopes and exercises progress/replacement/cancellation/timeout/disposal. Envelope/job-ID parsing before full payload decode remains a separately measured follow-up where the structured-clone boundary makes it meaningful.
 - [ ] Decide and document the worker-output byte-metadata trust boundary: current production workers compute exact UTF-8 bytes while the main thread intentionally performs only O(1) plausibility checks to avoid rescanning multi-megabyte output.
 
 ### 2.3 Bcrypt
@@ -221,7 +227,7 @@ implementation time on unrelated base-image/transitive CVEs.
 - [x] Verify a previously opened lazy tool reloads offline after clearing the HTTP cache; document, shell, Workbox client runtime, and lazy chunks are served by the service worker.
 - [ ] Add an optional explicit full-offline download flow if required.
 - [x] Provide an offline-unavailable state rather than a blank tool: hide the prior route, keep query/hash only in memory, verify origin reachability, and retry through a fresh query-free document so sticky failed imports recover without leaking tool content into access logs.
-- [x] Keep the mandatory precache below 1 MB raw; current artifact is 954,481 B raw / 327,007 B gzip across nine entries and both limits are executable CI/release gates.
+- [x] Keep the mandatory precache below 1 MB raw; current artifact is 956,157 B raw / 327,325 B gzip across nine entries and both limits are executable CI/release gates.
 - [x] Cover compression, immutable hashed-asset caching, and HTML/SW/manifest revalidation in the container smoke test.
 - [ ] Add browser acceptance for service-worker update/rollback and stale-cache cleanup.
 
@@ -309,7 +315,7 @@ Recommended first feature candidates:
 - [x] **DONE:** JSON Schema validation and structured source-aware error paths for Draft 7/2019-09/2020-12 under the local-only reference, parse/node/depth/error/time/privacy, bundle, and CSP contract in `.ai/experiments/JSON_SCHEMA_VALIDATOR_DESIGN.md`. Issues #368/#801 supplied requirements only; the implementation is local and no upstream component code was reused.
 - [x] Bound Ajv `allErrors` by both instance size and projected schema/instance node pairs so branch-heavy schemas fail fast before internal error-array amplification.
 - [ ] JSON schema/code generation plugins, JSON size analysis, and RFC 6902 path generation on one lossless parsed model.
-- [ ] Local file hashing with streaming/chunked workers.
+- [x] **DONE:** local file hashing with fixed 4 MiB incremental worker reads, SHA-256/384/512 in one pass, throttled progress, cancellation/replacement after real progress, session-only privacy, safe filename display, same-file reselection, 256 MiB peak-memory/responsiveness evidence, offline worker reuse, and independent route/worker bundle gates from `.ai/experiments/FILE_HASH_DESIGN.md`.
 - [ ] Local file identification, hex conversion, and CRC calculation with streaming workers.
 - [ ] SAML decoder and LDAP/FILETIME timestamp support with explicit verification/timezone semantics.
 - [ ] URL safety workspace with strict encoding, tracker removal, defang/refang, UTM, and text-fragment modes.
@@ -364,7 +370,7 @@ Every row is an explicit candidate to adapt manually. It is **not** approval to 
 | Open [PR #1085](https://github.com/CorentinTh/it-tools/pull/1085) and [PR #1087](https://github.com/CorentinTh/it-tools/pull/1087) | Unicode/code-point correctness | Reimplement with `TextEncoder`/code points and non-BMP fixtures across related text tools |
 | Open [PR #1434](https://github.com/CorentinTh/it-tools/pull/1434) | **Completed local Prettify-scope adaptation of large-integer requirements** | Strict JSON preserves source numeric lexemes and YAML Prettify uses `BigInt` for integers; YAML floats and converters remain explicitly outside the lossless contract |
 | Open [PR #1651](https://github.com/CorentinTh/it-tools/pull/1651) | Resilient ASCII font loading | Bundle a default font first, then adapt HTTPS cache/fallback behavior with cancellation |
-| Open [PR #1170](https://github.com/CorentinTh/it-tools/pull/1170) | All-tool smoke coverage | Expanded locally to all 88 routes, console/page errors, chunk failures, and local persistence isolation |
+| Open [PR #1170](https://github.com/CorentinTh/it-tools/pull/1170) | All-tool smoke coverage | Expanded locally to all 89 routes, console/page errors, chunk failures, and local persistence isolation |
 | Closed [PR #1374](https://github.com/CorentinTh/it-tools/pull/1374) | Emoji bounded rendering | Benchmark pagination versus virtualization and preserve accessibility; do not copy presentation wholesale |
 | Closed [PR #1373](https://github.com/CorentinTh/it-tools/pull/1373) | Icon inventory/consolidation | Reuse mapping research only; prefer direct virtual modules/sprite over another large barrel |
 | Open [PR #1443](https://github.com/CorentinTh/it-tools/pull/1443) | Generated registry/scaffolding ideas | Adapt generation to the local descriptor/category/i18n model and include deterministic validation |
@@ -415,6 +421,7 @@ Implementation is approved and active on the local branch. Current ordering is:
 13. [x] deliver the local bounded NanoID feature plus strict JSON numeric-lexeme and YAML integer-preserving Prettify with exact worker-side full-payload UTF-8 bounds, a bounded 100,000-byte readonly preview, `<50 ms` measured Long Task gates, and final bundle/privacy regressions.
 14. [x] harden YAML output sizing before serializer allocation for alias, indentation, escaping, and physical-line expansion; retain the 100,000-node capacity and stabilize the isolated Long Task fixture at 10/10 without weakening its threshold.
 15. [x] **DONE:** delivered the bounded three-draft JSON Schema Validator, extracted the shared JSON/YAML one-shot worker transport, closed related malformed-protocol correctness gaps, and passed focused/full/browser/build-budget gates.
+16. [x] **DONE:** delivered bounded local File Hash, same-file upload correctness, exact-key SHA worker protocols, compatible shared transport hardening, sampled peak-memory/Long Task/cancellation/replacement evidence, demand-cached offline reuse, and independent route/worker budgets.
 
 Dependency/base-image vulnerability remediation and scan policy remain in the
 separately tracked deferred security slice.

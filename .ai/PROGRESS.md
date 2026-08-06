@@ -11,9 +11,9 @@ milestone Definition of Done has not yet passed.
 
 | Area | Status | Current result / remaining gate |
 |---|---|---|
-| M0 quality baseline | DONE | Lint, dual-project typecheck, 729/729 unit tests, 97/97 sequential Chromium E2E tests, all 88 routes, production build, OUI generation, build budgets, and diff checks are green on the final integrated worktree. |
-| M0 build measurements | IN PROGRESS | Schema-v4 baseline includes literal route-owned workers in every closure; schema-v1 budgets enforce shell, required Workbox entries, default routes, and rationale-backed heavy-route ceilings in CI/release. Fifteen infrastructure tests and 198 current-artifact checks pass; standard-runner build-time/modules/RSS telemetry remains. |
-| PWA mandatory install | DONE | Shell-only Workbox inventory is 9 files / 954,481 B raw / 327,007 B gzip. Required membership and <=1 MB raw / <=350 kB gzip / <=10 files fail CI/release; clean-HTTP-cache offline lazy-route reload passes. |
+| M0 quality baseline | DONE | Lint, dual-project typecheck, 816/816 unit tests, 102/102 sequential Chromium E2E tests, all 89 routes, production build, OUI generation, build budgets, and diff checks are green on the final integrated worktree. |
+| M0 build measurements | IN PROGRESS | Schema-v4 baseline includes literal route-owned workers in every closure; schema-v1 budgets enforce shell, required Workbox entries, default routes, rationale-backed heavy-route ceilings, and an independent File Hash worker ceiling in CI/release. Sixteen infrastructure tests and 202 current-artifact checks pass; standard-runner build-time/modules/RSS telemetry remains. |
+| PWA mandatory install | DONE | Shell-only Workbox inventory is 9 files / 956,157 B raw / 327,325 B gzip. Required membership and <=1 MB raw / <=350 kB gzip / <=10 files fail CI/release; clean-HTTP-cache offline lazy-route reload passes, and File Hash separately proves its route-owned worker is demand-cached and hashes again offline. |
 | PWA uncached-route recovery | DONE | Strict lazy-tool/network-error classification, effective-offline probing, query-safe in-memory state, prior-route hiding, and accessible actions pass 14/14 unit/component checks and a production-Workbox E2E. Retry first probes the app origin, then starts a fresh query-free document because failed native imports are sticky and query/hash must not reach access logs. |
 | M1 container delivery | IN PROGRESS | Rootless/read-only/default-and-arbitrary-UID contracts pass with alternate internal port, strict static 404, gzip/cache/headers, and privacy-safe access logs. The CVE/remediation track is explicitly deferred; reverse-proxy/subpath acceptance remains. |
 | Secure randomness | DONE | Web Crypto rejection sampling, alphabet fixes, length bounds, Unicode/boundary tests, and non-persistence browser checks are implemented. `.ai/RANDOMNESS.md` classifies every caller; UUID v1 now seeds its multicast node and 14-bit clock sequence with Web Crypto, while remaining pseudo-random callers are presentation-only. |
@@ -22,8 +22,8 @@ milestone Definition of Done has not yet passed.
 | MAC/OUI route payload | IN PROGRESS | The accepted privacy-safe design generates one compact fixed-URL worker from 34,503 pinned records. Its worker is 1,929,826 B raw / 767,125 B gzip and its full closure is 1,937,384 B / 770,467 B, 27.6% less gzip than the original route. Input-selected buckets were measured then rejected because their filenames leaked MAC prefixes; the `<250 kB` product target remains open. |
 | YAML Prettify responsiveness | DONE | One terminate-and-replace worker parses each document exactly once with 2 MiB input, 4 MiB output, depth/node/alias, five-second, job-ID, cancellation, stale-result, disposal, and exact worker-side UTF-8 bounds. A conservative graph projection rejects scalar-alias, deep-sequence, escaped-line, and boundary-space amplification before serialization while preserving the 100,000-node capacity. Large integers use `BigInt`; 31 focused checks and the final isolated production 1 MiB fixture pass at 203 ms format-ready with 0.0 ms longest Long Task. |
 | JSON lossless/worker slice | DONE | Strict JSON Prettify uses one bounded worker AST, preserves integer/decimal/exponent/negative-zero lexemes, rejects duplicate decoded keys, and sorts decoded keys without touching value tokens. JSON5 is explicitly non-lossless and uses an incremental bounded writer. Thirty-three focused checks and the final production 1 MiB fixture pass at 404 ms cold-route / 197 ms format-ready with 0.0 ms longest Long Task. |
-| Shared one-shot worker transport | DONE | JSON/YAML now use the smallest common typed-envelope/job-ID/timeout/cancel/stale/dispose transport without changing their public APIs or literal route-owned worker URLs. Ninety-six focused regressions cover replacement, timeout, cancellation, stale messages, decode failures, and disposal. Persistent OUI indexing is not forced into the one-shot abstraction; broader parser/output/download policy remains incremental. |
-| Worker protocol correctness | DONE | Bcrypt error envelopes preserve valid correlation IDs and sanitize/bound worker messages; malformed OUI result IDs are worker failures and force replacement. The combined Bcrypt/OUI focused protocol set passes 46/46 checks. |
+| Shared one-shot worker transport | DONE | JSON/YAML/File Hash use the smallest common typed-envelope/job-ID/timeout/cancel/stale/dispose transport without changing literal route-owned worker URLs. `messageerror` settles deterministically and clears handlers/timers; File Hash adds validated progress and exact-key envelopes. Persistent OUI indexing is not forced into the one-shot abstraction; envelope-first stale filtering and broader parser/output/download policy remain incremental. |
+| Worker protocol correctness | DONE | Legacy JSON/YAML/Bcrypt guards reject arrays; Bcrypt preserves valid correlation IDs; OUI errors are static, bounded, Unicode/control-sanitized on both boundaries and malformed messages force replacement. File Hash rejects every extra request/progress/result/digest/error field, preventing future filename/byte leakage across the worker boundary. |
 | Shared refreshable tasks | DONE | Eight callers use explicit dependency sources and single-execution refresh. Async jobs have AbortSignal/stale-result/scope guards; node-forge cannot physically terminate its internal RSA worker after launch. |
 | Shell/Home lifecycle | DONE | Persistent `BaseLayout` removes the detached-layout leak: ten Home/tool cycles improved from +188.40 MiB to +0.86 MiB; DOM and listener counts are stable. |
 | ASCII font delivery | DONE | Removed the `unpkg.com` runtime dependency. All 289 Figlet fonts are emitted as versioned same-origin assets, excluded from install-time precache, cached on demand, and covered by browser/container smoke. |
@@ -34,17 +34,19 @@ milestone Definition of Done has not yet passed.
 | Cross-tool persistence/privacy | IN PROGRESS | The current storage inventory is classified in `.ai/PERSISTENCE.md`: thirteen legacy content/network-input keys are session-only, secrets are ephemeral, Text Diff is the sole bounded opt-in, Regex edits stay out of URL/history, analytics strips query/hash/referrer credentials, and About provides disclosure plus a managed-key-only global reset. A common preference-storage denial boundary remains. |
 | M5 first catalog feature | DONE | NanoID Generator is the first delivered bounded catalog feature: Web Crypto rejection sampling, no content persistence/network transport, explicit generation, NFC Unicode custom-alphabet validation, entropy/collision guidance, 100,000-symbol / 512-KiB limits, copy/download/clear, lazy route, and bundle/browser gates. Its additional closure is 23,225 B raw / 8,916 B gzip; the second feature is also delivered. |
 | M5 second catalog feature | DONE | JSON Schema Validator supports Draft 7/2019-09/2020-12 in a route-owned bounded worker with fragment-local references, source-aware sanitized errors, explicit actions, session-only privacy, safe equality for prototype-shaped data, and executable performance/PWA budgets. `allErrors` is additionally bounded by 20,000 projected schema/instance node pairs. Focused 121/121 and Chromium 3/3 pass; issues #368/#801 were requirements research only. |
+| M5 third catalog feature | DONE | Local File Hash is delivered under `.ai/experiments/FILE_HASH_DESIGN.md`: one fixed-4-MiB-window SHA-256/384/512 worker pass, exact-key protocol, progress/cancel/replacement, no application whole-file buffer, session-only file references, safe filename display, online/offline PWA reuse, sampled peak memory, and executable route/worker budgets. Issues #528 and PRs #535/#1141 remained requirements-only research. |
+| Worker transport hardening — compatible increment | DONE | Deterministic `messageerror` settlement, strict non-array legacy record guards, bounded sanitized OUI error text, and File Hash exact-key/progress lifecycle coverage pass. Envelope-first stale filtering and output-byte-metadata trust remain explicit follow-ups instead of being overstated as complete. |
 
 ## Verified checkpoints
 
 - `pnpm install --frozen-lockfile`: passed against the pinned pnpm 9.11.0 lock-resolved graph.
 - `pnpm lint`: final integrated run passed with zero errors/warnings.
 - `pnpm typecheck`: final integrated application/test and Vite-config projects passed.
-- `pnpm exec vitest run --environment jsdom`: final integrated run passed 729/729 across 97 files.
-- `pnpm test:build-stats`: schema-v4 15/15 passed, including worker discovery/ownership, unrelated-worker exclusion, malformed-reference failure, manifest graph, stable identity, subpath handling, strict budgets, and required Workbox membership.
-- `pnpm build`: final integrated production build passed; OUI freshness and dual typecheck run first, 24,185 modules were transformed, and the local Vite phase took 19.86 s. The earlier exact-Node-24.18.0 Docker build passed in 21.42 s.
-- `pnpm exec playwright test --project=chromium --reporter=line --workers=1`: final integrated run passed 97/97 in 1.3 minutes, including the registry-generated 88-tool route smoke.
-- Chromium all-tool route smoke: all 88 registry-backed routes pass without runtime/chunk errors or Monaco worker fallback warnings.
+- `pnpm exec vitest run --environment jsdom`: final integrated run passed 816/816 across 104 files.
+- `pnpm test:build-stats`: schema-v4 16/16 passed, including worker discovery/ownership, unrelated-worker exclusion, malformed-reference failure, manifest graph, stable identity, subpath handling, strict route/worker budgets, and required Workbox membership.
+- `pnpm build`: final integrated production build passed; OUI freshness and dual typecheck run first, 24,192 modules were transformed, and the local Vite phase took 21.17 s. The earlier exact-Node-24.18.0 Docker build remains the exact-baseline environment check.
+- `pnpm exec playwright test --project=chromium --reporter=line --workers=1`: final integrated run passed 102/102 in 1.5 minutes, including the registry-generated 89-tool route smoke.
+- Chromium all-tool route smoke: all 89 registry-backed routes pass without runtime/chunk errors or Monaco worker fallback warnings.
 - ASCII same-origin E2E: passed; no external font request is made.
 - Text Diff forced-GC gate: 20,423,472 B -> 23,001,392 B after ten warmed cycles, +2,577,920 B (+2.46 MiB), zero remaining workers.
 - Home forced-GC gate: before fix +188.40 MiB with DOM 9,064 -> 74,694 and listeners 1,939 -> 14,988; after fix 18,336,088 B -> 19,242,160 B, +906,072 B (+0.86 MiB), DOM 5,036 -> 5,037, listeners 807 -> 809.
@@ -54,29 +56,30 @@ milestone Definition of Done has not yet passed.
 - Correctness slice 1: 65/65 focused tests pass across Base64 File, Temperature, URL Parser, Command Palette, CSV, Text Statistics, and Docker Compose; scoped ESLint and `git diff --check` pass.
 - Regex responsiveness: 36/36 focused unit/component checks across five files and 4/4 Chromium flows pass for optional/zero-width captures, pre-allocation sample bounds, limits/protocol validation, explicit incoming-query/session-only behavior, catastrophic timeout with heartbeat, stale cancellation, route leave, and tool-to-tool unmount.
 - Shared `TextareaCopyable`: 9/9 component checks plus 16/16 UTF-8 helper checks pass; the 1 MiB JSON/YAML Chromium fixtures render one UTF-8-safe 100,000-byte readonly preview with zero descendants, and JSON verifies Copy receives the complete output.
-- Build budgets: 15/15 infrastructure tests and 198/198 current production-artifact checks pass; CI/release enforce byte/count ceilings, owned-worker closures, and mandatory Workbox shell/static membership.
+- Build budgets: 16/16 infrastructure tests and 202/202 current production-artifact checks pass; CI/release enforce byte/count ceilings, owned-worker closures, the independent File Hash worker ceiling, and mandatory Workbox shell/static membership.
 - Bcrypt responsiveness: 19/19 original worker/protocol unit checks and 4/4 Chromium flows pass; current protocol hardening is included in the 46/46 Bcrypt/OUI set. The lazy route is 11,427 B raw / 4,160 B gzip and its worker is 25,436 B raw / 11,394 B gzip.
 - Camera Recorder lifecycle: 18/18 model/composable/component checks pass with deterministic Blob URL ownership, 1-second chunks, 5-minute/64-MiB recording, single-flight screenshots, a pre-canvas 16,777,216-pixel/64-MiB raw bound, a 16-MiB encoded bound, and a 128-MiB aggregate bound.
 - Shared buttons: 4/4 component/router checks pass for non-submitting native defaults, explicit submit/reset, physical href removal plus link semantics while disabled, and enabled object-route navigation.
 - URL Encoder standards: 19/19 model regressions pass across component, RFC3986, RFC5987 value-body, and form-urlencoded modes.
 - UnoCSS native `size`: 15/15 input/config regressions pass with the original Attributify ignore defaults preserved.
-- Sensitive-content migration checkpoint: the current 729/729 full unit run, 15/15 focused storage checks, and 2/2 Chromium privacy flows pass after making thirteen content/network-input keys ephemeral and cleaning legacy values.
+- Sensitive-content migration checkpoint: the current 816/816 full unit run, 15/15 focused storage checks, and 2/2 Chromium privacy flows pass after making thirteen content/network-input keys ephemeral and cleaning legacy values.
 - Text Diff 1 MiB interaction: two exact 1,048,576-byte models reach ready diff state in 725 ms; a clear UI action takes 45 ms, the real worker remains active, storage remains default-off, and the focused production-preview suite passes.
 - Refreshable task abstraction: 9/9 new invocation/cancellation tests and 38/38 related unit checks pass across all eight migrated callers.
 - Privacy/reset UX: 4/4 focused tests pass; clearing managed settings/content preserves unrelated same-origin keys and reports denied mutations.
 - Mobile menu: 4/4 layout regressions, 2/2 style-store checks, and 1/1 Chromium focus flow pass for immediate small-screen collapse, route-close, Escape, focus restoration, inert desktop/mobile hidden states, and a preserved persisted desktop preference.
 - Emoji bounded rendering: 10/10 focused unit/component checks and 3/3 Chromium flows pass; 60 cards create 1,731 elements, load-more reaches 120, one result grid preserves Fuse ranking, production `face` search takes 166 ms with no Long Task API entry >=50 ms, and additional-route gzip is 32,488 B (-48.8%).
 - Analytics/URL privacy: 3/3 plugin checks cover path-only event/pageview URLs and sanitized referrers; 2/2 Regex component checks cover explicit incoming query import without editor write-back.
-- PWA demand caching: 10/10 policy checks and 1/1 Chromium offline flow pass. The final precache is nine entries / 954,481 B raw / 327,007 B gzip; Random Port adds four runtime-cached chunks; after HTTP-cache clear, offline reload completes in 290 ms with every required response served by the service worker.
+- PWA demand caching: 10/10 policy checks and the generic plus File Hash Chromium offline flows pass. The final precache is nine entries / 956,157 B raw / 327,325 B gzip; Random Port proves generic lazy-route caching, while File Hash separately proves both its route and worker are runtime-cached and can compute again after HTTP-cache clear/offline reload.
 - PWA uncached-route recovery: 14/14 classifier/component checks and 1/1 production-Workbox flow pass; an uncached target replaces sensitive prior DOM with recovery UI, an origin probe prevents navigation into the browser's own offline page, a fresh query-free document clears the sticky import failure after reconnect, and the target enters the lazy cache.
 - YAML Prettify: 31/31 handler/protocol/client/model/component checks, 10/10 repeated isolated Long Task runs, and the final 1/1 production flow pass; one bounded worker parse preserves large integers, exact UTF-8 accounting stays off-main-thread, pre-serialization projection blocks four output-amplification classes, format-ready is 203 ms, and no current-interaction Long Task is observed. Chromium garbage from prior discarded contexts is collected before the measurement window, without excluding any formatting allocation.
 - JSON Prettify: 33/33 handler/protocol/client/model/component checks and 1/1 1 MiB Chromium flow pass; strict formatting is lossless for numeric lexemes, full Copy is exact, cold route is 404 ms, format-ready is 197 ms, and no Long Task is observed.
 - NanoID Generator: 53/53 service/component/download-helper checks and 4/4 Chromium flows pass; maximum 100 x 1,000 generation is 144 ms with no Long Task, clipboard/download are exact, and output/alphabet remain absent from URL, requests, and storage.
 - MAC/OUI privacy and lifecycle: generator 4/4, data/protocol/client/service 28/28, and Chromium 2/2 pass; one prefix-independent worker request is reused offline, retry uses the exact same URL, no tested prefix enters a URL/body, and SPA leave disposes the worker.
 - UUID v1 randomness: 8/8 service regressions pass with Web Crypto seeding, multicast-node semantics, a 14-bit clock sequence, and no `Math.random` path.
-- Shared one-shot worker transport: 96/96 utility/UTF-8/JSON/YAML regressions pass with terminate-and-replace cancellation, timeout, stale-message, decode-failure, and disposal coverage while public clients remain stable.
-- Bcrypt/OUI protocol correctness: 46/46 focused checks pass for bounded sanitized errors, preserved valid correlation IDs, malformed-envelope classification, and worker invalidation.
+- Shared one-shot worker transport: utility/JSON/YAML/File Hash regressions pass with terminate-and-replace cancellation, timeout, `messageerror`, stale-message, progress-decode failure, and disposal coverage while public clients remain stable.
+- Bcrypt/OUI protocol correctness: strict record guards, bounded sanitized errors, preserved valid correlation IDs, malformed-envelope classification, and worker invalidation pass in the full/focused transport suites.
 - JSON Schema Validator: 121/121 model/protocol/handler/client/component regressions and 3/3 Chromium flows pass; the final 1 MiB production fixture is 246 ms cold / 205 ms result-ready / 0.0 ms longest observed Long Task, branch-heavy `allErrors` is node-pair bounded, and content remains absent from URL, storage, and requests.
+- File Hash: focused transport/tool/upload 107/107 and production Chromium core/privacy/copy/reselection 3/3, large-file 1/1, and PWA offline 1/1 pass. The 256 MiB/all-three run is 9,999 ms, 0.0 ms longest observed Long Task, +1,922,904 B peak page heap, +91,242,496 B peak sampled Chromium-process RSS, and +260,696 B retained page heap; replacement/cancel occur after nonzero progress and leave zero workers.
 
 ## Current production measurements
 
@@ -87,13 +90,13 @@ precache and caches at most 32 requested fonts at runtime.
 
 | Metric | Audit baseline | Current schema-v4 build | Change |
 |---|---:|---:|---:|
-| Total dist files | 286 | 508 | +222 (+77.6%; includes 289 local fonts) |
-| Total dist raw | 12,816,672 B | 13,298,942 B | +482,270 B (+3.8%) |
-| Total dist gzip | 3,893,533 B | 3,800,041 B | -93,492 B (-2.4%) |
-| Shell gzip incl. document | 273,513 B | 276,645 B | +3,132 B (+1.1%) |
+| Total dist files | 286 | 511 | +225 (+78.7%; includes 289 local fonts) |
+| Total dist raw | 12,816,672 B | 13,329,332 B | +512,660 B (+4.0%) |
+| Total dist gzip | 3,893,533 B | 3,812,444 B | -81,089 B (-2.1%) |
+| Shell gzip incl. document | 273,513 B | 276,963 B | +3,450 B (+1.3%) |
 | Workbox entries | 270 | 9 | -261 (-96.7%) |
-| Workbox raw | 6,121,476 B | 954,481 B | -5,166,995 B (-84.4%) |
-| Workbox gzip | 1,911,520 B | 327,007 B | -1,584,513 B (-82.9%) |
+| Workbox raw | 6,121,476 B | 956,157 B | -5,165,319 B (-84.4%) |
+| Workbox gzip | 1,911,520 B | 327,325 B | -1,584,195 B (-82.9%) |
 | Text Diff JS raw | 3,161,296 B | 2,206,864 B | -954,432 B (-30.2%) |
 | Text Diff JS gzip | 801,738 B | 570,786 B | -230,952 B (-28.8%) |
 | Text Diff additional route + worker gzip | not previously separated | 646,976 B | target remains `<350 kB` |
@@ -104,6 +107,8 @@ precache and caches at most 32 requested fonts at runtime.
 | YAML Prettify additional route + worker raw / gzip | not previously worker-aware | 261,438 B / 87,579 B | worker is 99,735 B / 31,033 B |
 | JSON Schema Validator additional route + worker raw / gzip | not present | 176,585 B / 53,355 B | worker is 161,471 B / 47,125 B; both gates pass |
 | JSON Schema registry shell increment | prior checkpoint 276,295 B gzip | 276,645 B gzip | +350 B (+0.1%) accepted for route metadata/icon; Ajv stays lazy and worker-owned |
+| File Hash additional route + worker raw / gzip | not present | 56,994 B / 22,189 B | worker is 13,583 B / 6,298 B; independent route and worker gates pass |
+| File Hash registry shell increment | prior checkpoint 276,645 B gzip | 276,963 B gzip | +318 B (+0.1%) accepted for route metadata/icon; hashing stays lazy and worker-owned |
 | Emoji additional route raw | 386,059 B | 272,834 B | -113,225 B (-29.3%) |
 | Emoji additional route gzip | 63,420 B | 32,488 B | -30,932 B (-48.8%) |
 
@@ -119,12 +124,12 @@ precache and caches at most 32 requested fonts at runtime.
 - Reworked Text Diff worker ownership, lifecycle disposal, persistence privacy, quota recovery, and forced-GC regression gates.
 - Fixed the application-shell detached layout leak and added a cross-route heap/DOM/listener gate.
 - Removed ASCII Art's third-party CDN dependency using versioned same-origin on-demand font delivery.
-- Added all-88-route smoke coverage and narrow worker/chunk/runtime warning gates.
+- Added all-89-route smoke coverage and narrow worker/chunk/runtime warning gates.
 - Added pinned rootless container delivery, configurable port, read-only operation, healthcheck, gzip/cache/security headers, strict static routing, and automated default/arbitrary-UID smoke.
 - Corrected release image namespaces from upstream `corentinth` to the local fork `64mb`.
 - Fixed Base64 MIME/raw-data URIs, all-scale Temperature bounds/rounding, ordered URL query duplicates/fragments, guarded Command Palette keyboard activation, standard CSV quoting, single-pass Text Statistics, and obsolete Compose output with focused regressions.
 - Fixed Regex optional captures and shared output copy-placement/late-height tracking.
-- Added machine-readable build budget schema, default route ceilings, documented heavy-route exceptions, and CI/release enforcement.
+- Added machine-readable build budget schema, default route ceilings, documented heavy-route exceptions, independent reviewed worker-asset ceilings, and CI/release enforcement.
 - Replaced route-wide Workbox precaching with a nine-entry shell policy (including the fail-closed discovered Workbox client runtime), bounded runtime caching for opened hashed routes, required-entry checks, product-target byte ceilings, and a clean-HTTP-cache offline reload fixture.
 - Replaced reactive Bcrypt work with explicit bounded worker actions; bounded Camera Recorder duration/chunks/raw canvas/encoded output/item and aggregate bytes with single-flight capture; added four URL encoding modes; restored native input `size` and shared disabled-button contracts.
 - Replaced getter-as-watch refresh logic with explicit dependencies, one execution per refresh, async stale guards, AbortSignal cancellation, and scope disposal across eight generators.
@@ -143,6 +148,9 @@ precache and caches at most 32 requested fonts at runtime.
 - Completed the Text Diff editor payload comparison and secure-randomness inventory; retained repaired Monaco pending a worker-backed CodeMirror spike and removed UUID v1's pseudo-random seed path.
 - Delivered the bounded three-draft JSON Schema Validator with local references, session-only privacy, source-aware sanitized errors, safe prototype-shaped equality, explicit actions, and measured worker/route/PWA budgets.
 - Extracted the proven JSON/YAML terminate-and-replace worker-task transport and closed Bcrypt/OUI malformed-envelope and error-sanitization correctness gaps with focused regressions.
+- Delivered File Hash with one fixed-window SHA-256/384/512 worker pass, explicit progress/cancel/replacement, exact-key wire boundaries, session-only privacy, grapheme-aware safe filename display, clipboard/empty/same-file coverage, and 256 MiB responsiveness plus peak-memory evidence.
+- Repaired the shared file-upload control so native same-file selection and drop-state reset are deterministic, and hardened shared transport `messageerror`, legacy non-array records, and OUI error-text boundaries without forcing persistent workers into the one-shot abstraction.
+- Added a separately reviewed File Hash worker budget and an online-to-offline production Workbox flow proving the route and worker stay demand-loaded yet reusable offline.
 
 ## Active risks and deliberately deferred work
 
@@ -157,6 +165,7 @@ precache and caches at most 32 requested fonts at runtime.
 - JSON/YAML Prettify now pass the unthrottled sequential Chromium 1 MiB `<50 ms` Long Task fixtures, but remaining converters/parsers and a slower-device profile are not covered by that claim. The complete bounded output still resides in memory/main-thread state; only the DOM preview is truncated.
 - NanoID's 100,000-symbol gate passes unthrottled Chromium at 144 ms with no observed Long Task; this is not yet a slow-device guarantee.
 - JSON Schema validation passes the unthrottled Chromium 1 MiB gate, but slower-device and cross-browser performance profiles remain open. The 5-second worker deadline is the hard runtime bound.
+- File Hash bounds application-owned reads to 4 MiB and its production Chromium peak-RSS gate rejects sustained whole-file growth, but `File` structured clone is browser-managed and no engine-level physical zero-copy/zeroization claim is made. Firefox/WebKit feature smoke remains part of the general cross-browser backlog because the pinned local binaries were unavailable.
 - Ajv performs runtime validator code generation. The current delivery headers do not impose an eval-blocking CSP; if a future CSP does, the feature reports validator unavailability and must move to precompiled/interpreted validation rather than adding `unsafe-eval`.
 - Dependency and base-image vulnerability remediation/scanner gating is intentionally deferred to a later security track per current scope direction. No advisory suppression was added.
 - Reverse-proxy and real base/subpath deployment acceptance remain open.
@@ -164,8 +173,8 @@ precache and caches at most 32 requested fonts at runtime.
 
 ## Next acceptance gates
 
-1. Extend the delivered one-shot task transport only where another real consumer needs it, adding `messageerror`, envelope-first stale filtering, strict legacy record guards, OUI error sanitization, and an explicit output-byte-metadata trust contract; then consolidate shared parser/depth/output/download limits without forcing persistent OUI or overstating lossless behavior.
-2. Scope the third bounded catalog feature; streaming local file hashing is the leading candidate and must prove incremental memory, cancellation/progress, large-file browser behavior, and route-worker budgets before implementation.
+1. Extend the delivered one-shot task transport only where another real consumer needs it: measure envelope-first stale filtering and make the existing output-byte-metadata trust contract explicit; then consolidate shared parser/depth/output/download limits without forcing persistent OUI or overstating lossless behavior.
+2. Select the fourth bounded catalog feature from the approved Priority A list and lock its privacy, worker/lifecycle, correctness, browser, bundle, and PWA gates before implementation.
 3. Build a worker-backed CodeMirror parity/adversarial spike and migrate Text Diff only if the full owned-worker closure is `<350 kB` gzip and lifecycle/accuracy gates pass.
 4. Add Emoji 4x CPU coverage and cancellable/worker-backed search if the slower profile exceeds budget.
 5. Add PWA update/rollback and stale-cache cleanup acceptance using an explicit two-build rollback contract.
@@ -215,3 +224,6 @@ precache and caches at most 32 requested fonts at runtime.
 - 2026-07-18: started the next autonomous cross-category slice: a local three-draft JSON Schema Validator, extraction of the proven JSON/YAML one-shot worker transport, and project-owned Bcrypt/OUI protocol hardening. Ajv 8.17.1 was promoted to an exact direct route dependency; issues #368/#801 remained requirements-only and no upstream code was transferred.
 - 2026-07-18: delivered the JSON Schema Validator with strict local-reference/resource/privacy contracts, prototype-safe validation semantics, and a schema/instance node-pair `allErrors` guard; delivered the shared JSON/YAML task transport; bounded and sanitized Bcrypt errors; and corrected malformed OUI response classification. Final integrated gates pass: lint, dual typecheck, 729/729 unit across 97 files, 15/15 build-stat, 4/4 OUI, 198/198 artifact budgets, 24,185-module production build in 19.86 s, 97/97 sequential Chromium E2E including all 88 routes, and `git diff --check`. The validator closure is 176,585 B raw / 53,355 B gzip, its worker is 161,471 B / 47,125 B, the nine-entry PWA is 954,481 B / 327,007 B, and the final 1 MiB flow is 246 ms cold / 205 ms ready / 0.0 ms longest task. The accepted initial-shell cost is +350 B gzip for the catalog entry while Ajv remains lazy and no new chunk exceeds 500 kB. External CVE/base-image work remains intentionally deferred.
 - 2026-07-18: final independent adversarial review found and closed one medium Ajv error-amplification gap with a real branch-heavy regression. No high-severity findings remain; lower-risk `messageerror`, envelope-first decode, legacy array-record, OUI text-sanitization, and byte-metadata trust refinements are explicitly queued in `TODO` rather than hidden or overstated.
+- 2026-07-18: started the next autonomous cross-category slice: third catalog feature local file hashing, same-file upload-control correctness, and compatible worker-transport hardening. The accepted implementation direction is local/session-only, explicit, fixed-chunk, worker-owned, cancellable, and measurable; no upstream code is transferred and the external CVE/base-image track remains deferred.
+- 2026-07-18: independent File Hash review found that post-GC page heap alone could not prove bounded peak memory and identified exact-key, cancellation/replacement, filename-spoofing, production-window, offline-worker, clipboard, and independent-worker-budget gaps. The accepted tree closes all of them: peak page/process memory is sampled during a 256 MiB run, replacement/cancel wait for nonzero progress, wire fields are exact, 4 MiB boundaries are differential-tested, format/invisible filename characters are visible or replaced, and Workbox re-hashes offline. Browser-engine physical zero-copy is deliberately not claimed.
+- 2026-07-18: completed the File Hash + compatible transport/upload slice. Final gates pass: zero-warning lint, dual typecheck, 816/816 unit across 104 files, 16/16 build-stat tests, 4/4 OUI checks, 202/202 artifact budgets, 24,192-module production build in 21.17 s, 102/102 sequential Chromium E2E including all 89 routes, and `git diff --check`. File Hash closure is 56,994 B raw / 22,189 B gzip, worker 13,583 B / 6,298 B, PWA 9 files / 956,157 B / 327,325 B, and the 256 MiB/all-three gate is 9,999 ms with 0.0 ms longest Long Task and +91,242,496 B peak sampled Chromium-process RSS. External CVE/base-image work remains intentionally deferred.

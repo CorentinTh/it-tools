@@ -4,6 +4,7 @@ export type WorkerTransportErrorCode = 'worker' | 'timeout' | 'cancelled' | 'una
 
 export interface WorkerTaskHandle<TRequest> {
   onmessage: ((event: MessageEvent<unknown>) => void) | null
+  onmessageerror?: ((event: MessageEvent<unknown>) => void) | null
   onerror: ((event: ErrorEvent) => void) | null
   postMessage: (request: TRequest) => void
   terminate: () => void
@@ -125,6 +126,7 @@ export class TerminateAndReplaceWorkerTask<
       const cleanup = () => {
         globalThis.clearTimeout(timeout);
         worker.onmessage = null;
+        worker.onmessageerror = null;
         worker.onerror = null;
         try {
           worker.terminate();
@@ -207,6 +209,10 @@ export class TerminateAndReplaceWorkerTask<
         succeed(result);
       };
       worker.onerror = (event) => {
+        event.preventDefault();
+        fail(this.options.createError('worker', this.options.messages.crash, elapsed()));
+      };
+      worker.onmessageerror = (event) => {
         event.preventDefault();
         fail(this.options.createError('worker', this.options.messages.crash, elapsed()));
       };

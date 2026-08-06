@@ -64,9 +64,15 @@ in-memory refs, never places its alphabet or output in URL/history, and exposes
 copy/download only as explicit user actions; it adds no managed storage key or
 network request.
 
+File Hash likewise adds no managed storage key. Its selected `File`, filename,
+and bytes are held only by route-local application references, never included in
+requests/URLs/analytics, and released by the application on clear/unmount. Only
+lowercase digests are copyable. This does not claim browser GC timing or physical
+memory zeroization.
+
 ## Verification
 
-- Final integrated unit checkpoint: 546/546 tests across 89 files passed; the
+- Final integrated unit checkpoint: 816/816 tests across 104 files passed; the
   focused storage/cleanup suite passed 15/15.
 - Chromium persistence flows: 2/2 passed across legacy cleanup and edits to all
   migrated tools.
@@ -78,6 +84,9 @@ network request.
 - NanoID's production Chromium flow verifies exact clipboard and downloaded
   output, no generated ID/custom alphabet in URL or request URL/body, no matching
   `localStorage` value, and explicit clearing.
+- File Hash production Chromium verifies no filename/content marker in URL,
+  storage, or request URL/body, exact digest-only clipboard output, reload reset,
+  and a second hash from demand-cached route/worker assets while offline.
 
 ## Remaining work
 

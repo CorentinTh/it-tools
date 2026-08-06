@@ -569,6 +569,52 @@ test('evaluateBuildBudgets rejects stale dynamic-entry overrides', async (t) => 
   );
 });
 
+test('worker asset budgets require rationale, enforce size, and reject stale paths', async (t) => {
+  const stats = await collectBuildStats({ distDirectory: await createFixture(t) });
+  const worker = stats.viteManifest.workerArtifacts.entries[0];
+  assert.ok(worker);
+  const baseBudgets = createBudgets(stats);
+  const budgets = parseBuildBudgets({
+    ...baseBudgets,
+    workerAssetLimits: {
+      [worker.path]: {
+        rawBytes: worker.rawBytes,
+        gzipBytes: worker.gzipBytes,
+        rationale: 'Reviewed fixture worker ceiling',
+      },
+    },
+  });
+
+  const accepted = evaluateBuildBudgets(stats, budgets);
+  assert.equal(accepted.passed, true);
+  assert.ok(accepted.checks.some(check => check.name === `workerAsset:${worker.path}.rawBytes`));
+
+  budgets.workerAssetLimits[worker.path].gzipBytes = 0;
+  assert.ok(evaluateBuildBudgets(stats, budgets).failures.some(
+    failure => failure.name === `workerAsset:${worker.path}.gzipBytes`,
+  ));
+  assert.throws(
+    () => parseBuildBudgets({
+      ...baseBudgets,
+      workerAssetLimits: { [worker.path]: { rawBytes: 1, gzipBytes: 1 } },
+    }),
+    /rationale/,
+  );
+  assert.throws(
+    () => evaluateBuildBudgets(stats, parseBuildBudgets({
+      ...baseBudgets,
+      workerAssetLimits: {
+        'assets/removed.worker-<hash>.js': {
+          rawBytes: 1,
+          gzipBytes: 1,
+          rationale: 'Intentional stale fixture',
+        },
+      },
+    })),
+    /missing worker asset/,
+  );
+});
+
 test('parseArguments accepts a build-budget file', () => {
   assert.deepEqual(
     parseArguments(['--dist', 'build', '--budgets', 'budgets.json', '--output', 'stats.json']),
