@@ -1,11 +1,20 @@
 # Implementation Progress
 
-Last updated: 2026-07-18
+Last updated: 2026-08-07
 
 This is the live implementation journal for the roadmap. A task is `DONE` only
 after its relevant regression tests and acceptance gates pass on the current
 working tree. `IN PROGRESS` means implementation exists but the complete
 milestone Definition of Done has not yet passed.
+
+## Resume checkpoint
+
+Cross-machine and cross-session recovery starts in `.ai/HANDOFF.md`. The last
+completed implementation checkpoint is `5f7e97a`; it was verified on the live
+`origin/feat-ai-research` ref on 2026-08-07 before the documentation-only
+handoff update. The full gates below were last executed on 2026-07-18; the
+transfer review verified repository/document consistency but did not relabel
+those measurements as newly rerun.
 
 ## Current slice
 
@@ -154,7 +163,7 @@ precache and caches at most 32 requested fonts at runtime.
 
 ## Active risks and deliberately deferred work
 
-- Local host Node is 24.15.0 while the selected baseline is 24.18.0. Exact-baseline build verification is provided by Docker; local commands emit the expected engine warning.
+- The final source-host measurements used Node 24.15.0 and emitted an engine warning; this is historical benchmark context, not a portable requirement. The selected and aligned baseline is Node 24.18.0, and the exact-baseline build is covered by Docker. A resumed machine should use `.nvmrc`.
 - `@types/node` remains 18.x. Updating it alone makes the old peer graph resolve an incompatible `@vueuse/shared` 14.x, so this stays in the controlled dependency-remediation group.
 - Text Diff meets the heap/worker budget but not the route payload budget; the measured comparison is complete and a worker-backed CodeMirror parity/adversarial spike is required before migration.
 - Local Figlet assets increase static artifact file count/size but remain excluded from the nine-entry mandatory precache; on-demand runtime caching and a separate same-origin browser/container fixture pass.
@@ -227,3 +236,4 @@ precache and caches at most 32 requested fonts at runtime.
 - 2026-07-18: started the next autonomous cross-category slice: third catalog feature local file hashing, same-file upload-control correctness, and compatible worker-transport hardening. The accepted implementation direction is local/session-only, explicit, fixed-chunk, worker-owned, cancellable, and measurable; no upstream code is transferred and the external CVE/base-image track remains deferred.
 - 2026-07-18: independent File Hash review found that post-GC page heap alone could not prove bounded peak memory and identified exact-key, cancellation/replacement, filename-spoofing, production-window, offline-worker, clipboard, and independent-worker-budget gaps. The accepted tree closes all of them: peak page/process memory is sampled during a 256 MiB run, replacement/cancel wait for nonzero progress, wire fields are exact, 4 MiB boundaries are differential-tested, format/invisible filename characters are visible or replaced, and Workbox re-hashes offline. Browser-engine physical zero-copy is deliberately not claimed.
 - 2026-07-18: completed the File Hash + compatible transport/upload slice. Final gates pass: zero-warning lint, dual typecheck, 816/816 unit across 104 files, 16/16 build-stat tests, 4/4 OUI checks, 202/202 artifact budgets, 24,192-module production build in 21.17 s, 102/102 sequential Chromium E2E including all 89 routes, and `git diff --check`. File Hash closure is 56,994 B raw / 22,189 B gzip, worker 13,583 B / 6,298 B, PWA 9 files / 956,157 B / 327,325 B, and the 256 MiB/all-three gate is 9,999 ms with 0.0 ms longest Long Task and +91,242,496 B peak sampled Chromium-process RSS. External CVE/base-image work remains intentionally deferred.
+- 2026-08-07: prepared the machine-independent recovery contract in `.ai/HANDOFF.md`, corrected stale current-state architecture/toolchain guidance, and verified the live GitHub ref for `origin/feat-ai-research` at implementation checkpoint `5f7e97a`. Before the documentation-only handoff edit, the worktree was clean with no staged/untracked files, submodules, LFS objects, or machine-local project inputs.

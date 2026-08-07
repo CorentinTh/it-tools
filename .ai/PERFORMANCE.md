@@ -47,7 +47,7 @@ converters/parsers, and shell reduction are the next frontier.
 
 This audit covers the complete current branch, not only upstream changes. It combines:
 
-- static inspection of the original 416 TypeScript/Vue source files and the current 88 registered tools;
+- static inspection of the original 416 TypeScript/Vue source files and the current 89 registered tools;
 - production build and manifest analysis;
 - Workbox service-worker inventory;
 - cold-route profiles in headless Chromium with service workers disabled;

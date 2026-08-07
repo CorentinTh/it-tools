@@ -19,20 +19,24 @@ The local fork is the source of truth. Do not merge, rebase, or cherry-pick upst
 - `locales/`: compiled i18n source. The current fork intentionally retains only English.
 - `scripts/`: scaffolding and release scripts.
 - `.github/workflows/`: CI, E2E, and release pipelines.
-- `.ai/`: architecture, upstream snapshots, findings, and the approved work plan.
+- `.ai/`: handoff state, architecture, upstream snapshots, findings, measurements, and the approved work plan.
 
-Read `.ai/ARCHITECTURE.md`, `.ai/FIXES.md`, `.ai/FEATURES.md`, `.ai/PERFORMANCE.md`, and `.ai/TODO.md` before broad changes.
+For a resumed session or any broad change, read `.ai/HANDOFF.md` first, then
+`.ai/PROGRESS.md`, `.ai/TODO.md`, `.ai/ARCHITECTURE.md`,
+`.ai/PERSISTENCE.md`, `.ai/FIXES.md`, `.ai/FEATURES.md`, and
+`.ai/PERFORMANCE.md`. `HANDOFF` and the current-status sections in `PROGRESS`
+take precedence over historical audit baselines elsewhere in `.ai`.
 
 ## Toolchain and commands
 
-Use the package manager pinned in `package.json` (`pnpm@9.11.0`) and install from the lockfile:
+Use Node `24.18.0`, aligned across `.nvmrc`, `package.json`, CI, and Docker.
+Do not silently substitute a different major/minor baseline. Use the package
+manager pinned in `package.json` (`pnpm@9.11.0`) and install from the lockfile:
 
 ```sh
 corepack enable
 pnpm install --frozen-lockfile
 ```
-
-The repository currently has inconsistent Node declarations (`.nvmrc`, CI, and Docker); do not silently choose a new baseline. Modernizing and aligning them is a planned task.
 
 Run checks proportional to the change:
 
@@ -44,7 +48,26 @@ pnpm build
 pnpm test:e2e --project=chromium --reporter=line
 ```
 
-`pnpm test:unit` starts Vitest in its default mode and may watch locally; use the explicit `vitest run` command for a one-shot verification. Browser binaries must match the pinned Playwright version.
+`pnpm test:unit` is the one-shot Vitest command; use
+`pnpm test:unit:watch` only when watch mode is intentional. Browser binaries
+must match the pinned Playwright version.
+
+## Session restoration and handoff
+
+- Treat Git-tracked files as the only portable project state. Do not copy
+  `node_modules/`, `dist/`, Playwright caches, pnpm stores, or editor state
+  between machines; reinstall and rebuild them.
+- Before editing in a resumed session, record `git status --short --branch` and
+  `git rev-parse HEAD`, then compare them with `.ai/HANDOFF.md`. Never discard
+  divergence or an unexpected dirty tree to force a match.
+- Before transferring a session, update `.ai/HANDOFF.md` with the branch,
+  durable checkpoint, completed slice, green gates, active risks/non-claims,
+  and exact next priority. Commit and push all tracked and untracked project
+  files, then verify the live remote ref; a local remote-tracking ref alone is
+  not proof that another machine can restore the work.
+- Machine-specific benchmark conditions belong in the handoff/evidence files,
+  not in permanent product rules. Re-run proportional gates on the target
+  machine before extending a measurement claim.
 
 ## Implementation rules
 

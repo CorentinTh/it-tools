@@ -1,5 +1,10 @@
 # IT Tools Architecture
 
+Current-state review: 2026-08-07. Exact accepted test/build measurements and
+the recovery checkpoint live in `.ai/PROGRESS.md` and `.ai/HANDOFF.md`.
+Audit-time comparisons are explicitly labeled historical below and must not be
+used to restart completed work.
+
 ## 1. Purpose and system boundaries
 
 The project is a static single-page application and PWA containing browser-based utilities for developers. The current branch registers 89 tools across 10 categories. There is no application backend: transformations, parsing, generation, cryptography, and file handling run in the user's browser.
@@ -55,7 +60,7 @@ Specialized libraries are grouped around individual tools: JSON5/YAML/TOML/XML/M
 ├── unocss.config.ts            # utility CSS
 ├── playwright.config.ts        # three browsers and preview server
 ├── Dockerfile / nginx.conf     # multi-stage static image
-└── .ai/                        # audit results and upstream snapshots
+└── .ai/                        # handoff, current status, audits, baselines, snapshots
 ```
 
 ## 4. Runtime flow
@@ -88,7 +93,7 @@ flowchart LR
 This creates a mixed loading model:
 
 - the UI and heavy libraries of a specific tool are normally loaded lazily;
-- metadata, `defineTool`, translations, and 86 icon components enter the application shell;
+- metadata, `defineTool`, translations, and 89 icon components enter the application shell;
 - Home and 404 are eager, while About and tool components are dynamic;
 - the router, side menu, favorites, and command palette all consume the same registry.
 
@@ -103,10 +108,18 @@ The central registry is convenient but is also a major source of initial-bundle 
 - `style.store.ts`: dark theme, mobile media query, and collapsed menu state.
 - `tools.store.ts`: translated descriptors, categories, favorite paths, and favorite order.
 - Command palette store: a snapshot of options and a Fuse search index.
-- `useStorage`: preferences and some user content, including JSON/YAML/diff/WYSIWYG/case data.
-- Query parameters: URL plus `localStorage` synchronization for selected tools.
+- `useStorage`: audited presentation preferences such as theme, menu, favorites,
+  formatter settings, and generator configuration.
+- Tool content is session-only by default. Startup removes thirteen legacy
+  content/network-input keys, and Regex never writes editor changes back to
+  URL/history.
+- Text Diff is the sole content-persistence exception: default-off, explicit,
+  versioned, debounced, clearable, and bounded to 256 KiB per side.
+- Secrets, uploaded files, generated tokens, private keys, and OTP seeds remain
+  ephemeral. Analytics receives path-only URLs and sanitized referrers.
 
-Persistence has no common schema version, size limits, migration mechanism, or sensitivity policy. Large text writes to `localStorage` are synchronous; Text Diff additionally writes its content on every Monaco model change.
+The full key inventory, migration behavior, denial residual, and browser
+evidence are authoritative in `.ai/PERSISTENCE.md`.
 
 ## 5. Architecture of a tool
 
@@ -129,78 +142,126 @@ src/tools/example/
 
 Vite uses Vue/JSX/Markdown/SVG, auto-import, auto-components, icon generation, UnoCSS, i18n, and PWA plugins. The target is `esnext`, so legacy browsers are not a supported target.
 
-Measured production build for the current branch:
+Accepted schema-v4 production evidence for implementation checkpoint `5f7e97a`:
 
-| Metric | Value |
+| Metric | Current value |
 |---|---:|
-| Transformed modules | 24,599 |
-| Build time | 51.16 s |
-| `dist/` | 13 MB |
-| Initial JS | 853.13 kB raw / 266.28 kB gzip |
-| Initial CSS | 32.55 kB raw / 6.84 kB gzip |
-| PWA precache | 270 entries / 5,940.03 KiB |
-| `mac-address-lookup` | 3,347.31 kB / 1,065.98 kB gzip |
-| `text-diff` JS | 3,160.91 kB / 804.42 kB gzip |
-| `text-diff` CSS | 112.42 kB / 18.28 kB gzip |
-| `math-evaluator` | 623.24 kB / 180.12 kB gzip |
-| `html-wysiwyg-editor` | 489.30 kB / 153.92 kB gzip |
+| Transformed modules | 24,192 |
+| Local Vite phase | 21.17 s |
+| `dist/` | 511 files / 13,329,332 B raw / 3,812,444 B gzip |
+| Shell including document | 902,309 B raw / 276,963 B gzip |
+| Mandatory Workbox install | 9 entries / 956,157 B raw / 327,325 B gzip |
+| Text Diff route + owned-worker closure | 2,474,507 B raw / 646,976 B gzip |
+| MAC Lookup route + owned-worker closure | 1,937,384 B raw / 770,467 B gzip |
+| File Hash route + owned-worker closure | 56,994 B raw / 22,189 B gzip |
+| File Hash worker | 13,583 B raw / 6,298 B gzip |
 
-Workbox does not precache the two chunks above its default size limit (`mac-address-lookup` and `text-diff`), but it precaches almost every other lazy chunk. Installing the PWA therefore downloads about 5.9 MB even if the user needs one tool.
+The nine-entry Workbox shell is enforced at no more than 1 MB raw, 350 kB
+gzip, and ten files. Lazy tool chunks, route-owned workers, and 289 same-origin
+Figlet fonts are cached only after use. Production offline tests cover a generic
+lazy route, uncached-route recovery, and File Hash route/worker reuse after the
+HTTP cache is cleared.
+
+`scripts/build-stats.mjs` discovers manifest graphs and literal route-owned
+workers, then applies rationale-backed shell, route, worker, and mandatory-PWA
+budgets. The accepted artifact passes 202 checks; schema behavior passes 16
+infrastructure tests. Raw baseline details remain in
+`.ai/baselines/build-stats.json` and `.ai/PERFORMANCE.md`.
 
 The main sources of weight are four icon mechanisms, eager registry metadata/icons, CommonJS `lodash` across 41 source imports, Monaco, the full OUI dataset, full `mathjs`, emoji datasets, TipTap, and overlapping parser/rendering libraries.
 
 ## 7. Test architecture and current quality
 
-- 33 unit-test files and 138 tests pass.
-- 26 E2E spec files and 61 Chromium tests pass.
-- Playwright is also configured for Firefox and WebKit; CI shards the full suite across three jobs.
-- The production build passes.
-- `pnpm lint` currently fails with 9 errors and 6 warnings, mostly stale imports left after local UI/sponsor/i18n removal.
-- `pnpm typecheck` currently fails on two nullable accesses in `c-diff-editor.vue`; `pnpm build` uses a different tsconfig path and does not expose these, while CI runs the separate typecheck.
-- There are no coverage thresholds, bundle budgets, performance tests, accessibility scans, dependency/container release gates, or mandatory smoke tests for all 86 routes.
+- The accepted integrated checkpoint passes zero-warning lint and both the
+  application/test and Vite-config typecheck projects.
+- 816/816 unit tests pass across 104 files.
+- 102/102 sequential Chromium E2E tests pass, including the registry-generated
+  smoke for all 89 routes.
+- Sixteen build-stat infrastructure tests, 202 current-artifact budget checks,
+  and four generated-OUI checks pass.
+- Production browser gates cover privacy/storage, worker cancellation and route
+  disposal, large structured inputs, File Hash 256 MiB behavior, PWA demand
+  caching/recovery, and lifecycle/heap regressions.
+- Playwright remains configured for Chromium, Firefox, and WebKit and CI shards
+  the suite. The source host did not have the pinned Firefox/WebKit binaries for
+  the latest File Hash feature smoke, so that cross-browser claim remains open.
+- Bundle/PWA/container budgets and all-route smoke are executable CI/release
+  gates. Coverage thresholds and full axe coverage remain separate backlog.
 
 ## 8. CI/CD and operations
 
 ### CI
 
-`ci.yml` runs install, lint, unit tests, type checking, and build on Node 20 for pushes to `main` and pull requests. Installation does not use `--frozen-lockfile`. The E2E workflow builds the application, installs Playwright browsers, and runs sharded tests.
-
-The Playwright cache key reads the nonexistent `.dependencies.playwright`; the actual package is `@playwright/test` under `devDependencies`. This produces an invalid key and reduces cache effectiveness.
+`ci.yml` resolves Node from `.nvmrc` (`24.18.0`), enables Corepack, installs
+with `--frozen-lockfile`, and runs lint, unit tests, build-stat tests, OUI
+freshness, both typecheck projects, production build, and artifact budgets. A
+separate container job builds the pinned image and runs rootless static-delivery
+contracts. The E2E workflow uses the same Node/lockfile contract, installs the
+pinned Playwright browsers, and shards the suite across three jobs.
 
 ### Docker
 
-The multi-stage Dockerfile performs these steps:
+The multi-stage Dockerfile uses digest-pinned Node 24.18.0/Alpine 3.23 and
+`nginxinc/nginx-unprivileged` 1.30.3/Alpine 3.23 images. Corepack resolves the
+package-manager pin; `pnpm fetch` plus offline frozen install makes the build
+reproducible. The final image runs as UID/GID 101 by default, also passes an
+arbitrary-UID contract, supports a configurable internal port, and is tested
+with a read-only root filesystem, dropped capabilities, and writable tmpfs.
 
-1. use mutable `node:lts-alpine`;
-2. install unpinned pnpm globally with npm;
-3. install from the lockfile and build;
-4. use mutable `nginx:stable-alpine`;
-5. copy `dist` and configure SPA fallback.
-
-`.nvmrc` (18.18.2), CI (20), the audited local runtime (22), and Docker `node:lts` disagree. The nginx config does not define gzip/Brotli, immutable caching, separate no-cache rules for `index.html`/`sw.js`, security headers, a health check, or a non-root runtime. For self-hosted Docker this affects reproducibility, security, and network performance.
+nginx enables compression, immutable caching for hashed assets, no-cache rules
+for documents/service-worker files, security headers, strict static 404s, SPA
+fallback, health checks, and access logs that omit query strings and referrers.
+Reverse-proxy and real base/subpath deployment acceptance remain open.
 
 ### Releases
 
-A `v*.*.*` tag publishes multi-architecture images to Docker Hub and GHCR and creates a draft GitHub release with a ZIP of `dist`. The image and ZIP are built independently; without provenance or an SBOM, artifact equivalence is not guaranteed.
+A `v*.*.*` tag publishes multi-architecture images to Docker Hub and GHCR and
+creates a draft GitHub release with a ZIP of `dist`. Release ordering,
+permissions, frozen installs, artifact budgets, Chromium smoke, SBOM, and
+provenance declarations are present. Building once and reusing one artifact
+across every delivery target remains a throughput/provenance improvement.
 
 ## 9. Security and privacy boundary
 
-All user information lives in the SPA origin. This reduces server-side exposure but leaves important browser-side risks:
+All user information remains inside the SPA origin unless an individual tool
+explicitly discloses a network/system boundary. Sensitive tool content is
+session-only by default; analytics is path-only; Text Diff persistence is the
+sole bounded, explicit, default-off content exception.
 
-- XSS can read all `localStorage`, including persisted JSON, diffs, and HTML;
-- regex, YAML/JSON/XML, Markdown, PDF, and crypto process untrusted input and can block the main thread;
-- synchronous bcrypt recomputes on input and allows 100 rounds;
-- document parsing has no shared size, depth, or timeout policy;
-- object URLs and Monaco models are not always released;
-- dependencies and container bases are substantially outdated.
+Attacker-controlled Regex, Bcrypt, JSON/YAML, schema validation, hashing, and
+OUI work now use bounded worker/lifecycle contracts where implemented. Monaco
+models/workers, media tracks, object URLs, timers, and shared layout ownership
+have disposal regressions. Shared large-output rendering bounds DOM expansion,
+while the complete accepted output can still remain in memory and must retain
+per-tool byte limits.
 
-The current `pnpm audit` reported 125 unique advisories: 4 critical, 45 high, 66 moderate, and 10 low. With repeated dependency paths, metadata reports 5 critical, 47 high, 77 moderate, and 12 low occurrences. Exploitability must be triaged individually, but `crypto-js`, `node-forge`, `lodash`, `yaml`, DOMPurify, and vue-i18n are direct dependencies and require priority updates.
+Important residuals remain: DOM-dependent Regex SVG, parser/download-policy
+consolidation, preference-storage denial, slower-device/cross-browser coverage,
+and any tool not yet migrated to the bounded execution policy. Ajv performs
+runtime validator code generation, so a future eval-blocking CSP requires a
+precompiled/interpreted design rather than `unsafe-eval`.
+
+Advisory counts recorded by the original audit are historical snapshots, not a
+current vulnerability report. Dependency/base-image remediation and scanner
+gating are deliberately deferred to a separate security track under the
+current scope; no advisory suppression has been added. Do not restart that
+track from this architecture document without explicit product direction.
 
 ## 10. Fork and upstream state
 
 The current working branch is `feat-ai-research`; the local fork and its reviewed `.ai` roadmap remain the source of truth. Upstream issues and pull requests are requirements research only unless an adaptation is explicitly approved and recorded.
 
-Upstream `main` was `d505845` at audit time. Local `main` is four upstream commits behind (`#1552`, `#1553`, `#1664`, `#1733`), while the feature branch diverges by three local versus four upstream commits. Sponsor changes are already superseded by the local line. The only substantive code candidate among those four is the logic from `#1552`, which prevents UnoCSS attributify from treating native HTML `size` as a utility; it should be adapted manually instead of cherry-picked.
+The portable implementation checkpoint for the 2026-08-07 handoff is
+`5f7e97aa4ee538d54c87605d8ad7c0e9f79486f5` on
+`origin/feat-ai-research`; recovery and ancestry rules live in
+`.ai/HANDOFF.md`. Session-specific branch/HEAD facts belong there rather than
+being treated as permanent architecture.
+
+The original audit compared upstream `main` at `d505845` with the then-current
+local history. That divergence is historical research, not a merge plan or a
+current ahead/behind claim. The useful native-`size` behavior from upstream
+`#1552` has already been adapted locally with regression coverage; no upstream
+history was cherry-picked.
 
 The complete upstream snapshot is stored in:
 

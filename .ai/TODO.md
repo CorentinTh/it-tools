@@ -18,14 +18,15 @@ and the backward-compatible worker-transport hardening increment is accepted.
 Its design, privacy boundary, memory evidence, and executable acceptance gates
 are recorded in `.ai/experiments/FILE_HASH_DESIGN.md`.
 
-See `.ai/PROGRESS.md` for the live journal, verified
+For a new machine or AI session, read `.ai/HANDOFF.md` first. See
+`.ai/PROGRESS.md` for the live journal, verified
 commands, measurements, risks, and next gates. In checklist text, `IN PROGRESS`
 means implementation exists but the full Definition of Done is not yet met.
 
 ## Audit work completed
 
 - [x] Inventory the complete repository structure, runtime flow, tool registry, state, build system, PWA, CI, release, and Docker paths.
-- [x] Inventory the original 86 tools across 10 categories, 416 TypeScript/Vue files, 67 runtime dependencies, and 43 development dependencies; local NanoID and JSON Schema Validator delivery brings the current registry to 88 tools.
+- [x] Inventory the original 86 tools across 10 categories, 416 TypeScript/Vue files, 67 runtime dependencies, and 43 development dependencies; local NanoID, JSON Schema Validator, and File Hash delivery brings the current registry to 89 tools.
 - [x] Compare the local branch, local `main`, and upstream `main` without modifying local history.
 - [x] Export all upstream issues to `.ai/issues/issues.json`.
 - [x] Export all upstream pull requests to `.ai/prs/pull-requests.json`.
@@ -422,6 +423,7 @@ Implementation is approved and active on the local branch. Current ordering is:
 14. [x] harden YAML output sizing before serializer allocation for alias, indentation, escaping, and physical-line expansion; retain the 100,000-node capacity and stabilize the isolated Long Task fixture at 10/10 without weakening its threshold.
 15. [x] **DONE:** delivered the bounded three-draft JSON Schema Validator, extracted the shared JSON/YAML one-shot worker transport, closed related malformed-protocol correctness gaps, and passed focused/full/browser/build-budget gates.
 16. [x] **DONE:** delivered bounded local File Hash, same-file upload correctness, exact-key SHA worker protocols, compatible shared transport hardening, sampled peak-memory/Long Task/cancellation/replacement evidence, demand-cached offline reuse, and independent route/worker budgets.
+17. [ ] **NEXT:** select and design the fourth bounded Priority A catalog feature, pair it with one measured project-owned correctness/performance improvement, and advance only the worker-transport residuals required by a real consumer. Start from `.ai/HANDOFF.md` and `.ai/PROGRESS.md` rather than historical audit findings.
 
 Dependency/base-image vulnerability remediation and scan policy remain in the
 separately tracked deferred security slice.
