@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import _ from 'lodash';
-import { diff } from '../xml-diff.models';
+import { diff } from '../../json-diff/json-diff.models';
+import { DiffRootViewer } from '../../json-diff/diff-viewer/diff-viewer.models';
 import { reconcileArrayShapes } from '../xml-diff.reconcile';
-import { DiffRootViewer } from './xml-diff-viewer.models';
 import { useAppTheme } from '@/ui/theme/themes';
 
 const props = defineProps<{ leftXml: unknown; rightXml: unknown }>();

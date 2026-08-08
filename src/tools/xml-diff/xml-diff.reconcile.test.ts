@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { diff } from './xml-diff.models';
+import { diff } from '../json-diff/json-diff.models';
 import { reconcileArrayShapes } from './xml-diff.reconcile';
 
 describe('xml-diff reconcile', () => {
