@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeMirror worker diff spike</title>
+    <style>
+      html, body, #app { height: 100%; margin: 0; }
+      #app { display: flex; flex-direction: column; font-family: sans-serif; }
+      #status { padding: 8px 12px; }
+      #editor { min-height: 0; flex: 1; }
+      .cm-mergeView { height: 100%; overflow: auto; }
+      .cm-editor { height: 100%; }
+    </style>
+  </head>
+  <body>
+    <main id="app">
+      <div id="status" role="status">Idle</div>
+      <div id="editor"></div>
+    </main>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

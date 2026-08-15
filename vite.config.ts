@@ -396,8 +396,32 @@ export default defineConfig({
     'import.meta.env.PACKAGE_VERSION': JSON.stringify(process.env.npm_package_version),
     'import.meta.env.FIGLET_FONT_PATH': JSON.stringify(figletFontPublicPath),
   },
+  server: {
+    headers: {
+      'Cache-Control': 'no-store',
+      'X-IT-Tools-Mode': 'development',
+    },
+    host: '127.0.0.1',
+    port: 8091,
+    strictPort: true,
+  },
+  preview: {
+    headers: {
+      'X-IT-Tools-Mode': 'preview',
+    },
+    host: '127.0.0.1',
+    port: 5050,
+    strictPort: true,
+  },
   test: {
     exclude: [...configDefaults.exclude, '**/*.e2e.spec.ts', 'scripts/**/*.test.mjs'],
+    server: {
+      deps: {
+        // iarna-toml-esm ships ESM syntax from a package without an ESM package
+        // marker. Vite handles it in the browser build; Vitest must transform it.
+        inline: ['iarna-toml-esm'],
+      },
+    },
   },
   build: {
     // Vite 4 emits this as dist/manifest.json. The build-stats reader also

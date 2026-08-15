@@ -124,6 +124,18 @@ describe('TextareaCopyable', () => {
     expect(wrapper.find('[data-test-id="copy-overlay"]').exists()).toBe(true);
   });
 
+  it('supports a smaller degraded preview while retaining the complete copy source', () => {
+    const value = 'x'.repeat(MAX_HIGHLIGHTED_OUTPUT_BYTES + 1);
+    const wrapper = shallowMount(TextareaCopyable, {
+      props: { value, language: 'sql', largePreviewBytes: 16 * 1024 },
+      global: { renderStubDefaultSlot: true },
+    });
+
+    expect((wrapper.get('textarea[data-test-id="area-content"]').element as HTMLTextAreaElement).value)
+      .toHaveLength(16 * 1024);
+    expect(wrapper.get('[data-test-id="large-output-notice"]').text()).toContain('16,384 bytes');
+  });
+
   it('keeps syntax highlighting at the exact byte boundary', () => {
     const wrapper = shallowMount(TextareaCopyable, {
       props: { value: 'x'.repeat(MAX_HIGHLIGHTED_OUTPUT_BYTES), language: 'json' },

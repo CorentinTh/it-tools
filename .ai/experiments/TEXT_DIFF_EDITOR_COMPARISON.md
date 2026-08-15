@@ -1,26 +1,73 @@
 # Text Diff Editor Payload Comparison
 
-Date: 2026-07-18
+Date: 2026-08-16
 
-Status: **comparison complete; migration not yet approved for production**.
+Status: **worker-backed spike complete; production migration rejected on parity grounds**.
 
 ## Decision
 
 Further Monaco import pruning cannot meet the `<350 kB gzip` route target.
 CodeMirror 6 is the only measured candidate with enough payload headroom, but
 its native `MergeView` recomputes diffs synchronously during document changes.
-Replacing Monaco before a worker-backed/adversarial-input spike would violate
-the fork's main-thread safety rules and risk silently coarse diffs.
+The completed worker-backed/adversarial-input spike confirms that its supported
+API cannot accept asynchronous chunks without rebuilding the editors and losing
+focus plus undo/history.
 
 Therefore:
 
 - keep the current repaired Monaco editor for now;
 - reject import-path-only and Monaco-upgrade payload work;
-- treat a focused, worker-backed CodeMirror spike as the next implementation
-  gate rather than a mechanical dependency swap;
+- accept the current Monaco payload as a documented route-specific exception
+  until CodeMirror exposes supported asynchronous chunk injection or another
+  editor can preserve the required interaction contract;
 - count worker assets in route measurements before accepting either editor.
 
-No dependency or production editor change was made by this experiment.
+No dependency or production editor change was made by this experiment. The
+temporary CodeMirror packages were removed from the root manifest and lockfile
+after the reproducible spike was built and measured.
+
+## Worker-backed spike result — 2026-08-16
+
+The follow-up built an isolated production artifact from the pinned comparison
+versions. `presentableDiff` ran in a terminate-and-replace module worker under a
+1 MiB-per-side bound, 1.5-second algorithm timeout, 10,000-change limit, and a
+150 ms edit debounce. The main thread rendered a focused two-pane `MergeView`.
+The source and measurement harness remain in
+`.ai/experiments/codemirror-worker-spike/`; they intentionally do not ship in
+the application.
+
+| Artifact / probe | Result |
+|---|---:|
+| Focused editor JavaScript | 332,686 B raw / 108,055 B gzip |
+| Diff worker | 30,983 B raw / 10,882 B gzip |
+| Combined editor + worker | **363,669 B raw / 118,937 B gzip** |
+| 1,000,000 B per side, initial result-ready | 76.5 ms |
+| Same fixture, worker algorithm | 4.2 ms |
+| Edit/publication longest observed Long Task | 0.0 ms |
+| Edit/publication heartbeat | 32 ticks |
+| Distributed 4,000-line adversarial worker run | 547.7 ms |
+| Ten destroy/recreate cycles | zero remaining `.cm-editor` nodes |
+
+Payload, worker isolation, bounds, responsiveness, and basic lifecycle gates
+passed. The production migration did not pass the interaction gate:
+
+- CodeMirror `MergeView` owns its chunk state and its public `diffConfig.override`
+  callback is synchronous;
+- returning a cheap empty diff during edits and rebuilding after the worker
+  response is the only supported spike path that never computes the diff on the
+  main thread;
+- rebuilding loses editor focus and the undo/history stack; both failures were
+  reproduced by the Chromium harness;
+- feeding stale worker changes through the synchronous callback is invalid after
+  document edits, while copying private package internals would create an
+  unmaintainable fork.
+
+Building independent editors with a custom asynchronous decoration, gutter,
+alignment, selection, search, and scroll-synchronization layer would cease to be
+a focused editor replacement and would duplicate most of the merge view. The
+measured payload saving does not justify that correctness and maintenance risk.
+The spike is therefore closed as a rejection, not left as an unbounded future
+migration task.
 
 ## Current Monaco transfer
 
@@ -92,16 +139,21 @@ The dangerous trade-off is increasing `scanLimit` for visual accuracy and
 reintroducing main-thread stalls. A production spike must move diff computation
 behind a debounced, cancellable worker and render bounded decorations.
 
-## Required migration gates
+## Migration gate disposition
 
-1. Route JavaScript/CSS plus every owned worker remains `<350 kB gzip`.
-2. Two editable panes retain line/character highlights, vertical alignment,
-   undo/redo, find, clipboard, line numbers, keyboard navigation, theme/resize,
-   and loop-free external model updates.
-3. Unicode, CRLF, empty-side, long-line, repeated-line, and adversarial
-   distributed-change fixtures are correct.
-4. Both existing 1 MiB fixtures stay responsive; normal editing creates no
-   main-thread task `>=50 ms` at 4x CPU.
-5. Input is byte-bounded and worker work is cancellable/stale-safe.
-6. Ten route cycles retain `<5 MiB`, with no workers/listeners left behind.
-7. Existing default-off persistence/privacy behavior remains unchanged.
+1. **Pass:** route JavaScript plus owned worker is 118,937 B gzip (`<350 kB`).
+2. **Fail:** two editable panes can retain line/character highlights and vertical alignment only by rebuilding after each worker result; focus and undo/history are lost.
+3. **Partial:** Unicode/CRLF/empty-side fixtures work in the underlying diff, but the distributed-change fixture took 547.7 ms in the worker and only bounded viewport markers were rendered.
+4. **Pass for main-thread safety:** the 1 MiB edit probe created no observed Long Task.
+5. **Pass:** byte bounds, debounce, physical replacement, and stale job IDs apply.
+6. **Pass for DOM/worker cleanup:** ten cycles leave no editor DOM; production migration was already rejected before a retained-heap acceptance claim was needed.
+7. **Not changed:** existing default-off persistence/privacy remains on Monaco.
+
+The original required parity included:
+
+- two editable panes retaining line/character highlights, vertical alignment,
+  undo/redo, find, clipboard, line numbers, keyboard navigation, theme/resize,
+  and loop-free external model updates.
+
+That interaction contract remains the reason Monaco is retained despite its
+larger transfer size.

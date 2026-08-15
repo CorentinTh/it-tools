@@ -18,7 +18,7 @@ const eapAnonymous = ref(false);
 const eapIdentity = ref();
 const eapPhase2Method = ref();
 
-const { qrcode, encryption } = useWifiQRCode({
+const { error, isGenerating, qrcode, status, encryption } = useWifiQRCode({
   ssid,
   password,
   eapMethod,
@@ -31,6 +31,20 @@ const { qrcode, encryption } = useWifiQRCode({
     foreground,
   },
   options: { width: 1024 },
+});
+
+const statusMessage = computed(() => {
+  if (error.value) {
+    return error.value;
+  }
+  if (isGenerating.value) {
+    return qrcode.value
+      ? 'Updating the WiFi QR code. The previous preview remains visible.'
+      : 'Generating the WiFi QR code…';
+  }
+  return status.value === 'ready'
+    ? 'WiFi QR code ready.'
+    : 'Complete the required WiFi fields to generate a QR code.';
 });
 
 const { download } = useDownloadFileFromBase64({ source: qrcode, filename: 'qr-code.png' });
@@ -131,11 +145,21 @@ const { download } = useDownloadFileFromBase64({ source: qrcode, filename: 'qr-c
       </div>
     </c-card>
 
+    <p
+      class="c-task-status"
+      data-test-id="wifi-qrcode-status"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      {{ statusMessage }}
+    </p>
+
     <c-card v-if="qrcode" data-test-id="wifi-qrcode-result">
       <div flex flex-col items-center gap-3>
         <img alt="WiFi QR code" :src="qrcode" width="240">
         <div class="c-generator-actions">
-          <c-button type="primary" @click="download">
+          <c-button type="primary" :disabled="isGenerating" @click="download">
             Download QR code
           </c-button>
         </div>

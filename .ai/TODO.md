@@ -18,11 +18,16 @@ and the backward-compatible worker-transport hardening increment is accepted.
 Its design, privacy boundary, memory evidence, and executable acceptance gates
 are recorded in `.ai/experiments/FILE_HASH_DESIGN.md`.
 
-**Priority update — 2026-08-10:** the catalog-wide interface-consistency
+**Priority update — 2026-08-15:** the catalog-wide interface-consistency
 foundation and route rollout are complete under `.ai/UI_CONSISTENCY.md`.
-Deterministic screenshot/state expansion remains hardening backlog, and the
-RSA generator lifecycle failure is a separate targeted correctness task. New
-work must use the accepted field/control/action/layout contracts.
+The deterministic screenshot/state suite now covers all five core archetypes
+plus true diff: explicit-task loading/disabled controls, mobile-dark errors,
+dense long-value/results, live-transformer error/stale output, local-file empty/
+disabled/legacy guidance, aligned diff output, and mobile-dark reference search.
+QR/Wi-Fi QR ordering, bounded WYSIWYG formatting, bounded JSON Diff alignment,
+the Math/SQL/XML/Markdown/Text Statistics worker slice, all JSON/YAML/TOML/XML
+converter pairs, and Docker Run-to-Compose isolation are complete. New work
+must use the accepted field/control/action/layout and bounded-task contracts.
 
 For a new machine or AI session, read `.ai/HANDOFF.md` first. See
 `.ai/PROGRESS.md` for the live journal, verified
@@ -59,7 +64,7 @@ means implementation exists but the full Definition of Done is not yet met.
 - [x] Add an accessible full-width `c-input-number` bridge that puts identity/ARIA state on the native input; adopt it in Percentage, UUID, and ULID before the remaining numeric-control rollout.
 - [x] Repair `c-input-text`, `c-select`, `c-file-upload`, `c-buttons-select`, and `c-button` behavior and accessibility with failing regressions first.
 - [x] Define checkbox, switch, segmented/radio, numeric, and slider semantics through tested route-level adapters.
-- [x] Add a global executable guard that prevents direct Naive switches, checkboxes, color pickers, fixed input groups, form items, and number inputs from entering migrated route code; RSA is the single named temporary exception for the queued correctness repair.
+- [x] Add a global executable guard that prevents direct Naive switches, checkboxes, color pickers, fixed input groups, form items, and number inputs from entering migrated route code; the completed RSA repair removes the final temporary exception.
 - [x] Add shared tool section, action bar, and status/result placement primitives without owning tool business logic.
 - [x] Migrate and visually accept the representative pilot routes listed in `.ai/UI_CONSISTENCY.md`; the broader all-route light/dark screenshot matrix remains a separate hardening gate.
 - [x] Apply the wide always-vertical editor contract to the shared transformer family and direct JSON/YAML/SQL/Docker plus text-conversion routes; only true diff tools may place editors side by side.
@@ -69,21 +74,23 @@ means implementation exists but the full Definition of Done is not yet met.
 - [x] Migrate Token, Random Port, MAC Address, IPv6 ULA, and Lorem Ipsum to the accepted generator rhythm; add explicit primary Generate actions where missing.
 - [x] Remove direct Naive switch/number/form wrappers and literal 100 px option widths from JSON, YAML, and XML formatters.
 - [x] Remove direct `n-switch` usage from every tool route and add a global source ratchet; all 23 route-level switches now use `CSwitch`.
-- [x] Complete the numeric/form/catalog control wave: migrate Bcrypt, ASCII Art, ETA, Integer Base, Roman Numeral, Temperature, BIP39, Benchmark Builder, Chmod, Hash Text, Keycode, Open Graph, Date-time, IPv4, OTP, URL Parser, Case Converter, HTML Entities, Markdown, SafeLink, QR, Wi-Fi QR, SVG Placeholder, and Color Converter. Direct Naive checkbox/switch/color/input-group usage is zero; form-item/number-input and literal label-width remain only in the named RSA exception.
+- [x] Complete the numeric/form/catalog control wave: migrate Bcrypt, ASCII Art, ETA, Integer Base, Roman Numeral, Temperature, BIP39, Benchmark Builder, Chmod, Hash Text, Keycode, Open Graph, Date-time, IPv4, OTP, URL Parser, Case Converter, HTML Entities, Markdown, SafeLink, QR, Wi-Fi QR, SVG Placeholder, Color Converter, and RSA. Direct Naive checkbox/switch/color/input-group/form-item/number-input usage and literal label widths are zero.
 - [x] Roll out the accepted patterns to the remaining routes by live-transformer, explicit-task, generator, local-file, and reference/catalog archetype.
-- [ ] Add deterministic screenshot baselines and the remaining long-label/value, disabled, error, loading, and result state variants; core keyboard/semantic and all-route responsive/theme gates are complete.
+- [x] Add the first deterministic screenshot baselines for explicit-task loading/disabled controls, mobile dark validation errors, and dense-form long-value/result layout. Semantic assertions run on every platform; the pixel references are Darwin Chromium baselines.
+- [x] Expand deterministic baselines across the five core archetypes plus true diff, including long-value, disabled, error, loading, empty, legacy-guidance, and result combinations. Seven Darwin Chromium pixel references retain cross-platform semantic assertions.
 - [x] Document only justified editor/media/table exceptions and reject new literal label widths or mixed field systems through executable source ratchets.
 
 ### Targeted correctness backlog discovered during UI review
 
-- [ ] Reproduce and repair RSA Key Pair Generator failures: replace the
+- [x] Reproduce and repair RSA Key Pair Generator failures: replace the
   arbitrary `+/- 8` bit spinner and reactive regeneration on every size change
   with an explicit supported-key-size choice plus an explicit `Generate`
   action. Keep the previous pair while a new request runs, expose loading and
   bounded static errors, define the practical browser-supported size policy,
   and add component/service/browser regressions for presets, repeated actions,
-  failure, cancellation, and unmount. Remember that aborting the wrapper does
-  not physically terminate node-forge's already launched internal worker.
+  failure, cancellation, and unmount. The accepted 2,048/3,072/4,096-bit policy
+  uses Web Crypto in a route-owned terminate-and-replace worker, so cancellation,
+  timeout, replacement, and unmount physically stop the owned task.
 
 ## Non-negotiable integration rules
 
@@ -104,7 +111,7 @@ means implementation exists but the full Definition of Done is not yet met.
 - [x] Resolve the current UnoCSS ordering warnings (3 at implementation start; the native `size` collision remains a separate item).
 - [x] Fix both nullable editor accesses reported by `pnpm typecheck`.
 - [x] Align `pnpm build` and `pnpm typecheck` on canonical application/test plus Vite-config checks so one cannot hide errors from the other.
-- [x] Make `pnpm lint`, `pnpm typecheck`, unit tests, Chromium E2E, and production build green; the current integrated checkpoint is 816/816 unit across 104 files and 102/102 Chromium tests, including all 89 routes.
+- [x] Make `pnpm lint`, `pnpm typecheck`, unit tests, Chromium E2E, and production build green; the current checkpoint is 990/990 unit across 150 files, current dev-runtime/production-PWA browser focus, and the 172/172 sequential Chromium all-route checkpoint.
 - [x] Add a frozen-lockfile install to every CI/release job.
 - [x] Add a Chromium route smoke test for all 89 tools that fails on page errors, chunk-load errors, unexpected console errors, and Monaco worker fallback warnings.
 - [ ] Add Firefox and WebKit smoke coverage after the Chromium baseline is stable.
@@ -113,6 +120,7 @@ means implementation exists but the full Definition of Done is not yet met.
 
 - [x] Select Node 24.18.0 and align `.nvmrc`, `package.json#engines`, tsconfig, CI, Docker, and contributor documentation; keep the remaining `@types/node` upgrade in its controlled dependency group.
 - [x] Use Corepack with the package-manager-pinned `pnpm@9.11.0`; never install an unpinned latest pnpm in Docker.
+- [x] Separate local dev (`127.0.0.1:8091`) from preview (`127.0.0.1:5050`), enforce strict ports/no-store dev responses, add `dev:fresh`, and automatically evict only stale IT Tools PWA state in development with unit and Chromium smoke coverage.
 - [x] Move build-only and type-only packages out of runtime dependencies.
 - [ ] Document Bun or remove the unpinned `bun:Glob` locale-script dependency.
 - [x] Add deterministic schema-v4 `build:stats` generation and regression tests; literal route-owned workers are included in closures and fail closed when missing, malformed, or unrelated.
@@ -136,7 +144,7 @@ implementation time on unrelated base-image/transitive CVEs.
 
 - [ ] Triage the 125 unique advisories by reachability and browser/runtime path.
 - [ ] Upgrade the direct critical `crypto-js` path first and add encryption/decryption compatibility fixtures.
-- [ ] Upgrade `yaml`, DOMPurify, vue-i18n, node-forge, Lodash, Vite, and other direct vulnerable dependencies in small compatible groups.
+- [ ] Upgrade `yaml`, DOMPurify, vue-i18n, Lodash, Vite, and other direct vulnerable dependencies in small compatible groups; direct RSA use of `node-forge` is removed, while its transitive PDF path remains in the reachability audit.
 - [ ] Upgrade Vitest/build dependencies separately from runtime packages.
 - [ ] Do not copy an upstream lockfile; select currently patched versions and regenerate the local lockfile.
 - [ ] Run unit/E2E/fixture suites, `pnpm audit`, and a production bundle diff after every group.
@@ -228,10 +236,11 @@ implementation time on unrelated base-image/transitive CVEs.
 - [x] Add a shared bounded plain-text output mode above 100,000 UTF-8 bytes while preserving full copy access; the 1 MiB fixtures render a UTF-8-safe 100,000-byte preview in one readonly `<textarea>` with zero descendants while keeping the complete output in memory for Copy.
 - [x] Parse YAML Prettify once per bounded worker job and reuse the single document for validation and formatting.
 - [x] Parse strict JSON Prettify once per bounded worker job and preserve original integer, decimal, exponent, and negative-zero lexemes through formatting and decoded-key sorting.
-- [ ] Parse the remaining YAML/JSON conversion paths once per change and reuse the result for validation and transformation.
+- [x] Parse JSON-to-TOML/YAML, YAML-to-JSON/TOML, and TOML-to-JSON/YAML once per bounded worker task and reuse the source-family result path for validation and transformation.
 - [x] Move YAML Prettify into a terminate-and-replace worker with job IDs, stale-result protection, cancellation, a five-second deadline, and byte/depth/node/alias limits.
 - [x] Move JSON Prettify into the same bounded terminate-and-replace lifecycle, with worker-only exact UTF-8 accounting so a 1 MiB transfer does not rescan the whole string on the main thread.
-- [ ] Move large TOML/XML/SQL/Markdown and remaining JSON/YAML converter processing into workers where supported.
+- [x] Move large TOML and remaining JSON/YAML converter processing into three source-family workers; move XML-to-JSON/JSON-to-XML into one XML-family worker. XML Formatter, SQL, and Markdown retain route-owned bounded worker tasks.
+- [x] Move Docker Run-to-Compose parsing, obsolete-version cleanup, and categorized-message production into a strict bounded worker; retain existing composerize semantics and replace base64 download construction with a Blob URL.
 - [x] Add YAML Prettify malformed, oversized, depth/node/alias/output-limit unit fixtures and a 1 MiB responsive Chromium fixture; 31 focused checks include pre-serialization scalar-alias, deep-sequence indentation, escaped-line, and boundary-space amplification while retaining valid 90,000-node and 1 MiB inputs.
 - [x] Add equivalent strict JSON malformed, duplicate-key, Unicode, depth/node/input/output, cancellation/stale/timeout/crash/disposal, and 1 MiB browser fixtures.
 - [ ] Add the equivalent 100 kB, 1 MB, deep, malformed, and oversized fixtures to the remaining structured-input tools.
@@ -249,7 +258,7 @@ implementation time on unrelated base-image/transitive CVEs.
 - [x] Choose and document the bounded lossless strategy for Prettify: strict JSON preserves numeric lexemes, YAML preserves integer values with `BigInt`, and legacy JSON5 remains an explicit non-lossless compatibility mode. YAML floats and converters remain outside this contract.
 - [x] Reset/clamp command-palette selection and guard Enter on an empty result.
 - [x] Escape CSV quotes as `""` and quote comma/newline/quote fields correctly.
-- [x] Return zero words for whitespace-only Text Statistics input and compute character/word/line/UTF-8 byte statistics in one O(n), O(1)-space pass.
+- [x] Return zero words for whitespace-only Text Statistics input, compute character/word/line/UTF-8 byte statistics in one O(n), O(1)-space pass, and run it in a debounced/explicit route-owned worker with a 4 MiB hard input bound.
 - [x] Revoke Camera Recorder object URLs on delete/unmount; cap recordings at 5 minutes/64 MiB, screenshots at 16 MiB, raw canvas allocation at 16,777,216 pixels/64 MiB, and aggregate retained media at 128 MiB; keep capture single-flight and ignore late callbacks after unmount in addition to the 12/4 item limits.
 - [x] Fix `TextareaCopyable` late element tracking and pass the exposed input wrapper from JSON/YAML/SQL viewers.
 - [x] Enforce every `TextareaCopyable.copyPlacement` value (`top-right`, `bottom-right`, `outside`, `none`) without duplicate buttons.
@@ -269,7 +278,7 @@ implementation time on unrelated base-image/transitive CVEs.
 - [x] Verify a previously opened lazy tool reloads offline after clearing the HTTP cache; document, shell, Workbox client runtime, and lazy chunks are served by the service worker.
 - [ ] Add an optional explicit full-offline download flow if required.
 - [x] Provide an offline-unavailable state rather than a blank tool: hide the prior route, keep query/hash only in memory, verify origin reachability, and retry through a fresh query-free document so sticky failed imports recover without leaking tool content into access logs.
-- [x] Keep the mandatory precache below 1 MB raw; current artifact is 956,157 B raw / 327,325 B gzip across nine entries and both limits are executable CI/release gates.
+- [x] Keep the mandatory precache below 1 MB raw; current artifact is 960,676 B raw / 327,958 B gzip across nine entries and both limits are executable CI/release gates.
 - [x] Cover compression, immutable hashed-asset caching, and HTML/SW/manifest revalidation in the container smoke test.
 - [ ] Add browser acceptance for service-worker update/rollback and stale-cache cleanup.
 
@@ -325,12 +334,12 @@ Current status: tool `keywords` are already indexed by Fuse, but the canonical p
 ### 3.6 Reactive computation cleanup
 
 - [x] Replace `computedRefreshable`/`computedRefreshableAsync` with a single-execution abstraction using explicit dependencies, throttling, stale-job guards, AbortSignal cancellation, and scope disposal.
-- [x] Prove one generation per dependency change/refresh for UUID, ULID, token, MAC, lorem, OTP, port, and RSA; focused invocation/cancellation coverage exercises all eight callers.
-- [ ] Debounce and order QR/Wi-Fi QR generation.
-- [ ] Format WYSIWYG HTML on idle/debounce or explicit action for large content.
-- [ ] Reduce Math Evaluator to a configured math build and bound expression complexity.
-- [ ] Compute JSON Diff status in one traversal and virtualize/lazily expand the tree.
-- [ ] Use one streaming pass for Text Statistics and worker mode for very large text.
+- [x] Prove one generation per dependency change/refresh for UUID, ULID, token, MAC, lorem, OTP, and port; focused invocation/cancellation coverage exercises all seven remaining refreshable callers. RSA now uses a separate explicit worker task and never generates from a dependency change.
+- [x] Debounce and order QR/Wi-Fi QR generation with a 150 ms pause, stale-result guards, a 4,096-byte UTF-8 preflight, scope disposal, and immediate clearing when required Wi-Fi fields become incomplete.
+- [x] Format WYSIWYG HTML in a terminate-and-replace worker: 250 ms idle formatting below 64 KiB, explicit action above that threshold, a 1 MiB input ceiling, bounded output, stale-result guards, teardown, and an eight-second deadline.
+- [x] Reduce Math Evaluator to the number-only `mathjs` entry and move debounced/explicit evaluation into a route-owned terminate-and-replace worker with 8 KiB input, 64 KiB output, and a two-second deadline.
+- [x] Bound JSON Diff at 1 MiB per document, depth 128, 100,000 total input/output nodes, and 250,000 LCS cells; parse once in a route-owned worker, align unique `id`/`key`/`name` arrays or primitive LCS sequences, retain positional fallback, and lazily render 200-row batches.
+- [x] Use one streaming pass for Text Statistics and route-owned worker mode for large text.
 
 ## Milestone 4 — P2 build, CI, and developer throughput
 
@@ -362,6 +371,7 @@ Recommended first feature candidates:
 - [ ] SAML decoder and LDAP/FILETIME timestamp support with explicit verification/timezone semantics.
 - [ ] URL safety workspace with strict encoding, tracker removal, defang/refang, UTM, and text-fragment modes.
 - [ ] Developer text workspace with stacktrace formatting, smart replace, folder tree, Markdown TOC, and paste-as-Markdown.
+- [ ] Priority A / Text: Faker-compatible mock-data generator for bounded names, addresses, identifiers, dates, network values, and JSON/CSV records; include deterministic seeds, explicit locale/data versions, lazy route-local datasets, worker generation, hard record/output limits, and ephemeral-by-default templates/results.
 - [ ] QR/barcode decoding from local images.
 - [ ] Certificate/CSR inspection with no network dependency.
 - [ ] JSON repair and optional jq-like querying with strict resource limits.
@@ -464,9 +474,15 @@ Implementation is approved and active on the local branch. Current ordering is:
 14. [x] harden YAML output sizing before serializer allocation for alias, indentation, escaping, and physical-line expansion; retain the 100,000-node capacity and stabilize the isolated Long Task fixture at 10/10 without weakening its threshold.
 15. [x] **DONE:** delivered the bounded three-draft JSON Schema Validator, extracted the shared JSON/YAML one-shot worker transport, closed related malformed-protocol correctness gaps, and passed focused/full/browser/build-budget gates.
 16. [x] **DONE:** delivered bounded local File Hash, same-file upload correctness, exact-key SHA worker protocols, compatible shared transport hardening, sampled peak-memory/Long Task/cancellation/replacement evidence, demand-cached offline reuse, and independent route/worker budgets.
-17. [ ] **NEXT:** execute `.ai/UI_CONSISTENCY.md` Phase 0–2: capture the live visual baseline, repair the shared field/choice/action primitives, and migrate the representative pilot with responsive, keyboard, visual, and bundle gates.
-18. [ ] Roll the accepted UI patterns through the remaining routes by archetype and make consistency regressions executable.
-19. [ ] After the UI foundation and pilot are accepted, select and design the fourth bounded Priority A catalog feature against the new interface contract, pair it with one measured project-owned correctness/performance improvement, and advance only worker-transport residuals required by a real consumer.
+17. [x] Execute `.ai/UI_CONSISTENCY.md` Phase 0–2: capture the live visual baseline, repair the shared field/choice/action primitives, and migrate the representative pilot with responsive, keyboard, visual, and bundle gates.
+18. [x] Roll the accepted UI patterns through the remaining routes by archetype and make consistency regressions executable.
+19. [x] Repair RSA as a fixed-preset explicit Web Crypto worker task with physical cancellation, prior-result retention, privacy coverage, and removal of its final UI-contract exceptions.
+20. [x] Add the first deterministic representative screenshot/state fixtures and complete the bounded QR/Wi-Fi QR, HTML WYSIWYG, and JSON Diff P1 lifecycle/rendering slice.
+21. [x] Expand visual baselines across the remaining archetypes and complete bounded JSON Diff array alignment plus the Math/SQL/XML/Markdown/Text Statistics worker slice.
+22. [x] Add production large-input/Long Task evidence for SQL, XML, Markdown, Text Statistics, and JSON Diff; migrate JSON-to-TOML/YAML, YAML-to-JSON/TOML, and TOML-to-JSON/YAML to three parse-once source-family workers plus the shared vertical bounded-transformer lifecycle.
+23. [x] Audit and migrate the remaining reactive XML-to-JSON/JSON-to-XML pair; migrate Docker Run-to-Compose to the same explicit-action, output-bound, cancellation, stale-result, and disposal policy with production responsiveness evidence.
+24. [x] Measure and rank the remaining attacker-controlled main-thread transforms by input cost and output amplification; move Hash Text's eight reactive CryptoJS digests into one bounded route-owned worker with exact protocols, lifecycle/privacy coverage, and production Long Task evidence.
+25. [ ] Repair the three remaining `FormatTransformer` routes. Start with the measured JSON-to-CSV duplicated JSON5 parse (parse once off-main-thread with bounded CSV amplification), then benchmark JSON Minify and List Converter and retire `FormatTransformer` when it has zero callers.
 
 Dependency/base-image vulnerability remediation and scan policy remain in the
 separately tracked deferred security slice.

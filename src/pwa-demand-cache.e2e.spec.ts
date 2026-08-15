@@ -119,7 +119,7 @@ test.describe('PWA demand-driven caching', () => {
     await page.locator('a[href="/random-port-generator"]').first().click();
     await expect(page).toHaveURL(/\/random-port-generator$/);
     await expect(page).toHaveTitle('Random port generator - IT Tools');
-    await expect(page.locator('.port')).toBeVisible();
+    await expect(page.getByTestId('random-port-output')).toBeVisible();
     const onlineToolLoadMs = Date.now() - toolLoadStartedAt;
 
     const lazyAssetPaths = await page.evaluate(precachePaths => [...new Set(
@@ -151,7 +151,7 @@ test.describe('PWA demand-driven caching', () => {
 
     expect(navigationResponse?.fromServiceWorker()).toBe(true);
     await expect(page).toHaveTitle('Random port generator - IT Tools');
-    await expect(page.locator('.port')).toBeVisible();
+    await expect(page.getByTestId('random-port-output')).toBeVisible();
     const offlineReloadMs = Date.now() - offlineReloadStartedAt;
 
     for (const path of [...shellAssetPaths, ...clientRuntimePaths, ...lazyAssetPaths]) {

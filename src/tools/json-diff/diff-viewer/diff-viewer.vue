@@ -1,39 +1,22 @@
 <script lang="ts" setup>
-import _ from 'lodash';
-import { diff } from '../json-diff.models';
+import type { Difference } from '../json-diff.types';
 import { DiffRootViewer } from './diff-viewer.models';
 import { useAppTheme } from '@/ui/theme/themes';
-import CSwitch from '@/ui/c-switch/c-switch.vue';
 
-const props = defineProps<{ leftJson: unknown; rightJson: unknown }>();
-const onlyShowDifferences = ref(false);
-const { leftJson, rightJson } = toRefs(props);
+const props = defineProps<{ difference?: Difference }>();
+const difference = computed(() => props.difference);
 const appTheme = useAppTheme();
 
-const result = computed(() =>
-  diff(leftJson.value, rightJson.value, { onlyShowDifferences: onlyShowDifferences.value }),
-);
-
-const jsonAreTheSame = computed(() => _.isEqual(leftJson.value, rightJson.value));
-const showResults = computed(() => !_.isUndefined(leftJson.value) && !_.isUndefined(rightJson.value));
+const jsonAreTheSame = computed(() => difference.value?.status === 'unchanged');
 </script>
 
 <template>
-  <div v-if="showResults">
-    <div flex justify-center>
-      <CSwitch
-        id="json-diff-only-differences"
-        v-model:value="onlyShowDifferences"
-        label="Only show differences"
-        max-w-320px
-      />
-    </div>
-
+  <div v-if="difference">
     <c-card data-test-id="diff-result">
       <div v-if="jsonAreTheSame" text-center op-70>
         The provided JSONs are the same
       </div>
-      <DiffRootViewer v-else :diff="result" />
+      <DiffRootViewer v-else :diff="difference" />
     </c-card>
   </div>
 </template>
@@ -44,6 +27,44 @@ const showResults = computed(() => !_.isUndefined(leftJson.value) && !_.isUndefi
 
   & > ul {
     padding-left: 0 !important;
+  }
+
+  .diff-toggle,
+  .diff-show-more {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: v-bind('appTheme.primary.color');
+    cursor: pointer;
+    font: inherit;
+  }
+
+  .diff-toggle {
+    width: 1.4rem;
+    padding: 0;
+    text-align: left;
+  }
+
+  .diff-show-more {
+    padding: 4px 0;
+    font-weight: 600;
+  }
+
+  .diff-toggle:hover,
+  .diff-show-more:hover {
+    color: v-bind('appTheme.primary.colorHover');
+  }
+
+  .diff-toggle:focus-visible,
+  .diff-show-more:focus-visible {
+    border-radius: 4px;
+    outline: 2px solid v-bind('appTheme.primary.color');
+    outline-offset: 2px;
+  }
+
+  .collapsed-summary {
+    margin: 0 0.35rem;
+    opacity: 0.7;
   }
 
   ul {

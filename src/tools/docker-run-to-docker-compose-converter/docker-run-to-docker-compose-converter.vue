@@ -1,34 +1,127 @@
 <script setup lang="ts">
-import { MessageType, composerize } from 'composerize-ts';
-import { removeObsoleteComposeVersion } from './docker-compose-output';
-import { withDefaultOnError } from '@/utils/defaults';
-import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
-import { textToBase64 } from '@/utils/base64';
+import { DockerConverterWorkerClient } from './docker-converter.worker-client';
+import {
+  DOCKER_CONVERTER_LIVE_MAX_BYTES,
+  DOCKER_CONVERTER_MAX_INPUT_BYTES,
+  type DockerConverterMessage,
+} from './docker-converter.worker.protocol';
+import { downloadTextFile } from '@/composable/downloadText';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 import CInputText from '@/ui/c-input-text/c-input-text.vue';
+import { exceedsUtf8ByteLimit } from '@/utils/utf8';
+import { BoundedTextTaskError } from '@/utils/bounded-text-task';
 
 const dockerRun = ref(
   'docker run -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock:ro --restart always --log-opt max-size=1g nginx',
 );
 
-const conversionResult = computed(() =>
-  withDefaultOnError(() => composerize(dockerRun.value.trim()), { yaml: '', messages: [] }),
-);
-const dockerCompose = computed(() => removeObsoleteComposeVersion(conversionResult.value.yaml));
+const dockerCompose = shallowRef('');
+const messages = shallowRef<DockerConverterMessage[]>([]);
+const client = new DockerConverterWorkerClient();
+const state = reactive<{ message: string; status: 'idle' | 'pending' | 'running' | 'success' | 'cancelled' | 'timeout' | 'error' }>({
+  message: '',
+  status: 'idle',
+});
+let timer: ReturnType<typeof globalThis.setTimeout> | undefined;
+let requestId = 0;
+
+const isRunning = computed(() => state.status === 'running');
+const hasError = computed(() => state.status === 'error' || state.status === 'timeout');
 const notImplemented = computed(() =>
-  conversionResult.value.messages.filter(msg => msg.type === MessageType.notImplemented).map(msg => msg.value),
+  messages.value.filter(message => message.type === 'notImplemented').map(message => message.value),
 );
 const notComposable = computed(() =>
-  conversionResult.value.messages.filter(msg => msg.type === MessageType.notTranslatable).map(msg => msg.value),
+  messages.value.filter(message => message.type === 'notTranslatable').map(message => message.value),
 );
 const errors = computed(() =>
-  conversionResult.value.messages
-    .filter(msg => msg.type === MessageType.errorDuringConversion)
-    .map(msg => msg.value),
+  messages.value.filter(message => message.type === 'errorDuringConversion').map(message => message.value),
 );
-const dockerComposeBase64 = computed(() => `data:application/yaml;base64,${textToBase64(dockerCompose.value)}`);
-const { download } = useDownloadFileFromBase64({ source: dockerComposeBase64, filename: 'docker-compose.yml' });
 const inputElement = ref<typeof CInputText>();
+
+function clearTimer(): void {
+  if (timer !== undefined) {
+    globalThis.clearTimeout(timer);
+    timer = undefined;
+  }
+}
+
+async function convert(): Promise<void> {
+  clearTimer();
+  if (dockerRun.value.trim() === '') {
+    dockerCompose.value = '';
+    messages.value = [];
+    state.status = 'idle';
+    state.message = '';
+    return;
+  }
+  const currentRequest = ++requestId;
+  state.status = 'running';
+  state.message = 'Docker conversion is running…';
+  try {
+    const result = await client.run({ source: dockerRun.value });
+    if (currentRequest !== requestId) {
+      return;
+    }
+    dockerCompose.value = result.value.yaml;
+    messages.value = result.value.messages;
+    state.status = 'success';
+    state.message = `Docker conversion completed in ${Math.round(result.elapsedMs)} ms.`;
+  }
+  catch (error) {
+    if (currentRequest !== requestId) {
+      return;
+    }
+    const taskError = error instanceof BoundedTextTaskError
+      ? error
+      : new BoundedTextTaskError('processing', 'The Docker run command could not be converted.');
+    state.status = taskError.code === 'timeout' ? 'timeout' : taskError.code === 'cancelled' ? 'cancelled' : 'error';
+    state.message = dockerCompose.value === '' ? taskError.message : `${taskError.message} The previous result remains available.`;
+  }
+}
+
+function scheduleConversion(): void {
+  clearTimer();
+  ++requestId;
+  client.cancel('Docker conversion cancelled because its input changed.');
+  if (dockerRun.value.trim() === '') {
+    dockerCompose.value = '';
+    messages.value = [];
+    state.status = 'idle';
+    state.message = '';
+  }
+  else if (dockerRun.value.length > DOCKER_CONVERTER_MAX_INPUT_BYTES) {
+    state.status = 'error';
+    state.message = `Docker command input is limited to ${DOCKER_CONVERTER_MAX_INPUT_BYTES.toLocaleString('en')} UTF-8 bytes.`;
+  }
+  else if (exceedsUtf8ByteLimit(dockerRun.value, DOCKER_CONVERTER_LIVE_MAX_BYTES)) {
+    state.status = 'pending';
+    state.message = 'Large Docker commands run only on request. Select Run Docker conversion.';
+  }
+  else {
+    state.status = 'pending';
+    state.message = 'Waiting to run Docker conversion…';
+    timer = globalThis.setTimeout(convert, 250);
+  }
+}
+
+function cancel(): void {
+  clearTimer();
+  ++requestId;
+  client.cancel();
+  state.status = 'cancelled';
+  state.message = 'Docker conversion cancelled. The previous result remains available.';
+}
+
+function download(): void {
+  downloadTextFile({ content: dockerCompose.value, filename: 'docker-compose.yml' });
+}
+
+watch(dockerRun, scheduleConversion, { flush: 'post', immediate: true });
+onUnmounted(() => {
+  clearTimer();
+  ++requestId;
+  client.dispose();
+});
 </script>
 
 <template>
@@ -41,8 +134,27 @@ const inputElement = ref<typeof CInputText>();
         raw-text multiline monospace
         placeholder="Your docker run command to convert..."
         rows="18"
+        test-id="docker-run-input"
       />
     </div>
+
+    <div class="c-task-actions">
+      <c-button type="primary" data-test-id="docker-converter-run" :disabled="dockerRun.trim() === '' || isRunning" @click="convert">
+        {{ isRunning ? 'Converting…' : 'Run Docker conversion' }}
+      </c-button>
+      <c-button v-if="isRunning" type="warning" data-test-id="docker-converter-cancel" @click="cancel">
+        Cancel
+      </c-button>
+    </div>
+    <p
+      v-if="state.message"
+      data-test-id="docker-converter-status"
+      role="status"
+      aria-live="polite"
+      :class="{ 'status-error': hasError }"
+    >
+      {{ state.message }}
+    </p>
 
     <div class="c-tool-panel">
       <div mb-5px>
@@ -55,7 +167,7 @@ const inputElement = ref<typeof CInputText>();
       />
     </div>
 
-    <div mt-5 flex justify-center>
+    <div class="c-task-actions">
       <c-button :disabled="dockerCompose === ''" @click="download">
         Download docker-compose.yml
       </c-button>
@@ -96,3 +208,9 @@ const inputElement = ref<typeof CInputText>();
     </div>
   </div>
 </template>
+
+<style scoped>
+.status-error {
+  color: var(--n-feedback-text-color-error);
+}
+</style>

@@ -19,10 +19,75 @@
     "favicon-32x32.png"
   ],
   "workerAssetLimits": {
+    "assets/docker-converter.worker-<hash>.js": {
+      "rawBytes": 120000,
+      "gzipBytes": 38000,
+      "rationale": "The measured 108,813 B raw / 33,464 B gzip route-owned worker contains composerize-ts and strict structured-result transport. It replaces reactive parser/YAML/base64 work with 16 KiB live, 256 KiB input, 512 KiB output, message-count/size, four-second, cancellation, stale-result, and disposal bounds."
+    },
     "assets/file-hash.worker-<hash>.js": {
       "rawBytes": 30000,
       "gzipBytes": 12000,
       "rationale": "The dedicated demand-loaded worker includes streaming SHA-2, SHA-3, BLAKE3, SHA-1, and MD5 implementations for interoperability without affecting the initial shell. The measured worker is 25,899 B raw / 10,417 B gzip; this narrow ceiling still prevents accidental parser or whole-library growth independently of its route closure."
+    },
+    "assets/hash-text.worker-<hash>.js": {
+      "rawBytes": 65000,
+      "gzipBytes": 24000,
+      "rationale": "The measured 60,239 B raw / 21,154 B gzip route-owned worker computes the existing eight CryptoJS digests outside the main thread. It replaces a measured 706 ms Node / 2.95 s production-browser reactive 1 MiB main-thread path with 16 KiB automatic, 1 MiB hard input, five-second, cancellation, stale-result, and disposal bounds."
+    },
+    "assets/html-wysiwyg-editor.worker-<hash>.js": {
+      "rawBytes": 220000,
+      "gzipBytes": 75000,
+      "rationale": "The measured 212,679 B raw / 70,280 B gzip demand-loaded worker contains the existing Prettier HTML formatter plus strict task transport. Moving this work out of the route's main thread shrank the route chunk from 493,145 B / 153,634 B to 287,982 B / 86,389 B while adding cancellation, timeout, and input/output bounds."
+    },
+    "assets/json-diff.worker-<hash>.js": {
+      "rawBytes": 36000,
+      "gzipBytes": 12000,
+      "rationale": "The measured 33,844 B raw / 10,393 B gzip route-owned worker parses JSON5 once, enforces byte/depth/input/output bounds, and performs bounded key-aware/LCS alignment outside the main thread."
+    },
+    "assets/json-converter.worker-<hash>.js": {
+      "rawBytes": 100000,
+      "gzipBytes": 32000,
+      "rationale": "The measured 89,752 B raw / 27,405 B gzip demand-loaded worker parses JSON5 once and converts to TOML or YAML under shared byte/output/time limits; both JSON-source routes reuse the artifact without entering the shell."
+    },
+    "assets/markdown-to-html.worker-<hash>.js": {
+      "rawBytes": 110000,
+      "gzipBytes": 50000,
+      "rationale": "The measured 104,960 B raw / 46,785 B gzip route-owned worker contains markdown-it plus bounded rendering transport and keeps large Markdown processing off the main thread."
+    },
+    "assets/math-evaluator.worker-<hash>.js": {
+      "rawBytes": 365000,
+      "gzipBytes": 108000,
+      "rationale": "The measured 354,052 B raw / 103,844 B gzip route-owned worker uses mathjs's number-only entry instead of the former full 623,620 B / 180,069 B route closure and enforces expression/output/time limits."
+    },
+    "assets/sql-prettify.worker-<hash>.js": {
+      "rawBytes": 220000,
+      "gzipBytes": 60000,
+      "rationale": "The measured 213,258 B raw / 56,829 B gzip route-owned worker contains sql-formatter and bounded dialect/options processing without running it reactively on the main thread."
+    },
+    "assets/text-statistics.worker-<hash>.js": {
+      "rawBytes": 3000,
+      "gzipBytes": 2000,
+      "rationale": "The measured 2,301 B raw / 1,144 B gzip route-owned worker moves the existing O(n), O(1)-space pass off the main thread for large text while retaining a narrow regression ceiling."
+    },
+    "assets/toml-converter.worker-<hash>.js": {
+      "rawBytes": 100000,
+      "gzipBytes": 28000,
+      "rationale": "The measured 89,835 B raw / 23,818 B gzip demand-loaded worker contains the existing TOML parser plus JSON/YAML writers and replaces duplicate validation/reactive parsing in both TOML-source routes."
+    },
+    "assets/xml-formatter.worker-<hash>.js": {
+      "rawBytes": 10000,
+      "gzipBytes": 5000,
+      "rationale": "The measured 7,486 B raw / 3,031 B gzip route-owned worker contains the XML formatter plus bounded task transport and preserves the vertical editor contract."
+    },
+    "assets/xml-data-converter.worker-<hash>.js": {
+      "rawBytes": 100000,
+      "gzipBytes": 34000,
+      "rationale": "The measured 92,312 B raw / 28,468 B gzip demand-loaded worker contains xml-js plus JSON5 and replaces duplicate reactive validation/transformation in both XML-to-JSON and JSON-to-XML routes under the shared bounded converter lifecycle."
+    },
+    "assets/yaml-converter.worker-<hash>.js": {
+      "rawBytes": 120000,
+      "gzipBytes": 38000,
+      "rationale": "The measured 109,980 B raw / 32,749 B gzip demand-loaded worker parses YAML once per task and converts to JSON or TOML under shared lifecycle and output limits; both YAML-source routes reuse it."
     }
   },
   "dynamicEntryLimits": {
@@ -37,9 +102,9 @@
         "rationale": "Bounded third catalog feature; this route-owned closure includes the incremental SHA-2 worker and must remain a small demand-loaded tool."
       },
       "src/tools/html-wysiwyg-editor/html-wysiwyg-editor.vue": {
-        "rawBytes": 550000,
-        "gzipBytes": 175000,
-        "rationale": "Existing Tiptap/HTML formatting route; replacement and large-output policy remain tracked."
+        "rawBytes": 560000,
+        "gzipBytes": 180000,
+        "rationale": "Bounded Tiptap route plus its demand-loaded Prettier worker. The measured additional closure is 551,423 B raw / 176,574 B gzip versus 541,545 B / 172,634 B before worker isolation; the 1.8% / 2.3% increase buys physical cancellation, an 8-second deadline, stale-result protection, and 64 KiB automatic / 1 MiB hard formatting bounds without increasing the initial shell or creating a chunk above 500 kB."
       },
       "src/tools/mac-address-lookup/mac-address-lookup.vue": {
         "rawBytes": 1950000,
@@ -47,9 +112,9 @@
         "rationale": "Privacy-safe fixed-URL worker keeps the entered MAC prefix out of network logs and is 27% smaller than the former monolith; the separate 250 kB product target remains open."
       },
       "src/tools/math-evaluator/math-evaluator.vue": {
-        "rawBytes": 635000,
-        "gzipBytes": 185000,
-        "rationale": "Existing full mathjs build; a configured route-local build remains tracked."
+        "rawBytes": 380000,
+        "gzipBytes": 115000,
+        "rationale": "The measured 363,883 B raw / 108,586 B gzip route closure now owns a number-only mathjs worker with debounce, explicit large-input evaluation, a two-second deadline, and expression/output bounds; the prior full reactive closure was 623,620 B / 180,069 B."
       },
       "src/tools/pdf-signature-checker/pdf-signature-checker.vue": {
         "rawBytes": 550000,

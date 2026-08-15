@@ -1,27 +1,34 @@
 <script setup lang="ts">
-import { formatXml, isValidXML } from './xml-formatter.service';
-import type { UseValidationRule } from '@/composable/validation';
+import { createXmlWorkerClient } from './xml-formatter.worker-client';
+import { XML_LIVE_MAX_BYTES, XML_MAX_INPUT_BYTES } from './xml-formatter.worker.protocol';
+import TextareaCopyable from '@/components/TextareaCopyable.vue';
+import { useBoundedTextTransform } from '@/composable/bounded-text-transform';
 import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
 import CSwitch from '@/ui/c-switch/c-switch.vue';
 
 const defaultValue = '<hello><world>foo</world><world>bar</world></hello>';
 const indentSize = useStorage('xml-formatter:indent-size', 2);
 const collapseContent = useStorage('xml-formatter:collapse-content', true);
-
-function transformer(value: string) {
-  return formatXml(value, {
-    indentation: ' '.repeat(indentSize.value),
-    collapseContent: collapseContent.value,
-    lineSeparator: '\n',
-  });
-}
-
-const rules: UseValidationRule<string>[] = [
-  {
-    validator: isValidXML,
-    message: 'Provided XML is not valid.',
-  },
-];
+const rawXml = ref(defaultValue);
+const inputComponent = ref<{ inputWrapperRef?: HTMLElement }>();
+const client = createXmlWorkerClient();
+const {
+  cancel,
+  hasError,
+  isRunning,
+  output: formattedXml,
+  run,
+  state,
+} = useBoundedTextTransform({
+  client,
+  createTask: () => ({ collapseContent: collapseContent.value, indentSize: indentSize.value, source: rawXml.value }),
+  debounceMs: 250,
+  label: 'XML formatting',
+  liveMaxBytes: XML_LIVE_MAX_BYTES,
+  maxInputBytes: XML_MAX_INPUT_BYTES,
+  source: rawXml,
+  watchSources: [rawXml, indentSize, collapseContent],
+});
 </script>
 
 <template>
@@ -47,14 +54,44 @@ const rules: UseValidationRule<string>[] = [
       </div>
     </c-card>
 
-    <format-transformer
-      input-label="Your XML"
-      input-placeholder="Paste your XML here..."
-      output-label="Formatted XML from your XML"
-      output-language="xml"
-      :input-validation-rules="rules"
-      :transformer="transformer"
-      :input-default="defaultValue"
-    />
+    <c-field class="c-tool-panel" label="Your XML">
+      <c-input-text
+        ref="inputComponent"
+        v-model:value="rawXml"
+        aria-label="Your XML"
+        placeholder="Paste your XML here..."
+        rows="20"
+        raw-text multiline monospace
+        test-id="input"
+      />
+    </c-field>
+
+    <div class="c-task-actions">
+      <c-button type="primary" data-test-id="xml-format-run" :disabled="rawXml.trim() === '' || isRunning" @click="run">
+        {{ isRunning ? 'Formatting…' : 'Run XML formatting' }}
+      </c-button>
+      <c-button v-if="isRunning" type="warning" data-test-id="xml-format-cancel" @click="cancel">
+        Cancel
+      </c-button>
+    </div>
+    <p
+      v-if="state.message"
+      data-test-id="xml-format-status"
+      role="status"
+      aria-live="polite"
+      :class="{ 'status-error': hasError }"
+    >
+      {{ state.message }}
+    </p>
+
+    <c-field class="c-tool-panel" label="Formatted XML from your XML">
+      <TextareaCopyable :value="formattedXml" language="xml" :follow-height-of="inputComponent?.inputWrapperRef" />
+    </c-field>
   </div>
 </template>
+
+<style scoped>
+.status-error {
+  color: var(--n-feedback-text-color-error);
+}
+</style>

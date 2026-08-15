@@ -1,7 +1,6 @@
 import { type MaybeRef, get, useStorage } from '@vueuse/core';
 import { defineStore } from 'pinia';
 import type { Ref } from 'vue';
-import _ from 'lodash';
 import type { Tool, ToolCategory, ToolWithCategory } from './tools.types';
 import { toolsWithCategory } from './index';
 
@@ -22,20 +21,19 @@ export const useToolStore = defineStore('tools', () => {
   }));
 
   const toolsByCategory = computed<ToolCategory[]>(() => {
-    return _.chain(tools.value)
-      .groupBy('category')
-      .map((components, name, path) => ({
-        name,
-        path,
-        components,
-      }))
-      .value();
+    const grouped = new Map<string, ToolWithCategory[]>();
+    for (const tool of tools.value) {
+      const components = grouped.get(tool.category) ?? [];
+      components.push(tool);
+      grouped.set(tool.category, components);
+    }
+    return [...grouped].map(([name, components]) => ({ name, components }));
   });
 
   const favoriteTools = computed(() => {
     return favoriteToolsName.value
       .map(favoriteName => tools.value.find(({ name, path }) => name === favoriteName || path === favoriteName))
-      .filter(Boolean) as ToolWithCategory[]; // cast because .filter(Boolean) does not remove undefined from type
+      .filter((tool): tool is ToolWithCategory => tool !== undefined);
   });
 
   return {

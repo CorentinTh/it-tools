@@ -19,6 +19,8 @@ list:
     number: 1
     `.trim());
 
+    await expect(page.getByTestId('converter-status')).toContainText('completed');
+
     const generatedJson = await page.getByTestId('area-content').innerText();
 
     expect(generatedJson.trim()).toEqual(

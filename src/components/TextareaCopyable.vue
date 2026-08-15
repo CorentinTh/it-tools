@@ -17,12 +17,14 @@ const props = withDefaults(
     value: string
     followHeightOf?: HTMLElement | null
     language?: string
+    largePreviewBytes?: number
     copyPlacement?: 'top-right' | 'bottom-right' | 'outside' | 'none'
     copyMessage?: string
   }>(),
   {
     followHeightOf: null,
     language: 'txt',
+    largePreviewBytes: MAX_HIGHLIGHTED_OUTPUT_BYTES,
     copyPlacement: 'top-right',
     copyMessage: 'Copy to clipboard',
   },
@@ -39,9 +41,14 @@ const { value, language, followHeightOf, copyPlacement, copyMessage } = toRefs(p
 const { height } = useElementSize(followHeightOf);
 const followedMinHeight = computed(() => height.value > 0 ? Math.max(height.value - 30, 0) : undefined);
 const usePlainLargeOutput = computed(() => exceedsUtf8ByteLimit(value.value, MAX_HIGHLIGHTED_OUTPUT_BYTES));
+const boundedLargePreviewBytes = computed(() => (
+  Number.isSafeInteger(props.largePreviewBytes) && props.largePreviewBytes >= 0
+    ? Math.min(props.largePreviewBytes, MAX_HIGHLIGHTED_OUTPUT_BYTES)
+    : MAX_HIGHLIGHTED_OUTPUT_BYTES
+));
 const plainLargeOutputPreview = computed(() => (
   usePlainLargeOutput.value
-    ? truncateUtf8ToByteLimit(value.value, MAX_HIGHLIGHTED_OUTPUT_BYTES)
+    ? truncateUtf8ToByteLimit(value.value, boundedLargePreviewBytes.value)
     : value.value
 ));
 
@@ -65,7 +72,7 @@ const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : copyMessage.
           text-xs
           op-70
         >
-          Syntax highlighting is disabled above {{ MAX_HIGHLIGHTED_OUTPUT_BYTES.toLocaleString('en') }} UTF-8 bytes. The preview is limited to that size; Copy keeps the complete output.
+          Syntax highlighting is disabled above {{ MAX_HIGHLIGHTED_OUTPUT_BYTES.toLocaleString('en') }} UTF-8 bytes. The preview is limited to {{ boundedLargePreviewBytes.toLocaleString('en') }} bytes; Copy keeps the complete output.
         </div>
         <textarea
           v-if="usePlainLargeOutput"

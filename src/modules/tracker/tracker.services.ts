@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import type Plausible from 'plausible-tracker';
 import { inject } from 'vue';
 
@@ -15,7 +14,7 @@ function createTrackerService({ plausible }: { plausible: ReturnType<typeof Plau
 function useTracker() {
   const plausible: ReturnType<typeof Plausible> | undefined = inject('plausible');
 
-  if (_.isNil(plausible)) {
+  if (plausible === undefined) {
     throw new TypeError('Plausible must be instantiated');
   }
 

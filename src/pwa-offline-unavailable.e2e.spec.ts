@@ -54,7 +54,7 @@ test.describe('PWA offline route recovery', () => {
 
     await page.locator('a[href="/random-port-generator"]').first().click();
     await expect(page).toHaveURL(/\/random-port-generator$/);
-    await expect(page.locator('.port')).toBeVisible();
+    await expect(page.getByTestId('random-port-output')).toBeVisible();
 
     const runtimeEntries = await page.evaluate(async () => {
       const cache = await caches.open('it-tools-lazy-assets-v1');
@@ -94,7 +94,7 @@ test.describe('PWA offline route recovery', () => {
     await expect(recovery).toContainText('/percentage-calculator');
     await expect(page.getByTestId('retry-offline-route')).toBeDisabled();
     await expect(page).toHaveURL(/\/random-port-generator$/);
-    await expect(page.locator('.port')).toHaveCount(0);
+    await expect(page.getByTestId('random-port-output')).toHaveCount(0);
     await expect(page.getByText('What is', { exact: true })).toHaveCount(0);
     expect(failedAssetPaths).toContain(targetAssetPath);
 

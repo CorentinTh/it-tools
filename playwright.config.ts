@@ -1,7 +1,9 @@
+import process from 'node:process';
+
 import { defineConfig, devices } from '@playwright/test';
 
 const isCI = !!process.env.CI;
-const baseUrl = process.env.BASE_URL || 'http://localhost:5050';
+const baseUrl = process.env.BASE_URL || 'http://127.0.0.1:5050';
 const useWebServer = process.env.NO_WEB_SERVER !== 'true';
 
 /**
@@ -57,7 +59,7 @@ export default defineConfig({
     && {
       webServer: {
         command: 'npm run preview',
-        url: 'http://localhost:5050',
+        url: 'http://127.0.0.1:5050',
         reuseExistingServer: !isCI,
       },
     }

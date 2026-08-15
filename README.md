@@ -42,6 +42,12 @@ pnpm install --frozen-lockfile
 pnpm dev
 ```
 
+The source-served development URL is `http://127.0.0.1:8091`. It is kept on a
+different origin from production preview (`http://127.0.0.1:5050`) so an old
+PWA service worker cannot masquerade as the current source tree. If Vite's
+optimized-dependency cache is suspect, stop the server and run
+`pnpm dev:fresh`; use `pnpm test:dev-runtime` to verify the browser contract.
+
 ### Run validation
 
 ```sh

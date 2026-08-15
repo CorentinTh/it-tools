@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia';
-import _ from 'lodash';
 import type { PaletteOption } from './command-palette.types';
 import { useToolStore } from '@/tools/tools.store';
 import { useFuzzySearch } from '@/composable/fuzzySearch';
@@ -30,8 +29,10 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
       name: 'Random tool',
       description: 'Get a random tool from the list.',
       action: () => {
-        const { path } = _.sample(toolStore.tools)!;
-        router.push(path);
+        const tool = toolStore.tools[Math.floor(Math.random() * toolStore.tools.length)];
+        if (tool) {
+          router.push(tool.path);
+        }
       },
       icon: DiceIcon,
       category: 'Tools',
@@ -81,8 +82,17 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
     },
   });
 
-  const filteredSearchResult = computed(() =>
-    _.chain(searchResult.value).groupBy('category').mapValues(categoryOptions => _.take(categoryOptions, 5)).value());
+  const filteredSearchResult = computed(() => {
+    const grouped: Record<string, PaletteOption[]> = {};
+    for (const option of searchResult.value) {
+      const options = grouped[option.category] ?? [];
+      if (options.length < 5) {
+        options.push(option);
+        grouped[option.category] = options;
+      }
+    }
+    return grouped;
+  });
 
   return {
     filteredSearchResult,

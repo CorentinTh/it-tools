@@ -15,7 +15,7 @@ test.describe('Tool - ASCII text drawer', () => {
     await page.goto('/ascii-text-drawer');
 
     await expect(page.getByText('Loading font...')).toBeHidden();
-    await expect(page.getByText('ASCII art text')).toBeVisible();
+    await expect(page.getByText('ASCII art text', { exact: true })).toBeVisible();
     await expect(page.getByRole('spinbutton', { name: 'Output width (0–10,000)' })).toBeVisible();
     expect(externalRequests).toEqual([]);
   });

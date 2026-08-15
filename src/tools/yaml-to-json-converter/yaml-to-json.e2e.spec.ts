@@ -12,6 +12,8 @@ test.describe('Tool - Yaml to json', () => {
   test('Yaml is parsed and output clean json', async ({ page }) => {
     await page.getByTestId('input').fill('foo: bar\nlist:\n  - item\n  - key: value');
 
+    await expect(page.getByTestId('converter-status')).toContainText('completed');
+
     const generatedJson = await page.getByTestId('area-content').innerText();
 
     expect(generatedJson.trim()).toEqual(
@@ -46,6 +48,8 @@ test.describe('Tool - Yaml to json', () => {
       - { age: 3, <<: *default }
       
       `);
+
+    await expect(page.getByTestId('converter-status')).toContainText('completed');
 
     const generatedJson = await page.getByTestId('area-content').innerText();
 

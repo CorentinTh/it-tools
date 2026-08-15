@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { convertArrayToCsv, getHeaders } from './json-to-csv.service';
+import { CsvOutputLimitError, convertArrayToCsv, getHeaders } from './json-to-csv.service';
 
 describe('json-to-csv service', () => {
   describe('getHeaders', () => {
@@ -100,6 +100,12 @@ describe('json-to-csv service', () => {
       ];
 
       expect(convertArrayToCsv({ array })).toBe('"comma,key","quoted""key"\n1,2');
+    });
+
+    it('stops incrementally before output exceeds its UTF-8 byte budget', () => {
+      expect(() => convertArrayToCsv({ array: [{ value: '🙂🙂' }], maxOutputBytes: 12 }))
+        .toThrow(CsvOutputLimitError);
+      expect(convertArrayToCsv({ array: [{ value: '🙂' }], maxOutputBytes: 10 })).toBe('value\n🙂');
     });
   });
 });

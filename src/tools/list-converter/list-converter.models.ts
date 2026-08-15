@@ -1,27 +1,58 @@
-import _ from 'lodash';
 import type { ConvertOptions } from './list-converter.types';
 import { byOrder } from '@/utils/array';
 
 export { convert };
 
-function whenever<T, R>(condition: boolean, fn: (value: T) => R) {
-  return (value: T) =>
-    condition ? fn(value) : value;
+export class ListOutputLimitError extends Error {
+  override readonly name = 'ListOutputLimitError';
 }
 
-function convert(list: string, options: ConvertOptions): string {
-  const lineBreak = options.keepLineBreaks ? '\n' : '';
+function convert(list: string, options: ConvertOptions, maxOutputBytes = Number.MAX_SAFE_INTEGER): string {
+  if (!Number.isSafeInteger(maxOutputBytes) || maxOutputBytes < 0) {
+    throw new RangeError('maxOutputBytes must be a non-negative safe integer.');
+  }
 
-  return _.chain(list)
-    .thru(whenever(options.lowerCase, text => text.toLowerCase()))
-    .split('\n')
-    .thru(whenever(options.removeDuplicates, _.uniq))
-    .thru(whenever(options.reverseList, _.reverse))
-    .thru(whenever(!_.isNull(options.sortList), parts => parts.sort(byOrder({ order: options.sortList }))))
-    .map(whenever(options.trimItems, _.trim))
-    .without('')
-    .map(p => options.itemPrefix + p + options.itemSuffix)
-    .join(options.separator + lineBreak)
-    .thru(text => [options.listPrefix, text, options.listSuffix].join(lineBreak))
-    .value();
+  const lineBreak = options.keepLineBreaks ? '\n' : '';
+  let parts = (options.lowerCase ? list.toLowerCase() : list).split('\n');
+
+  if (options.removeDuplicates) {
+    parts = [...new Set(parts)];
+  }
+  if (options.reverseList) {
+    parts.reverse();
+  }
+  if (options.sortList !== null) {
+    parts.sort(byOrder({ order: options.sortList }));
+  }
+  if (options.trimItems) {
+    parts = parts.map(part => part.trim());
+  }
+  parts = parts.filter(part => part !== '');
+
+  const encoder = new TextEncoder();
+  const chunks: string[] = [];
+  let byteLength = 0;
+  function append(value: string): void {
+    byteLength += encoder.encode(value).byteLength;
+    if (byteLength > maxOutputBytes) {
+      throw new ListOutputLimitError('List output exceeds its byte limit.');
+    }
+    chunks.push(value);
+  }
+
+  append(options.listPrefix);
+  append(lineBreak);
+  parts.forEach((part, index) => {
+    if (index > 0) {
+      append(options.separator);
+      append(lineBreak);
+    }
+    append(options.itemPrefix);
+    append(part);
+    append(options.itemSuffix);
+  });
+  append(lineBreak);
+  append(options.listSuffix);
+
+  return chunks.join('');
 }

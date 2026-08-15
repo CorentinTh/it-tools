@@ -27,7 +27,7 @@ The production artifact is the `dist/` directory. It can be served by Vercel, Ne
 | E2E tests | Playwright | Chromium, Firefox, and WebKit scenarios |
 | Delivery | GitHub Actions, Docker, nginx, Vercel, Netlify | CI, release artifacts, and static hosting |
 
-Specialized libraries are grouped around individual tools: JSON5/YAML/TOML/XML/Markdown/SQL, `crypto-js`/`bcryptjs`/`node-forge`/BIP39, `@noble/hashes`, `mathjs`, `monaco-editor`, TipTap, `libphonenumber-js`, generated OUI data, QR/PDF/UA parsers, and others. `package.json` currently contains 65 runtime and 47 development dependencies.
+Specialized libraries are grouped around individual tools: JSON5/YAML/TOML/XML/Markdown/SQL, `crypto-js`/`bcryptjs`/BIP39, Web Crypto, `@noble/hashes`, `mathjs`, `monaco-editor`, TipTap, `libphonenumber-js`, generated OUI data, QR/PDF/UA parsers, and others. `node-forge` is no longer a direct RSA dependency but remains transitive through the PDF signature reader. `package.json` currently contains 64 runtime and 46 development dependencies.
 
 ## 3. Repository structure
 
@@ -150,11 +150,24 @@ Accepted schema-v4 production evidence for implementation checkpoint `5f7e97a`:
 | Local Vite phase | 21.17 s |
 | `dist/` | 511 files / 13,329,332 B raw / 3,812,444 B gzip |
 | Shell including document | 902,309 B raw / 276,963 B gzip |
-| Mandatory Workbox install | 9 entries / 956,157 B raw / 327,325 B gzip |
+| Mandatory Workbox install | 9 entries / 959,654 B raw / 327,923 B gzip |
 | Text Diff route + owned-worker closure | 2,474,507 B raw / 646,976 B gzip |
 | MAC Lookup route + owned-worker closure | 1,937,384 B raw / 770,467 B gzip |
 | File Hash route + owned-worker closure | 70,260 B raw / 26,677 B gzip |
 | File Hash worker | 25,899 B raw / 10,417 B gzip |
+
+The current 2026-08-16 dirty-worktree build transforms 22,876 modules in
+36.94 seconds and emits 520 files / 13,358,344 B raw / 3,833,545 B gzip. Its
+shell including the document is 906,828 B / 277,596 B gzip, and the nine-entry
+mandatory install is 960,676 B / 327,958 B gzip. WYSIWYG owns a 212,679 B /
+70,280 B gzip
+demand-loaded Prettier worker; its main route chunk fell from 493,145 B /
+153,634 B gzip to 287,982 B / 86,389 B gzip. The complete additional closure
+is 551,423 B / 176,574 B gzip versus 541,545 B / 172,634 B before isolation.
+The bounded 1.8% / 2.3% closure increase is accepted because formatting leaves
+the main thread and gains physical cancellation, timeout, stale-result, and
+input/output bounds; neither the shell nor any WYSIWYG-owned chunk exceeds
+500 kB.
 
 The nine-entry Workbox shell is enforced at no more than 1 MB raw, 350 kB
 gzip, and ten files. Lazy tool chunks, route-owned workers, and 289 same-origin
@@ -164,9 +177,15 @@ HTTP cache is cleared.
 
 `scripts/build-stats.mjs` discovers manifest graphs and literal route-owned
 workers, then applies rationale-backed shell, route, worker, and mandatory-PWA
-budgets. The accepted artifact passes 202 checks; schema behavior passes 16
+budgets. The current artifact passes 228 checks; schema behavior passes 16
 infrastructure tests. Raw baseline details remain in
-`.ai/baselines/build-stats.json` and `.ai/PERFORMANCE.md`.
+`.ai/baselines/build-stats.json` and `.ai/PERFORMANCE.md`. The eight JSON/YAML/
+TOML/XML converter routes add four separately budgeted family workers:
+JSON 89,752 B / 27,405 B gzip, TOML 89,835 B / 23,818 B gzip, and YAML
+109,980 B / 32,749 B gzip, plus XML 92,312 B / 28,468 B gzip. Docker
+Run-to-Compose adds a separately budgeted 108,813 B / 33,464 B gzip worker.
+Hash Text adds a separately budgeted 60,239 B / 21,154 B gzip worker under a
+65/24 kB ceiling. All remain demand-loaded and outside the shell.
 
 The main sources of weight are four icon mechanisms, eager registry metadata/icons, CommonJS `lodash` across 41 source imports, Monaco, the full OUI dataset, full `mathjs`, emoji datasets, TipTap, and overlapping parser/rendering libraries.
 
@@ -174,14 +193,20 @@ The main sources of weight are four icon mechanisms, eager registry metadata/ico
 
 - The accepted integrated checkpoint passes zero-warning lint and both the
   application/test and Vite-config typecheck projects.
-- 816/816 unit tests pass across 104 files.
-- 102/102 sequential Chromium E2E tests pass, including the registry-generated
-  smoke for all 89 routes.
-- Sixteen build-stat infrastructure tests, 202 current-artifact budget checks,
-  and four generated-OUI checks pass.
+- 990/990 unit tests pass across 150 files in the current dirty-worktree checkpoint.
+- 172/172 sequential production-preview Chromium E2E tests pass, including the
+  registry-generated smoke for all 89 routes.
+- Sixteen build-stat infrastructure tests, 228 current-artifact budget checks,
+  and four generated-OUI checks pass. Fourteen route-owned worker families have
+  independent ceilings in addition to route-closure budgets.
 - Production browser gates cover privacy/storage, worker cancellation and route
   disposal, large structured inputs, File Hash 256 MiB behavior, PWA demand
   caching/recovery, and lifecycle/heap regressions.
+- The representative UI-state suite separates semantic assertions from pixel
+  comparison. Loading/disabled, mobile-dark validation-error, and dense-form
+  long-value/result states run semantically on every Chromium host; checked-in
+  pixel references currently target Darwin Chromium to avoid cross-renderer
+  font noise.
 - Playwright remains configured for Chromium, Firefox, and WebKit and CI shards
   the suite. The source host did not have the pinned Firefox/WebKit binaries for
   the latest File Hash feature smoke, so that cross-browser claim remains open.
@@ -228,16 +253,28 @@ explicitly discloses a network/system boundary. Sensitive tool content is
 session-only by default; analytics is path-only; Text Diff persistence is the
 sole bounded, explicit, default-off content exception.
 
-Attacker-controlled Regex, Bcrypt, JSON/YAML, schema validation, hashing, and
-OUI work now use bounded worker/lifecycle contracts where implemented. Monaco
+Attacker-controlled Regex, Bcrypt, JSON/YAML/TOML/XML, Docker conversion, schema validation, file/text hashing, and
+OUI work now use bounded worker/lifecycle contracts where implemented. A
+shared bounded-text client/composable supplies terminate-and-replace,
+debounce-versus-explicit thresholds, timeouts, stale-result handling, stable
+status/action slots, and disposal for route-local Math, SQL, XML, and Markdown
+workers. Hash Text uses the same task lifecycle with an empty-source opt-in but
+keeps a strict exact-key digest protocol and its own CryptoJS worker. The eight
+JSON/YAML/TOML/XML converters additionally share one vertical
+transformer, three parse-once source-family workers, and one XML-family worker;
+Docker conversion keeps its categorized typed result protocol, Text Statistics
+keeps a typed numeric-result protocol, and JSON Diff keeps its typed tree/report
+protocol. Heavy libraries remain inside literal
+lazy worker URLs rather than entering the shell. Monaco
 models/workers, media tracks, object URLs, timers, and shared layout ownership
 have disposal regressions. Shared large-output rendering bounds DOM expansion,
 while the complete accepted output can still remain in memory and must retain
 per-tool byte limits.
 
-Important residuals remain: DOM-dependent Regex SVG, parser/download-policy
-consolidation, preference-storage denial, slower-device/cross-browser coverage,
-and any tool not yet migrated to the bounded execution policy. Ajv performs
+Important residuals remain: DOM-dependent Regex SVG, JSON-to-CSV's measured
+duplicated JSON5 parse and output-amplification path, the two other remaining
+`FormatTransformer` callers, parser/download-policy consolidation,
+preference-storage denial, and slower-device/cross-browser coverage. Ajv performs
 runtime validator code generation, so a future eval-blocking CSP requires a
 precompiled/interpreted design rather than `unsafe-eval`.
 

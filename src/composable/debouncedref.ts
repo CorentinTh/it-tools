@@ -1,21 +1,50 @@
-import _ from 'lodash';
-
 function useDebouncedRef<T>(initialValue: T, delay: number, immediate: boolean = false) {
   const state = ref(initialValue);
-  const debouncedRef = customRef((track, trigger) => ({
-    get() {
-      track();
-      return state.value;
-    },
-    set: _.debounce(
-      (value) => {
-        state.value = value;
-        trigger();
+  let timer: ReturnType<typeof globalThis.setTimeout> | undefined;
+  let pendingValue = initialValue;
+  let needsTrailingUpdate = false;
+  const debouncedRef = customRef((track, trigger) => {
+    const publish = () => {
+      state.value = pendingValue;
+      trigger();
+    };
+
+    return {
+      get() {
+        track();
+        return state.value;
       },
-      delay,
-      { leading: immediate },
-    ),
-  }));
+      set(value) {
+        pendingValue = value;
+        if (timer === undefined && immediate) {
+          publish();
+          needsTrailingUpdate = false;
+        }
+        else {
+          needsTrailingUpdate = true;
+        }
+
+        if (timer !== undefined) {
+          globalThis.clearTimeout(timer);
+        }
+        timer = globalThis.setTimeout(() => {
+          timer = undefined;
+          if (!immediate || needsTrailingUpdate) {
+            publish();
+          }
+          needsTrailingUpdate = false;
+        }, delay);
+      },
+    };
+  });
+
+  if (getCurrentScope()) {
+    onScopeDispose(() => {
+      if (timer !== undefined) {
+        globalThis.clearTimeout(timer);
+      }
+    });
+  }
   return debouncedRef;
 }
 export default useDebouncedRef;

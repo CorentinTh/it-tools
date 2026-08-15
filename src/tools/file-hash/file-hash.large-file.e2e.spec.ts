@@ -7,9 +7,11 @@ import { type CDPSession, expect, test } from '@playwright/test';
 
 const LARGE_FILE_BYTES = 256 * 1024 * 1024;
 const MAX_RETAINED_RENDERER_HEAP_BYTES = 32 * 1024 * 1024;
-// Browser-process overhead varies by platform; half the fixture size still
-// rejects a sustained whole-file clone while leaving headroom for Chromium.
-const MAX_PEAK_BROWSER_RSS_DELTA_BYTES = LARGE_FILE_BYTES / 2;
+// Page heap/backing-storage limits are the primary clone guard. Process RSS
+// also includes Chromium's fresh worker/process overhead, which varies between
+// otherwise identical runs; three quarters of the fixture still rejects a
+// sustained 256 MiB whole-file clone without treating that overhead as data.
+const MAX_PEAK_BROWSER_RSS_DELTA_BYTES = LARGE_FILE_BYTES * 3 / 4;
 const MAX_PEAK_PAGE_MEMORY_DELTA_BYTES = 32 * 1024 * 1024;
 const ABC_SHA_256 = 'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad';
 

@@ -16,9 +16,8 @@ test.describe('Tool - List converter', () => {
     4
     5`);
 
-    const result = await page.getByTestId('area-content').innerText();
-
-    expect(result.trim()).toEqual('1, 2, 3, 4, 5');
+    await expect(page.getByTestId('list-converter-status')).toContainText('completed');
+    await expect(page.getByTestId('area-content')).toHaveText('1, 2, 3, 4, 5');
   });
 
   test('Duplicates should be removed, list should be sorted and prefix and suffix list items', async ({ page }) => {
@@ -33,7 +32,7 @@ test.describe('Tool - List converter', () => {
     await page.getByTestId('itemPrefix').fill('\'');
     await page.getByTestId('itemSuffix').fill('\'');
 
-    const result = await page.getByTestId('area-content').innerText();
-    expect(result.trim()).toEqual('\'1\', \'2\', \'4\', \'3\', \'5\'');
+    await expect(page.getByTestId('list-converter-status')).toContainText('completed');
+    await expect(page.getByTestId('area-content')).toHaveText('\'1\', \'2\', \'4\', \'3\', \'5\'');
   });
 });

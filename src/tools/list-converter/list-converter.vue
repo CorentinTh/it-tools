@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { useStorage } from '@vueuse/core';
-import { convert } from './list-converter.models';
 import type { ConvertOptions } from './list-converter.types';
+import { createListConverterWorkerClient } from './list-converter.worker-client';
+import { LIST_CONVERTER_LIVE_MAX_BYTES, LIST_CONVERTER_MAX_INPUT_BYTES } from './list-converter.worker.protocol';
 import CSwitch from '@/ui/c-switch/c-switch.vue';
+import TextareaCopyable from '@/components/TextareaCopyable.vue';
+import { useBoundedTextTransform } from '@/composable/bounded-text-transform';
 
 const sortOrderOptions = [
   {
@@ -17,7 +20,7 @@ const sortOrderOptions = [
   },
 ];
 
-const conversionConfig = useStorage<ConvertOptions>('list-converter:conversionConfig', {
+const conversionConfig = useStorage<ConvertOptions>('it-tools:list-converter:preferences:v1', {
   lowerCase: false,
   trimItems: true,
   removeDuplicates: true,
@@ -31,9 +34,32 @@ const conversionConfig = useStorage<ConvertOptions>('list-converter:conversionCo
   separator: ', ',
 });
 
-function transformer(value: string) {
-  return convert(value, conversionConfig.value);
-}
+const source = ref('');
+const inputComponent = ref<{ inputWrapperRef?: HTMLElement }>();
+const client = createListConverterWorkerClient();
+const { cancel, hasError, isRunning, output, run, state } = useBoundedTextTransform({
+  client,
+  createTask: () => ({ options: { ...conversionConfig.value }, source: source.value }),
+  debounceMs: 250,
+  label: 'List conversion',
+  liveMaxBytes: LIST_CONVERTER_LIVE_MAX_BYTES,
+  maxInputBytes: LIST_CONVERTER_MAX_INPUT_BYTES,
+  source,
+  watchSources: [
+    source,
+    () => conversionConfig.value.itemPrefix,
+    () => conversionConfig.value.itemSuffix,
+    () => conversionConfig.value.keepLineBreaks,
+    () => conversionConfig.value.listPrefix,
+    () => conversionConfig.value.listSuffix,
+    () => conversionConfig.value.lowerCase,
+    () => conversionConfig.value.removeDuplicates,
+    () => conversionConfig.value.reverseList,
+    () => conversionConfig.value.separator,
+    () => conversionConfig.value.sortList,
+    () => conversionConfig.value.trimItems,
+  ],
+});
 </script>
 
 <template>
@@ -96,11 +122,43 @@ function transformer(value: string) {
       </div>
     </c-card>
 
-    <format-transformer
-      input-label="Your input data"
-      input-placeholder="Paste your input data here..."
-      output-label="Your transformed data"
-      :transformer="transformer"
+    <c-input-text
+      ref="inputComponent"
+      v-model:value="source"
+      class="c-tool-panel"
+      label="Your input data"
+      placeholder="Paste your input data here..."
+      rows="20"
+      raw-text
+      multiline
+      test-id="input"
+      monospace
     />
+    <div class="c-task-actions">
+      <c-button type="primary" data-test-id="list-converter-run" :disabled="source === '' || isRunning" @click="run">
+        {{ isRunning ? 'Converting…' : 'Run list conversion' }}
+      </c-button>
+      <c-button v-if="isRunning" type="warning" data-test-id="list-converter-cancel" @click="cancel">
+        Cancel
+      </c-button>
+    </div>
+    <p
+      v-if="state.message"
+      data-test-id="list-converter-status"
+      role="status"
+      aria-live="polite"
+      :class="{ 'status-error': hasError }"
+    >
+      {{ state.message }}
+    </p>
+    <c-field class="c-tool-panel" label="Your transformed data">
+      <TextareaCopyable :value="output" :follow-height-of="inputComponent?.inputWrapperRef" />
+    </c-field>
   </div>
 </template>
+
+<style scoped>
+.status-error {
+  color: var(--n-feedback-text-color-error);
+}
+</style>

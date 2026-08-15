@@ -23,11 +23,9 @@ describe('route control adapter contract', () => {
     expect(offenders).toEqual([]);
   });
 
-  it('keeps direct Naive number inputs out of tool components except the queued RSA correctness repair', () => {
+  it('keeps direct Naive number inputs out of every tool component', () => {
     const toolsDirectory = new URL('../../tools', import.meta.url).pathname;
-    const rsaException = join(toolsDirectory, 'rsa-key-pair-generator/rsa-key-pair-generator.vue');
     const offenders = collectVueFiles(toolsDirectory)
-      .filter(path => path !== rsaException)
       .filter(path => readFileSync(path, 'utf8').includes('<n-input-number'));
 
     expect(offenders).toEqual([]);
@@ -49,11 +47,9 @@ describe('route control adapter contract', () => {
     expect(offenders).toEqual([]);
   });
 
-  it('keeps direct Naive form items out of tool components except the queued RSA correctness repair', () => {
+  it('keeps direct Naive form items out of every tool component', () => {
     const toolsDirectory = new URL('../../tools', import.meta.url).pathname;
-    const rsaException = join(toolsDirectory, 'rsa-key-pair-generator/rsa-key-pair-generator.vue');
     const offenders = collectVueFiles(toolsDirectory)
-      .filter(path => path !== rsaException)
       .filter(path => readFileSync(path, 'utf8').includes('<n-form-item'));
 
     expect(offenders).toEqual([]);
@@ -76,23 +72,19 @@ describe('route control adapter contract', () => {
     expect(offenders).toEqual([]);
   });
 
-  it('keeps literal label widths out of tool components except the queued RSA correctness repair', () => {
+  it('keeps literal label widths out of every tool component', () => {
     const toolsDirectory = new URL('../../tools', import.meta.url).pathname;
-    const rsaException = join(toolsDirectory, 'rsa-key-pair-generator/rsa-key-pair-generator.vue');
     const offenders = collectVueFiles(toolsDirectory)
-      .filter(path => path !== rsaException)
       .filter(path => /label-width=|labelWidth/.test(readFileSync(path, 'utf8')));
 
     expect(offenders).toEqual([]);
   });
 
-  it('limits template width exceptions to documented media, diff, compact-option, catalog, and RSA routes', () => {
+  it('limits template width exceptions to documented media, compact-option, and catalog routes', () => {
     const toolsDirectory = new URL('../../tools', import.meta.url).pathname;
     const allowed = [
       'emoji-picker/emoji-picker.vue',
-      'json-diff/diff-viewer/diff-viewer.vue',
       'json-schema-validator/json-schema-validator.vue',
-      'rsa-key-pair-generator/rsa-key-pair-generator.vue',
       'svg-placeholder-generator/svg-placeholder-generator.vue',
     ].map(path => join(toolsDirectory, path)).sort();
     const templateWidthPattern = /style="[^"]*(?:width|max-width|min-width)|\bmax-w-/;

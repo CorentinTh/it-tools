@@ -1,16 +1,19 @@
 # Cross-machine AI Handoff
 
-Last transfer review: 2026-08-07 (Europe/Moscow)
+Last transfer review: 2026-08-15 (Europe/Moscow)
 
 This file is the first recovery checkpoint for a new AI session. It records
 portable repository state, not hidden conversation memory or machine caches.
 After reading it, use `.ai/PROGRESS.md` for current results/risks/next gates and
 `.ai/TODO.md` for the approved roadmap.
 
-## Active resumed slice — 2026-08-10
+## Active resumed slice — 2026-08-15
 
 The current dirty worktree is intentional and must be preserved. It contains
-the first UI-consistency foundation and pilot: shared spacing/width/focus
+the completed UI-consistency/RSA implementation plus the expanded
+visual-state, ordered QR, bounded WYSIWYG/JSON Diff, and bounded text-worker
+slices. The
+UI foundation includes shared spacing/width/focus
 tokens, repaired input/select/file-upload/segmented-choice semantics, and the
 accepted wide vertical transformer contract (input above output; side-by-side
 only for true diff tools) across the shared 12-route transformer plus direct
@@ -28,16 +31,77 @@ fields. The broad numeric/form/catalog wave additionally covers Bcrypt, ASCII,
 ETA, Integer Base, Roman Numeral, Temperature, BIP39, Benchmark Builder, Chmod,
 Hash Text, Keycode, Open Graph, Date-time, IPv4, OTP, URL Parser, Case, HTML
 Entities, Markdown, SafeLink, and the QR/color family. Direct Naive
-checkbox/switch/color/fixed-input-group usage is zero. RSA is the only guarded
-form-item/number-input/literal-label-width exception and must be repaired as an
-explicit supported-size Generate task, not cosmetically migrated. The route
+checkbox/switch/color/fixed-input-group/form-item/number-input usage and
+literal label widths are now zero. RSA closes the final exception with fixed
+2,048/3,072/4,096-bit presets and an explicit Generate task. The route
 rollout is complete: every route uses a named layout archetype, and the all-89-
 route Vite-dev matrix passes desktop/light and mobile/dark overflow, form-
-control naming, theme, content, and runtime/chunk checks. Deterministic
-screenshot/state expansion remains hardening backlog rather than an unification
-implementation blocker.
+control naming, theme, content, and runtime/chunk checks. The first
+deterministic screenshot set now contains seven states across all five core
+archetypes plus true diff: loading/disabled, mobile-dark error, dense long
+value/result, live-transformer error with prior output, local-file empty/
+disabled/legacy guidance, aligned diff result, and mobile-dark reference
+search. Semantic assertions run everywhere; pixel references target Darwin
+Chromium.
 The Orca embedded-browser workflow, dev/preview distinction, and scoped stale
 PWA-cache recovery are recorded in `.ai/ORCA_BROWSER.md`.
+
+RSA generation now uses Web Crypto inside a strict route-owned
+terminate-and-replace worker. Cancel, replacement, a 30-second deadline, and
+unmount physically terminate owned work; prior output remains visible during
+pending/cancel/error and keys are never persisted. Direct `node-forge` and its
+types were removed, while the transitive PDF-reader path remains. The current
+additional closure is 60,832 B raw / 24,700 B gzip (previously 450,149 B /
+132,813 B), including a 2,498 B / 1,151 B worker. Focused RSA 22/22,
+Chromium Vite-dev 2/2, full unit 921/921, lint/typecheck/build, and 202/202
+artifact budgets pass.
+
+The following bounded reactive-computation slice is also complete:
+
+- QR and Wi-Fi QR generation waits 150 ms after edits, accepts only the latest
+  snapshot, rejects input above 4,096 UTF-8 bytes, clears incomplete Wi-Fi
+  output immediately, and invalidates pending work on scope disposal;
+- HTML WYSIWYG formats below 64 KiB after a 250 ms pause in a strict
+  terminate-and-replace worker; larger documents require an explicit action,
+  input/output are bounded at 1/2 MiB, and an eight-second timeout plus
+  cancellation/stale/unmount guards apply;
+- JSON Diff is an explicit route-owned worker task with 1 MiB-per-document,
+  depth-128, 100,000 input/output-node, 250,000-LCS-cell, and eight-second
+  bounds. It parses each JSON5 source once, aligns unique `id`/`key`/`name`
+  object arrays plus primitive LCS sequences, reports positional fallback,
+  lazily mounts nested branches, and renders wide results in 200-row batches;
+- Math, SQL, XML, Markdown, and Text Statistics use route-local terminate-and-
+  replace workers with shared debounce/explicit action/status/disposal
+  behavior. SQL/XML/Markdown use 64 KiB live and 1 MiB hard input thresholds;
+  Text Statistics uses 256 KiB live and 4 MiB hard input thresholds. Math uses
+  the number-only `mathjs` entry, 2/8 KiB live/hard input, 64 KiB output, and a
+  two-second deadline.
+
+The structured-converter slice is complete as well. JSON-to-TOML/YAML,
+YAML-to-JSON/TOML, TOML-to-JSON/YAML, and XML-to-JSON/JSON-to-XML use one shared
+vertical `BoundedTextTransformer`, three parse-once source-family workers, and
+one XML-family worker. They auto-run only below 64 KiB, require an explicit
+action up to 1 MiB, cap output at 2 MiB, time out after eight seconds,
+physically terminate replacement/cancel/unmount work, reject stale results,
+and retain the previous successful result after an invalid edit. Their library
+number semantics are not the strict JSON/YAML Prettify lossless-number
+contract. Docker Run-to-Compose separately moves composerize, cleanup, and
+message classification into a strict four-second worker with 16 KiB live,
+256 KiB hard input, 512 KiB YAML, and bounded-message limits; downloads use a
+Blob URL. Production Chromium fixtures cover SQL, XML Formatter, XML-to-JSON,
+Markdown, Text Statistics, JSON Diff, and Docker conversion with cold-route/
+result-ready timing, heartbeat, and `<50 ms` Long Task gates. SQL output
+publication at 400–700 KiB remains a measured textarea-rendering follow-up;
+the stable executable fixture is 128 KiB and the 1 MiB hard limit was not
+raised.
+
+The current integrated checkpoint is zero-warning lint, dual typecheck,
+990/990 unit tests across 150 files, a 22,876-module production build, 228/228
+artifact checks, focused Vite-dev Hash Text plus earlier bounded-tool flows, and
+172/172 sequential production-preview Chromium flows. WYSIWYG's main
+route chunk is 287,982 B raw / 86,389 B gzip and its demand-loaded worker is
+212,679 B / 70,280 B gzip; the accepted complete additional closure is
+551,423 B / 176,574 B gzip. The shell remains below its existing ceiling.
 
 File Hash in this slice supports SHA-256/384/512, SHA3-256, BLAKE3-256, SHA-1,
 and MD5 in the same fixed-window worker pass. SHA-1/MD5 are visibly marked as
@@ -54,8 +118,11 @@ raw / 10,417 B gzip under its documented 30/12 kB route-specific ceiling.
 - On 2026-08-07, `git ls-remote origin refs/heads/feat-ai-research`
   returned that exact implementation checkpoint before this documentation-only
   handoff update was created.
-- The pre-handoff worktree was clean, with no staged, modified, or untracked
-  files. The branch and local tracking ref were `+0/-0`.
+- The 2026-08-07 pre-handoff worktree was clean. The current 2026-08-15 dirty
+  worktree is intentional and contains the UI-consistency/RSA plus current
+  visual/reactive-computation, bounded text-worker, and structured-converter
+  implementation;
+  preserve it until it is reviewed and committed.
 - There are no Git submodules, Git LFS objects, repository-local `.env` or
   `.npmrc` files, machine-local symlinks, or required untracked datasets. The
   `.ai` snapshots and generated OUI source artifact are ordinary tracked Git
@@ -88,9 +155,19 @@ The latest completed cross-category slice delivered:
 - independent route/worker build budgets plus large-file, privacy, clipboard,
   lifecycle, and production Workbox evidence.
 
-There is no active partially implemented source change at this checkpoint.
-Roadmap rows marked `IN PROGRESS` describe remaining product milestones, not
-uncommitted work.
+The latest 2026-08-15 measured hardening slice ranks remaining synchronous
+paths instead of adding workers mechanically. Hash Text was highest at about
+706 ms for eight 1 MiB CryptoJS digests and now owns a strict bounded worker;
+its production fixture reports 0.0 ms longest observed Long Task with a live
+heartbeat. JSON-to-CSV's duplicated JSON5 parse ranked next at about 451 ms and
+is the next implementation target. JSON Minify and List Converter are the only
+other remaining `FormatTransformer` callers and must be measured before their
+transport is changed.
+
+The current dirty worktree contains a completed, fully gated UI-consistency,
+RSA, visual-state, QR/WYSIWYG, and JSON Diff slice. Roadmap rows marked
+`IN PROGRESS` describe remaining product
+milestones and are not permission to discard local changes.
 
 The last integrated evidence, executed on 2026-07-18 and committed in the
 checkpoint above, is:
@@ -129,6 +206,9 @@ baselines live in `.ai/PROGRESS.md`, `.ai/PERFORMANCE.md`, and
 - File Hash bounds application-owned reads to 4 MiB. Browser-managed `File`
   structured cloning does not establish physical zero-copy or memory
   zeroization, and the documentation intentionally makes neither claim.
+- Preserve RSA's fixed presets, explicit action, session-only keys, previous-
+  result retention, strict worker protocol, and physical worker termination;
+  do not restore reactive node-forge generation.
 - Envelope-first stale filtering and worker-reported output-byte metadata trust
   are explicit transport follow-ups. They are not hidden correctness claims.
 - Text Diff payload, privacy-safe OUI payload, PWA update/rollback cleanup,
@@ -195,14 +275,16 @@ Keep that bundle outside the repository.
 Continue from `.ai/PROGRESS.md` → `Next acceptance gates`, not from the oldest
 unchecked or historical finding. The next autonomous slice should:
 
-1. read `.ai/UI_CONSISTENCY.md` and capture its representative live visual
-   baseline before changing shared styles;
-2. repair the shared field/choice/action primitives with failing regressions,
-   then migrate and accept the representative route pilot;
-3. roll the accepted patterns through related routes by archetype without
-   mixing performance/security refactors into cosmetic migrations;
-4. select the fourth bounded catalog feature only after the shared UI
-   foundation and pilot pass, and build it against the accepted contract;
+1. preserve the seven representative screenshot baselines and expand states by
+   archetype rather than snapshotting every route indiscriminately;
+2. preserve the accepted QR/Wi-Fi ordering, WYSIWYG worker, JSON Diff
+   one-pass/progressive rendering, structured converters, and RSA lifecycle
+   regressions;
+3. migrate the confirmed JSON-to-CSV duplicated JSON5 parse/output-amplification
+   path, then measure JSON Minify and List Converter before retiring their last
+   `FormatTransformer` calls;
+4. continue the next confirmed bounded P1 item or select the fourth catalog feature only
+   against the accepted UI/privacy/output/bundle contracts;
 5. update `.ai/UI_CONSISTENCY.md`, `.ai/TODO.md`, and `.ai/PROGRESS.md` as work
    starts and completes.
 

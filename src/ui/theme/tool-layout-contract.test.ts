@@ -4,7 +4,6 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
 const STACKED_TRANSFORMER_SOURCES = [
-  '../../components/FormatTransformer.vue',
   '../../tools/base64-string-converter/base64-string-converter.vue',
   '../../tools/base64-file-converter/base64-file-converter.vue',
   '../../tools/docker-run-to-docker-compose-converter/docker-run-to-docker-compose-converter.vue',

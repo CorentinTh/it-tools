@@ -1,7 +1,7 @@
 # UI Consistency Audit and Migration Plan
 
-Status: **IMPLEMENTATION COMPLETE — snapshot/state expansion remains hardening backlog**  
-Source review: 2026-08-10
+Status: **IMPLEMENTATION COMPLETE — first snapshot/state baseline accepted; broader expansion remains**
+Source review: 2026-08-15
 
 ## Scope and review boundary
 
@@ -21,6 +21,13 @@ covers all 89 routes at desktop/light and mobile/dark, including horizontal
 overflow, visible form-control names, theme state, route content, and runtime/
 chunk errors. Representative Orca review supplies the complementary live
 desktop/mobile and light/dark visual checks against the Vite dev server.
+
+The first deterministic state baseline is now executable: explicit-task
+loading with disabled controls, mobile dark validation errors, and a dense form
+with long values plus a result. Semantic assertions remain cross-platform;
+pixel comparison uses checked-in Darwin Chromium references so host font
+rendering does not make Linux checks flaky. This is a representative hardening
+foundation, not a claim that every route/state combination has a screenshot.
 
 ## Accepted product decisions
 
@@ -48,8 +55,9 @@ desktop/mobile and light/dark visual checks against the Vite dev server.
   implementation detail while providing one labelled route-level control
   contract. The color adapter also repairs the old Naive trigger's missing
   keyboard/button semantics.
-- The wide vertical transformer contract is active in the shared
-  `FormatTransformer` (12 routes) and the direct JSON, YAML, SQL, Docker,
+- The wide vertical transformer contract is active across the original
+  12-route `FormatTransformer` cohort (three remaining callers) and the direct
+  JSON, YAML, SQL, Docker,
   Base64, URL, HTML entity, text/binary/Unicode, encryption, Markdown,
   SafeLink, email, slug, hash/HMAC, meta-tag, and obfuscation routes. A
   source-level test prevents these routes from losing the contract.
@@ -82,18 +90,30 @@ desktop/mobile and light/dark visual checks against the Vite dev server.
   until blur, so the explicit action could read the old value. Integer
   validation now preserves immediate commit, with component and browser gates.
 - Route source now contains zero direct Naive checkbox, switch, color-picker,
-  or fixed input-group controls. Direct `n-form-item`, `n-input-number`, and the
-  last literal `label-width` are each isolated to RSA and guarded as the same
-  temporary correctness-backlog exception.
-- RSA Key Pair Generator exposed a separate correctness issue during the UI
-  review: its arbitrary `+/- 8` bit spinner reactively starts generation and
-  can fail. The fix is tracked in `.ai/TODO.md` as an explicit supported-size
-  selector plus explicit Generate task; it is not being hidden inside a visual
-  refactor.
-- Final integrated evidence is zero-warning lint, dual-project typecheck,
-  901/901 unit tests across 120 files, the 89/89 all-route responsive/theme/
-  semantics matrix against Vite dev, a 24,205-module production build,
-  202/202 production artifact-budget checks, and `git diff --check`.
+  fixed input-group, form-item, or number-input controls, and zero literal
+  `label-width` rules. The completed RSA repair removes the final temporary
+  exception.
+- RSA Key Pair Generator now uses the shared explicit-task rhythm: fixed
+  2,048/3,072/4,096-bit presets, an explicit Generate action, a vertically
+  stacked prior-result-preserving output, and a bounded terminate-and-replace
+  Web Crypto worker lifecycle.
+- QR and Wi-Fi QR now share one ordered generation lifecycle and visible
+  status/result rhythm. Incomplete Wi-Fi fields clear the result immediately;
+  pending or invalid output cannot leave an enabled download action.
+- HTML WYSIWYG now uses the shared task/action/status/result layout. Small
+  documents format after typing pauses in a route-owned worker, while larger
+  documents expose an explicit action rather than doing hidden work per edit.
+- JSON Diff remains a justified side-by-side diff exception. Its array options
+  use top labels without route-local width constraints, actions use the shared
+  task bar, its bounded worker aligns stable keys/LCS sequences, and the result
+  tree uses accessible expand/collapse controls plus progressive 200-row
+  rendering instead of eagerly mounting every nested line.
+- Current integrated evidence is zero-warning lint, dual-project typecheck,
+  990/990 unit tests across 150 files, the prior 89/89 all-route responsive/
+  theme/semantics matrix plus Hash Text and bounded-converter focus against Vite
+  dev, 172/172 sequential production-preview Chromium flows, a fresh
+  22,876-module production build, and 228/228 production artifact-budget
+  checks.
 
 ## Resolved executive finding
 
@@ -101,15 +121,14 @@ The application originally had reusable `c-*` primitives but no single form or
 tool-page contract. Tools independently combined custom controls, Naive UI form
 wrappers, native elements, arbitrary UnoCSS spacing, and local widths. The
 rollout resolves that route-level split with shared control adapters, tokens,
-layout archetypes, source ratchets, and browser acceptance. RSA remains a named
-temporary exception because its required repair changes generation behavior,
-not merely presentation.
+layout archetypes, source ratchets, and browser acceptance. RSA's separate
+generation-lifecycle repair is now complete and follows the same contracts.
 
 The gate that held the next product feature is now satisfied. This was not a
 full visual redesign: the rollout preserved tool behavior while establishing a
-small, testable system that later routes must adopt. RSA is deliberately kept
-in the correctness backlog instead of disguising a generation-lifecycle change
-as a cosmetic migration.
+small, testable system that later routes must adopt. RSA was completed as a
+correctness task with its own lifecycle regressions rather than disguised as a
+cosmetic migration.
 
 ## Source inventory
 
@@ -119,37 +138,36 @@ components and route-local child components:
 | Signal | Current evidence |
 |---|---:|
 | Files using `c-input-text` | 60 |
-| Files using `n-form-item` | 1 (RSA exception) |
+| Files using `n-form-item` | 0 |
 | Files mixing `c-input-text` and `n-form-item` | 0 |
 | `c-input-text` instances | 110 |
-| `n-input-number` instances | 1 (RSA exception) |
+| `n-input-number` instances | 0 |
 | `c-select` instances | 26 |
 | `n-switch` instances | 0 |
 | `n-checkbox` instances | 0 |
 | `n-color-picker` instances | 0 |
 | `n-input-group` instances | 0 |
-| `c-buttons-select` instances | 5 |
+| `c-buttons-select` instances | 6 |
 | `CSwitch` instances | 23 |
 | `CInputNumber` instances | 28 |
 | `CCheckbox` instances | 10 |
 | `CColorPicker` instances | 7 |
 | `CSlider` instances | 3 |
-| Files with literal `label-width` rules | 1 (RSA exception) |
+| Files with literal `label-width` rules | 0 |
 | Files using `c-card` | 60 |
-| `c-card` instances | 126 |
-| Tool/component visual screenshot tests | 0 |
+| `c-card` instances | 127 |
+| Tool/component visual screenshot baselines | 7 representative states |
 | Executable all-route responsive/theme matrices | 1 (89 routes) |
 
 The original inventory found at least 18 literal label-width representations
-from 60 px to 200 px. The rollout has reduced that class to the single frozen
-RSA exception. Remaining inline width rules belong to a smaller media,
-large-table, diff, compact-output, and reference-layout exception audit rather
+from 60 px to 200 px. The rollout has reduced that class to zero. Remaining
+inline width rules belong to a smaller media,
+large-table, compact-output, and reference-layout exception audit rather
 than the former route-wide field system.
 
 The executable width ratchet permits template width exceptions only in Emoji
-Picker (media grid), JSON Diff's local diff viewer, JSON Schema Validator's
-compact option area, SVG Placeholder's bounded preview, and RSA's temporary
-correctness exception. CSS-only responsive breakpoints, intrinsic QR image
+Picker (media grid), JSON Schema Validator's compact option area, and SVG
+Placeholder's bounded preview. CSS-only responsive breakpoints, intrinsic QR image
 dimensions, editor containment, and the compact Chmod octal result are not
 field-layout exceptions. True JSON/Text diff views remain the only routes that
 may place peer editors side by side.
@@ -292,9 +310,11 @@ the remaining routes are migrated.
 - remove local width/label/spacing exceptions only after each route is visually
   accepted at the target viewports.
 
-### Phase 4 — hardening (core gates complete; snapshots/state variants remain)
+### Phase 4 — hardening (core gates and first snapshots complete; broader variants remain)
 
 - maintain the all-route responsive/theme matrix, keyboard flows, and semantic checks;
+- keep the three representative state baselines stable and expand them by
+  archetype rather than copying every route indiscriminately;
 - document justified exceptions for Monaco, media, large tables, and editors;
 - ratchet an executable UI consistency gate so new tools cannot recreate the
   mixed field system.
@@ -310,8 +330,8 @@ foundation plus representative pilot is approximately **2–3 weeks**.
 - [x] P0 primitive defects have failing regressions before fixes.
 - [x] Shared controls pass keyboard, labelling, disabled, error, and focus tests.
 - [x] Pilot routes pass desktop/mobile and light/dark visual review.
-- [x] No migrated route mixes `c-field` with direct `n-form-item` layout; RSA is
-  the single frozen, source-guarded correctness exception.
+- [x] No migrated route mixes `c-field` with direct `n-form-item` layout; the
+  RSA correctness repair removed the final frozen exception.
 - [x] No new literal label widths or unsupported button/control variants appear.
 - [x] Remaining per-route width exceptions are documented by archetype.
 - [x] All-route smoke, unit/type/lint/build, bundle/PWA, and affected E2E gates pass.
