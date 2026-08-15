@@ -57,49 +57,53 @@ function onSwitchStartEndClicked() {
 </script>
 
 <template>
-  <div>
-    <div mb-4 flex gap-4>
-      <c-input-text
-        v-model:value="rawStartAddress"
-        label="Start address"
-        placeholder="Start IPv4 address..."
-        :validation="startIpValidation"
-        clearable
-      />
-
-      <c-input-text
-        v-model:value="rawEndAddress"
-        label="End address"
-        placeholder="End IPv4 address..."
-        :validation="endIpValidation"
-        clearable
-      />
-    </div>
-
-    <n-table v-if="showResult" data-test-id="result">
-      <thead>
-        <tr>
-          <th scope="col">
-&nbsp;
-          </th>
-          <th scope="col">
-            old value
-          </th>
-          <th scope="col">
-            new value
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <ResultRow
-          v-for="{ label, getOldValue, getNewValue } in calculatedValues"
-          :key="label"
-          :label="label"
-          :old-value="getOldValue(result)"
-          :new-value="getNewValue(result)"
+  <div class="c-form-layout">
+    <c-card title="IPv4 range">
+      <div grid grid-cols-1 gap-3 md:grid-cols-2>
+        <c-input-text
+          v-model:value="rawStartAddress"
+          label="Start address"
+          placeholder="Start IPv4 address..."
+          :validation="startIpValidation"
+          clearable
         />
-      </tbody>
-    </n-table>
+
+        <c-input-text
+          v-model:value="rawEndAddress"
+          label="End address"
+          placeholder="End IPv4 address..."
+          :validation="endIpValidation"
+          clearable
+        />
+      </div>
+    </c-card>
+
+    <c-card v-if="showResult" title="Expanded range">
+      <n-table data-test-id="result">
+        <thead>
+          <tr>
+            <th scope="col">
+&nbsp;
+            </th>
+            <th scope="col">
+              old value
+            </th>
+            <th scope="col">
+              new value
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <ResultRow
+            v-for="{ label, getOldValue, getNewValue } in calculatedValues"
+            :key="label"
+            :label="label"
+            :old-value="getOldValue(result)"
+            :new-value="getNewValue(result)"
+          />
+        </tbody>
+      </n-table>
+    </c-card>
     <n-alert
       v-else-if="startIpValidation.isValid && endIpValidation.isValid"
       title="Invalid combination of start and end IPv4 address"

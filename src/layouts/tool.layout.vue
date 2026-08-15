@@ -65,12 +65,12 @@ const toolDescription = computed<string>(() => t(`tools.${i18nKey.value}.descrip
   gap: 16px;
 
   ::v-deep(& > *) {
-    flex: 0 1 600px;
+    flex: 0 1 var(--ui-content-compact);
   }
 }
 
 .tool-layout {
-  max-width: 600px;
+  max-width: var(--ui-content-compact);
   margin: 0 auto;
   box-sizing: border-box;
 

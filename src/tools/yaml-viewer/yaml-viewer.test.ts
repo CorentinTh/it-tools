@@ -70,10 +70,11 @@ function mountViewer() {
     global: {
       stubs: {
         CButton: ButtonStub,
+        CCard: FormItemStub,
+        CField: FormItemStub,
+        CInputNumber: true,
         CInputText: InputStub,
-        NFormItem: FormItemStub,
-        NInputNumber: true,
-        NSwitch: true,
+        CSwitch: true,
         TextareaCopyable: OutputStub,
       },
     },
@@ -95,6 +96,15 @@ describe('YAML viewer worker interaction', () => {
 
   afterEach(() => {
     vi.useRealTimers();
+  });
+
+  it('uses one wide vertical workbench for input and output', () => {
+    const wrapper = mountViewer();
+
+    expect(wrapper.get('.c-tool-workbench').classes()).toContain('c-tool-stack');
+    expect(wrapper.findAll('.c-tool-panel')).toHaveLength(2);
+
+    wrapper.unmount();
   });
 
   it('debounces small input and commits one worker result', async () => {

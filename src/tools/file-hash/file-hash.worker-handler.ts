@@ -1,5 +1,9 @@
+import { blake3 } from '@noble/hashes/blake3.js';
+import { md5, sha1 } from '@noble/hashes/legacy.js';
 import { sha256, sha384, sha512 } from '@noble/hashes/sha2.js';
+import { sha3_256 } from '@noble/hashes/sha3.js';
 import {
+  FILE_HASH_DIGEST_BYTES,
   FILE_HASH_PROGRESS_INTERVAL_MS,
   FILE_HASH_WINDOW_BYTES,
   FILE_HASH_WORKER_ERROR_MESSAGES,
@@ -29,13 +33,22 @@ export interface FileHashWorkerHandlerOptions {
 }
 
 function createHasher(algorithm: FileHashAlgorithm): FileHashIncrementalHasher {
-  if (algorithm === 'SHA-256') {
-    return sha256.create();
+  switch (algorithm) {
+    case 'MD5':
+      return md5.create();
+    case 'SHA-1':
+      return sha1.create();
+    case 'SHA-256':
+      return sha256.create();
+    case 'SHA-384':
+      return sha384.create();
+    case 'SHA-512':
+      return sha512.create();
+    case 'SHA3-256':
+      return sha3_256.create();
+    case 'BLAKE3-256':
+      return blake3.create();
   }
-  if (algorithm === 'SHA-384') {
-    return sha384.create();
-  }
-  return sha512.create();
 }
 
 function bytesToLowerHex(bytes: Uint8Array): string {
@@ -168,7 +181,7 @@ export async function handleFileHashWorkerRequest(
     try {
       for (const { algorithm, hasher } of hashers) {
         const digest = hasher.digest();
-        const expectedBytes = algorithm === 'SHA-256' ? 32 : algorithm === 'SHA-384' ? 48 : 64;
+        const expectedBytes = FILE_HASH_DIGEST_BYTES[algorithm];
         if (!(digest instanceof Uint8Array) || digest.byteLength !== expectedBytes) {
           throw new Error('The hash implementation returned an invalid digest.');
         }

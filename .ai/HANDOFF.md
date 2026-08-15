@@ -7,6 +7,44 @@ portable repository state, not hidden conversation memory or machine caches.
 After reading it, use `.ai/PROGRESS.md` for current results/risks/next gates and
 `.ai/TODO.md` for the approved roadmap.
 
+## Active resumed slice — 2026-08-10
+
+The current dirty worktree is intentional and must be preserved. It contains
+the first UI-consistency foundation and pilot: shared spacing/width/focus
+tokens, repaired input/select/file-upload/segmented-choice semantics, and the
+accepted wide vertical transformer contract (input above output; side-by-side
+only for true diff tools) across the shared 12-route transformer plus direct
+JSON/YAML/SQL/Docker and text-conversion routes. UUID/ULID/NanoID share
+NanoID's options -> fixed output -> actions structure and were accepted in the
+Orca Vite-dev browser alongside representative transformer geometry.
+The expanded form slice adds shared `c-field`, native-input-aware
+`c-input-number`, labelled `c-switch`, `c-choice-group`/`c-checkbox`, and
+ARIA-correct `c-slider` and keyboard-operable `c-color-picker` primitives. List Converter, Wi-Fi QR, Percentage,
+Regex, File Hash, and JSON Schema cover dense/form/numeric/multi-choice/task
+pilots. Token, Random Port, MAC Address, IPv6 ULA, and Lorem Ipsum have joined
+the identifier family on the generator rhythm. JSON/YAML/XML formatter options
+now use shared responsive controls rather than direct Naive wrappers and 100 px
+fields. The broad numeric/form/catalog wave additionally covers Bcrypt, ASCII,
+ETA, Integer Base, Roman Numeral, Temperature, BIP39, Benchmark Builder, Chmod,
+Hash Text, Keycode, Open Graph, Date-time, IPv4, OTP, URL Parser, Case, HTML
+Entities, Markdown, SafeLink, and the QR/color family. Direct Naive
+checkbox/switch/color/fixed-input-group usage is zero. RSA is the only guarded
+form-item/number-input/literal-label-width exception and must be repaired as an
+explicit supported-size Generate task, not cosmetically migrated. The route
+rollout is complete: every route uses a named layout archetype, and the all-89-
+route Vite-dev matrix passes desktop/light and mobile/dark overflow, form-
+control naming, theme, content, and runtime/chunk checks. Deterministic
+screenshot/state expansion remains hardening backlog rather than an unification
+implementation blocker.
+The Orca embedded-browser workflow, dev/preview distinction, and scoped stale
+PWA-cache recovery are recorded in `.ai/ORCA_BROWSER.md`.
+
+File Hash in this slice supports SHA-256/384/512, SHA3-256, BLAKE3-256, SHA-1,
+and MD5 in the same fixed-window worker pass. SHA-1/MD5 are visibly marked as
+legacy. Official vectors, protocol/UI tests, production Chromium E2E 3/3, and
+202/202 build-budget checks pass; the current demand-loaded worker is 25,899 B
+raw / 10,417 B gzip under its documented 30/12 kB route-specific ceiling.
+
 ## Repository identity and durable checkpoint
 
 - Repository: `git@github.com:64mb/it-tools.git`
@@ -157,15 +195,16 @@ Keep that bundle outside the repository.
 Continue from `.ai/PROGRESS.md` → `Next acceptance gates`, not from the oldest
 unchecked or historical finding. The next autonomous slice should:
 
-1. select the fourth independent bounded catalog feature from the approved
-   Priority A candidates and lock privacy, lifecycle, correctness, browser,
-   bundle, and PWA gates before implementation;
-2. advance envelope-first stale filtering and output-byte metadata trust only
-   where a real consumer proves the shared transport design;
-3. include one measured project-owned correctness or performance improvement
-   from the active non-security backlog;
-4. update `.ai/TODO.md`, the relevant category file, and `.ai/PROGRESS.md` as
-   work starts and completes.
+1. read `.ai/UI_CONSISTENCY.md` and capture its representative live visual
+   baseline before changing shared styles;
+2. repair the shared field/choice/action primitives with failing regressions,
+   then migrate and accept the representative route pilot;
+3. roll the accepted patterns through related routes by archetype without
+   mixing performance/security refactors into cosmetic migrations;
+4. select the fourth bounded catalog feature only after the shared UI
+   foundation and pilot pass, and build it against the accepted contract;
+5. update `.ai/UI_CONSISTENCY.md`, `.ai/TODO.md`, and `.ai/PROGRESS.md` as work
+   starts and completes.
 
 Do not weaken existing gates, overstate losslessness/zero-copy/cross-browser
 coverage, or silently expand the deferred CVE/base-image scope.
@@ -174,7 +213,8 @@ coverage, or silently expand the deferred CVE/base-image scope.
 
 ```text
 Read AGENTS.md and .ai/HANDOFF.md completely, then read the current-status,
-active-risk, and next-gate sections of .ai/PROGRESS.md plus .ai/TODO.md. Verify
+active-risk, and next-gate sections of .ai/PROGRESS.md plus .ai/TODO.md and
+.ai/UI_CONSISTENCY.md. Verify
 the branch, HEAD ancestry, and dirty state before editing. Continue the highest
 priority approved non-security slice autonomously, preserve the local fork as
 source of truth, run proportional regression/browser/build gates, and update

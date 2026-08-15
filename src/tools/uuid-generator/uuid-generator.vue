@@ -4,6 +4,7 @@ import { generateUuidV1Batch } from './uuid-generator.service';
 import { useCopy } from '@/composable/copy';
 import { computedRefreshable } from '@/composable/computedRefreshable';
 import { withDefaultOnError } from '@/utils/defaults';
+import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
 
 const versions = ['NIL', 'v1', 'v3', 'v4', 'v5'] as const;
 
@@ -46,16 +47,29 @@ const { copy } = useCopy({ source: uuids, text: 'UUIDs copied to the clipboard' 
 </script>
 
 <template>
-  <div>
-    <c-buttons-select v-model:value="version" :options="versions" label="UUID version" label-width="100px" mb-2 />
+  <div class="c-generator-layout">
+    <c-card class="c-generator-options">
+      <div grid grid-cols-1 gap-3 md:grid-cols-2>
+        <c-buttons-select
+          v-model:value="version"
+          :options="versions"
+          label="UUID version"
+          label-position="top"
+        />
+        <c-field label="Quantity (1–50)" label-for="uuid-quantity">
+          <CInputNumber
+            id="uuid-quantity"
+            v-model:value="count"
+            test-id="uuid-quantity"
+            :min="1"
+            :max="50"
+            placeholder="UUID quantity"
+            w-full
+          />
+        </c-field>
+      </div>
 
-    <div mb-2 flex items-center>
-      <span w-100px>Quantity </span>
-      <n-input-number v-model:value="count" flex-1 :min="1" :max="50" placeholder="UUID quantity" />
-    </div>
-
-    <div v-if="version === 'v3' || version === 'v5'">
-      <div>
+      <div v-if="version === 'v3' || version === 'v5'" mt-4 flex flex-col gap-3>
         <c-buttons-select
           v-model:value="v35Args.namespace"
           :options="{
@@ -64,62 +78,44 @@ const { copy } = useCopy({ source: uuids, text: 'UUIDs copied to the clipboard' 
             OID: '6ba7b812-9dad-11d1-80b4-00c04fd430c8',
             X500: '6ba7b814-9dad-11d1-80b4-00c04fd430c8',
           }"
-          label="Namespace"
-          label-width="100px"
-          mb-2
+          label="Namespace preset"
+          label-position="top"
         />
-      </div>
-      <div flex-1>
         <c-input-text
           v-model:value="v35Args.namespace"
           placeholder="Namespace"
-          label-width="100px"
-          label-position="left"
-          label=" "
+          label="Namespace UUID"
           :validation-rules="validUuidRules"
-          mb-2
+        />
+
+        <c-input-text
+          v-model:value="v35Args.name"
+          placeholder="Name"
+          label="Name"
         />
       </div>
-
-      <c-input-text
-        v-model:value="v35Args.name"
-        placeholder="Name"
-        label="Name"
-        label-width="100px"
-        label-position="left"
-        mb-2
-      />
-    </div>
+    </c-card>
 
     <c-input-text
-      style="text-align: center; font-family: monospace"
+      class="c-generator-output"
       :value="uuids"
+      aria-label="Generated UUIDs"
       placeholder="Your uuids"
-      rows="1"
-      autosize
+      test-id="uuid-output"
+      rows="12"
       readonly
       raw-text
       multiline
       monospace
-      my-3
-      class="uuid-display"
     />
 
-    <div flex justify-center gap-3>
-      <c-button autofocus @click="copy()">
-        Copy
+    <div class="c-generator-actions">
+      <c-button type="primary" data-test-id="uuid-generate" @click="refreshUUIDs">
+        Generate
       </c-button>
-      <c-button @click="refreshUUIDs">
-        Refresh
+      <c-button data-test-id="uuid-copy" @click="copy()">
+        Copy
       </c-button>
     </div>
   </div>
 </template>
-
-<style scoped lang="less">
-::v-deep(.uuid-display) {
-  textarea {
-    text-align: center;
-  }
-}
-</style>

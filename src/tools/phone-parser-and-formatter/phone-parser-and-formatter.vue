@@ -84,31 +84,36 @@ const countriesOptions = getCountries().map(code => ({
 </script>
 
 <template>
-  <div>
-    <c-select v-model:value="defaultCountryCode" label="Default country code:" :options="countriesOptions" searchable mb-5 />
+  <div class="c-form-layout">
+    <c-card title="Phone number">
+      <div grid grid-cols-1 gap-3 md:grid-cols-2>
+        <c-select v-model:value="defaultCountryCode" label="Default country code" :options="countriesOptions" searchable />
 
-    <c-input-text
-      v-model:value="rawPhone"
-      placeholder="Enter a phone number"
-      label="Phone number:"
-      :validation="validation"
-      mb-5
-    />
+        <c-input-text
+          v-model:value="rawPhone"
+          placeholder="Enter a phone number"
+          label="Phone number"
+          :validation="validation"
+        />
+      </div>
+    </c-card>
 
-    <n-table v-if="parsedDetails">
-      <tbody>
-        <tr v-for="{ label, value } in parsedDetails" :key="label">
-          <td font-bold>
-            {{ label }}
-          </td>
-          <td>
-            <span-copyable v-if="value" :value="value" />
-            <span v-else op-70>
-              Unknown
-            </span>
-          </td>
-        </tr>
-      </tbody>
-    </n-table>
+    <c-card v-if="parsedDetails" title="Parsed details">
+      <n-table>
+        <tbody>
+          <tr v-for="{ label, value } in parsedDetails" :key="label">
+            <td font-bold>
+              {{ label }}
+            </td>
+            <td>
+              <span-copyable v-if="value" :value="value" />
+              <span v-else op-70>
+                Unknown
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </n-table>
+    </c-card>
   </div>
 </template>

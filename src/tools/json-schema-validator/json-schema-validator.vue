@@ -195,8 +195,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div flex flex-col gap-4>
-    <c-card>
+  <div class="c-task-layout c-tool-workbench">
+    <c-card class="c-task-options">
       <div max-w-320px>
         <c-select
           v-model:value="draft"
@@ -210,9 +210,10 @@ onUnmounted(() => {
       </p>
     </c-card>
 
-    <div grid grid-cols-1 gap-4 xl:grid-cols-2>
+    <div class="c-tool-stack">
       <c-input-text
         v-model:value="schemaSource"
+        class="c-tool-panel"
         label="JSON Schema"
         placeholder="Paste a JSON Schema here…"
         test-id="json-schema-source"
@@ -224,6 +225,7 @@ onUnmounted(() => {
       />
       <c-input-text
         v-model:value="instanceSource"
+        class="c-tool-panel"
         label="JSON instance"
         placeholder="Paste a JSON instance here…"
         test-id="json-schema-instance"
@@ -235,7 +237,7 @@ onUnmounted(() => {
       />
     </div>
 
-    <div flex flex-wrap justify-end gap-2>
+    <div class="c-task-actions">
       <c-button
         type="primary"
         data-test-id="json-schema-validate"
@@ -245,6 +247,7 @@ onUnmounted(() => {
         {{ isRunning ? 'Validating…' : 'Validate' }}
       </c-button>
       <c-button
+        v-if="isRunning"
         type="warning"
         data-test-id="json-schema-cancel"
         :disabled="!isRunning"
@@ -262,7 +265,7 @@ onUnmounted(() => {
       role="status"
       aria-live="polite"
       aria-atomic="true"
-      min-h-5
+      class="c-task-status"
       text-sm
       :class="{
         'status-error': statusIsError,
@@ -284,6 +287,7 @@ onUnmounted(() => {
 
     <section
       v-if="validationResult && !validationResult.valid"
+      class="c-task-results"
       data-test-id="json-schema-errors"
       aria-label="Validation errors"
     >

@@ -8,28 +8,23 @@ const { copy } = useCopy({ source: natoText, text: 'NATO alphabet string copied.
 </script>
 
 <template>
-  <div>
-    <c-input-text
-      v-model:value="input"
-      label="Your text to convert to NATO phonetic alphabet"
-      placeholder="Put your text here..."
-      clearable
-      mb-5
-    />
+  <div class="c-tool-workbench c-tool-stack">
+    <c-card title="Input">
+      <c-input-text
+        v-model:value="input"
+        label="Text to convert to the NATO phonetic alphabet"
+        placeholder="Put your text here..."
+        clearable
+      />
+    </c-card>
 
-    <div v-if="natoText">
-      <div mb-2>
-        Your text in NATO phonetic alphabet
-      </div>
-      <c-card>
-        {{ natoText }}
-      </c-card>
-
-      <div mt-3 flex justify-center>
+    <c-card v-if="natoText" title="NATO phonetic alphabet">
+      <output>{{ natoText }}</output>
+      <div class="c-generator-actions mt-4">
         <c-button autofocus @click="copy()">
           Copy NATO string
         </c-button>
       </div>
-    </div>
+    </c-card>
   </div>
 </template>

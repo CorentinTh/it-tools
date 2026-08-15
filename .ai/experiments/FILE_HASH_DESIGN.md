@@ -111,6 +111,15 @@ base-image work.
   production build in 21.17 s, 102/102 sequential Chromium E2E including all
   89 routes, OUI generation checks, and `git diff --check`.
 
+### 2026-08-10 algorithm extension
+
+The same one-pass streaming contract now supports SHA-256/384/512, SHA3-256,
+BLAKE3-256, SHA-1, and MD5. SHA-1 and MD5 are exposed only for compatibility
+and carry visible collision warnings. Official empty/`abc` vectors cover all
+seven algorithms. The measured route closure is 70,260 B raw / 26,677 B gzip;
+the demand-loaded worker is 25,899 B / 10,417 B against a revised narrow
+30,000/12,000 B ceiling. No implementation enters the initial shell.
+
 ## Progress checklist
 
 - [x] Scope, provenance, privacy boundary, and memory model recorded.

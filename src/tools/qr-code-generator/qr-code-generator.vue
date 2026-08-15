@@ -2,6 +2,7 @@
 import type { QRCodeErrorCorrectionLevel } from 'qrcode';
 import { useQRCode } from './useQRCode';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
+import CColorPicker from '@/ui/c-color-picker/c-color-picker.vue';
 
 const foreground = ref('#000000ff');
 const background = ref('#ffffffff');
@@ -24,46 +25,43 @@ const { download } = useDownloadFileFromBase64({ source: qrcode, filename: 'qr-c
 </script>
 
 <template>
-  <c-card>
-    <n-grid x-gap="12" y-gap="12" cols="1 600:3">
-      <n-gi span="2">
+  <div class="c-generator-layout">
+    <c-card class="c-generator-options" title="Options">
+      <div grid grid-cols-1 gap-3>
         <c-input-text
           v-model:value="text"
-          label-position="left"
-          label-width="130px"
-          label-align="right"
-          label="Text:"
+          label="Text"
           multiline
-          rows="1"
-          autosize
+          rows="4"
           placeholder="Your link or text..."
-          mb-6
         />
-        <n-form label-width="130" label-placement="left">
-          <n-form-item label="Foreground color:">
-            <n-color-picker v-model:value="foreground" :modes="['hex']" />
-          </n-form-item>
-          <n-form-item label="Background color:">
-            <n-color-picker v-model:value="background" :modes="['hex']" />
-          </n-form-item>
-          <c-select
-            v-model:value="errorCorrectionLevel"
-            label="Error resistance:"
-            label-position="left"
-            label-width="130px"
-            label-align="right"
-            :options="errorCorrectionLevels.map((value) => ({ label: value, value }))"
-          />
-        </n-form>
-      </n-gi>
-      <n-gi>
-        <div flex flex-col items-center gap-3>
-          <n-image :src="qrcode" width="200" />
+
+        <div grid grid-cols-1 gap-3 md:grid-cols-2>
+          <c-field label="Foreground color">
+            <CColorPicker v-model:value="foreground" aria-label="Foreground color" :modes="['hex']" />
+          </c-field>
+          <c-field label="Background color">
+            <CColorPicker v-model:value="background" aria-label="Background color" :modes="['hex']" />
+          </c-field>
+        </div>
+
+        <c-select
+          v-model:value="errorCorrectionLevel"
+          label="Error resistance"
+          :options="errorCorrectionLevels.map((value) => ({ label: value, value }))"
+        />
+      </div>
+    </c-card>
+
+    <c-card class="c-generator-output" title="Generated QR code">
+      <div flex flex-col items-center gap-3>
+        <img :src="qrcode" alt="Generated QR code" width="240">
+        <div class="c-generator-actions">
           <c-button @click="download">
-            Download qr-code
+            Download QR code
           </c-button>
         </div>
-      </n-gi>
-    </n-grid>
-  </c-card>
+      </div>
+    </c-card>
+  </div>
 </template>

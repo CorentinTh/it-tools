@@ -5,6 +5,7 @@ import {
   temperatureBounds,
   temperatureScales,
 } from './temperature-converter.models';
+import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
 
 interface TemperatureUnit {
   title: string
@@ -76,24 +77,23 @@ update('kelvin', units.kelvin.ref);
 </script>
 
 <template>
-  <div>
-    <n-input-group v-for="key in temperatureScales" :key="key" mb-3 w-full>
-      <n-input-group-label style="width: 100px">
-        {{ units[key].title }}
-      </n-input-group-label>
-
-      <n-input-number
-        v-model:value="units[key].ref"
-        :data-testid="`temperature-${key}`"
-        :min="temperatureBounds[key].min"
-        :max="temperatureBounds[key].max"
-        style="flex: 1"
-        @update:value="update(key, $event)"
-      />
-
-      <n-input-group-label style="width: 50px">
-        {{ units[key].unit }}
-      </n-input-group-label>
-    </n-input-group>
+  <div class="c-form-layout">
+    <div grid grid-cols-1 gap-3 md:grid-cols-2>
+      <c-field
+        v-for="key in temperatureScales"
+        :key="key"
+        :label="`${units[key].title} (${units[key].unit})`"
+        :label-for="`temperature-${key}`"
+      >
+        <CInputNumber
+          :id="`temperature-${key}`"
+          v-model:value="units[key].ref"
+          :data-testid="`temperature-${key}`"
+          :min="temperatureBounds[key].min"
+          :max="temperatureBounds[key].max"
+          @update:value="update(key, $event)"
+        />
+      </c-field>
+    </div>
   </div>
 </template>

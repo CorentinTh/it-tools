@@ -10,6 +10,7 @@ const props = withDefaults(
     id?: string
     placeholder?: string
     label?: string
+    ariaLabel?: string
     readonly?: boolean
     disabled?: boolean
     validationRules?: UseValidationRule<string>[]
@@ -33,12 +34,16 @@ const props = withDefaults(
     monospace?: boolean
     maxlength?: number
     inputmode?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url'
+    clearAriaLabel?: string
+    showPasswordAriaLabel?: string
+    hidePasswordAriaLabel?: string
   }>(),
   {
     value: '',
     id: generateRandomId,
     placeholder: 'Input text',
     label: undefined,
+    ariaLabel: undefined,
     readonly: false,
     disabled: false,
     validationRules: () => [],
@@ -62,6 +67,9 @@ const props = withDefaults(
     monospace: false,
     maxlength: undefined,
     inputmode: undefined,
+    clearAriaLabel: 'Clear input',
+    showPasswordAriaLabel: 'Show password',
+    hidePasswordAriaLabel: 'Hide password',
   },
 );
 const emit = defineEmits(['update:value']);
@@ -80,6 +88,7 @@ const validation
 
 const theme = useTheme();
 const appTheme = useAppTheme();
+const feedbackId = computed(() => `${props.id}-feedback`);
 
 const textareaRef = ref<HTMLTextAreaElement>();
 const inputRef = ref<HTMLInputElement>();
@@ -177,6 +186,9 @@ defineExpose({
           :maxlength="props.maxlength"
           :inputmode="props.inputmode"
           :rows="rows"
+          :aria-invalid="!validation.isValid ? 'true' : undefined"
+          :aria-describedby="!validation.isValid ? feedbackId : undefined"
+          :aria-label="props.ariaLabel"
         />
 
         <input
@@ -200,19 +212,39 @@ defineExpose({
           :spellcheck="spellcheck ?? (rawText ? false : undefined)"
           :maxlength="props.maxlength"
           :inputmode="props.inputmode"
+          :aria-invalid="!validation.isValid ? 'true' : undefined"
+          :aria-describedby="!validation.isValid ? feedbackId : undefined"
+          :aria-label="props.ariaLabel"
         >
 
-        <c-button v-if="clearable && value" variant="text" circle size="small" @click="value = ''">
+        <c-button
+          v-if="clearable && value"
+          variant="text"
+          circle
+          size="small"
+          :disabled="disabled || readonly"
+          :aria-label="props.clearAriaLabel"
+          @click="value = ''"
+        >
           <icon-mdi-close />
         </c-button>
 
-        <c-button v-if="type === 'password'" variant="text" circle size="small" @click="showPassword = !showPassword">
+        <c-button
+          v-if="type === 'password'"
+          variant="text"
+          circle
+          size="small"
+          :disabled="disabled || readonly"
+          :aria-label="showPassword ? props.hidePasswordAriaLabel : props.showPasswordAriaLabel"
+          :aria-pressed="showPassword"
+          @click="showPassword = !showPassword"
+        >
           <icon-mdi-eye v-if="!showPassword" />
           <icon-mdi-eye-off v-if="showPassword" />
         </c-button>
         <slot name="suffix" />
       </div>
-      <span v-if="!validation.isValid" class="feedback"> {{ validation.message }} </span>
+      <span v-if="!validation.isValid" :id="feedbackId" class="feedback" role="alert"> {{ validation.message }} </span>
     </div>
   </div>
 </template>
@@ -228,22 +260,8 @@ defineExpose({
     align-items: baseline;
   }
 
-  &.error {
-    & > .input {
-      border-color: v-bind('appTheme.error.color');
-      &:hover,
-      &:focus {
-        border-color: v-bind('appTheme.error.color');
-      }
-
-      &:focus {
-        background-color: v-bind('appTheme.error.color + 22');
-      }
-    }
-
-    & .feedback {
-      color: v-bind('appTheme.error.color');
-    }
+  &.error .feedback {
+    color: v-bind('appTheme.error.color');
   }
 
   & > .label {

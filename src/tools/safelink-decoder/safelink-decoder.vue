@@ -14,7 +14,7 @@ const outputDecodedUrl = computed(() => {
 </script>
 
 <template>
-  <div>
+  <div class="c-tool-workbench c-tool-stack">
     <c-input-text
       v-model:value="inputSafeLinkUrl"
       raw-text
@@ -23,10 +23,8 @@ const outputDecodedUrl = computed(() => {
       label="Your input Outlook SafeLink Url:"
     />
 
-    <n-divider />
-
-    <n-form-item label="Output decoded URL:">
+    <c-field class="c-tool-panel" label="Output decoded URL">
       <TextareaCopyable :value="outputDecodedUrl" :word-wrap="true" />
-    </n-form-item>
+    </c-field>
   </div>
 </template>

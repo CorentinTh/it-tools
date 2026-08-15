@@ -29,35 +29,39 @@ const validation = useValidation({
 </script>
 
 <template>
-  <c-card>
-    <c-input-text v-model:value="rawJwt" label="JWT to decode" :validation="validation" placeholder="Put your token here..." rows="5" multiline raw-text autofocus mb-3 />
+  <div class="c-tool-workbench c-tool-stack">
+    <c-card title="Input">
+      <c-input-text v-model:value="rawJwt" label="JWT to decode" :validation="validation" placeholder="Put your token here..." rows="8" raw-text autofocus multiline monospace />
+    </c-card>
 
-    <n-table v-if="validation.isValid">
-      <tbody>
-        <template v-for="section of sections" :key="section.key">
-          <th colspan="2" class="table-header">
-            {{ section.title }}
-          </th>
-          <tr v-for="{ claim, claimDescription, friendlyValue, value } in decodedJWT[section.key]" :key="claim + value">
-            <td class="claims" style="vertical-align: top;">
-              <span font-bold>
-                {{ claim }}
-              </span>
-              <span v-if="claimDescription" ml-2 op-70>
-                ({{ claimDescription }})
-              </span>
-            </td>
-            <td style="word-wrap: break-word;word-break: break-all;">
-              <span>{{ value }}</span>
-              <span v-if="friendlyValue" ml-2 op-70>
-                ({{ friendlyValue }})
-              </span>
-            </td>
-          </tr>
-        </template>
-      </tbody>
-    </n-table>
-  </c-card>
+    <c-card v-if="validation.isValid" title="Decoded claims">
+      <n-table>
+        <tbody>
+          <template v-for="section of sections" :key="section.key">
+            <th colspan="2" class="table-header">
+              {{ section.title }}
+            </th>
+            <tr v-for="{ claim, claimDescription, friendlyValue, value } in decodedJWT[section.key]" :key="claim + value">
+              <td class="claims" style="vertical-align: top;">
+                <span font-bold>
+                  {{ claim }}
+                </span>
+                <span v-if="claimDescription" ml-2 op-70>
+                  ({{ claimDescription }})
+                </span>
+              </td>
+              <td style="word-wrap: break-word;word-break: break-all;">
+                <span>{{ value }}</span>
+                <span v-if="friendlyValue" ml-2 op-70>
+                  ({{ friendlyValue }})
+                </span>
+              </td>
+            </tr>
+          </template>
+        </tbody>
+      </n-table>
+    </c-card>
+  </div>
 </template>
 
 <style lang="less" scoped>

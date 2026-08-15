@@ -7,11 +7,12 @@ const numeronym = computed(() => generateNumeronym(word.value));
 </script>
 
 <template>
-  <div flex flex-col items-center gap-4>
-    <c-input-text v-model:value="word" placeholder="Enter a word, e.g. 'internationalization'" size="large" clearable test-id="word-input" />
-
-    <icon-mdi-arrow-down text-30px />
-
-    <input-copyable :value="numeronym" size="large" readonly placeholder="Your numeronym will be here, e.g. 'i18n'" test-id="numeronym" />
+  <div class="c-tool-workbench c-tool-stack">
+    <c-card title="Input">
+      <c-input-text v-model:value="word" label="Word" placeholder="Enter a word, e.g. 'internationalization'" size="large" clearable test-id="word-input" />
+    </c-card>
+    <c-card title="Result">
+      <input-copyable :value="numeronym" label="Numeronym" size="large" readonly monospace placeholder="Your numeronym will be here, e.g. 'i18n'" test-id="numeronym" />
+    </c-card>
   </div>
 </template>

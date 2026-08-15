@@ -82,58 +82,69 @@ async function onUpload(file: File) {
 </script>
 
 <template>
-  <c-card title="Base64 to file">
-    <n-grid cols="3" x-gap="12">
-      <n-gi span="2">
-        <c-input-text
-          v-model:value="fileName"
-          label="File Name"
-          placeholder="Download filename"
-          mb-2
-        />
-      </n-gi>
-      <n-gi>
-        <c-input-text
-          v-model:value="fileExtension"
-          label="Extension"
-          placeholder="Extension"
-          mb-2
-        />
-      </n-gi>
-    </n-grid>
-    <c-input-text
-      v-model:value="base64Input"
-      multiline
-      placeholder="Put your base64 file string here..."
-      rows="5"
-      :validation="base64InputValidation"
-      mb-2
-    />
+  <div class="c-tool-workbench c-tool-stack">
+    <c-card title="Base64 to file">
+      <n-grid cols="3" x-gap="12">
+        <n-gi span="2">
+          <c-input-text
+            v-model:value="fileName"
+            label="File Name"
+            placeholder="Download filename"
+            mb-2
+          />
+        </n-gi>
+        <n-gi>
+          <c-input-text
+            v-model:value="fileExtension"
+            label="Extension"
+            placeholder="Extension"
+            mb-2
+          />
+        </n-gi>
+      </n-grid>
+      <c-input-text
+        v-model:value="base64Input"
+        aria-label="Base64 input"
+        multiline
+        placeholder="Put your base64 file string here..."
+        rows="5"
+        :validation="base64InputValidation"
+        mb-2
+      />
 
-    <div flex justify-center py-2>
-      <div id="previewContainer" />
-    </div>
+      <div flex justify-center py-2>
+        <div id="previewContainer" />
+      </div>
 
-    <div flex justify-center gap-3>
-      <c-button :disabled="base64Input === '' || !base64InputValidation.isValid" @click="previewImage()">
-        Preview image
-      </c-button>
-      <c-button :disabled="base64Input === '' || !base64InputValidation.isValid" @click="downloadFile()">
-        Download file
-      </c-button>
-    </div>
-  </c-card>
+      <div flex justify-center gap-3>
+        <c-button :disabled="base64Input === '' || !base64InputValidation.isValid" @click="previewImage()">
+          Preview image
+        </c-button>
+        <c-button :disabled="base64Input === '' || !base64InputValidation.isValid" @click="downloadFile()">
+          Download file
+        </c-button>
+      </div>
+    </c-card>
 
-  <c-card title="File to base64">
-    <c-file-upload title="Drag and drop a file here, or click to select a file" @file-upload="onUpload" />
-    <c-input-text :value="fileBase64" multiline readonly placeholder="File in base64 will be here" rows="5" my-2 />
+    <c-card title="File to base64">
+      <c-file-upload title="Drag and drop a file here, or click to select a file" @file-upload="onUpload" />
+      <c-input-text
+        :value="fileBase64"
+        aria-label="File encoded as Base64"
+        multiline
+        readonly
+        placeholder="File in base64 will be here"
+        rows="5"
+        my-2
+      />
 
-    <div flex justify-center>
-      <c-button @click="copyFileBase64()">
-        Copy
-      </c-button>
-    </div>
-  </c-card>
+      <div flex justify-center>
+        <c-button @click="copyFileBase64()">
+          Copy
+        </c-button>
+      </div>
+    </c-card>
+  </div>
 </template>
 
 <style lang="less" scoped>

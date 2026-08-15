@@ -16,51 +16,42 @@ const urlValidationRules = [
 </script>
 
 <template>
-  <c-card>
-    <c-input-text
-      v-model:value="urlToParse"
-      label="Your url to parse:"
-      placeholder="Your url to parse..."
-      raw-text
-      :validation-rules="urlValidationRules"
-    />
+  <div class="c-form-layout">
+    <c-card title="Input">
+      <c-input-text
+        v-model:value="urlToParse"
+        label="URL to parse"
+        placeholder="Your url to parse..."
+        raw-text
+        :validation-rules="urlValidationRules"
+      />
+    </c-card>
 
-    <n-divider />
-
-    <InputCopyable
-      v-for="{ title, key, value } in urlProperties"
-      :key="key"
-      :label="title"
-      :value="value"
-      readonly
-      label-position="left"
-      label-width="110px"
-      mb-2
-      placeholder=" "
-    />
-
-    <div
-      v-for="{ id, name, value } in queryParameters"
-      :key="id"
-      mb-2
-      w-full
-      flex
-    >
-      <div style="flex: 1 0 110px">
-        <icon-mdi-arrow-right-bottom />
+    <c-card title="URL properties">
+      <div grid grid-cols-1 gap-3 md:grid-cols-2>
+        <InputCopyable
+          v-for="{ title, key, value } in urlProperties"
+          :key="key"
+          :label="title"
+          :value="value"
+          readonly
+          monospace
+          placeholder=" "
+        />
       </div>
+    </c-card>
 
-      <InputCopyable :value="name" readonly />
-      <InputCopyable :value="value" readonly />
-    </div>
-  </c-card>
+    <c-card v-if="queryParameters.length" title="Query parameters">
+      <div class="c-form-layout">
+        <div v-for="{ id, name, value } in queryParameters" :key="id" grid grid-cols-1 gap-3 md:grid-cols-2>
+          <c-field label="Parameter name">
+            <InputCopyable :value="name" aria-label="Parameter name" readonly monospace />
+          </c-field>
+          <c-field label="Parameter value">
+            <InputCopyable :value="value" aria-label="Parameter value" readonly monospace />
+          </c-field>
+        </div>
+      </div>
+    </c-card>
+  </div>
 </template>
-
-<style lang="less" scoped>
-.n-input-group-label {
-  text-align: right;
-}
-.n-input-group {
-  margin: 2px 0;
-}
-</style>

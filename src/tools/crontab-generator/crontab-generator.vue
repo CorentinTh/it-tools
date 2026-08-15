@@ -2,6 +2,7 @@
 import cronstrue from 'cronstrue';
 import { isValidCron } from 'cron-validator';
 import { useStyleStore } from '@/stores/style.store';
+import CSwitch from '@/ui/c-switch/c-switch.vue';
 
 function isCronValid(v: string) {
   return isValidCron(v, { allowBlankDay: true, alias: true, seconds: true });
@@ -108,39 +109,42 @@ const cronValidationRules = [
 </script>
 
 <template>
-  <c-card>
-    <div mx-auto max-w-sm>
+  <div class="c-tool-workbench c-tool-stack">
+    <c-card>
       <c-input-text
         v-model:value="cron"
         size="large"
         placeholder="* * * * *"
+        label="Cron expression"
         :validation-rules="cronValidationRules"
         mb-3
       />
-    </div>
 
-    <div class="cron-string">
-      {{ cronString }}
-    </div>
+      <div class="cron-string" role="status" aria-live="polite">
+        {{ cronString }}
+      </div>
 
-    <n-divider />
+      <n-divider />
 
-    <div flex justify-center>
-      <n-form :show-feedback="false" label-width="170" label-placement="left">
-        <n-form-item label="Verbose">
-          <n-switch v-model:value="cronstrueConfig.verbose" />
-        </n-form-item>
-        <n-form-item label="Use 24 hour time format">
-          <n-switch v-model:value="cronstrueConfig.use24HourTimeFormat" />
-        </n-form-item>
-        <n-form-item label="Days start at 0">
-          <n-switch v-model:value="cronstrueConfig.dayOfWeekStartIndexZero" />
-        </n-form-item>
-      </n-form>
-    </div>
-  </c-card>
-  <c-card>
-    <pre>
+      <div grid grid-cols-1 gap-3 md:grid-cols-3>
+        <CSwitch id="cron-verbose" v-model:value="cronstrueConfig.verbose" label="Verbose" label-position="top" />
+        <CSwitch
+          id="cron-24-hour-time"
+          v-model:value="cronstrueConfig.use24HourTimeFormat"
+          label="Use 24-hour time"
+          label-position="top"
+        />
+        <CSwitch
+          id="cron-days-start-zero"
+          v-model:value="cronstrueConfig.dayOfWeekStartIndexZero"
+          label="Days start at 0"
+          label-position="top"
+        />
+      </div>
+    </c-card>
+
+    <c-card>
+      <pre>
 ┌──────────── [optional] seconds (0 - 59)
 | ┌────────── minute (0 - 59)
 | | ┌──────── hour (0 - 23)
@@ -150,26 +154,27 @@ const cronValidationRules = [
 | | | | | |
 * * * * * * command</pre>
 
-    <div v-if="styleStore.isSmallScreen">
-      <c-card v-for="{ symbol, meaning, example, equivalent } in helpers" :key="symbol" mb-3 important:border-none>
-        <div>
-          Symbol: <strong>{{ symbol }}</strong>
-        </div>
-        <div>
-          Meaning: <strong>{{ meaning }}</strong>
-        </div>
-        <div>
-          Example:
-          <strong><code>{{ example }}</code></strong>
-        </div>
-        <div>
-          Equivalent: <strong>{{ equivalent }}</strong>
-        </div>
-      </c-card>
-    </div>
+      <div v-if="styleStore.isSmallScreen">
+        <c-card v-for="{ symbol, meaning, example, equivalent } in helpers" :key="symbol" mb-3 important:border-none>
+          <div>
+            Symbol: <strong>{{ symbol }}</strong>
+          </div>
+          <div>
+            Meaning: <strong>{{ meaning }}</strong>
+          </div>
+          <div>
+            Example:
+            <strong><code>{{ example }}</code></strong>
+          </div>
+          <div>
+            Equivalent: <strong>{{ equivalent }}</strong>
+          </div>
+        </c-card>
+      </div>
 
-    <c-table v-else :data="helpers" />
-  </c-card>
+      <c-table v-else :data="helpers" />
+    </c-card>
+  </div>
 </template>
 
 <style lang="less" scoped>

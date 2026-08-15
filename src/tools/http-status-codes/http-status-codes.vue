@@ -22,17 +22,21 @@ const codesByCategoryFiltered = computed(() => {
 </script>
 
 <template>
-  <div>
-    <c-input-text
-      v-model:value="search"
-      placeholder="Search http status..."
-      autofocus raw-text mb-10
-    />
+  <div class="c-form-layout">
+    <c-card title="Search">
+      <c-input-text
+        v-model:value="search"
+        label="HTTP status code, name, or description"
+        placeholder="Search HTTP status..."
+        autofocus
+        raw-text
+      />
+    </c-card>
 
-    <div v-for="{ codes, category } of codesByCategoryFiltered" :key="category" mb-8>
-      <div mb-2 text-xl>
+    <section v-for="{ codes, category } of codesByCategoryFiltered" :key="category">
+      <h2 mb-2 text-xl>
         {{ category }}
-      </div>
+      </h2>
 
       <c-card v-for="{ code, description, name, type } of codes" :key="code" mb-2>
         <div text-lg font-bold>
@@ -42,6 +46,6 @@ const codesByCategoryFiltered = computed(() => {
           {{ description }} {{ type !== 'HTTP' ? `For ${type}.` : '' }}
         </div>
       </c-card>
-    </div>
+    </section>
   </div>
 </template>

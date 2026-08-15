@@ -3,6 +3,7 @@ import _ from 'lodash';
 import { generateRandomMacAddress } from './mac-adress-generator.models';
 import { computedRefreshable } from '@/composable/computedRefreshable';
 import { useCopy } from '@/composable/copy';
+import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
 import { usePartialMacAddressValidation } from '@/utils/macAddress';
 
 const amount = useStorage('mac-address-generator-amount', 1);
@@ -54,50 +55,69 @@ const { copy } = useCopy({ source: macAddresses, text: 'MAC addresses copied to 
 </script>
 
 <template>
-  <div flex flex-col justify-center gap-2>
-    <div flex items-center>
-      <label w-150px pr-12px text-right> Quantity:</label>
-      <n-input-number v-model:value="amount" min="1" max="100" flex-1 />
-    </div>
+  <div class="c-generator-layout">
+    <c-card class="c-generator-options">
+      <div grid grid-cols-1 gap-3 md:grid-cols-2>
+        <c-field label="Quantity (1–100)" label-for="mac-address-quantity">
+          <CInputNumber
+            id="mac-address-quantity"
+            v-model:value="amount"
+            test-id="mac-address-quantity"
+            :min="1"
+            :max="100"
+          />
+        </c-field>
 
-    <c-input-text
-      v-model:value="macAddressPrefix"
-      label="MAC address prefix:"
-      placeholder="Set a prefix, e.g. 64:16:7F"
+        <c-input-text
+          id="mac-address-prefix"
+          v-model:value="macAddressPrefix"
+          label="MAC address prefix"
+          placeholder="Set a prefix, e.g. 64:16:7F"
+          test-id="mac-address-prefix"
+          spellcheck="false"
+          :validation="prefixValidation"
+          raw-text
+          clearable
+          monospace
+        />
 
-      label-position="left"
-      spellcheck="false"
-      :validation="prefixValidation"
-      raw-text clearable
-      label-width="150px"
-      label-align="right"
-    />
+        <c-buttons-select
+          v-model:value="caseTransformer"
+          :options="casesTransformers"
+          label="Case"
+          label-position="top"
+        />
 
-    <c-buttons-select
-      v-model:value="caseTransformer"
-      :options="casesTransformers"
-      label="Case:"
-      label-width="150px"
-      label-align="right"
-    />
-
-    <c-buttons-select
-      v-model:value="separator"
-      :options="separators"
-      label="Separator:"
-      label-width="150px"
-      label-align="right"
-    />
-
-    <c-card mt-5 flex data-test-id="ulids">
-      <pre m-0 m-x-auto>{{ macAddresses }}</pre>
+        <c-buttons-select
+          v-model:value="separator"
+          :options="separators"
+          label="Separator"
+          label-position="top"
+        />
+      </div>
     </c-card>
 
-    <div flex justify-center gap-2>
-      <c-button data-test-id="refresh" @click="refreshMacAddresses()">
-        Refresh
+    <c-input-text
+      class="c-generator-output"
+      :value="macAddresses"
+      aria-label="Generated MAC addresses"
+      placeholder="Generated MAC addresses"
+      test-id="mac-address-output"
+      :rows="12"
+
+      raw-text monospace readonly multiline
+    />
+
+    <div class="c-generator-actions">
+      <c-button
+        type="primary"
+        data-test-id="mac-address-generate"
+        :disabled="!prefixValidation.isValid"
+        @click="refreshMacAddresses()"
+      >
+        Generate
       </c-button>
-      <c-button @click="copy()">
+      <c-button data-test-id="mac-address-copy" :disabled="!macAddresses" @click="copy()">
         Copy
       </c-button>
     </div>

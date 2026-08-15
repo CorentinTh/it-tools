@@ -81,51 +81,55 @@ const { copy: copyPassphrase } = useCopy({ source: passphrase, text: 'Passphrase
 </script>
 
 <template>
-  <div>
-    <n-grid cols="3" x-gap="12">
-      <n-gi span="1">
+  <div class="c-generator-layout">
+    <c-card class="c-generator-options" title="Options">
+      <div grid grid-cols-1 gap-3 md:grid-cols-2>
         <c-select
           v-model:value="language"
           searchable
-          label="Language:"
+          label="Language"
           :options="Object.keys(languages)"
         />
-      </n-gi>
-      <n-gi span="2">
-        <n-form-item
-          label="Entropy (seed):"
-          :feedback="entropyValidation.message"
-          :validation-status="entropyValidation.status"
+        <c-input-text
+          v-model:value="entropy"
+          label="Entropy (seed)"
+          placeholder="Your hexadecimal entropy..."
+          :validation="entropyValidation"
+          monospace
         >
-          <n-input-group>
-            <c-input-text v-model:value="entropy" placeholder="Your string..." />
-
-            <c-button @click="refreshEntropy()">
+          <template #suffix>
+            <c-button circle variant="text" aria-label="Generate new entropy" @click="refreshEntropy()">
               <n-icon size="22">
                 <Refresh />
               </n-icon>
             </c-button>
-            <c-button @click="copyEntropy()">
+            <c-button circle variant="text" aria-label="Copy entropy" @click="copyEntropy()">
               <n-icon size="22">
                 <Copy />
               </n-icon>
             </c-button>
-          </n-input-group>
-        </n-form-item>
-      </n-gi>
-    </n-grid>
-    <n-form-item
-      label="Passphrase (mnemonic):"
-      :feedback="mnemonicValidation.message"
-      :validation-status="mnemonicValidation.status"
-    >
-      <n-input-group>
-        <c-input-text v-model:value="passphrase" placeholder="Your mnemonic..." raw-text />
+          </template>
+        </c-input-text>
+      </div>
+    </c-card>
 
+    <c-card class="c-generator-output" title="Mnemonic">
+      <c-input-text
+        v-model:value="passphrase"
+        label="Passphrase (mnemonic)"
+        placeholder="Your mnemonic..."
+        :validation="mnemonicValidation"
+
+        rows="4"
+
+        monospace raw-text multiline
+      />
+      <div class="c-generator-actions mt-4">
         <c-button @click="copyPassphrase()">
           <n-icon size="22" :component="Copy" />
+          Copy mnemonic
         </c-button>
-      </n-input-group>
-    </n-form-item>
+      </div>
+    </c-card>
   </div>
 </template>

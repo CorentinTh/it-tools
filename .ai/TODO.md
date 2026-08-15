@@ -18,6 +18,12 @@ and the backward-compatible worker-transport hardening increment is accepted.
 Its design, privacy boundary, memory evidence, and executable acceptance gates
 are recorded in `.ai/experiments/FILE_HASH_DESIGN.md`.
 
+**Priority update — 2026-08-10:** the catalog-wide interface-consistency
+foundation and route rollout are complete under `.ai/UI_CONSISTENCY.md`.
+Deterministic screenshot/state expansion remains hardening backlog, and the
+RSA generator lifecycle failure is a separate targeted correctness task. New
+work must use the accepted field/control/action/layout contracts.
+
 For a new machine or AI session, read `.ai/HANDOFF.md` first. See
 `.ai/PROGRESS.md` for the live journal, verified
 commands, measurements, risks, and next gates. In checklist text, `IN PROGRESS`
@@ -43,6 +49,41 @@ means implementation exists but the full Definition of Done is not yet met.
 - [x] Profile 100 kB/1 MB JSON and YAML input behavior.
 - [x] Confirm the Text Diff memory leak through repeated SPA navigation and forced garbage collection.
 - [x] Document architecture, fixes, feature candidates, performance opportunities, and contributor rules in English.
+- [x] Inventory shared controls and all tool SFCs for field, choice, width, action, responsive, accessibility, and visual-test consistency; record the active migration plan in `.ai/UI_CONSISTENCY.md`.
+
+## Priority UX slice — interface consistency
+
+- [x] Capture the representative Vite-dev live baseline in Orca and add an executable all-89-route desktop/light plus mobile/dark responsive/theme/semantics matrix.
+- [x] Define shared spacing, control-height, radius, focus, content-width, field-width, and the initial responsive layout tokens.
+- [x] Add one `c-field` contract for labels, descriptions, required/optional state, validation, and stable feedback space.
+- [x] Add an accessible full-width `c-input-number` bridge that puts identity/ARIA state on the native input; adopt it in Percentage, UUID, and ULID before the remaining numeric-control rollout.
+- [x] Repair `c-input-text`, `c-select`, `c-file-upload`, `c-buttons-select`, and `c-button` behavior and accessibility with failing regressions first.
+- [x] Define checkbox, switch, segmented/radio, numeric, and slider semantics through tested route-level adapters.
+- [x] Add a global executable guard that prevents direct Naive switches, checkboxes, color pickers, fixed input groups, form items, and number inputs from entering migrated route code; RSA is the single named temporary exception for the queued correctness repair.
+- [x] Add shared tool section, action bar, and status/result placement primitives without owning tool business logic.
+- [x] Migrate and visually accept the representative pilot routes listed in `.ai/UI_CONSISTENCY.md`; the broader all-route light/dark screenshot matrix remains a separate hardening gate.
+- [x] Apply the wide always-vertical editor contract to the shared transformer family and direct JSON/YAML/SQL/Docker plus text-conversion routes; only true diff tools may place editors side by side.
+- [x] Unify UUID/ULID/NanoID around NanoID's options -> output -> actions structure and verify the family in Orca dev.
+- [x] Migrate the first dense/form/numeric slice: List Converter, Wi-Fi QR, and Percentage Calculator, with shared field/layout contracts and Vite-dev DOM/behavior acceptance.
+- [x] Migrate Regex Tester to the wide explicit-task pattern with a labelled six-checkbox group and responsive keyboard/E2E coverage.
+- [x] Migrate Token, Random Port, MAC Address, IPv6 ULA, and Lorem Ipsum to the accepted generator rhythm; add explicit primary Generate actions where missing.
+- [x] Remove direct Naive switch/number/form wrappers and literal 100 px option widths from JSON, YAML, and XML formatters.
+- [x] Remove direct `n-switch` usage from every tool route and add a global source ratchet; all 23 route-level switches now use `CSwitch`.
+- [x] Complete the numeric/form/catalog control wave: migrate Bcrypt, ASCII Art, ETA, Integer Base, Roman Numeral, Temperature, BIP39, Benchmark Builder, Chmod, Hash Text, Keycode, Open Graph, Date-time, IPv4, OTP, URL Parser, Case Converter, HTML Entities, Markdown, SafeLink, QR, Wi-Fi QR, SVG Placeholder, and Color Converter. Direct Naive checkbox/switch/color/input-group usage is zero; form-item/number-input and literal label-width remain only in the named RSA exception.
+- [x] Roll out the accepted patterns to the remaining routes by live-transformer, explicit-task, generator, local-file, and reference/catalog archetype.
+- [ ] Add deterministic screenshot baselines and the remaining long-label/value, disabled, error, loading, and result state variants; core keyboard/semantic and all-route responsive/theme gates are complete.
+- [x] Document only justified editor/media/table exceptions and reject new literal label widths or mixed field systems through executable source ratchets.
+
+### Targeted correctness backlog discovered during UI review
+
+- [ ] Reproduce and repair RSA Key Pair Generator failures: replace the
+  arbitrary `+/- 8` bit spinner and reactive regeneration on every size change
+  with an explicit supported-key-size choice plus an explicit `Generate`
+  action. Keep the previous pair while a new request runs, expose loading and
+  bounded static errors, define the practical browser-supported size policy,
+  and add component/service/browser regressions for presets, repeated actions,
+  failure, cancellation, and unmount. Remember that aborting the wrapper does
+  not physically terminate node-forge's already launched internal worker.
 
 ## Non-negotiable integration rules
 
@@ -316,7 +357,7 @@ Recommended first feature candidates:
 - [x] **DONE:** JSON Schema validation and structured source-aware error paths for Draft 7/2019-09/2020-12 under the local-only reference, parse/node/depth/error/time/privacy, bundle, and CSP contract in `.ai/experiments/JSON_SCHEMA_VALIDATOR_DESIGN.md`. Issues #368/#801 supplied requirements only; the implementation is local and no upstream component code was reused.
 - [x] Bound Ajv `allErrors` by both instance size and projected schema/instance node pairs so branch-heavy schemas fail fast before internal error-array amplification.
 - [ ] JSON schema/code generation plugins, JSON size analysis, and RFC 6902 path generation on one lossless parsed model.
-- [x] **DONE:** local file hashing with fixed 4 MiB incremental worker reads, SHA-256/384/512 in one pass, throttled progress, cancellation/replacement after real progress, session-only privacy, safe filename display, same-file reselection, 256 MiB peak-memory/responsiveness evidence, offline worker reuse, and independent route/worker bundle gates from `.ai/experiments/FILE_HASH_DESIGN.md`.
+- [x] **DONE:** local file hashing with fixed 4 MiB incremental worker reads and SHA-256/384/512, SHA3-256, BLAKE3-256, SHA-1, and MD5 in one pass. SHA-1/MD5 are visibly marked as legacy; throttled progress, cancellation/replacement after real progress, session-only privacy, safe filename display, same-file reselection, 256 MiB peak-memory/responsiveness evidence, offline worker reuse, and independent route/worker bundle gates remain in force from `.ai/experiments/FILE_HASH_DESIGN.md`.
 - [ ] Local file identification, hex conversion, and CRC calculation with streaming workers.
 - [ ] SAML decoder and LDAP/FILETIME timestamp support with explicit verification/timezone semantics.
 - [ ] URL safety workspace with strict encoding, tracker removal, defang/refang, UTM, and text-fragment modes.
@@ -423,7 +464,9 @@ Implementation is approved and active on the local branch. Current ordering is:
 14. [x] harden YAML output sizing before serializer allocation for alias, indentation, escaping, and physical-line expansion; retain the 100,000-node capacity and stabilize the isolated Long Task fixture at 10/10 without weakening its threshold.
 15. [x] **DONE:** delivered the bounded three-draft JSON Schema Validator, extracted the shared JSON/YAML one-shot worker transport, closed related malformed-protocol correctness gaps, and passed focused/full/browser/build-budget gates.
 16. [x] **DONE:** delivered bounded local File Hash, same-file upload correctness, exact-key SHA worker protocols, compatible shared transport hardening, sampled peak-memory/Long Task/cancellation/replacement evidence, demand-cached offline reuse, and independent route/worker budgets.
-17. [ ] **NEXT:** select and design the fourth bounded Priority A catalog feature, pair it with one measured project-owned correctness/performance improvement, and advance only the worker-transport residuals required by a real consumer. Start from `.ai/HANDOFF.md` and `.ai/PROGRESS.md` rather than historical audit findings.
+17. [ ] **NEXT:** execute `.ai/UI_CONSISTENCY.md` Phase 0–2: capture the live visual baseline, repair the shared field/choice/action primitives, and migrate the representative pilot with responsive, keyboard, visual, and bundle gates.
+18. [ ] Roll the accepted UI patterns through the remaining routes by archetype and make consistency regressions executable.
+19. [ ] After the UI foundation and pilot are accepted, select and design the fourth bounded Priority A catalog feature against the new interface contract, pair it with one measured project-owned correctness/performance improvement, and advance only worker-transport residuals required by a real consumer.
 
 Dependency/base-image vulnerability remediation and scan policy remain in the
 separately tracked deferred security slice.

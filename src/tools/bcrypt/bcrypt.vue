@@ -9,6 +9,7 @@ import {
   toBcryptTaskError,
 } from './bcrypt.worker.protocol';
 import { useCopy } from '@/composable/copy';
+import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
 
 type TaskStatus = 'idle' | 'running' | 'success' | 'cancelled' | 'timeout' | 'error';
 
@@ -178,6 +179,10 @@ function formatElapsed(elapsedMs: number): string {
   return `${(elapsedMs / 1000).toFixed(2)} s`;
 }
 
+function isWholeNumber(value: number): boolean {
+  return Number.isInteger(value);
+}
+
 function getStatusText(label: string, state: TaskViewState): string {
   if (state.status === 'idle') {
     return '';
@@ -235,83 +240,88 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <c-card title="Hash">
-    <c-input-text
-      v-model:value="input"
-      placeholder="Your string to bcrypt..."
-      raw-text
-      label="Your string: "
-      label-position="left"
-      label-align="right"
-      label-width="120px"
-      test-id="bcrypt-input"
-      mb-2
-    />
-    <n-form-item label="Salt count: " label-placement="left" label-width="120">
-      <n-input-number
-        v-model:value="saltCount"
-        data-test-id="bcrypt-rounds"
-        placeholder="Salt rounds..."
-        :max="BCRYPT_MAX_ROUNDS"
-        :min="BCRYPT_MIN_ROUNDS"
-        :precision="0"
-        w-full
+  <div class="c-task-layout">
+    <c-card title="Hash">
+      <div grid grid-cols-1 gap-3 md:grid-cols-2>
+        <c-input-text
+          v-model:value="input"
+          placeholder="Your string to bcrypt..."
+          raw-text
+          label="String to hash"
+          test-id="bcrypt-input"
+        />
+        <c-field
+          :label="`Salt rounds (${BCRYPT_MIN_ROUNDS}–${BCRYPT_MAX_ROUNDS})`"
+          label-for="bcrypt-rounds"
+          :description="`Input is limited to ${BCRYPT_MAX_PASSWORD_BYTES} UTF-8 bytes.`"
+        >
+          <CInputNumber
+            id="bcrypt-rounds"
+            v-model:value="saltCount"
+            test-id="bcrypt-rounds"
+            placeholder="Salt rounds..."
+            :max="BCRYPT_MAX_ROUNDS"
+            :min="BCRYPT_MIN_ROUNDS"
+            :validator="isWholeNumber"
+          />
+        </c-field>
+      </div>
+
+      <c-input-text
+        class="mt-4"
+        :value="hashed"
+        label="Generated bcrypt hash"
+        test-id="bcrypt-hash-output"
+
+        raw-text readonly monospace
       />
-    </n-form-item>
 
-    <p mb-3 text-xs op-70>
-      Use {{ BCRYPT_MIN_ROUNDS }}–{{ BCRYPT_MAX_ROUNDS }} rounds. Input is limited to {{ BCRYPT_MAX_PASSWORD_BYTES }} UTF-8 bytes.
-    </p>
+      <n-progress
+        v-if="hashState.status === 'running'"
+        class="mt-3"
+        type="line"
+        :percentage="Math.round(hashState.progress * 100)"
+        :show-indicator="false"
+        processing
+      />
 
-    <c-input-text :value="hashed" test-id="bcrypt-hash-output" readonly monospace text-center />
+      <p
+        v-if="hashStatusText"
+        class="c-task-status"
+        data-test-id="bcrypt-hash-status"
+        role="status"
+        aria-live="polite"
+        mt-3
+        text-sm
+        :class="{ 'status-error': hashState.status === 'error' || hashState.status === 'timeout' }"
+      >
+        {{ hashStatusText }}
+      </p>
 
-    <n-progress
-      v-if="hashState.status === 'running'"
-      class="mt-3"
-      type="line"
-      :percentage="Math.round(hashState.progress * 100)"
-      :show-indicator="false"
-      processing
-    />
+      <div class="c-task-actions mt-4">
+        <c-button type="primary" data-test-id="bcrypt-hash-run" @click="runHash">
+          {{ hashState.status === 'running' ? 'Restart hash' : 'Generate hash' }}
+        </c-button>
+        <c-button v-if="hashState.status === 'running'" type="warning" data-test-id="bcrypt-hash-cancel" @click="cancelHash">
+          Cancel
+        </c-button>
+        <c-button :disabled="!hashed" data-test-id="bcrypt-hash-copy" @click="copy()">
+          Copy hash
+        </c-button>
+      </div>
+    </c-card>
 
-    <p
-      v-if="hashStatusText"
-      data-test-id="bcrypt-hash-status"
-      role="status"
-      aria-live="polite"
-      mt-3
-      text-sm
-      :class="{ 'status-error': hashState.status === 'error' || hashState.status === 'timeout' }"
-    >
-      {{ hashStatusText }}
-    </p>
+    <c-card title="Compare string with hash">
+      <div grid grid-cols-1 gap-3 md:grid-cols-2>
+        <c-input-text v-model:value="compareString" label="String to compare" test-id="bcrypt-compare-input" placeholder="Your string to compare..." raw-text />
+        <c-input-text v-model:value="compareHash" label="Bcrypt hash" test-id="bcrypt-compare-hash" placeholder="Your hash to compare..." raw-text monospace />
+      </div>
 
-    <div mt-5 flex flex-wrap justify-center gap-2>
-      <c-button type="primary" data-test-id="bcrypt-hash-run" @click="runHash">
-        {{ hashState.status === 'running' ? 'Restart hash' : 'Generate hash' }}
-      </c-button>
-      <c-button v-if="hashState.status === 'running'" type="warning" data-test-id="bcrypt-hash-cancel" @click="cancelHash">
-        Cancel
-      </c-button>
-      <c-button :disabled="!hashed" data-test-id="bcrypt-hash-copy" @click="copy()">
-        Copy hash
-      </c-button>
-    </div>
-  </c-card>
-
-  <c-card title="Compare string with hash">
-    <n-form label-width="120">
-      <n-form-item label="Your string: " label-placement="left">
-        <c-input-text v-model:value="compareString" test-id="bcrypt-compare-input" placeholder="Your string to compare..." raw-text />
-      </n-form-item>
-      <n-form-item label="Your hash: " label-placement="left">
-        <c-input-text v-model:value="compareHash" test-id="bcrypt-compare-hash" placeholder="Your hash to compare..." raw-text monospace />
-      </n-form-item>
-      <n-form-item v-if="compareMatch !== null" label="Do they match? " label-placement="left" :show-feedback="false">
+      <c-field v-if="compareMatch !== null" label="Do they match?" class="mt-4">
         <div data-test-id="bcrypt-compare-result" class="compare-result" :class="{ positive: compareMatch }">
           {{ compareMatch ? 'Yes' : 'No' }}
         </div>
-      </n-form-item>
+      </c-field>
 
       <n-progress
         v-if="compareState.status === 'running'"
@@ -334,7 +344,7 @@ onUnmounted(() => {
         {{ compareStatusText }}
       </p>
 
-      <div flex flex-wrap justify-center gap-2>
+      <div class="c-task-actions">
         <c-button type="primary" data-test-id="bcrypt-compare-run" @click="runCompare">
           {{ compareState.status === 'running' ? 'Restart comparison' : 'Compare' }}
         </c-button>
@@ -342,8 +352,8 @@ onUnmounted(() => {
           Cancel
         </c-button>
       </div>
-    </n-form>
-  </c-card>
+    </c-card>
+  </div>
 </template>
 
 <style lang="less" scoped>

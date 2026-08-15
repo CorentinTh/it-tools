@@ -4,8 +4,9 @@ import InputCopyable from '@/components/InputCopyable.vue';
 import { macAddressValidation } from '@/utils/macAddress';
 
 const macAddress = ref('20:37:06:12:34:56');
+const generation = ref(0);
 const calculatedSections = computed(() => {
-  const timestamp = new Date().getTime();
+  const timestamp = new Date().getTime() + generation.value * 0;
   const hex40bit = SHA1(timestamp + macAddress.value)
     .toString()
     .substring(30);
@@ -29,37 +30,54 @@ const calculatedSections = computed(() => {
 });
 
 const addressValidation = macAddressValidation(macAddress);
+
+function generate() {
+  generation.value += 1;
+}
 </script>
 
 <template>
-  <div>
-    <n-alert title="Info" type="info">
-      This tool uses the first method suggested by IETF using the current timestamp plus the mac address, sha1 hashed,
-      and the lower 40 bits to generate your random ULA.
-    </n-alert>
+  <div class="c-generator-layout">
+    <c-card class="c-generator-options">
+      <n-alert title="How it works" type="info" mb-4>
+        This tool follows the first RFC 4193 method: it hashes the current timestamp and MAC address with SHA-1,
+        then uses the lower 40 bits to generate the ULA.
+      </n-alert>
 
-    <c-input-text
-      v-model:value="macAddress"
-      placeholder="Type a MAC address"
-      clearable
-      label="MAC address:"
-      raw-text
-      my-8
-      :validation="addressValidation"
-    />
+      <c-input-text
+        id="ipv6-ula-mac-address"
+        v-model:value="macAddress"
+        placeholder="Type a MAC address"
+        clearable
+        label="MAC address"
+        test-id="ipv6-ula-mac-address"
+        raw-text
+        monospace
+        :validation="addressValidation"
+      />
+    </c-card>
 
-    <div v-if="addressValidation.isValid">
+    <c-card v-if="addressValidation.isValid" class="c-generator-output">
       <InputCopyable
         v-for="{ label, value } in calculatedSections"
         :key="label"
         :value="value"
         :label="label"
-        label-width="160px"
-        label-align="right"
-        label-position="left"
+        label-position="top"
         readonly
-        mb-2
+        class="mb-3 last:mb-0"
       />
+    </c-card>
+
+    <div class="c-generator-actions">
+      <c-button
+        type="primary"
+        data-test-id="ipv6-ula-generate"
+        :disabled="!addressValidation.isValid"
+        @click="generate"
+      >
+        Generate
+      </c-button>
     </div>
   </div>
 </template>

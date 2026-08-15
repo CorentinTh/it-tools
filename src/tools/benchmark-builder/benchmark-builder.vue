@@ -79,25 +79,21 @@ function copyAsBulletList() {
 </script>
 
 <template>
-  <n-scrollbar style="flex: 1" x-scrollable>
-    <div mb-5 flex flex-1 flex-nowrap justify-center gap-12px>
-      <div v-for="(suite, index) of suites" :key="index">
-        <c-card style="width: 294px">
-          <c-input-text
-            v-model:value="suite.title"
-            label-position="left"
-            label="Suite name"
-            placeholder="Suite name..."
-            clearable
-          />
+  <div class="c-form-layout">
+    <div class="suite-grid">
+      <c-card v-for="(suite, index) of suites" :key="index" :title="suite.title || `Suite ${index + 1}`">
+        <c-input-text
+          v-model:value="suite.title"
+          label="Suite name"
+          placeholder="Suite name..."
+          clearable
+        />
 
-          <n-divider />
-          <n-form-item label="Suite values" :show-feedback="false">
-            <DynamicValues v-model:values="suite.data" />
-          </n-form-item>
-        </c-card>
+        <c-field class="mt-4" label="Suite values">
+          <DynamicValues v-model:values="suite.data" :label-prefix="suite.title || `Suite ${index + 1}`" />
+        </c-field>
 
-        <div flex justify-center>
+        <div class="c-generator-actions mt-4">
           <c-button v-if="suites.length > 1" variant="text" @click="suites.splice(index, 1)">
             <n-icon :component="Trash" depth="3" mr-2 size="18" />
             Delete suite
@@ -110,14 +106,12 @@ function copyAsBulletList() {
             Add suite
           </c-button>
         </div>
-      </div>
+      </c-card>
     </div>
-  </n-scrollbar>
 
-  <div style="flex: 0 0 100%">
-    <div style="max-width: 600px; margin: 0 auto">
-      <div mx-auto max-w-sm flex justify-center gap-3>
-        <c-input-text v-model:value="unit" placeholder="Unit (eg: ms)" label="Unit" label-position="left" mb-4 />
+    <c-card title="Results">
+      <div grid grid-cols-1 items-end gap-3 md:grid-cols-2>
+        <c-input-text v-model:value="unit" placeholder="Unit (for example, ms)" label="Unit" />
 
         <c-button
           @click="
@@ -131,9 +125,11 @@ function copyAsBulletList() {
         </c-button>
       </div>
 
-      <c-table :data="results" :headers="header" />
+      <div class="mt-4" overflow-x-auto>
+        <c-table :data="results" :headers="header" />
+      </div>
 
-      <div mt-5 flex justify-center gap-3>
+      <div class="c-generator-actions mt-4">
         <c-button @click="copyAsMarkdown()">
           Copy as markdown table
         </c-button>
@@ -141,6 +137,15 @@ function copyAsBulletList() {
           Copy as bullet list
         </c-button>
       </div>
-    </div>
+    </c-card>
   </div>
 </template>
+
+<style scoped>
+.suite-grid {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--ui-space-4);
+}
+</style>

@@ -92,7 +92,7 @@ tools:
 
   file-hash:
     title: File hash
-    description: Calculate SHA-256, SHA-384, and SHA-512 checksums for a local file without uploading it.
+    description: Calculate SHA-2, SHA-3, BLAKE3, SHA-1, and MD5 checksums for a local file without uploading it.
 
   chronometer:
     title: Chronometer
@@ -112,6 +112,7 @@ tools:
     button:
       copy: Copy
       refresh: Refresh
+      generate: Generate
 
   nanoid-generator:
     title: NanoID generator

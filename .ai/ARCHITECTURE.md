@@ -153,8 +153,8 @@ Accepted schema-v4 production evidence for implementation checkpoint `5f7e97a`:
 | Mandatory Workbox install | 9 entries / 956,157 B raw / 327,325 B gzip |
 | Text Diff route + owned-worker closure | 2,474,507 B raw / 646,976 B gzip |
 | MAC Lookup route + owned-worker closure | 1,937,384 B raw / 770,467 B gzip |
-| File Hash route + owned-worker closure | 56,994 B raw / 22,189 B gzip |
-| File Hash worker | 13,583 B raw / 6,298 B gzip |
+| File Hash route + owned-worker closure | 70,260 B raw / 26,677 B gzip |
+| File Hash worker | 25,899 B raw / 10,417 B gzip |
 
 The nine-entry Workbox shell is enforced at no more than 1 MB raw, 350 kB
 gzip, and ten files. Lazy tool chunks, route-owned workers, and 289 same-origin

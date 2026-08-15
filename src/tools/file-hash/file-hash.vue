@@ -3,6 +3,7 @@ import { sanitizeFileNameForDisplay } from './file-hash.models';
 import { FileHashWorkerClient } from './file-hash.worker-client';
 import {
   FILE_HASH_ALGORITHMS,
+  FILE_HASH_LEGACY_ALGORITHMS,
   FILE_HASH_MAX_FILE_BYTES,
   FILE_HASH_MAX_FILE_LABEL,
   type FileHashAlgorithm,
@@ -15,6 +16,7 @@ import { formatBytes } from '@/utils/convert';
 type HashStatus = 'idle' | 'ready' | 'running' | 'success' | 'cancelled' | 'timeout' | 'error';
 
 const workerClient = new FileHashWorkerClient();
+const legacyAlgorithms: ReadonlySet<FileHashAlgorithm> = new Set(FILE_HASH_LEGACY_ALGORITHMS);
 const selectedFile = shallowRef<File>();
 const selectedAlgorithms = ref<FileHashAlgorithm[]>(['SHA-256']);
 const hashResult = shallowRef<FileHashResult>();
@@ -56,6 +58,10 @@ const canHash = computed(() => (
   && !isRunning.value
 ));
 const statusIsError = computed(() => state.status === 'timeout' || state.status === 'error');
+
+function isLegacyAlgorithm(algorithm: FileHashAlgorithm): boolean {
+  return legacyAlgorithms.has(algorithm);
+}
 
 function formatElapsedTime(elapsedMs: number): string {
   if (elapsedMs < 1) {
@@ -216,12 +222,12 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div flex flex-col gap-4>
+  <div class="c-task-layout">
     <c-alert title="Local and session-only">
       File contents are processed only in this browser and are never uploaded or persisted by IT Tools. Application references are released when you clear, leave, or reload this tool.
     </c-alert>
 
-    <c-card title="Local file">
+    <c-card class="c-task-options" title="Local file">
       <c-file-upload
         data-test-id="file-hash-upload"
         :title="`Drop one file here, or select a file (maximum ${FILE_HASH_MAX_FILE_LABEL})`"
@@ -239,25 +245,33 @@ onUnmounted(() => {
       </div>
     </c-card>
 
-    <c-card title="Algorithms">
+    <c-card class="c-task-options" title="Algorithms">
       <div flex flex-wrap gap-x-6 gap-y-2>
-        <n-checkbox
+        <CCheckbox
           v-for="algorithm in FILE_HASH_ALGORITHMS"
           :key="algorithm"
           :checked="selectedAlgorithms.includes(algorithm)"
           :disabled="isRunning"
-          :data-test-id="`file-hash-algorithm-${algorithm}`"
+          :test-id="`file-hash-algorithm-${algorithm}`"
           @update:checked="updateAlgorithm(algorithm, $event)"
         >
           {{ algorithm }}
-        </n-checkbox>
+          <span
+            v-if="isLegacyAlgorithm(algorithm)"
+            :data-test-id="`file-hash-legacy-${algorithm}`"
+            op-65
+          >
+            (legacy)
+          </span>
+        </CCheckbox>
       </div>
       <p mt-3 text-sm op-70>
-        SHA checksums help verify file integrity. They are not suitable for storing passwords.
+        MD5 and SHA-1 are legacy compatibility checksums with known collision attacks.
+        Prefer SHA-256 or newer for integrity. File hashes are not suitable for storing passwords.
       </p>
     </c-card>
 
-    <div flex flex-wrap justify-end gap-2>
+    <div class="c-task-actions">
       <c-button
         type="primary"
         data-test-id="file-hash-run"
@@ -267,6 +281,7 @@ onUnmounted(() => {
         Hash file
       </c-button>
       <c-button
+        v-if="isRunning"
         type="warning"
         data-test-id="file-hash-cancel"
         :disabled="!isRunning"
@@ -306,6 +321,7 @@ onUnmounted(() => {
       aria-atomic="true"
       min-h-5
       text-sm
+      class="c-task-status"
       :class="{
         'status-error': statusIsError,
         'status-success': state.status === 'success',
@@ -314,7 +330,12 @@ onUnmounted(() => {
       {{ state.message }}
     </p>
 
-    <section v-if="hashResult" data-test-id="file-hash-results" aria-label="File digests">
+    <section
+      v-if="hashResult"
+      class="c-task-results"
+      data-test-id="file-hash-results"
+      aria-label="File digests"
+    >
       <h2 mb-3 text-lg font-600>
         Digests
       </h2>

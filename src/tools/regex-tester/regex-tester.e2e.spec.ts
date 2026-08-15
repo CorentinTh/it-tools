@@ -85,4 +85,54 @@ test.describe('Tool - Regex Tester worker safety', () => {
     await expect(page.locator('.tool-header h1')).toContainText('URL');
     await expect(page.getByTestId('regex-pattern')).toHaveCount(0);
   });
+
+  test('keeps the wide task layout, checkbox semantics, and mobile dark-mode flow', async ({ page }) => {
+    const flags = page.getByRole('group', { name: 'Flags' });
+    const globalFlag = page.getByRole('checkbox', { name: /Global search/ });
+
+    await expect(flags).toBeVisible();
+    await expect(flags.getByRole('checkbox')).toHaveCount(6);
+    await expect(globalFlag).toBeChecked();
+    await globalFlag.focus();
+    await page.keyboard.press('Space');
+    await expect(globalFlag).not.toBeChecked();
+
+    const desktopWidths = await page.locator('.c-task-layout textarea').evaluateAll(elements => (
+      elements.map(element => element.getBoundingClientRect().width)
+    ));
+    expect(desktopWidths).toHaveLength(2);
+    expect(Math.abs(desktopWidths[0] - desktopWidths[1])).toBeLessThanOrEqual(1);
+
+    await page.getByRole('button', { name: 'Toggle dark/light mode' }).click();
+    await expect(page.locator('.app-root')).toHaveClass(/app-root--dark/);
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    await expect(flags).toBeVisible();
+
+    const mobileLayout = await page.evaluate(() => {
+      const options = document.querySelector('.c-choice-group__options');
+      const optionRects = options
+        ? [...options.children].map(element => element.getBoundingClientRect())
+        : [];
+      const workbench = document.querySelector('.c-tool-workbench')?.getBoundingClientRect();
+
+      return {
+        documentWidth: document.documentElement.scrollWidth,
+        viewportWidth: window.innerWidth,
+        workbenchWidth: workbench?.width ?? 0,
+        optionLefts: optionRects.map(rect => Math.round(rect.left)),
+      };
+    });
+
+    expect(mobileLayout.documentWidth).toBeLessThanOrEqual(mobileLayout.viewportWidth + 1);
+    expect(mobileLayout.workbenchWidth).toBeLessThanOrEqual(mobileLayout.viewportWidth);
+    expect(new Set(mobileLayout.optionLefts).size).toBe(1);
+
+    const darkTheme = await page.evaluate(() => ({
+      background: getComputedStyle(document.body).backgroundColor,
+      choiceText: getComputedStyle(document.querySelector('.c-choice-group')!).color,
+    }));
+    expect(darkTheme.background).toBe('rgb(16, 16, 20)');
+    expect(darkTheme.choiceText).toContain('255, 255, 255');
+  });
 });

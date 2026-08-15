@@ -16,16 +16,28 @@ import {
 
 const OFFICIAL_VECTORS = {
   '': {
+    'MD5': 'd41d8cd98f00b204e9800998ecf8427e',
+    'SHA-1': 'da39a3ee5e6b4b0d3255bfef95601890afd80709',
     'SHA-256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
     'SHA-384': '38b060a751ac96384cd9327eb1b1e36a21fdb71114be07434c0cc7bf63f6e1da274edebfe76f65fbd51ad2f14898b95b',
     'SHA-512': 'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e',
+    'SHA3-256': 'a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a',
+    'BLAKE3-256': 'af1349b9f5f9a1a6a0404dea36dcc9499bcb25c9adc112b7cc9a93cae41f3262',
   },
   'abc': {
+    'MD5': '900150983cd24fb0d6963f7d28e17f72',
+    'SHA-1': 'a9993e364706816aba3e25717850c26c9cd0d89d',
     'SHA-256': 'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad',
     'SHA-384': 'cb00753f45a35e8bb5a03d699ac65007272c32ab0eded1631a8b605a43ff5bed8086072ba1e7cc2358baeca134c825a7',
     'SHA-512': 'ddaf35a193617abacc417349ae20413112e6fa4e89a97ea20a9eeee64b55d39a2192992a274fc1a836ba3c23a3feebbd454d4423643ce80e2a9ac94fa54ca49f',
+    'SHA3-256': '3a985da74fe225b2045c172d6bd390bd855f086e3e9d525b46bfe24511431532',
+    'BLAKE3-256': '6437b3ac38465133ffb63b75273a8db548c558465d79db03fd359c6cd5bd9d85',
   },
 } as const;
+
+const NODE_HASH_ALGORITHMS = FILE_HASH_ALGORITHMS.filter(
+  (algorithm): algorithm is Exclude<FileHashAlgorithm, 'BLAKE3-256'> => algorithm !== 'BLAKE3-256',
+);
 
 function request(file: Blob, algorithms: FileHashAlgorithm[] = [...FILE_HASH_ALGORITHMS]) {
   return { jobId: 7, task: { file, algorithms } };
@@ -44,11 +56,22 @@ function binaryFixture(length: number): Uint8Array {
 }
 
 function nodeDigest(algorithm: FileHashAlgorithm, bytes: Uint8Array): string {
-  return createHash(algorithm.toLowerCase().replace('-', '')).update(bytes).digest('hex');
+  const nodeAlgorithm = {
+    'MD5': 'md5',
+    'SHA-1': 'sha1',
+    'SHA-256': 'sha256',
+    'SHA-384': 'sha384',
+    'SHA-512': 'sha512',
+    'SHA3-256': 'sha3-256',
+  } as const;
+  if (algorithm === 'BLAKE3-256') {
+    throw new Error('Node does not provide BLAKE3 in createHash.');
+  }
+  return createHash(nodeAlgorithm[algorithm]).update(bytes).digest('hex');
 }
 
 describe('file hash worker handler', () => {
-  it.each(['', 'abc'] as const)('matches official SHA-2 vectors for %j', async (source) => {
+  it.each(['', 'abc'] as const)('matches official supported-algorithm vectors for %j', async (source) => {
     const progress = progressCollector();
     const response = await handleFileHashWorkerRequest(request(new Blob([source])), progress);
 
@@ -70,14 +93,17 @@ describe('file hash worker handler', () => {
   });
 
   it.each([55, 56, 63, 64, 65, 111, 112, 127, 128, 129])(
-    'matches Node SHA-2 at the %i-byte padding boundary',
+    'matches Node-supported hashes at the %i-byte padding boundary',
     async (length) => {
       const bytes = binaryFixture(length);
-      const response = await handleFileHashWorkerRequest(request(new Blob([bytes])), { windowBytes: 17 });
+      const response = await handleFileHashWorkerRequest(
+        request(new Blob([bytes]), [...NODE_HASH_ALGORITHMS]),
+        { windowBytes: 17 },
+      );
 
       expect(response).toMatchObject({ type: 'result' });
       if (response.type === 'result') {
-        expect(response.result.digests).toEqual(FILE_HASH_ALGORITHMS.map(algorithm => ({
+        expect(response.result.digests).toEqual(NODE_HASH_ALGORITHMS.map(algorithm => ({
           algorithm,
           hex: nodeDigest(algorithm, bytes),
         })));
@@ -86,14 +112,14 @@ describe('file hash worker handler', () => {
   );
 
   it.each([15, 16, 17, 49])(
-    'matches Node SHA-2 for a %i-byte file around the injected 16-byte window',
+    'matches Node-supported hashes for a %i-byte file around the injected 16-byte window',
     async (length) => {
       const bytes = binaryFixture(length);
-      const response = await handleFileHashWorkerRequest(request(new Blob([bytes])), { windowBytes: 16 });
+      const response = await handleFileHashWorkerRequest(request(new Blob([bytes]), [...NODE_HASH_ALGORITHMS]), { windowBytes: 16 });
 
       expect(response).toMatchObject({ type: 'result' });
       if (response.type === 'result') {
-        expect(response.result.digests).toEqual(FILE_HASH_ALGORITHMS.map(algorithm => ({
+        expect(response.result.digests).toEqual(NODE_HASH_ALGORITHMS.map(algorithm => ({
           algorithm,
           hex: nodeDigest(algorithm, bytes),
         })));
@@ -217,7 +243,7 @@ describe('file hash worker handler', () => {
 
     await expect(handleFileHashWorkerRequest({
       jobId: 41,
-      task: { file: new Blob([]), algorithms: ['MD5'] },
+      task: { file: new Blob([]), algorithms: ['CRC32'] },
     })).resolves.toEqual({
       jobId: 41,
       type: 'error',

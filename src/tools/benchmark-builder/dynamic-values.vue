@@ -1,14 +1,19 @@
 <script setup lang="ts">
 import { Plus, Trash } from '@vicons/tabler';
 import { useTemplateRefsList, useVModel } from '@vueuse/core';
-import { NInputNumber } from 'naive-ui';
 import { nextTick } from 'vue';
+import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
 
-const props = defineProps<{ values: (number | null)[] }>();
+const props = withDefaults(defineProps<{
+  values: (number | null)[]
+  labelPrefix?: string
+}>(), {
+  labelPrefix: 'Suite',
+});
 
 const emit = defineEmits(['update:values']);
 
-const refs = useTemplateRefsList<typeof NInputNumber>();
+const refs = useTemplateRefsList<InstanceType<typeof CInputNumber>>();
 
 const values = useVModel(props, 'values', emit);
 
@@ -31,16 +36,17 @@ function onInputEnter(index: number) {
 <template>
   <div>
     <div v-for="(value, index) of values" :key="index" mb-2 flex flex-nowrap gap-2>
-      <NInputNumber
+      <CInputNumber
         :ref="refs.set"
         v-model:value="values[index]"
+        :aria-label="`${labelPrefix} measure ${index + 1}`"
         :show-button="false"
         placeholder="Set your measure..."
         autofocus
         @keydown.enter="onInputEnter(index)"
       />
       <c-tooltip tooltip="Delete this value">
-        <c-button circle variant="text" @click="values.splice(index, 1)">
+        <c-button circle variant="text" :aria-label="`Delete ${labelPrefix} measure ${index + 1}`" @click="values.splice(index, 1)">
           <n-icon :component="Trash" depth="3" size="18" />
         </c-button>
       </c-tooltip>

@@ -1,6 +1,15 @@
 import { isUnknownRecord, isWorkerJobId } from '@/utils/worker-protocol';
 
-export const FILE_HASH_ALGORITHMS = ['SHA-256', 'SHA-384', 'SHA-512'] as const;
+export const FILE_HASH_ALGORITHMS = [
+  'SHA-256',
+  'SHA-384',
+  'SHA-512',
+  'SHA3-256',
+  'BLAKE3-256',
+  'SHA-1',
+  'MD5',
+] as const;
+export const FILE_HASH_LEGACY_ALGORITHMS = ['SHA-1', 'MD5'] as const;
 export const FILE_HASH_MAX_FILE_BYTES = 8 * 1024 * 1024 * 1024;
 export const FILE_HASH_MAX_FILE_LABEL = '8 GiB';
 export const FILE_HASH_WINDOW_BYTES = 4 * 1024 * 1024;
@@ -24,10 +33,14 @@ export const FILE_HASH_WORKER_ERROR_MESSAGES: Readonly<Record<FileHashWorkerErro
   hash: 'The selected file could not be hashed.',
 };
 
-const DIGEST_HEX_LENGTHS: Readonly<Record<FileHashAlgorithm, number>> = {
-  'SHA-256': 64,
-  'SHA-384': 96,
-  'SHA-512': 128,
+export const FILE_HASH_DIGEST_BYTES: Readonly<Record<FileHashAlgorithm, number>> = {
+  'MD5': 16,
+  'SHA-1': 20,
+  'SHA-256': 32,
+  'SHA-384': 48,
+  'SHA-512': 64,
+  'SHA3-256': 32,
+  'BLAKE3-256': 32,
 };
 
 const INVALID_WORKER_MESSAGE = 'The file hash worker returned an invalid message.';
@@ -77,7 +90,8 @@ export type FileHashWorkerMessage =
 export type FileHashWorkerTerminalMessage = Exclude<FileHashWorkerMessage, { type: 'progress' }>;
 
 function isFileHashAlgorithm(value: unknown): value is FileHashAlgorithm {
-  return value === 'SHA-256' || value === 'SHA-384' || value === 'SHA-512';
+  return typeof value === 'string'
+    && (FILE_HASH_ALGORITHMS as readonly string[]).includes(value);
 }
 
 function hasExactKeys(
@@ -121,8 +135,15 @@ export function parseFileHashTask(value: unknown): FileHashTask {
   }
 
   parseFileSize(value.file);
-  if (!Array.isArray(value.algorithms) || value.algorithms.length < 1 || value.algorithms.length > 3) {
-    throw new FileHashTaskError('validation', 'Select between one and three hash algorithms.');
+  if (
+    !Array.isArray(value.algorithms)
+    || value.algorithms.length < 1
+    || value.algorithms.length > FILE_HASH_ALGORITHMS.length
+  ) {
+    throw new FileHashTaskError(
+      'validation',
+      `Select between one and ${FILE_HASH_ALGORITHMS.length} hash algorithms.`,
+    );
   }
 
   const algorithms: FileHashAlgorithm[] = [];
@@ -192,7 +213,7 @@ function parseFileHashResult(value: unknown): FileHashResult | undefined {
     || value.fileSize > FILE_HASH_MAX_FILE_BYTES
     || !Array.isArray(value.digests)
     || value.digests.length < 1
-    || value.digests.length > 3
+    || value.digests.length > FILE_HASH_ALGORITHMS.length
   ) {
     return undefined;
   }
@@ -205,7 +226,7 @@ function parseFileHashResult(value: unknown): FileHashResult | undefined {
       || !hasExactKeys(digest, ['algorithm', 'hex'])
       || !isFileHashAlgorithm(digest.algorithm)
       || typeof digest.hex !== 'string'
-      || digest.hex.length !== DIGEST_HEX_LENGTHS[digest.algorithm]
+      || digest.hex.length !== FILE_HASH_DIGEST_BYTES[digest.algorithm] * 2
       || !/^[0-9a-f]+$/.test(digest.hex)
       || digests.some(({ algorithm }) => algorithm === digest.algorithm)
     ) {

@@ -14,7 +14,7 @@ const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : 'Copy to cli
   <c-input-text v-model:value="value">
     <template #suffix>
       <c-tooltip :tooltip="tooltipText">
-        <c-button circle variant="text" size="small" @click="copy()">
+        <c-button circle variant="text" size="small" aria-label="Copy to clipboard" @click="copy()">
           <icon-mdi-content-copy />
         </c-button>
       </c-tooltip>

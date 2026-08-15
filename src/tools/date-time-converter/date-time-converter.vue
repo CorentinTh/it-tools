@@ -150,40 +150,42 @@ function formatDateUsingFormatter(formatter: (date: Date) => string, date?: Date
 </script>
 
 <template>
-  <div>
-    <div flex gap-2>
-      <c-input-text
-        v-model:value="inputDate"
-        autofocus
-        placeholder="Put your date string here..."
-        clearable
-        test-id="date-time-converter-input"
-        :validation="validation"
-        @update:value="onDateInputChanged"
-      />
+  <div class="c-form-layout">
+    <c-card title="Input">
+      <div grid grid-cols-1 gap-3 md:grid-cols-2>
+        <c-input-text
+          v-model:value="inputDate"
+          label="Date and time"
+          autofocus
+          placeholder="Put your date string here..."
+          clearable
+          test-id="date-time-converter-input"
+          :validation="validation"
+          @update:value="onDateInputChanged"
+        />
 
-      <c-select
-        v-model:value="formatIndex"
-        style="flex: 0 0 170px"
-        :options="formats.map(({ name }, i) => ({ label: name, value: i }))"
-        data-test-id="date-time-converter-format-select"
-      />
-    </div>
+        <c-select
+          v-model:value="formatIndex"
+          label="Input format"
+          :options="formats.map(({ name }, i) => ({ label: name, value: i }))"
+          data-test-id="date-time-converter-format-select"
+        />
+      </div>
+    </c-card>
 
-    <n-divider />
-
-    <input-copyable
-      v-for="{ name, fromDate } in formats"
-      :key="name"
-      :label="name"
-      label-width="150px"
-      label-position="left"
-      label-align="right"
-      :value="formatDateUsingFormatter(fromDate, normalizedDate)"
-      placeholder="Invalid date..."
-      :test-id="name"
-      readonly
-      mt-2
-    />
+    <c-card title="Converted values">
+      <div grid grid-cols-1 gap-3 md:grid-cols-2>
+        <input-copyable
+          v-for="{ name, fromDate } in formats"
+          :key="name"
+          :label="name"
+          :value="formatDateUsingFormatter(fromDate, normalizedDate)"
+          placeholder="Invalid date..."
+          :test-id="name"
+          readonly
+          monospace
+        />
+      </div>
+    </c-card>
   </div>
 </template>

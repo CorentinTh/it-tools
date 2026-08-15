@@ -218,7 +218,7 @@ function downloadMedia({ type, value, createdAt }: Pick<CameraMedia, 'type' | 'v
 </script>
 
 <template>
-  <div>
+  <div class="c-task-layout">
     <c-card v-if="!isSupported">
       Your browser does not support recording video from camera
     </c-card>
@@ -242,18 +242,14 @@ function downloadMedia({ type, value, createdAt }: Pick<CameraMedia, 'type' | 'v
       <div flex flex-col gap-2>
         <c-select
           v-model:value="currentCamera"
-          label-position="left"
-          label-width="60px"
-          label="Video:"
+          label="Video"
           :options="cameras.map(({ deviceId, label }) => ({ value: deviceId, label }))"
           placeholder="Select camera"
         />
         <c-select
           v-if="currentMicrophone && microphones.length > 0"
           v-model:value="currentMicrophone"
-          label="Audio:"
-          label-position="left"
-          label-width="60px"
+          label="Audio"
           :options="microphones.map(({ deviceId, label }) => ({ value: deviceId, label }))"
           placeholder="Select microphone"
         />

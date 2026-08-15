@@ -19,29 +19,49 @@ const jsonValidationRules = [
 </script>
 
 <template>
-  <c-input-text
-    v-model:value="rawLeftJson"
-    :validation-rules="jsonValidationRules"
-    label="Your first JSON"
-    placeholder="Paste your first JSON here..."
-    rows="20"
-    multiline
-    test-id="leftJson"
-    raw-text
-    monospace
-  />
+  <div class="c-tool-workbench c-diff-layout">
+    <c-input-text
+      v-model:value="rawLeftJson"
+      :validation-rules="jsonValidationRules"
+      label="Your first JSON"
+      placeholder="Paste your first JSON here..."
+      rows="20"
+      multiline
+      test-id="leftJson"
+      raw-text
+      monospace
+    />
 
-  <c-input-text
-    v-model:value="rawRightJson"
-    :validation-rules="jsonValidationRules"
-    label="Your JSON to compare"
-    placeholder="Paste your JSON to compare here..."
-    rows="20"
-    multiline
-    test-id="rightJson"
-    raw-text
-    monospace
-  />
+    <c-input-text
+      v-model:value="rawRightJson"
+      :validation-rules="jsonValidationRules"
+      label="Your JSON to compare"
+      placeholder="Paste your JSON to compare here..."
+      rows="20"
+      multiline
+      test-id="rightJson"
+      raw-text
+      monospace
+    />
 
-  <DiffsViewer :left-json="leftJson" :right-json="rightJson" />
+    <DiffsViewer class="diff-result" :left-json="leftJson" :right-json="rightJson" />
+  </div>
 </template>
+
+<style scoped>
+.c-diff-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--ui-space-4);
+}
+
+.diff-result {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 800px) {
+  .c-diff-layout {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

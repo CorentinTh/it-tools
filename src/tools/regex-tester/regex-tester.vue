@@ -13,6 +13,8 @@ import {
   getUtf8ByteLength,
   toRegexTaskError,
 } from './regex-tester.worker.protocol';
+import CCheckbox from '@/ui/c-choice-group/c-checkbox.vue';
+import CChoiceGroup from '@/ui/c-choice-group/c-choice-group.vue';
 import { useValidation } from '@/composable/validation';
 import { useQueryParam } from '@/composable/queryParams';
 
@@ -400,72 +402,75 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div max-w-600px>
-    <c-card title="Regex" mb-1>
+  <div class="c-tool-workbench c-task-layout">
+    <c-card title="Regex">
       <c-input-text
         v-model:value="regex"
         test-id="regex-pattern"
-        label="Regex to test:"
+        label="Regex to test"
         placeholder="Put the regex to test"
-
-        raw-text multiline
+        raw-text
+        multiline
         rows="3"
         :validation="regexValidation"
       />
-      <router-link target="_blank" to="/regex-memo" mb-1 mt-1>
+      <router-link target="_blank" to="/regex-memo" my-2 inline-block>
         See Regular Expression Cheatsheet
       </router-link>
-      <n-space>
-        <n-checkbox v-model:checked="global">
+
+      <CChoiceGroup
+        label="Flags"
+        description="Each flag independently changes how the expression is evaluated. Unicode and Unicode Sets are mutually exclusive."
+      >
+        <CCheckbox v-model:checked="global">
           <span title="Global search">Global search. (<code>g</code>)</span>
-        </n-checkbox>
-        <n-checkbox v-model:checked="ignoreCase">
+        </CCheckbox>
+        <CCheckbox v-model:checked="ignoreCase">
           <span title="Case-insensitive search">Case-insensitive search. (<code>i</code>)</span>
-        </n-checkbox>
-        <n-checkbox v-model:checked="multiline">
+        </CCheckbox>
+        <CCheckbox v-model:checked="multiline">
           <span title="Allows ^ and $ to match next to newline characters.">Multiline(<code>m</code>)</span>
-        </n-checkbox>
-        <n-checkbox v-model:checked="dotAll">
+        </CCheckbox>
+        <CCheckbox v-model:checked="dotAll">
           <span title="Allows . to match newline characters.">Singleline(<code>s</code>)</span>
-        </n-checkbox>
-        <n-checkbox v-model:checked="unicode">
+        </CCheckbox>
+        <CCheckbox v-model:checked="unicode">
           <span title="Unicode; treat a pattern as a sequence of Unicode code points.">Unicode(<code>u</code>)</span>
-        </n-checkbox>
-        <n-checkbox v-model:checked="unicodeSets">
+        </CCheckbox>
+        <CCheckbox v-model:checked="unicodeSets">
           <span title="An upgrade to the u mode with more Unicode features.">Unicode Sets (<code>v</code>)</span>
-        </n-checkbox>
-      </n-space>
+        </CCheckbox>
+      </CChoiceGroup>
 
       <n-divider />
 
       <c-input-text
         v-model:value="text"
         test-id="regex-text"
-        label="Text to match:"
+        label="Text to match"
         placeholder="Put the text to match"
         multiline
         raw-text
-        rows="5"
+        rows="8"
         :validation="textValidation"
       />
 
       <p mt-2 text-xs op-70>
         Pattern: {{ REGEX_MAX_PATTERN_BYTES.toLocaleString() }} bytes · input: {{ REGEX_MAX_INPUT_BYTES.toLocaleString() }} bytes · output: {{ REGEX_MAX_MATCHES }} matches.
       </p>
-      <div v-if="tasksRunning" mt-3 flex justify-end>
+      <div v-if="tasksRunning" class="c-task-actions" mt-3>
         <c-button type="warning" data-test-id="regex-cancel" @click="cancelTasks">
           Cancel computations
         </c-button>
       </div>
     </c-card>
 
-    <c-card title="Matches" mb-1 mt-3>
+    <c-card title="Matches" class="c-task-results">
       <p
-        v-if="matchStatusText"
+        class="c-task-status"
         data-test-id="regex-match-status"
         role="status"
         aria-live="polite"
-        mb-3
         text-sm
         :class="{ 'status-error': matchState.status === 'error' || matchState.status === 'timeout' }"
       >
@@ -474,56 +479,57 @@ onUnmounted(() => {
       <n-alert v-if="matchesTruncated" type="warning" mb-3>
         Results reached a safety limit; refine the pattern or input to see a complete set.
       </n-alert>
-      <n-table v-if="matches.length > 0" data-test-id="regex-matches">
-        <thead>
-          <tr>
-            <th scope="col">
-              Index in text
-            </th>
-            <th scope="col">
-              Value
-            </th>
-            <th scope="col">
-              Captures
-            </th>
-            <th scope="col">
-              Groups
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="match of matches" :key="`${match.index}:${match.value}`">
-            <td>{{ match.index }}</td>
-            <td>{{ match.value }}</td>
-            <td>
-              <ul>
-                <li v-for="capture in match.captures" :key="capture.name">
-                  "{{ capture.name }}" = {{ capture.value }} [{{ capture.start }} - {{ capture.end }}]
-                </li>
-              </ul>
-            </td>
-            <td>
-              <ul>
-                <li v-for="group in match.groups" :key="group.name">
-                  "{{ group.name }}" = {{ group.value }} [{{ group.start }} - {{ group.end }}]
-                </li>
-              </ul>
-            </td>
-          </tr>
-        </tbody>
-      </n-table>
+      <div v-if="matches.length > 0" overflow-x-auto>
+        <n-table data-test-id="regex-matches">
+          <thead>
+            <tr>
+              <th scope="col">
+                Index in text
+              </th>
+              <th scope="col">
+                Value
+              </th>
+              <th scope="col">
+                Captures
+              </th>
+              <th scope="col">
+                Groups
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="match of matches" :key="`${match.index}:${match.value}`">
+              <td>{{ match.index }}</td>
+              <td>{{ match.value }}</td>
+              <td>
+                <ul>
+                  <li v-for="capture in match.captures" :key="capture.name">
+                    "{{ capture.name }}" = {{ capture.value }} [{{ capture.start }} - {{ capture.end }}]
+                  </li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li v-for="group in match.groups" :key="group.name">
+                    "{{ group.name }}" = {{ group.value }} [{{ group.start }} - {{ group.end }}]
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </n-table>
+      </div>
       <c-alert v-else>
         No match
       </c-alert>
     </c-card>
 
-    <c-card title="Sample matching text" mt-3>
+    <c-card title="Sample matching text" class="c-task-results">
       <p
-        v-if="sampleStatusText"
+        class="c-task-status"
         data-test-id="regex-sample-status"
         role="status"
         aria-live="polite"
-        mb-3
         text-sm
         :class="{ 'status-error': sampleState.status === 'error' || sampleState.status === 'timeout' }"
       >
@@ -532,24 +538,25 @@ onUnmounted(() => {
       <pre data-test-id="regex-sample" style="white-space: pre-wrap; word-break: break-all;">{{ sample }}</pre>
     </c-card>
 
-    <c-card title="Regex Diagram" style="overflow-x: scroll;" mt-3>
+    <c-card title="Regex Diagram" class="c-task-results" overflow-x-auto>
       <p mb-3 text-xs op-70>
         Diagram rendering uses the browser DOM, so it runs only when requested and applies strict pattern, node, and output limits.
       </p>
-      <c-button
-        type="primary"
-        data-test-id="regex-diagram-run"
-        :disabled="diagramInFlight"
-        @click="renderDiagram"
-      >
-        {{ diagramInFlight ? 'Rendering diagram…' : 'Render diagram' }}
-      </c-button>
+      <div class="c-task-actions">
+        <c-button
+          type="primary"
+          data-test-id="regex-diagram-run"
+          :disabled="diagramInFlight"
+          @click="renderDiagram"
+        >
+          {{ diagramInFlight ? 'Rendering diagram…' : 'Render diagram' }}
+        </c-button>
+      </div>
       <p
-        v-if="diagramStatusText"
+        class="c-task-status"
         data-test-id="regex-diagram-status"
         role="status"
         aria-live="polite"
-        my-3
         text-sm
         :class="{ 'status-error': diagramState.status === 'error' || diagramState.status === 'timeout' }"
       >

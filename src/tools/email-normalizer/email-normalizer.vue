@@ -21,12 +21,13 @@ const { copy } = useCopy({ source: normalizedEmails, text: 'Normalized emails co
 </script>
 
 <template>
-  <div>
+  <div class="c-tool-workbench c-tool-stack">
     <div class="mb-2">
       Raw emails to normalize:
     </div>
     <c-input-text
       v-model:value="emails"
+      aria-label="Raw emails to normalize"
       placeholder="Put your emails here (one per line)..."
       rows="3"
       multiline
@@ -43,6 +44,7 @@ const { copy } = useCopy({ source: normalizedEmails, text: 'Normalized emails co
     </div>
     <c-input-text
       :value="normalizedEmails"
+      aria-label="Normalized emails"
       placeholder="Normalized emails will appear here..."
       rows="3"
       autocomplete="off"

@@ -64,10 +64,10 @@ const { copy } = useCopy({ source: () => details.value ?? '', text: 'Vendor info
 </script>
 
 <template>
-  <div>
+  <div class="c-task-layout">
     <c-input-text
       v-model:value="macAddress"
-      label="MAC address:"
+      label="MAC address"
       size="large"
       placeholder="Type a MAC address"
       clearable
@@ -76,13 +76,9 @@ const { copy } = useCopy({ source: () => details.value ?? '', text: 'Vendor info
       autocapitalize="off"
       spellcheck="false"
       :validation-rules="macAddressValidationRules"
-      mb-5
     />
 
-    <div mb-5px>
-      Vendor info:
-    </div>
-    <c-card mb-5>
+    <c-card title="Vendor information">
       <div v-if="isLoading" aria-live="polite">
         Loading local vendor information...
       </div>
@@ -105,7 +101,7 @@ const { copy } = useCopy({ source: () => details.value ?? '', text: 'Vendor info
       </div>
     </c-card>
 
-    <div flex justify-center>
+    <div class="c-task-actions">
       <c-button :disabled="isLoading || !details" @click="copy()">
         Copy vendor info
       </c-button>

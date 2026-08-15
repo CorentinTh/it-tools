@@ -28,7 +28,10 @@ const [certs, refreshCerts] = computedRefreshableAsync(
   <div style="flex: 0 0 100%">
     <div item-style="flex: 1 1 0" style="max-width: 600px" mx-auto flex gap-3>
       <n-form-item label="Bits :" v-bind="bitsValidationAttrs as any" label-placement="left" label-width="100">
-        <n-input-number v-model:value="bits" min="256" max="16384" step="8" />
+        <label w-full>
+          <span class="sr-only">RSA key size in bits</span>
+          <n-input-number v-model:value="bits" min="256" max="16384" step="8" />
+        </label>
       </n-form-item>
 
       <c-button @click="refreshCerts">

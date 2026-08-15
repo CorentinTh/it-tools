@@ -9,6 +9,8 @@ import {
   toJsonTaskError,
 } from './json-viewer.worker.protocol';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
+import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
+import CSwitch from '@/ui/c-switch/c-switch.vue';
 import { exceedsUtf8ByteLimit } from '@/utils/utf8';
 
 const inputComponent = ref<{ inputWrapperRef?: HTMLElement }>();
@@ -174,85 +176,96 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div style="flex: 0 0 100%">
-    <div style="margin: 0 auto; max-width: 760px" flex flex-wrap justify-center gap-3>
-      <c-select
-        v-model:value="formatMode"
-        data-test-id="json-format-mode"
-        label="Parsing mode:"
-        :options="formatModeOptions"
-        style="min-width: 240px"
-      />
-      <n-form-item label="Sort keys :" label-placement="left" label-width="100">
-        <n-switch v-model:value="sortKeys" />
-      </n-form-item>
-      <n-form-item label="Indent size :" label-placement="left" label-width="100" :show-feedback="false">
-        <n-input-number v-model:value="indentSize" min="0" max="10" style="width: 100px" />
-      </n-form-item>
-    </div>
-    <p
-      v-if="formatMode === 'json5'"
-      data-test-id="json-compatibility-warning"
-      role="alert"
-      mt-0
-      text-center
-      text-sm
-      class="compatibility-warning"
-    >
-      JSON5 compatibility rejects unsafe integers and non-finite numbers. Decimal and exponent values use JavaScript number semantics and may lose precision.
-    </p>
-  </div>
+  <div class="c-tool-workbench c-tool-stack">
+    <section aria-label="Formatting options">
+      <c-card>
+        <div grid grid-cols-1 gap-3 md:grid-cols-3>
+          <c-select
+            v-model:value="formatMode"
+            data-test-id="json-format-mode"
+            label="Parsing mode"
+            :options="formatModeOptions"
+          />
+          <CSwitch id="json-sort-keys" v-model:value="sortKeys" label="Sort keys" label-position="top" />
+          <c-field label="Indent size (0–10)" label-for="json-indent-size">
+            <CInputNumber
+              id="json-indent-size"
+              v-model:value="indentSize"
+              test-id="json-indent-size"
+              :min="0"
+              :max="10"
+            />
+          </c-field>
+        </div>
+      </c-card>
+      <p
+        v-if="formatMode === 'json5'"
+        data-test-id="json-compatibility-warning"
+        role="alert"
+        mt-0
+        text-center
+        text-sm
+        class="compatibility-warning"
+      >
+        JSON5 compatibility rejects unsafe integers and non-finite numbers. Decimal and exponent values use JavaScript number semantics and may lose precision.
+      </p>
+    </section>
 
-  <n-form-item
-    label="Your raw JSON"
-    :feedback="hasValidationError ? formatState.message : ''"
-    :validation-status="hasValidationError ? 'error' : undefined"
-  >
-    <c-input-text
-      ref="inputComponent"
-      v-model:value="rawJson"
-      placeholder="Paste your raw JSON here..."
-      rows="20"
-      multiline
-      autocomplete="off"
-      autocorrect="off"
-      autocapitalize="off"
-      spellcheck="false"
-      monospace
-    />
-  </n-form-item>
-  <div mb-4 flex flex-wrap items-center justify-end gap-2>
-    <c-button
-      type="primary"
-      data-test-id="json-format-run"
-      :disabled="formatState.status === 'running'"
-      @click="runFormat"
-    >
-      {{ formatState.status === 'running' ? 'Formatting…' : 'Format' }}
-    </c-button>
-    <c-button
-      v-if="canCancel"
-      type="warning"
-      data-test-id="json-format-cancel"
-      @click="cancelFormat"
-    >
-      Cancel
-    </c-button>
+    <div class="c-tool-panel">
+      <c-field
+        label="Your raw JSON"
+        :feedback="hasValidationError ? formatState.message : ''"
+        :status="hasValidationError ? 'error' : 'default'"
+      >
+        <c-input-text
+          ref="inputComponent"
+          v-model:value="rawJson"
+          aria-label="Your raw JSON"
+          placeholder="Paste your raw JSON here..."
+          rows="20"
+          multiline
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+          monospace
+        />
+      </c-field>
+      <div mb-4 flex flex-wrap items-center justify-end gap-2>
+        <c-button
+          type="primary"
+          data-test-id="json-format-run"
+          :disabled="formatState.status === 'running'"
+          @click="runFormat"
+        >
+          {{ formatState.status === 'running' ? 'Formatting…' : 'Format' }}
+        </c-button>
+        <c-button
+          v-if="canCancel"
+          type="warning"
+          data-test-id="json-format-cancel"
+          @click="cancelFormat"
+        >
+          Cancel
+        </c-button>
+      </div>
+      <p
+        v-if="formatState.message"
+        data-test-id="json-format-status"
+        role="status"
+        aria-live="polite"
+        mb-0
+        text-sm
+        :class="{ 'status-error': hasValidationError }"
+      >
+        {{ formatState.message }}
+      </p>
+    </div>
+
+    <c-field class="c-tool-panel" label="Prettified version of your JSON">
+      <TextareaCopyable :value="cleanJson" language="json" :follow-height-of="inputComponent?.inputWrapperRef" />
+    </c-field>
   </div>
-  <p
-    v-if="formatState.message"
-    data-test-id="json-format-status"
-    role="status"
-    aria-live="polite"
-    mb-4
-    text-sm
-    :class="{ 'status-error': hasValidationError }"
-  >
-    {{ formatState.message }}
-  </p>
-  <n-form-item label="Prettified version of your JSON">
-    <TextareaCopyable :value="cleanJson" language="json" :follow-height-of="inputComponent?.inputWrapperRef" />
-  </n-form-item>
 </template>
 
 <style lang="less" scoped>

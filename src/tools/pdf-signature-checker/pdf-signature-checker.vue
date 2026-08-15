@@ -25,11 +25,11 @@ async function onVerifyClicked(uploadedFile: File) {
 </script>
 
 <template>
-  <div style="flex: 0 0 100%">
-    <div mx-auto max-w-600px>
+  <div class="c-task-layout">
+    <c-card title="Local PDF">
       <c-file-upload title="Drag and drop a PDF file here, or click to select a file" accept=".pdf" @file-upload="onVerifyClicked" />
 
-      <c-card v-if="file" mt-4 flex gap-2>
+      <div v-if="file" mt-4 flex flex-wrap gap-2>
         <div font-bold>
           {{ file.name }}
         </div>
@@ -37,23 +37,20 @@ async function onVerifyClicked(uploadedFile: File) {
         <div>
           {{ formatBytes(file.size) }}
         </div>
+      </div>
+
+      <p v-if="status === 'loading'" class="c-task-status mt-4" role="status" aria-live="polite">
+        Checking PDF signatures…
+      </p>
+      <c-alert v-else-if="status === 'error'" mt-4>
+        No signatures found in the provided file.
+      </c-alert>
+    </c-card>
+
+    <div v-if="status === 'parsed' && signatures.length" class="c-task-results c-form-layout">
+      <c-card v-for="(signature, index) of signatures" :key="index" :title="`Signature ${index + 1} certificates`">
+        <pdf-signature-details :signature="signature" />
       </c-card>
-
-      <div v-if="status === 'error'">
-        <c-alert mt-4>
-          No signatures found in the provided file.
-        </c-alert>
-      </div>
-    </div>
-  </div>
-
-  <div v-if="status === 'parsed' && signatures.length" style="flex: 0 0 100%" mt-5 flex flex-col gap-4>
-    <div v-for="(signature, index) of signatures" :key="index">
-      <div mb-2 font-bold>
-        Signature {{ index + 1 }} certificates :
-      </div>
-
-      <pdf-signature-details :signature="signature" />
     </div>
   </div>
 </template>

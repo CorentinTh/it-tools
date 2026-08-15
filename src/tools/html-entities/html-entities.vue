@@ -13,62 +13,58 @@ const { copy: copyUnescaped } = useCopy({ source: unescapeOutput });
 </script>
 
 <template>
-  <c-card title="Escape html entities">
-    <n-form-item label="Your string :">
+  <div class="c-tool-workbench c-tool-stack">
+    <c-card title="Escape html entities">
       <c-input-text
         v-model:value="escapeInput"
-        multiline
+        label="Input string"
+
         placeholder="The string to escape"
-        rows="3"
-        autosize
-        raw-text
+        rows="8"
+        raw-text multiline
       />
-    </n-form-item>
 
-    <n-form-item label="Your string escaped :">
       <c-input-text
-        multiline
-        readonly
-        placeholder="Your string escaped"
+        class="mt-4"
         :value="escapeOutput"
-        rows="3"
-        autosize
+        label="Escaped string"
+        multiline
+        placeholder="Your string escaped"
+        rows="8"
+        readonly
       />
-    </n-form-item>
 
-    <div flex justify-center>
-      <c-button @click="copyEscaped()">
-        Copy
-      </c-button>
-    </div>
-  </c-card>
-  <c-card title="Unescape html entities">
-    <n-form-item label="Your escaped string :">
+      <div class="c-generator-actions mt-4">
+        <c-button @click="copyEscaped()">
+          Copy
+        </c-button>
+      </div>
+    </c-card>
+    <c-card title="Unescape html entities">
       <c-input-text
         v-model:value="unescapeInput"
+        label="Escaped input string"
         multiline
         placeholder="The string to unescape"
-        rows="3"
-        autosize
+        rows="8"
         raw-text
       />
-    </n-form-item>
 
-    <n-form-item label="Your string unescaped :">
       <c-input-text
+        class="mt-4"
         :value="unescapeOutput"
+        label="Unescaped string"
         multiline
-        readonly
         placeholder="Your string unescaped"
-        rows="3"
-        autosize
+        rows="8"
+        readonly
       />
-    </n-form-item>
 
-    <div flex justify-center>
-      <c-button @click="copyUnescaped()">
-        Copy
-      </c-button>
-    </div>
-  </c-card>
+      <div class="c-generator-actions mt-4">
+        <c-button @click="copyUnescaped()">
+          Copy
+        </c-button>
+      </div>
+    </c-card>
+  </div>
 </template>

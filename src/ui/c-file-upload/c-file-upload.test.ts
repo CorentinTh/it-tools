@@ -1,6 +1,7 @@
-import { describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
 import { defineComponent, h } from 'vue';
+import { createPinia, setActivePinia } from 'pinia';
 import CFileUpload from './c-file-upload.vue';
 
 function setFileSelection(input: HTMLInputElement, files: File[]): void {
@@ -15,10 +16,11 @@ function setFileSelection(input: HTMLInputElement, files: File[]): void {
   });
 }
 
-function mountFileUpload() {
+function mountFileUpload(props: { disabled?: boolean; title?: string } = {}) {
   const uploadedFiles: File[] = [];
   const TestHost = defineComponent({
     setup: () => () => h(CFileUpload, {
+      ...props,
       onFileUpload: (file: File) => uploadedFiles.push(file),
     }, {
       default: () => 'Upload a file',
@@ -29,6 +31,46 @@ function mountFileUpload() {
 }
 
 describe('CFileUpload', () => {
+  beforeEach(() => {
+    setActivePinia(createPinia());
+  });
+
+  it('exposes one keyboard-operable labelled drop-zone trigger', async () => {
+    const { wrapper } = mountFileUpload({ title: 'Upload certificate' });
+    const dropZone = wrapper.get('.c-file-upload');
+    const input = wrapper.get<HTMLInputElement>('input[type="file"]');
+    const click = vi.spyOn(input.element, 'click');
+
+    expect(dropZone.attributes('role')).toBe('button');
+    expect(dropZone.attributes('tabindex')).toBe('0');
+    expect(dropZone.attributes('aria-label')).toBe('Upload certificate');
+
+    await dropZone.trigger('keydown', { key: 'Enter' });
+    await dropZone.trigger('keydown', { key: ' ' });
+
+    expect(click).toHaveBeenCalledTimes(2);
+  });
+
+  it('makes the native input and drop zone inert when disabled', async () => {
+    const { wrapper } = mountFileUpload({ disabled: true });
+    const dropZone = wrapper.get('.c-file-upload');
+    const input = wrapper.get<HTMLInputElement>('input[type="file"]');
+    const click = vi.spyOn(input.element, 'click');
+
+    expect(dropZone.attributes('aria-disabled')).toBe('true');
+    expect(dropZone.attributes('tabindex')).toBe('-1');
+    expect(input.element.disabled).toBe(true);
+
+    await dropZone.trigger('click');
+    await dropZone.trigger('keydown', { key: 'Enter' });
+    await dropZone.trigger('drop', {
+      dataTransfer: { files: [new File(['content'], 'disabled.txt')] },
+    });
+
+    expect(click).not.toHaveBeenCalled();
+    expect(wrapper.emitted('fileUpload')).toBeUndefined();
+  });
+
   it('clears the native input so the same file can be selected again', async () => {
     const { uploadedFiles, wrapper } = mountFileUpload();
     const input = wrapper.get<HTMLInputElement>('input[type="file"]');

@@ -6,28 +6,29 @@ const crackTimeEstimation = computed(() => getPasswordCrackTimeEstimation({ pass
 
 const details = computed(() => [
   {
-    label: 'Password length:',
+    label: 'Password length',
     value: crackTimeEstimation.value.passwordLength,
   },
   {
-    label: 'Entropy:',
+    label: 'Entropy',
     value: Math.round(crackTimeEstimation.value.entropy * 100) / 100,
   },
   {
-    label: 'Character set size:',
+    label: 'Character set size',
     value: crackTimeEstimation.value.charsetLength,
   },
   {
-    label: 'Score:',
+    label: 'Score',
     value: `${Math.round(crackTimeEstimation.value.score * 100)} / 100`,
   },
 ]);
 </script>
 
 <template>
-  <div flex flex-col gap-3>
+  <div class="c-form-layout">
     <c-input-text
       v-model:value="password"
+      label="Password"
       type="password"
       placeholder="Enter a password..."
       clearable
@@ -44,15 +45,8 @@ const details = computed(() => [
         {{ crackTimeEstimation.crackDurationFormatted }}
       </div>
     </c-card>
-    <c-card>
-      <div v-for="({ label, value }) of details" :key="label" flex gap-3>
-        <div flex-1 text-right op-60>
-          {{ label }}
-        </div>
-        <div flex-1 text-left>
-          {{ value }}
-        </div>
-      </div>
+    <c-card title="Strength details">
+      <c-key-value-list :items="details.map(item => ({ ...item, showCopyButton: false }))" />
     </c-card>
     <div op-70>
       <span font-bold>Note: </span>

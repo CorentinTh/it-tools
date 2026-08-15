@@ -52,76 +52,71 @@ const secretValidationRules = [
 </script>
 
 <template>
-  <div style="max-width: 350px">
-    <c-input-text
-      v-model:value="secret"
-      label="Secret"
-      placeholder="Paste your TOTP secret..."
-      mb-5
-      :validation-rules="secretValidationRules"
-    >
-      <template #suffix>
-        <c-tooltip tooltip="Generate a new random secret">
-          <c-button circle variant="text" size="small" @click="refreshSecret">
-            <icon-mdi-refresh />
-          </c-button>
-        </c-tooltip>
-      </template>
-    </c-input-text>
+  <div class="c-generator-layout">
+    <c-card class="c-generator-options" title="Secret and current codes">
+      <c-input-text
+        v-model:value="secret"
+        label="Secret"
+        placeholder="Paste your TOTP secret..."
+        mb-5
+        :validation-rules="secretValidationRules"
+      >
+        <template #suffix>
+          <c-tooltip tooltip="Generate a new random secret">
+            <c-button circle variant="text" size="small" aria-label="Generate a new random secret" @click="refreshSecret">
+              <icon-mdi-refresh />
+            </c-button>
+          </c-tooltip>
+        </template>
+      </c-input-text>
 
-    <div>
-      <TokenDisplay :tokens="tokens" />
+      <div>
+        <TokenDisplay :tokens="tokens" />
 
-      <n-progress :percentage="(100 * interval) / 30" :color="theme.primaryColor" :show-indicator="false" />
-      <div style="text-align: center">
-        Next in {{ String(Math.floor(30 - interval)).padStart(2, '0') }}s
+        <n-progress :percentage="(100 * interval) / 30" :color="theme.primaryColor" :show-indicator="false" />
+        <div style="text-align: center">
+          Next in {{ String(Math.floor(30 - interval)).padStart(2, '0') }}s
+        </div>
       </div>
-    </div>
-    <div mt-4 flex flex-col items-center justify-center gap-3>
-      <n-image :src="qrcode" />
-      <c-button :href="keyUri" target="_blank">
-        Open Key URI in new tab
-      </c-button>
-    </div>
-  </div>
-  <div style="max-width: 350px">
-    <InputCopyable
-      label="Secret in hexadecimal"
-      :value="base32toHex(secret)"
-      readonly
-      placeholder="Secret in hex will be displayed here"
-      mb-5
-    />
+      <div mt-4 flex flex-col items-center justify-center gap-3>
+        <img :src="qrcode" alt="OTP setup QR code" width="210">
+        <c-button :href="keyUri" target="_blank">
+          Open Key URI in new tab
+        </c-button>
+      </div>
+    </c-card>
 
-    <InputCopyable
-      label="Epoch"
-      :value="Math.floor(now / 1000).toString()"
-      readonly
-      mb-5
-      placeholder="Epoch in sec will be displayed here"
-    />
+    <c-card class="c-generator-output" title="Technical details">
+      <div grid grid-cols-1 gap-3 md:grid-cols-2>
+        <InputCopyable
+          label="Secret in hexadecimal"
+          :value="base32toHex(secret)"
+          readonly
+          placeholder="Secret in hex will be displayed here"
+        />
 
-    <p>Iteration</p>
+        <InputCopyable
+          label="Epoch"
+          :value="Math.floor(now / 1000).toString()"
+          readonly
+          placeholder="Epoch in sec will be displayed here"
+        />
 
-    <InputCopyable
-      :value="String(getCounterFromTime({ now, timeStep: 30 }))"
-      readonly
-      label="Count:"
-      label-position="left"
-      label-width="90px"
-      label-align="right"
-      placeholder="Iteration count will be displayed here"
-    />
+        <InputCopyable
+          :value="String(getCounterFromTime({ now, timeStep: 30 }))"
+          readonly
+          label="Iteration count"
+          placeholder="Iteration count will be displayed here"
+        />
 
-    <InputCopyable
-      :value="getCounterFromTime({ now, timeStep: 30 }).toString(16).padStart(16, '0')"
-      readonly
-      placeholder="Iteration count in hex will be displayed here"
-      label-position="left"
-      label-width="90px"
-      label-align="right"
-      label="Padded hex:"
-    />
+        <InputCopyable
+          :value="getCounterFromTime({ now, timeStep: 30 }).toString(16).padStart(16, '0')"
+          readonly
+          placeholder="Iteration count in hex will be displayed here"
+          label="Padded hexadecimal count"
+        />
+      </div>
+    </c-card>
   </div>
 </template>
 

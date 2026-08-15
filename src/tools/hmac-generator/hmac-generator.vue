@@ -46,20 +46,26 @@ const { copy } = useCopy({ source: hmac });
 </script>
 
 <template>
-  <div flex flex-col gap-4>
-    <c-input-text v-model:value="plainText" multiline raw-text placeholder="Plain text to compute the hash..." rows="3" autosize autofocus label="Plain text to compute the hash" />
+  <div class="c-tool-workbench c-tool-stack">
+    <c-input-text
+      v-model:value="plainText"
+      label="Plain text to compute the hash"
+      placeholder="Plain text to compute the hash..."
+      rows="8"
+      multiline
+      raw-text
+      autofocus
+    />
     <c-input-text v-model:value="secret" raw-text placeholder="Enter the secret key..." label="Secret key" clearable />
 
-    <div flex gap-2>
+    <div grid grid-cols-1 gap-3 md:grid-cols-2>
       <c-select
         v-model:value="hashFunction" label="Hashing function"
-        flex-1
         placeholder="Select an hashing function..."
         :options="Object.keys(algos).map((label) => ({ label, value: label }))"
       />
       <c-select
         v-model:value="encoding" label="Output encoding"
-        flex-1
         placeholder="Select the result encoding..."
         :options="[
           {
@@ -82,7 +88,7 @@ const { copy } = useCopy({ source: hmac });
       />
     </div>
     <input-copyable v-model:value="hmac" type="textarea" placeholder="The result of the HMAC..." label="HMAC of your text" />
-    <div flex justify-center>
+    <div class="c-generator-actions">
       <c-button @click="copy()">
         Copy HMAC
       </c-button>

@@ -3,6 +3,7 @@ import { ulid } from 'ulid';
 import _ from 'lodash';
 import { computedRefreshable } from '@/composable/computedRefreshable';
 import { useCopy } from '@/composable/copy';
+import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
 
 const amount = useStorage('ulid-generator-amount', 1);
 const formats = [{ label: 'Raw', value: 'raw' }, { label: 'JSON', value: 'json' }] as const;
@@ -22,23 +23,47 @@ const { copy } = useCopy({ source: ulids, text: 'ULIDs copied to the clipboard' 
 </script>
 
 <template>
-  <div flex flex-col justify-center gap-2>
-    <div flex items-center>
-      <label w-75px> Quantity:</label>
-      <n-input-number v-model:value="amount" min="1" max="100" flex-1 />
-    </div>
+  <div class="c-generator-layout">
+    <c-card class="c-generator-options">
+      <div grid grid-cols-1 gap-3 md:grid-cols-2>
+        <c-field label="Quantity (1–100)" label-for="ulid-quantity">
+          <CInputNumber
+            id="ulid-quantity"
+            v-model:value="amount"
+            test-id="ulid-quantity"
+            min="1"
+            max="100"
+            w-full
+          />
+        </c-field>
 
-    <c-buttons-select v-model:value="format" :options="formats" label="Format: " label-width="75px" />
-
-    <c-card mt-5 flex data-test-id="ulids">
-      <pre m-0 m-x-auto>{{ ulids }}</pre>
+        <c-buttons-select
+          v-model:value="format"
+          :options="formats"
+          label="Format"
+          label-position="top"
+        />
+      </div>
     </c-card>
 
-    <div flex justify-center gap-2>
-      <c-button data-test-id="refresh" @click="refreshUlids()">
-        Refresh
+    <c-input-text
+      class="c-generator-output"
+      :value="ulids"
+      aria-label="Generated ULIDs"
+      placeholder="Your ULIDs"
+      test-id="ulids"
+      rows="12"
+      readonly
+      raw-text
+      multiline
+      monospace
+    />
+
+    <div class="c-generator-actions">
+      <c-button type="primary" data-test-id="refresh" @click="refreshUlids()">
+        Generate
       </c-button>
-      <c-button @click="copy()">
+      <c-button data-test-id="ulid-copy" @click="copy()">
         Copy
       </c-button>
     </div>

@@ -16,6 +16,7 @@ import {
 import type { NanoIdOptions, NanoIdValidation } from './nanoid-generator.service';
 import { useCopy } from '@/composable/copy';
 import { downloadTextFile } from '@/composable/downloadText';
+import CSwitch from '@/ui/c-switch/c-switch.vue';
 
 const { t } = useI18n();
 
@@ -125,8 +126,8 @@ generate();
 </script>
 
 <template>
-  <div flex flex-col gap-3>
-    <c-card>
+  <div class="c-generator-layout">
+    <c-card class="c-generator-options">
       <div grid grid-cols-1 gap-3 md:grid-cols-2>
         <c-input-text
           id="nanoid-length"
@@ -149,14 +150,13 @@ generate();
         />
       </div>
 
-      <div mt-4 flex items-center gap-3>
-        <label for="nanoid-custom-alphabet" min-w-150px>{{ t('tools.nanoid-generator.customAlphabet') }}</label>
-        <n-switch
-          id="nanoid-custom-alphabet"
-          v-model:value="useCustomAlphabet"
-          data-test-id="nanoid-custom-alphabet"
-        />
-      </div>
+      <CSwitch
+        id="nanoid-custom-alphabet"
+        v-model:value="useCustomAlphabet"
+        :label="t('tools.nanoid-generator.customAlphabet')"
+        test-id="nanoid-custom-alphabet"
+        class="mt-4"
+      />
 
       <c-input-text
         v-if="useCustomAlphabet"
@@ -167,7 +167,7 @@ generate();
         test-id="nanoid-alphabet"
         class="mt-3"
 
-        raw-text clearable monospace
+        raw-text monospace clearable
       />
 
       <p mt-3 text-sm op-70>
@@ -231,7 +231,9 @@ generate();
     </c-alert>
 
     <c-input-text
+      class="c-generator-output"
       :value="output"
+      aria-label="Generated NanoIDs"
       :placeholder="t('tools.nanoid-generator.outputPlaceholder')"
       test-id="nanoid-output"
 
@@ -239,7 +241,7 @@ generate();
       :rows="12"
     />
 
-    <div flex flex-wrap justify-center gap-2>
+    <div class="c-generator-actions">
       <c-button
         type="primary"
         :disabled="!validation.isValid"

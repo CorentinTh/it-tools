@@ -1,0 +1,103 @@
+:root {
+  --ui-space-1: 4px;
+  --ui-space-2: 8px;
+  --ui-space-3: 12px;
+  --ui-space-4: 16px;
+  --ui-space-6: 24px;
+  --ui-space-8: 32px;
+  --ui-control-height-small: 28px;
+  --ui-control-height-medium: 34px;
+  --ui-control-height-large: 40px;
+  --ui-radius-control: 4px;
+  --ui-radius-card: 6px;
+  --ui-focus-color: #7868f4;
+  --ui-content-compact: 600px;
+  --ui-content-wide: 1200px;
+  --ui-field-short: 120px;
+  --ui-field-normal: 320px;
+}
+
+.app-root--dark {
+  --ui-focus-color: #8777ff;
+}
+
+/*
+ * Tool layout vocabulary:
+ * - default route roots remain compact;
+ * - workbenches use the available content width up to the shared wide limit;
+ * - transformer workbenches are always vertical. Only real diff tools may use
+ *   side-by-side editors.
+ */
+.c-tool-workbench {
+  width: 100%;
+  min-width: 0;
+  max-width: var(--ui-content-wide);
+  flex: 1 1 var(--ui-content-wide) !important;
+}
+
+.c-tool-stack {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--ui-space-6);
+}
+
+.c-tool-panel {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Generator routes share NanoID's options -> output -> actions rhythm. */
+.c-generator-layout {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--ui-space-3);
+}
+
+.c-generator-options,
+.c-generator-output {
+  width: 100%;
+  min-width: 0;
+}
+
+.c-generator-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--ui-space-2);
+}
+
+/* Explicit worker/file tasks share options -> inputs -> actions -> status -> results. */
+.c-task-layout {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--ui-space-4);
+}
+
+.c-task-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--ui-space-2);
+}
+
+.c-task-status {
+  min-height: 20px;
+}
+
+.c-task-results {
+  width: 100%;
+  min-width: 0;
+}
+
+.c-form-layout {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--ui-space-4);
+}

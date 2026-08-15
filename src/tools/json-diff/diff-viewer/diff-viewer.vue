@@ -3,6 +3,7 @@ import _ from 'lodash';
 import { diff } from '../json-diff.models';
 import { DiffRootViewer } from './diff-viewer.models';
 import { useAppTheme } from '@/ui/theme/themes';
+import CSwitch from '@/ui/c-switch/c-switch.vue';
 
 const props = defineProps<{ leftJson: unknown; rightJson: unknown }>();
 const onlyShowDifferences = ref(false);
@@ -20,9 +21,12 @@ const showResults = computed(() => !_.isUndefined(leftJson.value) && !_.isUndefi
 <template>
   <div v-if="showResults">
     <div flex justify-center>
-      <n-form-item label="Only show differences" label-placement="left">
-        <n-switch v-model:value="onlyShowDifferences" />
-      </n-form-item>
+      <CSwitch
+        id="json-diff-only-differences"
+        v-model:value="onlyShowDifferences"
+        label="Only show differences"
+        max-w-320px
+      />
     </div>
 
     <c-card data-test-id="diff-result">

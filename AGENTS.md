@@ -52,6 +52,27 @@ pnpm test:e2e --project=chromium --reporter=line
 `pnpm test:unit:watch` only when watch mode is intentional. Browser binaries
 must match the pinned Playwright version.
 
+## Orca Browser workflow
+
+When an Orca embedded browser tab is available, use the `orca-cli` skill and
+Orca browser commands instead of the generic in-app browser, Playwright, or
+desktop Computer Use for interactive review. Read `.ai/ORCA_BROWSER.md` before
+starting or diagnosing the local browser session.
+
+- Discover and reuse the existing tab with `orca tab list --json`; keep its
+  `browserPageId` for explicit `--page` targeting when more than one tab exists.
+- Run the application in a separate Orca terminal. Never send shell commands to
+  an agent terminal merely because it is the active terminal.
+- Use `pnpm dev --host 127.0.0.1 --port 8080` for current-source UI work.
+  `vite preview` serves `dist/` and is valid only after an intentional fresh
+  `pnpm build`; a copied or old `dist/` must not be treated as current source.
+- If the UI still shows old colors, routes, or controls after switching servers,
+  inspect the loaded scripts, service-worker controller, and Cache Storage.
+  Clear only the affected localhost origin's stale PWA registration/cache, then
+  reload and verify that dev mode loads `/@vite/client` and `/src/main.ts`.
+- Use a snapshot/interact/re-snapshot loop. Browser element references expire
+  after navigation or DOM-changing interaction.
+
 ## Session restoration and handoff
 
 - Treat Git-tracked files as the only portable project state. Do not copy

@@ -20,4 +20,13 @@ test.describe('Tool - XML formatter', () => {
   <bar>baz</bar>
 </foo>`.trim());
   });
+
+  test('uses shared full-width formatter controls without mobile overflow', async ({ page }) => {
+    await expect(page.getByRole('switch', { name: 'Collapse content' })).toBeVisible();
+    await expect(page.getByRole('spinbutton', { name: 'Indent size (0–10)' })).toHaveAttribute('aria-valuenow', '2');
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    const hasHorizontalOverflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
+    expect(hasHorizontalOverflow).toBe(false);
+  });
 });

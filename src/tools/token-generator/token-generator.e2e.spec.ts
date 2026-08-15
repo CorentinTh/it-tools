@@ -9,9 +9,9 @@ test.describe('Tool - Token generator', () => {
     await expect(page).toHaveTitle('Token generator - IT Tools');
   });
 
-  test('New token on refresh', async ({ page }) => {
+  test('New token on Generate', async ({ page }) => {
     const initialToken = await page.getByPlaceholder('The token...').inputValue();
-    await page.getByRole('button', { name: 'Refresh' }).click();
+    await page.getByRole('button', { name: 'Generate' }).click();
     const newToken = await page.getByPlaceholder('The token...').inputValue();
 
     expect(newToken).not.toEqual(initialToken);

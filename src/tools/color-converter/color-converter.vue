@@ -7,6 +7,7 @@ import hwbPlugin from 'colord/plugins/hwb';
 import namesPlugin from 'colord/plugins/names';
 import lchPlugin from 'colord/plugins/lch';
 import { buildColorFormat } from './color-converter.models';
+import CColorPicker from '@/ui/c-color-picker/c-color-picker.vue';
 
 extend([cmykPlugin, hwbPlugin, namesPlugin, lchPlugin]);
 
@@ -73,31 +74,30 @@ function updateColorValue(value: Colord | undefined, omitLabel?: string) {
 </script>
 
 <template>
-  <c-card>
-    <template v-for="({ label, parse, placeholder, validation, type }, key) in formats" :key="key">
-      <input-copyable
-        v-if="type === 'text'"
-        v-model:value="formats[key].value.value"
-        :test-id="`input-${key}`"
-        :label="`${label}:`"
-        label-position="left"
-        label-width="100px"
-        label-align="right"
-        :placeholder="placeholder"
-        :validation="validation"
-        raw-text
-        clearable
-        mt-2
-        @update:value="(v:string) => updateColorValue(parse(v), key)"
-      />
-
-      <n-form-item v-else-if="type === 'color-picker'" :label="`${label}:`" label-width="100" label-placement="left" :show-feedback="false">
-        <n-color-picker
+  <c-card class="c-form-layout">
+    <div grid grid-cols-1 gap-3 md:grid-cols-2>
+      <template v-for="({ label, parse, placeholder, validation, type }, key) in formats" :key="key">
+        <input-copyable
+          v-if="type === 'text'"
           v-model:value="formats[key].value.value"
-          placement="bottom-end"
+          :test-id="`input-${key}`"
+          :label="label"
+          :placeholder="placeholder"
+          :validation="validation"
+          raw-text
+          clearable
           @update:value="(v:string) => updateColorValue(parse(v), key)"
         />
-      </n-form-item>
-    </template>
+
+        <c-field v-else-if="type === 'color-picker'" :label="label">
+          <CColorPicker
+            v-model:value="formats[key].value.value"
+            :aria-label="label"
+            placement="bottom-end"
+            @update:value="(v:string) => updateColorValue(parse(v), key)"
+          />
+        </c-field>
+      </template>
+    </div>
   </c-card>
 </template>

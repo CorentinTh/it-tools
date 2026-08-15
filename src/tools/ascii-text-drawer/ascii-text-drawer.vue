@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import figlet from 'figlet';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
+import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
 
 const input = ref('Ascii ART');
 const font = useStorage('ascii-text-drawer:font', 'Standard');
@@ -58,39 +59,41 @@ const fonts = ['1Row', '3-D', '3D Diagonal', '3D-ASCII', '3x5', '4Max', '5 Line 
 </script>
 
 <template>
-  <c-card style="max-width: 600px;">
-    <c-input-text
-      v-model:value="input"
-      label="Your text:"
-      placeholder="Your text to draw"
-      raw-text
-      multiline
-      rows="4"
-    />
+  <div class="c-tool-workbench c-tool-stack">
+    <c-card>
+      <c-input-text
+        v-model:value="input"
+        label="Your text"
+        placeholder="Your text to draw"
+        raw-text
+        multiline
+        rows="4"
+      />
 
-    <n-divider />
+      <n-divider />
 
-    <n-grid cols="4" x-gap="12" w-full>
-      <n-gi span="2">
+      <div grid grid-cols-1 gap-3 md:grid-cols-2>
         <c-select
           v-model:value="font"
           label-position="top"
-          label="Font:"
+          label="Font"
           :options="fonts"
           searchable="true"
           placeholder="Select font to use"
         />
-      </n-gi>
-      <n-gi span="2">
-        <n-form-item label="Width:" label-placement="top" label-width="100" :show-feedback="false">
-          <n-input-number v-model:value="width" min="0" max="10000" w-full placeholder="Width of the text" />
-        </n-form-item>
-      </n-gi>
-    </n-grid>
+        <c-field label="Output width (0–10,000)" label-for="ascii-output-width">
+          <CInputNumber
+            id="ascii-output-width"
+            v-model:value="width"
+            :min="0"
+            :max="10000"
+            placeholder="Width of the text"
+          />
+        </c-field>
+      </div>
+    </c-card>
 
-    <n-divider />
-
-    <div v-if="processing" flex items-center justify-center>
+    <div v-if="processing" class="c-task-status" flex items-center justify-center role="status">
       <n-spin size="medium" />
       <span class="ml-2">Loading font...</span>
     </div>
@@ -99,12 +102,12 @@ const fonts = ['1Row', '3-D', '3D Diagonal', '3D-ASCII', '3x5', '4Max', '5 Line 
       Current settings resulted in error.
     </c-alert>
 
-    <n-form-item v-if="!processing && !errored" label="Ascii Art text:">
+    <c-field v-if="!processing && !errored" class="c-tool-panel" label="ASCII art text">
       <TextareaCopyable
         :value="output"
         mb-1 mt-1
         copy-placement="outside"
       />
-    </n-form-item>
-  </c-card>
+    </c-field>
+  </div>
 </template>

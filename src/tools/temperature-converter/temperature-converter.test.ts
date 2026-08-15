@@ -1,9 +1,9 @@
-import { NInputNumber } from 'naive-ui';
 import { shallowMount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 import { describe, expect, it } from 'vitest';
 import TemperatureConverter from './temperature-converter.vue';
 import { type TemperatureScale, temperatureBounds, temperatureScales } from './temperature-converter.models';
+import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
 
 function mountTemperatureConverter() {
   const wrapper = shallowMount(TemperatureConverter, {
@@ -14,7 +14,7 @@ function mountTemperatureConverter() {
 
   const inputFor = (scale: TemperatureScale) => {
     const input = wrapper
-      .findAllComponents(NInputNumber)
+      .findAllComponents(CInputNumber)
       .find(component => component.attributes('data-testid') === `temperature-${scale}`);
 
     if (!input) {
@@ -32,8 +32,16 @@ describe('temperature-converter component', () => {
     const { inputFor } = mountTemperatureConverter();
 
     for (const scale of temperatureScales) {
-      expect(inputFor(scale).props('min')).toBe(temperatureBounds[scale].min);
-      expect(inputFor(scale).props('max')).toBe(temperatureBounds[scale].max);
+      for (const bound of ['min', 'max'] as const) {
+        const expected = temperatureBounds[scale][bound];
+        const actual = inputFor(scale).attributes(bound);
+        if (expected === undefined) {
+          expect(actual).toBeUndefined();
+        }
+        else {
+          expect(Number(actual)).toBe(expected);
+        }
+      }
     }
   });
 

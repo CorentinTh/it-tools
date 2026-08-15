@@ -5,6 +5,7 @@ import { withDefaultOnError } from '@/utils/defaults';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 import { textToBase64 } from '@/utils/base64';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
+import CInputText from '@/ui/c-input-text/c-input-text.vue';
 
 const dockerRun = ref(
   'docker run -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock:ro --restart always --log-opt max-size=1g nginx',
@@ -27,27 +28,35 @@ const errors = computed(() =>
 );
 const dockerComposeBase64 = computed(() => `data:application/yaml;base64,${textToBase64(dockerCompose.value)}`);
 const { download } = useDownloadFileFromBase64({ source: dockerComposeBase64, filename: 'docker-compose.yml' });
+const inputElement = ref<typeof CInputText>();
 </script>
 
 <template>
-  <div>
-    <c-input-text
-      v-model:value="dockerRun"
-      label="Your docker run command:"
-      style="font-family: monospace"
-      multiline
-      raw-text
-      monospace
-      placeholder="Your docker run command to convert..."
-      rows="3"
-    />
+  <div class="c-tool-workbench c-tool-stack">
+    <div class="c-tool-panel">
+      <CInputText
+        ref="inputElement"
+        v-model:value="dockerRun"
+        label="Docker run command"
+        raw-text multiline monospace
+        placeholder="Your docker run command to convert..."
+        rows="18"
+      />
+    </div>
 
-    <n-divider />
-
-    <TextareaCopyable :value="dockerCompose" language="yaml" />
+    <div class="c-tool-panel">
+      <div mb-5px>
+        Docker compose output
+      </div>
+      <TextareaCopyable
+        :value="dockerCompose"
+        language="yaml"
+        :follow-height-of="inputElement?.inputWrapperRef"
+      />
+    </div>
 
     <div mt-5 flex justify-center>
-      <c-button :disabled="dockerCompose === ''" secondary @click="download">
+      <c-button :disabled="dockerCompose === ''" @click="download">
         Download docker-compose.yml
       </c-button>
     </div>

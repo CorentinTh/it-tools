@@ -4,6 +4,7 @@ import { defineComponent, h } from 'vue';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import FileHash from './file-hash.vue';
 import {
+  FILE_HASH_DIGEST_BYTES,
   FILE_HASH_MAX_FILE_BYTES,
   type FileHashResult,
 } from './file-hash.worker.protocol';
@@ -99,10 +100,12 @@ function mountFileHash() {
 }
 
 function resultFor(file: File, algorithms: FileHashResult['digests'][number]['algorithm'][]): FileHashResult {
-  const lengths = { 'SHA-256': 64, 'SHA-384': 96, 'SHA-512': 128 } as const;
   return {
     fileSize: file.size,
-    digests: algorithms.map(algorithm => ({ algorithm, hex: 'a'.repeat(lengths[algorithm]) })),
+    digests: algorithms.map(algorithm => ({
+      algorithm,
+      hex: 'a'.repeat(FILE_HASH_DIGEST_BYTES[algorithm] * 2),
+    })),
   };
 }
 
@@ -124,6 +127,19 @@ beforeEach(() => {
 });
 
 describe('File Hash interactions', () => {
+  it('offers modern hashes and clearly labels MD5 and SHA-1 as legacy', () => {
+    const wrapper = mountFileHash();
+
+    for (const algorithm of ['SHA-256', 'SHA-384', 'SHA-512', 'SHA3-256', 'BLAKE3-256']) {
+      expect(wrapper.find(`[data-test-id="file-hash-algorithm-${algorithm}"]`).exists()).toBe(true);
+    }
+    expect(wrapper.get('[data-test-id="file-hash-legacy-SHA-1"]').text()).toBe('(legacy)');
+    expect(wrapper.get('[data-test-id="file-hash-legacy-MD5"]').text()).toBe('(legacy)');
+    expect(wrapper.text()).toContain('known collision attacks');
+
+    wrapper.unmount();
+  });
+
   it('waits for an explicit action and hashes the selected file with SHA-256 by default', async () => {
     const file = new File(['abc'], 'release-🚀.bin', { type: 'application/octet-stream' });
     mocks.run.mockResolvedValue({ value: resultFor(file, ['SHA-256']), elapsedMs: 12 });

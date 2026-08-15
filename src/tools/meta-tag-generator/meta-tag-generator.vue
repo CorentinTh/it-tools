@@ -51,52 +51,45 @@ const metaTags = computed(() => {
 </script>
 
 <template>
-  <div>
-    <div v-for="{ name, elements } of sections" :key="name" style="margin-bottom: 15px">
-      <div mb-5px>
-        {{ name }}
+  <div class="c-tool-workbench c-tool-stack">
+    <c-card v-for="{ name, elements } of sections" :key="name" :title="name">
+      <div grid grid-cols-1 gap-3 md:grid-cols-2>
+        <template v-for="{ key, type, label, placeholder, ...element } of elements" :key="key">
+          <c-input-text
+            v-if="type === 'input'"
+            v-model:value="metadata[key]"
+            :label="label"
+            :placeholder="placeholder"
+            clearable
+          />
+          <c-field v-else-if="type === 'input-multiple'" :label="label">
+            <n-dynamic-input
+              v-model:value="metadata[key]"
+              :min="1"
+              :placeholder="placeholder"
+              :default-value="['']"
+              :show-sort-button="true"
+              :aria-label="label"
+            />
+          </c-field>
+
+          <c-select
+            v-else-if="type === 'select'"
+            v-model:value="metadata[key]"
+            :label="label"
+            :placeholder="placeholder"
+            :options="(element as OGSchemaTypeElementSelect).options"
+          />
+        </template>
       </div>
-
-      <n-input-group v-for="{ key, type, label, placeholder, ...element } of elements" :key="key">
-        <n-input-group-label style="flex: 0 0 110px">
-          {{ label }}
-        </n-input-group-label>
-
-        <c-input-text v-if="type === 'input'" v-model:value="metadata[key]" :placeholder="placeholder" clearable />
-        <n-dynamic-input
-          v-else-if="type === 'input-multiple'"
-          v-model:value="metadata[key]"
-          :min="1"
-          :placeholder="placeholder"
-          :default-value="['']"
-          :show-sort-button="true"
-        />
-
-        <c-select
-          v-else-if="type === 'select'"
-          v-model:value="metadata[key]"
-          w-full
-          :placeholder="placeholder"
-          :options="(element as OGSchemaTypeElementSelect).options"
-        />
-      </n-input-group>
-    </div>
-  </div>
-  <div>
-    <n-form-item label="Your meta tags">
+    </c-card>
+    <c-field class="c-tool-panel" label="Your meta tags">
       <TextareaCopyable :value="metaTags" language="html" />
-    </n-form-item>
+    </c-field>
   </div>
 </template>
 
 <style lang="less" scoped>
-.n-input-group {
-  margin-bottom: 5px;
-}
-
-::v-deep(.n-form-item-blank) {
-  min-height: 0 !important;
-}
 ::v-deep(.n-dynamic-input-item) {
   margin-bottom: 5px;
 }

@@ -12,26 +12,25 @@ const { copy } = useCopy({ source: port, text: 'Port copied to the clipboard' })
 </script>
 
 <template>
-  <c-card>
-    <div class="port">
-      {{ port }}
-    </div>
-    <div flex justify-center gap-3>
-      <c-button @click="copy()">
+  <div class="c-generator-layout">
+    <c-input-text
+      class="c-generator-output"
+      :value="port"
+      label="Generated port"
+      placeholder="Generated port"
+      test-id="random-port-output"
+      readonly
+      raw-text
+      monospace
+    />
+
+    <div class="c-generator-actions">
+      <c-button type="primary" data-test-id="random-port-generate" @click="refreshPort">
+        Generate
+      </c-button>
+      <c-button data-test-id="random-port-copy" @click="copy()">
         Copy
       </c-button>
-      <c-button @click="refreshPort">
-        Refresh
-      </c-button>
     </div>
-  </c-card>
+  </div>
 </template>
-
-<style lang="less" scoped>
-.port {
-  text-align: center;
-  font-size: 26px;
-  font-weight: 400;
-  margin: 10px 0 25px;
-}
-</style>

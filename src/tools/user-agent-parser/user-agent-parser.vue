@@ -102,19 +102,19 @@ const sections: UserAgentResultSection[] = [
 </script>
 
 <template>
-  <div>
-    <c-input-text
-      v-model:value="ua"
-      label="User agent string"
-      multiline
-      placeholder="Put your user-agent here..."
-      clearable
-      raw-text
-      rows="2"
-      autosize
-      monospace
-      mb-3
-    />
+  <div class="c-form-layout">
+    <c-card title="Input">
+      <c-input-text
+        v-model:value="ua"
+        label="User agent string"
+        multiline
+        placeholder="Put your user-agent here..."
+        clearable
+        raw-text
+        rows="4"
+        monospace
+      />
+    </c-card>
 
     <UserAgentResultCards :user-agent-info="userAgentInfo" :sections="sections" />
   </div>

@@ -9,7 +9,7 @@ const { copy } = useCopy({ source: slug, text: 'Slug copied to clipboard' });
 </script>
 
 <template>
-  <div>
+  <div class="c-tool-workbench c-tool-stack">
     <c-input-text v-model:value="input" multiline placeholder="Put your string here (ex: My file path)" label="Your string to slugify" autofocus raw-text mb-5 />
 
     <c-input-text :value="slug" multiline readonly placeholder="You slug will be generated here (ex: my-file-path)" label="Your slug" mb-5 />

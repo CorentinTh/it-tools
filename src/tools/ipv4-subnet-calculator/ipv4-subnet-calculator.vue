@@ -82,16 +82,17 @@ function switchToBlock({ count = 1 }: { count?: number }) {
 </script>
 
 <template>
-  <div>
-    <c-input-text
-      v-model:value="ip"
-      label="An IPv4 address with or without mask"
-      placeholder="The ipv4 address..."
-      :validation-rules="ipValidationRules"
-      mb-4
-    />
+  <div class="c-form-layout">
+    <c-card title="Network">
+      <c-input-text
+        v-model:value="ip"
+        label="IPv4 address with or without mask"
+        placeholder="The IPv4 address..."
+        :validation-rules="ipValidationRules"
+      />
+    </c-card>
 
-    <div v-if="networkInfo">
+    <c-card v-if="networkInfo" title="Subnet details">
       <n-table>
         <tbody>
           <tr v-for="{ getValue, label, undefinedFallback } in sections" :key="label">
@@ -108,7 +109,7 @@ function switchToBlock({ count = 1 }: { count?: number }) {
         </tbody>
       </n-table>
 
-      <div mt-3 flex items-center justify-between>
+      <div class="c-generator-actions mt-4">
         <c-button @click="switchToBlock({ count: -1 })">
           <n-icon :component="ArrowLeft" />
           Previous block
@@ -118,6 +119,6 @@ function switchToBlock({ count = 1 }: { count?: number }) {
           <n-icon :component="ArrowRight" />
         </c-button>
       </div>
-    </div>
+    </c-card>
   </div>
 </template>

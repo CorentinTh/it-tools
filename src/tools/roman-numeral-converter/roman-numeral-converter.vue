@@ -8,11 +8,12 @@ import {
 } from './roman-numeral-converter.service';
 import { useCopy } from '@/composable/copy';
 import { useValidation } from '@/composable/validation';
+import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
 
 const inputNumeral = ref(42);
 const outputRoman = computed(() => arabicToRoman(inputNumeral.value));
 
-const { attrs: validationNumeral } = useValidation({
+const validationNumeral = useValidation({
   source: inputNumeral,
   rules: [
     {
@@ -40,27 +41,28 @@ const { copy: copyArabic } = useCopy({ source: () => String(outputNumeral), text
 </script>
 
 <template>
-  <div>
+  <div class="c-form-layout">
     <c-card title="Arabic to roman">
-      <div flex items-center justify-between>
-        <n-form-item v-bind="validationNumeral as any">
-          <n-input-number v-model:value="inputNumeral" :min="1" style="width: 200px" :show-button="false" />
-        </n-form-item>
-        <div class="result">
-          {{ outputRoman }}
-        </div>
-        <c-button autofocus :disabled="validationNumeral.validationStatus === 'error'" @click="copyRoman()">
+      <div grid grid-cols-1 items-end gap-3 md:grid-cols-3>
+        <c-field
+          label="Arabic number"
+          label-for="roman-arabic-input"
+          :feedback="validationNumeral.message"
+          :status="validationNumeral.isValid ? 'default' : 'error'"
+          reserve-feedback
+        >
+          <CInputNumber id="roman-arabic-input" v-model:value="inputNumeral" :min="MIN_ARABIC_TO_ROMAN" :max="MAX_ARABIC_TO_ROMAN" :show-button="false" />
+        </c-field>
+        <c-input-text :value="outputRoman" label="Roman numeral" readonly raw-text monospace />
+        <c-button :disabled="!validationNumeral.isValid" @click="copyRoman()">
           Copy
         </c-button>
       </div>
     </c-card>
-    <c-card title="Roman to arabic" mt-5>
-      <div flex items-center justify-between>
-        <c-input-text v-model:value="inputRoman" style="width: 200px" :validation="validationRoman" />
-
-        <div class="result">
-          {{ outputNumeral }}
-        </div>
+    <c-card title="Roman to arabic">
+      <div grid grid-cols-1 items-end gap-3 md:grid-cols-3>
+        <c-input-text v-model:value="inputRoman" label="Roman numeral" :validation="validationRoman" raw-text monospace />
+        <c-input-text :value="String(outputNumeral)" label="Arabic number" readonly raw-text />
         <c-button :disabled="!validationRoman.isValid" @click="copyArabic()">
           Copy
         </c-button>
@@ -68,9 +70,3 @@ const { copy: copyArabic } = useCopy({ source: () => String(outputNumeral), text
     </c-card>
   </div>
 </template>
-
-<style lang="less" scoped>
-.result {
-  font-size: 22px;
-}
-</style>

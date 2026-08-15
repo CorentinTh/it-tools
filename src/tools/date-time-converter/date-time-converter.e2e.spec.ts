@@ -10,12 +10,13 @@ test.describe('Date time converter - json to yaml', () => {
   });
 
   test('Format is auto detected from a date and the date is correctly converted', async ({ page }) => {
-    const initialFormat = await page.getByTestId('date-time-converter-format-select').innerText();
+    const formatSelect = page.getByRole('combobox', { name: 'Input format' });
+    const initialFormat = await formatSelect.innerText();
     expect(initialFormat.trim()).toEqual('Timestamp');
 
     await page.getByTestId('date-time-converter-input').fill('2023-04-12T23:10:24+02:00');
 
-    const detectedFormat = await page.getByTestId('date-time-converter-format-select').innerText();
+    const detectedFormat = await formatSelect.innerText();
     expect(detectedFormat.trim()).toEqual('ISO 8601');
 
     expect((await page.getByTestId('JS locale date string').inputValue()).trim()).toEqual(

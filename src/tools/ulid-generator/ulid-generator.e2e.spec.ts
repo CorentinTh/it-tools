@@ -11,12 +11,12 @@ test.describe('Tool - ULID generator', () => {
     await expect(page).toHaveTitle('ULID generator - IT Tools');
   });
 
-  test('the refresh button generates a new ulid', async ({ page }) => {
-    const ulid = await page.getByTestId('ulids').textContent();
+  test('the primary Generate action creates a new ulid', async ({ page }) => {
+    const ulid = await page.getByTestId('ulids').inputValue();
     expect(ulid?.trim()).toMatch(ULID_REGEX);
 
     await page.getByTestId('refresh').click();
-    const newUlid = await page.getByTestId('ulids').textContent();
+    const newUlid = await page.getByTestId('ulids').inputValue();
     expect(ulid?.trim()).not.toBe(newUlid?.trim());
     expect(newUlid?.trim()).toMatch(ULID_REGEX);
   });

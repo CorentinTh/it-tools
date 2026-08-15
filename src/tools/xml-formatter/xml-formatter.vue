@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { formatXml, isValidXML } from './xml-formatter.service';
 import type { UseValidationRule } from '@/composable/validation';
+import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
+import CSwitch from '@/ui/c-switch/c-switch.vue';
 
 const defaultValue = '<hello><world>foo</world><world>bar</world></hello>';
 const indentSize = useStorage('xml-formatter:indent-size', 2);
@@ -23,24 +25,36 @@ const rules: UseValidationRule<string>[] = [
 </script>
 
 <template>
-  <div important:flex-full important:flex-shrink-0 important:flex-grow-0>
-    <div flex justify-center>
-      <n-form-item label="Collapse content:" label-placement="left">
-        <n-switch v-model:value="collapseContent" />
-      </n-form-item>
-      <n-form-item label="Indent size:" label-placement="left" label-width="100" :show-feedback="false">
-        <n-input-number v-model:value="indentSize" min="0" max="10" w-100px />
-      </n-form-item>
-    </div>
-  </div>
+  <div class="c-tool-workbench c-tool-stack">
+    <c-card>
+      <div grid grid-cols-1 gap-3 md:grid-cols-2>
+        <CSwitch
+          id="xml-collapse-content"
+          v-model:value="collapseContent"
+          label="Collapse content"
+          label-position="top"
+        />
 
-  <format-transformer
-    input-label="Your XML"
-    input-placeholder="Paste your XML here..."
-    output-label="Formatted XML from your XML"
-    output-language="xml"
-    :input-validation-rules="rules"
-    :transformer="transformer"
-    :input-default="defaultValue"
-  />
+        <c-field label="Indent size (0–10)" label-for="xml-indent-size">
+          <CInputNumber
+            id="xml-indent-size"
+            v-model:value="indentSize"
+            test-id="xml-indent-size"
+            :min="0"
+            :max="10"
+          />
+        </c-field>
+      </div>
+    </c-card>
+
+    <format-transformer
+      input-label="Your XML"
+      input-placeholder="Paste your XML here..."
+      output-label="Formatted XML from your XML"
+      output-language="xml"
+      :input-validation-rules="rules"
+      :transformer="transformer"
+      :input-default="defaultValue"
+    />
+  </div>
 </template>

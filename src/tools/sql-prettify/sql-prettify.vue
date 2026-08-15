@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { type FormatOptionsWithLanguage, format as formatSQL } from 'sql-formatter';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
-import { useStyleStore } from '@/stores/style.store';
 
 const inputComponent = ref<{ inputWrapperRef?: HTMLElement }>();
-const styleStore = useStyleStore();
 const config = reactive<FormatOptionsWithLanguage>({
   keywordCase: 'upper',
   useTabs: false,
@@ -18,66 +16,68 @@ const prettySQL = computed(() => formatSQL(rawSQL.value, config));
 </script>
 
 <template>
-  <div style="flex: 0 0 100%">
-    <div style="max-width: 600px" :class="{ 'flex-col': styleStore.isSmallScreen }" mx-auto mb-5 flex gap-2>
-      <c-select
-        v-model:value="config.language"
-        flex-1
-        label="Dialect"
-        :options="[
-          { label: 'GCP BigQuery', value: 'bigquery' },
-          { label: 'IBM DB2', value: 'db2' },
-          { label: 'Apache Hive', value: 'hive' },
-          { label: 'MariaDB', value: 'mariadb' },
-          { label: 'MySQL', value: 'mysql' },
-          { label: 'Couchbase N1QL', value: 'n1ql' },
-          { label: 'Oracle PL/SQL', value: 'plsql' },
-          { label: 'PostgreSQL', value: 'postgresql' },
-          { label: 'Amazon Redshift', value: 'redshift' },
-          { label: 'Spark', value: 'spark' },
-          { label: 'Standard SQL', value: 'sql' },
-          { label: 'sqlite', value: 'sqlite' },
-          { label: 'SQL Server Transact-SQL', value: 'tsql' },
-        ]"
-      />
-      <c-select
-        v-model:value="config.keywordCase" label="Keyword case"
-        flex-1
-        :options="[
-          { label: 'UPPERCASE', value: 'upper' },
-          { label: 'lowercase', value: 'lower' },
-          { label: 'Preserve', value: 'preserve' },
-        ]"
-      />
-      <c-select
-        v-model:value="config.indentStyle" label="Indent style"
-        flex-1
-        :options="[
-          { label: 'Standard', value: 'standard' },
-          { label: 'Tabular left', value: 'tabularLeft' },
-          { label: 'Tabular right', value: 'tabularRight' },
-        ]"
-      />
-    </div>
-  </div>
+  <div class="c-tool-workbench c-tool-stack">
+    <section aria-label="Formatting options">
+      <c-card title="Formatting options">
+        <div grid grid-cols-1 gap-3 md:grid-cols-3>
+          <c-select
+            v-model:value="config.language"
+            label="Dialect"
+            :options="[
+              { label: 'GCP BigQuery', value: 'bigquery' },
+              { label: 'IBM DB2', value: 'db2' },
+              { label: 'Apache Hive', value: 'hive' },
+              { label: 'MariaDB', value: 'mariadb' },
+              { label: 'MySQL', value: 'mysql' },
+              { label: 'Couchbase N1QL', value: 'n1ql' },
+              { label: 'Oracle PL/SQL', value: 'plsql' },
+              { label: 'PostgreSQL', value: 'postgresql' },
+              { label: 'Amazon Redshift', value: 'redshift' },
+              { label: 'Spark', value: 'spark' },
+              { label: 'Standard SQL', value: 'sql' },
+              { label: 'sqlite', value: 'sqlite' },
+              { label: 'SQL Server Transact-SQL', value: 'tsql' },
+            ]"
+          />
+          <c-select
+            v-model:value="config.keywordCase" label="Keyword case"
+            :options="[
+              { label: 'UPPERCASE', value: 'upper' },
+              { label: 'lowercase', value: 'lower' },
+              { label: 'Preserve', value: 'preserve' },
+            ]"
+          />
+          <c-select
+            v-model:value="config.indentStyle" label="Indent style"
+            :options="[
+              { label: 'Standard', value: 'standard' },
+              { label: 'Tabular left', value: 'tabularLeft' },
+              { label: 'Tabular right', value: 'tabularRight' },
+            ]"
+          />
+        </div>
+      </c-card>
+    </section>
 
-  <n-form-item label="Your SQL query">
-    <c-input-text
-      ref="inputComponent"
-      v-model:value="rawSQL"
-      placeholder="Put your SQL query here..."
-      rows="20"
-      multiline
-      autocomplete="off"
-      autocorrect="off"
-      autocapitalize="off"
-      spellcheck="false"
-      monospace
-    />
-  </n-form-item>
-  <n-form-item label="Prettify version of your query">
-    <TextareaCopyable :value="prettySQL" language="sql" :follow-height-of="inputComponent?.inputWrapperRef" />
-  </n-form-item>
+    <c-field class="c-tool-panel" label="Your SQL query">
+      <c-input-text
+        ref="inputComponent"
+        v-model:value="rawSQL"
+        aria-label="Your SQL query"
+        placeholder="Put your SQL query here..."
+        rows="20"
+        multiline
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+        monospace
+      />
+    </c-field>
+    <c-field class="c-tool-panel" label="Prettified version of your query">
+      <TextareaCopyable :value="prettySQL" language="sql" :follow-height-of="inputComponent?.inputWrapperRef" />
+    </c-field>
+  </div>
 </template>
 
 <style lang="less" scoped>

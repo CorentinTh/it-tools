@@ -20,9 +20,9 @@
   ],
   "workerAssetLimits": {
     "assets/file-hash.worker-<hash>.js": {
-      "rawBytes": 20000,
-      "gzipBytes": 10000,
-      "rationale": "The incremental SHA-2 implementation is a dedicated demand-loaded worker; this ceiling prevents accidental parser or whole-library growth independently of its route closure."
+      "rawBytes": 30000,
+      "gzipBytes": 12000,
+      "rationale": "The dedicated demand-loaded worker includes streaming SHA-2, SHA-3, BLAKE3, SHA-1, and MD5 implementations for interoperability without affecting the initial shell. The measured worker is 25,899 B raw / 10,417 B gzip; this narrow ceiling still prevents accidental parser or whole-library growth independently of its route closure."
     }
   },
   "dynamicEntryLimits": {

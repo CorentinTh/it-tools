@@ -26,53 +26,66 @@ const symbolic = computed(() => computeChmodSymbolicRepresentation({ permissions
 </script>
 
 <template>
-  <div>
-    <n-table :bordered="false" :bottom-bordered="false" single-column class="permission-table">
-      <thead>
-        <tr>
-          <th class="text-center" scope="col" />
-          <th class="text-center" scope="col">
-            Owner (u)
-          </th>
-          <th class="text-center" scope="col">
-            Group (g)
-          </th>
-          <th class="text-center" scope="col">
-            Public (o)
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="{ scope, title } of scopes" :key="scope">
-          <td class="line-header">
-            {{ title }}
-          </td>
-          <td v-for="group of groups" :key="group" class="text-center">
-            <!-- <n-switch v-model:value="permissions[group][scope]" /> -->
-            <n-checkbox v-model:checked="permissions[group][scope]" size="large" />
-          </td>
-        </tr>
-      </tbody>
-    </n-table>
+  <div class="c-form-layout">
+    <c-card title="Permissions">
+      <n-table :bordered="false" :bottom-bordered="false" single-column class="permission-table">
+        <thead>
+          <tr>
+            <th class="text-center" scope="col" />
+            <th v-for="group of groups" :key="group" class="text-center" scope="col">
+              {{ group === 'public' ? 'Public (o)' : `${group[0].toUpperCase()}${group.slice(1)} (${group === 'owner' ? 'u' : 'g'})` }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="{ scope, title } of scopes" :key="scope">
+            <th class="line-header" scope="row">
+              {{ title }}
+            </th>
+            <td v-for="group of groups" :key="group" class="text-center">
+              <CCheckbox
+                v-model:checked="permissions[group][scope]"
+                :aria-label="`${group} ${scope}`"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </n-table>
+    </c-card>
 
-    <div class="octal-result">
-      {{ octal }}
-    </div>
-    <div class="octal-result">
-      {{ symbolic }}
-    </div>
+    <c-card title="Calculated permission">
+      <div class="result-grid">
+        <c-field label="Octal">
+          <output class="permission-result" data-test-id="chmod-octal">{{ octal }}</output>
+        </c-field>
+        <c-field label="Symbolic">
+          <output class="permission-result" data-test-id="chmod-symbolic">{{ symbolic }}</output>
+        </c-field>
+      </div>
 
-    <InputCopyable :value="`chmod ${octal} path`" readonly />
+      <InputCopyable :value="`chmod ${octal} path`" label="Command" readonly monospace />
+    </c-card>
   </div>
 </template>
 
 <style lang="less" scoped>
-.octal-result {
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--ui-space-3);
+  margin-bottom: var(--ui-space-4);
+}
+
+.permission-result {
+  display: block;
+  min-width: 0;
+  padding: var(--ui-space-3);
+  border: 1px solid v-bind('themeVars.borderColor');
+  border-radius: var(--ui-radius-control);
   text-align: center;
-  font-size: 50px;
+  font-size: clamp(1.75rem, 5vw, 3rem);
   font-family: monospace;
   color: v-bind('themeVars.primaryColor');
-  margin: 20px 0;
 }
 .permission-table {
   td,
@@ -91,5 +104,11 @@ const symbolic = computed(() => computeChmodSymbolicRepresentation({ permissions
 }
 .text-center {
   text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

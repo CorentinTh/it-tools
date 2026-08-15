@@ -35,15 +35,20 @@ const hashText = (algo: AlgoNames, value: string) => formatWithEncoding(algos[al
 </script>
 
 <template>
-  <div>
-    <c-card>
-      <c-input-text v-model:value="clearText" multiline raw-text placeholder="Your string to hash..." rows="3" autosize autofocus label="Your text to hash:" />
+  <div class="c-tool-workbench c-tool-stack">
+    <c-card title="Input">
+      <c-input-text
+        v-model:value="clearText"
+        label="Text to hash"
+        placeholder="Your string to hash..."
+        rows="8"
 
-      <n-divider />
+        raw-text autofocus multiline
+      />
 
       <c-select
         v-model:value="encoding"
-        mb-4
+        class="mt-4"
         label="Digest encoding"
         :options="[
           {
@@ -64,14 +69,18 @@ const hashText = (algo: AlgoNames, value: string) => formatWithEncoding(algos[al
           },
         ]"
       />
+    </c-card>
 
-      <div v-for="algo in algoNames" :key="algo" style="margin: 5px 0">
-        <n-input-group>
-          <n-input-group-label style="flex: 0 0 120px">
-            {{ algo }}
-          </n-input-group-label>
-          <InputCopyable :value="hashText(algo, clearText)" readonly />
-        </n-input-group>
+    <c-card title="Digests">
+      <div grid grid-cols-1 gap-3 md:grid-cols-2>
+        <InputCopyable
+          v-for="algo in algoNames"
+          :key="algo"
+          :value="hashText(algo, clearText)"
+          :label="algo"
+          readonly
+          monospace
+        />
       </div>
     </c-card>
   </div>

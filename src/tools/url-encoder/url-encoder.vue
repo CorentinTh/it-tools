@@ -47,73 +47,76 @@ const { copy: copyDecoded } = useCopy({ source: decodeOutput, text: 'Decoded str
 </script>
 
 <template>
-  <c-card title="Encoding mode">
-    <c-select
-      v-model:value="mode"
-      label="Standard:"
-      :options="urlEncodingModes"
-      mb-2
-    />
-    <p m-0 text-sm op-70>
-      {{ modeDescription }}
-    </p>
-  </c-card>
+  <div class="c-tool-workbench c-tool-stack">
+    <c-card title="Encoding mode">
+      <c-select
+        v-model:value="mode"
+        label="Standard:"
+        :options="urlEncodingModes"
+        mb-2
+      />
+      <p m-0 text-sm op-70>
+        {{ modeDescription }}
+      </p>
+    </c-card>
 
-  <c-card title="Encode">
-    <c-input-text
-      v-model:value="encodeInput"
-      label="Your string :"
-      :validation="encodedValidation"
+    <c-card title="Encode">
+      <c-input-text
+        v-model:value="encodeInput"
+        class="mb-3"
+        label="Your string :"
+        placeholder="The string to encode"
+        rows="2"
+        :autosize="true"
+        :multiline="true"
+        :validation="encodedValidation"
+      />
 
-      placeholder="The string to encode"
-      rows="2"
-      autosize multiline mb-3
-    />
+      <c-input-text
+        :value="encodeOutput"
+        class="mb-3"
+        label="Your string encoded :"
+        placeholder="Your string encoded"
+        rows="2"
+        :autosize="true"
+        :multiline="true"
+        :readonly="true"
+      />
 
-    <c-input-text
-      label="Your string encoded :"
-      :value="encodeOutput"
-      multiline
-      autosize
-      readonly
-      placeholder="Your string encoded"
-      rows="2"
-      mb-3
-    />
+      <div flex justify-center>
+        <c-button @click="copyEncoded()">
+          Copy
+        </c-button>
+      </div>
+    </c-card>
+    <c-card title="Decode">
+      <c-input-text
+        v-model:value="decodeInput"
+        class="mb-3"
+        label="Your encoded string :"
+        placeholder="The string to decode"
+        rows="2"
+        :autosize="true"
+        :multiline="true"
+        :validation="decodeValidation"
+      />
 
-    <div flex justify-center>
-      <c-button @click="copyEncoded()">
-        Copy
-      </c-button>
-    </div>
-  </c-card>
-  <c-card title="Decode">
-    <c-input-text
-      v-model:value="decodeInput"
-      label="Your encoded string :"
-      :validation="decodeValidation"
-      multiline
-      autosize
-      placeholder="The string to decode"
-      rows="2"
-      mb-3
-    />
+      <c-input-text
+        :value="decodeOutput"
+        class="mb-3"
+        label="Your string decoded :"
+        placeholder="Your string decoded"
+        rows="2"
+        :autosize="true"
+        :multiline="true"
+        :readonly="true"
+      />
 
-    <c-input-text
-      label="Your string decoded :"
-      :value="decodeOutput"
-      multiline
-      autosize
-      readonly
-      placeholder="Your string decoded"
-      rows="2"
-      mb-3
-    />
-
-    <div flex justify-center>
-      <c-button @click="copyDecoded()">
-        Copy
-      </c-button>
-    </div>
-  </c-card>
+      <div flex justify-center>
+        <c-button @click="copyDecoded()">
+          Copy
+        </c-button>
+      </div>
+    </c-card>
+  </div>
 </template>

@@ -81,33 +81,30 @@ const formats = computed(() => [
       .join(''),
   },
 ]);
-
-const inputLabelAlignmentConfig = {
-  labelPosition: 'left',
-  labelWidth: '120px',
-  labelAlign: 'right',
-};
 </script>
 
 <template>
-  <c-card>
-    <c-input-text
-      v-model:value="input"
-      label="Your string:"
-      placeholder="Your string..."
-      raw-text
-      v-bind="inputLabelAlignmentConfig"
-    />
+  <div class="c-form-layout">
+    <c-card title="Input">
+      <c-input-text
+        v-model:value="input"
+        label="String to convert"
+        placeholder="Your string..."
+        raw-text
+      />
+    </c-card>
 
-    <div my-16px divider />
-
-    <InputCopyable
-      v-for="format in formats"
-      :key="format.label"
-      :value="format.value"
-      :label="format.label"
-      v-bind="inputLabelAlignmentConfig"
-      mb-1
-    />
-  </c-card>
+    <c-card title="Converted values">
+      <div grid grid-cols-1 gap-3 md:grid-cols-2>
+        <InputCopyable
+          v-for="format in formats"
+          :key="format.label"
+          :value="format.value"
+          :label="format.label.replace(/:$/, '')"
+          readonly
+          monospace
+        />
+      </div>
+    </c-card>
+  </div>
 </template>

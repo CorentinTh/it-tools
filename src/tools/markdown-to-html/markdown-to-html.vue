@@ -19,7 +19,7 @@ function printHtml() {
 </script>
 
 <template>
-  <div>
+  <div class="c-tool-workbench c-tool-stack">
     <c-input-text
       v-model:value="inputMarkdown"
       multiline raw-text
@@ -29,16 +29,14 @@ function printHtml() {
       label="Your Markdown to convert:"
     />
 
-    <n-divider />
-
-    <n-form-item label="Output HTML:">
+    <c-field class="c-tool-panel" label="Output HTML">
       <TextareaCopyable :value="outputHtml" :word-wrap="true" language="html" />
-    </n-form-item>
+    </c-field>
 
-    <div flex justify-center>
-      <n-button @click="printHtml">
+    <div class="c-generator-actions">
+      <c-button @click="printHtml">
         Print as PDF
-      </n-button>
+      </c-button>
     </div>
   </div>
 </template>

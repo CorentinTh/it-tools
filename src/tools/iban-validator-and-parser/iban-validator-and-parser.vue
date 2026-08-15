@@ -57,14 +57,16 @@ const ibanExamples = [
 </script>
 
 <template>
-  <div>
-    <c-input-text v-model:value="rawIban" placeholder="Enter an IBAN to check for validity..." test-id="iban-input" />
+  <div class="c-form-layout">
+    <c-card title="IBAN">
+      <c-input-text v-model:value="rawIban" label="IBAN to validate" placeholder="Enter an IBAN to check for validity..." test-id="iban-input" />
+    </c-card>
 
-    <c-card v-if="ibanInfo.length > 0" mt-5>
+    <c-card v-if="ibanInfo.length > 0" title="Validation result">
       <c-key-value-list :items="ibanInfo" data-test-id="iban-info" />
     </c-card>
 
-    <c-card title="Valid IBAN examples" mt-5>
+    <c-card title="Valid IBAN examples">
       <div v-for="iban in ibanExamples" :key="iban">
         <c-text-copyable :value="iban" font-mono :displayed-value="friendlyFormatIBAN(iban)" />
       </div>

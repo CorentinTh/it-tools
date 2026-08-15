@@ -5,10 +5,12 @@ const props = withDefaults(defineProps<{
   multiple?: boolean
   accept?: string
   title?: string
+  disabled?: boolean
 }>(), {
   multiple: false,
   accept: undefined,
   title: 'Drag and drop files here, or click to select files',
+  disabled: false,
 });
 
 const emit = defineEmits<{
@@ -16,13 +18,17 @@ const emit = defineEmits<{
   (event: 'fileUpload', file: File): void
 }>();
 
-const { multiple } = toRefs(props);
+const { disabled, multiple } = toRefs(props);
 
 const isOverDropZone = ref(false);
 
 const fileInput = ref<HTMLInputElement | null>(null);
 
 function triggerFileInput() {
+  if (disabled.value) {
+    return;
+  }
+
   fileInput.value?.click();
 }
 
@@ -41,7 +47,9 @@ function handleDrop(event: DragEvent) {
   event.preventDefault();
 
   try {
-    handleUpload(event.dataTransfer?.files);
+    if (!disabled.value) {
+      handleUpload(event.dataTransfer?.files);
+    }
   }
   finally {
     isOverDropZone.value = false;
@@ -49,7 +57,7 @@ function handleDrop(event: DragEvent) {
 }
 
 function handleUpload(files: FileList | null | undefined) {
-  if (_.isNil(files) || _.isEmpty(files)) {
+  if (disabled.value || _.isNil(files) || _.isEmpty(files)) {
     return;
   }
 
@@ -64,14 +72,22 @@ function handleUpload(files: FileList | null | undefined) {
 
 <template>
   <div
-    class="flex flex-col cursor-pointer items-center justify-center border-2px border-gray-300 border-opacity-50 rounded-lg border-dashed p-8 transition-colors"
+    class="c-file-upload flex flex-col items-center justify-center border-2px border-gray-300 border-opacity-50 rounded-lg border-dashed p-8 transition-colors focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
     :class="{
       'border-primary border-opacity-100': isOverDropZone,
+      'cursor-pointer': !disabled,
+      'cursor-not-allowed opacity-50': disabled,
     }"
+    role="button"
+    :tabindex="disabled ? -1 : 0"
+    :aria-label="title"
+    :aria-disabled="disabled ? 'true' : undefined"
     @click="triggerFileInput"
+    @keydown.enter.prevent="triggerFileInput"
+    @keydown.space.prevent="triggerFileInput"
     @drop.prevent="handleDrop"
     @dragover.prevent
-    @dragenter="isOverDropZone = true"
+    @dragenter="!disabled && (isOverDropZone = true)"
     @dragleave="isOverDropZone = false"
   >
     <input
@@ -80,6 +96,8 @@ function handleUpload(files: FileList | null | undefined) {
       class="hidden"
       :multiple="multiple"
       :accept="accept"
+      :disabled="disabled"
+      @click.stop
       @change="handleFileInput"
     >
     <slot>
@@ -96,7 +114,7 @@ function handleUpload(files: FileList | null | undefined) {
         <div class="h-1px max-w-100px flex-1 bg-gray-300 op-50" />
       </div>
 
-      <c-button>
+      <c-button :disabled="disabled" tabindex="-1" aria-hidden="true">
         Browse files
       </c-button>
     </slot>

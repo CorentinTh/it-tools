@@ -7,6 +7,7 @@ import shadow from 'vue-shadow-dom';
 import { plausible } from './plugins/plausible.plugin';
 
 import 'virtual:uno.css';
+import './ui/theme/tokens.css';
 
 import { naive } from './plugins/naive.plugin';
 

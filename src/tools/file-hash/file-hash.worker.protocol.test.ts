@@ -20,6 +20,10 @@ const DIGESTS = [
   { algorithm: 'SHA-256' as const, hex: 'a'.repeat(64) },
   { algorithm: 'SHA-384' as const, hex: 'b'.repeat(96) },
   { algorithm: 'SHA-512' as const, hex: 'c'.repeat(128) },
+  { algorithm: 'SHA3-256' as const, hex: 'd'.repeat(64) },
+  { algorithm: 'BLAKE3-256' as const, hex: 'e'.repeat(64) },
+  { algorithm: 'SHA-1' as const, hex: 'f'.repeat(40) },
+  { algorithm: 'MD5' as const, hex: '0'.repeat(32) },
 ];
 
 function expectTaskError(
@@ -44,7 +48,7 @@ function blobWithReportedSize(size: number): Blob {
 }
 
 describe('file hash worker protocol', () => {
-  it('accepts an empty Blob and one to three unique supported algorithms', () => {
+  it('accepts an empty Blob and one to seven unique supported algorithms', () => {
     const empty = new Blob([]);
     expect(parseFileHashTask({ file: empty, algorithms: ['SHA-256'] })).toEqual({
       file: empty,
@@ -62,7 +66,7 @@ describe('file hash worker protocol', () => {
     [{ file: FILE, algorithms: [...FILE_HASH_ALGORITHMS, 'SHA-256'] }, 'validation'],
     [{ file: FILE, algorithms: ['SHA-256', 'SHA-256'] }, 'validation'],
     [{ file: FILE, algorithms: ['SHA-512', 'SHA-256'] }, 'validation'],
-    [{ file: FILE, algorithms: ['MD5'] }, 'unsupported'],
+    [{ file: FILE, algorithms: ['CRC32'] }, 'unsupported'],
     [{ file: FILE, algorithms: ['SHA-256'], secretName: 'private.bin' }, 'validation'],
     [{ file: blobWithReportedSize(-1), algorithms: ['SHA-256'] }, 'validation'],
     [{ file: blobWithReportedSize(1.5), algorithms: ['SHA-256'] }, 'validation'],

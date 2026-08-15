@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useObfuscateString } from './string-obfuscator.model';
 import { useCopy } from '@/composable/copy';
+import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
+import CSwitch from '@/ui/c-switch/c-switch.vue';
 
 const str = ref('Lorem ipsum dolor sit amet');
 const keepFirst = ref(4);
@@ -12,29 +14,24 @@ const { copy } = useCopy({ source: obfuscatedString });
 </script>
 
 <template>
-  <div>
-    <c-input-text v-model:value="str" raw-text placeholder="Enter string to obfuscate" label="String to obfuscate:" clearable multiline />
+  <div class="c-tool-workbench c-tool-stack">
+    <c-input-text v-model:value="str" placeholder="Enter string to obfuscate" label="String to obfuscate" raw-text clearable multiline />
 
-    <div mt-4 flex gap-10px>
-      <div>
-        <div>Keep first:</div>
-        <n-input-number v-model:value="keepFirst" min="0" />
+    <c-card>
+      <div grid grid-cols-1 gap-3 md:grid-cols-3>
+        <c-field label="Keep first characters" label-for="obfuscator-keep-first">
+          <CInputNumber id="obfuscator-keep-first" v-model:value="keepFirst" :min="0" />
+        </c-field>
+
+        <c-field label="Keep last characters" label-for="obfuscator-keep-last">
+          <CInputNumber id="obfuscator-keep-last" v-model:value="keepLast" :min="0" />
+        </c-field>
+
+        <CSwitch id="obfuscator-keep-spaces" v-model:value="keepSpace" label="Keep spaces" label-position="top" />
       </div>
+    </c-card>
 
-      <div>
-        <div>Keep last:</div>
-        <n-input-number v-model:value="keepLast" min="0" />
-      </div>
-
-      <div>
-        <div mb-5px>
-          Keep&nbsp;spaces:
-        </div>
-        <n-switch v-model:value="keepSpace" />
-      </div>
-    </div>
-
-    <c-card v-if="obfuscatedString" mt-60px max-w-600px flex items-center gap-5px font-mono>
+    <c-card v-if="obfuscatedString" flex items-center gap-5px font-mono>
       <div break-anywhere text-wrap>
         {{ obfuscatedString }}
       </div>

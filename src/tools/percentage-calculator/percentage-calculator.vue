@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
+
 const percentageX = ref();
 const percentageY = ref();
 const percentageResult = computed(() => {
@@ -30,49 +32,104 @@ const percentageIncreaseDecrease = computed(() => {
 </script>
 
 <template>
-  <div style="flex: 0 0 100%">
-    <div style="margin: 0 auto; max-width: 600px">
-      <c-card mb-3>
-        <div mb-3 sm:hidden>
-          What is
-        </div>
-        <div flex gap-2>
-          <div hidden pt-1 sm:block style="min-width: 48px;">
-            What is
-          </div>
-          <n-input-number v-model:value="percentageX" data-test-id="percentageX" placeholder="X" />
-          <div min-w-fit pt-1>
-            % of
-          </div>
-          <n-input-number v-model:value="percentageY" data-test-id="percentageY" placeholder="Y" />
-          <input-copyable v-model:value="percentageResult" data-test-id="percentageResult" readonly placeholder="Result" style="max-width: 150px;" />
-        </div>
-      </c-card>
+  <div class="c-form-layout">
+    <c-card title="Percentage of a number">
+      <div grid grid-cols-1 gap-3 sm:grid-cols-3>
+        <c-field label="Percentage (%)" label-for="percentage-x">
+          <CInputNumber
+            id="percentage-x"
+            v-model:value="percentageX"
+            test-id="percentageX"
+            placeholder="Percentage"
+            w-full
+          />
+        </c-field>
+        <c-field label="Number" label-for="percentage-y">
+          <CInputNumber
+            id="percentage-y"
+            v-model:value="percentageY"
+            test-id="percentageY"
+            placeholder="Number"
+            w-full
+          />
+        </c-field>
+        <c-field label="Result" label-for="percentage-result">
+          <input-copyable
+            id="percentage-result"
+            v-model:value="percentageResult"
+            data-test-id="percentageResult"
+            readonly
+            placeholder="Result"
+            w-full
+          />
+        </c-field>
+      </div>
+    </c-card>
 
-      <c-card mb-3>
-        <div mb-3 sm:hidden>
-          X is what percent of Y
-        </div>
-        <div flex gap-2>
-          <n-input-number v-model:value="numberX" data-test-id="numberX" placeholder="X" />
-          <div hidden min-w-fit pt-1 sm:block>
-            is what percent of
-          </div>
-          <n-input-number v-model:value="numberY" data-test-id="numberY" placeholder="Y" />
-          <input-copyable v-model:value="numberResult" data-test-id="numberResult" readonly placeholder="Result" style="max-width: 150px;" />
-        </div>
-      </c-card>
+    <c-card title="Percentage ratio">
+      <div grid grid-cols-1 gap-3 sm:grid-cols-3>
+        <c-field label="Part" label-for="number-x">
+          <CInputNumber
+            id="number-x"
+            v-model:value="numberX"
+            test-id="numberX"
+            placeholder="Part"
+            w-full
+          />
+        </c-field>
+        <c-field label="Total" label-for="number-y">
+          <CInputNumber
+            id="number-y"
+            v-model:value="numberY"
+            test-id="numberY"
+            placeholder="Total"
+            w-full
+          />
+        </c-field>
+        <c-field label="Result (%)" label-for="number-result">
+          <input-copyable
+            id="number-result"
+            v-model:value="numberResult"
+            data-test-id="numberResult"
+            readonly
+            placeholder="Result"
+            w-full
+          />
+        </c-field>
+      </div>
+    </c-card>
 
-      <c-card mb-3>
-        <div mb-3>
-          What is the percentage increase/decrease
-        </div>
-        <div flex gap-2>
-          <n-input-number v-model:value="numberFrom" data-test-id="numberFrom" placeholder="From" />
-          <n-input-number v-model:value="numberTo" data-test-id="numberTo" placeholder="To" />
-          <input-copyable v-model:value="percentageIncreaseDecrease" data-test-id="percentageIncreaseDecrease" readonly placeholder="Result" style="max-width: 150px;" />
-        </div>
-      </c-card>
-    </div>
+    <c-card title="Percentage change">
+      <div grid grid-cols-1 gap-3 sm:grid-cols-3>
+        <c-field label="From" label-for="number-from">
+          <CInputNumber
+            id="number-from"
+            v-model:value="numberFrom"
+            test-id="numberFrom"
+            placeholder="From"
+            w-full
+          />
+        </c-field>
+        <c-field label="To" label-for="number-to">
+          <CInputNumber
+            id="number-to"
+            v-model:value="numberTo"
+            test-id="numberTo"
+            placeholder="To"
+            w-full
+          />
+        </c-field>
+        <c-field label="Change (%)" label-for="percentage-change">
+          <input-copyable
+            id="percentage-change"
+            v-model:value="percentageIncreaseDecrease"
+            data-test-id="percentageIncreaseDecrease"
+            readonly
+            placeholder="Result"
+            w-full
+          />
+        </c-field>
+      </div>
+    </c-card>
   </div>
 </template>

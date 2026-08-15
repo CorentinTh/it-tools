@@ -6,6 +6,7 @@ import {
   writePersistedTextDiffContent,
   writeTextDiffPersistencePreference,
 } from './text-diff.persistence';
+import CSwitch from '@/ui/c-switch/c-switch.vue';
 
 const DEFAULT_ORIGINAL_TEXT = 'original text';
 const DEFAULT_MODIFIED_TEXT = 'modified text';
@@ -122,16 +123,20 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <c-card w-full important:flex-1 important:pa-0>
+  <c-card class="c-tool-workbench" w-full important:flex-1 important:pa-0>
     <div flex flex-wrap items-center gap-3 px-4 py-3>
-      <n-switch v-model:value="persistenceEnabled" />
-      <span>{{ t('tools.text-diff.persistenceLabel') }}</span>
+      <CSwitch
+        id="text-diff-persistence"
+        v-model:value="persistenceEnabled"
+        :label="t('tools.text-diff.persistenceLabel')"
+        :description="t('tools.text-diff.persistenceHint')"
+        label-position="top"
+        min-w-280px
+        flex-1
+      />
       <c-button ml-auto @click="clearSavedContent">
         {{ t('tools.text-diff.clearSavedContent') }}
       </c-button>
-      <p w-full text-sm op-70>
-        {{ t('tools.text-diff.persistenceHint') }}
-      </p>
       <p v-if="persistenceMessage" w-full text-sm text-red role="status">
         {{ persistenceMessage }}
       </p>
