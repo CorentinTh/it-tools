@@ -10,7 +10,9 @@ lerna-debug.log*
 node_modules
 .DS_Store
 dist
+dist-standalone
 dist-ssr
+/src/tools/index.standalone.ts
 coverage
 *.tsbuildinfo
 *.local

@@ -301,6 +301,9 @@ importers:
       consola:
         specifier: ^3.0.2
         version: 3.0.2
+      esbuild:
+        specifier: 0.18.20
+        version: 0.18.20
       eslint:
         specifier: ^8.47.0
         version: 8.47.0
@@ -342,7 +345,7 @@ importers:
         version: 0.25.0(@babel/parser@7.29.8)(rollup@2.79.2)(vue@3.3.4)
       unplugin-vue-markdown:
         specifier: 32.0.0
-        version: 32.0.0(esbuild@0.23.1)(rollup@2.79.2)(vite@4.4.9(@types/node@18.15.11)(less@4.1.3)(terser@5.37.0))
+        version: 32.0.0(esbuild@0.18.20)(rollup@2.79.2)(vite@4.4.9(@types/node@18.15.11)(less@4.1.3)(terser@5.37.0))
       vite:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@18.15.11)(less@4.1.3)(terser@5.37.0)
@@ -3773,10 +3776,6 @@ packages:
 
   hash-wasm@4.12.0:
     resolution: {integrity: sha512-+/2B2rYLb48I/evdOIhP+K/DD2ca2fgBjp6O+GBEnCDk2e4rpeXIK8GvIyRPjTezgmWn9gmKwkQjjx6BtqDHVQ==}
-
-  hasown@2.0.0:
-    resolution: {integrity: sha512-vUptKVTpIJhcczKBbgnS+RtcuYMB8+oNzPK2/Hp3hanz8JmpATdmmgLgSaadVREkDm+e2giHwY3ZRkyjSIDDFA==}
-    engines: {node: '>= 0.4'}
 
   hasown@2.0.2:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
@@ -10237,10 +10236,6 @@ snapshots:
 
   hash-wasm@4.12.0: {}
 
-  hasown@2.0.0:
-    dependencies:
-      function-bind: 1.1.2
-
   hasown@2.0.2:
     dependencies:
       function-bind: 1.1.2
@@ -10429,7 +10424,7 @@ snapshots:
 
   is-core-module@2.13.1:
     dependencies:
-      hasown: 2.0.0
+      hasown: 2.0.2
 
   is-core-module@2.16.0:
     dependencies:
@@ -11731,7 +11726,7 @@ snapshots:
 
   resolve@1.22.4:
     dependencies:
-      is-core-module: 2.13.1
+      is-core-module: 2.16.0
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
 
@@ -12415,13 +12410,13 @@ snapshots:
       - rollup
       - supports-color
 
-  unplugin-vue-markdown@32.0.0(esbuild@0.23.1)(rollup@2.79.2)(vite@4.4.9(@types/node@18.15.11)(less@4.1.3)(terser@5.37.0)):
+  unplugin-vue-markdown@32.0.0(esbuild@0.18.20)(rollup@2.79.2)(vite@4.4.9(@types/node@18.15.11)(less@4.1.3)(terser@5.37.0)):
     dependencies:
       '@mdit-vue/plugin-component': 3.0.2
       '@mdit-vue/plugin-frontmatter': 3.0.2
       '@mdit-vue/types': 3.0.2
       markdown-exit: 1.0.0-beta.9
-      unplugin: 3.3.0(esbuild@0.23.1)(rollup@2.79.2)(vite@4.4.9(@types/node@18.15.11)(less@4.1.3)(terser@5.37.0))
+      unplugin: 3.3.0(esbuild@0.18.20)(rollup@2.79.2)(vite@4.4.9(@types/node@18.15.11)(less@4.1.3)(terser@5.37.0))
       unplugin-utils: 0.3.2
       vite: 4.4.9(@types/node@18.15.11)(less@4.1.3)(terser@5.37.0)
     transitivePeerDependencies:
@@ -12448,13 +12443,13 @@ snapshots:
       webpack-sources: 3.2.3
       webpack-virtual-modules: 0.5.0
 
-  unplugin@3.3.0(esbuild@0.23.1)(rollup@2.79.2)(vite@4.4.9(@types/node@18.15.11)(less@4.1.3)(terser@5.37.0)):
+  unplugin@3.3.0(esbuild@0.18.20)(rollup@2.79.2)(vite@4.4.9(@types/node@18.15.11)(less@4.1.3)(terser@5.37.0)):
     dependencies:
       '@jridgewell/remapping': 2.3.5
       picomatch: 4.0.5
       webpack-virtual-modules: 0.6.2
     optionalDependencies:
-      esbuild: 0.23.1
+      esbuild: 0.18.20
       rollup: 2.79.2
       vite: 4.4.9(@types/node@18.15.11)(less@4.1.3)(terser@5.37.0)
 

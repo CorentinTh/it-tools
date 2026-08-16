@@ -21,20 +21,22 @@ clearLegacySensitiveContentStorage();
 migrateApplicationStorage();
 installOfflineRouteRecovery(router);
 
-void configurePwaRuntime({
-  baseUrl: import.meta.env.BASE_URL,
-  cacheStorage: 'caches' in window ? window.caches : undefined,
-  currentRuntimeCacheNames: [
-    import.meta.env.LAZY_ASSET_CACHE_NAME,
-    import.meta.env.FIGLET_FONT_CACHE_NAME,
-  ],
-  isDevelopment: import.meta.env.DEV,
-  origin: window.location.origin,
-  registerServiceWorker: () => registerSW(),
-  reload: () => window.location.reload(),
-  serviceWorker: 'serviceWorker' in navigator ? navigator.serviceWorker : undefined,
-  sessionStorage: window.sessionStorage,
-}).catch(() => undefined);
+if (!import.meta.env.STANDALONE) {
+  void configurePwaRuntime({
+    baseUrl: import.meta.env.BASE_URL,
+    cacheStorage: 'caches' in window ? window.caches : undefined,
+    currentRuntimeCacheNames: [
+      import.meta.env.LAZY_ASSET_CACHE_NAME,
+      import.meta.env.FIGLET_FONT_CACHE_NAME,
+    ],
+    isDevelopment: import.meta.env.DEV,
+    origin: window.location.origin,
+    registerServiceWorker: () => registerSW(),
+    reload: () => window.location.reload(),
+    serviceWorker: 'serviceWorker' in navigator ? navigator.serviceWorker : undefined,
+    sessionStorage: window.sessionStorage,
+  }).catch(() => undefined);
+}
 
 const app = createApp(App);
 

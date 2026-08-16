@@ -11,12 +11,21 @@ const output = ref('');
 const errored = ref(false);
 const processing = ref(false);
 
-figlet.defaults({ fontPath: import.meta.env.FIGLET_FONT_PATH });
+if (!globalThis.__IT_TOOLS_STANDALONE_FONTS__) {
+  figlet.defaults({ fontPath: import.meta.env.FIGLET_FONT_PATH });
+}
 
 watch([input, font, width], (_, __, onCleanup) => {
   let cancelled = false;
   const debounceTimer = window.setTimeout(async () => {
     try {
+      const standaloneFont = globalThis.__IT_TOOLS_STANDALONE_FONTS__?.[font.value];
+      if (globalThis.__IT_TOOLS_STANDALONE_FONTS__) {
+        if (!standaloneFont) {
+          throw new Error('The standalone font is unavailable.');
+        }
+        figlet.parseFont(font.value, standaloneFont);
+      }
       const options: figlet.Options = {
         font: font.value as figlet.Fonts,
         width: width.value,

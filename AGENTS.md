@@ -19,13 +19,13 @@ The local fork is the source of truth. Do not merge, rebase, or cherry-pick upst
 - `locales/`: compiled i18n source. The current fork intentionally retains only English.
 - `scripts/`: scaffolding and release scripts.
 - `.github/workflows/`: CI, E2E, and release pipelines.
-- `.ai/`: handoff state, architecture, upstream snapshots, findings, measurements, and the approved work plan.
+- `.ai/`: compact handoff, current architecture/contracts, and executable build budgets.
 
 For a resumed session or any broad change, read `.ai/HANDOFF.md` first, then
-`.ai/PROGRESS.md`, `.ai/TODO.md`, `.ai/ARCHITECTURE.md`,
-`.ai/PERSISTENCE.md`, `.ai/FIXES.md`, `.ai/FEATURES.md`, and
-`.ai/PERFORMANCE.md`. `HANDOFF` and the current-status sections in `PROGRESS`
-take precedence over historical audit baselines elsewhere in `.ai`.
+`.ai/TODO.md`, `.ai/ARCHITECTURE.md`, `.ai/PERSISTENCE.md`, `.ai/FIXES.md`,
+`.ai/FEATURES.md`, and `.ai/PERFORMANCE.md`. These files describe current
+contracts only; completed journals and raw upstream snapshots are intentionally
+not retained.
 
 ## Toolchain and commands
 
@@ -63,7 +63,9 @@ starting or diagnosing the local browser session.
   `browserPageId` for explicit `--page` targeting when more than one tab exists.
 - Run the application in a separate Orca terminal. Never send shell commands to
   an agent terminal merely because it is the active terminal.
-- Use `pnpm dev --host 127.0.0.1 --port 8080` for current-source UI work.
+- Use `pnpm dev` for current-source UI work. Vite is fixed to strict
+  `http://127.0.0.1:8091`; use `pnpm dev:fresh` when its optimizer cache is
+  suspect.
   `vite preview` serves `dist/` and is valid only after an intentional fresh
   `pnpm build`; a copied or old `dist/` must not be treated as current source.
 - If the UI still shows old colors, routes, or controls after switching servers,

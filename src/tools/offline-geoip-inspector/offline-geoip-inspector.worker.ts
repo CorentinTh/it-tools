@@ -22,7 +22,9 @@ const MAX_DECOMPRESSED_DATASET_CHARACTERS = 32 * 1024 * 1024;
 
 async function loadDataset(family: 4 | 6) {
   const fileName = `user-country-ipv${family}.csv.gz`;
-  const response = await fetch(`${import.meta.env.BASE_URL}assets/geoip/${fileName}`, {
+  const datasetUrl = __IT_TOOLS_STANDALONE_GEOIP_DATASET_URLS__?.[fileName]
+    ?? `${import.meta.env.BASE_URL}assets/geoip/${fileName}`;
+  const response = await fetch(datasetUrl, {
     cache: 'force-cache',
     credentials: 'same-origin',
   });

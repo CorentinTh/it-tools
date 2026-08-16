@@ -10,6 +10,7 @@
     "composite": true,
     "baseUrl": ".",
     "paths": {
+      "@tool-registry": ["./src/tools/index.ts"],
       "@/*": ["./src/*"]
     },
     "types": ["naive-ui/volar", "@intlify/unplugin-vue-i18n/messages", "unplugin-icons/types/vue"],

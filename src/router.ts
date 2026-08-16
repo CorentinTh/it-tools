@@ -1,5 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import { tools } from './tools';
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router';
+import { tools } from '@tool-registry';
 import { config } from './config';
 import { applyRouteDocumentMetadata } from './modules/document-metadata';
 
@@ -16,7 +16,9 @@ const toolsRedirectRoutes = tools
   );
 
 const router = createRouter({
-  history: createWebHistory(config.app.baseUrl),
+  history: import.meta.env.STANDALONE
+    ? createWebHashHistory()
+    : createWebHistory(config.app.baseUrl),
   routes: [
     {
       path: '/',

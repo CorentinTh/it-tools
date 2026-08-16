@@ -20,6 +20,7 @@ import markdown from 'unplugin-vue-markdown/vite';
 import svgLoader from 'vite-svg-loader';
 import { configDefaults } from 'vitest/config';
 
+const isStandaloneBuild = process.env.IT_TOOLS_BUILD_MODE === 'standalone';
 const baseUrl = process.env.BASE_URL ?? '/';
 const require = createRequire(import.meta.url);
 const figletPackageJsonPath = require.resolve('figlet/package.json');
@@ -43,6 +44,13 @@ const lazyAssetCacheName = 'it-tools-lazy-assets-v1';
 const figletFontCacheName = `figlet-fonts-${figletVersion}`;
 const normalizedBaseUrl = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
 const figletFontPublicPath = `${normalizedBaseUrl}${figletFontAssetDirectory}`;
+const geoIpPublicDirectory = resolve(__dirname, 'public/assets/geoip');
+const standaloneGeoIpDatasetUrls = isStandaloneBuild
+  ? Object.fromEntries(['user-country-ipv4.csv.gz', 'user-country-ipv6.csv.gz'].map(fileName => [
+      fileName,
+      `data:application/gzip;base64,${readFileSync(resolve(geoIpPublicDirectory, fileName)).toString('base64')}`,
+    ]))
+  : undefined;
 const MAX_SHELL_PRECACHE_RAW_BYTES = 1_000_000;
 export const WORKER_OPTIMIZED_DEPENDENCIES = [
   '@noble/hashes/blake3.js',
@@ -354,10 +362,24 @@ function localFigletFonts(): Plugin {
   };
 }
 
+function standalonePwaRegisterStub(): Plugin {
+  const moduleId = '\0it-tools-standalone-pwa-register';
+
+  return {
+    name: 'it-tools-standalone-pwa-register-stub',
+    resolveId(id) {
+      return id === 'virtual:pwa-register' ? moduleId : undefined;
+    },
+    load(id) {
+      return id === moduleId ? 'export const registerSW = () => undefined;' : undefined;
+    },
+  };
+}
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    localFigletFonts(),
+    ...(!isStandaloneBuild ? [localFigletFonts()] : []),
     VueI18n({
       runtimeOnly: true,
       jitCompilation: true,
@@ -390,7 +412,7 @@ export default defineConfig({
     vueJsx(),
     markdown({}),
     svgLoader(),
-    VitePWA({
+    ...(isStandaloneBuild ? [standalonePwaRegisterStub()] : [VitePWA({
       registerType: 'autoUpdate',
       strategies: 'generateSW',
       includeAssets: [
@@ -480,7 +502,7 @@ export default defineConfig({
           },
         ],
       },
-    }),
+    })]),
     Components({
       dirs: ['src/'],
       extensions: ['vue', 'md'],
@@ -489,17 +511,25 @@ export default defineConfig({
     }),
     Unocss(),
   ],
-  base: baseUrl,
+  base: isStandaloneBuild ? './' : baseUrl,
   resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-    },
+    alias: [
+      {
+        find: '@tool-registry',
+        replacement: resolve(__dirname, isStandaloneBuild
+          ? 'src/tools/index.standalone.ts'
+          : 'src/tools/index.ts'),
+      },
+      { find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) },
+    ],
   },
   define: {
     'import.meta.env.PACKAGE_VERSION': JSON.stringify(process.env.npm_package_version),
     'import.meta.env.FIGLET_FONT_PATH': JSON.stringify(figletFontPublicPath),
     'import.meta.env.LAZY_ASSET_CACHE_NAME': JSON.stringify(lazyAssetCacheName),
     'import.meta.env.FIGLET_FONT_CACHE_NAME': JSON.stringify(figletFontCacheName),
+    'import.meta.env.STANDALONE': JSON.stringify(isStandaloneBuild),
+    '__IT_TOOLS_STANDALONE_GEOIP_DATASET_URLS__': JSON.stringify(standaloneGeoIpDatasetUrls),
   },
   optimizeDeps: {
     // Vite 4 does not crawl route-owned workers or every lazy route during its
@@ -543,5 +573,16 @@ export default defineConfig({
     // accepts Vite's newer dist/.vite/manifest.json location.
     manifest: true,
     target: 'esnext',
+    ...(isStandaloneBuild
+      ? {
+          assetsDir: '',
+          assetsInlineLimit: Number.MAX_SAFE_INTEGER,
+          chunkSizeWarningLimit: 100_000,
+          copyPublicDir: false,
+          cssCodeSplit: false,
+          minify: false,
+          outDir: 'dist-standalone/.intermediate',
+        }
+      : {}),
   },
 });
