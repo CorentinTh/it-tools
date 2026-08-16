@@ -4,12 +4,13 @@ import { XML_LIVE_MAX_BYTES, XML_MAX_INPUT_BYTES } from './xml-formatter.worker.
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 import { useBoundedTextTransform } from '@/composable/bounded-text-transform';
 import { downloadTextFile } from '@/composable/downloadText';
+import { useResilientStorage } from '@/composable/use-resilient-storage';
 import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
 import CSwitch from '@/ui/c-switch/c-switch.vue';
 
 const defaultValue = '<hello><world>foo</world><world>bar</world></hello>';
-const indentSize = useStorage('xml-formatter:indent-size', 2);
-const collapseContent = useStorage('xml-formatter:collapse-content', true);
+const indentSize = useResilientStorage('xml-formatter:indent-size', 2);
+const collapseContent = useResilientStorage('xml-formatter:collapse-content', true);
 const rawXml = ref(defaultValue);
 const inputComponent = ref<{ inputWrapperRef?: HTMLElement }>();
 const client = createXmlWorkerClient();

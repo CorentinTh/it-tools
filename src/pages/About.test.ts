@@ -1,8 +1,10 @@
-import { shallowMount } from '@vue/test-utils';
+import { flushPromises, shallowMount } from '@vue/test-utils';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import AboutPage from './About.vue';
 
-vi.mock('@vueuse/head', () => ({ useHead: vi.fn() }));
+const mocks = vi.hoisted(() => ({ deleteOtpVaultDatabase: vi.fn(async () => true) }));
+vi.mock('@/tools/local-encrypted-otp-vault/local-encrypted-otp-vault.repository', () => mocks);
+
 vi.mock('vue-i18n', () => ({
   useI18n: () => ({ t: (key: string) => key }),
 }));
@@ -11,6 +13,7 @@ describe('About privacy controls', () => {
   beforeEach(() => {
     localStorage.clear();
     vi.restoreAllMocks();
+    mocks.deleteOtpVaultDatabase.mockResolvedValue(true);
   });
 
   it('clears managed browser data only after confirmation', async () => {
@@ -27,6 +30,8 @@ describe('About privacy controls', () => {
     });
 
     wrapper.getComponent({ name: 'Popconfirm' }).vm.$emit('positive-click');
+    await flushPromises();
+    expect(mocks.deleteOtpVaultDatabase).toHaveBeenCalledOnce();
     await wrapper.vm.$nextTick();
 
     expect(localStorage.getItem('json-prettify:sort-keys')).toBeNull();

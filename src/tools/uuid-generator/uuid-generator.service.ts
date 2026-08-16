@@ -1,5 +1,5 @@
 import { v1 as createUuidV1 } from 'uuid';
-import type { V1Options } from 'uuid';
+import type { Version1Options } from 'uuid';
 import type { RandomValuesProvider } from '@/utils/secure-random';
 
 const MAX_UUIDS_PER_MILLISECOND = 10_000;
@@ -10,7 +10,7 @@ const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{
 
 const webCryptoRandomValues: RandomValuesProvider = values => globalThis.crypto.getRandomValues(values);
 
-type UuidV1Factory = (options: V1Options) => string;
+type UuidV1Factory = (options: Version1Options) => string;
 
 export interface GenerateUuidV1BatchOptions {
   count: number
@@ -232,14 +232,14 @@ export function generateUuidV1Batch({
   // RFC 4122 section 4.5: set the multicast bit when the node is random rather
   // than an IEEE 802 MAC address. The remaining node and clock-sequence bits
   // come from non-overlapping parts of the Web Crypto seed.
-  const node = [
+  const node = new Uint8Array([
     (seed[0] >>> 24) | 0x01,
     (seed[0] >>> 16) & 0xFF,
     (seed[0] >>> 8) & 0xFF,
     seed[0] & 0xFF,
     seed[1] >>> 24,
     (seed[1] >>> 16) & 0xFF,
-  ];
+  ]);
   const clockseq = seed[1] & CLOCK_SEQUENCE_MASK;
   const msecs = now();
 

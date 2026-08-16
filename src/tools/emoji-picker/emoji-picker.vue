@@ -5,6 +5,7 @@ import { createEmojiSearchWorkerClient } from './emoji-picker.worker-client';
 import { EMOJI_SEARCH_DEBOUNCE_MS } from './emoji-picker.worker.protocol';
 import {
   ALL_EMOJI_GROUPS,
+  EMOJI_DATASET_LABEL,
   createEmojiCatalog,
   filterEmojiGroup,
   getEmojiGroups,
@@ -138,6 +139,9 @@ function cancelSearch() {
       aria-live="polite"
     >
       {{ isSearching ? 'Searching emojis…' : `${matchingEmojiInfos.length} emojis available` }}
+    </div>
+    <div mt-1 text-xs op-60 data-test-id="emoji-dataset-version">
+      Dataset: {{ EMOJI_DATASET_LABEL }} (unicode-emoji-json, local only)
     </div>
 
     <div v-if="isSearching" mt-3>

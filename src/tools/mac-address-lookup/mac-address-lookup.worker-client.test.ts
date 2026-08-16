@@ -4,6 +4,7 @@ import { type OuiLookupError, type OuiWorkerRequest } from './mac-address-lookup
 
 class FakeWorker implements OuiWorkerHandle {
   onmessage: ((event: MessageEvent<unknown>) => void) | null = null;
+  onmessageerror: ((event: MessageEvent<unknown>) => void) | null = null;
   onerror: ((event: ErrorEvent) => void) | null = null;
   posted: OuiWorkerRequest[] = [];
   terminated = false;
@@ -26,6 +27,10 @@ class FakeWorker implements OuiWorkerHandle {
 
   crash(): void {
     this.onerror?.({ preventDefault: vi.fn() } as unknown as ErrorEvent);
+  }
+
+  failToDeserialize(): void {
+    this.onmessageerror?.({ preventDefault: vi.fn() } as unknown as MessageEvent<unknown>);
   }
 }
 
@@ -96,6 +101,12 @@ describe('OuiWorkerClient', () => {
     malformed.workers[0].emit({ jobId: 1, type: 'result', operation: 'lookup', value: 42 });
     await expectLookupError(malformedLookup, 'worker');
     expect(malformed.workers[0].terminated).toBe(true);
+
+    const unreadable = createHarness();
+    const unreadableLookup = lookup(unreadable.client);
+    unreadable.workers[0].failToDeserialize();
+    await expectLookupError(unreadableLookup, 'worker');
+    expect(unreadable.workers[0].terminated).toBe(true);
   });
 
   it('treats a missing response job identifier as a worker protocol failure', async () => {
@@ -181,5 +192,10 @@ describe('OuiWorkerClient', () => {
     client.dispose();
     expect(workers[0].terminated).toBe(true);
     await expectLookupError(lookup(client), 'unavailable');
+  });
+
+  it('rejects invalid timeout configuration before allocating a worker', () => {
+    expect(() => createHarness(0)).toThrow(RangeError);
+    expect(() => createHarness(Number.NaN)).toThrow(RangeError);
   });
 });

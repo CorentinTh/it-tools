@@ -23,7 +23,7 @@ test.describe('Tool - Text Diff', () => {
 
     const storedContent = await page.evaluate(key => localStorage.getItem(key), CONTENT_KEY);
     expect(JSON.parse(storedContent ?? '{}')).toEqual({
-      version: 1,
+      version: 2,
       original: 'original text',
       modified: 'modified text',
     });

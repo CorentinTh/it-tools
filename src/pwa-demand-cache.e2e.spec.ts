@@ -107,12 +107,16 @@ test.describe('PWA demand-driven caching', () => {
     const clientRuntimePaths = precache?.entries.filter(
       path => /^\/assets\/workbox-window[^/]*\.js$/.test(path),
     ) ?? [];
+    const offlineRecoveryPaths = precache?.entries.filter(
+      path => /^\/assets\/OfflineRouteUnavailable-[^/]*\.js$/.test(path),
+    ) ?? [];
 
     expect(precache, 'Workbox precache should exist after service-worker activation').toBeDefined();
     expect(clientRuntimePaths).toHaveLength(1);
-    expect(precache?.entries).toEqual([...STATIC_SHELL_PATHS, ...shellAssetPaths, ...clientRuntimePaths].sort());
+    expect(offlineRecoveryPaths).toHaveLength(1);
+    expect(precache?.entries).toEqual([...STATIC_SHELL_PATHS, ...shellAssetPaths, ...offlineRecoveryPaths, ...clientRuntimePaths].sort());
     expect(precache?.entries.filter(path => path.startsWith('/assets/')))
-      .toEqual([...shellAssetPaths, ...clientRuntimePaths].sort());
+      .toEqual([...shellAssetPaths, ...offlineRecoveryPaths, ...clientRuntimePaths].sort());
     expect(initialCaches.find(cache => cache.name === RUNTIME_CACHE_NAME)?.entries ?? []).toEqual([]);
 
     const toolLoadStartedAt = Date.now();
@@ -154,9 +158,10 @@ test.describe('PWA demand-driven caching', () => {
     await expect(page.getByTestId('random-port-output')).toBeVisible();
     const offlineReloadMs = Date.now() - offlineReloadStartedAt;
 
-    for (const path of [...shellAssetPaths, ...clientRuntimePaths, ...lazyAssetPaths]) {
+    for (const path of [...clientRuntimePaths, ...lazyAssetPaths]) {
       expect(offlineResponses.get(path), `${path} should be served by the service worker while offline`).toBe(true);
     }
+    expect([...offlineResponses.values()].every(Boolean), 'Every resource requested offline should come from the service worker').toBe(true);
 
     expect(chunkErrors, chunkErrors.join('\n')).toEqual([]);
 

@@ -95,7 +95,8 @@ describe('emoji picker component', () => {
     const wrapper = mountPicker();
 
     expect(wrapper.findAll('[data-test-id="emoji-card"]')).toHaveLength(8);
-    expect(wrapper.get('[data-test-id="emoji-result-status"]').text()).toBe('1870 emojis available');
+    expect(wrapper.get('[data-test-id="emoji-result-status"]').text()).toBe('1914 emojis available');
+    expect(wrapper.get('[data-test-id="emoji-dataset-version"]').text()).toContain('Unicode Emoji 16.0');
     expect(wrapper.findAll('[data-test-id="emoji-virtual-grid"]')).toHaveLength(1);
     expect(mocks.search).not.toHaveBeenCalled();
   });

@@ -20,9 +20,9 @@ test('Crontab uses one wide labelled field and shared mode switches', async ({ p
   await page.goto('/crontab-generator');
   await expect(page).toHaveTitle('Crontab generator - IT Tools');
   await expect(page.getByRole('textbox', { name: 'Cron expression' })).toBeVisible();
-  await expect(page.getByRole('switch', { name: 'Verbose' })).toBeChecked();
+  await expect(page.getByRole('switch', { name: 'Verbose description' })).toBeChecked();
   await expect(page.getByRole('switch', { name: 'Use 24-hour time' })).toBeChecked();
-  await expect(page.getByRole('switch', { name: 'Days start at 0' })).toBeChecked();
+  await expect(page.getByRole('switch', { name: 'Sunday is day 0' })).toBeChecked();
 
   await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth)).toBe(false);
@@ -175,9 +175,10 @@ test('Encryption uses equal responsive secret and algorithm fields above each ou
 test('HMAC uses a responsive option grid and full-width labelled result', async ({ page }) => {
   await page.goto('/hmac-generator');
   await expect(page).toHaveTitle('Hmac generator - IT Tools');
-  await page.getByRole('textbox', { name: 'Plain text to compute the hash' }).fill('abc');
+  await page.getByRole('textbox', { name: 'Message (UTF-8)' }).fill('abc');
   await page.getByRole('textbox', { name: 'Secret key' }).fill('key');
-  await expect(page.getByRole('textbox', { name: 'HMAC of your text' })).toHaveValue('9c196e32dc0175f86f4b1cb89289d6619de6bee699e4c378e68309ed97a1a6ab');
+  await page.getByRole('button', { name: 'Compute HMAC' }).click();
+  await expect(page.getByRole('textbox', { name: 'HMAC', exact: true })).toHaveValue('9c196e32dc0175f86f4b1cb89289d6619de6bee699e4c378e68309ed97a1a6ab');
 
   await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth)).toBe(false);

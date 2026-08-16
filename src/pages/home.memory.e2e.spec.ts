@@ -13,6 +13,10 @@ async function visitHomeAndReturnToTool(page: Page) {
   await page.locator('a[href="/"]').first().click();
   await expect(page).toHaveURL(/\/$/);
   await expect(page.locator('.grid-wrapper')).toBeVisible();
+  // Compare equivalent fully-rendered visits. Leaving while the progressive
+  // Home batches are still mounting makes the forced-GC baseline depend on
+  // scheduler timing instead of retained application ownership.
+  await expect.poll(() => page.locator('a[href] .tool-card').count()).toBeGreaterThanOrEqual(133);
   await settleRendering(page);
 
   await page.locator('a[href="/token-generator"]').first().click();

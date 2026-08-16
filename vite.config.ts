@@ -16,7 +16,7 @@ import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
 import { type Plugin, defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
-import markdown from 'vite-plugin-vue-markdown';
+import markdown from 'unplugin-vue-markdown/vite';
 import svgLoader from 'vite-svg-loader';
 import { configDefaults } from 'vitest/config';
 
@@ -39,6 +39,8 @@ function readPackageVersion(packageJsonPath: string) {
 
 const figletVersion = readPackageVersion(figletPackageJsonPath);
 const figletFontAssetDirectory = `assets/figlet-fonts-${figletVersion}`;
+const lazyAssetCacheName = 'it-tools-lazy-assets-v1';
+const figletFontCacheName = `figlet-fonts-${figletVersion}`;
 const normalizedBaseUrl = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
 const figletFontPublicPath = `${normalizedBaseUrl}${figletFontAssetDirectory}`;
 const MAX_SHELL_PRECACHE_RAW_BYTES = 1_000_000;
@@ -89,6 +91,11 @@ const SHELL_STATIC_URLS = new Set([
 // Workbox transforms. Only index.html is guaranteed to exist in this phase;
 // the final generated inventory is enforced by build statistics and budgets.
 const REQUIRED_TRANSFORM_INPUT_URLS = new Set(['index.html']);
+export const MANDATORY_ASYNC_SHELL_SOURCES = new Set([
+  'src/layouts/base.layout.vue',
+  'src/modules/pwa/OfflineRouteUnavailable.vue',
+  'src/pages/Home.page.vue',
+]);
 
 interface PrecacheManifestEntry {
   url: string
@@ -228,6 +235,58 @@ export function extractPwaClientRuntimePaths(viteManifestSource: string) {
   return runtimePaths;
 }
 
+export function extractMandatoryAsyncShellPaths(viteManifestSource: string) {
+  const viteManifest: unknown = JSON.parse(viteManifestSource);
+
+  if (!viteManifest || typeof viteManifest !== 'object' || Array.isArray(viteManifest)) {
+    throw new TypeError('Vite manifest must be an object');
+  }
+
+  const entries = viteManifest as Record<string, {
+    src?: unknown
+    file?: unknown
+    css?: unknown
+    assets?: unknown
+    imports?: unknown
+  }>;
+  const rootKeys = Object.entries(entries)
+    .filter(([, entry]) => typeof entry.src === 'string' && MANDATORY_ASYNC_SHELL_SOURCES.has(entry.src))
+    .map(([key]) => key);
+
+  if (rootKeys.length !== MANDATORY_ASYNC_SHELL_SOURCES.size) {
+    throw new Error(`Expected ${MANDATORY_ASYNC_SHELL_SOURCES.size} mandatory async shell entries; found ${rootKeys.length}`);
+  }
+
+  const paths = new Set<string>();
+  const pending = [...rootKeys];
+  const visited = new Set<string>();
+  while (pending.length > 0) {
+    const key = pending.pop();
+    if (!key || visited.has(key)) continue;
+    visited.add(key);
+    const entry = entries[key];
+    if (!entry || typeof entry.file !== 'string') {
+      throw new Error(`Mandatory async shell manifest entry is invalid: ${key}`);
+    }
+    paths.add(normalizePrecacheUrl(entry.file));
+    for (const field of [entry.css, entry.assets]) {
+      if (field === undefined) continue;
+      if (!Array.isArray(field) || field.some(value => typeof value !== 'string')) {
+        throw new Error(`Mandatory async shell manifest entry has an invalid asset list: ${key}`);
+      }
+      for (const path of field as string[]) paths.add(normalizePrecacheUrl(path));
+    }
+    if (entry.imports !== undefined) {
+      if (!Array.isArray(entry.imports) || entry.imports.some(value => typeof value !== 'string')) {
+        throw new Error(`Mandatory async shell manifest entry has an invalid imports list: ${key}`);
+      }
+      pending.push(...entry.imports as string[]);
+    }
+  }
+
+  return [...paths].sort();
+}
+
 async function listFigletFontFiles() {
   const entries = await readdir(figletFontsDirectory, { withFileTypes: true });
 
@@ -329,38 +388,44 @@ export default defineConfig({
       include: [/\.vue$/, /\.md$/],
     }),
     vueJsx(),
-    markdown(),
+    markdown({}),
     svgLoader(),
     VitePWA({
       registerType: 'autoUpdate',
       strategies: 'generateSW',
+      includeAssets: [
+        'android-chrome-192x192.png',
+        'android-chrome-512x512.png',
+        'favicon-16x16.png',
+        'favicon-32x32.png',
+      ],
       manifest: {
         name: 'IT Tools',
         description: 'Aggregated set of useful tools for developers.',
         display: 'standalone',
         lang: 'en',
-        start_url: `${baseUrl}?utm_source=pwa&utm_medium=pwa`,
+        start_url: `${normalizedBaseUrl}?utm_source=pwa&utm_medium=pwa`,
         orientation: 'any',
         theme_color: '#7868f4',
         background_color: '#f7f7fb',
         icons: [
           {
-            src: '/favicon-16x16.png',
+            src: `${normalizedBaseUrl}favicon-16x16.png`,
             type: 'image/png',
             sizes: '16x16',
           },
           {
-            src: '/favicon-32x32.png',
+            src: `${normalizedBaseUrl}favicon-32x32.png`,
             type: 'image/png',
             sizes: '32x32',
           },
           {
-            src: '/android-chrome-192x192.png',
+            src: `${normalizedBaseUrl}android-chrome-192x192.png`,
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: '/android-chrome-512x512.png',
+            src: `${normalizedBaseUrl}android-chrome-512x512.png`,
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable',
@@ -380,7 +445,10 @@ export default defineConfig({
             return filterShellPrecacheManifest(
               entries,
               indexHtml,
-              extractPwaClientRuntimePaths(viteManifest),
+              [
+                ...extractPwaClientRuntimePaths(viteManifest),
+                ...extractMandatoryAsyncShellPaths(viteManifest),
+              ],
             );
           },
         ],
@@ -389,7 +457,7 @@ export default defineConfig({
             urlPattern: /\/assets\/.+-[a-z\d_-]{8,}\.(?:css|js)$/i,
             handler: 'CacheFirst',
             options: {
-              cacheName: 'it-tools-lazy-assets-v1',
+              cacheName: lazyAssetCacheName,
               cacheableResponse: {
                 statuses: [0, 200],
               },
@@ -403,7 +471,7 @@ export default defineConfig({
             urlPattern: new RegExp(`/${figletFontAssetDirectory.replaceAll('.', '\\.')}\/[^/]+\\.flf$`),
             handler: 'CacheFirst',
             options: {
-              cacheName: `figlet-fonts-${figletVersion}`,
+              cacheName: figletFontCacheName,
               expiration: {
                 maxEntries: 32,
                 maxAgeSeconds: 60 * 60 * 24 * 365,
@@ -430,6 +498,8 @@ export default defineConfig({
   define: {
     'import.meta.env.PACKAGE_VERSION': JSON.stringify(process.env.npm_package_version),
     'import.meta.env.FIGLET_FONT_PATH': JSON.stringify(figletFontPublicPath),
+    'import.meta.env.LAZY_ASSET_CACHE_NAME': JSON.stringify(lazyAssetCacheName),
+    'import.meta.env.FIGLET_FONT_CACHE_NAME': JSON.stringify(figletFontCacheName),
   },
   optimizeDeps: {
     // Vite 4 does not crawl route-owned workers or every lazy route during its

@@ -23,14 +23,14 @@ function assertBoundedSide(value: string, side: keyof TextDiffContent) {
   }
 }
 
-function isStoredTextDiffContent(value: unknown): value is TextDiffContent & { version: 1 } {
+function isStoredTextDiffContent(value: unknown): value is TextDiffContent & { version: 1 | 2 } {
   if (!value || typeof value !== 'object') {
     return false;
   }
 
   const record = value as Record<string, unknown>;
 
-  return record.version === 1
+  return (record.version === 1 || record.version === 2)
     && typeof record.original === 'string'
     && typeof record.modified === 'string';
 }
@@ -75,7 +75,7 @@ export function writePersistedTextDiffContent(storage: TextDiffStorage, content:
   assertBoundedSide(content.modified, 'modified');
 
   storage.setItem(TEXT_DIFF_PERSISTENCE_KEYS.content, JSON.stringify({
-    version: 1,
+    version: 2,
     ...content,
   }));
 }

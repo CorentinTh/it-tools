@@ -51,7 +51,7 @@ about:
   privacy:
     title: Privacy and saved browser data
     description: Tool inputs are processed in this browser and are session-only by default. IT Tools saves only small preferences such as theme, formatting options, favorites, and generator settings.
-    textDiff: Text Diff content is saved only after you explicitly enable its bounded local persistence option. Secrets, generated tokens, OTP seeds, private keys, passwords, and uploaded files are not saved by default.
+    textDiff: Text Diff content is saved only after you explicitly enable its bounded local persistence option. OTP seeds are saved only inside the explicitly created encrypted OTP vault. Other secrets, generated tokens, private keys, passwords, and uploaded files are not saved by default.
     clearButton: Clear saved preferences and content
     confirmButton: Clear saved data
     cancelButton: Cancel
@@ -181,9 +181,17 @@ tools:
     title: File hash
     description: Calculate SHA-2, SHA-3, BLAKE3, SHA-1, and MD5 checksums for a local file without uploading it.
 
+  local-encrypted-otp-vault:
+    title: Local encrypted OTP vault
+    description: Store TOTP entries in one opt-in Web Crypto encrypted IndexedDB vault without accounts or synchronization.
+
   ipv6-calculator:
     title: IPv6 calculator
     description: Expand, compress, inspect, test, and split IPv6 CIDR networks with exact 128-bit calculations.
+
+  offline-geoip-inspector:
+    title: Offline GeoIP inspector
+    description: Estimate the country for an IPv4 or IPv6 address using a bundled static dataset without API requests.
 
   sensitive-data-masker:
     title: Sensitive data masker

@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { useHead } from '@vueuse/head';
-
-useHead({ title: 'Page not found - IT Tools' });
-</script>
-
 <template>
   <div mt-20 flex flex-col items-center>
     <span text-90px lh-1 op-50>

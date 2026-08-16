@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { extractPwaClientRuntimePaths, filterShellPrecacheManifest } from './vite.config';
+import {
+  extractMandatoryAsyncShellPaths,
+  extractPwaClientRuntimePaths,
+  filterShellPrecacheManifest,
+} from './vite.config';
 
 const manifestEntries = [
   { url: 'index.html', revision: 'index', size: 2_000 },
@@ -69,6 +73,29 @@ describe('PWA shell precache policy', () => {
 
     expect(clientRuntimePaths).toEqual(['assets/workbox-window.prod.es5-a7b12eab.js']);
     expect(result.manifest.some(entry => entry.url === clientRuntimePaths[0])).toBe(true);
+  });
+
+  it('includes the mandatory async layout, offline recovery, Home, and their static imports', () => {
+    const paths = extractMandatoryAsyncShellPaths(JSON.stringify({
+      'index.html': { file: 'assets/index-12345678.js', isEntry: true },
+      '_shared.js': { file: 'assets/shared-12345678.js' },
+      'src/layouts/base.layout.vue': {
+        src: 'src/layouts/base.layout.vue', file: 'assets/layout-12345678.js', imports: ['_shared.js'],
+      },
+      'src/modules/pwa/OfflineRouteUnavailable.vue': {
+        src: 'src/modules/pwa/OfflineRouteUnavailable.vue', file: 'assets/offline-12345678.js', imports: ['_shared.js'],
+      },
+      'src/pages/Home.page.vue': {
+        src: 'src/pages/Home.page.vue', file: 'assets/home-12345678.js', imports: ['_shared.js'],
+      },
+    }));
+
+    expect(paths).toEqual([
+      'assets/home-12345678.js',
+      'assets/layout-12345678.js',
+      'assets/offline-12345678.js',
+      'assets/shared-12345678.js',
+    ]);
   });
 
   it('fails closed when the Workbox client runtime cannot be identified', () => {

@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-const MINIMUM_TOOL_COUNT = 129;
+const MINIMUM_TOOL_COUNT = 133;
 const FORBIDDEN_CONSOLE_WARNINGS = [
   /Could not create web worker/i,
   /Falling back to loading web worker code in main thread/i,
@@ -43,6 +43,7 @@ test.describe('All tool routes', () => {
 
     const toolCards = page.locator('a[href] .tool-card');
     await expect(toolCards.first()).toBeVisible();
+    await expect.poll(() => toolCards.count()).toBeGreaterThanOrEqual(MINIMUM_TOOL_COUNT);
     const renderedToolCount = await toolCards.count();
     expect(renderedToolCount).toBeGreaterThanOrEqual(MINIMUM_TOOL_COUNT);
 

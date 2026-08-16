@@ -6,6 +6,8 @@ interface ImportMetaEnv {
   VITE_PLAUSIBLE_DOMAIN: string;
   PACKAGE_VERSION: string;
   FIGLET_FONT_PATH: string;
+  FIGLET_FONT_CACHE_NAME: string;
+  LAZY_ASSET_CACHE_NAME: string;
   GIT_SHORT_SHA: string;
   PROD: boolean;
 }

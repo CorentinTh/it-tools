@@ -36,7 +36,7 @@ describe('emoji virtual grid model', () => {
 
     expect(visible.length).toBeLessThanOrEqual(maximumRows);
     expect(visible.length).toBeLessThan(rows.length);
-    expect(getEmojiVirtualRowForIndex(rows, 1_869)).toMatchObject({ type: 'emoji' });
-    expect(getEmojiVirtualRowForIndex(rows, 1_870)).toBeUndefined();
+    expect(getEmojiVirtualRowForIndex(rows, 1_913)).toMatchObject({ type: 'emoji' });
+    expect(getEmojiVirtualRowForIndex(rows, 1_914)).toBeUndefined();
   });
 });

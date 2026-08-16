@@ -21,6 +21,11 @@ const DEFAULT_DIST_DIRECTORY = 'dist';
 const DEFAULT_LARGEST_ASSET_COUNT = 20;
 const VITE_MANIFEST_CANDIDATES = ['.vite/manifest.json', 'manifest.json'];
 const JAVASCRIPT_ARTIFACT_EXTENSIONS = new Set(['.js', '.mjs', '.cjs']);
+const MANDATORY_ASYNC_SHELL_SOURCES = new Set([
+  'src/layouts/base.layout.vue',
+  'src/modules/pwa/OfflineRouteUnavailable.vue',
+  'src/pages/Home.page.vue',
+]);
 const WORKER_REFERENCE_PATTERNS = Object.freeze([
   {
     relativeToOwner: true,
@@ -840,8 +845,14 @@ function analyzeViteManifest(source, manifestPath, recordsByActualPath) {
     workerArtifactPathsByRecordKey,
   );
   const entryRecords = records.filter(record => record.isEntry || record.isDynamicEntry);
+  const mandatoryAsyncShellRecords = records.filter(record => (
+    typeof record.src === 'string' && MANDATORY_ASYNC_SHELL_SOURCES.has(record.src)
+  ));
   const mainEntryInitialRecords = collectManifestRecordClosures(
-    records.filter(record => record.isEntry).map(record => record.key),
+    [
+      ...records.filter(record => record.isEntry).map(record => record.key),
+      ...mandatoryAsyncShellRecords.map(record => record.key),
+    ],
     recordsByKey,
     ['imports'],
   );
@@ -861,6 +872,7 @@ function analyzeViteManifest(source, manifestPath, recordsByActualPath) {
         importFields: ['imports'],
         artifactFields: ['file', 'css', 'assets', 'referencedWorkers'],
       },
+      mandatoryAsyncShellSources: [...MANDATORY_ASYNC_SHELL_SOURCES].sort(compareText),
       reachableClosure: {
         importFields: ['imports', 'dynamicImports'],
         artifactFields: ['file', 'css', 'assets', 'referencedWorkers'],

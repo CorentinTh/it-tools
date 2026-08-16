@@ -12,6 +12,7 @@ import {
 } from './uuid-generator.service';
 import { useCopy } from '@/composable/copy';
 import { computedRefreshable } from '@/composable/computedRefreshable';
+import { useResilientStorage } from '@/composable/use-resilient-storage';
 import { withDefaultOnError } from '@/utils/defaults';
 import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
 
@@ -23,7 +24,7 @@ const identifierKinds: Array<{ label: string; value: ModernIdentifierKind }> = [
 ];
 
 const version = useStorage<typeof versions[number]>('uuid-generator:version', 'v4');
-const count = useStorage('uuid-generator:quantity', 1);
+const count = useResilientStorage('uuid-generator:quantity', 1);
 const v35Args = ref({ namespace: '6ba7b811-9dad-11d1-80b4-00c04fd430c8', name: '' });
 const identifierKind = ref<ModernIdentifierKind>('uuid');
 const identifierInput = ref('01890abc-def0-7000-8000-000000000001');

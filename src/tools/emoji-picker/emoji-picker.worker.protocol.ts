@@ -5,7 +5,7 @@ import { isUnknownRecord } from '@/utils/worker-protocol';
 export const EMOJI_SEARCH_DEBOUNCE_MS = 150;
 export const EMOJI_SEARCH_MAX_QUERY_BYTES = 256;
 export const EMOJI_SEARCH_MAX_RESULT_BYTES = 128 * 1024;
-export const EMOJI_SEARCH_MAX_RESULTS = 1_870;
+export const EMOJI_SEARCH_MAX_RESULTS = 2_000;
 export const EMOJI_SEARCH_TIMEOUT_MS = 3_000;
 
 export interface EmojiSearchTask {

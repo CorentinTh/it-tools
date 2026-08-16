@@ -1,13 +1,15 @@
-import { useDark, useMediaQuery, useStorage, useToggle } from '@vueuse/core';
+import { useDark, useMediaQuery, useToggle } from '@vueuse/core';
 import { defineStore } from 'pinia';
 import { type Ref, computed, ref, watch } from 'vue';
+import { useResilientStorage } from '@/composable/use-resilient-storage';
+import { resilientLocalStorage } from '@/utils/resilient-storage';
 
 export const useStyleStore = defineStore('style', {
   state: () => {
-    const isDarkTheme = useDark();
+    const isDarkTheme = useDark({ storage: resilientLocalStorage });
     const toggleDark = useToggle(isDarkTheme);
     const isSmallScreen = useMediaQuery('(max-width: 700px)');
-    const desktopMenuCollapsed = useStorage('isMenuCollapsed', false) as Ref<boolean>;
+    const desktopMenuCollapsed = useResilientStorage('isMenuCollapsed', false) as Ref<boolean>;
     const mobileMenuCollapsed = ref(true);
     const isMenuCollapsed = computed({
       get: () => isSmallScreen.value ? mobileMenuCollapsed.value : desktopMenuCollapsed.value,

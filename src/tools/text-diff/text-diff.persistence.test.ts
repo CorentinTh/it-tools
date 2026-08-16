@@ -29,6 +29,7 @@ describe('Text Diff persistence', () => {
       original: 'before 💩',
       modified: 'after 今天',
     });
+    expect(JSON.parse(localStorage.getItem(TEXT_DIFF_PERSISTENCE_KEYS.content)!)).toMatchObject({ version: 2 });
   });
 
   it('checks UTF-8 byte limits before writing', () => {
@@ -42,7 +43,7 @@ describe('Text Diff persistence', () => {
   });
 
   it('rejects corrupt and oversized saved content without returning it', () => {
-    localStorage.setItem(TEXT_DIFF_PERSISTENCE_KEYS.content, '{"version":2}');
+    localStorage.setItem(TEXT_DIFF_PERSISTENCE_KEYS.content, '{"version":3}');
     expect(() => readPersistedTextDiffContent(localStorage)).toThrow(TypeError);
 
     localStorage.setItem(TEXT_DIFF_PERSISTENCE_KEYS.content, JSON.stringify({

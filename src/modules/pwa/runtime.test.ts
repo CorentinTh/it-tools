@@ -3,6 +3,7 @@ import { describe, expect, it, vi } from 'vitest';
 import {
   DEV_PWA_RESET_MARKER,
   clearDevelopmentPwaState,
+  clearStaleProductionCaches,
   configurePwaRuntime,
 } from './runtime';
 
@@ -92,7 +93,7 @@ describe('development PWA runtime hygiene', () => {
   it('registers Workbox only in production', async () => {
     const registerServiceWorker = vi.fn();
 
-    await configurePwaRuntime({
+    const result = await configurePwaRuntime({
       baseUrl: '/',
       isDevelopment: false,
       origin: 'https://it-tools.example',
@@ -100,5 +101,38 @@ describe('development PWA runtime hygiene', () => {
     });
 
     expect(registerServiceWorker).toHaveBeenCalledOnce();
+    expect(result.registration).toBe('registered');
+  });
+
+  it('removes stale runtime caches while preserving current and unrelated caches', async () => {
+    const deleted: string[] = [];
+    const result = await clearStaleProductionCaches({
+      delete: async (name) => {
+        deleted.push(name);
+        return true;
+      },
+      keys: async () => [
+        'it-tools-lazy-assets-v1',
+        'it-tools-lazy-assets-v2',
+        'figlet-fonts-1.7.0',
+        'figlet-fonts-1.8.0',
+        'workbox-precache-v2-example',
+        'another-application',
+      ],
+    }, ['it-tools-lazy-assets-v2', 'figlet-fonts-1.8.0']);
+
+    expect(deleted).toEqual(['it-tools-lazy-assets-v1', 'figlet-fonts-1.7.0']);
+    expect(result.deletedCacheCount).toBe(2);
+  });
+
+  it('keeps the loaded production app usable when registration fails', async () => {
+    const result = await configurePwaRuntime({
+      baseUrl: '/',
+      isDevelopment: false,
+      origin: 'https://it-tools.example',
+      registerServiceWorker: async () => { throw new Error('offline'); },
+    });
+
+    expect(result.registration).toBe('failed');
   });
 });

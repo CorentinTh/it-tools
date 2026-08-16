@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useStorage } from '@vueuse/core';
 import { YamlWorkerClient } from './yaml-viewer.worker-client';
 import {
   YAML_FORMAT_DEBOUNCE_MS,
@@ -12,12 +11,13 @@ import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
 import CSwitch from '@/ui/c-switch/c-switch.vue';
 import { exceedsUtf8ByteLimit } from '@/utils/utf8';
 import { downloadTextFile } from '@/composable/downloadText';
+import { useResilientStorage } from '@/composable/use-resilient-storage';
 
 const inputComponent = ref<{ inputWrapperRef?: HTMLElement }>();
 
 const rawYaml = ref('');
-const indentSize = useStorage('yaml-prettify:indent-size', 2);
-const sortKeys = useStorage('yaml-prettify:sort-keys', false);
+const indentSize = useResilientStorage('yaml-prettify:indent-size', 2);
+const sortKeys = useResilientStorage('yaml-prettify:sort-keys', false);
 const cleanYaml = shallowRef('null\n');
 const requiresExplicitFormat = ref(false);
 const workerClient = new YamlWorkerClient();

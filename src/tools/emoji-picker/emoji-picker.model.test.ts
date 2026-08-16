@@ -23,8 +23,9 @@ describe('emoji picker model', () => {
     const catalog = createEmojiCatalog(emojiUnicodeData);
     const family = catalog.find(({ emoji }) => emoji === '👨‍👩‍👧‍👦');
     const unitedNationsFlag = catalog.find(({ emoji }) => emoji === '🇺🇳');
+    const faceWithBags = catalog.find(({ emoji }) => emoji === '🫩');
 
-    expect(catalog).toHaveLength(1870);
+    expect(catalog).toHaveLength(1914);
     expect(family).toMatchObject({
       emoji: '👨‍👩‍👧‍👦',
       title: 'Family man, woman, girl, boy',
@@ -34,6 +35,11 @@ describe('emoji picker model', () => {
       emoji: '🇺🇳',
       title: 'Flag United Nations',
       group: 'Flags',
+    });
+    expect(faceWithBags).toMatchObject({
+      emoji: '🫩',
+      title: 'Face with bags under eyes',
+      emoji_version: '16.0',
     });
   });
 

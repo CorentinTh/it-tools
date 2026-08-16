@@ -1,27 +1,10 @@
 <script lang="ts" setup>
 import { useRoute } from 'vue-router';
-import { useHead } from '@vueuse/head';
-import type { HeadObject } from '@vueuse/head';
 
 import FavoriteButton from '@/components/FavoriteButton.vue';
 import type { Tool } from '@/tools/tools.types';
 
 const route = useRoute();
-
-const head = computed<HeadObject>(() => ({
-  title: `${route.meta.name} - IT Tools`,
-  meta: [
-    {
-      name: 'description',
-      content: route.meta?.description as string,
-    },
-    {
-      name: 'keywords',
-      content: ((route.meta.keywords ?? []) as string[]).join(','),
-    },
-  ],
-}));
-useHead(head);
 const { t } = useI18n();
 
 const i18nKey = computed<string>(() => route.path.trim().replace('/', ''));

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useStorage } from '@vueuse/core';
 import { JsonWorkerClient } from './json-viewer.worker-client';
 import {
   JSON_FORMAT_DEBOUNCE_MS,
@@ -13,12 +12,13 @@ import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
 import CSwitch from '@/ui/c-switch/c-switch.vue';
 import { exceedsUtf8ByteLimit } from '@/utils/utf8';
 import { downloadTextFile } from '@/composable/downloadText';
+import { useResilientStorage } from '@/composable/use-resilient-storage';
 
 const inputComponent = ref<{ inputWrapperRef?: HTMLElement }>();
 
 const rawJson = ref('{"hello": "world", "foo": "bar"}');
-const indentSize = useStorage('json-prettify:indent-size', 3);
-const sortKeys = useStorage('json-prettify:sort-keys', true);
+const indentSize = useResilientStorage('json-prettify:indent-size', 3);
+const sortKeys = useResilientStorage('json-prettify:sort-keys', true);
 const formatMode = ref<JsonFormatMode>('strict');
 const cleanJson = shallowRef('');
 const requiresExplicitFormat = ref(false);

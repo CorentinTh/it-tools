@@ -31,7 +31,8 @@ interface ConfigurePwaRuntimeOptions {
   cacheStorage?: CacheStorageLike
   isDevelopment: boolean
   origin: string
-  registerServiceWorker: () => unknown
+  currentRuntimeCacheNames?: readonly string[]
+  registerServiceWorker: () => unknown | Promise<unknown>
   reload?: () => void
   serviceWorker?: ServiceWorkerContainerLike
   sessionStorage?: SessionStorageLike
@@ -42,6 +43,11 @@ export const IT_TOOLS_CACHE_PREFIXES = [
   'figlet-fonts-',
   'it-tools-lazy-assets-',
   'workbox-precache-',
+] as const;
+
+export const IT_TOOLS_RUNTIME_CACHE_PREFIXES = [
+  'figlet-fonts-',
+  'it-tools-lazy-assets-',
 ] as const;
 
 function normalizeBaseUrl(baseUrl: string) {
@@ -70,6 +76,27 @@ function isApplicationRegistration(
 
 function isApplicationCache(cacheName: string) {
   return IT_TOOLS_CACHE_PREFIXES.some(prefix => cacheName.startsWith(prefix));
+}
+
+export async function clearStaleProductionCaches(
+  cacheStorage: CacheStorageLike | undefined,
+  currentCacheNames: readonly string[],
+) {
+  if (!cacheStorage) {
+    return { deletedCacheCount: 0 };
+  }
+
+  const cacheNames = await cacheStorage.keys().catch(() => []);
+  const current = new Set(currentCacheNames);
+  const stale = cacheNames.filter(cacheName => (
+    IT_TOOLS_RUNTIME_CACHE_PREFIXES.some(prefix => cacheName.startsWith(prefix))
+    && !current.has(cacheName)
+  ));
+  const deleted = await Promise.allSettled(stale.map(cacheName => cacheStorage.delete(cacheName)));
+
+  return {
+    deletedCacheCount: deleted.filter(result => result.status === 'fulfilled' && result.value).length,
+  };
 }
 
 export async function clearDevelopmentPwaState({
@@ -103,8 +130,19 @@ export async function clearDevelopmentPwaState({
 
 export async function configurePwaRuntime(options: ConfigurePwaRuntimeOptions) {
   if (!options.isDevelopment) {
-    options.registerServiceWorker();
-    return { mode: 'production' as const };
+    const cleanup = await clearStaleProductionCaches(
+      options.cacheStorage,
+      options.currentRuntimeCacheNames ?? [],
+    );
+
+    try {
+      await options.registerServiceWorker();
+      return { cleanup, mode: 'production' as const, registration: 'registered' as const };
+    }
+    catch {
+      // Keep the already loaded application usable if a new worker cannot register.
+      return { cleanup, mode: 'production' as const, registration: 'failed' as const };
+    }
   }
 
   const cleanup = await clearDevelopmentPwaState(options);

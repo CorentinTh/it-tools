@@ -1,8 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HomePage from './pages/Home.page.vue';
-import NotFound from './pages/404.page.vue';
 import { tools } from './tools';
 import { config } from './config';
+import { applyRouteDocumentMetadata } from './modules/document-metadata';
 
 const toolsRoutes = tools.map(({ path, name, component, ...config }) => ({
   path,
@@ -22,7 +21,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomePage,
+      component: () => import('./pages/Home.page.vue'),
     },
     {
       path: '/about',
@@ -31,8 +30,12 @@ const router = createRouter({
     },
     ...toolsRoutes,
     ...toolsRedirectRoutes,
-    { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
+    { path: '/:pathMatch(.*)*', name: 'NotFound', component: () => import('./pages/404.page.vue') },
   ],
+});
+
+router.afterEach((route) => {
+  applyRouteDocumentMetadata(document, route);
 });
 
 export default router;

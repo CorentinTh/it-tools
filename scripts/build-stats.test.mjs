@@ -143,6 +143,11 @@ test('collectBuildStats emits deterministic, hash-normalized artifact metrics', 
       importFields: ['imports'],
       artifactFields: ['file', 'css', 'assets', 'referencedWorkers'],
     },
+    mandatoryAsyncShellSources: [
+      'src/layouts/base.layout.vue',
+      'src/modules/pwa/OfflineRouteUnavailable.vue',
+      'src/pages/Home.page.vue',
+    ],
     reachableClosure: {
       importFields: ['imports', 'dynamicImports'],
       artifactFields: ['file', 'css', 'assets', 'referencedWorkers'],

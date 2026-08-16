@@ -37,7 +37,7 @@ test.describe('Shell-conscious existing-route interoperability wave', () => {
     await page.goto('/?q=first&q=second&category=Missing&secret=do-not-keep');
     await expect(page).toHaveURL(/\/$/);
     await expect(page.getByLabel('Search tools')).toHaveValue('');
-    await expect(page.getByTestId('home-filter-status')).toContainText('129 tools shown');
+    await expect(page.getByTestId('home-filter-status')).toContainText('133 tools shown');
   });
 
   test('downloads the complete already-computed converter output with a safe filename', async ({ page }) => {

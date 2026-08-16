@@ -2,7 +2,9 @@
 
 FROM node:24.18.0-alpine3.23@sha256:595398b0081eacda8e1c4c5b97b76cd1020e4d58a8ebcb4843b9bca1e79e7436 AS build-stage
 
+ARG BASE_URL=/
 ENV CI=true \
+    BASE_URL=${BASE_URL} \
     PNPM_HOME=/pnpm \
     PATH=/pnpm:$PATH
 
@@ -19,9 +21,10 @@ COPY . .
 RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store \
     pnpm config set store-dir /pnpm/store && \
     pnpm install --offline --frozen-lockfile && \
+    case "$BASE_URL" in /|/*/) ;; *) echo 'BASE_URL must start and end with /' >&2; exit 1 ;; esac && \
     pnpm build
 
-FROM nginxinc/nginx-unprivileged:1.30.3-alpine3.23@sha256:b3f2436575bd5be7386518084d842dac414ab4962712afa31e99e0942a56e3b2 AS production-stage
+FROM nginxinc/nginx-unprivileged:1.30.4-alpine3.24@sha256:44e36330f74d4f3a1d4e222acca9e23b401fb87811a7597024502bb759c4dd49 AS production-stage
 
 ENV NGINX_PORT=8080
 

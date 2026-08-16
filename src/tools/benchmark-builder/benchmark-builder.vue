@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { Plus, Trash } from '@vicons/tabler';
-import { useStorage } from '@vueuse/core';
 import _ from 'lodash';
 
 import { arrayToMarkdownTable, computeAverage, computeVariance } from './benchmark-builder.models';
 import DynamicValues from './dynamic-values.vue';
 import { useCopy } from '@/composable/copy';
+import { useResilientStorage } from '@/composable/use-resilient-storage';
 
 const suites = ref([
   { title: 'Suite 1', data: [5, 10] },
   { title: 'Suite 2', data: [8, 12] },
 ]);
 
-const unit = useStorage('benchmark-builder:unit', '');
+const unit = useResilientStorage('benchmark-builder:unit', '');
 
 const round = (v: number) => Math.round(v * 1000) / 1000;
 

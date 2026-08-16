@@ -7,6 +7,8 @@ import {
 } from './generate-tool-registry.mjs';
 
 const descriptorSource = (overrides = '') => `
+import { Fingerprint } from '@vicons/tabler';
+
 export const registry = {
   category: 'Crypto',
   order: 3,
@@ -15,6 +17,10 @@ export const registry = {
 export const tool = defineTool({
   name: 'Example',
   path: '/example',
+  description: 'Example description',
+  keywords: ['example'],
+  component: () => import('./example.vue'),
+  icon: Fingerprint,
   ${overrides}
 });
 `;
@@ -22,9 +28,16 @@ export const tool = defineTool({
 test('parses the canonical category, order, and path', () => {
   assert.deepEqual(parseToolDescriptor(descriptorSource(), 'example'), {
     category: 'Crypto',
+    componentPath: './example.vue',
+    createdAt: undefined,
+    description: "'Example description'",
     directoryName: 'example',
+    icon: { imported: 'Fingerprint', local: 'Fingerprint', source: '@vicons/tabler' },
+    keywords: "['example']",
+    name: "'Example'",
     order: 3,
     path: '/example',
+    redirectFrom: undefined,
   });
 });
 
@@ -51,13 +64,17 @@ test('rejects duplicate paths and category positions', () => {
 
 test('renders deterministic imports, category membership, and lazy descriptor references', () => {
   const output = renderToolRegistry([
-    { category: 'Text', directoryName: 'zeta', order: 2, path: '/zeta' },
-    { category: 'Crypto', directoryName: 'alpha', order: 1, path: '/alpha' },
+    { category: 'Text', componentPath: './zeta.vue', description: "'Zeta'", directoryName: 'zeta', icon: { imported: 'default', local: 'ZetaIcon', source: './zeta.svg?component' }, keywords: "['zeta']", name: "'Zeta'", order: 2, path: '/zeta' },
+    { category: 'Crypto', componentPath: './alpha.vue', description: "'Alpha'", directoryName: 'alpha', icon: { imported: 'Fingerprint', local: 'Fingerprint', source: '@vicons/tabler' }, keywords: "['alpha']", name: "'Alpha'", order: 1, path: '/alpha' },
   ]);
 
-  assert.match(output, /import \{ tool as tool0 \} from '\.\/alpha';/);
-  assert.match(output, /import \{ tool as tool1 \} from '\.\/zeta';/);
+  assert.match(output, /import \{ Fingerprint as ToolIcon0 \} from '@vicons\/tabler';/);
+  assert.match(output, /import ToolIcon1 from '\.\/zeta\/zeta\.svg\?component';/);
+  assert.match(output, /const tool0 = defineTool\(\{/);
+  assert.match(output, /component: \(\) => import\('\.\/alpha\/alpha\.vue'\)/);
+  assert.match(output, /icon: ToolIcon0/);
+  assert.match(output, /icon: ToolIcon1/);
   assert.match(output, /\{ name: 'Crypto', components: \[tool0\] \}/);
   assert.match(output, /\{ name: 'Text', components: \[tool1\] \}/);
-  assert.ok(output.indexOf("'./alpha'") < output.indexOf("'./zeta'"));
+  assert.ok(output.indexOf("'./alpha/alpha.vue'") < output.indexOf("'./zeta/zeta.vue'"));
 });

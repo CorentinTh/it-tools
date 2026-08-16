@@ -7,9 +7,11 @@ import {
   parseOuiWorkerMessage,
   toOuiLookupError,
 } from './mac-address-lookup.worker.protocol';
+import { assertWorkerTaskTimeout } from '@/utils/worker-task';
 
 export interface OuiWorkerHandle {
   onmessage: ((event: MessageEvent<unknown>) => void) | null
+  onmessageerror?: ((event: MessageEvent<unknown>) => void) | null
   onerror: ((event: ErrorEvent) => void) | null
   postMessage: (message: OuiWorkerRequest) => void
   terminate: () => void
@@ -42,7 +44,9 @@ export class OuiWorkerClient {
   constructor(
     private readonly workerFactory: OuiWorkerFactory = createWorker,
     private readonly timeoutMs = OUI_LOOKUP_TIMEOUT_MS,
-  ) {}
+  ) {
+    assertWorkerTaskTimeout(timeoutMs);
+  }
 
   start(): void {
     if (this.disposed || this.worker || this.startError) {
@@ -66,6 +70,10 @@ export class OuiWorkerClient {
     worker.onerror = (event) => {
       event.preventDefault();
       this.invalidateWorker(new OuiLookupError('worker', 'The local vendor database worker stopped unexpectedly.'));
+    };
+    worker.onmessageerror = (event) => {
+      event.preventDefault();
+      this.invalidateWorker(new OuiLookupError('worker', 'The local vendor database worker returned an unreadable message.'));
     };
     this.worker = worker;
   }
@@ -192,6 +200,7 @@ export class OuiWorkerClient {
     }
 
     worker.onmessage = null;
+    worker.onmessageerror = null;
     worker.onerror = null;
     try {
       worker.terminate();

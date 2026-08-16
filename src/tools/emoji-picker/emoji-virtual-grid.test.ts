@@ -51,7 +51,7 @@ describe('emoji virtual grid', () => {
     expect(initialCards.length).toBeGreaterThan(0);
     expect(initialCards.length).toBeLessThan(100);
     expect(initialCards[0].attributes('aria-posinset')).toBe('1');
-    expect(initialCards[0].attributes('aria-setsize')).toBe('1870');
+    expect(initialCards[0].attributes('aria-setsize')).toBe('1914');
 
     const viewport = wrapper.get('[data-test-id="emoji-virtual-viewport"]');
     (viewport.element as HTMLElement).scrollTop = 5_000;
@@ -72,8 +72,8 @@ describe('emoji virtual grid', () => {
     await first.trigger('keydown', { key: 'End' });
     await flushPromises();
 
-    expect(document.activeElement?.getAttribute('data-emoji-index')).toBe('1869');
-    await wrapper.get('[data-emoji-index="1869"]').trigger('keydown', { key: 'Home' });
+    expect(document.activeElement?.getAttribute('data-emoji-index')).toBe('1913');
+    await wrapper.get('[data-emoji-index="1913"]').trigger('keydown', { key: 'Home' });
     await flushPromises();
     expect(document.activeElement?.getAttribute('data-emoji-index')).toBe('0');
   });

@@ -1,11 +1,12 @@
-import { type MaybeRef, get, useStorage } from '@vueuse/core';
+import { type MaybeRef, get } from '@vueuse/core';
 import { defineStore } from 'pinia';
 import type { Ref } from 'vue';
 import type { Tool, ToolCategory, ToolWithCategory } from './tools.types';
 import { toolsByCategory as sourceToolsByCategory } from './index';
+import { useResilientStorage } from '@/composable/use-resilient-storage';
 
 export const useToolStore = defineStore('tools', () => {
-  const favoriteToolsName = useStorage('favoriteToolsName', []) as Ref<string[]>;
+  const favoriteToolsName = useResilientStorage('favoriteToolsName', []) as Ref<string[]>;
   const { t } = useI18n();
 
   const tools = computed<ToolWithCategory[]>(() => sourceToolsByCategory.flatMap(({ components, name: category }) => (

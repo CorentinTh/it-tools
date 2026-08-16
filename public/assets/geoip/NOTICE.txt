@@ -1,0 +1,11 @@
+Offline GeoIP Inspector dataset
+
+Source: sapics/ip-location-db, user-country IPv4 and IPv6 releases
+https://github.com/sapics/ip-location-db
+
+License: Open Data Commons Public Domain Dedication and License 1.0 (PDDL-1.0)
+https://opendatacommons.org/licenses/pddl/1-0/
+
+The pinned source checksums and row counts are recorded in
+scripts/generate-geoip-data.mjs. The database is loaded only from this local
+application artifact. No runtime API or third-party network request is used.

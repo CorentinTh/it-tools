@@ -46,7 +46,7 @@ test.describe('Mermaid Diagram Renderer', () => {
     expect(markerRequests).toEqual([]);
 
     await page.getByTestId('mermaid-render').click();
-    await page.getByTestId('mermaid-cancel').click();
+    await page.getByTestId('mermaid-cancel').dispatchEvent('click');
     await expect(page.getByTestId('mermaid-status')).toContainText('cancelled');
     await expect(page.getByTestId('mermaid-empty-preview')).toBeVisible();
 

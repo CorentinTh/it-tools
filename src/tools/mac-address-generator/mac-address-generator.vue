@@ -3,10 +3,11 @@ import _ from 'lodash';
 import { generateRandomMacAddress } from './mac-adress-generator.models';
 import { computedRefreshable } from '@/composable/computedRefreshable';
 import { useCopy } from '@/composable/copy';
+import { useResilientStorage } from '@/composable/use-resilient-storage';
 import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
 import { usePartialMacAddressValidation } from '@/utils/macAddress';
 
-const amount = useStorage('mac-address-generator-amount', 1);
+const amount = useResilientStorage('mac-address-generator-amount', 1);
 const macAddressPrefix = ref('64:16:7F');
 
 const prefixValidation = usePartialMacAddressValidation(macAddressPrefix);
@@ -35,7 +36,7 @@ const separators = [
     value: '',
   },
 ];
-const separator = useStorage('mac-address-generator-separator', separators[0].value);
+const separator = useResilientStorage('mac-address-generator-separator', separators[0].value);
 
 const [macAddresses, refreshMacAddresses] = computedRefreshable(() => {
   if (!prefixValidation.isValid) {

@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { useHead } from '@vueuse/head';
 import { clearManagedStorage } from '@/utils/app-storage';
-
-useHead({ title: 'About - IT Tools' });
+import { deleteOtpVaultDatabase } from '@/tools/local-encrypted-otp-vault/local-encrypted-otp-vault.repository';
 
 const { t } = useI18n();
 const storageClearStatus = ref('');
 
-function clearSavedBrowserData() {
+async function clearSavedBrowserData() {
   let removedKeys: string[];
   let failedKeys: string[];
 
@@ -19,9 +17,17 @@ function clearSavedBrowserData() {
     return;
   }
 
+  let removedDatabases = 0;
+  try {
+    removedDatabases = await deleteOtpVaultDatabase() ? 1 : 0;
+  }
+  catch {
+    failedKeys.push('IndexedDB:it-tools-otp-vault');
+  }
+
   storageClearStatus.value = failedKeys.length > 0
-    ? t('about.privacy.clearPartial', { removed: removedKeys.length, failed: failedKeys.length })
-    : t('about.privacy.clearSuccess', { count: removedKeys.length });
+    ? t('about.privacy.clearPartial', { removed: removedKeys.length + removedDatabases, failed: failedKeys.length })
+    : t('about.privacy.clearSuccess', { count: removedKeys.length + removedDatabases });
 }
 </script>
 

@@ -1,5 +1,5 @@
 import { LEGACY_SENSITIVE_CONTENT_STORAGE_KEYS } from './sensitive-content-storage';
-import { TEXT_DIFF_PERSISTENCE_KEYS } from './storage-keys';
+import { STORAGE_SCHEMA_KEY, TEXT_DIFF_PERSISTENCE_KEYS } from './storage-keys';
 
 export const PERSISTED_PREFERENCE_STORAGE_KEYS = [
   'locale',
@@ -34,6 +34,7 @@ export const PERSISTED_PREFERENCE_STORAGE_KEYS = [
 ] as const;
 
 export const MANAGED_STORAGE_KEYS = [
+  STORAGE_SCHEMA_KEY,
   ...PERSISTED_PREFERENCE_STORAGE_KEYS,
   TEXT_DIFF_PERSISTENCE_KEYS.preference,
   TEXT_DIFF_PERSISTENCE_KEYS.content,

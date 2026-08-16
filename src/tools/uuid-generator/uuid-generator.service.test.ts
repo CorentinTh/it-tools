@@ -41,13 +41,13 @@ describe('generateUuidV1Batch', () => {
     expect(uuidV1Factory).toHaveBeenNthCalledWith(1, {
       clockseq: 0x0AFE,
       msecs: 1_700_000_000_000,
-      node: [0x11, 0x20, 0x30, 0x40, 0x50, 0x60],
+      node: new Uint8Array([0x11, 0x20, 0x30, 0x40, 0x50, 0x60]),
       nsecs: 0,
     });
     expect(uuidV1Factory).toHaveBeenNthCalledWith(3, {
       clockseq: 0x0AFE,
       msecs: 1_700_000_000_000,
-      node: [0x11, 0x20, 0x30, 0x40, 0x50, 0x60],
+      node: new Uint8Array([0x11, 0x20, 0x30, 0x40, 0x50, 0x60]),
       nsecs: 2,
     });
   });

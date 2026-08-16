@@ -2,6 +2,7 @@ import type emojiUnicodeData from 'unicode-emoji-json';
 import type { EmojiInfo, EmojiKeywordMap } from './emoji.types';
 
 export const ALL_EMOJI_GROUPS = '__all__';
+export const EMOJI_DATASET_LABEL = 'Unicode Emoji 16.0';
 
 type EmojiUnicodeData = typeof emojiUnicodeData;
 

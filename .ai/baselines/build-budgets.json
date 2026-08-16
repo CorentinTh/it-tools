@@ -6,7 +6,7 @@
   "globalLimits": {
     "shell.withDocument.rawBytes": 850000,
     "shell.withDocument.gzipBytes": 250000,
-    "workbox.fileCount": 10,
+    "workbox.fileCount": 56,
     "workbox.rawBytes": 1000000,
     "workbox.gzipBytes": 350000
   },
@@ -40,9 +40,9 @@
       "rationale": "The measured 7,892 B raw / 3,171 B gzip route-owned worker performs bounded DER/ASN.1 inspection for X.509 certificates, CSRs, and public keys. It rejects private-key blocks, enforces 1 MiB DER plus node/depth/output limits and an eight-second terminate-and-replace lifecycle, and deliberately does not claim signature, chain, hostname, revocation, or trust validation."
     },
     "assets/emoji-picker.worker-<hash>.js": {
-      "rawBytes": 410000,
-      "gzipBytes": 72000,
-      "rationale": "The measured 400,601 B raw / 68,523 B gzip demand-loaded search worker owns Fuse plus the complete Unicode and keyword catalogs. It is fetched only after a query and feeds a truly windowed grid with physical replacement, cancellation, a three-second deadline, exact query/result bounds, and a strict 4x-CPU sub-50-ms Long Task gate."
+      "rawBytes": 480000,
+      "gzipBytes": 90000,
+      "rationale": "The measured 466,920 B raw / 85,086 B gzip demand-loaded search worker owns Fuse plus the updated 1,914-entry Unicode Emoji 16.0 and emojilib 4.0.3 keyword catalogs. It remains below the 500 kB chunk gate, is fetched only after a query, and feeds a truly windowed grid with physical replacement, cancellation, a three-second deadline, exact query/result bounds, and a strict 4x-CPU sub-50-ms Long Task gate."
     },
     "assets/docker-converter.worker-<hash>.js": {
       "rawBytes": 215000,
@@ -75,14 +75,14 @@
       "rationale": "The dedicated demand-loaded worker includes streaming SHA-2, SHA-3, BLAKE3, SHA-1, and MD5 implementations for interoperability without affecting the initial shell. The measured worker is 25,899 B raw / 10,417 B gzip; this narrow ceiling still prevents accidental parser or whole-library growth independently of its route closure."
     },
     "assets/hash-text.worker-<hash>.js": {
-      "rawBytes": 65000,
-      "gzipBytes": 24000,
-      "rationale": "The measured 60,239 B raw / 21,154 B gzip route-owned worker computes the existing eight CryptoJS digests outside the main thread. It replaces a measured 706 ms Node / 2.95 s production-browser reactive 1 MiB main-thread path with 16 KiB automatic, 1 MiB hard input, five-second, cancellation, stale-result, and disposal bounds."
+      "rawBytes": 80000,
+      "gzipBytes": 30000,
+      "rationale": "The measured 73,068 B raw / 27,769 B gzip route-owned worker computes the existing eight digests outside the main thread after the security-fixed CryptoJS 4.2.0 upgrade. It replaces a measured 706 ms Node / 2.95 s production-browser reactive 1 MiB main-thread path with 16 KiB automatic, 1 MiB hard input, five-second, cancellation, stale-result, and disposal bounds."
     },
     "assets/hmac-generator.worker-<hash>.js": {
-      "rawBytes": 66000,
-      "gzipBytes": 24000,
-      "rationale": "The measured 60,965 B raw / 21,477 B gzip route-owned worker moves the existing CryptoJS HMAC algorithms off the reactive main thread and adds exact UTF-8, byte-paired hex, or canonical RFC 4648 Base64 key decoding. It has 1 MiB message, 8 KiB encoded/4 KiB decoded key, 1 KiB output, five-second, exact-envelope, replacement, cancellation, and disposal bounds; RFC 4231 SHA-256 fixtures prove the modern path and legacy algorithms are visibly labelled."
+      "rawBytes": 80000,
+      "gzipBytes": 30000,
+      "rationale": "The measured 73,794 B raw / 28,119 B gzip route-owned worker moves the security-fixed CryptoJS 4.2.0 HMAC algorithms off the reactive main thread and retains exact UTF-8, byte-paired hex, or canonical RFC 4648 Base64 key decoding. It has 1 MiB message, 8 KiB encoded/4 KiB decoded key, 1 KiB output, five-second, exact-envelope, replacement, cancellation, and disposal bounds; RFC 4231 SHA-256 fixtures prove the modern path and legacy algorithms are visibly labelled."
     },
     "assets/html-wysiwyg-editor.worker-<hash>.js": {
       "rawBytes": 220000,
@@ -292,9 +292,9 @@
         "rationale": "Bounded third catalog feature; this route-owned closure includes the incremental SHA-2 worker and must remain a small demand-loaded tool."
       },
       "src/tools/emoji-picker/emoji-picker.vue": {
-        "rawBytes": 700000,
-        "gzipBytes": 110000,
-        "rationale": "The measured additional closure is 680,300 B raw / 104,121 B gzip because the demand-loaded worker deliberately owns the complete compressible Unicode/keyword catalogs. Initial shell and initial emoji route rendering remain paged; the worker is fetched only after search and has a separate asset ceiling."
+        "rawBytes": 780000,
+        "gzipBytes": 130000,
+        "rationale": "The measured additional closure is 757,903 B raw / 123,134 B gzip after updating the complete local catalogs to 1,914 Unicode Emoji 16.0 entries and emojilib 4.0.3. Initial shell and initial emoji route rendering remain windowed; the worker is fetched only after search, stays below 500 kB, and has a separate narrow asset ceiling."
       },
       "src/tools/html-wysiwyg-editor/html-wysiwyg-editor.vue": {
         "rawBytes": 560000,

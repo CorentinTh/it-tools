@@ -58,7 +58,17 @@ interface ActiveTask {
   cancel: (code: 'cancelled' | 'timeout', message: string) => void
 }
 
-const MAX_TIMER_DELAY_MS = 2_147_483_647;
+export const MAX_WORKER_TASK_TIMEOUT_MS = 2_147_483_647;
+
+export function assertWorkerTaskTimeout(timeoutMs: number): void {
+  if (
+    !Number.isSafeInteger(timeoutMs)
+    || timeoutMs < 1
+    || timeoutMs > MAX_WORKER_TASK_TIMEOUT_MS
+  ) {
+    throw new RangeError(`Worker task timeout must be a whole number between 1 and ${MAX_WORKER_TASK_TIMEOUT_MS}.`);
+  }
+}
 
 export class TerminateAndReplaceWorkerTask<
   TTask,
@@ -81,13 +91,7 @@ export class TerminateAndReplaceWorkerTask<
       TProgress
     >,
   ) {
-    if (
-      !Number.isSafeInteger(options.timeoutMs)
-      || options.timeoutMs < 1
-      || options.timeoutMs > MAX_TIMER_DELAY_MS
-    ) {
-      throw new RangeError(`Worker task timeout must be a whole number between 1 and ${MAX_TIMER_DELAY_MS}.`);
-    }
+    assertWorkerTaskTimeout(options.timeoutMs);
   }
 
   run(

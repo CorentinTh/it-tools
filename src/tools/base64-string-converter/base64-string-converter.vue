@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { useCopy } from '@/composable/copy';
+import { useResilientStorage } from '@/composable/use-resilient-storage';
 import { base64ToText, isValidBase64, textToBase64 } from '@/utils/base64';
 import { withDefaultOnError } from '@/utils/defaults';
 import CSwitch from '@/ui/c-switch/c-switch.vue';
 
-const encodeUrlSafe = useStorage('base64-string-converter--encode-url-safe', false);
-const decodeUrlSafe = useStorage('base64-string-converter--decode-url-safe', false);
+const encodeUrlSafe = useResilientStorage('base64-string-converter--encode-url-safe', false);
+const decodeUrlSafe = useResilientStorage('base64-string-converter--decode-url-safe', false);
 
 const textInput = ref('');
 const base64Output = computed(() => textToBase64(textInput.value, { makeUrlSafe: encodeUrlSafe.value }));

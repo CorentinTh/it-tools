@@ -81,6 +81,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Reject high or critical production dependency vulnerabilities
+        run: pnpm test:security
+
       - name: Run linters
         run: pnpm lint
 
@@ -104,11 +107,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-playwright-
 
-      - name: Install Chromium
-        run: pnpm exec playwright install --with-deps chromium
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps chromium firefox webkit
 
       - name: Run Chromium acceptance tests
         run: pnpm test:e2e --project=chromium --reporter=line
+
+      - name: Run Firefox and WebKit smoke tests
+        run: pnpm test:e2e src/cross-browser-smoke.e2e.spec.ts --project=firefox --project=webkit --reporter=line
 
       - name: Package the verified artifact
         run: zip -r "it-tools-${{ needs.metadata.outputs.version }}.zip" dist
@@ -135,6 +141,23 @@ jobs:
 
       - name: Verify rootless static-delivery contracts
         run: sh scripts/container-smoke.sh it-tools:release-candidate
+
+      - name: Scan the release candidate for fixable high and critical vulnerabilities
+        uses: aquasecurity/trivy-action@a9c7b0f06e461e9d4b4d1711f154ee024b8d7ab8 # v0.36.0
+        with:
+          image-ref: it-tools:release-candidate
+          version: v0.74.0
+          format: table
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: os,library
+          severity: HIGH,CRITICAL
+
+      - name: Build the subpath release candidate
+        run: docker build --build-arg BASE_URL=/it-tools/ --tag it-tools:release-subpath .
+
+      - name: Verify reverse-proxy and subpath contracts
+        run: sh scripts/subpath-container-smoke.sh it-tools:release-subpath
 
   github-release:
     needs: [metadata, verify, container-verify]

@@ -2,15 +2,16 @@
 import { MAX_TOKEN_ALPHABET_SIZE, MAX_TOKEN_LENGTH, MAX_TOKEN_QUANTITY, createTokens } from './token-generator.service';
 import { useCopy } from '@/composable/copy';
 import { downloadTextFile } from '@/composable/downloadText';
+import { useResilientStorage } from '@/composable/use-resilient-storage';
 import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
 import CSwitch from '@/ui/c-switch/c-switch.vue';
 
-const length = useStorage('token-generator:v1:length', 64);
-const quantity = useStorage('token-generator:v1:quantity', 1);
-const withUppercase = useStorage('token-generator:v1:uppercase', true);
-const withLowercase = useStorage('token-generator:v1:lowercase', true);
-const withNumbers = useStorage('token-generator:v1:numbers', true);
-const withSymbols = useStorage('token-generator:v1:symbols', false);
+const length = useResilientStorage('token-generator:v1:length', 64);
+const quantity = useResilientStorage('token-generator:v1:quantity', 1);
+const withUppercase = useResilientStorage('token-generator:v1:uppercase', true);
+const withLowercase = useResilientStorage('token-generator:v1:lowercase', true);
+const withNumbers = useResilientStorage('token-generator:v1:numbers', true);
+const withSymbols = useResilientStorage('token-generator:v1:symbols', false);
 const customAlphabet = ref('');
 const deniedCharacters = ref('');
 const output = ref('');

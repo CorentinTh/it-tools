@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import figlet from 'figlet';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
+import { useResilientStorage } from '@/composable/use-resilient-storage';
 import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
 
 const input = ref('Ascii ART');
-const font = useStorage('ascii-text-drawer:font', 'Standard');
-const width = useStorage('ascii-text-drawer:width', 80);
+const font = useResilientStorage('ascii-text-drawer:font', 'Standard');
+const width = useResilientStorage('ascii-text-drawer:width', 80);
 const output = ref('');
 const errored = ref(false);
 const processing = ref(false);

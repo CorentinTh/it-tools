@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useHead } from '@vueuse/head';
 import ToolCard from '../components/ToolCard.vue';
 import { HOME_SEARCH_MAX_LENGTH, createHomeQuery, filterHomeTools, readHomeFilter } from './home-filter';
 import { useToolStore } from '@/tools/tools.store';
@@ -8,7 +7,6 @@ const toolStore = useToolStore();
 const route = useRoute();
 const router = useRouter();
 
-useHead({ title: 'IT Tools - Handy online tools for developers' });
 const { t } = useI18n();
 
 const favoriteTools = computed(() => toolStore.favoriteTools);
@@ -19,8 +17,44 @@ const categoryOptions = computed(() => [
 ]);
 const filter = computed(() => readHomeFilter(route.query, categories.value));
 const filteredTools = computed(() => filterHomeTools(toolStore.tools, filter.value));
+const HOME_RENDER_BATCH_SIZE = 8;
+const renderedToolCount = ref(0);
+const renderedTools = computed(() => filteredTools.value.slice(0, renderedToolCount.value));
 const hasActiveFilter = computed(() => Boolean(filter.value.query || filter.value.category));
 const draggedFavoritePath = ref('');
+let renderFrame: number | undefined;
+
+function scheduleToolBatches() {
+  if (renderFrame !== undefined) {
+    cancelAnimationFrame(renderFrame);
+  }
+  renderedToolCount.value = Math.min(HOME_RENDER_BATCH_SIZE, filteredTools.value.length);
+
+  const renderNextBatch = () => {
+    renderedToolCount.value = Math.min(
+      renderedToolCount.value + HOME_RENDER_BATCH_SIZE,
+      filteredTools.value.length,
+    );
+    if (renderedToolCount.value < filteredTools.value.length) {
+      renderFrame = requestAnimationFrame(renderNextBatch);
+    }
+    else {
+      renderFrame = undefined;
+    }
+  };
+
+  if (renderedToolCount.value < filteredTools.value.length) {
+    renderFrame = requestAnimationFrame(renderNextBatch);
+  }
+}
+
+watch(filteredTools, scheduleToolBatches, { immediate: true });
+
+onScopeDispose(() => {
+  if (renderFrame !== undefined) {
+    cancelAnimationFrame(renderFrame);
+  }
+});
 
 const searchQuery = computed({
   get: () => filter.value.query,
@@ -196,7 +230,7 @@ onMounted(async () => {
         {{ hasActiveFilter ? 'Filtered tools' : $t('home.categories.allTools') }}
       </h3>
       <div v-if="filteredTools.length" class="grid grid-cols-1 gap-12px lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4">
-        <ToolCard v-for="tool in filteredTools" :key="tool.path" :tool="tool" />
+        <ToolCard v-for="tool in renderedTools" :key="tool.path" :tool="tool" />
       </div>
       <n-alert v-else type="info" role="status">
         No tools match this filter.

@@ -6,6 +6,7 @@ test.describe('Tool - OTP code generator', () => {
       Date.now = () => 1609477200000; // Jan 1, 2021
     });
     await page.goto('/otp-generator');
+    await expect(page).toHaveTitle('OTP code generator - IT Tools');
   });
 
   test('Has title', async ({ page }) => {
@@ -13,15 +14,15 @@ test.describe('Tool - OTP code generator', () => {
   });
 
   test('Secret hexa value is computed from provided secret', async ({ page }) => {
-    await page.getByPlaceholder('Paste your TOTP secret...').fill('ITTOOLS');
+    await page.getByLabel('RFC 4648 Base32 secret').fill('ITTOOLS');
 
-    const secretInHex = await page.getByPlaceholder('Secret in hex will be displayed here').inputValue();
+    const secretInHex = await page.getByLabel('Secret in hexadecimal').inputValue();
 
     expect(secretInHex).toEqual('44e6e72e02');
   });
 
   test('OTP a generated from the provided secret', async ({ page }) => {
-    await page.getByPlaceholder('Paste your TOTP secret...').fill('ITTOOLS');
+    await page.getByLabel('RFC 4648 Base32 secret').fill('ITTOOLS');
 
     const previousOtp = await page.getByTestId('previous-otp').innerText();
     const currentOtp = await page.getByTestId('current-otp').innerText();
@@ -33,13 +34,9 @@ test.describe('Tool - OTP code generator', () => {
   });
 
   test('You can generate a new random secret', async ({ page }) => {
-    const secretInput = page.getByPlaceholder('Paste your TOTP secret...');
+    const secretInput = page.getByLabel('RFC 4648 Base32 secret');
     const initialSecret = await secretInput.inputValue();
-    await page
-      .locator('div')
-      .filter({ hasText: /^Secret$/ })
-      .getByRole('button')
-      .click();
+    await page.getByRole('button', { name: 'Generate a new random secret' }).click();
 
     await expect(secretInput).not.toHaveValue(initialSecret);
     const newSecret = await secretInput.inputValue();

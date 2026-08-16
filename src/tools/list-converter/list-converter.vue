@@ -154,7 +154,7 @@ const { cancel, hasError, isRunning, output, run, state } = useBoundedTextTransf
     <c-field class="c-tool-panel" label="Your transformed data">
       <TextareaCopyable
         :value="output"
-        :large-preview-bytes="16 * 1024"
+        :large-preview-bytes="8 * 1024"
         :follow-height-of="inputComponent?.inputWrapperRef"
       />
     </c-field>

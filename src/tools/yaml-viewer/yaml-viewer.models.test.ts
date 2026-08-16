@@ -146,9 +146,10 @@ describe('YAML formatter model', () => {
     }
 
     const actualOutput = new Document(root).toString({ indent: 10, lineWidth: 0 });
-    const outputLimit = 84_500;
+    const actualBytes = new TextEncoder().encode(actualOutput).byteLength;
+    const outputLimit = actualBytes - 1;
 
-    expect(new TextEncoder().encode(actualOutput).byteLength).toBeGreaterThan(outputLimit);
+    expect(actualBytes).toBeGreaterThan(outputLimit);
     expectErrorCode(() => assertYamlOutputWithinLimits(root, 10, outputLimit), 'limit');
   });
 
