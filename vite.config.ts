@@ -61,6 +61,7 @@ export const WORKER_OPTIMIZED_DEPENDENCIES = [
   'json5',
   'markdown-it',
   'mathjs/number',
+  'pkijs',
   'prettier',
   'prettier/plugins/html',
   'randexp',

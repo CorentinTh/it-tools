@@ -2,6 +2,11 @@ import { AlignJustified } from '@vicons/tabler';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
+export const registry = {
+  category: 'Crypto',
+  order: 12,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: translate('tools.bip39-generator.title'),
   path: '/bip39-generator',

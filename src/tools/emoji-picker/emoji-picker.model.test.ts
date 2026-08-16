@@ -2,14 +2,11 @@ import emojiUnicodeData from 'unicode-emoji-json';
 import { describe, expect, it } from 'vitest';
 import {
   ALL_EMOJI_GROUPS,
-  EMOJI_PAGE_SIZE,
   createEmojiCatalog,
   filterEmojiGroup,
   getEmojiCodePoints,
   getEmojiGroups,
-  getEmojiPage,
   getEmojiUnicodeEscape,
-  groupEmojiInfos,
 } from './emoji-picker.model';
 
 describe('emoji picker model', () => {
@@ -40,26 +37,12 @@ describe('emoji picker model', () => {
     });
   });
 
-  it('returns bounded progressive pages and preserves source order', () => {
+  it('filters categories without duplicating entries', () => {
     const catalog = createEmojiCatalog(emojiUnicodeData);
-    const firstPage = getEmojiPage(catalog, EMOJI_PAGE_SIZE);
-    const secondPage = getEmojiPage(catalog, EMOJI_PAGE_SIZE * 2);
-
-    expect(firstPage).toHaveLength(EMOJI_PAGE_SIZE);
-    expect(secondPage).toHaveLength(EMOJI_PAGE_SIZE * 2);
-    expect(secondPage.slice(0, EMOJI_PAGE_SIZE)).toEqual(firstPage);
-  });
-
-  it('filters and groups categories without duplicating entries', () => {
-    const catalog = createEmojiCatalog(emojiUnicodeData);
-    const flags = filterEmojiGroup(catalog, 'Flags');
     const allEmoji = filterEmojiGroup(catalog, ALL_EMOJI_GROUPS);
-    const groupedFlags = groupEmojiInfos(flags);
 
     expect(getEmojiGroups(catalog)).toContain('Flags');
     expect(allEmoji).toHaveLength(catalog.length);
     expect(allEmoji).not.toBe(catalog);
-    expect(groupedFlags).toHaveLength(1);
-    expect(groupedFlags[0]).toMatchObject({ group: 'Flags', emojiInfos: flags });
   });
 });

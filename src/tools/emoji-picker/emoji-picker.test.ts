@@ -3,7 +3,7 @@ import { defineComponent, h } from 'vue';
 import { flushPromises, mount } from '@vue/test-utils';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import emojiUnicodeData from 'unicode-emoji-json';
-import { EMOJI_PAGE_SIZE, createEmojiCatalog } from './emoji-picker.model';
+import { createEmojiCatalog } from './emoji-picker.model';
 import type { EmojiInfo } from './emoji.types';
 import EmojiPicker from './emoji-picker.vue';
 
@@ -46,12 +46,12 @@ const ButtonStub = defineComponent({
   },
 });
 
-const GridStub = defineComponent({
+const VirtualGridStub = defineComponent({
   props: {
     emojiInfos: { type: Array as () => EmojiInfo[], default: () => [] },
   },
   setup(props) {
-    return () => h('div', { 'data-test-id': 'emoji-grid' }, props.emojiInfos.map(emojiInfo => h('span', {
+    return () => h('div', { 'data-test-id': 'emoji-virtual-grid' }, props.emojiInfos.slice(0, 8).map(emojiInfo => h('span', {
       'data-test-id': 'emoji-card',
       'data-emoji': emojiInfo.emoji,
     }, emojiInfo.title)));
@@ -64,7 +64,7 @@ function mountPicker() {
       stubs: {
         CButton: ButtonStub,
         CInputText: InputStub,
-        EmojiGrid: GridStub,
+        EmojiVirtualGrid: VirtualGridStub,
         IconMdiSearch: true,
       },
     },
@@ -91,26 +91,20 @@ describe('emoji picker component', () => {
     vi.useRealTimers();
   });
 
-  it('renders one bounded page and progressively adds another page', async () => {
+  it('hands the complete catalog to one bounded virtual viewport', () => {
     const wrapper = mountPicker();
 
-    expect(wrapper.findAll('[data-test-id="emoji-card"]')).toHaveLength(EMOJI_PAGE_SIZE);
-    expect(wrapper.get('[data-test-id="emoji-result-status"]').text()).toBe(`Showing ${EMOJI_PAGE_SIZE} of 1870 emojis`);
+    expect(wrapper.findAll('[data-test-id="emoji-card"]')).toHaveLength(8);
+    expect(wrapper.get('[data-test-id="emoji-result-status"]').text()).toBe('1870 emojis available');
+    expect(wrapper.findAll('[data-test-id="emoji-virtual-grid"]')).toHaveLength(1);
     expect(mocks.search).not.toHaveBeenCalled();
-
-    await wrapper.get('[data-test-id="emoji-load-more"]').trigger('click');
-
-    expect(wrapper.findAll('[data-test-id="emoji-card"]')).toHaveLength(EMOJI_PAGE_SIZE * 2);
   });
 
-  it('resets the progressive page after category and query changes', async () => {
+  it('updates the virtual source after category and query changes', async () => {
     const wrapper = mountPicker();
 
-    await wrapper.get('[data-test-id="emoji-load-more"]').trigger('click');
-    expect(wrapper.findAll('[data-test-id="emoji-card"]')).toHaveLength(EMOJI_PAGE_SIZE * 2);
-
     await wrapper.get('[data-test-id="emoji-category"]').setValue('Flags');
-    expect(wrapper.findAll('[data-test-id="emoji-card"]')).toHaveLength(EMOJI_PAGE_SIZE);
+    expect(wrapper.findAll('[data-test-id="emoji-card"]')).toHaveLength(8);
     expect(wrapper.findAll('[data-test-id="emoji-card"]').every(card => card.attributes('data-emoji'))).toBe(true);
 
     await wrapper.get('[data-test-id="emoji-search"]').setValue('United Nations');
@@ -138,7 +132,20 @@ describe('emoji picker component', () => {
     await vi.advanceTimersByTimeAsync(150);
     await flushPromises();
 
-    expect(wrapper.findAll('[data-test-id="emoji-grid"]')).toHaveLength(1);
-    expect(wrapper.findAll('[data-test-id="emoji-card"]')).toHaveLength(EMOJI_PAGE_SIZE);
+    expect(wrapper.findAll('[data-test-id="emoji-virtual-grid"]')).toHaveLength(1);
+    expect(wrapper.findAll('[data-test-id="emoji-card"]')).toHaveLength(8);
+  });
+
+  it('exposes cancellation for an in-flight worker search', async () => {
+    mocks.search.mockImplementation(() => new Promise(() => undefined));
+    const wrapper = mountPicker();
+
+    await wrapper.get('[data-test-id="emoji-search"]').setValue('face');
+    await vi.advanceTimersByTimeAsync(150);
+    expect(wrapper.find('[data-test-id="emoji-cancel-search"]').exists()).toBe(true);
+
+    await wrapper.get('[data-test-id="emoji-cancel-search"]').trigger('click');
+    expect(mocks.cancel).toHaveBeenCalled();
+    expect(wrapper.get('[role="alert"]').text()).toBe('Emoji search was cancelled.');
   });
 });

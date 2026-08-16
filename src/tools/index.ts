@@ -1,262 +1,148 @@
-import { tool as base64FileConverter } from './base64-file-converter';
-import { tool as base64StringConverter } from './base64-string-converter';
-import { tool as basicAuthGenerator } from './basic-auth-generator';
-import { tool as emailNormalizer } from './email-normalizer';
-import { tool as gzipConverter } from './gzip-converter';
-import { tool as idnSafetyConverter } from './idn-safety-converter';
-import { tool as httpRequestCodeBuilder } from './http-request-code-builder';
-import { tool as aesGcmEnvelope } from './aes-gcm-envelope';
-import { tool as devopsSecretHelper } from './devops-secret-helper';
-import { tool as spdxLicenseGuidance } from './spdx-license-guidance';
-
-import { tool as asciiTextDrawer } from './ascii-text-drawer';
-
-import { tool as textToUnicode } from './text-to-unicode';
-import { tool as safelinkDecoder } from './safelink-decoder';
-import { tool as sensitiveDataMasker } from './sensitive-data-masker';
-import { tool as markdownTableGenerator } from './markdown-table-generator';
-import { tool as markdownDiff } from './markdown-diff';
-import { tool as mermaidDiagram } from './mermaid-diagram';
-import { tool as parquetReader } from './parquet-reader';
-import { tool as xlsxReader } from './xlsx-reader';
-import { tool as tabularDataInspector } from './tabular-data-inspector';
-import { tool as xmlToJson } from './xml-to-json';
-import { tool as jsonToXml } from './json-to-xml';
-import { tool as regexTester } from './regex-tester';
-import { tool as regexMemo } from './regex-memo';
-import { tool as markdownToHtml } from './markdown-to-html';
-import { tool as pdfSignatureChecker } from './pdf-signature-checker';
-import { tool as numeronymGenerator } from './numeronym-generator';
-import { tool as macAddressGenerator } from './mac-address-generator';
-import { tool as textToBinary } from './text-to-binary';
-import { tool as ulidGenerator } from './ulid-generator';
-import { tool as ibanValidatorAndParser } from './iban-validator-and-parser';
-import { tool as stringObfuscator } from './string-obfuscator';
-import { tool as textDiff } from './text-diff';
-import { tool as emojiPicker } from './emoji-picker';
-import { tool as passwordStrengthAnalyser } from './password-strength-analyser';
-import { tool as yamlToToml } from './yaml-to-toml';
-import { tool as jsonToToml } from './json-to-toml';
-import { tool as tomlToYaml } from './toml-to-yaml';
-import { tool as tomlToJson } from './toml-to-json';
-import { tool as jsonToCsv } from './json-to-csv';
-import { tool as cameraRecorder } from './camera-recorder';
-import { tool as barcodeGeneratorReader } from './barcode-generator-reader';
-import { tool as faviconAppIconGenerator } from './favicon-app-icon-generator';
-import { tool as imageMetadataRemover } from './image-metadata-remover';
-import { tool as listConverter } from './list-converter';
-import { tool as listComparison } from './list-comparison';
-import { tool as phoneParserAndFormatter } from './phone-parser-and-formatter';
-import { tool as jsonDiff } from './json-diff';
-import { tool as ipv4RangeExpander } from './ipv4-range-expander';
-import { tool as httpStatusCodes } from './http-status-codes';
-import { tool as yamlToJson } from './yaml-to-json-converter';
-import { tool as jsonToYaml } from './json-to-yaml-converter';
-import { tool as ipv6UlaGenerator } from './ipv6-ula-generator';
-import { tool as ipv6Calculator } from './ipv6-calculator';
-import { tool as networkCalculationSuite } from './network-calculation-suite';
-import { tool as dnsOverHttpsQuery } from './dns-over-https-query';
-import { tool as ipv4AddressConverter } from './ipv4-address-converter';
-import { tool as benchmarkBuilder } from './benchmark-builder';
-import { tool as userAgentParser } from './user-agent-parser';
-import { tool as ipv4SubnetCalculator } from './ipv4-subnet-calculator';
-import { tool as dockerRunToDockerComposeConverter } from './docker-run-to-docker-compose-converter';
-import { tool as htmlWysiwygEditor } from './html-wysiwyg-editor';
-import { tool as rsaKeyPairGenerator } from './rsa-key-pair-generator';
-import { tool as ed25519KeyWorkspace } from './ed25519-key-workspace';
-import { tool as certificateInspector } from './certificate-inspector';
-import { tool as samlEnterpriseInspector } from './saml-enterprise-inspector';
-import { tool as textToNatoAlphabet } from './text-to-nato-alphabet';
-import { tool as slugifyString } from './slugify-string';
-import { tool as keycodeInfo } from './keycode-info';
-import { tool as jsonMinify } from './json-minify';
-import { tool as jsonRepairQuery } from './json-repair-query';
-import { tool as jsonCodeGenerator } from './json-code-generator';
-import { tool as bcrypt } from './bcrypt';
-import { tool as argon2idHashVerify } from './argon2id-hash-verify';
-import { tool as bip39 } from './bip39-generator';
-import { tool as caseConverter } from './case-converter';
-import { tool as chmodCalculator } from './chmod-calculator';
-import { tool as chronometer } from './chronometer';
-import { tool as colorConverter } from './color-converter';
-import { tool as crontabGenerator } from './crontab-generator';
-import { tool as cliCommandEditor } from './cli-command-editor';
-import { tool as devopsConfigWorkspace } from './devops-config-workspace';
-import { tool as developerTextWorkspace } from './developer-text-workspace';
-import { tool as conventionalCommitHelper } from './conventional-commit-helper';
-import { tool as localFileInspector } from './local-file-inspector';
-import { tool as dateTimeConverter } from './date-time-converter';
-import { tool as timezoneDurationCalculator } from './timezone-duration-calculator';
-import { tool as deviceInformation } from './device-information';
-import { tool as cypher } from './encryption';
-import { tool as etaCalculator } from './eta-calculator';
-import { tool as percentageCalculator } from './percentage-calculator';
-import { tool as ieee754Inspector } from './ieee754-inspector';
-import { tool as gitMemo } from './git-memo';
-import { tool as fileHash } from './file-hash';
-import { tool as hashText } from './hash-text';
-import { tool as hmacGenerator } from './hmac-generator';
-import { tool as htmlEntities } from './html-entities';
-import { tool as baseConverter } from './integer-base-converter';
-import { tool as jsonViewer } from './json-viewer';
-import { tool as jsonSchemaValidator } from './json-schema-validator';
-import { tool as jwtParser } from './jwt-parser';
-import { tool as loremIpsumGenerator } from './lorem-ipsum-generator';
-import { tool as mathEvaluator } from './math-evaluator';
-import { tool as metaTagGenerator } from './meta-tag-generator';
-import { tool as mimeTypes } from './mime-types';
-import { tool as otpCodeGeneratorAndValidator } from './otp-code-generator-and-validator';
-import { tool as qrCodeGenerator } from './qr-code-generator';
-import { tool as qrDecoderOtpImport } from './qr-decoder-otp-import';
-import { tool as wifiQrCodeGenerator } from './wifi-qr-code-generator';
-import { tool as randomPortGenerator } from './random-port-generator';
-import { tool as romanNumeralConverter } from './roman-numeral-converter';
-import { tool as sqlPrettify } from './sql-prettify';
-import { tool as svgPlaceholderGenerator } from './svg-placeholder-generator';
-import { tool as temperatureConverter } from './temperature-converter';
-import { tool as textStatistics } from './text-statistics';
-import { tool as tokenGenerator } from './token-generator';
-import { tool as passphraseGenerator } from './passphrase-generator';
-import { tool as nanoidGenerator } from './nanoid-generator';
-import { tool as mockDataGenerator } from './mock-data-generator';
+// This file is generated by scripts/generate-tool-registry.mjs. Do not edit manually.
+import { tool as tool0 } from './token-generator';
+import { tool as tool1 } from './passphrase-generator';
+import { tool as tool2 } from './nanoid-generator';
+import { tool as tool3 } from './uuid-generator';
+import { tool as tool4 } from './ulid-generator';
+import { tool as tool5 } from './hash-text';
+import { tool as tool6 } from './file-hash';
+import { tool as tool7 } from './bcrypt';
+import { tool as tool8 } from './argon2id-hash-verify';
+import { tool as tool9 } from './devops-secret-helper';
+import { tool as tool10 } from './aes-gcm-envelope';
+import { tool as tool11 } from './encryption';
+import { tool as tool12 } from './bip39-generator';
+import { tool as tool13 } from './hmac-generator';
+import { tool as tool14 } from './rsa-key-pair-generator';
+import { tool as tool15 } from './ed25519-key-workspace';
+import { tool as tool16 } from './certificate-inspector';
+import { tool as tool17 } from './password-strength-analyser';
+import { tool as tool18 } from './pdf-signature-checker';
+import { tool as tool19 } from './pkcs12-pem-workspace';
+import { tool as tool20 } from './date-time-converter';
+import { tool as tool21 } from './integer-base-converter';
+import { tool as tool22 } from './roman-numeral-converter';
+import { tool as tool23 } from './base64-string-converter';
+import { tool as tool24 } from './base64-file-converter';
+import { tool as tool25 } from './gzip-converter';
+import { tool as tool26 } from './idn-safety-converter';
+import { tool as tool27 } from './color-converter';
+import { tool as tool28 } from './case-converter';
+import { tool as tool29 } from './text-to-nato-alphabet';
+import { tool as tool30 } from './text-to-binary';
+import { tool as tool31 } from './text-to-unicode';
+import { tool as tool32 } from './yaml-to-json-converter';
+import { tool as tool33 } from './yaml-to-toml';
+import { tool as tool34 } from './json-to-yaml-converter';
+import { tool as tool35 } from './json-to-toml';
+import { tool as tool36 } from './list-converter';
+import { tool as tool37 } from './toml-to-json';
+import { tool as tool38 } from './toml-to-yaml';
+import { tool as tool39 } from './xml-to-json';
+import { tool as tool40 } from './json-to-xml';
+import { tool as tool41 } from './markdown-to-html';
+import { tool as tool42 } from './url-encoder';
+import { tool as tool43 } from './html-entities';
+import { tool as tool44 } from './url-parser';
+import { tool as tool45 } from './device-information';
+import { tool as tool46 } from './basic-auth-generator';
+import { tool as tool47 } from './meta-tag-generator';
+import { tool as tool48 } from './otp-code-generator-and-validator';
+import { tool as tool49 } from './mime-types';
+import { tool as tool50 } from './jwt-parser';
+import { tool as tool51 } from './keycode-info';
+import { tool as tool52 } from './slugify-string';
+import { tool as tool53 } from './html-wysiwyg-editor';
+import { tool as tool54 } from './user-agent-parser';
+import { tool as tool55 } from './http-status-codes';
+import { tool as tool56 } from './json-diff';
+import { tool as tool57 } from './safelink-decoder';
+import { tool as tool58 } from './sensitive-data-masker';
+import { tool as tool59 } from './http-request-code-builder';
+import { tool as tool60 } from './qr-code-generator';
+import { tool as tool61 } from './qr-decoder-otp-import';
+import { tool as tool62 } from './wifi-qr-code-generator';
+import { tool as tool63 } from './barcode-generator-reader';
+import { tool as tool64 } from './image-metadata-remover';
+import { tool as tool65 } from './favicon-app-icon-generator';
+import { tool as tool66 } from './svg-placeholder-generator';
+import { tool as tool67 } from './camera-recorder';
+import { tool as tool68 } from './git-memo';
+import { tool as tool69 } from './conventional-commit-helper';
+import { tool as tool70 } from './cli-command-editor';
+import { tool as tool71 } from './devops-config-workspace';
+import { tool as tool72 } from './developer-text-workspace';
+import { tool as tool73 } from './spdx-license-guidance';
+import { tool as tool74 } from './markdown-table-generator';
+import { tool as tool75 } from './mermaid-diagram';
+import { tool as tool76 } from './tabular-data-inspector';
+import { tool as tool77 } from './local-file-inspector';
+import { tool as tool78 } from './saml-enterprise-inspector';
+import { tool as tool79 } from './random-port-generator';
+import { tool as tool80 } from './crontab-generator';
+import { tool as tool81 } from './json-viewer';
+import { tool as tool82 } from './json-schema-validator';
+import { tool as tool83 } from './json-minify';
+import { tool as tool84 } from './json-repair-query';
+import { tool as tool85 } from './json-code-generator';
+import { tool as tool86 } from './json-to-csv';
+import { tool as tool87 } from './sql-prettify';
+import { tool as tool88 } from './chmod-calculator';
+import { tool as tool89 } from './docker-run-to-docker-compose-converter';
+import { tool as tool90 } from './xml-formatter';
+import { tool as tool91 } from './yaml-viewer';
+import { tool as tool92 } from './email-normalizer';
+import { tool as tool93 } from './regex-tester';
+import { tool as tool94 } from './regex-memo';
+import { tool as tool95 } from './openapi-inspector';
+import { tool as tool96 } from './ipv4-subnet-calculator';
+import { tool as tool97 } from './ipv4-address-converter';
+import { tool as tool98 } from './ipv4-range-expander';
+import { tool as tool99 } from './ipv6-calculator';
+import { tool as tool100 } from './network-calculation-suite';
+import { tool as tool101 } from './dns-over-https-query';
+import { tool as tool102 } from './mac-address-lookup';
+import { tool as tool103 } from './mac-address-generator';
+import { tool as tool104 } from './ipv6-ula-generator';
+import { tool as tool105 } from './math-evaluator';
+import { tool as tool106 } from './ieee754-inspector';
+import { tool as tool107 } from './eta-calculator';
+import { tool as tool108 } from './percentage-calculator';
+import { tool as tool109 } from './chronometer';
+import { tool as tool110 } from './timezone-duration-calculator';
+import { tool as tool111 } from './date-calendar-utilities';
+import { tool as tool112 } from './temperature-converter';
+import { tool as tool113 } from './data-units-converter';
+import { tool as tool114 } from './raid-storage-calculator';
+import { tool as tool115 } from './benchmark-builder';
+import { tool as tool116 } from './mock-data-generator';
+import { tool as tool117 } from './lorem-ipsum-generator';
+import { tool as tool118 } from './text-statistics';
+import { tool as tool119 } from './list-comparison';
+import { tool as tool120 } from './unicode-gsm-inspector';
+import { tool as tool121 } from './markdown-diff';
+import { tool as tool122 } from './emoji-picker';
+import { tool as tool123 } from './string-obfuscator';
+import { tool as tool124 } from './text-diff';
+import { tool as tool125 } from './numeronym-generator';
+import { tool as tool126 } from './ascii-text-drawer';
+import { tool as tool127 } from './parquet-reader';
+import { tool as tool128 } from './xlsx-reader';
+import { tool as tool129 } from './phone-parser-and-formatter';
+import { tool as tool130 } from './iban-validator-and-parser';
 import type { ToolCategory } from './tools.types';
-import { tool as urlEncoder } from './url-encoder';
-import { tool as urlParser } from './url-parser';
-import { tool as uuidGenerator } from './uuid-generator';
-import { tool as dataUnitsConverter } from './data-units-converter';
-import { tool as raidStorageCalculator } from './raid-storage-calculator';
-import { tool as dateCalendarUtilities } from './date-calendar-utilities';
-import { tool as macAddressLookup } from './mac-address-lookup';
-import { tool as xmlFormatter } from './xml-formatter';
-import { tool as yamlViewer } from './yaml-viewer';
-import { tool as unicodeGsmInspector } from './unicode-gsm-inspector';
 
 export const toolsByCategory: ToolCategory[] = [
-  {
-    name: 'Crypto',
-    components: [tokenGenerator, passphraseGenerator, nanoidGenerator, uuidGenerator, ulidGenerator, hashText, fileHash, bcrypt, argon2idHashVerify, devopsSecretHelper, aesGcmEnvelope, cypher, bip39, hmacGenerator, rsaKeyPairGenerator, ed25519KeyWorkspace, certificateInspector, passwordStrengthAnalyser, pdfSignatureChecker],
-  },
-  {
-    name: 'Converter',
-    components: [
-      dateTimeConverter,
-      baseConverter,
-      romanNumeralConverter,
-      base64StringConverter,
-      base64FileConverter,
-      gzipConverter,
-      idnSafetyConverter,
-      colorConverter,
-      caseConverter,
-      textToNatoAlphabet,
-      textToBinary,
-      textToUnicode,
-      yamlToJson,
-      yamlToToml,
-      jsonToYaml,
-      jsonToToml,
-      listConverter,
-      tomlToJson,
-      tomlToYaml,
-      xmlToJson,
-      jsonToXml,
-      markdownToHtml,
-    ],
-  },
-  {
-    name: 'Web',
-    components: [
-      urlEncoder,
-      htmlEntities,
-      urlParser,
-      deviceInformation,
-      basicAuthGenerator,
-      metaTagGenerator,
-      otpCodeGeneratorAndValidator,
-      mimeTypes,
-      jwtParser,
-      keycodeInfo,
-      slugifyString,
-      htmlWysiwygEditor,
-      userAgentParser,
-      httpStatusCodes,
-      jsonDiff,
-      safelinkDecoder,
-      sensitiveDataMasker,
-      httpRequestCodeBuilder,
-    ],
-  },
-  {
-    name: 'Images and videos',
-    components: [qrCodeGenerator, qrDecoderOtpImport, wifiQrCodeGenerator, barcodeGeneratorReader, imageMetadataRemover, faviconAppIconGenerator, svgPlaceholderGenerator, cameraRecorder],
-  },
-  {
-    name: 'Development',
-    components: [
-      gitMemo,
-      conventionalCommitHelper,
-      cliCommandEditor,
-      devopsConfigWorkspace,
-      developerTextWorkspace,
-      spdxLicenseGuidance,
-      markdownTableGenerator,
-      mermaidDiagram,
-      tabularDataInspector,
-      localFileInspector,
-      samlEnterpriseInspector,
-      randomPortGenerator,
-      crontabGenerator,
-      jsonViewer,
-      jsonSchemaValidator,
-      jsonMinify,
-      jsonRepairQuery,
-      jsonCodeGenerator,
-      jsonToCsv,
-      sqlPrettify,
-      chmodCalculator,
-      dockerRunToDockerComposeConverter,
-      xmlFormatter,
-      yamlViewer,
-      emailNormalizer,
-      regexTester,
-      regexMemo,
-    ],
-  },
-  {
-    name: 'Network',
-    components: [ipv4SubnetCalculator, ipv4AddressConverter, ipv4RangeExpander, ipv6Calculator, networkCalculationSuite, dnsOverHttpsQuery, macAddressLookup, macAddressGenerator, ipv6UlaGenerator],
-  },
-  {
-    name: 'Math',
-    components: [mathEvaluator, ieee754Inspector, etaCalculator, percentageCalculator],
-  },
-  {
-    name: 'Measurement',
-    components: [chronometer, timezoneDurationCalculator, dateCalendarUtilities, temperatureConverter, dataUnitsConverter, raidStorageCalculator, benchmarkBuilder],
-  },
-  {
-    name: 'Text',
-    components: [
-      mockDataGenerator,
-      loremIpsumGenerator,
-      textStatistics,
-      listComparison,
-      unicodeGsmInspector,
-      markdownDiff,
-      emojiPicker,
-      stringObfuscator,
-      textDiff,
-      numeronymGenerator,
-      asciiTextDrawer,
-    ],
-  },
-  {
-    name: 'Data',
-    components: [parquetReader, xlsxReader, phoneParserAndFormatter, ibanValidatorAndParser],
-  },
+  { name: 'Crypto', components: [tool0, tool1, tool2, tool3, tool4, tool5, tool6, tool7, tool8, tool9, tool10, tool11, tool12, tool13, tool14, tool15, tool16, tool17, tool18, tool19] },
+  { name: 'Converter', components: [tool20, tool21, tool22, tool23, tool24, tool25, tool26, tool27, tool28, tool29, tool30, tool31, tool32, tool33, tool34, tool35, tool36, tool37, tool38, tool39, tool40, tool41] },
+  { name: 'Web', components: [tool42, tool43, tool44, tool45, tool46, tool47, tool48, tool49, tool50, tool51, tool52, tool53, tool54, tool55, tool56, tool57, tool58, tool59] },
+  { name: 'Images and videos', components: [tool60, tool61, tool62, tool63, tool64, tool65, tool66, tool67] },
+  { name: 'Development', components: [tool68, tool69, tool70, tool71, tool72, tool73, tool74, tool75, tool76, tool77, tool78, tool79, tool80, tool81, tool82, tool83, tool84, tool85, tool86, tool87, tool88, tool89, tool90, tool91, tool92, tool93, tool94, tool95] },
+  { name: 'Network', components: [tool96, tool97, tool98, tool99, tool100, tool101, tool102, tool103, tool104] },
+  { name: 'Math', components: [tool105, tool106, tool107, tool108] },
+  { name: 'Measurement', components: [tool109, tool110, tool111, tool112, tool113, tool114, tool115] },
+  { name: 'Text', components: [tool116, tool117, tool118, tool119, tool120, tool121, tool122, tool123, tool124, tool125, tool126] },
+  { name: 'Data', components: [tool127, tool128, tool129, tool130] },
 ];
 
 export const tools = toolsByCategory.flatMap(({ components }) => components);
-export const toolsWithCategory = toolsByCategory.flatMap(({ components, name }) =>
-  components.map(tool => ({ category: name, ...tool })),
-);

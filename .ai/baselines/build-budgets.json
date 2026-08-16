@@ -42,7 +42,7 @@
     "assets/emoji-picker.worker-<hash>.js": {
       "rawBytes": 410000,
       "gzipBytes": 72000,
-      "rationale": "The measured 400,601 B raw / 68,523 B gzip demand-loaded search worker owns Fuse plus the complete Unicode and keyword catalogs. It is fetched only after a query and replaces the measured 166 ms synchronous full-catalog route search with 150 ms debounce, physical replacement, a three-second deadline, exact query/result bounds, and a 4x-CPU main-thread responsiveness gate."
+      "rationale": "The measured 400,601 B raw / 68,523 B gzip demand-loaded search worker owns Fuse plus the complete Unicode and keyword catalogs. It is fetched only after a query and feeds a truly windowed grid with physical replacement, cancellation, a three-second deadline, exact query/result bounds, and a strict 4x-CPU sub-50-ms Long Task gate."
     },
     "assets/docker-converter.worker-<hash>.js": {
       "rawBytes": 215000,
@@ -139,10 +139,20 @@
       "gzipBytes": 4000,
       "rationale": "The measured 7,058 B raw / 3,299 B gzip route-owned worker holds the versioned English mock dataset and deterministic generator under 5,000-record, 2 MiB output, eight-second, cancellation, and disposal bounds."
     },
+    "assets/openapi-inspector.worker-<hash>.js": {
+      "rawBytes": 110000,
+      "gzipBytes": 36000,
+      "rationale": "The measured 101,774 B raw / 32,190 B gzip disposable worker contains the already-installed YAML parser and a deliberately structural OpenAPI 3.0/3.1 inspector. It enforces 1 MiB input/output, 50,000-node, depth-64, 1,000-operation, local-reference-only, eight-second, replacement, cancellation, protocol, and disposal bounds; external references are reported and never fetched."
+    },
     "assets/parquet-reader.worker-<hash>.js": {
       "rawBytes": 75000,
       "gzipBytes": 25000,
       "rationale": "The measured 65,630 B raw / 20,682 B gzip route-owned worker contains exact hyparquet 1.28.2 plus strict metadata and selected-page transport. It reads one explicit local file only, supports uncompressed and built-in Snappy, and independently bounds the 64 MiB file, 2 MiB footer, schema, nesting, row groups, selected columns/chunks, cell/preview/export output, cumulative reads, fifteen-second timeout, replacement, cancellation, completion, malformed responses, and disposal. The dependency remains absent from the initial shell and mandatory Workbox payload."
+    },
+    "assets/pkcs12-pem-workspace.worker-<hash>.js": {
+      "rawBytes": 420000,
+      "gzipBytes": 95000,
+      "rationale": "The measured 399,673 B raw / 87,264 B gzip disposable worker contains exact BSD-3-Clause pkijs 3.4.0 plus asn1js/pvutils and Web Crypto integration. It accepts one explicit 4 MiB PFX or 2 MiB public PEM input, enforces safe-content/bag/certificate/output/password/time/protocol limits, verifies PKCS#12 integrity, exports certificates only, counts but never decrypts or returns private-key bags, and is physically terminated after every settlement."
     },
     "assets/markdown-table-generator.worker-<hash>.js": {
       "rawBytes": 5000,
@@ -256,10 +266,20 @@
         "gzipBytes": 80000,
         "rationale": "The measured 168,815 B raw / 71,948 B gzip additional closure includes the 4,927/2,021 B diff worker plus existing markdown-it and patched DOMPurify 3.4.13 loaded only with this route. Preview is explicit-result-only, limited to 64 KiB per side, disables raw HTML/linkification/active links/images, and uses a static HTML-only no-attribute sanitizer allow-list. No Monaco, CodeMirror, second Markdown parser, or new diff dependency is included."
       },
+      "src/tools/openapi-inspector/openapi-inspector.vue": {
+        "rawBytes": 130000,
+        "gzipBytes": 45000,
+        "rationale": "The measured 115,352 B raw / 38,521 B gzip additional closure includes the explicit-action structural OpenAPI worker and reused vertical task UI. JSON/YAML parsing, local-reference resolution, endpoint inventory, curl examples, and bounded mock payload generation remain route-local; no request, external reference, or user input is sent over the network."
+      },
       "src/tools/parquet-reader/parquet-reader.vue": {
         "rawBytes": 200000,
         "gzipBytes": 70000,
         "rationale": "The measured 183,431 B raw / 61,032 B gzip additional closure includes the 65,630/20,682 B disposable worker, exact dependency-free hyparquet 1.28.2 parser, and reused file/table/form UI. Metadata inspection is explicit and allocation-bounded; preview reads at most 200 rows and 16 selected columns under chunk/read/output budgets, with conservative exact JSON/CSV export. The route is local-file-only, ephemeral, vertically laid out, and adds no Arrow, DuckDB, WASM, XLSX, broad codec package, initial-shell parser, or mandatory-PWA asset."
+      },
+      "src/tools/pkcs12-pem-workspace/pkcs12-pem-workspace.vue": {
+        "rawBytes": 450000,
+        "gzipBytes": 105000,
+        "rationale": "The measured 417,172 B raw / 95,332 B gzip additional closure includes the route-owned PKIjs worker and reused file/form UI. The new dependency is fully lazy, stays below the global 500 kB artifact gate, adds nothing to the mandatory Workbox set, and is limited to integrity-checked certificate inventory/export plus public PEM inspection; private-key export, trust validation, revocation, network lookup, and legacy unavailable algorithms are excluded."
       },
       "src/tools/xlsx-reader/xlsx-reader.vue": {
         "rawBytes": 150000,

@@ -2,6 +2,11 @@ import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 import FileCertIcon from '~icons/mdi/file-certificate-outline';
 
+export const registry = {
+  category: 'Crypto',
+  order: 18,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: translate('tools.pdf-signature-checker.title'),
   path: '/pdf-signature-checker',

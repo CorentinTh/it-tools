@@ -7,7 +7,7 @@ used to restart completed work.
 
 ## 1. Purpose and system boundaries
 
-The project is a static single-page application and PWA containing browser-based utilities for developers. The current branch registers 129 tools across 10 categories. There is no application backend: transformations, parsing, generation, cryptography, and file handling run in the user's browser.
+The project is a static single-page application and PWA containing browser-based utilities for developers. The current branch registers 131 tools across 10 categories. There is no application backend: transformations, parsing, generation, cryptography, and file handling run in the user's browser.
 
 The production artifact is the `dist/` directory. It can be served by Vercel, Netlify, any static host, or nginx in the Docker image. Plausible is the only built-in external telemetry integration and is disabled by default; its URLs are path-only. ASCII Art fonts are versioned same-origin assets, opened tool chunks/workers are demand-cached, and tools that intentionally require browser network/system APIs retain their own disclosed boundaries.
 
@@ -17,7 +17,7 @@ The production artifact is the `dist/` directory. It can be served by Vercel, Ne
 |---|---|---|
 | Language and UI | TypeScript 5.2, Vue 3.3, SFC | Components and reactive business logic |
 | Build | Vite 4.4, vue-tsc, pnpm 9.11 | Type checking, code splitting, production bundle |
-| Routing | Vue Router 4, HTML5 history | Home, About, 129 tool routes, redirects, and 404 |
+| Routing | Vue Router 4, HTML5 history | Home, About, 131 tool routes, redirects, and 404 |
 | State | Pinia, VueUse `useStorage` | Theme, menu, favorites, and local tool preferences |
 | UI system | Naive UI, UnoCSS, custom `c-*` components | Layout, forms, cards, tables, and themes |
 | Icons | `@vicons/tabler`, `@vicons/material`, `@tabler/icons-vue`, unplugin-icons/MDI | Shell and tool icons |
@@ -27,7 +27,7 @@ The production artifact is the `dist/` directory. It can be served by Vercel, Ne
 | E2E tests | Playwright | Chromium, Firefox, and WebKit scenarios |
 | Delivery | GitHub Actions, Docker, nginx, Vercel, Netlify | CI, release artifacts, and static hosting |
 
-Specialized libraries are grouped around individual tools: JSON5/YAML/TOML/XML/Markdown/SQL, `crypto-js`/`bcryptjs`/BIP39, Web Crypto, `@noble/hashes`, route-local `hash-wasm` Argon2, explicit-action-only `mermaid@10.9.8`, worker-local dependency-free `hyparquet@1.28.2`, worker-local exact `saxen@11.1.1` plus native DEFLATE for bounded XLSX, `mathjs`, `monaco-editor`, TipTap, `libphonenumber-js`, generated OUI data, QR/PDF/UA parsers, and others. `node-forge` is no longer a direct RSA dependency but remains transitive through the PDF signature reader. `package.json` currently contains 67 runtime and 46 development dependencies; shared `lodash` and `lodash-es` resolve to patched `4.18.1`, and Home favorite ordering uses native drag/drop plus keyboard actions instead of `vuedraggable`/`sortablejs`.
+Specialized libraries are grouped around individual tools: JSON5/YAML/TOML/XML/Markdown/SQL, `crypto-js`/`bcryptjs`/BIP39, Web Crypto, `@noble/hashes`, route-local `hash-wasm` Argon2, explicit-action-only `mermaid@10.9.8`, worker-local dependency-free `hyparquet@1.28.2`, worker-local exact `saxen@11.1.1` plus native DEFLATE for bounded XLSX, and worker-local exact `pkijs@3.4.0` plus `asn1js`/`pvutils` for the narrow PKCS#12 certificate-only workspace. `mathjs`, `monaco-editor`, TipTap, `libphonenumber-js`, generated OUI data, QR/PDF/UA parsers, and others remain route-scoped where practical. `node-forge` is not used by RSA or PKCS#12 but remains vulnerable and transitively reachable through the PDF signature reader. `package.json` currently contains 68 runtime and 46 development dependencies; shared `lodash` and `lodash-es` resolve to patched `4.18.1`, and Home favorite ordering uses native drag/drop plus keyboard actions instead of `vuedraggable`/`sortablejs`.
 
 ## 3. Repository structure
 
@@ -38,8 +38,8 @@ Specialized libraries are grouped around individual tools: JSON5/YAML/TOML/XML/M
 │   ├── App.vue                 # theme/providers + layout selection + RouterView
 │   ├── router.ts               # routes generated from the tool registry
 │   ├── config.ts               # typed environment configuration
-│   ├── tools/                  # 129 isolated tools
-│   │   ├── index.ts            # central registry and categories
+│   ├── tools/                  # 131 isolated tools
+│   │   ├── index.ts            # generated registry and categories
 │   │   ├── tool.ts             # defineTool and isNew calculation
 │   │   ├── tools.store.ts      # localization, categories, favorites
 │   │   └── <tool>/             # index, Vue UI, service/model, tests
@@ -88,7 +88,7 @@ flowchart LR
 
 ### Routes and registry
 
-`src/tools/index.ts` statically imports every tool's `index.ts` and groups descriptors into categories. A descriptor contains `name`, `path`, `description`, `keywords`, an icon component, and `component: () => import('./tool.vue')`.
+Each `src/tools/<tool>/index.ts` owns one ordinary lazy descriptor plus typed `registry` metadata (`category` and deterministic `order`). `scripts/generate-tool-registry.mjs` discovers every descriptor directory, validates category/path/order uniqueness, and emits `src/tools/index.ts` in deterministic category order. The generated registry contains `name`, `path`, `description`, `keywords`, an icon component, and `component: () => import('./tool.vue')` and is the single source consumed by routes, categories, Home/search, favorites, and route smoke.
 
 This creates a mixed loading model:
 
@@ -97,7 +97,7 @@ This creates a mixed loading model:
 - Home and 404 are eager, while About and tool components are dynamic;
 - the router, side menu, favorites, and command palette all consume the same registry.
 
-The central registry is convenient but is also a major source of initial-bundle weight and merge conflicts when tools are added in parallel.
+The generated registry removes manual barrel/category synchronization and catches stale output in build/CI. Descriptor metadata and icon components remain eager by design, so the registry does not claim to eliminate shell cost; the accepted generation slice reduced the measured shell slightly, and further descriptor/icon splitting requires a separate measured design.
 
 ### Layout and navigation
 
@@ -141,7 +141,7 @@ src/tools/example/
 └── components/                 # optional local UI
 ```
 
-`scripts/create-tool.mjs` creates this skeleton and inserts an import into the shared registry, but the category must still be added manually. `scripts/build-locales-files.mjs` imports `bun:Glob`, while Bun is not pinned as part of the main toolchain and the script is not exposed through package scripts.
+`scripts/create-tool.mjs` creates this skeleton with required category/order metadata and regenerates the checked registry instead of editing a shared barrel. `scripts/build-locales-files.mjs` imports `bun:Glob`, while Bun is not pinned as part of the main toolchain and the script is not exposed through package scripts.
 
 ## 6. Build and code splitting
 
@@ -243,7 +243,7 @@ include inventories plus the native-data exclusion inventory. This prevents a
 first tool visit in source dev from changing optimized dependencies, reloading
 the page, and abandoning an in-flight task. The lazy inventory currently covers
 `jsonc-parser`, Monaco's editor API, Mermaid, and worker-owned `hyparquet` and
-`saxen`. Source-contract tests and a clean strict 8091 traversal of all 129 routes guard
+`saxen` and `pkijs`. Source-contract tests and a clean strict 8091 traversal of all 131 routes guard
 the inventories. The AES-GCM and image
 metadata workers are independently capped at 17/6.5 kB and 8/3.5 kB raw/gzip;
 their measured artifacts are 14,329/5,023 B and 6,447/2,589 B respectively.
@@ -255,7 +255,7 @@ The main sources of weight are four icon mechanisms, eager registry metadata/ico
 - The accepted integrated checkpoint passes zero-warning lint and both the
   application/test and Vite-config typecheck projects.
 - 1417/1417 unit tests pass across 245 files in the current dirty-worktree checkpoint.
-- The registry-generated Chromium smoke passes all 129 routes; the targeted
+- The registry-generated Chromium smoke passes all 131 routes; the targeted
   XLSX source-dev inspect/preview/export/privacy/layout suite passes 2/2. The earlier 176-case full
   matrix remains historical evidence and was not relabelled as rerun for this wave.
 - Sixteen build-stat infrastructure tests, 404 current-artifact budget checks,

@@ -2,6 +2,11 @@ import { Fingerprint } from '@vicons/tabler';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
+export const registry = {
+  category: 'Crypto',
+  order: 3,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: translate('tools.uuid-generator.title'),
   path: '/uuid-generator',

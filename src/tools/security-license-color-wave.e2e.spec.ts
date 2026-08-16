@@ -20,6 +20,50 @@ test.describe('JWT, HOTP, SPDX, and OKLCH wave', () => {
     expect(await page.evaluate(() => JSON.stringify(localStorage))).not.toContain('0123456789abcdef');
   });
 
+  test('selects a local JWKS key by kid and verifies RS256 without a network lookup', async ({ page }) => {
+    await page.goto('/jwt-parser');
+    const fixture = await page.evaluate(async () => {
+      const pair = await crypto.subtle.generateKey({
+        hash: 'SHA-256',
+        modulusLength: 2048,
+        name: 'RSASSA-PKCS1-v1_5',
+        publicExponent: new Uint8Array([1, 0, 1]),
+      }, true, ['sign', 'verify']);
+      if (!('publicKey' in pair)) {
+        throw new Error('Expected an RSA key pair.');
+      }
+      const encode = (value: object) => {
+        const bytes = new TextEncoder().encode(JSON.stringify(value));
+        let binary = '';
+        bytes.forEach((byte) => {
+          binary += String.fromCharCode(byte);
+        });
+        return btoa(binary).replace(/=/gu, '').replace(/\+/gu, '-').replace(/\//gu, '_');
+      };
+      const signingInput = `${encode({ alg: 'RS256', kid: 'browser-current', typ: 'JWT' })}.${encode({ sub: 'browser-rsa' })}`;
+      const signature = new Uint8Array(await crypto.subtle.sign('RSASSA-PKCS1-v1_5', pair.privateKey, new TextEncoder().encode(signingInput)));
+      let signatureBinary = '';
+      signature.forEach((byte) => {
+        signatureBinary += String.fromCharCode(byte);
+      });
+      const encodedSignature = btoa(signatureBinary).replace(/=/gu, '').replace(/\+/gu, '-').replace(/\//gu, '_');
+      const publicJwk = await crypto.subtle.exportKey('jwk', pair.publicKey);
+      return {
+        jwks: JSON.stringify({ keys: [{ ...publicJwk, alg: 'RS256', kid: 'browser-current', use: 'sig' }] }),
+        token: `${signingInput}.${encodedSignature}`,
+      };
+    });
+
+    await page.getByLabel('Operation', { exact: true }).click();
+    await page.getByRole('option', { name: 'Verify with JWK / JWKS / public PEM', exact: true }).click();
+    await page.getByTestId('jwt-token-input').locator('textarea').fill(fixture.token);
+    await page.getByTestId('jwt-public-key').locator('textarea').fill(fixture.jwks);
+    await page.getByTestId('jwt-run').click();
+    await expect(page.getByTestId('jwt-status')).toContainText('RS256 signature is valid');
+    await expect(page.getByTestId('jwt-status')).toContainText('kid "browser-current"');
+    expect(await page.evaluate(() => JSON.stringify(localStorage))).not.toContain('browser-current');
+  });
+
   test('generates the first RFC 4226 HOTP vector with an exact counter', async ({ page }) => {
     await page.goto('/otp-generator');
     await page.getByLabel('OTP mode').click();

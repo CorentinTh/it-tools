@@ -2,6 +2,11 @@ import { Certificate } from '@vicons/tabler';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
+export const registry = {
+  category: 'Crypto',
+  order: 14,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: translate('tools.rsa-key-pair-generator.title'),
   path: '/rsa-key-pair-generator',

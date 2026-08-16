@@ -1,6 +1,11 @@
 import { Markdown } from '@vicons/tabler';
 import { defineTool } from '../tool';
 
+export const registry = {
+  category: 'Converter',
+  order: 21,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: 'Markdown to HTML',
   path: '/markdown-to-html',

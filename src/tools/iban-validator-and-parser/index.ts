@@ -2,6 +2,11 @@ import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 import Bank from '~icons/mdi/bank';
 
+export const registry = {
+  category: 'Data',
+  order: 3,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: translate('tools.iban-validator-and-parser.title'),
   path: '/iban-validator-and-parser',

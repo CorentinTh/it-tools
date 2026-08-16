@@ -2,6 +2,11 @@ import { Percentage } from '@vicons/tabler';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
+export const registry = {
+  category: 'Math',
+  order: 3,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: translate('tools.percentage-calculator.title'),
   path: '/percentage-calculator',

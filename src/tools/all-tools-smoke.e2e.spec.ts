@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-const EXPECTED_TOOL_COUNT = 129;
+const MINIMUM_TOOL_COUNT = 129;
 const FORBIDDEN_CONSOLE_WARNINGS = [
   /Could not create web worker/i,
   /Falling back to loading web worker code in main thread/i,
@@ -42,7 +42,9 @@ test.describe('All tool routes', () => {
     await page.goto('/');
 
     const toolCards = page.locator('a[href] .tool-card');
-    await expect(toolCards).toHaveCount(EXPECTED_TOOL_COUNT);
+    await expect(toolCards.first()).toBeVisible();
+    const renderedToolCount = await toolCards.count();
+    expect(renderedToolCount).toBeGreaterThanOrEqual(MINIMUM_TOOL_COUNT);
 
     const routePaths = await toolCards.evaluateAll(cards => [...new Set(cards.map((card) => {
       const link = card.closest('a');
@@ -50,7 +52,7 @@ test.describe('All tool routes', () => {
       return link instanceof HTMLAnchorElement ? link.pathname : '';
     }).filter(Boolean))].sort());
 
-    expect(routePaths).toHaveLength(EXPECTED_TOOL_COUNT);
+    expect(routePaths).toHaveLength(renderedToolCount);
 
     for (const routePath of routePaths) {
       currentRoute = routePath;

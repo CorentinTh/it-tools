@@ -2,6 +2,11 @@ import { RouterOutlined } from '@vicons/material';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
+export const registry = {
+  category: 'Network',
+  order: 0,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: translate('tools.ipv4-subnet-calculator.title'),
   path: '/ipv4-subnet-calculator',

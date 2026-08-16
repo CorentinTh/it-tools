@@ -88,6 +88,76 @@ whole-workbook export, and non-UTF-8 XML remain outside scope. The current
 129-route checkpoint passes all gates and retains 101,558 B of mandatory
 Workbox raw headroom. See `.ai/experiments/XLSX_READER_DESIGN.md`.
 
+The generated-registry/Emoji/security-workspace goal is implementation-
+complete. All 131 descriptors now own typed category/order metadata and one
+deterministic generated registry drives routes, categories, search, favorites,
+scaffolding, and smoke traversal without exact manual count synchronization.
+Emoji uses true row windowing and cancellable worker search under the strict
+4x-CPU `<50 ms` Long Task gate. JWT verifies local public JWK/JWKS/SPKI for
+RSA-PKCS1, RSA-PSS, ECDSA, and EdDSA with exact `kid` selection and no network.
+OpenAPI Inspector is a bounded local structural 3.0/3.1 inventory/example tool.
+PKCS#12 / PEM Workspace uses exact lazy `pkijs@3.4.0` to verify/decrypt modern
+PFX safe contents but returns certificates only; private-key bags are never
+decrypted or exported. The new PKIjs path has no target audit advisory and is
+399,673/87,264 B raw/gzip, below the 500 kB artifact gate. The existing
+transitive vulnerable `node-forge` PDF path was rejected for this feature and
+remains in the separate remediation track. A clean strict-port source-dev run
+prebundles PKIjs without optimizer reload, passes 4/4 new-feature scenarios,
+and traverses all 131 routes in 5.0 minutes.
+
+## Remaining plans after the 131-tool wave
+
+No additional catalog feature is pre-approved. The remaining executable work,
+in recommended order, is:
+
+1. dependency-security remediation: replace or upgrade the direct critical
+   `crypto-js` path with compatibility fixtures, then patch `yaml`, vue-i18n,
+   Ajv/`fast-uri`, the PDF reader's transitive `node-forge`, and the remaining
+   reachable runtime advisories in isolated groups; handle dev/build packages
+   separately and record residual-risk expiry dates;
+2. release/container hardening: select and scan a currently patched immutable
+   nginx base, then add the deferred vulnerability gate, reverse-proxy
+   acceptance, and real base/subpath deployment coverage;
+3. cross-browser and performance coverage: add Firefox/WebKit smoke, extend
+   Long Task/DOM probes to the remaining critical structured tools, and record
+   build time/transformed modules/peak RSS on the standard CI runner;
+4. build/shell follow-up: reuse one provenance-verified production artifact
+   across E2E/release/container stages; measure direct icon imports, narrower
+   component scanning, duplicate/unused dependencies, and Home grid windowing,
+   accepting changes only when they move the 200 kB-gzip shell/300 ms Home
+   targets without weakening current ceilings;
+5. shared bounded-task cleanup: consolidate compatible worker protocols and
+   common byte/depth/count/time/download/output trust contracts, then extend
+   malformed/deep/large/stale/cancel coverage to the remaining structured
+   routes;
+6. persistence/tooling resilience: handle storage denial/corruption/migration/
+   quota behavior, document or remove the unpinned Bun locale script, add a
+   reproducible upstream-export refresh, and cover service-worker update,
+   rollback, and stale-cache cleanup;
+7. Emoji data maintenance only after a separate review: refresh and record the
+   Unicode/keyword source versions and add new-sequence fixtures without
+   regressing route, search, DOM, or offline budgets.
+
+The roadmap is now permanently limited to client-only features. REST/auth,
+accounts, cloud persistence/sharing, provider-backed GeoIP/public-IP/currency,
+remote DNS/SSL inspection, active network scanning/ping, hosted inference, and
+server-side file processing are not deferred work: they are explicitly not
+planned and must not be reintroduced as roadmap tasks.
+
+No additional catalog feature is approved for implementation yet. The finite
+browser-only candidate pool left by the feature review is:
+
+1. an offline GeoIP/IP-dataset inspector using a licensed, versioned static
+   dataset shipped with the application, with no lookup requests;
+2. an opt-in device-local encrypted OTP vault using Web Crypto and IndexedDB,
+   with no account, recovery service, sync, telemetry, or default persistence.
+
+This is the final candidate list. OCR, PDF manipulation, JavaScript
+obfuscation/deobfuscation, HEIC conversion, and general media conversion are
+explicitly not planned.
+Static English-only localization remains a platform policy, not a utility
+candidate.
+
 **Priority update — 2026-08-15:** the catalog-wide interface-consistency
 foundation and route rollout are complete under `.ai/UI_CONSISTENCY.md`.
 The deterministic screenshot/state suite now covers all five core archetypes
@@ -212,7 +282,7 @@ These items remain recorded, but are intentionally outside the current
 project-correctness slice. Do not add advisory suppressions or spend current
 implementation time on unrelated base-image/transitive CVEs.
 
-- [ ] Triage the 125 unique advisories by reachability and browser/runtime path.
+- [ ] Triage the current 57 production advisories (1 critical, 28 high, 25 moderate, 3 low) by reachability and browser/runtime path; retain the historical 125-advisory snapshot only for comparison.
 - [ ] Upgrade the direct critical `crypto-js` path first and add encryption/decryption compatibility fixtures.
 - [x] Upgrade and exactly pin DOMPurify to patched `3.4.13`; preserve existing component tests plus the Markdown Diff no-active-content preview regression.
 - [ ] Upgrade `yaml`, vue-i18n, Vite, and other direct vulnerable dependencies in small compatible groups; `lodash` and transitive `lodash-es` are now pinned at patched `4.18.1`, and direct RSA use of `node-forge` is removed while its transitive PDF path remains in the reachability audit.
@@ -355,10 +425,10 @@ implementation time on unrelated base-image/transitive CVEs.
 
 ### 3.2 Emoji Picker
 
-- [x] Page the 1,870 emoji cards and category groups in bounded increments of 60.
-- [x] Keep initial DOM below 2,000 nodes; the production Chromium fixture measures 60 cards / 1,731 elements.
-- [x] Use keyboard-native copy controls, preserve full-catalog search and Fuse relevance order in one paged result grid, and keep result rendering bounded.
-- [ ] Make the synchronous Fuse search cancellable/worker-backed or prove the current bounded catalog remains safe under the slower-device profile.
+- [x] Replace the historical 60-card pagination slice with responsive row windowing over all 1,870 records and category groups.
+- [x] Keep mounted DOM proportional to the viewport plus one overscan row instead of catalog size.
+- [x] Use keyboard-native copy controls, preserve full-catalog search/Fuse order and group/ARIA semantics, and navigate across unmounted results.
+- [x] Make Fuse search cancellable/worker-backed and keep search results in the same true windowed grid under the slower-device profile.
 - [x] Load secondary `emojilib` keyword metadata only after search begins.
 - [ ] Refresh `unicode-emoji-json` and `emojilib` against the current Unicode Emoji release after reviewing compatibility, licenses, and bundle impact.
 - [ ] Record the Unicode Emoji/data-source version and generation date so the catalog can be updated reproducibly.
@@ -366,7 +436,7 @@ implementation time on unrelated base-image/transitive CVEs.
 - [ ] Extend sequence fixtures to professions, keycaps, variation selectors, and skin-tone modifiers.
 - [ ] Add fixtures for newly introduced emoji and aliases/keywords that were missing from the previous dataset.
 - [ ] Verify that the updated catalog does not regress initial payload, DOM count, search latency, or offline-cache budgets.
-- [ ] Verify the 4x CPU route task is below 200 ms.
+- [x] Verify the 4x CPU route task is below 50 ms; repeated production runs pass the stricter gate.
 
 ### 3.3 MAC Address Lookup
 
@@ -378,11 +448,11 @@ implementation time on unrelated base-image/transitive CVEs.
 
 ### 3.4 Shell and Home
 
-- [ ] Generate lightweight tool descriptors and a route/component map.
+- [x] Generate the typed descriptor/category route map deterministically from per-tool registry metadata and fail build/CI when it is stale or ambiguous.
 - [ ] Consolidate four icon mechanisms into direct virtual icons or a generated sprite.
-- [ ] Remove full CommonJS Lodash from shared shell paths.
-- [ ] Precompute/remove runtime `isNew` date logic.
-- [ ] Lazily initialize drag-and-drop and command-palette search.
+- [x] Remove full CommonJS Lodash from shared shell paths where the measured native slice wins gzip.
+- [x] Precompute/remove runtime `isNew` date logic.
+- [x] Remove the drag-and-drop dependency and keep command-palette fuzzy work outside initial render.
 - [ ] Progressively render or virtualize the Home tool grid.
 - [ ] Reduce shell JavaScript to 200 kB gzip or less and Home 4x CPU work below 300 ms.
 
@@ -485,13 +555,25 @@ Recommended first feature candidates:
 - [x] **DONE:** Ansible Vault 1.1 and labelled 1.2 AES256 encrypt/decrypt plus Apache bcrypt htpasswd generation/verification in one lazy disposable-worker route. Compatibility is proven against Ansible Core 2.21.2 and Apache's documented `$2y$` example; inputs, outputs, secrets, formats, cost, and time are bounded, authentication failures are generic, and APR1/SHA-1/crypt/plaintext generation is excluded.
 - [x] **DONE:** explicit escaped-JSON-string import in JSON Repair & Query. The worker accepts only a strict outer JSON string whose decoded content is itself strict bounded JSON, returns the decoded text without rewriting numeric lexemes, and never silently reinterprets ordinary valid JSON.
 
-Features to defer unless the product boundary changes explicitly:
+Permanent product-boundary exclusions (not backlog tasks):
 
-- [ ] REST backend, authentication, accounts, or cloud persistence.
-- [ ] API-dependent GeoIP/DNS/SSL features that weaken offline/local-only behavior.
-- [ ] OTP-secret persistence.
-- [ ] Bulk restoration of removed locales or sponsor UI.
-- [ ] Heavy AI/file-processing tools without explicit bundle, privacy, and memory designs.
+- **NOT PLANNED:** REST backend/API, authentication, accounts, or cloud
+  persistence/sync/sharing.
+- **NOT PLANNED:** provider-backed GeoIP, currency, public-IP, remote DNS/SSL,
+  or other utilities whose core result requires a network service.
+- **NOT PLANNED:** active network scanning, ping, raw-socket probing, or a
+  server-side proxy used to bypass browser networking limits.
+- **NOT PLANNED:** hosted AI inference or server-side file processing.
+- **NOT PLANNED:** JavaScript obfuscation/deobfuscation, HEIC conversion, or
+  general-purpose media conversion.
+- **NOT PLANNED:** OCR or PDF merge/split/rotate/extraction workspaces.
+- **NOT PLANNED:** bulk restoration of removed locales or sponsor UI; the fork
+  remains intentionally English-only.
+
+The only remaining utility candidates are the finite client-only list above.
+Local OTP persistence and heavy local file/WASM work are allowed to enter the
+roadmap only through their stated security and feasibility gates; no remote
+fallback is acceptable.
 
 ## Explicit upstream adaptations
 
@@ -600,6 +682,8 @@ Implementation is approved and active on the local branch. Current ordering is:
 27. [x] Deliver the bounded JWT/HOTP, version-pinned common-license SPDX guidance, and OKLCH/sRGB-gamut wave without new runtime dependencies, then pass RFC/boundary, browser, route, and build-budget gates.
 28. [x] Deliver bounded CSV/TSV import/inspection, scanner-compatible WPA3-intent/raw Wi-Fi QR output, and Chmod special-bit/umask workflows without new runtime dependencies, then pass boundary/browser/route/build-budget gates.
 29. [x] Deliver compatible bounded Ansible Vault/htpasswd workflows, deterministic exact-first Command Palette search with accessible Show all, and explicit non-destructive escaped-JSON import, then pass official-fixture/unit/browser/route/build-budget gates.
+30. [x] Replace manual registry/category synchronization with typed per-tool metadata plus deterministic generation; implement true Emoji windowing/cancellable search and retain further shell/PWA work only when post-registry measurement proves a gain.
+31. [x] Deliver local JWK/JWKS/SPKI asymmetric JWT verification, bounded OpenAPI structural inspection, and the certificate-only PKCS#12/PEM workspace after separate privacy, dependency, audit, bundle, worker, production, and source-dev gates.
 
 Dependency/base-image vulnerability remediation and scan policy remain in the
 separately tracked deferred security slice.

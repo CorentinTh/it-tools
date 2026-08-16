@@ -1,6 +1,11 @@
 import { Mail } from '@vicons/tabler';
 import { defineTool } from '../tool';
 
+export const registry = {
+  category: 'Development',
+  order: 24,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: 'Email normalizer',
   path: '/email-normalizer',

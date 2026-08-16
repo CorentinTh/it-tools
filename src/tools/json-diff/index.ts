@@ -2,6 +2,11 @@ import { CompareArrowsRound } from '@vicons/material';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
+export const registry = {
+  category: 'Web',
+  order: 14,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: translate('tools.json-diff.title'),
   path: '/json-diff',

@@ -1,6 +1,11 @@
 import { Language } from '@vicons/tabler';
 import { defineTool } from '../tool';
 
+export const registry = {
+  category: 'Development',
+  order: 25,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: 'Regex Tester',
   path: '/regex-tester',

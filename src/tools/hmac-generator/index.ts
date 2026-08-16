@@ -2,6 +2,11 @@ import { ShortTextRound } from '@vicons/material';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
+export const registry = {
+  category: 'Crypto',
+  order: 13,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: translate('tools.hmac-generator.title'),
   path: '/hmac-generator',

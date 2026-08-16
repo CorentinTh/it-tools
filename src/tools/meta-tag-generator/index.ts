@@ -2,6 +2,11 @@ import { Tags } from '@vicons/tabler';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
+export const registry = {
+  category: 'Web',
+  order: 5,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: translate('tools.og-meta-generator.title'),
   path: '/og-meta-generator',

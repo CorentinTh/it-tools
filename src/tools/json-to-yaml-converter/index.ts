@@ -2,6 +2,11 @@ import { Braces } from '@vicons/tabler';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
+export const registry = {
+  category: 'Converter',
+  order: 14,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: translate('tools.json-to-yaml-converter.title'),
   path: '/json-to-yaml-converter',

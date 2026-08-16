@@ -5,12 +5,9 @@ import { createEmojiSearchWorkerClient } from './emoji-picker.worker-client';
 import { EMOJI_SEARCH_DEBOUNCE_MS } from './emoji-picker.worker.protocol';
 import {
   ALL_EMOJI_GROUPS,
-  EMOJI_PAGE_SIZE,
   createEmojiCatalog,
   filterEmojiGroup,
   getEmojiGroups,
-  getEmojiPage,
-  groupEmojiInfos,
 } from './emoji-picker.model';
 
 const emojiCatalog = createEmojiCatalog(emojiUnicodeData);
@@ -19,7 +16,6 @@ const emojiByValue = new Map(emojiCatalog.map(info => [info.emoji, info]));
 
 const searchQuery = ref('');
 const selectedGroup = ref(ALL_EMOJI_GROUPS);
-const visibleCount = ref(EMOJI_PAGE_SIZE);
 const searchResults = shallowRef<string[]>();
 const searchError = ref('');
 const isSearching = ref(false);
@@ -36,13 +32,7 @@ const matchingEmojiInfos = computed(() => {
 
   return filterEmojiGroup(matchingCatalog, selectedGroup.value);
 });
-const visibleEmojiInfos = computed(() => getEmojiPage(matchingEmojiInfos.value, visibleCount.value));
-const visibleEmojiGroups = computed(() => groupEmojiInfos(visibleEmojiInfos.value));
-const hasMore = computed(() => visibleEmojiInfos.value.length < matchingEmojiInfos.value.length);
-
-watch([searchQuery, selectedGroup], () => {
-  visibleCount.value = EMOJI_PAGE_SIZE;
-});
+const virtualResetKey = computed(() => `${normalizedSearchQuery.value}\u0000${selectedGroup.value}`);
 
 watch(normalizedSearchQuery, (query) => {
   if (searchTimer !== undefined) {
@@ -90,11 +80,15 @@ onScopeDispose(() => {
   searchClient.dispose();
 });
 
-function showMore() {
-  visibleCount.value = Math.min(
-    visibleCount.value + EMOJI_PAGE_SIZE,
-    matchingEmojiInfos.value.length,
-  );
+function cancelSearch() {
+  ++searchRevision;
+  if (searchTimer !== undefined) {
+    globalThis.clearTimeout(searchTimer);
+    searchTimer = undefined;
+  }
+  searchClient.cancel();
+  isSearching.value = false;
+  searchError.value = 'Emoji search was cancelled.';
 }
 </script>
 
@@ -143,7 +137,13 @@ function showMore() {
       op-70
       aria-live="polite"
     >
-      {{ isSearching ? 'Searching emojis…' : `Showing ${visibleEmojiInfos.length} of ${matchingEmojiInfos.length} emojis` }}
+      {{ isSearching ? 'Searching emojis…' : `${matchingEmojiInfos.length} emojis available` }}
+    </div>
+
+    <div v-if="isSearching" mt-3>
+      <c-button data-test-id="emoji-cancel-search" @click="cancelSearch">
+        Cancel search
+      </c-button>
     </div>
 
     <div v-if="searchError" role="alert" mt-3>
@@ -154,37 +154,15 @@ function showMore() {
       No results
     </div>
 
-    <div v-else id="emoji-results" data-test-id="emoji-results">
-      <template v-if="normalizedSearchQuery">
-        <div mt-4 text-20px font-bold>
-          Search results
-        </div>
-        <emoji-grid :emoji-infos="visibleEmojiInfos" />
-      </template>
-
-      <template v-else>
-        <div
-          v-for="{ group, emojiInfos } in visibleEmojiGroups"
-          :key="group"
-        >
-          <div mt-4 text-20px font-bold>
-            {{ group }}
-          </div>
-
-          <emoji-grid :emoji-infos="emojiInfos" />
-        </div>
-      </template>
-    </div>
-
-    <div v-if="hasMore" mt-5 flex justify-center>
-      <c-button
-        data-test-id="emoji-load-more"
-        aria-controls="emoji-results"
-        :aria-label="`Show ${Math.min(EMOJI_PAGE_SIZE, matchingEmojiInfos.length - visibleEmojiInfos.length)} more emojis`"
-        @click="showMore"
-      >
-        Load more
-      </c-button>
+    <div v-else id="emoji-results" data-test-id="emoji-results" mt-4>
+      <div v-if="normalizedSearchQuery" mb-2 text-20px font-bold>
+        Search results
+      </div>
+      <emoji-virtual-grid
+        :emoji-infos="matchingEmojiInfos"
+        :reset-key="virtualResetKey"
+        :show-group-headers="!normalizedSearchQuery"
+      />
     </div>
   </div>
 </template>

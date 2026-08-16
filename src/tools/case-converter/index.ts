@@ -2,6 +2,11 @@ import { LetterCaseToggle } from '@vicons/tabler';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
+export const registry = {
+  category: 'Converter',
+  order: 8,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: translate('tools.case-converter.title'),
   path: '/case-converter',

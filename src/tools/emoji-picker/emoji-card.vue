@@ -2,7 +2,16 @@
 import type { EmojiInfo } from './emoji.types';
 import { useCopy } from '@/composable/copy';
 
-const props = (defineProps<{ emojiInfo: EmojiInfo }>());
+const props = withDefaults(defineProps<{
+  emojiInfo: EmojiInfo
+  position?: number
+  total?: number
+  virtualIndex?: number
+}>(), {
+  position: undefined,
+  total: undefined,
+  virtualIndex: undefined,
+});
 const { emojiInfo } = toRefs(props);
 
 const { copy } = useCopy();
@@ -11,11 +20,14 @@ const { copy } = useCopy();
 <template>
   <c-card
     role="listitem"
+    :aria-posinset="position"
+    :aria-setsize="total"
     data-test-id="emoji-card"
     flex items-center gap-3 important:py-8px important:pl-10px important:pr-5px
   >
     <button
       type="button"
+      :data-emoji-index="virtualIndex"
       :aria-label="`Copy ${emojiInfo.title} emoji`"
       class="emoji-copy-button"
       text-30px

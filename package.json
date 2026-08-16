@@ -34,7 +34,7 @@
   "scripts": {
     "dev": "vite",
     "dev:fresh": "vite --force",
-    "build": "node scripts/generate-oui-data.mjs --check && pnpm typecheck && node --max-old-space-size=4096 node_modules/vite/bin/vite.js build",
+    "build": "node scripts/generate-oui-data.mjs --check && node scripts/generate-tool-registry.mjs --check && pnpm typecheck && node --max-old-space-size=4096 node_modules/vite/bin/vite.js build",
     "build:stats": "node scripts/build-stats.mjs",
     "build:stats:check": "node scripts/build-stats.mjs --budgets .ai/baselines/build-budgets.json",
     "build:stats:update": "node scripts/build-stats.mjs --output .ai/baselines/build-stats.json",
@@ -43,7 +43,7 @@
     "test": "pnpm test:unit",
     "test:unit": "vitest run --environment jsdom",
     "test:unit:watch": "vitest --environment jsdom",
-    "test:build-stats": "node --test scripts/build-stats.test.mjs",
+    "test:build-stats": "node --test scripts/build-stats.test.mjs scripts/generate-tool-registry.test.mjs",
     "test:oui-data": "node --test scripts/generate-oui-data.test.mjs && node scripts/generate-oui-data.mjs --check",
     "test:container": "sh scripts/container-smoke.sh it-tools:smoke",
     "test:e2e": "playwright test",
@@ -53,6 +53,7 @@
     "typecheck": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false && vue-tsc --noEmit -p tsconfig.vite-config.json --composite false",
     "lint": "eslint src --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore --ignore-pattern 'src/tools/mac-address-lookup/data/**/*.json'",
     "generate:oui-data": "node scripts/generate-oui-data.mjs",
+    "generate:tool-registry": "node scripts/generate-tool-registry.mjs",
     "script:create:tool": "node scripts/create-tool.mjs",
     "script:create:ui": "hygen generator ui-component",
     "release": "node ./scripts/release.mjs"
@@ -109,6 +110,7 @@
     "netmask": "^2.0.2",
     "pdf-signature-reader": "^1.4.2",
     "pinia": "^2.0.34",
+    "pkijs": "3.4.0",
     "plausible-tracker": "^0.3.8",
     "qrcode": "^1.5.1",
     "randexp": "^0.5.3",

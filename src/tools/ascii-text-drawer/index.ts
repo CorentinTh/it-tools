@@ -1,6 +1,11 @@
 import { Artboard } from '@vicons/tabler';
 import { defineTool } from '../tool';
 
+export const registry = {
+  category: 'Text',
+  order: 10,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: 'ASCII Art Text Generator',
   path: '/ascii-text-drawer',

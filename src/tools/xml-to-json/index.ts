@@ -1,6 +1,11 @@
 import { Braces } from '@vicons/tabler';
 import { defineTool } from '../tool';
 
+export const registry = {
+  category: 'Converter',
+  order: 19,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: 'XML to JSON',
   path: '/xml-to-json',

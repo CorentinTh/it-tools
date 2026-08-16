@@ -2,6 +2,11 @@ import { defineTool } from '../tool';
 import n7mIcon from './n7m-icon.svg?component';
 import { translate } from '@/plugins/i18n.plugin';
 
+export const registry = {
+  category: 'Text',
+  order: 9,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: translate('tools.numeronym-generator.title'),
   path: '/numeronym-generator',

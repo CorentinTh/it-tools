@@ -2,6 +2,11 @@ import { PasswordRound } from '@vicons/material';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
+export const registry = {
+  category: 'Web',
+  order: 4,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: translate('tools.basic-auth-generator.title'),
   path: '/basic-auth-generator',

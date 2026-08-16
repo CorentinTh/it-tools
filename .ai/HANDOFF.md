@@ -9,6 +9,57 @@ After reading it, use `.ai/PROGRESS.md` for current results/risks/next gates and
 
 ## Latest completed product goal — 2026-08-16
 
+The generated-registry/Emoji/JWK/OpenAPI/PKCS#12 goal is complete. Every one of
+the 131 tool descriptors owns typed category/order metadata; the deterministic
+`scripts/generate-tool-registry.mjs` output is the single registry for routes,
+categories, Home/search, favorites, scaffolding, and smoke traversal. Build and
+tests reject stale output, duplicate paths, invalid categories, and duplicate
+category positions while every tool component remains lazy. Relative to the
+129-route XLSX checkpoint, the final shell including document is only 1,366 B
+raw larger and 22 B gzip smaller at 845,960/247,436 B; no further shell/PWA
+optimization was justified by the post-registry measurement.
+
+Emoji now uses real responsive row windowing with one-row overscan, stable total
+geometry, group headers, ARIA position/set metadata, and arrow/Home/End
+navigation across unmounted items. Fuse search is query-triggered, bounded,
+physically cancellable, and worker-owned. Repeated production 4x-CPU runs pass
+the strict `<50 ms` Long Task gate; the demand-loaded worker remains
+400,601/68,523 B raw/gzip.
+
+The existing JWT route now verifies local public JWK, JWKS, or SPKI PEM for
+RS256/384/512, PS256/384/512, ES256/384/512, and EdDSA/Ed25519. Exact `kid`
+selection, ambiguity, key type/curve/alg/use/key_ops, private parameters, RSA
+modulus size, signature shape, and critical-header rules are enforced; no URL or
+key is fetched or persisted. OpenAPI Inspector is a new bounded disposable-
+worker route for structural OpenAPI 3.0/3.1 JSON/YAML checks, fragment-local
+references, at most 1,000 endpoints, curl examples, and mock request payloads.
+It reports external references without fetching them and does not claim full
+conformance validation.
+
+PKCS#12 / PEM Workspace is the second new lazy route. Exact BSD-3-Clause
+`pkijs@3.4.0` plus `asn1js@3.0.10`/`pvutils@1.2.0` passed the target license,
+audit, and bundle gate. A disposable worker verifies modern PFX integrity and
+decrypts bounded safe contents, exports certificates only, and counts but never
+decrypts or returns private-key bags. Public PEM mode accepts only certificates,
+CSRs, and public keys. Trust, chain, hostname, revocation, network lookup,
+private-key conversion, and unavailable legacy algorithms are outside scope.
+The worker is 399,673/87,264 B and the full additional route closure is
+417,172/95,332 B, below separate 420/95 and 450/105 kB ceilings. The existing
+vulnerable transitive `node-forge@1.3.1` PDF path was explicitly rejected.
+
+Final evidence is zero-warning lint, dual typecheck, 1438/1438 unit tests across
+253 files, a 24,176-module production build, and 412/412 artifact checks.
+Production and clean source-dev feature flows pass 4/4. PKIjs is explicitly
+prebundled, so the clean strict-port run has no optimizer reload; the generated
+smoke traverses all 131 routes in 5.0 minutes. Artifact is 646 files /
+18,678,871 B raw / 5,432,106 B gzip; mandatory Workbox is 9 files /
+899,808/297,798 B with 100,192 B raw headroom. A fresh production audit reports
+57 pre-existing findings (1 critical, 28 high, 25 moderate, 3 low), none on the
+new PKIjs branch; the isolated remediation order is in `.ai/TODO.md`. No
+upstream implementation code was copied.
+
+## Previous completed product goal — 2026-08-16
+
 XLSX Reader is implementation-complete as one lazy local Data route. Exact MIT
 `saxen@11.1.1`, native raw-DEFLATE, and repository-owned ZIP central-directory
 and OPC readers are imported only by a disposable route-owned worker after an
@@ -42,7 +93,7 @@ General spreadsheet/ZIP engines and upstream implementation code were not used.
 The decision and official sources are recorded in
 `.ai/experiments/XLSX_READER_DESIGN.md`.
 
-## Previous completed product goal — 2026-08-16
+## Earlier completed product goal — 2026-08-16
 
 Parquet Reader is implementation-complete as one lazy local Data route. Exact
 dependency-free MIT `hyparquet@1.28.2` is imported only by a disposable

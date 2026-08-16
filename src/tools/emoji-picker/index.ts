@@ -2,6 +2,11 @@ import { MoodSmile } from '@vicons/tabler';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
+export const registry = {
+  category: 'Text',
+  order: 6,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: translate('tools.emoji-picker.title'),
   path: '/emoji-picker',

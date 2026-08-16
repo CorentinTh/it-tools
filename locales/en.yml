@@ -73,6 +73,12 @@ toolCard:
 search:
   label: Search
 tools:
+  pkcs12-pem-workspace:
+    title: PKCS#12 / PEM Workspace
+    description: Inspect bounded local PFX archives, export certificates to PEM, and normalize public PEM bundles without exposing private-key material.
+  openapi-inspector:
+    title: OpenAPI Inspector
+    description: Inspect bounded local OpenAPI 3.0/3.1 JSON or YAML, list endpoints, and generate illustrative curl requests and mock payloads.
   devops-secret-helper:
     title: Ansible Vault & htpasswd helper
     description: Encrypt and decrypt compatible Ansible Vault text or generate and verify modern bcrypt htpasswd entries locally

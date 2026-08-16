@@ -2,6 +2,11 @@ import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 import BracketIcon from '~icons/mdi/code-brackets';
 
+export const registry = {
+  category: 'Converter',
+  order: 18,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: translate('tools.toml-to-yaml.title'),
   path: '/toml-to-yaml',

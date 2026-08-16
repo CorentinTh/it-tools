@@ -2,23 +2,25 @@ import { type MaybeRef, get, useStorage } from '@vueuse/core';
 import { defineStore } from 'pinia';
 import type { Ref } from 'vue';
 import type { Tool, ToolCategory, ToolWithCategory } from './tools.types';
-import { toolsWithCategory } from './index';
+import { toolsByCategory as sourceToolsByCategory } from './index';
 
 export const useToolStore = defineStore('tools', () => {
   const favoriteToolsName = useStorage('favoriteToolsName', []) as Ref<string[]>;
   const { t } = useI18n();
 
-  const tools = computed<ToolWithCategory[]>(() => toolsWithCategory.map((tool) => {
-    const toolI18nKey = tool.path.replace(/\//g, '');
+  const tools = computed<ToolWithCategory[]>(() => sourceToolsByCategory.flatMap(({ components, name: category }) => (
+    components.map((tool) => {
+      const toolI18nKey = tool.path.replace(/\//g, '');
 
-    return ({
-      ...tool,
-      path: tool.path,
-      name: t(`tools.${toolI18nKey}.title`, tool.name),
-      description: t(`tools.${toolI18nKey}.description`, tool.description),
-      category: t(`tools.categories.${tool.category.toLowerCase()}`, tool.category),
-    });
-  }));
+      return ({
+        ...tool,
+        path: tool.path,
+        name: t(`tools.${toolI18nKey}.title`, tool.name),
+        description: t(`tools.${toolI18nKey}.description`, tool.description),
+        category: t(`tools.categories.${category.toLowerCase()}`, category),
+      });
+    })
+  )));
 
   const toolsByCategory = computed<ToolCategory[]>(() => {
     const grouped = new Map<string, ToolWithCategory[]>();

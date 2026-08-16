@@ -2,6 +2,11 @@ import { Terminal2 } from '@vicons/tabler';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
+export const registry = {
+  category: 'Development',
+  order: 2,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: translate('tools.cli-command-editor.title'),
   path: '/cli-command-editor',

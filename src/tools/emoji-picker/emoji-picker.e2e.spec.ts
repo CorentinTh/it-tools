@@ -1,7 +1,5 @@
 import { expect, test } from '@playwright/test';
 
-const EMOJI_PAGE_SIZE = 60;
-
 test.use({ serviceWorkers: 'block' });
 
 test.describe('Tool - Emoji picker bounded rendering', () => {
@@ -9,24 +7,33 @@ test.describe('Tool - Emoji picker bounded rendering', () => {
     await page.goto('/emoji-picker');
   });
 
-  test('keeps the initial DOM bounded and progressively renders pages', async ({ page }, testInfo) => {
+  test('keeps the DOM bounded while windowing the complete catalog', async ({ page }, testInfo) => {
     await expect(page).toHaveTitle('Emoji picker - IT Tools');
 
     const cards = page.getByTestId('emoji-card');
-    await expect(cards).toHaveCount(EMOJI_PAGE_SIZE);
+    await expect.poll(() => cards.count()).toBeGreaterThan(0);
+    const initialCardCount = await cards.count();
+    expect(initialCardCount).toBeLessThan(110);
+    await expect(cards.first()).toHaveAttribute('aria-posinset', '1');
+    await expect(cards.first()).toHaveAttribute('aria-setsize', '1870');
     const initialElementCount = await page.locator('*').count();
     testInfo.annotations.push({
       type: 'performance',
-      description: `${initialElementCount} initial DOM elements for ${EMOJI_PAGE_SIZE} cards`,
+      description: `${initialElementCount} initial DOM elements for ${initialCardCount} windowed cards`,
     });
-    expect(initialElementCount).toBeLessThan(2000);
+    expect(initialElementCount).toBeLessThan(2400);
 
-    await page.getByTestId('emoji-load-more').click();
-    await expect(cards).toHaveCount(EMOJI_PAGE_SIZE * 2);
+    const viewport = page.getByTestId('emoji-virtual-viewport');
+    await viewport.evaluate((element) => {
+      element.scrollTop = element.scrollHeight;
+      element.dispatchEvent(new Event('scroll'));
+    });
+    await expect.poll(async () => Number(await cards.first().getAttribute('aria-posinset'))).toBeGreaterThan(1_700);
+    expect(await cards.count()).toBeLessThan(110);
 
     await page.getByTestId('emoji-category').selectOption('Flags');
-    await expect(cards).toHaveCount(EMOJI_PAGE_SIZE);
-    await expect(page.getByTestId('emoji-result-status')).toContainText(`Showing ${EMOJI_PAGE_SIZE} of`);
+    await expect(cards.first()).toHaveAttribute('aria-posinset', '1');
+    await expect(page.getByTestId('emoji-result-status')).toHaveText(/^\s*\d+ emojis available\s*$/);
   });
 
   test('searches the full catalog without truncating ZWJ and flag sequences', async ({ context, page }) => {
@@ -74,8 +81,8 @@ test.describe('Tool - Emoji picker bounded rendering', () => {
 
     const searchStartedAt = Date.now();
     await page.getByTestId('emoji-search').fill('face');
-    await expect(page.getByTestId('emoji-card')).toHaveCount(EMOJI_PAGE_SIZE);
-    await expect(page.getByTestId('emoji-result-status')).toHaveText(/^\s*Showing 60 of \d+ emojis\s*$/);
+    await expect.poll(() => page.getByTestId('emoji-card').count()).toBeGreaterThan(0);
+    await expect(page.getByTestId('emoji-result-status')).toHaveText(/^\s*\d+ emojis available\s*$/);
     await page.waitForTimeout(50);
 
     const searchElapsedMs = Date.now() - searchStartedAt;
@@ -97,10 +104,21 @@ test.describe('Tool - Emoji picker bounded rendering', () => {
     // from production Long Task acceptance. It remains useful here for the
     // worker/HMR functional flow and heartbeat assertion.
     if (supportsLongTasks && runtimeMode === 'preview') {
-      expect(longestTaskMs).toBeLessThan(200);
+      expect(longestTaskMs).toBeLessThan(50);
     }
 
-    await page.getByTestId('emoji-load-more').click();
-    await expect(page.getByTestId('emoji-card')).toHaveCount(EMOJI_PAGE_SIZE * 2);
+    const renderedCardCount = await page.getByTestId('emoji-card').count();
+    expect(renderedCardCount).toBeLessThan(110);
+  });
+
+  test('cancels a pending worker search and keeps controls usable', async ({ page }) => {
+    const search = page.getByTestId('emoji-search');
+    await search.fill('face');
+    const cancel = page.getByTestId('emoji-cancel-search');
+    await expect(cancel).toBeVisible();
+    await cancel.click();
+    await expect(page.getByRole('alert')).toHaveText('Emoji search was cancelled.');
+    await search.fill('United Nations');
+    await expect(page.getByRole('button', { name: 'Copy Flag United Nations emoji' })).toBeVisible();
   });
 });

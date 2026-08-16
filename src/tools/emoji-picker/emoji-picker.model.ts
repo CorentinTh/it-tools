@@ -1,7 +1,6 @@
 import type emojiUnicodeData from 'unicode-emoji-json';
 import type { EmojiInfo, EmojiKeywordMap } from './emoji.types';
 
-export const EMOJI_PAGE_SIZE = 60;
 export const ALL_EMOJI_GROUPS = '__all__';
 
 type EmojiUnicodeData = typeof emojiUnicodeData;
@@ -58,26 +57,4 @@ export function filterEmojiGroup(
   return group === ALL_EMOJI_GROUPS
     ? [...emojiInfos]
     : emojiInfos.filter(emojiInfo => emojiInfo.group === group);
-}
-
-export function getEmojiPage(
-  emojiInfos: readonly EmojiInfo[],
-  visibleCount: number,
-) {
-  return emojiInfos.slice(0, Math.max(0, visibleCount));
-}
-
-export function groupEmojiInfos(emojiInfos: readonly EmojiInfo[]) {
-  const groupedEmojiInfos = new Map<string, EmojiInfo[]>();
-
-  for (const emojiInfo of emojiInfos) {
-    const group = groupedEmojiInfos.get(emojiInfo.group) ?? [];
-    group.push(emojiInfo);
-    groupedEmojiInfos.set(emojiInfo.group, group);
-  }
-
-  return [...groupedEmojiInfos].map(([group, infos]) => ({
-    group,
-    emojiInfos: infos,
-  }));
 }

@@ -2,6 +2,11 @@ import { SpeedFilled } from '@vicons/material';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
+export const registry = {
+  category: 'Measurement',
+  order: 6,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: translate('tools.benchmark-builder.title'),
   path: '/benchmark-builder',

@@ -2,6 +2,11 @@ import { Browser } from '@vicons/tabler';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
+export const registry = {
+  category: 'Web',
+  order: 12,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: translate('tools.user-agent-parser.title'),
   path: '/user-agent-parser',

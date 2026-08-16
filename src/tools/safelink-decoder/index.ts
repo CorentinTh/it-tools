@@ -1,6 +1,11 @@
 import { Mailbox } from '@vicons/tabler';
 import { defineTool } from '../tool';
 
+export const registry = {
+  category: 'Web',
+  order: 15,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: 'Outlook Safelink decoder',
   path: '/safelink-decoder',

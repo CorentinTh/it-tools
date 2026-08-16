@@ -1,18 +1,31 @@
-import { mkdir, readFile, writeFile } from 'fs/promises';
+import { mkdir, writeFile } from 'fs/promises';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+import {
+  TOOL_CATEGORY_NAMES,
+  discoverToolDescriptors,
+  generateToolRegistry,
+} from './generate-tool-registry.mjs';
 
 const currentDirname = dirname(fileURLToPath(import.meta.url));
 
 const toolsDir = join(currentDirname, '..', 'src', 'tools');
 // eslint-disable-next-line no-undef
 const toolName = process.argv[2];
+const toolCategory = process.argv[3];
 
 if (!toolName) {
-  throw new Error('Please specify a toolname.');
+  throw new Error('Please specify a tool name.');
+}
+if (!TOOL_CATEGORY_NAMES.includes(toolCategory)) {
+  throw new Error(`Please specify one category: ${TOOL_CATEGORY_NAMES.join(', ')}`);
 }
 
-const toolNameCamelCase = toolName.replace(/-./g, (x) => x[1].toUpperCase());
+const existingDescriptors = await discoverToolDescriptors(toolsDir);
+const nextCategoryOrder = existingDescriptors
+  .filter(({ category }) => category === toolCategory)
+  .reduce((highest, { order }) => Math.max(highest, order), -1) + 1;
+
 const toolNameTitleCase = toolName[0].toUpperCase() + toolName.slice(1).replace(/-/g, ' ');
 const toolDir = join(toolsDir, toolName);
 
@@ -48,6 +61,11 @@ createToolFile(
   `
 import { ArrowsShuffle } from '@vicons/tabler';
 import { defineTool } from '../tool';
+
+export const registry = {
+  category: '${toolCategory}',
+  order: ${nextCategoryOrder},
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
 
 export const tool = defineTool({
   name: '${toolNameTitleCase}',
@@ -96,9 +114,5 @@ test.describe('Tool - ${toolNameTitleCase}', () => {
 `,
 );
 
-const toolsIndex = join(toolsDir, 'index.ts');
-const indexContent = await readFile(toolsIndex, { encoding: 'utf-8' }).then((r) => r.split('\n'));
-
-indexContent.splice(3, 0, `import { tool as ${toolNameCamelCase} } from './${toolName}';`);
-writeFile(toolsIndex, indexContent.join('\n'));
-console.log(`Added import in: ${toolsIndex}`);
+await generateToolRegistry();
+console.log('Regenerated the typed tool registry.');

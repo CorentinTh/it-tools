@@ -2,6 +2,11 @@ import { UnfoldMoreOutlined } from '@vicons/material';
 import { defineTool } from '../tool';
 import { translate } from '@/plugins/i18n.plugin';
 
+export const registry = {
+  category: 'Network',
+  order: 2,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: translate('tools.ipv4-range-expander.title'),
   path: '/ipv4-range-expander',

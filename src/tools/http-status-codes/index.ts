@@ -4,6 +4,11 @@ import { defineTool } from '../tool';
 import { codesByCategories } from './http-status-codes.constants';
 import { translate } from '@/plugins/i18n.plugin';
 
+export const registry = {
+  category: 'Web',
+  order: 13,
+} as const satisfies import('../tools.types').ToolRegistryMetadata;
+
 export const tool = defineTool({
   name: translate('tools.http-status-codes.title'),
   path: '/http-status-codes',
