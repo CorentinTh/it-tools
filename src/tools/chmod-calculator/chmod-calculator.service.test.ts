@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { computeChmodOctalRepresentation, computeChmodSymbolicRepresentation } from './chmod-calculator.service';
+import { applyUmask, computeChmodOctalRepresentation, computeChmodSymbolicRepresentation, parseChmodMode } from './chmod-calculator.service';
 
 describe('chmod-calculator', () => {
   describe('computeChmodOctalRepresentation', () => {
@@ -126,5 +126,26 @@ describe('chmod-calculator', () => {
         }),
       ).to.eql('-w--w--w-');
     });
+  });
+
+  it('round-trips octal and symbolic modes including special bits', () => {
+    const mode = parseChmodMode('6755');
+    expect(computeChmodOctalRepresentation(mode)).toBe('6755');
+    expect(computeChmodSymbolicRepresentation(mode)).toBe('rwsr-sr-x');
+    expect(computeChmodOctalRepresentation(parseChmodMode('rwsr-sr-x'))).toBe('6755');
+    expect(computeChmodSymbolicRepresentation(parseChmodMode('rwSr--r-T'))).toBe('rwSr--r-T');
+    expect(computeChmodOctalRepresentation(parseChmodMode('0755'))).toBe('755');
+  });
+
+  it('rejects malformed octal and symbolic modes', () => {
+    expect(() => parseChmodMode('888')).toThrow('using only 0–7');
+    expect(() => parseChmodMode('rwx')).toThrow('exactly nine');
+    expect(() => parseChmodMode('rwxr-xr-s')).toThrow('applicable position');
+  });
+
+  it('applies a bounded creation umask without claiming chmod behavior', () => {
+    expect(applyUmask('0666', '022')).toBe('644');
+    expect(applyUmask('0777', '0027')).toBe('750');
+    expect(() => applyUmask('0666', '888')).toThrow('Umask');
   });
 });

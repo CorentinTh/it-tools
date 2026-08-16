@@ -85,6 +85,16 @@ describe('camera recorder component', () => {
     vi.restoreAllMocks();
   });
 
+  it('does not request camera or microphone permission during route mount', () => {
+    const wrapper = mountCameraRecorder();
+
+    expect(mocks.useDevicesList).toHaveBeenCalledWith(expect.objectContaining({
+      requestPermissions: false,
+    }));
+
+    wrapper.unmount();
+  });
+
   it('keeps keyed media nodes stable and releases retained video URLs on unmount', async () => {
     let nextUrl = 0;
     const createObjectURL = vi.spyOn(URL, 'createObjectURL')

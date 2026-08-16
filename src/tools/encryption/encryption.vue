@@ -20,6 +20,9 @@ const [decryptOutput, decryptError] = computedCatch(() => algos[decryptAlgo.valu
 
 <template>
   <div class="c-tool-workbench c-tool-stack">
+    <c-alert title="Password-based compatibility format">
+      This legacy route uses CryptoJS's password-based OpenSSL-compatible envelope: the field is UTF-8 password text, not raw key bytes, and the serialized value owns its random salt/derived IV. Raw hex/Base64 keys or caller-supplied IVs are deliberately not offered because this format cannot describe them unambiguously. Prefer AES-GCM Envelope for new authenticated encryption; TripleDES, Rabbit, and RC4 are legacy compatibility choices.
+    </c-alert>
     <c-card title="Encrypt">
       <c-input-text
         v-model:value="cypherInput"
@@ -34,7 +37,7 @@ const [decryptOutput, decryptError] = computedCatch(() => algos[decryptAlgo.valu
         <c-select
           v-model:value="cypherAlgo"
           label="Encryption algorithm"
-          :options="Object.keys(algos).map((label) => ({ label, value: label }))"
+          :options="Object.keys(algos).map((value) => ({ label: value === 'AES' ? 'AES (password envelope; unauthenticated)' : `${value} (legacy)`, value }))"
         />
       </div>
       <c-input-text
@@ -59,7 +62,7 @@ const [decryptOutput, decryptError] = computedCatch(() => algos[decryptAlgo.valu
         <c-select
           v-model:value="decryptAlgo"
           label="Encryption algorithm"
-          :options="Object.keys(algos).map((label) => ({ label, value: label }))"
+          :options="Object.keys(algos).map((value) => ({ label: value === 'AES' ? 'AES (password envelope; unauthenticated)' : `${value} (legacy)`, value }))"
         />
       </div>
       <c-alert v-if="decryptError" type="error" mt-12 title="Error while decrypting">

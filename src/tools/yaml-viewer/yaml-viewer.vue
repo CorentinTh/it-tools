@@ -11,6 +11,7 @@ import TextareaCopyable from '@/components/TextareaCopyable.vue';
 import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
 import CSwitch from '@/ui/c-switch/c-switch.vue';
 import { exceedsUtf8ByteLimit } from '@/utils/utf8';
+import { downloadTextFile } from '@/composable/downloadText';
 
 const inputComponent = ref<{ inputWrapperRef?: HTMLElement }>();
 
@@ -220,6 +221,9 @@ onUnmounted(() => {
           @click="cancelFormat"
         >
           Cancel
+        </c-button>
+        <c-button :disabled="!cleanYaml" data-test-id="yaml-format-download" @click="downloadTextFile({ content: cleanYaml, filename: 'formatted.yaml' })">
+          Download
         </c-button>
       </div>
       <p

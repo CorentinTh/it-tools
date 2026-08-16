@@ -1,0 +1,12 @@
+import { defineTool } from '../tool';
+import { translate } from '@/plugins/i18n.plugin';
+import PasswordIcon from '~icons/mdi/form-textbox-password';
+
+export const tool = defineTool({
+  name: translate('tools.passphrase-generator.title'),
+  path: '/passphrase-generator',
+  description: translate('tools.passphrase-generator.description'),
+  keywords: ['passphrase', 'password', 'diceware', 'entropy', 'wordlist', 'web crypto'],
+  component: () => import('./passphrase-generator.vue'),
+  icon: PasswordIcon,
+});

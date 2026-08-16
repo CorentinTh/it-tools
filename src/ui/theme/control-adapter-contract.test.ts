@@ -84,6 +84,7 @@ describe('route control adapter contract', () => {
     const toolsDirectory = new URL('../../tools', import.meta.url).pathname;
     const allowed = [
       'emoji-picker/emoji-picker.vue',
+      'image-metadata-remover/image-metadata-remover.vue',
       'json-schema-validator/json-schema-validator.vue',
       'svg-placeholder-generator/svg-placeholder-generator.vue',
     ].map(path => join(toolsDirectory, path)).sort();

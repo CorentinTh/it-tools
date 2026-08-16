@@ -22,7 +22,10 @@ const {
   isSupported,
   ensurePermissions,
 } = useDevicesList({
-  requestPermissions: true,
+  // Permission requests must stay behind the visible Grant permission action.
+  // VueUse does not await/catch its automatic request, so a denied or
+  // unsupported request would otherwise surface as an unhandled page error.
+  requestPermissions: false,
   constraints: { video: true, audio: true },
   onUpdated() {
     refreshCurrentDevices();

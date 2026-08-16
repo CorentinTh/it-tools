@@ -6,7 +6,7 @@ export const tool = defineTool({
   name: translate('tools.color-converter.title'),
   path: '/color-converter',
   description: translate('tools.color-converter.description'),
-  keywords: ['color', 'converter'],
+  keywords: ['color', 'converter', 'OKLab', 'OKLCH', 'gamut', 'sRGB'],
   component: () => import('./color-converter.vue'),
   icon: Palette,
   redirectFrom: ['/color-picker-converter'],

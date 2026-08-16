@@ -13,7 +13,7 @@ const router = useRouter();
 const isMac = computed(() => window.navigator.userAgent.toLowerCase().includes('mac'));
 
 const commandPaletteStore = useCommandPaletteStore();
-const { searchPrompt, filteredSearchResult } = storeToRefs(commandPaletteStore);
+const { searchPrompt, filteredSearchResult, hiddenResultCount, showAllResults } = storeToRefs(commandPaletteStore);
 const flattenedOptions = computed(() => Object.values(filteredSearchResult.value).flat());
 const selectedOptionIndex = ref(0);
 
@@ -43,10 +43,16 @@ function open() {
 function close() {
   isModalOpen.value = false;
   searchPrompt.value = '';
+  showAllResults.value = false;
   selectedOptionIndex.value = 0;
 }
 
 watch(searchPrompt, () => {
+  selectedOptionIndex.value = 0;
+  showAllResults.value = false;
+});
+
+watch(showAllResults, () => {
   selectedOptionIndex.value = 0;
 });
 
@@ -136,6 +142,17 @@ function activateOption(option: PaletteOption) {
         </div>
         <command-palette-option v-for="option in options" :key="option.name" :option="option" :selected="selectedOptionIndex === getOptionIndex(option)" @activated="activateOption" />
       </div>
+      <c-button
+        v-if="hiddenResultCount > 0 && !showAllResults"
+        data-test-id="command-palette-show-all"
+        mt-3 w-full
+        @click="showAllResults = true"
+      >
+        Show all {{ hiddenResultCount }} more results
+      </c-button>
+      <p v-else-if="searchPrompt && flattenedOptions.length === 0" role="status" mt-4 text-center op-70>
+        No matching tools or commands.
+      </p>
     </c-modal>
   </div>
 </template>

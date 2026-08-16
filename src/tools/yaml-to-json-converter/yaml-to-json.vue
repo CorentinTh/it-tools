@@ -7,6 +7,7 @@ import BoundedTextTransformer from '@/components/BoundedTextTransformer.vue';
   <BoundedTextTransformer
     conversion="yaml-to-json"
     :create-client="createYamlConverterWorkerClient"
+    download-filename="converted.json"
     input-label="Your YAML"
     input-placeholder="Paste your YAML here..."
     output-label="JSON from your YAML"

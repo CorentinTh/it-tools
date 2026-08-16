@@ -3,6 +3,7 @@ import { createJsonToCsvWorkerClient } from './json-to-csv.worker-client';
 import { JSON_TO_CSV_LIVE_MAX_BYTES, JSON_TO_CSV_MAX_INPUT_BYTES } from './json-to-csv.worker.protocol';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 import { useBoundedTextTransform } from '@/composable/bounded-text-transform';
+import { downloadTextFile } from '@/composable/downloadText';
 
 const source = ref('');
 const inputComponent = ref<{ inputWrapperRef?: HTMLElement }>();
@@ -39,6 +40,9 @@ const { cancel, hasError, isRunning, output, run, state } = useBoundedTextTransf
       </c-button>
       <c-button v-if="isRunning" type="warning" data-test-id="json-to-csv-cancel" @click="cancel">
         Cancel
+      </c-button>
+      <c-button :disabled="!output" data-test-id="json-to-csv-download" @click="downloadTextFile({ content: output, filename: 'converted.csv' })">
+        Download
       </c-button>
     </div>
     <p

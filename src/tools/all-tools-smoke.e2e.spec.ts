@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-const EXPECTED_TOOL_COUNT = 94;
+const EXPECTED_TOOL_COUNT = 129;
 const FORBIDDEN_CONSOLE_WARNINGS = [
   /Could not create web worker/i,
   /Falling back to loading web worker code in main thread/i,
@@ -12,7 +12,7 @@ test.use({ serviceWorkers: 'block' });
 test.describe('All tool routes', () => {
   test('every registered tool loads without runtime or chunk errors', async ({ browserName, page }) => {
     test.skip(browserName !== 'chromium', 'Chromium is the mandatory Milestone 0 smoke baseline.');
-    test.setTimeout(5 * 60 * 1000);
+    test.setTimeout(7 * 60 * 1000);
 
     const runtimeErrors: string[] = [];
     let currentRoute = '/';

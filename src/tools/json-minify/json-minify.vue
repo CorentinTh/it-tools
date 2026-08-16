@@ -8,6 +8,7 @@ const defaultValue = '{\n\t"hello": [\n\t\t"world"\n\t]\n}';
   <BoundedTextTransformer
     conversion="json-minify"
     :create-client="createJsonConverterWorkerClient"
+    download-filename="minified.json"
     input-label="Your raw JSON"
     :input-default="defaultValue"
     input-placeholder="Paste your raw JSON here..."

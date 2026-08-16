@@ -1,13 +1,13 @@
 # IT Tools Architecture
 
-Current-state review: 2026-08-07. Exact accepted test/build measurements and
+Current-state review: 2026-08-16. Exact accepted test/build measurements and
 the recovery checkpoint live in `.ai/PROGRESS.md` and `.ai/HANDOFF.md`.
 Audit-time comparisons are explicitly labeled historical below and must not be
 used to restart completed work.
 
 ## 1. Purpose and system boundaries
 
-The project is a static single-page application and PWA containing browser-based utilities for developers. The current branch registers 89 tools across 10 categories. There is no application backend: transformations, parsing, generation, cryptography, and file handling run in the user's browser.
+The project is a static single-page application and PWA containing browser-based utilities for developers. The current branch registers 129 tools across 10 categories. There is no application backend: transformations, parsing, generation, cryptography, and file handling run in the user's browser.
 
 The production artifact is the `dist/` directory. It can be served by Vercel, Netlify, any static host, or nginx in the Docker image. Plausible is the only built-in external telemetry integration and is disabled by default; its URLs are path-only. ASCII Art fonts are versioned same-origin assets, opened tool chunks/workers are demand-cached, and tools that intentionally require browser network/system APIs retain their own disclosed boundaries.
 
@@ -17,7 +17,7 @@ The production artifact is the `dist/` directory. It can be served by Vercel, Ne
 |---|---|---|
 | Language and UI | TypeScript 5.2, Vue 3.3, SFC | Components and reactive business logic |
 | Build | Vite 4.4, vue-tsc, pnpm 9.11 | Type checking, code splitting, production bundle |
-| Routing | Vue Router 4, HTML5 history | Home, About, 89 tool routes, redirects, and 404 |
+| Routing | Vue Router 4, HTML5 history | Home, About, 129 tool routes, redirects, and 404 |
 | State | Pinia, VueUse `useStorage` | Theme, menu, favorites, and local tool preferences |
 | UI system | Naive UI, UnoCSS, custom `c-*` components | Layout, forms, cards, tables, and themes |
 | Icons | `@vicons/tabler`, `@vicons/material`, `@tabler/icons-vue`, unplugin-icons/MDI | Shell and tool icons |
@@ -27,7 +27,7 @@ The production artifact is the `dist/` directory. It can be served by Vercel, Ne
 | E2E tests | Playwright | Chromium, Firefox, and WebKit scenarios |
 | Delivery | GitHub Actions, Docker, nginx, Vercel, Netlify | CI, release artifacts, and static hosting |
 
-Specialized libraries are grouped around individual tools: JSON5/YAML/TOML/XML/Markdown/SQL, `crypto-js`/`bcryptjs`/BIP39, Web Crypto, `@noble/hashes`, `mathjs`, `monaco-editor`, TipTap, `libphonenumber-js`, generated OUI data, QR/PDF/UA parsers, and others. `node-forge` is no longer a direct RSA dependency but remains transitive through the PDF signature reader. `package.json` currently contains 64 runtime and 46 development dependencies.
+Specialized libraries are grouped around individual tools: JSON5/YAML/TOML/XML/Markdown/SQL, `crypto-js`/`bcryptjs`/BIP39, Web Crypto, `@noble/hashes`, route-local `hash-wasm` Argon2, explicit-action-only `mermaid@10.9.8`, worker-local dependency-free `hyparquet@1.28.2`, worker-local exact `saxen@11.1.1` plus native DEFLATE for bounded XLSX, `mathjs`, `monaco-editor`, TipTap, `libphonenumber-js`, generated OUI data, QR/PDF/UA parsers, and others. `node-forge` is no longer a direct RSA dependency but remains transitive through the PDF signature reader. `package.json` currently contains 67 runtime and 46 development dependencies; shared `lodash` and `lodash-es` resolve to patched `4.18.1`, and Home favorite ordering uses native drag/drop plus keyboard actions instead of `vuedraggable`/`sortablejs`.
 
 ## 3. Repository structure
 
@@ -38,7 +38,7 @@ Specialized libraries are grouped around individual tools: JSON5/YAML/TOML/XML/M
 │   ├── App.vue                 # theme/providers + layout selection + RouterView
 │   ├── router.ts               # routes generated from the tool registry
 │   ├── config.ts               # typed environment configuration
-│   ├── tools/                  # 89 isolated tools
+│   ├── tools/                  # 129 isolated tools
 │   │   ├── index.ts            # central registry and categories
 │   │   ├── tool.ts             # defineTool and isNew calculation
 │   │   ├── tools.store.ts      # localization, categories, favorites
@@ -93,7 +93,7 @@ flowchart LR
 This creates a mixed loading model:
 
 - the UI and heavy libraries of a specific tool are normally loaded lazily;
-- metadata, `defineTool`, translations, and 89 icon components enter the application shell;
+- metadata, `defineTool`, translations, and tool icon imports enter the application shell;
 - Home and 404 are eager, while About and tool components are dynamic;
 - the router, side menu, favorites, and command palette all consume the same registry.
 
@@ -117,6 +117,11 @@ The central registry is convenient but is also a major source of initial-bundle 
   versioned, debounced, clearable, and bounded to 256 KiB per side.
 - Secrets, uploaded files, generated tokens, private keys, and OTP seeds remain
   ephemeral. Analytics receives path-only URLs and sanitized referrers.
+- DNS-over-HTTPS is a deliberate network exception: only an explicit action can
+  send one bounded RFC 8484 binary POST to a fixed resolver allow-list. The DNS
+  name/type stays out of URL/history/storage/analytics/application logs, while
+  the UI states that the selected resolver still observes it together with the
+  client IP and ordinary transport metadata.
 
 The full key inventory, migration behavior, denial residual, and browser
 evidence are authoritative in `.ai/PERSISTENCE.md`.
@@ -156,10 +161,10 @@ Accepted schema-v4 production evidence for implementation checkpoint `5f7e97a`:
 | File Hash route + owned-worker closure | 70,260 B raw / 26,677 B gzip |
 | File Hash worker | 25,899 B raw / 10,417 B gzip |
 
-The current 2026-08-16 dirty-worktree build transforms 22,876 modules and emits
-522 files / 13,656,676 B raw / 3,875,761 B gzip. Its shell including the
-document is 907,307 B / 277,717 B gzip, and the nine-entry mandatory install is
-961,155 B / 328,079 B gzip. WYSIWYG owns a 212,679 B /
+The current 2026-08-16 dirty-worktree build transforms 24,163 modules and emits
+642 files / 18,151,938 B raw / 5,303,777 B gzip. Its shell including the
+document is 844,594 B / 247,458 B gzip, and the nine-entry mandatory install is
+898,442 B / 297,820 B gzip. WYSIWYG owns a 212,679 B /
 70,280 B gzip
 demand-loaded Prettier worker; its main route chunk fell from 493,145 B /
 153,634 B gzip to 287,982 B / 86,389 B gzip. The complete additional closure
@@ -177,23 +182,71 @@ HTTP cache is cleared.
 
 `scripts/build-stats.mjs` discovers manifest graphs and literal route-owned
 workers, then applies rationale-backed shell, route, worker, and mandatory-PWA
-budgets. The current artifact passes 228 checks; schema behavior passes 16
+budgets. The current artifact passes 396 checks; schema behavior passes 16
 infrastructure tests. Raw baseline details remain in
 `.ai/baselines/build-stats.json` and `.ai/PERFORMANCE.md`. The eight JSON/YAML/
 TOML/XML converter routes add four separately budgeted family workers:
 JSON 89,752 B / 27,405 B gzip, TOML 89,835 B / 23,818 B gzip, and YAML
-109,980 B / 32,749 B gzip, plus XML 92,312 B / 28,468 B gzip. Docker
-Run-to-Compose adds a separately budgeted 108,813 B / 33,464 B gzip worker.
+109,980 B / 32,749 B gzip, plus XML 92,312 B / 28,468 B gzip. Bidirectional
+Docker conversion adds a separately budgeted 206,522 B / 63,434 B gzip worker.
 Hash Text adds a separately budgeted 60,239 B / 21,154 B gzip worker under a
-65/24 kB ceiling. JSON-to-CSV, List Converter, and Emoji Search add independent
-worker ceilings; all remain demand-loaded and outside the shell.
+65/24 kB ceiling. JSON-to-CSV, List Converter, Emoji Search, Mock Data,
+Sensitive Data, Cron, DevOps Configuration, JSON Repair/Query, Certificate
+Inspection, Developer Text, and SAML Inspection add independent worker
+ceilings; the Markdown Table Generator adds a 4,187 B / 1,929 B gzip worker
+under its own 5/2.5 kB ceiling, and List Comparison adds a 5,039 B / 2,152 B
+gzip worker under its own 6/2.8 kB ceiling. Tabular Data Inspector adds a
+5,908 B / 2,656 B gzip worker under its own 7/3.2 kB ceiling. All remain
+demand-loaded and outside the shell. Structured `.env` extraction extends the
+DevOps Configuration worker to 146,714/40,101 B raw/gzip; RFC 6902 extends the
+JSON Code worker to 45,180/14,297 B; and explicit-key HMAC adds a separately
+budgeted 60,965/21,477 B worker. Their protocols bound bytes, structure,
+output, and time independently of the route chunks. Argon2id adds the first
+measured WASM feature through pinned `hash-wasm@4.12.0`: its disposable worker
+is 34,523/13,687 B raw/gzip and its full additional route closure is
+130,867/47,124 B. The WASM/glue is route-owned, demand-loaded, outside both the
+initial shell and mandatory Workbox install, and physically discarded after
+every task settlement.
+Markdown Diff adds a 4,927/2,021 B raw/gzip disposable worker and a
+168,815/71,948 B additional route closure. Its line/word alignment is bounded
+before allocation; optional preview reuses lazy `markdown-it` with HTML/link/
+image activation disabled, followed by pinned DOMPurify `3.4.13` with a static
+HTML-only allow-list. Neither input nor rendered content enters shell, Workbox,
+storage, URL, or network transport.
+Mermaid Diagram Renderer adds a 44,906/18,043 B route closure before action and
+a 278,266/78,124 B explicit renderer closure. The exact patched dependency is
+demand-loaded only after Render; a source-family allow-list, fixed strict
+configuration, DOMPurify plus independent SVG/resource bounds, and a
+scriptless network-denying iframe form the rendering boundary. Supported
+families remain under the default closure gate. Exact exceptions cover only
+unreachable official legacy Graph, ELK, and Mindmap catalog entries, without
+weakening global limits or adding them to shell/mandatory Workbox.
+Parquet Reader adds a 183,372/61,028 B route closure and a 65,630/20,682 B
+disposable worker containing exact dependency-free `hyparquet@1.28.2`. The
+worker treats the local `File` as an asynchronous Blob-backed buffer, validates
+PAR1/footer/schema/row-group/column metadata before decoding, and requests only
+bounded selected slices. Independent file/footer/schema/nesting/chunk/
+aggregate/cumulative-read/page/cell/output/time limits prevent whole-file and
+metadata-driven allocation. Only UNCOMPRESSED and SNAPPY are decoded; other
+codecs remain metadata-visible and encrypted/external layouts are rejected.
+The route and dependency stay outside the initial shell and mandatory Workbox
+install, while cancellation/replacement/timeout/unmount physically terminates
+the worker.
+Network calculations
+reuse the existing exact IPv6 model and BigInt without a worker because the
+operation count and input are strictly bounded; app-icon rendering uses bounded
+Canvas/OffscreenCanvas allocations and deterministic Blob URL disposal.
 
-Vite 4 does not discover every dependency reachable only from a Web Worker.
-`vite.config.ts` therefore owns an explicit include/exclude inventory for
-worker-only dependencies. This prevents a first tool visit in source dev from
-changing optimized dependencies, reloading the page, and abandoning an
-in-flight worker. A source contract test and the strict 8091 dev-runtime smoke
-guard the inventory.
+Vite 4 does not discover every dependency reachable only from a Web Worker or
+lazy route. `vite.config.ts` therefore owns explicit worker and lazy-route
+include inventories plus the native-data exclusion inventory. This prevents a
+first tool visit in source dev from changing optimized dependencies, reloading
+the page, and abandoning an in-flight task. The lazy inventory currently covers
+`jsonc-parser`, Monaco's editor API, Mermaid, and worker-owned `hyparquet` and
+`saxen`. Source-contract tests and a clean strict 8091 traversal of all 129 routes guard
+the inventories. The AES-GCM and image
+metadata workers are independently capped at 17/6.5 kB and 8/3.5 kB raw/gzip;
+their measured artifacts are 14,329/5,023 B and 6,447/2,589 B respectively.
 
 The main sources of weight are four icon mechanisms, eager registry metadata/icons, CommonJS `lodash` across 41 source imports, Monaco, the full OUI dataset, full `mathjs`, emoji datasets, TipTap, and overlapping parser/rendering libraries.
 
@@ -201,13 +254,12 @@ The main sources of weight are four icon mechanisms, eager registry metadata/ico
 
 - The accepted integrated checkpoint passes zero-warning lint and both the
   application/test and Vite-config typecheck projects.
-- 1021/1021 unit tests pass across 160 files in the current dirty-worktree checkpoint.
-- All 176 production-preview Chromium cases pass across the isolated
-  performance and full functional matrices, including the registry-generated
-  smoke for all 89 routes. A single combined timing run is not treated as
-  authoritative while unrelated workstation processes saturate CPU.
-- Sixteen build-stat infrastructure tests, 232 current-artifact budget checks,
-  and four generated-OUI checks pass. Seventeen route-owned worker families have
+- 1417/1417 unit tests pass across 245 files in the current dirty-worktree checkpoint.
+- The registry-generated Chromium smoke passes all 129 routes; the targeted
+  XLSX source-dev inspect/preview/export/privacy/layout suite passes 2/2. The earlier 176-case full
+  matrix remains historical evidence and was not relabelled as rerun for this wave.
+- Sixteen build-stat infrastructure tests, 404 current-artifact budget checks,
+  and four generated-OUI checks pass. Route-owned worker families have
   independent ceilings in addition to route-closure budgets.
 - Production browser gates cover privacy/storage, worker cancellation and route
   disposal, large structured inputs, File Hash 256 MiB behavior, PWA demand
@@ -262,6 +314,11 @@ All user information remains inside the SPA origin unless an individual tool
 explicitly discloses a network/system boundary. Sensitive tool content is
 session-only by default; analytics is path-only; Text Diff persistence is the
 sole bounded, explicit, default-off content exception.
+
+DNS-over-HTTPS is the current explicit outbound-network exception. It uses a
+fixed resolver allow-list and binary POST only after the user presses Query;
+standard DoH protects transport but is not presented as local-only, anonymous,
+or oblivious DNS.
 
 Attacker-controlled Regex, Bcrypt, JSON/YAML/TOML/XML, Docker conversion, schema validation, file/text hashing, and
 OUI work now use bounded worker/lifecycle contracts where implemented. A

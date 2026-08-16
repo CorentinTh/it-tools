@@ -54,17 +54,26 @@ export const WORKER_OPTIMIZED_DEPENDENCIES = [
   'composerize-ts',
   'crypto-js',
   'fuse.js',
+  'hash-wasm',
+  'hyparquet',
   'iarna-toml-esm',
+  'js-base64',
   'json5',
   'markdown-it',
   'mathjs/number',
   'prettier',
   'prettier/plugins/html',
   'randexp',
+  'saxen',
   'sql-formatter',
   'xml-formatter',
   'xml-js',
   'yaml',
+] as const;
+export const LAZY_ROUTE_OPTIMIZED_DEPENDENCIES = [
+  'jsonc-parser',
+  'mermaid',
+  'monaco-editor/esm/vs/editor/editor.api',
 ] as const;
 export const WORKER_UNOPTIMIZED_DEPENDENCIES = ['emojilib', 'unicode-emoji-json'] as const;
 const SHELL_STATIC_URLS = new Set([
@@ -422,10 +431,10 @@ export default defineConfig({
     'import.meta.env.FIGLET_FONT_PATH': JSON.stringify(figletFontPublicPath),
   },
   optimizeDeps: {
-    // Vite 4 does not crawl route-owned worker graphs during its initial scan.
-    // Without this list, the first visit to each worker family triggers a new
+    // Vite 4 does not crawl route-owned workers or every lazy route during its
+    // initial scan. Without these lists, a first visit can trigger a new
     // optimization pass and a full-page reload that abandons the active task.
-    include: [...WORKER_OPTIMIZED_DEPENDENCIES],
+    include: [...WORKER_OPTIMIZED_DEPENDENCIES, ...LAZY_ROUTE_OPTIMIZED_DEPENDENCIES],
     // These packages expose JSON/module data that Vite cannot prebundle as an
     // optimizeDeps entry. Excluding them keeps them native and prevents a
     // later discovery pass from restarting the dev page.

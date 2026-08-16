@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { TOKEN_ALPHABETS, createToken } from './token-generator.service';
+import { TOKEN_ALPHABETS, createToken, createTokenAlphabet, createTokens } from './token-generator.service';
 import type { RandomValuesProvider } from '@/utils/secure-random';
 
 function sequenceRandomValues(sequence: number[]): RandomValuesProvider {
@@ -158,5 +158,21 @@ describe('token-generator', () => {
       expect(token).toHaveLength(256);
       expect(token).toMatch(/^[a-zA-Z]+$/);
     });
+  });
+
+  it('deduplicates custom alphabets and removes denied Unicode characters', () => {
+    expect(createTokenAlphabet({ customAlphabet: 'aabb💩💩c', deniedCharacters: 'b💩' })).toBe('ac');
+  });
+
+  it('generates a bounded batch with the final unbiased alphabet', () => {
+    expect(createTokens({
+      customAlphabet: 'abc',
+      deniedCharacters: 'b',
+      length: 3,
+      quantity: 2,
+      getRandomValues: sequenceRandomValues([0, 1]),
+    })).toEqual(['aca', 'cac']);
+    expect(() => createTokens({ quantity: 101 })).toThrow('quantity');
+    expect(() => createTokens({ customAlphabet: 'x', deniedCharacters: 'x' })).toThrow('allowed character');
   });
 });

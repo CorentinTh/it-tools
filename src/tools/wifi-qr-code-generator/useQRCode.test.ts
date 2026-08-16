@@ -31,6 +31,20 @@ describe('WiFi QR payload and ordered generation', () => {
     })).toBeNull();
   });
 
+  it('encodes WPA3 personal intent with the de-facto scanner-compatible WPA token', () => {
+    const common = {
+      ssid: 'sae-network',
+      password: 'correct horse',
+      eapMethod: undefined,
+      isHiddenSSID: false,
+      eapAnonymous: false,
+      eapIdentity: '',
+      eapPhase2Method: undefined,
+    } as const;
+    expect(getQrCodeText({ ...common, encryption: 'WPA3' })).toBe('WIFI:S:sae-network;T:WPA;P:correct horse;;');
+    expect(getQrCodeText({ ...common, encryption: 'WPA3-TRANSITION' })).toBe('WIFI:S:sae-network;T:WPA;P:correct horse;;');
+  });
+
   it('debounces field changes and clears an old QR when the current form becomes incomplete', async () => {
     vi.useFakeTimers();
     const ssid = ref('office');
@@ -53,6 +67,7 @@ describe('WiFi QR payload and ordered generation', () => {
 
     await vi.advanceTimersByTimeAsync(0);
     expect(result.qrcode.value).toContain('WIFI:S:office');
+    expect(result.payload.value).toContain('WIFI:S:office');
 
     ssid.value = 'new';
     await nextTick();
@@ -68,6 +83,7 @@ describe('WiFi QR payload and ordered generation', () => {
     password.value = '';
     await nextTick();
     expect(result.qrcode.value).toBe('');
+    expect(result.payload.value).toBe('');
     expect(result.status.value).toBe('idle');
     scope.stop();
   });

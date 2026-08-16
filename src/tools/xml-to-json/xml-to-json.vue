@@ -9,6 +9,7 @@ const defaultValue = '<a x="1.234" y="It\'s"/>';
   <BoundedTextTransformer
     conversion="xml-to-json"
     :create-client="createXmlDataConverterWorkerClient"
+    download-filename="converted.json"
     :input-default="defaultValue"
     input-label="Your XML content"
     input-placeholder="Paste your XML content here..."

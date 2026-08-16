@@ -3,6 +3,7 @@ import { createXmlWorkerClient } from './xml-formatter.worker-client';
 import { XML_LIVE_MAX_BYTES, XML_MAX_INPUT_BYTES } from './xml-formatter.worker.protocol';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 import { useBoundedTextTransform } from '@/composable/bounded-text-transform';
+import { downloadTextFile } from '@/composable/downloadText';
 import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
 import CSwitch from '@/ui/c-switch/c-switch.vue';
 
@@ -72,6 +73,9 @@ const {
       </c-button>
       <c-button v-if="isRunning" type="warning" data-test-id="xml-format-cancel" @click="cancel">
         Cancel
+      </c-button>
+      <c-button :disabled="!formattedXml" data-test-id="xml-format-download" @click="downloadTextFile({ content: formattedXml, filename: 'formatted.xml' })">
+        Download
       </c-button>
     </div>
     <p

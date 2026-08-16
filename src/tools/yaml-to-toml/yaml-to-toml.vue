@@ -7,6 +7,7 @@ import BoundedTextTransformer from '@/components/BoundedTextTransformer.vue';
   <BoundedTextTransformer
     conversion="yaml-to-toml"
     :create-client="createYamlConverterWorkerClient"
+    download-filename="converted.toml"
     input-label="Your YAML"
     input-placeholder="Paste your YAML here..."
     output-label="TOML from your YAML"

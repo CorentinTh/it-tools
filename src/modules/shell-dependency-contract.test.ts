@@ -16,4 +16,12 @@ describe('initial shell dependency contract', () => {
     const source = readFileSync(new URL(relativePath, import.meta.url), 'utf8');
     expect(source).not.toMatch(/from ['"]lodash['"]/);
   });
+
+  it('keeps Sortable/VueDraggable out of the mandatory Home shell', () => {
+    const homeSource = readFileSync(new URL('../pages/Home.page.vue', import.meta.url), 'utf8');
+    const packageSource = readFileSync(new URL('../../package.json', import.meta.url), 'utf8');
+
+    expect(homeSource).not.toMatch(/vuedraggable|sortablejs/i);
+    expect(packageSource).not.toMatch(/"vuedraggable"|"sortablejs"/i);
+  });
 });

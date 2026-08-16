@@ -20,6 +20,8 @@ export const tool = defineTool({
     'device',
     'security',
     'TOTP',
+    'HOTP',
+    'counter',
     'Time',
     'HMAC',
   ],

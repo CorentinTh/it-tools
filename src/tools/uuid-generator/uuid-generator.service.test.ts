@@ -1,5 +1,13 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { generateUuidV1Batch } from './uuid-generator.service';
+import {
+  generateUuidV1Batch,
+  generateUuidV6Batch,
+  generateUuidV7Batch,
+  inspectObjectId,
+  inspectSnowflake,
+  inspectUuid,
+  normalizeUuid,
+} from './uuid-generator.service';
 import type { RandomValuesProvider } from '@/utils/secure-random';
 
 function fixedRandomValues(firstWord: number, secondWord: number): RandomValuesProvider {
@@ -79,4 +87,53 @@ describe('generateUuidV1Batch', () => {
       expect(() => generateUuidV1Batch({ count })).toThrow(RangeError);
     },
   );
+});
+
+describe('modern identifiers', () => {
+  const zeroRandom: RandomValuesProvider = (values) => {
+    values.fill(0);
+    return values;
+  };
+
+  it('generates RFC-variant UUID v6 and v7 values with recoverable timestamps', () => {
+    const now = 1_700_000_000_000;
+    const v6 = generateUuidV6Batch({ count: 2, getRandomValues: zeroRandom, now: () => now });
+    const v7 = generateUuidV7Batch({ count: 1, getRandomValues: zeroRandom, now: () => now });
+
+    expect(v6[0]).toMatch(/^[0-9a-f-]{14}6[0-9a-f]{3}-8[0-9a-f]{3}-[0-9a-f]{12}$/);
+    expect(new Set(v6).size).toBe(2);
+    expect(v7[0]).toMatch(/^[0-9a-f-]{14}7[0-9a-f]{3}-8[0-9a-f]{3}-[0-9a-f]{12}$/);
+    expect(inspectUuid(v6[0]).details).toContainEqual({ label: 'Embedded timestamp', value: new Date(now).toISOString() });
+    expect(inspectUuid(v7[0]).details).toContainEqual({ label: 'Embedded timestamp', value: new Date(now).toISOString() });
+  });
+
+  it('normalizes common UUID wrappers without changing bits', () => {
+    expect(normalizeUuid('{01890ABCDEF070008000000000000001}')).toBe('01890abc-def0-7000-8000-000000000001');
+    expect(normalizeUuid('urn:uuid:01890ABC-DEF0-7000-8000-000000000001')).toBe('01890abc-def0-7000-8000-000000000001');
+    expect(() => normalizeUuid('not-a-uuid')).toThrow('32 hexadecimal');
+  });
+
+  it('inspects Mongo ObjectID timestamps and counters', () => {
+    const result = inspectObjectId('507F1F77BCF86CD799439011');
+    expect(result.canonical).toBe('507f1f77bcf86cd799439011');
+    expect(result.details).toContainEqual({ label: 'Timestamp', value: '2012-10-17T21:13:27.000Z' });
+    expect(result.details).toContainEqual({ label: 'Counter', value: '4427793' });
+  });
+
+  it('inspects Snowflake timestamp, worker, process, and sequence fields exactly', () => {
+    const epoch = 1_420_070_400_000n;
+    const timestamp = 1_700_000_000_000n;
+    const identifier = ((timestamp - epoch) << 22n) | (17n << 17n) | (3n << 12n) | 42n;
+    const result = inspectSnowflake(identifier.toString(), epoch.toString());
+    expect(result.details).toEqual([
+      { label: 'Timestamp', value: new Date(Number(timestamp)).toISOString() },
+      { label: 'Worker ID', value: '17' },
+      { label: 'Process ID', value: '3' },
+      { label: 'Sequence', value: '42' },
+    ]);
+  });
+
+  it('rejects a safe integer timestamp outside the ECMAScript Date range', () => {
+    expect(() => inspectSnowflake('0', String(Number.MAX_SAFE_INTEGER))).toThrow('outside the JavaScript date range');
+  });
 });

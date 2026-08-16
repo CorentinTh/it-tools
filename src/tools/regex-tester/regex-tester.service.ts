@@ -5,17 +5,17 @@ import {
   REGEX_MAX_RESULT_CHARACTERS,
 } from './regex-tester.worker.protocol';
 
-interface RegExpGroupIndices {
+interface LocalRegExpGroupIndices {
   [name: string]: [number, number] | undefined
 }
 
-interface RegExpIndices extends Array<[number, number] | undefined> {
-  groups?: RegExpGroupIndices
+interface LocalRegExpIndices extends Array<[number, number] | undefined> {
+  groups?: LocalRegExpGroupIndices
 }
 
-interface RegExpExecArrayWithIndices extends RegExpExecArray {
-  indices: RegExpIndices
-}
+type RegExpExecArrayWithIndices = RegExpExecArray & {
+  indices: LocalRegExpIndices
+};
 
 export interface GroupCapture {
   name: string

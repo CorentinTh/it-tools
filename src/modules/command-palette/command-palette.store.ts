@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import type { PaletteOption } from './command-palette.types';
+import { groupPaletteOptions, rankPaletteOptions } from './command-palette.search';
 import { useToolStore } from '@/tools/tools.store';
-import { useFuzzySearch } from '@/composable/fuzzySearch';
 import { useStyleStore } from '@/stores/style.store';
 
 import SunIcon from '~icons/mdi/white-balance-sunny';
@@ -15,16 +15,17 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
   const styleStore = useStyleStore();
   const router = useRouter();
   const searchPrompt = ref('');
+  const showAllResults = ref(false);
 
-  const toolsOptions = toolStore.tools.map(tool => ({
+  const toolsOptions = computed(() => toolStore.tools.map(tool => ({
     ...tool,
     to: tool.path,
     toolCategory: tool.category,
     category: 'Tools',
-  }));
+  })));
 
-  const searchOptions: PaletteOption[] = [
-    ...toolsOptions,
+  const searchOptions = computed<PaletteOption[]>(() => [
+    ...toolsOptions.value,
     {
       name: 'Random tool',
       description: 'Get a random tool from the list.',
@@ -71,31 +72,18 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
       keywords: ['about', 'learn', 'more', 'info', 'information'],
       icon: InfoIcon,
     },
-  ];
+  ]);
 
-  const { searchResult } = useFuzzySearch({
-    search: searchPrompt,
-    data: searchOptions,
-    options: {
-      keys: [{ name: 'name', weight: 2 }, 'description', 'keywords', 'category'],
-      threshold: 0.3,
-    },
-  });
+  const searchResult = computed(() => rankPaletteOptions(searchOptions.value, searchPrompt.value));
+  const hiddenResultCount = computed(() => searchResult.value.length
+    - Object.values(groupPaletteOptions(searchResult.value, 5)).flat().length);
 
-  const filteredSearchResult = computed(() => {
-    const grouped: Record<string, PaletteOption[]> = {};
-    for (const option of searchResult.value) {
-      const options = grouped[option.category] ?? [];
-      if (options.length < 5) {
-        options.push(option);
-        grouped[option.category] = options;
-      }
-    }
-    return grouped;
-  });
+  const filteredSearchResult = computed(() => groupPaletteOptions(searchResult.value, showAllResults.value ? undefined : 5));
 
   return {
     filteredSearchResult,
+    hiddenResultCount,
     searchPrompt,
+    showAllResults,
   };
 });

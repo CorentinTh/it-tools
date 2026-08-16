@@ -7,11 +7,13 @@ import {
   type StructuredDataConversionTask,
 } from '@/utils/structured-data-converter.worker.protocol';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
+import { downloadTextFile } from '@/composable/downloadText';
 import { useBoundedTextTransform } from '@/composable/bounded-text-transform';
 
 const props = withDefaults(defineProps<{
   conversion: StructuredDataConversion
   createClient: () => BoundedTextWorkerClient<StructuredDataConversionTask>
+  downloadFilename: string
   inputDefault?: string
   inputLabel: string
   inputPlaceholder: string
@@ -65,6 +67,9 @@ const {
       </c-button>
       <c-button v-if="isRunning" type="warning" data-test-id="converter-cancel" @click="cancel">
         Cancel
+      </c-button>
+      <c-button :disabled="!output" data-test-id="converter-download" @click="downloadTextFile({ content: output, filename: downloadFilename })">
+        Download
       </c-button>
     </div>
     <p

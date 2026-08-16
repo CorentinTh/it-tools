@@ -7,6 +7,7 @@ import BoundedTextTransformer from '@/components/BoundedTextTransformer.vue';
   <BoundedTextTransformer
     conversion="json-to-toml"
     :create-client="createJsonConverterWorkerClient"
+    download-filename="converted.toml"
     input-label="Your JSON"
     input-placeholder="Paste your JSON here..."
     output-label="TOML from your JSON"

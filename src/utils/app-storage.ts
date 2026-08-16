@@ -25,6 +25,12 @@ export const PERSISTED_PREFERENCE_STORAGE_KEYS = [
   'mac-address-generator-separator',
   'ascii-text-drawer:font',
   'ascii-text-drawer:width',
+  'token-generator:v1:length',
+  'token-generator:v1:quantity',
+  'token-generator:v1:uppercase',
+  'token-generator:v1:lowercase',
+  'token-generator:v1:numbers',
+  'token-generator:v1:symbols',
 ] as const;
 
 export const MANAGED_STORAGE_KEYS = [

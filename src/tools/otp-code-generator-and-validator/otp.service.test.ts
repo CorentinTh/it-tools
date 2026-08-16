@@ -49,6 +49,12 @@ describe('otp functions', () => {
     it('case does not matter', () => {
       expect(base32toHex('ABC')).to.eql(base32toHex('abc'));
     });
+
+    it('rejects empty and malformed Base32 instead of silently decoding it', () => {
+      expect(() => base32toHex('')).toThrow('non-empty RFC 4648 Base32');
+      expect(() => base32toHex('ABC0')).toThrow('non-empty RFC 4648 Base32');
+      expect(() => base32toHex('A'.repeat(513))).toThrow('must not exceed 512');
+    });
   });
 
   describe('generateHOTP', () => {
@@ -59,6 +65,14 @@ describe('otp functions', () => {
       for (const [counter, code] of hotpCodes.entries()) {
         expect(generateHOTP({ key, counter })).to.eql(code);
       }
+    });
+
+    it('matches the RFC 4226 Appendix D vectors and accepts exact 64-bit counters', () => {
+      const key = 'GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ';
+      const expected = ['755224', '287082', '359152', '969429', '338314', '254676', '287922', '162583', '399871', '520489'];
+      expect(expected.map((_, counter) => generateHOTP({ key, counter: BigInt(counter) }))).toEqual(expected);
+      expect(generateHOTP({ key, counter: (1n << 64n) - 1n })).toMatch(/^\d{6}$/u);
+      expect(() => generateHOTP({ key, counter: 1n << 64n })).toThrow('2^64 - 1');
     });
   });
 
@@ -128,6 +142,10 @@ describe('otp functions', () => {
     it('build a key uri string', () => {
       expect(buildKeyUri({ secret: 'JBSWY3DPEHPK3PXP' })).to.eql(
         'otpauth://totp/IT-Tools:demo-user?issuer=IT-Tools&secret=JBSWY3DPEHPK3PXP&algorithm=SHA1&digits=6&period=30',
+      );
+
+      expect(buildKeyUri({ secret: 'JBSWY3DPEHPK3PXP', type: 'hotp', counter: 42n })).to.eql(
+        'otpauth://hotp/IT-Tools:demo-user?issuer=IT-Tools&secret=JBSWY3DPEHPK3PXP&algorithm=SHA1&digits=6&counter=42',
       );
 
       expect(

@@ -37,6 +37,7 @@ export function useLatestQRCode(
   dependencies: QrCodeGenerationDependencies = {},
 ) {
   const qrcode = ref('');
+  const encodedText = ref('');
   const status = shallowRef<QrCodeGenerationStatus>('idle');
   const error = ref('');
   const isGenerating = computed(() => status.value === 'scheduled' || status.value === 'running');
@@ -66,6 +67,7 @@ export function useLatestQRCode(
     const request = createRequest();
     if (!request || !request.text) {
       qrcode.value = '';
+      encodedText.value = '';
       error.value = '';
       status.value = 'idle';
       initialized = true;
@@ -74,6 +76,7 @@ export function useLatestQRCode(
 
     if (exceedsUtf8ByteLimit(request.text, QR_CODE_MAX_INPUT_BYTES)) {
       qrcode.value = '';
+      encodedText.value = '';
       error.value = `QR code input exceeds ${QR_CODE_MAX_INPUT_BYTES.toLocaleString('en-US')} UTF-8 bytes.`;
       status.value = 'error';
       initialized = true;
@@ -98,6 +101,7 @@ export function useLatestQRCode(
         }
 
         qrcode.value = result;
+        encodedText.value = request.text;
         status.value = 'ready';
       }
       catch {
@@ -106,6 +110,7 @@ export function useLatestQRCode(
         }
 
         qrcode.value = '';
+        encodedText.value = '';
         error.value = QR_CODE_GENERATION_ERROR;
         status.value = 'error';
       }
@@ -124,11 +129,12 @@ export function useLatestQRCode(
     ++latestGeneration;
     clearTimer();
     qrcode.value = '';
+    encodedText.value = '';
     error.value = '';
     status.value = 'idle';
   });
 
-  return { error, isGenerating, qrcode, status };
+  return { encodedText, error, isGenerating, qrcode, status };
 }
 
 export function useQRCode({

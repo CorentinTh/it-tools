@@ -17,7 +17,7 @@ Wi-Fi QR, QR, Bcrypt, Random Port, MAC Address, IPv6 ULA, Lorem Ipsum, and
 shared control semantics against the Vite dev server. Every live claim was
 checked with `/@vite/client` and `/src/main.ts` loaded, no service-worker
 controller, and the current purple accent. The executable all-route matrix now
-covers all 89 routes at desktop/light and mobile/dark, including horizontal
+covers all 129 routes at desktop/light and mobile/dark, including horizontal
 overflow, visible form-control names, theme state, route content, and runtime/
 chunk errors. Representative Orca review supplies the complementary live
 desktop/mobile and light/dark visual checks against the Vite dev server.
@@ -55,8 +55,8 @@ foundation, not a claim that every route/state combination has a screenshot.
   implementation detail while providing one labelled route-level control
   contract. The color adapter also repairs the old Naive trigger's missing
   keyboard/button semantics.
-- The wide vertical transformer contract is active across the original
-  12-route `FormatTransformer` cohort (three remaining callers) and the direct
+- The wide vertical transformer contract remains active after removal of the
+  zero-caller `FormatTransformer` abstraction and across the direct
   JSON, YAML, SQL, Docker,
   Base64, URL, HTML entity, text/binary/Unicode, encryption, Markdown,
   SafeLink, email, slug, hash/HMAC, meta-tag, and obfuscation routes. A
@@ -108,12 +108,48 @@ foundation, not a claim that every route/state combination has a screenshot.
   task bar, its bounded worker aligns stable keys/LCS sequences, and the result
   tree uses accessible expand/collapse controls plus progressive 200-row
   rendering instead of eagerly mounting every nested line.
+- Markdown Diff adopts the same true-diff layout rule without inheriting Monaco:
+  equal wide peer inputs sit side by side from 900 px and stack below it, while
+  deterministic line/word work stays in a bounded disposable worker. Optional
+  previews are equal peers, use only the last successful snapshot, disable raw
+  HTML/links/images, and apply a strict DOMPurify allow-list.
+- DNS-over-HTTPS follows the non-diff task contract: resolver/type options and
+  the main name field use the full task card, while the response remains below
+  the input on every viewport. Orca source-dev measurement at 1363 x 921 found
+  the 1,039 px input and output widths equal inside a 1,057 px tool area, input
+  before output, and no horizontal overflow; the live explicit query retained
+  the same layout.
+- Mermaid follows the same non-diff workbench contract: the wide source editor
+  is always above the wide preview rather than placed beside it. Source-dev
+  Chromium verifies both working areas exceed 600 px on desktop, differ by less
+  than 80 px, preserve source-before-preview order, and introduce no horizontal
+  overflow while rendering each supported diagram family.
+- Parquet follows the local-file task archetype and the same non-diff vertical
+  contract: file selection and Inspect lead to full-width metadata, options,
+  then the paged preview below on every desktop width. Schema, row-group, and
+  preview tables scroll internally when necessary; they are never paired as
+  side-by-side editors. Source-dev Chromium verifies the main work area exceeds
+  600 px, preserves document order, and introduces no page-level horizontal
+  overflow.
+- XLSX follows the same local-file/non-diff vertical contract: local file,
+  workbook metadata, page options, sheet inventory, and selected-page preview
+  are always stacked in document order. Tables scroll internally, large desktop
+  work areas are not artificially narrowed, and no side-by-side editor layout is
+  introduced. Source-dev Chromium verifies metadata and preview widths above
+  600 px, preview below metadata, exact long-cell wrapping, and no page-level
+  horizontal overflow.
+- Home now uses the shared field/card rhythm for bounded URL-state search and
+  category controls, exposes live result/no-result status, and preserves both
+  pointer drag/drop and named keyboard actions for favorite ordering. The
+  transformed-output contract now includes a shared bounded Download action on
+  17 prioritized structured-text/authoring paths whenever a complete existing
+  result is available in memory.
 - Current integrated evidence is zero-warning lint, dual-project typecheck,
-  990/990 unit tests across 150 files, the prior 89/89 all-route responsive/
-  theme/semantics matrix plus Hash Text and bounded-converter focus against Vite
-  dev, 172/172 sequential production-preview Chromium flows, a fresh
-  22,876-module production build, and 228/228 production artifact-budget
-  checks.
+  1417/1417 unit tests across 245 files, a fresh 24,163-module production build,
+  and 404/404 production artifact-budget checks. The XLSX source-dev suite
+  passes 2/2, including inspect/preview, exports, privacy, cancellation, and
+  layout, and the fresh all-route matrix passes all 129 routes in 5.2 minutes
+  without runtime/chunk errors or optimizer restart.
 
 ## Resolved executive finding
 
@@ -132,32 +168,32 @@ cosmetic migration.
 
 ## Source inventory
 
-The following counts cover 100 Vue files in `src/tools/`, including route
+The following counts cover 137 Vue files in `src/tools/`, including route
 components and route-local child components:
 
 | Signal | Current evidence |
 |---|---:|
-| Files using `c-input-text` | 60 |
+| Files using `c-input-text` | 98 |
 | Files using `n-form-item` | 0 |
 | Files mixing `c-input-text` and `n-form-item` | 0 |
-| `c-input-text` instances | 110 |
+| `c-input-text` instances | 257 |
 | `n-input-number` instances | 0 |
-| `c-select` instances | 26 |
+| `c-select` instances | 62 |
 | `n-switch` instances | 0 |
 | `n-checkbox` instances | 0 |
 | `n-color-picker` instances | 0 |
 | `n-input-group` instances | 0 |
-| `c-buttons-select` instances | 6 |
-| `CSwitch` instances | 23 |
-| `CInputNumber` instances | 28 |
-| `CCheckbox` instances | 10 |
-| `CColorPicker` instances | 7 |
+| `c-buttons-select` instances | 26 |
+| `CSwitch` instances | 43 |
+| `CInputNumber` instances | 37 |
+| `CCheckbox` instances | 13 |
+| `CColorPicker` instances | 8 |
 | `CSlider` instances | 3 |
 | Files with literal `label-width` rules | 0 |
-| Files using `c-card` | 60 |
-| `c-card` instances | 127 |
+| Files using `c-card` | 107 |
+| `c-card` instances | 208 |
 | Tool/component visual screenshot baselines | 7 representative states |
-| Executable all-route responsive/theme matrices | 1 (89 routes) |
+| Executable all-route responsive/theme matrices | 1 (129 routes) |
 
 The original inventory found at least 18 literal label-width representations
 from 60 px to 200 px. The rollout has reduced that class to zero. Remaining
@@ -166,10 +202,10 @@ large-table, compact-output, and reference-layout exception audit rather
 than the former route-wide field system.
 
 The executable width ratchet permits template width exceptions only in Emoji
-Picker (media grid), JSON Schema Validator's compact option area, and SVG
-Placeholder's bounded preview. CSS-only responsive breakpoints, intrinsic QR image
+Picker (media grid), Image Metadata Remover's bounded image preview, JSON Schema
+Validator's compact option area, and SVG Placeholder's bounded preview. CSS-only responsive breakpoints, intrinsic QR image
 dimensions, editor containment, and the compact Chmod octal result are not
-field-layout exceptions. True JSON/Text diff views remain the only routes that
+field-layout exceptions. True JSON/Text/Markdown diff views remain the only routes that
 may place peer editors side by side.
 
 ## Confirmed growth points
@@ -249,7 +285,7 @@ may place peer editors side by side.
   long-value, empty, loading, and result states for shared primitives.
 - Add keyboard and semantic tests for label association, tab order, select,
   checkbox groups, segmented choices, file upload, action bars, and dialogs.
-- Keep all 89 route smoke, bundle, PWA, privacy, and lifecycle gates green. A UI
+- Keep all 123 route smoke, bundle, PWA, privacy, and lifecycle gates green. A UI
   migration must not eager-load Naive modules or another component library into
   the shell.
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import InputCopyable from '../../components/InputCopyable.vue';
-import { convertBase } from './integer-base-converter.model';
+import { INTEGER_INPUT_MAX_LENGTH, formatInteger, parseInteger } from './integer-base-converter.model';
 import CInputNumber from '@/ui/c-input-number/c-input-number.vue';
 import { getErrorMessageIfThrows } from '@/utils/error';
 
@@ -12,19 +12,19 @@ const input = ref('42');
 const inputBase = ref(10);
 const outputBase = ref(42);
 
-function errorlessConvert(...args: Parameters<typeof convertBase>) {
+const parsedValue = computed(() => parseInteger({ value: input.value, base: inputBase.value }));
+
+function formatted(base: number) {
   try {
-    return convertBase(...args);
+    return formatInteger({ value: parsedValue.value, base });
   }
-  catch (err) {
+  catch {
     return '';
   }
 }
 
 const error = computed(() =>
-  getErrorMessageIfThrows(() =>
-    convertBase({ value: input.value, fromBase: inputBase.value, toBase: outputBase.value }),
-  ),
+  getErrorMessageIfThrows(() => formatInteger({ value: parsedValue.value, base: outputBase.value })),
 );
 </script>
 
@@ -32,7 +32,7 @@ const error = computed(() =>
   <div class="c-form-layout">
     <c-card>
       <div grid grid-cols-1 gap-3 md:grid-cols-2>
-        <c-input-text v-model:value="input" label="Input number" placeholder="Put your number here (ex: 42)" />
+        <c-input-text v-model:value="input" label="Input number" placeholder="For example: -0xFF or 1010b" :maxlength="INTEGER_INPUT_MAX_LENGTH" monospace />
         <c-field label="Input base (2–64)" label-for="integer-input-base">
           <CInputNumber id="integer-input-base" v-model:value="inputBase" :max="64" :min="2" />
         </c-field>
@@ -41,6 +41,9 @@ const error = computed(() =>
       <n-alert v-if="error" style="margin-top: 25px" type="error">
         {{ error }}
       </n-alert>
+      <n-alert v-else type="info" mt-4>
+        Bases 2, 8, 10, and 16 accept matching 0b/0o/0d/0x prefixes or b/o/d/h suffixes. Digits are case-insensitive through base 36; bases 37–64 preserve case because A–Z are distinct digits.
+      </n-alert>
     </c-card>
 
     <c-card>
@@ -48,35 +51,35 @@ const error = computed(() =>
         <InputCopyable
           label="Binary (2)"
           v-bind="inputProps"
-          :value="errorlessConvert({ value: input, fromBase: inputBase, toBase: 2 })"
+          :value="formatted(2)"
           placeholder="Binary version will be here..."
         />
 
         <InputCopyable
           label="Octal (8)"
           v-bind="inputProps"
-          :value="errorlessConvert({ value: input, fromBase: inputBase, toBase: 8 })"
+          :value="formatted(8)"
           placeholder="Octal version will be here..."
         />
 
         <InputCopyable
           label="Decimal (10)"
           v-bind="inputProps"
-          :value="errorlessConvert({ value: input, fromBase: inputBase, toBase: 10 })"
+          :value="formatted(10)"
           placeholder="Decimal version will be here..."
         />
 
         <InputCopyable
           label="Hexadecimal (16)"
           v-bind="inputProps"
-          :value="errorlessConvert({ value: input, fromBase: inputBase, toBase: 16 })"
+          :value="formatted(16)"
           placeholder="Hexadecimal version will be here..."
         />
 
         <InputCopyable
           label="Base64 (64)"
           v-bind="inputProps"
-          :value="errorlessConvert({ value: input, fromBase: inputBase, toBase: 64 })"
+          :value="formatted(64)"
           placeholder="Base64 version will be here..."
         />
 
@@ -86,7 +89,7 @@ const error = computed(() =>
         <InputCopyable
           v-bind="inputProps"
           :label="`Base ${outputBase}`"
-          :value="errorlessConvert({ value: input, fromBase: inputBase, toBase: outputBase })"
+          :value="formatted(outputBase)"
           :placeholder="`Base ${outputBase} will be here...`"
         />
       </div>

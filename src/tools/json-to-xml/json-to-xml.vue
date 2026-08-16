@@ -9,6 +9,7 @@ const defaultValue = '{"a":{"_attributes":{"x":"1.234","y":"It\'s"}}}';
   <BoundedTextTransformer
     conversion="json-to-xml"
     :create-client="createXmlDataConverterWorkerClient"
+    download-filename="converted.xml"
     :input-default="defaultValue"
     input-label="Your JSON content"
     input-placeholder="Paste your JSON content here..."

@@ -12,7 +12,8 @@
   },
   "pnpm": {
     "overrides": {
-      "@unhead/vue>@vueuse/shared": "10.3.0"
+      "@unhead/vue>@vueuse/shared": "10.3.0",
+      "lodash-es": "4.18.1"
     }
   },
   "repository": {
@@ -81,13 +82,15 @@
     "cronstrue": "^2.26.0",
     "crypto-js": "^4.1.1",
     "date-fns": "^2.29.3",
-    "dompurify": "^3.0.6",
+    "dompurify": "3.4.13",
     "email-normalizer": "^1.0.0",
     "emojilib": "^3.0.10",
     "figlet": "^1.7.0",
     "figue": "^1.2.0",
     "fuse.js": "^6.6.2",
+    "hash-wasm": "4.12.0",
     "highlight.js": "^11.7.0",
+    "hyparquet": "1.28.2",
     "iarna-toml-esm": "^3.0.5",
     "ibantools": "^4.3.3",
     "js-base64": "^3.7.6",
@@ -95,10 +98,11 @@
     "jsonc-parser": "3.2.0",
     "jwt-decode": "^3.1.2",
     "libphonenumber-js": "^1.10.28",
-    "lodash": "^4.17.21",
+    "lodash": "4.18.1",
     "markdown-it": "^14.0.0",
     "marked": "^10.0.0",
     "mathjs": "^11.9.1",
+    "mermaid": "10.9.8",
     "mime-types": "^2.1.35",
     "monaco-editor": "^0.43.0",
     "naive-ui": "^2.35.0",
@@ -108,6 +112,7 @@
     "plausible-tracker": "^0.3.8",
     "qrcode": "^1.5.1",
     "randexp": "^0.5.3",
+    "saxen": "11.1.1",
     "sql-formatter": "^13.0.0",
     "ua-parser-js": "^1.0.35",
     "ulid": "^2.3.0",
@@ -117,7 +122,6 @@
     "vue-i18n": "^9.9.1",
     "vue-router": "^4.1.6",
     "vue-shadow-dom": "^4.2.0",
-    "vuedraggable": "^4.1.0",
     "xml-formatter": "^3.3.2",
     "xml-js": "^1.6.11",
     "yaml": "^2.2.1"

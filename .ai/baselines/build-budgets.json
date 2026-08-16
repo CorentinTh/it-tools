@@ -4,8 +4,8 @@
     "version": 1
   },
   "globalLimits": {
-    "shell.withDocument.rawBytes": 915000,
-    "shell.withDocument.gzipBytes": 280000,
+    "shell.withDocument.rawBytes": 850000,
+    "shell.withDocument.gzipBytes": 250000,
     "workbox.fileCount": 10,
     "workbox.rawBytes": 1000000,
     "workbox.gzipBytes": 350000
@@ -19,6 +19,26 @@
     "favicon-32x32.png"
   ],
   "workerAssetLimits": {
+    "assets/argon2id.worker-<hash>.js": {
+      "rawBytes": 38000,
+      "gzipBytes": 15000,
+      "rationale": "The measured 34,523 B raw / 13,687 B gzip route-owned worker contains the pinned zero-dependency hash-wasm 4.12.0 Argon2 v1.3 implementation and strict local transport. Only Argon2id v=19 is exposed, with 1,024-byte password, 512-character PHC, 8–262,144 KiB memory, 1–10 iteration, 1–4 lane, 16–64-byte tag, canonical salt/hash, twenty-second, replacement, cancellation, completion, and disposal bounds. The worker is terminated after every settlement so its WASM memory is not retained."
+    },
+    "assets/aes-gcm-envelope.worker-<hash>.js": {
+      "rawBytes": 17000,
+      "gzipBytes": 6500,
+      "rationale": "The measured 14,329 B raw / 5,023 B gzip route-owned worker performs explicit ITAE-v1 PBKDF2-HMAC-SHA-256 and AES-256-GCM text/file encryption or authenticated decryption with 1 MiB text, 32 MiB file, iteration, protocol, timeout, replacement, cancellation, and disposal bounds. Passphrases and plaintext stay ephemeral, while file names and media types are inside the authenticated ciphertext."
+    },
+    "assets/ed25519-key-workspace.worker-<hash>.js": {
+      "rawBytes": 4500,
+      "gzipBytes": 2200,
+      "rationale": "The measured 3,245 B raw / 1,564 B gzip route-owned worker generates one Ed25519 Web Crypto pair only after an explicit action, exports bounded SPKI/PKCS#8/OpenSSH material and a SHA-256 fingerprint, and is physically terminated on completion, cancellation, timeout, replacement, or route disposal. Private material is ephemeral and never enters persistence."
+    },
+    "assets/certificate-inspector.worker-<hash>.js": {
+      "rawBytes": 10000,
+      "gzipBytes": 4500,
+      "rationale": "The measured 7,892 B raw / 3,171 B gzip route-owned worker performs bounded DER/ASN.1 inspection for X.509 certificates, CSRs, and public keys. It rejects private-key blocks, enforces 1 MiB DER plus node/depth/output limits and an eight-second terminate-and-replace lifecycle, and deliberately does not claim signature, chain, hostname, revocation, or trust validation."
+    },
     "assets/emoji-picker.worker-<hash>.js": {
       "rawBytes": 410000,
       "gzipBytes": 72000,
@@ -28,6 +48,21 @@
       "rawBytes": 215000,
       "gzipBytes": 66000,
       "rationale": "The measured 206,522 B raw / 63,261 B gzip route-owned worker contains the existing composerize-ts path plus YAML parsing for the new reverse Compose-to-run direction. Both directions share strict 16 KiB live, 256 KiB input, 512 KiB output, message-count/size, four-second, cancellation, stale-result, and disposal bounds; the worker remains demand-loaded and below the 500 kB chunk gate."
+    },
+    "assets/devops-config-workspace.worker-<hash>.js": {
+      "rawBytes": 155000,
+      "gzipBytes": 44000,
+      "rationale": "The measured 146,714 B raw / 40,101 B gzip route-owned worker adds the already-installed TOML parser to the existing YAML-only DevOps worker for explicit JSON/YAML/TOML-to-.env extraction. It retains 1 MiB input, 2 MiB output, depth/node/line, JSON Pointer, normalized-key collision, prototype-key, eight-second, replacement, cancellation, and disposal bounds; it never executes configuration or expands environment values."
+    },
+    "assets/developer-text-workspace.worker-<hash>.js": {
+      "rawBytes": 6000,
+      "gzipBytes": 2800,
+      "rationale": "The measured 5,202 B raw / 2,380 B gzip route-owned worker performs explicit stack-trace formatting, bounded literal/regex replacement, folder-tree rendering, and Markdown TOC generation. It has 1 MiB input, 2 MiB output, path/heading/replacement caps, a five-second deadline, replacement, cancellation, and disposal."
+    },
+    "assets/devops-secret-helper.worker-<hash>.js": {
+      "rawBytes": 34000,
+      "gzipBytes": 15000,
+      "rationale": "The measured 29,852 B raw / 13,270 B gzip route-owned worker contains the already-installed bcrypt implementation plus Web Crypto Ansible Vault 1.1/1.2 AES256 interoperability. It is explicit and disposable with 1 MiB plaintext, 2 MiB armored input/output, 1,024-byte vault-password, 72-byte bcrypt-password, cost 4–14, twelve-second, replacement, cancellation, and disposal bounds; plaintext and passwords are ephemeral and legacy htpasswd formats are not generated."
     },
     "assets/cron-next-runs.worker-<hash>.js": {
       "rawBytes": 11000,
@@ -44,15 +79,30 @@
       "gzipBytes": 24000,
       "rationale": "The measured 60,239 B raw / 21,154 B gzip route-owned worker computes the existing eight CryptoJS digests outside the main thread. It replaces a measured 706 ms Node / 2.95 s production-browser reactive 1 MiB main-thread path with 16 KiB automatic, 1 MiB hard input, five-second, cancellation, stale-result, and disposal bounds."
     },
+    "assets/hmac-generator.worker-<hash>.js": {
+      "rawBytes": 66000,
+      "gzipBytes": 24000,
+      "rationale": "The measured 60,965 B raw / 21,477 B gzip route-owned worker moves the existing CryptoJS HMAC algorithms off the reactive main thread and adds exact UTF-8, byte-paired hex, or canonical RFC 4648 Base64 key decoding. It has 1 MiB message, 8 KiB encoded/4 KiB decoded key, 1 KiB output, five-second, exact-envelope, replacement, cancellation, and disposal bounds; RFC 4231 SHA-256 fixtures prove the modern path and legacy algorithms are visibly labelled."
+    },
     "assets/html-wysiwyg-editor.worker-<hash>.js": {
       "rawBytes": 220000,
       "gzipBytes": 75000,
       "rationale": "The measured 212,679 B raw / 70,280 B gzip demand-loaded worker contains the existing Prettier HTML formatter plus strict task transport. Moving this work out of the route's main thread shrank the route chunk from 493,145 B / 153,634 B to 287,982 B / 86,389 B while adding cancellation, timeout, and input/output bounds."
     },
+    "assets/image-metadata-remover.worker-<hash>.js": {
+      "rawBytes": 8000,
+      "gzipBytes": 3500,
+      "rationale": "The measured 6,447 B raw / 2,589 B gzip route-owned worker strips metadata from bounded 32 MiB JPEG, PNG, and WebP containers without pixel decode or re-encoding. It validates container and item bounds, preserves rendering/color chunks, repairs WebP flags and size, returns a transferable buffer, and has a 20-second terminate-and-replace lifecycle."
+    },
     "assets/json-diff.worker-<hash>.js": {
       "rawBytes": 36000,
       "gzipBytes": 12000,
       "rationale": "The measured 33,844 B raw / 10,393 B gzip route-owned worker parses JSON5 once, enforces byte/depth/input/output bounds, and performs bounded key-aware/LCS alignment outside the main thread."
+    },
+    "assets/json-code-generator.worker-<hash>.js": {
+      "rawBytes": 50000,
+      "gzipBytes": 17000,
+      "rationale": "The measured 45,180 B raw / 14,297 B gzip route-owned worker retains JSON5 schema/type/stats generation and adds strict RFC 6902 add/remove/replace generation through the already-installed jsonc-parser. Both documents have independent 1 MiB byte plus shared node/depth/20,000-operation/2 MiB output/eight-second lifecycle bounds; JSON Pointer paths are escaped and target numeric lexemes are copied without Number coercion."
     },
     "assets/json-converter.worker-<hash>.js": {
       "rawBytes": 100000,
@@ -64,15 +114,45 @@
       "gzipBytes": 11000,
       "rationale": "The measured 30,443 B raw / 9,203 B gzip route-owned worker parses JSON5 once and performs incremental standard CSV generation under 64 KiB automatic, 1 MiB input, 2 MiB output, four-times amplification, eight-second, cancellation, stale-result, and disposal bounds."
     },
+    "assets/json-repair-query.worker-<hash>.js": {
+      "rawBytes": 35000,
+      "gzipBytes": 11000,
+      "rationale": "The measured 31,425 B raw / 9,649 B gzip route-owned worker contains JSON5 repair plus a deliberately restricted JSONPath subset with no eval, filters, recursion, or scripts. It enforces 1 MiB input, 2 MiB output, node/depth/result limits and an eight-second terminate-and-replace lifecycle."
+    },
     "assets/list-converter.worker-<hash>.js": {
       "rawBytes": 5000,
       "gzipBytes": 2500,
       "rationale": "The measured 4,097 B raw / 1,752 B gzip route-owned worker moves the measured large-list transform off the main thread and enforces bounded option strings, 64 KiB automatic, 1 MiB input, 2 MiB output, four-times amplification, timeout, replacement, and disposal contracts."
     },
+    "assets/list-comparison.worker-<hash>.js": {
+      "rawBytes": 6000,
+      "gzipBytes": 2800,
+      "rationale": "The measured 5,039 B raw / 2,152 B gzip route-owned worker compares explicit bounded line lists as sets, multisets, or ordered LCS sequences. It enforces 1 MiB and 100,000 lines per side, a 250,000-cell ordered-work ceiling, 2 MiB output, six-second timeout, replacement, cancellation, and disposal contracts."
+    },
+    "assets/local-file-inspector.worker-<hash>.js": {
+      "rawBytes": 6500,
+      "gzipBytes": 3000,
+      "rationale": "The measured 5,074 B raw / 2,171 B gzip route-owned worker reads bounded 4 MiB file windows, detects common magic signatures, streams CRC-32, and emits only a 4 KiB hex preview. It never buffers the whole file and is terminated on completion, cancellation, timeout, replacement, or disposal."
+    },
     "assets/mock-data-generator.worker-<hash>.js": {
       "rawBytes": 8000,
       "gzipBytes": 4000,
       "rationale": "The measured 7,058 B raw / 3,299 B gzip route-owned worker holds the versioned English mock dataset and deterministic generator under 5,000-record, 2 MiB output, eight-second, cancellation, and disposal bounds."
+    },
+    "assets/parquet-reader.worker-<hash>.js": {
+      "rawBytes": 75000,
+      "gzipBytes": 25000,
+      "rationale": "The measured 65,630 B raw / 20,682 B gzip route-owned worker contains exact hyparquet 1.28.2 plus strict metadata and selected-page transport. It reads one explicit local file only, supports uncompressed and built-in Snappy, and independently bounds the 64 MiB file, 2 MiB footer, schema, nesting, row groups, selected columns/chunks, cell/preview/export output, cumulative reads, fifteen-second timeout, replacement, cancellation, completion, malformed responses, and disposal. The dependency remains absent from the initial shell and mandatory Workbox payload."
+    },
+    "assets/markdown-table-generator.worker-<hash>.js": {
+      "rawBytes": 5000,
+      "gzipBytes": 2500,
+      "rationale": "The measured 4,187 B raw / 1,929 B gzip route-owned worker parses bounded CSV/TSV and renders escaped Markdown only after an explicit action. It enforces 512 KiB input, 10,000 data-row, 128-column, 32 KiB cell, 1 MiB output, five-second timeout, replacement, cancellation, and disposal contracts."
+    },
+    "assets/markdown-diff.worker-<hash>.js": {
+      "rawBytes": 6000,
+      "gzipBytes": 2600,
+      "rationale": "The measured 4,927 B raw / 2,021 B gzip route-owned worker performs deterministic line or exact word/token LCS comparison only after an explicit action. Each side is capped at 256 KiB, 4,000 lines, 8,000 word tokens and 64 KiB per line; common prefix/suffix trimming precedes a 1,000,000-cell allocation ceiling, while output, timeout, replacement, cancellation, malformed envelopes, and disposal are independently bounded."
     },
     "assets/markdown-to-html.worker-<hash>.js": {
       "rawBytes": 110000,
@@ -94,15 +174,30 @@
       "gzipBytes": 3000,
       "rationale": "The measured 5,740 B raw / 2,499 B gzip route-owned worker sanitizes bounded text, JSON, and HAR documents with depth/node/input/output limits and a ten-second terminate-and-replace lifecycle; sensitive source content never enters persistence or transport."
     },
+    "assets/saml-enterprise-inspector.worker-<hash>.js": {
+      "rawBytes": 12000,
+      "gzipBytes": 5000,
+      "rationale": "The measured 10,174 B raw / 4,050 B gzip route-owned worker decodes bounded Base64/Base64url SAML and streams raw-DEFLATE Redirect payloads to a 2 MiB ceiling before plain-text XML formatting. It rejects DTD/entity declarations, has a seven-second terminate-and-replace lifecycle, and explicitly never claims signature or trust verification."
+    },
     "assets/text-statistics.worker-<hash>.js": {
       "rawBytes": 3000,
       "gzipBytes": 2000,
       "rationale": "The measured 2,301 B raw / 1,144 B gzip route-owned worker moves the existing O(n), O(1)-space pass off the main thread for large text while retaining a narrow regression ceiling."
     },
+    "assets/tabular-data-inspector.worker-<hash>.js": {
+      "rawBytes": 7000,
+      "gzipBytes": 3200,
+      "rationale": "The measured 5,908 B raw / 2,656 B gzip route-owned worker performs one explicit RFC 4180-style CSV/TSV parse and bounded inspection/JSON/normalized-delimited output. It enforces 1 MiB input, 2 MiB output, 10,000-row, 128-column, 200,000-cell, 32 KiB-cell, eight-second, cancellation, stale-result, and disposal limits while keeping local table content ephemeral."
+    },
     "assets/toml-converter.worker-<hash>.js": {
       "rawBytes": 100000,
       "gzipBytes": 28000,
       "rationale": "The measured 89,835 B raw / 23,818 B gzip demand-loaded worker contains the existing TOML parser plus JSON/YAML writers and replaces duplicate validation/reactive parsing in both TOML-source routes."
+    },
+    "assets/xlsx-reader.worker-<hash>.js": {
+      "rawBytes": 35000,
+      "gzipBytes": 13000,
+      "rationale": "The measured 29,240 B raw / 10,717 B gzip route-owned worker contains the zero-dependency ZIP boundary, exact saxen 11.1.1 streaming XML parser, workbook/package metadata reader, and selected-page exporter. It rejects ZIP64/encryption/unsafe or overlapping entries, verifies required-part sizes and CRC-32 after bounded native raw-DEFLATE, rejects macros/DTD/entities/processing instructions/external fetches, preserves stored scalar lexemes, and enforces independent file/entry/XML/sheet/page/cell/output/fifteen-second/lifecycle bounds."
     },
     "assets/xml-formatter.worker-<hash>.js": {
       "rawBytes": 10000,
@@ -126,6 +221,51 @@
       "gzipBytes": 150000
     },
     "overrides": {
+      "node_modules/.pnpm/mermaid@10.9.8/node_modules/mermaid/dist/flowDiagram-<hash>.js": {
+        "rawBytes": 525000,
+        "gzipBytes": 158000,
+        "rationale": "The pinned Mermaid 10.9.8 security-backport package registers this legacy graph renderer as a demand-only catalog entry, producing a measured 508,673 B raw / 151,723 B gzip closure. Local prevalidation accepts the modern flowchart header only and rejects the legacy graph header before Mermaid is loaded, so this artifact has no supported request path; the narrow package-entry ceiling prevents silent growth without importing private hashed internals."
+      },
+      "node_modules/.pnpm/mermaid@10.9.8/node_modules/mermaid/dist/flowchart-elk-definition-<hash>.js": {
+        "rawBytes": 1950000,
+        "gzipBytes": 590000,
+        "rationale": "The official Mermaid root API exposes an all-diagram demand-loaded catalog, including a measured 1,874,316 B raw / 564,108 B gzip ELK renderer closure. This tool fixes renderer configuration, rejects frontmatter and init directives, and accepts only the plain flowchart header, so flowchart-elk cannot be selected; this exact pinned-package exception records unavoidable static artifact cost while keeping the global 500 kB gate intact."
+      },
+      "node_modules/.pnpm/mermaid@10.9.8/node_modules/mermaid/dist/mindmap-definition-<hash>.js": {
+        "rawBytes": 925000,
+        "gzipBytes": 280000,
+        "rationale": "The official Mermaid root API also emits an unsupported mindmap catalog entry with a measured 882,467 B raw / 265,935 B gzip closure. The source allow-list rejects mindmap before loading Mermaid, and the application neither imports nor reaches this entry; this exact 10.9.8 package ceiling makes the otherwise unavoidable demand-only artifact explicit without weakening default route budgets."
+      },
+      "_mermaid-diagram-<hash>.js": {
+        "rawBytes": 60000,
+        "gzipBytes": 25000,
+        "rationale": "The measured 44,906 B raw / 18,043 B gzip route closure contains only the vertical bounded source UI, DOMPurify policy, inert sandboxed preview, and demand-loader client. The Mermaid engine remains behind an explicit Render action, uses the pinned 10.9.8 security backport, and is governed separately by supported-type, SVG, raster, lifecycle, network, and package-entry limits."
+      },
+      "_mermaid-renderer.service-<hash>.js": {
+        "rawBytes": 325000,
+        "gzipBytes": 95000,
+        "rationale": "The measured 278,266 B raw / 78,124 B gzip explicit-action renderer closure contains pinned Mermaid 10.9.8 plus strict initialization, post-render sanitization, bounded SVG validation, and bounded PNG rasterization. It is absent from the route's initial closure and source-dev optimization only prebundles it for first-use stability; the UI documents that cancellation can invalidate results but cannot physically interrupt Mermaid's synchronous DOM phase."
+      },
+      "src/tools/dns-over-https-query/dns-over-https-query.vue": {
+        "rawBytes": 35000,
+        "gzipBytes": 15000,
+        "rationale": "The measured 26,124 B raw / 11,383 B gzip additional closure implements one explicit RFC 8484 binary POST integration and a bounded DNS wire encoder/parser against two fixed browser-CORS-compatible Cloudflare resolver modes. It adds no runtime dependency or worker; response bytes, record count, DNS names and compression, request time, redirects, content type, replacement, cancellation, disposal, report output, and privacy are independently bounded."
+      },
+      "src/tools/markdown-diff/markdown-diff.vue": {
+        "rawBytes": 190000,
+        "gzipBytes": 80000,
+        "rationale": "The measured 168,815 B raw / 71,948 B gzip additional closure includes the 4,927/2,021 B diff worker plus existing markdown-it and patched DOMPurify 3.4.13 loaded only with this route. Preview is explicit-result-only, limited to 64 KiB per side, disables raw HTML/linkification/active links/images, and uses a static HTML-only no-attribute sanitizer allow-list. No Monaco, CodeMirror, second Markdown parser, or new diff dependency is included."
+      },
+      "src/tools/parquet-reader/parquet-reader.vue": {
+        "rawBytes": 200000,
+        "gzipBytes": 70000,
+        "rationale": "The measured 183,431 B raw / 61,032 B gzip additional closure includes the 65,630/20,682 B disposable worker, exact dependency-free hyparquet 1.28.2 parser, and reused file/table/form UI. Metadata inspection is explicit and allocation-bounded; preview reads at most 200 rows and 16 selected columns under chunk/read/output budgets, with conservative exact JSON/CSV export. The route is local-file-only, ephemeral, vertically laid out, and adds no Arrow, DuckDB, WASM, XLSX, broad codec package, initial-shell parser, or mandatory-PWA asset."
+      },
+      "src/tools/xlsx-reader/xlsx-reader.vue": {
+        "rawBytes": 150000,
+        "gzipBytes": 55000,
+        "rationale": "The measured 135,961 B raw / 47,458 B gzip additional closure includes the 29,240/10,717 B disposable worker, exact zero-dependency saxen 11.1.1, reused file/table/form UI, and no general spreadsheet or ZIP library. The macro-free XLSX surface is explicit-action, local-only, ephemeral, vertically laid out, metadata-first, and limited to one 200-row by 32-column page with conservative JSON/CSV export; formulas, macros, links, objects, styles, and dates are never executed or interpreted."
+      },
       "src/tools/file-hash/file-hash.vue": {
         "rawBytes": 150000,
         "gzipBytes": 50000,

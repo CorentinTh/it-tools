@@ -73,6 +73,87 @@ toolCard:
 search:
   label: Search
 tools:
+  devops-secret-helper:
+    title: Ansible Vault & htpasswd helper
+    description: Encrypt and decrypt compatible Ansible Vault text or generate and verify modern bcrypt htpasswd entries locally
+  tabular-data-inspector:
+    title: Tabular Data Import & Inspector
+    description: Inspect or convert bounded local CSV/TSV with explicit text/type and spreadsheet-safety choices.
+  spdx-license-guidance:
+    title: SPDX & License Guidance
+    description: Browse common SPDX identifiers and triage license-family obligations locally without claiming legal advice.
+  aes-gcm-envelope:
+    title: AES-GCM Authenticated Envelope
+    description: Encrypt bounded text or local files in a versioned authenticated Web Crypto envelope without persisting passphrases.
+  image-metadata-remover:
+    title: Image Metadata Remover
+    description: Remove privacy metadata from bounded JPEG, PNG, and WebP containers locally without recompressing encoded pixels.
+  raid-storage-calculator:
+    title: RAID & Storage Capacity Calculator
+    description: Calculate exact RAID capacity, decimal-versus-binary display, overhead, efficiency, and failure tolerance locally.
+  http-request-code-builder:
+    title: HTTP Request & Code Builder
+    description: Author cURL or fetch request code and import a strict cURL subset locally without executing commands or network requests.
+  date-calendar-utilities:
+    title: Date, ISO Week & iCalendar Utilities
+    description: Convert strict ISO week dates and build or inspect bounded RFC 5545 VEVENT data locally.
+  unicode-gsm-inspector:
+    title: Unicode & GSM-7 Inspector
+    description: Inspect code points, UTF encodings, grapheme counts, normalization, and GSM-7/SMS segment estimates locally.
+  list-comparison:
+    title: List Comparison
+    description: Compare bounded line lists as sets, multisets, or ordered LCS sequences in a local disposable worker.
+  markdown-diff:
+    title: Markdown Diff
+    description: Compare bounded Markdown source locally by line or word and inspect sanitized rendered previews.
+  favicon-app-icon-generator:
+    title: Favicon & App Icon Generator
+    description: Generate bounded favicon, Apple touch, PWA, and maskable PNG icons plus a manifest and TAR bundle from a local image.
+  saml-enterprise-inspector:
+    title: SAML & Enterprise Timestamp Inspector
+    description: Decode bounded Base64 or DEFLATE SAML messages and convert FILETIME or LDAP timestamps locally with explicit trust semantics.
+  network-calculation-suite:
+    title: Network Calculation Suite
+    description: Calculate exact IPv4 and IPv6 CIDRs, exclusions, DHCP Option 43 payloads, port information, and DNS TTL durations offline.
+  dns-over-https-query:
+    title: DNS-over-HTTPS Query
+    description: Send one explicit bounded RFC 8484 wire query to a fixed browser-compatible resolver and inspect the response.
+  mermaid-diagram:
+    title: Mermaid Diagram Renderer
+    description: Explicitly render a restricted bounded Mermaid subset to sanitized isolated SVG or PNG without persisting source.
+  parquet-reader:
+    title: Parquet Reader
+    description: Inspect bounded local Apache Parquet metadata and export a selected row page as JSON or CSV without uploading the file.
+  xlsx-reader:
+    title: XLSX Spreadsheet Reader
+    description: Inspect a bounded local macro-free XLSX workbook and export one selected worksheet page as conservative JSON or CSV.
+  developer-text-workspace:
+    title: Developer Text Workspace
+    description: Format stack traces, replace text, render folder trees, and build Markdown tables of contents in a bounded local worker.
+  qr-decoder-otp-import:
+    title: QR Decoder & OTP Import
+    description: Decode QR images or explicit camera frames locally and inspect bounded TOTP/HOTP provisioning URIs without persistence.
+  ed25519-key-workspace:
+    title: Ed25519 & SSH Key Workspace
+    description: Generate ephemeral Ed25519 keys, OpenSSH public keys, and SHA-256 fingerprints locally with Web Crypto.
+  json-code-generator:
+    title: JSON Schema & Code Generator
+    description: Infer schema/types/stats or generate a bounded lossless-number RFC 6902 JSON Patch locally.
+  local-file-inspector:
+    title: Local File Inspector
+    description: Detect local files by magic bytes, calculate streaming CRC-32, and view a bounded hex preview without uploading content.
+  certificate-inspector:
+    title: Certificate & CSR Inspector
+    description: Inspect bounded X.509, PKCS#10 CSR, and public-key PEM structures locally without uploading or storing key material.
+  json-repair-query:
+    title: JSON Repair & Query
+    description: Repair common JSON5-style syntax or extract data with a bounded JSONPath subset that never executes JavaScript.
+  devops-config-workspace:
+    title: DevOps Configuration Workspace
+    description: Locally lint/format common DevOps files and export selected JSON, YAML, or TOML values as bounded shell-safe .env assignments.
+  cli-command-editor:
+    title: CLI Command Editor
+    description: Parse, inspect, edit, and safely re-quote POSIX shell or PowerShell commands without executing them
   categories:
     favorite-tools: 'Your favorite tools'
     crypto: Crypto
@@ -116,7 +197,7 @@ tools:
 
   token-generator:
     title: Token generator
-    description: Generate random string with the chars you want, uppercase or lowercase letters, numbers and/or symbols.
+    description: Generate bounded Web Crypto token batches with category, custom alphabet, and denied-character controls.
 
     uppercase: Uppercase (ABC...)
     lowercase: Lowercase (abc...)
@@ -190,11 +271,15 @@ tools:
 
   color-converter:
     title: Color converter
-    description: Convert color between the different formats (hex, rgb, hsl and css name)
+    description: Convert between hex, RGB, HSL, CSS names, and perceptual OKLCH with explicit sRGB gamut mapping.
 
   bcrypt:
     title: Bcrypt
     description: Hash and compare text string using bcrypt. Bcrypt is a password-hashing function based on the Blowfish cipher.
+
+  argon2id-hash-verify:
+    title: Argon2id Hash & Verify
+    description: Hash passwords into bounded Argon2id v=19 PHC strings or verify them locally in a disposable WASM worker.
 
   crontab-generator:
     title: Crontab generator
@@ -222,7 +307,7 @@ tools:
 
   encryption:
     title: Encrypt / decrypt text
-    description: Encrypt clear text and decrypt ciphertext using crypto algorithms like AES, TripleDES, Rabbit or RC4.
+    description: Read or write legacy CryptoJS/OpenSSL password envelopes; prefer the authenticated AES-GCM Envelope for new data.
 
   random-port-generator:
     title: Random port generator
@@ -242,7 +327,7 @@ tools:
 
   hmac-generator:
     title: Hmac generator
-    description: Computes a hash-based message authentication code (HMAC) using a secret key and your favorite hashing function.
+    description: Compute a bounded local HMAC in a worker with explicit UTF-8, hex, or canonical Base64 key bytes.
 
   bip39-generator:
     title: BIP39 passphrase generator
@@ -330,7 +415,7 @@ tools:
 
   wifi-qrcode-generator:
     title: WiFi QR Code generator
-    description: Generate and download QR codes for quick connections to WiFi networks.
+    description: Generate local de-facto WiFi QR payloads for open, WEP, WPA/WPA2/WPA3-intent, and WPA2-EAP networks.
 
   xml-formatter:
     title: XML formatter
@@ -342,7 +427,7 @@ tools:
 
   chmod-calculator:
     title: Chmod calculator
-    description: Compute your chmod permissions and commands with this online chmod calculator.
+    description: Parse and compute rwx, setuid, setgid, sticky, octal, symbolic, and creation-umask permissions locally.
 
   rsa-key-pair-generator:
     title: RSA key pair generator
@@ -365,8 +450,8 @@ tools:
     description: Compare two JSON objects and get the differences between them.
 
   jwt-parser:
-    title: JWT parser
-    description: Parse and decode your JSON Web Token (jwt) and display its content.
+    title: JWT Author, Sign & Verify
+    description: Decode untrusted JWT content or explicitly author, sign, and verify bounded HMAC JWTs locally.
 
   date-converter:
     title: Date-time converter
@@ -418,15 +503,15 @@ tools:
 
   base-converter:
     title: Integer base converter
-    description: Convert a number between different bases (decimal, hexadecimal, binary, octal, base64, ...)
+    description: Convert exact signed integers between bases 2–64 with common binary, octal, decimal, and hexadecimal notation.
 
   yaml-to-json-converter:
     title: YAML to JSON converter
     description: Simply convert YAML to JSON with this online live converter.
 
   uuid-generator:
-    title: UUIDs generator
-    description: A Universally Unique Identifier (UUID) is a 128-bit number used to identify information in computer systems. The number of possible UUIDs is 16^32, which is 2^128 or about 3.4x10^38 (which is a lot!).
+    title: UUID & Identifier Workspace
+    description: Generate UUID v1/v3/v4/v5/v6/v7 values and locally normalize or inspect UUID, Mongo ObjectID, and Snowflake identifiers.
 
   ipv4-address-converter:
     title: IPv4 address converter
@@ -461,13 +546,41 @@ tools:
     persistenceCleared: Saved Text Diff content was cleared.
     persistenceError: Browser storage is unavailable.
 
+  passphrase-generator:
+    title: Passphrase Generator
+    description: Generate secure, ephemeral word-based passphrases locally with Web Crypto and explicit entropy guidance.
+
+  gzip-converter:
+    title: GZIP String & File Converter
+    description: Compress or decompress bounded text and local files with the browser-native streaming GZIP API.
+
+  idn-safety-converter:
+    title: Punycode & IDN Safety Converter
+    description: Convert Unicode and ASCII domain labels locally and flag mixed-script or confusable-character risks.
+
+  data-units-converter:
+    title: Data Storage & Transfer Units
+    description: Convert bits, bytes, SI, and IEC units exactly and estimate transfer duration without floating-point loss.
+
+  markdown-table-generator:
+    title: Markdown Table Generator
+    description: Convert bounded CSV or TSV input into escaped, aligned Markdown tables in a disposable worker.
+
+  ieee754-inspector:
+    title: IEEE-754 Float Inspector
+    description: Inspect binary32 and binary64 sign, exponent, fraction, bytes, exact stored values, and rounding error.
+
+  conventional-commit-helper:
+    title: Conventional Commit Helper
+    description: Author and validate a Conventional Commit message locally with breaking-change and footer guidance.
+
   otp-generator:
     title: OTP code generator
     description: Generate and validate time-based OTP (one time password) for multi-factor authentication.
 
   url-encoder:
-    title: Encode/decode URL-formatted strings
-    description: Encode text to URL-encoded format (also known as "percent-encoded"), or decode from it.
+    title: URL Safety & Authoring Workspace
+    description: Encode and decode URL text, remove known trackers, defang/refang links, and author UTM or text-fragment URLs locally.
 
   text-to-binary:
     title: Text to ASCII binary

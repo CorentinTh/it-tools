@@ -6,7 +6,7 @@ import {
   useLatestQRCode,
 } from '../qr-code-generator/useQRCode';
 
-export const wifiEncryptions = ['WEP', 'WPA', 'nopass', 'WPA2-EAP'] as const;
+export const wifiEncryptions = ['WEP', 'WPA', 'WPA3', 'WPA3-TRANSITION', 'nopass', 'WPA2-EAP'] as const;
 export type WifiEncryption = typeof wifiEncryptions[number];
 
 // @see https://en.wikipedia.org/wiki/Extensible_Authentication_Protocol
@@ -77,7 +77,8 @@ export function getQrCodeText(options: GetQrCodeTextOptions): string | null {
     return `WIFI:S:${escapeString(ssid)};;`;
   }
   if (encryption !== 'WPA2-EAP' && password) {
-    return `WIFI:S:${escapeString(ssid)};T:${encryption};P:${escapeString(password)};${isHiddenSSID ? 'H:true' : ''};`;
+    const compatibleType = encryption === 'WPA3' || encryption === 'WPA3-TRANSITION' ? 'WPA' : encryption;
+    return `WIFI:S:${escapeString(ssid)};T:${compatibleType};P:${escapeString(password)};${isHiddenSSID ? 'H:true' : ''};`;
   }
   if (encryption === 'WPA2-EAP' && password && eapMethod) {
     if (!eapIdentity && !eapAnonymous) {
@@ -149,5 +150,5 @@ export function useWifiQRCode({
     dependencies,
   );
 
-  return { ...task, encryption };
+  return { ...task, encryption, payload: task.encodedText };
 }

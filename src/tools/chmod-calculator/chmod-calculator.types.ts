@@ -8,3 +8,9 @@ export type GroupPermissions = {
 export type Permissions = {
   [k in Group]: GroupPermissions;
 };
+
+export interface SpecialPermissions {
+  setuid: boolean
+  setgid: boolean
+  sticky: boolean
+}

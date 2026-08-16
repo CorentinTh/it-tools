@@ -1,6 +1,10 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { WORKER_OPTIMIZED_DEPENDENCIES, WORKER_UNOPTIMIZED_DEPENDENCIES } from './vite.config';
+import {
+  LAZY_ROUTE_OPTIMIZED_DEPENDENCIES,
+  WORKER_OPTIMIZED_DEPENDENCIES,
+  WORKER_UNOPTIMIZED_DEPENDENCIES,
+} from './vite.config';
 
 const expectedWorkerDependencies = [
   '@noble/hashes/blake3.js',
@@ -14,13 +18,17 @@ const expectedWorkerDependencies = [
   'composerize-ts',
   'crypto-js',
   'fuse.js',
+  'hash-wasm',
+  'hyparquet',
   'iarna-toml-esm',
+  'js-base64',
   'json5',
   'markdown-it',
   'mathjs/number',
   'prettier',
   'prettier/plugins/html',
   'randexp',
+  'saxen',
   'sql-formatter',
   'xml-formatter',
   'xml-js',
@@ -33,6 +41,8 @@ describe('Vite worker dependency optimization', () => {
     expect(WORKER_UNOPTIMIZED_DEPENDENCIES).toEqual(['emojilib', 'unicode-emoji-json']);
 
     const workerSources = [
+      'src/tools/aes-gcm-envelope/aes-gcm-envelope.service.ts',
+      'src/tools/argon2id-hash-verify/argon2id.worker-handler.ts',
       'src/tools/bcrypt/bcrypt.worker.ts',
       'src/tools/docker-run-to-docker-compose-converter/docker-converter.worker-handler.ts',
       'src/tools/emoji-picker/emoji-picker.worker.ts',
@@ -43,7 +53,9 @@ describe('Vite worker dependency optimization', () => {
       'src/tools/json-to-toml/json-converter.worker.ts',
       'src/tools/markdown-to-html/markdown-to-html.worker.ts',
       'src/tools/math-evaluator/math-evaluator.worker.ts',
+      'src/tools/parquet-reader/parquet-reader.service.ts',
       'src/tools/regex-tester/regex-tester.sample.service.ts',
+      'src/tools/xlsx-reader/xlsx-reader.service.ts',
       'src/tools/sql-prettify/sql-prettify.worker.ts',
       'src/tools/toml-to-json/toml-converter.worker.ts',
       'src/tools/xml-formatter/xml-formatter.worker.ts',
@@ -56,6 +68,24 @@ describe('Vite worker dependency optimization', () => {
     }
     for (const dependency of WORKER_UNOPTIMIZED_DEPENDENCIES) {
       expect(workerSources, dependency).toContain(`'${dependency}'`);
+    }
+  });
+
+  it('prebundles dependencies that are otherwise discovered only after visiting a lazy route', () => {
+    expect(LAZY_ROUTE_OPTIMIZED_DEPENDENCIES).toEqual([
+      'jsonc-parser',
+      'mermaid',
+      'monaco-editor/esm/vs/editor/editor.api',
+    ]);
+
+    const lazyRouteSources = [
+      'src/tools/json-viewer/json.models.ts',
+      'src/tools/mermaid-diagram/mermaid-renderer.service.ts',
+      'src/ui/c-diff-editor/c-diff-editor.vue',
+    ].map(path => readFileSync(new URL(path, import.meta.url), 'utf8')).join('\n');
+
+    for (const dependency of LAZY_ROUTE_OPTIMIZED_DEPENDENCIES) {
+      expect(lazyRouteSources, dependency).toContain(`'${dependency}'`);
     }
   });
 });
