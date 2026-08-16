@@ -94,6 +94,22 @@ tools:
     title: File hash
     description: Calculate SHA-2, SHA-3, BLAKE3, SHA-1, and MD5 checksums for a local file without uploading it.
 
+  ipv6-calculator:
+    title: IPv6 calculator
+    description: Expand, compress, inspect, test, and split IPv6 CIDR networks with exact 128-bit calculations.
+
+  sensitive-data-masker:
+    title: Sensitive data masker
+    description: Redact secrets and selected personal data from text, JSON, and HAR files locally before sharing them.
+
+  timezone-duration-calculator:
+    title: Timezone and date duration calculator
+    description: Convert local date-times between IANA timezones and calculate exact elapsed durations with DST ambiguity guidance.
+
+  barcode-generator-reader:
+    title: Barcode generator and reader
+    description: Generate Code 128, EAN-13, and UPC-A SVG barcodes or read supported barcodes from local images in your browser.
+
   chronometer:
     title: Chronometer
     description: Monitor the duration of a thing. Basically a chronometer with simple chronometer features.
@@ -144,6 +160,10 @@ tools:
       numberRequired: Length and quantity are required.
       invalid: The NanoID configuration is invalid.
       generationFailed: NanoID generation failed.
+
+  mock-data-generator:
+    title: Mock data generator
+    description: Generate reproducible people, addresses, dates, internet values, identifiers, and JSON or CSV fixtures locally in your browser.
   percentage-calculator:
     title: Percentage calculator
     description: Easily calculate percentages from a value to another value, or from a percentage to a value.

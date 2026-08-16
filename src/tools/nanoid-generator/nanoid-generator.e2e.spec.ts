@@ -76,9 +76,17 @@ test.describe('Tool - NanoID generator', () => {
     await expect(page.getByTestId('nanoid-download')).toBeDisabled();
   });
 
-  test('keeps the maximum accepted batch within the main-thread interaction budget', async ({ page }, testInfo) => {
+  test('keeps the maximum accepted batch within the main-thread interaction budget', async ({ page, browserName }, testInfo) => {
     await page.getByTestId('nanoid-length').fill('100');
     await page.getByTestId('nanoid-quantity').fill('1000');
+
+    if (browserName === 'chromium') {
+      const session = await page.context().newCDPSession(page);
+      await session.send('HeapProfiler.collectGarbage');
+      await session.detach();
+    }
+    await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
+    await page.waitForTimeout(50);
 
     const supportsLongTasks = await page.evaluate(() => PerformanceObserver.supportedEntryTypes.includes('longtask'));
     await page.evaluate(() => {

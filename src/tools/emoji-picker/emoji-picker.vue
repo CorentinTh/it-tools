@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import Fuse from 'fuse.js';
 import emojiUnicodeData from 'unicode-emoji-json';
-import type { EmojiKeywordMap } from './emoji.types';
+import type { EmojiInfo } from './emoji.types';
+import { createEmojiSearchWorkerClient } from './emoji-picker.worker-client';
+import { EMOJI_SEARCH_DEBOUNCE_MS } from './emoji-picker.worker.protocol';
 import {
   ALL_EMOJI_GROUPS,
   EMOJI_PAGE_SIZE,
-  addEmojiKeywords,
   createEmojiCatalog,
   filterEmojiGroup,
   getEmojiGroups,
@@ -15,30 +15,23 @@ import {
 
 const emojiCatalog = createEmojiCatalog(emojiUnicodeData);
 const emojiGroups = getEmojiGroups(emojiCatalog);
+const emojiByValue = new Map(emojiCatalog.map(info => [info.emoji, info]));
 
 const searchQuery = ref('');
 const selectedGroup = ref(ALL_EMOJI_GROUPS);
 const visibleCount = ref(EMOJI_PAGE_SIZE);
-const emojiKeywords = shallowRef<EmojiKeywordMap>();
-let keywordLoad: Promise<void> | undefined;
-
-const catalogWithKeywords = computed(() => emojiKeywords.value
-  ? addEmojiKeywords(emojiCatalog, emojiKeywords.value)
-  : emojiCatalog,
-);
-
-const searchEngine = computed(() => new Fuse(catalogWithKeywords.value, {
-  keys: ['group', { name: 'name', weight: 3 }, 'keywords', 'unicode', 'codePoints', 'emoji'],
-  threshold: 0.3,
-  useExtendedSearch: true,
-  isCaseSensitive: false,
-}));
+const searchResults = shallowRef<string[]>();
+const searchError = ref('');
+const isSearching = ref(false);
+const searchClient = createEmojiSearchWorkerClient();
+let searchTimer: ReturnType<typeof globalThis.setTimeout> | undefined;
+let searchRevision = 0;
 
 const normalizedSearchQuery = computed(() => searchQuery.value.trim());
 const matchingEmojiInfos = computed(() => {
   const query = normalizedSearchQuery.value;
   const matchingCatalog = query
-    ? searchEngine.value.search(query).map(({ item }) => item)
+    ? (searchResults.value ?? []).map(emoji => emojiByValue.get(emoji)).filter((info): info is EmojiInfo => info !== undefined)
     : emojiCatalog;
 
   return filterEmojiGroup(matchingCatalog, selectedGroup.value);
@@ -52,23 +45,50 @@ watch([searchQuery, selectedGroup], () => {
 });
 
 watch(normalizedSearchQuery, (query) => {
-  if (query) {
-    loadEmojiKeywords();
+  if (searchTimer !== undefined) {
+    globalThis.clearTimeout(searchTimer);
+    searchTimer = undefined;
   }
+  const currentRevision = ++searchRevision;
+  searchClient.cancel();
+  searchError.value = '';
+
+  if (!query) {
+    isSearching.value = false;
+    searchResults.value = undefined;
+    return;
+  }
+
+  isSearching.value = true;
+  searchTimer = globalThis.setTimeout(async () => {
+    searchTimer = undefined;
+    try {
+      const result = await searchClient.search(query);
+      if (currentRevision === searchRevision) {
+        searchResults.value = result.value;
+      }
+    }
+    catch {
+      if (currentRevision === searchRevision) {
+        searchResults.value = [];
+        searchError.value = 'Emoji search could not be completed. Please try again.';
+      }
+    }
+    finally {
+      if (currentRevision === searchRevision) {
+        isSearching.value = false;
+      }
+    }
+  }, EMOJI_SEARCH_DEBOUNCE_MS);
+}, { immediate: true });
+
+onScopeDispose(() => {
+  ++searchRevision;
+  if (searchTimer !== undefined) {
+    globalThis.clearTimeout(searchTimer);
+  }
+  searchClient.dispose();
 });
-
-async function loadEmojiKeywords() {
-  keywordLoad ??= import('emojilib')
-    .then(({ default: keywordMap }) => {
-      emojiKeywords.value = keywordMap;
-    })
-    .catch(() => {
-      // Official Unicode names remain searchable if the optional chunk cannot
-      // be loaded (for example when a stale offline tab references old assets).
-    });
-
-  await keywordLoad;
-}
 
 function showMore() {
   visibleCount.value = Math.min(
@@ -123,10 +143,14 @@ function showMore() {
       op-70
       aria-live="polite"
     >
-      Showing {{ visibleEmojiInfos.length }} of {{ matchingEmojiInfos.length }} emojis
+      {{ isSearching ? 'Searching emojis…' : `Showing ${visibleEmojiInfos.length} of ${matchingEmojiInfos.length} emojis` }}
     </div>
 
-    <div v-if="matchingEmojiInfos.length === 0" mt-4 text-20px font-bold role="status">
+    <div v-if="searchError" role="alert" mt-3>
+      {{ searchError }}
+    </div>
+
+    <div v-if="!isSearching && matchingEmojiInfos.length === 0" mt-4 text-20px font-bold role="status">
       No results
     </div>
 

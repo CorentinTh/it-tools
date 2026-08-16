@@ -27,4 +27,13 @@ test.describe('Docker Run to Compose bounded conversion', () => {
     await expect(page.getByTestId('docker-converter-status')).toContainText('completed', { timeout: 15_000 });
     await expect(page.getByTestId('area-content')).toContainText('KEY_999=value_999');
   });
+
+  test('converts Compose back to a safely quoted Docker run command', async ({ page }) => {
+    await page.goto('/docker-run-to-docker-compose-converter');
+    await page.getByRole('radio', { name: 'Compose → Docker run' }).click();
+    await expect(page.getByTestId('docker-converter-status')).toContainText('completed');
+    await expect(page.getByTestId('area-content')).toContainText('docker \\\nrun');
+    await expect(page.getByTestId('area-content')).toContainText('APP_MODE=development');
+    await expect(page.getByTestId('area-content')).toContainText('./site:/usr/share/nginx/html:ro');
+  });
 });

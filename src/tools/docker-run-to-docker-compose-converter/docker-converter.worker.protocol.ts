@@ -9,10 +9,13 @@ export const DOCKER_CONVERTER_MAX_MESSAGES = 100;
 export const DOCKER_CONVERTER_MAX_MESSAGE_BYTES = 4 * 1024;
 export const DOCKER_CONVERTER_TASK_TIMEOUT_MS = 4_000;
 
+export const DOCKER_CONVERTER_DIRECTIONS = ['run-to-compose', 'compose-to-run'] as const;
+export type DockerConverterDirection = typeof DOCKER_CONVERTER_DIRECTIONS[number];
 export type DockerConverterMessageType = 'notImplemented' | 'notTranslatable' | 'errorDuringConversion';
 export type DockerConverterErrorCode = 'validation' | 'input-limit' | 'output-limit' | 'processing';
 
 export interface DockerConverterTask {
+  direction: DockerConverterDirection
   source: string
 }
 
@@ -69,7 +72,9 @@ function isMessageType(value: unknown): value is DockerConverterMessageType {
 export function parseDockerConverterTask(value: unknown): DockerConverterTask {
   if (
     !isUnknownRecord(value)
-    || !hasExactKeys(value, ['source'])
+    || !hasExactKeys(value, ['direction', 'source'])
+    || typeof value.direction !== 'string'
+    || !DOCKER_CONVERTER_DIRECTIONS.includes(value.direction as DockerConverterDirection)
     || typeof value.source !== 'string'
     || value.source.trim() === ''
   ) {
@@ -78,7 +83,7 @@ export function parseDockerConverterTask(value: unknown): DockerConverterTask {
   if (exceedsUtf8ByteLimit(value.source, DOCKER_CONVERTER_MAX_INPUT_BYTES)) {
     throw new BoundedTextTaskError('input-limit', DOCKER_CONVERTER_ERRORS['input-limit']);
   }
-  return { source: value.source };
+  return { direction: value.direction as DockerConverterDirection, source: value.source };
 }
 
 export function parseDockerConverterWorkerRequest(value: unknown): DockerConverterWorkerRequest {

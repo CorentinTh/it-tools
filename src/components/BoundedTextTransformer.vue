@@ -78,7 +78,12 @@ const {
     </p>
 
     <c-field class="c-tool-panel" :label="outputLabel">
-      <TextareaCopyable :value="output" :language="outputLanguage" :follow-height-of="inputComponent?.inputWrapperRef" />
+      <TextareaCopyable
+        :value="output"
+        :language="outputLanguage"
+        :large-preview-bytes="16 * 1024"
+        :follow-height-of="inputComponent?.inputWrapperRef"
+      />
     </c-field>
   </div>
 </template>

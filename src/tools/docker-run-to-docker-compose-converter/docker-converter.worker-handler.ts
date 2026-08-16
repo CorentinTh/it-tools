@@ -1,4 +1,5 @@
 import { MessageType, composerize } from 'composerize-ts';
+import { convertComposeToDockerRun } from './docker-compose-to-run.service';
 import { removeObsoleteComposeVersion } from './docker-compose-output';
 import {
   DOCKER_CONVERTER_ERRORS,
@@ -13,7 +14,7 @@ import {
 } from './docker-converter.worker.protocol';
 import { BoundedTextTaskError, createBoundedTextResult, parseBoundedTextWorkerJobId } from '@/utils/bounded-text-task';
 
-function toMessageType(value: MessageType): DockerConverterMessageType | undefined {
+function toMessageType(value: MessageType | DockerConverterMessageType): DockerConverterMessageType | undefined {
   if (
     value === MessageType.notImplemented
     || value === MessageType.notTranslatable
@@ -24,17 +25,28 @@ function toMessageType(value: MessageType): DockerConverterMessageType | undefin
   return undefined;
 }
 
-function createWireResult(source: string): DockerConverterWireResult | undefined {
-  const converted = composerize(source.trim());
-  if (converted.messages.length > DOCKER_CONVERTER_MAX_MESSAGES) {
+function createWireResult(source: string, direction: 'run-to-compose' | 'compose-to-run'): DockerConverterWireResult | undefined {
+  let output: string;
+  let sourceMessages: Array<{ type: MessageType | DockerConverterMessageType; value: string }>;
+  if (direction === 'run-to-compose') {
+    const converted = composerize(source.trim());
+    output = removeObsoleteComposeVersion(converted.yaml);
+    sourceMessages = converted.messages;
+  }
+  else {
+    const converted = convertComposeToDockerRun(source);
+    output = converted.commands;
+    sourceMessages = converted.messages;
+  }
+  if (sourceMessages.length > DOCKER_CONVERTER_MAX_MESSAGES) {
     return undefined;
   }
-  const yaml = createBoundedTextResult(removeObsoleteComposeVersion(converted.yaml), DOCKER_CONVERTER_MAX_OUTPUT_BYTES);
+  const yaml = createBoundedTextResult(output, DOCKER_CONVERTER_MAX_OUTPUT_BYTES);
   if (!yaml) {
     return undefined;
   }
   const messages: DockerConverterWireResult['messages'] = [];
-  for (const message of converted.messages) {
+  for (const message of sourceMessages) {
     const type = toMessageType(message.type);
     const text = createBoundedTextResult(message.value, DOCKER_CONVERTER_MAX_MESSAGE_BYTES);
     if (!type || !text) {
@@ -53,7 +65,7 @@ export function handleDockerConverterWorkerRequest(value: unknown): DockerConver
   try {
     jobId = parseBoundedTextWorkerJobId(value);
     const { task } = parseDockerConverterWorkerRequest(value);
-    const result = createWireResult(task.source);
+    const result = createWireResult(task.source, task.direction);
     return result
       ? { jobId, type: 'result', result }
       : { jobId, type: 'error', code: 'output-limit', message: DOCKER_CONVERTER_ERRORS['output-limit'] };

@@ -10,6 +10,11 @@
     "node": ">=24.18.0 <25",
     "pnpm": "9.11.0"
   },
+  "pnpm": {
+    "overrides": {
+      "@unhead/vue>@vueuse/shared": "10.3.0"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/64mb/it-tools"

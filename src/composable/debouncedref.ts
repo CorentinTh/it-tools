@@ -1,18 +1,18 @@
 function useDebouncedRef<T>(initialValue: T, delay: number, immediate: boolean = false) {
-  const state = ref(initialValue);
+  let currentValue = initialValue;
   let timer: ReturnType<typeof globalThis.setTimeout> | undefined;
   let pendingValue = initialValue;
   let needsTrailingUpdate = false;
   const debouncedRef = customRef((track, trigger) => {
     const publish = () => {
-      state.value = pendingValue;
+      currentValue = pendingValue;
       trigger();
     };
 
     return {
       get() {
         track();
-        return state.value;
+        return currentValue;
       },
       set(value) {
         pendingValue = value;

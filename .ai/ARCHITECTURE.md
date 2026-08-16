@@ -156,10 +156,10 @@ Accepted schema-v4 production evidence for implementation checkpoint `5f7e97a`:
 | File Hash route + owned-worker closure | 70,260 B raw / 26,677 B gzip |
 | File Hash worker | 25,899 B raw / 10,417 B gzip |
 
-The current 2026-08-16 dirty-worktree build transforms 22,876 modules in
-36.94 seconds and emits 520 files / 13,358,344 B raw / 3,833,545 B gzip. Its
-shell including the document is 906,828 B / 277,596 B gzip, and the nine-entry
-mandatory install is 960,676 B / 327,958 B gzip. WYSIWYG owns a 212,679 B /
+The current 2026-08-16 dirty-worktree build transforms 22,876 modules and emits
+522 files / 13,656,676 B raw / 3,875,761 B gzip. Its shell including the
+document is 907,307 B / 277,717 B gzip, and the nine-entry mandatory install is
+961,155 B / 328,079 B gzip. WYSIWYG owns a 212,679 B /
 70,280 B gzip
 demand-loaded Prettier worker; its main route chunk fell from 493,145 B /
 153,634 B gzip to 287,982 B / 86,389 B gzip. The complete additional closure
@@ -185,7 +185,15 @@ JSON 89,752 B / 27,405 B gzip, TOML 89,835 B / 23,818 B gzip, and YAML
 109,980 B / 32,749 B gzip, plus XML 92,312 B / 28,468 B gzip. Docker
 Run-to-Compose adds a separately budgeted 108,813 B / 33,464 B gzip worker.
 Hash Text adds a separately budgeted 60,239 B / 21,154 B gzip worker under a
-65/24 kB ceiling. All remain demand-loaded and outside the shell.
+65/24 kB ceiling. JSON-to-CSV, List Converter, and Emoji Search add independent
+worker ceilings; all remain demand-loaded and outside the shell.
+
+Vite 4 does not discover every dependency reachable only from a Web Worker.
+`vite.config.ts` therefore owns an explicit include/exclude inventory for
+worker-only dependencies. This prevents a first tool visit in source dev from
+changing optimized dependencies, reloading the page, and abandoning an
+in-flight worker. A source contract test and the strict 8091 dev-runtime smoke
+guard the inventory.
 
 The main sources of weight are four icon mechanisms, eager registry metadata/icons, CommonJS `lodash` across 41 source imports, Monaco, the full OUI dataset, full `mathjs`, emoji datasets, TipTap, and overlapping parser/rendering libraries.
 
@@ -193,11 +201,13 @@ The main sources of weight are four icon mechanisms, eager registry metadata/ico
 
 - The accepted integrated checkpoint passes zero-warning lint and both the
   application/test and Vite-config typecheck projects.
-- 990/990 unit tests pass across 150 files in the current dirty-worktree checkpoint.
-- 172/172 sequential production-preview Chromium E2E tests pass, including the
-  registry-generated smoke for all 89 routes.
-- Sixteen build-stat infrastructure tests, 228 current-artifact budget checks,
-  and four generated-OUI checks pass. Fourteen route-owned worker families have
+- 1021/1021 unit tests pass across 160 files in the current dirty-worktree checkpoint.
+- All 176 production-preview Chromium cases pass across the isolated
+  performance and full functional matrices, including the registry-generated
+  smoke for all 89 routes. A single combined timing run is not treated as
+  authoritative while unrelated workstation processes saturate CPU.
+- Sixteen build-stat infrastructure tests, 232 current-artifact budget checks,
+  and four generated-OUI checks pass. Seventeen route-owned worker families have
   independent ceilings in addition to route-closure budgets.
 - Production browser gates cover privacy/storage, worker cancellation and route
   disposal, large structured inputs, File Hash 256 MiB behavior, PWA demand
@@ -271,10 +281,9 @@ have disposal regressions. Shared large-output rendering bounds DOM expansion,
 while the complete accepted output can still remain in memory and must retain
 per-tool byte limits.
 
-Important residuals remain: DOM-dependent Regex SVG, JSON-to-CSV's measured
-duplicated JSON5 parse and output-amplification path, the two other remaining
-`FormatTransformer` callers, parser/download-policy consolidation,
-preference-storage denial, and slower-device/cross-browser coverage. Ajv performs
+Important residuals remain: DOM-dependent Regex SVG, broader parser/download-
+policy consolidation, preference-storage denial, and cross-browser coverage.
+Ajv performs
 runtime validator code generation, so a future eval-blocking CSP requires a
 precompiled/interpreted design rather than `unsafe-eval`.
 

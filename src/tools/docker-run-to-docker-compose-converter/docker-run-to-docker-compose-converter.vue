@@ -3,6 +3,7 @@ import { DockerConverterWorkerClient } from './docker-converter.worker-client';
 import {
   DOCKER_CONVERTER_LIVE_MAX_BYTES,
   DOCKER_CONVERTER_MAX_INPUT_BYTES,
+  type DockerConverterDirection,
   type DockerConverterMessage,
 } from './docker-converter.worker.protocol';
 import { downloadTextFile } from '@/composable/downloadText';
@@ -14,6 +15,11 @@ import { BoundedTextTaskError } from '@/utils/bounded-text-task';
 const dockerRun = ref(
   'docker run -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock:ro --restart always --log-opt max-size=1g nginx',
 );
+const direction = ref<DockerConverterDirection>('run-to-compose');
+const directionOptions: Array<{ label: string; value: DockerConverterDirection }> = [
+  { label: 'Docker run → Compose', value: 'run-to-compose' },
+  { label: 'Compose → Docker run', value: 'compose-to-run' },
+];
 
 const dockerCompose = shallowRef('');
 const messages = shallowRef<DockerConverterMessage[]>([]);
@@ -58,7 +64,7 @@ async function convert(): Promise<void> {
   state.status = 'running';
   state.message = 'Docker conversion is running…';
   try {
-    const result = await client.run({ source: dockerRun.value });
+    const result = await client.run({ direction: direction.value, source: dockerRun.value });
     if (currentRequest !== requestId) {
       return;
     }
@@ -113,10 +119,18 @@ function cancel(): void {
 }
 
 function download(): void {
-  downloadTextFile({ content: dockerCompose.value, filename: 'docker-compose.yml' });
+  downloadTextFile({
+    content: dockerCompose.value,
+    filename: direction.value === 'run-to-compose' ? 'docker-compose.yml' : 'docker-run.sh',
+  });
 }
 
-watch(dockerRun, scheduleConversion, { flush: 'post', immediate: true });
+watch(direction, (nextDirection) => {
+  dockerRun.value = nextDirection === 'run-to-compose'
+    ? 'docker run -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock:ro --restart always --log-opt max-size=1g nginx'
+    : 'services:\n  web:\n    image: nginx:alpine\n    ports:\n      - "8080:80"\n    environment:\n      APP_MODE: development\n    volumes:\n      - ./site:/usr/share/nginx/html:ro';
+});
+watch([dockerRun, direction], scheduleConversion, { flush: 'post', immediate: true });
 onUnmounted(() => {
   clearTimer();
   ++requestId;
@@ -126,13 +140,20 @@ onUnmounted(() => {
 
 <template>
   <div class="c-tool-workbench c-tool-stack">
+    <c-buttons-select
+      v-model:value="direction"
+      label="Conversion direction"
+      label-position="top"
+      :options="directionOptions"
+      data-test-id="docker-converter-direction"
+    />
     <div class="c-tool-panel">
       <CInputText
         ref="inputElement"
         v-model:value="dockerRun"
-        label="Docker run command"
+        :label="direction === 'run-to-compose' ? 'Docker run command' : 'Docker Compose YAML'"
         raw-text multiline monospace
-        placeholder="Your docker run command to convert..."
+        :placeholder="direction === 'run-to-compose' ? 'Your docker run command to convert...' : 'Your Docker Compose YAML to convert...'"
         rows="18"
         test-id="docker-run-input"
       />
@@ -158,18 +179,18 @@ onUnmounted(() => {
 
     <div class="c-tool-panel">
       <div mb-5px>
-        Docker compose output
+        {{ direction === 'run-to-compose' ? 'Docker Compose output' : 'Docker run output' }}
       </div>
       <TextareaCopyable
         :value="dockerCompose"
-        language="yaml"
+        :language="direction === 'run-to-compose' ? 'yaml' : 'shell'"
         :follow-height-of="inputElement?.inputWrapperRef"
       />
     </div>
 
     <div class="c-task-actions">
       <c-button :disabled="dockerCompose === ''" @click="download">
-        Download docker-compose.yml
+        {{ direction === 'run-to-compose' ? 'Download docker-compose.yml' : 'Download docker-run.sh' }}
       </c-button>
     </div>
 

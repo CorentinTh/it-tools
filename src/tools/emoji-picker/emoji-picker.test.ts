@@ -1,24 +1,23 @@
 /* eslint-disable vue/one-component-per-file -- Small render-only stubs keep the DOM-count assertions precise. */
 import { defineComponent, h } from 'vue';
 import { flushPromises, mount } from '@vue/test-utils';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { EMOJI_PAGE_SIZE } from './emoji-picker.model';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import emojiUnicodeData from 'unicode-emoji-json';
+import { EMOJI_PAGE_SIZE, createEmojiCatalog } from './emoji-picker.model';
 import type { EmojiInfo } from './emoji.types';
 import EmojiPicker from './emoji-picker.vue';
 
 const mocks = vi.hoisted(() => ({
-  keywordModuleLoaded: vi.fn(),
+  cancel: vi.fn(),
+  dispose: vi.fn(),
+  search: vi.fn(),
 }));
 
-vi.mock('emojilib', () => {
-  mocks.keywordModuleLoaded();
+vi.mock('./emoji-picker.worker-client', () => ({
+  createEmojiSearchWorkerClient: () => mocks,
+}));
 
-  return {
-    default: {
-      '🎉': ['test-only-celebration-keyword'],
-    },
-  };
-});
+const emojiCatalog = createEmojiCatalog(emojiUnicodeData);
 
 const InputStub = defineComponent({
   inheritAttrs: false,
@@ -74,7 +73,22 @@ function mountPicker() {
 
 describe('emoji picker component', () => {
   beforeEach(() => {
-    mocks.keywordModuleLoaded.mockClear();
+    vi.useFakeTimers();
+    mocks.cancel.mockClear();
+    mocks.dispose.mockClear();
+    mocks.search.mockReset();
+    mocks.search.mockImplementation(async (query: string) => {
+      const values = query === 'test-only-celebration-keyword'
+        ? ['🎉']
+        : emojiCatalog
+          .filter(info => info.emoji === query || info.name.toLowerCase().includes(query.toLowerCase()))
+          .map(info => info.emoji);
+      return { elapsedMs: 1, value: values };
+    });
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
   });
 
   it('renders one bounded page and progressively adds another page', async () => {
@@ -82,7 +96,7 @@ describe('emoji picker component', () => {
 
     expect(wrapper.findAll('[data-test-id="emoji-card"]')).toHaveLength(EMOJI_PAGE_SIZE);
     expect(wrapper.get('[data-test-id="emoji-result-status"]').text()).toBe(`Showing ${EMOJI_PAGE_SIZE} of 1870 emojis`);
-    expect(mocks.keywordModuleLoaded).not.toHaveBeenCalled();
+    expect(mocks.search).not.toHaveBeenCalled();
 
     await wrapper.get('[data-test-id="emoji-load-more"]').trigger('click');
 
@@ -100,16 +114,20 @@ describe('emoji picker component', () => {
     expect(wrapper.findAll('[data-test-id="emoji-card"]').every(card => card.attributes('data-emoji'))).toBe(true);
 
     await wrapper.get('[data-test-id="emoji-search"]').setValue('United Nations');
+    await vi.advanceTimersByTimeAsync(150);
+    await flushPromises();
     expect(wrapper.findAll('[data-test-id="emoji-card"]')).toHaveLength(1);
     expect(wrapper.get('[data-test-id="emoji-card"]').attributes('data-emoji')).toBe('🇺🇳');
   });
 
-  it('loads optional synonym metadata only after search starts', async () => {
+  it('starts the isolated search worker only after search starts', async () => {
     const wrapper = mountPicker();
 
     await wrapper.get('[data-test-id="emoji-search"]').setValue('test-only-celebration-keyword');
+    await vi.advanceTimersByTimeAsync(150);
     await flushPromises();
 
+    expect(mocks.search).toHaveBeenCalledWith('test-only-celebration-keyword');
     expect(wrapper.get('[data-test-id="emoji-card"]').attributes('data-emoji')).toBe('🎉');
   });
 
@@ -117,6 +135,7 @@ describe('emoji picker component', () => {
     const wrapper = mountPicker();
 
     await wrapper.get('[data-test-id="emoji-search"]').setValue('face');
+    await vi.advanceTimersByTimeAsync(150);
     await flushPromises();
 
     expect(wrapper.findAll('[data-test-id="emoji-grid"]')).toHaveLength(1);

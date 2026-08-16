@@ -49,11 +49,20 @@ test.describe('Tool - Emoji picker bounded rendering', () => {
       .toHaveText('0x1f1fa 0x1f1f3');
   });
 
-  test('keeps full-catalog search responsive and its result DOM bounded', async ({ page }, testInfo) => {
+  test('keeps full-catalog search responsive at 4x CPU and its result DOM bounded', async ({ context, page }, testInfo) => {
+    const runtimeMode = await page.evaluate(async () => (
+      await fetch(globalThis.location.href, { method: 'HEAD' })
+    ).headers.get('X-IT-Tools-Mode'));
+    const cdp = await context.newCDPSession(page);
+    await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
     const supportsLongTasks = await page.evaluate(() => PerformanceObserver.supportedEntryTypes.includes('longtask'));
     await page.evaluate(() => {
-      const measuredWindow = window as typeof window & { emojiPickerLongTasks?: number[] };
+      const measuredWindow = window as typeof window & { emojiPickerHeartbeat?: number; emojiPickerLongTasks?: number[] };
       measuredWindow.emojiPickerLongTasks = [];
+      measuredWindow.emojiPickerHeartbeat = 0;
+      globalThis.setInterval(() => {
+        measuredWindow.emojiPickerHeartbeat = (measuredWindow.emojiPickerHeartbeat ?? 0) + 1;
+      }, 20);
 
       if (PerformanceObserver.supportedEntryTypes.includes('longtask')) {
         const observer = new PerformanceObserver((entries) => {
@@ -70,18 +79,25 @@ test.describe('Tool - Emoji picker bounded rendering', () => {
     await page.waitForTimeout(50);
 
     const searchElapsedMs = Date.now() - searchStartedAt;
-    const longestTaskMs = await page.evaluate(() => Math.max(
-      0,
-      ...((window as typeof window & { emojiPickerLongTasks?: number[] }).emojiPickerLongTasks ?? []),
-    ));
+    const { heartbeat, longestTaskMs } = await page.evaluate(() => {
+      const measuredWindow = window as typeof window & { emojiPickerHeartbeat?: number; emojiPickerLongTasks?: number[] };
+      return {
+        heartbeat: measuredWindow.emojiPickerHeartbeat ?? 0,
+        longestTaskMs: Math.max(0, ...(measuredWindow.emojiPickerLongTasks ?? [])),
+      };
+    });
     testInfo.annotations.push({
       type: 'performance',
-      description: `${searchElapsedMs} ms search ready; ${longestTaskMs.toFixed(1)} ms longest task`,
+      description: `${searchElapsedMs} ms search ready at 4x CPU (${runtimeMode ?? 'unknown'}); ${longestTaskMs.toFixed(1)} ms longest task; ${heartbeat} heartbeat ticks`,
     });
 
-    expect(searchElapsedMs).toBeLessThan(1500);
-    if (supportsLongTasks) {
-      expect(longestTaskMs).toBeLessThan(500);
+    expect(searchElapsedMs).toBeLessThan(5000);
+    expect(heartbeat).toBeGreaterThan(5);
+    // Dev serves hundreds of unbundled modules and is intentionally excluded
+    // from production Long Task acceptance. It remains useful here for the
+    // worker/HMR functional flow and heartbeat assertion.
+    if (supportsLongTasks && runtimeMode === 'preview') {
+      expect(longestTaskMs).toBeLessThan(200);
     }
 
     await page.getByTestId('emoji-load-more').click();

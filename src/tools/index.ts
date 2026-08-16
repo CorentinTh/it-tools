@@ -7,6 +7,7 @@ import { tool as asciiTextDrawer } from './ascii-text-drawer';
 
 import { tool as textToUnicode } from './text-to-unicode';
 import { tool as safelinkDecoder } from './safelink-decoder';
+import { tool as sensitiveDataMasker } from './sensitive-data-masker';
 import { tool as xmlToJson } from './xml-to-json';
 import { tool as jsonToXml } from './json-to-xml';
 import { tool as regexTester } from './regex-tester';
@@ -28,6 +29,7 @@ import { tool as tomlToYaml } from './toml-to-yaml';
 import { tool as tomlToJson } from './toml-to-json';
 import { tool as jsonToCsv } from './json-to-csv';
 import { tool as cameraRecorder } from './camera-recorder';
+import { tool as barcodeGeneratorReader } from './barcode-generator-reader';
 import { tool as listConverter } from './list-converter';
 import { tool as phoneParserAndFormatter } from './phone-parser-and-formatter';
 import { tool as jsonDiff } from './json-diff';
@@ -36,6 +38,7 @@ import { tool as httpStatusCodes } from './http-status-codes';
 import { tool as yamlToJson } from './yaml-to-json-converter';
 import { tool as jsonToYaml } from './json-to-yaml-converter';
 import { tool as ipv6UlaGenerator } from './ipv6-ula-generator';
+import { tool as ipv6Calculator } from './ipv6-calculator';
 import { tool as ipv4AddressConverter } from './ipv4-address-converter';
 import { tool as benchmarkBuilder } from './benchmark-builder';
 import { tool as userAgentParser } from './user-agent-parser';
@@ -55,6 +58,7 @@ import { tool as chronometer } from './chronometer';
 import { tool as colorConverter } from './color-converter';
 import { tool as crontabGenerator } from './crontab-generator';
 import { tool as dateTimeConverter } from './date-time-converter';
+import { tool as timezoneDurationCalculator } from './timezone-duration-calculator';
 import { tool as deviceInformation } from './device-information';
 import { tool as cypher } from './encryption';
 import { tool as etaCalculator } from './eta-calculator';
@@ -83,6 +87,7 @@ import { tool as temperatureConverter } from './temperature-converter';
 import { tool as textStatistics } from './text-statistics';
 import { tool as tokenGenerator } from './token-generator';
 import { tool as nanoidGenerator } from './nanoid-generator';
+import { tool as mockDataGenerator } from './mock-data-generator';
 import type { ToolCategory } from './tools.types';
 import { tool as urlEncoder } from './url-encoder';
 import { tool as urlParser } from './url-parser';
@@ -140,11 +145,12 @@ export const toolsByCategory: ToolCategory[] = [
       httpStatusCodes,
       jsonDiff,
       safelinkDecoder,
+      sensitiveDataMasker,
     ],
   },
   {
     name: 'Images and videos',
-    components: [qrCodeGenerator, wifiQrCodeGenerator, svgPlaceholderGenerator, cameraRecorder],
+    components: [qrCodeGenerator, wifiQrCodeGenerator, barcodeGeneratorReader, svgPlaceholderGenerator, cameraRecorder],
   },
   {
     name: 'Development',
@@ -168,7 +174,7 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Network',
-    components: [ipv4SubnetCalculator, ipv4AddressConverter, ipv4RangeExpander, macAddressLookup, macAddressGenerator, ipv6UlaGenerator],
+    components: [ipv4SubnetCalculator, ipv4AddressConverter, ipv4RangeExpander, ipv6Calculator, macAddressLookup, macAddressGenerator, ipv6UlaGenerator],
   },
   {
     name: 'Math',
@@ -176,11 +182,12 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Measurement',
-    components: [chronometer, temperatureConverter, benchmarkBuilder],
+    components: [chronometer, timezoneDurationCalculator, temperatureConverter, benchmarkBuilder],
   },
   {
     name: 'Text',
     components: [
+      mockDataGenerator,
       loremIpsumGenerator,
       textStatistics,
       emojiPicker,

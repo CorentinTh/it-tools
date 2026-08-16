@@ -4,7 +4,7 @@
     "version": 1
   },
   "globalLimits": {
-    "shell.withDocument.rawBytes": 910000,
+    "shell.withDocument.rawBytes": 915000,
     "shell.withDocument.gzipBytes": 280000,
     "workbox.fileCount": 10,
     "workbox.rawBytes": 1000000,
@@ -19,10 +19,20 @@
     "favicon-32x32.png"
   ],
   "workerAssetLimits": {
+    "assets/emoji-picker.worker-<hash>.js": {
+      "rawBytes": 410000,
+      "gzipBytes": 72000,
+      "rationale": "The measured 400,601 B raw / 68,523 B gzip demand-loaded search worker owns Fuse plus the complete Unicode and keyword catalogs. It is fetched only after a query and replaces the measured 166 ms synchronous full-catalog route search with 150 ms debounce, physical replacement, a three-second deadline, exact query/result bounds, and a 4x-CPU main-thread responsiveness gate."
+    },
     "assets/docker-converter.worker-<hash>.js": {
-      "rawBytes": 120000,
-      "gzipBytes": 38000,
-      "rationale": "The measured 108,813 B raw / 33,464 B gzip route-owned worker contains composerize-ts and strict structured-result transport. It replaces reactive parser/YAML/base64 work with 16 KiB live, 256 KiB input, 512 KiB output, message-count/size, four-second, cancellation, stale-result, and disposal bounds."
+      "rawBytes": 215000,
+      "gzipBytes": 66000,
+      "rationale": "The measured 206,522 B raw / 63,261 B gzip route-owned worker contains the existing composerize-ts path plus YAML parsing for the new reverse Compose-to-run direction. Both directions share strict 16 KiB live, 256 KiB input, 512 KiB output, message-count/size, four-second, cancellation, stale-result, and disposal bounds; the worker remains demand-loaded and below the 500 kB chunk gate."
+    },
+    "assets/cron-next-runs.worker-<hash>.js": {
+      "rawBytes": 11000,
+      "gzipBytes": 5000,
+      "rationale": "The measured 8,957 B raw / 3,837 B gzip route-owned worker computes at most 25 timezone-aware Unix, seconds, or Quartz runs within a five-year horizon, with an eight-second deadline and physical cancellation outside the main thread."
     },
     "assets/file-hash.worker-<hash>.js": {
       "rawBytes": 30000,
@@ -49,6 +59,21 @@
       "gzipBytes": 32000,
       "rationale": "The measured 89,752 B raw / 27,405 B gzip demand-loaded worker parses JSON5 once and converts to TOML or YAML under shared byte/output/time limits; both JSON-source routes reuse the artifact without entering the shell."
     },
+    "assets/json-to-csv.worker-<hash>.js": {
+      "rawBytes": 35000,
+      "gzipBytes": 11000,
+      "rationale": "The measured 30,443 B raw / 9,203 B gzip route-owned worker parses JSON5 once and performs incremental standard CSV generation under 64 KiB automatic, 1 MiB input, 2 MiB output, four-times amplification, eight-second, cancellation, stale-result, and disposal bounds."
+    },
+    "assets/list-converter.worker-<hash>.js": {
+      "rawBytes": 5000,
+      "gzipBytes": 2500,
+      "rationale": "The measured 4,097 B raw / 1,752 B gzip route-owned worker moves the measured large-list transform off the main thread and enforces bounded option strings, 64 KiB automatic, 1 MiB input, 2 MiB output, four-times amplification, timeout, replacement, and disposal contracts."
+    },
+    "assets/mock-data-generator.worker-<hash>.js": {
+      "rawBytes": 8000,
+      "gzipBytes": 4000,
+      "rationale": "The measured 7,058 B raw / 3,299 B gzip route-owned worker holds the versioned English mock dataset and deterministic generator under 5,000-record, 2 MiB output, eight-second, cancellation, and disposal bounds."
+    },
     "assets/markdown-to-html.worker-<hash>.js": {
       "rawBytes": 110000,
       "gzipBytes": 50000,
@@ -63,6 +88,11 @@
       "rawBytes": 220000,
       "gzipBytes": 60000,
       "rationale": "The measured 213,258 B raw / 56,829 B gzip route-owned worker contains sql-formatter and bounded dialect/options processing without running it reactively on the main thread."
+    },
+    "assets/sensitive-data-masker.worker-<hash>.js": {
+      "rawBytes": 7000,
+      "gzipBytes": 3000,
+      "rationale": "The measured 5,740 B raw / 2,499 B gzip route-owned worker sanitizes bounded text, JSON, and HAR documents with depth/node/input/output limits and a ten-second terminate-and-replace lifecycle; sensitive source content never enters persistence or transport."
     },
     "assets/text-statistics.worker-<hash>.js": {
       "rawBytes": 3000,
@@ -100,6 +130,11 @@
         "rawBytes": 150000,
         "gzipBytes": 50000,
         "rationale": "Bounded third catalog feature; this route-owned closure includes the incremental SHA-2 worker and must remain a small demand-loaded tool."
+      },
+      "src/tools/emoji-picker/emoji-picker.vue": {
+        "rawBytes": 700000,
+        "gzipBytes": 110000,
+        "rationale": "The measured additional closure is 680,300 B raw / 104,121 B gzip because the demand-loaded worker deliberately owns the complete compressible Unicode/keyword catalogs. Initial shell and initial emoji route rendering remain paged; the worker is fetched only after search and has a separate asset ceiling."
       },
       "src/tools/html-wysiwyg-editor/html-wysiwyg-editor.vue": {
         "rawBytes": 560000,

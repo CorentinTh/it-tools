@@ -2,7 +2,7 @@
 
 Date: 2026-07-18
 
-Status: **format decision and production acceptance complete; `<250 kB` product target remains open**.
+Status: **format decision and production acceptance complete; the privacy-safe exact-coverage payload is an accepted product exception**.
 
 ## Decision
 
@@ -19,6 +19,12 @@ of the entered address. The six-hex-digit prefix crosses only the browser's
 `postMessage` boundary; it is absent from HTTP URLs, storage, analytics, and
 logs. Repeated lookups reuse the same worker and make no input-dependent
 network request.
+
+The earlier `<250 kB` target cannot be met by the measured exact-coverage
+formats without disclosing an input-derived prefix in a request URL. The
+fixed-URL worker is therefore the accepted endpoint for this optimization;
+reopening it requires an explicit product decision to reduce coverage or
+change the privacy contract.
 
 ## Measured formats
 

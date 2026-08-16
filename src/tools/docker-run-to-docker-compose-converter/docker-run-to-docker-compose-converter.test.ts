@@ -22,7 +22,7 @@ describe('Docker run converter layout', () => {
     expect(wrapper.findAll('.c-tool-panel')).toHaveLength(2);
     expect(input.props('rows')).toBe('18');
     expect(input.props('autosize')).toBe(false);
-    expect(wrapper.text()).toContain('Docker compose output');
+    expect(wrapper.text()).toContain('Docker Compose output');
     expect(wrapper.find('[data-test-id="docker-converter-run"]').exists()).toBe(true);
     wrapper.unmount();
   });

@@ -42,6 +42,31 @@ const figletFontAssetDirectory = `assets/figlet-fonts-${figletVersion}`;
 const normalizedBaseUrl = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
 const figletFontPublicPath = `${normalizedBaseUrl}${figletFontAssetDirectory}`;
 const MAX_SHELL_PRECACHE_RAW_BYTES = 1_000_000;
+export const WORKER_OPTIMIZED_DEPENDENCIES = [
+  '@noble/hashes/blake3.js',
+  '@noble/hashes/legacy.js',
+  '@noble/hashes/sha2.js',
+  '@noble/hashes/sha3.js',
+  'ajv',
+  'ajv/dist/2019.js',
+  'ajv/dist/2020.js',
+  'bcryptjs',
+  'composerize-ts',
+  'crypto-js',
+  'fuse.js',
+  'iarna-toml-esm',
+  'json5',
+  'markdown-it',
+  'mathjs/number',
+  'prettier',
+  'prettier/plugins/html',
+  'randexp',
+  'sql-formatter',
+  'xml-formatter',
+  'xml-js',
+  'yaml',
+] as const;
+export const WORKER_UNOPTIMIZED_DEPENDENCIES = ['emojilib', 'unicode-emoji-json'] as const;
 const SHELL_STATIC_URLS = new Set([
   'index.html',
   'manifest.webmanifest',
@@ -395,6 +420,16 @@ export default defineConfig({
   define: {
     'import.meta.env.PACKAGE_VERSION': JSON.stringify(process.env.npm_package_version),
     'import.meta.env.FIGLET_FONT_PATH': JSON.stringify(figletFontPublicPath),
+  },
+  optimizeDeps: {
+    // Vite 4 does not crawl route-owned worker graphs during its initial scan.
+    // Without this list, the first visit to each worker family triggers a new
+    // optimization pass and a full-page reload that abandons the active task.
+    include: [...WORKER_OPTIMIZED_DEPENDENCIES],
+    // These packages expose JSON/module data that Vite cannot prebundle as an
+    // optimizeDeps entry. Excluding them keeps them native and prevents a
+    // later discovery pass from restarting the dev page.
+    exclude: [...WORKER_UNOPTIMIZED_DEPENDENCIES],
   },
   server: {
     headers: {

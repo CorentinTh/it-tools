@@ -90,15 +90,15 @@ message classification into a strict four-second worker with 16 KiB live,
 256 KiB hard input, 512 KiB YAML, and bounded-message limits; downloads use a
 Blob URL. Production Chromium fixtures cover SQL, XML Formatter, XML-to-JSON,
 Markdown, Text Statistics, JSON Diff, and Docker conversion with cold-route/
-result-ready timing, heartbeat, and `<50 ms` Long Task gates. SQL output
-publication at 400–700 KiB remains a measured textarea-rendering follow-up;
-the stable executable fixture is 128 KiB and the 1 MiB hard limit was not
-raised.
+result-ready timing, heartbeat, and `<50 ms` Long Task gates. SQL and the
+remaining large text transformers publish a 16 KiB preview while preserving
+the complete bounded result for Copy/download; SQL's executable fixture now
+covers 700 KiB without raising the 1 MiB hard limit.
 
 The current integrated checkpoint is zero-warning lint, dual typecheck,
-990/990 unit tests across 150 files, a 22,876-module production build, 228/228
-artifact checks, focused Vite-dev Hash Text plus earlier bounded-tool flows, and
-172/172 sequential production-preview Chromium flows. WYSIWYG's main
+1021/1021 unit tests across 160 files, a 22,876-module production build, 232/232
+artifact checks, source-dev worker flows, and all 176 production Chromium cases
+passing across isolated performance plus full functional matrices. WYSIWYG's main
 route chunk is 287,982 B raw / 86,389 B gzip and its demand-loaded worker is
 212,679 B / 70,280 B gzip; the accepted complete additional closure is
 551,423 B / 176,574 B gzip. The shell remains below its existing ceiling.
@@ -155,14 +155,12 @@ The latest completed cross-category slice delivered:
 - independent route/worker build budgets plus large-file, privacy, clipboard,
   lifecycle, and production Workbox evidence.
 
-The latest 2026-08-15 measured hardening slice ranks remaining synchronous
-paths instead of adding workers mechanically. Hash Text was highest at about
-706 ms for eight 1 MiB CryptoJS digests and now owns a strict bounded worker;
-its production fixture reports 0.0 ms longest observed Long Task with a live
-heartbeat. JSON-to-CSV's duplicated JSON5 parse ranked next at about 451 ms and
-is the next implementation target. JSON Minify and List Converter are the only
-other remaining `FormatTransformer` callers and must be measured before their
-transport is changed.
+The latest measured hardening slice moved JSON-to-CSV, JSON Minify, and List
+Converter into bounded workers after measurement, deleted the zero-caller
+`FormatTransformer`, degraded large result previews to 16 KiB while retaining
+complete Copy/download data, and moved Emoji Fuse search into its own bounded
+worker. The CodeMirror spike and privacy-safe exact-coverage OUI decision are
+closed documented exceptions rather than hidden open-ended migrations.
 
 The current dirty worktree contains a completed, fully gated UI-consistency,
 RSA, visual-state, QR/WYSIWYG, and JSON Diff slice. Roadmap rows marked
@@ -211,9 +209,12 @@ baselines live in `.ai/PROGRESS.md`, `.ai/PERFORMANCE.md`, and
   do not restore reactive node-forge generation.
 - Envelope-first stale filtering and worker-reported output-byte metadata trust
   are explicit transport follow-ups. They are not hidden correctness claims.
-- Text Diff payload, privacy-safe OUI payload, PWA update/rollback cleanup,
-  Emoji slower-device search, reverse-proxy/subpath acceptance, and the common
-  preference-storage denial boundary remain open as listed in `PROGRESS`.
+- Monaco's Text Diff payload and the privacy-safe exact-coverage OUI payload are
+  documented product exceptions after measured alternatives failed interaction
+  or privacy parity. Emoji slower-device worker search and dev stale-cache/
+  optimizer recovery now pass. PWA update-notification UX, reverse-proxy/subpath
+  acceptance, and the common preference-storage denial boundary remain open as
+  separate work in `PROGRESS`.
 
 ## Exact recovery procedure
 
@@ -280,11 +281,11 @@ unchecked or historical finding. The next autonomous slice should:
 2. preserve the accepted QR/Wi-Fi ordering, WYSIWYG worker, JSON Diff
    one-pass/progressive rendering, structured converters, and RSA lifecycle
    regressions;
-3. migrate the confirmed JSON-to-CSV duplicated JSON5 parse/output-amplification
-   path, then measure JSON Minify and List Converter before retiring their last
-   `FormatTransformer` calls;
-4. continue the next confirmed bounded P1 item or select the fourth catalog feature only
-   against the accepted UI/privacy/output/bundle contracts;
+3. preserve the completed JSON-to-CSV/JSON Minify/List Converter worker bounds,
+   SQL preview/full-download contract, and zero-`FormatTransformer` ratchet;
+4. begin the next Priority A catalog feature against the accepted UI/privacy/
+   output/bundle contracts; Faker-compatible mock data generation is recorded
+   in Text with deterministic seed and explicit locale/data-version requirements;
 5. update `.ai/UI_CONSISTENCY.md`, `.ai/TODO.md`, and `.ai/PROGRESS.md` as work
    starts and completes.
 

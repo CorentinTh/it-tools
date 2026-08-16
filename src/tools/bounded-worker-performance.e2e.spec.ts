@@ -25,6 +25,11 @@ async function collectFixtureGarbage(page: Page): Promise<void> {
   const session = await page.context().newCDPSession(page);
   await session.send('HeapProfiler.collectGarbage');
   await session.detach();
+  // Let fixture input/layout work paint before the observer starts. The
+  // measured window still includes every allocation and render caused by the
+  // explicit worker action, but not deferred work from preparing its input.
+  await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
+  await page.waitForTimeout(50);
 }
 
 async function startMainThreadProbe(page: Page): Promise<void> {
@@ -306,6 +311,7 @@ test.describe('Production bounded-worker responsiveness', () => {
     const taskStartedAt = Date.now();
     await page.getByTestId('json-to-csv-run').click();
     await expect(page.getByTestId('json-to-csv-status')).toContainText('completed', { timeout: 30_000 });
+    expect(await page.getByTestId('area-content').inputValue()).toHaveLength(16 * 1024);
     const resultReadyMs = Date.now() - taskStartedAt;
     const result = await stopMainThreadProbe(page);
     recordPerformance(testInfo, 'JSON to CSV', new TextEncoder().encode(source).byteLength, coldRouteMs, resultReadyMs, result);
@@ -328,6 +334,7 @@ test.describe('Production bounded-worker responsiveness', () => {
     const taskStartedAt = Date.now();
     await page.getByTestId('converter-run').click();
     await expect(page.getByTestId('converter-status')).toContainText('completed', { timeout: 30_000 });
+    expect(await page.getByTestId('area-content').inputValue()).toHaveLength(16 * 1024);
     const resultReadyMs = Date.now() - taskStartedAt;
     const result = await stopMainThreadProbe(page);
     recordPerformance(testInfo, 'JSON Minify', new TextEncoder().encode(source).byteLength, coldRouteMs, resultReadyMs, result);
@@ -350,6 +357,7 @@ test.describe('Production bounded-worker responsiveness', () => {
     const taskStartedAt = Date.now();
     await page.getByTestId('list-converter-run').click();
     await expect(page.getByTestId('list-converter-status')).toContainText('completed', { timeout: 30_000 });
+    expect(await page.getByTestId('area-content').inputValue()).toHaveLength(16 * 1024);
     const resultReadyMs = Date.now() - taskStartedAt;
     const result = await stopMainThreadProbe(page);
     recordPerformance(testInfo, 'List Converter', new TextEncoder().encode(source).byteLength, coldRouteMs, resultReadyMs, result);

@@ -111,9 +111,9 @@ means implementation exists but the full Definition of Done is not yet met.
 - [x] Resolve the current UnoCSS ordering warnings (3 at implementation start; the native `size` collision remains a separate item).
 - [x] Fix both nullable editor accesses reported by `pnpm typecheck`.
 - [x] Align `pnpm build` and `pnpm typecheck` on canonical application/test plus Vite-config checks so one cannot hide errors from the other.
-- [x] Make `pnpm lint`, `pnpm typecheck`, unit tests, Chromium E2E, and production build green; the current checkpoint is 990/990 unit across 150 files, current dev-runtime/production-PWA browser focus, and the 172/172 sequential Chromium all-route checkpoint.
+- [x] Make `pnpm lint`, `pnpm typecheck`, unit tests, Chromium E2E, and production build green; the current checkpoint is 1021/1021 unit across 160 files, source-dev/PWA browser focus, and all 176 Chromium cases passing across the isolated performance and full functional matrices.
 - [x] Add a frozen-lockfile install to every CI/release job.
-- [x] Add a Chromium route smoke test for all 89 tools that fails on page errors, chunk-load errors, unexpected console errors, and Monaco worker fallback warnings.
+- [x] Add a Chromium route smoke test for all registered tools (94 at the 2026-08-16 checkpoint) that fails on page errors, chunk-load errors, unexpected console errors, and Monaco worker fallback warnings.
 - [ ] Add Firefox and WebKit smoke coverage after the Chromium baseline is stable.
 
 ### 0.2 Reproducible toolchain
@@ -197,7 +197,7 @@ implementation time on unrelated base-image/transitive CVEs.
 - [x] Add a repeated SPA open/close forced-GC memory test; ten cycles retain +2.46 MiB with zero workers.
 - [x] Add a large-text interaction fixture: two 1 MiB models complete in the real Monaco worker with default-off storage and responsive UI actions.
 - [x] Meet the Text Diff heap budget in `.ai/PERFORMANCE.md`.
-- [ ] Meet the Text Diff route payload budget in `.ai/PERFORMANCE.md` (schema-v4 route plus owned worker: 646,976 B gzip; target: `<350 kB`). The measured Monaco/CodeMirror decision is complete; a worker-backed CodeMirror spike remains the migration gate.
+- [x] Close the Text Diff payload decision. The worker-backed CodeMirror spike meets the size/isolation target but loses focus, undo, and history when async diff results rebuild public `MergeView`; retain repaired Monaco as a documented parity-driven exception to the original `<350 kB` target.
 
 ### 2.2 Shared worker/task abstraction
 
@@ -278,7 +278,7 @@ implementation time on unrelated base-image/transitive CVEs.
 - [x] Verify a previously opened lazy tool reloads offline after clearing the HTTP cache; document, shell, Workbox client runtime, and lazy chunks are served by the service worker.
 - [ ] Add an optional explicit full-offline download flow if required.
 - [x] Provide an offline-unavailable state rather than a blank tool: hide the prior route, keep query/hash only in memory, verify origin reachability, and retry through a fresh query-free document so sticky failed imports recover without leaking tool content into access logs.
-- [x] Keep the mandatory precache below 1 MB raw; current artifact is 960,676 B raw / 327,958 B gzip across nine entries and both limits are executable CI/release gates.
+- [x] Keep the mandatory precache below 1 MB raw; current artifact is 961,155 B raw / 328,079 B gzip across nine entries and both limits are executable CI/release gates.
 - [x] Cover compression, immutable hashed-asset caching, and HTML/SW/manifest revalidation in the container smoke test.
 - [ ] Add browser acceptance for service-worker update/rollback and stale-cache cleanup.
 
@@ -371,12 +371,15 @@ Recommended first feature candidates:
 - [ ] SAML decoder and LDAP/FILETIME timestamp support with explicit verification/timezone semantics.
 - [ ] URL safety workspace with strict encoding, tracker removal, defang/refang, UTM, and text-fragment modes.
 - [ ] Developer text workspace with stacktrace formatting, smart replace, folder tree, Markdown TOC, and paste-as-Markdown.
-- [ ] Priority A / Text: Faker-compatible mock-data generator for bounded names, addresses, identifiers, dates, network values, and JSON/CSV records; include deterministic seeds, explicit locale/data versions, lazy route-local datasets, worker generation, hard record/output limits, and ephemeral-by-default templates/results.
-- [ ] QR/barcode decoding from local images.
+- [x] **DONE:** Priority A / Text Faker-compatible mock-data generator with deterministic seeds, disclosed `it-tools-en-v1` data, person/address/date/internet/identifier profiles, JSON/CSV, a route-owned worker, 5,000-record/2-MiB limits, ephemeral state, and copy/download actions.
+- [x] **DONE:** bounded local-image barcode generation/decoding: dependency-free Code 128/EAN-13/UPC-A SVG output plus capability-detected native `BarcodeDetector` reading with 20-MiB/25-megapixel/50-result limits and deterministic image-resource disposal.
 - [ ] Certificate/CSR inspection with no network dependency.
 - [ ] JSON repair and optional jq-like querying with strict resource limits.
-- [ ] Docker command conversion improvements and fixtures.
-- [ ] IPv6 expansion and network calculator correctness.
+- [x] **DONE:** Docker Compose ↔ Docker Run conversion in one bounded worker with quoting, environment, ports, volumes, entrypoint/command, unsupported-field guidance, and both-direction fixtures.
+- [x] **DONE:** IPv6 expansion, RFC 5952 compression, BigInt CIDR network/range/count, containment, and bounded subnet splitting.
+- [x] **DONE:** Sensitive Data Masker/HAR Sanitizer for local text/JSON/HAR with bounded worker traversal and secret header/key/query/body presets.
+- [x] **DONE:** Timezone + Date Duration Calculator with IANA zones and explicit DST gap/ambiguity behavior.
+- [x] **DONE:** Cron Next Runs with Unix/seconds/Quartz presets, IANA timezone evaluation, DST-safe instants, bounded results and explicit unsupported Quartz-special syntax.
 - [ ] Passphrase/Argon2/AES-GCM features only after the crypto dependency and worker foundation is complete.
 
 Features to defer unless the product boundary changes explicitly:
@@ -482,7 +485,8 @@ Implementation is approved and active on the local branch. Current ordering is:
 22. [x] Add production large-input/Long Task evidence for SQL, XML, Markdown, Text Statistics, and JSON Diff; migrate JSON-to-TOML/YAML, YAML-to-JSON/TOML, and TOML-to-JSON/YAML to three parse-once source-family workers plus the shared vertical bounded-transformer lifecycle.
 23. [x] Audit and migrate the remaining reactive XML-to-JSON/JSON-to-XML pair; migrate Docker Run-to-Compose to the same explicit-action, output-bound, cancellation, stale-result, and disposal policy with production responsiveness evidence.
 24. [x] Measure and rank the remaining attacker-controlled main-thread transforms by input cost and output amplification; move Hash Text's eight reactive CryptoJS digests into one bounded route-owned worker with exact protocols, lifecycle/privacy coverage, and production Long Task evidence.
-25. [ ] Repair the three remaining `FormatTransformer` routes. Start with the measured JSON-to-CSV duplicated JSON5 parse (parse once off-main-thread with bounded CSV amplification), then benchmark JSON Minify and List Converter and retire `FormatTransformer` when it has zero callers.
+25. [x] Repair the three remaining `FormatTransformer` routes. JSON-to-CSV now parses JSON5 once in a bounded worker and limits CSV amplification; JSON Minify and List Converter were measured and migrated to bounded workers; the zero-caller `FormatTransformer` was removed.
+26. [x] Close the remaining performance-first implementation slice: degrade large SQL display while retaining full copy/download, run and reject the worker-backed CodeMirror migration spike on interaction parity, move Emoji search into a bounded worker, accept the privacy-safe exact OUI payload as a documented product exception, preserve the nine-entry PWA contract, explicitly prebundle worker dependencies in Vite dev, and measure the initial-shell Lodash removal.
 
 Dependency/base-image vulnerability remediation and scan policy remain in the
 separately tracked deferred security slice.

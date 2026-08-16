@@ -173,3 +173,11 @@ Before claiming that a current-source UI change is visible:
    change.
 8. Keep Playwright deterministic regression coverage separate from the manual
    Orca review.
+
+## 6. Runtime fallback record
+
+On 2026-08-16 Orca 1.4.177 again reported `ready` after `orca open --json`, then
+the next embedded-browser command failed with `runtime_unavailable`. This is
+the third reproduction of the same runtime exit. Per this runbook, the current
+source was verified through the strict 8091 Vite-dev server and deterministic
+Playwright coverage; no preview artifact or alternate browser surface was used.
