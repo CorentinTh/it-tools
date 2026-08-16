@@ -2,10 +2,17 @@
 
 ## Current baseline
 
-The generated registry contains 133 lazy routes. The last accepted pre-icon
-regression build measured a 678,871-byte raw / 185,180-byte gzip shell and a
-53-file, 931,633-byte raw / 305,466-byte gzip Workbox payload. Restoring unique
-tool icons must be remeasured; the executable ceiling remains authoritative.
+The generated registry contains 133 lazy routes. The accepted normal build on
+2026-08-17 measured a 687,421-byte raw / 186,417-byte gzip main entry, a
+716,733-byte raw / 192,710-byte gzip shell including the document, and a
+53-file, 970,294-byte raw / 313,252-byte gzip Workbox payload. All 426 build
+budget checks passed with unique tool icons preserved.
+
+The accepted standalone artifact contains 126 tools in one HTML file. It is
+7,587,222 bytes (7.24 MiB); the JSON upload envelope `{ "html": ... }` is
+7,589,273 bytes. Both are below the strict 10 MiB limit. The build fails if
+either measurement exceeds that limit and always removes its intermediate
+directory to prevent stale-build reuse.
 
 Production large-result fixtures for SQL, JSON-to-CSV, JSON Minify, and List
 Converter publish bounded previews while Copy/Blob download retains the full
@@ -25,6 +32,8 @@ fresh measurements with:
 pnpm build
 pnpm build:stats
 pnpm build:stats:check
+pnpm build:standalone
+pnpm test:standalone
 ```
 
 Never update a budget merely to make a failure pass. Record the before/after

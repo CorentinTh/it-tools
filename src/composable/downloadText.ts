@@ -1,3 +1,5 @@
+import { exportBytesToStandaloneHost } from '@/utils/standalone-host';
+
 export interface TextDownloadPlatform {
   createAnchor: () => Pick<HTMLAnchorElement, 'click' | 'download' | 'href'>
   createObjectUrl: (blob: Blob) => string
@@ -26,6 +28,14 @@ export function downloadTextFile({
   const normalizedFilename = filename.trim();
   if (!normalizedFilename || /[\\/]/.test(normalizedFilename)) {
     throw new Error('Download filename must be a non-empty file name without path separators.');
+  }
+
+  if (platform === browserTextDownloadPlatform && exportBytesToStandaloneHost({
+    bytes: new TextEncoder().encode(content),
+    mime: 'text/plain;charset=utf-8',
+    name: normalizedFilename,
+  })) {
+    return;
   }
 
   const objectUrl = platform.createObjectUrl(new Blob([content], { type: 'text/plain;charset=utf-8' }));

@@ -44,5 +44,15 @@ Docker/nginx. CI uses the frozen lockfile, builds the static artifact, enforces
 budgets, runs browser smoke, audits production dependencies, scans the runtime
 image, and checks root plus reverse-proxy/subpath delivery.
 
+`pnpm build:standalone` is a separate delivery mode. It generates a 126-tool
+registry, emits an AMD route graph, embeds JavaScript, CSS, worker programs,
+icons, and figlet fonts, then writes only `dist-standalone/it-tools.html`.
+The HTML bootstraps from an inline gzip payload and uses a main-thread worker
+compatibility layer because the target DataLens CSP sets `worker-src 'none'`.
+Standalone uses hash routing, skips PWA registration, keeps menu collapse state
+in memory, and sends downloads and external links to the parent through
+`EXPORT` and `OPEN_URL` messages. None of these choices affect the normal
+`dist/` build.
+
 The local fork is authoritative. Upstream material is research only and must
 not be merged or adapted without an explicit approved record in `TODO.md`.

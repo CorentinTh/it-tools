@@ -16,10 +16,12 @@ import { i18nPlugin } from './plugins/i18n.plugin';
 import { naive } from './plugins/naive.plugin';
 import { clearLegacySensitiveContentStorage } from './utils/sensitive-content-storage';
 import { migrateApplicationStorage } from './utils/storage-migrations';
+import { installStandaloneHostBridge } from './utils/standalone-host';
 
 clearLegacySensitiveContentStorage();
 migrateApplicationStorage();
 installOfflineRouteRecovery(router);
+installStandaloneHostBridge();
 
 if (!import.meta.env.STANDALONE) {
   void configurePwaRuntime({

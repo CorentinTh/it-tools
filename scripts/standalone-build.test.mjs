@@ -13,7 +13,11 @@ import {
 
 test('generates a standalone-only registry without the reviewed heavyweight routes', async () => {
   assert.deepEqual(STANDALONE_EXCLUDED_TOOL_DIRECTORIES, [
+    'camera-recorder',
+    'dns-over-https-query',
+    'local-encrypted-otp-vault',
     'mermaid-diagram',
+    'offline-geoip-inspector',
     'pdf-signature-checker',
     'text-diff',
   ]);
@@ -21,7 +25,7 @@ test('generates a standalone-only registry without the reviewed heavyweight rout
   const { count, output } = await generateStandaloneToolRegistry({
     outputPath: resolve(root, 'index.ts'),
   });
-  assert.equal(count, 130);
+  assert.equal(count, 126);
   for (const directory of STANDALONE_EXCLUDED_TOOL_DIRECTORIES) {
     assert.doesNotMatch(output, new RegExp(`\\./${directory}/`));
   }
@@ -49,11 +53,14 @@ test('embeds entry, CSS, workers, public icons, and figlet fonts into one HTML a
   assert.match(html, /<style>body\{color:red\}<\/style>/);
   assert.match(html, /data:image\/png;base64,/);
   assert.match(html, /DecompressionStream/);
+  assert.match(html, /\(0,eval\)\(source\)/);
+  assert.doesNotMatch(html, /import\(moduleUrl\)/);
   assert.doesNotMatch(html, /font source/);
   const payload = html.match(/const encoded='([^']+)'/)?.[1];
   assert.ok(payload);
   const source = gunzipSync(Buffer.from(payload, 'base64')).toString('utf8');
   assert.match(source, /data:text\/javascript;base64,/);
+  assert.match(source, /class InlineWorker/);
   assert.match(source, /font source/);
   assert.doesNotMatch(html, /(?:src|href)=["'](?:\.\/)?(?:index|style|worker)/);
 });

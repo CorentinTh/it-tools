@@ -1,8 +1,8 @@
 import { type MaybeRef, get } from '@vueuse/core';
 import { defineStore } from 'pinia';
 import type { Ref } from 'vue';
-import type { Tool, ToolCategory, ToolWithCategory } from './tools.types';
 import { toolsByCategory as sourceToolsByCategory } from '@tool-registry';
+import type { Tool, ToolCategory, ToolWithCategory } from './tools.types';
 import { useResilientStorage } from '@/composable/use-resilient-storage';
 
 export const useToolStore = defineStore('tools', () => {

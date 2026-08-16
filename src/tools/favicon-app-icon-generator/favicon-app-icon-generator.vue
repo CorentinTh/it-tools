@@ -6,6 +6,7 @@ import CSwitch from '@/ui/c-switch/c-switch.vue';
 import { useCopy } from '@/composable/copy';
 import { downloadTextFile } from '@/composable/downloadText';
 import { formatBytes } from '@/utils/convert';
+import { downloadBlobFile } from '@/utils/standalone-host';
 
 interface PreviewIcon extends GeneratedAppIcon {
   url: string
@@ -89,26 +90,13 @@ async function generate() {
   }
 }
 
-function downloadBlob(blob: Blob, filename: string) {
-  const url = URL.createObjectURL(blob);
-  try {
-    const anchor = document.createElement('a');
-    anchor.href = url;
-    anchor.download = filename;
-    anchor.click();
-  }
-  finally {
-    URL.revokeObjectURL(url);
-  }
-}
-
 async function downloadBundle() {
   if (icons.value.length === 0) {
     return;
   }
   try {
     status.value = 'Building a local TAR bundle…';
-    downloadBlob(await createAppIconTar(icons.value, manifest.value), 'app-icons.tar');
+    await downloadBlobFile(await createAppIconTar(icons.value, manifest.value), 'app-icons.tar');
     status.value = 'Downloaded app-icons.tar.';
   }
   catch (caught) {
@@ -182,7 +170,7 @@ onBeforeUnmount(() => {
             <img :src="icon.url" :alt="`${icon.size} pixel generated icon`" max-h-24>
           </div>
           <code text-xs>{{ icon.name }}</code>
-          <c-button size="small" @click="downloadBlob(icon.blob, icon.name)">
+          <c-button size="small" @click="downloadBlobFile(icon.blob, icon.name)">
             Download
           </c-button>
         </div>

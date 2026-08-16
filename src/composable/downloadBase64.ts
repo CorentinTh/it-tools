@@ -1,5 +1,6 @@
 import { extension as getExtensionFromMimeType, lookup as lookupMimeTypeFromExtension } from 'mime-types';
 import type { Ref } from 'vue';
+import { exportBytesToStandaloneHost } from '@/utils/standalone-host';
 
 export {
   getMimeTypeFromBase64,
@@ -81,6 +82,13 @@ function downloadFromBase64({ sourceValue, filename, extension, fileMimeType }:
   let cleanFileName = filename ?? `file.${cleanExtension}`;
   if (cleanRequestedExtension && !cleanFileName.endsWith(`.${cleanRequestedExtension}`)) {
     cleanFileName = `${cleanFileName}.${cleanExtension}`;
+  }
+
+  const encodedPayload = base64String.slice(base64String.indexOf(',') + 1);
+  const decoded = atob(encodedPayload);
+  const bytes = Uint8Array.from(decoded, character => character.charCodeAt(0));
+  if (exportBytesToStandaloneHost({ bytes, mime: targetMimeType, name: cleanFileName })) {
+    return;
   }
 
   const a = document.createElement('a');

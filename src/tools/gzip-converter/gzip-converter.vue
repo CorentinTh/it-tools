@@ -2,6 +2,7 @@
 import { GZIP_MAX_FILE_BYTES, blobToUtf8, decodeGzipBase64, encodeGzipBase64, gzipStreamsAvailable, textToBoundedBlob, transformGzip } from './gzip-converter.service';
 import { formatBytes } from '@/utils/convert';
 import { useCopy } from '@/composable/copy';
+import { downloadBlobFile } from '@/utils/standalone-host';
 
 type Mode = 'compress-text' | 'decompress-base64' | 'compress-file' | 'decompress-file';
 const mode = ref<Mode>('compress-text');
@@ -90,20 +91,11 @@ async function run() {
   }
 }
 
-function download() {
+async function download() {
   if (!resultBlob.value || !resultName.value) {
     return;
   }
-  const url = URL.createObjectURL(resultBlob.value);
-  try {
-    const anchor = document.createElement('a');
-    anchor.href = url;
-    anchor.download = resultName.value;
-    anchor.click();
-  }
-  finally {
-    URL.revokeObjectURL(url);
-  }
+  await downloadBlobFile(resultBlob.value, resultName.value);
 }
 
 watch(mode, () => {

@@ -5,6 +5,7 @@ import { AesEnvelopeWorkerClient } from './aes-gcm-envelope.worker-client';
 import { useCopy } from '@/composable/copy';
 import { downloadTextFile } from '@/composable/downloadText';
 import { formatBytes } from '@/utils/convert';
+import { downloadBlobFile } from '@/utils/standalone-host';
 
 type Mode = AesEnvelopeTask['operation'];
 const mode = ref<Mode>('encrypt-text');
@@ -156,14 +157,11 @@ function cancel() {
   status.value = 'Task cancelled.';
 }
 
-function downloadFile() {
-  if (!resultUrl.value || !resultFileName.value) {
+async function downloadFile() {
+  if (!resultBlob.value || !resultFileName.value) {
     return;
   }
-  const anchor = document.createElement('a');
-  anchor.href = resultUrl.value;
-  anchor.download = resultFileName.value;
-  anchor.click();
+  await downloadBlobFile(resultBlob.value, resultFileName.value);
 }
 
 function clearSensitiveData() {

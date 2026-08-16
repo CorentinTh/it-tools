@@ -62,7 +62,7 @@
     "test:container": "sh scripts/container-smoke.sh it-tools:smoke",
     "test:container:subpath": "sh scripts/subpath-container-smoke.sh it-tools:subpath-smoke",
     "test:security": "pnpm audit --prod --audit-level high",
-    "test:standalone": "node --test scripts/standalone-build.test.mjs && pnpm build:standalone && STANDALONE_TEST=true NO_WEB_SERVER=true playwright test src/standalone.e2e.spec.ts --project=chromium --reporter=line",
+    "test:standalone": "node --test scripts/standalone-build.test.mjs && pnpm build:standalone && STANDALONE_TEST=true NO_WEB_SERVER=true playwright test src/standalone.e2e.spec.ts --project=chromium --project=firefox --project=webkit --reporter=line --workers=1",
     "test:e2e": "playwright test",
     "test:e2e:dev": "BASE_URL=http://127.0.0.1:8091 NO_WEB_SERVER=true playwright test",
     "test:dev-runtime": "node scripts/dev-runtime-smoke.mjs",

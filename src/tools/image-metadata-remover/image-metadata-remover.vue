@@ -3,6 +3,7 @@ import type { ImageMetadataResult } from './image-metadata-remover.worker.protoc
 import { IMAGE_METADATA_MAX_FILE_BYTES, IMAGE_METADATA_MAX_FILE_LABEL } from './image-metadata-remover.worker.protocol';
 import { ImageMetadataWorkerClient } from './image-metadata-remover.worker-client';
 import { formatBytes } from '@/utils/convert';
+import { downloadBlobFile } from '@/utils/standalone-host';
 
 const selectedFile = shallowRef<File>();
 const result = shallowRef<ImageMetadataResult>();
@@ -88,14 +89,11 @@ function cancel() {
   status.value = 'Removal cancelled.';
 }
 
-function downloadResult() {
-  if (!resultUrl.value) {
+async function downloadResult() {
+  if (!resultBlob.value) {
     return;
   }
-  const anchor = document.createElement('a');
-  anchor.href = resultUrl.value;
-  anchor.download = downloadName.value;
-  anchor.click();
+  await downloadBlobFile(resultBlob.value, downloadName.value);
 }
 
 onBeforeUnmount(() => {

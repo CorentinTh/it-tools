@@ -7,6 +7,12 @@ import { resilientLocalStorage } from '@/utils/resilient-storage';
 export const useStyleStore = defineStore('style', {
   state: () => {
     const isDarkTheme = useDark({ storage: resilientLocalStorage });
+    if (import.meta.env.STANDALONE) {
+      const requestedTheme = new URLSearchParams(window.location.search).get('theme');
+      if (requestedTheme === 'dark' || requestedTheme === 'light') {
+        isDarkTheme.value = requestedTheme === 'dark';
+      }
+    }
     const toggleDark = useToggle(isDarkTheme);
     const isSmallScreen = useMediaQuery('(max-width: 700px)');
     const desktopMenuCollapsed = useResilientStorage('isMenuCollapsed', false) as Ref<boolean>;

@@ -14,6 +14,13 @@ The definitive inventory is generated from `src/tools/*/index.ts`; do not keep
 a second hand-maintained list here. Every tool keeps its own icon and lazy route
 component.
 
+The optional single-file build contains 126 tools. Its reviewed exclusions are
+Camera Recorder, DNS over HTTPS Query, Local Encrypted OTP Vault, Mermaid
+Diagram, Offline GeoIP Inspector, PDF Signature Checker, and Text Diff. The
+reasons are sandbox permissions/network policy, unavailable opaque-origin
+storage, or the strict 10 MiB artifact budget. These tools remain present in
+the normal 133-tool application.
+
 No new feature backlog is approved. Server-dependent products, account/cloud
 features, network scanning, remote GeoIP/API services, heavy OCR/PDF workspaces,
 and broad converter/obfuscation expansion are outside the product boundary.

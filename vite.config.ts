@@ -582,6 +582,11 @@ export default defineConfig({
           cssCodeSplit: false,
           minify: false,
           outDir: 'dist-standalone/.intermediate',
+          rollupOptions: {
+            output: {
+              format: 'amd',
+            },
+          },
         }
       : {}),
   },
