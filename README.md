@@ -35,6 +35,7 @@ docker run -d --name it-tools --restart unless-stopped -p 8080:80 ghcr.io/corent
 - [Cloudron](https://www.cloudron.io/store/tech.ittools.cloudron.html)
 - [Tipi](https://www.runtipi.io/docs/apps-available)
 - [Unraid](https://unraid.net/community/apps?q=it-tools)
+- [RepoCloud](https://repocloud.io/details/IT%20Tools/)
 
 ## Contribute
 
