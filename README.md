@@ -36,6 +36,10 @@ docker run -d --name it-tools --restart unless-stopped -p 8080:80 ghcr.io/corent
 - [Tipi](https://www.runtipi.io/docs/apps-available)
 - [Unraid](https://unraid.net/community/apps?q=it-tools)
 
+**One-click deploy:**
+
+[![Deploy on RepoCloud](https://d16t0pc4846x52.cloudfront.net/deploylobe.svg)](https://repocloud.io/details/IT%20Tools/)
+
 ## Contribute
 
 ### Recommended IDE Setup
