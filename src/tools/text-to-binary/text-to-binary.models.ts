@@ -1,22 +1,20 @@
-export { convertTextToAsciiBinary, convertAsciiBinaryToText };
+export { convertTextToUtf8Binary, convertUtf8BinaryToText };
 
-function convertTextToAsciiBinary(text: string, { separator = ' ' }: { separator?: string } = {}): string {
-  return text
-    .split('')
-    .map(char => char.charCodeAt(0).toString(2).padStart(8, '0'))
+function convertTextToUtf8Binary(text: string, { separator = ' ' }: { separator?: string } = {}): string {
+  return Array.from(new TextEncoder().encode(text))
+    .map(byte => byte.toString(2).padStart(8, '0'))
     .join(separator);
 }
 
-function convertAsciiBinaryToText(binary: string): string {
+function convertUtf8BinaryToText(binary: string): string {
   const cleanBinary = binary.replace(/[^01]/g, '');
 
   if (cleanBinary.length % 8) {
     throw new Error('Invalid binary string');
   }
 
-  return cleanBinary
-    .split(/(\d{8})/)
-    .filter(Boolean)
-    .map(binary => String.fromCharCode(Number.parseInt(binary, 2)))
-    .join('');
+  const octets = cleanBinary.match(/\d{8}/g) ?? [];
+  const bytes = Uint8Array.from(octets, octet => Number.parseInt(octet, 2));
+
+  return new TextDecoder('utf-8', { fatal: true }).decode(bytes);
 }
