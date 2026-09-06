@@ -6,7 +6,7 @@ export const tool = defineTool({
   name: translate('tools.text-to-binary.title'),
   path: '/text-to-binary',
   description: translate('tools.text-to-binary.description'),
-  keywords: ['text', 'to', 'binary', 'converter', 'encode', 'decode', 'ascii'],
+  keywords: ['text', 'to', 'binary', 'converter', 'encode', 'decode', 'utf-8'],
   component: () => import('./text-to-binary.vue'),
   icon: Binary,
   createdAt: new Date('2023-10-15'),
