@@ -45,6 +45,10 @@ const siderPosition = computed(() => (isSmallScreen.value ? 'absolute' : 'static
   }
 }
 
+::v-deep(.n-layout-sider .n-scrollbar-rail) {
+  z-index: 2;
+}
+
 .n-layout {
   height: 100vh;
 }
