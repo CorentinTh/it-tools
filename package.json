@@ -148,6 +148,6 @@
     "vite-svg-loader": "^4.0.0",
     "vitest": "^0.34.0",
     "workbox-window": "^7.0.0",
-    "zx": "^7.2.1"
+    "zx": "^8.0.0"
   }
 }
