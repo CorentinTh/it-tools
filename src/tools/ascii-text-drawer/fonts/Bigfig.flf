@@ -1,0 +1,334 @@
+flf2a$ 3 3 5 -1 23
+Expansion font for bigfig program by Glenn Chappell 4/93 -- based on Mini
+26 Apr 1995
+Permission is hereby given to modify this font, as long as the
+modifier's name is placed on a comment line.
+
+This font is intended to be used with the "bigfig" program. It can
+be used as an ordinary figlet font, but it won't look very nice.
+"bigfig" is available by anonymous ftp from "ftp.nicoh.com". Look in
+the directory "pub/figlet/util".
+
+Or, if you'd rather not use the bigfig program, just type
+figlet -w27 -f myfavoritefont | figlet -f bigfig
+
+Explanation of first line:
+flf2 - "magic number" for file identification
+a    - should always be `a', for now
+$    - the "hardblank" -- prints as a blank, but can't be smushed
+3    - height of a character
+3    - height of a character, not including descenders
+5    - max line length (excluding comment lines) + a fudge factor
+-1   - default smushmode for this font
+23   - number of comment lines
+
+ $ @
+ $ @
+ $ @@
+ | @
+ | @
+ o @@
+| |@
+ $ @
+ $ @@
+| |@
+===@
+| |@@
+  _@
+(| @
+_|)@@
+O /@
+ / @
+/ O@@
+() @
+/\/@
+\/\@@
+ / @
+ $ @
+ $ @@
+  /@
+ ( @
+  \@@
+\  @
+ ) @
+/  @@
+\|/@
+-*-@
+/|\@@
+ | @
+-+-@
+ | @@
+   @
+   @
+ / @@
+   @
+---@
+ $ @@
+   @
+   @
+ o @@
+  /@
+ / @
+/  @@
+ _ @
+/ \@
+\_/@@
+   @
+/| @
+ | @@
+__ @
+ _)@
+/__@@
+__ @
+__)@
+__)@@
+   @
+|_|@
+  |@@
+ __@
+|_ @
+__)@@
+ _ @
+|_ @
+|_)@@
+ __@
+  /@
+ / @@
+ _ @
+(_)@
+(_)@@
+ _ @
+(_|@
+ _|@@
+ o @
+ $ @
+ o @@
+ o @
+ $ @
+ / @@
+  /@
+ < @
+  \@@
+___@
+___@
+ $ @@
+\  @
+ > @
+/  @@
+ _ @
+  )@
+ o @@
+ _ @
+/a)@
+\__@@
+ _ @
+|_|@
+| |@@
+ _ @
+|_)@
+|_)@@
+ __@
+/  @
+\__@@
+ _ @
+| \@
+|_/@@
+ __@
+|_ @
+|__@@
+ __@
+|_ @
+|  @@
+ __@
+/__@
+\_|@@
+   @
+|_|@
+| |@@
+___@
+ | @
+_|_@@
+   @
+  |@
+\_|@@
+   @
+|/ @
+|\ @@
+   @
+|  @
+|__@@
+   @
+|V|@
+| |@@
+   @
+|\|@
+| |@@
+ _ @
+/ \@
+\_/@@
+ _ @
+|_)@
+|  @@
+ _ @
+/ \@
+\_X@@
+ _ @
+|_)@
+| \@@
+ __@
+(_ @
+__)@@
+___@
+ | @
+ | @@
+   @
+| |@
+|_|@@
+\ /@
+ V @
+   @@
+   @
+| |@
+|^|@@
+\ /@
+ X @
+/ \@@
+\ /@
+ Y @
+ | @@
+___@
+ _/@
+/__@@
++--@
+|  @
+|__@@
+\  @
+ \ @
+  \@@
+--+@
+  |@
+__|@@
+ _ @
+/ \@
+ $ @@
+ $ @
+ $ @
+___@@
+ \ @
+ $ @
+ $ @@
+   @
+ _ @
+(_|@@
+   @
+|_ @
+|_)@@
+   @
+ _ @
+(_ @@
+   @
+ _|@
+(_|@@
+   @
+ _ @
+(/_@@
+  _@
+_|_@
+ | @@
+ _ @
+(_|@
+__|@@
+   @
+|_ @
+| |@@
+   @
+ o @
+ | @@
+ o @
+ | @
+_| @@
+   @
+ | @
+ |<@@
+   @
+ | @
+ | @@
+   @
+__ @
+|||@@
+   @
+__ @
+| |@@
+   @
+ _ @
+(_)@@
+ _ @
+|_)@
+|  @@
+ _ @
+(_|@
+  |@@
+   @
+ __@
+ | @@
+   @
+ _ @
+_> @@
+   @
+_|_@
+ |_@@
+   @
+   @
+|_|@@
+   @
+   @
+\_/@@
+   @
+   @
+\^/@@
+   @
+   @
+>< @@
+   @
+ \/@
+ / @@
+   @
+ _ @
+ /_@@
+  /@
+-( @
+  \@@
+ | @
+ | @
+ | @@
+\  @
+ )-@
+/  @@
+/\/@
+ $ @
+ $ @@
+o_o@
+|_|@
+| |@@
+o_o@
+/ \@
+\_/@@
+o o@
+| |@
+|_|@@
+   @
+o_o@
+(_|@@
+   @
+o_o@
+(_)@@
+   @
+o o@
+|_|@@
+ _ @
+| )@
+| )@@
+0
+XXX@
+XXX@
+XXX@@
