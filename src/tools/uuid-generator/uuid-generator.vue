@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { v1 as generateUuidV1, v3 as generateUuidV3, v4 as generateUuidV4, v5 as generateUuidV5, NIL as nilUuid } from 'uuid';
+import { generateUuidV6, generateUuidV7 } from './uuid-extended';
 import { useCopy } from '@/composable/copy';
 import { computedRefreshable } from '@/composable/computedRefreshable';
 import { withDefaultOnError } from '@/utils/defaults';
 
-const versions = ['NIL', 'v1', 'v3', 'v4', 'v5'] as const;
+const versions = ['NIL', 'v1', 'v3', 'v4', 'v5', 'v6', 'v7'] as const;
 
 const version = useStorage<typeof versions[number]>('uuid-generator:version', 'v4');
 const count = useStorage('uuid-generator:quantity', 1);
@@ -34,6 +35,8 @@ const generators = {
   v3: () => generateUuidV3(v35Args.value.name, v35Args.value.namespace),
   v4: () => generateUuidV4(),
   v5: () => generateUuidV5(v35Args.value.name, v35Args.value.namespace),
+  v6: () => generateUuidV6(),
+  v7: () => generateUuidV7(),
 };
 
 const [uuids, refreshUUIDs] = computedRefreshable(() => withDefaultOnError(() =>
@@ -94,14 +97,12 @@ const { copy } = useCopy({ source: uuids, text: 'UUIDs copied to the clipboard' 
     <c-input-text
       style="text-align: center; font-family: monospace"
       :value="uuids"
-      multiline
+
       placeholder="Your uuids"
-      autosize
+
       rows="1"
-      readonly
-      raw-text
-      monospace
-      my-3
+
+      autosize readonly raw-text multiline monospace my-3
       class="uuid-display"
     />
 
