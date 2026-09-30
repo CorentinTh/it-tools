@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { createToken } from './token-generator.service';
 import { useCopy } from '@/composable/copy';
-import { useQueryParam } from '@/composable/queryParams';
+import { useQueryParamOrStorage } from '@/composable/queryParams';
 import { computedRefreshable } from '@/composable/computedRefreshable';
 
-const length = useQueryParam({ name: 'length', defaultValue: 64 });
-const withUppercase = useQueryParam({ name: 'uppercase', defaultValue: true });
-const withLowercase = useQueryParam({ name: 'lowercase', defaultValue: true });
-const withNumbers = useQueryParam({ name: 'numbers', defaultValue: true });
-const withSymbols = useQueryParam({ name: 'symbols', defaultValue: false });
+// Settings persist in localStorage while staying URL-shareable (#806).
+const length = useQueryParamOrStorage({ name: 'length', storageName: 'token-generator:length', defaultValue: 64 });
+const withUppercase = useQueryParamOrStorage({ name: 'uppercase', storageName: 'token-generator:uppercase', defaultValue: true });
+const withLowercase = useQueryParamOrStorage({ name: 'lowercase', storageName: 'token-generator:lowercase', defaultValue: true });
+const withNumbers = useQueryParamOrStorage({ name: 'numbers', storageName: 'token-generator:numbers', defaultValue: true });
+const withSymbols = useQueryParamOrStorage({ name: 'symbols', storageName: 'token-generator:symbols', defaultValue: false });
 const { t } = useI18n();
 
 const [token, refreshToken] = computedRefreshable(() =>
@@ -57,11 +58,11 @@ const { copy } = useCopy({ source: token, text: t('tools.token-generator.copied'
 
       <c-input-text
         v-model:value="token"
-        multiline
+
         :placeholder="t('tools.token-generator.tokenPlaceholder')"
-        readonly
+
         rows="3"
-        autosize
+        readonly autosize multiline
         class="token-display"
       />
 
