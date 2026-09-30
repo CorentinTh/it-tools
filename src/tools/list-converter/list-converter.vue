@@ -5,6 +5,11 @@ import type { ConvertOptions } from './list-converter.types';
 
 const sortOrderOptions = [
   {
+    label: 'No sort',
+    value: 'none',
+    disabled: false,
+  },
+  {
     label: 'Sort ascending',
     value: 'asc',
     disabled: false,
@@ -28,6 +33,14 @@ const conversionConfig = useStorage<ConvertOptions>('list-converter:conversionCo
   reverseList: false,
   sortList: null,
   separator: ', ',
+});
+
+// The select works on string values while the model stores null for "no
+// sort"; 'none' is a UI-only alias so a previous sort can be reset.
+const sortListSelection = computed({
+  get: () => conversionConfig.value.sortList ?? 'none',
+  set: (value: string) =>
+    (conversionConfig.value.sortList = value === 'none' ? null : (value as 'asc' | 'desc')),
 });
 
 function transformer(value: string) {
@@ -62,7 +75,7 @@ function transformer(value: string) {
           </div>
           <div flex-1>
             <c-select
-              v-model:value="conversionConfig.sortList"
+              v-model:value="sortListSelection"
               label="Sort list"
               label-position="left"
               label-width="120px"
