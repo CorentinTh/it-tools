@@ -6,7 +6,7 @@ on:
       - main
 jobs:
   test:
-    timeout-minutes: 10
+    timeout-minutes: 20
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -23,10 +23,10 @@ jobs:
 
       - name: Get Playwright version
         id: playwright-version
-        run: echo "PLAYWRIGHT_VERSION=$(jq -r .dependencies.playwright package.json)" >> "$GITHUB_OUTPUT"
+        run: echo "PLAYWRIGHT_VERSION=$(jq -r '.devDependencies["@playwright/test"]' package.json)" >> "$GITHUB_OUTPUT"
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --ignore-scripts
 
       - name: Build app
         run: pnpm build
@@ -41,7 +41,22 @@ jobs:
             ${{ runner.os }}-playwright-
 
       - name: Install Playwright Browsers
-        run: pnpm exec playwright install --with-deps
+        # browser CDN downloads occasionally hang forever; bound the step so
+        # the retry loop takes over, and bound each connection attempt
+        # --with-deps runs apt-get for the full browser dependency set; the
+        # ubuntu archive can be very slow at peak, so allow up to 15 minutes
+        timeout-minutes: 15
+        env:
+          PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT: 60000
+        run: |
+          for attempt in 1 2 3; do
+            if ./node_modules/.bin/playwright install --with-deps; then
+              exit 0
+            fi
+            echo "playwright install attempt $attempt failed, retrying in 15s"
+            sleep 15
+          done
+          exit 1
 
       - name: Run Playwright tests
         run: pnpm run test:e2e --shard=${{ matrix.shard }}
