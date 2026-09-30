@@ -58,6 +58,12 @@ toolCard:
 search:
   label: Search
 tools:
+  ascii-text-drawer:
+    title: ASCII art drawer
+    description: Convert text to ASCII art with 289 locally bundled FIGlet fonts.
+  barcode-generator:
+    title: Barcode generator
+    description: Generate Code 128 barcodes (auto B/C subsets) as scalable SVG.
   categories:
     favorite-tools: 'Your favorite tools'
     crypto: Crypto
@@ -71,6 +77,15 @@ tools:
     text: Text
     data: Data
 
+  email-normalizer:
+    title: Email normalizer
+    description: Normalize email addresses by removing dots, plus-addressing and casing.
+  json-to-xml:
+    title: JSON to XML
+    description: Convert JSON data to XML format.
+  markdown-to-html:
+    title: Markdown to HTML
+    description: Convert Markdown text to an HTML fragment.
   password-strength-analyser:
     title: Password strength analyser
     description: Discover the strength of your password with this client-side-only password strength analyser and crack time estimation tool.
@@ -79,6 +94,18 @@ tools:
     title: Chronometer
     description: Monitor the duration of a thing. Basically a chronometer with simple chronometer features.
 
+  regex-memo:
+    title: Regex cheat sheet
+    description: A cheat sheet of common regular expressions (email, URL, dates...).
+  regex-tester:
+    title: Regex tester
+    description: Test regular expressions in real time with highlighted matches and capture groups.
+  resistor-calculator:
+    title: Resistor color code calculator
+    description: Decode 4-band and 5-band resistor color codes into resistance and tolerance.
+  safelink-decoder:
+    title: Outlook Safelink decoder
+    description: Decode Outlook SafeLink links to recover the original URL.
   token-generator:
     title: Token generator
     description: Generate random string with the chars you want, uppercase or lowercase letters, numbers and/or symbols.
@@ -157,6 +184,9 @@ tools:
     title: Random port generator
     description: Generate random port numbers outside of the range of "known" ports (0-1023).
 
+  xml-to-json:
+    title: XML to JSON
+    description: Convert XML data to JSON format.
   yaml-prettify:
     title: YAML prettify and format
     description: Prettify your YAML string into a friendly, human-readable format.
