@@ -59,6 +59,7 @@ import { tool as deviceInformation } from './device-information';
 import { tool as cypher } from './encryption';
 import { tool as etaCalculator } from './eta-calculator';
 import { tool as percentageCalculator } from './percentage-calculator';
+import { tool as x509CertificateDecoder } from './x509-certificate-decoder';
 import { tool as gitMemo } from './git-memo';
 import { tool as hashText } from './hash-text';
 import { tool as hmacGenerator } from './hmac-generator';
@@ -164,7 +165,7 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Network',
-    components: [ipv4SubnetCalculator, ipv4AddressConverter, ipv4RangeExpander, macAddressLookup, macAddressGenerator, ipv6UlaGenerator],
+    components: [ipv4SubnetCalculator, ipv4AddressConverter, ipv4RangeExpander, macAddressLookup, macAddressGenerator, ipv6UlaGenerator, x509CertificateDecoder],
   },
   {
     name: 'Math',
