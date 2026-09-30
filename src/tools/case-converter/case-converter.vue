@@ -15,7 +15,10 @@ import {
 import InputCopyable from '../../components/InputCopyable.vue';
 
 const baseConfig = {
-  stripRegexp: /[^A-Za-zÀ-ÖØ-öø-ÿ]+/gi,
+  // Keep digits: stripping them made the change-case based formats silently
+  // drop every number from the input. With the case-insensitive flag A-Z
+  // already covers a-z, so listing both would duplicate the class (S5869).
+  stripRegexp: /[^A-ZÀ-ÖØ-öø-ÿ0-9]+/gi,
 };
 
 const input = ref('lorem ipsum dolor sit amet');
