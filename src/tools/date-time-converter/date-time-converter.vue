@@ -73,7 +73,7 @@ const formats: DateFormat[] = [
   {
     name: 'Timestamp',
     fromDate: date => String(getTime(date)),
-    toDate: ms => parseJSON(+ms),
+    toDate: ms => parseJSON(Math.floor(+ms / (10 ** Math.max(0, String(ms).length - 13)))),
     formatMatcher: date => isTimestamp(date),
   },
   {
