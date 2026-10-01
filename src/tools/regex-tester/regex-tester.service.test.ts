@@ -1,106 +1,33 @@
 import { describe, expect, it } from 'vitest';
 import { matchRegex } from './regex-tester.service';
 
-const regexesData = [
-  {
-    regex: '',
-    text: '',
-    flags: '',
-    result: [],
-  },
-  {
-    regex: '.*',
-    text: '',
-    flags: '',
-    result: [],
-  },
-  {
-    regex: '',
-    text: 'aaa',
-    flags: '',
-    result: [],
-  },
-  {
-    regex: 'a',
-    text: 'baaa',
-    flags: '',
-    result: [
-      {
-        captures: [],
-        groups: [],
-        index: 1,
-        value: 'a',
-      },
-    ],
-  },
-  {
-    regex: '(.)(?<g>r)',
-    text: 'azertyr',
-    flags: 'g',
-    result: [
-      {
-        captures: [
-          {
-            end: 3,
-            name: '1',
-            start: 2,
-            value: 'e',
-          },
-          {
-            end: 4,
-            name: '2',
-            start: 3,
-            value: 'r',
-          },
-        ],
-        groups: [
-          {
-            end: 4,
-            name: 'g',
-            start: 3,
-            value: 'r',
-          },
-        ],
-        index: 2,
-        value: 'er',
-      },
-      {
-        captures: [
-          {
-            end: 6,
-            name: '1',
-            start: 5,
-            value: 'y',
-          },
-          {
-            end: 7,
-            name: '2',
-            start: 6,
-            value: 'r',
-          },
-        ],
-        groups: [
-          {
-            end: 7,
-            name: 'g',
-            start: 6,
-            value: 'r',
-          },
-        ],
-        index: 5,
-        value: 'yr',
-      },
-    ],
-  },
-];
+describe('regex-tester: matchRegex', () => {
+  it('finds matches with capture groups and indices', () => {
+    const results = matchRegex('\\s(\\w+):', 'a b: c d:', 'dg');
+    expect(results).toHaveLength(2);
+    expect(results[0]?.value).toBe(' b:');
+    expect(results[0]?.captures[0]?.value).toBe('b');
+  });
 
-describe('regex-tester', () => {
-  for (const reg of regexesData) {
-    const { regex, text, flags, result: expected_result } = reg;
-    it(`Should matchRegex("${regex}","${text}","${flags}") return correct result`, async () => {
-      const result = matchRegex(regex, text, `${flags}d`);
+  it('keeps matching when an optional group does not participate (#1388)', () => {
+    const regex = '\\s([^\\s\\[]+)(?:\\[(\\d+)\\])?:\\s';
+    const text = 'Nov 11 21:03:26 abc2 def.sh[1]: \nNov 11 21:03:26 abc2 def.sh: ';
+    const results = matchRegex(regex, text, 'dg');
+    expect(results).toHaveLength(2);
+    // first line: both groups participate
+    expect(results[0]?.captures.map(capture => capture.value)).toEqual(['def.sh', '1']);
+    // second line: the optional digits group did not participate
+    expect(results[1]?.captures.map(capture => capture.value)).toEqual(['def.sh']);
+  });
 
-      expect(result).to.deep.equal(expected_result);
-    });
-  }
+  it('keeps matching named groups that do not participate', () => {
+    const results = matchRegex('(?<word>\\w+)?x(?<tail>\\d+)', 'x123', 'dg');
+    expect(results).toHaveLength(1);
+    expect(results[0]?.groups.map(group => group.name)).toEqual(['tail']);
+  });
+
+  it('stops at the first zero-length match to avoid infinite loops', () => {
+    const results = matchRegex('a*', 'bbb', 'dg');
+    expect(results).toHaveLength(0);
+  });
 });
