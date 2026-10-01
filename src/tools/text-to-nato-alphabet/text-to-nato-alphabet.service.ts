@@ -1,19 +1,27 @@
-import { natoAlphabet } from './text-to-nato-alphabet.constants';
+import { type SpellingAlphabet, getSpellingAlphabet } from './text-to-nato-alphabet.constants';
 
-export { textToNatoAlphabet };
+export { textToSpellingAlphabet };
 
 function getLetterPositionInAlphabet({ letter }: { letter: string }) {
   return letter.toLowerCase().charCodeAt(0) - 'a'.charCodeAt(0);
 }
 
-function textToNatoAlphabet({ text }: { text: string }) {
-  return text
-    .split('')
+function textToSpellingAlphabet({ text, alphabetKey, spellDigits = true }: { text: string; alphabetKey: string; spellDigits?: boolean }) {
+  const alphabet: SpellingAlphabet = getSpellingAlphabet(alphabetKey);
+
+  return [...text]
     .map((character) => {
       const alphabetIndex = getLetterPositionInAlphabet({ letter: character });
-      const natoWord = natoAlphabet[alphabetIndex];
+      const word = alphabet.letters[alphabetIndex];
+      if (word) {
+        return word;
+      }
 
-      return natoWord ?? character;
+      if (spellDigits && /\d/.test(character) && alphabet.digits) {
+        return alphabet.digits[Number(character)];
+      }
+
+      return character;
     })
     .join(' ');
 }

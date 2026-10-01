@@ -1,4 +1,17 @@
-export const natoAlphabet = [
+import alphabetsData from './spelling-alphabets.json';
+
+export interface SpellingAlphabet {
+  key: string
+  label: string
+  /** 26 entries, A..Z. */
+  letters: string[]
+  /** Optional digit words; missing digits pass through. */
+  digits?: string[]
+}
+
+export { natoAlphabet, spellingAlphabets, getSpellingAlphabet };
+
+const natoAlphabet = [
   'Alpha',
   'Bravo',
   'Charlie',
@@ -26,3 +39,13 @@ export const natoAlphabet = [
   'Yankee',
   'Zulu',
 ];
+
+const spellingAlphabets = alphabetsData as SpellingAlphabet[];
+
+function getSpellingAlphabet(key: string): SpellingAlphabet {
+  const alphabet = spellingAlphabets.find(candidate => candidate.key === key);
+  if (!alphabet) {
+    throw new Error(`Unknown spelling alphabet: ${key}`);
+  }
+  return alphabet;
+}
