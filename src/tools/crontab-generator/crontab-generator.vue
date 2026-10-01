@@ -3,8 +3,25 @@ import cronstrue from 'cronstrue';
 import { isValidCron } from 'cron-validator';
 import { useStyleStore } from '@/stores/style.store';
 
+/** Tolerate paste artifacts (extra spaces, a step syntax split across spaces
+ *  like 'star /10', '1, 2, 3' lists): return the first form that
+ *  cron-validator accepts, else the cleaned-up original for the error message. */
+function normalizeCron(v: string) {
+  const options = { allowBlankDay: true, alias: true, seconds: true } as const;
+  const compact = v.trim().replace(/\s+/g, ' ').replace(/,\s+/g, ',');
+  if (isValidCron(compact, options)) {
+    return compact;
+  }
+  // '* /10 * * * *' -> '*/10 * * * *'
+  const merged = compact.replace(/\s+(\/\S+)/g, '$1');
+  if (isValidCron(merged, options)) {
+    return merged;
+  }
+  return compact;
+}
+
 function isCronValid(v: string) {
-  return isValidCron(v, { allowBlankDay: true, alias: true, seconds: true });
+  return isValidCron(normalizeCron(v), { allowBlankDay: true, alias: true, seconds: true });
 }
 
 const styleStore = useStyleStore();
@@ -94,7 +111,7 @@ const helpers = [
 
 const cronString = computed(() => {
   if (isCronValid(cron.value)) {
-    return cronstrue.toString(cron.value, cronstrueConfig);
+    return cronstrue.toString(normalizeCron(cron.value), cronstrueConfig);
   }
   return ' ';
 });
