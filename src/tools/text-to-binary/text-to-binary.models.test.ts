@@ -29,4 +29,17 @@ describe('text-to-binary', () => {
       expect(() => convertAsciiBinaryToText('1')).toThrow('Invalid binary string');
     });
   });
+
+  describe('non-ASCII input (#1082)', () => {
+    it('encodes non-ASCII characters as their UTF-8 bytes', () => {
+      expect(convertTextToAsciiBinary('中')).toBe('11100100 10111000 10101101');
+      expect(convertTextToAsciiBinary('é')).toBe('11000011 10101001');
+    });
+
+    it('decodes multi-byte UTF-8 sequences back to text', () => {
+      expect(convertAsciiBinaryToText('11100100 10111000 10101101')).toBe('中');
+      expect(convertAsciiBinaryToText('11000011 10101001')).toBe('é');
+      expect(convertAsciiBinaryToText(convertTextToAsciiBinary('hello 🌍'))).toBe('hello 🌍');
+    });
+  });
 });
