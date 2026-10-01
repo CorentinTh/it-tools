@@ -5,7 +5,16 @@ import { isNotThrowing } from '@/utils/boolean';
 import { withDefaultOnError } from '@/utils/defaults';
 
 const encodeInput = ref('Hello world :)');
-const encodeOutput = computed(() => withDefaultOnError(() => encodeURIComponent(encodeInput.value), ''));
+// RFC 3986 also reserves !, ', (, ) and * which encodeURIComponent leaves as-is (#1445)
+const encodeStrict = useStorage('url-encoder:strict', false);
+
+function strictEncode(value: string) {
+  return encodeURIComponent(value).replace(/[!'()*]/g, ch => `%${ch.charCodeAt(0).toString(16).toUpperCase()}`);
+}
+
+const encodeOutput = computed(() =>
+  withDefaultOnError(() => (encodeStrict.value ? strictEncode(encodeInput.value) : encodeURIComponent(encodeInput.value)), ''),
+);
 
 const encodedValidation = useValidation({
   source: encodeInput,
