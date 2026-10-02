@@ -30,6 +30,17 @@ docker run -d --name it-tools --restart unless-stopped -p 8080:80 corentinth/it-
 docker run -d --name it-tools --restart unless-stopped -p 8080:80 ghcr.io/corentinth/it-tools:latest
 ```
 
+**Serving from a sub-path** (e.g. `https://example.com/tools/`):
+
+Build the image with the `BASE_URL` build argument (must start and end with `/`):
+
+```sh
+docker build --build-arg BASE_URL=/tools/ -t it-tools-subpath .
+docker run -d --name it-tools --restart unless-stopped -p 8080:80 it-tools-subpath
+```
+
+The base path is baked at build time (it configures Vite, the router and the PWA manifest), so it cannot be changed with a runtime environment variable on the published images.
+
 **Other solutions:**
 
 - [Cloudron](https://www.cloudron.io/store/tech.ittools.cloudron.html)

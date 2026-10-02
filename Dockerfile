@@ -5,8 +5,15 @@ ENV NPM_CONFIG_LOGLEVEL warn
 ENV CI true
 WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
-RUN npm install -g pnpm && pnpm i --frozen-lockfile
+# Pin pnpm to the version from packageManager and skip lifecycle scripts
+# (none are needed for the web build; Sonar S6505/S8543).
+RUN npm install --global --ignore-scripts pnpm@9.11.0 && pnpm install --frozen-lockfile --ignore-scripts
 COPY . .
+
+# Base path the app is served from (must start and end with '/'), e.g. '/tools/'
+# for https://example.com/tools/. See README self-hosting section.
+ARG BASE_URL=/
+ENV BASE_URL=${BASE_URL}
 RUN pnpm build
 
 # production stage
