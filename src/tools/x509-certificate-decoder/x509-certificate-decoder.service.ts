@@ -35,6 +35,8 @@ const DN_OIDS: Record<string, string> = {
   '0.9.2342.19200300.100.1.1': 'UserID (UID)',
 };
 
+// Dotted strings below are ASN.1 object identifiers in dotted-arc notation,
+// not network addresses (S1313 pattern-matches some of them as IPv4).
 const SIGNATURE_ALGORITHM_OIDS: Record<string, string> = {
   '1.2.840.113549.1.1.4': 'md5WithRSAEncryption',
   '1.2.840.113549.1.1.5': 'sha1WithRSAEncryption',
