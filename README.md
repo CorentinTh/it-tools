@@ -30,6 +30,10 @@ docker run -d --name it-tools --restart unless-stopped -p 8080:80 corentinth/it-
 docker run -d --name it-tools --restart unless-stopped -p 8080:80 ghcr.io/corentinth/it-tools:latest
 ```
 
+**About data persistence:**
+
+All tool settings and favorites are stored in your **browser's localStorage**, not in the container. Restarting, recreating or upgrading the container never loses them - no volume mount is needed. If favorites disappear, the cause is on the browser side (cleared site data, private mode, or a different origin such as a changed port).
+
 **Other solutions:**
 
 - [Cloudron](https://www.cloudron.io/store/tech.ittools.cloudron.html)
