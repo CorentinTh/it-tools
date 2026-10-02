@@ -83,15 +83,21 @@ const units = reactive<
         },
       });
 
+const belowAbsoluteZero = ref(false);
+
 function update(key: TemperatureScale) {
   const { ref: value, toKelvin } = units[key];
 
-  const kelvins = toKelvin(value) ?? 0;
+  const raw = toKelvin(value) ?? 0;
+  belowAbsoluteZero.value = raw < 0;
+  // temperatures below absolute zero (0 K) are unphysical
+  const kelvins = Math.max(raw, 0);
 
   _.chain(units)
     .omit(key)
     .forEach(({ fromKelvin }, index) => {
-      units[index].ref = Math.floor((fromKelvin(kelvins) ?? 0) * 100) / 100;
+      // round to 2 decimals: floor() biased negative values down by 0.01 (#1486)
+      units[index].ref = Math.round((fromKelvin(kelvins) ?? 0) * 100) / 100;
     })
     .value();
 }
@@ -101,6 +107,9 @@ update('kelvin');
 
 <template>
   <div>
+    <c-alert v-if="belowAbsoluteZero" type="warning" mb-3>
+      That temperature is below absolute zero (0 K), which is physically impossible — values are clamped.
+    </c-alert>
     <n-input-group v-for="[key, { title, unit }] in Object.entries(units)" :key="key" mb-3 w-full>
       <n-input-group-label style="width: 100px">
         {{ title }}
