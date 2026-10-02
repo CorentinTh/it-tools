@@ -21,6 +21,7 @@ import { tool as ibanValidatorAndParser } from './iban-validator-and-parser';
 import { tool as stringObfuscator } from './string-obfuscator';
 import { tool as textDiff } from './text-diff';
 import { tool as emojiPicker } from './emoji-picker';
+import { tool as folderTreeGenerator } from './folder-tree-generator';
 import { tool as passwordStrengthAnalyser } from './password-strength-analyser';
 import { tool as yamlToToml } from './yaml-to-toml';
 import { tool as jsonToToml } from './json-to-toml';
@@ -179,7 +180,7 @@ export const toolsByCategory: ToolCategory[] = [
     components: [
       loremIpsumGenerator,
       textStatistics,
-      emojiPicker,
+      emojiPicker, folderTreeGenerator,
       stringObfuscator,
       textDiff,
       numeronymGenerator,
