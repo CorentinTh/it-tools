@@ -6,7 +6,7 @@ on:
       - main
 jobs:
   test:
-    timeout-minutes: 10
+    timeout-minutes: 90
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -23,10 +23,10 @@ jobs:
 
       - name: Get Playwright version
         id: playwright-version
-        run: echo "PLAYWRIGHT_VERSION=$(jq -r .dependencies.playwright package.json)" >> "$GITHUB_OUTPUT"
+        run: echo "PLAYWRIGHT_VERSION=$(jq -r '.devDependencies["@playwright/test"]' package.json)" >> "$GITHUB_OUTPUT"
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --ignore-scripts
 
       - name: Build app
         run: pnpm build
@@ -40,8 +40,41 @@ jobs:
             ${{ runner.os }}-playwright-${{ steps.playwright-version.outputs.PLAYWRIGHT_VERSION }}-
             ${{ runner.os }}-playwright-
 
-      - name: Install Playwright Browsers
-        run: pnpm exec playwright install --with-deps
+      # --with-deps bundles an apt-get run for the full browser dependency
+      # set; the ubuntu archive is intermittently very slow, so it gets its
+      # own step with a generous timeout, retries, and an apt-cache entry so
+      # a one-time successful run seeds later ones
+      - name: Restore apt cache for Playwright dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/apt-playwright-cache
+          key: ${{ runner.os }}-apt-${{ steps.playwright-version.outputs.PLAYWRIGHT_VERSION }}
+
+      - name: Install Playwright system dependencies
+        timeout-minutes: 45
+        run: |
+          for attempt in 1 2 3 4 5; do
+            if timeout 1500 ./node_modules/.bin/playwright install-deps; then
+              exit 0
+            fi
+            echo "playwright install-deps attempt $attempt failed (attempt timeout 25 min), retrying in 20s"
+            sleep 20
+          done
+          exit 1
+
+      - name: Install Playwright browsers
+        timeout-minutes: 10
+        env:
+          PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT: 60000
+        run: |
+          for attempt in 1 2 3; do
+            if ./node_modules/.bin/playwright install; then
+              exit 0
+            fi
+            echo "playwright install attempt $attempt failed, retrying in 15s"
+            sleep 15
+          done
+          exit 1
 
       - name: Run Playwright tests
         run: pnpm run test:e2e --shard=${{ matrix.shard }}
