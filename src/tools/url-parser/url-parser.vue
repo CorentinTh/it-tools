@@ -21,6 +21,7 @@ const properties: { title: string; key: keyof URL }[] = [
   { title: 'Port', key: 'port' },
   { title: 'Path', key: 'pathname' },
   { title: 'Params', key: 'search' },
+  { title: 'Fragment', key: 'hash' },
 ];
 </script>
 
@@ -49,8 +50,8 @@ const properties: { title: string; key: keyof URL }[] = [
     />
 
     <div
-      v-for="[k, v] in Object.entries(Object.fromEntries(urlParsed?.searchParams.entries() ?? []))"
-      :key="k"
+      v-for="[k, v] in urlParsed?.searchParams.entries() ?? []"
+      :key="`${k}=${v}`"
       mb-2
       w-full
       flex
