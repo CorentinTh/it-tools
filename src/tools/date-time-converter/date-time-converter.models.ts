@@ -35,7 +35,9 @@ const isISO9075DateString = createRegexMatcher(ISO9075_REGEX);
 const isRFC3339DateString = createRegexMatcher(RFC3339_REGEX);
 const isRFC7231DateString = createRegexMatcher(RFC7231_REGEX);
 const isUnixTimestamp = createRegexMatcher(/^[0-9]{1,10}$/);
-const isTimestamp = createRegexMatcher(/^[0-9]{1,13}$/);
+// up to microseconds: 16 digits (13 ms + 3 us); the extra digits are
+// truncated downstream when parsing (#783)
+const isTimestamp = createRegexMatcher(/^[0-9]{1,16}$/);
 const isMongoObjectId = createRegexMatcher(/^[0-9a-fA-F]{24}$/);
 
 const isExcelFormat = createRegexMatcher(EXCEL_FORMAT_REGEX);

@@ -177,4 +177,9 @@ describe('date-time-converter models', () => {
       expect(excelFormatToDate('-1000')).toEqual(new Date('1897-04-04T00:00:00.000Z'));
     });
   });
+  test('accepts microsecond timestamps (16 digits) (#783)', () => {
+    expect(isTimestamp('1701227351995845')).toBe(true);
+    expect(isTimestamp('1701227351995')).toBe(true);
+    expect(isTimestamp('17012273519958456789')).toBe(false);
+  });
 });
