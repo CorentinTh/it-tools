@@ -30,7 +30,9 @@ export function matchRegex(regex: string, text: string, flags: string) {
     const indices = match.indices;
     const captures: Array<GroupCapture> = [];
     Object.entries(match).forEach(([captureName, captureValue]) => {
-      if (captureName !== '0' && captureName.match(/\d+/)) {
+      // optional groups may not participate: both the captured value and its
+      // indices entry are then undefined, and must be skipped (#1388)
+      if (captureName !== '0' && /^\d+$/.test(captureName) && captureValue !== undefined && indices[Number(captureName)]) {
         captures.push({
           name: captureName,
           value: captureValue,
@@ -41,6 +43,9 @@ export function matchRegex(regex: string, text: string, flags: string) {
     });
     const groups: Array<GroupCapture> = [];
     Object.entries(match.groups || {}).forEach(([groupName, groupValue]) => {
+      if (groupValue === undefined || !indices.groups[groupName]) {
+        return;
+      }
       groups.push({
         name: groupName,
         value: groupValue,
