@@ -1,0 +1,1242 @@
+[
+ {
+  "input": "9417:7dc:8770:f0b6:d75d:f7ee:5c1f:aa9f/64",
+  "expanded": "9417:07dc:8770:f0b6:d75d:f7ee:5c1f:aa9f",
+  "compressed": "9417:7dc:8770:f0b6::",
+  "network": "9417:7dc:8770:f0b6::/64",
+  "first": "9417:7dc:8770:f0b6::",
+  "last": "9417:7dc:8770:f0b6:ffff:ffff:ffff:ffff",
+  "total": "18446744073709551616",
+  "netmask": "ffff:ffff:ffff:ffff::"
+ },
+ {
+  "input": "d2ed:d018:cbf9:952f:e408:726b:6455:1fdf/128",
+  "expanded": "d2ed:d018:cbf9:952f:e408:726b:6455:1fdf",
+  "compressed": "d2ed:d018:cbf9:952f:e408:726b:6455:1fdf",
+  "network": "d2ed:d018:cbf9:952f:e408:726b:6455:1fdf/128",
+  "first": "d2ed:d018:cbf9:952f:e408:726b:6455:1fdf",
+  "last": "d2ed:d018:cbf9:952f:e408:726b:6455:1fdf",
+  "total": "1",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+ },
+ {
+  "input": "bbb0:d683:c286:c20e:302f:ae0:2661:ddfe/127",
+  "expanded": "bbb0:d683:c286:c20e:302f:0ae0:2661:ddfe",
+  "compressed": "bbb0:d683:c286:c20e:302f:ae0:2661:ddfe",
+  "network": "bbb0:d683:c286:c20e:302f:ae0:2661:ddfe/127",
+  "first": "bbb0:d683:c286:c20e:302f:ae0:2661:ddfe",
+  "last": "bbb0:d683:c286:c20e:302f:ae0:2661:ddff",
+  "total": "2",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffe"
+ },
+ {
+  "input": "2fcb:5832:e466:e705:98a:4df0:22e3:f570/128",
+  "expanded": "2fcb:5832:e466:e705:098a:4df0:22e3:f570",
+  "compressed": "2fcb:5832:e466:e705:98a:4df0:22e3:f570",
+  "network": "2fcb:5832:e466:e705:98a:4df0:22e3:f570/128",
+  "first": "2fcb:5832:e466:e705:98a:4df0:22e3:f570",
+  "last": "2fcb:5832:e466:e705:98a:4df0:22e3:f570",
+  "total": "1",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+ },
+ {
+  "input": "9091:3a1f:3106:4483:572d:2d7e:36bf:7fec/96",
+  "expanded": "9091:3a1f:3106:4483:572d:2d7e:36bf:7fec",
+  "compressed": "9091:3a1f:3106:4483:572d:2d7e::",
+  "network": "9091:3a1f:3106:4483:572d:2d7e::/96",
+  "first": "9091:3a1f:3106:4483:572d:2d7e::",
+  "last": "9091:3a1f:3106:4483:572d:2d7e:ffff:ffff",
+  "total": "4294967296",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff::"
+ },
+ {
+  "input": "ce0b:d65b:6406:d27d:d0c9:5e2c:411b:ff12/48",
+  "expanded": "ce0b:d65b:6406:d27d:d0c9:5e2c:411b:ff12",
+  "compressed": "ce0b:d65b:6406::",
+  "network": "ce0b:d65b:6406::/48",
+  "first": "ce0b:d65b:6406::",
+  "last": "ce0b:d65b:6406:ffff:ffff:ffff:ffff:ffff",
+  "total": "1208925819614629174706176",
+  "netmask": "ffff:ffff:ffff::"
+ },
+ {
+  "input": "3b22:e7de:dc4b:cc23:697:b18c:5006:e38/32",
+  "expanded": "3b22:e7de:dc4b:cc23:0697:b18c:5006:0e38",
+  "compressed": "3b22:e7de::",
+  "network": "3b22:e7de::/32",
+  "first": "3b22:e7de::",
+  "last": "3b22:e7de:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "79228162514264337593543950336",
+  "netmask": "ffff:ffff::"
+ },
+ {
+  "input": "7ad9:3428:4356:2f72:bf9b:4438:3f98:f1bb/120",
+  "expanded": "7ad9:3428:4356:2f72:bf9b:4438:3f98:f1bb",
+  "compressed": "7ad9:3428:4356:2f72:bf9b:4438:3f98:f100",
+  "network": "7ad9:3428:4356:2f72:bf9b:4438:3f98:f100/120",
+  "first": "7ad9:3428:4356:2f72:bf9b:4438:3f98:f100",
+  "last": "7ad9:3428:4356:2f72:bf9b:4438:3f98:f1ff",
+  "total": "256",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ff00"
+ },
+ {
+  "input": "b213:3a63:80f9:1ecf:6362:8ff7:5c31:d441/16",
+  "expanded": "b213:3a63:80f9:1ecf:6362:8ff7:5c31:d441",
+  "compressed": "b213::",
+  "network": "b213::/16",
+  "first": "b213::",
+  "last": "b213:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "5192296858534827628530496329220096",
+  "netmask": "ffff::"
+ },
+ {
+  "input": "9780:2716:63b2:5992:7314:4f18:e87:7968/105",
+  "expanded": "9780:2716:63b2:5992:7314:4f18:0e87:7968",
+  "compressed": "9780:2716:63b2:5992:7314:4f18:e80:0",
+  "network": "9780:2716:63b2:5992:7314:4f18:e80:0/105",
+  "first": "9780:2716:63b2:5992:7314:4f18:e80:0",
+  "last": "9780:2716:63b2:5992:7314:4f18:eff:ffff",
+  "total": "8388608",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ff80:0"
+ },
+ {
+  "input": "ad4f:23b9:d437:df60:1b91:e6b0:1f49:1554/112",
+  "expanded": "ad4f:23b9:d437:df60:1b91:e6b0:1f49:1554",
+  "compressed": "ad4f:23b9:d437:df60:1b91:e6b0:1f49:0",
+  "network": "ad4f:23b9:d437:df60:1b91:e6b0:1f49:0/112",
+  "first": "ad4f:23b9:d437:df60:1b91:e6b0:1f49:0",
+  "last": "ad4f:23b9:d437:df60:1b91:e6b0:1f49:ffff",
+  "total": "65536",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:0"
+ },
+ {
+  "input": "6c5f:e71b:2d0a:56c:ffc8:3d74:61ad:5f4b/112",
+  "expanded": "6c5f:e71b:2d0a:056c:ffc8:3d74:61ad:5f4b",
+  "compressed": "6c5f:e71b:2d0a:56c:ffc8:3d74:61ad:0",
+  "network": "6c5f:e71b:2d0a:56c:ffc8:3d74:61ad:0/112",
+  "first": "6c5f:e71b:2d0a:56c:ffc8:3d74:61ad:0",
+  "last": "6c5f:e71b:2d0a:56c:ffc8:3d74:61ad:ffff",
+  "total": "65536",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:0"
+ },
+ {
+  "input": "48ed:81e7:86ba:40f1:ba9b:6711:a1e3:e16/16",
+  "expanded": "48ed:81e7:86ba:40f1:ba9b:6711:a1e3:0e16",
+  "compressed": "48ed::",
+  "network": "48ed::/16",
+  "first": "48ed::",
+  "last": "48ed:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "5192296858534827628530496329220096",
+  "netmask": "ffff::"
+ },
+ {
+  "input": "e555:9766:f57c:b482:42a:39bb:71a3:4991/112",
+  "expanded": "e555:9766:f57c:b482:042a:39bb:71a3:4991",
+  "compressed": "e555:9766:f57c:b482:42a:39bb:71a3:0",
+  "network": "e555:9766:f57c:b482:42a:39bb:71a3:0/112",
+  "first": "e555:9766:f57c:b482:42a:39bb:71a3:0",
+  "last": "e555:9766:f57c:b482:42a:39bb:71a3:ffff",
+  "total": "65536",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:0"
+ },
+ {
+  "input": "abc2:4062:f12b:e2a9:7035:85e3:3da9:4211/127",
+  "expanded": "abc2:4062:f12b:e2a9:7035:85e3:3da9:4211",
+  "compressed": "abc2:4062:f12b:e2a9:7035:85e3:3da9:4210",
+  "network": "abc2:4062:f12b:e2a9:7035:85e3:3da9:4210/127",
+  "first": "abc2:4062:f12b:e2a9:7035:85e3:3da9:4210",
+  "last": "abc2:4062:f12b:e2a9:7035:85e3:3da9:4211",
+  "total": "2",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffe"
+ },
+ {
+  "input": "bbd2:aef0:794c:6dcc:2215:207b:73ad:86d2/120",
+  "expanded": "bbd2:aef0:794c:6dcc:2215:207b:73ad:86d2",
+  "compressed": "bbd2:aef0:794c:6dcc:2215:207b:73ad:8600",
+  "network": "bbd2:aef0:794c:6dcc:2215:207b:73ad:8600/120",
+  "first": "bbd2:aef0:794c:6dcc:2215:207b:73ad:8600",
+  "last": "bbd2:aef0:794c:6dcc:2215:207b:73ad:86ff",
+  "total": "256",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ff00"
+ },
+ {
+  "input": "178d:1501:3f49:b96b:3907:7d6a:94fc:f4a/48",
+  "expanded": "178d:1501:3f49:b96b:3907:7d6a:94fc:0f4a",
+  "compressed": "178d:1501:3f49::",
+  "network": "178d:1501:3f49::/48",
+  "first": "178d:1501:3f49::",
+  "last": "178d:1501:3f49:ffff:ffff:ffff:ffff:ffff",
+  "total": "1208925819614629174706176",
+  "netmask": "ffff:ffff:ffff::"
+ },
+ {
+  "input": "54eb:2a62:91a8:9407:d20:e53b:358f:bdc1/32",
+  "expanded": "54eb:2a62:91a8:9407:0d20:e53b:358f:bdc1",
+  "compressed": "54eb:2a62::",
+  "network": "54eb:2a62::/32",
+  "first": "54eb:2a62::",
+  "last": "54eb:2a62:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "79228162514264337593543950336",
+  "netmask": "ffff:ffff::"
+ },
+ {
+  "input": "5ec4:90ff:1d67:7adb:ff67:a2f0:7025:e6b3/32",
+  "expanded": "5ec4:90ff:1d67:7adb:ff67:a2f0:7025:e6b3",
+  "compressed": "5ec4:90ff::",
+  "network": "5ec4:90ff::/32",
+  "first": "5ec4:90ff::",
+  "last": "5ec4:90ff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "79228162514264337593543950336",
+  "netmask": "ffff:ffff::"
+ },
+ {
+  "input": "25e7:2d19:14de:550:a739:d0a9:c49e:d36/127",
+  "expanded": "25e7:2d19:14de:0550:a739:d0a9:c49e:0d36",
+  "compressed": "25e7:2d19:14de:550:a739:d0a9:c49e:d36",
+  "network": "25e7:2d19:14de:550:a739:d0a9:c49e:d36/127",
+  "first": "25e7:2d19:14de:550:a739:d0a9:c49e:d36",
+  "last": "25e7:2d19:14de:550:a739:d0a9:c49e:d37",
+  "total": "2",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffe"
+ },
+ {
+  "input": "faff:5682:776e:b9f9:a6e1:e81:d2bf:8f1a/112",
+  "expanded": "faff:5682:776e:b9f9:a6e1:0e81:d2bf:8f1a",
+  "compressed": "faff:5682:776e:b9f9:a6e1:e81:d2bf:0",
+  "network": "faff:5682:776e:b9f9:a6e1:e81:d2bf:0/112",
+  "first": "faff:5682:776e:b9f9:a6e1:e81:d2bf:0",
+  "last": "faff:5682:776e:b9f9:a6e1:e81:d2bf:ffff",
+  "total": "65536",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:0"
+ },
+ {
+  "input": "8977:335b:43d1:494f:7fca:59fa:5f46:c048/120",
+  "expanded": "8977:335b:43d1:494f:7fca:59fa:5f46:c048",
+  "compressed": "8977:335b:43d1:494f:7fca:59fa:5f46:c000",
+  "network": "8977:335b:43d1:494f:7fca:59fa:5f46:c000/120",
+  "first": "8977:335b:43d1:494f:7fca:59fa:5f46:c000",
+  "last": "8977:335b:43d1:494f:7fca:59fa:5f46:c0ff",
+  "total": "256",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ff00"
+ },
+ {
+  "input": "ae77:2a0e:ac28:37fd:310c:23ec:255f:40a9/120",
+  "expanded": "ae77:2a0e:ac28:37fd:310c:23ec:255f:40a9",
+  "compressed": "ae77:2a0e:ac28:37fd:310c:23ec:255f:4000",
+  "network": "ae77:2a0e:ac28:37fd:310c:23ec:255f:4000/120",
+  "first": "ae77:2a0e:ac28:37fd:310c:23ec:255f:4000",
+  "last": "ae77:2a0e:ac28:37fd:310c:23ec:255f:40ff",
+  "total": "256",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ff00"
+ },
+ {
+  "input": "77be:3105:c3c:2a77:f102:3e57:71d5:77b5/64",
+  "expanded": "77be:3105:0c3c:2a77:f102:3e57:71d5:77b5",
+  "compressed": "77be:3105:c3c:2a77::",
+  "network": "77be:3105:c3c:2a77::/64",
+  "first": "77be:3105:c3c:2a77::",
+  "last": "77be:3105:c3c:2a77:ffff:ffff:ffff:ffff",
+  "total": "18446744073709551616",
+  "netmask": "ffff:ffff:ffff:ffff::"
+ },
+ {
+  "input": "82cb:c6bb:e13:1eae:8b36:5edc:3a41:8cb1/32",
+  "expanded": "82cb:c6bb:0e13:1eae:8b36:5edc:3a41:8cb1",
+  "compressed": "82cb:c6bb::",
+  "network": "82cb:c6bb::/32",
+  "first": "82cb:c6bb::",
+  "last": "82cb:c6bb:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "79228162514264337593543950336",
+  "netmask": "ffff:ffff::"
+ },
+ {
+  "input": "3bd3:d84f:11ca:205b:21cd:3df5:72eb:411b/96",
+  "expanded": "3bd3:d84f:11ca:205b:21cd:3df5:72eb:411b",
+  "compressed": "3bd3:d84f:11ca:205b:21cd:3df5::",
+  "network": "3bd3:d84f:11ca:205b:21cd:3df5::/96",
+  "first": "3bd3:d84f:11ca:205b:21cd:3df5::",
+  "last": "3bd3:d84f:11ca:205b:21cd:3df5:ffff:ffff",
+  "total": "4294967296",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff::"
+ },
+ {
+  "input": "b07d:e339:fcf6:3f58:ccc8:c0c3:7843:5b2d/16",
+  "expanded": "b07d:e339:fcf6:3f58:ccc8:c0c3:7843:5b2d",
+  "compressed": "b07d::",
+  "network": "b07d::/16",
+  "first": "b07d::",
+  "last": "b07d:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "5192296858534827628530496329220096",
+  "netmask": "ffff::"
+ },
+ {
+  "input": "325d:34f5:2fe2:69cd:3820:b09e:4f20:1ad2/71",
+  "expanded": "325d:34f5:2fe2:69cd:3820:b09e:4f20:1ad2",
+  "compressed": "325d:34f5:2fe2:69cd:3800::",
+  "network": "325d:34f5:2fe2:69cd:3800::/71",
+  "first": "325d:34f5:2fe2:69cd:3800::",
+  "last": "325d:34f5:2fe2:69cd:39ff:ffff:ffff:ffff",
+  "total": "144115188075855872",
+  "netmask": "ffff:ffff:ffff:ffff:fe00::"
+ },
+ {
+  "input": "5cab:94ea:da11:7fb:f0b9:498a:f3d4:9b6/64",
+  "expanded": "5cab:94ea:da11:07fb:f0b9:498a:f3d4:09b6",
+  "compressed": "5cab:94ea:da11:7fb::",
+  "network": "5cab:94ea:da11:7fb::/64",
+  "first": "5cab:94ea:da11:7fb::",
+  "last": "5cab:94ea:da11:7fb:ffff:ffff:ffff:ffff",
+  "total": "18446744073709551616",
+  "netmask": "ffff:ffff:ffff:ffff::"
+ },
+ {
+  "input": "34ed:765a:8f61:5618:cfca:16d7:8b80:d0b1/128",
+  "expanded": "34ed:765a:8f61:5618:cfca:16d7:8b80:d0b1",
+  "compressed": "34ed:765a:8f61:5618:cfca:16d7:8b80:d0b1",
+  "network": "34ed:765a:8f61:5618:cfca:16d7:8b80:d0b1/128",
+  "first": "34ed:765a:8f61:5618:cfca:16d7:8b80:d0b1",
+  "last": "34ed:765a:8f61:5618:cfca:16d7:8b80:d0b1",
+  "total": "1",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+ },
+ {
+  "input": "198f:ceaf:2969:8004:471a:b649:b13c:2bc6/16",
+  "expanded": "198f:ceaf:2969:8004:471a:b649:b13c:2bc6",
+  "compressed": "198f::",
+  "network": "198f::/16",
+  "first": "198f::",
+  "last": "198f:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "5192296858534827628530496329220096",
+  "netmask": "ffff::"
+ },
+ {
+  "input": "2ee8:62e0:c166:83e0:2e98:d91e:7978:f0df/112",
+  "expanded": "2ee8:62e0:c166:83e0:2e98:d91e:7978:f0df",
+  "compressed": "2ee8:62e0:c166:83e0:2e98:d91e:7978:0",
+  "network": "2ee8:62e0:c166:83e0:2e98:d91e:7978:0/112",
+  "first": "2ee8:62e0:c166:83e0:2e98:d91e:7978:0",
+  "last": "2ee8:62e0:c166:83e0:2e98:d91e:7978:ffff",
+  "total": "65536",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:0"
+ },
+ {
+  "input": "d39e:bc2d:ae60:33c5:b14e:60af:2de7:bfdf/128",
+  "expanded": "d39e:bc2d:ae60:33c5:b14e:60af:2de7:bfdf",
+  "compressed": "d39e:bc2d:ae60:33c5:b14e:60af:2de7:bfdf",
+  "network": "d39e:bc2d:ae60:33c5:b14e:60af:2de7:bfdf/128",
+  "first": "d39e:bc2d:ae60:33c5:b14e:60af:2de7:bfdf",
+  "last": "d39e:bc2d:ae60:33c5:b14e:60af:2de7:bfdf",
+  "total": "1",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+ },
+ {
+  "input": "eede:2813:52ee:6543:ed90:916d:889e:9b1f/16",
+  "expanded": "eede:2813:52ee:6543:ed90:916d:889e:9b1f",
+  "compressed": "eede::",
+  "network": "eede::/16",
+  "first": "eede::",
+  "last": "eede:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "5192296858534827628530496329220096",
+  "netmask": "ffff::"
+ },
+ {
+  "input": "a1b4:89e6:916:9ffd:ca1b:3df9:4073:88aa/96",
+  "expanded": "a1b4:89e6:0916:9ffd:ca1b:3df9:4073:88aa",
+  "compressed": "a1b4:89e6:916:9ffd:ca1b:3df9::",
+  "network": "a1b4:89e6:916:9ffd:ca1b:3df9::/96",
+  "first": "a1b4:89e6:916:9ffd:ca1b:3df9::",
+  "last": "a1b4:89e6:916:9ffd:ca1b:3df9:ffff:ffff",
+  "total": "4294967296",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff::"
+ },
+ {
+  "input": "9e24:7801:e1c7:5423:430:85b3:381d:c887/32",
+  "expanded": "9e24:7801:e1c7:5423:0430:85b3:381d:c887",
+  "compressed": "9e24:7801::",
+  "network": "9e24:7801::/32",
+  "first": "9e24:7801::",
+  "last": "9e24:7801:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "79228162514264337593543950336",
+  "netmask": "ffff:ffff::"
+ },
+ {
+  "input": "c480:401c:b3e6:c357:3760:a7a2:a271:9a30/0",
+  "expanded": "c480:401c:b3e6:c357:3760:a7a2:a271:9a30",
+  "compressed": "::",
+  "network": "::/0",
+  "first": "::",
+  "last": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "340282366920938463463374607431768211456",
+  "netmask": "::"
+ },
+ {
+  "input": "ff15:610d:b112:508d:def1:f844:2642:3b52/120",
+  "expanded": "ff15:610d:b112:508d:def1:f844:2642:3b52",
+  "compressed": "ff15:610d:b112:508d:def1:f844:2642:3b00",
+  "network": "ff15:610d:b112:508d:def1:f844:2642:3b00/120",
+  "first": "ff15:610d:b112:508d:def1:f844:2642:3b00",
+  "last": "ff15:610d:b112:508d:def1:f844:2642:3bff",
+  "total": "256",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ff00"
+ },
+ {
+  "input": "e346:ecf7:dd96:791f:8aed:8606:d446:6c73/16",
+  "expanded": "e346:ecf7:dd96:791f:8aed:8606:d446:6c73",
+  "compressed": "e346::",
+  "network": "e346::/16",
+  "first": "e346::",
+  "last": "e346:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "5192296858534827628530496329220096",
+  "netmask": "ffff::"
+ },
+ {
+  "input": "501e:616d:55f7:4ad1:8220:442b:8197:dbca/8",
+  "expanded": "501e:616d:55f7:4ad1:8220:442b:8197:dbca",
+  "compressed": "5000::",
+  "network": "5000::/8",
+  "first": "5000::",
+  "last": "50ff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "1329227995784915872903807060280344576",
+  "netmask": "ff00::"
+ },
+ {
+  "input": "655b:b1c9:a105:6ef0:8b57:d9f7:4ad3:c1de/48",
+  "expanded": "655b:b1c9:a105:6ef0:8b57:d9f7:4ad3:c1de",
+  "compressed": "655b:b1c9:a105::",
+  "network": "655b:b1c9:a105::/48",
+  "first": "655b:b1c9:a105::",
+  "last": "655b:b1c9:a105:ffff:ffff:ffff:ffff:ffff",
+  "total": "1208925819614629174706176",
+  "netmask": "ffff:ffff:ffff::"
+ },
+ {
+  "input": "3e34:d1e8:efaa:2482:ccb5:ccd7:a3b3:e98d/64",
+  "expanded": "3e34:d1e8:efaa:2482:ccb5:ccd7:a3b3:e98d",
+  "compressed": "3e34:d1e8:efaa:2482::",
+  "network": "3e34:d1e8:efaa:2482::/64",
+  "first": "3e34:d1e8:efaa:2482::",
+  "last": "3e34:d1e8:efaa:2482:ffff:ffff:ffff:ffff",
+  "total": "18446744073709551616",
+  "netmask": "ffff:ffff:ffff:ffff::"
+ },
+ {
+  "input": "e5c5:f401:5367:5b10:ba14:7595:f9b6:9fee/0",
+  "expanded": "e5c5:f401:5367:5b10:ba14:7595:f9b6:9fee",
+  "compressed": "::",
+  "network": "::/0",
+  "first": "::",
+  "last": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "340282366920938463463374607431768211456",
+  "netmask": "::"
+ },
+ {
+  "input": "a150:bd4:e6a9:d736:dede:da1a:c018:6f1a/112",
+  "expanded": "a150:0bd4:e6a9:d736:dede:da1a:c018:6f1a",
+  "compressed": "a150:bd4:e6a9:d736:dede:da1a:c018:0",
+  "network": "a150:bd4:e6a9:d736:dede:da1a:c018:0/112",
+  "first": "a150:bd4:e6a9:d736:dede:da1a:c018:0",
+  "last": "a150:bd4:e6a9:d736:dede:da1a:c018:ffff",
+  "total": "65536",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:0"
+ },
+ {
+  "input": "7ee1:59b1:968b:634e:6a55:76e9:c4f7:fcc9/128",
+  "expanded": "7ee1:59b1:968b:634e:6a55:76e9:c4f7:fcc9",
+  "compressed": "7ee1:59b1:968b:634e:6a55:76e9:c4f7:fcc9",
+  "network": "7ee1:59b1:968b:634e:6a55:76e9:c4f7:fcc9/128",
+  "first": "7ee1:59b1:968b:634e:6a55:76e9:c4f7:fcc9",
+  "last": "7ee1:59b1:968b:634e:6a55:76e9:c4f7:fcc9",
+  "total": "1",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+ },
+ {
+  "input": "927c:8dce:5f64:413f:54fa:395f:cafd:6bf4/120",
+  "expanded": "927c:8dce:5f64:413f:54fa:395f:cafd:6bf4",
+  "compressed": "927c:8dce:5f64:413f:54fa:395f:cafd:6b00",
+  "network": "927c:8dce:5f64:413f:54fa:395f:cafd:6b00/120",
+  "first": "927c:8dce:5f64:413f:54fa:395f:cafd:6b00",
+  "last": "927c:8dce:5f64:413f:54fa:395f:cafd:6bff",
+  "total": "256",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ff00"
+ },
+ {
+  "input": "28e3:e05d:978a:c29d:4404:ff5c:5aaa:b3de/16",
+  "expanded": "28e3:e05d:978a:c29d:4404:ff5c:5aaa:b3de",
+  "compressed": "28e3::",
+  "network": "28e3::/16",
+  "first": "28e3::",
+  "last": "28e3:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "5192296858534827628530496329220096",
+  "netmask": "ffff::"
+ },
+ {
+  "input": "2702:49f8:9a68:1906:9e54:f8e2:6098:a5a7/0",
+  "expanded": "2702:49f8:9a68:1906:9e54:f8e2:6098:a5a7",
+  "compressed": "::",
+  "network": "::/0",
+  "first": "::",
+  "last": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "340282366920938463463374607431768211456",
+  "netmask": "::"
+ },
+ {
+  "input": "f18e:e9e2:40ce:d139:5d5a:e2c6:28c1:cbef/127",
+  "expanded": "f18e:e9e2:40ce:d139:5d5a:e2c6:28c1:cbef",
+  "compressed": "f18e:e9e2:40ce:d139:5d5a:e2c6:28c1:cbee",
+  "network": "f18e:e9e2:40ce:d139:5d5a:e2c6:28c1:cbee/127",
+  "first": "f18e:e9e2:40ce:d139:5d5a:e2c6:28c1:cbee",
+  "last": "f18e:e9e2:40ce:d139:5d5a:e2c6:28c1:cbef",
+  "total": "2",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffe"
+ },
+ {
+  "input": "bd73:90d9:98f3:5cda:162f:bef0:2915:7ee9/32",
+  "expanded": "bd73:90d9:98f3:5cda:162f:bef0:2915:7ee9",
+  "compressed": "bd73:90d9::",
+  "network": "bd73:90d9::/32",
+  "first": "bd73:90d9::",
+  "last": "bd73:90d9:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "79228162514264337593543950336",
+  "netmask": "ffff:ffff::"
+ },
+ {
+  "input": "a9b1:76a8:d95b:dd70:1aa5:4781:a6a5:df81/112",
+  "expanded": "a9b1:76a8:d95b:dd70:1aa5:4781:a6a5:df81",
+  "compressed": "a9b1:76a8:d95b:dd70:1aa5:4781:a6a5:0",
+  "network": "a9b1:76a8:d95b:dd70:1aa5:4781:a6a5:0/112",
+  "first": "a9b1:76a8:d95b:dd70:1aa5:4781:a6a5:0",
+  "last": "a9b1:76a8:d95b:dd70:1aa5:4781:a6a5:ffff",
+  "total": "65536",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:0"
+ },
+ {
+  "input": "40f3:9e7:a2c6:ed:579c:8abc:abb2:b433/16",
+  "expanded": "40f3:09e7:a2c6:00ed:579c:8abc:abb2:b433",
+  "compressed": "40f3::",
+  "network": "40f3::/16",
+  "first": "40f3::",
+  "last": "40f3:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "5192296858534827628530496329220096",
+  "netmask": "ffff::"
+ },
+ {
+  "input": "4fea:b48:81fb:fa8b:ecbe:3d27:fc85:9246/0",
+  "expanded": "4fea:0b48:81fb:fa8b:ecbe:3d27:fc85:9246",
+  "compressed": "::",
+  "network": "::/0",
+  "first": "::",
+  "last": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "340282366920938463463374607431768211456",
+  "netmask": "::"
+ },
+ {
+  "input": "475f:94b8:c186:78ee:d2fd:fec:e11f:218/19",
+  "expanded": "475f:94b8:c186:78ee:d2fd:0fec:e11f:0218",
+  "compressed": "475f:8000::",
+  "network": "475f:8000::/19",
+  "first": "475f:8000::",
+  "last": "475f:9fff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "649037107316853453566312041152512",
+  "netmask": "ffff:e000::"
+ },
+ {
+  "input": "e1b9:546d:b494:48f0:d40b:878:e166:75a1/96",
+  "expanded": "e1b9:546d:b494:48f0:d40b:0878:e166:75a1",
+  "compressed": "e1b9:546d:b494:48f0:d40b:878::",
+  "network": "e1b9:546d:b494:48f0:d40b:878::/96",
+  "first": "e1b9:546d:b494:48f0:d40b:878::",
+  "last": "e1b9:546d:b494:48f0:d40b:878:ffff:ffff",
+  "total": "4294967296",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff::"
+ },
+ {
+  "input": "260c:59d9:221c:b082:3049:62f2:d58e:117c/128",
+  "expanded": "260c:59d9:221c:b082:3049:62f2:d58e:117c",
+  "compressed": "260c:59d9:221c:b082:3049:62f2:d58e:117c",
+  "network": "260c:59d9:221c:b082:3049:62f2:d58e:117c/128",
+  "first": "260c:59d9:221c:b082:3049:62f2:d58e:117c",
+  "last": "260c:59d9:221c:b082:3049:62f2:d58e:117c",
+  "total": "1",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+ },
+ {
+  "input": "e09c:707b:2a37:d5a0:7168:61f5:ae74:f180/48",
+  "expanded": "e09c:707b:2a37:d5a0:7168:61f5:ae74:f180",
+  "compressed": "e09c:707b:2a37::",
+  "network": "e09c:707b:2a37::/48",
+  "first": "e09c:707b:2a37::",
+  "last": "e09c:707b:2a37:ffff:ffff:ffff:ffff:ffff",
+  "total": "1208925819614629174706176",
+  "netmask": "ffff:ffff:ffff::"
+ },
+ {
+  "input": "9598:4315:18aa:2a2f:2e66:ed88:9c73:68f4/112",
+  "expanded": "9598:4315:18aa:2a2f:2e66:ed88:9c73:68f4",
+  "compressed": "9598:4315:18aa:2a2f:2e66:ed88:9c73:0",
+  "network": "9598:4315:18aa:2a2f:2e66:ed88:9c73:0/112",
+  "first": "9598:4315:18aa:2a2f:2e66:ed88:9c73:0",
+  "last": "9598:4315:18aa:2a2f:2e66:ed88:9c73:ffff",
+  "total": "65536",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:0"
+ },
+ {
+  "input": "dfe:cf73:2e0d:44f8:4d2:5a12:9d46:6102/8",
+  "expanded": "0dfe:cf73:2e0d:44f8:04d2:5a12:9d46:6102",
+  "compressed": "d00::",
+  "network": "d00::/8",
+  "first": "d00::",
+  "last": "dff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "1329227995784915872903807060280344576",
+  "netmask": "ff00::"
+ },
+ {
+  "input": "3f85:4cc6:a23c:3b83:a3fa:2956:9aab:badf/96",
+  "expanded": "3f85:4cc6:a23c:3b83:a3fa:2956:9aab:badf",
+  "compressed": "3f85:4cc6:a23c:3b83:a3fa:2956::",
+  "network": "3f85:4cc6:a23c:3b83:a3fa:2956::/96",
+  "first": "3f85:4cc6:a23c:3b83:a3fa:2956::",
+  "last": "3f85:4cc6:a23c:3b83:a3fa:2956:ffff:ffff",
+  "total": "4294967296",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff::"
+ },
+ {
+  "input": "8336:8aef:af2f:c97b:5082:2850:9640:34a/128",
+  "expanded": "8336:8aef:af2f:c97b:5082:2850:9640:034a",
+  "compressed": "8336:8aef:af2f:c97b:5082:2850:9640:34a",
+  "network": "8336:8aef:af2f:c97b:5082:2850:9640:34a/128",
+  "first": "8336:8aef:af2f:c97b:5082:2850:9640:34a",
+  "last": "8336:8aef:af2f:c97b:5082:2850:9640:34a",
+  "total": "1",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+ },
+ {
+  "input": "3e90:6fe:f57e:4fe7:ee99:20cd:38bb:b09b/67",
+  "expanded": "3e90:06fe:f57e:4fe7:ee99:20cd:38bb:b09b",
+  "compressed": "3e90:6fe:f57e:4fe7:e000::",
+  "network": "3e90:6fe:f57e:4fe7:e000::/67",
+  "first": "3e90:6fe:f57e:4fe7:e000::",
+  "last": "3e90:6fe:f57e:4fe7:ffff:ffff:ffff:ffff",
+  "total": "2305843009213693952",
+  "netmask": "ffff:ffff:ffff:ffff:e000::"
+ },
+ {
+  "input": "1b34:c4e5:afe9:ea28:5ec6:31e:b3bf:397d/0",
+  "expanded": "1b34:c4e5:afe9:ea28:5ec6:031e:b3bf:397d",
+  "compressed": "::",
+  "network": "::/0",
+  "first": "::",
+  "last": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "340282366920938463463374607431768211456",
+  "netmask": "::"
+ },
+ {
+  "input": "b99d:74f2:613:53ab:8a8e:b637:25b4:7ac9/0",
+  "expanded": "b99d:74f2:0613:53ab:8a8e:b637:25b4:7ac9",
+  "compressed": "::",
+  "network": "::/0",
+  "first": "::",
+  "last": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "340282366920938463463374607431768211456",
+  "netmask": "::"
+ },
+ {
+  "input": "c20b:288c:ca0e:d457:b3da:5a41:2ec8:d178/64",
+  "expanded": "c20b:288c:ca0e:d457:b3da:5a41:2ec8:d178",
+  "compressed": "c20b:288c:ca0e:d457::",
+  "network": "c20b:288c:ca0e:d457::/64",
+  "first": "c20b:288c:ca0e:d457::",
+  "last": "c20b:288c:ca0e:d457:ffff:ffff:ffff:ffff",
+  "total": "18446744073709551616",
+  "netmask": "ffff:ffff:ffff:ffff::"
+ },
+ {
+  "input": "e357:2ec:a639:a585:66a9:2ec5:7242:15bc/96",
+  "expanded": "e357:02ec:a639:a585:66a9:2ec5:7242:15bc",
+  "compressed": "e357:2ec:a639:a585:66a9:2ec5::",
+  "network": "e357:2ec:a639:a585:66a9:2ec5::/96",
+  "first": "e357:2ec:a639:a585:66a9:2ec5::",
+  "last": "e357:2ec:a639:a585:66a9:2ec5:ffff:ffff",
+  "total": "4294967296",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff::"
+ },
+ {
+  "input": "7290:b736:fc98:cac9:7ee4:9a13:599c:9217/48",
+  "expanded": "7290:b736:fc98:cac9:7ee4:9a13:599c:9217",
+  "compressed": "7290:b736:fc98::",
+  "network": "7290:b736:fc98::/48",
+  "first": "7290:b736:fc98::",
+  "last": "7290:b736:fc98:ffff:ffff:ffff:ffff:ffff",
+  "total": "1208925819614629174706176",
+  "netmask": "ffff:ffff:ffff::"
+ },
+ {
+  "input": "1140:a84:ee48:1be4:b8b2:5aa:a179:9913/48",
+  "expanded": "1140:0a84:ee48:1be4:b8b2:05aa:a179:9913",
+  "compressed": "1140:a84:ee48::",
+  "network": "1140:a84:ee48::/48",
+  "first": "1140:a84:ee48::",
+  "last": "1140:a84:ee48:ffff:ffff:ffff:ffff:ffff",
+  "total": "1208925819614629174706176",
+  "netmask": "ffff:ffff:ffff::"
+ },
+ {
+  "input": "c2b6:366e:66ca:a6d8:bf0c:a9e7:506f:2859/120",
+  "expanded": "c2b6:366e:66ca:a6d8:bf0c:a9e7:506f:2859",
+  "compressed": "c2b6:366e:66ca:a6d8:bf0c:a9e7:506f:2800",
+  "network": "c2b6:366e:66ca:a6d8:bf0c:a9e7:506f:2800/120",
+  "first": "c2b6:366e:66ca:a6d8:bf0c:a9e7:506f:2800",
+  "last": "c2b6:366e:66ca:a6d8:bf0c:a9e7:506f:28ff",
+  "total": "256",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ff00"
+ },
+ {
+  "input": "c0c4:21d6:aaf8:70be:623e:e0d8:d9de:29d4/64",
+  "expanded": "c0c4:21d6:aaf8:70be:623e:e0d8:d9de:29d4",
+  "compressed": "c0c4:21d6:aaf8:70be::",
+  "network": "c0c4:21d6:aaf8:70be::/64",
+  "first": "c0c4:21d6:aaf8:70be::",
+  "last": "c0c4:21d6:aaf8:70be:ffff:ffff:ffff:ffff",
+  "total": "18446744073709551616",
+  "netmask": "ffff:ffff:ffff:ffff::"
+ },
+ {
+  "input": "4c86:a104:ae41:cdc6:46da:61c1:1471:5d8d/17",
+  "expanded": "4c86:a104:ae41:cdc6:46da:61c1:1471:5d8d",
+  "compressed": "4c86:8000::",
+  "network": "4c86:8000::/17",
+  "first": "4c86:8000::",
+  "last": "4c86:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "2596148429267413814265248164610048",
+  "netmask": "ffff:8000::"
+ },
+ {
+  "input": "9b36:36a1:370:e3a1:19d8:1335:7e27:ed8c/8",
+  "expanded": "9b36:36a1:0370:e3a1:19d8:1335:7e27:ed8c",
+  "compressed": "9b00::",
+  "network": "9b00::/8",
+  "first": "9b00::",
+  "last": "9bff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "1329227995784915872903807060280344576",
+  "netmask": "ff00::"
+ },
+ {
+  "input": "dcc8:d464:e187:60c2:9575:b959:9460:8eba/112",
+  "expanded": "dcc8:d464:e187:60c2:9575:b959:9460:8eba",
+  "compressed": "dcc8:d464:e187:60c2:9575:b959:9460:0",
+  "network": "dcc8:d464:e187:60c2:9575:b959:9460:0/112",
+  "first": "dcc8:d464:e187:60c2:9575:b959:9460:0",
+  "last": "dcc8:d464:e187:60c2:9575:b959:9460:ffff",
+  "total": "65536",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:0"
+ },
+ {
+  "input": "958f:af5f:15d6:37d3:dad1:9a2e:8ed7:a7de/16",
+  "expanded": "958f:af5f:15d6:37d3:dad1:9a2e:8ed7:a7de",
+  "compressed": "958f::",
+  "network": "958f::/16",
+  "first": "958f::",
+  "last": "958f:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "5192296858534827628530496329220096",
+  "netmask": "ffff::"
+ },
+ {
+  "input": "4d78:4cf6:56e7:f631:c5fa:f642:a42e:9862/128",
+  "expanded": "4d78:4cf6:56e7:f631:c5fa:f642:a42e:9862",
+  "compressed": "4d78:4cf6:56e7:f631:c5fa:f642:a42e:9862",
+  "network": "4d78:4cf6:56e7:f631:c5fa:f642:a42e:9862/128",
+  "first": "4d78:4cf6:56e7:f631:c5fa:f642:a42e:9862",
+  "last": "4d78:4cf6:56e7:f631:c5fa:f642:a42e:9862",
+  "total": "1",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+ },
+ {
+  "input": "4b37:4243:e505:cfb8:12f8:672c:1bee:b052/112",
+  "expanded": "4b37:4243:e505:cfb8:12f8:672c:1bee:b052",
+  "compressed": "4b37:4243:e505:cfb8:12f8:672c:1bee:0",
+  "network": "4b37:4243:e505:cfb8:12f8:672c:1bee:0/112",
+  "first": "4b37:4243:e505:cfb8:12f8:672c:1bee:0",
+  "last": "4b37:4243:e505:cfb8:12f8:672c:1bee:ffff",
+  "total": "65536",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:0"
+ },
+ {
+  "input": "be7b:4e4a:50b4:e754:fd9a:fe4:1b77:c003/72",
+  "expanded": "be7b:4e4a:50b4:e754:fd9a:0fe4:1b77:c003",
+  "compressed": "be7b:4e4a:50b4:e754:fd00::",
+  "network": "be7b:4e4a:50b4:e754:fd00::/72",
+  "first": "be7b:4e4a:50b4:e754:fd00::",
+  "last": "be7b:4e4a:50b4:e754:fdff:ffff:ffff:ffff",
+  "total": "72057594037927936",
+  "netmask": "ffff:ffff:ffff:ffff:ff00::"
+ },
+ {
+  "input": "558b:3eab:135e:f5b4:6443:f696:5850:59cc/8",
+  "expanded": "558b:3eab:135e:f5b4:6443:f696:5850:59cc",
+  "compressed": "5500::",
+  "network": "5500::/8",
+  "first": "5500::",
+  "last": "55ff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "1329227995784915872903807060280344576",
+  "netmask": "ff00::"
+ },
+ {
+  "input": "90ee:d86c:be7e:bba3:ac67:9c31:ade3:9e76/128",
+  "expanded": "90ee:d86c:be7e:bba3:ac67:9c31:ade3:9e76",
+  "compressed": "90ee:d86c:be7e:bba3:ac67:9c31:ade3:9e76",
+  "network": "90ee:d86c:be7e:bba3:ac67:9c31:ade3:9e76/128",
+  "first": "90ee:d86c:be7e:bba3:ac67:9c31:ade3:9e76",
+  "last": "90ee:d86c:be7e:bba3:ac67:9c31:ade3:9e76",
+  "total": "1",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+ },
+ {
+  "input": "26f2:2878:8083:1b41:fbd9:43cc:de84:39f8/112",
+  "expanded": "26f2:2878:8083:1b41:fbd9:43cc:de84:39f8",
+  "compressed": "26f2:2878:8083:1b41:fbd9:43cc:de84:0",
+  "network": "26f2:2878:8083:1b41:fbd9:43cc:de84:0/112",
+  "first": "26f2:2878:8083:1b41:fbd9:43cc:de84:0",
+  "last": "26f2:2878:8083:1b41:fbd9:43cc:de84:ffff",
+  "total": "65536",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:0"
+ },
+ {
+  "input": "3eb5:191a:5ce5:d005:65d9:297a:d6d:83a8/16",
+  "expanded": "3eb5:191a:5ce5:d005:65d9:297a:0d6d:83a8",
+  "compressed": "3eb5::",
+  "network": "3eb5::/16",
+  "first": "3eb5::",
+  "last": "3eb5:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "5192296858534827628530496329220096",
+  "netmask": "ffff::"
+ },
+ {
+  "input": "f447:80d9:165d:e1d0:3349:d7df:2967:6032/112",
+  "expanded": "f447:80d9:165d:e1d0:3349:d7df:2967:6032",
+  "compressed": "f447:80d9:165d:e1d0:3349:d7df:2967:0",
+  "network": "f447:80d9:165d:e1d0:3349:d7df:2967:0/112",
+  "first": "f447:80d9:165d:e1d0:3349:d7df:2967:0",
+  "last": "f447:80d9:165d:e1d0:3349:d7df:2967:ffff",
+  "total": "65536",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:0"
+ },
+ {
+  "input": "8b84:b1a6:5ec2:f1c4:3665:d7f:81a2:b9ef/64",
+  "expanded": "8b84:b1a6:5ec2:f1c4:3665:0d7f:81a2:b9ef",
+  "compressed": "8b84:b1a6:5ec2:f1c4::",
+  "network": "8b84:b1a6:5ec2:f1c4::/64",
+  "first": "8b84:b1a6:5ec2:f1c4::",
+  "last": "8b84:b1a6:5ec2:f1c4:ffff:ffff:ffff:ffff",
+  "total": "18446744073709551616",
+  "netmask": "ffff:ffff:ffff:ffff::"
+ },
+ {
+  "input": "5ce0:2425:9b97:8600:97c4:46d2:af01:a32e/64",
+  "expanded": "5ce0:2425:9b97:8600:97c4:46d2:af01:a32e",
+  "compressed": "5ce0:2425:9b97:8600::",
+  "network": "5ce0:2425:9b97:8600::/64",
+  "first": "5ce0:2425:9b97:8600::",
+  "last": "5ce0:2425:9b97:8600:ffff:ffff:ffff:ffff",
+  "total": "18446744073709551616",
+  "netmask": "ffff:ffff:ffff:ffff::"
+ },
+ {
+  "input": "913e:f412:115a:2519:9bff:41fb:565b:d076/128",
+  "expanded": "913e:f412:115a:2519:9bff:41fb:565b:d076",
+  "compressed": "913e:f412:115a:2519:9bff:41fb:565b:d076",
+  "network": "913e:f412:115a:2519:9bff:41fb:565b:d076/128",
+  "first": "913e:f412:115a:2519:9bff:41fb:565b:d076",
+  "last": "913e:f412:115a:2519:9bff:41fb:565b:d076",
+  "total": "1",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+ },
+ {
+  "input": "59ae:9d25:7937:7e1d:4c9d:17:4111:dc92/48",
+  "expanded": "59ae:9d25:7937:7e1d:4c9d:0017:4111:dc92",
+  "compressed": "59ae:9d25:7937::",
+  "network": "59ae:9d25:7937::/48",
+  "first": "59ae:9d25:7937::",
+  "last": "59ae:9d25:7937:ffff:ffff:ffff:ffff:ffff",
+  "total": "1208925819614629174706176",
+  "netmask": "ffff:ffff:ffff::"
+ },
+ {
+  "input": "cc18:3f1d:2ccc:4ea1:76f:f2e3:6dfc:c8c3/64",
+  "expanded": "cc18:3f1d:2ccc:4ea1:076f:f2e3:6dfc:c8c3",
+  "compressed": "cc18:3f1d:2ccc:4ea1::",
+  "network": "cc18:3f1d:2ccc:4ea1::/64",
+  "first": "cc18:3f1d:2ccc:4ea1::",
+  "last": "cc18:3f1d:2ccc:4ea1:ffff:ffff:ffff:ffff",
+  "total": "18446744073709551616",
+  "netmask": "ffff:ffff:ffff:ffff::"
+ },
+ {
+  "input": "a60a:1728:772c:9eb4:ebb8:b295:cd1d:dcf2/48",
+  "expanded": "a60a:1728:772c:9eb4:ebb8:b295:cd1d:dcf2",
+  "compressed": "a60a:1728:772c::",
+  "network": "a60a:1728:772c::/48",
+  "first": "a60a:1728:772c::",
+  "last": "a60a:1728:772c:ffff:ffff:ffff:ffff:ffff",
+  "total": "1208925819614629174706176",
+  "netmask": "ffff:ffff:ffff::"
+ },
+ {
+  "input": "2fe0:6b3f:47c4:b01d:b6c7:ba64:10e0:9a9e/16",
+  "expanded": "2fe0:6b3f:47c4:b01d:b6c7:ba64:10e0:9a9e",
+  "compressed": "2fe0::",
+  "network": "2fe0::/16",
+  "first": "2fe0::",
+  "last": "2fe0:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "5192296858534827628530496329220096",
+  "netmask": "ffff::"
+ },
+ {
+  "input": "8d74:b745:dc63:e395:1386:f436:4145:a0d/8",
+  "expanded": "8d74:b745:dc63:e395:1386:f436:4145:0a0d",
+  "compressed": "8d00::",
+  "network": "8d00::/8",
+  "first": "8d00::",
+  "last": "8dff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "1329227995784915872903807060280344576",
+  "netmask": "ff00::"
+ },
+ {
+  "input": "497d:2804:3bf4:d14e:5a62:879a:ceb1:a861/120",
+  "expanded": "497d:2804:3bf4:d14e:5a62:879a:ceb1:a861",
+  "compressed": "497d:2804:3bf4:d14e:5a62:879a:ceb1:a800",
+  "network": "497d:2804:3bf4:d14e:5a62:879a:ceb1:a800/120",
+  "first": "497d:2804:3bf4:d14e:5a62:879a:ceb1:a800",
+  "last": "497d:2804:3bf4:d14e:5a62:879a:ceb1:a8ff",
+  "total": "256",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ff00"
+ },
+ {
+  "input": "4b0:a9f9:dcf5:1c22:f3a4:2e40:ef77:39d8/128",
+  "expanded": "04b0:a9f9:dcf5:1c22:f3a4:2e40:ef77:39d8",
+  "compressed": "4b0:a9f9:dcf5:1c22:f3a4:2e40:ef77:39d8",
+  "network": "4b0:a9f9:dcf5:1c22:f3a4:2e40:ef77:39d8/128",
+  "first": "4b0:a9f9:dcf5:1c22:f3a4:2e40:ef77:39d8",
+  "last": "4b0:a9f9:dcf5:1c22:f3a4:2e40:ef77:39d8",
+  "total": "1",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+ },
+ {
+  "input": "236:9ae8:8988:94a8:d7c:5347:3992:5d80/48",
+  "expanded": "0236:9ae8:8988:94a8:0d7c:5347:3992:5d80",
+  "compressed": "236:9ae8:8988::",
+  "network": "236:9ae8:8988::/48",
+  "first": "236:9ae8:8988::",
+  "last": "236:9ae8:8988:ffff:ffff:ffff:ffff:ffff",
+  "total": "1208925819614629174706176",
+  "netmask": "ffff:ffff:ffff::"
+ },
+ {
+  "input": "25a6:7c98:3ecb:ea8f:8a7b:d164:9ffa:4b06/128",
+  "expanded": "25a6:7c98:3ecb:ea8f:8a7b:d164:9ffa:4b06",
+  "compressed": "25a6:7c98:3ecb:ea8f:8a7b:d164:9ffa:4b06",
+  "network": "25a6:7c98:3ecb:ea8f:8a7b:d164:9ffa:4b06/128",
+  "first": "25a6:7c98:3ecb:ea8f:8a7b:d164:9ffa:4b06",
+  "last": "25a6:7c98:3ecb:ea8f:8a7b:d164:9ffa:4b06",
+  "total": "1",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+ },
+ {
+  "input": "1b7e:1f1:1c52:1ced:d6b5:c135:fdf:f6b0/0",
+  "expanded": "1b7e:01f1:1c52:1ced:d6b5:c135:0fdf:f6b0",
+  "compressed": "::",
+  "network": "::/0",
+  "first": "::",
+  "last": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "340282366920938463463374607431768211456",
+  "netmask": "::"
+ },
+ {
+  "input": "f6c9:6c5d:5764:60fa:5afe:c2ac:3e56:a9c/112",
+  "expanded": "f6c9:6c5d:5764:60fa:5afe:c2ac:3e56:0a9c",
+  "compressed": "f6c9:6c5d:5764:60fa:5afe:c2ac:3e56:0",
+  "network": "f6c9:6c5d:5764:60fa:5afe:c2ac:3e56:0/112",
+  "first": "f6c9:6c5d:5764:60fa:5afe:c2ac:3e56:0",
+  "last": "f6c9:6c5d:5764:60fa:5afe:c2ac:3e56:ffff",
+  "total": "65536",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:0"
+ },
+ {
+  "input": "2024:574d:ad9d:301c:247b:c9df:f1f8:21ac/127",
+  "expanded": "2024:574d:ad9d:301c:247b:c9df:f1f8:21ac",
+  "compressed": "2024:574d:ad9d:301c:247b:c9df:f1f8:21ac",
+  "network": "2024:574d:ad9d:301c:247b:c9df:f1f8:21ac/127",
+  "first": "2024:574d:ad9d:301c:247b:c9df:f1f8:21ac",
+  "last": "2024:574d:ad9d:301c:247b:c9df:f1f8:21ad",
+  "total": "2",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffe"
+ },
+ {
+  "input": "2606:a34f:f9ba:8bdf:d202:9ef2:da0d:3062/64",
+  "expanded": "2606:a34f:f9ba:8bdf:d202:9ef2:da0d:3062",
+  "compressed": "2606:a34f:f9ba:8bdf::",
+  "network": "2606:a34f:f9ba:8bdf::/64",
+  "first": "2606:a34f:f9ba:8bdf::",
+  "last": "2606:a34f:f9ba:8bdf:ffff:ffff:ffff:ffff",
+  "total": "18446744073709551616",
+  "netmask": "ffff:ffff:ffff:ffff::"
+ },
+ {
+  "input": "c211:c8fc:87ae:8263:6863:a2f2:4c86:608/112",
+  "expanded": "c211:c8fc:87ae:8263:6863:a2f2:4c86:0608",
+  "compressed": "c211:c8fc:87ae:8263:6863:a2f2:4c86:0",
+  "network": "c211:c8fc:87ae:8263:6863:a2f2:4c86:0/112",
+  "first": "c211:c8fc:87ae:8263:6863:a2f2:4c86:0",
+  "last": "c211:c8fc:87ae:8263:6863:a2f2:4c86:ffff",
+  "total": "65536",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:0"
+ },
+ {
+  "input": "f0a:9ec9:a88f:f088:912d:6fbf:5229:532/112",
+  "expanded": "0f0a:9ec9:a88f:f088:912d:6fbf:5229:0532",
+  "compressed": "f0a:9ec9:a88f:f088:912d:6fbf:5229:0",
+  "network": "f0a:9ec9:a88f:f088:912d:6fbf:5229:0/112",
+  "first": "f0a:9ec9:a88f:f088:912d:6fbf:5229:0",
+  "last": "f0a:9ec9:a88f:f088:912d:6fbf:5229:ffff",
+  "total": "65536",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:0"
+ },
+ {
+  "input": "a495:c942:eb61:c7e5:6fea:edb6:3963:5737/127",
+  "expanded": "a495:c942:eb61:c7e5:6fea:edb6:3963:5737",
+  "compressed": "a495:c942:eb61:c7e5:6fea:edb6:3963:5736",
+  "network": "a495:c942:eb61:c7e5:6fea:edb6:3963:5736/127",
+  "first": "a495:c942:eb61:c7e5:6fea:edb6:3963:5736",
+  "last": "a495:c942:eb61:c7e5:6fea:edb6:3963:5737",
+  "total": "2",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffe"
+ },
+ {
+  "input": "ba33:4f18:7d1f:2df3:57d7:f904:7ff9:5325/120",
+  "expanded": "ba33:4f18:7d1f:2df3:57d7:f904:7ff9:5325",
+  "compressed": "ba33:4f18:7d1f:2df3:57d7:f904:7ff9:5300",
+  "network": "ba33:4f18:7d1f:2df3:57d7:f904:7ff9:5300/120",
+  "first": "ba33:4f18:7d1f:2df3:57d7:f904:7ff9:5300",
+  "last": "ba33:4f18:7d1f:2df3:57d7:f904:7ff9:53ff",
+  "total": "256",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ff00"
+ },
+ {
+  "input": "4c90:ba63:1a47:a1e0:a46a:4d18:2201:45c/16",
+  "expanded": "4c90:ba63:1a47:a1e0:a46a:4d18:2201:045c",
+  "compressed": "4c90::",
+  "network": "4c90::/16",
+  "first": "4c90::",
+  "last": "4c90:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "5192296858534827628530496329220096",
+  "netmask": "ffff::"
+ },
+ {
+  "input": "c5e5:66ec:57c8:8d64:deaf:b009:86de:8608/32",
+  "expanded": "c5e5:66ec:57c8:8d64:deaf:b009:86de:8608",
+  "compressed": "c5e5:66ec::",
+  "network": "c5e5:66ec::/32",
+  "first": "c5e5:66ec::",
+  "last": "c5e5:66ec:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "79228162514264337593543950336",
+  "netmask": "ffff:ffff::"
+ },
+ {
+  "input": "292b:2dd5:e721:3ad6:84d6:3863:94f4:3c38/0",
+  "expanded": "292b:2dd5:e721:3ad6:84d6:3863:94f4:3c38",
+  "compressed": "::",
+  "network": "::/0",
+  "first": "::",
+  "last": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "340282366920938463463374607431768211456",
+  "netmask": "::"
+ },
+ {
+  "input": "d27:58c0:d3c4:be41:b3c3:939a:852f:daaa/96",
+  "expanded": "0d27:58c0:d3c4:be41:b3c3:939a:852f:daaa",
+  "compressed": "d27:58c0:d3c4:be41:b3c3:939a::",
+  "network": "d27:58c0:d3c4:be41:b3c3:939a::/96",
+  "first": "d27:58c0:d3c4:be41:b3c3:939a::",
+  "last": "d27:58c0:d3c4:be41:b3c3:939a:ffff:ffff",
+  "total": "4294967296",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff::"
+ },
+ {
+  "input": "6120:efc2:f931:5bd9:b479:6767:9bfd:1be8/78",
+  "expanded": "6120:efc2:f931:5bd9:b479:6767:9bfd:1be8",
+  "compressed": "6120:efc2:f931:5bd9:b478::",
+  "network": "6120:efc2:f931:5bd9:b478::/78",
+  "first": "6120:efc2:f931:5bd9:b478::",
+  "last": "6120:efc2:f931:5bd9:b47b:ffff:ffff:ffff",
+  "total": "1125899906842624",
+  "netmask": "ffff:ffff:ffff:ffff:fffc::"
+ },
+ {
+  "input": "67d4:783f:2550:6155:5381:a20c:2cc6:a7c9/112",
+  "expanded": "67d4:783f:2550:6155:5381:a20c:2cc6:a7c9",
+  "compressed": "67d4:783f:2550:6155:5381:a20c:2cc6:0",
+  "network": "67d4:783f:2550:6155:5381:a20c:2cc6:0/112",
+  "first": "67d4:783f:2550:6155:5381:a20c:2cc6:0",
+  "last": "67d4:783f:2550:6155:5381:a20c:2cc6:ffff",
+  "total": "65536",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:0"
+ },
+ {
+  "input": "27fe:1b8d:931d:6f52:2189:83b4:443:9a74/32",
+  "expanded": "27fe:1b8d:931d:6f52:2189:83b4:0443:9a74",
+  "compressed": "27fe:1b8d::",
+  "network": "27fe:1b8d::/32",
+  "first": "27fe:1b8d::",
+  "last": "27fe:1b8d:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "79228162514264337593543950336",
+  "netmask": "ffff:ffff::"
+ },
+ {
+  "input": "ec12:91fb:d418:ec30:25ee:efdf:41c9:2450/48",
+  "expanded": "ec12:91fb:d418:ec30:25ee:efdf:41c9:2450",
+  "compressed": "ec12:91fb:d418::",
+  "network": "ec12:91fb:d418::/48",
+  "first": "ec12:91fb:d418::",
+  "last": "ec12:91fb:d418:ffff:ffff:ffff:ffff:ffff",
+  "total": "1208925819614629174706176",
+  "netmask": "ffff:ffff:ffff::"
+ },
+ {
+  "input": "4955:71af:6f48:a7a4:ca95:6fb5:da62:a5ec/64",
+  "expanded": "4955:71af:6f48:a7a4:ca95:6fb5:da62:a5ec",
+  "compressed": "4955:71af:6f48:a7a4::",
+  "network": "4955:71af:6f48:a7a4::/64",
+  "first": "4955:71af:6f48:a7a4::",
+  "last": "4955:71af:6f48:a7a4:ffff:ffff:ffff:ffff",
+  "total": "18446744073709551616",
+  "netmask": "ffff:ffff:ffff:ffff::"
+ },
+ {
+  "input": "5d74:a6d0:6a1b:8f59:b668:2ddf:4eaa:dd3d/0",
+  "expanded": "5d74:a6d0:6a1b:8f59:b668:2ddf:4eaa:dd3d",
+  "compressed": "::",
+  "network": "::/0",
+  "first": "::",
+  "last": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "340282366920938463463374607431768211456",
+  "netmask": "::"
+ },
+ {
+  "input": "33a3:4fc4:95fd:6371:5900:fcbf:7396:1976/8",
+  "expanded": "33a3:4fc4:95fd:6371:5900:fcbf:7396:1976",
+  "compressed": "3300::",
+  "network": "3300::/8",
+  "first": "3300::",
+  "last": "33ff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "1329227995784915872903807060280344576",
+  "netmask": "ff00::"
+ },
+ {
+  "input": "1323:5c54:9cab:29f0:fefc:1c78:8469:63b3/78",
+  "expanded": "1323:5c54:9cab:29f0:fefc:1c78:8469:63b3",
+  "compressed": "1323:5c54:9cab:29f0:fefc::",
+  "network": "1323:5c54:9cab:29f0:fefc::/78",
+  "first": "1323:5c54:9cab:29f0:fefc::",
+  "last": "1323:5c54:9cab:29f0:feff:ffff:ffff:ffff",
+  "total": "1125899906842624",
+  "netmask": "ffff:ffff:ffff:ffff:fffc::"
+ },
+ {
+  "input": "e4aa:a90a:8e91:69bf:666f:b767:c446:5154/112",
+  "expanded": "e4aa:a90a:8e91:69bf:666f:b767:c446:5154",
+  "compressed": "e4aa:a90a:8e91:69bf:666f:b767:c446:0",
+  "network": "e4aa:a90a:8e91:69bf:666f:b767:c446:0/112",
+  "first": "e4aa:a90a:8e91:69bf:666f:b767:c446:0",
+  "last": "e4aa:a90a:8e91:69bf:666f:b767:c446:ffff",
+  "total": "65536",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:0"
+ },
+ {
+  "input": "a8e0:8be9:c459:69b4:1639:a42c:2b0f:4eb0/127",
+  "expanded": "a8e0:8be9:c459:69b4:1639:a42c:2b0f:4eb0",
+  "compressed": "a8e0:8be9:c459:69b4:1639:a42c:2b0f:4eb0",
+  "network": "a8e0:8be9:c459:69b4:1639:a42c:2b0f:4eb0/127",
+  "first": "a8e0:8be9:c459:69b4:1639:a42c:2b0f:4eb0",
+  "last": "a8e0:8be9:c459:69b4:1639:a42c:2b0f:4eb1",
+  "total": "2",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffe"
+ },
+ {
+  "input": "6873:aebd:568d:f472:1b15:f2eb:e795:c2bb/64",
+  "expanded": "6873:aebd:568d:f472:1b15:f2eb:e795:c2bb",
+  "compressed": "6873:aebd:568d:f472::",
+  "network": "6873:aebd:568d:f472::/64",
+  "first": "6873:aebd:568d:f472::",
+  "last": "6873:aebd:568d:f472:ffff:ffff:ffff:ffff",
+  "total": "18446744073709551616",
+  "netmask": "ffff:ffff:ffff:ffff::"
+ },
+ {
+  "input": "57be:4b91:1b6:504e:bc58:db82:4991:1f5c/127",
+  "expanded": "57be:4b91:01b6:504e:bc58:db82:4991:1f5c",
+  "compressed": "57be:4b91:1b6:504e:bc58:db82:4991:1f5c",
+  "network": "57be:4b91:1b6:504e:bc58:db82:4991:1f5c/127",
+  "first": "57be:4b91:1b6:504e:bc58:db82:4991:1f5c",
+  "last": "57be:4b91:1b6:504e:bc58:db82:4991:1f5d",
+  "total": "2",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffe"
+ },
+ {
+  "input": "1809:f938:aeed:f7ef:b74b:8ba3:e23a:c71d/48",
+  "expanded": "1809:f938:aeed:f7ef:b74b:8ba3:e23a:c71d",
+  "compressed": "1809:f938:aeed::",
+  "network": "1809:f938:aeed::/48",
+  "first": "1809:f938:aeed::",
+  "last": "1809:f938:aeed:ffff:ffff:ffff:ffff:ffff",
+  "total": "1208925819614629174706176",
+  "netmask": "ffff:ffff:ffff::"
+ },
+ {
+  "input": "9526:b027:caa9:4081:c0c9:dd10:1c2c:6dc4/120",
+  "expanded": "9526:b027:caa9:4081:c0c9:dd10:1c2c:6dc4",
+  "compressed": "9526:b027:caa9:4081:c0c9:dd10:1c2c:6d00",
+  "network": "9526:b027:caa9:4081:c0c9:dd10:1c2c:6d00/120",
+  "first": "9526:b027:caa9:4081:c0c9:dd10:1c2c:6d00",
+  "last": "9526:b027:caa9:4081:c0c9:dd10:1c2c:6dff",
+  "total": "256",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ff00"
+ },
+ {
+  "input": "2001:db8::1/64",
+  "expanded": "2001:0db8:0000:0000:0000:0000:0000:0001",
+  "compressed": "2001:db8::",
+  "network": "2001:db8::/64",
+  "first": "2001:db8::",
+  "last": "2001:db8::ffff:ffff:ffff:ffff",
+  "total": "18446744073709551616",
+  "netmask": "ffff:ffff:ffff:ffff::"
+ },
+ {
+  "input": "fe80::1/10",
+  "expanded": "fe80:0000:0000:0000:0000:0000:0000:0001",
+  "compressed": "fe80::",
+  "network": "fe80::/10",
+  "first": "fe80::",
+  "last": "febf:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "332306998946228968225951765070086144",
+  "netmask": "ffc0::"
+ },
+ {
+  "input": "::1/128",
+  "expanded": "0000:0000:0000:0000:0000:0000:0000:0001",
+  "compressed": "::1",
+  "network": "::1/128",
+  "first": "::1",
+  "last": "::1",
+  "total": "1",
+  "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+ },
+ {
+  "input": "::/0",
+  "expanded": "0000:0000:0000:0000:0000:0000:0000:0000",
+  "compressed": "::",
+  "network": "::/0",
+  "first": "::",
+  "last": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+  "total": "340282366920938463463374607431768211456",
+  "netmask": "::"
+ }
+]

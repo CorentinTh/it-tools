@@ -36,6 +36,7 @@ import { tool as httpStatusCodes } from './http-status-codes';
 import { tool as yamlToJson } from './yaml-to-json-converter';
 import { tool as jsonToYaml } from './json-to-yaml-converter';
 import { tool as ipv6UlaGenerator } from './ipv6-ula-generator';
+import { tool as ipv6SubnetCalculator } from './ipv6-subnet-calculator';
 import { tool as ipv4AddressConverter } from './ipv4-address-converter';
 import { tool as benchmarkBuilder } from './benchmark-builder';
 import { tool as userAgentParser } from './user-agent-parser';
@@ -164,7 +165,7 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Network',
-    components: [ipv4SubnetCalculator, ipv4AddressConverter, ipv4RangeExpander, macAddressLookup, macAddressGenerator, ipv6UlaGenerator],
+    components: [ipv4SubnetCalculator, ipv6SubnetCalculator, ipv4AddressConverter, ipv4RangeExpander, macAddressLookup, macAddressGenerator, ipv6UlaGenerator],
   },
   {
     name: 'Math',
