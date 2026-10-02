@@ -135,12 +135,14 @@ export function describeIpv6(cidr: string): Ipv6Info {
 
   const hostBits = 128 - prefix;
   const networkValue = prefix === 0 ? 0n : (addressValue >> BigInt(hostBits)) << BigInt(hostBits);
-  const total = hostBits >= 0 ? (1n << BigInt(hostBits)) : 0n;
+  const total = 1n << BigInt(hostBits);
   const firstValue = networkValue;
   const lastValue = networkValue + total - 1n;
 
-  const maskHostBits = BigInt(hostBits);
-  const maskValue = hostBits === 0 ? 0n : ((1n << (128n - maskHostBits)) - 1n) << maskHostBits;
+  // Top `prefix` bits set. (2^p - 1) << (128 - p) is exact for every p in
+  // 0..128 — the old special case for hostBits === 0 was inverted and
+  // produced an all-zero netmask for /128 (#differential fixture).
+  const maskValue = ((1n << BigInt(prefix)) - 1n) << BigInt(128 - prefix);
 
   const { type, scope } = describeType(address);
 
