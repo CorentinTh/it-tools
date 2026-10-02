@@ -1,0 +1,753 @@
+flf2a$ 4 4 8 0 14 0 8256
+Graceful-6x4 by Mikhael Goikhman, http://migo.n3.net/, 20/Jan/2002.
+
+Why did I make this font? Most of the figlet fonts are ugly for my taste.
+Chars ".", "'" or "|" are not as graceful as "(", ")", "/", "\" and "_".
+Also most of the fonts unlike this one are either small or good, not both.
+And finally, I wanted to have a strictly sized font, this one is 6x4.
+I intended to create this elegant figlet font in 1996, but only in
+January 2002 actually had the time to bring it to the working state. :)
+Cyrillic letters are supported, maybe somewhen I will add hebrew latters.
+To get a monospaced font 6x4, use "figlet -f graceful -m -1". Enjoy!
+
+Permission is hereby given to modify this font, as long as the
+modifier's name is added to this comment.
+
+$$    @
+$$    @
+$$    @
+$$    @@
+  _   @
+ / \  @
+ \_/  @
+ (_)  @@
+  _ _ @
+ (/(/ @
+      @
+      @@
+ _  _ @
+/ )( \@
+)    (@
+\_)(_/@@
+ ____ @
+/ (__)@
+\__  \@
+(__)_/@@
+ _ _  @
+(// ) @
+ / /_ @
+(_/(/ @@
+  ___ @
+ ( _ \@
+/ _  /@
+\__\_)@@
+   _  @
+  (/  @
+      @
+      @@
+   _  @
+  / ) @
+ ( (  @
+  \_) @@
+  _   @
+ ( \  @
+  ) ) @
+ (_/  @@
+      @
+(\/\/)@
+ )  ( @
+(/\/\)@@
+  _   @
+ ( )  @
+(_ _) @
+ (_)  @@
+      @
+  _   @
+ ( )  @
+ (/   @@
+      @
+ ___  @
+(___) @
+      @@
+      @
+      @
+  _   @
+ (_)  @@
+   _  @
+  / ) @
+ / /  @
+(_/   @@
+  __  @
+ /  \ @
+(  0 )@
+ \__/ @@
+  __  @
+ /  \ @
+(_/ / @
+ (__) @@
+ ____ @
+(___ \@
+ / __/@
+(____)@@
+ ____ @
+( __ \@
+ (__ (@
+(____/@@
+  ___ @
+ / _ \@
+(__  (@
+  (__/@@
+  ___ @
+ / __)@
+(___ \@
+(____/@@
+  ___ @
+ / __)@
+(  _ \@
+ \___/@@
+ ____ @
+(__  )@
+  / / @
+ (_/  @@
+ ____ @
+/ _  \@
+) _  (@
+\____/@@
+ ___  @
+/ _ \ @
+\__  )@
+(___/ @@
+  _   @
+ (_)  @
+  _   @
+ (_)  @@
+  _   @
+ (_)  @
+ ( )  @
+ (/   @@
+   __ @
+  / / @
+ ( (  @
+  \_\ @@
+ ___  @
+(___) @
+ ___  @
+(___) @@
+ __   @
+ \ \  @
+  ) ) @
+ /_/  @@
+ ___  @
+(__ \ @
+ (__/ @
+ (_)  @@
+  ___ @
+ /   \@
+( (__/@
+ \___)@@
+  __  @
+ / _\ @
+/    \@
+\_/\_/@@
+ ____ @
+(  _ \@
+ ) _ (@
+(____/@@
+  ___ @
+ / __)@
+( (__ @
+ \___)@@
+ ____ @
+(    \@
+ ) D (@
+(____/@@
+ ____ @
+(  __)@
+ ) _) @
+(____)@@
+ ____ @
+(  __)@
+ ) _) @
+(__)  @@
+  ___ @
+ / __)@
+( (_ \@
+ \___/@@
+ _  _ @
+/ )( \@
+) __ (@
+\_)(_/@@
+  __  @
+ (  ) @
+  )(  @
+ (__) @@
+   __ @
+ _(  )@
+/ \) \@
+\____/@@
+ __ _ @
+(  / )@
+ )  ( @
+(__\_)@@
+ __   @
+(  )  @
+/ (_/\@
+\____/@@
+ _  _ @
+( \/ )@
+/ \/ \@
+\_)(_/@@
+ __ _ @
+(  ( \@
+/    /@
+\_)__)@@
+  __  @
+ /  \ @
+(  O )@
+ \__/ @@
+ ____ @
+(  _ \@
+ ) __/@
+(__)  @@
+  __  @
+ /  \ @
+(  O )@
+ \__\)@@
+ ____ @
+(  _ \@
+ )   /@
+(__\_)@@
+ ____ @
+/ ___)@
+\___ \@
+(____/@@
+ ____ @
+(_  _)@
+  )(  @
+ (__) @@
+ _  _ @
+/ )( \@
+) \/ (@
+\____/@@
+ _  _ @
+/ )( \@
+\ \/ /@
+ \__/ @@
+ _  _ @
+/ )( \@
+\ /\ /@
+(_/\_)@@
+ _  _ @
+( \/ )@
+ )  ( @
+(_/\_)@@
+ _  _ @
+( \/ )@
+ )  / @
+(__/  @@
+ ____ @
+(__  )@
+ / _/ @
+(____)@@
+ ___  @
+/  _) @
+) (_  @
+\___) @@
+ _    @
+( \   @
+ \ \  @
+  \_) @@
+  ___ @
+ (_  \@
+  _) (@
+ (___/@@
+  __  @
+ /  \ @
+(_/\_)@
+      @@
+      @
+      @
+ ____ @
+(____)@@
+  _   @
+  \)  @
+      @
+      @@
+  __  @
+ / _\ @
+/    \@
+\_/\_/@@
+ ____ @
+(  _ \@
+ ) _ (@
+(____/@@
+  ___ @
+ / __)@
+( (__ @
+ \___)@@
+ ____ @
+(    \@
+ ) D (@
+(____/@@
+ ____ @
+(  __)@
+ ) _) @
+(____)@@
+ ____ @
+(  __)@
+ ) _) @
+(__)  @@
+  ___ @
+ / __)@
+( (_ \@
+ \___/@@
+ _  _ @
+/ )( \@
+) __ (@
+\_)(_/@@
+  __  @
+ (  ) @
+  )(  @
+ (__) @@
+   __ @
+ _(  )@
+/ \) \@
+\____/@@
+ __ _ @
+(  / )@
+ )  ( @
+(__\_)@@
+ __   @
+(  )  @
+/ (_/\@
+\____/@@
+ _  _ @
+( \/ )@
+/ \/ \@
+\_)(_/@@
+ __ _ @
+(  ( \@
+/    /@
+\_)__)@@
+  __  @
+ /  \ @
+(  O )@
+ \__/ @@
+ ____ @
+(  _ \@
+ ) __/@
+(__)  @@
+  __  @
+ /  \ @
+(  O )@
+ \__\)@@
+ ____ @
+(  _ \@
+ )   /@
+(__\_)@@
+ ____ @
+/ ___)@
+\___ \@
+(____/@@
+ ____ @
+(_  _)@
+  )(  @
+ (__) @@
+ _  _ @
+/ )( \@
+) \/ (@
+\____/@@
+ _  _ @
+/ )( \@
+\ \/ /@
+ \__/ @@
+ _  _ @
+/ )( \@
+\ /\ /@
+(_/\_)@@
+ _  _ @
+( \/ )@
+ )  ( @
+(_/\_)@@
+ _  _ @
+( \/ )@
+ )  / @
+(__/  @@
+ ____ @
+(__  )@
+ / _/ @
+(____)@@
+  ___ @
+ (  _)@
+(_ (_ @
+ (___)@@
+  _   @
+ ( \  @
+ / /  @
+ \_)  @@
+ ___  @
+(_  ) @
+ _) _)@
+(___) @@
+ __   @
+(_ \_ @
+  \__)@
+      @@
+$     @
+$     @
+$     @
+$     @@
+$     @
+$     @
+$     @
+$     @@
+$     @
+$     @
+$     @
+$     @@
+$     @
+$     @
+$     @
+$     @@
+$     @
+$     @
+$     @
+$     @@
+$     @
+$     @
+$     @
+$     @@
+$     @
+$     @
+$     @
+$     @@
+0x0401  CYRILLIC CAPITAL LETTER IO
+ _--_ @
+(  __)@
+ ) _) @
+(____)@@
+0x0410  CYRILLIC CAPITAL LETTER A
+  __  @
+ / _\ @
+/    \@
+\_/\_/@@
+0x0411  CYRILLIC CAPITAL LETTER BE
+ ____ @
+(  __)@
+ ) _ \@
+(____/@@
+0x0412  CYRILLIC CAPITAL LETTER VE
+ ____ @
+(  _ \@
+ ) _ (@
+(____/@@
+0x0413  CYRILLIC CAPITAL LETTER GHE
+ ____ @
+/  __)@
+) (   @
+\_/   @@
+0x0414  CYRILLIC CAPITAL LETTER DE
+ ____ @
+/ __ \@
+\_  _/@
+(_)(_)@@
+0x0415  CYRILLIC CAPITAL LETTER IE
+ ____ @
+(  __)@
+ ) _) @
+(____)@@
+0x0416  CYRILLIC CAPITAL LETTER ZHE
+  _ _ @
+/( ( \@
+)    (@
+\_)_)/@@
+0x0417  CYRILLIC CAPITAL LETTER ZE
+ ____ @
+( __ \@
+ (__ (@
+(____/@@
+0x0418  CYRILLIC CAPITAL LETTER I
+ _ __ @
+/ )  )@
+\    \@
+(__(_/@@
+0x0419  CYRILLIC CAPITAL LETTER SHORT I
+ _ u_ @
+/ )  )@
+\    \@
+(__(_/@@
+0x041A  CYRILLIC CAPITAL LETTER KA
+ __ _ @
+(  / )@
+ )  ( @
+(__\_)@@
+0x041B  CYRILLIC CAPITAL LETTER EL
+  __  @
+ /  \ @
+/ /\ \@
+\_)(_/@@
+0x041C  CYRILLIC CAPITAL LETTER EM
+ _  _ @
+( \/ )@
+/ \/ \@
+\_)(_/@@
+0x041D  CYRILLIC CAPITAL LETTER EN
+ _  _ @
+/ )( \@
+) __ (@
+\_)(_/@@
+0x041E  CYRILLIC CAPITAL LETTER O
+  __  @
+ /  \ @
+(  O )@
+ \__/ @@
+0x041F  CYRILLIC CAPITAL LETTER PE
+ ____ @
+/    \@
+) /\ (@
+\_)(_/@@
+0x0420  CYRILLIC CAPITAL LETTER ER
+ ____ @
+(  _ \@
+ ) __/@
+(__)  @@
+0x0421  CYRILLIC CAPITAL LETTER ES
+  ___ @
+ / __)@
+( (__ @
+ \___)@@
+0x0422  CYRILLIC CAPITAL LETTER TE
+ ____ @
+(_  _)@
+  )(  @
+ (__) @@
+0x0423  CYRILLIC CAPITAL LETTER U
+ _  _ @
+( \/ )@
+ )  / @
+(__/  @@
+0x0424  CYRILLIC CAPITAL LETTER EF
+ ____ @
+/ __ \@
+\_  _/@
+ (__) @@
+0x0425  CYRILLIC CAPITAL LETTER HA
+ _  _ @
+( \/ )@
+ )  ( @
+(_/\_)@@
+0x0426  CYRILLIC CAPITAL LETTER TSE
+ _  _ @
+/ \( \@
+) (/ (@
+\___\/@@
+0x0427  CYRILLIC CAPITAL LETTER CHE
+ __ _ @
+/ (/ \@
+\__  (@
+  (__/@@
+0x0428  CYRILLIC CAPITAL LETTER SHA
+ _ _  @
+( ) ))@
+/( ( \@
+\____/@@
+0x0429  CYRILLIC CAPITAL LETTER SHCHA
+ _ _  @
+( ) ))@
+/( ( \@
+\___\/@@
+0x042A  CYRILLIC CAPITAL LETTER HARD SIGN
+ __   @
+(_ )_ @
+ / _ \@
+ \___/@@
+0x042B  CYRILLIC CAPITAL LETTER YERU
+ _  _ @
+( )( )@
+/ _ \\@
+\___//@@
+0x042C  CYRILLIC CAPITAL LETTER SOFT SIGN
+ __   @
+(  )_ @
+ ) _ \@
+(____/@@
+0x042D  CYRILLIC CAPITAL LETTER E
+ ___  @
+(__ \ @
+ (_  )@
+(___/ @@
+0x042E  CYRILLIC CAPITAL LETTER YU
+ _ __ @
+/ /  \@
+)   O(@
+\_\__/@@
+0x042F  CYRILLIC CAPITAL LETTER YA
+ ____ @
+/ _  )@
+\    \@
+(_/__/@@
+0x0430  CYRILLIC SMALL LETTER A
+  __  @
+ / _\ @
+/    \@
+\_/\_/@@
+0x0431  CYRILLIC SMALL LETTER BE
+ ____ @
+(  __)@
+ ) _ \@
+(____/@@
+0x0432  CYRILLIC SMALL LETTER VE
+ ____ @
+(  _ \@
+ ) _ (@
+(____/@@
+0x0433  CYRILLIC SMALL LETTER GHE
+ ____ @
+/  __)@
+) (   @
+\_/   @@
+0x0434  CYRILLIC SMALL LETTER DE
+ ____ @
+/ __ \@
+\_  _/@
+(_)(_)@@
+0x0435  CYRILLIC SMALL LETTER IE
+ ____ @
+(  __)@
+ ) _) @
+(____)@@
+0x0436  CYRILLIC SMALL LETTER ZHE
+  _ _ @
+/( ( \@
+)    (@
+\_)_)/@@
+0x0437  CYRILLIC SMALL LETTER ZE
+ ____ @
+( __ \@
+ (__ (@
+(____/@@
+0x0438  CYRILLIC SMALL LETTER I
+ _ __ @
+/ )  )@
+\    \@
+(__(_/@@
+0x0439  CYRILLIC SMALL LETTER SHORT I
+ _ u_ @
+/ )  )@
+\    \@
+(__(_/@@
+0x043A  CYRILLIC SMALL LETTER KA
+ __ _ @
+(  / )@
+ )  ( @
+(__\_)@@
+0x043B  CYRILLIC SMALL LETTER EL
+  __  @
+ /  \ @
+/ /\ \@
+\_)(_/@@
+0x043C  CYRILLIC SMALL LETTER EM
+ _  _ @
+( \/ )@
+/ \/ \@
+\_)(_/@@
+0x043D  CYRILLIC SMALL LETTER EN
+ _  _ @
+/ )( \@
+) __ (@
+\_)(_/@@
+0x043E  CYRILLIC SMALL LETTER O
+  __  @
+ /  \ @
+(  O )@
+ \__/ @@
+0x043F  CYRILLIC SMALL LETTER PE
+ ____ @
+/    \@
+) /\ (@
+\_)(_/@@
+0x0440  CYRILLIC SMALL LETTER ER
+ ____ @
+(  _ \@
+ ) __/@
+(__)  @@
+0x0441  CYRILLIC SMALL LETTER ES
+  ___ @
+ / __)@
+( (__ @
+ \___)@@
+0x0442  CYRILLIC SMALL LETTER TE
+ ____ @
+(_  _)@
+  )(  @
+ (__) @@
+0x0443  CYRILLIC SMALL LETTER U
+ _  _ @
+( \/ )@
+ )  / @
+(__/  @@
+0x0444  CYRILLIC SMALL LETTER EF
+ ____ @
+/ __ \@
+\_  _/@
+ (__) @@
+0x0445  CYRILLIC SMALL LETTER HA
+ _  _ @
+( \/ )@
+ )  ( @
+(_/\_)@@
+0x0446  CYRILLIC SMALL LETTER TSE
+ _  _ @
+/ \( \@
+) (/ (@
+\___\/@@
+0x0447  CYRILLIC SMALL LETTER CHE
+ __ _ @
+/ (/ \@
+\__  (@
+  (__/@@
+0x0448  CYRILLIC SMALL LETTER SHA
+ _ _  @
+( ) ))@
+/( ( \@
+\____/@@
+0x0449  CYRILLIC SMALL LETTER SHCHA
+ _ _  @
+( ) ))@
+/( ( \@
+\___\/@@
+0x044A  CYRILLIC SMALL LETTER HARD SIGN
+ __   @
+(_ )_ @
+ / _ \@
+ \___/@@
+0x044B  CYRILLIC SMALL LETTER YERU
+ _  _ @
+( )( )@
+/ _ \\@
+\___//@@
+0x044C  CYRILLIC SMALL LETTER SOFT SIGN
+ __   @
+(  )_ @
+ ) _ \@
+(____/@@
+0x044D  CYRILLIC SMALL LETTER E
+ ___  @
+(__ \ @
+ (_  )@
+(___/ @@
+0x044E  CYRILLIC SMALL LETTER YU
+ _ __ @
+/ /  \@
+)   O(@
+\_\__/@@
+0x044F  CYRILLIC SMALL LETTER YA
+ ____ @
+/ _  )@
+\    \@
+(_/__/@@
+0x0451  CYRILLIC SMALL LETTER IO
+ _--_ @
+(  __)@
+ ) _) @
+(____)@@
