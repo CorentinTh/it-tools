@@ -58,6 +58,12 @@ toolCard:
 search:
   label: '搜索'
 tools:
+  ascii-text-drawer:
+    title: ASCII 艺术字生成器
+    description: 将文本转换为 ASCII 艺术字（支持 289 种 FIGlet 字体，本地加载）。
+  barcode-generator:
+    title: 条形码生成器
+    description: 生成 Code 128 条形码（自动切换 B/C 子集），输出可缩放的 SVG。
   categories:
     favorite-tools: '我的收藏'
     crypto: '加密'
@@ -71,6 +77,15 @@ tools:
     text: '文本'
     data: '数据'
 
+  email-normalizer:
+    title: 邮箱地址规范化
+    description: 去除 Gmail 等邮箱地址中的点号、加号后缀和大小写差异，规范化邮箱地址。
+  json-to-xml:
+    title: JSON 转 XML
+    description: 将 JSON 数据转换为 XML 格式。
+  markdown-to-html:
+    title: Markdown 转 HTML
+    description: 将 Markdown 文本转换为 HTML 片段。
   password-strength-analyser:
     title: 密码强度分析仪
     description: 使用此密码强度分析器和破解时间估计工具来发现密码的强度。
@@ -78,6 +93,18 @@ tools:
   chronometer:
     title: 计时器
     description: 监控事物的持续时间。基本上是一种具有简单计时器功能的计时器。
+  regex-memo:
+    title: 正则表达式速查
+    description: 常用正则表达式速查表（邮箱、URL、日期等）。
+  regex-tester:
+    title: 正则表达式测试器
+    description: 实时测试正则表达式，高亮匹配结果并显示捕获组。
+  resistor-calculator:
+    title: 电阻色环计算器
+    description: 解码 4 环和 5 环电阻的色环颜色，得到阻值和容差。
+  safelink-decoder:
+    title: Outlook SafeLink 解码器
+    description: 解码 Outlook SafeLink 链接，还原原始 URL。
   token-generator:
     title: Token 生成器
     description: 使用您想要的字符、大写或小写字母、数字和/或符号生成随机字符串。
@@ -155,6 +182,9 @@ tools:
     title: 随机端口生成
     description: 生成“已知”端口范围（0-1023）之外的随机端口号。
 
+  xml-to-json:
+    title: XML 转 JSON
+    description: 将 XML 数据转换为 JSON 格式。
   yaml-prettify:
     title: YAML美化和格式化
     description: 将YAML字符串修饰为友好的可读格式。
