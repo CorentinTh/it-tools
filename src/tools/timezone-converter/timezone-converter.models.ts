@@ -32,13 +32,17 @@ function getTimeZoneOffsetMs(date: Date, timeZone: string): number {
 }
 
 function offsetLabel(offsetMs: number): string {
-  if (offsetMs === 0) {
+  // getTimeZoneOffsetMs carries sub-second residue from Date milliseconds;
+  // round to whole minutes BEFORE the sign test or a -363 ms residue on a
+  // zero-offset zone renders as 'UTC-0'.
+  const totalMinutes = Math.round(offsetMs / 60000);
+  if (totalMinutes === 0) {
     return 'UTC';
   }
-  const sign = offsetMs < 0 ? '-' : '+';
-  const total = Math.abs(offsetMs) / 60000;
-  const hours = Math.floor(total / 60);
-  const minutes = Math.round(total % 60);
+  const sign = totalMinutes < 0 ? '-' : '+';
+  const abs = Math.abs(totalMinutes);
+  const hours = Math.floor(abs / 60);
+  const minutes = abs % 60;
   const minutesLabel = minutes > 0 ? `:${String(minutes).padStart(2, '0')}` : '';
   return `UTC${sign}${hours}${minutes > 0 ? minutesLabel : ''}`;
 }
@@ -68,8 +72,23 @@ export function convertBetweenTimezones({ dateTime, fromTz, toTz }: { dateTime: 
     throw new Error(`Unknown target timezone: ${toTz}`);
   }
 
-  const sourceOffset = getTimeZoneOffsetMs(new Date(assumedUtc), fromTz);
-  const trueUtc = assumedUtc - sourceOffset;
+  // Resolve the source-zone offset by fixed-point iteration. A single pass
+  // measures the offset at the naive time treated as UTC, which is wrong
+  // whenever the true instant sits across a nearby transition (e.g. EU
+  // fall-back at 01:00 UTC makes wall 01:05 CEST correspond to the previous
+  // day). Iterate until the offset is self-consistent; realizable wall
+  // times converge in ≤ 2 steps, and gap/fold times settle on one of the
+  // adjacent offsets.
+  let sourceOffset = getTimeZoneOffsetMs(new Date(assumedUtc), fromTz);
+  let trueUtc = assumedUtc - sourceOffset;
+  for (let i = 0; i < 3; i++) {
+    const nextOffset = getTimeZoneOffsetMs(new Date(trueUtc), fromTz);
+    if (nextOffset === sourceOffset) {
+      break;
+    }
+    sourceOffset = nextOffset;
+    trueUtc = assumedUtc - sourceOffset;
+  }
   const targetOffset = getTimeZoneOffsetMs(new Date(trueUtc), toTz);
 
   const target = new Date(trueUtc + targetOffset);
