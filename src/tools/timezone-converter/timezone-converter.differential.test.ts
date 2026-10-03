@@ -1,42 +1,10 @@
 import { expect, it } from 'vitest';
-import { convertBetweenTimezones, listTimezones } from './timezone-converter.models';
-
-// Mirror of the internal offset function (module doesn't export it).
-function getTimeZoneOffsetMs(date: Date, timeZone: string): number {
-  const parts = new Intl.DateTimeFormat('en-US', {
-    timeZone,
-    hourCycle: 'h23',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-  }).formatToParts(date);
-  const values = Object.fromEntries(parts.map(part => [part.type, part.value]));
-  const asUtc = Date.UTC(
-    Number(values.year),
-    Number(values.month) - 1,
-    Number(values.day),
-    Number(values.hour) % 24,
-    Number(values.minute),
-    Number(values.second),
-  );
-  return asUtc - date.getTime();
-}
-
-function offsetLabel(offsetMs: number): string {
-  const totalMinutes = Math.round(offsetMs / 60000);
-  if (totalMinutes === 0) {
-    return 'UTC';
-  }
-  const sign = totalMinutes < 0 ? '-' : '+';
-  const abs = Math.abs(totalMinutes);
-  const hours = Math.floor(abs / 60);
-  const minutes = abs % 60;
-  const minutesLabel = minutes > 0 ? `:${String(minutes).padStart(2, '0')}` : '';
-  return `UTC${sign}${hours}${minutes > 0 ? minutesLabel : ''}`;
-}
+import {
+  convertBetweenTimezones,
+  getTimeZoneOffsetMs,
+  listTimezones,
+  offsetLabel,
+} from './timezone-converter.models';
 
 it('offset matches Intl shortOffset rendering across all zones and dense instants', () => {
   const zones = listTimezones().filter(z => z !== 'UTC');

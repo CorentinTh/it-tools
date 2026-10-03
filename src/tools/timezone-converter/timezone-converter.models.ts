@@ -6,8 +6,10 @@ export interface TimezoneConversion {
   sourceOffset: string
 }
 
-/** Offset of a timezone at a given instant, in milliseconds. */
-function getTimeZoneOffsetMs(date: Date, timeZone: string): number {
+/** Offset of a timezone at a given instant, in milliseconds. Exported for
+ *  the differential suite — mirroring it there trips SonarCloud's copy-paste
+ *  detection and would leave the sweep testing a copy, not the real code. */
+export function getTimeZoneOffsetMs(date: Date, timeZone: string): number {
   const parts = new Intl.DateTimeFormat('en-US', {
     timeZone,
     hour12: false,
@@ -31,7 +33,7 @@ function getTimeZoneOffsetMs(date: Date, timeZone: string): number {
   return asUtc - date.getTime();
 }
 
-function offsetLabel(offsetMs: number): string {
+export function offsetLabel(offsetMs: number): string {
   // getTimeZoneOffsetMs carries sub-second residue from Date milliseconds;
   // round to whole minutes BEFORE the sign test or a -363 ms residue on a
   // zero-offset zone renders as 'UTC-0'.
