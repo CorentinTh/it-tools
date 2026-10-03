@@ -5,7 +5,7 @@ import { convertBetweenTimezones, listTimezones } from './timezone-converter.mod
 function getTimeZoneOffsetMs(date: Date, timeZone: string): number {
   const parts = new Intl.DateTimeFormat('en-US', {
     timeZone,
-    hour12: false,
+    hourCycle: 'h23',
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
@@ -79,7 +79,7 @@ it('A to B to A roundtrip is lossless across zone pairs', () => {
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit',
-        hour12: false,
+        hourCycle: 'h23',
       }).formatToParts(instant);
       const v = Object.fromEntries(parts.map(p => [p.type, p.value]));
       const naive = `${v.year}-${v.month}-${v.day} ${v.hour}:${v.minute}:${v.second}`;
