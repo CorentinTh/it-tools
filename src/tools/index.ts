@@ -55,6 +55,7 @@ import { tool as chronometer } from './chronometer';
 import { tool as colorConverter } from './color-converter';
 import { tool as crontabGenerator } from './crontab-generator';
 import { tool as dateTimeConverter } from './date-time-converter';
+import { tool as timezoneConverter } from './timezone-converter';
 import { tool as deviceInformation } from './device-information';
 import { tool as cypher } from './encryption';
 import { tool as etaCalculator } from './eta-calculator';
@@ -172,7 +173,7 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Measurement',
-    components: [chronometer, temperatureConverter, benchmarkBuilder],
+    components: [chronometer, temperatureConverter, benchmarkBuilder, timezoneConverter],
   },
   {
     name: 'Text',
