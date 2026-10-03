@@ -23,7 +23,7 @@ const validation = useValidation({
 });
 
 const decoded = computed(() =>
-  withDefaultOnError(() => (id.value.trim() && validation.isValid ? decodeSnowflake(id.value, effectiveEpoch.value) : undefined), undefined),
+  withDefaultOnError(() => (id.value.trim() && validation.isValid ? decodeSnowflake(id.value, platform.value, effectiveEpoch.value) : undefined), undefined),
 );
 
 const epochOptions = SNOWFLAKE_PLATFORMS.map(p => ({ label: p.label, value: p.key }));
@@ -70,17 +70,11 @@ const epochOptions = SNOWFLAKE_PLATFORMS.map(p => ({ label: p.label, value: p.ke
             </td>
             <td>{{ decoded.isoDate }}</td>
           </tr>
-          <tr v-if="platformKey !== 'twitter'">
+          <tr v-for="field in decoded.fields" :key="field.label">
             <td class="labels">
-              Datacenter id:
+              {{ field.label }}:
             </td>
-            <td>{{ decoded.datacenterId }}</td>
-          </tr>
-          <tr v-if="platformKey !== 'twitter'">
-            <td class="labels">
-              Worker id:
-            </td>
-            <td>{{ decoded.workerId }}</td>
+            <td>{{ field.value }}</td>
           </tr>
           <tr>
             <td class="labels">
@@ -91,7 +85,7 @@ const epochOptions = SNOWFLAKE_PLATFORMS.map(p => ({ label: p.label, value: p.ke
         </tbody>
       </n-table>
       <div mt-2 text-xs op-60>
-        Epoch: {{ effectiveEpoch }} ms · layout: 41-bit timestamp / 5-bit datacenter / 5-bit worker / 12-bit sequence
+        Epoch: {{ effectiveEpoch }} ms · layout: {{ decoded.layoutLabel }}
       </div>
     </c-card>
   </div>
