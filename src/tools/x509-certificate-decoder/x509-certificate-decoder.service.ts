@@ -92,11 +92,50 @@ const EXTENDED_KEY_USAGE_OIDS: Record<string, string> = {
   '1.3.6.1.5.5.7.3.9': 'OCSPSigning',
 };
 
+/** IPv4 = dotted decimal; IPv6 = RFC 5952 text (lowercase, longest zero run
+ *  compressed). Anything else falls back to dotted decimal of the bytes. */
+function decodeIpAddress(bytes: string): string {
+  const octets = Array.from(bytes, ch => ch.charCodeAt(0));
+  if (octets.length === 16) {
+    const groups: string[] = [];
+    for (let i = 0; i < 16; i += 2) {
+      groups.push(((octets[i]! << 8) | octets[i + 1]!).toString(16));
+    }
+    // Compress the longest run of zero groups (length ≥ 2) into '::'.
+    let bestStart = -1;
+    let bestLength = 0;
+    let currentStart = -1;
+    let currentLength = 0;
+    for (let i = 0; i < groups.length; i++) {
+      if (groups[i] !== '0') {
+        currentStart = -1;
+        currentLength = 0;
+        continue;
+      }
+      if (currentStart < 0) {
+        currentStart = i;
+      }
+      currentLength++;
+      if (currentLength > bestLength) {
+        bestStart = currentStart;
+        bestLength = currentLength;
+      }
+    }
+    if (bestLength >= 2) {
+      const head = groups.slice(0, bestStart).join(':');
+      const tail = groups.slice(bestStart + bestLength).join(':');
+      return `${head}::${tail}`;
+    }
+    return groups.join(':');
+  }
+  return octets.join('.');
+}
+
 const GENERAL_NAME_TYPES: Record<number, { label: string; decode: (value: string) => string }> = {
   1: { label: 'Email', decode: value => value },
   2: { label: 'DNS', decode: value => value },
   6: { label: 'URI', decode: value => value },
-  7: { label: 'IP', decode: value => Array.from(value, ch => ch.charCodeAt(0)).join('.') },
+  7: { label: 'IP', decode: decodeIpAddress },
   4: { label: 'DirName', decode: () => '(directory name)' },
   8: { label: 'RID', decode: () => '(registered id)' },
 };
@@ -124,19 +163,35 @@ function bitStringValue(node: asn1.Asn1 | undefined): string {
 }
 
 /** forge's fromDer keeps OBJECT IDENTIFIER values as raw DER bytes; expand
- *  them to dotted notation (first byte = 40·x+y, rest base-128). */
+ *  them to dotted notation. The first sub-identifier packs 40·arc1+arc2 and
+ *  may itself span multiple base-128 bytes (arc2 ≥ 40 under arc 2, e.g.
+ *  2.999 → 0x88 0x67); the rest decode as plain base-128. */
 function decodeOid(node: asn1.Asn1 | undefined): string {
   const bytes = primitiveValue(node);
   if (!bytes) {
     return '';
   }
-  const parts: number[] = [];
-  const first = bytes.charCodeAt(0);
-  parts.push(Math.floor(first / 40), first % 40);
   let pending = 0;
-  for (const ch of bytes.slice(1)) {
-    pending = (pending << 7) | (ch.charCodeAt(0) & 0x7F);
-    if ((ch.charCodeAt(0) & 0x80) === 0) {
+  let first = 0;
+  let index = 0;
+  // Accumulate the packed first sub-identifier (continuation while high bit set).
+  for (; index < bytes.length; index++) {
+    const byte = bytes.charCodeAt(index);
+    pending = (pending << 7) | (byte & 0x7F);
+    if ((byte & 0x80) === 0) {
+      first = pending;
+      index++;
+      break;
+    }
+  }
+  const parts: number[] = first < 80
+    ? [Math.floor(first / 40), first % 40]
+    : [2, first - 80];
+  pending = 0;
+  for (; index < bytes.length; index++) {
+    const byte = bytes.charCodeAt(index);
+    pending = (pending << 7) | (byte & 0x7F);
+    if ((byte & 0x80) === 0) {
       parts.push(pending);
       pending = 0;
     }
@@ -251,9 +306,13 @@ function describeExtension(extension: asn1.Asn1): CertificateRow {
     }
     if (oid === '2.5.29.15') {
       const bytes = bitStringValue(asn1.fromDer(raw));
-      const byte0 = bytes.charCodeAt(0) ?? 0;
-      const flags = ['digitalSignature', 'nonRepudiation', 'keyEncipherment', 'dataEncipherment', 'keyAgreement', 'keyCertSign', 'cRLSign', 'encipherOnly'];
-      const active = flags.filter((_, index) => byte0 & (0b1000_0000 >> index));
+      // Named bits span up to 2 bytes (bit 9 = decipherOnly); unused-bits
+      // count was already dropped with the BIT STRING prefix.
+      const flags = ['digitalSignature', 'nonRepudiation', 'keyEncipherment', 'dataEncipherment', 'keyAgreement', 'keyCertSign', 'cRLSign', 'encipherOnly', 'decipherOnly'];
+      const active = flags.filter((_, index) => {
+        const byte = bytes.charCodeAt(index >> 3) ?? 0;
+        return byte & (0b1000_0000 >> (index & 7));
+      });
       return { label, value: active.join(', ') || '(none)' };
     }
     if (oid === '2.5.29.37') {
@@ -261,9 +320,21 @@ function describeExtension(extension: asn1.Asn1): CertificateRow {
       const parts = asChildren(usages.value).map(node => EXTENDED_KEY_USAGE_OIDS[decodeOid(node)] ?? decodeOid(node));
       return { label, value: parts.join(', ') };
     }
-    if (oid === '2.5.29.14' || oid === '2.5.29.35') {
+    if (oid === '2.5.29.14') {
+      // SKI: the extension value is a bare OCTET STRING — hex its content,
+      // not the DER wrapper (openssl prints the bare key id).
+      const node = asn1.fromDer(raw);
+      const value = isUniversal(node, asn1.Type.OCTETSTRING) ? primitiveValue(node) : raw;
+      return { label, value: hex(value) };
+    }
+    if (oid === '2.5.29.35') {
+      // AKI: SEQUENCE; the key identifier lives in the context-tagged [0]
+      // child. Fall back to the whole-der hex when the shape is unexpected.
       const first = asChildren(asn1.fromDer(raw).value)[0];
-      const value = isUniversal(first, asn1.Type.OCTETSTRING) ? primitiveValue(first) : raw;
+      const isKeyId = first
+        && first.tagClass === asn1.Class.CONTEXT_SPECIFIC
+        && first.type === 0;
+      const value = isKeyId ? primitiveValue(first) : raw;
       return { label, value: hex(value) };
     }
   }
