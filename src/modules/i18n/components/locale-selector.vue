@@ -12,6 +12,7 @@ const localesLong: Record<string, string> = {
   uk: 'Українська',
   zh: '中文',
   vi: 'Tiếng Việt',
+  id: 'Indonesian',
 };
 
 const localeOptions = computed(() =>
