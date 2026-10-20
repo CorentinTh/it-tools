@@ -75,6 +75,10 @@ tools:
     title: Password strength analyser
     description: Discover the strength of your password with this client-side-only password strength analyser and crack time estimation tool.
 
+  data-storage-converter:
+    title: Data storage converter
+    description: Convert data storage units (bytes, kilobytes, megabytes, gigabytes, terabytes, petabytes, and their binary IEC counterparts) in real time.
+
   chronometer:
     title: Chronometer
     description: Monitor the duration of a thing. Basically a chronometer with simple chronometer features.
@@ -244,6 +248,10 @@ tools:
   toml-to-json:
     title: TOML to JSON
     description: Parse and convert TOML to JSON.
+
+  markdown-table-generator:
+    title: Markdown table generator
+    description: Build a table with a visual editor and generate its GitHub Flavored Markdown (GFM) representation.
 
   lorem-ipsum-generator:
     title: Lorem ipsum generator
