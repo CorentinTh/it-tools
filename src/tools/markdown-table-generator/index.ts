@@ -1,0 +1,21 @@
+import { Table } from '@vicons/tabler';
+import { defineTool } from '../tool';
+import { translate } from '@/plugins/i18n.plugin';
+
+export const tool = defineTool({
+  name: translate('tools.markdown-table-generator.title'),
+  path: '/markdown-table-generator',
+  description: translate('tools.markdown-table-generator.description'),
+  keywords: [
+    'markdown',
+    'table',
+    'generator',
+    'gfm',
+    'github',
+    'md',
+    'editor',
+    'grid',
+  ],
+  component: () => import('./markdown-table-generator.vue'),
+  icon: Table,
+});

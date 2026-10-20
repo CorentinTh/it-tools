@@ -79,6 +79,7 @@ import { tool as sqlPrettify } from './sql-prettify';
 import { tool as svgPlaceholderGenerator } from './svg-placeholder-generator';
 import { tool as temperatureConverter } from './temperature-converter';
 import { tool as dataStorageConverter } from './data-storage-converter';
+import { tool as markdownTableGenerator } from './markdown-table-generator';
 import { tool as textStatistics } from './text-statistics';
 import { tool as tokenGenerator } from './token-generator';
 import type { ToolCategory } from './tools.types';
@@ -117,6 +118,7 @@ export const toolsByCategory: ToolCategory[] = [
       xmlToJson,
       jsonToXml,
       markdownToHtml,
+      markdownTableGenerator,
     ],
   },
   {

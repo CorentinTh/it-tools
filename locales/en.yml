@@ -249,6 +249,10 @@ tools:
     title: TOML to JSON
     description: Parse and convert TOML to JSON.
 
+  markdown-table-generator:
+    title: Markdown table generator
+    description: Build a table with a visual editor and generate its GitHub Flavored Markdown (GFM) representation.
+
   lorem-ipsum-generator:
     title: Lorem ipsum generator
     description: Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content
