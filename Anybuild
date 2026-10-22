@@ -1,0 +1,39 @@
+# Build the web app and serve only its static output on Wasmer.
+load("//anybuild/tools:node_static.bzl", "nodestatic_build", "nodestatic_config", "nodestatic_serve")
+
+config = nodestatic_config(
+    schema = 1,
+    static_redirects_config = """
+[[advanced.rewrites]]
+source = "/assets/**"
+destination = "$0"
+
+[[advanced.rewrites]]
+source = "/**/*.*"
+destination = "$0"
+
+[[advanced.rewrites]]
+source = "/**"
+destination = "/index.html"
+
+""",
+    sws_version = "2.38.0",
+    static_dir = "dist",
+    node_package_manager = "pnpm",
+    node_version = "24",
+    node_install_requires_all_files = True,
+    node_build_command = "pnpm run build",
+    commands = {"install": "pnpm install --frozen-lockfile", "build": "pnpm run build"},
+    pnpm_version = "9.11.0",
+)
+
+build = nodestatic_build(config)
+
+nodestatic_serve(
+    config,
+    build,
+    name = "it-tools",
+    extra_commands = {
+        "start": "static-web-server --root='{}' --config-file='{}/sws.toml' --log-level=info --port={}".format(build.static_app.serve_path, build.static_config.serve_path, config.port),
+    },
+)
