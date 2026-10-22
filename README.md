@@ -36,6 +36,12 @@ docker run -d --name it-tools --restart unless-stopped -p 8080:80 ghcr.io/corent
 - [Tipi](https://www.runtipi.io/docs/apps-available)
 - [Unraid](https://unraid.net/community/apps?q=it-tools)
 
+### Deploy on Wasmer
+
+[![Deploy to Wasmer](https://img.shields.io/badge/Deploy%20to-Wasmer-171717?logo=wasmer&logoColor=white)](https://wasmer.io/apps/create?github=CorentinTh%2Fit-tools)
+
+[Wasmer Edge](https://docs.wasmer.io/edge/) is a cloud hosting platform powered by WebAssembly. The included `Anybuild` configuration runs `pnpm run build`, serves `dist/`, and preserves direct links to individual tools. The button opens the import settings for this public repository; review them before deploying. To customize the app and redeploy changes, fork this repository and import your own fork.
+
 ## Contribute
 
 ### Recommended IDE Setup
