@@ -96,7 +96,9 @@ tools:
   percentage-calculator:
     title: Percentage calculator
     description: Easily calculate percentages from a value to another value, or from a percentage to a value.
-
+      loan-calculator:
+      title: Loan / EMI calculator
+      description: Calculate your monthly loan installment (EMI), total payment and total interest from the loan amount, annual interest rate and duration.      
   svg-placeholder-generator:
     title: SVG placeholder generator
     description: Generate svg images to use as a placeholder in your applications.
