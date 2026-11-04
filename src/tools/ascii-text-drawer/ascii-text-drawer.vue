@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import figlet from 'figlet';
+import figlet, { type FigletOptions, type FontName } from 'figlet';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 
 const input = ref('Ascii ART');
@@ -14,8 +14,8 @@ figlet.defaults({ fontPath: '//unpkg.com/figlet@1.6.0/fonts/' });
 watchEffect(async () => {
   processing.value = true;
   try {
-    const options: figlet.Options = {
-      font: font.value as figlet.Fonts,
+    const options: FigletOptions = {
+      font: font.value as FontName,
       width: width.value,
       whitespaceBreak: true,
     };
