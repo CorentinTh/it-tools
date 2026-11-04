@@ -1,7 +1,8 @@
+import type { Component } from 'vue';
 import type { RouteRecordRaw } from 'vue-router';
 import DemoHome from './demo-home.page.vue';
 
-const demoPages = import.meta.glob('../*/*.demo.vue', { eager: true });
+const demoPages = import.meta.glob<{ default: Component }>('../*/*.demo.vue', { eager: true });
 
 export const demoRoutes = Object.keys(demoPages).map((demoComponentPath) => {
   const [, , fileName] = demoComponentPath.split('/');
@@ -10,7 +11,7 @@ export const demoRoutes = Object.keys(demoPages).map((demoComponentPath) => {
   return {
     path: demoComponentName,
     name: demoComponentName,
-    component: () => import(/* @vite-ignore */ demoComponentPath),
+    component: demoPages[demoComponentPath].default,
   } as RouteRecordRaw;
 });
 
