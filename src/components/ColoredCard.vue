@@ -22,8 +22,8 @@ const { icon, title } = toRefs(props);
 
 <style lang="less" scoped>
 .colored-card {
-  background: rgb(37, 99, 108);
-  background: linear-gradient(48deg, rgba(37, 99, 108, 1) 0%, rgba(59, 149, 111, 1) 60%, rgba(20, 160, 88, 1) 100%);
+  background: rgb(139, 46, 14);
+  background: linear-gradient(48deg, rgba(139, 46, 14, 1) 0%, rgba(195, 65, 19, 1) 60%, rgba(233, 84, 32, 1) 100%);
   color: #fff;
   border: none;
 

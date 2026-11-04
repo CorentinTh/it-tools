@@ -2,7 +2,7 @@
 import type { ToolCategory } from '@/tools/tools.types';
 
 import { Home2, Menu2 } from '@vicons/tabler';
-import { NIcon, useThemeVars } from 'naive-ui';
+import { NIcon } from 'naive-ui';
 
 import { storeToRefs } from 'pinia';
 import { RouterLink } from 'vue-router';
@@ -14,7 +14,6 @@ import HeroGradient from '../assets/hero-gradient.svg?component';
 import MenuLayout from '../components/MenuLayout.vue';
 import NavbarButtons from '../components/NavbarButtons.vue';
 
-const themeVars = useThemeVars();
 const styleStore = useStyleStore();
 const { isMenuCollapsed, isSmallScreen } = storeToRefs(styleStore);
 const version = config.app.version;
@@ -43,7 +42,6 @@ const tools = computed<ToolCategory[]>(() => [
           <div class="title">
             TOOLBOX
           </div>
-          <div class="divider" />
           <div class="subtitle">
             {{ $t('home.subtitle') }}
           </div>
@@ -184,14 +182,6 @@ const tools = computed<ToolCategory[]>(() => [
     .title {
       font-size: 25px;
       font-weight: 600;
-    }
-
-    .divider {
-      width: 50px;
-      height: 2px;
-      border-radius: 4px;
-      background-color: v-bind('themeVars.primaryColor');
-      margin: 0 auto 5px;
     }
 
     .subtitle {
