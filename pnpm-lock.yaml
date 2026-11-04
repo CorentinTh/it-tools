@@ -223,7 +223,7 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0(rollup@2.79.2)(vue-i18n@9.14.5(vue@3.3.4))
       '@playwright/test':
-        specifier: ^1.64.1
+        specifier: 1.64.1
         version: 1.64.1
       '@rushstack/eslint-patch':
         specifier: ^1.2.0
