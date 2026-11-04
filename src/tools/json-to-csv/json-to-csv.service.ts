@@ -17,19 +17,24 @@ function serializeValue(value: unknown): string {
     return '';
   }
 
-  const valueAsString = String(value).replace(/\n/g, '\\n').replace(/\r/g, '\\r').replace(/"/g, '\\"');
+  return escapeField(String(value));
+}
 
-  if (valueAsString.includes(',')) {
-    return `"${valueAsString}"`;
+// RFC 4180: a field that contains a comma, a double quote, or a line break is enclosed in double quotes,
+// and a double quote inside the field is doubled.
+function escapeField(field: string): string {
+  if (/[",\r\n]/.test(field)) {
+    return `"${field.replace(/"/g, '""')}"`;
   }
 
-  return valueAsString;
+  return field;
 }
 
 function convertArrayToCsv({ array }: { array: Record<string, unknown>[] }): string {
   const headers = getHeaders({ array });
 
-  const rows = array.map(item => headers.map(header => serializeValue(item[header])));
+  const headerRow = headers.map(escapeField).join(',');
+  const rows = array.map(item => headers.map(header => serializeValue(item[header])).join(','));
 
-  return [headers.join(','), ...rows].join('\n');
+  return [headerRow, ...rows].join('\r\n');
 }

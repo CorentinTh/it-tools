@@ -19,11 +19,10 @@ test.describe('Tool - JSON to CSV', () => {
 
     const generatedJson = await page.getByTestId('area-content').innerText();
 
-    expect(generatedJson.trim()).toEqual(`
-Age,Salary,Gender,Country,Purchased
-18,20000,Male,Germany,N
-19,22000,Female,France,N
-   `.trim(),
-    );
+    expect(generatedJson.trim()).toEqual([
+      'Age,Salary,Gender,Country,Purchased',
+      '18,20000,Male,Germany,N',
+      '19,22000,Female,France,N',
+    ].join('\r\n'));
   });
 });
