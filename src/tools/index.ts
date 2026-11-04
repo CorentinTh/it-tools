@@ -1,6 +1,7 @@
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as basicAuthGenerator } from './basic-auth-generator';
+import { tool as whitespaceCleaner } from './whitespace-cleaner';
 import { tool as emailNormalizer } from './email-normalizer';
 import { tool as pasteImage } from './paste-image';
 
@@ -185,6 +186,7 @@ export const toolsByCategory: ToolCategory[] = [
       textDiff,
       numeronymGenerator,
       asciiTextDrawer,
+      whitespaceCleaner,
     ],
   },
   {
