@@ -105,6 +105,10 @@ tools:
     title: Camera recorder
     description: Take a picture or record a video from your webcam or camera.
 
+  paste-image:
+    title: Paste image
+    description: Paste an image from your clipboard, convert it to PNG, JPEG, or WebP, and download it.
+
   keycode-info:
     title: Keycode info
     description: Find the javascript keycode, code, location and modifiers of any pressed key.
