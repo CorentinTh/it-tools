@@ -4,6 +4,28 @@ This plan covers the dependency upgrades that need a major version change. It al
 
 On 2026-11-04, every target version in this plan matched the `latest` dist-tag in the npm registry. Every "From" version matched `pnpm-lock.yaml` on `main`.
 
+## Outcome
+
+All phases are complete. The work landed in these pull requests:
+
+| Pull request | Scope |
+|---|---|
+| [#6](https://github.com/destan/toolbox/pull/6) | Phase 0 |
+| [#12](https://github.com/destan/toolbox/pull/12) | Phase 1 |
+| [#15](https://github.com/destan/toolbox/pull/15) | Phases 2 to 7, one commit for each phase |
+| The follow-up pull request | Removal of `hygen`, replacement of `composerize-ts`, and `figue` 3 |
+
+The work deviated from the plan in these points:
+
+- Phase 4 ran before phase 3. `@types/node` 22 and later require TypeScript 5.6 or later. Phase 1 had pinned TypeScript 5.4.5.
+- Phase 4 moved to TypeScript 6.0.3. TypeScript 7 does not work with `vue-tsc` and `typescript-eslint`. The [TypeScript 7 readiness notes](typescript-7-readiness.md) record the evidence.
+- Phase 2 added `workbox-build` 7.4.1, a required peer of `vite-plugin-pwa` 2.
+- Phase 3 kept two conventions of the previous ESLint config: no delimiters after multiline type members, and no forced line breaks between list items.
+- Phase 7 added a pnpm override that lifts the `dompurify` copy of `monaco-editor` to 3.4.17. Remove the override once a `monaco-editor` release depends on a fixed version.
+- The follow-up removed `hygen`, replaced `composerize-ts` with `composerize` 1.7.6, and moved `figue` to 3.3.0 with `valibot` schemas.
+
+After the follow-up, `pnpm audit` reported 0 critical, 10 high, 8 moderate, and 2 low advisories on 2026-11-04.
+
 ## Starting point
 
 On 2026-11-04, `pnpm audit` on `main` at `5b069d5` reported these advisories:
@@ -69,7 +91,7 @@ The peer ranges fix the order of the phases:
 
 ## Phases
 
-Each phase is one pull request. Each pull request runs the full verification procedure before it merges.
+Each phase runs the full verification procedure before it merges. The [outcome](#outcome) lists the pull requests that delivered the phases.
 
 | Phase | Scope | Risk | Expected audit effect |
 |---|---|---|---|
@@ -230,10 +252,9 @@ Alternative: split Vite and Vitest into two pull requests. Unverified: `vitest` 
 ### Phase 4: Type checking toolchain
 
 1. Update `vue-tsc` from 1.8.27 to 3.3.14.
-2. Update `typescript` from 5.4.5 to 7.0.2.
-3. Fall back to `typescript` 6.0.3 if `vue-tsc` fails with 7.0.2. `vue-tsc` 3.3.14 declares `typescript >=5.0.0`. Unverified: `vue-tsc` support for TypeScript 7.
-4. Update `@vue/tsconfig` from 0.4.0 to 0.9.1.
-5. Replace `@tsconfig/node18` with `@tsconfig/node26` 26.0.1.
+2. Update `typescript` from 5.4.5 to 6.0.3. The [TypeScript 7 readiness notes](typescript-7-readiness.md) explain why the project does not use TypeScript 7.
+3. Update `@vue/tsconfig` from 0.4.0 to 0.9.1.
+4. Replace `@tsconfig/node18` with `@tsconfig/node26` 26.0.1.
 
 ### Phase 5: Vue ecosystem libraries
 
@@ -250,10 +271,11 @@ Alternative: split Vite and Vitest into two pull requests. Unverified: `vitest` 
 2. Update `uuid` from 9.0.0 to 14.0.3.
 3. Remove `@types/uuid`. npm marks it deprecated because `uuid` ships its own types.
 4. Update `zx` from 7.2.1 to 8.8.5. Only `scripts/release.mjs` uses it.
-5. Decide what to do with `hygen`. Version 6.2.11 is the latest release and still pulls in 21 high advisories. Only the `script:create:ui` script uses it.
+5. Remove `hygen`, the `script:create:ui` script, and the `_templates` folder. Version 6.2.11 is the latest release and still pulls in 21 high advisories.
 6. Update `mathjs` from 11.9.1 to 15.2.0. The math evaluator tool uses it.
+7. Replace `composerize-ts` 0.6.2 with `composerize` 1.7.6 in the Docker run to Docker Compose converter.
 
-`composerize-ts` 0.6.2 is the latest release, and it pulls in 10 high advisories. No upgrade fixes them.
+`composerize-ts` 0.6.2 is the latest release, and it pulls in 10 high advisories. No upgrade fixes them. `composerize` 1.7.6 has no advisory.
 
 ### Phase 7: Remaining major versions without advisories
 
@@ -267,7 +289,7 @@ These packages have a major version available and no advisory in the audit:
 | `cronstrue` | 2.26.0 | 3.38.0 | |
 | `date-fns` | 2.29.3 | 4.4.0 | |
 | `emojilib` | 3.0.10 | 4.0.3 | |
-| `figue` | 1.2.0 | 3.3.0 | |
+| `figue` | 1.2.0 | 3.3.0, with `valibot` 1.5.0 schemas | |
 | `fuse.js` | 6.6.2 | 7.5.0 | |
 | `jwt-decode` | 3.1.2 | 4.0.0 | |
 | `markdown-it` | 14.3.3 | 15.0.3 | Remove `@types/markdown-it` |
@@ -281,7 +303,7 @@ These packages have a major version available and no advisory in the audit:
 
 `bcryptjs` 3, `markdown-it` 15, and `ua-parser-js` 2 ship their own types. npm marks `@types/bcryptjs` 3.0.0 deprecated for this reason.
 
-Each package backs one or two tools. Upgrade each package in a separate pull request, or let Renovate propose them.
+Each package backs one or two tools. `figue` 3 validates the configuration with Standard Schema validators, so it needs a validation library such as `valibot`.
 
 `vuedraggable` needs no update. Its `latest` dist-tag points to the Vue 2 release line, and 4.1.0 is the latest Vue 3 release.
 
@@ -307,7 +329,4 @@ pnpm 10.34.9, 11.28.9, and 12.16.1 are the latest releases of the next three maj
 
 ## Open questions
 
-- Should the project remove `hygen` and its `script:create:ui` script, or replace it?
-- Should the project keep `composerize-ts`, given that no release fixes its advisories?
-- Which TypeScript major version should phase 4 target if `vue-tsc` supports both 6 and 7?
-- Which pnpm major version should the project move to after phase 7?
+- Which pnpm major version should the project move to?

@@ -1,29 +1,24 @@
 <script setup lang="ts">
-import { composerize, MessageType } from 'composerize-ts';
+import composerize from 'composerize';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 import { textToBase64 } from '@/utils/base64';
-import { withDefaultOnError } from '@/utils/defaults';
 
 const dockerRun = ref(
   'docker run -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock:ro --restart always --log-opt max-size=1g nginx',
 );
 
-const conversionResult = computed(() =>
-  withDefaultOnError(() => composerize(dockerRun.value.trim()), { yaml: '', messages: [] }),
-);
+// composerize lists the options it cannot translate as comments at the top of the generated YAML.
+const conversionResult = computed(() => {
+  try {
+    return { yaml: composerize(dockerRun.value.trim()), error: '' };
+  }
+  catch (error) {
+    return { yaml: '', error: error instanceof Error ? error.message : String(error) };
+  }
+});
 const dockerCompose = computed(() => conversionResult.value.yaml);
-const notImplemented = computed(() =>
-  conversionResult.value.messages.filter(msg => msg.type === MessageType.notImplemented).map(msg => msg.value),
-);
-const notComposable = computed(() =>
-  conversionResult.value.messages.filter(msg => msg.type === MessageType.notTranslatable).map(msg => msg.value),
-);
-const errors = computed(() =>
-  conversionResult.value.messages
-    .filter(msg => msg.type === MessageType.errorDuringConversion)
-    .map(msg => msg.value),
-);
+const conversionError = computed(() => conversionResult.value.error);
 const dockerComposeBase64 = computed(() => `data:application/yaml;base64,${textToBase64(dockerCompose.value)}`);
 const { download } = useDownloadFileFromBase64({ source: dockerComposeBase64, filename: 'docker-compose.yml' });
 </script>
@@ -51,38 +46,8 @@ const { download } = useDownloadFileFromBase64({ source: dockerComposeBase64, fi
       </c-button>
     </div>
 
-    <div v-if="notComposable.length > 0">
-      <n-alert title="This options are not translatable to docker-compose" type="info" mt-5>
-        <ul>
-          <li v-for="(message, index) of notComposable" :key="index">
-            {{ message }}
-          </li>
-        </ul>
-      </n-alert>
-    </div>
-
-    <div v-if="notImplemented.length > 0">
-      <n-alert
-        title="This options are not yet implemented and therefore haven't been translated to docker-compose"
-        type="warning"
-        mt-5
-      >
-        <ul>
-          <li v-for="(message, index) of notImplemented" :key="index">
-            {{ message }}
-          </li>
-        </ul>
-      </n-alert>
-    </div>
-
-    <div v-if="errors.length > 0">
-      <n-alert title="The following errors occured" type="error" mt-5>
-        <ul>
-          <li v-for="(message, index) of errors" :key="index">
-            {{ message }}
-          </li>
-        </ul>
-      </n-alert>
-    </div>
+    <c-alert v-if="conversionError" type="error" title="The command could not be converted" mt-5>
+      {{ conversionError }}
+    </c-alert>
   </div>
 </template>
