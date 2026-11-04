@@ -9,7 +9,7 @@ const errorCorrectionLevel = ref<QRCodeErrorCorrectionLevel>('medium');
 
 const errorCorrectionLevels = ['low', 'medium', 'quartile', 'high'];
 
-const text = ref('https://toolbox.destan.dev');
+const text = ref('https://toolbox.destan.workers.dev');
 const { qrcode } = useQRCode({
   text,
   color: {

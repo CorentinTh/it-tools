@@ -1,6 +1,6 @@
 # Toolbox
 
-Useful tools for developers and people working in IT. [Try it!](https://toolbox.destan.dev)
+Useful tools for developers and people working in IT. [Try it!](https://toolbox.destan.workers.dev)
 
 Toolbox is a fork of [IT-Tools](https://github.com/CorentinTh/it-tools) by [Corentin Thomasset](https://corentin.tech).
 
