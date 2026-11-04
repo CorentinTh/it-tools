@@ -1,4 +1,7 @@
 /* TEAM */
-Developer: Corentin Thomasset
+Maintainer: destan
+Site: https://github.com/destan
+
+/* THANKS */
+Original author of IT-Tools: Corentin Thomasset
 Site: https://github.com/CorentinTh
-Twitter: @cthmsst

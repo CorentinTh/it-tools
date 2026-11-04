@@ -1,40 +1,32 @@
-<picture>
-    <source srcset="./.github/logo-dark.png" media="(prefers-color-scheme: light)">
-    <source srcset="./.github/logo-white.png" media="(prefers-color-scheme: dark)">
-    <img src="./.github/logo-dark.png" alt="logo">
-</picture>
+# Toolbox
 
-<p align="center">
-Useful tools for developer and people working in IT. <a href="https://it-tools.tech">Try it!</a>
-</p>
+Useful tools for developers and people working in IT. [Try it!](https://toolbox.destan.dev)
+
+Toolbox is a fork of [IT-Tools](https://github.com/CorentinTh/it-tools) by [Corentin Thomasset](https://corentin.tech).
 
 ## Functionalities and roadmap
 
-Please check the [issues](https://github.com/CorentinTh/it-tools/issues) to see if some feature listed to be implemented.
+Please check the [issues](https://github.com/destan/toolbox/issues) to see if some feature listed to be implemented.
 
-You have an idea of a tool? Submit a [feature request](https://github.com/CorentinTh/it-tools/issues/new/choose)!
+You have an idea of a tool? Submit a [feature request](https://github.com/destan/toolbox/issues/new/choose)!
 
 ## Self host
 
-Self host solutions for your homelab
-
-**From docker hub:**
+Build and run the Docker image:
 
 ```sh
-docker run -d --name it-tools --restart unless-stopped -p 8080:80 corentinth/it-tools:latest
+docker build -t toolbox .
+docker run -d --name toolbox --restart unless-stopped -p 8080:80 toolbox
 ```
 
-**From github packages:**
+### Build variables
 
-```sh
-docker run -d --name it-tools --restart unless-stopped -p 8080:80 ghcr.io/corentinth/it-tools:latest
-```
+The build reads these optional environment variables:
 
-**Other solutions:**
-
-- [Cloudron](https://www.cloudron.io/store/tech.ittools.cloudron.html)
-- [Tipi](https://www.runtipi.io/docs/apps-available)
-- [Unraid](https://unraid.net/community/apps?q=it-tools)
+| Variable          | Default                                                                       | Purpose                                                                    |
+| ----------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `VITE_APP_ENV`    | The Vite mode: `production` for `pnpm build`, `development` for `pnpm dev`    | Shows development-only pages, such as the UI library, when `development`. |
+| `VITE_COMMIT_SHA` | `WORKERS_CI_COMMIT_SHA`, which Cloudflare Workers Builds sets                 | Links the footer version to the built commit.                              |
 
 ## Contribute
 
@@ -111,22 +103,13 @@ pnpm run script:create:tool my-tool-name
 
 It will create a directory in `src/tools` with the correct files, and a the import in `src/tools/index.ts`. You will just need to add the imported tool in the proper category and develop the tool.
 
-## Contributors
-
-Big thanks to all the people who have already contributed!
-
-[![contributors](https://contrib.rocks/image?repo=corentinth/it-tools&refresh=1)](https://github.com/corentinth/it-tools/graphs/contributors)
-
 ## Credits
 
-Coded with ❤️ by [Corentin Thomasset](https://corentin.tech?utm_source=it-tools&utm_medium=readme).
+Toolbox is a fork of [IT-Tools](https://github.com/CorentinTh/it-tools), coded with ❤️ by [Corentin Thomasset](https://corentin.tech) and the [IT-Tools contributors](https://github.com/CorentinTh/it-tools/graphs/contributors).
 
-This project is continuously deployed using [vercel.com](https://vercel.com).
+[destan](https://github.com/destan) maintains this fork.
 
-Contributor graph is generated using [contrib.rocks](https://contrib.rocks/preview?repo=corentinth/it-tools).
-
-<a href="https://www.producthunt.com/posts/it-tools?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-it&#0045;tools" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=345793&theme=light" alt="IT&#0032;Tools - Collection&#0032;of&#0032;handy&#0032;online&#0032;tools&#0032;for&#0032;devs&#0044;&#0032;with&#0032;great&#0032;UX | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
-<a href="https://www.producthunt.com/posts/it-tools?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-it&#0045;tools" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=345793&theme=light&period=daily" alt="IT&#0032;Tools - Collection&#0032;of&#0032;handy&#0032;online&#0032;tools&#0032;for&#0032;devs&#0044;&#0032;with&#0032;great&#0032;UX | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+This project is continuously deployed using [Cloudflare](https://www.cloudflare.com).
 
 ## License
 

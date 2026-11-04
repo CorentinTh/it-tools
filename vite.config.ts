@@ -19,7 +19,7 @@ import { configDefaults } from 'vitest/config';
 const baseUrl = process.env.BASE_URL ?? '/';
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
     VueI18n({
       runtimeOnly: true,
@@ -57,7 +57,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       strategies: 'generateSW',
       manifest: {
-        name: 'IT Tools',
+        name: 'Toolbox',
         description: 'Aggregated set of useful tools for developers.',
         display: 'standalone',
         lang: 'fr-FR',
@@ -106,6 +106,10 @@ export default defineConfig({
   },
   define: {
     'import.meta.env.PACKAGE_VERSION': JSON.stringify(process.env.npm_package_version),
+    // The Vite mode is "development" for `vite`, "production" for `vite build`, and "test" for Vitest.
+    'import.meta.env.VITE_APP_ENV': JSON.stringify(process.env.VITE_APP_ENV ?? mode),
+    // Cloudflare Workers Builds sets WORKERS_CI_COMMIT_SHA. Other build systems can set VITE_COMMIT_SHA.
+    'import.meta.env.VITE_COMMIT_SHA': JSON.stringify(process.env.VITE_COMMIT_SHA ?? process.env.WORKERS_CI_COMMIT_SHA ?? ''),
   },
   test: {
     exclude: [...configDefaults.exclude, '**/*.e2e.spec.ts'],
@@ -113,4 +117,4 @@ export default defineConfig({
   build: {
     target: 'esnext',
   },
-});
+}));
