@@ -1,0 +1,4 @@
+- [ ] Renovate: the plan’s “Keeping dependencies current” section suggests enabling Renovate and grouping the build toolchain packages. No phase covered that, so it wasn’t done.
+- [ ] pnpm major version: the project is on pnpm 9.15.9. The plan lists the move to pnpm 10, 11, or 12 as its one open question.
+- [ ] dompurify override: remove it from package.json once a monaco-editor release depends on a fixed dompurify.
+- [ ] TypeScript 7: run the check procedure in docs/typescript-7-readiness.md now and then. The upgrade becomes possible once vue-tsc and typescript-eslint support TypeScript 7.
