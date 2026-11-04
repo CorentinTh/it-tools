@@ -34,7 +34,7 @@ export const BULLET_CHARS = new Set(['●', '○', '◐', '◑', '◒', '◓', '
 const FENCE_LINE = /^\s*(`{3,}|~{3,})/;
 const DIFF_HUNK_HEADER = /^@@ .*@@/;
 const SENTENCE_END = /[.!?:;]$/;
-const UNWRAP_STOP_START = /^(?:[-*•#]|\d+\.|`{3}|~{3}| {2}|\t)/;
+const UNWRAP_STOP_START = /^(?:[\-*•#\t]|\d+\.|`{3}|~{3}| {2})/;
 const MARKDOWN_BLOCK_LINE = /^\s*(?:[-*+•]\s|\d+[.)]\s|#{1,6}(?:\s|$)|>|\|)/;
 
 export function cleanText(input: string, options: CleanerOptions): string {

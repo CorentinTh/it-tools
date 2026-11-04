@@ -1,5 +1,7 @@
-import { type MaybeRef, get } from '@vueuse/core';
-import QRCode, { type QRCodeToDataURLOptions } from 'qrcode';
+import type { QRCodeToDataURLOptions } from 'qrcode';
+import type { MaybeRef } from 'vue';
+import { get } from '@vueuse/core';
+import QRCode from 'qrcode';
 import { isRef, ref, watch } from 'vue';
 
 export const wifiEncryptions = ['WEP', 'WPA', 'nopass', 'WPA2-EAP'] as const;

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import JSON5 from 'json5';
-import { convertArrayToCsv } from './json-to-csv.service';
 import type { UseValidationRule } from '@/composable/validation';
+import JSON5 from 'json5';
 import { withDefaultOnError } from '@/utils/defaults';
+import { convertArrayToCsv } from './json-to-csv.service';
 
 function transformer(value: string) {
   return withDefaultOnError(() => {

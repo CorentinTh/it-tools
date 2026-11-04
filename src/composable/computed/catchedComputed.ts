@@ -1,4 +1,5 @@
-import { type Ref, ref, watchEffect } from 'vue';
+import type { Ref } from 'vue';
+import { ref, watchEffect } from 'vue';
 
 export { computedCatch };
 

@@ -66,7 +66,7 @@ describe('token-generator', () => {
       });
 
       expect(token).toHaveLength(256);
-      expect(token).toMatch(/^[0-9]+$/);
+      expect(token).toMatch(/^\d+$/);
     });
 
     it('should generate a random string with just symbols if only withSymbols is set', () => {
@@ -79,7 +79,7 @@ describe('token-generator', () => {
       });
 
       expect(token).toHaveLength(256);
-      expect(token).toMatch(/^[.,;:!?./\-"'#{([-|\\@)\]=}*+]+$/);
+      expect(token).toMatch(/^[.,;:!?/\-"'#{([|\\@)\]=}*+]+$/);
     });
 
     it('should generate a random string with just letters (case incensitive) with withLowercase and withUppercase', () => {
@@ -92,7 +92,7 @@ describe('token-generator', () => {
       });
 
       expect(token).toHaveLength(256);
-      expect(token).toMatch(/^[a-zA-Z]+$/);
+      expect(token).toMatch(/^[a-z]+$/i);
     });
   });
 });

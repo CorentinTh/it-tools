@@ -5,28 +5,14 @@ const typeOptions = [
   { label: 'Article', value: 'article' },
   { label: 'Book', value: 'book' },
   { label: 'Profile', value: 'profile' },
-  {
-    type: 'group',
-    label: 'Music',
-    key: 'Music',
-    children: [
-      { label: 'Song', value: 'music.song' },
-      { label: 'Music album', value: 'music.album' },
-      { label: 'Playlist', value: 'music.playlist' },
-      { label: 'Radio station', value: 'music.radio_station' },
-    ],
-  },
-  {
-    type: 'group',
-    label: 'Video',
-    key: 'Video',
-    children: [
-      { label: 'Movie', value: 'video.movie' },
-      { label: 'Episode', value: 'video.episode' },
-      { label: 'TV show', value: 'video.tv_show' },
-      { label: 'Other video', value: 'video.other' },
-    ],
-  },
+  { label: 'Music: Song', value: 'music.song' },
+  { label: 'Music: Music album', value: 'music.album' },
+  { label: 'Music: Playlist', value: 'music.playlist' },
+  { label: 'Music: Radio station', value: 'music.radio_station' },
+  { label: 'Video: Movie', value: 'video.movie' },
+  { label: 'Video: Episode', value: 'video.episode' },
+  { label: 'Video: TV show', value: 'video.tv_show' },
+  { label: 'Video: Other video', value: 'video.other' },
 ];
 
 export const website: OGSchemaType = {

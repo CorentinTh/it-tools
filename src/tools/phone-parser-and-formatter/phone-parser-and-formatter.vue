@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { getCountries, getCountryCallingCode, parsePhoneNumber } from 'libphonenumber-js/max';
 import lookup from 'country-code-lookup';
+import { getCountries, getCountryCallingCode, parsePhoneNumber } from 'libphonenumber-js/max';
+import { useValidation } from '@/composable/validation';
+import { booleanToHumanReadable } from '@/utils/boolean';
+import { withDefaultOnError } from '@/utils/defaults';
 import {
   formatTypeToHumanReadable,
   getDefaultCountryCode,
   getFullCountryName,
 } from './phone-parser-and-formatter.models';
-import { withDefaultOnError } from '@/utils/defaults';
-import { booleanToHumanReadable } from '@/utils/boolean';
-import { useValidation } from '@/composable/validation';
 
 const rawPhone = ref('');
 const defaultCountryCode = ref(getDefaultCountryCode());

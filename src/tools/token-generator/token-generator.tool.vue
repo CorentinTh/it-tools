@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { createToken } from './token-generator.service';
+import { computedRefreshable } from '@/composable/computedRefreshable';
 import { useCopy } from '@/composable/copy';
 import { useQueryParam } from '@/composable/queryParams';
-import { computedRefreshable } from '@/composable/computedRefreshable';
+import { createToken } from './token-generator.service';
 
 const length = useQueryParam({ name: 'length', defaultValue: 64 });
 const withUppercase = useQueryParam({ name: 'uppercase', defaultValue: true });

@@ -1,4 +1,5 @@
-import xmlFormat, { type XMLFormatterOptions } from 'xml-formatter';
+import type { XMLFormatterOptions } from 'xml-formatter';
+import xmlFormat from 'xml-formatter';
 import { withDefaultOnError } from '@/utils/defaults';
 
 export { formatXml, isValidXML };
@@ -22,7 +23,7 @@ function isValidXML(rawXml: string): boolean {
     xmlFormat(cleanedRawXml);
     return true;
   }
-  catch (e) {
+  catch {
     return false;
   }
 }

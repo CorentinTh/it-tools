@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { type RouteLocationRaw, RouterLink } from 'vue-router';
+import type { RouteLocationRaw } from 'vue-router';
+import { RouterLink } from 'vue-router';
 import { useTheme } from './c-link.theme';
 
 const props = defineProps<{

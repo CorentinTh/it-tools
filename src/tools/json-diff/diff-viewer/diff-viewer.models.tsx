@@ -1,10 +1,10 @@
-import _ from 'lodash';
 import type { ArrayDifference, Difference, ObjectDifference } from '../json-diff.types';
+import _ from 'lodash';
 import { useCopy } from '@/composable/copy';
 
 export function DiffRootViewer({ diff }: { diff: Difference }) {
   return (
-    <div class={'diffs-viewer'}>
+    <div class="diffs-viewer">
       <ul>{DiffViewer({ diff, showKeys: false })}</ul>
     </div>
   );
@@ -37,7 +37,7 @@ function LineDiffViewer({ diff, showKeys }: { diff: Difference; showKeys?: boole
       <span class={[status, 'result']}>
         {showKeys && (
           <>
-            <span class={'key'}>{key}</span>
+            <span class="key">{key}</span>
             {': '}
           </>
         )}
@@ -52,15 +52,16 @@ function ComparisonViewer({ diff, showKeys }: { diff: Difference; showKeys?: boo
   const { value, key, oldValue } = diff;
 
   return (
-    <li class={'updated-line'}>
+    <li class="updated-line">
       {showKeys && (
         <>
-          <span class={'key'}>{key}</span>
+          <span class="key">{key}</span>
           {': '}
         </>
       )}
       {Value({ value: oldValue, status: 'removed' })}
-      {Value({ value, status: 'added' })},
+      {Value({ value, status: 'added' })}
+      ,
     </li>
   );
 }
@@ -85,7 +86,7 @@ function ChildrenViewer({
       <div class={[type, status]} style={{ display: 'inline-block' }}>
         {showKeys && (
           <>
-            <span class={'key'}>{key}</span>
+            <span class="key">{key}</span>
             {': '}
           </>
         )}

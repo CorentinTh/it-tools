@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-export { computeAverage, computeVariance, arrayToMarkdownTable };
+export { arrayToMarkdownTable, computeAverage, computeVariance };
 
 function computeAverage({ data }: { data: number[] }) {
   if (data.length === 0) {

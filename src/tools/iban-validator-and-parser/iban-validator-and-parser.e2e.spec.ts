@@ -1,8 +1,10 @@
-import { type Page, expect, test } from '@playwright/test';
+import type { Page } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 async function extractIbanInfo({ page }: { page: Page }) {
   const itemsLines = await page
-    .locator('.c-key-value-list__item').all();
+    .locator('.c-key-value-list__item')
+    .all();
 
   return await Promise.all(
     itemsLines.map(async item => [

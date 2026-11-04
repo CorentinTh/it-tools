@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { tryOnBeforeUnmount, useVModel } from '@vueuse/core';
-import { Editor, EditorContent } from '@tiptap/vue-3';
 import StarterKit from '@tiptap/starter-kit';
+import { Editor, EditorContent } from '@tiptap/vue-3';
+import { tryOnBeforeUnmount, useVModel } from '@vueuse/core';
 import { useThemeVars } from 'naive-ui';
 import MenuBar from './menu-bar.vue';
 

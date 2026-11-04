@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useTimestamp } from '@vueuse/core';
 import { useThemeVars } from 'naive-ui';
+import InputCopyable from '@/components/InputCopyable.vue';
+import { computedRefreshable } from '@/composable/computedRefreshable';
+import { useStyleStore } from '@/stores/style.store';
 import { useQRCode } from '../qr-code-generator/useQRCode';
 import { base32toHex, buildKeyUri, generateSecret, generateTOTP, getCounterFromTime } from './otp.service';
 import TokenDisplay from './token-display.vue';
-import { useStyleStore } from '@/stores/style.store';
-import InputCopyable from '@/components/InputCopyable.vue';
-import { computedRefreshable } from '@/composable/computedRefreshable';
 
 const now = useTimestamp();
 const interval = computed(() => (now.value / 1000) % 30);
@@ -42,7 +42,7 @@ const { qrcode } = useQRCode({
 const secretValidationRules = [
   {
     message: 'Secret should be a base32 string',
-    validator: (value: string) => value.toUpperCase().match(/^[A-Z234567]+$/),
+    validator: (value: string) => value.toUpperCase().match(/^[A-Z2-7]+$/),
   },
   {
     message: 'Please set a secret',

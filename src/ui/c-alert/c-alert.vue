@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useTheme } from './c-alert.theme';
 
-const props = withDefaults(defineProps<{ type?: 'warning'; title?: string }>(), { type: 'warning', title: undefined });
+const props = withDefaults(defineProps<{ type?: 'warning' | 'error'; title?: string }>(), { type: 'warning', title: undefined });
 const { type, title } = toRefs(props);
 
 const theme = useTheme();

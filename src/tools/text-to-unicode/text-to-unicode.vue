@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { convertTextToUnicode, convertUnicodeToText } from './text-to-unicode.service';
 import { useCopy } from '@/composable/copy';
+import { convertTextToUnicode, convertUnicodeToText } from './text-to-unicode.service';
 
 const inputText = ref('');
 const unicodeFromText = computed(() => inputText.value.trim() === '' ? '' : convertTextToUnicode(inputText.value));

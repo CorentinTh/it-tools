@@ -1,16 +1,16 @@
-import { beforeEach, describe, expect, it } from 'vitest';
 import { mount, shallowMount } from '@vue/test-utils';
-import { createPinia, setActivePinia } from 'pinia';
 import _ from 'lodash';
-import CInputText from './c-input-text.vue';
+import { createPinia, setActivePinia } from 'pinia';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { useValidation } from '@/composable/validation';
+import CInputText from './c-input-text.vue';
 
-describe('CInputText', () => {
+describe('cInputText', () => {
   beforeEach(() => {
     setActivePinia(createPinia());
   });
 
-  it('Renders a label', () => {
+  it('renders a label', () => {
     const wrapper = shallowMount(CInputText, {
       props: {
         label: 'Label',
@@ -20,7 +20,7 @@ describe('CInputText', () => {
     expect(wrapper.get('.label').text()).to.equal('Label');
   });
 
-  it('Renders a placeholder', () => {
+  it('renders a placeholder', () => {
     const wrapper = shallowMount(CInputText, {
       props: {
         placeholder: 'Placeholder',
@@ -30,7 +30,7 @@ describe('CInputText', () => {
     expect(wrapper.get('.input').attributes('placeholder')).to.equal('Placeholder');
   });
 
-  it('Renders a value', () => {
+  it('renders a value', () => {
     const wrapper = shallowMount(CInputText, {
       props: {
         value: 'Value',
@@ -40,7 +40,7 @@ describe('CInputText', () => {
     expect(wrapper.vm.value).to.equal('Value');
   });
 
-  it('Renders a provided id', () => {
+  it('renders a provided id', () => {
     const wrapper = shallowMount(CInputText, {
       props: {
         id: 'id',

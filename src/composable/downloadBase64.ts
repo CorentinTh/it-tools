@@ -1,12 +1,14 @@
-import { extension as getExtensionFromMimeType, extension as getMimeTypeFromExtension } from 'mime-types';
 import type { Ref } from 'vue';
 import _ from 'lodash';
+import { extension as getExtensionFromMimeType, extension as getMimeTypeFromExtension } from 'mime-types';
 
 export {
+  getExtensionFromMimeType,
   getMimeTypeFromBase64,
-  getMimeTypeFromExtension, getExtensionFromMimeType,
-  useDownloadFileFromBase64, useDownloadFileFromBase64Refs,
+  getMimeTypeFromExtension,
   previewImageFromBase64,
+  useDownloadFileFromBase64,
+  useDownloadFileFromBase64Refs,
 };
 
 const commonMimeTypesSignatures = {
@@ -62,7 +64,8 @@ function downloadFromBase64({ sourceValue, filename, extension, fileMimeType }:
   }
 
   const cleanExtension = extension ?? getFileExtensionFromMimeType(
-    { mimeType, defaultExtension });
+    { mimeType, defaultExtension },
+  );
   let cleanFileName = filename ?? `file.${cleanExtension}`;
   if (extension && !cleanFileName.endsWith(`.${extension}`)) {
     cleanFileName = `${cleanFileName}.${cleanExtension}`;
@@ -76,7 +79,8 @@ function downloadFromBase64({ sourceValue, filename, extension, fileMimeType }:
 
 function useDownloadFileFromBase64(
   { source, filename, extension, fileMimeType }:
-  { source: Ref<string>; filename?: string; extension?: string; fileMimeType?: string }) {
+  { source: Ref<string>; filename?: string; extension?: string; fileMimeType?: string },
+) {
   return {
     download() {
       downloadFromBase64({ sourceValue: source.value, filename, extension, fileMimeType });
@@ -86,7 +90,8 @@ function useDownloadFileFromBase64(
 
 function useDownloadFileFromBase64Refs(
   { source, filename, extension }:
-  { source: Ref<string>; filename?: Ref<string>; extension?: Ref<string> }) {
+  { source: Ref<string>; filename?: Ref<string>; extension?: Ref<string> },
+) {
   return {
     download() {
       downloadFromBase64({ sourceValue: source.value, filename: filename?.value, extension: extension?.value });

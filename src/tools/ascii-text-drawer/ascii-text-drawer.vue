@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import figlet, { type FigletOptions, type FontName } from 'figlet';
+import type { FigletOptions, FontName } from 'figlet';
+import figlet from 'figlet';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 
 const input = ref('Ascii ART');
@@ -20,18 +21,17 @@ watchEffect(async () => {
       whitespaceBreak: true,
     };
     output.value = await (new Promise<string>((resolve, reject) =>
-      figlet.text(input.value, options,
-        (err, text) => {
-          if (err) {
-            reject(err);
-            return;
-          }
+      figlet.text(input.value, options, (err, text) => {
+        if (err) {
+          reject(err);
+          return;
+        }
 
-          resolve(text ?? '');
-        })));
+        resolve(text ?? '');
+      })));
     errored.value = false;
   }
-  catch (e: any) {
+  catch {
     errored.value = true;
   }
   processing.value = false;
@@ -60,7 +60,7 @@ const fonts = ['1Row', '3-D', '3D Diagonal', '3D-ASCII', '3x5', '4Max', '5 Line 
           label-position="top"
           label="Font:"
           :options="fonts"
-          searchable="true"
+          searchable
           placeholder="Select font to use"
         />
       </n-gi>

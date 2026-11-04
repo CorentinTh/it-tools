@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import JSON5 from 'json5';
 import type { UseValidationRule } from '@/composable/validation';
+import JSON5 from 'json5';
 import { withDefaultOnError } from '@/utils/defaults';
 
 const defaultValue = '{\n\t"hello": [\n\t\t"world"\n\t]\n}';

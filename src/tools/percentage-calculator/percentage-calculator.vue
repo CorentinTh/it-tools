@@ -37,7 +37,7 @@ const percentageIncreaseDecrease = computed(() => {
           What is
         </div>
         <div flex gap-2>
-          <div hidden pt-1 sm:block style="min-width: 48px;">
+          <div pt-1 hidden sm:block style="min-width: 48px;">
             What is
           </div>
           <n-input-number v-model:value="percentageX" data-test-id="percentageX" placeholder="X" />
@@ -55,7 +55,7 @@ const percentageIncreaseDecrease = computed(() => {
         </div>
         <div flex gap-2>
           <n-input-number v-model:value="numberX" data-test-id="numberX" placeholder="X" />
-          <div hidden min-w-fit pt-1 sm:block>
+          <div min-w-fit pt-1 hidden sm:block>
             is what percent of
           </div>
           <n-input-number v-model:value="numberY" data-test-id="numberY" placeholder="Y" />

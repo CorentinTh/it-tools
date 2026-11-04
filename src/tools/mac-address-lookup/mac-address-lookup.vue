@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import db from 'oui-data';
-import { macAddressValidationRules } from '@/utils/macAddress';
 import { useCopy } from '@/composable/copy';
+import { macAddressValidationRules } from '@/utils/macAddress';
 
 const getVendorValue = (address: string) => address.trim().replace(/[.:-]/g, '').toUpperCase().substring(0, 6);
 

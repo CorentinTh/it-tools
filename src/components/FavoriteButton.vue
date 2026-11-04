@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useToolStore } from '@/tools/tools.store';
 import type { Tool } from '@/tools/tools.types';
+import { useToolStore } from '@/tools/tools.store';
 
 const props = defineProps<{ tool: Tool }>();
 

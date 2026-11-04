@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { convertAsciiBinaryToText, convertTextToAsciiBinary } from './text-to-binary.models';
-import { withDefaultOnError } from '@/utils/defaults';
 import { useCopy } from '@/composable/copy';
 import { isNotThrowing } from '@/utils/boolean';
+import { withDefaultOnError } from '@/utils/defaults';
+import { convertAsciiBinaryToText, convertTextToAsciiBinary } from './text-to-binary.models';
 
 const inputText = ref('');
 const binaryFromText = computed(() => convertTextToAsciiBinary(inputText.value));

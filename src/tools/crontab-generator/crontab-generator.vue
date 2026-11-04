@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import cronstrue from 'cronstrue';
 import { isValidCron } from 'cron-validator';
+import cronstrue from 'cronstrue';
 import { useStyleStore } from '@/stores/style.store';
 
 function isCronValid(v: string) {

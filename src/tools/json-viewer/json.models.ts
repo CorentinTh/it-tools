@@ -1,7 +1,8 @@
-import { type MaybeRef, get } from '@vueuse/core';
+import type { MaybeRef } from 'vue';
+import { get } from '@vueuse/core';
 import JSON5 from 'json5';
 
-export { sortObjectKeys, formatJson };
+export { formatJson, sortObjectKeys };
 
 function sortObjectKeys<T>(obj: T): T {
   if (typeof obj !== 'object' || obj === null) {

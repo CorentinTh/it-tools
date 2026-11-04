@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import type { OutputFormat } from './paste-image.service';
 import { useMessage } from 'naive-ui';
+import { useCopy } from '@/composable/copy';
+import { formatBytes } from '@/utils/convert';
 import {
-  type OutputFormat,
   clampQuality,
   convertImage,
   defaultOutputFormat,
@@ -14,14 +16,13 @@ import {
   getUniqueFileName,
   isFallbackOutput,
   isOutputFormat,
+
   outputFormats,
   readImageDimensions,
   readImageFromClipboard,
   writeDataUrlToClipboard,
   writeImageToClipboard,
 } from './paste-image.service';
-import { useCopy } from '@/composable/copy';
-import { formatBytes } from '@/utils/convert';
 
 interface PastedImage {
   id: number

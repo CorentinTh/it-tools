@@ -1,5 +1,5 @@
 export function decodeSafeLinksURL(safeLinksUrl: string) {
-  if (!safeLinksUrl.match(/\.safelinks\.protection\.outlook\.com/)) {
+  if (!/\.safelinks\.protection\.outlook\.com/.test(safeLinksUrl)) {
     throw new Error('Invalid SafeLinks URL provided');
   }
 

@@ -1,7 +1,7 @@
-import type { CountryCode, NumberType } from 'libphonenumber-js/types';
+import type { CountryCode, NumberType } from 'libphonenumber-js';
 import lookup from 'country-code-lookup';
 
-export { formatTypeToHumanReadable, getFullCountryName, getDefaultCountryCode };
+export { formatTypeToHumanReadable, getDefaultCountryCode, getFullCountryName };
 
 const typeToLabel: Record<NonNullable<NumberType>, string> = {
   MOBILE: 'Mobile',

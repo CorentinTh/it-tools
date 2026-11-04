@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { parse as parseYaml } from 'yaml';
 import type { UseValidationRule } from '@/composable/validation';
+import { parse as parseYaml } from 'yaml';
 import { isNotThrowing } from '@/utils/boolean';
 import { withDefaultOnError } from '@/utils/defaults';
 

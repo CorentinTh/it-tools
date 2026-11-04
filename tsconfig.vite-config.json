@@ -1,8 +1,11 @@
 {
-  "extends": "@tsconfig/node18/tsconfig.json",
+  "extends": "@tsconfig/node26/tsconfig.json",
   "include": ["vite.config.*"],
   "compilerOptions": {
-    "composite": true,
-    "types": ["node", "vitest"]
+    "noEmit": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.vite-config.tsbuildinfo",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "types": ["node"]
   }
 }

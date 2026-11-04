@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { textToNatoAlphabet } from './text-to-nato-alphabet.service';
 import { useCopy } from '@/composable/copy';
+import { textToNatoAlphabet } from './text-to-nato-alphabet.service';
 
 const input = ref('');
 const natoText = computed(() => textToNatoAlphabet({ text: input.value }));

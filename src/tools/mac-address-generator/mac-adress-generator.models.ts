@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-export { splitPrefix, generateRandomMacAddress };
+export { generateRandomMacAddress, splitPrefix };
 
 function splitPrefix(prefix: string): string[] {
   const base = prefix.match(/[^0-9a-f]/i) === null ? prefix.match(/.{1,2}/g) ?? [] : prefix.split(/[^0-9a-f]/i);

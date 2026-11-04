@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ulid } from 'ulid';
 import _ from 'lodash';
+import { ulid } from 'ulid';
 import { computedRefreshable } from '@/composable/computedRefreshable';
 import { useCopy } from '@/composable/copy';
 

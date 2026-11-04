@@ -27,7 +27,7 @@ function computedRefreshable<T>(getter: () => T, { throttle }: { throttle?: numb
   return [computedValue, update] as const;
 }
 
-function computedRefreshableAsync<T>(getter: () => Promise<T>, defaultValue?: T) {
+function computedRefreshableAsync<T>(getter: () => Promise<T>, defaultValue: T) {
   const dirty = ref(true);
   let value: T;
 

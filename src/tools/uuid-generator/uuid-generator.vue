@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { v1 as generateUuidV1, v3 as generateUuidV3, v4 as generateUuidV4, v5 as generateUuidV5, NIL as nilUuid } from 'uuid';
-import { useCopy } from '@/composable/copy';
 import { computedRefreshable } from '@/composable/computedRefreshable';
+import { useCopy } from '@/composable/copy';
 import { withDefaultOnError } from '@/utils/defaults';
 
 const versions = ['NIL', 'v1', 'v3', 'v4', 'v5'] as const;
@@ -29,7 +29,7 @@ const generators = {
     clockseq: index,
     msecs: Date.now(),
     nsecs: Math.floor(Math.random() * 10000),
-    node: Array.from({ length: 6 }, () => Math.floor(Math.random() * 256)),
+    node: Uint8Array.from({ length: 6 }, () => Math.floor(Math.random() * 256)),
   }),
   v3: () => generateUuidV3(v35Args.value.name, v35Args.value.namespace),
   v4: () => generateUuidV4(),

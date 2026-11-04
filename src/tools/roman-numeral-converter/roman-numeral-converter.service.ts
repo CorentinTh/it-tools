@@ -30,7 +30,7 @@ export function arabicToRoman(num: number) {
   return roman;
 }
 
-const ROMAN_NUMBER_REGEX = /^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/;
+const ROMAN_NUMBER_REGEX = /^M{0,3}(?:CM|CD|D?C{0,3})(?:XC|XL|L?X{0,3})(?:IX|IV|V?I{0,3})$/;
 
 export function isValidRomanNumber(romanNumber: string) {
   return ROMAN_NUMBER_REGEX.test(romanNumber);

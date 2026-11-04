@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import emojiUnicodeData from 'unicode-emoji-json';
+import type { EmojiInfo } from './emoji.types';
 import emojiKeywords from 'emojilib';
 import _ from 'lodash';
-import type { EmojiInfo } from './emoji.types';
-import { useFuzzySearch } from '@/composable/fuzzySearch';
+import emojiUnicodeData from 'unicode-emoji-json';
 import useDebouncedRef from '@/composable/debouncedref';
+import { useFuzzySearch } from '@/composable/fuzzySearch';
 
 const escapeUnicode = ({ emoji }: { emoji: string }) => emoji.split('').map(unit => `\\u${unit.charCodeAt(0).toString(16).padStart(4, '0')}`).join('');
 const getEmojiCodePoints = ({ emoji }: { emoji: string }) => emoji.codePointAt(0) ? `0x${emoji.codePointAt(0)?.toString(16)}` : undefined;

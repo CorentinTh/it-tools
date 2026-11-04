@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import slugify from '@sindresorhus/slugify';
-import { withDefaultOnError } from '@/utils/defaults';
 import { useCopy } from '@/composable/copy';
+import { withDefaultOnError } from '@/utils/defaults';
 
 const input = ref('');
 const slug = computed(() => withDefaultOnError(() => slugify(input.value), ''));

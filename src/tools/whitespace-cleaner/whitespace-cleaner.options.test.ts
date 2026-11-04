@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { OPTIONS_STORAGE_KEY, getDefaultOptions, loadOptions, saveOptions } from './whitespace-cleaner.options';
+import { getDefaultOptions, loadOptions, OPTIONS_STORAGE_KEY, saveOptions } from './whitespace-cleaner.options';
 
 function createStorage(initial: Record<string, string> = {}) {
   const values = new Map(Object.entries(initial));
@@ -17,11 +17,11 @@ describe('whitespace-cleaner options', () => {
     expect(getDefaultOptions().markdownMode).to.eql(false);
   });
 
-  it('OS1 returns the defaults when nothing is saved', () => {
+  it('oS1 returns the defaults when nothing is saved', () => {
     expect(loadOptions(createStorage())).to.eql(getDefaultOptions());
   });
 
-  it('OS2 ignores unknown keys and keeps the default for missing keys', () => {
+  it('oS2 ignores unknown keys and keeps the default for missing keys', () => {
     const { stripLineNumbers: _missing, ...saved } = { ...getDefaultOptions(), removeAnsi: false, smartUnwrap: true };
     const storage = createStorage({ [OPTIONS_STORAGE_KEY]: JSON.stringify({ ...saved, unknownKey: true }) });
 
@@ -31,7 +31,7 @@ describe('whitespace-cleaner options', () => {
     expect(options).not.to.have.property('unknownKey');
   });
 
-  it('OS3 returns the defaults when the storage throws an error', () => {
+  it('oS3 returns the defaults when the storage throws an error', () => {
     const storage = {
       getItem: () => {
         throw new Error('SecurityError');

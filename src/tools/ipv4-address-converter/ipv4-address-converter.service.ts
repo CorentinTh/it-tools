@@ -34,5 +34,6 @@ function ipv4ToIpv6({ ip, prefix = '0000:0000:0000:0000:0000:ffff:' }: { ip: str
 function isValidIpv4({ ip }: { ip: string }) {
   const cleanIp = ip.trim();
 
+  // eslint-disable-next-line regexp/no-unused-capturing-group, regexp/no-empty-alternative -- Standard IPv4 pattern: the empty alternative matches one-digit octets.
   return /^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$/.test(cleanIp);
 }

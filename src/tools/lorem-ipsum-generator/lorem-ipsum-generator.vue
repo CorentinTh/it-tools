@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { generateLoremIpsum } from './lorem-ipsum-generator.service';
+import { computedRefreshable } from '@/composable/computedRefreshable';
 import { useCopy } from '@/composable/copy';
 import { randIntFromInterval } from '@/utils/random';
-import { computedRefreshable } from '@/composable/computedRefreshable';
+import { generateLoremIpsum } from './lorem-ipsum-generator.service';
 
 const paragraphs = ref(1);
 const sentences = ref([3, 8]);

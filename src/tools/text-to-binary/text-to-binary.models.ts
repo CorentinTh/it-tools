@@ -1,4 +1,4 @@
-export { convertTextToAsciiBinary, convertAsciiBinaryToText };
+export { convertAsciiBinaryToText, convertTextToAsciiBinary };
 
 function convertTextToAsciiBinary(text: string, { separator = ' ' }: { separator?: string } = {}): string {
   return text

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { MessageType, composerize } from 'composerize-ts';
-import { withDefaultOnError } from '@/utils/defaults';
+import { composerize, MessageType } from 'composerize-ts';
+import TextareaCopyable from '@/components/TextareaCopyable.vue';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 import { textToBase64 } from '@/utils/base64';
-import TextareaCopyable from '@/components/TextareaCopyable.vue';
+import { withDefaultOnError } from '@/utils/defaults';
 
 const dockerRun = ref(
   'docker run -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock:ro --restart always --log-opt max-size=1g nginx',

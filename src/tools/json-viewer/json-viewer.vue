@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import JSON5 from 'json5';
 import { useStorage } from '@vueuse/core';
-import { formatJson } from './json.models';
-import { withDefaultOnError } from '@/utils/defaults';
-import { useValidation } from '@/composable/validation';
+import JSON5 from 'json5';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
+import { useValidation } from '@/composable/validation';
+import { withDefaultOnError } from '@/utils/defaults';
+import { formatJson } from './json.models';
 
 const inputElement = ref<HTMLElement>();
 

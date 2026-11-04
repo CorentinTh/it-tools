@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useBase64 } from '@vueuse/core';
 import type { Ref } from 'vue';
+import { useBase64 } from '@vueuse/core';
 import { useCopy } from '@/composable/copy';
 import { getExtensionFromMimeType, getMimeTypeFromBase64, previewImageFromBase64, useDownloadFileFromBase64Refs } from '@/composable/downloadBase64';
 import { useValidation } from '@/composable/validation';
@@ -14,7 +14,8 @@ const { download } = useDownloadFileFromBase64Refs(
     source: base64Input,
     filename: fileName,
     extension: fileExtension,
-  });
+  },
+);
 const base64InputValidation = useValidation({
   source: base64Input,
   rules: [
@@ -49,7 +50,7 @@ function previewImage() {
       previewContainer.appendChild(image);
     }
   }
-  catch (_) {
+  catch {
     //
   }
 }
@@ -62,7 +63,7 @@ function downloadFile() {
   try {
     download();
   }
-  catch (_) {
+  catch {
     //
   }
 }

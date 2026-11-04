@@ -24,64 +24,64 @@ const units = reactive<
     string | TemperatureScale,
     { title: string; unit: string; ref: number; toKelvin: (v: number) => number; fromKelvin: (v: number) => number }
   >
-      >({
-        kelvin: {
-          title: 'Kelvin',
-          unit: 'K',
-          ref: 0,
-          toKelvin: _.identity,
-          fromKelvin: _.identity,
-        },
-        celsius: {
-          title: 'Celsius',
-          unit: '°C',
-          ref: 0,
-          toKelvin: convertCelsiusToKelvin,
-          fromKelvin: convertKelvinToCelsius,
-        },
-        fahrenheit: {
-          title: 'Fahrenheit',
-          unit: '°F',
-          ref: 0,
-          toKelvin: convertFahrenheitToKelvin,
-          fromKelvin: convertKelvinToFahrenheit,
-        },
-        rankine: {
-          title: 'Rankine',
-          unit: '°R',
-          ref: 0,
-          toKelvin: convertRankineToKelvin,
-          fromKelvin: convertKelvinToRankine,
-        },
-        delisle: {
-          title: 'Delisle',
-          unit: '°De',
-          ref: 0,
-          toKelvin: convertDelisleToKelvin,
-          fromKelvin: convertKelvinToDelisle,
-        },
-        newton: {
-          title: 'Newton',
-          unit: '°N',
-          ref: 0,
-          toKelvin: convertNewtonToKelvin,
-          fromKelvin: convertKelvinToNewton,
-        },
-        reaumur: {
-          title: 'Réaumur',
-          unit: '°Ré',
-          ref: 0,
-          toKelvin: convertReaumurToKelvin,
-          fromKelvin: convertKelvinToReaumur,
-        },
-        romer: {
-          title: 'Rømer',
-          unit: '°Rø',
-          ref: 0,
-          toKelvin: convertRomerToKelvin,
-          fromKelvin: convertKelvinToRomer,
-        },
-      });
+>({
+  kelvin: {
+    title: 'Kelvin',
+    unit: 'K',
+    ref: 0,
+    toKelvin: _.identity,
+    fromKelvin: _.identity,
+  },
+  celsius: {
+    title: 'Celsius',
+    unit: '°C',
+    ref: 0,
+    toKelvin: convertCelsiusToKelvin,
+    fromKelvin: convertKelvinToCelsius,
+  },
+  fahrenheit: {
+    title: 'Fahrenheit',
+    unit: '°F',
+    ref: 0,
+    toKelvin: convertFahrenheitToKelvin,
+    fromKelvin: convertKelvinToFahrenheit,
+  },
+  rankine: {
+    title: 'Rankine',
+    unit: '°R',
+    ref: 0,
+    toKelvin: convertRankineToKelvin,
+    fromKelvin: convertKelvinToRankine,
+  },
+  delisle: {
+    title: 'Delisle',
+    unit: '°De',
+    ref: 0,
+    toKelvin: convertDelisleToKelvin,
+    fromKelvin: convertKelvinToDelisle,
+  },
+  newton: {
+    title: 'Newton',
+    unit: '°N',
+    ref: 0,
+    toKelvin: convertNewtonToKelvin,
+    fromKelvin: convertKelvinToNewton,
+  },
+  reaumur: {
+    title: 'Réaumur',
+    unit: '°Ré',
+    ref: 0,
+    toKelvin: convertReaumurToKelvin,
+    fromKelvin: convertKelvinToReaumur,
+  },
+  romer: {
+    title: 'Rømer',
+    unit: '°Rø',
+    ref: 0,
+    toKelvin: convertRomerToKelvin,
+    fromKelvin: convertKelvinToRomer,
+  },
+});
 
 function update(key: TemperatureScale) {
   const { ref: value, toKelvin } = units[key];

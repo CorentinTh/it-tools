@@ -1,6 +1,6 @@
+import { useStorage } from '@vueuse/core';
 import { useRouteQuery } from '@vueuse/router';
 import { computed } from 'vue';
-import { useStorage } from '@vueuse/core';
 
 export { useQueryParam, useQueryParamOrStorage };
 
@@ -51,12 +51,10 @@ function useQueryParamOrStorage<T>({ name, storageName, defaultValue }: { name: 
 
   const r = ref(defaultValue);
 
-  watch(r,
-    (value) => {
-      proxy.value = transformer.toQuery(value as never);
-      storageRef.value = value as never;
-    },
-    { deep: true });
+  watch(r, (value) => {
+    proxy.value = transformer.toQuery(value as never);
+    storageRef.value = value as never;
+  }, { deep: true });
 
   r.value = (proxy.value && proxy.value !== proxyDefaultValue
     ? transformer.fromQuery(proxy.value) as unknown as T

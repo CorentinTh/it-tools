@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import {
-  MAX_ARABIC_TO_ROMAN,
-  MIN_ARABIC_TO_ROMAN,
-  arabicToRoman,
-  isValidRomanNumber,
-  romanToArabic,
-} from './roman-numeral-converter.service';
 import { useCopy } from '@/composable/copy';
 import { useValidation } from '@/composable/validation';
+import {
+  arabicToRoman,
+  isValidRomanNumber,
+  MAX_ARABIC_TO_ROMAN,
+  MIN_ARABIC_TO_ROMAN,
+  romanToArabic,
+} from './roman-numeral-converter.service';
 
 const inputNumeral = ref(42);
 const outputRoman = computed(() => arabicToRoman(inputNumeral.value));

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import _ from 'lodash';
-import { generateRandomMacAddress } from './mac-adress-generator.models';
 import { computedRefreshable } from '@/composable/computedRefreshable';
 import { useCopy } from '@/composable/copy';
 import { usePartialMacAddressValidation } from '@/utils/macAddress';
+import { generateRandomMacAddress } from './mac-adress-generator.models';
 
 const amount = useStorage('mac-address-generator-amount', 1);
 const macAddressPrefix = useStorage('mac-address-generator-prefix', '64:16:7F');

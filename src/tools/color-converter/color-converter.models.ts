@@ -1,8 +1,9 @@
-import { type Colord, colord } from 'colord';
-import { withDefaultOnError } from '@/utils/defaults';
+import type { Colord } from 'colord';
+import { colord } from 'colord';
 import { useValidation } from '@/composable/validation';
+import { withDefaultOnError } from '@/utils/defaults';
 
-export { removeAlphaChannelWhenOpaque, buildColorFormat };
+export { buildColorFormat, removeAlphaChannelWhenOpaque };
 
 function removeAlphaChannelWhenOpaque(hexColor: string) {
   return hexColor.replace(/^(#(?:[0-9a-f]{3}){1,2})ff$/i, '$1');

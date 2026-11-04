@@ -10,11 +10,10 @@ import IconsResolver from 'unplugin-icons/resolver';
 import Icons from 'unplugin-icons/vite';
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
-import { defineConfig } from 'vite';
+import Markdown from 'unplugin-vue-markdown/vite';
 import { VitePWA } from 'vite-plugin-pwa';
-import markdown from 'vite-plugin-vue-markdown';
 import svgLoader from 'vite-svg-loader';
-import { configDefaults } from 'vitest/config';
+import { configDefaults, defineConfig } from 'vitest/config';
 
 const baseUrl = process.env.BASE_URL ?? '/';
 
@@ -23,12 +22,11 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     VueI18n({
       runtimeOnly: true,
-      jitCompilation: true,
       compositionOnly: true,
       fullInstall: true,
       strictMessage: false,
       include: [
-        resolve(__dirname, 'locales/**'),
+        resolve(import.meta.dirname, 'locales/**'),
       ],
     }),
     AutoImport({
@@ -51,11 +49,13 @@ export default defineConfig(({ mode }) => ({
       include: [/\.vue$/, /\.md$/],
     }),
     vueJsx(),
-    markdown(),
+    Markdown({}),
     svgLoader(),
     VitePWA({
       registerType: 'autoUpdate',
       strategies: 'generateSW',
+      // Keep the chunks above the 2 MiB precache limit out of the precache, with a warning instead of a build error.
+      showMaximumFileSizeToCacheInBytesWarning: true,
       manifest: {
         name: 'Toolbox',
         description: 'Aggregated set of useful tools for developers.',
@@ -95,6 +95,8 @@ export default defineConfig(({ mode }) => ({
       extensions: ['vue', 'md'],
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       resolvers: [NaiveUiResolver(), IconsResolver({ prefix: 'icon' })],
+      // The TSX declarations use component names as constant names, and names such as `404.page` are not valid identifiers. No TSX file uses a global component.
+      dtsTsx: false,
     }),
     Unocss(),
   ],

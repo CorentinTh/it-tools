@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { UAParser } from 'ua-parser-js';
-import { Adjustments, Browser, Cpu, Devices, Engine } from '@vicons/tabler';
-import UserAgentResultCards from './user-agent-result-cards.vue';
 import type { UserAgentResultSection } from './user-agent-parser.types';
+import { Adjustments, Browser, Cpu, Devices, Engine } from '@vicons/tabler';
+import { UAParser } from 'ua-parser-js';
 import { withDefaultOnError } from '@/utils/defaults';
+import UserAgentResultCards from './user-agent-result-cards.vue';
 
 const ua = ref(navigator.userAgent as string);
 

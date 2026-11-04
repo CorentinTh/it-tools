@@ -1,6 +1,6 @@
+import { translate } from '@/plugins/i18n.plugin';
 import { defineTool } from '../tool';
 import n7mIcon from './n7m-icon.svg?component';
-import { translate } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
   name: translate('tools.numeronym-generator.title'),

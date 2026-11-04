@@ -1,8 +1,9 @@
 <script lang="ts" setup>
+import type { UseValidationRule } from '@/composable/validation';
+import { useValidation } from '@/composable/validation';
+import { generateRandomId } from '@/utils/random';
 import { useAppTheme } from '../theme/themes';
 import { useTheme } from './c-input-text.theme';
-import { generateRandomId } from '@/utils/random';
-import { type UseValidationRule, useValidation } from '@/composable/validation';
 
 const props = withDefaults(
   defineProps<{
@@ -68,11 +69,11 @@ const { id, placeholder, label, validationRules, labelPosition, labelWidth, labe
 
 const validation
   = props.validation
-  ?? useValidation({
-    rules: validationRules,
-    source: value,
-    watch: props.validationWatch,
-  });
+    ?? useValidation({
+      rules: validationRules,
+      source: value,
+      watch: props.validationWatch,
+    });
 
 const theme = useTheme();
 const appTheme = useAppTheme();

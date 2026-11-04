@@ -1,15 +1,14 @@
 <script lang="ts" setup>
-import { useRoute } from 'vue-router';
-import { useHead } from '@vueuse/head';
-import type { HeadObject } from '@vueuse/head';
-
-import BaseLayout from './base.layout.vue';
-import FavoriteButton from '@/components/FavoriteButton.vue';
 import type { Tool } from '@/tools/tools.types';
+import { useHead } from '@unhead/vue';
+
+import { useRoute } from 'vue-router';
+import FavoriteButton from '@/components/FavoriteButton.vue';
+import BaseLayout from './base.layout.vue';
 
 const route = useRoute();
 
-const head = computed<HeadObject>(() => ({
+const head = computed(() => ({
   title: `${route.meta.name} - Toolbox`,
   meta: [
     {

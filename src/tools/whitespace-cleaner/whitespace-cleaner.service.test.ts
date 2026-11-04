@@ -1,7 +1,8 @@
+import type { CleanerOptions } from './whitespace-cleaner.service';
 import { describe, expect, it } from 'vitest';
-import { type CleanerOptions, cleanText, computeStats } from './whitespace-cleaner.service';
 import { getDefaultOptions } from './whitespace-cleaner.options';
 import { SAMPLE_INPUT } from './whitespace-cleaner.sample';
+import { cleanText, computeStats } from './whitespace-cleaner.service';
 
 const ALL_OFF: CleanerOptions = {
   stripLineNumbers: false,
@@ -93,7 +94,7 @@ describe('whitespace-cleaner', () => {
   });
 
   describe('cleanText, default options', () => {
-    it('G1 cleans the sample', () => {
+    it('g1 cleans the sample', () => {
       const expected = [
         'function greetUser(name: string) {',
         // eslint-disable-next-line no-template-curly-in-string -- The sample is TypeScript source text.
@@ -109,23 +110,23 @@ describe('whitespace-cleaner', () => {
       expect(cleanText(SAMPLE_INPUT, getDefaultOptions())).to.eql(expected);
     });
 
-    it('G2 (defect 1) keeps unfenced code on separate lines', () => {
+    it('g2 (defect 1) keeps unfenced code on separate lines', () => {
       const input = sp('def foo():\n····if x:\n········return 1');
 
       expect(cleanText(input, getDefaultOptions())).to.eql(input);
     });
 
-    it('G3 strips a bullet marker and the common indent', () => {
+    it('g3 strips a bullet marker and the common indent', () => {
       expect(cleanText(sp('⏺·I fixed the bug.\n··It was in the parser.'), getDefaultOptions())).to.eql('I fixed the bug.\nIt was in the parser.');
     });
   });
 
   describe('computeStats', () => {
-    it('ST1 returns zero counts for empty input', () => {
+    it('sT1 returns zero counts for empty input', () => {
       expect(computeStats('', '')).to.eql({ inputLines: 0, inputChars: 0, outputLines: 0, outputChars: 0, savedPercent: 0 });
     });
 
-    it('ST2 computes the saved percentage', () => {
+    it('sT2 computes the saved percentage', () => {
       expect(computeStats('a'.repeat(100), 'a'.repeat(80)).savedPercent).to.eql(20);
     });
 

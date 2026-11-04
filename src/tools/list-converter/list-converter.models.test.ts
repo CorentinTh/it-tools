@@ -1,6 +1,6 @@
+import type { ConvertOptions } from './list-converter.types';
 import { describe, expect, it } from 'vitest';
 import { convert } from './list-converter.models';
-import type { ConvertOptions } from './list-converter.types';
 
 describe('list-converter', () => {
   describe('convert', () => {

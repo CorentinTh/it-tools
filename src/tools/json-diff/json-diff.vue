@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import JSON5 from 'json5';
 
-import DiffsViewer from './diff-viewer/diff-viewer.vue';
-import { withDefaultOnError } from '@/utils/defaults';
 import { isNotThrowing } from '@/utils/boolean';
+import { withDefaultOnError } from '@/utils/defaults';
+import DiffsViewer from './diff-viewer/diff-viewer.vue';
 
 const rawLeftJson = ref('');
 const rawRightJson = ref('');

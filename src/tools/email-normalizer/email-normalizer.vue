@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { normalizeEmail } from 'email-normalizer';
-import { withDefaultOnError } from '@/utils/defaults';
 import { useCopy } from '@/composable/copy';
+import { withDefaultOnError } from '@/utils/defaults';
 
 const emails = ref('');
 const normalizedEmails = computed(() => {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { QRCodeErrorCorrectionLevel } from 'qrcode';
-import { useQRCode } from './useQRCode';
 import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
+import { useQRCode } from './useQRCode';
 
 const foreground = ref('#000000ff');
 const background = ref('#ffffffff');

@@ -4,7 +4,7 @@ import { useValidation } from '@/composable/validation';
 const macAddressValidationRules = [
   {
     message: 'Invalid MAC address',
-    validator: (value: string) => value.trim().match(/^([0-9A-Fa-f]{2}[:-]){2,5}([0-9A-Fa-f]{2})$/),
+    validator: (value: string) => value.trim().match(/^([0-9A-F]{2}[:-]){2,5}([0-9A-F]{2})$/i),
   },
 ];
 
@@ -29,4 +29,4 @@ function usePartialMacAddressValidation(value: Ref) {
   });
 }
 
-export { macAddressValidation, macAddressValidationRules, usePartialMacAddressValidation, partialMacAddressValidationRules };
+export { macAddressValidation, macAddressValidationRules, partialMacAddressValidationRules, usePartialMacAddressValidation };

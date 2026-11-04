@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-export { getPasswordCrackTimeEstimation, getCharsetLength };
+export { getCharsetLength, getPasswordCrackTimeEstimation };
 
 function prettifyExponentialNotation(exponentialNotation: number) {
   const [base, exponent] = exponentialNotation.toString().split('e');

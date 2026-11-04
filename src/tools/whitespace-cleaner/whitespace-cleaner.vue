@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { cleanText, computeStats } from './whitespace-cleaner.service';
-import { OPTION_DEFINITIONS, getBrowserStorage, loadOptions, saveOptions } from './whitespace-cleaner.options';
-import { SAMPLE_INPUT } from './whitespace-cleaner.sample';
 import CInputText from '@/ui/c-input-text/c-input-text.vue';
+import { getBrowserStorage, loadOptions, OPTION_DEFINITIONS, saveOptions } from './whitespace-cleaner.options';
+import { SAMPLE_INPUT } from './whitespace-cleaner.sample';
+import { cleanText, computeStats } from './whitespace-cleaner.service';
 
 type CopyState = 'idle' | 'copied' | 'failed';
 

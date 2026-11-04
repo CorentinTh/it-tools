@@ -1,4 +1,5 @@
-import { type Page, expect, test } from '@playwright/test';
+import type { Page } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 const SAMPLE_OUTPUT_FIRST_LINE = 'function greetUser(name: string) {';
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { formatXml, isValidXML } from './xml-formatter.service';
 import type { UseValidationRule } from '@/composable/validation';
+import { formatXml, isValidXML } from './xml-formatter.service';
 
 const defaultValue = '<hello><world>foo</world><world>bar</world></hello>';
 const indentSize = useStorage('xml-formatter:indent-size', 2);

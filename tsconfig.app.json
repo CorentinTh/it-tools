@@ -1,20 +1,15 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.json",
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "**/*.d.ts", "node_modules/vite-plugin-pwa/client.d.ts"],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
-    "lib": ["ES2022"],
-    "target": "es2022",
-    "module": "es2022",
-    "moduleResolution": "Node",
-    "composite": true,
-    "baseUrl": ".",
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      // The package exports maps of @it-tools/oggen 1.3.0 and figue 1.2.0 have no types condition, so bundler resolution misses their types.
+      "@it-tools/oggen": ["./node_modules/@it-tools/oggen/dist/index.d.ts"],
+      "figue": ["./node_modules/figue/dist/index.d.ts"]
     },
-    "types": ["naive-ui/volar", "@intlify/unplugin-vue-i18n/messages", "unplugin-icons/types/vue"],
-    "esModuleInterop": true,
-    "jsx": "preserve",
-    "skipLibCheck": true
+    "types": ["naive-ui/volar", "@intlify/unplugin-vue-i18n/messages", "unplugin-icons/types/vue"]
   }
 }

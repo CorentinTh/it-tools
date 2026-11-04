@@ -1,8 +1,8 @@
-import { type MaybeRef, get, useStorage } from '@vueuse/core';
-import { defineStore } from 'pinia';
-import type { Ref } from 'vue';
-import _ from 'lodash';
+import type { MaybeRef, Ref } from 'vue';
 import type { Tool, ToolCategory, ToolWithCategory } from './tools.types';
+import { get, useStorage } from '@vueuse/core';
+import _ from 'lodash';
+import { defineStore } from 'pinia';
 import { toolsWithCategory } from './index';
 
 export const useToolStore = defineStore('tools', () => {

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import _ from 'lodash';
 import type { CKeyValueListItems } from './c-key-value-list.types';
+import _ from 'lodash';
 
 const props = withDefaults(defineProps<{ items?: CKeyValueListItems }>(), { items: () => [] });
 const { items } = toRefs(props);

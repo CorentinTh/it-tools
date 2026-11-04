@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import RandExp from 'randexp';
-import { render } from '@regexper/render';
 import type { ShadowRootExpose } from 'vue-shadow-dom';
-import { matchRegex } from './regex-tester.service';
-import { useValidation } from '@/composable/validation';
+import { render } from '@regexper/render';
+import RandExp from 'randexp';
 import { useQueryParamOrStorage } from '@/composable/queryParams';
+import { useValidation } from '@/composable/validation';
+import { matchRegex } from './regex-tester.service';
 
 const regex = useQueryParamOrStorage({ name: 'regex', storageName: 'regex-tester:regex', defaultValue: '' });
 const text = ref('');
@@ -53,17 +53,17 @@ const results = computed(() => {
   try {
     return matchRegex(regex.value, text.value, flags);
   }
-  catch (_) {
+  catch {
     return [];
   }
 });
 
 const sample = computed(() => {
   try {
-    const randexp = new RandExp(new RegExp(regex.value.replace(/\(\?\<[^\>]*\>/g, '(?:')));
+    const randexp = new RandExp(new RegExp(regex.value.replace(/\(\?<[^>]*>/g, '(?:')));
     return randexp.gen();
   }
-  catch (_) {
+  catch {
     return '';
   }
 });
@@ -82,7 +82,7 @@ watchEffect(
       try {
         await render(regexValue, svg);
       }
-      catch (_) {
+      catch {
       }
       visualizer.appendChild(svg);
     }

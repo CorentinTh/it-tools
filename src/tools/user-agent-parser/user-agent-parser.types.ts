@@ -1,5 +1,5 @@
-import type { Component } from 'vue';
 import type { UAParser } from 'ua-parser-js';
+import type { Component } from 'vue';
 
 export interface UserAgentResultSection {
   heading: string

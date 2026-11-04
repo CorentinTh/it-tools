@@ -1,5 +1,5 @@
-import _ from 'lodash';
 import type Plausible from 'plausible-tracker';
+import _ from 'lodash';
 import { inject } from 'vue';
 
 export { createTrackerService, useTracker };

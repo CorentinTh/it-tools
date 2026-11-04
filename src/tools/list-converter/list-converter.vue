@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import type { ConvertOptions } from './list-converter.types';
 import { useStorage } from '@vueuse/core';
 import { convert } from './list-converter.models';
-import type { ConvertOptions } from './list-converter.types';
 
 const sortOrderOptions = [
   {

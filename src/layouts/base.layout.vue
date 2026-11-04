@@ -1,23 +1,25 @@
 <script lang="ts" setup>
+import type { ToolCategory } from '@/tools/tools.types';
+
+import { Home2, Menu2 } from '@vicons/tabler';
 import { NIcon, useThemeVars } from 'naive-ui';
 
-import { RouterLink } from 'vue-router';
-import { Home2, Menu2 } from '@vicons/tabler';
-
 import { storeToRefs } from 'pinia';
+import { RouterLink } from 'vue-router';
+import CollapsibleToolMenu from '@/components/CollapsibleToolMenu.vue';
+import { config } from '@/config';
+import { useStyleStore } from '@/stores/style.store';
+import { useToolStore } from '@/tools/tools.store';
 import HeroGradient from '../assets/hero-gradient.svg?component';
 import MenuLayout from '../components/MenuLayout.vue';
 import NavbarButtons from '../components/NavbarButtons.vue';
-import { useStyleStore } from '@/stores/style.store';
-import { config } from '@/config';
-import type { ToolCategory } from '@/tools/tools.types';
-import { useToolStore } from '@/tools/tools.store';
-import CollapsibleToolMenu from '@/components/CollapsibleToolMenu.vue';
 
 const themeVars = useThemeVars();
 const styleStore = useStyleStore();
+const { isMenuCollapsed, isSmallScreen } = storeToRefs(styleStore);
 const version = config.app.version;
 const commitSha = config.app.lastCommitSha.slice(0, 7);
+const isDevelopment = computed(() => config.app.env === 'development');
 const repositoryUrl = 'https://github.com/destan/toolbox';
 const sourceUrl = commitSha ? `${repositoryUrl}/tree/${commitSha}` : repositoryUrl;
 
@@ -33,7 +35,7 @@ const tools = computed<ToolCategory[]>(() => [
 </script>
 
 <template>
-  <MenuLayout class="menu-layout" :class="{ isSmallScreen: styleStore.isSmallScreen }">
+  <MenuLayout class="menu-layout" :class="{ isSmallScreen }">
     <template #sider>
       <RouterLink to="/" class="hero-wrapper">
         <HeroGradient class="gradient" />
@@ -49,7 +51,7 @@ const tools = computed<ToolCategory[]>(() => [
       </RouterLink>
 
       <div class="sider-content">
-        <div v-if="styleStore.isSmallScreen" flex flex-col items-center>
+        <div v-if="isSmallScreen" flex flex-col items-center>
           <locale-selector w="90%" />
 
           <div flex justify-center>
@@ -105,7 +107,7 @@ const tools = computed<ToolCategory[]>(() => [
           circle
           variant="text"
           :aria-label="$t('home.toggleMenu')"
-          @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed"
+          @click="isMenuCollapsed = !isMenuCollapsed"
         >
           <NIcon size="25" :component="Menu2" />
         </c-button>
@@ -117,17 +119,17 @@ const tools = computed<ToolCategory[]>(() => [
         </c-tooltip>
 
         <c-tooltip :tooltip="$t('home.uiLib')" position="bottom">
-          <c-button v-if="config.app.env === 'development'" to="/c-lib" circle variant="text" :aria-label="$t('home.uiLib')">
+          <c-button v-if="isDevelopment" to="/c-lib" circle variant="text" :aria-label="$t('home.uiLib')">
             <icon-mdi:brush-variant text-20px />
           </c-button>
         </c-tooltip>
 
         <command-palette />
 
-        <locale-selector v-if="!styleStore.isSmallScreen" />
+        <locale-selector v-if="!isSmallScreen" />
 
         <div>
-          <NavbarButtons v-if="!styleStore.isSmallScreen" />
+          <NavbarButtons v-if="!isSmallScreen" />
         </div>
       </div>
       <slot />
