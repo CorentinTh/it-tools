@@ -1,0 +1,51 @@
+name: Dependency check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  schedule:
+    # Weekly: new CVEs appear without code changes.
+    - cron: '17 4 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dependency-check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # The SARIF upload writes to code scanning.
+      security-events: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # The scan reads pnpm-lock.yaml, so it needs no `pnpm install`.
+      # The action image ships the vulnerability database and runs with --noupdate.
+      - name: Run OWASP Dependency-Check
+        uses: dependency-check/Dependency-Check_Action@1e54355a8b4c8abaa8cc7d0b70aa655a3bb15a6c # main
+        with:
+          project: toolbox
+          path: '.'
+          format: 'ALL'
+          out: reports
+          args: >
+            --failOnCVSS 7
+
+      - name: Upload the reports
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: dependency-check-reports
+          path: reports
+
+      # Pull requests from forks get a read-only token, so they skip the upload.
+      - name: Upload SARIF to code scanning
+        if: always() && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+        uses: github/codeql-action/upload-sarif@33d7b85da1a04171e211befe2c739303b9a4c066 # v4.39.3
+        with:
+          sarif_file: reports/dependency-check-report.sarif
+          category: dependency-check
