@@ -1,0 +1,394 @@
+home:
+  categories:
+    newestTools: En yeni araçlar
+    favoriteTools: 'Favori araçlarınız'
+    allTools: 'Tüm araçlar'
+    favoritesDndToolTip: 'Favorileri yeniden sıralamak için sürükleyip bırakın'
+  subtitle: 'Geliştiriciler için kullanışlı araçlar'
+  toggleMenu: 'Menüyü aç/kapat'
+  home: Ana Sayfa
+  uiLib: 'UI Lib'
+  support: 'IT-Tools geliştirmesini destekleyin'
+  buyMeACoffee: 'Bana bir kahve ısmarla'
+  follow:
+    title: 'it-tools''u beğendiniz mi?'
+    p1: 'Bize bir yıldız verin:'
+    githubRepository: 'IT-Tools GitHub deposu'
+    p2: 'veya bizi takip edin:'
+    twitterXAccount: 'IT-Tools X hesabı'
+    thankYou: 'Teşekkürler!'
+  nav:
+    github: 'GitHub deposu'
+    githubRepository: 'IT-Tools GitHub deposu'
+    twitterX: 'X hesabı'
+    twitterXAccount: 'IT-Tools X hesabı'
+    about: 'IT-Tools Hakkında'
+    aboutLabel: 'Hakkında'
+    darkMode: 'Karanlık mod'
+    lightMode: 'Aydınlık mod'
+    mode: 'Karanlık/Aydınlık modunu değiştir'
+about:
+  content: >
+    # IT-Tools Hakkında
+
+    [Corentin Thomasset](https://corentin.tech?utm_source=it-tools&utm_medium=about) tarafından ❤ ile hazırlanan bu harika web sitesi, geliştiriciler ve bilişim alanında çalışan kişiler için kullanışlı araçları bir araya getirir. Yararlı bulduysanız lütfen faydalanabileceğini düşündüğünüz kişilerle paylaşmaktan çekinmeyin ve yer işaretlerinize eklemeyi unutmayın!
+
+    IT Tools açık kaynaklıdır (GPL-3.0 lisansı altında), ücretsizdir ve her zaman öyle kalacaktır; ancak barındırma ve alan adı yenileme maliyetleri bulunmaktadır. Çalışmalarımı desteklemek ve daha fazla araç eklememi teşvik etmek isterseniz lütfen [bana sponsor olmayı](https://www.buymeacoffee.com/cthmsst) değerlendirin.
+
+    ## Teknolojiler
+
+    IT Tools, Naive UI bileşen kütüphanesi ile Vue.js (Vue 3) kullanılarak geliştirilmiştir ve Vercel tarafından barındırılıp sürekli olarak dağıtılmaktadır (CI/CD). Bazı araçlarda üçüncü taraf açık kaynak kütüphaneler kullanılmıştır; tam listeyi depodaki [package.json](https://github.com/CorentinTh/it-tools/blob/main/package.json) dosyasında bulabilirsiniz.
+
+    ## Bir hata mı buldunuz? Bir araç mı eksik?
+
+    Şu anda burada bulunmayan ve yararlı olabileceğini düşündüğünüz bir araca ihtiyacınız varsa, GitHub deposundaki [sorunlar (issues) bölümünden](https://github.com/CorentinTh/it-tools/issues/new/choose) özellik isteği gönderebilirsiniz.
+
+    Bir hata bulduysanız veya bir şey beklendiği gibi çalışmıyorsa lütfen GitHub deposundaki [sorunlar (issues) bölümünden](https://github.com/CorentinTh/it-tools/issues/new/choose) bir hata bildirimi oluşturun.
+
+404:
+  notFound: '404 Bulunamadı'
+  sorry: 'Üzgünüz, bu sayfa mevcut görünmüyor'
+  maybe: 'Önbellek sorun yaratıyor olabilir, sayfayı yenilemeyi deneyin?'
+  backHome: 'Ana sayfaya dön'
+favoriteButton:
+  remove: 'Favorilerden kaldır'
+  add: 'Favorilere ekle'
+toolCard:
+  new: Yeni
+search:
+  label: Ara
+tools:
+  categories:
+    favorite-tools: 'Favori araçlarınız'
+    crypto: Kripto
+    converter: Dönüştürücü
+    web: Web
+    images and videos: 'Görseller ve Videolar'
+    development: Geliştirme
+    network: Ağ
+    math: Matematik
+    measurement: Ölçüm
+    text: Metin
+    data: Veri
+
+  password-strength-analyser:
+    title: Şifre gücü analizi
+    description: Yalnızca istemci tarafında çalışan bu şifre gücü analizörü ve kırılma süresi tahmin aracı ile şifrenizin gücünü keşfedin.
+
+  chronometer:
+    title: Kronometre
+    description: Bir işlemin süresini izleyin. Basit ve kullanışlı kronometre özellikleri.
+
+  token-generator:
+    title: Belirteç (Token) oluşturucu
+    description: İstediğiniz karakterlerle (büyük veya küçük harfler, sayılar ve/veya semboller) rastgele dizeler oluşturun.
+
+    uppercase: Büyük Harf (ABC...)
+    lowercase: Küçük Harf (abc...)
+    numbers: Sayılar (123...)
+    symbols: Semboller (!-;...)
+    length: Uzunluk
+    tokenPlaceholder: 'Belirteç...'
+    copied: Belirteç panoya kopyalandı
+    button:
+      copy: Kopyala
+      refresh: Yenile
+  percentage-calculator:
+    title: Yüzde hesaplayıcı
+    description: Bir değerden diğerine veya bir yüzdeden bir değere kolayca yüzde hesaplamaları yapın.
+
+  svg-placeholder-generator:
+    title: SVG yer tutucu (placeholder) oluşturucu
+    description: Uygulamalarınızda yer tutucu olarak kullanmak üzere SVG görselleri oluşturun.
+
+  json-to-csv:
+    title: JSON'dan CSV'ye
+    description: Otomatik başlık algılama ile JSON verilerini CSV formatına dönüştürün.
+
+  camera-recorder:
+    title: Kamera kaydedici
+    description: Web kameranızdan veya kameranızdan fotoğraf çekin ya da video kaydedin.
+
+  keycode-info:
+    title: Tuş kodu (Keycode) bilgisi
+    description: Basılan herhangi bir tuşun javascript tuş kodunu (keycode), kodunu, konumunu ve değiştiricilerini öğrenin.
+
+  emoji-picker:
+    title: Emoji seçici
+    description: Emojileri kolayca kopyalayıp yapıştırın; her emojinin unicode ve kod noktası değerlerini öğrenin.
+
+  color-converter:
+    title: Renk dönüştürücü
+    description: Farklı formatlar arasında renk dönüşümü yapın (hex, rgb, hsl ve css adı)
+
+  bcrypt:
+    title: Bcrypt
+    description: Bcrypt kullanarak metin dizelerini karma hale getirin ve karşılaştırın. Bcrypt, Blowfish şifresine dayalı bir şifre hashleme fonksiyonudur.
+
+  crontab-generator:
+    title: Crontab oluşturucu
+    description: Crontab ifadelerini doğrulayın, oluşturun ve cron zamanlamasının anlaşılır açıklamasını görün.
+
+  http-status-codes:
+    title: HTTP durum kodları
+    description: Tüm HTTP durum kodlarının listesi, adları ve anlamları.
+
+  sql-prettify:
+    title: SQL güzelleştirici ve biçimlendirici
+    description: SQL sorgularınızı çevrimiçi olarak biçimlendirin ve güzelleştirin (çeşitli SQL lehçelerini destekler).
+
+  benchmark-builder:
+    title: Karşılaştırmalı test (Benchmark) oluşturucu
+    description: Bu çok basit çevrimiçi karşılaştırma aracıyla görevlerin yürütme sürelerini kolayca karşılaştırın.
+
+  git-memo:
+    title: Git başvuru kılavuzu (Cheatsheet)
+    description: Git dağıtık bir sürüm kontrol yazılımıdır. Bu başvuru kılavuzu ile en yaygın Git komutlarına hızlıca erişebilirsiniz.
+
+  slugify-string:
+    title: Dizeyi URL uyumlu yap (Slugify)
+    description: Bir metni URL, dosya adı ve kimlik (id) için güvenli hale getirin.
+
+  encryption:
+    title: Metin şifreleme / şifre çözme
+    description: AES, TripleDES, Rabbit veya RC4 gibi kripto algoritmalarını kullanarak düz metni şifreleyin ve şifreli metni çözün.
+
+  random-port-generator:
+    title: Rastgele port oluşturucu
+    description: Bilinen port aralığının (0-1023) dışında rastgele port numaraları oluşturun.
+
+  yaml-prettify:
+    title: YAML güzelleştirici ve biçimlendirici
+    description: YAML dizenizi anlaşılır ve okunabilir bir biçime dönüştürün.
+
+  eta-calculator:
+    title: ETA (Tahmini Varış Süresi) hesaplayıcı
+    description: Bir görevin yaklaşık bitiş zamanını (örneğin bir dosya indirmesinin bitiş zamanını ve süresini) belirlemek için ETA hesaplayıcı.
+
+  roman-numeral-converter:
+    title: Romen rakamı dönüştürücü
+    description: Romen rakamlarını sayılara, sayıları da Romen rakamlarına dönüştürün.
+
+  hmac-generator:
+    title: HMAC oluşturucu
+    description: Gizli bir anahtar ve tercih ettiğiniz hash fonksiyonunu kullanarak hash tabanlı bir mesaj doğrulama kodu (HMAC) hesaplar.
+
+  bip39-generator:
+    title: BIP39 parola dizesi (passphrase) oluşturucu
+    description: Mevcut veya rastgele bir anımsatıcıdan (mnemonic) BIP39 parolası oluşturun veya paroladan anımsatıcıyı elde edin.
+
+  base64-file-converter:
+    title: Base64 dosya dönüştürücü
+    description: Bir metni, dosyayı veya görseli base64 temsiline dönüştürün.
+
+  list-converter:
+    title: Liste dönüştürücü
+    description: Bu araç sütun tabanlı verileri işleyebilir ve her satıra çeşitli değişiklikler uygulayabilir (satır/sütun yer değiştirme, ön ek ve son ek ekleme, listeyi tersine çevirme, sıralama, küçük harfe dönüştürme, değerleri kısaltma).
+
+  base64-string-converter:
+    title: Base64 metin kodlayıcı/kod çözücü
+    description: Metin dizelerini base64 temsiline kolayca kodlayın veya kodunu çözün.
+
+  toml-to-yaml:
+    title: TOML'dan YAML'a
+    description: TOML verilerini ayrıştırın ve YAML'a dönüştürün.
+
+  math-evaluator:
+    title: Matematiksel ifade değerlendirici
+    description: Matematiksel ifadeleri hesaplamak için bir hesap makinesi. sqrt, cos, sin, abs vb. fonksiyonları kullanabilirsiniz.
+
+  json-to-yaml-converter:
+    title: JSON'dan YAML'a dönüştürücü
+    description: Bu canlı çevrimiçi dönüştürücü ile JSON'u kolayca YAML'a dönüştürün.
+
+  url-parser:
+    title: URL ayrıştırıcı
+    description: Bir URL'yi bileşenlerine ayrıştırın (protokol, kaynak, parametreler, port, kullanıcı adı-şifre vb.)
+
+  iban-validator-and-parser:
+    title: IBAN doğrulayıcı ve ayrıştırıcı
+    description: IBAN numaralarını doğrulayın ve ayrıştırın. Bir IBAN'ın geçerli olup olmadığını kontrol edin; ülke, BBAN, QR-IBAN durumu ve biçimlendirilmiş format bilgilerini alın.
+
+  user-agent-parser:
+    title: Kullanıcı aracısı (User-Agent) ayrıştırıcı
+    description: User-Agent dizesinden Tarayıcı, Motor, İşletim Sistemi, CPU ve Cihaz türünü/modelini algılayıp ayrıştırın.
+
+  numeronym-generator:
+    title: Nümeronim oluşturucu
+    description: Nümeronim, bir kısaltma oluşturmak için sayı kullanılan bir sözcüktür. Örneğin "i18n", ilk i ile son n harfi arasındaki 18 harfi temsil eden "internationalization" sözcüğünün bir nümeronimidir.
+
+  case-converter:
+    title: Harf durumu (Case) dönüştürücü
+    description: Bir metin dizesinin harf büyüklüğünü dönüştürün ve farklı formatlar arasında seçim yapın (camelCase, snake_case vb.)
+
+  html-entities:
+    title: HTML varlıklarını kaçır (Escape HTML)
+    description: HTML varlıklarını kaçırın veya geri alın (<, >, &, " ve ' gibi karakterleri HTML karşılıklarıyla değiştirin).
+
+  json-prettify:
+    title: JSON güzelleştirici ve biçimlendirici
+    description: JSON dizenizi anlaşılır ve okunabilir bir formata dönüştürün.
+
+  docker-run-to-docker-compose-converter:
+    title: Docker run'dan Docker compose'a dönüştürücü
+    description: '"docker run" komutlarını docker-compose dosyalarına dönüştürür!'
+
+  mac-address-lookup:
+    title: MAC adresi sorgulama
+    description: MAC adresine göre bir cihazın satıcısını ve üreticisini bulun.
+
+  mime-types:
+    title: MIME türleri
+    description: MIME türlerini dosya uzantılarına ve tersine dönüştürün.
+
+  toml-to-json:
+    title: TOML'dan JSON'a
+    description: TOML verilerini ayrıştırın ve JSON'a dönüştürün.
+
+  lorem-ipsum-generator:
+    title: Lorem ipsum oluşturucu
+    description: Lorem ipsum, anlamlı bir içeriğe dayanmadan bir belgenin veya yazı tipinin görsel biçimini göstermek için yaygın olarak kullanılan bir yer tutucu metindir.
+
+  qrcode-generator:
+    title: QR Kodu oluşturucu
+    description: Bir URL (veya düz metin) için QR kodu oluşturup indirin; arka plan ve ön plan renklerini özelleştirin.
+
+  wifi-qrcode-generator:
+    title: WiFi QR Kodu oluşturucu
+    description: WiFi ağlarına hızlı bağlantı için QR kodları oluşturun ve indirin.
+
+  xml-formatter:
+    title: XML biçimlendirici
+    description: XML dizenizi anlaşılır ve okunabilir bir formata dönüştürün.
+
+  temperature-converter:
+    title: Sıcaklık dönüştürücü
+    description: Kelvin, Celsius, Fahrenheit, Rankine, Delisle, Newton, Réaumur ve Rømer için sıcaklık dönüşümleri.
+
+  chmod-calculator:
+    title: Chmod hesaplayıcı
+    description: Bu çevrimiçi chmod hesaplayıcı ile Linux chmod izinlerinizi ve komutlarınızı hesaplayın.
+
+  rsa-key-pair-generator:
+    title: RSA anahtar çifti oluşturucu
+    description: Rastgele yeni bir RSA özel ve genel PEM sertifika anahtar çifti oluşturun.
+
+  html-wysiwyg-editor:
+    title: HTML WYSIWYG düzenleyici
+    description: İçeriğin kaynak kodunu anında üreten, zengin özelliklere sahip çevrimiçi WYSIWYG HTML düzenleyici.
+
+  yaml-to-toml:
+    title: YAML'dan TOML'a
+    description: YAML verilerini ayrıştırın ve TOML'a dönüştürün.
+
+  mac-address-generator:
+    title: MAC adresi oluşturucu
+    description: Miktar ve ön ek girin. MAC adresleri seçtiğiniz harf durumunda (büyük veya küçük harf) oluşturulacaktır.
+
+  json-diff:
+    title: JSON karşılaştırma (diff)
+    description: İki JSON nesnesini karşılaştırın ve aralarındaki farkları görün.
+
+  jwt-parser:
+    title: JWT ayrıştırıcı
+    description: JSON Web Token (JWT) dizesini ayrıştırıp kodunu çözün ve içeriğini görüntüleyin.
+
+  date-converter:
+    title: Tarih-saat dönüştürücü
+    description: Tarih ve saati çeşitli farklı formatlara dönüştürün.
+
+  phone-parser-and-formatter:
+    title: Telefon numarası ayrıştırıcı ve biçimlendirici
+    description: Telefon numaralarını ayrıştırın, doğrulayın ve biçimlendirin. Ülke kodu, tür vb. telefon numarası bilgilerini alın.
+
+  ipv4-subnet-calculator:
+    title: IPv4 alt ağ hesaplayıcı
+    description: IPv4 CIDR bloklarınızı ayrıştırın ve alt ağınız hakkında ihtiyacınız olan tüm bilgileri alın.
+
+  og-meta-generator:
+    title: Open Graph meta etiketi oluşturucu
+    description: Web siteniz için open-graph ve sosyal medya HTML meta etiketleri oluşturun.
+
+  ipv6-ula-generator:
+    title: IPv6 ULA oluşturucu
+    description: RFC4193'e göre ağınız için kendi yerel, yönlendirilemez IP adreslerinizi oluşturun.
+
+  hash-text:
+    title: Metin hashleme
+    description: 'İhtiyacınız olan fonksiyonu kullanarak bir metin dizesini hashleyin: MD5, SHA1, SHA256, SHA224, SHA512, SHA384, SHA3 veya RIPEMD160'
+
+  json-to-toml:
+    title: JSON'dan TOML'a
+    description: JSON verilerini ayrıştırın ve TOML'a dönüştürün.
+
+  device-information:
+    title: Cihaz bilgisi
+    description: Mevcut cihazınız hakkında bilgi alın (ekran boyutu, piksel oranı, kullanıcı aracısı vb.)
+
+  pdf-signature-checker:
+    title: PDF imza denetleyici
+    description: Bir PDF dosyasının imzalarını doğrulayın. İmzalı bir PDF dosyası, dosya imzalandıktan sonra içeriğin değiştirilip değiştirilmediğini belirlemek için kullanılabilecek bir veya daha fazla imza içerir.
+
+  json-minify:
+    title: JSON küçültücü (minify)
+    description: Gereksiz boşlukları kaldırarak JSON verilerinizi küçültün ve sıkıştırın.
+
+  ulid-generator:
+    title: ULID oluşturucu
+    description: Evrensel Olarak Benzersiz Sözlüksel Olarak Sıralanabilir Tanımlayıcı (ULID) oluşturun.
+
+  string-obfuscator:
+    title: Dize karartıcı (Obfuscator)
+    description: Bir dizeyi (gizli anahtar, IBAN veya belirteç gibi) içeriğini açığa çıkarmadan paylaşılabilir ve tanımlanabilir kılmak için karartın.
+
+  base-converter:
+    title: Sayı tabanı dönüştürücü
+    description: Bir sayıyı farklı tabanlar arasında dönüştürün (onluk, onaltılık, ikilik, sekizlik, base64 vb.)
+
+  yaml-to-json-converter:
+    title: YAML'dan JSON'a dönüştürücü
+    description: Bu canlı çevrimiçi dönüştürücü ile YAML'ı kolayca JSON'a dönüştürün.
+
+  uuid-generator:
+    title: UUID oluşturucu
+    description: Evrensel Benzersiz Tanımlayıcı (UUID), bilgisayar sistemlerindeki bilgileri tanımlamak için kullanılan 128 bitlik bir sayıdır. Olası UUID sayısı 16^32, yani 2^128 veya yaklaşık 3.4x10^38'dir (oldukça büyük bir sayı!).
+
+  ipv4-address-converter:
+    title: IPv4 adres dönüştürücü
+    description: Bir IP adresini onluk, ikilik, onaltılık veya hatta IPv6 temsiline dönüştürün.
+
+  text-statistics:
+    title: Metin istatistikleri
+    description: 'Bir metin hakkında bilgi alın: karakter sayısı, kelime sayısı, bayt cinsinden boyutu vb.'
+
+  text-to-nato-alphabet:
+    title: Metinden NATO alfabesine
+    description: Sözlü iletim için metni NATO fonetik alfabesine dönüştürün.
+
+  basic-auth-generator:
+    title: Basic auth oluşturucu
+    description: Kullanıcı adı ve şifreden base64 basic auth başlığı oluşturun.
+
+  text-to-unicode:
+    title: Metinden Unicode'a
+    description: Metni unicode'a ve tersine ayrıştırıp dönüştürün.
+
+  ipv4-range-expander:
+    title: IPv4 aralık genişletici
+    description: Başlangıç ve bitiş IPv4 adresi verildiğinde, bu araç CIDR gösterimi ile birlikte geçerli bir IPv4 alt ağı hesaplar.
+
+  text-diff:
+    title: Metin karşılaştırma (diff)
+    description: İki metni karşılaştırın ve aralarındaki farkları görün.
+
+  otp-generator:
+    title: OTP kod oluşturucu
+    description: Çok faktörlü kimlik doğrulama için zamana dayalı OTP (tek kullanımlık şifre) oluşturun ve doğrulayın.
+
+  url-encoder:
+    title: URL biçimli dizeleri kodla/çöz
+    description: Metni URL kodlu biçime dönüştürün (yüzde kodlu olarak da bilinir) veya kodunu çözün.
+
+  text-to-binary:
+    title: Metinden ASCII ikiliye (Binary)
+    description: Metni ASCII ikili temsiline ve tersine dönüştürün.
