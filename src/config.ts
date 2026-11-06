@@ -23,12 +23,18 @@ export const config = figue({
     env: {
       doc: 'Application current env',
       format: 'enum',
-      values: ['production', 'development', 'test'],
+      values: ['production', 'development', 'preview', 'test'],
       default: 'development',
-      env: 'MODE',
+      env: 'VITE_VERCEL_ENV',
     },
   },
   plausible: {
+    isTrackerEnabled: {
+      doc: 'Is the tracker enabled',
+      format: 'boolean',
+      default: false,
+      env: 'VITE_TRACKER_ENABLED',
+    },
     domain: {
       doc: 'Plausible current domain',
       format: 'string',
@@ -47,13 +53,17 @@ export const config = figue({
       default: false,
     },
   },
-  tools: {
-    newTools: {
-      doc: 'Tool names for tools flagged a as new',
-      format: 'array',
-      default: [],
-      env: 'VITE_NEW_TOOLS',
-    },
+  showBanner: {
+    doc: 'Show the banner',
+    format: 'boolean',
+    default: false,
+    env: 'VITE_SHOW_BANNER',
+  },
+  showSponsorBanner: {
+    doc: 'Show the sponsor banner',
+    format: 'boolean',
+    default: false,
+    env: 'VITE_SHOW_SPONSOR_BANNER',
   },
 })
   .loadEnv({

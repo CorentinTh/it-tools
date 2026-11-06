@@ -1,43 +1,23 @@
-<template>
-  <n-input v-model:value="value">
-    <template #suffix>
-      <n-tooltip trigger="hover">
-        <template #trigger>
-          <n-button quaternary circle @click="onCopyClicked">
-            <n-icon :component="ContentCopyFilled" />
-          </n-button>
-        </template>
-        {{ tooltipText }}
-      </n-tooltip>
-    </template>
-  </n-input>
-</template>
-
 <script setup lang="ts">
-import { useVModel, useClipboard } from '@vueuse/core';
-import { ContentCopyFilled } from '@vicons/material';
-import { ref } from 'vue';
+import { useVModel } from '@vueuse/core';
+import { useCopy } from '@/composable/copy';
 
 const props = defineProps<{ value: string }>();
 const emit = defineEmits(['update:value']);
 
 const value = useVModel(props, 'value', emit);
-const tooltipText = ref('Copy to clipboard');
-
-const { copy } = useClipboard({ source: value });
-
-function onCopyClicked() {
-  copy();
-  tooltipText.value = 'Copied !';
-
-  setTimeout(() => {
-    tooltipText.value = 'Copy to clipboard';
-  }, 2000);
-}
+const { copy, isJustCopied } = useCopy({ source: value, createToast: false });
+const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : 'Copy to clipboard');
 </script>
 
-<style scoped>
-::v-deep(.n-input-wrapper) {
-  padding-right: 5px;
-}
-</style>
+<template>
+  <c-input-text v-model:value="value">
+    <template #suffix>
+      <c-tooltip :tooltip="tooltipText">
+        <c-button circle variant="text" size="small" @click="copy()">
+          <icon-mdi-content-copy />
+        </c-button>
+      </c-tooltip>
+    </template>
+  </c-input-text>
+</template>

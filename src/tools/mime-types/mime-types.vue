@@ -1,19 +1,43 @@
+<script setup lang="ts">
+import { types as extensionToMimeType, extensions as mimeTypeToExtension } from 'mime-types';
+
+const mimeInfos = Object.entries(mimeTypeToExtension).map(([mimeType, extensions]) => ({ mimeType, extensions }));
+
+const mimeToExtensionsOptions = Object.keys(mimeTypeToExtension).map(label => ({ label, value: label }));
+const selectedMimeType = ref(undefined);
+
+const extensionsFound = computed(() => (selectedMimeType.value ? mimeTypeToExtension[selectedMimeType.value] : []));
+
+const extensionToMimeTypeOptions = Object.keys(extensionToMimeType).map((label) => {
+  const extension = `.${label}`;
+
+  return { label: extension, value: label };
+});
+const selectedExtension = ref(undefined);
+
+const mimeTypeFound = computed(() => (selectedExtension.value ? extensionToMimeType[selectedExtension.value] : []));
+</script>
+
 <template>
-  <n-card>
-    <n-h2 style="margin-bottom: 0">Mime type to extension</n-h2>
-    <div style="opacity: 0.8">Now witch file extensions are associated to a mime-type</div>
-    <n-form-item>
-      <n-select
-        v-model:value="selectedMimeType"
-        filterable
-        :options="mimeToExtensionsOptions"
-        size="large"
-        placeholder="Select your mimetype here... (ex: application/pdf)"
-      />
-    </n-form-item>
+  <c-card>
+    <n-h2 style="margin-bottom: 0">
+      Mime type to extension
+    </n-h2>
+    <div style="opacity: 0.8">
+      Know which file extensions are associated to a mime-type
+    </div>
+    <c-select
+      v-model:value="selectedMimeType"
+      searchable
+      my-4
+      :options="mimeToExtensionsOptions"
+      placeholder="Select your mimetype here... (ex: application/pdf)"
+    />
 
     <div v-if="extensionsFound.length > 0">
-      Extensions of files with the <n-tag round :bordered="false">{{ selectedMimeType }}</n-tag> mime-type:
+      Extensions of files with the <n-tag round :bordered="false">
+        {{ selectedMimeType }}
+      </n-tag> mime-type:
       <div style="margin-top: 10px">
         <n-tag
           v-for="extension of extensionsFound"
@@ -27,23 +51,27 @@
         </n-tag>
       </div>
     </div>
-  </n-card>
+  </c-card>
 
-  <n-card>
-    <n-h2 style="margin-bottom: 0">File extension to mime type</n-h2>
-    <div style="opacity: 0.8">Now witch mime type is associated to a file extension</div>
-    <n-form-item>
-      <n-select
-        v-model:value="selectedExtension"
-        filterable
-        :options="extensionToMimeTypeOptions"
-        size="large"
-        placeholder="Select your mimetype here... (ex: application/pdf)"
-      />
-    </n-form-item>
+  <c-card>
+    <n-h2 style="margin-bottom: 0">
+      File extension to mime type
+    </n-h2>
+    <div style="opacity: 0.8">
+      Know which mime type is associated to a file extension
+    </div>
+    <c-select
+      v-model:value="selectedExtension"
+      searchable
+      my-4
+      :options="extensionToMimeTypeOptions"
+      placeholder="Select your mimetype here... (ex: application/pdf)"
+    />
 
     <div v-if="selectedExtension">
-      Mime type associated to the extension <n-tag round :bordered="false">{{ selectedExtension }}</n-tag> file
+      Mime type associated to the extension <n-tag round :bordered="false">
+        {{ selectedExtension }}
+      </n-tag> file
       extension:
       <div style="margin-top: 10px">
         <n-tag round :bordered="false" type="primary" style="margin-right: 10px">
@@ -51,7 +79,7 @@
         </n-tag>
       </div>
     </div>
-  </n-card>
+  </c-card>
 
   <div>
     <n-table>
@@ -74,24 +102,3 @@
     </n-table>
   </div>
 </template>
-
-<script setup lang="ts">
-import { types as extensionToMimeType, extensions as mimeTypeToExtension } from 'mime-types';
-import { computed, ref } from 'vue';
-
-const mimeInfos = Object.entries(mimeTypeToExtension).map(([mimeType, extensions]) => ({ mimeType, extensions }));
-
-const mimeToExtensionsOptions = Object.keys(mimeTypeToExtension).map((label) => ({ label, value: label }));
-const selectedMimeType = ref(undefined);
-
-const extensionsFound = computed(() => (selectedMimeType.value ? mimeTypeToExtension[selectedMimeType.value] : []));
-
-const extensionToMimeTypeOptions = Object.keys(extensionToMimeType).map((label) => {
-  const extension = `.${label}`;
-
-  return { label: extension, value: label };
-});
-const selectedExtension = ref(undefined);
-
-const mimeTypeFound = computed(() => (selectedExtension.value ? extensionToMimeType[selectedExtension.value] : []));
-</script>

@@ -1,4 +1,4 @@
-import { get, type MaybeRef } from '@vueuse/core';
+import { type MaybeRef, get } from '@vueuse/core';
 import Fuse from 'fuse.js';
 import { computed } from 'vue';
 
@@ -9,14 +9,21 @@ function useFuzzySearch<Data>({
   data,
   options = {},
 }: {
-  search: MaybeRef<string>;
-  data: Data[];
-  options?: Fuse.IFuseOptions<Data>;
+  search: MaybeRef<string>
+  data: Data[]
+  options?: Fuse.IFuseOptions<Data> & { filterEmpty?: boolean }
 }) {
   const fuse = new Fuse(data, options);
+  const filterEmpty = options.filterEmpty ?? true;
 
-  const searchResult = computed(() => {
-    return fuse.search(get(search)).map(({ item }) => item);
+  const searchResult = computed<Data[]>(() => {
+    const query = get(search);
+
+    if (!filterEmpty && query === '') {
+      return data;
+    }
+
+    return fuse.search(query).map(({ item }) => item);
   });
 
   return { searchResult };

@@ -1,10 +1,11 @@
 import { Code } from '@vicons/tabler';
 import { defineTool } from '../tool';
+import { translate } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: 'Escape html entities',
+  name: translate('tools.html-entities.title'),
   path: '/html-entities',
-  description: 'Escape or unescape html entities (replace <,>, &, " and \' to their html version)',
+  description: translate('tools.html-entities.description'),
   keywords: ['html', 'entities', 'escape', 'unescape', 'special', 'characters', 'tags'],
   component: () => import('./html-entities.vue'),
   icon: Code,

@@ -6,7 +6,8 @@ function getErrorMessageIfThrows(cb: () => unknown) {
   try {
     cb();
     return undefined;
-  } catch (err) {
+  }
+  catch (err) {
     if (_.isString(err)) {
       return err;
     }

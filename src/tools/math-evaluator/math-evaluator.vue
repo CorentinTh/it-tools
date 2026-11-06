@@ -1,31 +1,28 @@
-<template>
-  <div>
-    <n-input
-      v-model:value="expression"
-      rows="1"
-      type="textarea"
-      placeholder="Your math expression (ex: 2*sqrt(6) )..."
-      size="large"
-      autocomplete="off"
-      autocorrect="off"
-      autocapitalize="off"
-      spellcheck="false"
-    />
-    <br />
-    <br />
-
-    <n-card v-if="result !== ''" title="Result ">
-      {{ result }}
-    </n-card>
-  </div>
-</template>
-
 <script setup lang="ts">
-import { withDefaultOnError } from '@/utils/defaults';
 import { evaluate } from 'mathjs';
-import { computed, ref } from 'vue';
+
+import { withDefaultOnError } from '@/utils/defaults';
 
 const expression = ref('');
 
 const result = computed(() => withDefaultOnError(() => evaluate(expression.value) ?? '', ''));
 </script>
+
+<template>
+  <div>
+    <c-input-text
+      v-model:value="expression"
+      rows="1"
+      multiline
+      placeholder="Your math expression (ex: 2*sqrt(6) )..."
+      raw-text
+      monospace
+      autofocus
+      autosize
+    />
+
+    <c-card v-if="result !== ''" title="Result " mt-5>
+      {{ result }}
+    </c-card>
+  </div>
+</template>

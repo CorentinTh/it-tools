@@ -1,70 +1,50 @@
-<template>
-  <n-tooltip trigger="hover">
-    <template #trigger>
-      <n-button
-        size="large"
-        circle
-        quaternary
-        tag="a"
-        href="https://github.com/CorentinTh/it-tools"
-        rel="noopener"
-        target="_blank"
-        aria-label="IT-Tools' GitHub repository"
-      >
-        <n-icon size="25" :component="BrandGithub" />
-      </n-button>
-    </template>
-    Github repository
-  </n-tooltip>
-
-  <n-tooltip trigger="hover">
-    <template #trigger>
-      <n-button
-        size="large"
-        circle
-        quaternary
-        tag="a"
-        href="https://twitter.com/ittoolsdottech"
-        rel="noopener"
-        target="_blank"
-        aria-label="IT Tools' Twitter account"
-      >
-        <n-icon size="25" :component="BrandTwitter" />
-      </n-button>
-    </template>
-    IT Tools' Twitter account
-  </n-tooltip>
-
-  <router-link to="/about" #="{ navigate, href }" custom>
-    <n-tooltip trigger="hover">
-      <template #trigger>
-        <n-button tag="a" :href="href" circle quaternary size="large" aria-label="About" @click="navigate">
-          <n-icon size="25" :component="InfoCircle" />
-        </n-button>
-      </template>
-      About
-    </n-tooltip>
-  </router-link>
-  <n-tooltip trigger="hover">
-    <template #trigger>
-      <n-button size="large" circle quaternary aria-label="Toggle dark/light mode" @click="isDarkTheme = !isDarkTheme">
-        <n-icon v-if="isDarkTheme" size="25" :component="Sun" />
-        <n-icon v-else size="25" :component="Moon" />
-      </n-button>
-    </template>
-    <span v-if="isDarkTheme">Light mode</span>
-    <span v-else>Dark mode</span>
-  </n-tooltip>
-</template>
-
 <script setup lang="ts">
+import { IconBrandGithub, IconBrandX, IconInfoCircle, IconMoon, IconSun } from '@tabler/icons-vue';
 import { useStyleStore } from '@/stores/style.store';
-import { BrandGithub, BrandTwitter, InfoCircle, Moon, Sun } from '@vicons/tabler';
-import { toRefs } from 'vue';
 
 const styleStore = useStyleStore();
 const { isDarkTheme } = toRefs(styleStore);
 </script>
+
+<template>
+  <c-tooltip :tooltip="$t('home.nav.github')" position="bottom">
+    <c-button
+      circle
+      variant="text"
+      href="https://github.com/CorentinTh/it-tools"
+      target="_blank"
+      rel="noopener noreferrer"
+      :aria-label="$t('home.nav.githubRepository')"
+    >
+      <n-icon size="25" :component="IconBrandGithub" />
+    </c-button>
+  </c-tooltip>
+
+  <c-tooltip :tooltip="$t('home.nav.twitterX')" position="bottom">
+    <c-button
+      circle
+      variant="text"
+      href="https://x.com/ittoolsdottech"
+      rel="noopener"
+      target="_blank"
+      :aria-label="$t('home.nav.twitterXAccount')"
+    >
+      <n-icon size="25" :component="IconBrandX" />
+    </c-button>
+  </c-tooltip>
+
+  <c-tooltip :tooltip="$t('home.nav.about')" position="bottom">
+    <c-button circle variant="text" to="/about" :aria-label="$t('home.nav.aboutLabel')">
+      <n-icon size="25" :component="IconInfoCircle" />
+    </c-button>
+  </c-tooltip>
+  <c-tooltip :tooltip="isDarkTheme ? $t('home.nav.lightMode') : $t('home.nav.darkMode')" position="bottom">
+    <c-button circle variant="text" :aria-label="$t('home.nav.mode')" @click="() => styleStore.toggleDark()">
+      <n-icon v-if="isDarkTheme" size="25" :component="IconSun" />
+      <n-icon v-else size="25" :component="IconMoon" />
+    </c-button>
+  </c-tooltip>
+</template>
 
 <style lang="less" scoped>
 .n-button {

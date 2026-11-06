@@ -5,19 +5,23 @@ useHead({ title: 'Page not found - IT Tools' });
 </script>
 
 <template>
-  <div class="e404-wrapper">
-    <n-result status="404" title="404 Not Found" description="Sorry, this page does not seem to exist">
-      <template #footer>
-        <router-link to="/" #="{ navigate, href }" custom>
-          <n-button tag="a" :href="href" secondary type="success" @click="navigate"> Back home </n-button>
-        </router-link>
-      </template>
-    </n-result>
+  <div mt-20 flex flex-col items-center>
+    <span text-90px lh-1 op-50>
+      <icon-mdi:kettle-steam-outline />
+    </span>
+
+    <h1 m-0 mt-3>
+      {{ $t('404.notFound') }}
+    </h1>
+    <div mt-4 op-60>
+      {{ $t('404.sorry') }}
+    </div>
+    <div mb-8 op-60>
+      {{ $t('404.maybe') }}
+    </div>
+
+    <c-button to="/">
+      {{ $t('404.backHome') }}
+    </c-button>
   </div>
 </template>
-
-<style scoped>
-.e404-wrapper {
-  padding-top: 150px;
-}
-</style>

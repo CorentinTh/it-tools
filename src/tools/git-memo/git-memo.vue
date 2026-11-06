@@ -1,15 +1,15 @@
-<template>
-  <div>
-    <memo />
-  </div>
-</template>
-
 <script setup lang="ts">
 import { useThemeVars } from 'naive-ui';
-import Memo from './git-memo.md';
+import Memo from './git-memo.content.md';
 
 const themeVars = useThemeVars();
 </script>
+
+<template>
+  <div>
+    <Memo />
+  </div>
+</template>
 
 <style lang="less" scoped>
 ::v-deep(pre) {

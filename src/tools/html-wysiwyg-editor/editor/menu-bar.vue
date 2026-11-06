@@ -1,12 +1,3 @@
-<template>
-  <n-space align="center" :size="0">
-    <template v-for="(item, index) in items">
-      <n-divider v-if="item.type === 'divider'" :key="`divider${index}`" vertical />
-      <menu-bar-item v-else-if="item.type === 'button'" :key="index" v-bind="item" />
-    </template>
-  </n-space>
-</template>
-
 <script setup lang="ts">
 import type { Editor } from '@tiptap/vue-3';
 import {
@@ -22,14 +13,12 @@ import {
   H3,
   H4,
   Italic,
-  Link,
   List,
   ListNumbers,
-  Separator,
   Strikethrough,
   TextWrap,
 } from '@vicons/tabler';
-import { toRefs, type Component } from 'vue';
+import type { Component } from 'vue';
 import MenuBarItem from './menu-bar-item.vue';
 
 const props = defineProps<{ editor: Editor }>();
@@ -37,12 +26,12 @@ const { editor } = toRefs(props);
 
 type MenuItem =
   | {
-      icon: Component;
-      title: string;
-      action: () => void;
-      isActive?: () => boolean;
-      type: 'button';
-    }
+    icon: Component
+    title: string
+    action: () => void
+    isActive?: () => boolean
+    type: 'button'
+  }
   | { type: 'divider' };
 
 const items: MenuItem[] = [
@@ -95,8 +84,8 @@ const items: MenuItem[] = [
     type: 'button',
     icon: H3,
     title: 'Heading 3',
-    action: () => editor.value.chain().focus().toggleHeading({ level: 4 }).run(),
-    isActive: () => editor.value.isActive('heading', { level: 4 }),
+    action: () => editor.value.chain().focus().toggleHeading({ level: 3 }).run(),
+    isActive: () => editor.value.isActive('heading', { level: 3 }),
   },
   {
     type: 'button',
@@ -168,4 +157,11 @@ const items: MenuItem[] = [
 ];
 </script>
 
-<style scoped></style>
+<template>
+  <div flex items-center>
+    <template v-for="(item, index) in items">
+      <n-divider v-if="item.type === 'divider'" :key="`divider${index}`" vertical />
+      <MenuBarItem v-else-if="item.type === 'button'" :key="index" v-bind="item" />
+    </template>
+  </div>
+</template>

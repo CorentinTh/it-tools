@@ -28,3 +28,8 @@ coverage
 *.sw?
 
 .env
+/test-results/
+/playwright-report/
+/playwright/.cache/
+# Webkit with playwright creates a salt file
+salt

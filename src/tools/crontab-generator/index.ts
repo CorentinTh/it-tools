@@ -1,10 +1,11 @@
 import { Alarm } from '@vicons/tabler';
 import { defineTool } from '../tool';
+import { translate } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: 'Crontab generator',
+  name: translate('tools.crontab-generator.title'),
   path: '/crontab-generator',
-  description: 'Validate and generate crontab and get the human readable description of the cron schedule.',
+  description: translate('tools.crontab-generator.description'),
   keywords: [
     'crontab',
     'generator',

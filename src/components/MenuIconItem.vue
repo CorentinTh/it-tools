@@ -1,20 +1,19 @@
-<template>
-  <div class="menu-icon-item">
-    <n-icon :component="tool.icon" />
-    <div v-if="tool.isNew" class="badge"></div>
-  </div>
-</template>
-
 <script setup lang="ts">
-import type { Tool } from '@/tools/tools.types';
 import { useThemeVars } from 'naive-ui';
-import { toRefs } from 'vue';
+import type { Tool } from '@/tools/tools.types';
 
 const props = defineProps<{ tool: Tool }>();
 const { tool } = toRefs(props);
 
 const theme = useThemeVars();
 </script>
+
+<template>
+  <div class="menu-icon-item">
+    <n-icon :component="tool.icon" />
+    <div v-if="tool.isNew" class="badge" />
+  </div>
+</template>
 
 <style lang="less" scoped>
 .menu-icon-item {

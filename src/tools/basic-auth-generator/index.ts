@@ -1,10 +1,11 @@
 import { PasswordRound } from '@vicons/material';
 import { defineTool } from '../tool';
+import { translate } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: 'Basic auth generator',
+  name: translate('tools.basic-auth-generator.title'),
   path: '/basic-auth-generator',
-  description: 'Generate a base64 basic auth header from an username and a password.',
+  description: translate('tools.basic-auth-generator.description'),
   keywords: [
     'basic',
     'auth',

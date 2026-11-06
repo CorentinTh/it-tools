@@ -1,36 +1,59 @@
+import { type MaybeRef, get } from '@vueuse/core';
 import _ from 'lodash';
-import { reactive, watch, type Ref } from 'vue';
+import { type Ref, reactive, watch } from 'vue';
 
 type ValidatorReturnType = unknown;
+type GetErrorMessageReturnType = string;
 
-interface UseValidationRule<T> {
-  validator: (value: T) => ValidatorReturnType;
-  message: string;
+export interface UseValidationRule<T> {
+  validator: (value: T) => ValidatorReturnType
+  getErrorMessage?: (value: T) => GetErrorMessageReturnType
+  message: string
 }
 
 export function isFalsyOrHasThrown(cb: () => ValidatorReturnType): boolean {
   try {
     const returnValue = cb();
 
-    if (_.isNil(returnValue)) return true;
+    if (_.isNil(returnValue)) {
+      return true;
+    }
 
     return returnValue === false;
-  } catch (_) {
+  }
+  catch (_) {
     return true;
   }
 }
 
-type ValidationAttrs = {
-  feedback: string;
-  validationStatus: string | undefined;
-};
+export function getErrorMessageOrThrown(cb: () => GetErrorMessageReturnType): string {
+  try {
+    return cb() || '';
+  }
+  catch (e: any) {
+    return e.toString();
+  }
+}
 
-export function useValidation<T>({ source, rules }: { source: Ref<T>; rules: UseValidationRule<T>[] }) {
+export interface ValidationAttrs {
+  feedback: string
+  validationStatus: string | undefined
+}
+
+export function useValidation<T>({
+  source,
+  rules,
+  watch: watchRefs = [],
+}: {
+  source: Ref<T>
+  rules: MaybeRef<UseValidationRule<T>[]>
+  watch?: Ref<unknown>[]
+}) {
   const state = reactive<{
-    message: string;
-    status: undefined | 'error';
-    isValid: boolean;
-    attrs: ValidationAttrs;
+    message: string
+    status: undefined | 'error'
+    isValid: boolean
+    attrs: ValidationAttrs
   }>({
     message: '',
     status: undefined,
@@ -42,14 +65,20 @@ export function useValidation<T>({ source, rules }: { source: Ref<T>; rules: Use
   });
 
   watch(
-    [source],
+    [source, ...watchRefs],
     () => {
       state.message = '';
       state.status = undefined;
 
-      for (const rule of rules) {
+      for (const rule of get(rules)) {
         if (isFalsyOrHasThrown(() => rule.validator(source.value))) {
-          state.message = rule.message;
+          if (rule.getErrorMessage) {
+            const getErrorMessage = rule.getErrorMessage;
+            state.message = rule.message.replace('{0}', getErrorMessageOrThrown(() => getErrorMessage(source.value)));
+          }
+          else {
+            state.message = rule.message;
+          }
           state.status = 'error';
         }
       }

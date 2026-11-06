@@ -1,10 +1,11 @@
 import { DeviceMobile } from '@vicons/tabler';
 import { defineTool } from '../tool';
+import { translate } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: 'OTP code generator',
+  name: translate('tools.otp-generator.title'),
   path: '/otp-generator',
-  description: 'Generate and validate time-based OTP (one time password) for multi-factor authentication.',
+  description: translate('tools.otp-generator.description'),
   keywords: [
     'otp',
     'code',

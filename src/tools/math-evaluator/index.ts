@@ -1,13 +1,17 @@
 import { Math } from '@vicons/tabler';
 import { defineTool } from '../tool';
+import { translate } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: 'Math evaluator',
+  name: translate('tools.math-evaluator.title'),
   path: '/math-evaluator',
-  description: `Evaluate math expression, like a calculator on steroid (you can use function like sqrt, cos, sin, abs, ...)`,
+  description: translate('tools.math-evaluator.description'),
   keywords: [
     'math',
     'evaluator',
+    'calculator',
+    'expression',
+    'abs',
     'acos',
     'acosh',
     'acot',
@@ -31,6 +35,7 @@ export const tool = defineTool({
     'sech',
     'sin',
     'sinh',
+    'sqrt',
     'tan',
     'tanh',
   ],

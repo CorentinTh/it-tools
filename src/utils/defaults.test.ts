@@ -9,7 +9,7 @@ describe('defaults util', () => {
 
     expect(
       withDefaultOnError(() => {
-        throw '';
+        throw new Error('message');
       }, 'default'),
     ).to.eql('default');
   });

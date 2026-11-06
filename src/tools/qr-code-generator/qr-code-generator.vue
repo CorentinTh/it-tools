@@ -1,40 +1,7 @@
-<template>
-  <n-card>
-    <n-grid x-gap="12" y-gap="12" cols="1 600:3">
-      <n-gi span="2">
-        <n-form label-width="130" label-placement="left">
-          <n-form-item label="Text:">
-            <n-input v-model:value="text" placeholder="Your link or text..." />
-          </n-form-item>
-          <n-form-item label="Foreground color:">
-            <n-color-picker v-model:value="foreground" :modes="['hex']" />
-          </n-form-item>
-          <n-form-item label="Background color:">
-            <n-color-picker v-model:value="background" :modes="['hex']" />
-          </n-form-item>
-          <n-form-item label="Error resistance:">
-            <n-select
-              v-model:value="errorCorrectionLevel"
-              :options="errorCorrectionLevels.map((value) => ({ label: value, value }))"
-            />
-          </n-form-item>
-        </n-form>
-      </n-gi>
-      <n-gi>
-        <n-space justify="center" align="center" vertical>
-          <n-image :src="qrcode" width="200" />
-          <n-button secondary @click="download"> Download qr-code </n-button>
-        </n-space>
-      </n-gi>
-    </n-grid>
-  </n-card>
-</template>
-
 <script setup lang="ts">
-import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
-import { ref } from 'vue';
 import type { QRCodeErrorCorrectionLevel } from 'qrcode';
 import { useQRCode } from './useQRCode';
+import { useDownloadFileFromBase64 } from '@/composable/downloadBase64';
 
 const foreground = ref('#000000ff');
 const background = ref('#ffffffff');
@@ -55,3 +22,48 @@ const { qrcode } = useQRCode({
 
 const { download } = useDownloadFileFromBase64({ source: qrcode, filename: 'qr-code.png' });
 </script>
+
+<template>
+  <c-card>
+    <n-grid x-gap="12" y-gap="12" cols="1 600:3">
+      <n-gi span="2">
+        <c-input-text
+          v-model:value="text"
+          label-position="left"
+          label-width="130px"
+          label-align="right"
+          label="Text:"
+          multiline
+          rows="1"
+          autosize
+          placeholder="Your link or text..."
+          mb-6
+        />
+        <n-form label-width="130" label-placement="left">
+          <n-form-item label="Foreground color:">
+            <n-color-picker v-model:value="foreground" :modes="['hex']" />
+          </n-form-item>
+          <n-form-item label="Background color:">
+            <n-color-picker v-model:value="background" :modes="['hex']" />
+          </n-form-item>
+          <c-select
+            v-model:value="errorCorrectionLevel"
+            label="Error resistance:"
+            label-position="left"
+            label-width="130px"
+            label-align="right"
+            :options="errorCorrectionLevels.map((value) => ({ label: value, value }))"
+          />
+        </n-form>
+      </n-gi>
+      <n-gi>
+        <div flex flex-col items-center gap-3>
+          <n-image :src="qrcode" width="200" />
+          <c-button @click="download">
+            Download qr-code
+          </c-button>
+        </div>
+      </n-gi>
+    </n-grid>
+  </c-card>
+</template>

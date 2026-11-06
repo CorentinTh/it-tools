@@ -16,7 +16,7 @@ function useTracker() {
   const plausible: ReturnType<typeof Plausible> | undefined = inject('plausible');
 
   if (_.isNil(plausible)) {
-    throw new Error('Plausible must be instantiated');
+    throw new TypeError('Plausible must be instantiated');
   }
 
   const tracker = createTrackerService({ plausible });

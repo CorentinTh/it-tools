@@ -1,14 +1,3 @@
-<template>
-  <n-card v-if="editor" class="editor">
-    <template #header>
-      <menu-bar class="editor-header" :editor="editor" />
-      <n-divider style="margin-top: 0" />
-    </template>
-
-    <editor-content class="editor-content" :editor="editor" />
-  </n-card>
-</template>
-
 <script setup lang="ts">
 import { tryOnBeforeUnmount, useVModel } from '@vueuse/core';
 import { Editor, EditorContent } from '@tiptap/vue-3';
@@ -16,9 +5,9 @@ import StarterKit from '@tiptap/starter-kit';
 import { useThemeVars } from 'naive-ui';
 import MenuBar from './menu-bar.vue';
 
-const themeVars = useThemeVars();
 const props = defineProps<{ html: string }>();
 const emit = defineEmits(['update:html']);
+const themeVars = useThemeVars();
 const html = useVModel(props, 'html', emit);
 
 const editor = new Editor({
@@ -33,11 +22,18 @@ tryOnBeforeUnmount(() => {
 });
 </script>
 
-<style scoped lang="less">
-::v-deep(.n-card-header) {
-  padding: 0;
-}
+<template>
+  <c-card v-if="editor" important:p0>
+    <MenuBar class="editor-header" :editor="editor" />
+    <n-divider style="margin-top: 0" />
 
+    <div px8 pb6>
+      <EditorContent class="editor-content" :editor="editor" />
+    </div>
+  </c-card>
+</template>
+
+<style scoped lang="less">
 ::v-deep(.ProseMirror-focused) {
   outline: none;
 }

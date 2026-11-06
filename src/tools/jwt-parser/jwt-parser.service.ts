@@ -1,6 +1,5 @@
 import jwtDecode, { type JwtHeader, type JwtPayload } from 'jwt-decode';
 import _ from 'lodash';
-import { match } from 'ts-pattern';
 import { ALGORITHM_DESCRIPTIONS, CLAIM_DESCRIPTIONS } from './jwt-parser.constants';
 
 export { decodeJwt };
@@ -20,7 +19,7 @@ function decodeJwt({ jwt }: { jwt: string }) {
 
 function parseClaims({ claim, value }: { claim: string; value: unknown }) {
   const claimDescription = CLAIM_DESCRIPTIONS[claim];
-  const formattedValue = _.isPlainObject(value) ? JSON.stringify(value, null, 3) : _.toString(value);
+  const formattedValue = _.isPlainObject(value) || _.isArray(value) ? JSON.stringify(value, null, 3) : _.toString(value);
   const friendlyValue = getFriendlyValue({ claim, value });
 
   return {
@@ -32,15 +31,22 @@ function parseClaims({ claim, value }: { claim: string; value: unknown }) {
 }
 
 function getFriendlyValue({ claim, value }: { claim: string; value: unknown }) {
-  return match(claim)
-    .with('exp', 'nbf', 'iat', () => dateFormatter(value))
-    .with('alg', () => (_.isString(value) ? ALGORITHM_DESCRIPTIONS[value] : undefined))
-    .otherwise(() => undefined);
+  if (['exp', 'nbf', 'iat'].includes(claim)) {
+    return dateFormatter(value);
+  }
+
+  if (claim === 'alg' && _.isString(value)) {
+    return ALGORITHM_DESCRIPTIONS[value];
+  }
+
+  return undefined;
 }
 
-const dateFormatter = (value: unknown) => {
-  if (_.isNil(value)) return undefined;
+function dateFormatter(value: unknown) {
+  if (_.isNil(value)) {
+    return undefined;
+  }
 
   const date = new Date(Number(value) * 1000);
   return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
-};
+}

@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import {
+  base32toHex,
+  buildKeyUri,
   generateHOTP,
+  generateTOTP,
   hexToBytes,
   verifyHOTP,
-  generateTOTP,
   verifyTOTP,
-  buildKeyUri,
-  base32toHex,
 } from './otp.service';
 
 describe('otp functions', () => {

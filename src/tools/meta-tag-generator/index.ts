@@ -1,10 +1,11 @@
 import { Tags } from '@vicons/tabler';
 import { defineTool } from '../tool';
+import { translate } from '@/plugins/i18n.plugin';
 
 export const tool = defineTool({
-  name: 'Open graph meta generator',
+  name: translate('tools.og-meta-generator.title'),
   path: '/og-meta-generator',
-  description: 'Generate open-graph and socials html meta tags for your website.',
+  description: translate('tools.og-meta-generator.description'),
   keywords: [
     'meta',
     'tag',
