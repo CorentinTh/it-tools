@@ -291,7 +291,7 @@ tools:
 
   jwt-parser:
     title: JWT parser
-    description: Parse and decode your JSON Web Token (jwt) and display its content.
+    description: Decode, edit, sign, and verify your JSON Web Token (jwt).
 
   date-converter:
     title: Date-time converter

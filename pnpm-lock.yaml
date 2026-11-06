@@ -104,6 +104,9 @@ importers:
       ibantools:
         specifier: ^4.5.4
         version: 4.5.4
+      jose:
+        specifier: ^6.2.15
+        version: 6.2.15
       js-base64:
         specifier: ^3.9.6
         version: 3.9.6
@@ -3982,6 +3985,9 @@ packages:
   jiti@2.7.0:
     resolution: {integrity: sha512-AC/7JofJvZGrrneWNaEnJeOLUx+JlGt7tNa0wZiRPT4MY1wmfKjt2+6O2p2uz2+skll8OZZmJMNqeke7kKbNgQ==}
     hasBin: true
+
+  jose@6.2.15:
+    resolution: {integrity: sha512-qdF6ewcZARtef63fJ9AKKZPgxw+t7USH6HLXYcD4CrdmSvDp79rpJSPFEKc90QBeGS63u1KQtN2MZQHC0yDIzA==}
 
   js-base64@3.9.6:
     resolution: {integrity: sha512-LjkzbLtU6Lx6fjXMYGEACEB7rdtqZtxkBe9aS1ZpDNUyWgUivw3yBEIhQ37OVygJYRt+C+9e9fVT8PpFzH2Hww==}
@@ -9626,6 +9632,8 @@ snapshots:
   javascript-natural-sort@0.7.1: {}
 
   jiti@2.7.0: {}
+
+  jose@6.2.15: {}
 
   js-base64@3.9.6: {}
 
