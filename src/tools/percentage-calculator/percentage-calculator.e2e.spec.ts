@@ -33,4 +33,22 @@ test.describe('Tool - Percentage calculator', () => {
     await page.getByTestId('numberFrom').locator('input').fill('123');
     await expect(page.getByTestId('percentageIncreaseDecrease').locator('input')).toHaveValue('');
   });
+
+  test('Displays empty results after an input is cleared', async ({ page }) => {
+    await page.getByTestId('percentageX').locator('input').fill('40');
+    await page.getByTestId('percentageY').locator('input').fill('50');
+    await expect(page.getByTestId('percentageResult').locator('input')).toHaveValue('20');
+
+    await page.getByTestId('numberFrom').locator('input').fill('40');
+    await page.getByTestId('numberTo').locator('input').fill('46');
+    await expect(page.getByTestId('percentageIncreaseDecrease').locator('input')).toHaveValue('15');
+
+    await page.getByTestId('percentageY').locator('input').clear();
+    await page.getByTestId('numberTo').locator('input').clear();
+    await page.getByTestId('percentageX').locator('input').clear();
+    await page.getByTestId('numberFrom').locator('input').clear();
+
+    await expect(page.getByTestId('percentageResult').locator('input')).toHaveValue('');
+    await expect(page.getByTestId('percentageIncreaseDecrease').locator('input')).toHaveValue('');
+  });
 });

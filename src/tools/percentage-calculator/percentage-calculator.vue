@@ -1,32 +1,23 @@
 <script setup lang="ts">
+import {
+  computeIsWhatPercentOf,
+  computePercentageIncreaseDecrease,
+  computePercentageOf,
+} from './percentage-calculator.service';
+
 const percentageX = ref();
 const percentageY = ref();
-const percentageResult = computed(() => {
-  if (percentageX.value === undefined || percentageY.value === undefined) {
-    return '';
-  }
-  return (percentageX.value / 100 * percentageY.value).toString();
-});
+const percentageResult = computed(() => computePercentageOf(percentageX.value, percentageY.value));
 
 const numberX = ref();
 const numberY = ref();
-const numberResult = computed(() => {
-  if (numberX.value === undefined || numberY.value === undefined) {
-    return '';
-  }
-  const result = 100 * numberX.value / numberY.value;
-  return (!Number.isFinite(result) || Number.isNaN(result)) ? '' : result.toString();
-});
+const numberResult = computed(() => computeIsWhatPercentOf(numberX.value, numberY.value));
 
 const numberFrom = ref();
 const numberTo = ref();
-const percentageIncreaseDecrease = computed(() => {
-  if (numberFrom.value === undefined || numberTo.value === undefined) {
-    return '';
-  }
-  const result = (numberTo.value - numberFrom.value) / numberFrom.value * 100;
-  return (!Number.isFinite(result) || Number.isNaN(result)) ? '' : result.toString();
-});
+const percentageIncreaseDecrease = computed(() =>
+  computePercentageIncreaseDecrease(numberFrom.value, numberTo.value),
+);
 </script>
 
 <template>
