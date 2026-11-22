@@ -1,4 +1,8 @@
-/* TEAM */
-Developer: Corentin Thomasset
-Site: https://github.com/CorentinTh
-Twitter: @cthmsst
+/* WOWTOOLBAR */
+Site: https://wowtoolbar.com
+Source: https://github.com/geisajiamanshang/wowtoolbar
+
+/* UPSTREAM PROJECT */
+Original project: IT-Tools
+Original developer: Corentin Thomasset
+Source: https://github.com/CorentinTh/it-tools

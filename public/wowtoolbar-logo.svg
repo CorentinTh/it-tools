@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">WowToolbar logo</title>
+  <rect width="512" height="512" rx="112" fill="#0f766e"/>
+  <path d="M96 152l58 220h66l36-126 36 126h66l58-220h-66l-31 137-36-137h-54l-36 137-31-137H96z" fill="#fff"/>
+  <path d="M384 78l11 29 29 11-29 11-11 29-11-29-29-11 29-11 11-29z" fill="#5eead4"/>
+</svg>
