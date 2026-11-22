@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { IconDragDrop, IconHeart } from '@tabler/icons-vue';
+import { IconDragDrop } from '@tabler/icons-vue';
 import { useHead } from '@vueuse/head';
 import { computed } from 'vue';
 import Draggable from 'vuedraggable';
-import ColoredCard from '../components/ColoredCard.vue';
 import ToolCard from '../components/ToolCard.vue';
 import { useToolStore } from '@/tools/tools.store';
-import { config } from '@/config';
 
 const toolStore = useToolStore();
 
@@ -25,25 +23,12 @@ function onUpdateFavoriteTools() {
   <div class="pt-50px">
     <div class="grid-wrapper">
       <section class="terminal-intro">
-        <div class="terminal-kicker">HELLO, BUILDER_</div>
+        <div class="terminal-kicker">
+          HELLO, BUILDER_
+        </div>
         <h1>Your digital workbench.<br>Sharp tools, zero clutter.</h1>
         <p>{{ toolStore.tools.length }} utilities · private by default · always ready</p>
       </section>
-      <div class="grid grid-cols-1 gap-12px lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4">
-        <ColoredCard v-if="config.showBanner" :title="$t('home.follow.title')" :icon="IconHeart">
-          {{ $t('home.follow.p1') }}
-          <a
-            href="https://github.com/geisajiamanshang/wowtoolbar"
-            rel="noopener"
-            target="_blank"
-            :aria-label="$t('home.follow.githubRepository')"
-          >GitHub</a>
-          {{ $t('home.follow.p2') }}
-          {{ $t('home.follow.thankYou') }}
-          <n-icon :component="IconHeart" />
-        </ColoredCard>
-      </div>
-
       <transition name="height">
         <div v-if="toolStore.favoriteTools.length > 0">
           <h3 class="section-heading">
@@ -67,7 +52,7 @@ function onUpdateFavoriteTools() {
       </transition>
 
       <div v-if="toolStore.newTools.length > 0">
-          <h3 class="section-heading">
+        <h3 class="section-heading">
           {{ t('home.categories.newestTools') }}
         </h3>
         <div class="grid grid-cols-1 gap-12px lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4">

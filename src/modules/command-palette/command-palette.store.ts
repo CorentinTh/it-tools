@@ -3,17 +3,11 @@ import _ from 'lodash';
 import type { PaletteOption } from './command-palette.types';
 import { useToolStore } from '@/tools/tools.store';
 import { useFuzzySearch } from '@/composable/fuzzySearch';
-import { useStyleStore } from '@/stores/style.store';
-
-import SunIcon from '~icons/mdi/white-balance-sunny';
-import GithubIcon from '~icons/mdi/github';
-import BugIcon from '~icons/mdi/bug-outline';
 import DiceIcon from '~icons/mdi/dice-5';
 import InfoIcon from '~icons/mdi/information-outline';
 
 export const useCommandPaletteStore = defineStore('command-palette', () => {
   const toolStore = useToolStore();
-  const styleStore = useStyleStore();
   const router = useRouter();
   const searchPrompt = ref('');
 
@@ -37,30 +31,6 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
       category: 'Tools',
       keywords: ['random', 'tool', 'pick', 'choose', 'select'],
       closeOnSelect: true,
-    },
-    {
-      name: 'Toggle dark mode',
-      description: 'Toggle dark mode on or off.',
-      action: () => styleStore.toggleDark(),
-      icon: SunIcon,
-      category: 'Actions',
-      keywords: ['dark', 'theme', 'toggle', 'mode', 'light', 'system'],
-    },
-    {
-      name: 'Github repository',
-      href: 'https://github.com/geisajiamanshang/wowtoolbar',
-      category: 'External',
-      description: 'View the WowToolbar source code on GitHub.',
-      keywords: ['github', 'repo', 'repository', 'source', 'code'],
-      icon: GithubIcon,
-    },
-    {
-      name: 'Report a bug or an issue',
-      description: 'Report a bug or an issue to help improve WowToolbar.',
-      href: 'https://github.com/geisajiamanshang/wowtoolbar/issues/new/choose',
-      category: 'Actions',
-      keywords: ['report', 'issue', 'bug', 'problem', 'error'],
-      icon: BugIcon,
     },
     {
       name: 'About',

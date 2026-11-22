@@ -31,19 +31,7 @@ about:
   content: >
     # About WowToolbar
 
-    WowToolbar brings together fast, free, and easy-to-use online tools for developers, creators, and everyday tasks. The tools run in your browser whenever possible, so you can get work done without installing extra software.
-
-    WowToolbar is free and open source under the GPL-3.0 license. It is based on the original [IT-Tools](https://github.com/CorentinTh/it-tools) project created by [Corentin Thomasset](https://corentin.tech). The original copyright, license, and contributor history are preserved.
-
-    ## Technologies
-
-    WowToolbar is made with Vue 3 and the Naive UI component library. Third-party open-source libraries are used in some tools; the complete list is available in the [package.json](https://github.com/geisajiamanshang/wowtoolbar/blob/main/package.json) file.
-
-    ## Found a bug? A tool is missing?
-
-    If a useful tool is missing, you are welcome to submit a feature request in the [issues section](https://github.com/geisajiamanshang/wowtoolbar/issues/new/choose).
-
-    If something does not work as expected, please file a bug report in the same [issues section](https://github.com/geisajiamanshang/wowtoolbar/issues/new/choose).
+    WowToolbar is a privacy-friendly collection of fast online utilities. Tools run in your browser whenever possible, and the interface is designed to stay simple and reliable.
 
 404:
   notFound: '404 Not Found'

@@ -8,14 +8,11 @@ import { storeToRefs } from 'pinia';
 import MenuLayout from '../components/MenuLayout.vue';
 import NavbarButtons from '../components/NavbarButtons.vue';
 import { useStyleStore } from '@/stores/style.store';
-import { config } from '@/config';
 import type { ToolCategory } from '@/tools/tools.types';
 import { useToolStore } from '@/tools/tools.store';
 import CollapsibleToolMenu from '@/components/CollapsibleToolMenu.vue';
 
 const styleStore = useStyleStore();
-const version = config.app.version;
-const commitSha = config.app.lastCommitSha.slice(0, 7);
 
 const { t } = useI18n();
 
@@ -50,40 +47,6 @@ const tools = computed<ToolCategory[]>(() => [
         </div>
 
         <CollapsibleToolMenu :tools-by-category="tools" />
-
-        <div class="footer">
-          <div class="personal-signature">
-            crafted by<br>
-            <strong>xiaojie.dev</strong><br>
-            with coffee + curiosity
-          </div>
-          <div class="upstream-credit">
-            WowToolbar
-
-            <c-link target="_blank" rel="noopener" :href="`https://github.com/geisajiamanshang/wowtoolbar/tree/v${version}`">
-              v{{ version }}
-            </c-link>
-
-            <template v-if="commitSha && commitSha.length > 0">
-              -
-              <c-link
-                target="_blank"
-                rel="noopener"
-                type="primary"
-                :href="`https://github.com/geisajiamanshang/wowtoolbar/tree/${commitSha}`"
-              >
-                {{ commitSha }}
-              </c-link>
-            </template>
-          </div>
-          <div class="upstream-credit">
-            © {{ new Date().getFullYear() }}
-            Based on IT-Tools by
-            <c-link target="_blank" rel="noopener" href="https://github.com/CorentinTh/it-tools">
-              Corentin Thomasset
-            </c-link>
-          </div>
-        </div>
       </div>
     </template>
 
@@ -104,12 +67,6 @@ const tools = computed<ToolCategory[]>(() => [
           </c-button>
         </c-tooltip>
 
-        <c-tooltip :tooltip="$t('home.uiLib')" position="bottom">
-          <c-button v-if="config.app.env === 'development'" to="/c-lib" circle variant="text" :aria-label="$t('home.uiLib')">
-            <icon-mdi:brush-variant text-20px />
-          </c-button>
-        </c-tooltip>
-
         <div class="command-search">
           <span class="prompt-mark">›</span>
           <command-palette />
@@ -120,8 +77,6 @@ const tools = computed<ToolCategory[]>(() => [
         <div>
           <NavbarButtons v-if="!styleStore.isSmallScreen" />
         </div>
-
-        <a class="profile-badge" href="https://github.com/geisajiamanshang/wowtoolbar" target="_blank" rel="noopener" aria-label="WowToolbar GitHub repository">XJ</a>
       </div>
       <slot />
     </template>
@@ -139,30 +94,6 @@ const tools = computed<ToolCategory[]>(() => [
 //     background-position: 0 0, @position @position;
 //     background-size: @size @size;
 // }
-
-.footer {
-  color: #51666d;
-  margin-top: 24px;
-  padding: 20px 22px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 10px;
-  line-height: 1.6;
-  border-top: 1px solid #203036;
-
-  .personal-signature {
-    margin-bottom: 18px;
-    text-transform: lowercase;
-
-    strong {
-      color: #9bb0b4;
-      font-weight: 500;
-    }
-  }
-
-  .upstream-credit {
-    margin-top: 4px;
-  }
-}
 
 .sider-content {
   padding-top: 96px;
@@ -267,27 +198,11 @@ const tools = computed<ToolCategory[]>(() => [
   }
 }
 
-.profile-badge {
-  width: 34px;
-  height: 34px;
-  display: grid;
-  place-items: center;
-  flex: 0 0 auto;
-  border-radius: 50%;
-  color: #07100d;
-  background: #46f0b4;
-  text-decoration: none;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 11px;
-  font-weight: 700;
-}
-
 @keyframes cursor-blink {
   50% { opacity: 0.15; }
 }
 
 @media (max-width: 700px) {
   .terminal-topbar { gap: 4px; }
-  .profile-badge { display: none; }
 }
 </style>

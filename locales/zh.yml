@@ -29,21 +29,9 @@ home:
     mode: '颜色模式'
 about:
   content: >
-    # 关于 WowToolbar
+    # About WowToolbar
 
-    WowToolbar 汇集了快速、免费且易用的在线工具，服务于开发者、创作者和日常任务。工具尽可能直接在浏览器中运行，无需安装额外软件。
-
-    WowToolbar 以 GPL-3.0 许可证免费开源，基于 [Corentin Thomasset](https://corentin.tech) 创建的原始 [IT-Tools](https://github.com/CorentinTh/it-tools) 项目开发，并保留原始版权、许可证与贡献历史。
-
-    ## 技术
-
-    WowToolbar 采用 Vue 3 和 Naive UI 组件库开发。某些工具使用了第三方开源库，您可以在仓库的 [package.json](https://github.com/geisajiamanshang/wowtoolbar/blob/main/package.json) 文件中查看完整列表。
-
-    ## 发现了 Bug？缺少工具？
-
-    如果缺少您需要的实用工具，欢迎在 GitHub 仓库的 [issues](https://github.com/geisajiamanshang/wowtoolbar/issues/new/choose) 中提交功能请求。
-
-    如果您发现 Bug 或功能未按预期工作，也请在同一 [issues](https://github.com/geisajiamanshang/wowtoolbar/issues/new/choose) 页面提交报告。
+    WowToolbar is a privacy-friendly collection of fast online utilities. Tools run in your browser whenever possible, and the interface is designed to stay simple and reliable.
 
 404:
   notFound: '404 页面不存在'
