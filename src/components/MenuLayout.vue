@@ -12,7 +12,7 @@ const siderPosition = computed(() => (isSmallScreen.value ? 'absolute' : 'static
       bordered
       collapse-mode="width"
       :collapsed-width="0"
-      :width="240"
+      :width="210"
       :collapsed="isMenuCollapsed"
       :show-trigger="false"
       :native-scrollbar="false"
@@ -39,10 +39,20 @@ const siderPosition = computed(() => (isSmallScreen.value ? 'absolute' : 'static
 }
 
 .content {
-  // background-color: #f1f5f9;
+  background-color: #0b1014;
   ::v-deep(.n-layout-scroll-container) {
-    padding: 26px;
+    padding: 18px 26px 26px;
+    background-color: #0b1014;
+    background-image:
+      linear-gradient(rgba(70, 240, 180, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(70, 240, 180, 0.03) 1px, transparent 1px);
+    background-size: 28px 28px;
   }
+}
+
+::v-deep(.n-layout-sider) {
+  background: #0e161b !important;
+  border-right-color: #203036 !important;
 }
 
 .n-layout {

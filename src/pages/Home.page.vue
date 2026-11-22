@@ -24,6 +24,11 @@ function onUpdateFavoriteTools() {
 <template>
   <div class="pt-50px">
     <div class="grid-wrapper">
+      <section class="terminal-intro">
+        <div class="terminal-kicker">HELLO, BUILDER_</div>
+        <h1>Your digital workbench.<br>Sharp tools, zero clutter.</h1>
+        <p>{{ toolStore.tools.length }} utilities · private by default · always ready</p>
+      </section>
       <div class="grid grid-cols-1 gap-12px lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4">
         <ColoredCard v-if="config.showBanner" :title="$t('home.follow.title')" :icon="IconHeart">
           {{ $t('home.follow.p1') }}
@@ -41,7 +46,7 @@ function onUpdateFavoriteTools() {
 
       <transition name="height">
         <div v-if="toolStore.favoriteTools.length > 0">
-          <h3 class="mb-5px mt-25px text-neutral-400 font-500">
+          <h3 class="section-heading">
             {{ $t('home.categories.favoriteTools') }}
             <c-tooltip :tooltip="$t('home.categories.favoritesDndToolTip')">
               <n-icon :component="IconDragDrop" size="18" />
@@ -62,7 +67,7 @@ function onUpdateFavoriteTools() {
       </transition>
 
       <div v-if="toolStore.newTools.length > 0">
-        <h3 class="mb-5px mt-25px text-neutral-400 font-500">
+          <h3 class="section-heading">
           {{ t('home.categories.newestTools') }}
         </h3>
         <div class="grid grid-cols-1 gap-12px lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4">
@@ -70,7 +75,7 @@ function onUpdateFavoriteTools() {
         </div>
       </div>
 
-      <h3 class="mb-5px mt-25px text-neutral-400 font-500">
+      <h3 class="section-heading">
         {{ $t('home.categories.allTools') }}
       </h3>
       <div class="grid grid-cols-1 gap-12px lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4">
@@ -81,6 +86,40 @@ function onUpdateFavoriteTools() {
 </template>
 
 <style scoped lang="less">
+.terminal-intro {
+  margin-bottom: 28px;
+
+  .terminal-kicker {
+    color: #46f0b4;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  h1 {
+    margin: 8px 0;
+    color: #eafff8;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.08;
+    letter-spacing: -0.045em;
+  }
+
+  p {
+    margin: 0;
+    color: #789097;
+    font-size: 12px;
+  }
+}
+
+.section-heading {
+  margin: 26px 0 10px;
+  color: #6f898f;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 .height-enter-active,
 .height-leave-active {
   transition: all 0.5s ease-in-out;
