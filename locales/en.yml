@@ -4,46 +4,34 @@ home:
     favoriteTools: 'Your favorite tools'
     allTools: 'All the tools'
     favoritesDndToolTip: 'Drag and drop to reorder favorites'
-  subtitle: 'Handy tools for developers'
+  subtitle: 'Every tool you need, one click away'
   toggleMenu: 'Toggle menu'
   home: Home
   uiLib: 'UI Lib'
-  support: 'Support IT-Tools development'
-  buyMeACoffee: 'Buy me a coffee'
+  support: 'View the source code'
+  buyMeACoffee: 'Open source'
   follow:
-    title: 'You like it-tools?'
+    title: 'You like WowToolbar?'
     p1: 'Give us a star on'
-    githubRepository: 'IT-Tools GitHub repository'
-    p2: 'or follow us on'
-    twitterXAccount: 'IT-Tools X account'
+    githubRepository: 'WowToolbar GitHub repository'
+    p2: ''
+    twitterXAccount: 'WowToolbar X account'
     thankYou: 'Thank you!'
   nav:
     github: 'GitHub repository'
-    githubRepository: 'IT-Tools GitHub repository'
+    githubRepository: 'WowToolbar GitHub repository'
     twitterX: 'X account'
-    twitterXAccount: 'IT Tools X account'
-    about: 'About  IT-Tools'
+    twitterXAccount: 'WowToolbar X account'
+    about: 'About  WowToolbar'
     aboutLabel: 'About'
     darkMode: 'Dark mode'
     lightMode: 'Light mode'
     mode: 'Toggle dark/light mode'
 about:
   content: >
-    # About IT-Tools
+    # About WowToolbar
 
-    This wonderful website, made with ❤ by [Corentin Thomasset](https://corentin.tech?utm_source=it-tools&utm_medium=about) , aggregates useful tools for developer and people working in IT. If you find it useful, please feel free to share it to people you think may find it useful too and don't forget to bookmark it in your shortcut bar!
-
-    IT Tools is open-source (under the GPL-3.0 license) and free, and will always be, but it costs me money to host and renew the domain name. If you want to support my work, and encourage me to add more tools, please consider supporting by [sponsoring me](https://www.buymeacoffee.com/cthmsst).
-
-    ## Technologies
-
-    IT Tools is made in Vue.js (Vue 3) with the the Naive UI component library and is hosted and continuously deployed by Vercel. Third-party open-source libraries are used in some tools, you may find the complete list in the [package.json](https://github.com/CorentinTh/it-tools/blob/main/package.json) file of the repository.
-
-    ## Found a bug? A tool is missing?
-
-    If you need a tool that is currently not present here, and you think can be useful, you are welcome to submit a feature request in the [issues section](https://github.com/CorentinTh/it-tools/issues/new/choose) in the GitHub repository.
-
-    And if you found a bug, or something doesn't work as expected, please file a bug report in the [issues section](https://github.com/CorentinTh/it-tools/issues/new/choose) in the GitHub repository.
+    WowToolbar is a privacy-friendly collection of fast online utilities. Tools run in your browser whenever possible, and the interface is designed to stay simple and reliable.
 
 404:
   notFound: '404 Not Found'

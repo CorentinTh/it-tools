@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">WowToolbar</title>
+  <desc id="desc">Every tool you need, one click away</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#0f766e"/>
+      <stop offset="1" stop-color="#115e59"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <circle cx="1080" cy="110" r="250" fill="#5eead4" opacity=".12"/>
+  <circle cx="120" cy="620" r="280" fill="#99f6e4" opacity=".1"/>
+  <rect x="120" y="160" width="190" height="190" rx="42" fill="#fff"/>
+  <path d="M152 218l26 96h29l16-55 16 55h29l26-96h-29l-14 60-16-60h-24l-16 60-14-60h-29z" fill="#0f766e"/>
+  <path d="M278 184l7 17 17 7-17 7-7 17-7-17-17-7 17-7 7-17z" fill="#14b8a6"/>
+  <text x="360" y="270" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="88" font-weight="700">WowToolbar</text>
+  <text x="365" y="345" fill="#ccfbf1" font-family="Arial, Helvetica, sans-serif" font-size="36">Every tool you need, one click away.</text>
+  <text x="365" y="410" fill="#99f6e4" font-family="Arial, Helvetica, sans-serif" font-size="28">Free online tools for developers and everyday tasks</text>
+</svg>

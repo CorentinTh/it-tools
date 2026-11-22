@@ -57,13 +57,14 @@ export default defineConfig({
       registerType: 'autoUpdate',
       strategies: 'generateSW',
       manifest: {
-        name: 'IT Tools',
-        description: 'Aggregated set of useful tools for developers.',
+        name: 'WowToolbar',
+        short_name: 'WowToolbar',
+        description: 'Fast, free, and easy-to-use online tools for developers and everyday tasks.',
         display: 'standalone',
-        lang: 'fr-FR',
+        lang: 'en',
         start_url: `${baseUrl}?utm_source=pwa&utm_medium=pwa`,
         orientation: 'any',
-        theme_color: '#18a058',
+        theme_color: '#0f766e',
         background_color: '#f1f5f9',
         icons: [
           {

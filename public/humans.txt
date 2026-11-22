@@ -1,4 +1,3 @@
-/* TEAM */
-Developer: Corentin Thomasset
-Site: https://github.com/CorentinTh
-Twitter: @cthmsst
+/* WOWTOOLBAR */
+Site: https://wowtoolbar.com
+Purpose: Privacy-friendly online utilities

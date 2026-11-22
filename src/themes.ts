@@ -16,19 +16,24 @@ export const lightThemeOverrides: GlobalThemeOverrides = {
 
 export const darkThemeOverrides: GlobalThemeOverrides = {
   common: {
-    primaryColor: '#1ea54cFF',
-    primaryColorHover: '#36AD6AFF',
-    primaryColorPressed: '#0C7A43FF',
-    primaryColorSuppl: '#36AD6AFF',
+    primaryColor: '#46f0b4',
+    primaryColorHover: '#78f6c9',
+    primaryColorPressed: '#28c990',
+    primaryColorSuppl: '#46f0b4',
+    bodyColor: '#0b1014',
+    cardColor: '#0f181d',
+    modalColor: '#111c21',
+    popoverColor: '#111c21',
+    textColorBase: '#eafff8',
   },
 
   Notification: {
-    color: '#333333',
+    color: '#111c21',
   },
 
   AutoComplete: {
     peers: {
-      InternalSelectMenu: { height: '500px', color: '#1e1e1e' },
+      InternalSelectMenu: { height: '500px', color: '#111c21' },
     },
   },
 
@@ -37,14 +42,14 @@ export const darkThemeOverrides: GlobalThemeOverrides = {
   },
 
   Layout: {
-    color: '#1c1c1c',
-    siderColor: '#232323',
-    siderBorderColor: 'transparent',
+    color: '#0b1014',
+    siderColor: '#0e161b',
+    siderBorderColor: '#203036',
   },
 
   Card: {
-    color: '#232323',
-    borderColor: '#282828',
+    color: '#0f181d',
+    borderColor: '#24363b',
   },
 
   Table: {
